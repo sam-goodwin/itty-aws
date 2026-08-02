@@ -1,40 +1,21 @@
-import * as Duration from "effect/Duration";
-import * as Effect from "effect/Effect";
-import { pipe } from "effect/Function";
-import * as Layer from "effect/Layer";
-import * as Ref from "effect/Ref";
-import * as Schedule from "effect/Schedule";
+/**
+ * AWS retry surface — a veneer over `@distilled.cloud/core/retry`.
+ *
+ * The `Retry` service tag is threaded into every generated operation via
+ * `API.make({ retry: Retry })`, so a caller-installed policy applies to all
+ * AWS calls below it and core's `makeDefault` is the fallback when none is
+ * provided. Server-provided hints are honored through `error.retryAfter`
+ * (a Duration), which the AWS protocol stamps from wire
+ * `retryAfterSeconds` fields at decode time.
+ */
 import * as Context from "effect/Context";
-import {
-  isRetryable,
-  isThrottlingError,
-  isTransientError,
-} from "./category.ts";
+import * as Effect from "effect/Effect";
+import * as Layer from "effect/Layer";
+import * as Retries from "@distilled.cloud/core/retry";
 
-/**
- * Retry policy options that match the Effect.retry contract.
- */
-export interface Options {
-  /**
-   * Predicate to determine if an error should trigger a retry.
-   */
-  readonly while?: (error: unknown) => boolean;
-  /**
-   * The schedule to use for retrying.
-   */
-  readonly schedule?: Schedule.Schedule<unknown>;
-}
-
-/**
- * A factory function that creates retry policy options with access to the last error ref.
- * This allows dynamic policies that can inspect the last error for retry-after headers, etc.
- */
-export type Factory = (lastError: Ref.Ref<unknown>) => Options;
-
-/**
- * A retry policy can be either static options or a factory that receives the last error ref.
- */
-export type Policy = Options | Factory;
+export type Options = Retries.Options;
+export type Factory = Retries.Factory;
+export type Policy = Retries.Policy;
 
 /**
  * Context tag for configuring retry behavior of AWS API calls.
@@ -68,98 +49,35 @@ export const none: <A, E, R>(
 );
 
 /**
- * Creates the default retry policy used by the AWS SDK.
- *
- * This policy:
- * - Retries transient errors, throttling errors, and errors with the @retryable trait
- * - Uses exponential backoff starting at 100ms with a factor of 2
- * - Respects RetryAfter headers when present
- * - Ensures at least 500ms delay for throttling errors
- * - Limits to 5 retry attempts
- * - Applies jitter to avoid thundering herd
+ * The default retry policy (core's): transient/throttling/retryable errors,
+ * capped exponential backoff with jitter, server `retryAfter` hints honored
+ * with precedence.
  */
-export const makeDefault: Factory = (lastError) => ({
-  while: (error) =>
-    isTransientError(error) || isThrottlingError(error) || isRetryable(error),
-  schedule: Schedule.max([
-    pipe(
-      Schedule.exponential(100, 2),
-      Schedule.modifyDelay(
-        Effect.fnUntraced(function* ({ duration }) {
-          const error = yield* Ref.get(lastError);
-          if (isRetryable(error)) {
-            const retryAfter = Number(
-              (error as any).retryAfterSeconds ??
-                (error as any).RetryAfterSeconds ??
-                0,
-            );
-            if (!isNaN(retryAfter)) {
-              return Duration.toMillis(Duration.seconds(retryAfter));
-            }
-          }
-          if (isThrottlingError(error)) {
-            if (Duration.toMillis(duration) < 500) {
-              // if we got throttled, ensure the delay is at least 500ms
-              return Duration.toMillis(Duration.millis(500));
-            }
-          }
-          return Duration.toMillis(duration);
-        }),
-      ),
-    ),
-    Schedule.recurs(5),
-  ]).pipe(jittered),
-});
+export const makeDefault: Factory = Retries.makeDefault;
 
-export const jittered = Schedule.addDelay(() =>
-  // Add random jitter between 0-50ms
-  Effect.succeed(Duration.millis(Math.random() * 50)),
-);
-
-export const capped = (max: Duration.Duration) =>
-  Schedule.modifyDelay(({ duration }) =>
-    Effect.succeed(Duration.isGreaterThan(duration, max) ? max : duration),
-  );
+export const jittered = Retries.jittered;
+export const capped = Retries.capped;
 
 /**
  * Retry options that retries all throttling errors indefinitely.
  */
-export const throttlingOptions: Options = {
-  while: isThrottlingError,
-  schedule: pipe(
-    Schedule.exponential(1000, 2),
-    capped(Duration.seconds(5)),
-    jittered,
-  ),
-};
+export const throttlingOptions: Options = Retries.throttlingOptions;
 
 /**
- * Retries all throttling errors indefinitely.
+ * Retries all throttling errors indefinitely (honoring server hints).
  */
 export const throttling: <A, E, R>(
   effect: Effect.Effect<A, E, R>,
-) => Effect.Effect<A, E, Exclude<R, Retry>> = policy(throttlingOptions);
+) => Effect.Effect<A, E, Exclude<R, Retry>> = policy(Retries.throttlingFactory);
 
 /**
  * Retry options that retries all transient errors indefinitely.
- *
- * This includes:
- * 1. Throttling errors
- * 2. Smithy's @retryable trait
- * 3. Server errors
  */
-export const transientOptions: Options = {
-  while: isTransientError,
-  schedule: pipe(
-    Schedule.exponential(1000, 2),
-    capped(Duration.seconds(5)),
-    jittered,
-  ),
-};
+export const transientOptions: Options = Retries.transientOptions;
 
 /**
- * Retries all transient errors indefinitely.
+ * Retries all transient errors indefinitely (honoring server hints).
  */
 export const transient: <A, E, R>(
   effect: Effect.Effect<A, E, R>,
-) => Effect.Effect<A, E, Exclude<R, Retry>> = policy(transientOptions);
+) => Effect.Effect<A, E, Exclude<R, Retry>> = policy(Retries.transientFactory);

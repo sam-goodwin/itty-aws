@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,118 +85,64 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    ServiceCode: S.String,
+    QuotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    ServiceCode: S.optional(S.String),
+    QuotaCode: S.optional(S.String),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DirectoryId = string;
 export type CertificateAuthorityArn = string;
-export type SecurityGroupId = string;
-export type ClientToken = string;
-export type ConnectorArn = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type DirectoryRegistrationArn = string;
-export type TemplateArn = string;
-export type GroupSecurityIdentifier = string;
-export type DisplayName = string;
-export type TemplateName = string;
-export type CustomObjectIdentifier = string;
-
-//# Schemas
-export interface ListTagsForResourceRequest {
-  ResourceArn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
-export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export interface ListTagsForResourceResponse {
-  Tags?: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
-export type ValidationExceptionReason =
-  | "FIELD_VALIDATION_FAILED"
-  | "INVALID_CA_SUBJECT"
-  | "INVALID_PERMISSION"
-  | "INVALID_STATE"
-  | "MISMATCHED_CONNECTOR"
-  | "MISMATCHED_VPC"
-  | "NO_CLIENT_TOKEN"
-  | "UNKNOWN_OPERATION"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface TagResourceRequest {
-  ResourceArn: string;
-  Tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Tags: Tags,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  ResourceArn: string;
-  TagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
 export type IpAddressType = "IPV4" | "DUALSTACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
+export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface VpcInformation {
@@ -207,6 +155,9 @@ export const VpcInformation = /*@__PURE__*/ S.suspend(() =>
     SecurityGroupIds: SecurityGroupIdList,
   }),
 ).annotate({ identifier: "VpcInformation" }) as any as S.Schema<VpcInformation>;
+export type ClientToken = string;
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateConnectorRequest {
   DirectoryId: string;
   CertificateAuthorityArn: string;
@@ -234,6 +185,7 @@ export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorRequest",
 }) as any as S.Schema<CreateConnectorRequest>;
+export type ConnectorArn = string;
 export interface CreateConnectorResponse {
   ConnectorArn?: string;
 }
@@ -242,794 +194,73 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
-export interface GetConnectorRequest {
-  ConnectorArn: string;
-}
-export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connectors/{ConnectorArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConnectorRequest",
-}) as any as S.Schema<GetConnectorRequest>;
-export type ConnectorStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
-export const ConnectorStatus = /*@__PURE__*/ S.String;
-export type ConnectorStatusReason =
-  | "CA_CERTIFICATE_REGISTRATION_FAILED"
-  | "DIRECTORY_ACCESS_DENIED"
-  | "INTERNAL_FAILURE"
-  | "INSUFFICIENT_FREE_ADDRESSES"
-  | "INVALID_SUBNET_IP_PROTOCOL"
-  | "PRIVATECA_ACCESS_DENIED"
-  | "PRIVATECA_RESOURCE_NOT_FOUND"
-  | "SECURITY_GROUP_NOT_IN_VPC"
-  | "VPC_ACCESS_DENIED"
-  | "VPC_ENDPOINT_LIMIT_EXCEEDED"
-  | "VPC_RESOURCE_NOT_FOUND"
-  | (string & {});
-export const ConnectorStatusReason = /*@__PURE__*/ S.String;
-export interface Connector {
-  Arn?: string;
-  CertificateAuthorityArn?: string;
-  CertificateEnrollmentPolicyServerEndpoint?: string;
-  DirectoryId?: string;
-  VpcInformation?: VpcInformation;
-  Status?: ConnectorStatus;
-  StatusReason?: ConnectorStatusReason;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const Connector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CertificateAuthorityArn: S.optional(S.String),
-    CertificateEnrollmentPolicyServerEndpoint: S.optional(S.String),
-    DirectoryId: S.optional(S.String),
-    VpcInformation: S.optional(VpcInformation),
-    Status: S.optional(ConnectorStatus),
-    StatusReason: S.optional(ConnectorStatusReason),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
-export interface GetConnectorResponse {
-  Connector?: Connector;
-}
-export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Connector: S.optional(Connector) }),
-).annotate({
-  identifier: "GetConnectorResponse",
-}) as any as S.Schema<GetConnectorResponse>;
-export interface DeleteConnectorRequest {
-  ConnectorArn: string;
-}
-export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/connectors/{ConnectorArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteConnectorRequest",
-}) as any as S.Schema<DeleteConnectorRequest>;
-export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteConnectorResponse",
-}) as any as S.Schema<DeleteConnectorResponse>;
-export interface ListConnectorsRequest {
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/connectors" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListConnectorsRequest",
-}) as any as S.Schema<ListConnectorsRequest>;
-export interface ConnectorSummary {
-  Arn?: string;
-  CertificateAuthorityArn?: string;
-  CertificateEnrollmentPolicyServerEndpoint?: string;
-  DirectoryId?: string;
-  VpcInformation?: VpcInformation;
-  Status?: ConnectorStatus;
-  StatusReason?: ConnectorStatusReason;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const ConnectorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CertificateAuthorityArn: S.optional(S.String),
-    CertificateEnrollmentPolicyServerEndpoint: S.optional(S.String),
-    DirectoryId: S.optional(S.String),
-    VpcInformation: S.optional(VpcInformation),
-    Status: S.optional(ConnectorStatus),
-    StatusReason: S.optional(ConnectorStatusReason),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "ConnectorSummary",
-}) as any as S.Schema<ConnectorSummary>;
-export type ConnectorList = ConnectorSummary[];
-export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorSummary);
-export interface ListConnectorsResponse {
-  Connectors?: ConnectorSummary[];
-  NextToken?: string;
-}
-export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Connectors: S.optional(ConnectorList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConnectorsResponse",
-}) as any as S.Schema<ListConnectorsResponse>;
 export interface CreateDirectoryRegistrationRequest {
   DirectoryId: string;
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateDirectoryRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/directoryRegistrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDirectoryRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/directoryRegistrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDirectoryRegistrationRequest",
-  }) as any as S.Schema<CreateDirectoryRegistrationRequest>;
+  ),
+).annotate({
+  identifier: "CreateDirectoryRegistrationRequest",
+}) as any as S.Schema<CreateDirectoryRegistrationRequest>;
+export type DirectoryRegistrationArn = string;
 export interface CreateDirectoryRegistrationResponse {
   DirectoryRegistrationArn?: string;
 }
-export const CreateDirectoryRegistrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryRegistrationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateDirectoryRegistrationResponse",
-  }) as any as S.Schema<CreateDirectoryRegistrationResponse>;
-export interface GetDirectoryRegistrationRequest {
-  DirectoryRegistrationArn: string;
-}
-export const GetDirectoryRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrationArn: S.String.pipe(
-        T.HttpLabel("DirectoryRegistrationArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/directoryRegistrations/{DirectoryRegistrationArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetDirectoryRegistrationRequest",
-  }) as any as S.Schema<GetDirectoryRegistrationRequest>;
-export type DirectoryRegistrationStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
-export const DirectoryRegistrationStatus = /*@__PURE__*/ S.String;
-export type DirectoryRegistrationStatusReason =
-  | "DIRECTORY_ACCESS_DENIED"
-  | "DIRECTORY_RESOURCE_NOT_FOUND"
-  | "DIRECTORY_NOT_ACTIVE"
-  | "DIRECTORY_NOT_REACHABLE"
-  | "DIRECTORY_TYPE_NOT_SUPPORTED"
-  | "INTERNAL_FAILURE"
-  | (string & {});
-export const DirectoryRegistrationStatusReason = /*@__PURE__*/ S.String;
-export interface DirectoryRegistration {
-  Arn?: string;
-  DirectoryId?: string;
-  Status?: DirectoryRegistrationStatus;
-  StatusReason?: DirectoryRegistrationStatusReason;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const DirectoryRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    DirectoryId: S.optional(S.String),
-    Status: S.optional(DirectoryRegistrationStatus),
-    StatusReason: S.optional(DirectoryRegistrationStatusReason),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
+export const CreateDirectoryRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryRegistrationArn: S.optional(S.String) }),
 ).annotate({
-  identifier: "DirectoryRegistration",
-}) as any as S.Schema<DirectoryRegistration>;
-export interface GetDirectoryRegistrationResponse {
-  DirectoryRegistration?: DirectoryRegistration;
-}
-export const GetDirectoryRegistrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryRegistration: S.optional(DirectoryRegistration) }),
-  ).annotate({
-    identifier: "GetDirectoryRegistrationResponse",
-  }) as any as S.Schema<GetDirectoryRegistrationResponse>;
-export interface DeleteDirectoryRegistrationRequest {
-  DirectoryRegistrationArn: string;
-}
-export const DeleteDirectoryRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrationArn: S.String.pipe(
-        T.HttpLabel("DirectoryRegistrationArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/directoryRegistrations/{DirectoryRegistrationArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteDirectoryRegistrationRequest",
-  }) as any as S.Schema<DeleteDirectoryRegistrationRequest>;
-export interface DeleteDirectoryRegistrationResponse {}
-export const DeleteDirectoryRegistrationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDirectoryRegistrationResponse",
-  }) as any as S.Schema<DeleteDirectoryRegistrationResponse>;
-export interface ListDirectoryRegistrationsRequest {
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListDirectoryRegistrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/directoryRegistrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListDirectoryRegistrationsRequest",
-  }) as any as S.Schema<ListDirectoryRegistrationsRequest>;
-export interface DirectoryRegistrationSummary {
-  Arn?: string;
-  DirectoryId?: string;
-  Status?: DirectoryRegistrationStatus;
-  StatusReason?: DirectoryRegistrationStatusReason;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const DirectoryRegistrationSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      DirectoryId: S.optional(S.String),
-      Status: S.optional(DirectoryRegistrationStatus),
-      StatusReason: S.optional(DirectoryRegistrationStatusReason),
-      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "DirectoryRegistrationSummary",
-  }) as any as S.Schema<DirectoryRegistrationSummary>;
-export type DirectoryRegistrationList = DirectoryRegistrationSummary[];
-export const DirectoryRegistrationList = /*@__PURE__*/ S.Array(
-  DirectoryRegistrationSummary,
-);
-export interface ListDirectoryRegistrationsResponse {
-  DirectoryRegistrations?: DirectoryRegistrationSummary[];
-  NextToken?: string;
-}
-export const ListDirectoryRegistrationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrations: S.optional(DirectoryRegistrationList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDirectoryRegistrationsResponse",
-  }) as any as S.Schema<ListDirectoryRegistrationsResponse>;
+  identifier: "CreateDirectoryRegistrationResponse",
+}) as any as S.Schema<CreateDirectoryRegistrationResponse>;
 export interface CreateServicePrincipalNameRequest {
   DirectoryRegistrationArn: string;
   ConnectorArn: string;
   ClientToken?: string;
 }
-export const CreateServicePrincipalNameRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrationArn: S.String.pipe(
-        T.HttpLabel("DirectoryRegistrationArn"),
-      ),
-      ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateServicePrincipalNameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.String.pipe(
+      T.HttpLabel("DirectoryRegistrationArn"),
     ),
-  ).annotate({
-    identifier: "CreateServicePrincipalNameRequest",
-  }) as any as S.Schema<CreateServicePrincipalNameRequest>;
+    ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateServicePrincipalNameRequest",
+}) as any as S.Schema<CreateServicePrincipalNameRequest>;
 export interface CreateServicePrincipalNameResponse {}
-export const CreateServicePrincipalNameResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateServicePrincipalNameResponse",
-  }) as any as S.Schema<CreateServicePrincipalNameResponse>;
-export interface GetServicePrincipalNameRequest {
-  DirectoryRegistrationArn: string;
-  ConnectorArn: string;
-}
-export const GetServicePrincipalNameRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrationArn: S.String.pipe(
-        T.HttpLabel("DirectoryRegistrationArn"),
-      ),
-      ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetServicePrincipalNameRequest",
-  }) as any as S.Schema<GetServicePrincipalNameRequest>;
-export type ServicePrincipalNameStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
-export const ServicePrincipalNameStatus = /*@__PURE__*/ S.String;
-export type ServicePrincipalNameStatusReason =
-  | "DIRECTORY_ACCESS_DENIED"
-  | "DIRECTORY_NOT_REACHABLE"
-  | "DIRECTORY_RESOURCE_NOT_FOUND"
-  | "SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"
-  | "SPN_LIMIT_EXCEEDED"
-  | "INTERNAL_FAILURE"
-  | (string & {});
-export const ServicePrincipalNameStatusReason = /*@__PURE__*/ S.String;
-export interface ServicePrincipalName {
-  DirectoryRegistrationArn?: string;
-  ConnectorArn?: string;
-  Status?: ServicePrincipalNameStatus;
-  StatusReason?: ServicePrincipalNameStatusReason;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const ServicePrincipalName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DirectoryRegistrationArn: S.optional(S.String),
-    ConnectorArn: S.optional(S.String),
-    Status: S.optional(ServicePrincipalNameStatus),
-    StatusReason: S.optional(ServicePrincipalNameStatusReason),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
+export const CreateServicePrincipalNameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "ServicePrincipalName",
-}) as any as S.Schema<ServicePrincipalName>;
-export interface GetServicePrincipalNameResponse {
-  ServicePrincipalName?: ServicePrincipalName;
-}
-export const GetServicePrincipalNameResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ServicePrincipalName: S.optional(ServicePrincipalName) }),
-  ).annotate({
-    identifier: "GetServicePrincipalNameResponse",
-  }) as any as S.Schema<GetServicePrincipalNameResponse>;
-export interface DeleteServicePrincipalNameRequest {
-  DirectoryRegistrationArn: string;
-  ConnectorArn: string;
-}
-export const DeleteServicePrincipalNameRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrationArn: S.String.pipe(
-        T.HttpLabel("DirectoryRegistrationArn"),
-      ),
-      ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteServicePrincipalNameRequest",
-  }) as any as S.Schema<DeleteServicePrincipalNameRequest>;
-export interface DeleteServicePrincipalNameResponse {}
-export const DeleteServicePrincipalNameResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteServicePrincipalNameResponse",
-  }) as any as S.Schema<DeleteServicePrincipalNameResponse>;
-export interface ListServicePrincipalNamesRequest {
-  MaxResults?: number;
-  NextToken?: string;
-  DirectoryRegistrationArn: string;
-}
-export const ListServicePrincipalNamesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-      DirectoryRegistrationArn: S.String.pipe(
-        T.HttpLabel("DirectoryRegistrationArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListServicePrincipalNamesRequest",
-  }) as any as S.Schema<ListServicePrincipalNamesRequest>;
-export interface ServicePrincipalNameSummary {
-  DirectoryRegistrationArn?: string;
-  ConnectorArn?: string;
-  Status?: ServicePrincipalNameStatus;
-  StatusReason?: ServicePrincipalNameStatusReason;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const ServicePrincipalNameSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryRegistrationArn: S.optional(S.String),
-      ConnectorArn: S.optional(S.String),
-      Status: S.optional(ServicePrincipalNameStatus),
-      StatusReason: S.optional(ServicePrincipalNameStatusReason),
-      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "ServicePrincipalNameSummary",
-  }) as any as S.Schema<ServicePrincipalNameSummary>;
-export type ServicePrincipalNameList = ServicePrincipalNameSummary[];
-export const ServicePrincipalNameList = /*@__PURE__*/ S.Array(
-  ServicePrincipalNameSummary,
-);
-export interface ListServicePrincipalNamesResponse {
-  ServicePrincipalNames?: ServicePrincipalNameSummary[];
-  NextToken?: string;
-}
-export const ListServicePrincipalNamesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServicePrincipalNames: S.optional(ServicePrincipalNameList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServicePrincipalNamesResponse",
-  }) as any as S.Schema<ListServicePrincipalNamesResponse>;
-export type AccessRight = "ALLOW" | "DENY" | (string & {});
-export const AccessRight = /*@__PURE__*/ S.String;
-export interface AccessRights {
-  Enroll?: AccessRight;
-  AutoEnroll?: AccessRight;
-}
-export const AccessRights = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Enroll: S.optional(AccessRight),
-    AutoEnroll: S.optional(AccessRight),
-  }),
-).annotate({ identifier: "AccessRights" }) as any as S.Schema<AccessRights>;
-export interface CreateTemplateGroupAccessControlEntryRequest {
-  TemplateArn: string;
-  GroupSecurityIdentifier: string;
-  GroupDisplayName: string;
-  AccessRights: AccessRights;
-  ClientToken?: string;
-}
-export const CreateTemplateGroupAccessControlEntryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
-      GroupSecurityIdentifier: S.String,
-      GroupDisplayName: S.String,
-      AccessRights: AccessRights,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/templates/{TemplateArn}/accessControlEntries",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateTemplateGroupAccessControlEntryRequest",
-  }) as any as S.Schema<CreateTemplateGroupAccessControlEntryRequest>;
-export interface CreateTemplateGroupAccessControlEntryResponse {}
-export const CreateTemplateGroupAccessControlEntryResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateTemplateGroupAccessControlEntryResponse",
-  }) as any as S.Schema<CreateTemplateGroupAccessControlEntryResponse>;
-export interface GetTemplateGroupAccessControlEntryRequest {
-  TemplateArn: string;
-  GroupSecurityIdentifier: string;
-}
-export const GetTemplateGroupAccessControlEntryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
-      GroupSecurityIdentifier: S.String.pipe(
-        T.HttpLabel("GroupSecurityIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetTemplateGroupAccessControlEntryRequest",
-  }) as any as S.Schema<GetTemplateGroupAccessControlEntryRequest>;
-export interface AccessControlEntry {
-  GroupDisplayName?: string;
-  GroupSecurityIdentifier?: string;
-  AccessRights?: AccessRights;
-  TemplateArn?: string;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const AccessControlEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupDisplayName: S.optional(S.String),
-    GroupSecurityIdentifier: S.optional(S.String),
-    AccessRights: S.optional(AccessRights),
-    TemplateArn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "AccessControlEntry",
-}) as any as S.Schema<AccessControlEntry>;
-export interface GetTemplateGroupAccessControlEntryResponse {
-  AccessControlEntry?: AccessControlEntry;
-}
-export const GetTemplateGroupAccessControlEntryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AccessControlEntry: S.optional(AccessControlEntry) }),
-  ).annotate({
-    identifier: "GetTemplateGroupAccessControlEntryResponse",
-  }) as any as S.Schema<GetTemplateGroupAccessControlEntryResponse>;
-export interface UpdateTemplateGroupAccessControlEntryRequest {
-  TemplateArn: string;
-  GroupSecurityIdentifier: string;
-  GroupDisplayName?: string;
-  AccessRights?: AccessRights;
-}
-export const UpdateTemplateGroupAccessControlEntryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
-      GroupSecurityIdentifier: S.String.pipe(
-        T.HttpLabel("GroupSecurityIdentifier"),
-      ),
-      GroupDisplayName: S.optional(S.String),
-      AccessRights: S.optional(AccessRights),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateTemplateGroupAccessControlEntryRequest",
-  }) as any as S.Schema<UpdateTemplateGroupAccessControlEntryRequest>;
-export interface UpdateTemplateGroupAccessControlEntryResponse {}
-export const UpdateTemplateGroupAccessControlEntryResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateTemplateGroupAccessControlEntryResponse",
-  }) as any as S.Schema<UpdateTemplateGroupAccessControlEntryResponse>;
-export interface DeleteTemplateGroupAccessControlEntryRequest {
-  TemplateArn: string;
-  GroupSecurityIdentifier: string;
-}
-export const DeleteTemplateGroupAccessControlEntryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
-      GroupSecurityIdentifier: S.String.pipe(
-        T.HttpLabel("GroupSecurityIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteTemplateGroupAccessControlEntryRequest",
-  }) as any as S.Schema<DeleteTemplateGroupAccessControlEntryRequest>;
-export interface DeleteTemplateGroupAccessControlEntryResponse {}
-export const DeleteTemplateGroupAccessControlEntryResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTemplateGroupAccessControlEntryResponse",
-  }) as any as S.Schema<DeleteTemplateGroupAccessControlEntryResponse>;
-export interface ListTemplateGroupAccessControlEntriesRequest {
-  MaxResults?: number;
-  NextToken?: string;
-  TemplateArn: string;
-}
-export const ListTemplateGroupAccessControlEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/templates/{TemplateArn}/accessControlEntries",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListTemplateGroupAccessControlEntriesRequest",
-  }) as any as S.Schema<ListTemplateGroupAccessControlEntriesRequest>;
-export interface AccessControlEntrySummary {
-  GroupDisplayName?: string;
-  GroupSecurityIdentifier?: string;
-  AccessRights?: AccessRights;
-  TemplateArn?: string;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-}
-export const AccessControlEntrySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupDisplayName: S.optional(S.String),
-    GroupSecurityIdentifier: S.optional(S.String),
-    AccessRights: S.optional(AccessRights),
-    TemplateArn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "AccessControlEntrySummary",
-}) as any as S.Schema<AccessControlEntrySummary>;
-export type AccessControlEntryList = AccessControlEntrySummary[];
-export const AccessControlEntryList = /*@__PURE__*/ S.Array(
-  AccessControlEntrySummary,
-);
-export interface ListTemplateGroupAccessControlEntriesResponse {
-  AccessControlEntries?: AccessControlEntrySummary[];
-  NextToken?: string;
-}
-export const ListTemplateGroupAccessControlEntriesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccessControlEntries: S.optional(AccessControlEntryList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListTemplateGroupAccessControlEntriesResponse",
-  }) as any as S.Schema<ListTemplateGroupAccessControlEntriesResponse>;
+  identifier: "CreateServicePrincipalNameResponse",
+}) as any as S.Schema<CreateServicePrincipalNameResponse>;
+export type TemplateName = string;
 export type ValidityPeriodType =
   | "HOURS"
   | "DAYS"
@@ -1038,6 +269,7 @@ export type ValidityPeriodType =
   | "YEARS"
   | (string & {});
 export const ValidityPeriodType = /*@__PURE__*/ S.String;
+
 export interface ValidityPeriod {
   PeriodType: ValidityPeriodType;
   Period: number;
@@ -1058,6 +290,7 @@ export type TemplateNameList = string[];
 export const TemplateNameList = /*@__PURE__*/ S.Array(S.String);
 export type KeySpec = "KEY_EXCHANGE" | "SIGNATURE" | (string & {});
 export const KeySpec = /*@__PURE__*/ S.String;
+
 export type CryptoProvidersList = string[];
 export const CryptoProvidersList = /*@__PURE__*/ S.Array(S.String);
 export interface PrivateKeyAttributesV2 {
@@ -1083,6 +316,7 @@ export type ClientCompatibilityV2 =
   | "WINDOWS_SERVER_2016"
   | (string & {});
 export const ClientCompatibilityV2 = /*@__PURE__*/ S.String;
+
 export interface PrivateKeyFlagsV2 {
   ExportableKey?: boolean;
   StrongKeyProtectionRequired?: boolean;
@@ -1246,6 +480,8 @@ export type ApplicationPolicyType =
   | "WINDOWS_UPDATE"
   | (string & {});
 export const ApplicationPolicyType = /*@__PURE__*/ S.String;
+
+export type CustomObjectIdentifier = string;
 export type ApplicationPolicy =
   | { PolicyType: ApplicationPolicyType; PolicyObjectIdentifier?: never }
   | { PolicyType?: never; PolicyObjectIdentifier: string };
@@ -1301,6 +537,7 @@ export const TemplateV2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateV2" }) as any as S.Schema<TemplateV2>;
 export type KeyUsagePropertyType = "ALL" | (string & {});
 export const KeyUsagePropertyType = /*@__PURE__*/ S.String;
+
 export interface KeyUsagePropertyFlags {
   Decrypt?: boolean;
   KeyAgreement?: boolean;
@@ -1329,6 +566,7 @@ export type PrivateKeyAlgorithm =
   | "ECDH_P521"
   | (string & {});
 export const PrivateKeyAlgorithm = /*@__PURE__*/ S.String;
+
 export interface PrivateKeyAttributesV3 {
   MinimalKeyLength: number;
   KeySpec: KeySpec;
@@ -1355,6 +593,7 @@ export type ClientCompatibilityV3 =
   | "WINDOWS_SERVER_2016"
   | (string & {});
 export const ClientCompatibilityV3 = /*@__PURE__*/ S.String;
+
 export interface PrivateKeyFlagsV3 {
   ExportableKey?: boolean;
   StrongKeyProtectionRequired?: boolean;
@@ -1429,6 +668,7 @@ export const GeneralFlagsV3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneralFlagsV3" }) as any as S.Schema<GeneralFlagsV3>;
 export type HashAlgorithm = "SHA256" | "SHA384" | "SHA512" | (string & {});
 export const HashAlgorithm = /*@__PURE__*/ S.String;
+
 export interface ExtensionsV3 {
   KeyUsage: KeyUsage;
   ApplicationPolicies?: ApplicationPolicies;
@@ -1487,6 +727,7 @@ export type ClientCompatibilityV4 =
   | "WINDOWS_SERVER_2016"
   | (string & {});
 export const ClientCompatibilityV4 = /*@__PURE__*/ S.String;
+
 export interface PrivateKeyFlagsV4 {
   ExportableKey?: boolean;
   StrongKeyProtectionRequired?: boolean;
@@ -1633,6 +874,7 @@ export const CreateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTemplateRequest",
 }) as any as S.Schema<CreateTemplateRequest>;
+export type TemplateArn = string;
 export interface CreateTemplateResponse {
   TemplateArn?: string;
 }
@@ -1641,6 +883,411 @@ export const CreateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTemplateResponse",
 }) as any as S.Schema<CreateTemplateResponse>;
+export type GroupSecurityIdentifier = string;
+export type DisplayName = string;
+export type AccessRight = "ALLOW" | "DENY" | (string & {});
+export const AccessRight = /*@__PURE__*/ S.String;
+
+export interface AccessRights {
+  Enroll?: AccessRight;
+  AutoEnroll?: AccessRight;
+}
+export const AccessRights = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Enroll: S.optional(AccessRight),
+    AutoEnroll: S.optional(AccessRight),
+  }),
+).annotate({ identifier: "AccessRights" }) as any as S.Schema<AccessRights>;
+export interface CreateTemplateGroupAccessControlEntryRequest {
+  TemplateArn: string;
+  GroupSecurityIdentifier: string;
+  GroupDisplayName: string;
+  AccessRights: AccessRights;
+  ClientToken?: string;
+}
+export const CreateTemplateGroupAccessControlEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
+      GroupSecurityIdentifier: S.String,
+      GroupDisplayName: S.String,
+      AccessRights: AccessRights,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/templates/{TemplateArn}/accessControlEntries",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateTemplateGroupAccessControlEntryRequest",
+  }) as any as S.Schema<CreateTemplateGroupAccessControlEntryRequest>;
+export interface CreateTemplateGroupAccessControlEntryResponse {}
+export const CreateTemplateGroupAccessControlEntryResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "CreateTemplateGroupAccessControlEntryResponse",
+  }) as any as S.Schema<CreateTemplateGroupAccessControlEntryResponse>;
+export interface DeleteConnectorRequest {
+  ConnectorArn: string;
+}
+export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/connectors/{ConnectorArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteConnectorRequest",
+}) as any as S.Schema<DeleteConnectorRequest>;
+export interface DeleteConnectorResponse {}
+export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectorResponse",
+}) as any as S.Schema<DeleteConnectorResponse>;
+export interface DeleteDirectoryRegistrationRequest {
+  DirectoryRegistrationArn: string;
+}
+export const DeleteDirectoryRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.String.pipe(
+      T.HttpLabel("DirectoryRegistrationArn"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/directoryRegistrations/{DirectoryRegistrationArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDirectoryRegistrationRequest",
+}) as any as S.Schema<DeleteDirectoryRegistrationRequest>;
+export interface DeleteDirectoryRegistrationResponse {}
+export const DeleteDirectoryRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDirectoryRegistrationResponse",
+}) as any as S.Schema<DeleteDirectoryRegistrationResponse>;
+export interface DeleteServicePrincipalNameRequest {
+  DirectoryRegistrationArn: string;
+  ConnectorArn: string;
+}
+export const DeleteServicePrincipalNameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.String.pipe(
+      T.HttpLabel("DirectoryRegistrationArn"),
+    ),
+    ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteServicePrincipalNameRequest",
+}) as any as S.Schema<DeleteServicePrincipalNameRequest>;
+export interface DeleteServicePrincipalNameResponse {}
+export const DeleteServicePrincipalNameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServicePrincipalNameResponse",
+}) as any as S.Schema<DeleteServicePrincipalNameResponse>;
+export interface DeleteTemplateRequest {
+  TemplateArn: string;
+}
+export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/templates/{TemplateArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteTemplateRequest",
+}) as any as S.Schema<DeleteTemplateRequest>;
+export interface DeleteTemplateResponse {}
+export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTemplateResponse",
+}) as any as S.Schema<DeleteTemplateResponse>;
+export interface DeleteTemplateGroupAccessControlEntryRequest {
+  TemplateArn: string;
+  GroupSecurityIdentifier: string;
+}
+export const DeleteTemplateGroupAccessControlEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
+      GroupSecurityIdentifier: S.String.pipe(
+        T.HttpLabel("GroupSecurityIdentifier"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteTemplateGroupAccessControlEntryRequest",
+  }) as any as S.Schema<DeleteTemplateGroupAccessControlEntryRequest>;
+export interface DeleteTemplateGroupAccessControlEntryResponse {}
+export const DeleteTemplateGroupAccessControlEntryResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteTemplateGroupAccessControlEntryResponse",
+  }) as any as S.Schema<DeleteTemplateGroupAccessControlEntryResponse>;
+export interface GetConnectorRequest {
+  ConnectorArn: string;
+}
+export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/connectors/{ConnectorArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetConnectorRequest",
+}) as any as S.Schema<GetConnectorRequest>;
+export type ConnectorStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
+export const ConnectorStatus = /*@__PURE__*/ S.String;
+
+export type ConnectorStatusReason =
+  | "CA_CERTIFICATE_REGISTRATION_FAILED"
+  | "DIRECTORY_ACCESS_DENIED"
+  | "INTERNAL_FAILURE"
+  | "INSUFFICIENT_FREE_ADDRESSES"
+  | "INVALID_SUBNET_IP_PROTOCOL"
+  | "PRIVATECA_ACCESS_DENIED"
+  | "PRIVATECA_RESOURCE_NOT_FOUND"
+  | "SECURITY_GROUP_NOT_IN_VPC"
+  | "VPC_ACCESS_DENIED"
+  | "VPC_ENDPOINT_LIMIT_EXCEEDED"
+  | "VPC_RESOURCE_NOT_FOUND"
+  | (string & {});
+export const ConnectorStatusReason = /*@__PURE__*/ S.String;
+
+export interface Connector {
+  Arn?: string;
+  CertificateAuthorityArn?: string;
+  CertificateEnrollmentPolicyServerEndpoint?: string;
+  DirectoryId?: string;
+  VpcInformation?: VpcInformation;
+  Status?: ConnectorStatus;
+  StatusReason?: ConnectorStatusReason;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const Connector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    CertificateAuthorityArn: S.optional(S.String),
+    CertificateEnrollmentPolicyServerEndpoint: S.optional(S.String),
+    DirectoryId: S.optional(S.String),
+    VpcInformation: S.optional(VpcInformation),
+    Status: S.optional(ConnectorStatus),
+    StatusReason: S.optional(ConnectorStatusReason),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
+export interface GetConnectorResponse {
+  Connector?: Connector;
+}
+export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Connector: S.optional(Connector) }),
+).annotate({
+  identifier: "GetConnectorResponse",
+}) as any as S.Schema<GetConnectorResponse>;
+export interface GetDirectoryRegistrationRequest {
+  DirectoryRegistrationArn: string;
+}
+export const GetDirectoryRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.String.pipe(
+      T.HttpLabel("DirectoryRegistrationArn"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/directoryRegistrations/{DirectoryRegistrationArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDirectoryRegistrationRequest",
+}) as any as S.Schema<GetDirectoryRegistrationRequest>;
+export type DirectoryRegistrationStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
+export const DirectoryRegistrationStatus = /*@__PURE__*/ S.String;
+
+export type DirectoryRegistrationStatusReason =
+  | "DIRECTORY_ACCESS_DENIED"
+  | "DIRECTORY_RESOURCE_NOT_FOUND"
+  | "DIRECTORY_NOT_ACTIVE"
+  | "DIRECTORY_NOT_REACHABLE"
+  | "DIRECTORY_TYPE_NOT_SUPPORTED"
+  | "INTERNAL_FAILURE"
+  | (string & {});
+export const DirectoryRegistrationStatusReason = /*@__PURE__*/ S.String;
+
+export interface DirectoryRegistration {
+  Arn?: string;
+  DirectoryId?: string;
+  Status?: DirectoryRegistrationStatus;
+  StatusReason?: DirectoryRegistrationStatusReason;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const DirectoryRegistration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    DirectoryId: S.optional(S.String),
+    Status: S.optional(DirectoryRegistrationStatus),
+    StatusReason: S.optional(DirectoryRegistrationStatusReason),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DirectoryRegistration",
+}) as any as S.Schema<DirectoryRegistration>;
+export interface GetDirectoryRegistrationResponse {
+  DirectoryRegistration?: DirectoryRegistration;
+}
+export const GetDirectoryRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryRegistration: S.optional(DirectoryRegistration) }),
+).annotate({
+  identifier: "GetDirectoryRegistrationResponse",
+}) as any as S.Schema<GetDirectoryRegistrationResponse>;
+export interface GetServicePrincipalNameRequest {
+  DirectoryRegistrationArn: string;
+  ConnectorArn: string;
+}
+export const GetServicePrincipalNameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.String.pipe(
+      T.HttpLabel("DirectoryRegistrationArn"),
+    ),
+    ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetServicePrincipalNameRequest",
+}) as any as S.Schema<GetServicePrincipalNameRequest>;
+export type ServicePrincipalNameStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
+export const ServicePrincipalNameStatus = /*@__PURE__*/ S.String;
+
+export type ServicePrincipalNameStatusReason =
+  | "DIRECTORY_ACCESS_DENIED"
+  | "DIRECTORY_NOT_REACHABLE"
+  | "DIRECTORY_RESOURCE_NOT_FOUND"
+  | "SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"
+  | "SPN_LIMIT_EXCEEDED"
+  | "INTERNAL_FAILURE"
+  | (string & {});
+export const ServicePrincipalNameStatusReason = /*@__PURE__*/ S.String;
+
+export interface ServicePrincipalName {
+  DirectoryRegistrationArn?: string;
+  ConnectorArn?: string;
+  Status?: ServicePrincipalNameStatus;
+  StatusReason?: ServicePrincipalNameStatusReason;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const ServicePrincipalName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.optional(S.String),
+    ConnectorArn: S.optional(S.String),
+    Status: S.optional(ServicePrincipalNameStatus),
+    StatusReason: S.optional(ServicePrincipalNameStatusReason),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "ServicePrincipalName",
+}) as any as S.Schema<ServicePrincipalName>;
+export interface GetServicePrincipalNameResponse {
+  ServicePrincipalName?: ServicePrincipalName;
+}
+export const GetServicePrincipalNameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ServicePrincipalName: S.optional(ServicePrincipalName) }),
+).annotate({
+  identifier: "GetServicePrincipalNameResponse",
+}) as any as S.Schema<GetServicePrincipalNameResponse>;
 export interface GetTemplateRequest {
   TemplateArn: string;
 }
@@ -1660,6 +1307,7 @@ export const GetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTemplateRequest>;
 export type TemplateStatus = "ACTIVE" | "DELETING" | (string & {});
 export const TemplateStatus = /*@__PURE__*/ S.String;
+
 export interface TemplateRevision {
   MajorRevision: number;
   MinorRevision: number;
@@ -1703,19 +1351,75 @@ export const GetTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTemplateResponse",
 }) as any as S.Schema<GetTemplateResponse>;
-export interface UpdateTemplateRequest {
+export interface GetTemplateGroupAccessControlEntryRequest {
   TemplateArn: string;
-  Definition?: TemplateDefinition;
-  ReenrollAllCertificateHolders?: boolean;
+  GroupSecurityIdentifier: string;
 }
-export const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetTemplateGroupAccessControlEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
+      GroupSecurityIdentifier: S.String.pipe(
+        T.HttpLabel("GroupSecurityIdentifier"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetTemplateGroupAccessControlEntryRequest",
+  }) as any as S.Schema<GetTemplateGroupAccessControlEntryRequest>;
+export interface AccessControlEntry {
+  GroupDisplayName?: string;
+  GroupSecurityIdentifier?: string;
+  AccessRights?: AccessRights;
+  TemplateArn?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const AccessControlEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
-    Definition: S.optional(TemplateDefinition),
-    ReenrollAllCertificateHolders: S.optional(S.Boolean),
+    GroupDisplayName: S.optional(S.String),
+    GroupSecurityIdentifier: S.optional(S.String),
+    AccessRights: S.optional(AccessRights),
+    TemplateArn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "AccessControlEntry",
+}) as any as S.Schema<AccessControlEntry>;
+export interface GetTemplateGroupAccessControlEntryResponse {
+  AccessControlEntry?: AccessControlEntry;
+}
+export const GetTemplateGroupAccessControlEntryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ AccessControlEntry: S.optional(AccessControlEntry) }),
+  ).annotate({
+    identifier: "GetTemplateGroupAccessControlEntryResponse",
+  }) as any as S.Schema<GetTemplateGroupAccessControlEntryResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export interface ListConnectorsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
   }).pipe(
     T.all(
-      T.Http({ method: "PATCH", uri: "/templates/{TemplateArn}" }),
+      T.Http({ method: "GET", uri: "/connectors" }),
       svc,
       auth,
       proto,
@@ -1724,37 +1428,258 @@ export const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "UpdateTemplateRequest",
-}) as any as S.Schema<UpdateTemplateRequest>;
-export interface UpdateTemplateResponse {}
-export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  identifier: "ListConnectorsRequest",
+}) as any as S.Schema<ListConnectorsRequest>;
+export interface ConnectorSummary {
+  Arn?: string;
+  CertificateAuthorityArn?: string;
+  CertificateEnrollmentPolicyServerEndpoint?: string;
+  DirectoryId?: string;
+  VpcInformation?: VpcInformation;
+  Status?: ConnectorStatus;
+  StatusReason?: ConnectorStatusReason;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const ConnectorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    CertificateAuthorityArn: S.optional(S.String),
+    CertificateEnrollmentPolicyServerEndpoint: S.optional(S.String),
+    DirectoryId: S.optional(S.String),
+    VpcInformation: S.optional(VpcInformation),
+    Status: S.optional(ConnectorStatus),
+    StatusReason: S.optional(ConnectorStatusReason),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
-  identifier: "UpdateTemplateResponse",
-}) as any as S.Schema<UpdateTemplateResponse>;
-export interface DeleteTemplateRequest {
+  identifier: "ConnectorSummary",
+}) as any as S.Schema<ConnectorSummary>;
+export type ConnectorList = ConnectorSummary[];
+export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorSummary);
+export interface ListConnectorsResponse {
+  Connectors?: ConnectorSummary[];
+  NextToken?: string;
+}
+export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Connectors: S.optional(ConnectorList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConnectorsResponse",
+}) as any as S.Schema<ListConnectorsResponse>;
+export interface ListDirectoryRegistrationsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListDirectoryRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/directoryRegistrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDirectoryRegistrationsRequest",
+}) as any as S.Schema<ListDirectoryRegistrationsRequest>;
+export interface DirectoryRegistrationSummary {
+  Arn?: string;
+  DirectoryId?: string;
+  Status?: DirectoryRegistrationStatus;
+  StatusReason?: DirectoryRegistrationStatusReason;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const DirectoryRegistrationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    DirectoryId: S.optional(S.String),
+    Status: S.optional(DirectoryRegistrationStatus),
+    StatusReason: S.optional(DirectoryRegistrationStatusReason),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DirectoryRegistrationSummary",
+}) as any as S.Schema<DirectoryRegistrationSummary>;
+export type DirectoryRegistrationList = DirectoryRegistrationSummary[];
+export const DirectoryRegistrationList = /*@__PURE__*/ S.Array(
+  DirectoryRegistrationSummary,
+);
+export interface ListDirectoryRegistrationsResponse {
+  DirectoryRegistrations?: DirectoryRegistrationSummary[];
+  NextToken?: string;
+}
+export const ListDirectoryRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrations: S.optional(DirectoryRegistrationList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDirectoryRegistrationsResponse",
+}) as any as S.Schema<ListDirectoryRegistrationsResponse>;
+export interface ListServicePrincipalNamesRequest {
+  MaxResults?: number;
+  NextToken?: string;
+  DirectoryRegistrationArn: string;
+}
+export const ListServicePrincipalNamesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    DirectoryRegistrationArn: S.String.pipe(
+      T.HttpLabel("DirectoryRegistrationArn"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListServicePrincipalNamesRequest",
+}) as any as S.Schema<ListServicePrincipalNamesRequest>;
+export interface ServicePrincipalNameSummary {
+  DirectoryRegistrationArn?: string;
+  ConnectorArn?: string;
+  Status?: ServicePrincipalNameStatus;
+  StatusReason?: ServicePrincipalNameStatusReason;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const ServicePrincipalNameSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryRegistrationArn: S.optional(S.String),
+    ConnectorArn: S.optional(S.String),
+    Status: S.optional(ServicePrincipalNameStatus),
+    StatusReason: S.optional(ServicePrincipalNameStatusReason),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "ServicePrincipalNameSummary",
+}) as any as S.Schema<ServicePrincipalNameSummary>;
+export type ServicePrincipalNameList = ServicePrincipalNameSummary[];
+export const ServicePrincipalNameList = /*@__PURE__*/ S.Array(
+  ServicePrincipalNameSummary,
+);
+export interface ListServicePrincipalNamesResponse {
+  ServicePrincipalNames?: ServicePrincipalNameSummary[];
+  NextToken?: string;
+}
+export const ListServicePrincipalNamesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServicePrincipalNames: S.optional(ServicePrincipalNameList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServicePrincipalNamesResponse",
+}) as any as S.Schema<ListServicePrincipalNamesResponse>;
+export interface ListTagsForResourceRequest {
+  ResourceArn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export interface ListTagsForResourceResponse {
+  Tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export interface ListTemplateGroupAccessControlEntriesRequest {
+  MaxResults?: number;
+  NextToken?: string;
   TemplateArn: string;
 }
-export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/templates/{TemplateArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
+export const ListTemplateGroupAccessControlEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/templates/{TemplateArn}/accessControlEntries",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
-  ),
+  ).annotate({
+    identifier: "ListTemplateGroupAccessControlEntriesRequest",
+  }) as any as S.Schema<ListTemplateGroupAccessControlEntriesRequest>;
+export interface AccessControlEntrySummary {
+  GroupDisplayName?: string;
+  GroupSecurityIdentifier?: string;
+  AccessRights?: AccessRights;
+  TemplateArn?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+}
+export const AccessControlEntrySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GroupDisplayName: S.optional(S.String),
+    GroupSecurityIdentifier: S.optional(S.String),
+    AccessRights: S.optional(AccessRights),
+    TemplateArn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
-  identifier: "DeleteTemplateRequest",
-}) as any as S.Schema<DeleteTemplateRequest>;
-export interface DeleteTemplateResponse {}
-export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteTemplateResponse",
-}) as any as S.Schema<DeleteTemplateResponse>;
+  identifier: "AccessControlEntrySummary",
+}) as any as S.Schema<AccessControlEntrySummary>;
+export type AccessControlEntryList = AccessControlEntrySummary[];
+export const AccessControlEntryList = /*@__PURE__*/ S.Array(
+  AccessControlEntrySummary,
+);
+export interface ListTemplateGroupAccessControlEntriesResponse {
+  AccessControlEntries?: AccessControlEntrySummary[];
+  NextToken?: string;
+}
+export const ListTemplateGroupAccessControlEntriesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AccessControlEntries: S.optional(AccessControlEntryList),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListTemplateGroupAccessControlEntriesResponse",
+  }) as any as S.Schema<ListTemplateGroupAccessControlEntriesResponse>;
 export interface ListTemplatesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1820,131 +1745,140 @@ export const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTemplatesResponse",
 }) as any as S.Schema<ListTemplatesResponse>;
+export interface TagResourceRequest {
+  ResourceArn: string;
+  Tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    Tags: Tags,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  ResourceArn: string;
+  TagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateTemplateRequest {
+  TemplateArn: string;
+  Definition?: TemplateDefinition;
+  ReenrollAllCertificateHolders?: boolean;
+}
+export const UpdateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
+    Definition: S.optional(TemplateDefinition),
+    ReenrollAllCertificateHolders: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/templates/{TemplateArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTemplateRequest",
+}) as any as S.Schema<UpdateTemplateRequest>;
+export interface UpdateTemplateResponse {}
+export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateTemplateResponse",
+}) as any as S.Schema<UpdateTemplateResponse>;
+export interface UpdateTemplateGroupAccessControlEntryRequest {
+  TemplateArn: string;
+  GroupSecurityIdentifier: string;
+  GroupDisplayName?: string;
+  AccessRights?: AccessRights;
+}
+export const UpdateTemplateGroupAccessControlEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TemplateArn: S.String.pipe(T.HttpLabel("TemplateArn")),
+      GroupSecurityIdentifier: S.String.pipe(
+        T.HttpLabel("GroupSecurityIdentifier"),
+      ),
+      GroupDisplayName: S.optional(S.String),
+      AccessRights: S.optional(AccessRights),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PATCH",
+          uri: "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateTemplateGroupAccessControlEntryRequest",
+  }) as any as S.Schema<UpdateTemplateGroupAccessControlEntryRequest>;
+export interface UpdateTemplateGroupAccessControlEntryResponse {}
+export const UpdateTemplateGroupAccessControlEntryResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UpdateTemplateGroupAccessControlEntryResponse",
+  }) as any as S.Schema<UpdateTemplateGroupAccessControlEntryResponse>;
+export type ValidationExceptionReason =
+  | "FIELD_VALIDATION_FAILED"
+  | "INVALID_CA_SUBJECT"
+  | "INVALID_PERMISSION"
+  | "INVALID_STATE"
+  | "MISMATCHED_CONNECTOR"
+  | "MISMATCHED_VPC"
+  | "NO_CLIENT_TOKEN"
+  | "UNKNOWN_OPERATION"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    ServiceCode: S.optional(S.String),
-    QuotaCode: S.optional(S.String),
-  },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String, Reason: S.optional(ValidationExceptionReason) },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    ServiceCode: S.String,
-    QuotaCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-
-//# Operations
-export type ListTagsForResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the tags, if any, that are associated with your resource.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Adds one or more tags to your resource.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Removes one or more tags from your resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UntagResource",
-}));
 export type CreateConnectorError =
   | AccessDeniedException
   | ConflictException
@@ -1975,36 +1909,148 @@ export const createConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnector",
 }));
-export type GetConnectorError =
+
+export type CreateDirectoryRegistrationError =
   | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Lists information about your connector. You specify the connector on input by its ARN
- * (Amazon Resource Name).
+ * Creates a directory registration that authorizes communication between Amazon Web Services Private CA and an
+ * Active Directory
  */
-export const getConnector: API.OperationMethod<
-  GetConnectorRequest,
-  GetConnectorResponse,
-  GetConnectorError,
+export const createDirectoryRegistration: API.OperationMethod<
+  CreateDirectoryRegistrationRequest,
+  CreateDirectoryRegistrationResponse,
+  CreateDirectoryRegistrationError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorRequest,
-  output: GetConnectorResponse,
+  input: CreateDirectoryRegistrationRequest,
+  output: CreateDirectoryRegistrationResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
-  operationName: "GetConnector",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateDirectoryRegistration",
 }));
+
+export type CreateServicePrincipalNameError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a service principal name (SPN) for the service account in Active Directory. Kerberos
+ * authentication uses SPNs to associate a service instance with a service sign-in
+ * account.
+ */
+export const createServicePrincipalName: API.OperationMethod<
+  CreateServicePrincipalNameRequest,
+  CreateServicePrincipalNameResponse,
+  CreateServicePrincipalNameError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateServicePrincipalNameRequest,
+  output: CreateServicePrincipalNameResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateServicePrincipalName",
+}));
+
+export type CreateTemplateError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an Active Directory compatible certificate template. The connectors issues certificates
+ * using these templates based on the requester’s Active Directory group membership.
+ */
+export const createTemplate: API.OperationMethod<
+  CreateTemplateRequest,
+  CreateTemplateResponse,
+  CreateTemplateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTemplateRequest,
+  output: CreateTemplateResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTemplate",
+}));
+
+export type CreateTemplateGroupAccessControlEntryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a group access control entry. Allow or deny Active Directory groups from enrolling and/or
+ * autoenrolling with the template based on the group security identifiers (SIDs).
+ */
+export const createTemplateGroupAccessControlEntry: API.OperationMethod<
+  CreateTemplateGroupAccessControlEntryRequest,
+  CreateTemplateGroupAccessControlEntryResponse,
+  CreateTemplateGroupAccessControlEntryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTemplateGroupAccessControlEntryRequest,
+  output: CreateTemplateGroupAccessControlEntryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTemplateGroupAccessControlEntry",
+}));
+
 export type DeleteConnectorError =
   | AccessDeniedException
   | ConflictException
@@ -2036,8 +2082,291 @@ export const deleteConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnector",
 }));
+
+export type DeleteDirectoryRegistrationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a directory registration. Deleting a directory registration deauthorizes
+ * Amazon Web Services Private CA with the directory.
+ */
+export const deleteDirectoryRegistration: API.OperationMethod<
+  DeleteDirectoryRegistrationRequest,
+  DeleteDirectoryRegistrationResponse,
+  DeleteDirectoryRegistrationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDirectoryRegistrationRequest,
+  output: DeleteDirectoryRegistrationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDirectoryRegistration",
+}));
+
+export type DeleteServicePrincipalNameError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the service principal name (SPN) used by a connector to authenticate with your
+ * Active Directory.
+ */
+export const deleteServicePrincipalName: API.OperationMethod<
+  DeleteServicePrincipalNameRequest,
+  DeleteServicePrincipalNameResponse,
+  DeleteServicePrincipalNameError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServicePrincipalNameRequest,
+  output: DeleteServicePrincipalNameResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteServicePrincipalName",
+}));
+
+export type DeleteTemplateError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a template. Certificates issued using the template are still valid until they
+ * are revoked or expired.
+ */
+export const deleteTemplate: API.OperationMethod<
+  DeleteTemplateRequest,
+  DeleteTemplateResponse,
+  DeleteTemplateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTemplateRequest,
+  output: DeleteTemplateResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTemplate",
+}));
+
+export type DeleteTemplateGroupAccessControlEntryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a group access control entry.
+ */
+export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
+  DeleteTemplateGroupAccessControlEntryRequest,
+  DeleteTemplateGroupAccessControlEntryResponse,
+  DeleteTemplateGroupAccessControlEntryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTemplateGroupAccessControlEntryRequest,
+  output: DeleteTemplateGroupAccessControlEntryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTemplateGroupAccessControlEntry",
+}));
+
+export type GetConnectorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists information about your connector. You specify the connector on input by its ARN
+ * (Amazon Resource Name).
+ */
+export const getConnector: API.OperationMethod<
+  GetConnectorRequest,
+  GetConnectorResponse,
+  GetConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConnector",
+}));
+
+export type GetDirectoryRegistrationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * A structure that contains information about your directory registration.
+ */
+export const getDirectoryRegistration: API.OperationMethod<
+  GetDirectoryRegistrationRequest,
+  GetDirectoryRegistrationResponse,
+  GetDirectoryRegistrationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDirectoryRegistrationRequest,
+  output: GetDirectoryRegistrationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDirectoryRegistration",
+}));
+
+export type GetServicePrincipalNameError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the service principal name that the connector uses to authenticate with
+ * Active Directory.
+ */
+export const getServicePrincipalName: API.OperationMethod<
+  GetServicePrincipalNameRequest,
+  GetServicePrincipalNameResponse,
+  GetServicePrincipalNameError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServicePrincipalNameRequest,
+  output: GetServicePrincipalNameResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetServicePrincipalName",
+}));
+
+export type GetTemplateError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a certificate template that the connector uses to issue certificates from a
+ * private CA.
+ */
+export const getTemplate: API.OperationMethod<
+  GetTemplateRequest,
+  GetTemplateResponse,
+  GetTemplateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTemplateRequest,
+  output: GetTemplateResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTemplate",
+}));
+
+export type GetTemplateGroupAccessControlEntryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the group access control entries for a template.
+ */
+export const getTemplateGroupAccessControlEntry: API.OperationMethod<
+  GetTemplateGroupAccessControlEntryRequest,
+  GetTemplateGroupAccessControlEntryResponse,
+  GetTemplateGroupAccessControlEntryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTemplateGroupAccessControlEntryRequest,
+  output: GetTemplateGroupAccessControlEntryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTemplateGroupAccessControlEntry",
+}));
+
 export type ListConnectorsError =
   | AccessDeniedException
   | InternalServerException
@@ -2076,6 +2405,8 @@ export const listConnectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -2084,91 +2415,7 @@ export const listConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateDirectoryRegistrationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a directory registration that authorizes communication between Amazon Web Services Private CA and an
- * Active Directory
- */
-export const createDirectoryRegistration: API.OperationMethod<
-  CreateDirectoryRegistrationRequest,
-  CreateDirectoryRegistrationResponse,
-  CreateDirectoryRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDirectoryRegistrationRequest,
-  output: CreateDirectoryRegistrationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateDirectoryRegistration",
-}));
-export type GetDirectoryRegistrationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * A structure that contains information about your directory registration.
- */
-export const getDirectoryRegistration: API.OperationMethod<
-  GetDirectoryRegistrationRequest,
-  GetDirectoryRegistrationResponse,
-  GetDirectoryRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDirectoryRegistrationRequest,
-  output: GetDirectoryRegistrationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetDirectoryRegistration",
-}));
-export type DeleteDirectoryRegistrationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a directory registration. Deleting a directory registration deauthorizes
- * Amazon Web Services Private CA with the directory.
- */
-export const deleteDirectoryRegistration: API.OperationMethod<
-  DeleteDirectoryRegistrationRequest,
-  DeleteDirectoryRegistrationResponse,
-  DeleteDirectoryRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDirectoryRegistrationRequest,
-  output: DeleteDirectoryRegistrationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DeleteDirectoryRegistration",
-}));
+
 export type ListDirectoryRegistrationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2208,6 +2455,8 @@ export const listDirectoryRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDirectoryRegistrations",
   pagination: {
     inputToken: "NextToken",
@@ -2216,93 +2465,7 @@ export const listDirectoryRegistrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateServicePrincipalNameError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a service principal name (SPN) for the service account in Active Directory. Kerberos
- * authentication uses SPNs to associate a service instance with a service sign-in
- * account.
- */
-export const createServicePrincipalName: API.OperationMethod<
-  CreateServicePrincipalNameRequest,
-  CreateServicePrincipalNameResponse,
-  CreateServicePrincipalNameError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateServicePrincipalNameRequest,
-  output: CreateServicePrincipalNameResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateServicePrincipalName",
-}));
-export type GetServicePrincipalNameError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the service principal name that the connector uses to authenticate with
- * Active Directory.
- */
-export const getServicePrincipalName: API.OperationMethod<
-  GetServicePrincipalNameRequest,
-  GetServicePrincipalNameResponse,
-  GetServicePrincipalNameError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetServicePrincipalNameRequest,
-  output: GetServicePrincipalNameResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetServicePrincipalName",
-}));
-export type DeleteServicePrincipalNameError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the service principal name (SPN) used by a connector to authenticate with your
- * Active Directory.
- */
-export const deleteServicePrincipalName: API.OperationMethod<
-  DeleteServicePrincipalNameRequest,
-  DeleteServicePrincipalNameResponse,
-  DeleteServicePrincipalNameError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServicePrincipalNameRequest,
-  output: DeleteServicePrincipalNameResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DeleteServicePrincipalName",
-}));
+
 export type ListServicePrincipalNamesError =
   | AccessDeniedException
   | InternalServerException
@@ -2344,6 +2507,8 @@ export const listServicePrincipalNames: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServicePrincipalNames",
   pagination: {
     inputToken: "NextToken",
@@ -2352,39 +2517,8 @@ export const listServicePrincipalNames: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateTemplateGroupAccessControlEntryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a group access control entry. Allow or deny Active Directory groups from enrolling and/or
- * autoenrolling with the template based on the group security identifiers (SIDs).
- */
-export const createTemplateGroupAccessControlEntry: API.OperationMethod<
-  CreateTemplateGroupAccessControlEntryRequest,
-  CreateTemplateGroupAccessControlEntryResponse,
-  CreateTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateGroupAccessControlEntryRequest,
-  output: CreateTemplateGroupAccessControlEntryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateTemplateGroupAccessControlEntry",
-}));
-export type GetTemplateGroupAccessControlEntryError =
+
+export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
@@ -2392,16 +2526,16 @@ export type GetTemplateGroupAccessControlEntryError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves the group access control entries for a template.
+ * Lists the tags, if any, that are associated with your resource.
  */
-export const getTemplateGroupAccessControlEntry: API.OperationMethod<
-  GetTemplateGroupAccessControlEntryRequest,
-  GetTemplateGroupAccessControlEntryResponse,
-  GetTemplateGroupAccessControlEntryError,
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateGroupAccessControlEntryRequest,
-  output: GetTemplateGroupAccessControlEntryResponse,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2409,66 +2543,11 @@ export const getTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
-  operationName: "GetTemplateGroupAccessControlEntry",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
 }));
-export type UpdateTemplateGroupAccessControlEntryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update a group access control entry you created using CreateTemplateGroupAccessControlEntry.
- */
-export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
-  UpdateTemplateGroupAccessControlEntryRequest,
-  UpdateTemplateGroupAccessControlEntryResponse,
-  UpdateTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateGroupAccessControlEntryRequest,
-  output: UpdateTemplateGroupAccessControlEntryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UpdateTemplateGroupAccessControlEntry",
-}));
-export type DeleteTemplateGroupAccessControlEntryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a group access control entry.
- */
-export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
-  DeleteTemplateGroupAccessControlEntryRequest,
-  DeleteTemplateGroupAccessControlEntryResponse,
-  DeleteTemplateGroupAccessControlEntryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTemplateGroupAccessControlEntryRequest,
-  output: DeleteTemplateGroupAccessControlEntryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DeleteTemplateGroupAccessControlEntry",
-}));
+
 export type ListTemplateGroupAccessControlEntriesError =
   | AccessDeniedException
   | InternalServerException
@@ -2509,6 +2588,8 @@ export const listTemplateGroupAccessControlEntries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateGroupAccessControlEntries",
   pagination: {
     inputToken: "NextToken",
@@ -2517,125 +2598,7 @@ export const listTemplateGroupAccessControlEntries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateTemplateError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates an Active Directory compatible certificate template. The connectors issues certificates
- * using these templates based on the requester’s Active Directory group membership.
- */
-export const createTemplate: API.OperationMethod<
-  CreateTemplateRequest,
-  CreateTemplateResponse,
-  CreateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateRequest,
-  output: CreateTemplateResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateTemplate",
-}));
-export type GetTemplateError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a certificate template that the connector uses to issue certificates from a
- * private CA.
- */
-export const getTemplate: API.OperationMethod<
-  GetTemplateRequest,
-  GetTemplateResponse,
-  GetTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateRequest,
-  output: GetTemplateResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetTemplate",
-}));
-export type UpdateTemplateError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update template configuration to define the information included in certificates.
- */
-export const updateTemplate: API.OperationMethod<
-  UpdateTemplateRequest,
-  UpdateTemplateResponse,
-  UpdateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateRequest,
-  output: UpdateTemplateResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UpdateTemplate",
-}));
-export type DeleteTemplateError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a template. Certificates issued using the template are still valid until they
- * are revoked or expired.
- */
-export const deleteTemplate: API.OperationMethod<
-  DeleteTemplateRequest,
-  DeleteTemplateResponse,
-  DeleteTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTemplateRequest,
-  output: DeleteTemplateResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DeleteTemplate",
-}));
+
 export type ListTemplatesError =
   | AccessDeniedException
   | InternalServerException
@@ -2676,6 +2639,8 @@ export const listTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -2683,4 +2648,128 @@ export const listTemplates: API.OperationMethod<
     items: "Templates",
     pageSize: "MaxResults",
   } as const,
+}));
+
+export type TagResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Adds one or more tags to your resource.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes one or more tags from your resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateTemplateError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update template configuration to define the information included in certificates.
+ */
+export const updateTemplate: API.OperationMethod<
+  UpdateTemplateRequest,
+  UpdateTemplateResponse,
+  UpdateTemplateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTemplateRequest,
+  output: UpdateTemplateResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTemplate",
+}));
+
+export type UpdateTemplateGroupAccessControlEntryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update a group access control entry you created using CreateTemplateGroupAccessControlEntry.
+ */
+export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
+  UpdateTemplateGroupAccessControlEntryRequest,
+  UpdateTemplateGroupAccessControlEntryResponse,
+  UpdateTemplateGroupAccessControlEntryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTemplateGroupAccessControlEntryRequest,
+  output: UpdateTemplateGroupAccessControlEntryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTemplateGroupAccessControlEntry",
 }));

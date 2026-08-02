@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -88,33 +90,92 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArgsException extends S.TaggedErrorClass<InvalidArgsException>()(
+  "InvalidArgsException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
+  "InvalidArnException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDomainValidationOptionsException extends S.TaggedErrorClass<InvalidDomainValidationOptionsException>()(
+  "InvalidDomainValidationOptionsException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
+  "InvalidTagException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class RequestInProgressException extends S.TaggedErrorClass<RequestInProgressException>()(
+  "RequestInProgressException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
+  "TagPolicyException",
+  { message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.optional(S.String),
+    throttlingReasons: S.optional(
+      S.suspend(() => ThrottlingReasonList).annotate({
+        identifier: "ThrottlingReasonList",
+      }),
+    ),
+  },
+  T.all(
+    T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type TagKey = string;
 export type TagValue = string;
-export type AvailabilityErrorMessage = string;
-export type CoralAvailabilityThrottlingReason = string;
-export type CoralAvailabilityThrottledResource = string;
-export type ServiceErrorMessage = string;
-export type DomainNameString = string;
-export type PassphraseBlob = Uint8Array | redacted.Redacted<Uint8Array>;
-export type CertificateBody = string;
-export type CertificateChain = string;
-export type PrivateKey = string | redacted.Redacted<string>;
-export type PositiveInteger = number;
-export type CertificateBodyBlob = Uint8Array;
-export type PrivateKeyBlob = Uint8Array | redacted.Redacted<Uint8Array>;
-export type CertificateChainBlob = Uint8Array;
-export type NextToken = string;
-export type MaxItems = number;
-export type ValidationExceptionMessage = string;
-export type IdempotencyToken = string;
-export type PcaArn = string;
-export type FilterString = string;
-export type SerialNumber = string;
-export type SearchMaxResults = number;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value?: string;
@@ -128,30 +189,19 @@ export interface AddTagsToCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-export const AddTagsToCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "AddTagsToCertificateRequest",
-  }) as any as S.Schema<AddTagsToCertificateRequest>;
-export interface AddTagsToCertificateResponse {}
-export const AddTagsToCertificateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AddTagsToCertificateResponse",
-  }) as any as S.Schema<AddTagsToCertificateResponse>;
-export interface ThrottlingReason {
-  reason?: string;
-  resource?: string;
-}
-export const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+export const AddTagsToCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
-  identifier: "ThrottlingReason",
-}) as any as S.Schema<ThrottlingReason>;
-export type ThrottlingReasonList = ThrottlingReason[];
-export const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+  identifier: "AddTagsToCertificateRequest",
+}) as any as S.Schema<AddTagsToCertificateRequest>;
+export interface AddTagsToCertificateResponse {}
+export const AddTagsToCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AddTagsToCertificateResponse",
+}) as any as S.Schema<AddTagsToCertificateResponse>;
 export interface DeleteCertificateRequest {
   CertificateArn: string;
 }
@@ -178,10 +228,12 @@ export const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCertificateRequest",
 }) as any as S.Schema<DescribeCertificateRequest>;
+export type DomainNameString = string;
 export type DomainList = string[];
 export const DomainList = /*@__PURE__*/ S.Array(S.String);
 export type CertificateManagedBy = "CLOUDFRONT" | (string & {});
 export const CertificateManagedBy = /*@__PURE__*/ S.String;
+
 export type ValidationEmailList = string[];
 export const ValidationEmailList = /*@__PURE__*/ S.Array(S.String);
 export type DomainStatus =
@@ -190,8 +242,10 @@ export type DomainStatus =
   | "FAILED"
   | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
+
 export type RecordType = "CNAME" | (string & {});
 export const RecordType = /*@__PURE__*/ S.String;
+
 export interface ResourceRecord {
   Name: string;
   Type: RecordType;
@@ -212,6 +266,7 @@ export const HttpRedirect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpRedirect" }) as any as S.Schema<HttpRedirect>;
 export type ValidationMethod = "EMAIL" | "DNS" | "HTTP" | (string & {});
 export const ValidationMethod = /*@__PURE__*/ S.String;
+
 export interface DomainValidation {
   DomainName: string;
   ValidationEmails?: string[];
@@ -246,6 +301,7 @@ export type CertificateStatus =
   | "FAILED"
   | (string & {});
 export const CertificateStatus = /*@__PURE__*/ S.String;
+
 export type RevocationReason =
   | "UNSPECIFIED"
   | "KEY_COMPROMISE"
@@ -260,6 +316,7 @@ export type RevocationReason =
   | "A_A_COMPROMISE"
   | (string & {});
 export const RevocationReason = /*@__PURE__*/ S.String;
+
 export type KeyAlgorithm =
   | "RSA_1024"
   | "RSA_2048"
@@ -270,6 +327,7 @@ export type KeyAlgorithm =
   | "EC_secp521r1"
   | (string & {});
 export const KeyAlgorithm = /*@__PURE__*/ S.String;
+
 export type InUseList = string[];
 export const InUseList = /*@__PURE__*/ S.Array(S.String);
 export type FailureReason =
@@ -292,12 +350,14 @@ export type FailureReason =
   | "OTHER"
   | (string & {});
 export const FailureReason = /*@__PURE__*/ S.String;
+
 export type CertificateType =
   | "IMPORTED"
   | "AMAZON_ISSUED"
   | "PRIVATE"
   | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
+
 export type RenewalStatus =
   | "PENDING_AUTO_RENEWAL"
   | "PENDING_VALIDATION"
@@ -305,6 +365,7 @@ export type RenewalStatus =
   | "FAILED"
   | (string & {});
 export const RenewalStatus = /*@__PURE__*/ S.String;
+
 export interface RenewalSummary {
   RenewalStatus: RenewalStatus;
   DomainValidationOptions: DomainValidation[];
@@ -333,6 +394,7 @@ export type KeyUsageName =
   | "CUSTOM"
   | (string & {});
 export const KeyUsageName = /*@__PURE__*/ S.String;
+
 export interface KeyUsage {
   Name?: KeyUsageName;
 }
@@ -356,6 +418,7 @@ export type ExtendedKeyUsageName =
   | "CUSTOM"
   | (string & {});
 export const ExtendedKeyUsageName = /*@__PURE__*/ S.String;
+
 export interface ExtendedKeyUsage {
   Name?: ExtendedKeyUsageName;
   OID?: string;
@@ -372,13 +435,16 @@ export type ExtendedKeyUsageList = ExtendedKeyUsage[];
 export const ExtendedKeyUsageList = /*@__PURE__*/ S.Array(ExtendedKeyUsage);
 export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE" | (string & {});
 export const RenewalEligibility = /*@__PURE__*/ S.String;
+
 export type CertificateTransparencyLoggingPreference =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
 export const CertificateTransparencyLoggingPreference = /*@__PURE__*/ S.String;
+
 export type CertificateExport = "ENABLED" | "DISABLED" | (string & {});
 export const CertificateExport = /*@__PURE__*/ S.String;
+
 export interface CertificateOptions {
   CertificateTransparencyLoggingPreference?: CertificateTransparencyLoggingPreference;
   Export?: CertificateExport;
@@ -458,12 +524,12 @@ export const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeCertificateResponse {
   Certificate?: CertificateDetail;
 }
-export const DescribeCertificateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Certificate: S.optional(CertificateDetail) }),
-  ).annotate({
-    identifier: "DescribeCertificateResponse",
-  }) as any as S.Schema<DescribeCertificateResponse>;
+export const DescribeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Certificate: S.optional(CertificateDetail) }),
+).annotate({
+  identifier: "DescribeCertificateResponse",
+}) as any as S.Schema<DescribeCertificateResponse>;
+export type PassphraseBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface ExportCertificateRequest {
   CertificateArn: string;
   Passphrase: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -475,6 +541,9 @@ export const ExportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportCertificateRequest",
 }) as any as S.Schema<ExportCertificateRequest>;
+export type CertificateBody = string;
+export type CertificateChain = string;
+export type PrivateKey = string | redacted.Redacted<string>;
 export interface ExportCertificateResponse {
   Certificate?: string;
   CertificateChain?: string;
@@ -490,14 +559,14 @@ export const ExportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportCertificateResponse",
 }) as any as S.Schema<ExportCertificateResponse>;
 export interface GetAccountConfigurationRequest {}
-export const GetAccountConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetAccountConfigurationRequest",
-  }) as any as S.Schema<GetAccountConfigurationRequest>;
+export const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetAccountConfigurationRequest",
+}) as any as S.Schema<GetAccountConfigurationRequest>;
+export type PositiveInteger = number;
 export interface ExpiryEventsConfiguration {
   DaysBeforeExpiry?: number;
 }
@@ -509,12 +578,11 @@ export const ExpiryEventsConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccountConfigurationResponse {
   ExpiryEvents?: ExpiryEventsConfiguration;
 }
-export const GetAccountConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExpiryEvents: S.optional(ExpiryEventsConfiguration) }),
-  ).annotate({
-    identifier: "GetAccountConfigurationResponse",
-  }) as any as S.Schema<GetAccountConfigurationResponse>;
+export const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExpiryEvents: S.optional(ExpiryEventsConfiguration) }),
+).annotate({
+  identifier: "GetAccountConfigurationResponse",
+}) as any as S.Schema<GetAccountConfigurationResponse>;
 export interface GetCertificateRequest {
   CertificateArn: string;
 }
@@ -537,6 +605,9 @@ export const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCertificateResponse",
 }) as any as S.Schema<GetCertificateResponse>;
+export type CertificateBodyBlob = Uint8Array;
+export type PrivateKeyBlob = Uint8Array | redacted.Redacted<Uint8Array>;
+export type CertificateChainBlob = Uint8Array;
 export interface ImportCertificateRequest {
   CertificateArn?: string;
   Certificate: Uint8Array;
@@ -590,10 +661,14 @@ export const Filters = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(CertificateManagedBy),
   }),
 ).annotate({ identifier: "Filters" }) as any as S.Schema<Filters>;
+export type NextToken = string;
+export type MaxItems = number;
 export type SortBy = "CREATED_AT" | (string & {});
 export const SortBy = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface ListCertificatesRequest {
   CertificateStatuses?: CertificateStatus[];
   Includes?: Filters;
@@ -686,60 +761,59 @@ export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForCertificateRequest {
   CertificateArn: string;
 }
-export const ListTagsForCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CertificateArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListTagsForCertificateRequest",
-  }) as any as S.Schema<ListTagsForCertificateRequest>;
+export const ListTagsForCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CertificateArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListTagsForCertificateRequest",
+}) as any as S.Schema<ListTagsForCertificateRequest>;
 export interface ListTagsForCertificateResponse {
   Tags?: Tag[];
 }
-export const ListTagsForCertificateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForCertificateResponse",
-  }) as any as S.Schema<ListTagsForCertificateResponse>;
+export const ListTagsForCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForCertificateResponse",
+}) as any as S.Schema<ListTagsForCertificateResponse>;
+export type IdempotencyToken = string;
 export interface PutAccountConfigurationRequest {
   ExpiryEvents?: ExpiryEventsConfiguration;
   IdempotencyToken: string;
 }
-export const PutAccountConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExpiryEvents: S.optional(ExpiryEventsConfiguration),
-      IdempotencyToken: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "PutAccountConfigurationRequest",
-  }) as any as S.Schema<PutAccountConfigurationRequest>;
+export const PutAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExpiryEvents: S.optional(ExpiryEventsConfiguration),
+    IdempotencyToken: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "PutAccountConfigurationRequest",
+}) as any as S.Schema<PutAccountConfigurationRequest>;
 export interface PutAccountConfigurationResponse {}
-export const PutAccountConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutAccountConfigurationResponse",
-  }) as any as S.Schema<PutAccountConfigurationResponse>;
+export const PutAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutAccountConfigurationResponse",
+}) as any as S.Schema<PutAccountConfigurationResponse>;
 export interface RemoveTagsFromCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-export const RemoveTagsFromCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "RemoveTagsFromCertificateRequest",
-  }) as any as S.Schema<RemoveTagsFromCertificateRequest>;
+export const RemoveTagsFromCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "RemoveTagsFromCertificateRequest",
+}) as any as S.Schema<RemoveTagsFromCertificateRequest>;
 export interface RemoveTagsFromCertificateResponse {}
-export const RemoveTagsFromCertificateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveTagsFromCertificateResponse",
-  }) as any as S.Schema<RemoveTagsFromCertificateResponse>;
+export const RemoveTagsFromCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RemoveTagsFromCertificateResponse",
+}) as any as S.Schema<RemoveTagsFromCertificateResponse>;
 export interface RenewCertificateRequest {
   CertificateArn: string;
 }
@@ -769,6 +843,7 @@ export type DomainValidationOptionList = DomainValidationOption[];
 export const DomainValidationOptionList = /*@__PURE__*/ S.Array(
   DomainValidationOption,
 );
+export type PcaArn = string;
 export interface RequestCertificateRequest {
   DomainName: string;
   ValidationMethod?: ValidationMethod;
@@ -812,23 +887,23 @@ export interface ResendValidationEmailRequest {
   Domain: string;
   ValidationDomain: string;
 }
-export const ResendValidationEmailRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CertificateArn: S.String,
-      Domain: S.String,
-      ValidationDomain: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ResendValidationEmailRequest",
-  }) as any as S.Schema<ResendValidationEmailRequest>;
+export const ResendValidationEmailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CertificateArn: S.String,
+    Domain: S.String,
+    ValidationDomain: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ResendValidationEmailRequest",
+}) as any as S.Schema<ResendValidationEmailRequest>;
 export interface ResendValidationEmailResponse {}
-export const ResendValidationEmailResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ResendValidationEmailResponse",
-  }) as any as S.Schema<ResendValidationEmailResponse>;
+export const ResendValidationEmailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResendValidationEmailResponse",
+}) as any as S.Schema<ResendValidationEmailResponse>;
 export interface RevokeCertificateRequest {
   CertificateArn: string;
   RevocationReason: RevocationReason;
@@ -852,14 +927,15 @@ export const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeCertificateResponse",
 }) as any as S.Schema<RevokeCertificateResponse>;
 export type CertificateFilterStatementList = CertificateFilterStatement[];
-export const CertificateFilterStatementList =
-  /*@__PURE__*/ S.Array(
-    S.suspend(() => CertificateFilterStatement).annotate({
-      identifier: "CertificateFilterStatement",
-    }),
-  ) as any as S.Schema<CertificateFilterStatementList>;
+export const CertificateFilterStatementList = /*@__PURE__*/ S.Array(
+  S.suspend(() => CertificateFilterStatement).annotate({
+    identifier: "CertificateFilterStatement",
+  }),
+) as any as S.Schema<CertificateFilterStatementList>;
+export type FilterString = string;
 export type ComparisonOperator = "CONTAINS" | "EQUALS" | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export interface CommonNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
@@ -884,6 +960,7 @@ export type SubjectAlternativeNameFilter = { DnsName: DnsNameFilter };
 export const SubjectAlternativeNameFilter = /*@__PURE__*/ S.Union([
   S.Struct({ DnsName: DnsNameFilter }),
 ]);
+export type SerialNumber = string;
 export interface TimestampRange {
   Start?: Date;
   End?: Date;
@@ -1130,6 +1207,7 @@ export const CertificateFilterStatement = /*@__PURE__*/ S.Union([
   }),
   S.Struct({ Filter: CertificateFilter }),
 ]) as any as S.Schema<CertificateFilterStatement>;
+export type SearchMaxResults = number;
 export type SearchCertificatesSortBy =
   | "CREATED_AT"
   | "NOT_AFTER"
@@ -1151,11 +1229,13 @@ export type SearchCertificatesSortBy =
   | "IMPORTED_AT"
   | (string & {});
 export const SearchCertificatesSortBy = /*@__PURE__*/ S.String;
+
 export type SearchCertificatesSortOrder =
   | "ASCENDING"
   | "DESCENDING"
   | (string & {});
 export const SearchCertificatesSortOrder = /*@__PURE__*/ S.String;
+
 export interface SearchCertificatesRequest {
   FilterStatement?: CertificateFilterStatement;
   MaxResults?: number;
@@ -1415,93 +1495,35 @@ export interface UpdateCertificateOptionsRequest {
   CertificateArn: string;
   Options: CertificateOptions;
 }
-export const UpdateCertificateOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CertificateArn: S.String, Options: CertificateOptions }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateCertificateOptionsRequest",
-  }) as any as S.Schema<UpdateCertificateOptionsRequest>;
+export const UpdateCertificateOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CertificateArn: S.String, Options: CertificateOptions }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateCertificateOptionsRequest",
+}) as any as S.Schema<UpdateCertificateOptionsRequest>;
 export interface UpdateCertificateOptionsResponse {}
-export const UpdateCertificateOptionsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateCertificateOptionsResponse",
-  }) as any as S.Schema<UpdateCertificateOptionsResponse>;
-
-//# Errors
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
-  "InvalidTagException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
-  "TagPolicyException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.optional(S.String),
-    throttlingReasons: S.optional(ThrottlingReasonList),
-  },
-  T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class RequestInProgressException extends S.TaggedErrorClass<RequestInProgressException>()(
-  "RequestInProgressException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class InvalidArgsException extends S.TaggedErrorClass<InvalidArgsException>()(
-  "InvalidArgsException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidDomainValidationOptionsException extends S.TaggedErrorClass<InvalidDomainValidationOptionsException>()(
-  "InvalidDomainValidationOptionsException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export const UpdateCertificateOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateCertificateOptionsResponse",
+}) as any as S.Schema<UpdateCertificateOptionsResponse>;
+export type AvailabilityErrorMessage = string;
+export type CoralAvailabilityThrottlingReason = string;
+export type CoralAvailabilityThrottledResource = string;
+export interface ThrottlingReason {
+  reason?: string;
+  resource?: string;
+}
+export const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
+).annotate({
+  identifier: "ThrottlingReason",
+}) as any as S.Schema<ThrottlingReason>;
+export type ThrottlingReasonList = ThrottlingReason[];
+export const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+export type ServiceErrorMessage = string;
+export type ValidationExceptionMessage = string;
 export type AddTagsToCertificateError =
   | InvalidArnException
   | InvalidParameterException
@@ -1535,8 +1557,11 @@ export const addTagsToCertificate: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToCertificate",
 }));
+
 export type DeleteCertificateError =
   | AccessDeniedException
   | ConflictException
@@ -1570,8 +1595,11 @@ export const deleteCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
+
 export type DescribeCertificateError =
   | InvalidArnException
   | ResourceNotFoundException
@@ -1590,8 +1618,11 @@ export const describeCertificate: API.OperationMethod<
   input: DescribeCertificateRequest,
   output: DescribeCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificate",
 }));
+
 export type ExportCertificateError =
   | InvalidArnException
   | RequestInProgressException
@@ -1619,8 +1650,11 @@ export const exportCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportCertificate",
 }));
+
 export type GetAccountConfigurationError =
   | AccessDeniedException
   | ThrottlingException
@@ -1637,8 +1671,11 @@ export const getAccountConfiguration: API.OperationMethod<
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
   errors: [AccessDeniedException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountConfiguration",
 }));
+
 export type GetCertificateError =
   | InvalidArnException
   | RequestInProgressException
@@ -1660,8 +1697,11 @@ export const getCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificate",
 }));
+
 export type ImportCertificateError =
   | ConflictException
   | InvalidArnException
@@ -1721,8 +1761,11 @@ export const importCertificate: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCertificate",
 }));
+
 export type ListCertificatesError =
   | InvalidArgsException
   | ValidationException
@@ -1754,6 +1797,8 @@ export const listCertificates: API.OperationMethod<
   input: ListCertificatesRequest,
   output: ListCertificatesResponse,
   errors: [InvalidArgsException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -1762,6 +1807,7 @@ export const listCertificates: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListTagsForCertificateError =
   | InvalidArnException
   | ResourceNotFoundException
@@ -1778,8 +1824,11 @@ export const listTagsForCertificate: API.OperationMethod<
   input: ListTagsForCertificateRequest,
   output: ListTagsForCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForCertificate",
 }));
+
 export type PutAccountConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -1805,8 +1854,11 @@ export const putAccountConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountConfiguration",
 }));
+
 export type RemoveTagsFromCertificateError =
   | InvalidArnException
   | InvalidParameterException
@@ -1836,8 +1888,11 @@ export const removeTagsFromCertificate: API.OperationMethod<
     TagPolicyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromCertificate",
 }));
+
 export type RenewCertificateError =
   | InvalidArnException
   | RequestInProgressException
@@ -1859,8 +1914,11 @@ export const renewCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenewCertificate",
 }));
+
 export type RequestCertificateError =
   | InvalidArnException
   | InvalidDomainValidationOptionsException
@@ -1896,8 +1954,11 @@ export const requestCertificate: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestCertificate",
 }));
+
 export type ResendValidationEmailError =
   | InvalidArnException
   | InvalidDomainValidationOptionsException
@@ -1921,8 +1982,11 @@ export const resendValidationEmail: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResendValidationEmail",
 }));
+
 export type RevokeCertificateError =
   | AccessDeniedException
   | ConflictException
@@ -1952,8 +2016,11 @@ export const revokeCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeCertificate",
 }));
+
 export type SearchCertificatesError =
   | AccessDeniedException
   | ThrottlingException
@@ -1986,6 +2053,8 @@ export const searchCertificates: API.OperationMethod<
   input: SearchCertificatesRequest,
   output: SearchCertificatesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -1994,6 +2063,7 @@ export const searchCertificates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type UpdateCertificateOptionsError =
   | InvalidArnException
   | InvalidStateException
@@ -2017,5 +2087,7 @@ export const updateCertificateOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCertificateOptions",
 }));

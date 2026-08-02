@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -52,31 +54,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    QuotaCode: S.String,
+  },
+  T.all(T.HttpError(402), T.Retryable()),
+).pipe(C.withQuotaError, C.withRetryableError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    FieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CatalogName = string;
 export type BenefitApplicationIdentifier = string;
-export type Arn = string;
-export type BenefitApplicationId = string;
-export type BenefitApplicationName = string;
-export type BenefitApplicationDescription = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ContactEmail = string | redacted.Redacted<string>;
-export type ContactFirstName = string | redacted.Redacted<string>;
-export type ContactLastName = string | redacted.Redacted<string>;
-export type ContactPhone = string | redacted.Redacted<string>;
-export type FileURI = string;
-export type Program = string;
-export type BenefitAllocationIdentifier = string;
-export type BenefitAllocationId = string;
-export type BenefitAllocationArn = string;
-export type BenefitId = string;
-export type BenefitApplicationStage = string;
-export type StatusReasonCode = string;
-export type BenefitAllocationName = string;
-export type TaggableResourceArn = string;
-
-//# Schemas
 export interface Amendment {
   FieldPath: string;
   NewValue: string;
@@ -94,79 +123,41 @@ export interface AmendBenefitApplicationInput {
   AmendmentReason: string;
   Amendments: Amendment[];
 }
-export const AmendBenefitApplicationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Revision: S.String,
-      Identifier: S.String,
-      AmendmentReason: S.String,
-      Amendments: AmendmentList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/AmendBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "AmendBenefitApplicationInput",
-  }) as any as S.Schema<AmendBenefitApplicationInput>;
-export interface AmendBenefitApplicationOutput {}
-export const AmendBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AmendBenefitApplicationOutput",
-  }) as any as S.Schema<AmendBenefitApplicationOutput>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | "BUSINESS_VALIDATION_FAILED"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionErrorCode =
-  | "REQUIRED_FIELD_MISSING"
-  | "INVALID_ENUM_VALUE"
-  | "INVALID_STRING_FORMAT"
-  | "INVALID_VALUE"
-  | "NOT_ENOUGH_VALUES"
-  | "TOO_MANY_VALUES"
-  | "INVALID_RESOURCE_STATE"
-  | "DUPLICATE_KEY_VALUE"
-  | "VALUE_OUT_OF_RANGE"
-  | "ACTION_NOT_PERMITTED"
-  | (string & {});
-export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-  Code?: ValidationExceptionErrorCode;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+export const AmendBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Name: S.String,
-    Message: S.String,
-    Code: S.optional(ValidationExceptionErrorCode),
-  }),
+    Catalog: S.String,
+    ClientToken: S.String,
+    Revision: S.String,
+    Identifier: S.String,
+    AmendmentReason: S.String,
+    Amendments: AmendmentList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/AmendBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "AmendBenefitApplicationInput",
+}) as any as S.Schema<AmendBenefitApplicationInput>;
+export interface AmendBenefitApplicationOutput {}
+export const AmendBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AmendBenefitApplicationOutput",
+}) as any as S.Schema<AmendBenefitApplicationOutput>;
+export type Arn = string;
 export interface AssociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
   ResourceArn: string;
 }
-export const AssociateBenefitApplicationResourceInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssociateBenefitApplicationResourceInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Catalog: S.String,
       BenefitApplicationIdentifier: S.String,
@@ -181,9 +172,10 @@ export const AssociateBenefitApplicationResourceInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AssociateBenefitApplicationResourceInput",
-  }) as any as S.Schema<AssociateBenefitApplicationResourceInput>;
+).annotate({
+  identifier: "AssociateBenefitApplicationResourceInput",
+}) as any as S.Schema<AssociateBenefitApplicationResourceInput>;
+export type BenefitApplicationId = string;
 export interface AssociateBenefitApplicationResourceOutput {
   Id?: string;
   Arn?: string;
@@ -205,35 +197,40 @@ export interface CancelBenefitApplicationInput {
   Identifier: string;
   Reason?: string;
 }
-export const CancelBenefitApplicationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Identifier: S.String,
-      Reason: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CancelBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Identifier: S.String,
+    Reason: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CancelBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelBenefitApplicationInput",
-  }) as any as S.Schema<CancelBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "CancelBenefitApplicationInput",
+}) as any as S.Schema<CancelBenefitApplicationInput>;
 export interface CancelBenefitApplicationOutput {}
-export const CancelBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelBenefitApplicationOutput",
-  }) as any as S.Schema<CancelBenefitApplicationOutput>;
+export const CancelBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CancelBenefitApplicationOutput",
+}) as any as S.Schema<CancelBenefitApplicationOutput>;
+export type BenefitApplicationName = string;
+export type BenefitApplicationDescription = string;
 export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS" | (string & {});
 export const FulfillmentType = /*@__PURE__*/ S.String;
+
 export type FulfillmentTypes = FulfillmentType[];
 export const FulfillmentTypes = /*@__PURE__*/ S.Array(FulfillmentType);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -245,6 +242,10 @@ export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
 export type Arns = string[];
 export const Arns = /*@__PURE__*/ S.Array(S.String);
+export type ContactEmail = string | redacted.Redacted<string>;
+export type ContactFirstName = string | redacted.Redacted<string>;
+export type ContactLastName = string | redacted.Redacted<string>;
+export type ContactPhone = string | redacted.Redacted<string>;
 export interface Contact {
   Email?: string | redacted.Redacted<string>;
   FirstName?: string | redacted.Redacted<string>;
@@ -263,6 +264,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 export type Contacts = Contact[];
 export const Contacts = /*@__PURE__*/ S.Array(Contact);
+export type FileURI = string;
 export interface FileInput {
   FileURI: string;
   BusinessUseCase?: string;
@@ -285,48 +287,46 @@ export interface CreateBenefitApplicationInput {
   PartnerContacts?: Contact[];
   FileDetails?: FileInput[];
 }
-export const CreateBenefitApplicationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      BenefitIdentifier: S.String,
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitApplicationDetails: S.optional(S.Any),
-      Tags: S.optional(Tags),
-      AssociatedResources: S.optional(Arns),
-      PartnerContacts: S.optional(Contacts),
-      FileDetails: S.optional(FileInputDetails),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    BenefitIdentifier: S.String,
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitApplicationDetails: S.optional(S.Any),
+    Tags: S.optional(Tags),
+    AssociatedResources: S.optional(Arns),
+    PartnerContacts: S.optional(Contacts),
+    FileDetails: S.optional(FileInputDetails),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateBenefitApplicationInput",
-  }) as any as S.Schema<CreateBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "CreateBenefitApplicationInput",
+}) as any as S.Schema<CreateBenefitApplicationInput>;
 export interface CreateBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
-export const CreateBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Revision: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateBenefitApplicationOutput",
-  }) as any as S.Schema<CreateBenefitApplicationOutput>;
+export const CreateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Revision: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateBenefitApplicationOutput",
+}) as any as S.Schema<CreateBenefitApplicationOutput>;
 export interface DisassociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
@@ -387,10 +387,12 @@ export const GetBenefitInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBenefitInput",
 }) as any as S.Schema<GetBenefitInput>;
+export type Program = string;
 export type Programs = string[];
 export const Programs = /*@__PURE__*/ S.Array(S.String);
 export type BenefitStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const BenefitStatus = /*@__PURE__*/ S.String;
+
 export interface GetBenefitOutput {
   Id?: string;
   Catalog?: string;
@@ -417,6 +419,7 @@ export const GetBenefitOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBenefitOutput",
 }) as any as S.Schema<GetBenefitOutput>;
+export type BenefitAllocationIdentifier = string;
 export interface GetBenefitAllocationInput {
   Catalog: string;
   Identifier: string;
@@ -435,12 +438,16 @@ export const GetBenefitAllocationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBenefitAllocationInput",
 }) as any as S.Schema<GetBenefitAllocationInput>;
+export type BenefitAllocationId = string;
+export type BenefitAllocationArn = string;
 export type BenefitAllocationStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "FULFILLED"
   | (string & {});
 export const BenefitAllocationStatus = /*@__PURE__*/ S.String;
+
+export type BenefitId = string;
 export type BenefitIdentifiers = string[];
 export const BenefitIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type CurrencyCode =
@@ -541,6 +548,7 @@ export type CurrencyCode =
   | "ZAR"
   | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
+
 export interface MonetaryValue {
   Amount: string;
   CurrencyCode: CurrencyCode;
@@ -730,6 +738,9 @@ export type BenefitApplicationStatus =
   | "CANCELED"
   | (string & {});
 export const BenefitApplicationStatus = /*@__PURE__*/ S.String;
+
+export type BenefitApplicationStage = string;
+export type StatusReasonCode = string;
 export type StatusReasonCodes = string[];
 export const StatusReasonCodes = /*@__PURE__*/ S.Array(S.String);
 export type FileType =
@@ -744,6 +755,7 @@ export type FileType =
   | "text/csv"
   | (string & {});
 export const FileType = /*@__PURE__*/ S.String;
+
 export interface FileDetail {
   FileURI: string;
   BusinessUseCase?: string;
@@ -792,37 +804,36 @@ export interface GetBenefitApplicationOutput {
   PartnerContacts?: Contact[];
   FileDetails?: FileDetail[];
 }
-export const GetBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Catalog: S.optional(S.String),
-      BenefitId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitApplicationDetails: S.optional(S.Any),
-      Programs: S.optional(Programs),
-      Status: S.optional(BenefitApplicationStatus),
-      Stage: S.optional(S.String),
-      StatusReason: S.optional(S.String),
-      StatusReasonCode: S.optional(S.String),
-      StatusReasonCodes: S.optional(StatusReasonCodes),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      UpdatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Revision: S.optional(S.String),
-      AssociatedResources: S.optional(Arns),
-      PartnerContacts: S.optional(Contacts),
-      FileDetails: S.optional(FileDetails),
-    }),
-  ).annotate({
-    identifier: "GetBenefitApplicationOutput",
-  }) as any as S.Schema<GetBenefitApplicationOutput>;
+export const GetBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Catalog: S.optional(S.String),
+    BenefitId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitApplicationDetails: S.optional(S.Any),
+    Programs: S.optional(Programs),
+    Status: S.optional(BenefitApplicationStatus),
+    Stage: S.optional(S.String),
+    StatusReason: S.optional(S.String),
+    StatusReasonCode: S.optional(S.String),
+    StatusReasonCodes: S.optional(StatusReasonCodes),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    UpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    Revision: S.optional(S.String),
+    AssociatedResources: S.optional(Arns),
+    PartnerContacts: S.optional(Contacts),
+    FileDetails: S.optional(FileDetails),
+  }),
+).annotate({
+  identifier: "GetBenefitApplicationOutput",
+}) as any as S.Schema<GetBenefitApplicationOutput>;
 export type BenefitApplicationIdentifierList = string[];
 export const BenefitApplicationIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export type BenefitAllocationStatusList = BenefitAllocationStatus[];
@@ -838,31 +849,29 @@ export interface ListBenefitAllocationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListBenefitAllocationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitIdentifiers: S.optional(BenefitIdentifiers),
-      BenefitApplicationIdentifiers: S.optional(
-        BenefitApplicationIdentifierList,
-      ),
-      Status: S.optional(BenefitAllocationStatusList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListBenefitAllocations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBenefitAllocationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitIdentifiers: S.optional(BenefitIdentifiers),
+    BenefitApplicationIdentifiers: S.optional(BenefitApplicationIdentifierList),
+    Status: S.optional(BenefitAllocationStatusList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListBenefitAllocations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBenefitAllocationsInput",
-  }) as any as S.Schema<ListBenefitAllocationsInput>;
+  ),
+).annotate({
+  identifier: "ListBenefitAllocationsInput",
+}) as any as S.Schema<ListBenefitAllocationsInput>;
+export type BenefitAllocationName = string;
 export type BenefitIds = string[];
 export const BenefitIds = /*@__PURE__*/ S.Array(S.String);
 export interface BenefitAllocationSummary {
@@ -909,21 +918,21 @@ export interface ListBenefitAllocationsOutput {
   BenefitAllocationSummaries?: BenefitAllocationSummary[];
   NextToken?: string;
 }
-export const ListBenefitAllocationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BenefitAllocationSummaries: S.optional(BenefitAllocationSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBenefitAllocationsOutput",
-  }) as any as S.Schema<ListBenefitAllocationsOutput>;
+export const ListBenefitAllocationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BenefitAllocationSummaries: S.optional(BenefitAllocationSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBenefitAllocationsOutput",
+}) as any as S.Schema<ListBenefitAllocationsOutput>;
 export type Statuses = BenefitApplicationStatus[];
 export const Statuses = /*@__PURE__*/ S.Array(BenefitApplicationStatus);
 export type Stages = string[];
 export const Stages = /*@__PURE__*/ S.Array(S.String);
 export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface AssociatedResource {
   ResourceType?: ResourceType;
   ResourceIdentifier?: string;
@@ -952,32 +961,31 @@ export interface ListBenefitApplicationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListBenefitApplicationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      Programs: S.optional(Programs),
-      FulfillmentTypes: S.optional(FulfillmentTypes),
-      BenefitIdentifiers: S.optional(BenefitIdentifiers),
-      Status: S.optional(Statuses),
-      Stages: S.optional(Stages),
-      AssociatedResources: S.optional(AssociatedResources),
-      AssociatedResourceArns: S.optional(Arns),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListBenefitApplications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBenefitApplicationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    Programs: S.optional(Programs),
+    FulfillmentTypes: S.optional(FulfillmentTypes),
+    BenefitIdentifiers: S.optional(BenefitIdentifiers),
+    Status: S.optional(Statuses),
+    Stages: S.optional(Stages),
+    AssociatedResources: S.optional(AssociatedResources),
+    AssociatedResourceArns: S.optional(Arns),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListBenefitApplications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBenefitApplicationsInput",
-  }) as any as S.Schema<ListBenefitApplicationsInput>;
+  ),
+).annotate({
+  identifier: "ListBenefitApplicationsInput",
+}) as any as S.Schema<ListBenefitApplicationsInput>;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -1029,15 +1037,14 @@ export interface ListBenefitApplicationsOutput {
   BenefitApplicationSummaries?: BenefitApplicationSummary[];
   NextToken?: string;
 }
-export const ListBenefitApplicationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BenefitApplicationSummaries: S.optional(BenefitApplicationSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBenefitApplicationsOutput",
-  }) as any as S.Schema<ListBenefitApplicationsOutput>;
+export const ListBenefitApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BenefitApplicationSummaries: S.optional(BenefitApplicationSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBenefitApplicationsOutput",
+}) as any as S.Schema<ListBenefitApplicationsOutput>;
 export type BenefitStatuses = BenefitStatus[];
 export const BenefitStatuses = /*@__PURE__*/ S.Array(BenefitStatus);
 export interface ListBenefitsInput {
@@ -1105,6 +1112,7 @@ export const ListBenefitsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBenefitsOutput",
 }) as any as S.Schema<ListBenefitsOutput>;
+export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1125,65 +1133,66 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RecallBenefitApplicationInput {
   Catalog: string;
   ClientToken?: string;
   Identifier: string;
   Reason: string;
 }
-export const RecallBenefitApplicationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.optional(S.String),
-      Identifier: S.String,
-      Reason: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/RecallBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RecallBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.optional(S.String),
+    Identifier: S.String,
+    Reason: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/RecallBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RecallBenefitApplicationInput",
-  }) as any as S.Schema<RecallBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "RecallBenefitApplicationInput",
+}) as any as S.Schema<RecallBenefitApplicationInput>;
 export interface RecallBenefitApplicationOutput {}
-export const RecallBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RecallBenefitApplicationOutput",
-  }) as any as S.Schema<RecallBenefitApplicationOutput>;
+export const RecallBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RecallBenefitApplicationOutput",
+}) as any as S.Schema<RecallBenefitApplicationOutput>;
 export interface SubmitBenefitApplicationInput {
   Catalog: string;
   Identifier: string;
 }
-export const SubmitBenefitApplicationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/SubmitBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SubmitBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Catalog: S.String, Identifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/SubmitBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SubmitBenefitApplicationInput",
-  }) as any as S.Schema<SubmitBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "SubmitBenefitApplicationInput",
+}) as any as S.Schema<SubmitBenefitApplicationInput>;
 export interface SubmitBenefitApplicationOutput {}
-export const SubmitBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SubmitBenefitApplicationOutput",
-  }) as any as S.Schema<SubmitBenefitApplicationOutput>;
+export const SubmitBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SubmitBenefitApplicationOutput",
+}) as any as S.Schema<SubmitBenefitApplicationOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -1245,88 +1254,85 @@ export interface UpdateBenefitApplicationInput {
   PartnerContacts?: Contact[];
   FileDetails?: FileInput[];
 }
-export const UpdateBenefitApplicationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Catalog: S.String,
-      ClientToken: S.String,
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      Identifier: S.String,
-      Revision: S.String,
-      BenefitApplicationDetails: S.optional(S.Any),
-      PartnerContacts: S.optional(Contacts),
-      FileDetails: S.optional(FileInputDetails),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateBenefitApplication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateBenefitApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Catalog: S.String,
+    ClientToken: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Identifier: S.String,
+    Revision: S.String,
+    BenefitApplicationDetails: S.optional(S.Any),
+    PartnerContacts: S.optional(Contacts),
+    FileDetails: S.optional(FileInputDetails),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateBenefitApplication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateBenefitApplicationInput",
-  }) as any as S.Schema<UpdateBenefitApplicationInput>;
+  ),
+).annotate({
+  identifier: "UpdateBenefitApplicationInput",
+}) as any as S.Schema<UpdateBenefitApplicationInput>;
 export interface UpdateBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
-export const UpdateBenefitApplicationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Arn: S.optional(S.String),
-      Revision: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateBenefitApplicationOutput",
-  }) as any as S.Schema<UpdateBenefitApplicationOutput>;
+export const UpdateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Revision: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateBenefitApplicationOutput",
+}) as any as S.Schema<UpdateBenefitApplicationOutput>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | "BUSINESS_VALIDATION_FAILED"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: ValidationExceptionReason,
-    FieldList: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    QuotaCode: S.String,
-  },
-  T.Retryable(),
-).pipe(C.withQuotaError, C.withRetryableError) {}
+export type ValidationExceptionErrorCode =
+  | "REQUIRED_FIELD_MISSING"
+  | "INVALID_ENUM_VALUE"
+  | "INVALID_STRING_FORMAT"
+  | "INVALID_VALUE"
+  | "NOT_ENOUGH_VALUES"
+  | "TOO_MANY_VALUES"
+  | "INVALID_RESOURCE_STATE"
+  | "DUPLICATE_KEY_VALUE"
+  | "VALUE_OUT_OF_RANGE"
+  | "ACTION_NOT_PERMITTED"
+  | (string & {});
+export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
 
-//# Operations
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+  Code?: ValidationExceptionErrorCode;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Message: S.String,
+    Code: S.optional(ValidationExceptionErrorCode),
+  }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AmendBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1354,8 +1360,11 @@ export const amendBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AmendBenefitApplication",
 }));
+
 export type AssociateBenefitApplicationResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1383,8 +1392,11 @@ export const associateBenefitApplicationResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBenefitApplicationResource",
 }));
+
 export type CancelBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1412,8 +1424,11 @@ export const cancelBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelBenefitApplication",
 }));
+
 export type CreateBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1441,8 +1456,11 @@ export const createBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBenefitApplication",
 }));
+
 export type DisassociateBenefitApplicationResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1470,8 +1488,11 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBenefitApplicationResource",
 }));
+
 export type GetBenefitError =
   | AccessDeniedException
   | InternalServerException
@@ -1497,8 +1518,11 @@ export const getBenefit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBenefit",
 }));
+
 export type GetBenefitAllocationError =
   | AccessDeniedException
   | InternalServerException
@@ -1524,8 +1548,11 @@ export const getBenefitAllocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBenefitAllocation",
 }));
+
 export type GetBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1553,8 +1580,11 @@ export const getBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBenefitApplication",
 }));
+
 export type ListBenefitAllocationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1595,6 +1625,8 @@ export const listBenefitAllocations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBenefitAllocations",
   pagination: {
     inputToken: "NextToken",
@@ -1603,6 +1635,7 @@ export const listBenefitAllocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBenefitApplicationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1643,6 +1676,8 @@ export const listBenefitApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBenefitApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1651,6 +1686,7 @@ export const listBenefitApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBenefitsError =
   | AccessDeniedException
   | InternalServerException
@@ -1691,6 +1727,8 @@ export const listBenefits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBenefits",
   pagination: {
     inputToken: "NextToken",
@@ -1699,6 +1737,7 @@ export const listBenefits: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1724,8 +1763,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RecallBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1753,8 +1795,11 @@ export const recallBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RecallBenefitApplication",
 }));
+
 export type SubmitBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1782,8 +1827,11 @@ export const submitBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitBenefitApplication",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1813,8 +1861,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1844,8 +1895,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1873,5 +1927,7 @@ export const updateBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBenefitApplication",
 }));

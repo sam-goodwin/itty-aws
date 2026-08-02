@@ -1,1 +1,62 @@
-{ "errors": { "TsigNotFound": [{ "status": 404 }] } }
+{
+  "description": "Align dns#ZoneTransfersTsigsDelete with distilled cloudflare/dns deleteZoneTransferTsig",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersTsigsDelete",
+      "path": "/shapes/com.cloudflare.dns#DeleteZoneTransferTsig"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersTsigsDeleteRequest",
+      "path": "/shapes/com.cloudflare.dns#DeleteZoneTransferTsigRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns#DeleteZoneTransferTsig/input/target",
+      "value": "com.cloudflare.dns#DeleteZoneTransferTsigRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersTsigsDeleteResponse",
+      "path": "/shapes/com.cloudflare.dns#DeleteZoneTransferTsigResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns#DeleteZoneTransferTsig/output/target",
+      "value": "com.cloudflare.dns#DeleteZoneTransferTsigResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#TsigNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#DeleteZoneTransferTsig/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.dns#TsigNotFound"
+        }
+      ]
+    }
+  ]
+}

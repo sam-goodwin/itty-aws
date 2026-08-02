@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#OrganizationsListForAccount with distilled cloudflare/zero-trust listOrganizationsForAccount",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#OrganizationsListForAccount",
+      "path": "/shapes/com.cloudflare.zero_trust#ListOrganizationsForAccount"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#OrganizationsListForAccountRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#ListOrganizationsForAccountRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListOrganizationsForAccount/input/target",
+      "value": "com.cloudflare.zero_trust#ListOrganizationsForAccountRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#OrganizationsListForAccountResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#ListOrganizationsForAccountResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListOrganizationsForAccount/output/target",
+      "value": "com.cloudflare.zero_trust#ListOrganizationsForAccountResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#OrganizationNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListOrganizationsForAccount/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#OrganizationNotFound"
+        }
+      ]
+    }
+  ]
+}

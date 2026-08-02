@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -88,31 +90,67 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConcurrentUpdateException extends S.TaggedErrorClass<ConcurrentUpdateException>()(
+  "ConcurrentUpdateException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConcurrentUpdateException",
+      httpResponseCode: 500,
+    }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InternalServiceException",
+      httpResponseCode: 500,
+    }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidNextTokenException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ObjectNotFoundException extends S.TaggedErrorClass<ObjectNotFoundException>()(
+  "ObjectNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ObjectNotFoundException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type ScalingPlanName = string;
 export type XmlString = string;
 export type XmlStringMaxLen128 = string;
 export type XmlStringMaxLen256 = string;
-export type ResourceIdMaxLen1600 = string;
-export type ResourceCapacity = number;
-export type ResourceLabel = string;
-export type MetricName = string;
-export type MetricNamespace = string;
-export type MetricDimensionName = string;
-export type MetricDimensionValue = string;
-export type MetricUnit = string;
-export type MetricScale = number;
-export type DisableScaleIn = boolean;
-export type Cooldown = number;
-export type ScheduledActionBufferTime = number;
-export type DisableDynamicScaling = boolean;
-export type ScalingPlanVersion = number;
-export type ErrorMessage = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type PolicyName = string;
-
-//# Schemas
 export type TagValues = string[];
 export const TagValues = /*@__PURE__*/ S.Array(S.String);
 export interface TagFilter {
@@ -144,6 +182,8 @@ export type ServiceNamespace =
   | "dynamodb"
   | (string & {});
 export const ServiceNamespace = /*@__PURE__*/ S.String;
+
+export type ResourceIdMaxLen1600 = string;
 export type ScalableDimension =
   | "autoscaling:autoScalingGroup:DesiredCapacity"
   | "ecs:service:DesiredCount"
@@ -155,6 +195,8 @@ export type ScalableDimension =
   | "dynamodb:index:WriteCapacityUnits"
   | (string & {});
 export const ScalableDimension = /*@__PURE__*/ S.String;
+
+export type ResourceCapacity = number;
 export type ScalingMetricType =
   | "ASGAverageCPUUtilization"
   | "ASGAverageNetworkIn"
@@ -171,19 +213,25 @@ export type ScalingMetricType =
   | "EC2SpotFleetRequestAverageNetworkOut"
   | (string & {});
 export const ScalingMetricType = /*@__PURE__*/ S.String;
+
+export type ResourceLabel = string;
 export interface PredefinedScalingMetricSpecification {
   PredefinedScalingMetricType: ScalingMetricType;
   ResourceLabel?: string;
 }
-export const PredefinedScalingMetricSpecification =
-  /*@__PURE__*/ S.suspend(() =>
+export const PredefinedScalingMetricSpecification = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PredefinedScalingMetricType: ScalingMetricType,
       ResourceLabel: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "PredefinedScalingMetricSpecification",
-  }) as any as S.Schema<PredefinedScalingMetricSpecification>;
+).annotate({
+  identifier: "PredefinedScalingMetricSpecification",
+}) as any as S.Schema<PredefinedScalingMetricSpecification>;
+export type MetricName = string;
+export type MetricNamespace = string;
+export type MetricDimensionName = string;
+export type MetricDimensionValue = string;
 export interface MetricDimension {
   Name: string;
   Value: string;
@@ -203,6 +251,8 @@ export type MetricStatistic =
   | "Sum"
   | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
+
+export type MetricUnit = string;
 export interface CustomizedScalingMetricSpecification {
   MetricName: string;
   Namespace: string;
@@ -210,8 +260,8 @@ export interface CustomizedScalingMetricSpecification {
   Statistic: MetricStatistic;
   Unit?: string;
 }
-export const CustomizedScalingMetricSpecification =
-  /*@__PURE__*/ S.suspend(() =>
+export const CustomizedScalingMetricSpecification = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MetricName: S.String,
       Namespace: S.String,
@@ -219,9 +269,12 @@ export const CustomizedScalingMetricSpecification =
       Statistic: MetricStatistic,
       Unit: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "CustomizedScalingMetricSpecification",
-  }) as any as S.Schema<CustomizedScalingMetricSpecification>;
+).annotate({
+  identifier: "CustomizedScalingMetricSpecification",
+}) as any as S.Schema<CustomizedScalingMetricSpecification>;
+export type MetricScale = number;
+export type DisableScaleIn = boolean;
+export type Cooldown = number;
 export interface TargetTrackingConfiguration {
   PredefinedScalingMetricSpecification?: PredefinedScalingMetricSpecification;
   CustomizedScalingMetricSpecification?: CustomizedScalingMetricSpecification;
@@ -231,24 +284,23 @@ export interface TargetTrackingConfiguration {
   ScaleInCooldown?: number;
   EstimatedInstanceWarmup?: number;
 }
-export const TargetTrackingConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PredefinedScalingMetricSpecification: S.optional(
-        PredefinedScalingMetricSpecification,
-      ),
-      CustomizedScalingMetricSpecification: S.optional(
-        CustomizedScalingMetricSpecification,
-      ),
-      TargetValue: S.Number,
-      DisableScaleIn: S.optional(S.Boolean),
-      ScaleOutCooldown: S.optional(S.Number),
-      ScaleInCooldown: S.optional(S.Number),
-      EstimatedInstanceWarmup: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TargetTrackingConfiguration",
-  }) as any as S.Schema<TargetTrackingConfiguration>;
+export const TargetTrackingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PredefinedScalingMetricSpecification: S.optional(
+      PredefinedScalingMetricSpecification,
+    ),
+    CustomizedScalingMetricSpecification: S.optional(
+      CustomizedScalingMetricSpecification,
+    ),
+    TargetValue: S.Number,
+    DisableScaleIn: S.optional(S.Boolean),
+    ScaleOutCooldown: S.optional(S.Number),
+    ScaleInCooldown: S.optional(S.Number),
+    EstimatedInstanceWarmup: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TargetTrackingConfiguration",
+}) as any as S.Schema<TargetTrackingConfiguration>;
 export type TargetTrackingConfigurations = TargetTrackingConfiguration[];
 export const TargetTrackingConfigurations = /*@__PURE__*/ S.Array(
   TargetTrackingConfiguration,
@@ -260,19 +312,19 @@ export type LoadMetricType =
   | "ALBTargetGroupRequestCount"
   | (string & {});
 export const LoadMetricType = /*@__PURE__*/ S.String;
+
 export interface PredefinedLoadMetricSpecification {
   PredefinedLoadMetricType: LoadMetricType;
   ResourceLabel?: string;
 }
-export const PredefinedLoadMetricSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PredefinedLoadMetricType: LoadMetricType,
-      ResourceLabel: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PredefinedLoadMetricSpecification",
-  }) as any as S.Schema<PredefinedLoadMetricSpecification>;
+export const PredefinedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PredefinedLoadMetricType: LoadMetricType,
+    ResourceLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PredefinedLoadMetricSpecification",
+}) as any as S.Schema<PredefinedLoadMetricSpecification>;
 export interface CustomizedLoadMetricSpecification {
   MetricName: string;
   Namespace: string;
@@ -280,34 +332,38 @@ export interface CustomizedLoadMetricSpecification {
   Statistic: MetricStatistic;
   Unit?: string;
 }
-export const CustomizedLoadMetricSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MetricName: S.String,
-      Namespace: S.String,
-      Dimensions: S.optional(MetricDimensions),
-      Statistic: MetricStatistic,
-      Unit: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CustomizedLoadMetricSpecification",
-  }) as any as S.Schema<CustomizedLoadMetricSpecification>;
+export const CustomizedLoadMetricSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MetricName: S.String,
+    Namespace: S.String,
+    Dimensions: S.optional(MetricDimensions),
+    Statistic: MetricStatistic,
+    Unit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomizedLoadMetricSpecification",
+}) as any as S.Schema<CustomizedLoadMetricSpecification>;
+export type ScheduledActionBufferTime = number;
 export type PredictiveScalingMaxCapacityBehavior =
   | "SetForecastCapacityToMaxCapacity"
   | "SetMaxCapacityToForecastCapacity"
   | "SetMaxCapacityAboveForecastCapacity"
   | (string & {});
 export const PredictiveScalingMaxCapacityBehavior = /*@__PURE__*/ S.String;
+
 export type PredictiveScalingMode =
   | "ForecastAndScale"
   | "ForecastOnly"
   | (string & {});
 export const PredictiveScalingMode = /*@__PURE__*/ S.String;
+
 export type ScalingPolicyUpdateBehavior =
   | "KeepExternalPolicies"
   | "ReplaceExternalPolicies"
   | (string & {});
 export const ScalingPolicyUpdateBehavior = /*@__PURE__*/ S.String;
+
+export type DisableDynamicScaling = boolean;
 export interface ScalingInstruction {
   ServiceNamespace: ServiceNamespace;
   ResourceId: string;
@@ -368,6 +424,7 @@ export const CreateScalingPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScalingPlanRequest",
 }) as any as S.Schema<CreateScalingPlanRequest>;
+export type ScalingPlanVersion = number;
 export interface CreateScalingPlanResponse {
   ScalingPlanVersion: number;
 }
@@ -393,27 +450,30 @@ export const DeleteScalingPlanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteScalingPlanResponse",
 }) as any as S.Schema<DeleteScalingPlanResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeScalingPlanResourcesRequest {
   ScalingPlanName: string;
   ScalingPlanVersion: number;
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeScalingPlanResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScalingPlanName: S.String,
-      ScalingPlanVersion: S.Number,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeScalingPlanResourcesRequest",
-  }) as any as S.Schema<DescribeScalingPlanResourcesRequest>;
+export const DescribeScalingPlanResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScalingPlanName: S.String,
+    ScalingPlanVersion: S.Number,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeScalingPlanResourcesRequest",
+}) as any as S.Schema<DescribeScalingPlanResourcesRequest>;
+export type PolicyName = string;
 export type PolicyType = "TargetTrackingScaling" | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
+
 export interface ScalingPolicy {
   PolicyName: string;
   PolicyType: PolicyType;
@@ -434,6 +494,7 @@ export type ScalingStatusCode =
   | "Active"
   | (string & {});
 export const ScalingStatusCode = /*@__PURE__*/ S.String;
+
 export interface ScalingPlanResource {
   ScalingPlanName: string;
   ScalingPlanVersion: number;
@@ -464,15 +525,15 @@ export interface DescribeScalingPlanResourcesResponse {
   ScalingPlanResources?: ScalingPlanResource[];
   NextToken?: string;
 }
-export const DescribeScalingPlanResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeScalingPlanResourcesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ScalingPlanResources: S.optional(ScalingPlanResources),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DescribeScalingPlanResourcesResponse",
-  }) as any as S.Schema<DescribeScalingPlanResourcesResponse>;
+).annotate({
+  identifier: "DescribeScalingPlanResourcesResponse",
+}) as any as S.Schema<DescribeScalingPlanResourcesResponse>;
 export type ScalingPlanNames = string[];
 export const ScalingPlanNames = /*@__PURE__*/ S.Array(S.String);
 export type ApplicationSources = ApplicationSource[];
@@ -484,20 +545,19 @@ export interface DescribeScalingPlansRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeScalingPlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScalingPlanNames: S.optional(ScalingPlanNames),
-      ScalingPlanVersion: S.optional(S.Number),
-      ApplicationSources: S.optional(ApplicationSources),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeScalingPlansRequest",
-  }) as any as S.Schema<DescribeScalingPlansRequest>;
+export const DescribeScalingPlansRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScalingPlanNames: S.optional(ScalingPlanNames),
+    ScalingPlanVersion: S.optional(S.Number),
+    ApplicationSources: S.optional(ApplicationSources),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeScalingPlansRequest",
+}) as any as S.Schema<DescribeScalingPlansRequest>;
 export type ScalingPlanStatusCode =
   | "Active"
   | "ActiveWithProblems"
@@ -509,6 +569,7 @@ export type ScalingPlanStatusCode =
   | "UpdateFailed"
   | (string & {});
 export const ScalingPlanStatusCode = /*@__PURE__*/ S.String;
+
 export interface ScalingPlan {
   ScalingPlanName: string;
   ScalingPlanVersion: number;
@@ -539,15 +600,14 @@ export interface DescribeScalingPlansResponse {
   ScalingPlans?: ScalingPlan[];
   NextToken?: string;
 }
-export const DescribeScalingPlansResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScalingPlans: S.optional(ScalingPlans),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DescribeScalingPlansResponse",
-  }) as any as S.Schema<DescribeScalingPlansResponse>;
+export const DescribeScalingPlansResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScalingPlans: S.optional(ScalingPlans),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeScalingPlansResponse",
+}) as any as S.Schema<DescribeScalingPlansResponse>;
 export type ForecastDataType =
   | "CapacityForecast"
   | "LoadForecast"
@@ -555,6 +615,7 @@ export type ForecastDataType =
   | "ScheduledActionMaxCapacity"
   | (string & {});
 export const ForecastDataType = /*@__PURE__*/ S.String;
+
 export interface GetScalingPlanResourceForecastDataRequest {
   ScalingPlanName: string;
   ScalingPlanVersion: number;
@@ -625,40 +686,7 @@ export const UpdateScalingPlanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateScalingPlanResponse",
 }) as any as S.Schema<UpdateScalingPlanResponse>;
-
-//# Errors
-export class ConcurrentUpdateException extends S.TaggedErrorClass<ConcurrentUpdateException>()(
-  "ConcurrentUpdateException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConcurrentUpdateException", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalServiceException", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ObjectNotFoundException extends S.TaggedErrorClass<ObjectNotFoundException>()(
-  "ObjectNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ObjectNotFoundException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidNextTokenException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateScalingPlanError =
   | ConcurrentUpdateException
   | InternalServiceException
@@ -682,8 +710,11 @@ export const createScalingPlan: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScalingPlan",
 }));
+
 export type DeleteScalingPlanError =
   | ConcurrentUpdateException
   | InternalServiceException
@@ -713,8 +744,11 @@ export const deleteScalingPlan: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScalingPlan",
 }));
+
 export type DescribeScalingPlanResourcesError =
   | ConcurrentUpdateException
   | InternalServiceException
@@ -738,8 +772,11 @@ export const describeScalingPlanResources: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingPlanResources",
 }));
+
 export type DescribeScalingPlansError =
   | ConcurrentUpdateException
   | InternalServiceException
@@ -763,8 +800,11 @@ export const describeScalingPlans: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingPlans",
 }));
+
 export type GetScalingPlanResourceForecastDataError =
   | InternalServiceException
   | ValidationException
@@ -785,8 +825,11 @@ export const getScalingPlanResourceForecastData: API.OperationMethod<
   input: GetScalingPlanResourceForecastDataRequest,
   output: GetScalingPlanResourceForecastDataResponse,
   errors: [InternalServiceException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScalingPlanResourceForecastData",
 }));
+
 export type UpdateScalingPlanError =
   | ConcurrentUpdateException
   | InternalServiceException
@@ -813,5 +856,7 @@ export const updateScalingPlan: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScalingPlan",
 }));

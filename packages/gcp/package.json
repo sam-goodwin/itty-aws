@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/gcp",
-  "version": "0.30.2",
+  "version": "0.31.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -14,25 +14,20 @@
     "src"
   ],
   "exports": {
-    "./*": {
-      "types": "./lib/services/*.d.ts",
-      "bun": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
-    },
-    "./unstable/*": {
-      "types": "./lib/unstable-services/*.d.ts",
-      "bun": "./src/unstable-services/*.ts",
-      "default": "./lib/unstable-services/*.js"
-    },
-    "./Category": {
-      "types": "./lib/category.d.ts",
-      "bun": "./src/category.ts",
-      "default": "./lib/category.js"
+    "./Credentials": {
+      "types": "./lib/credentials.d.ts",
+      "bun": "./src/credentials.ts",
+      "default": "./lib/credentials.js"
     },
     "./Errors": {
       "types": "./lib/errors.d.ts",
       "bun": "./src/errors.ts",
       "default": "./lib/errors.js"
+    },
+    "./Protocol": {
+      "types": "./lib/protocol.d.ts",
+      "bun": "./src/protocol.ts",
+      "default": "./lib/protocol.js"
     },
     "./Retry": {
       "types": "./lib/retry.d.ts",
@@ -44,35 +39,37 @@
       "bun": "./src/traits.ts",
       "default": "./lib/traits.js"
     },
+    "./unstable/*": {
+      "types": "./lib/unstable-services/*.d.ts",
+      "bun": "./src/unstable-services/*.ts",
+      "default": "./lib/unstable-services/*.js"
+    },
     ".": {
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "default": "./lib/index.js"
+    },
+    "./*": {
+      "types": "./lib/services/*.d.ts",
+      "bun": "./src/services/*.ts",
+      "default": "./lib/services/*.js"
     }
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsc -b",
-    "fmt": "oxfmt --write src",
-    "lint": "oxlint --fix src",
-    "check": "tsc && oxlint src && oxfmt --check src",
-    "test": "bunx vitest run test --exclude specs --passWithNoTests",
-    "publish:npm": "bun run build && bun publish --access public",
-    "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
+    "convert": "bun scripts/convert.ts",
+    "generate": "bun scripts/generate.ts && bun scripts/generate.ts --smithy .generated-specs/unstable --out src/unstable-services",
+    "typecheck": "tsc -p tsconfig.json",
+    "typecheck:strict": "tsc -p tsconfig.strict.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-gcp && git -C specs/distilled-spec-gcp checkout -- .",
     "specs:update": "git -C specs/distilled-spec-gcp fetch && git -C specs/distilled-spec-gcp checkout main && git -C specs/distilled-spec-gcp pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*"
+    "@distilled.cloud/core": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "dotenv": "catalog:",
-    "rolldown": "catalog:",
-    "vitest": "catalog:"
-  },
-  "peerDependencies": {
-    "effect": "catalog:"
+    "@types/node": "catalog:"
   }
 }

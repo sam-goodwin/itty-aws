@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "RealtimeKitWebhookExists": [{ "status": 409 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

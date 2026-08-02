@@ -1,7 +1,65 @@
 {
-  "errors": {
-    "InvalidZoneIdentifier": [
-      { "code": 9109, "message": { "includes": "Invalid zone identifier" } }
-    ]
-  }
+  "description": "Align zones#Delete with distilled cloudflare/zones deleteZone",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#Delete",
+      "path": "/shapes/com.cloudflare.zones#DeleteZone"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#DeleteRequest",
+      "path": "/shapes/com.cloudflare.zones#DeleteZoneRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#DeleteZone/input/target",
+      "value": "com.cloudflare.zones#DeleteZoneRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#DeleteResponse",
+      "path": "/shapes/com.cloudflare.zones#DeleteZoneResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#DeleteZone/output/target",
+      "value": "com.cloudflare.zones#DeleteZoneResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#InvalidZoneIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 9109,
+              "message": {
+                "includes": "Invalid zone identifier"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#DeleteZone/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zones#InvalidZoneIdentifier"
+        }
+      ]
+    }
+  ]
 }

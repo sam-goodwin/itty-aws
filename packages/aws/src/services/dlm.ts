@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,59 +84,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    RequiredParameters: S.optional(
+      S.suspend(() => ParameterList).annotate({ identifier: "ParameterList" }),
+    ),
+    MutuallyExclusiveParameters: S.optional(
+      S.suspend(() => ParameterList).annotate({ identifier: "ParameterList" }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ResourceIds: S.optional(
+      S.suspend(() => PolicyIdList).annotate({ identifier: "PolicyIdList" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type ExecutionRoleArn = string;
 export type PolicyDescription = string;
-export type ScheduleName = string;
-export type CopyTags = boolean;
-export type Interval = number;
-export type CronExpression = string;
-export type ExecutionHandler = string;
-export type ExecuteOperationOnScriptFailure = boolean;
-export type ScriptExecutionTimeout = number;
-export type ScriptMaximumRetryCount = number;
-export type StandardTierRetainRuleCount = number;
-export type StandardTierRetainRuleInterval = number;
-export type Count = number;
-export type AvailabilityZone = string;
-export type AvailabilityZoneId = string;
-export type TargetRegion = string;
-export type Target = string;
-export type Encrypted = boolean;
-export type CmkArn = string;
-export type CopyTagsNullable = boolean;
-export type AwsAccountId = string;
-export type ExcludeBootVolume = boolean;
-export type NoReboot = boolean;
-export type DescriptionRegex = string;
-export type ActionName = string;
-export type CreateInterval = number;
-export type RetainInterval = number;
-export type ExtendDeletion = boolean;
-export type ExcludeBootVolumes = boolean;
-export type VolumeTypeValues = string;
-export type TagKey = string;
-export type TagValue = string;
-export type PolicyId = string;
-export type ErrorMessage = string;
-export type ErrorCode = string;
-export type Parameter = string;
-export type TagFilter = string;
-export type DefaultPolicy = boolean;
-export type StatusMessage = string;
-export type PolicyArn = string;
-
-//# Schemas
 export type SettablePolicyStateValues = "ENABLED" | "DISABLED" | (string & {});
 export const SettablePolicyStateValues = /*@__PURE__*/ S.String;
+
 export type PolicyTypeValues =
   | "EBS_SNAPSHOT_MANAGEMENT"
   | "IMAGE_MANAGEMENT"
   | "EVENT_BASED_POLICY"
   | (string & {});
 export const PolicyTypeValues = /*@__PURE__*/ S.String;
+
 export type ResourceTypeValues = "VOLUME" | "INSTANCE" | (string & {});
 export const ResourceTypeValues = /*@__PURE__*/ S.String;
+
 export type ResourceTypeValuesList = ResourceTypeValues[];
 export const ResourceTypeValuesList = /*@__PURE__*/ S.Array(ResourceTypeValues);
 export type ResourceLocationValues =
@@ -143,6 +147,7 @@ export type ResourceLocationValues =
   | "LOCAL_ZONE"
   | (string & {});
 export const ResourceLocationValues = /*@__PURE__*/ S.String;
+
 export type ResourceLocationList = ResourceLocationValues[];
 export const ResourceLocationList = /*@__PURE__*/ S.Array(
   ResourceLocationValues,
@@ -156,6 +161,8 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TargetTagList = Tag[];
 export const TargetTagList = /*@__PURE__*/ S.Array(Tag);
+export type ScheduleName = string;
+export type CopyTags = boolean;
 export type TagsToAddList = Tag[];
 export const TagsToAddList = /*@__PURE__*/ S.Array(Tag);
 export type VariableTagsList = Tag[];
@@ -166,18 +173,28 @@ export type LocationValues =
   | "LOCAL_ZONE"
   | (string & {});
 export const LocationValues = /*@__PURE__*/ S.String;
+
+export type Interval = number;
 export type IntervalUnitValues = "HOURS" | (string & {});
 export const IntervalUnitValues = /*@__PURE__*/ S.String;
+
 export type TimesList = string[];
 export const TimesList = /*@__PURE__*/ S.Array(S.String);
+export type CronExpression = string;
 export type StageValues = "PRE" | "POST" | (string & {});
 export const StageValues = /*@__PURE__*/ S.String;
+
 export type StagesList = StageValues[];
 export const StagesList = /*@__PURE__*/ S.Array(StageValues);
 export type ExecutionHandlerServiceValues =
   | "AWS_SYSTEMS_MANAGER"
   | (string & {});
 export const ExecutionHandlerServiceValues = /*@__PURE__*/ S.String;
+
+export type ExecutionHandler = string;
+export type ExecuteOperationOnScriptFailure = boolean;
+export type ScriptExecutionTimeout = number;
+export type ScriptMaximumRetryCount = number;
 export interface Script {
   Stages?: StageValues[];
   ExecutionHandlerService?: ExecutionHandlerServiceValues;
@@ -216,6 +233,8 @@ export const CreateRule = /*@__PURE__*/ S.suspend(() =>
     Scripts: S.optional(ScriptsList),
   }),
 ).annotate({ identifier: "CreateRule" }) as any as S.Schema<CreateRule>;
+export type StandardTierRetainRuleCount = number;
+export type StandardTierRetainRuleInterval = number;
 export type RetentionIntervalUnitValues =
   | "DAYS"
   | "WEEKS"
@@ -223,6 +242,7 @@ export type RetentionIntervalUnitValues =
   | "YEARS"
   | (string & {});
 export const RetentionIntervalUnitValues = /*@__PURE__*/ S.String;
+
 export interface RetainRule {
   Count?: number;
   Interval?: number;
@@ -235,8 +255,11 @@ export const RetainRule = /*@__PURE__*/ S.suspend(() =>
     IntervalUnit: S.optional(RetentionIntervalUnitValues),
   }),
 ).annotate({ identifier: "RetainRule" }) as any as S.Schema<RetainRule>;
+export type Count = number;
+export type AvailabilityZone = string;
 export type AvailabilityZoneList = string[];
 export const AvailabilityZoneList = /*@__PURE__*/ S.Array(S.String);
+export type AvailabilityZoneId = string;
 export type AvailabilityZoneIdList = string[];
 export const AvailabilityZoneIdList = /*@__PURE__*/ S.Array(S.String);
 export interface FastRestoreRule {
@@ -257,6 +280,11 @@ export const FastRestoreRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FastRestoreRule",
 }) as any as S.Schema<FastRestoreRule>;
+export type TargetRegion = string;
+export type Target = string;
+export type Encrypted = boolean;
+export type CmkArn = string;
+export type CopyTagsNullable = boolean;
 export interface CrossRegionCopyRetainRule {
   Interval?: number;
   IntervalUnit?: RetentionIntervalUnitValues;
@@ -273,15 +301,14 @@ export interface CrossRegionCopyDeprecateRule {
   Interval?: number;
   IntervalUnit?: RetentionIntervalUnitValues;
 }
-export const CrossRegionCopyDeprecateRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Interval: S.optional(S.Number),
-      IntervalUnit: S.optional(RetentionIntervalUnitValues),
-    }),
-  ).annotate({
-    identifier: "CrossRegionCopyDeprecateRule",
-  }) as any as S.Schema<CrossRegionCopyDeprecateRule>;
+export const CrossRegionCopyDeprecateRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Interval: S.optional(S.Number),
+    IntervalUnit: S.optional(RetentionIntervalUnitValues),
+  }),
+).annotate({
+  identifier: "CrossRegionCopyDeprecateRule",
+}) as any as S.Schema<CrossRegionCopyDeprecateRule>;
 export interface CrossRegionCopyRule {
   TargetRegion?: string;
   Target?: string;
@@ -306,6 +333,7 @@ export const CrossRegionCopyRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrossRegionCopyRule>;
 export type CrossRegionCopyRules = CrossRegionCopyRule[];
 export const CrossRegionCopyRules = /*@__PURE__*/ S.Array(CrossRegionCopyRule);
+export type AwsAccountId = string;
 export type ShareTargetAccountList = string[];
 export const ShareTargetAccountList = /*@__PURE__*/ S.Array(S.String);
 export interface ShareRule {
@@ -392,6 +420,8 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 export type ScheduleList = Schedule[];
 export const ScheduleList = /*@__PURE__*/ S.Array(Schedule);
+export type ExcludeBootVolume = boolean;
+export type NoReboot = boolean;
 export type ExcludeDataVolumeTagList = Tag[];
 export const ExcludeDataVolumeTagList = /*@__PURE__*/ S.Array(Tag);
 export interface Parameters {
@@ -408,10 +438,13 @@ export const Parameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Parameters" }) as any as S.Schema<Parameters>;
 export type EventSourceValues = "MANAGED_CWE" | (string & {});
 export const EventSourceValues = /*@__PURE__*/ S.String;
+
 export type EventTypeValues = "shareSnapshot" | (string & {});
 export const EventTypeValues = /*@__PURE__*/ S.String;
+
 export type SnapshotOwnerList = string[];
 export const SnapshotOwnerList = /*@__PURE__*/ S.Array(S.String);
+export type DescriptionRegex = string;
 export interface EventParameters {
   EventType?: EventTypeValues;
   SnapshotOwner?: string[];
@@ -436,15 +469,13 @@ export const EventSource = /*@__PURE__*/ S.suspend(() =>
     Parameters: S.optional(EventParameters),
   }),
 ).annotate({ identifier: "EventSource" }) as any as S.Schema<EventSource>;
+export type ActionName = string;
 export interface EncryptionConfiguration {
   Encrypted?: boolean;
   CmkArn?: string;
 }
 export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Encrypted: S.optional(S.Boolean),
-    CmkArn: S.optional(S.String),
-  }),
+  S.Struct({ Encrypted: S.optional(S.Boolean), CmkArn: S.optional(S.String) }),
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
@@ -480,6 +511,9 @@ export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
 export type PolicyLanguageValues = "SIMPLIFIED" | "STANDARD" | (string & {});
 export const PolicyLanguageValues = /*@__PURE__*/ S.String;
+
+export type CreateInterval = number;
+export type RetainInterval = number;
 export interface CrossRegionCopyTarget {
   TargetRegion?: string;
 }
@@ -492,6 +526,9 @@ export type CrossRegionCopyTargetList = CrossRegionCopyTarget[];
 export const CrossRegionCopyTargetList = /*@__PURE__*/ S.Array(
   CrossRegionCopyTarget,
 );
+export type ExtendDeletion = boolean;
+export type ExcludeBootVolumes = boolean;
+export type VolumeTypeValues = string;
 export type ExcludeVolumeTypesList = string[];
 export const ExcludeVolumeTypesList = /*@__PURE__*/ S.Array(S.String);
 export type ExcludeTagsList = Tag[];
@@ -546,6 +583,8 @@ export const PolicyDetails = /*@__PURE__*/ S.suspend(() =>
     Exclusions: S.optional(Exclusions),
   }),
 ).annotate({ identifier: "PolicyDetails" }) as any as S.Schema<PolicyDetails>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -553,6 +592,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type DefaultPolicyTypeValues = "VOLUME" | "INSTANCE" | (string & {});
 export const DefaultPolicyTypeValues = /*@__PURE__*/ S.String;
+
 export interface CreateLifecyclePolicyRequest {
   ExecutionRoleArn?: string;
   Description?: string;
@@ -567,68 +607,65 @@ export interface CreateLifecyclePolicyRequest {
   CrossRegionCopyTargets?: CrossRegionCopyTarget[];
   Exclusions?: Exclusions;
 }
-export const CreateLifecyclePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ExecutionRoleArn: S.optional(S.String),
-      Description: S.optional(S.String),
-      State: S.optional(SettablePolicyStateValues),
-      PolicyDetails: S.optional(PolicyDetails),
-      Tags: S.optional(TagMap),
-      DefaultPolicy: S.optional(DefaultPolicyTypeValues),
-      CreateInterval: S.optional(S.Number),
-      RetainInterval: S.optional(S.Number),
-      CopyTags: S.optional(S.Boolean),
-      ExtendDeletion: S.optional(S.Boolean),
-      CrossRegionCopyTargets: S.optional(CrossRegionCopyTargetList),
-      Exclusions: S.optional(Exclusions),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/policies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExecutionRoleArn: S.optional(S.String),
+    Description: S.optional(S.String),
+    State: S.optional(SettablePolicyStateValues),
+    PolicyDetails: S.optional(PolicyDetails),
+    Tags: S.optional(TagMap),
+    DefaultPolicy: S.optional(DefaultPolicyTypeValues),
+    CreateInterval: S.optional(S.Number),
+    RetainInterval: S.optional(S.Number),
+    CopyTags: S.optional(S.Boolean),
+    ExtendDeletion: S.optional(S.Boolean),
+    CrossRegionCopyTargets: S.optional(CrossRegionCopyTargetList),
+    Exclusions: S.optional(Exclusions),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/policies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateLifecyclePolicyRequest",
-  }) as any as S.Schema<CreateLifecyclePolicyRequest>;
+  ),
+).annotate({
+  identifier: "CreateLifecyclePolicyRequest",
+}) as any as S.Schema<CreateLifecyclePolicyRequest>;
+export type PolicyId = string;
 export interface CreateLifecyclePolicyResponse {
   PolicyId?: string;
 }
-export const CreateLifecyclePolicyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PolicyId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLifecyclePolicyResponse",
-  }) as any as S.Schema<CreateLifecyclePolicyResponse>;
-export type ParameterList = string[];
-export const ParameterList = /*@__PURE__*/ S.Array(S.String);
+export const CreateLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyId: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLifecyclePolicyResponse",
+}) as any as S.Schema<CreateLifecyclePolicyResponse>;
 export interface DeleteLifecyclePolicyRequest {
   PolicyId: string;
 }
-export const DeleteLifecyclePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/policies/{PolicyId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/policies/{PolicyId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteLifecyclePolicyRequest",
-  }) as any as S.Schema<DeleteLifecyclePolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteLifecyclePolicyRequest",
+}) as any as S.Schema<DeleteLifecyclePolicyRequest>;
 export interface DeleteLifecyclePolicyResponse {}
-export const DeleteLifecyclePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteLifecyclePolicyResponse",
-  }) as any as S.Schema<DeleteLifecyclePolicyResponse>;
+export const DeleteLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLifecyclePolicyResponse",
+}) as any as S.Schema<DeleteLifecyclePolicyResponse>;
 export type PolicyIdList = string[];
 export const PolicyIdList = /*@__PURE__*/ S.Array(S.String);
 export type GettablePolicyStateValues =
@@ -637,6 +674,8 @@ export type GettablePolicyStateValues =
   | "ERROR"
   | (string & {});
 export const GettablePolicyStateValues = /*@__PURE__*/ S.String;
+
+export type TagFilter = string;
 export type TargetTagsFilterList = string[];
 export const TargetTagsFilterList = /*@__PURE__*/ S.Array(S.String);
 export type TagsToAddFilterList = string[];
@@ -647,6 +686,7 @@ export type DefaultPoliciesTypeValues =
   | "ALL"
   | (string & {});
 export const DefaultPoliciesTypeValues = /*@__PURE__*/ S.String;
+
 export interface GetLifecyclePoliciesRequest {
   PolicyIds?: string[];
   State?: GettablePolicyStateValues;
@@ -655,34 +695,34 @@ export interface GetLifecyclePoliciesRequest {
   TagsToAdd?: string[];
   DefaultPolicyType?: DefaultPoliciesTypeValues;
 }
-export const GetLifecyclePoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PolicyIds: S.optional(PolicyIdList).pipe(T.HttpQuery("policyIds")),
-      State: S.optional(GettablePolicyStateValues).pipe(T.HttpQuery("state")),
-      ResourceTypes: S.optional(ResourceTypeValuesList).pipe(
-        T.HttpQuery("resourceTypes"),
-      ),
-      TargetTags: S.optional(TargetTagsFilterList).pipe(
-        T.HttpQuery("targetTags"),
-      ),
-      TagsToAdd: S.optional(TagsToAddFilterList).pipe(T.HttpQuery("tagsToAdd")),
-      DefaultPolicyType: S.optional(DefaultPoliciesTypeValues).pipe(
-        T.HttpQuery("defaultPolicyType"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/policies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetLifecyclePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyIds: S.optional(PolicyIdList).pipe(T.HttpQuery("policyIds")),
+    State: S.optional(GettablePolicyStateValues).pipe(T.HttpQuery("state")),
+    ResourceTypes: S.optional(ResourceTypeValuesList).pipe(
+      T.HttpQuery("resourceTypes"),
     ),
-  ).annotate({
-    identifier: "GetLifecyclePoliciesRequest",
-  }) as any as S.Schema<GetLifecyclePoliciesRequest>;
+    TargetTags: S.optional(TargetTagsFilterList).pipe(
+      T.HttpQuery("targetTags"),
+    ),
+    TagsToAdd: S.optional(TagsToAddFilterList).pipe(T.HttpQuery("tagsToAdd")),
+    DefaultPolicyType: S.optional(DefaultPoliciesTypeValues).pipe(
+      T.HttpQuery("defaultPolicyType"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/policies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetLifecyclePoliciesRequest",
+}) as any as S.Schema<GetLifecyclePoliciesRequest>;
+export type DefaultPolicy = boolean;
 export interface LifecyclePolicySummary {
   PolicyId?: string;
   Description?: string;
@@ -710,12 +750,11 @@ export const LifecyclePolicySummaryList = /*@__PURE__*/ S.Array(
 export interface GetLifecyclePoliciesResponse {
   Policies?: LifecyclePolicySummary[];
 }
-export const GetLifecyclePoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Policies: S.optional(LifecyclePolicySummaryList) }),
-  ).annotate({
-    identifier: "GetLifecyclePoliciesResponse",
-  }) as any as S.Schema<GetLifecyclePoliciesResponse>;
+export const GetLifecyclePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policies: S.optional(LifecyclePolicySummaryList) }),
+).annotate({
+  identifier: "GetLifecyclePoliciesResponse",
+}) as any as S.Schema<GetLifecyclePoliciesResponse>;
 export interface GetLifecyclePolicyRequest {
   PolicyId: string;
 }
@@ -733,6 +772,8 @@ export const GetLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLifecyclePolicyRequest",
 }) as any as S.Schema<GetLifecyclePolicyRequest>;
+export type StatusMessage = string;
+export type PolicyArn = string;
 export interface LifecyclePolicy {
   PolicyId?: string;
   Description?: string;
@@ -838,12 +879,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -913,72 +953,43 @@ export interface UpdateLifecyclePolicyRequest {
   CrossRegionCopyTargets?: CrossRegionCopyTarget[];
   Exclusions?: Exclusions;
 }
-export const UpdateLifecyclePolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PolicyId: S.String.pipe(T.HttpLabel("PolicyId")),
-      ExecutionRoleArn: S.optional(S.String),
-      State: S.optional(SettablePolicyStateValues),
-      Description: S.optional(S.String),
-      PolicyDetails: S.optional(PolicyDetails),
-      CreateInterval: S.optional(S.Number),
-      RetainInterval: S.optional(S.Number),
-      CopyTags: S.optional(S.Boolean),
-      ExtendDeletion: S.optional(S.Boolean),
-      CrossRegionCopyTargets: S.optional(CrossRegionCopyTargetList),
-      Exclusions: S.optional(Exclusions),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/policies/{PolicyId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.String.pipe(T.HttpLabel("PolicyId")),
+    ExecutionRoleArn: S.optional(S.String),
+    State: S.optional(SettablePolicyStateValues),
+    Description: S.optional(S.String),
+    PolicyDetails: S.optional(PolicyDetails),
+    CreateInterval: S.optional(S.Number),
+    RetainInterval: S.optional(S.Number),
+    CopyTags: S.optional(S.Boolean),
+    ExtendDeletion: S.optional(S.Boolean),
+    CrossRegionCopyTargets: S.optional(CrossRegionCopyTargetList),
+    Exclusions: S.optional(Exclusions),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/policies/{PolicyId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateLifecyclePolicyRequest",
-  }) as any as S.Schema<UpdateLifecyclePolicyRequest>;
+  ),
+).annotate({
+  identifier: "UpdateLifecyclePolicyRequest",
+}) as any as S.Schema<UpdateLifecyclePolicyRequest>;
 export interface UpdateLifecyclePolicyResponse {}
-export const UpdateLifecyclePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLifecyclePolicyResponse",
-  }) as any as S.Schema<UpdateLifecyclePolicyResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    RequiredParameters: S.optional(ParameterList),
-    MutuallyExclusiveParameters: S.optional(ParameterList),
-  },
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceIds: S.optional(PolicyIdList),
-  },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export const UpdateLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLifecyclePolicyResponse",
+}) as any as S.Schema<UpdateLifecyclePolicyResponse>;
+export type ErrorMessage = string;
+export type ErrorCode = string;
+export type Parameter = string;
+export type ParameterList = string[];
+export const ParameterList = /*@__PURE__*/ S.Array(S.String);
 export type CreateLifecyclePolicyError =
   | InternalServerException
   | InvalidRequestException
@@ -1016,8 +1027,11 @@ export const createLifecyclePolicy: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLifecyclePolicy",
 }));
+
 export type DeleteLifecyclePolicyError =
   | InternalServerException
   | LimitExceededException
@@ -1043,8 +1057,11 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
+
 export type GetLifecyclePoliciesError =
   | InternalServerException
   | InvalidRequestException
@@ -1070,8 +1087,11 @@ export const getLifecyclePolicies: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicies",
 }));
+
 export type GetLifecyclePolicyError =
   | InternalServerException
   | LimitExceededException
@@ -1093,8 +1113,11 @@ export const getLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -1116,8 +1139,11 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -1139,8 +1165,11 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -1162,8 +1191,11 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateLifecyclePolicyError =
   | InternalServerException
   | InvalidRequestException
@@ -1190,5 +1222,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLifecyclePolicy",
 }));

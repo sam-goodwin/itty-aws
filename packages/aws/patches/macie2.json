@@ -55,8 +55,6 @@
     }
   },
   "errorCategories": {
-    "MacieNotEnabled": [
-      "RetryableError"
-    ]
+    "MacieNotEnabled": ["RetryableError"]
   }
 }

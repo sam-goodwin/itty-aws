@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,100 +85,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFields).annotate({
+        identifier: "ValidationExceptionFields",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type TopicArn = string;
-export type NotificationChannelId = string;
-export type ErrorMessageString = string;
-export type ResourceIdString = string;
-export type ResourceIdType = string;
-export type RetryAfterSeconds = number;
-export type ErrorQuotaCodeString = string;
-export type ErrorServiceCodeString = string;
-export type ErrorNameString = string;
-export type InsightId = string;
-export type NumOpenReactiveInsights = number;
-export type NumOpenProactiveInsights = number;
-export type NumMetricsAnalyzed = number;
-export type ResourceHours = number;
-export type AnalyzedResourceCount = number;
-export type NumReactiveInsights = number;
-export type NumProactiveInsights = number;
-export type MeanTimeToRecoverInMilliseconds = number;
-export type AnomalyId = string;
-export type AwsAccountId = string;
-export type CloudWatchMetricsMetricName = string;
-export type CloudWatchMetricsNamespace = string;
-export type CloudWatchMetricsDimensionName = string;
-export type CloudWatchMetricsDimensionValue = string;
-export type CloudWatchMetricsUnit = string;
-export type CloudWatchMetricsPeriod = number;
-export type MetricValue = number;
-export type PerformanceInsightsMetricDisplayName = string;
-export type PerformanceInsightsMetricUnit = string;
-export type PerformanceInsightsMetricName = string;
-export type PerformanceInsightsMetricGroup = string;
-export type PerformanceInsightsMetricDimension = string;
-export type PerformanceInsightsMetricLimitInteger = number;
-export type PerformanceInsightsMetricFilterKey = string;
-export type PerformanceInsightsMetricFilterValue = string;
-export type PerformanceInsightsReferenceName = string;
-export type PerformanceInsightsValueDouble = number;
-export type PerformanceInsightsStatType = string;
-export type StackName = string;
-export type AppBoundaryKey = string;
-export type TagValue = string;
-export type AnomalyLimit = number;
-export type AnomalySource = string;
-export type ResourceName = string;
-export type ResourceType = string;
-export type AnomalyDescription = string;
-export type AnomalyName = string;
-export type InsightName = string;
-export type SsmOpsItemId = string;
-export type InsightDescription = string;
-export type OrganizationalUnitId = string;
-export type UuidNextToken = string;
-export type OrganizationResourceCollectionMaxResults = number;
-export type KMSKeyId = string;
-export type CostEstimationServiceResourceCount = number;
-export type Cost = number;
-export type ListAnomaliesForInsightMaxResults = number;
-export type ListAnomalousLogGroupsMaxResults = number;
-export type LogGroupName = string;
-export type NumberOfLogLinesScanned = number;
-export type LogStreamName = string;
-export type LogAnomalyToken = string;
-export type LogEventId = string;
-export type Explanation = string;
-export type NumberOfLogLinesOccurrences = number;
-export type EventSource = string;
-export type ListEventsMaxResults = number;
-export type EventId = string;
-export type EventName = string;
-export type EventResourceType = string;
-export type EventResourceName = string;
-export type EventResourceArn = string;
-export type ListInsightsMaxResults = number;
-export type ResourceArn = string;
-export type ListMonitoredResourcesMaxResults = number;
-export type MonitoredResourceName = string;
-export type RecommendationDescription = string;
-export type RecommendationLink = string;
-export type RecommendationName = string;
-export type RecommendationReason = string;
-export type RecommendationRelatedEventName = string;
-export type RecommendationRelatedEventResourceName = string;
-export type RecommendationRelatedEventResourceType = string;
-export type RecommendationRelatedAnomalyResourceName = string;
-export type RecommendationRelatedAnomalyResourceType = string;
-export type RecommendationRelatedCloudWatchMetricsSourceMetricName = string;
-export type RecommendationRelatedCloudWatchMetricsSourceNamespace = string;
-export type RecommendationCategory = string;
-export type SearchInsightsMaxResults = number;
-export type SearchOrganizationInsightsMaxResults = number;
-export type ClientToken = string;
-
-//# Schemas
 export interface SnsChannelConfig {
   TopicArn?: string;
 }
@@ -187,6 +151,7 @@ export const SnsChannelConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnsChannelConfig>;
 export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const InsightSeverity = /*@__PURE__*/ S.String;
+
 export type InsightSeverities = InsightSeverity[];
 export const InsightSeverities = /*@__PURE__*/ S.Array(InsightSeverity);
 export type NotificationMessageType =
@@ -197,6 +162,7 @@ export type NotificationMessageType =
   | "NEW_RECOMMENDATION"
   | (string & {});
 export const NotificationMessageType = /*@__PURE__*/ S.String;
+
 export type NotificationMessageTypes = NotificationMessageType[];
 export const NotificationMessageTypes = /*@__PURE__*/ S.Array(
   NotificationMessageType,
@@ -228,50 +194,30 @@ export const NotificationChannelConfig = /*@__PURE__*/ S.suspend(() =>
 export interface AddNotificationChannelRequest {
   Config: NotificationChannelConfig;
 }
-export const AddNotificationChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Config: NotificationChannelConfig }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/channels" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AddNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Config: NotificationChannelConfig }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/channels" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AddNotificationChannelRequest",
-  }) as any as S.Schema<AddNotificationChannelRequest>;
+  ),
+).annotate({
+  identifier: "AddNotificationChannelRequest",
+}) as any as S.Schema<AddNotificationChannelRequest>;
+export type NotificationChannelId = string;
 export interface AddNotificationChannelResponse {
   Id: string;
 }
-export const AddNotificationChannelResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Id: S.String })).annotate({
-    identifier: "AddNotificationChannelResponse",
-  }) as any as S.Schema<AddNotificationChannelResponse>;
-export type ValidationExceptionReason =
-  | "UNKNOWN_OPERATION"
-  | "CANNOT_PARSE"
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | "INVALID_PARAMETER_COMBINATION"
-  | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
+export const AddNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String }),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFields = ValidationExceptionField[];
-export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "AddNotificationChannelResponse",
+}) as any as S.Schema<AddNotificationChannelResponse>;
+export type InsightId = string;
 export interface DeleteInsightRequest {
   Id: string;
 }
@@ -296,21 +242,25 @@ export const DeleteInsightResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteInsightResponse",
 }) as any as S.Schema<DeleteInsightResponse>;
 export interface DescribeAccountHealthRequest {}
-export const DescribeAccountHealthRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/accounts/health" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAccountHealthRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accounts/health" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAccountHealthRequest",
-  }) as any as S.Schema<DescribeAccountHealthRequest>;
+  ),
+).annotate({
+  identifier: "DescribeAccountHealthRequest",
+}) as any as S.Schema<DescribeAccountHealthRequest>;
+export type NumOpenReactiveInsights = number;
+export type NumOpenProactiveInsights = number;
+export type NumMetricsAnalyzed = number;
+export type ResourceHours = number;
+export type AnalyzedResourceCount = number;
 export interface DescribeAccountHealthResponse {
   OpenReactiveInsights: number;
   OpenProactiveInsights: number;
@@ -318,55 +268,57 @@ export interface DescribeAccountHealthResponse {
   ResourceHours: number;
   AnalyzedResourceCount?: number;
 }
-export const DescribeAccountHealthResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OpenReactiveInsights: S.Number,
-      OpenProactiveInsights: S.Number,
-      MetricsAnalyzed: S.Number,
-      ResourceHours: S.Number,
-      AnalyzedResourceCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "DescribeAccountHealthResponse",
-  }) as any as S.Schema<DescribeAccountHealthResponse>;
+export const DescribeAccountHealthResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OpenReactiveInsights: S.Number,
+    OpenProactiveInsights: S.Number,
+    MetricsAnalyzed: S.Number,
+    ResourceHours: S.Number,
+    AnalyzedResourceCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DescribeAccountHealthResponse",
+}) as any as S.Schema<DescribeAccountHealthResponse>;
 export interface DescribeAccountOverviewRequest {
   FromTime: Date;
   ToTime?: Date;
 }
-export const DescribeAccountOverviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FromTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/accounts/overview" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAccountOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FromTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accounts/overview" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAccountOverviewRequest",
-  }) as any as S.Schema<DescribeAccountOverviewRequest>;
+  ),
+).annotate({
+  identifier: "DescribeAccountOverviewRequest",
+}) as any as S.Schema<DescribeAccountOverviewRequest>;
+export type NumReactiveInsights = number;
+export type NumProactiveInsights = number;
+export type MeanTimeToRecoverInMilliseconds = number;
 export interface DescribeAccountOverviewResponse {
   ReactiveInsights: number;
   ProactiveInsights: number;
   MeanTimeToRecoverInMilliseconds: number;
 }
-export const DescribeAccountOverviewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReactiveInsights: S.Number,
-      ProactiveInsights: S.Number,
-      MeanTimeToRecoverInMilliseconds: S.Number,
-    }),
-  ).annotate({
-    identifier: "DescribeAccountOverviewResponse",
-  }) as any as S.Schema<DescribeAccountOverviewResponse>;
+export const DescribeAccountOverviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReactiveInsights: S.Number,
+    ProactiveInsights: S.Number,
+    MeanTimeToRecoverInMilliseconds: S.Number,
+  }),
+).annotate({
+  identifier: "DescribeAccountOverviewResponse",
+}) as any as S.Schema<DescribeAccountOverviewResponse>;
+export type AnomalyId = string;
+export type AwsAccountId = string;
 export interface DescribeAnomalyRequest {
   Id: string;
   AccountId?: string;
@@ -390,8 +342,10 @@ export const DescribeAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAnomalyRequest>;
 export type AnomalySeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const AnomalySeverity = /*@__PURE__*/ S.String;
+
 export type AnomalyStatus = "ONGOING" | "CLOSED" | (string & {});
 export const AnomalyStatus = /*@__PURE__*/ S.String;
+
 export interface AnomalyTimeRange {
   StartTime: Date;
   EndTime?: Date;
@@ -428,6 +382,10 @@ export const PredictionTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredictionTimeRange",
 }) as any as S.Schema<PredictionTimeRange>;
+export type CloudWatchMetricsMetricName = string;
+export type CloudWatchMetricsNamespace = string;
+export type CloudWatchMetricsDimensionName = string;
+export type CloudWatchMetricsDimensionValue = string;
 export interface CloudWatchMetricsDimension {
   Name?: string;
   Value?: string;
@@ -452,6 +410,10 @@ export type CloudWatchMetricsStat =
   | "p50"
   | (string & {});
 export const CloudWatchMetricsStat = /*@__PURE__*/ S.String;
+
+export type CloudWatchMetricsUnit = string;
+export type CloudWatchMetricsPeriod = number;
+export type MetricValue = number;
 export interface TimestampMetricValuePair {
   Timestamp?: Date;
   MetricValue?: number;
@@ -474,19 +436,19 @@ export type CloudWatchMetricDataStatusCode =
   | "PartialData"
   | (string & {});
 export const CloudWatchMetricDataStatusCode = /*@__PURE__*/ S.String;
+
 export interface CloudWatchMetricsDataSummary {
   TimestampMetricValuePairList?: TimestampMetricValuePair[];
   StatusCode?: CloudWatchMetricDataStatusCode;
 }
-export const CloudWatchMetricsDataSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TimestampMetricValuePairList: S.optional(TimestampMetricValuePairList),
-      StatusCode: S.optional(CloudWatchMetricDataStatusCode),
-    }),
-  ).annotate({
-    identifier: "CloudWatchMetricsDataSummary",
-  }) as any as S.Schema<CloudWatchMetricsDataSummary>;
+export const CloudWatchMetricsDataSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TimestampMetricValuePairList: S.optional(TimestampMetricValuePairList),
+    StatusCode: S.optional(CloudWatchMetricDataStatusCode),
+  }),
+).annotate({
+  identifier: "CloudWatchMetricsDataSummary",
+}) as any as S.Schema<CloudWatchMetricsDataSummary>;
 export interface CloudWatchMetricsDetail {
   MetricName?: string;
   Namespace?: string;
@@ -513,62 +475,72 @@ export type CloudWatchMetricsDetails = CloudWatchMetricsDetail[];
 export const CloudWatchMetricsDetails = /*@__PURE__*/ S.Array(
   CloudWatchMetricsDetail,
 );
+export type PerformanceInsightsMetricDisplayName = string;
+export type PerformanceInsightsMetricUnit = string;
+export type PerformanceInsightsMetricName = string;
+export type PerformanceInsightsMetricGroup = string;
+export type PerformanceInsightsMetricDimension = string;
 export type PerformanceInsightsMetricDimensions = string[];
-export const PerformanceInsightsMetricDimensions =
-  /*@__PURE__*/ S.Array(S.String);
+export const PerformanceInsightsMetricDimensions = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export type PerformanceInsightsMetricLimitInteger = number;
 export interface PerformanceInsightsMetricDimensionGroup {
   Group?: string;
   Dimensions?: string[];
   Limit?: number;
 }
-export const PerformanceInsightsMetricDimensionGroup =
-  /*@__PURE__*/ S.suspend(() =>
+export const PerformanceInsightsMetricDimensionGroup = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Group: S.optional(S.String),
       Dimensions: S.optional(PerformanceInsightsMetricDimensions),
       Limit: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "PerformanceInsightsMetricDimensionGroup",
-  }) as any as S.Schema<PerformanceInsightsMetricDimensionGroup>;
+).annotate({
+  identifier: "PerformanceInsightsMetricDimensionGroup",
+}) as any as S.Schema<PerformanceInsightsMetricDimensionGroup>;
+export type PerformanceInsightsMetricFilterKey = string;
+export type PerformanceInsightsMetricFilterValue = string;
 export type PerformanceInsightsMetricFilterMap = {
   [key: string]: string | undefined;
 };
-export const PerformanceInsightsMetricFilterMap =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const PerformanceInsightsMetricFilterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface PerformanceInsightsMetricQuery {
   Metric?: string;
   GroupBy?: PerformanceInsightsMetricDimensionGroup;
   Filter?: { [key: string]: string | undefined };
 }
-export const PerformanceInsightsMetricQuery =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Metric: S.optional(S.String),
-      GroupBy: S.optional(PerformanceInsightsMetricDimensionGroup),
-      Filter: S.optional(PerformanceInsightsMetricFilterMap),
-    }),
-  ).annotate({
-    identifier: "PerformanceInsightsMetricQuery",
-  }) as any as S.Schema<PerformanceInsightsMetricQuery>;
+export const PerformanceInsightsMetricQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Metric: S.optional(S.String),
+    GroupBy: S.optional(PerformanceInsightsMetricDimensionGroup),
+    Filter: S.optional(PerformanceInsightsMetricFilterMap),
+  }),
+).annotate({
+  identifier: "PerformanceInsightsMetricQuery",
+}) as any as S.Schema<PerformanceInsightsMetricQuery>;
+export type PerformanceInsightsReferenceName = string;
+export type PerformanceInsightsValueDouble = number;
 export interface PerformanceInsightsReferenceScalar {
   Value?: number;
 }
-export const PerformanceInsightsReferenceScalar =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Value: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "PerformanceInsightsReferenceScalar",
-  }) as any as S.Schema<PerformanceInsightsReferenceScalar>;
+export const PerformanceInsightsReferenceScalar = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Value: S.optional(S.Number) }),
+).annotate({
+  identifier: "PerformanceInsightsReferenceScalar",
+}) as any as S.Schema<PerformanceInsightsReferenceScalar>;
 export interface PerformanceInsightsReferenceMetric {
   MetricQuery?: PerformanceInsightsMetricQuery;
 }
-export const PerformanceInsightsReferenceMetric =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MetricQuery: S.optional(PerformanceInsightsMetricQuery) }),
-  ).annotate({
-    identifier: "PerformanceInsightsReferenceMetric",
-  }) as any as S.Schema<PerformanceInsightsReferenceMetric>;
+export const PerformanceInsightsReferenceMetric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MetricQuery: S.optional(PerformanceInsightsMetricQuery) }),
+).annotate({
+  identifier: "PerformanceInsightsReferenceMetric",
+}) as any as S.Schema<PerformanceInsightsReferenceMetric>;
 export interface PerformanceInsightsReferenceComparisonValues {
   ReferenceScalar?: PerformanceInsightsReferenceScalar;
   ReferenceMetric?: PerformanceInsightsReferenceMetric;
@@ -586,21 +558,20 @@ export interface PerformanceInsightsReferenceData {
   Name?: string;
   ComparisonValues?: PerformanceInsightsReferenceComparisonValues;
 }
-export const PerformanceInsightsReferenceData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      ComparisonValues: S.optional(
-        PerformanceInsightsReferenceComparisonValues,
-      ),
-    }),
-  ).annotate({
-    identifier: "PerformanceInsightsReferenceData",
-  }) as any as S.Schema<PerformanceInsightsReferenceData>;
+export const PerformanceInsightsReferenceData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    ComparisonValues: S.optional(PerformanceInsightsReferenceComparisonValues),
+  }),
+).annotate({
+  identifier: "PerformanceInsightsReferenceData",
+}) as any as S.Schema<PerformanceInsightsReferenceData>;
 export type PerformanceInsightsReferenceDataList =
   PerformanceInsightsReferenceData[];
-export const PerformanceInsightsReferenceDataList =
-  /*@__PURE__*/ S.Array(PerformanceInsightsReferenceData);
+export const PerformanceInsightsReferenceDataList = /*@__PURE__*/ S.Array(
+  PerformanceInsightsReferenceData,
+);
+export type PerformanceInsightsStatType = string;
 export interface PerformanceInsightsStat {
   Type?: string;
   Value?: number;
@@ -622,23 +593,23 @@ export interface PerformanceInsightsMetricsDetail {
   StatsAtAnomaly?: PerformanceInsightsStat[];
   StatsAtBaseline?: PerformanceInsightsStat[];
 }
-export const PerformanceInsightsMetricsDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MetricDisplayName: S.optional(S.String),
-      Unit: S.optional(S.String),
-      MetricQuery: S.optional(PerformanceInsightsMetricQuery),
-      ReferenceData: S.optional(PerformanceInsightsReferenceDataList),
-      StatsAtAnomaly: S.optional(PerformanceInsightsStats),
-      StatsAtBaseline: S.optional(PerformanceInsightsStats),
-    }),
-  ).annotate({
-    identifier: "PerformanceInsightsMetricsDetail",
-  }) as any as S.Schema<PerformanceInsightsMetricsDetail>;
+export const PerformanceInsightsMetricsDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MetricDisplayName: S.optional(S.String),
+    Unit: S.optional(S.String),
+    MetricQuery: S.optional(PerformanceInsightsMetricQuery),
+    ReferenceData: S.optional(PerformanceInsightsReferenceDataList),
+    StatsAtAnomaly: S.optional(PerformanceInsightsStats),
+    StatsAtBaseline: S.optional(PerformanceInsightsStats),
+  }),
+).annotate({
+  identifier: "PerformanceInsightsMetricsDetail",
+}) as any as S.Schema<PerformanceInsightsMetricsDetail>;
 export type PerformanceInsightsMetricsDetails =
   PerformanceInsightsMetricsDetail[];
-export const PerformanceInsightsMetricsDetails =
-  /*@__PURE__*/ S.Array(PerformanceInsightsMetricsDetail);
+export const PerformanceInsightsMetricsDetails = /*@__PURE__*/ S.Array(
+  PerformanceInsightsMetricsDetail,
+);
 export interface AnomalySourceDetails {
   CloudWatchMetrics?: CloudWatchMetricsDetail[];
   PerformanceInsightsMetrics?: PerformanceInsightsMetricsDetail[];
@@ -651,6 +622,7 @@ export const AnomalySourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnomalySourceDetails",
 }) as any as S.Schema<AnomalySourceDetails>;
+export type StackName = string;
 export type StackNames = string[];
 export const StackNames = /*@__PURE__*/ S.Array(S.String);
 export interface CloudFormationCollection {
@@ -661,6 +633,8 @@ export const CloudFormationCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloudFormationCollection",
 }) as any as S.Schema<CloudFormationCollection>;
+export type AppBoundaryKey = string;
+export type TagValue = string;
 export type TagValues = string[];
 export const TagValues = /*@__PURE__*/ S.Array(S.String);
 export interface TagCollection {
@@ -684,6 +658,10 @@ export const ResourceCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceCollection",
 }) as any as S.Schema<ResourceCollection>;
+export type AnomalyLimit = number;
+export type AnomalySource = string;
+export type ResourceName = string;
+export type ResourceType = string;
 export interface AnomalySourceMetadata {
   Source?: string;
   SourceResourceName?: string;
@@ -709,6 +687,7 @@ export const AnomalyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnomalyResource>;
 export type AnomalyResources = AnomalyResource[];
 export const AnomalyResources = /*@__PURE__*/ S.Array(AnomalyResource);
+export type AnomalyDescription = string;
 export interface ProactiveAnomaly {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -747,6 +726,8 @@ export const ProactiveAnomaly = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProactiveAnomaly>;
 export type AnomalyType = "CAUSAL" | "CONTEXTUAL" | (string & {});
 export const AnomalyType = /*@__PURE__*/ S.String;
+
+export type AnomalyName = string;
 export interface ReactiveAnomaly {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -794,32 +775,31 @@ export const DescribeAnomalyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAnomalyResponse",
 }) as any as S.Schema<DescribeAnomalyResponse>;
 export interface DescribeEventSourcesConfigRequest {}
-export const DescribeEventSourcesConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/event-sources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEventSourcesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/event-sources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEventSourcesConfigRequest",
-  }) as any as S.Schema<DescribeEventSourcesConfigRequest>;
+  ),
+).annotate({
+  identifier: "DescribeEventSourcesConfigRequest",
+}) as any as S.Schema<DescribeEventSourcesConfigRequest>;
 export type EventSourceOptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const EventSourceOptInStatus = /*@__PURE__*/ S.String;
+
 export interface AmazonCodeGuruProfilerIntegration {
   Status?: EventSourceOptInStatus;
 }
-export const AmazonCodeGuruProfilerIntegration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: S.optional(EventSourceOptInStatus) }),
-  ).annotate({
-    identifier: "AmazonCodeGuruProfilerIntegration",
-  }) as any as S.Schema<AmazonCodeGuruProfilerIntegration>;
+export const AmazonCodeGuruProfilerIntegration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(EventSourceOptInStatus) }),
+).annotate({
+  identifier: "AmazonCodeGuruProfilerIntegration",
+}) as any as S.Schema<AmazonCodeGuruProfilerIntegration>;
 export interface EventSourcesConfig {
   AmazonCodeGuruProfiler?: AmazonCodeGuruProfilerIntegration;
 }
@@ -833,12 +813,11 @@ export const EventSourcesConfig = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeEventSourcesConfigResponse {
   EventSources?: EventSourcesConfig;
 }
-export const DescribeEventSourcesConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSources: S.optional(EventSourcesConfig) }),
-  ).annotate({
-    identifier: "DescribeEventSourcesConfigResponse",
-  }) as any as S.Schema<DescribeEventSourcesConfigResponse>;
+export const DescribeEventSourcesConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSources: S.optional(EventSourcesConfig) }),
+).annotate({
+  identifier: "DescribeEventSourcesConfigResponse",
+}) as any as S.Schema<DescribeEventSourcesConfigResponse>;
 export interface DescribeFeedbackRequest {
   InsightId?: string;
 }
@@ -864,6 +843,7 @@ export type InsightFeedbackOption =
   | "DATA_INCORRECT"
   | (string & {});
 export const InsightFeedbackOption = /*@__PURE__*/ S.String;
+
 export interface InsightFeedback {
   Id?: string;
   Feedback?: InsightFeedbackOption;
@@ -905,8 +885,10 @@ export const DescribeInsightRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInsightRequest",
 }) as any as S.Schema<DescribeInsightRequest>;
+export type InsightName = string;
 export type InsightStatus = "ONGOING" | "CLOSED" | (string & {});
 export const InsightStatus = /*@__PURE__*/ S.String;
+
 export interface InsightTimeRange {
   StartTime: Date;
   EndTime?: Date;
@@ -919,6 +901,8 @@ export const InsightTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InsightTimeRange",
 }) as any as S.Schema<InsightTimeRange>;
+export type SsmOpsItemId = string;
+export type InsightDescription = string;
 export interface ProactiveInsight {
   Id?: string;
   Name?: string;
@@ -983,83 +967,80 @@ export const DescribeInsightResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInsightResponse>;
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export type OrganizationalUnitId = string;
 export type OrganizationalUnitIdList = string[];
 export const OrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeOrganizationHealthRequest {
   AccountIds?: string[];
   OrganizationalUnitIds?: string[];
 }
-export const DescribeOrganizationHealthRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountIds: S.optional(AccountIdList),
-      OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/organization/health" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeOrganizationHealthRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountIds: S.optional(AccountIdList),
+    OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/organization/health" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeOrganizationHealthRequest",
-  }) as any as S.Schema<DescribeOrganizationHealthRequest>;
+  ),
+).annotate({
+  identifier: "DescribeOrganizationHealthRequest",
+}) as any as S.Schema<DescribeOrganizationHealthRequest>;
 export interface DescribeOrganizationHealthResponse {
   OpenReactiveInsights: number;
   OpenProactiveInsights: number;
   MetricsAnalyzed: number;
   ResourceHours: number;
 }
-export const DescribeOrganizationHealthResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OpenReactiveInsights: S.Number,
-      OpenProactiveInsights: S.Number,
-      MetricsAnalyzed: S.Number,
-      ResourceHours: S.Number,
-    }),
-  ).annotate({
-    identifier: "DescribeOrganizationHealthResponse",
-  }) as any as S.Schema<DescribeOrganizationHealthResponse>;
+export const DescribeOrganizationHealthResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OpenReactiveInsights: S.Number,
+    OpenProactiveInsights: S.Number,
+    MetricsAnalyzed: S.Number,
+    ResourceHours: S.Number,
+  }),
+).annotate({
+  identifier: "DescribeOrganizationHealthResponse",
+}) as any as S.Schema<DescribeOrganizationHealthResponse>;
 export interface DescribeOrganizationOverviewRequest {
   FromTime: Date;
   ToTime?: Date;
   AccountIds?: string[];
   OrganizationalUnitIds?: string[];
 }
-export const DescribeOrganizationOverviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FromTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      AccountIds: S.optional(AccountIdList),
-      OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/organization/overview" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeOrganizationOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FromTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AccountIds: S.optional(AccountIdList),
+    OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/organization/overview" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeOrganizationOverviewRequest",
-  }) as any as S.Schema<DescribeOrganizationOverviewRequest>;
+  ),
+).annotate({
+  identifier: "DescribeOrganizationOverviewRequest",
+}) as any as S.Schema<DescribeOrganizationOverviewRequest>;
 export interface DescribeOrganizationOverviewResponse {
   ReactiveInsights: number;
   ProactiveInsights: number;
 }
-export const DescribeOrganizationOverviewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReactiveInsights: S.Number, ProactiveInsights: S.Number }),
-  ).annotate({
-    identifier: "DescribeOrganizationOverviewResponse",
-  }) as any as S.Schema<DescribeOrganizationOverviewResponse>;
+export const DescribeOrganizationOverviewResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ ReactiveInsights: S.Number, ProactiveInsights: S.Number }),
+).annotate({
+  identifier: "DescribeOrganizationOverviewResponse",
+}) as any as S.Schema<DescribeOrganizationOverviewResponse>;
 export type OrganizationResourceCollectionType =
   | "AWS_CLOUD_FORMATION"
   | "AWS_SERVICE"
@@ -1067,6 +1048,9 @@ export type OrganizationResourceCollectionType =
   | "AWS_TAGS"
   | (string & {});
 export const OrganizationResourceCollectionType = /*@__PURE__*/ S.String;
+
+export type UuidNextToken = string;
+export type OrganizationResourceCollectionMaxResults = number;
 export interface DescribeOrganizationResourceCollectionHealthRequest {
   OrganizationResourceCollectionType: OrganizationResourceCollectionType;
   AccountIds?: string[];
@@ -1155,6 +1139,7 @@ export type ServiceName =
   | "SWF"
   | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
+
 export interface ServiceInsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
@@ -1246,12 +1231,13 @@ export type ResourceCollectionType =
   | "AWS_TAGS"
   | (string & {});
 export const ResourceCollectionType = /*@__PURE__*/ S.String;
+
 export interface DescribeResourceCollectionHealthRequest {
   ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
 }
-export const DescribeResourceCollectionHealthRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeResourceCollectionHealthRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ResourceCollectionType: ResourceCollectionType.pipe(
         T.HttpLabel("ResourceCollectionType"),
@@ -1270,44 +1256,44 @@ export const DescribeResourceCollectionHealthRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeResourceCollectionHealthRequest",
-  }) as any as S.Schema<DescribeResourceCollectionHealthRequest>;
+).annotate({
+  identifier: "DescribeResourceCollectionHealthRequest",
+}) as any as S.Schema<DescribeResourceCollectionHealthRequest>;
 export interface DescribeResourceCollectionHealthResponse {
   CloudFormation?: CloudFormationHealth[];
   Service?: ServiceHealth[];
   NextToken?: string;
   Tags?: TagHealth[];
 }
-export const DescribeResourceCollectionHealthResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeResourceCollectionHealthResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CloudFormation: S.optional(CloudFormationHealths),
       Service: S.optional(ServiceHealths),
       NextToken: S.optional(S.String),
       Tags: S.optional(TagHealths),
     }),
-  ).annotate({
-    identifier: "DescribeResourceCollectionHealthResponse",
-  }) as any as S.Schema<DescribeResourceCollectionHealthResponse>;
+).annotate({
+  identifier: "DescribeResourceCollectionHealthResponse",
+}) as any as S.Schema<DescribeResourceCollectionHealthResponse>;
 export interface DescribeServiceIntegrationRequest {}
-export const DescribeServiceIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/service-integrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeServiceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/service-integrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeServiceIntegrationRequest",
-  }) as any as S.Schema<DescribeServiceIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "DescribeServiceIntegrationRequest",
+}) as any as S.Schema<DescribeServiceIntegrationRequest>;
 export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OptInStatus = /*@__PURE__*/ S.String;
+
 export interface OpsCenterIntegration {
   OptInStatus?: OptInStatus;
 }
@@ -1319,32 +1305,32 @@ export const OpsCenterIntegration = /*@__PURE__*/ S.suspend(() =>
 export interface LogsAnomalyDetectionIntegration {
   OptInStatus?: OptInStatus;
 }
-export const LogsAnomalyDetectionIntegration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OptInStatus: S.optional(OptInStatus) }),
-  ).annotate({
-    identifier: "LogsAnomalyDetectionIntegration",
-  }) as any as S.Schema<LogsAnomalyDetectionIntegration>;
+export const LogsAnomalyDetectionIntegration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OptInStatus: S.optional(OptInStatus) }),
+).annotate({
+  identifier: "LogsAnomalyDetectionIntegration",
+}) as any as S.Schema<LogsAnomalyDetectionIntegration>;
+export type KMSKeyId = string;
 export type ServerSideEncryptionType =
   | "CUSTOMER_MANAGED_KEY"
   | "AWS_OWNED_KMS_KEY"
   | (string & {});
 export const ServerSideEncryptionType = /*@__PURE__*/ S.String;
+
 export interface KMSServerSideEncryptionIntegration {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
   Type?: ServerSideEncryptionType;
 }
-export const KMSServerSideEncryptionIntegration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KMSKeyId: S.optional(S.String),
-      OptInStatus: S.optional(OptInStatus),
-      Type: S.optional(ServerSideEncryptionType),
-    }),
-  ).annotate({
-    identifier: "KMSServerSideEncryptionIntegration",
-  }) as any as S.Schema<KMSServerSideEncryptionIntegration>;
+export const KMSServerSideEncryptionIntegration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KMSKeyId: S.optional(S.String),
+    OptInStatus: S.optional(OptInStatus),
+    Type: S.optional(ServerSideEncryptionType),
+  }),
+).annotate({
+  identifier: "KMSServerSideEncryptionIntegration",
+}) as any as S.Schema<KMSServerSideEncryptionIntegration>;
 export interface ServiceIntegrationConfig {
   OpsCenter?: OpsCenterIntegration;
   LogsAnomalyDetection?: LogsAnomalyDetectionIntegration;
@@ -1362,12 +1348,11 @@ export const ServiceIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeServiceIntegrationResponse {
   ServiceIntegration?: ServiceIntegrationConfig;
 }
-export const DescribeServiceIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ServiceIntegration: S.optional(ServiceIntegrationConfig) }),
-  ).annotate({
-    identifier: "DescribeServiceIntegrationResponse",
-  }) as any as S.Schema<DescribeServiceIntegrationResponse>;
+export const DescribeServiceIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ServiceIntegration: S.optional(ServiceIntegrationConfig) }),
+).annotate({
+  identifier: "DescribeServiceIntegrationResponse",
+}) as any as S.Schema<DescribeServiceIntegrationResponse>;
 export interface GetCostEstimationRequest {
   NextToken?: string;
 }
@@ -1412,30 +1397,35 @@ export const TagCostEstimationResourceCollectionFilter =
   }) as any as S.Schema<TagCostEstimationResourceCollectionFilter>;
 export type TagCostEstimationResourceCollectionFilters =
   TagCostEstimationResourceCollectionFilter[];
-export const TagCostEstimationResourceCollectionFilters =
-  /*@__PURE__*/ S.Array(TagCostEstimationResourceCollectionFilter);
+export const TagCostEstimationResourceCollectionFilters = /*@__PURE__*/ S.Array(
+  TagCostEstimationResourceCollectionFilter,
+);
 export interface CostEstimationResourceCollectionFilter {
   CloudFormation?: CloudFormationCostEstimationResourceCollectionFilter;
   Tags?: TagCostEstimationResourceCollectionFilter[];
 }
-export const CostEstimationResourceCollectionFilter =
-  /*@__PURE__*/ S.suspend(() =>
+export const CostEstimationResourceCollectionFilter = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CloudFormation: S.optional(
         CloudFormationCostEstimationResourceCollectionFilter,
       ),
       Tags: S.optional(TagCostEstimationResourceCollectionFilters),
     }),
-  ).annotate({
-    identifier: "CostEstimationResourceCollectionFilter",
-  }) as any as S.Schema<CostEstimationResourceCollectionFilter>;
+).annotate({
+  identifier: "CostEstimationResourceCollectionFilter",
+}) as any as S.Schema<CostEstimationResourceCollectionFilter>;
 export type CostEstimationStatus = "ONGOING" | "COMPLETED" | (string & {});
 export const CostEstimationStatus = /*@__PURE__*/ S.String;
+
 export type CostEstimationServiceResourceState =
   | "ACTIVE"
   | "INACTIVE"
   | (string & {});
 export const CostEstimationServiceResourceState = /*@__PURE__*/ S.String;
+
+export type CostEstimationServiceResourceCount = number;
+export type Cost = number;
 export interface ServiceResourceCost {
   Type?: string;
   State?: CostEstimationServiceResourceState;
@@ -1492,38 +1482,36 @@ export interface GetResourceCollectionRequest {
   ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
 }
-export const GetResourceCollectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceCollectionType: ResourceCollectionType.pipe(
-        T.HttpLabel("ResourceCollectionType"),
-      ),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/resource-collections/{ResourceCollectionType}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceCollectionType: ResourceCollectionType.pipe(
+      T.HttpLabel("ResourceCollectionType"),
     ),
-  ).annotate({
-    identifier: "GetResourceCollectionRequest",
-  }) as any as S.Schema<GetResourceCollectionRequest>;
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/resource-collections/{ResourceCollectionType}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetResourceCollectionRequest",
+}) as any as S.Schema<GetResourceCollectionRequest>;
 export interface CloudFormationCollectionFilter {
   StackNames?: string[];
 }
-export const CloudFormationCollectionFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackNames: S.optional(StackNames) }),
-  ).annotate({
-    identifier: "CloudFormationCollectionFilter",
-  }) as any as S.Schema<CloudFormationCollectionFilter>;
+export const CloudFormationCollectionFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackNames: S.optional(StackNames) }),
+).annotate({
+  identifier: "CloudFormationCollectionFilter",
+}) as any as S.Schema<CloudFormationCollectionFilter>;
 export interface TagCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
@@ -1551,15 +1539,14 @@ export interface GetResourceCollectionResponse {
   ResourceCollection?: ResourceCollectionFilter;
   NextToken?: string;
 }
-export const GetResourceCollectionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceCollection: S.optional(ResourceCollectionFilter),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetResourceCollectionResponse",
-  }) as any as S.Schema<GetResourceCollectionResponse>;
+export const GetResourceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceCollection: S.optional(ResourceCollectionFilter),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResourceCollectionResponse",
+}) as any as S.Schema<GetResourceCollectionResponse>;
 export interface StartTimeRange {
   FromTime?: Date;
   ToTime?: Date;
@@ -1570,6 +1557,7 @@ export const StartTimeRange = /*@__PURE__*/ S.suspend(() =>
     ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "StartTimeRange" }) as any as S.Schema<StartTimeRange>;
+export type ListAnomaliesForInsightMaxResults = number;
 export type ServiceNames = ServiceName[];
 export const ServiceNames = /*@__PURE__*/ S.Array(ServiceName);
 export interface ServiceCollection {
@@ -1583,12 +1571,11 @@ export const ServiceCollection = /*@__PURE__*/ S.suspend(() =>
 export interface ListAnomaliesForInsightFilters {
   ServiceCollection?: ServiceCollection;
 }
-export const ListAnomaliesForInsightFilters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ServiceCollection: S.optional(ServiceCollection) }),
-  ).annotate({
-    identifier: "ListAnomaliesForInsightFilters",
-  }) as any as S.Schema<ListAnomaliesForInsightFilters>;
+export const ListAnomaliesForInsightFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ServiceCollection: S.optional(ServiceCollection) }),
+).annotate({
+  identifier: "ListAnomaliesForInsightFilters",
+}) as any as S.Schema<ListAnomaliesForInsightFilters>;
 export interface ListAnomaliesForInsightRequest {
   InsightId: string;
   StartTimeRange?: StartTimeRange;
@@ -1597,28 +1584,27 @@ export interface ListAnomaliesForInsightRequest {
   AccountId?: string;
   Filters?: ListAnomaliesForInsightFilters;
 }
-export const ListAnomaliesForInsightRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InsightId: S.String.pipe(T.HttpLabel("InsightId")),
-      StartTimeRange: S.optional(StartTimeRange),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      AccountId: S.optional(S.String),
-      Filters: S.optional(ListAnomaliesForInsightFilters),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/anomalies/insight/{InsightId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAnomaliesForInsightRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InsightId: S.String.pipe(T.HttpLabel("InsightId")),
+    StartTimeRange: S.optional(StartTimeRange),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    AccountId: S.optional(S.String),
+    Filters: S.optional(ListAnomaliesForInsightFilters),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/anomalies/insight/{InsightId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAnomaliesForInsightRequest",
-  }) as any as S.Schema<ListAnomaliesForInsightRequest>;
+  ),
+).annotate({
+  identifier: "ListAnomaliesForInsightRequest",
+}) as any as S.Schema<ListAnomaliesForInsightRequest>;
 export interface ProactiveAnomalySummary {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -1700,40 +1686,42 @@ export interface ListAnomaliesForInsightResponse {
   ReactiveAnomalies?: ReactiveAnomalySummary[];
   NextToken?: string;
 }
-export const ListAnomaliesForInsightResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProactiveAnomalies: S.optional(ProactiveAnomalies),
-      ReactiveAnomalies: S.optional(ReactiveAnomalies),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAnomaliesForInsightResponse",
-  }) as any as S.Schema<ListAnomaliesForInsightResponse>;
+export const ListAnomaliesForInsightResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProactiveAnomalies: S.optional(ProactiveAnomalies),
+    ReactiveAnomalies: S.optional(ReactiveAnomalies),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAnomaliesForInsightResponse",
+}) as any as S.Schema<ListAnomaliesForInsightResponse>;
+export type ListAnomalousLogGroupsMaxResults = number;
 export interface ListAnomalousLogGroupsRequest {
   InsightId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListAnomalousLogGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InsightId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/list-log-anomalies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAnomalousLogGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InsightId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/list-log-anomalies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAnomalousLogGroupsRequest",
-  }) as any as S.Schema<ListAnomalousLogGroupsRequest>;
+  ),
+).annotate({
+  identifier: "ListAnomalousLogGroupsRequest",
+}) as any as S.Schema<ListAnomalousLogGroupsRequest>;
+export type LogGroupName = string;
+export type NumberOfLogLinesScanned = number;
+export type LogStreamName = string;
 export type LogAnomalyType =
   | "KEYWORD"
   | "KEYWORD_TOKEN"
@@ -1745,6 +1733,11 @@ export type LogAnomalyType =
   | "NEW_FIELD_NAME"
   | (string & {});
 export const LogAnomalyType = /*@__PURE__*/ S.String;
+
+export type LogAnomalyToken = string;
+export type LogEventId = string;
+export type Explanation = string;
+export type NumberOfLogLinesOccurrences = number;
 export interface LogAnomalyClass {
   LogStreamName?: string;
   LogAnomalyType?: LogAnomalyType;
@@ -1808,16 +1801,15 @@ export interface ListAnomalousLogGroupsResponse {
   AnomalousLogGroups: AnomalousLogGroup[];
   NextToken?: string;
 }
-export const ListAnomalousLogGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InsightId: S.String,
-      AnomalousLogGroups: AnomalousLogGroups,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAnomalousLogGroupsResponse",
-  }) as any as S.Schema<ListAnomalousLogGroupsResponse>;
+export const ListAnomalousLogGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InsightId: S.String,
+    AnomalousLogGroups: AnomalousLogGroups,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAnomalousLogGroupsResponse",
+}) as any as S.Schema<ListAnomalousLogGroupsResponse>;
 export interface EventTimeRange {
   FromTime: Date;
   ToTime: Date;
@@ -1836,11 +1828,14 @@ export type EventClass =
   | "SCHEMA_CHANGE"
   | (string & {});
 export const EventClass = /*@__PURE__*/ S.String;
+
+export type EventSource = string;
 export type EventDataSource =
   | "AWS_CLOUD_TRAIL"
   | "AWS_CODE_DEPLOY"
   | (string & {});
 export const EventDataSource = /*@__PURE__*/ S.String;
+
 export interface ListEventsFilters {
   InsightId?: string;
   EventTimeRange?: EventTimeRange;
@@ -1861,6 +1856,7 @@ export const ListEventsFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventsFilters",
 }) as any as S.Schema<ListEventsFilters>;
+export type ListEventsMaxResults = number;
 export interface ListEventsRequest {
   Filters: ListEventsFilters;
   MaxResults?: number;
@@ -1886,6 +1882,11 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventsRequest",
 }) as any as S.Schema<ListEventsRequest>;
+export type EventId = string;
+export type EventName = string;
+export type EventResourceType = string;
+export type EventResourceName = string;
+export type EventResourceArn = string;
 export interface EventResource {
   Type?: string;
   Name?: string;
@@ -1935,13 +1936,15 @@ export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEventsResponse>;
 export type InsightType = "REACTIVE" | "PROACTIVE" | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
+
 export interface ListInsightsOngoingStatusFilter {
   Type: InsightType;
 }
-export const ListInsightsOngoingStatusFilter =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Type: InsightType })).annotate({
-    identifier: "ListInsightsOngoingStatusFilter",
-  }) as any as S.Schema<ListInsightsOngoingStatusFilter>;
+export const ListInsightsOngoingStatusFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: InsightType }),
+).annotate({
+  identifier: "ListInsightsOngoingStatusFilter",
+}) as any as S.Schema<ListInsightsOngoingStatusFilter>;
 export interface EndTimeRange {
   FromTime?: Date;
   ToTime?: Date;
@@ -1956,22 +1959,20 @@ export interface ListInsightsClosedStatusFilter {
   Type: InsightType;
   EndTimeRange: EndTimeRange;
 }
-export const ListInsightsClosedStatusFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Type: InsightType, EndTimeRange: EndTimeRange }),
-  ).annotate({
-    identifier: "ListInsightsClosedStatusFilter",
-  }) as any as S.Schema<ListInsightsClosedStatusFilter>;
+export const ListInsightsClosedStatusFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: InsightType, EndTimeRange: EndTimeRange }),
+).annotate({
+  identifier: "ListInsightsClosedStatusFilter",
+}) as any as S.Schema<ListInsightsClosedStatusFilter>;
 export interface ListInsightsAnyStatusFilter {
   Type: InsightType;
   StartTimeRange: StartTimeRange;
 }
-export const ListInsightsAnyStatusFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Type: InsightType, StartTimeRange: StartTimeRange }),
-  ).annotate({
-    identifier: "ListInsightsAnyStatusFilter",
-  }) as any as S.Schema<ListInsightsAnyStatusFilter>;
+export const ListInsightsAnyStatusFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: InsightType, StartTimeRange: StartTimeRange }),
+).annotate({
+  identifier: "ListInsightsAnyStatusFilter",
+}) as any as S.Schema<ListInsightsAnyStatusFilter>;
 export interface ListInsightsStatusFilter {
   Ongoing?: ListInsightsOngoingStatusFilter;
   Closed?: ListInsightsClosedStatusFilter;
@@ -1986,6 +1987,7 @@ export const ListInsightsStatusFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsStatusFilter",
 }) as any as S.Schema<ListInsightsStatusFilter>;
+export type ListInsightsMaxResults = number;
 export interface ListInsightsRequest {
   StatusFilter: ListInsightsStatusFilter;
   MaxResults?: number;
@@ -2009,6 +2011,7 @@ export const ListInsightsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsRequest",
 }) as any as S.Schema<ListInsightsRequest>;
+export type ResourceArn = string;
 export type AssociatedResourceArns = string[];
 export const AssociatedResourceArns = /*@__PURE__*/ S.Array(S.String);
 export interface ProactiveInsightSummary {
@@ -2084,6 +2087,7 @@ export type ResourcePermission =
   | "MISSING_PERMISSION"
   | (string & {});
 export const ResourcePermission = /*@__PURE__*/ S.String;
+
 export type ResourceTypeFilter =
   | "LOG_GROUPS"
   | "CLOUDFRONT_DISTRIBUTION"
@@ -2114,45 +2118,46 @@ export type ResourceTypeFilter =
   | "STEP_FUNCTIONS_STATE_MACHINE"
   | (string & {});
 export const ResourceTypeFilter = /*@__PURE__*/ S.String;
+
 export type ResourceTypeFilters = ResourceTypeFilter[];
 export const ResourceTypeFilters = /*@__PURE__*/ S.Array(ResourceTypeFilter);
 export interface ListMonitoredResourcesFilters {
   ResourcePermission: ResourcePermission;
   ResourceTypeFilters: ResourceTypeFilter[];
 }
-export const ListMonitoredResourcesFilters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourcePermission: ResourcePermission,
-      ResourceTypeFilters: ResourceTypeFilters,
-    }),
-  ).annotate({
-    identifier: "ListMonitoredResourcesFilters",
-  }) as any as S.Schema<ListMonitoredResourcesFilters>;
+export const ListMonitoredResourcesFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourcePermission: ResourcePermission,
+    ResourceTypeFilters: ResourceTypeFilters,
+  }),
+).annotate({
+  identifier: "ListMonitoredResourcesFilters",
+}) as any as S.Schema<ListMonitoredResourcesFilters>;
+export type ListMonitoredResourcesMaxResults = number;
 export interface ListMonitoredResourcesRequest {
   Filters?: ListMonitoredResourcesFilters;
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListMonitoredResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(ListMonitoredResourcesFilters),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/monitoredResources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(ListMonitoredResourcesFilters),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/monitoredResources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListMonitoredResourcesRequest",
-  }) as any as S.Schema<ListMonitoredResourcesRequest>;
+  ),
+).annotate({
+  identifier: "ListMonitoredResourcesRequest",
+}) as any as S.Schema<ListMonitoredResourcesRequest>;
+export type MonitoredResourceName = string;
 export interface MonitoredResourceIdentifier {
   MonitoredResourceName?: string;
   Type?: string;
@@ -2160,18 +2165,17 @@ export interface MonitoredResourceIdentifier {
   LastUpdated?: Date;
   ResourceCollection?: ResourceCollection;
 }
-export const MonitoredResourceIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MonitoredResourceName: S.optional(S.String),
-      Type: S.optional(S.String),
-      ResourcePermission: S.optional(ResourcePermission),
-      LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ResourceCollection: S.optional(ResourceCollection),
-    }),
-  ).annotate({
-    identifier: "MonitoredResourceIdentifier",
-  }) as any as S.Schema<MonitoredResourceIdentifier>;
+export const MonitoredResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitoredResourceName: S.optional(S.String),
+    Type: S.optional(S.String),
+    ResourcePermission: S.optional(ResourcePermission),
+    LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ResourceCollection: S.optional(ResourceCollection),
+  }),
+).annotate({
+  identifier: "MonitoredResourceIdentifier",
+}) as any as S.Schema<MonitoredResourceIdentifier>;
 export type MonitoredResourceIdentifiers = MonitoredResourceIdentifier[];
 export const MonitoredResourceIdentifiers = /*@__PURE__*/ S.Array(
   MonitoredResourceIdentifier,
@@ -2180,33 +2184,31 @@ export interface ListMonitoredResourcesResponse {
   MonitoredResourceIdentifiers: MonitoredResourceIdentifier[];
   NextToken?: string;
 }
-export const ListMonitoredResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MonitoredResourceIdentifiers: MonitoredResourceIdentifiers,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListMonitoredResourcesResponse",
-  }) as any as S.Schema<ListMonitoredResourcesResponse>;
+export const ListMonitoredResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitoredResourceIdentifiers: MonitoredResourceIdentifiers,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListMonitoredResourcesResponse",
+}) as any as S.Schema<ListMonitoredResourcesResponse>;
 export interface ListNotificationChannelsRequest {
   NextToken?: string;
 }
-export const ListNotificationChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ NextToken: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/channels" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListNotificationChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ NextToken: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/channels" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListNotificationChannelsRequest",
-  }) as any as S.Schema<ListNotificationChannelsRequest>;
+  ),
+).annotate({
+  identifier: "ListNotificationChannelsRequest",
+}) as any as S.Schema<ListNotificationChannelsRequest>;
 export interface NotificationChannel {
   Id?: string;
   Config?: NotificationChannelConfig;
@@ -2225,20 +2227,17 @@ export interface ListNotificationChannelsResponse {
   Channels?: NotificationChannel[];
   NextToken?: string;
 }
-export const ListNotificationChannelsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Channels: S.optional(Channels),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListNotificationChannelsResponse",
-  }) as any as S.Schema<ListNotificationChannelsResponse>;
+export const ListNotificationChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Channels: S.optional(Channels), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListNotificationChannelsResponse",
+}) as any as S.Schema<ListNotificationChannelsResponse>;
 export type ListInsightsAccountIdList = string[];
 export const ListInsightsAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type ListInsightsOrganizationalUnitIdList = string[];
-export const ListInsightsOrganizationalUnitIdList =
-  /*@__PURE__*/ S.Array(S.String);
+export const ListInsightsOrganizationalUnitIdList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface ListOrganizationInsightsRequest {
   StatusFilter: ListInsightsStatusFilter;
   MaxResults?: number;
@@ -2246,27 +2245,26 @@ export interface ListOrganizationInsightsRequest {
   OrganizationalUnitIds?: string[];
   NextToken?: string;
 }
-export const ListOrganizationInsightsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StatusFilter: ListInsightsStatusFilter,
-      MaxResults: S.optional(S.Number),
-      AccountIds: S.optional(ListInsightsAccountIdList),
-      OrganizationalUnitIds: S.optional(ListInsightsOrganizationalUnitIdList),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/organization/insights" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListOrganizationInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StatusFilter: ListInsightsStatusFilter,
+    MaxResults: S.optional(S.Number),
+    AccountIds: S.optional(ListInsightsAccountIdList),
+    OrganizationalUnitIds: S.optional(ListInsightsOrganizationalUnitIdList),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/organization/insights" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListOrganizationInsightsRequest",
-  }) as any as S.Schema<ListOrganizationInsightsRequest>;
+  ),
+).annotate({
+  identifier: "ListOrganizationInsightsRequest",
+}) as any as S.Schema<ListOrganizationInsightsRequest>;
 export interface ProactiveOrganizationInsightSummary {
   Id?: string;
   AccountId?: string;
@@ -2279,27 +2277,27 @@ export interface ProactiveOrganizationInsightSummary {
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
-export const ProactiveOrganizationInsightSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      AccountId: S.optional(S.String),
-      OrganizationalUnitId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Severity: S.optional(InsightSeverity),
-      Status: S.optional(InsightStatus),
-      InsightTimeRange: S.optional(InsightTimeRange),
-      PredictionTimeRange: S.optional(PredictionTimeRange),
-      ResourceCollection: S.optional(ResourceCollection),
-      ServiceCollection: S.optional(ServiceCollection),
-    }),
-  ).annotate({
-    identifier: "ProactiveOrganizationInsightSummary",
-  }) as any as S.Schema<ProactiveOrganizationInsightSummary>;
+export const ProactiveOrganizationInsightSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    AccountId: S.optional(S.String),
+    OrganizationalUnitId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Severity: S.optional(InsightSeverity),
+    Status: S.optional(InsightStatus),
+    InsightTimeRange: S.optional(InsightTimeRange),
+    PredictionTimeRange: S.optional(PredictionTimeRange),
+    ResourceCollection: S.optional(ResourceCollection),
+    ServiceCollection: S.optional(ServiceCollection),
+  }),
+).annotate({
+  identifier: "ProactiveOrganizationInsightSummary",
+}) as any as S.Schema<ProactiveOrganizationInsightSummary>;
 export type ProactiveOrganizationInsights =
   ProactiveOrganizationInsightSummary[];
-export const ProactiveOrganizationInsights =
-  /*@__PURE__*/ S.Array(ProactiveOrganizationInsightSummary);
+export const ProactiveOrganizationInsights = /*@__PURE__*/ S.Array(
+  ProactiveOrganizationInsightSummary,
+);
 export interface ReactiveOrganizationInsightSummary {
   Id?: string;
   AccountId?: string;
@@ -2311,22 +2309,21 @@ export interface ReactiveOrganizationInsightSummary {
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
-export const ReactiveOrganizationInsightSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      AccountId: S.optional(S.String),
-      OrganizationalUnitId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Severity: S.optional(InsightSeverity),
-      Status: S.optional(InsightStatus),
-      InsightTimeRange: S.optional(InsightTimeRange),
-      ResourceCollection: S.optional(ResourceCollection),
-      ServiceCollection: S.optional(ServiceCollection),
-    }),
-  ).annotate({
-    identifier: "ReactiveOrganizationInsightSummary",
-  }) as any as S.Schema<ReactiveOrganizationInsightSummary>;
+export const ReactiveOrganizationInsightSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    AccountId: S.optional(S.String),
+    OrganizationalUnitId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Severity: S.optional(InsightSeverity),
+    Status: S.optional(InsightStatus),
+    InsightTimeRange: S.optional(InsightTimeRange),
+    ResourceCollection: S.optional(ResourceCollection),
+    ServiceCollection: S.optional(ServiceCollection),
+  }),
+).annotate({
+  identifier: "ReactiveOrganizationInsightSummary",
+}) as any as S.Schema<ReactiveOrganizationInsightSummary>;
 export type ReactiveOrganizationInsights = ReactiveOrganizationInsightSummary[];
 export const ReactiveOrganizationInsights = /*@__PURE__*/ S.Array(
   ReactiveOrganizationInsightSummary,
@@ -2336,16 +2333,15 @@ export interface ListOrganizationInsightsResponse {
   ReactiveInsights?: ReactiveOrganizationInsightSummary[];
   NextToken?: string;
 }
-export const ListOrganizationInsightsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProactiveInsights: S.optional(ProactiveOrganizationInsights),
-      ReactiveInsights: S.optional(ReactiveOrganizationInsights),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListOrganizationInsightsResponse",
-  }) as any as S.Schema<ListOrganizationInsightsResponse>;
+export const ListOrganizationInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProactiveInsights: S.optional(ProactiveOrganizationInsights),
+    ReactiveInsights: S.optional(ReactiveOrganizationInsights),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOrganizationInsightsResponse",
+}) as any as S.Schema<ListOrganizationInsightsResponse>;
 export type Locale =
   | "DE_DE"
   | "EN_US"
@@ -2360,6 +2356,7 @@ export type Locale =
   | "ZH_TW"
   | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
+
 export interface ListRecommendationsRequest {
   InsightId: string;
   NextToken?: string;
@@ -2385,20 +2382,27 @@ export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsRequest",
 }) as any as S.Schema<ListRecommendationsRequest>;
+export type RecommendationDescription = string;
+export type RecommendationLink = string;
+export type RecommendationName = string;
+export type RecommendationReason = string;
+export type RecommendationRelatedEventName = string;
+export type RecommendationRelatedEventResourceName = string;
+export type RecommendationRelatedEventResourceType = string;
 export interface RecommendationRelatedEventResource {
   Name?: string;
   Type?: string;
 }
-export const RecommendationRelatedEventResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
-  ).annotate({
-    identifier: "RecommendationRelatedEventResource",
-  }) as any as S.Schema<RecommendationRelatedEventResource>;
+export const RecommendationRelatedEventResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
+).annotate({
+  identifier: "RecommendationRelatedEventResource",
+}) as any as S.Schema<RecommendationRelatedEventResource>;
 export type RecommendationRelatedEventResources =
   RecommendationRelatedEventResource[];
-export const RecommendationRelatedEventResources =
-  /*@__PURE__*/ S.Array(RecommendationRelatedEventResource);
+export const RecommendationRelatedEventResources = /*@__PURE__*/ S.Array(
+  RecommendationRelatedEventResource,
+);
 export interface RecommendationRelatedEvent {
   Name?: string;
   Resources?: RecommendationRelatedEventResource[];
@@ -2415,20 +2419,24 @@ export type RecommendationRelatedEvents = RecommendationRelatedEvent[];
 export const RecommendationRelatedEvents = /*@__PURE__*/ S.Array(
   RecommendationRelatedEvent,
 );
+export type RecommendationRelatedAnomalyResourceName = string;
+export type RecommendationRelatedAnomalyResourceType = string;
 export interface RecommendationRelatedAnomalyResource {
   Name?: string;
   Type?: string;
 }
-export const RecommendationRelatedAnomalyResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
-  ).annotate({
-    identifier: "RecommendationRelatedAnomalyResource",
-  }) as any as S.Schema<RecommendationRelatedAnomalyResource>;
+export const RecommendationRelatedAnomalyResource = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
+).annotate({
+  identifier: "RecommendationRelatedAnomalyResource",
+}) as any as S.Schema<RecommendationRelatedAnomalyResource>;
 export type RecommendationRelatedAnomalyResources =
   RecommendationRelatedAnomalyResource[];
-export const RecommendationRelatedAnomalyResources =
-  /*@__PURE__*/ S.Array(RecommendationRelatedAnomalyResource);
+export const RecommendationRelatedAnomalyResources = /*@__PURE__*/ S.Array(
+  RecommendationRelatedAnomalyResource,
+);
+export type RecommendationRelatedCloudWatchMetricsSourceMetricName = string;
+export type RecommendationRelatedCloudWatchMetricsSourceNamespace = string;
 export interface RecommendationRelatedCloudWatchMetricsSourceDetail {
   MetricName?: string;
   Namespace?: string;
@@ -2449,16 +2457,16 @@ export const RecommendationRelatedCloudWatchMetricsSourceDetails =
 export interface RecommendationRelatedAnomalySourceDetail {
   CloudWatchMetrics?: RecommendationRelatedCloudWatchMetricsSourceDetail[];
 }
-export const RecommendationRelatedAnomalySourceDetail =
-  /*@__PURE__*/ S.suspend(() =>
+export const RecommendationRelatedAnomalySourceDetail = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CloudWatchMetrics: S.optional(
         RecommendationRelatedCloudWatchMetricsSourceDetails,
       ),
     }),
-  ).annotate({
-    identifier: "RecommendationRelatedAnomalySourceDetail",
-  }) as any as S.Schema<RecommendationRelatedAnomalySourceDetail>;
+).annotate({
+  identifier: "RecommendationRelatedAnomalySourceDetail",
+}) as any as S.Schema<RecommendationRelatedAnomalySourceDetail>;
 export type RelatedAnomalySourceDetails =
   RecommendationRelatedAnomalySourceDetail[];
 export const RelatedAnomalySourceDetails = /*@__PURE__*/ S.Array(
@@ -2469,19 +2477,20 @@ export interface RecommendationRelatedAnomaly {
   SourceDetails?: RecommendationRelatedAnomalySourceDetail[];
   AnomalyId?: string;
 }
-export const RecommendationRelatedAnomaly =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Resources: S.optional(RecommendationRelatedAnomalyResources),
-      SourceDetails: S.optional(RelatedAnomalySourceDetails),
-      AnomalyId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecommendationRelatedAnomaly",
-  }) as any as S.Schema<RecommendationRelatedAnomaly>;
+export const RecommendationRelatedAnomaly = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Resources: S.optional(RecommendationRelatedAnomalyResources),
+    SourceDetails: S.optional(RelatedAnomalySourceDetails),
+    AnomalyId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecommendationRelatedAnomaly",
+}) as any as S.Schema<RecommendationRelatedAnomaly>;
 export type RecommendationRelatedAnomalies = RecommendationRelatedAnomaly[];
-export const RecommendationRelatedAnomalies =
-  /*@__PURE__*/ S.Array(RecommendationRelatedAnomaly);
+export const RecommendationRelatedAnomalies = /*@__PURE__*/ S.Array(
+  RecommendationRelatedAnomaly,
+);
+export type RecommendationCategory = string;
 export interface Recommendation {
   Description?: string;
   Link?: string;
@@ -2508,15 +2517,14 @@ export interface ListRecommendationsResponse {
   Recommendations?: Recommendation[];
   NextToken?: string;
 }
-export const ListRecommendationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Recommendations: S.optional(Recommendations),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListRecommendationsResponse",
-  }) as any as S.Schema<ListRecommendationsResponse>;
+export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Recommendations: S.optional(Recommendations),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRecommendationsResponse",
+}) as any as S.Schema<ListRecommendationsResponse>;
 export interface PutFeedbackRequest {
   InsightFeedback?: InsightFeedback;
 }
@@ -2543,26 +2551,26 @@ export const PutFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveNotificationChannelRequest {
   Id: string;
 }
-export const RemoveNotificationChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/channels/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/channels/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RemoveNotificationChannelRequest",
-  }) as any as S.Schema<RemoveNotificationChannelRequest>;
+  ),
+).annotate({
+  identifier: "RemoveNotificationChannelRequest",
+}) as any as S.Schema<RemoveNotificationChannelRequest>;
 export interface RemoveNotificationChannelResponse {}
-export const RemoveNotificationChannelResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveNotificationChannelResponse",
-  }) as any as S.Schema<RemoveNotificationChannelResponse>;
+export const RemoveNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RemoveNotificationChannelResponse",
+}) as any as S.Schema<RemoveNotificationChannelResponse>;
 export type InsightStatuses = InsightStatus[];
 export const InsightStatuses = /*@__PURE__*/ S.Array(InsightStatus);
 export interface SearchInsightsFilters {
@@ -2581,6 +2589,7 @@ export const SearchInsightsFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchInsightsFilters",
 }) as any as S.Schema<SearchInsightsFilters>;
+export type SearchInsightsMaxResults = number;
 export interface SearchInsightsRequest {
   StartTimeRange: StartTimeRange;
   Filters?: SearchInsightsFilters;
@@ -2630,17 +2639,17 @@ export interface SearchOrganizationInsightsFilters {
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
-export const SearchOrganizationInsightsFilters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Severities: S.optional(InsightSeverities),
-      Statuses: S.optional(InsightStatuses),
-      ResourceCollection: S.optional(ResourceCollection),
-      ServiceCollection: S.optional(ServiceCollection),
-    }),
-  ).annotate({
-    identifier: "SearchOrganizationInsightsFilters",
-  }) as any as S.Schema<SearchOrganizationInsightsFilters>;
+export const SearchOrganizationInsightsFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Severities: S.optional(InsightSeverities),
+    Statuses: S.optional(InsightStatuses),
+    ResourceCollection: S.optional(ResourceCollection),
+    ServiceCollection: S.optional(ServiceCollection),
+  }),
+).annotate({
+  identifier: "SearchOrganizationInsightsFilters",
+}) as any as S.Schema<SearchOrganizationInsightsFilters>;
+export type SearchOrganizationInsightsMaxResults = number;
 export interface SearchOrganizationInsightsRequest {
   AccountIds: string[];
   StartTimeRange: StartTimeRange;
@@ -2649,43 +2658,42 @@ export interface SearchOrganizationInsightsRequest {
   NextToken?: string;
   Type: InsightType;
 }
-export const SearchOrganizationInsightsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountIds: SearchInsightsAccountIdList,
-      StartTimeRange: StartTimeRange,
-      Filters: S.optional(SearchOrganizationInsightsFilters),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      Type: InsightType,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/organization/insights/search" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SearchOrganizationInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountIds: SearchInsightsAccountIdList,
+    StartTimeRange: StartTimeRange,
+    Filters: S.optional(SearchOrganizationInsightsFilters),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    Type: InsightType,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/organization/insights/search" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SearchOrganizationInsightsRequest",
-  }) as any as S.Schema<SearchOrganizationInsightsRequest>;
+  ),
+).annotate({
+  identifier: "SearchOrganizationInsightsRequest",
+}) as any as S.Schema<SearchOrganizationInsightsRequest>;
 export interface SearchOrganizationInsightsResponse {
   ProactiveInsights?: ProactiveInsightSummary[];
   ReactiveInsights?: ReactiveInsightSummary[];
   NextToken?: string;
 }
-export const SearchOrganizationInsightsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProactiveInsights: S.optional(ProactiveInsights),
-      ReactiveInsights: S.optional(ReactiveInsights),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchOrganizationInsightsResponse",
-  }) as any as S.Schema<SearchOrganizationInsightsResponse>;
+export const SearchOrganizationInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProactiveInsights: S.optional(ProactiveInsights),
+    ReactiveInsights: S.optional(ReactiveInsights),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchOrganizationInsightsResponse",
+}) as any as S.Schema<SearchOrganizationInsightsResponse>;
+export type ClientToken = string;
 export interface StartCostEstimationRequest {
   ResourceCollection: CostEstimationResourceCollectionFilter;
   ClientToken?: string;
@@ -2708,46 +2716,47 @@ export const StartCostEstimationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartCostEstimationRequest",
 }) as any as S.Schema<StartCostEstimationRequest>;
 export interface StartCostEstimationResponse {}
-export const StartCostEstimationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StartCostEstimationResponse",
-  }) as any as S.Schema<StartCostEstimationResponse>;
+export const StartCostEstimationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StartCostEstimationResponse",
+}) as any as S.Schema<StartCostEstimationResponse>;
 export interface UpdateEventSourcesConfigRequest {
   EventSources?: EventSourcesConfig;
 }
-export const UpdateEventSourcesConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSources: S.optional(EventSourcesConfig) }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/event-sources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEventSourcesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSources: S.optional(EventSourcesConfig) }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/event-sources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEventSourcesConfigRequest",
-  }) as any as S.Schema<UpdateEventSourcesConfigRequest>;
+  ),
+).annotate({
+  identifier: "UpdateEventSourcesConfigRequest",
+}) as any as S.Schema<UpdateEventSourcesConfigRequest>;
 export interface UpdateEventSourcesConfigResponse {}
-export const UpdateEventSourcesConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateEventSourcesConfigResponse",
-  }) as any as S.Schema<UpdateEventSourcesConfigResponse>;
+export const UpdateEventSourcesConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateEventSourcesConfigResponse",
+}) as any as S.Schema<UpdateEventSourcesConfigResponse>;
 export type UpdateResourceCollectionAction = "ADD" | "REMOVE" | (string & {});
 export const UpdateResourceCollectionAction = /*@__PURE__*/ S.String;
+
 export type UpdateStackNames = string[];
 export const UpdateStackNames = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateCloudFormationCollectionFilter {
   StackNames?: string[];
 }
-export const UpdateCloudFormationCollectionFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackNames: S.optional(UpdateStackNames) }),
-  ).annotate({
-    identifier: "UpdateCloudFormationCollectionFilter",
-  }) as any as S.Schema<UpdateCloudFormationCollectionFilter>;
+export const UpdateCloudFormationCollectionFilter = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ StackNames: S.optional(UpdateStackNames) }),
+).annotate({
+  identifier: "UpdateCloudFormationCollectionFilter",
+}) as any as S.Schema<UpdateCloudFormationCollectionFilter>;
 export type UpdateTagValues = string[];
 export const UpdateTagValues = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateTagCollectionFilter {
@@ -2767,42 +2776,41 @@ export interface UpdateResourceCollectionFilter {
   CloudFormation?: UpdateCloudFormationCollectionFilter;
   Tags?: UpdateTagCollectionFilter[];
 }
-export const UpdateResourceCollectionFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CloudFormation: S.optional(UpdateCloudFormationCollectionFilter),
-      Tags: S.optional(UpdateTagCollectionFilters),
-    }),
-  ).annotate({
-    identifier: "UpdateResourceCollectionFilter",
-  }) as any as S.Schema<UpdateResourceCollectionFilter>;
+export const UpdateResourceCollectionFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudFormation: S.optional(UpdateCloudFormationCollectionFilter),
+    Tags: S.optional(UpdateTagCollectionFilters),
+  }),
+).annotate({
+  identifier: "UpdateResourceCollectionFilter",
+}) as any as S.Schema<UpdateResourceCollectionFilter>;
 export interface UpdateResourceCollectionRequest {
   Action: UpdateResourceCollectionAction;
   ResourceCollection: UpdateResourceCollectionFilter;
 }
-export const UpdateResourceCollectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Action: UpdateResourceCollectionAction,
-      ResourceCollection: UpdateResourceCollectionFilter,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/resource-collections" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateResourceCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: UpdateResourceCollectionAction,
+    ResourceCollection: UpdateResourceCollectionFilter,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/resource-collections" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateResourceCollectionRequest",
-  }) as any as S.Schema<UpdateResourceCollectionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateResourceCollectionRequest",
+}) as any as S.Schema<UpdateResourceCollectionRequest>;
 export interface UpdateResourceCollectionResponse {}
-export const UpdateResourceCollectionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateResourceCollectionResponse",
-  }) as any as S.Schema<UpdateResourceCollectionResponse>;
+export const UpdateResourceCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateResourceCollectionResponse",
+}) as any as S.Schema<UpdateResourceCollectionResponse>;
 export interface OpsCenterIntegrationConfig {
   OptInStatus?: OptInStatus;
 }
@@ -2814,111 +2822,95 @@ export const OpsCenterIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface LogsAnomalyDetectionIntegrationConfig {
   OptInStatus?: OptInStatus;
 }
-export const LogsAnomalyDetectionIntegrationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OptInStatus: S.optional(OptInStatus) }),
-  ).annotate({
-    identifier: "LogsAnomalyDetectionIntegrationConfig",
-  }) as any as S.Schema<LogsAnomalyDetectionIntegrationConfig>;
+export const LogsAnomalyDetectionIntegrationConfig = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ OptInStatus: S.optional(OptInStatus) }),
+).annotate({
+  identifier: "LogsAnomalyDetectionIntegrationConfig",
+}) as any as S.Schema<LogsAnomalyDetectionIntegrationConfig>;
 export interface KMSServerSideEncryptionIntegrationConfig {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
   Type?: ServerSideEncryptionType;
 }
-export const KMSServerSideEncryptionIntegrationConfig =
-  /*@__PURE__*/ S.suspend(() =>
+export const KMSServerSideEncryptionIntegrationConfig = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       KMSKeyId: S.optional(S.String),
       OptInStatus: S.optional(OptInStatus),
       Type: S.optional(ServerSideEncryptionType),
     }),
-  ).annotate({
-    identifier: "KMSServerSideEncryptionIntegrationConfig",
-  }) as any as S.Schema<KMSServerSideEncryptionIntegrationConfig>;
+).annotate({
+  identifier: "KMSServerSideEncryptionIntegrationConfig",
+}) as any as S.Schema<KMSServerSideEncryptionIntegrationConfig>;
 export interface UpdateServiceIntegrationConfig {
   OpsCenter?: OpsCenterIntegrationConfig;
   LogsAnomalyDetection?: LogsAnomalyDetectionIntegrationConfig;
   KMSServerSideEncryption?: KMSServerSideEncryptionIntegrationConfig;
 }
-export const UpdateServiceIntegrationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OpsCenter: S.optional(OpsCenterIntegrationConfig),
-      LogsAnomalyDetection: S.optional(LogsAnomalyDetectionIntegrationConfig),
-      KMSServerSideEncryption: S.optional(
-        KMSServerSideEncryptionIntegrationConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateServiceIntegrationConfig",
-  }) as any as S.Schema<UpdateServiceIntegrationConfig>;
+export const UpdateServiceIntegrationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OpsCenter: S.optional(OpsCenterIntegrationConfig),
+    LogsAnomalyDetection: S.optional(LogsAnomalyDetectionIntegrationConfig),
+    KMSServerSideEncryption: S.optional(
+      KMSServerSideEncryptionIntegrationConfig,
+    ),
+  }),
+).annotate({
+  identifier: "UpdateServiceIntegrationConfig",
+}) as any as S.Schema<UpdateServiceIntegrationConfig>;
 export interface UpdateServiceIntegrationRequest {
   ServiceIntegration: UpdateServiceIntegrationConfig;
 }
-export const UpdateServiceIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ServiceIntegration: UpdateServiceIntegrationConfig }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/service-integrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ServiceIntegration: UpdateServiceIntegrationConfig }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/service-integrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateServiceIntegrationRequest",
-  }) as any as S.Schema<UpdateServiceIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateServiceIntegrationRequest",
+}) as any as S.Schema<UpdateServiceIntegrationRequest>;
 export interface UpdateServiceIntegrationResponse {}
-export const UpdateServiceIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateServiceIntegrationResponse",
-  }) as any as S.Schema<UpdateServiceIntegrationResponse>;
+export const UpdateServiceIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateServiceIntegrationResponse",
+}) as any as S.Schema<UpdateServiceIntegrationResponse>;
+export type ErrorMessageString = string;
+export type ResourceIdString = string;
+export type ResourceIdType = string;
+export type RetryAfterSeconds = number;
+export type ErrorQuotaCodeString = string;
+export type ErrorServiceCodeString = string;
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | "INVALID_PARAMETER_COMBINATION"
+  | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFields),
-  },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorNameString = string;
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFields = ValidationExceptionField[];
+export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AddNotificationChannelError =
   | AccessDeniedException
   | ConflictException
@@ -2958,8 +2950,11 @@ export const addNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddNotificationChannel",
 }));
+
 export type DeleteInsightError =
   | AccessDeniedException
   | ConflictException
@@ -2987,8 +2982,11 @@ export const deleteInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInsight",
 }));
+
 export type DescribeAccountHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3014,8 +3012,11 @@ export const describeAccountHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountHealth",
 }));
+
 export type DescribeAccountOverviewError =
   | AccessDeniedException
   | InternalServerException
@@ -3041,8 +3042,11 @@ export const describeAccountOverview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountOverview",
 }));
+
 export type DescribeAnomalyError =
   | AccessDeniedException
   | InternalServerException
@@ -3068,8 +3072,11 @@ export const describeAnomaly: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnomaly",
 }));
+
 export type DescribeEventSourcesConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -3096,8 +3103,11 @@ export const describeEventSourcesConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSourcesConfig",
 }));
+
 export type DescribeFeedbackError =
   | AccessDeniedException
   | InternalServerException
@@ -3123,8 +3133,11 @@ export const describeFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFeedback",
 }));
+
 export type DescribeInsightError =
   | AccessDeniedException
   | InternalServerException
@@ -3150,8 +3163,11 @@ export const describeInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInsight",
 }));
+
 export type DescribeOrganizationHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3176,8 +3192,11 @@ export const describeOrganizationHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationHealth",
 }));
+
 export type DescribeOrganizationOverviewError =
   | AccessDeniedException
   | InternalServerException
@@ -3202,8 +3221,11 @@ export const describeOrganizationOverview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationOverview",
 }));
+
 export type DescribeOrganizationResourceCollectionHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3244,9 +3266,12 @@ export const describeOrganizationResourceCollectionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type DescribeResourceCollectionHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3289,9 +3314,12 @@ export const describeResourceCollectionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type DescribeServiceIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -3319,8 +3347,11 @@ export const describeServiceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceIntegration",
 }));
+
 export type GetCostEstimationError =
   | AccessDeniedException
   | InternalServerException
@@ -3365,9 +3396,12 @@ export const getCostEstimation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostEstimation",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type GetResourceCollectionError =
   | AccessDeniedException
   | InternalServerException
@@ -3411,9 +3445,12 @@ export const getResourceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type ListAnomaliesForInsightError =
   | AccessDeniedException
   | InternalServerException
@@ -3455,6 +3492,8 @@ export const listAnomaliesForInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnomaliesForInsight",
   pagination: {
     inputToken: "NextToken",
@@ -3462,6 +3501,7 @@ export const listAnomaliesForInsight: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAnomalousLogGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -3502,6 +3542,8 @@ export const listAnomalousLogGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnomalousLogGroups",
   pagination: {
     inputToken: "NextToken",
@@ -3509,6 +3551,7 @@ export const listAnomalousLogGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -3550,6 +3593,8 @@ export const listEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEvents",
   pagination: {
     inputToken: "NextToken",
@@ -3558,6 +3603,7 @@ export const listEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3598,6 +3644,8 @@ export const listInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsights",
   pagination: {
     inputToken: "NextToken",
@@ -3605,6 +3653,7 @@ export const listInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitoredResourcesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3643,6 +3692,8 @@ export const listMonitoredResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitoredResources",
   pagination: {
     inputToken: "NextToken",
@@ -3650,6 +3701,7 @@ export const listMonitoredResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotificationChannelsError =
   | AccessDeniedException
   | InternalServerException
@@ -3691,6 +3743,8 @@ export const listNotificationChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotificationChannels",
   pagination: {
     inputToken: "NextToken",
@@ -3698,6 +3752,7 @@ export const listNotificationChannels: API.OperationMethod<
     items: "Channels",
   } as const,
 }));
+
 export type ListOrganizationInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3736,6 +3791,8 @@ export const listOrganizationInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationInsights",
   pagination: {
     inputToken: "NextToken",
@@ -3743,6 +3800,7 @@ export const listOrganizationInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -3784,6 +3842,8 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "NextToken",
@@ -3791,6 +3851,7 @@ export const listRecommendations: API.OperationMethod<
     items: "Recommendations",
   } as const,
 }));
+
 export type PutFeedbackError =
   | AccessDeniedException
   | ConflictException
@@ -3818,8 +3879,11 @@ export const putFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFeedback",
 }));
+
 export type RemoveNotificationChannelError =
   | AccessDeniedException
   | ConflictException
@@ -3849,8 +3913,11 @@ export const removeNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveNotificationChannel",
 }));
+
 export type SearchInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3896,6 +3963,8 @@ export const searchInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchInsights",
   pagination: {
     inputToken: "NextToken",
@@ -3903,6 +3972,7 @@ export const searchInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchOrganizationInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3949,6 +4019,8 @@ export const searchOrganizationInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchOrganizationInsights",
   pagination: {
     inputToken: "NextToken",
@@ -3956,6 +4028,7 @@ export const searchOrganizationInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartCostEstimationError =
   | AccessDeniedException
   | ConflictException
@@ -3984,8 +4057,11 @@ export const startCostEstimation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCostEstimation",
 }));
+
 export type UpdateEventSourcesConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -4011,8 +4087,11 @@ export const updateEventSourcesConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventSourcesConfig",
 }));
+
 export type UpdateResourceCollectionError =
   | AccessDeniedException
   | ConflictException
@@ -4042,8 +4121,11 @@ export const updateResourceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceCollection",
 }));
+
 export type UpdateServiceIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -4071,5 +4153,7 @@ export const updateServiceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceIntegration",
 }));

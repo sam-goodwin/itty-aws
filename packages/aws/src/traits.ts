@@ -16,92 +16,52 @@ import { restJson1Protocol } from "./protocols/rest-json.ts";
 import { restXmlProtocol } from "./protocols/rest-xml.ts";
 import type { RuleSetObject } from "./rules-engine/expression.ts";
 
-/**
- * Internal symbol for annotation metadata storage
- */
-const annotationMetaSymbol = "distilled-aws/annotation-meta" as const;
+import {
+  all,
+  annotationMetaSymbol,
+  headerSymbol as coreHeaderSymbol,
+  httpBodySymbol as coreHttpBodySymbol,
+  httpSymbol as coreHttpSymbol,
+  labelSymbol as coreLabelSymbol,
+  makeAnnotation,
+  querySymbol as coreQuerySymbol,
+  responseCodeSymbol as coreResponseCodeSymbol,
+  type Annotation,
+} from "@distilled.cloud/core/trait";
+
+// The annotation machinery (pipeable builders usable as S.Class annotation
+// objects, the `all` combinator) is core's; this module supplies the AWS
+// trait vocabulary on top of it.
+export { all, type Annotation };
 
 /**
  * Any type that has an .annotate() method returning itself.
  * This includes Schema.Schema and Schema.PropertySignature (from S.optional).
- * We use `any` for the annotations parameter because Effect Schema uses
- * specific annotation types for different schema types.
  */
 type Annotatable = {
   annotate(annotations: any): Annotatable;
 };
 
-/**
- * An Annotation is a callable that can be used with .pipe() AND
- * has symbol properties so it works directly with S.Class() second argument.
- *
- * The index signatures allow TypeScript to accept this as a valid annotations object.
- */
-export interface Annotation {
-  <A extends Annotatable>(schema: A): A;
-  readonly [annotationMetaSymbol]: Array<{ symbol: string; value: unknown }>;
-  // Index signatures for compatibility with Schema.Annotations
-  readonly [key: symbol]: unknown;
-  readonly [key: string]: unknown;
-}
-
-/**
- * Create an annotation builder for a given symbol and value
- */
-function makeAnnotation<T>(sym: string, value: T): Annotation {
-  const fn = <A extends Annotatable>(schema: A): A =>
-    schema.annotate({ [sym]: value }) as A;
-
-  (fn as any)[annotationMetaSymbol] = [{ symbol: sym, value }];
-  (fn as any)[sym] = value;
-
-  return fn as Annotation;
-}
-
-/**
- * Combine multiple annotations into one.
- * Use with S.Class when you need multiple class-level annotations:
- *
- * @example
- * class Foo extends S.Class<Foo>("Foo")({ ... }, A.all(A.XmlName("Foo"), A.OtherAnnotation())) {}
- */
-export function all(...annotations: Annotation[]): Annotation {
-  const entries: Array<{ symbol: string; value: unknown }> = [];
-  const raw: Record<string, unknown> = {};
-
-  for (const a of annotations) {
-    for (const entry of a[annotationMetaSymbol]) {
-      entries.push(entry);
-      raw[entry.symbol] = entry.value;
-    }
-  }
-
-  const fn = <A extends Annotatable>(schema: A): A => schema.annotate(raw) as A;
-
-  (fn as any)[annotationMetaSymbol] = entries;
-
-  for (const { symbol, value } of entries) {
-    (fn as any)[symbol] = value;
-  }
-
-  return fn as Annotation;
-}
-
 // =============================================================================
 // HTTP Binding Traits (smithy.api#http*)
 // =============================================================================
 
+// The generic HTTP binding traits are keyed to core's shared symbols
+// (`@distilled.cloud/core/trait`) — the same annotations the cloudflare
+// SDK stamps. The builders keep their smithy-flavored names because the
+// generator emits them; only the underlying keys are shared.
+
 /** smithy.api#httpHeader - Bind member to an HTTP header */
-export const httpHeaderSymbol = "distilled-aws/http-header" as const;
+export const httpHeaderSymbol = coreHeaderSymbol;
 export const HttpHeader = (name: string) =>
   makeAnnotation(httpHeaderSymbol, name);
 
 /** smithy.api#httpPayload - Bind member to the HTTP body */
-export const httpPayloadSymbol = "distilled-aws/http-payload" as const;
+export const httpPayloadSymbol = coreHttpBodySymbol;
 export const HttpPayload = () => makeAnnotation(httpPayloadSymbol, true);
 
 /** smithy.api#httpLabel - Bind member to a URI label (path parameter) */
-export const httpLabelSymbol = "distilled-aws/http-label" as const;
+export const httpLabelSymbol = coreLabelSymbol;
 /**
  * HttpLabel trait - binds a member to a URI label (path parameter).
  * @param labelName - Optional. The name to use in the URI template. If provided, this name
@@ -113,7 +73,7 @@ export const HttpLabel = (labelName?: string) =>
   makeAnnotation(httpLabelSymbol, labelName ?? true);
 
 /** smithy.api#httpQuery - Bind member to a query string parameter */
-export const httpQuerySymbol = "distilled-aws/http-query" as const;
+export const httpQuerySymbol = coreQuerySymbol;
 export const HttpQuery = (name: string) =>
   makeAnnotation(httpQuerySymbol, name);
 
@@ -129,8 +89,7 @@ export const HttpPrefixHeaders = (prefix: string) =>
   makeAnnotation(httpPrefixHeadersSymbol, prefix);
 
 /** smithy.api#httpResponseCode - Bind member to the HTTP response status code */
-export const httpResponseCodeSymbol =
-  "distilled-aws/http-response-code" as const;
+export const httpResponseCodeSymbol = coreResponseCodeSymbol;
 export const HttpResponseCode = () =>
   makeAnnotation(httpResponseCodeSymbol, true);
 
@@ -262,7 +221,7 @@ export const TimestampFormat = (format: TimestampFormatType) => {
 // =============================================================================
 
 /** smithy.api#http - HTTP binding for an operation (applied to request schema) */
-export const httpSymbol = "distilled-aws/smithy.api#http" as const;
+export const httpSymbol = coreHttpSymbol;
 export interface HttpTrait {
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS";
   uri: string;
@@ -921,14 +880,14 @@ export const getOutputEventPayloadMap = (
 
 export const getAnnotation = <T>(
   ast: AST.AST,
-  symbol: string,
+  symbol: string | symbol,
 ): T | undefined => {
   return ast.annotations?.[symbol] as T | undefined;
 };
 
 export const getPropAnnotation = <T>(
   prop: AST.PropertySignature,
-  symbol: string,
+  symbol: string | symbol,
 ): T | undefined => {
   // @ts-expect-error
   const propAnnot = prop.annotations?.[symbol] as T | undefined;
@@ -938,7 +897,7 @@ export const getPropAnnotation = <T>(
 
 export const hasPropAnnotation = (
   prop: AST.PropertySignature,
-  symbol: string,
+  symbol: string | symbol,
 ): boolean => {
   // @ts-expect-error
   if (prop.annotations?.[symbol] !== undefined) return true;
@@ -979,7 +938,10 @@ export const getXmlName = (ast: AST.AST): string | undefined => {
   return getAnnotationUnwrap(ast, xmlNameSymbol);
 };
 
-export const hasAnnotation = (ast: AST.AST, symbol: string): boolean => {
+export const hasAnnotation = (
+  ast: AST.AST,
+  symbol: string | symbol,
+): boolean => {
   if (ast.annotations?.[symbol] !== undefined) return true;
   if (ast._tag === "Suspend") {
     return hasAnnotation(ast.thunk(), symbol);
@@ -1002,7 +964,7 @@ export const hasAnnotation = (ast: AST.AST, symbol: string): boolean => {
 
 export const getAnnotationUnwrap = <T>(
   ast: AST.AST,
-  symbol: string,
+  symbol: string | symbol,
 ): T | undefined => {
   const direct = ast.annotations?.[symbol] as T | undefined;
   if (direct !== undefined) return direct;

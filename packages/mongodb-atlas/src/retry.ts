@@ -1,17 +1,16 @@
 /**
- * MongoDBAtlas retry configuration.
+ * MongoDB Atlas retry configuration.
  *
- * Defines the per-SDK `Retry` Context.Service tag that
- * `packages/mongodb-atlas/src/client.ts` wires into `makeAPI`. Callers can
- * install a blanket retry policy at the layer level and have every
- * MongoDBAtlas API call below it pick it up:
+ * Defines the per-SDK `Retry` Context.Service tag that generated operations
+ * wire into `API.make`. Callers can install a blanket retry policy at the
+ * layer level and have every Atlas API call below it pick it up:
  *
  * @example
  * ```ts
- * import * as MongoDBAtlas from "@distilled.cloud/mongodb-atlas";
+ * import * as MongodbAtlas from "@distilled.cloud/mongodb-atlas";
  *
- * myEffect.pipe(MongoDBAtlas.Retry.transient);
- * Effect.provide(myEffect, Layer.succeed(MongoDBAtlas.Retry.Retry, customPolicy));
+ * myEffect.pipe(MongodbAtlas.Retry.transient);
+ * Effect.provide(myEffect, Layer.succeed(MongodbAtlas.Retry.Retry, customPolicy));
  * ```
  */
 import * as Context from "effect/Context";
@@ -36,12 +35,12 @@ export {
   transientFactory,
 } from "@distilled.cloud/core/retry";
 
-/** Context tag for configuring retry behavior of MongoDBAtlas API calls. */
+/** Context tag for configuring retry behavior of MongoDB Atlas API calls. */
 export class Retry extends Context.Service<Retry, Policy>()(
   "MongoDBAtlasRetry",
 ) {}
 
-/** Provides a custom retry policy to every MongoDBAtlas API call below it. */
+/** Provides a custom retry policy to every Atlas API call below it. */
 export const policy = (optionsOrFactory: Policy) =>
   Effect.provide(Layer.succeed(Retry, optionsOrFactory));
 

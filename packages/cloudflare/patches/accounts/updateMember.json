@@ -1,8 +1,146 @@
 {
-  "errors": {
-    "MemberNotFound": [{ "code": 1003 }],
-    "InvalidRoute": [{ "code": 7003 }],
-    "BadRequest": [{ "code": 400 }],
-    "MethodNotAllowed": [{ "code": 10000 }, { "code": 10405 }]
-  }
+  "description": "Align accounts#MembersUpdate with distilled cloudflare/accounts updateMember",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersUpdate",
+      "path": "/shapes/com.cloudflare.accounts#UpdateMember"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersUpdateRequest",
+      "path": "/shapes/com.cloudflare.accounts#UpdateMemberRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#UpdateMember/input/target",
+      "value": "com.cloudflare.accounts#UpdateMemberRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#MembersUpdateResponse",
+      "path": "/shapes/com.cloudflare.accounts#UpdateMemberResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#UpdateMember/output/target",
+      "value": "com.cloudflare.accounts#UpdateMemberResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#MemberNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#BadRequest",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 400
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#MethodNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7001
+            },
+            {
+              "code": 10000
+            },
+            {
+              "code": 10405
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#UpdateMember/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.accounts#MemberNotFound"
+        },
+        {
+          "target": "com.cloudflare.accounts#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.accounts#BadRequest"
+        },
+        {
+          "target": "com.cloudflare.accounts#MethodNotAllowed"
+        }
+      ]
+    }
+  ]
 }

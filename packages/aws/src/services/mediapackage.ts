@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,11 +87,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type SensitiveString = string | redacted.Redacted<string>;
-export type MaxResults = number;
-
-//# Schemas
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  { Message: S.optional(S.String) },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export interface EgressAccessLogs {
   LogGroupName?: string;
 }
@@ -140,6 +167,7 @@ export const ConfigureLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigureLogsRequest",
 }) as any as S.Schema<ConfigureLogsRequest>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface IngestEndpoint {
   Id?: string;
   Password?: string | redacted.Redacted<string>;
@@ -325,6 +353,7 @@ export const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateHarvestJobRequest>;
 export type Status = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CreateHarvestJobResponse {
   Arn?: string;
   ChannelId?: string;
@@ -384,6 +413,7 @@ export const Authorization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 export type CmafEncryptionMethod = "SAMPLE_AES" | "AES_CTR" | (string & {});
 export const CmafEncryptionMethod = /*@__PURE__*/ S.String;
+
 export type PresetSpeke20Audio =
   | "PRESET-AUDIO-1"
   | "PRESET-AUDIO-2"
@@ -392,6 +422,7 @@ export type PresetSpeke20Audio =
   | "UNENCRYPTED"
   | (string & {});
 export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
+
 export type PresetSpeke20Video =
   | "PRESET-VIDEO-1"
   | "PRESET-VIDEO-2"
@@ -405,24 +436,24 @@ export type PresetSpeke20Video =
   | "UNENCRYPTED"
   | (string & {});
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
+
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio?: PresetSpeke20Audio;
   PresetSpeke20Video?: PresetSpeke20Video;
 }
-export const EncryptionContractConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PresetSpeke20Audio: S.optional(PresetSpeke20Audio),
-      PresetSpeke20Video: S.optional(PresetSpeke20Video),
-    }).pipe(
-      S.encodeKeys({
-        PresetSpeke20Audio: "presetSpeke20Audio",
-        PresetSpeke20Video: "presetSpeke20Video",
-      }),
-    ),
-  ).annotate({
-    identifier: "EncryptionContractConfiguration",
-  }) as any as S.Schema<EncryptionContractConfiguration>;
+export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PresetSpeke20Audio: S.optional(PresetSpeke20Audio),
+    PresetSpeke20Video: S.optional(PresetSpeke20Video),
+  }).pipe(
+    S.encodeKeys({
+      PresetSpeke20Audio: "presetSpeke20Audio",
+      PresetSpeke20Video: "presetSpeke20Video",
+    }),
+  ),
+).annotate({
+  identifier: "EncryptionContractConfiguration",
+}) as any as S.Schema<EncryptionContractConfiguration>;
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface SpekeKeyProvider {
@@ -484,6 +515,7 @@ export type AdMarkers =
   | "DATERANGE"
   | (string & {});
 export const AdMarkers = /*@__PURE__*/ S.String;
+
 export type __AdTriggersElement =
   | "SPLICE_INSERT"
   | "BREAK"
@@ -495,6 +527,7 @@ export type __AdTriggersElement =
   | "DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
   | (string & {});
 export const __AdTriggersElement = /*@__PURE__*/ S.String;
+
 export type AdTriggers = __AdTriggersElement[];
 export const AdTriggers = /*@__PURE__*/ S.Array(__AdTriggersElement);
 export type AdsOnDeliveryRestrictions =
@@ -504,8 +537,10 @@ export type AdsOnDeliveryRestrictions =
   | "BOTH"
   | (string & {});
 export const AdsOnDeliveryRestrictions = /*@__PURE__*/ S.String;
+
 export type PlaylistType = "NONE" | "EVENT" | "VOD" | (string & {});
 export const PlaylistType = /*@__PURE__*/ S.String;
+
 export interface HlsManifestCreateOrUpdateParameters {
   AdMarkers?: AdMarkers;
   AdTriggers?: __AdTriggersElement[];
@@ -517,34 +552,33 @@ export interface HlsManifestCreateOrUpdateParameters {
   PlaylistWindowSeconds?: number;
   ProgramDateTimeIntervalSeconds?: number;
 }
-export const HlsManifestCreateOrUpdateParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AdMarkers: S.optional(AdMarkers),
-      AdTriggers: S.optional(AdTriggers),
-      AdsOnDeliveryRestrictions: S.optional(AdsOnDeliveryRestrictions),
-      Id: S.optional(S.String),
-      IncludeIframeOnlyStream: S.optional(S.Boolean),
-      ManifestName: S.optional(S.String),
-      PlaylistType: S.optional(PlaylistType),
-      PlaylistWindowSeconds: S.optional(S.Number),
-      ProgramDateTimeIntervalSeconds: S.optional(S.Number),
-    }).pipe(
-      S.encodeKeys({
-        AdMarkers: "adMarkers",
-        AdTriggers: "adTriggers",
-        AdsOnDeliveryRestrictions: "adsOnDeliveryRestrictions",
-        Id: "id",
-        IncludeIframeOnlyStream: "includeIframeOnlyStream",
-        ManifestName: "manifestName",
-        PlaylistType: "playlistType",
-        PlaylistWindowSeconds: "playlistWindowSeconds",
-        ProgramDateTimeIntervalSeconds: "programDateTimeIntervalSeconds",
-      }),
-    ),
-  ).annotate({
-    identifier: "HlsManifestCreateOrUpdateParameters",
-  }) as any as S.Schema<HlsManifestCreateOrUpdateParameters>;
+export const HlsManifestCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdMarkers: S.optional(AdMarkers),
+    AdTriggers: S.optional(AdTriggers),
+    AdsOnDeliveryRestrictions: S.optional(AdsOnDeliveryRestrictions),
+    Id: S.optional(S.String),
+    IncludeIframeOnlyStream: S.optional(S.Boolean),
+    ManifestName: S.optional(S.String),
+    PlaylistType: S.optional(PlaylistType),
+    PlaylistWindowSeconds: S.optional(S.Number),
+    ProgramDateTimeIntervalSeconds: S.optional(S.Number),
+  }).pipe(
+    S.encodeKeys({
+      AdMarkers: "adMarkers",
+      AdTriggers: "adTriggers",
+      AdsOnDeliveryRestrictions: "adsOnDeliveryRestrictions",
+      Id: "id",
+      IncludeIframeOnlyStream: "includeIframeOnlyStream",
+      ManifestName: "manifestName",
+      PlaylistType: "playlistType",
+      PlaylistWindowSeconds: "playlistWindowSeconds",
+      ProgramDateTimeIntervalSeconds: "programDateTimeIntervalSeconds",
+    }),
+  ),
+).annotate({
+  identifier: "HlsManifestCreateOrUpdateParameters",
+}) as any as S.Schema<HlsManifestCreateOrUpdateParameters>;
 export type __listOfHlsManifestCreateOrUpdateParameters =
   HlsManifestCreateOrUpdateParameters[];
 export const __listOfHlsManifestCreateOrUpdateParameters =
@@ -555,6 +589,7 @@ export type StreamOrder =
   | "VIDEO_BITRATE_DESCENDING"
   | (string & {});
 export const StreamOrder = /*@__PURE__*/ S.String;
+
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
@@ -582,26 +617,25 @@ export interface CmafPackageCreateOrUpdateParameters {
   SegmentPrefix?: string;
   StreamSelection?: StreamSelection;
 }
-export const CmafPackageCreateOrUpdateParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Encryption: S.optional(CmafEncryption),
-      HlsManifests: S.optional(__listOfHlsManifestCreateOrUpdateParameters),
-      SegmentDurationSeconds: S.optional(S.Number),
-      SegmentPrefix: S.optional(S.String),
-      StreamSelection: S.optional(StreamSelection),
-    }).pipe(
-      S.encodeKeys({
-        Encryption: "encryption",
-        HlsManifests: "hlsManifests",
-        SegmentDurationSeconds: "segmentDurationSeconds",
-        SegmentPrefix: "segmentPrefix",
-        StreamSelection: "streamSelection",
-      }),
-    ),
-  ).annotate({
-    identifier: "CmafPackageCreateOrUpdateParameters",
-  }) as any as S.Schema<CmafPackageCreateOrUpdateParameters>;
+export const CmafPackageCreateOrUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Encryption: S.optional(CmafEncryption),
+    HlsManifests: S.optional(__listOfHlsManifestCreateOrUpdateParameters),
+    SegmentDurationSeconds: S.optional(S.Number),
+    SegmentPrefix: S.optional(S.String),
+    StreamSelection: S.optional(StreamSelection),
+  }).pipe(
+    S.encodeKeys({
+      Encryption: "encryption",
+      HlsManifests: "hlsManifests",
+      SegmentDurationSeconds: "segmentDurationSeconds",
+      SegmentPrefix: "segmentPrefix",
+      StreamSelection: "streamSelection",
+    }),
+  ),
+).annotate({
+  identifier: "CmafPackageCreateOrUpdateParameters",
+}) as any as S.Schema<CmafPackageCreateOrUpdateParameters>;
 export interface DashEncryption {
   KeyRotationIntervalSeconds?: number;
   SpekeKeyProvider?: SpekeKeyProvider;
@@ -623,11 +657,14 @@ export type ManifestLayout =
   | "DRM_TOP_LEVEL_COMPACT"
   | (string & {});
 export const ManifestLayout = /*@__PURE__*/ S.String;
+
 export type __PeriodTriggersElement = "ADS" | (string & {});
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
+
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
-export const __listOf__PeriodTriggersElement =
-  /*@__PURE__*/ S.Array(__PeriodTriggersElement);
+export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
+  __PeriodTriggersElement,
+);
 export type Profile =
   | "NONE"
   | "HBBTV_1_5"
@@ -635,12 +672,14 @@ export type Profile =
   | "DVB_DASH_2014"
   | (string & {});
 export const Profile = /*@__PURE__*/ S.String;
+
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
   | "NUMBER_WITH_DURATION"
   | (string & {});
 export const SegmentTemplateFormat = /*@__PURE__*/ S.String;
+
 export type UtcTiming =
   | "NONE"
   | "HTTP-HEAD"
@@ -648,6 +687,7 @@ export type UtcTiming =
   | "HTTP-XSDATE"
   | (string & {});
 export const UtcTiming = /*@__PURE__*/ S.String;
+
 export interface DashPackage {
   AdTriggers?: __AdTriggersElement[];
   AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions;
@@ -707,6 +747,7 @@ export const DashPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
 export const EncryptionMethod = /*@__PURE__*/ S.String;
+
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
   EncryptionMethod?: EncryptionMethod;
@@ -807,6 +848,7 @@ export const MssPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MssPackage" }) as any as S.Schema<MssPackage>;
 export type Origination = "ALLOW" | "DENY" | (string & {});
 export const Origination = /*@__PURE__*/ S.String;
+
 export interface CreateOriginEndpointRequest {
   Authorization?: Authorization;
   ChannelId?: string;
@@ -823,55 +865,54 @@ export interface CreateOriginEndpointRequest {
   TimeDelaySeconds?: number;
   Whitelist?: string[];
 }
-export const CreateOriginEndpointRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Authorization: S.optional(Authorization),
-      ChannelId: S.optional(S.String),
-      CmafPackage: S.optional(CmafPackageCreateOrUpdateParameters),
-      DashPackage: S.optional(DashPackage),
-      Description: S.optional(S.String),
-      HlsPackage: S.optional(HlsPackage),
-      Id: S.optional(S.String),
-      ManifestName: S.optional(S.String),
-      MssPackage: S.optional(MssPackage),
-      Origination: S.optional(Origination),
-      StartoverWindowSeconds: S.optional(S.Number),
-      Tags: S.optional(Tags),
-      TimeDelaySeconds: S.optional(S.Number),
-      Whitelist: S.optional(__listOf__string),
-    })
-      .pipe(
-        S.encodeKeys({
-          Authorization: "authorization",
-          ChannelId: "channelId",
-          CmafPackage: "cmafPackage",
-          DashPackage: "dashPackage",
-          Description: "description",
-          HlsPackage: "hlsPackage",
-          Id: "id",
-          ManifestName: "manifestName",
-          MssPackage: "mssPackage",
-          Origination: "origination",
-          StartoverWindowSeconds: "startoverWindowSeconds",
-          Tags: "tags",
-          TimeDelaySeconds: "timeDelaySeconds",
-          Whitelist: "whitelist",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({ method: "POST", uri: "/origin_endpoints" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+export const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Authorization: S.optional(Authorization),
+    ChannelId: S.optional(S.String),
+    CmafPackage: S.optional(CmafPackageCreateOrUpdateParameters),
+    DashPackage: S.optional(DashPackage),
+    Description: S.optional(S.String),
+    HlsPackage: S.optional(HlsPackage),
+    Id: S.optional(S.String),
+    ManifestName: S.optional(S.String),
+    MssPackage: S.optional(MssPackage),
+    Origination: S.optional(Origination),
+    StartoverWindowSeconds: S.optional(S.Number),
+    Tags: S.optional(Tags),
+    TimeDelaySeconds: S.optional(S.Number),
+    Whitelist: S.optional(__listOf__string),
+  })
+    .pipe(
+      S.encodeKeys({
+        Authorization: "authorization",
+        ChannelId: "channelId",
+        CmafPackage: "cmafPackage",
+        DashPackage: "dashPackage",
+        Description: "description",
+        HlsPackage: "hlsPackage",
+        Id: "id",
+        ManifestName: "manifestName",
+        MssPackage: "mssPackage",
+        Origination: "origination",
+        StartoverWindowSeconds: "startoverWindowSeconds",
+        Tags: "tags",
+        TimeDelaySeconds: "timeDelaySeconds",
+        Whitelist: "whitelist",
+      }),
+    )
+    .pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/origin_endpoints" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "CreateOriginEndpointRequest",
-  }) as any as S.Schema<CreateOriginEndpointRequest>;
+    ),
+).annotate({
+  identifier: "CreateOriginEndpointRequest",
+}) as any as S.Schema<CreateOriginEndpointRequest>;
 export interface HlsManifest {
   AdMarkers?: AdMarkers;
   Id?: string;
@@ -1012,50 +1053,49 @@ export interface CreateOriginEndpointResponse {
   Url?: string;
   Whitelist?: string[];
 }
-export const CreateOriginEndpointResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Authorization: S.optional(Authorization),
-      ChannelId: S.optional(S.String),
-      CmafPackage: S.optional(CmafPackage),
-      CreatedAt: S.optional(S.String),
-      DashPackage: S.optional(DashPackage),
-      Description: S.optional(S.String),
-      HlsPackage: S.optional(HlsPackage),
-      Id: S.optional(S.String),
-      ManifestName: S.optional(S.String),
-      MssPackage: S.optional(MssPackage),
-      Origination: S.optional(Origination),
-      StartoverWindowSeconds: S.optional(S.Number),
-      Tags: S.optional(Tags),
-      TimeDelaySeconds: S.optional(S.Number),
-      Url: S.optional(S.String),
-      Whitelist: S.optional(__listOf__string),
-    }).pipe(
-      S.encodeKeys({
-        Arn: "arn",
-        Authorization: "authorization",
-        ChannelId: "channelId",
-        CmafPackage: "cmafPackage",
-        CreatedAt: "createdAt",
-        DashPackage: "dashPackage",
-        Description: "description",
-        HlsPackage: "hlsPackage",
-        Id: "id",
-        ManifestName: "manifestName",
-        MssPackage: "mssPackage",
-        Origination: "origination",
-        StartoverWindowSeconds: "startoverWindowSeconds",
-        Tags: "tags",
-        TimeDelaySeconds: "timeDelaySeconds",
-        Url: "url",
-        Whitelist: "whitelist",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateOriginEndpointResponse",
-  }) as any as S.Schema<CreateOriginEndpointResponse>;
+export const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Authorization: S.optional(Authorization),
+    ChannelId: S.optional(S.String),
+    CmafPackage: S.optional(CmafPackage),
+    CreatedAt: S.optional(S.String),
+    DashPackage: S.optional(DashPackage),
+    Description: S.optional(S.String),
+    HlsPackage: S.optional(HlsPackage),
+    Id: S.optional(S.String),
+    ManifestName: S.optional(S.String),
+    MssPackage: S.optional(MssPackage),
+    Origination: S.optional(Origination),
+    StartoverWindowSeconds: S.optional(S.Number),
+    Tags: S.optional(Tags),
+    TimeDelaySeconds: S.optional(S.Number),
+    Url: S.optional(S.String),
+    Whitelist: S.optional(__listOf__string),
+  }).pipe(
+    S.encodeKeys({
+      Arn: "arn",
+      Authorization: "authorization",
+      ChannelId: "channelId",
+      CmafPackage: "cmafPackage",
+      CreatedAt: "createdAt",
+      DashPackage: "dashPackage",
+      Description: "description",
+      HlsPackage: "hlsPackage",
+      Id: "id",
+      ManifestName: "manifestName",
+      MssPackage: "mssPackage",
+      Origination: "origination",
+      StartoverWindowSeconds: "startoverWindowSeconds",
+      Tags: "tags",
+      TimeDelaySeconds: "timeDelaySeconds",
+      Url: "url",
+      Whitelist: "whitelist",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOriginEndpointResponse",
+}) as any as S.Schema<CreateOriginEndpointResponse>;
 export interface DeleteChannelRequest {
   Id: string;
 }
@@ -1082,26 +1122,26 @@ export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOriginEndpointRequest {
   Id: string;
 }
-export const DeleteOriginEndpointRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/origin_endpoints/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/origin_endpoints/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteOriginEndpointRequest",
-  }) as any as S.Schema<DeleteOriginEndpointRequest>;
+  ),
+).annotate({
+  identifier: "DeleteOriginEndpointRequest",
+}) as any as S.Schema<DeleteOriginEndpointRequest>;
 export interface DeleteOriginEndpointResponse {}
-export const DeleteOriginEndpointResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteOriginEndpointResponse",
-  }) as any as S.Schema<DeleteOriginEndpointResponse>;
+export const DeleteOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOriginEndpointResponse",
+}) as any as S.Schema<DeleteOriginEndpointResponse>;
 export interface DescribeChannelRequest {
   Id: string;
 }
@@ -1216,21 +1256,20 @@ export const DescribeHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeOriginEndpointRequest {
   Id: string;
 }
-export const DescribeOriginEndpointRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/origin_endpoints/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/origin_endpoints/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeOriginEndpointRequest",
-  }) as any as S.Schema<DescribeOriginEndpointRequest>;
+  ),
+).annotate({
+  identifier: "DescribeOriginEndpointRequest",
+}) as any as S.Schema<DescribeOriginEndpointRequest>;
 export interface DescribeOriginEndpointResponse {
   Arn?: string;
   Authorization?: Authorization & {
@@ -1306,50 +1345,50 @@ export interface DescribeOriginEndpointResponse {
   Url?: string;
   Whitelist?: string[];
 }
-export const DescribeOriginEndpointResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Authorization: S.optional(Authorization),
-      ChannelId: S.optional(S.String),
-      CmafPackage: S.optional(CmafPackage),
-      CreatedAt: S.optional(S.String),
-      DashPackage: S.optional(DashPackage),
-      Description: S.optional(S.String),
-      HlsPackage: S.optional(HlsPackage),
-      Id: S.optional(S.String),
-      ManifestName: S.optional(S.String),
-      MssPackage: S.optional(MssPackage),
-      Origination: S.optional(Origination),
-      StartoverWindowSeconds: S.optional(S.Number),
-      Tags: S.optional(Tags),
-      TimeDelaySeconds: S.optional(S.Number),
-      Url: S.optional(S.String),
-      Whitelist: S.optional(__listOf__string),
-    }).pipe(
-      S.encodeKeys({
-        Arn: "arn",
-        Authorization: "authorization",
-        ChannelId: "channelId",
-        CmafPackage: "cmafPackage",
-        CreatedAt: "createdAt",
-        DashPackage: "dashPackage",
-        Description: "description",
-        HlsPackage: "hlsPackage",
-        Id: "id",
-        ManifestName: "manifestName",
-        MssPackage: "mssPackage",
-        Origination: "origination",
-        StartoverWindowSeconds: "startoverWindowSeconds",
-        Tags: "tags",
-        TimeDelaySeconds: "timeDelaySeconds",
-        Url: "url",
-        Whitelist: "whitelist",
-      }),
-    ),
-  ).annotate({
-    identifier: "DescribeOriginEndpointResponse",
-  }) as any as S.Schema<DescribeOriginEndpointResponse>;
+export const DescribeOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Authorization: S.optional(Authorization),
+    ChannelId: S.optional(S.String),
+    CmafPackage: S.optional(CmafPackage),
+    CreatedAt: S.optional(S.String),
+    DashPackage: S.optional(DashPackage),
+    Description: S.optional(S.String),
+    HlsPackage: S.optional(HlsPackage),
+    Id: S.optional(S.String),
+    ManifestName: S.optional(S.String),
+    MssPackage: S.optional(MssPackage),
+    Origination: S.optional(Origination),
+    StartoverWindowSeconds: S.optional(S.Number),
+    Tags: S.optional(Tags),
+    TimeDelaySeconds: S.optional(S.Number),
+    Url: S.optional(S.String),
+    Whitelist: S.optional(__listOf__string),
+  }).pipe(
+    S.encodeKeys({
+      Arn: "arn",
+      Authorization: "authorization",
+      ChannelId: "channelId",
+      CmafPackage: "cmafPackage",
+      CreatedAt: "createdAt",
+      DashPackage: "dashPackage",
+      Description: "description",
+      HlsPackage: "hlsPackage",
+      Id: "id",
+      ManifestName: "manifestName",
+      MssPackage: "mssPackage",
+      Origination: "origination",
+      StartoverWindowSeconds: "startoverWindowSeconds",
+      Tags: "tags",
+      TimeDelaySeconds: "timeDelaySeconds",
+      Url: "url",
+      Whitelist: "whitelist",
+    }),
+  ),
+).annotate({
+  identifier: "DescribeOriginEndpointResponse",
+}) as any as S.Schema<DescribeOriginEndpointResponse>;
+export type MaxResults = number;
 export interface ListChannelsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1652,20 +1691,19 @@ export interface ListOriginEndpointsResponse {
     };
   })[];
 }
-export const ListOriginEndpointsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      OriginEndpoints: S.optional(__listOfOriginEndpoint),
-    }).pipe(
-      S.encodeKeys({
-        NextToken: "nextToken",
-        OriginEndpoints: "originEndpoints",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListOriginEndpointsResponse",
-  }) as any as S.Schema<ListOriginEndpointsResponse>;
+export const ListOriginEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    OriginEndpoints: S.optional(__listOfOriginEndpoint),
+  }).pipe(
+    S.encodeKeys({
+      NextToken: "nextToken",
+      OriginEndpoints: "originEndpoints",
+    }),
+  ),
+).annotate({
+  identifier: "ListOriginEndpointsResponse",
+}) as any as S.Schema<ListOriginEndpointsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1691,32 +1729,30 @@ export const __mapOf__string = /*@__PURE__*/ S.Record(
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(
-      S.encodeKeys({ Tags: "tags" }),
-    ),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(
+    S.encodeKeys({ Tags: "tags" }),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RotateChannelCredentialsRequest {
   Id: string;
 }
-export const RotateChannelCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/channels/{Id}/credentials" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RotateChannelCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/channels/{Id}/credentials" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RotateChannelCredentialsRequest",
-  }) as any as S.Schema<RotateChannelCredentialsRequest>;
+  ),
+).annotate({
+  identifier: "RotateChannelCredentialsRequest",
+}) as any as S.Schema<RotateChannelCredentialsRequest>;
 export interface RotateChannelCredentialsResponse {
   Arn?: string;
   CreatedAt?: string;
@@ -1727,38 +1763,37 @@ export interface RotateChannelCredentialsResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const RotateChannelCredentialsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      CreatedAt: S.optional(S.String),
-      Description: S.optional(S.String),
-      EgressAccessLogs: S.optional(EgressAccessLogs),
-      HlsIngest: S.optional(HlsIngest),
-      Id: S.optional(S.String),
-      IngressAccessLogs: S.optional(IngressAccessLogs),
-      Tags: S.optional(Tags),
-    }).pipe(
-      S.encodeKeys({
-        Arn: "arn",
-        CreatedAt: "createdAt",
-        Description: "description",
-        EgressAccessLogs: "egressAccessLogs",
-        HlsIngest: "hlsIngest",
-        Id: "id",
-        IngressAccessLogs: "ingressAccessLogs",
-        Tags: "tags",
-      }),
-    ),
-  ).annotate({
-    identifier: "RotateChannelCredentialsResponse",
-  }) as any as S.Schema<RotateChannelCredentialsResponse>;
+export const RotateChannelCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    CreatedAt: S.optional(S.String),
+    Description: S.optional(S.String),
+    EgressAccessLogs: S.optional(EgressAccessLogs),
+    HlsIngest: S.optional(HlsIngest),
+    Id: S.optional(S.String),
+    IngressAccessLogs: S.optional(IngressAccessLogs),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      Arn: "arn",
+      CreatedAt: "createdAt",
+      Description: "description",
+      EgressAccessLogs: "egressAccessLogs",
+      HlsIngest: "hlsIngest",
+      Id: "id",
+      IngressAccessLogs: "ingressAccessLogs",
+      Tags: "tags",
+    }),
+  ),
+).annotate({
+  identifier: "RotateChannelCredentialsResponse",
+}) as any as S.Schema<RotateChannelCredentialsResponse>;
 export interface RotateIngestEndpointCredentialsRequest {
   Id: string;
   IngestEndpointId: string;
 }
-export const RotateIngestEndpointCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const RotateIngestEndpointCredentialsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Id: S.String.pipe(T.HttpLabel("Id")),
       IngestEndpointId: S.String.pipe(T.HttpLabel("IngestEndpointId")),
@@ -1775,9 +1810,9 @@ export const RotateIngestEndpointCredentialsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "RotateIngestEndpointCredentialsRequest",
-  }) as any as S.Schema<RotateIngestEndpointCredentialsRequest>;
+).annotate({
+  identifier: "RotateIngestEndpointCredentialsRequest",
+}) as any as S.Schema<RotateIngestEndpointCredentialsRequest>;
 export interface RotateIngestEndpointCredentialsResponse {
   Arn?: string;
   CreatedAt?: string;
@@ -1788,8 +1823,8 @@ export interface RotateIngestEndpointCredentialsResponse {
   IngressAccessLogs?: IngressAccessLogs;
   Tags?: { [key: string]: string | undefined };
 }
-export const RotateIngestEndpointCredentialsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const RotateIngestEndpointCredentialsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Arn: S.optional(S.String),
       CreatedAt: S.optional(S.String),
@@ -1811,9 +1846,9 @@ export const RotateIngestEndpointCredentialsResponse =
         Tags: "tags",
       }),
     ),
-  ).annotate({
-    identifier: "RotateIngestEndpointCredentialsResponse",
-  }) as any as S.Schema<RotateIngestEndpointCredentialsResponse>;
+).annotate({
+  identifier: "RotateIngestEndpointCredentialsResponse",
+}) as any as S.Schema<RotateIngestEndpointCredentialsResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -1942,50 +1977,49 @@ export interface UpdateOriginEndpointRequest {
   TimeDelaySeconds?: number;
   Whitelist?: string[];
 }
-export const UpdateOriginEndpointRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Authorization: S.optional(Authorization),
-      CmafPackage: S.optional(CmafPackageCreateOrUpdateParameters),
-      DashPackage: S.optional(DashPackage),
-      Description: S.optional(S.String),
-      HlsPackage: S.optional(HlsPackage),
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      ManifestName: S.optional(S.String),
-      MssPackage: S.optional(MssPackage),
-      Origination: S.optional(Origination),
-      StartoverWindowSeconds: S.optional(S.Number),
-      TimeDelaySeconds: S.optional(S.Number),
-      Whitelist: S.optional(__listOf__string),
-    })
-      .pipe(
-        S.encodeKeys({
-          Authorization: "authorization",
-          CmafPackage: "cmafPackage",
-          DashPackage: "dashPackage",
-          Description: "description",
-          HlsPackage: "hlsPackage",
-          ManifestName: "manifestName",
-          MssPackage: "mssPackage",
-          Origination: "origination",
-          StartoverWindowSeconds: "startoverWindowSeconds",
-          TimeDelaySeconds: "timeDelaySeconds",
-          Whitelist: "whitelist",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({ method: "PUT", uri: "/origin_endpoints/{Id}" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+export const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Authorization: S.optional(Authorization),
+    CmafPackage: S.optional(CmafPackageCreateOrUpdateParameters),
+    DashPackage: S.optional(DashPackage),
+    Description: S.optional(S.String),
+    HlsPackage: S.optional(HlsPackage),
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    ManifestName: S.optional(S.String),
+    MssPackage: S.optional(MssPackage),
+    Origination: S.optional(Origination),
+    StartoverWindowSeconds: S.optional(S.Number),
+    TimeDelaySeconds: S.optional(S.Number),
+    Whitelist: S.optional(__listOf__string),
+  })
+    .pipe(
+      S.encodeKeys({
+        Authorization: "authorization",
+        CmafPackage: "cmafPackage",
+        DashPackage: "dashPackage",
+        Description: "description",
+        HlsPackage: "hlsPackage",
+        ManifestName: "manifestName",
+        MssPackage: "mssPackage",
+        Origination: "origination",
+        StartoverWindowSeconds: "startoverWindowSeconds",
+        TimeDelaySeconds: "timeDelaySeconds",
+        Whitelist: "whitelist",
+      }),
+    )
+    .pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/origin_endpoints/{Id}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "UpdateOriginEndpointRequest",
-  }) as any as S.Schema<UpdateOriginEndpointRequest>;
+    ),
+).annotate({
+  identifier: "UpdateOriginEndpointRequest",
+}) as any as S.Schema<UpdateOriginEndpointRequest>;
 export interface UpdateOriginEndpointResponse {
   Arn?: string;
   Authorization?: Authorization & {
@@ -2061,78 +2095,49 @@ export interface UpdateOriginEndpointResponse {
   Url?: string;
   Whitelist?: string[];
 }
-export const UpdateOriginEndpointResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Authorization: S.optional(Authorization),
-      ChannelId: S.optional(S.String),
-      CmafPackage: S.optional(CmafPackage),
-      CreatedAt: S.optional(S.String),
-      DashPackage: S.optional(DashPackage),
-      Description: S.optional(S.String),
-      HlsPackage: S.optional(HlsPackage),
-      Id: S.optional(S.String),
-      ManifestName: S.optional(S.String),
-      MssPackage: S.optional(MssPackage),
-      Origination: S.optional(Origination),
-      StartoverWindowSeconds: S.optional(S.Number),
-      Tags: S.optional(Tags),
-      TimeDelaySeconds: S.optional(S.Number),
-      Url: S.optional(S.String),
-      Whitelist: S.optional(__listOf__string),
-    }).pipe(
-      S.encodeKeys({
-        Arn: "arn",
-        Authorization: "authorization",
-        ChannelId: "channelId",
-        CmafPackage: "cmafPackage",
-        CreatedAt: "createdAt",
-        DashPackage: "dashPackage",
-        Description: "description",
-        HlsPackage: "hlsPackage",
-        Id: "id",
-        ManifestName: "manifestName",
-        MssPackage: "mssPackage",
-        Origination: "origination",
-        StartoverWindowSeconds: "startoverWindowSeconds",
-        Tags: "tags",
-        TimeDelaySeconds: "timeDelaySeconds",
-        Url: "url",
-        Whitelist: "whitelist",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateOriginEndpointResponse",
-  }) as any as S.Schema<UpdateOriginEndpointResponse>;
-
-//# Errors
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export const UpdateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Authorization: S.optional(Authorization),
+    ChannelId: S.optional(S.String),
+    CmafPackage: S.optional(CmafPackage),
+    CreatedAt: S.optional(S.String),
+    DashPackage: S.optional(DashPackage),
+    Description: S.optional(S.String),
+    HlsPackage: S.optional(HlsPackage),
+    Id: S.optional(S.String),
+    ManifestName: S.optional(S.String),
+    MssPackage: S.optional(MssPackage),
+    Origination: S.optional(Origination),
+    StartoverWindowSeconds: S.optional(S.Number),
+    Tags: S.optional(Tags),
+    TimeDelaySeconds: S.optional(S.Number),
+    Url: S.optional(S.String),
+    Whitelist: S.optional(__listOf__string),
+  }).pipe(
+    S.encodeKeys({
+      Arn: "arn",
+      Authorization: "authorization",
+      ChannelId: "channelId",
+      CmafPackage: "cmafPackage",
+      CreatedAt: "createdAt",
+      DashPackage: "dashPackage",
+      Description: "description",
+      HlsPackage: "hlsPackage",
+      Id: "id",
+      ManifestName: "manifestName",
+      MssPackage: "mssPackage",
+      Origination: "origination",
+      StartoverWindowSeconds: "startoverWindowSeconds",
+      Tags: "tags",
+      TimeDelaySeconds: "timeDelaySeconds",
+      Url: "url",
+      Whitelist: "whitelist",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOriginEndpointResponse",
+}) as any as S.Schema<UpdateOriginEndpointResponse>;
 export type ConfigureLogsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2160,8 +2165,11 @@ export const configureLogs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureLogs",
 }));
+
 export type CreateChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2189,8 +2197,11 @@ export const createChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
+
 export type CreateHarvestJobError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2218,8 +2229,11 @@ export const createHarvestJob: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHarvestJob",
 }));
+
 export type CreateOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2247,8 +2261,11 @@ export const createOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOriginEndpoint",
 }));
+
 export type DeleteChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2276,8 +2293,11 @@ export const deleteChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
+
 export type DeleteOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2305,8 +2325,11 @@ export const deleteOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOriginEndpoint",
 }));
+
 export type DescribeChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2334,8 +2357,11 @@ export const describeChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannel",
 }));
+
 export type DescribeHarvestJobError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2363,8 +2389,11 @@ export const describeHarvestJob: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHarvestJob",
 }));
+
 export type DescribeOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2392,8 +2421,11 @@ export const describeOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOriginEndpoint",
 }));
+
 export type ListChannelsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2436,6 +2468,8 @@ export const listChannels: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -2444,6 +2478,7 @@ export const listChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHarvestJobsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2486,6 +2521,8 @@ export const listHarvestJobs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHarvestJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2494,6 +2531,7 @@ export const listHarvestJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOriginEndpointsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2536,6 +2574,8 @@ export const listOriginEndpoints: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOriginEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -2544,6 +2584,7 @@ export const listOriginEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  *
@@ -2557,8 +2598,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RotateChannelCredentialsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2586,8 +2630,11 @@ export const rotateChannelCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateChannelCredentials",
 }));
+
 export type RotateIngestEndpointCredentialsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2615,8 +2662,11 @@ export const rotateIngestEndpointCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateIngestEndpointCredentials",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  *
@@ -2630,8 +2680,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  *
@@ -2645,8 +2698,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2674,8 +2730,11 @@ export const updateChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
+
 export type UpdateOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2703,5 +2762,7 @@ export const updateOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOriginEndpoint",
 }));

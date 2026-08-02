@@ -1,19 +1,128 @@
 {
-  "errors": {
-    "InvalidZoneIdentifier": [
-      { "code": 9109, "message": { "includes": "Invalid zone identifier" } }
-    ],
-    "CustomNameserverSetNotFound": [
-      {
-        "code": 1001,
-        "message": { "includes": "Custom Nameserver set doesn't exist" }
+  "description": "Align zones#CustomNameserversUpdate with distilled cloudflare/zones putCustomNameserver",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#CustomNameserversUpdate",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserver"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#CustomNameserversUpdateRequest",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserverRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserver/input/target",
+      "value": "com.cloudflare.zones#PutCustomNameserverRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#CustomNameserversUpdateResponse",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserverResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserver/output/target",
+      "value": "com.cloudflare.zones#PutCustomNameserverResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserver/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
       }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "result": { "type": "unknown" }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#InvalidZoneIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 9109,
+              "message": {
+                "includes": "Invalid zone identifier"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#CustomNameserverSetNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001,
+              "message": {
+                "includes": "Custom Nameserver set doesn't exist"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#PutCustomNameserver/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zones#InvalidZoneIdentifier"
+        },
+        {
+          "target": "com.cloudflare.zones#CustomNameserverSetNotFound"
+        },
+        {
+          "target": "com.cloudflare.zones#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

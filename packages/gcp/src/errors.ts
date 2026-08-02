@@ -23,7 +23,7 @@ export type { DefaultErrors } from "@distilled.cloud/core/errors";
 import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
-// Unknown GCP error - returned when an error code is not recognized
+/** Unknown GCP error - returned when an error status is not recognized. */
 export class UnknownGCPError extends Schema.TaggedErrorClass<UnknownGCPError>()(
   "UnknownGCPError",
   {
@@ -34,7 +34,7 @@ export class UnknownGCPError extends Schema.TaggedErrorClass<UnknownGCPError>()(
   },
 ).pipe(Category.withServerError) {}
 
-// Schema parse error wrapper
+/** Schema parse error wrapper. */
 export class GCPParseError extends Schema.TaggedErrorClass<GCPParseError>()(
   "GCPParseError",
   {
@@ -42,3 +42,9 @@ export class GCPParseError extends Schema.TaggedErrorClass<GCPParseError>()(
     cause: Schema.Unknown,
   },
 ).pipe(Category.withParseError) {}
+
+/**
+ * Errors any GCP operation may surface in addition to the per-operation
+ * 4xx classes declared in each generated service module.
+ */
+export type ClientErrors = UnknownGCPError | GCPParseError;

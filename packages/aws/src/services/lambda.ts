@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,155 +87,427 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type DurableExecutionArn = string;
-export type CheckpointToken = string;
-export type OperationId = string;
-export type OperationName = string;
-export type OperationSubType = string;
-export type OperationPayload = string | redacted.Redacted<string>;
-export type ErrorMessage = string | redacted.Redacted<string>;
-export type ErrorType = string | redacted.Redacted<string>;
-export type ErrorData = string | redacted.Redacted<string>;
-export type StackTraceEntry = string | redacted.Redacted<string>;
-export type ReplayChildren = boolean;
-export type DurationSeconds = number;
-export type NamespacedFunctionName = string;
-export type TenantId = string;
-export type ClientToken = string;
-export type ExecutionTimestamp = Date;
-export type InputPayload = string | redacted.Redacted<string>;
-export type AttemptCount = number;
-export type CallbackId = string;
-export type NumericLatestPublishedOrAliasQualifier = string;
-export type UnreservedConcurrentExecutions = number;
-export type DurableExecutionName = string;
-export type NameSpacedFunctionArn = string;
-export type OutputPayload = string | redacted.Redacted<string>;
-export type VersionWithLatestPublished = string;
-export type XAmznTraceId = string;
-export type IncludeExecutionData = boolean;
-export type ItemCount = number;
-export type ReverseOrder = boolean;
-export type EventId = number;
-export type Truncated = boolean;
-export type FunctionArn = string;
-export type MaximumRetryAttempts = number;
-export type MaximumEventAgeInSeconds = number;
-export type DestinationArn = string;
-export type MaxFunctionEventInvokeConfigListItems = number;
-export type TaggableResource = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CapacityProviderName = string;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type RoleArn = string;
-export type InstanceType = string;
-export type CapacityProviderMaxVCpuCount = number;
-export type MetricTargetValue = number;
-export type KMSKeyArnNonEmpty = string;
-export type CapacityProviderArn = string;
-export type KMSKeyArn = string;
-export type MaxFiftyListItems = number;
-export type Description = string;
-export type Arn = string;
-export type CodeSigningConfigId = string;
-export type CodeSigningConfigArn = string;
-export type MaxListItems = number;
-export type Enabled = boolean;
-export type BatchSize = number;
-export type Pattern = string;
-export type MaximumConcurrency = number;
-export type MaximumBatchingWindowInSeconds = number;
-export type ParallelizationFactor = number;
-export type MaximumRecordAgeInSeconds = number;
-export type BisectBatchOnFunctionError = boolean;
-export type MaximumRetryAttemptsEventSourceMapping = number;
-export type TumblingWindowInSeconds = number;
-export type Topic = string;
-export type Queue = string;
-export type URI = string;
-export type Endpoint = string;
-export type SchemaRegistryUri = string;
-export type DatabaseName = string;
-export type CollectionName = string;
-export type MinimumNumberOfPollers = number;
-export type MaximumNumberOfPollers = number;
-export type ProvisionedPollerGroupName = string;
-export type UUIDString = string;
-export type FilterCriteriaErrorCode = string;
-export type FilterCriteriaErrorMessage = string;
-export type EventSourceMappingArn = string;
-export type FunctionName = string;
-export type Handler = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type S3ObjectVersion = string;
-export type Timeout = number;
-export type MemorySize = number;
-export type ResourceArn = string;
-export type EnvironmentVariableName = string | redacted.Redacted<string>;
-export type EnvironmentVariableValue = string | redacted.Redacted<string>;
-export type LayerVersionArn = string;
-export type FileSystemArn = string;
-export type LocalMountPath = string;
-export type WorkingDirectory = string;
-export type EphemeralStorageSize = number;
-export type LogGroup = string;
-export type PerExecutionEnvironmentMaxConcurrency = number;
-export type ExecutionEnvironmentMemoryGiBPerVCpu = number;
-export type RetentionPeriodInDays = number;
-export type ExecutionTimeout = number;
-export type Version = string;
-export type VpcId = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type StateReason = string;
-export type LastUpdateStatusReason = string;
-export type RuntimeVersionArn = string;
-export type MasterRegion = string;
-export type ReservedConcurrentExecutions = number;
-export type MaxProvisionedConcurrencyConfigListItems = number;
-export type PositiveInteger = number;
-export type NonNegativeInteger = number;
-export type FunctionUrlFunctionName = string;
-export type FunctionUrlQualifier = string;
-export type AllowCredentials = boolean;
-export type Header = string;
-export type Method = string;
-export type Origin = string;
-export type MaxAge = number;
-export type FunctionUrl = string;
-export type SensitiveStringOnServerOnly = string;
-export type TagsErrorCode = string;
-export type TagsErrorMessage = string;
-export type UnqualifiedFunctionName = string;
-export type PublishedFunctionQualifier = string;
-export type FunctionScalingConfigExecutionEnvironments = number;
-export type HttpStatus = number;
-export type MaxItems = number;
-export type Alias = string;
-export type AdditionalVersion = string;
-export type Weight = number;
-export type MaxLayerListItems = number;
+export class AliasLimitExceededException extends S.TaggedErrorClass<AliasLimitExceededException>()(
+  "AliasLimitExceededException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CallbackTimeoutException extends S.TaggedErrorClass<CallbackTimeoutException>()(
+  "CallbackTimeoutException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CapacityProviderLimitExceededException extends S.TaggedErrorClass<CapacityProviderLimitExceededException>()(
+  "CapacityProviderLimitExceededException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CodeArtifactUserDeletedException extends S.TaggedErrorClass<CodeArtifactUserDeletedException>()(
+  "CodeArtifactUserDeletedException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class CodeArtifactUserFailedException extends S.TaggedErrorClass<CodeArtifactUserFailedException>()(
+  "CodeArtifactUserFailedException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class CodeArtifactUserPendingException extends S.TaggedErrorClass<CodeArtifactUserPendingException>()(
+  "CodeArtifactUserPendingException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class CodeSigningConfigNotFoundException extends S.TaggedErrorClass<CodeSigningConfigNotFoundException>()(
+  "CodeSigningConfigNotFoundException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class CodeStorageExceededException extends S.TaggedErrorClass<CodeStorageExceededException>()(
+  "CodeStorageExceededException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CodeVerificationFailedException extends S.TaggedErrorClass<CodeVerificationFailedException>()(
+  "CodeVerificationFailedException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DurableExecutionAlreadyStartedException extends S.TaggedErrorClass<DurableExecutionAlreadyStartedException>()(
+  "DurableExecutionAlreadyStartedException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class EC2AccessDeniedException extends S.TaggedErrorClass<EC2AccessDeniedException>()(
+  "EC2AccessDeniedException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError, C.withAuthError) {}
+export class EC2ThrottledException extends S.TaggedErrorClass<EC2ThrottledException>()(
+  "EC2ThrottledException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class EC2UnexpectedException extends S.TaggedErrorClass<EC2UnexpectedException>()(
+  "EC2UnexpectedException",
+  {
+    Type: S.optional(S.String),
+    Message: S.optional(S.String),
+    EC2ErrorCode: S.optional(S.String),
+  },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class EFSIOException extends S.TaggedErrorClass<EFSIOException>()(
+  "EFSIOException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class EFSMountConnectivityException extends S.TaggedErrorClass<EFSMountConnectivityException>()(
+  "EFSMountConnectivityException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class EFSMountFailureException extends S.TaggedErrorClass<EFSMountFailureException>()(
+  "EFSMountFailureException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class EFSMountTimeoutException extends S.TaggedErrorClass<EFSMountTimeoutException>()(
+  "EFSMountTimeoutException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class ENILimitReachedException extends S.TaggedErrorClass<ENILimitReachedException>()(
+  "ENILimitReachedException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class ENINotReadyException extends S.TaggedErrorClass<ENINotReadyException>()(
+  "ENINotReadyException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class FunctionVersionsPerCapacityProviderLimitExceededException extends S.TaggedErrorClass<FunctionVersionsPerCapacityProviderLimitExceededException>()(
+  "FunctionVersionsPerCapacityProviderLimitExceededException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidCodeSignatureException extends S.TaggedErrorClass<InvalidCodeSignatureException>()(
+  "InvalidCodeSignatureException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestContentException extends S.TaggedErrorClass<InvalidRequestContentException>()(
+  "InvalidRequestContentException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRuntimeException extends S.TaggedErrorClass<InvalidRuntimeException>()(
+  "InvalidRuntimeException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class InvalidSecurityGroupIDException extends S.TaggedErrorClass<InvalidSecurityGroupIDException>()(
+  "InvalidSecurityGroupIDException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class InvalidSubnetIDException extends S.TaggedErrorClass<InvalidSubnetIDException>()(
+  "InvalidSubnetIDException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class InvalidZipFileException extends S.TaggedErrorClass<InvalidZipFileException>()(
+  "InvalidZipFileException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
+  "KMSAccessDeniedException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError, C.withAuthError) {}
+export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
+  "KMSDisabledException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
+  "KMSInvalidStateException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
+  "KMSNotFoundException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class ModeNotSupportedException extends S.TaggedErrorClass<ModeNotSupportedException>()(
+  "ModeNotSupportedException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NoPublishedVersionException extends S.TaggedErrorClass<NoPublishedVersionException>()(
+  "NoPublishedVersionException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ParseError extends S.TaggedErrorClass<ParseError>()(
+  "ParseError",
+  {},
+) {}
+export class PolicyLengthExceededException extends S.TaggedErrorClass<PolicyLengthExceededException>()(
+  "PolicyLengthExceededException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
+  "PreconditionFailedException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ProvisionedConcurrencyConfigNotFoundException extends S.TaggedErrorClass<ProvisionedConcurrencyConfigNotFoundException>()(
+  "ProvisionedConcurrencyConfigNotFoundException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class PublicPolicyException extends S.TaggedErrorClass<PublicPolicyException>()(
+  "PublicPolicyException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RecursiveInvocationException extends S.TaggedErrorClass<RecursiveInvocationException>()(
+  "RecursiveInvocationException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class RequestTooLargeException extends S.TaggedErrorClass<RequestTooLargeException>()(
+  "RequestTooLargeException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
+  "ResourceNotReadyException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class S3FilesMountConnectivityException extends S.TaggedErrorClass<S3FilesMountConnectivityException>()(
+  "S3FilesMountConnectivityException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class S3FilesMountFailureException extends S.TaggedErrorClass<S3FilesMountFailureException>()(
+  "S3FilesMountFailureException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class S3FilesMountTimeoutException extends S.TaggedErrorClass<S3FilesMountTimeoutException>()(
+  "S3FilesMountTimeoutException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class SerializedRequestEntityTooLargeException extends S.TaggedErrorClass<SerializedRequestEntityTooLargeException>()(
+  "SerializedRequestEntityTooLargeException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class SnapStartException extends S.TaggedErrorClass<SnapStartException>()(
+  "SnapStartException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class SnapStartNotReadyException extends S.TaggedErrorClass<SnapStartNotReadyException>()(
+  "SnapStartNotReadyException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class SnapStartRegenerationFailureException extends S.TaggedErrorClass<SnapStartRegenerationFailureException>()(
+  "SnapStartRegenerationFailureException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class SnapStartTimeoutException extends S.TaggedErrorClass<SnapStartTimeoutException>()(
+  "SnapStartTimeoutException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class SubnetIPAddressLimitReachedException extends S.TaggedErrorClass<SubnetIPAddressLimitReachedException>()(
+  "SubnetIPAddressLimitReachedException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {
+    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+    Type: S.optional(S.String),
+    message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ThrottleReason).annotate({
+        identifier: "ThrottleReason",
+      }),
+    ),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedMediaTypeException extends S.TaggedErrorClass<UnsupportedMediaTypeException>()(
+  "UnsupportedMediaTypeException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(415),
+).pipe(C.withBadRequestError) {}
 export type LayerName = string;
-export type LayerArn = string;
 export type LayerVersionNumber = number;
-export type LicenseInfo = string;
 export type StatementId = string;
 export type LayerPermissionAllowedAction = string;
 export type LayerPermissionAllowedPrincipal = string;
 export type OrganizationId = string;
+export interface AddLayerVersionPermissionRequest {
+  LayerName: string;
+  VersionNumber: number;
+  StatementId: string;
+  Action: string;
+  Principal: string;
+  OrganizationId?: string;
+  RevisionId?: string;
+}
+export const AddLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
+    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
+    StatementId: S.String,
+    Action: S.String,
+    Principal: S.String,
+    OrganizationId: S.optional(S.String),
+    RevisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AddLayerVersionPermissionRequest",
+}) as any as S.Schema<AddLayerVersionPermissionRequest>;
+export interface AddLayerVersionPermissionResponse {
+  Statement?: string;
+  RevisionId?: string;
+}
+export const AddLayerVersionPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Statement: S.optional(S.String),
+    RevisionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddLayerVersionPermissionResponse",
+}) as any as S.Schema<AddLayerVersionPermissionResponse>;
+export type NamespacedFunctionName = string;
 export type Action = string;
 export type Principal = string;
+export type Arn = string;
+export type FunctionUrlAuthType = "NONE" | "AWS_IAM" | (string & {});
+export const FunctionUrlAuthType = /*@__PURE__*/ S.String;
+
 export type InvokedViaFunctionUrl = boolean;
 export type SourceOwner = string;
 export type EventSourceToken = string;
+export type NumericLatestPublishedOrAliasQualifier = string;
 export type PrincipalOrgID = string;
-export type NamespacedStatementId = string;
-export type Qualifier = string;
-
-//# Schemas
+export interface AddPermissionRequest {
+  FunctionName: string;
+  StatementId: string;
+  Action: string;
+  Principal: string;
+  SourceArn?: string;
+  FunctionUrlAuthType?: FunctionUrlAuthType;
+  InvokedViaFunctionUrl?: boolean;
+  SourceAccount?: string;
+  EventSourceToken?: string;
+  Qualifier?: string;
+  RevisionId?: string;
+  PrincipalOrgID?: string;
+}
+export const AddPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    StatementId: S.String,
+    Action: S.String,
+    Principal: S.String,
+    SourceArn: S.optional(S.String),
+    FunctionUrlAuthType: S.optional(FunctionUrlAuthType),
+    InvokedViaFunctionUrl: S.optional(S.Boolean),
+    SourceAccount: S.optional(S.String),
+    EventSourceToken: S.optional(S.String),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    RevisionId: S.optional(S.String),
+    PrincipalOrgID: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2015-03-31/functions/{FunctionName}/policy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AddPermissionRequest",
+}) as any as S.Schema<AddPermissionRequest>;
+export interface AddPermissionResponse {
+  Statement?: string;
+}
+export const AddPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Statement: S.optional(S.String) }),
+).annotate({
+  identifier: "AddPermissionResponse",
+}) as any as S.Schema<AddPermissionResponse>;
+export type DurableExecutionArn = string;
+export type CheckpointToken = string;
+export type OperationId = string;
+export type OperationName = string;
 export type OperationType =
   | "EXECUTION"
   | "CONTEXT"
@@ -243,6 +517,8 @@ export type OperationType =
   | "CHAINED_INVOKE"
   | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
+export type OperationSubType = string;
 export type OperationAction =
   | "START"
   | "SUCCEED"
@@ -251,13 +527,19 @@ export type OperationAction =
   | "CANCEL"
   | (string & {});
 export const OperationAction = /*@__PURE__*/ S.String;
-export type StackTraceEntries = string | redacted.Redacted<string>[];
+
+export type OperationPayload = string | redacted.Redacted<string>;
+export type ErrorMessage = string | redacted.Redacted<string>;
+export type ErrorType = string | redacted.Redacted<string>;
+export type ErrorData = string | redacted.Redacted<string>;
+export type StackTraceEntry = string | redacted.Redacted<string>;
+export type StackTraceEntries = (string | redacted.Redacted<string>)[];
 export const StackTraceEntries = /*@__PURE__*/ S.Array(SensitiveString);
 export interface ErrorObject {
   ErrorMessage?: string | redacted.Redacted<string>;
   ErrorType?: string | redacted.Redacted<string>;
   ErrorData?: string | redacted.Redacted<string>;
-  StackTrace?: string | redacted.Redacted<string>[];
+  StackTrace?: (string | redacted.Redacted<string>)[];
 }
 export const ErrorObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -267,12 +549,14 @@ export const ErrorObject = /*@__PURE__*/ S.suspend(() =>
     StackTrace: S.optional(StackTraceEntries),
   }),
 ).annotate({ identifier: "ErrorObject" }) as any as S.Schema<ErrorObject>;
+export type ReplayChildren = boolean;
 export interface ContextOptions {
   ReplayChildren?: boolean;
 }
 export const ContextOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReplayChildren: S.optional(S.Boolean) }),
 ).annotate({ identifier: "ContextOptions" }) as any as S.Schema<ContextOptions>;
+export type DurationSeconds = number;
 export interface StepOptions {
   NextAttemptDelaySeconds?: number;
 }
@@ -297,6 +581,7 @@ export const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CallbackOptions",
 }) as any as S.Schema<CallbackOptions>;
+export type TenantId = string;
 export interface ChainedInvokeOptions {
   FunctionName: string;
   TenantId?: string;
@@ -342,35 +627,36 @@ export const OperationUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationUpdate>;
 export type OperationUpdates = OperationUpdate[];
 export const OperationUpdates = /*@__PURE__*/ S.Array(OperationUpdate);
+export type ClientToken = string;
 export interface CheckpointDurableExecutionRequest {
   DurableExecutionArn: string;
   CheckpointToken: string;
   Updates?: OperationUpdate[];
   ClientToken?: string;
 }
-export const CheckpointDurableExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
-      CheckpointToken: S.String,
-      Updates: S.optional(OperationUpdates),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/checkpoint",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CheckpointDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
+    CheckpointToken: S.String,
+    Updates: S.optional(OperationUpdates),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/checkpoint",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CheckpointDurableExecutionRequest",
-  }) as any as S.Schema<CheckpointDurableExecutionRequest>;
+  ),
+).annotate({
+  identifier: "CheckpointDurableExecutionRequest",
+}) as any as S.Schema<CheckpointDurableExecutionRequest>;
+export type ExecutionTimestamp = Date;
 export type OperationStatus =
   | "STARTED"
   | "PENDING"
@@ -382,6 +668,8 @@ export type OperationStatus =
   | "STOPPED"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
+export type InputPayload = string | redacted.Redacted<string>;
 export interface ExecutionDetails {
   InputPayload?: string | redacted.Redacted<string>;
 }
@@ -402,6 +690,7 @@ export const ContextDetails = /*@__PURE__*/ S.suspend(() =>
     Error: S.optional(ErrorObject),
   }),
 ).annotate({ identifier: "ContextDetails" }) as any as S.Schema<ContextDetails>;
+export type AttemptCount = number;
 export interface StepDetails {
   Attempt?: number;
   NextAttemptTimestamp?: Date;
@@ -428,6 +717,7 @@ export const WaitDetails = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "WaitDetails" }) as any as S.Schema<WaitDetails>;
+export type CallbackId = string;
 export interface CallbackDetails {
   CallbackId?: string;
   Result?: string | redacted.Redacted<string>;
@@ -494,37 +784,1655 @@ export interface CheckpointUpdatedExecutionState {
   Operations?: Operation[];
   NextMarker?: string;
 }
-export const CheckpointUpdatedExecutionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Operations: S.optional(Operations),
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CheckpointUpdatedExecutionState",
-  }) as any as S.Schema<CheckpointUpdatedExecutionState>;
+export const CheckpointUpdatedExecutionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Operations: S.optional(Operations),
+    NextMarker: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckpointUpdatedExecutionState",
+}) as any as S.Schema<CheckpointUpdatedExecutionState>;
 export interface CheckpointDurableExecutionResponse {
   CheckpointToken?: string;
   NewExecutionState: CheckpointUpdatedExecutionState;
 }
-export const CheckpointDurableExecutionResponse =
+export const CheckpointDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CheckpointToken: S.optional(S.String),
+    NewExecutionState: CheckpointUpdatedExecutionState,
+  }),
+).annotate({
+  identifier: "CheckpointDurableExecutionResponse",
+}) as any as S.Schema<CheckpointDurableExecutionResponse>;
+export type FunctionName = string;
+export type Alias = string;
+export type VersionWithLatestPublished = string;
+export type Description = string;
+export type AdditionalVersion = string;
+export type Weight = number;
+export type AdditionalVersionWeights = { [key: string]: number | undefined };
+export const AdditionalVersionWeights = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number.pipe(S.optional),
+);
+export interface AliasRoutingConfiguration {
+  AdditionalVersionWeights?: { [key: string]: number | undefined };
+}
+export const AliasRoutingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AdditionalVersionWeights: S.optional(AdditionalVersionWeights) }),
+).annotate({
+  identifier: "AliasRoutingConfiguration",
+}) as any as S.Schema<AliasRoutingConfiguration>;
+export interface CreateAliasRequest {
+  FunctionName: string;
+  Name: string;
+  FunctionVersion: string;
+  Description?: string;
+  RoutingConfig?: AliasRoutingConfiguration;
+}
+export const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Name: S.String,
+    FunctionVersion: S.String,
+    Description: S.optional(S.String),
+    RoutingConfig: S.optional(AliasRoutingConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2015-03-31/functions/{FunctionName}/aliases",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateAliasRequest",
+}) as any as S.Schema<CreateAliasRequest>;
+export type FunctionArn = string;
+export type Version = string;
+export interface AliasConfiguration {
+  AliasArn?: string;
+  Name?: string;
+  FunctionVersion?: string;
+  Description?: string;
+  RoutingConfig?: AliasRoutingConfiguration;
+  RevisionId?: string;
+}
+export const AliasConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AliasArn: S.optional(S.String),
+    Name: S.optional(S.String),
+    FunctionVersion: S.optional(S.String),
+    Description: S.optional(S.String),
+    RoutingConfig: S.optional(AliasRoutingConfiguration),
+    RevisionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AliasConfiguration",
+}) as any as S.Schema<AliasConfiguration>;
+export type CapacityProviderName = string;
+export type SubnetId = string;
+export type CapacityProviderSubnetIds = string[];
+export const CapacityProviderSubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
+export type CapacityProviderSecurityGroupIds = string[];
+export const CapacityProviderSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export interface CapacityProviderVpcConfig {
+  SubnetIds: string[];
+  SecurityGroupIds: string[];
+}
+export const CapacityProviderVpcConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetIds: CapacityProviderSubnetIds,
+    SecurityGroupIds: CapacityProviderSecurityGroupIds,
+  }),
+).annotate({
+  identifier: "CapacityProviderVpcConfig",
+}) as any as S.Schema<CapacityProviderVpcConfig>;
+export type RoleArn = string;
+export interface CapacityProviderPermissionsConfig {
+  CapacityProviderOperatorRoleArn: string;
+}
+export const CapacityProviderPermissionsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CapacityProviderOperatorRoleArn: S.String }),
+).annotate({
+  identifier: "CapacityProviderPermissionsConfig",
+}) as any as S.Schema<CapacityProviderPermissionsConfig>;
+export type Architecture = "x86_64" | "arm64" | (string & {});
+export const Architecture = /*@__PURE__*/ S.String;
+
+export type ArchitecturesList = Architecture[];
+export const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
+export type InstanceType = string;
+export type InstanceTypeSet = string[];
+export const InstanceTypeSet = /*@__PURE__*/ S.Array(S.String);
+export interface InstanceRequirements {
+  Architectures?: Architecture[];
+  AllowedInstanceTypes?: string[];
+  ExcludedInstanceTypes?: string[];
+}
+export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Architectures: S.optional(ArchitecturesList),
+    AllowedInstanceTypes: S.optional(InstanceTypeSet),
+    ExcludedInstanceTypes: S.optional(InstanceTypeSet),
+  }),
+).annotate({
+  identifier: "InstanceRequirements",
+}) as any as S.Schema<InstanceRequirements>;
+export type CapacityProviderMaxVCpuCount = number;
+export type CapacityProviderScalingMode = "Auto" | "Manual" | (string & {});
+export const CapacityProviderScalingMode = /*@__PURE__*/ S.String;
+
+export type CapacityProviderPredefinedMetricType =
+  | "LambdaCapacityProviderAverageCPUUtilization"
+  | (string & {});
+export const CapacityProviderPredefinedMetricType = /*@__PURE__*/ S.String;
+
+export type MetricTargetValue = number;
+export interface TargetTrackingScalingPolicy {
+  PredefinedMetricType: CapacityProviderPredefinedMetricType;
+  TargetValue: number;
+}
+export const TargetTrackingScalingPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PredefinedMetricType: CapacityProviderPredefinedMetricType,
+    TargetValue: S.Number,
+  }),
+).annotate({
+  identifier: "TargetTrackingScalingPolicy",
+}) as any as S.Schema<TargetTrackingScalingPolicy>;
+export type CapacityProviderScalingPoliciesList = TargetTrackingScalingPolicy[];
+export const CapacityProviderScalingPoliciesList = /*@__PURE__*/ S.Array(
+  TargetTrackingScalingPolicy,
+);
+export interface CapacityProviderScalingConfig {
+  MaxVCpuCount?: number;
+  ScalingMode?: CapacityProviderScalingMode;
+  ScalingPolicies?: TargetTrackingScalingPolicy[];
+}
+export const CapacityProviderScalingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxVCpuCount: S.optional(S.Number),
+    ScalingMode: S.optional(CapacityProviderScalingMode),
+    ScalingPolicies: S.optional(CapacityProviderScalingPoliciesList),
+  }),
+).annotate({
+  identifier: "CapacityProviderScalingConfig",
+}) as any as S.Schema<CapacityProviderScalingConfig>;
+export type KMSKeyArnNonEmpty = string;
+export type TagKey = string;
+export type TagValue = string;
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type PropagateTagsMode = "None" | "Explicit" | (string & {});
+export const PropagateTagsMode = /*@__PURE__*/ S.String;
+
+export interface PropagateTags {
+  Mode?: PropagateTagsMode;
+  ExplicitTags?: { [key: string]: string | undefined };
+}
+export const PropagateTags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Mode: S.optional(PropagateTagsMode),
+    ExplicitTags: S.optional(Tags),
+  }),
+).annotate({ identifier: "PropagateTags" }) as any as S.Schema<PropagateTags>;
+export interface CreateCapacityProviderRequest {
+  CapacityProviderName: string;
+  VpcConfig: CapacityProviderVpcConfig;
+  PermissionsConfig: CapacityProviderPermissionsConfig;
+  InstanceRequirements?: InstanceRequirements;
+  CapacityProviderScalingConfig?: CapacityProviderScalingConfig;
+  KmsKeyArn?: string;
+  Tags?: { [key: string]: string | undefined };
+  PropagateTags?: PropagateTags;
+}
+export const CreateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityProviderName: S.String,
+    VpcConfig: CapacityProviderVpcConfig,
+    PermissionsConfig: CapacityProviderPermissionsConfig,
+    InstanceRequirements: S.optional(InstanceRequirements),
+    CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
+    KmsKeyArn: S.optional(S.String),
+    Tags: S.optional(Tags),
+    PropagateTags: S.optional(PropagateTags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2025-11-30/capacity-providers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCapacityProviderRequest",
+}) as any as S.Schema<CreateCapacityProviderRequest>;
+export type CapacityProviderArn = string;
+export type CapacityProviderState =
+  | "Pending"
+  | "Active"
+  | "Failed"
+  | "Deleting"
+  | (string & {});
+export const CapacityProviderState = /*@__PURE__*/ S.String;
+
+export type KMSKeyArn = string;
+export interface CapacityProvider {
+  CapacityProviderArn: string;
+  State: CapacityProviderState;
+  VpcConfig: CapacityProviderVpcConfig;
+  PermissionsConfig: CapacityProviderPermissionsConfig;
+  InstanceRequirements?: InstanceRequirements;
+  CapacityProviderScalingConfig?: CapacityProviderScalingConfig;
+  KmsKeyArn?: string;
+  LastModified?: string;
+  PropagateTags?: PropagateTags;
+}
+export const CapacityProvider = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityProviderArn: S.String,
+    State: CapacityProviderState,
+    VpcConfig: CapacityProviderVpcConfig,
+    PermissionsConfig: CapacityProviderPermissionsConfig,
+    InstanceRequirements: S.optional(InstanceRequirements),
+    CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
+    KmsKeyArn: S.optional(S.String),
+    LastModified: S.optional(S.String),
+    PropagateTags: S.optional(PropagateTags),
+  }),
+).annotate({
+  identifier: "CapacityProvider",
+}) as any as S.Schema<CapacityProvider>;
+export interface CreateCapacityProviderResponse {
+  CapacityProvider: CapacityProvider;
+}
+export const CreateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CapacityProvider: CapacityProvider }),
+).annotate({
+  identifier: "CreateCapacityProviderResponse",
+}) as any as S.Schema<CreateCapacityProviderResponse>;
+export type SigningProfileVersionArns = string[];
+export const SigningProfileVersionArns = /*@__PURE__*/ S.Array(S.String);
+export interface AllowedPublishers {
+  SigningProfileVersionArns: string[];
+}
+export const AllowedPublishers = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SigningProfileVersionArns: SigningProfileVersionArns }),
+).annotate({
+  identifier: "AllowedPublishers",
+}) as any as S.Schema<AllowedPublishers>;
+export type CodeSigningPolicy = "Warn" | "Enforce" | (string & {});
+export const CodeSigningPolicy = /*@__PURE__*/ S.String;
+
+export interface CodeSigningPolicies {
+  UntrustedArtifactOnDeployment?: CodeSigningPolicy;
+}
+export const CodeSigningPolicies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UntrustedArtifactOnDeployment: S.optional(CodeSigningPolicy) }),
+).annotate({
+  identifier: "CodeSigningPolicies",
+}) as any as S.Schema<CodeSigningPolicies>;
+export interface CreateCodeSigningConfigRequest {
+  Description?: string;
+  AllowedPublishers: AllowedPublishers;
+  CodeSigningPolicies?: CodeSigningPolicies;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    AllowedPublishers: AllowedPublishers,
+    CodeSigningPolicies: S.optional(CodeSigningPolicies),
+    Tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2020-04-22/code-signing-configs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCodeSigningConfigRequest",
+}) as any as S.Schema<CreateCodeSigningConfigRequest>;
+export type CodeSigningConfigId = string;
+export type CodeSigningConfigArn = string;
+export interface CodeSigningConfig {
+  CodeSigningConfigId: string;
+  CodeSigningConfigArn: string;
+  Description?: string;
+  AllowedPublishers: AllowedPublishers;
+  CodeSigningPolicies: CodeSigningPolicies;
+  LastModified: string;
+}
+export const CodeSigningConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CodeSigningConfigId: S.String,
+    CodeSigningConfigArn: S.String,
+    Description: S.optional(S.String),
+    AllowedPublishers: AllowedPublishers,
+    CodeSigningPolicies: CodeSigningPolicies,
+    LastModified: S.String,
+  }),
+).annotate({
+  identifier: "CodeSigningConfig",
+}) as any as S.Schema<CodeSigningConfig>;
+export interface CreateCodeSigningConfigResponse {
+  CodeSigningConfig: CodeSigningConfig;
+}
+export const CreateCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CodeSigningConfig: CodeSigningConfig }),
+).annotate({
+  identifier: "CreateCodeSigningConfigResponse",
+}) as any as S.Schema<CreateCodeSigningConfigResponse>;
+export type Enabled = boolean;
+export type BatchSize = number;
+export type Pattern = string;
+export interface Filter {
+  Pattern?: string;
+}
+export const Filter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Pattern: S.optional(S.String) }),
+).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+export type FilterList = Filter[];
+export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export interface FilterCriteria {
+  Filters?: Filter[];
+}
+export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Filters: S.optional(FilterList) }),
+).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
+export type EventSourceMappingMetric =
+  | "EventCount"
+  | "ErrorCount"
+  | "KafkaMetrics"
+  | (string & {});
+export const EventSourceMappingMetric = /*@__PURE__*/ S.String;
+
+export type EventSourceMappingMetricList = EventSourceMappingMetric[];
+export const EventSourceMappingMetricList = /*@__PURE__*/ S.Array(
+  EventSourceMappingMetric,
+);
+export interface EventSourceMappingMetricsConfig {
+  Metrics?: EventSourceMappingMetric[];
+}
+export const EventSourceMappingMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Metrics: S.optional(EventSourceMappingMetricList) }),
+).annotate({
+  identifier: "EventSourceMappingMetricsConfig",
+}) as any as S.Schema<EventSourceMappingMetricsConfig>;
+export type EventSourceMappingSystemLogLevel =
+  | "DEBUG"
+  | "INFO"
+  | "WARN"
+  | (string & {});
+export const EventSourceMappingSystemLogLevel = /*@__PURE__*/ S.String;
+
+export interface EventSourceMappingLoggingConfig {
+  SystemLogLevel?: EventSourceMappingSystemLogLevel;
+}
+export const EventSourceMappingLoggingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SystemLogLevel: S.optional(EventSourceMappingSystemLogLevel) }),
+).annotate({
+  identifier: "EventSourceMappingLoggingConfig",
+}) as any as S.Schema<EventSourceMappingLoggingConfig>;
+export type MaximumConcurrency = number;
+export interface ScalingConfig {
+  MaximumConcurrency?: number;
+}
+export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MaximumConcurrency: S.optional(S.Number) }),
+).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
+export type MaximumBatchingWindowInSeconds = number;
+export type ParallelizationFactor = number;
+export type EventSourcePosition =
+  | "TRIM_HORIZON"
+  | "LATEST"
+  | "AT_TIMESTAMP"
+  | (string & {});
+export const EventSourcePosition = /*@__PURE__*/ S.String;
+
+export type DestinationArn = string;
+export interface OnSuccess {
+  Destination?: string;
+}
+export const OnSuccess = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Destination: S.optional(S.String) }),
+).annotate({ identifier: "OnSuccess" }) as any as S.Schema<OnSuccess>;
+export interface OnFailure {
+  Destination?: string;
+}
+export const OnFailure = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Destination: S.optional(S.String) }),
+).annotate({ identifier: "OnFailure" }) as any as S.Schema<OnFailure>;
+export interface DestinationConfig {
+  OnSuccess?: OnSuccess;
+  OnFailure?: OnFailure;
+}
+export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OnSuccess: S.optional(OnSuccess),
+    OnFailure: S.optional(OnFailure),
+  }),
+).annotate({
+  identifier: "DestinationConfig",
+}) as any as S.Schema<DestinationConfig>;
+export type MaximumRecordAgeInSeconds = number;
+export type BisectBatchOnFunctionError = boolean;
+export type MaximumRetryAttemptsEventSourceMapping = number;
+export type TumblingWindowInSeconds = number;
+export type Topic = string;
+export type Topics = string[];
+export const Topics = /*@__PURE__*/ S.Array(S.String);
+export type Queue = string;
+export type Queues = string[];
+export const Queues = /*@__PURE__*/ S.Array(S.String);
+export type SourceAccessType =
+  | "BASIC_AUTH"
+  | "VPC_SUBNET"
+  | "VPC_SECURITY_GROUP"
+  | "SASL_SCRAM_512_AUTH"
+  | "SASL_SCRAM_256_AUTH"
+  | "VIRTUAL_HOST"
+  | "CLIENT_CERTIFICATE_TLS_AUTH"
+  | "SERVER_ROOT_CA_CERTIFICATE"
+  | (string & {});
+export const SourceAccessType = /*@__PURE__*/ S.String;
+
+export type URI = string;
+export interface SourceAccessConfiguration {
+  Type?: SourceAccessType;
+  URI?: string;
+}
+export const SourceAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: S.optional(SourceAccessType), URI: S.optional(S.String) }),
+).annotate({
+  identifier: "SourceAccessConfiguration",
+}) as any as S.Schema<SourceAccessConfiguration>;
+export type SourceAccessConfigurations = SourceAccessConfiguration[];
+export const SourceAccessConfigurations = /*@__PURE__*/ S.Array(
+  SourceAccessConfiguration,
+);
+export type EndPointType = "KAFKA_BOOTSTRAP_SERVERS" | (string & {});
+export const EndPointType = /*@__PURE__*/ S.String;
+
+export type Endpoint = string;
+export type EndpointLists = string[];
+export const EndpointLists = /*@__PURE__*/ S.Array(S.String);
+export type Endpoints = { [key in EndPointType]?: string[] };
+export const Endpoints = /*@__PURE__*/ S.Record(
+  EndPointType,
+  EndpointLists.pipe(S.optional),
+);
+export interface SelfManagedEventSource {
+  Endpoints?: { [key: string]: string[] | undefined };
+}
+export const SelfManagedEventSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Endpoints: S.optional(Endpoints) }),
+).annotate({
+  identifier: "SelfManagedEventSource",
+}) as any as S.Schema<SelfManagedEventSource>;
+export type FunctionResponseType = "ReportBatchItemFailures" | (string & {});
+export const FunctionResponseType = /*@__PURE__*/ S.String;
+
+export type FunctionResponseTypeList = FunctionResponseType[];
+export const FunctionResponseTypeList =
+  /*@__PURE__*/ S.Array(FunctionResponseType);
+export type SchemaRegistryUri = string;
+export type SchemaRegistryEventRecordFormat = "JSON" | "SOURCE" | (string & {});
+export const SchemaRegistryEventRecordFormat = /*@__PURE__*/ S.String;
+
+export type KafkaSchemaRegistryAuthType =
+  | "BASIC_AUTH"
+  | "CLIENT_CERTIFICATE_TLS_AUTH"
+  | "SERVER_ROOT_CA_CERTIFICATE"
+  | (string & {});
+export const KafkaSchemaRegistryAuthType = /*@__PURE__*/ S.String;
+
+export interface KafkaSchemaRegistryAccessConfig {
+  Type?: KafkaSchemaRegistryAuthType;
+  URI?: string;
+}
+export const KafkaSchemaRegistryAccessConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(KafkaSchemaRegistryAuthType),
+    URI: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KafkaSchemaRegistryAccessConfig",
+}) as any as S.Schema<KafkaSchemaRegistryAccessConfig>;
+export type KafkaSchemaRegistryAccessConfigList =
+  KafkaSchemaRegistryAccessConfig[];
+export const KafkaSchemaRegistryAccessConfigList = /*@__PURE__*/ S.Array(
+  KafkaSchemaRegistryAccessConfig,
+);
+export type KafkaSchemaValidationAttribute = "KEY" | "VALUE" | (string & {});
+export const KafkaSchemaValidationAttribute = /*@__PURE__*/ S.String;
+
+export interface KafkaSchemaValidationConfig {
+  Attribute?: KafkaSchemaValidationAttribute;
+}
+export const KafkaSchemaValidationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Attribute: S.optional(KafkaSchemaValidationAttribute) }),
+).annotate({
+  identifier: "KafkaSchemaValidationConfig",
+}) as any as S.Schema<KafkaSchemaValidationConfig>;
+export type KafkaSchemaValidationConfigList = KafkaSchemaValidationConfig[];
+export const KafkaSchemaValidationConfigList = /*@__PURE__*/ S.Array(
+  KafkaSchemaValidationConfig,
+);
+export interface KafkaSchemaRegistryConfig {
+  SchemaRegistryURI?: string;
+  EventRecordFormat?: SchemaRegistryEventRecordFormat;
+  AccessConfigs?: KafkaSchemaRegistryAccessConfig[];
+  SchemaValidationConfigs?: KafkaSchemaValidationConfig[];
+}
+export const KafkaSchemaRegistryConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaRegistryURI: S.optional(S.String),
+    EventRecordFormat: S.optional(SchemaRegistryEventRecordFormat),
+    AccessConfigs: S.optional(KafkaSchemaRegistryAccessConfigList),
+    SchemaValidationConfigs: S.optional(KafkaSchemaValidationConfigList),
+  }),
+).annotate({
+  identifier: "KafkaSchemaRegistryConfig",
+}) as any as S.Schema<KafkaSchemaRegistryConfig>;
+export interface AmazonManagedKafkaEventSourceConfig {
+  ConsumerGroupId?: string;
+  SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
+}
+export const AmazonManagedKafkaEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConsumerGroupId: S.optional(S.String),
+    SchemaRegistryConfig: S.optional(KafkaSchemaRegistryConfig),
+  }),
+).annotate({
+  identifier: "AmazonManagedKafkaEventSourceConfig",
+}) as any as S.Schema<AmazonManagedKafkaEventSourceConfig>;
+export interface SelfManagedKafkaEventSourceConfig {
+  ConsumerGroupId?: string;
+  SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
+}
+export const SelfManagedKafkaEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConsumerGroupId: S.optional(S.String),
+    SchemaRegistryConfig: S.optional(KafkaSchemaRegistryConfig),
+  }),
+).annotate({
+  identifier: "SelfManagedKafkaEventSourceConfig",
+}) as any as S.Schema<SelfManagedKafkaEventSourceConfig>;
+export type DatabaseName = string;
+export type CollectionName = string;
+export type FullDocument = "UpdateLookup" | "Default" | (string & {});
+export const FullDocument = /*@__PURE__*/ S.String;
+
+export interface DocumentDBEventSourceConfig {
+  DatabaseName?: string;
+  CollectionName?: string;
+  FullDocument?: FullDocument;
+}
+export const DocumentDBEventSourceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatabaseName: S.optional(S.String),
+    CollectionName: S.optional(S.String),
+    FullDocument: S.optional(FullDocument),
+  }),
+).annotate({
+  identifier: "DocumentDBEventSourceConfig",
+}) as any as S.Schema<DocumentDBEventSourceConfig>;
+export type MinimumNumberOfPollers = number;
+export type MaximumNumberOfPollers = number;
+export type ProvisionedPollerGroupName = string;
+export interface ProvisionedPollerConfig {
+  MinimumPollers?: number;
+  MaximumPollers?: number;
+  PollerGroupName?: string;
+}
+export const ProvisionedPollerConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MinimumPollers: S.optional(S.Number),
+    MaximumPollers: S.optional(S.Number),
+    PollerGroupName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisionedPollerConfig",
+}) as any as S.Schema<ProvisionedPollerConfig>;
+export interface CreateEventSourceMappingRequest {
+  EventSourceArn?: string;
+  FunctionName: string;
+  Enabled?: boolean;
+  BatchSize?: number;
+  FilterCriteria?: FilterCriteria;
+  KMSKeyArn?: string;
+  MetricsConfig?: EventSourceMappingMetricsConfig;
+  LoggingConfig?: EventSourceMappingLoggingConfig;
+  ScalingConfig?: ScalingConfig;
+  MaximumBatchingWindowInSeconds?: number;
+  ParallelizationFactor?: number;
+  StartingPosition?: EventSourcePosition;
+  StartingPositionTimestamp?: Date;
+  DestinationConfig?: DestinationConfig;
+  MaximumRecordAgeInSeconds?: number;
+  BisectBatchOnFunctionError?: boolean;
+  MaximumRetryAttempts?: number;
+  Tags?: { [key: string]: string | undefined };
+  TumblingWindowInSeconds?: number;
+  Topics?: string[];
+  Queues?: string[];
+  SourceAccessConfigurations?: SourceAccessConfiguration[];
+  SelfManagedEventSource?: SelfManagedEventSource;
+  FunctionResponseTypes?: FunctionResponseType[];
+  AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
+  SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
+  DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
+  ProvisionedPollerConfig?: ProvisionedPollerConfig;
+}
+export const CreateEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventSourceArn: S.optional(S.String),
+    FunctionName: S.String,
+    Enabled: S.optional(S.Boolean),
+    BatchSize: S.optional(S.Number),
+    FilterCriteria: S.optional(FilterCriteria),
+    KMSKeyArn: S.optional(S.String),
+    MetricsConfig: S.optional(EventSourceMappingMetricsConfig),
+    LoggingConfig: S.optional(EventSourceMappingLoggingConfig),
+    ScalingConfig: S.optional(ScalingConfig),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+    ParallelizationFactor: S.optional(S.Number),
+    StartingPosition: S.optional(EventSourcePosition),
+    StartingPositionTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    DestinationConfig: S.optional(DestinationConfig),
+    MaximumRecordAgeInSeconds: S.optional(S.Number),
+    BisectBatchOnFunctionError: S.optional(S.Boolean),
+    MaximumRetryAttempts: S.optional(S.Number),
+    Tags: S.optional(Tags),
+    TumblingWindowInSeconds: S.optional(S.Number),
+    Topics: S.optional(Topics),
+    Queues: S.optional(Queues),
+    SourceAccessConfigurations: S.optional(SourceAccessConfigurations),
+    SelfManagedEventSource: S.optional(SelfManagedEventSource),
+    FunctionResponseTypes: S.optional(FunctionResponseTypeList),
+    AmazonManagedKafkaEventSourceConfig: S.optional(
+      AmazonManagedKafkaEventSourceConfig,
+    ),
+    SelfManagedKafkaEventSourceConfig: S.optional(
+      SelfManagedKafkaEventSourceConfig,
+    ),
+    DocumentDBEventSourceConfig: S.optional(DocumentDBEventSourceConfig),
+    ProvisionedPollerConfig: S.optional(ProvisionedPollerConfig),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2015-03-31/event-source-mappings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateEventSourceMappingRequest",
+}) as any as S.Schema<CreateEventSourceMappingRequest>;
+export type UUIDString = string;
+export type FilterCriteriaErrorCode = string;
+export type FilterCriteriaErrorMessage = string;
+export interface FilterCriteriaError {
+  ErrorCode?: string;
+  Message?: string;
+}
+export const FilterCriteriaError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
+).annotate({
+  identifier: "FilterCriteriaError",
+}) as any as S.Schema<FilterCriteriaError>;
+export type EventSourceMappingArn = string;
+export interface EventSourceMappingConfiguration {
+  UUID?: string;
+  StartingPosition?: EventSourcePosition;
+  StartingPositionTimestamp?: Date;
+  BatchSize?: number;
+  MaximumBatchingWindowInSeconds?: number;
+  ParallelizationFactor?: number;
+  EventSourceArn?: string;
+  FilterCriteria?: FilterCriteria;
+  FilterCriteriaError?: FilterCriteriaError;
+  KMSKeyArn?: string;
+  MetricsConfig?: EventSourceMappingMetricsConfig;
+  LoggingConfig?: EventSourceMappingLoggingConfig;
+  ScalingConfig?: ScalingConfig;
+  FunctionArn?: string;
+  LastModified?: Date;
+  LastProcessingResult?: string;
+  State?: string;
+  StateTransitionReason?: string;
+  DestinationConfig?: DestinationConfig;
+  Topics?: string[];
+  Queues?: string[];
+  SourceAccessConfigurations?: SourceAccessConfiguration[];
+  SelfManagedEventSource?: SelfManagedEventSource;
+  MaximumRecordAgeInSeconds?: number;
+  BisectBatchOnFunctionError?: boolean;
+  MaximumRetryAttempts?: number;
+  TumblingWindowInSeconds?: number;
+  FunctionResponseTypes?: FunctionResponseType[];
+  AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
+  SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
+  DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
+  EventSourceMappingArn?: string;
+  ProvisionedPollerConfig?: ProvisionedPollerConfig;
+}
+export const EventSourceMappingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UUID: S.optional(S.String),
+    StartingPosition: S.optional(EventSourcePosition),
+    StartingPositionTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    BatchSize: S.optional(S.Number),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+    ParallelizationFactor: S.optional(S.Number),
+    EventSourceArn: S.optional(S.String),
+    FilterCriteria: S.optional(FilterCriteria),
+    FilterCriteriaError: S.optional(FilterCriteriaError),
+    KMSKeyArn: S.optional(S.String),
+    MetricsConfig: S.optional(EventSourceMappingMetricsConfig),
+    LoggingConfig: S.optional(EventSourceMappingLoggingConfig),
+    ScalingConfig: S.optional(ScalingConfig),
+    FunctionArn: S.optional(S.String),
+    LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastProcessingResult: S.optional(S.String),
+    State: S.optional(S.String),
+    StateTransitionReason: S.optional(S.String),
+    DestinationConfig: S.optional(DestinationConfig),
+    Topics: S.optional(Topics),
+    Queues: S.optional(Queues),
+    SourceAccessConfigurations: S.optional(SourceAccessConfigurations),
+    SelfManagedEventSource: S.optional(SelfManagedEventSource),
+    MaximumRecordAgeInSeconds: S.optional(S.Number),
+    BisectBatchOnFunctionError: S.optional(S.Boolean),
+    MaximumRetryAttempts: S.optional(S.Number),
+    TumblingWindowInSeconds: S.optional(S.Number),
+    FunctionResponseTypes: S.optional(FunctionResponseTypeList),
+    AmazonManagedKafkaEventSourceConfig: S.optional(
+      AmazonManagedKafkaEventSourceConfig,
+    ),
+    SelfManagedKafkaEventSourceConfig: S.optional(
+      SelfManagedKafkaEventSourceConfig,
+    ),
+    DocumentDBEventSourceConfig: S.optional(DocumentDBEventSourceConfig),
+    EventSourceMappingArn: S.optional(S.String),
+    ProvisionedPollerConfig: S.optional(ProvisionedPollerConfig),
+  }),
+).annotate({
+  identifier: "EventSourceMappingConfiguration",
+}) as any as S.Schema<EventSourceMappingConfiguration>;
+export type Runtime =
+  | "nodejs"
+  | "nodejs4.3"
+  | "nodejs6.10"
+  | "nodejs8.10"
+  | "nodejs10.x"
+  | "nodejs12.x"
+  | "nodejs14.x"
+  | "nodejs16.x"
+  | "nodejs18.x"
+  | "nodejs20.x"
+  | "nodejs22.x"
+  | "nodejs24.x"
+  | "java8"
+  | "java8.al2"
+  | "java11"
+  | "java17"
+  | "java21"
+  | "java25"
+  | "python2.7"
+  | "python3.6"
+  | "python3.7"
+  | "python3.8"
+  | "python3.9"
+  | "python3.10"
+  | "python3.11"
+  | "python3.12"
+  | "python3.13"
+  | "python3.14"
+  | "dotnetcore1.0"
+  | "dotnetcore2.0"
+  | "dotnetcore2.1"
+  | "dotnetcore3.1"
+  | "dotnet6"
+  | "dotnet8"
+  | "dotnet10"
+  | "nodejs4.3-edge"
+  | "go1.x"
+  | "ruby2.5"
+  | "ruby2.7"
+  | "ruby3.2"
+  | "ruby3.3"
+  | "ruby3.4"
+  | "ruby4.0"
+  | "provided"
+  | "provided.al2"
+  | "provided.al2023"
+  | (string & {});
+export const Runtime = /*@__PURE__*/ S.String;
+
+export type Handler = string;
+export type S3Bucket = string;
+export type S3Key = string;
+export type S3ObjectVersion = string;
+export type S3ObjectStorageMode = "COPY" | "REFERENCE" | (string & {});
+export const S3ObjectStorageMode = /*@__PURE__*/ S.String;
+
+export interface FunctionCode {
+  ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
+  S3Bucket?: string;
+  S3Key?: string;
+  S3ObjectVersion?: string;
+  S3ObjectStorageMode?: S3ObjectStorageMode;
+  ImageUri?: string;
+  SourceKMSKeyArn?: string;
+}
+export const FunctionCode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ZipFile: S.optional(SensitiveBlob),
+    S3Bucket: S.optional(S.String),
+    S3Key: S.optional(S.String),
+    S3ObjectVersion: S.optional(S.String),
+    S3ObjectStorageMode: S.optional(S3ObjectStorageMode),
+    ImageUri: S.optional(S.String),
+    SourceKMSKeyArn: S.optional(S.String),
+  }),
+).annotate({ identifier: "FunctionCode" }) as any as S.Schema<FunctionCode>;
+export type Timeout = number;
+export type MemorySize = number;
+export type FunctionVersionLatestPublished = "LATEST_PUBLISHED" | (string & {});
+export const FunctionVersionLatestPublished = /*@__PURE__*/ S.String;
+
+export type SubnetIds = string[];
+export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupIds = string[];
+export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export interface VpcConfig {
+  SubnetIds?: string[];
+  SecurityGroupIds?: string[];
+  Ipv6AllowedForDualStack?: boolean;
+}
+export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetIds: S.optional(SubnetIds),
+    SecurityGroupIds: S.optional(SecurityGroupIds),
+    Ipv6AllowedForDualStack: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
+export type PackageType = "Zip" | "Image" | (string & {});
+export const PackageType = /*@__PURE__*/ S.String;
+
+export type ResourceArn = string;
+export interface DeadLetterConfig {
+  TargetArn?: string;
+}
+export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TargetArn: S.optional(S.String) }),
+).annotate({
+  identifier: "DeadLetterConfig",
+}) as any as S.Schema<DeadLetterConfig>;
+export type EnvironmentVariableName = string | redacted.Redacted<string>;
+export type EnvironmentVariableValue = string | redacted.Redacted<string>;
+export type EnvironmentVariables = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const EnvironmentVariables = /*@__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export interface Environment {
+  Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
+}
+export const Environment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Variables: S.optional(EnvironmentVariables) }),
+).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
+export type TracingMode = "Active" | "PassThrough" | (string & {});
+export const TracingMode = /*@__PURE__*/ S.String;
+
+export interface TracingConfig {
+  Mode?: TracingMode;
+}
+export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Mode: S.optional(TracingMode) }),
+).annotate({ identifier: "TracingConfig" }) as any as S.Schema<TracingConfig>;
+export type LayerVersionArn = string;
+export type LayerList = string[];
+export const LayerList = /*@__PURE__*/ S.Array(S.String);
+export type FileSystemArn = string;
+export type LocalMountPath = string;
+export interface FileSystemConfig {
+  Arn: string;
+  LocalMountPath: string;
+}
+export const FileSystemConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String, LocalMountPath: S.String }),
+).annotate({
+  identifier: "FileSystemConfig",
+}) as any as S.Schema<FileSystemConfig>;
+export type FileSystemConfigList = FileSystemConfig[];
+export const FileSystemConfigList = /*@__PURE__*/ S.Array(FileSystemConfig);
+export type StringList = string[];
+export const StringList = /*@__PURE__*/ S.Array(S.String);
+export type WorkingDirectory = string;
+export interface ImageConfig {
+  EntryPoint?: string[];
+  Command?: string[];
+  WorkingDirectory?: string;
+}
+export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EntryPoint: S.optional(StringList),
+    Command: S.optional(StringList),
+    WorkingDirectory: S.optional(S.String),
+  }),
+).annotate({ identifier: "ImageConfig" }) as any as S.Schema<ImageConfig>;
+export type EphemeralStorageSize = number;
+export interface EphemeralStorage {
+  Size: number;
+}
+export const EphemeralStorage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Size: S.Number }),
+).annotate({
+  identifier: "EphemeralStorage",
+}) as any as S.Schema<EphemeralStorage>;
+export type SnapStartApplyOn = "PublishedVersions" | "None" | (string & {});
+export const SnapStartApplyOn = /*@__PURE__*/ S.String;
+
+export interface SnapStart {
+  ApplyOn?: SnapStartApplyOn;
+}
+export const SnapStart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplyOn: S.optional(SnapStartApplyOn) }),
+).annotate({ identifier: "SnapStart" }) as any as S.Schema<SnapStart>;
+export type LogFormat = "JSON" | "Text" | (string & {});
+export const LogFormat = /*@__PURE__*/ S.String;
+
+export type ApplicationLogLevel =
+  | "TRACE"
+  | "DEBUG"
+  | "INFO"
+  | "WARN"
+  | "ERROR"
+  | "FATAL"
+  | (string & {});
+export const ApplicationLogLevel = /*@__PURE__*/ S.String;
+
+export type SystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
+export const SystemLogLevel = /*@__PURE__*/ S.String;
+
+export type LogGroup = string;
+export interface LoggingConfig {
+  LogFormat?: LogFormat;
+  ApplicationLogLevel?: ApplicationLogLevel;
+  SystemLogLevel?: SystemLogLevel;
+  LogGroup?: string;
+}
+export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LogFormat: S.optional(LogFormat),
+    ApplicationLogLevel: S.optional(ApplicationLogLevel),
+    SystemLogLevel: S.optional(SystemLogLevel),
+    LogGroup: S.optional(S.String),
+  }),
+).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
+export type TenantIsolationMode = "PER_TENANT" | (string & {});
+export const TenantIsolationMode = /*@__PURE__*/ S.String;
+
+export interface TenancyConfig {
+  TenantIsolationMode: TenantIsolationMode;
+}
+export const TenancyConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TenantIsolationMode: TenantIsolationMode }),
+).annotate({ identifier: "TenancyConfig" }) as any as S.Schema<TenancyConfig>;
+export type PerExecutionEnvironmentMaxConcurrency = number;
+export type ExecutionEnvironmentMemoryGiBPerVCpu = number;
+export interface LambdaManagedInstancesCapacityProviderConfig {
+  CapacityProviderArn: string;
+  PerExecutionEnvironmentMaxConcurrency?: number;
+  ExecutionEnvironmentMemoryGiBPerVCpu?: number;
+}
+export const LambdaManagedInstancesCapacityProviderConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      CheckpointToken: S.optional(S.String),
-      NewExecutionState: CheckpointUpdatedExecutionState,
+      CapacityProviderArn: S.String,
+      PerExecutionEnvironmentMaxConcurrency: S.optional(S.Number),
+      ExecutionEnvironmentMemoryGiBPerVCpu: S.optional(S.Number),
     }),
   ).annotate({
-    identifier: "CheckpointDurableExecutionResponse",
-  }) as any as S.Schema<CheckpointDurableExecutionResponse>;
-export type ThrottleReason =
-  | "ConcurrentInvocationLimitExceeded"
-  | "FunctionInvocationRateLimitExceeded"
-  | "ReservedFunctionConcurrentInvocationLimitExceeded"
-  | "ReservedFunctionInvocationRateLimitExceeded"
-  | "CallerRateLimitExceeded"
-  | "ConcurrentSnapshotCreateLimitExceeded"
+    identifier: "LambdaManagedInstancesCapacityProviderConfig",
+  }) as any as S.Schema<LambdaManagedInstancesCapacityProviderConfig>;
+export interface CapacityProviderConfig {
+  LambdaManagedInstancesCapacityProviderConfig: LambdaManagedInstancesCapacityProviderConfig;
+}
+export const CapacityProviderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LambdaManagedInstancesCapacityProviderConfig:
+      LambdaManagedInstancesCapacityProviderConfig,
+  }),
+).annotate({
+  identifier: "CapacityProviderConfig",
+}) as any as S.Schema<CapacityProviderConfig>;
+export type RetentionPeriodInDays = number;
+export type ExecutionTimeout = number;
+export interface DurableConfig {
+  RetentionPeriodInDays?: number;
+  ExecutionTimeout?: number;
+}
+export const DurableConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RetentionPeriodInDays: S.optional(S.Number),
+    ExecutionTimeout: S.optional(S.Number),
+  }),
+).annotate({ identifier: "DurableConfig" }) as any as S.Schema<DurableConfig>;
+export interface CreateFunctionRequest {
+  FunctionName: string;
+  Runtime?: Runtime;
+  Role: string;
+  Handler?: string;
+  Code: FunctionCode;
+  Description?: string;
+  Timeout?: number;
+  MemorySize?: number;
+  Publish?: boolean;
+  PublishTo?: FunctionVersionLatestPublished;
+  VpcConfig?: VpcConfig;
+  PackageType?: PackageType;
+  DeadLetterConfig?: DeadLetterConfig;
+  Environment?: Environment;
+  KMSKeyArn?: string;
+  TracingConfig?: TracingConfig;
+  Tags?: { [key: string]: string | undefined };
+  Layers?: string[];
+  FileSystemConfigs?: FileSystemConfig[];
+  CodeSigningConfigArn?: string;
+  ImageConfig?: ImageConfig;
+  Architectures?: Architecture[];
+  EphemeralStorage?: EphemeralStorage;
+  SnapStart?: SnapStart;
+  LoggingConfig?: LoggingConfig;
+  TenancyConfig?: TenancyConfig;
+  CapacityProviderConfig?: CapacityProviderConfig;
+  DurableConfig?: DurableConfig;
+}
+export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String,
+    Runtime: S.optional(Runtime),
+    Role: S.String,
+    Handler: S.optional(S.String),
+    Code: FunctionCode,
+    Description: S.optional(S.String),
+    Timeout: S.optional(S.Number),
+    MemorySize: S.optional(S.Number),
+    Publish: S.optional(S.Boolean),
+    PublishTo: S.optional(FunctionVersionLatestPublished),
+    VpcConfig: S.optional(VpcConfig),
+    PackageType: S.optional(PackageType),
+    DeadLetterConfig: S.optional(DeadLetterConfig),
+    Environment: S.optional(Environment),
+    KMSKeyArn: S.optional(S.String),
+    TracingConfig: S.optional(TracingConfig),
+    Tags: S.optional(Tags),
+    Layers: S.optional(LayerList),
+    FileSystemConfigs: S.optional(FileSystemConfigList),
+    CodeSigningConfigArn: S.optional(S.String),
+    ImageConfig: S.optional(ImageConfig),
+    Architectures: S.optional(ArchitecturesList),
+    EphemeralStorage: S.optional(EphemeralStorage),
+    SnapStart: S.optional(SnapStart),
+    LoggingConfig: S.optional(LoggingConfig),
+    TenancyConfig: S.optional(TenancyConfig),
+    CapacityProviderConfig: S.optional(CapacityProviderConfig),
+    DurableConfig: S.optional(DurableConfig),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2015-03-31/functions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateFunctionRequest",
+}) as any as S.Schema<CreateFunctionRequest>;
+export type NameSpacedFunctionArn = string;
+export type VpcId = string;
+export interface VpcConfigResponse {
+  SubnetIds?: string[];
+  SecurityGroupIds?: string[];
+  VpcId?: string;
+  Ipv6AllowedForDualStack?: boolean;
+}
+export const VpcConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetIds: S.optional(SubnetIds),
+    SecurityGroupIds: S.optional(SecurityGroupIds),
+    VpcId: S.optional(S.String),
+    Ipv6AllowedForDualStack: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VpcConfigResponse",
+}) as any as S.Schema<VpcConfigResponse>;
+export type SensitiveString = string | redacted.Redacted<string>;
+export interface EnvironmentError {
+  ErrorCode?: string;
+  Message?: string | redacted.Redacted<string>;
+}
+export const EnvironmentError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorCode: S.optional(S.String),
+    Message: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "EnvironmentError",
+}) as any as S.Schema<EnvironmentError>;
+export interface EnvironmentResponse {
+  Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
+  Error?: EnvironmentError;
+}
+export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Variables: S.optional(EnvironmentVariables),
+    Error: S.optional(EnvironmentError),
+  }),
+).annotate({
+  identifier: "EnvironmentResponse",
+}) as any as S.Schema<EnvironmentResponse>;
+export interface TracingConfigResponse {
+  Mode?: TracingMode;
+}
+export const TracingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Mode: S.optional(TracingMode) }),
+).annotate({
+  identifier: "TracingConfigResponse",
+}) as any as S.Schema<TracingConfigResponse>;
+export interface Layer {
+  Arn?: string;
+  CodeSize?: number;
+  SigningProfileVersionArn?: string;
+  SigningJobArn?: string;
+}
+export const Layer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    CodeSize: S.optional(S.Number),
+    SigningProfileVersionArn: S.optional(S.String),
+    SigningJobArn: S.optional(S.String),
+  }),
+).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
+export type LayersReferenceList = Layer[];
+export const LayersReferenceList = /*@__PURE__*/ S.Array(Layer);
+export type State =
+  | "Pending"
+  | "Active"
+  | "Inactive"
+  | "Failed"
+  | "Deactivating"
+  | "Deactivated"
+  | "ActiveNonInvocable"
+  | "Deleting"
   | (string & {});
-export const ThrottleReason = /*@__PURE__*/ S.String;
+export const State = /*@__PURE__*/ S.String;
+
+export type StateReason = string;
+export type StateReasonCode =
+  | "Idle"
+  | "Creating"
+  | "Restoring"
+  | "EniLimitExceeded"
+  | "InsufficientRolePermissions"
+  | "InvalidConfiguration"
+  | "InternalError"
+  | "SubnetOutOfIPAddresses"
+  | "InvalidSubnet"
+  | "InvalidSecurityGroup"
+  | "ImageDeleted"
+  | "ImageAccessDenied"
+  | "InvalidImage"
+  | "KMSKeyAccessDenied"
+  | "KMSKeyNotFound"
+  | "InvalidStateKMSKey"
+  | "DisabledKMSKey"
+  | "EFSIOError"
+  | "EFSMountConnectivityError"
+  | "EFSMountFailure"
+  | "EFSMountTimeout"
+  | "InvalidRuntime"
+  | "InvalidZipFileException"
+  | "FunctionError"
+  | "ServiceQuotaExceededException"
+  | "VcpuLimitExceeded"
+  | "CapacityProviderScalingLimitExceeded"
+  | "InsufficientCapacity"
+  | "EC2RequestLimitExceeded"
+  | "FunctionError.InitTimeout"
+  | "FunctionError.RuntimeInitError"
+  | "FunctionError.ExtensionInitError"
+  | "FunctionError.InvalidEntryPoint"
+  | "FunctionError.InvalidWorkingDirectory"
+  | "FunctionError.PermissionDenied"
+  | "FunctionError.TooManyExtensions"
+  | "FunctionError.InitResourceExhausted"
+  | "DisallowedByVpcEncryptionControl"
+  | "DrainingDurableExecutions"
+  | "Creating"
+  | (string & {});
+export const StateReasonCode = /*@__PURE__*/ S.String;
+
+export type LastUpdateStatus =
+  | "Successful"
+  | "Failed"
+  | "InProgress"
+  | (string & {});
+export const LastUpdateStatus = /*@__PURE__*/ S.String;
+
+export type LastUpdateStatusReason = string;
+export type LastUpdateStatusReasonCode =
+  | "EniLimitExceeded"
+  | "InsufficientRolePermissions"
+  | "InvalidConfiguration"
+  | "InternalError"
+  | "SubnetOutOfIPAddresses"
+  | "InvalidSubnet"
+  | "InvalidSecurityGroup"
+  | "ImageDeleted"
+  | "ImageAccessDenied"
+  | "InvalidImage"
+  | "KMSKeyAccessDenied"
+  | "KMSKeyNotFound"
+  | "InvalidStateKMSKey"
+  | "DisabledKMSKey"
+  | "EFSIOError"
+  | "EFSMountConnectivityError"
+  | "EFSMountFailure"
+  | "EFSMountTimeout"
+  | "InvalidRuntime"
+  | "InvalidZipFileException"
+  | "FunctionError"
+  | "ServiceQuotaExceededException"
+  | "VcpuLimitExceeded"
+  | "CapacityProviderScalingLimitExceeded"
+  | "InsufficientCapacity"
+  | "EC2RequestLimitExceeded"
+  | "FunctionError.InitTimeout"
+  | "FunctionError.RuntimeInitError"
+  | "FunctionError.ExtensionInitError"
+  | "FunctionError.InvalidEntryPoint"
+  | "FunctionError.InvalidWorkingDirectory"
+  | "FunctionError.PermissionDenied"
+  | "FunctionError.TooManyExtensions"
+  | "FunctionError.InitResourceExhausted"
+  | "DisallowedByVpcEncryptionControl"
+  | "Creating"
+  | (string & {});
+export const LastUpdateStatusReasonCode = /*@__PURE__*/ S.String;
+
+export interface ImageConfigError {
+  ErrorCode?: string;
+  Message?: string | redacted.Redacted<string>;
+}
+export const ImageConfigError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorCode: S.optional(S.String),
+    Message: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "ImageConfigError",
+}) as any as S.Schema<ImageConfigError>;
+export interface ImageConfigResponse {
+  ImageConfig?: ImageConfig;
+  Error?: ImageConfigError;
+}
+export const ImageConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ImageConfig: S.optional(ImageConfig),
+    Error: S.optional(ImageConfigError),
+  }),
+).annotate({
+  identifier: "ImageConfigResponse",
+}) as any as S.Schema<ImageConfigResponse>;
+export type SnapStartOptimizationStatus = "On" | "Off" | (string & {});
+export const SnapStartOptimizationStatus = /*@__PURE__*/ S.String;
+
+export interface SnapStartResponse {
+  ApplyOn?: SnapStartApplyOn;
+  OptimizationStatus?: SnapStartOptimizationStatus;
+}
+export const SnapStartResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplyOn: S.optional(SnapStartApplyOn),
+    OptimizationStatus: S.optional(SnapStartOptimizationStatus),
+  }),
+).annotate({
+  identifier: "SnapStartResponse",
+}) as any as S.Schema<SnapStartResponse>;
+export type RuntimeVersionArn = string;
+export interface RuntimeVersionError {
+  ErrorCode?: string;
+  Message?: string | redacted.Redacted<string>;
+}
+export const RuntimeVersionError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorCode: S.optional(S.String),
+    Message: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "RuntimeVersionError",
+}) as any as S.Schema<RuntimeVersionError>;
+export interface RuntimeVersionConfig {
+  RuntimeVersionArn?: string;
+  Error?: RuntimeVersionError;
+}
+export const RuntimeVersionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuntimeVersionArn: S.optional(S.String),
+    Error: S.optional(RuntimeVersionError),
+  }),
+).annotate({
+  identifier: "RuntimeVersionConfig",
+}) as any as S.Schema<RuntimeVersionConfig>;
+export interface FunctionConfiguration {
+  FunctionName?: string;
+  FunctionArn?: string;
+  Runtime?: Runtime;
+  Role?: string;
+  Handler?: string;
+  CodeSize?: number;
+  Description?: string;
+  Timeout?: number;
+  MemorySize?: number;
+  LastModified?: string;
+  CodeSha256?: string;
+  Version?: string;
+  VpcConfig?: VpcConfigResponse;
+  DeadLetterConfig?: DeadLetterConfig;
+  Environment?: EnvironmentResponse;
+  KMSKeyArn?: string;
+  TracingConfig?: TracingConfigResponse;
+  MasterArn?: string;
+  RevisionId?: string;
+  Layers?: Layer[];
+  State?: State;
+  StateReason?: string;
+  StateReasonCode?: StateReasonCode;
+  LastUpdateStatus?: LastUpdateStatus;
+  LastUpdateStatusReason?: string;
+  LastUpdateStatusReasonCode?: LastUpdateStatusReasonCode;
+  FileSystemConfigs?: FileSystemConfig[];
+  SigningProfileVersionArn?: string;
+  SigningJobArn?: string;
+  PackageType?: PackageType;
+  ImageConfigResponse?: ImageConfigResponse;
+  Architectures?: Architecture[];
+  EphemeralStorage?: EphemeralStorage;
+  SnapStart?: SnapStartResponse;
+  RuntimeVersionConfig?: RuntimeVersionConfig;
+  LoggingConfig?: LoggingConfig;
+  TenancyConfig?: TenancyConfig;
+  CapacityProviderConfig?: CapacityProviderConfig;
+  ConfigSha256?: string;
+  DurableConfig?: DurableConfig;
+}
+export const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.optional(S.String),
+    FunctionArn: S.optional(S.String),
+    Runtime: S.optional(Runtime),
+    Role: S.optional(S.String),
+    Handler: S.optional(S.String),
+    CodeSize: S.optional(S.Number),
+    Description: S.optional(S.String),
+    Timeout: S.optional(S.Number),
+    MemorySize: S.optional(S.Number),
+    LastModified: S.optional(S.String),
+    CodeSha256: S.optional(S.String),
+    Version: S.optional(S.String),
+    VpcConfig: S.optional(VpcConfigResponse),
+    DeadLetterConfig: S.optional(DeadLetterConfig),
+    Environment: S.optional(EnvironmentResponse),
+    KMSKeyArn: S.optional(S.String),
+    TracingConfig: S.optional(TracingConfigResponse),
+    MasterArn: S.optional(S.String),
+    RevisionId: S.optional(S.String),
+    Layers: S.optional(LayersReferenceList),
+    State: S.optional(State),
+    StateReason: S.optional(S.String),
+    StateReasonCode: S.optional(StateReasonCode),
+    LastUpdateStatus: S.optional(LastUpdateStatus),
+    LastUpdateStatusReason: S.optional(S.String),
+    LastUpdateStatusReasonCode: S.optional(LastUpdateStatusReasonCode),
+    FileSystemConfigs: S.optional(FileSystemConfigList),
+    SigningProfileVersionArn: S.optional(S.String),
+    SigningJobArn: S.optional(S.String),
+    PackageType: S.optional(PackageType),
+    ImageConfigResponse: S.optional(ImageConfigResponse),
+    Architectures: S.optional(ArchitecturesList),
+    EphemeralStorage: S.optional(EphemeralStorage),
+    SnapStart: S.optional(SnapStartResponse),
+    RuntimeVersionConfig: S.optional(RuntimeVersionConfig),
+    LoggingConfig: S.optional(LoggingConfig),
+    TenancyConfig: S.optional(TenancyConfig),
+    CapacityProviderConfig: S.optional(CapacityProviderConfig),
+    ConfigSha256: S.optional(S.String),
+    DurableConfig: S.optional(DurableConfig),
+  }),
+).annotate({
+  identifier: "FunctionConfiguration",
+}) as any as S.Schema<FunctionConfiguration>;
+export type FunctionUrlFunctionName = string;
+export type FunctionUrlQualifier = string;
+export type AllowCredentials = boolean;
+export type Header = string;
+export type HeadersList = string[];
+export const HeadersList = /*@__PURE__*/ S.Array(S.String);
+export type Method = string;
+export type AllowMethodsList = string[];
+export const AllowMethodsList = /*@__PURE__*/ S.Array(S.String);
+export type Origin = string;
+export type AllowOriginsList = string[];
+export const AllowOriginsList = /*@__PURE__*/ S.Array(S.String);
+export type MaxAge = number;
+export interface Cors {
+  AllowCredentials?: boolean;
+  AllowHeaders?: string[];
+  AllowMethods?: string[];
+  AllowOrigins?: string[];
+  ExposeHeaders?: string[];
+  MaxAge?: number;
+}
+export const Cors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AllowCredentials: S.optional(S.Boolean),
+    AllowHeaders: S.optional(HeadersList),
+    AllowMethods: S.optional(AllowMethodsList),
+    AllowOrigins: S.optional(AllowOriginsList),
+    ExposeHeaders: S.optional(HeadersList),
+    MaxAge: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Cors" }) as any as S.Schema<Cors>;
+export type InvokeMode = "BUFFERED" | "RESPONSE_STREAM" | (string & {});
+export const InvokeMode = /*@__PURE__*/ S.String;
+
+export interface CreateFunctionUrlConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+  AuthType: FunctionUrlAuthType;
+  Cors?: Cors;
+  InvokeMode?: InvokeMode;
+}
+export const CreateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    AuthType: FunctionUrlAuthType,
+    Cors: S.optional(Cors),
+    InvokeMode: S.optional(InvokeMode),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2021-10-31/functions/{FunctionName}/url",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateFunctionUrlConfigRequest",
+}) as any as S.Schema<CreateFunctionUrlConfigRequest>;
+export type FunctionUrl = string;
+export interface CreateFunctionUrlConfigResponse {
+  FunctionUrl: string;
+  FunctionArn: string;
+  AuthType: FunctionUrlAuthType;
+  Cors?: Cors;
+  CreationTime: string;
+  InvokeMode?: InvokeMode;
+}
+export const CreateFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionUrl: S.String,
+    FunctionArn: S.String,
+    AuthType: FunctionUrlAuthType,
+    Cors: S.optional(Cors),
+    CreationTime: S.String,
+    InvokeMode: S.optional(InvokeMode),
+  }),
+).annotate({
+  identifier: "CreateFunctionUrlConfigResponse",
+}) as any as S.Schema<CreateFunctionUrlConfigResponse>;
+export interface DeleteAliasRequest {
+  FunctionName: string;
+  Name: string;
+}
+export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAliasRequest",
+}) as any as S.Schema<DeleteAliasRequest>;
+export interface DeleteAliasResponse {}
+export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAliasResponse",
+}) as any as S.Schema<DeleteAliasResponse>;
+export interface DeleteCapacityProviderRequest {
+  CapacityProviderName: string;
+}
+export const DeleteCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2025-11-30/capacity-providers/{CapacityProviderName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCapacityProviderRequest",
+}) as any as S.Schema<DeleteCapacityProviderRequest>;
+export interface DeleteCapacityProviderResponse {
+  CapacityProvider: CapacityProvider;
+}
+export const DeleteCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CapacityProvider: CapacityProvider }),
+).annotate({
+  identifier: "DeleteCapacityProviderResponse",
+}) as any as S.Schema<DeleteCapacityProviderResponse>;
+export interface DeleteCodeSigningConfigRequest {
+  CodeSigningConfigArn: string;
+}
+export const DeleteCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCodeSigningConfigRequest",
+}) as any as S.Schema<DeleteCodeSigningConfigRequest>;
+export interface DeleteCodeSigningConfigResponse {}
+export const DeleteCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCodeSigningConfigResponse",
+}) as any as S.Schema<DeleteCodeSigningConfigResponse>;
+export interface DeleteEventSourceMappingRequest {
+  UUID: string;
+}
+export const DeleteEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UUID: S.String.pipe(T.HttpLabel("UUID")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2015-03-31/event-source-mappings/{UUID}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteEventSourceMappingRequest",
+}) as any as S.Schema<DeleteEventSourceMappingRequest>;
 export interface DeleteFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -554,12 +2462,65 @@ export const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteFunctionResponse",
 }) as any as S.Schema<DeleteFunctionResponse>;
+export interface DeleteFunctionCodeSigningConfigRequest {
+  FunctionName: string;
+}
+export const DeleteFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/2020-06-30/functions/{FunctionName}/code-signing-config",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteFunctionCodeSigningConfigRequest",
+}) as any as S.Schema<DeleteFunctionCodeSigningConfigRequest>;
+export interface DeleteFunctionCodeSigningConfigResponse {}
+export const DeleteFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteFunctionCodeSigningConfigResponse",
+}) as any as S.Schema<DeleteFunctionCodeSigningConfigResponse>;
+export interface DeleteFunctionConcurrencyRequest {
+  FunctionName: string;
+}
+export const DeleteFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2017-10-31/functions/{FunctionName}/concurrency",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFunctionConcurrencyRequest",
+}) as any as S.Schema<DeleteFunctionConcurrencyRequest>;
+export interface DeleteFunctionConcurrencyResponse {}
+export const DeleteFunctionConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFunctionConcurrencyResponse",
+}) as any as S.Schema<DeleteFunctionConcurrencyResponse>;
 export interface DeleteFunctionEventInvokeConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const DeleteFunctionEventInvokeConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
       Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
@@ -576,14 +2537,106 @@ export const DeleteFunctionEventInvokeConfigRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteFunctionEventInvokeConfigRequest",
-  }) as any as S.Schema<DeleteFunctionEventInvokeConfigRequest>;
+).annotate({
+  identifier: "DeleteFunctionEventInvokeConfigRequest",
+}) as any as S.Schema<DeleteFunctionEventInvokeConfigRequest>;
 export interface DeleteFunctionEventInvokeConfigResponse {}
-export const DeleteFunctionEventInvokeConfigResponse =
+export const DeleteFunctionEventInvokeConfigResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteFunctionEventInvokeConfigResponse",
+}) as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>;
+export interface DeleteFunctionUrlConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+}
+export const DeleteFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2021-10-31/functions/{FunctionName}/url",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFunctionUrlConfigRequest",
+}) as any as S.Schema<DeleteFunctionUrlConfigRequest>;
+export interface DeleteFunctionUrlConfigResponse {}
+export const DeleteFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFunctionUrlConfigResponse",
+}) as any as S.Schema<DeleteFunctionUrlConfigResponse>;
+export interface DeleteLayerVersionRequest {
+  LayerName: string;
+  VersionNumber: number;
+}
+export const DeleteLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
+    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteLayerVersionRequest",
+}) as any as S.Schema<DeleteLayerVersionRequest>;
+export interface DeleteLayerVersionResponse {}
+export const DeleteLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLayerVersionResponse",
+}) as any as S.Schema<DeleteLayerVersionResponse>;
+export type Qualifier = string;
+export interface DeleteProvisionedConcurrencyConfigRequest {
+  FunctionName: string;
+  Qualifier: string;
+}
+export const DeleteProvisionedConcurrencyConfigRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteProvisionedConcurrencyConfigRequest",
+  }) as any as S.Schema<DeleteProvisionedConcurrencyConfigRequest>;
+export interface DeleteProvisionedConcurrencyConfigResponse {}
+export const DeleteProvisionedConcurrencyConfigResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteFunctionEventInvokeConfigResponse",
-  }) as any as S.Schema<DeleteFunctionEventInvokeConfigResponse>;
+    identifier: "DeleteProvisionedConcurrencyConfigResponse",
+  }) as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>;
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -599,6 +2652,7 @@ export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountSettingsRequest",
 }) as any as S.Schema<GetAccountSettingsRequest>;
+export type UnreservedConcurrentExecutions = number;
 export interface AccountLimit {
   TotalCodeSize?: number;
   CodeSizeUnzipped?: number;
@@ -637,6 +2691,90 @@ export const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountSettingsResponse",
 }) as any as S.Schema<GetAccountSettingsResponse>;
+export interface GetAliasRequest {
+  FunctionName: string;
+  Name: string;
+}
+export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAliasRequest",
+}) as any as S.Schema<GetAliasRequest>;
+export interface GetCapacityProviderRequest {
+  CapacityProviderName: string;
+}
+export const GetCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-11-30/capacity-providers/{CapacityProviderName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCapacityProviderRequest",
+}) as any as S.Schema<GetCapacityProviderRequest>;
+export interface GetCapacityProviderResponse {
+  CapacityProvider: CapacityProvider;
+}
+export const GetCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CapacityProvider: CapacityProvider }),
+).annotate({
+  identifier: "GetCapacityProviderResponse",
+}) as any as S.Schema<GetCapacityProviderResponse>;
+export interface GetCodeSigningConfigRequest {
+  CodeSigningConfigArn: string;
+}
+export const GetCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCodeSigningConfigRequest",
+}) as any as S.Schema<GetCodeSigningConfigRequest>;
+export interface GetCodeSigningConfigResponse {
+  CodeSigningConfig: CodeSigningConfig;
+}
+export const GetCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CodeSigningConfig: CodeSigningConfig }),
+).annotate({
+  identifier: "GetCodeSigningConfigResponse",
+}) as any as S.Schema<GetCodeSigningConfigResponse>;
 export interface GetDurableExecutionRequest {
   DurableExecutionArn: string;
 }
@@ -659,6 +2797,8 @@ export const GetDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDurableExecutionRequest",
 }) as any as S.Schema<GetDurableExecutionRequest>;
+export type DurableExecutionName = string;
+export type OutputPayload = string | redacted.Redacted<string>;
 export type ExecutionStatus =
   | "RUNNING"
   | "SUCCEEDED"
@@ -667,6 +2807,8 @@ export type ExecutionStatus =
   | "STOPPED"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
+export type XAmznTraceId = string;
 export interface TraceHeader {
   XAmznTraceId?: string;
 }
@@ -686,24 +2828,26 @@ export interface GetDurableExecutionResponse {
   Version?: string;
   TraceHeader?: TraceHeader;
 }
-export const GetDurableExecutionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DurableExecutionArn: S.String,
-      DurableExecutionName: S.String,
-      FunctionArn: S.String,
-      InputPayload: S.optional(SensitiveString),
-      Result: S.optional(SensitiveString),
-      Error: S.optional(ErrorObject),
-      StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      Status: ExecutionStatus,
-      EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Version: S.optional(S.String),
-      TraceHeader: S.optional(TraceHeader),
-    }),
-  ).annotate({
-    identifier: "GetDurableExecutionResponse",
-  }) as any as S.Schema<GetDurableExecutionResponse>;
+export const GetDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DurableExecutionArn: S.String,
+    DurableExecutionName: S.String,
+    FunctionArn: S.String,
+    InputPayload: S.optional(SensitiveString),
+    Result: S.optional(SensitiveString),
+    Error: S.optional(ErrorObject),
+    StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    Status: ExecutionStatus,
+    EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Version: S.optional(S.String),
+    TraceHeader: S.optional(TraceHeader),
+  }),
+).annotate({
+  identifier: "GetDurableExecutionResponse",
+}) as any as S.Schema<GetDurableExecutionResponse>;
+export type IncludeExecutionData = boolean;
+export type ItemCount = number;
+export type ReverseOrder = boolean;
 export interface GetDurableExecutionHistoryRequest {
   DurableExecutionArn: string;
   IncludeExecutionData?: boolean;
@@ -711,32 +2855,31 @@ export interface GetDurableExecutionHistoryRequest {
   Marker?: string;
   ReverseOrder?: boolean;
 }
-export const GetDurableExecutionHistoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
-      IncludeExecutionData: S.optional(S.Boolean).pipe(
-        T.HttpQuery("IncludeExecutionData"),
-      ),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      ReverseOrder: S.optional(S.Boolean).pipe(T.HttpQuery("ReverseOrder")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/history",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDurableExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
+    IncludeExecutionData: S.optional(S.Boolean).pipe(
+      T.HttpQuery("IncludeExecutionData"),
     ),
-  ).annotate({
-    identifier: "GetDurableExecutionHistoryRequest",
-  }) as any as S.Schema<GetDurableExecutionHistoryRequest>;
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    ReverseOrder: S.optional(S.Boolean).pipe(T.HttpQuery("ReverseOrder")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/history",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDurableExecutionHistoryRequest",
+}) as any as S.Schema<GetDurableExecutionHistoryRequest>;
 export type EventType =
   | "ExecutionStarted"
   | "ExecutionSucceeded"
@@ -764,6 +2907,9 @@ export type EventType =
   | "InvocationCompleted"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
+export type EventId = number;
+export type Truncated = boolean;
 export interface EventInput {
   Payload?: string | redacted.Redacted<string>;
   Truncated?: boolean;
@@ -926,25 +3072,25 @@ export interface ChainedInvokeStartedDetails {
   ExecutedVersion?: string;
   DurableExecutionArn?: string;
 }
-export const ChainedInvokeStartedDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String,
-      TenantId: S.optional(S.String),
-      Input: S.optional(EventInput),
-      ExecutedVersion: S.optional(S.String),
-      DurableExecutionArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ChainedInvokeStartedDetails",
-  }) as any as S.Schema<ChainedInvokeStartedDetails>;
+export const ChainedInvokeStartedDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String,
+    TenantId: S.optional(S.String),
+    Input: S.optional(EventInput),
+    ExecutedVersion: S.optional(S.String),
+    DurableExecutionArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ChainedInvokeStartedDetails",
+}) as any as S.Schema<ChainedInvokeStartedDetails>;
 export interface ChainedInvokeSucceededDetails {
   Result: EventResult;
 }
-export const ChainedInvokeSucceededDetails =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Result: EventResult })).annotate({
-    identifier: "ChainedInvokeSucceededDetails",
-  }) as any as S.Schema<ChainedInvokeSucceededDetails>;
+export const ChainedInvokeSucceededDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Result: EventResult }),
+).annotate({
+  identifier: "ChainedInvokeSucceededDetails",
+}) as any as S.Schema<ChainedInvokeSucceededDetails>;
 export interface ChainedInvokeFailedDetails {
   Error: EventError;
 }
@@ -956,17 +3102,19 @@ export const ChainedInvokeFailedDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ChainedInvokeTimedOutDetails {
   Error: EventError;
 }
-export const ChainedInvokeTimedOutDetails =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Error: EventError })).annotate({
-    identifier: "ChainedInvokeTimedOutDetails",
-  }) as any as S.Schema<ChainedInvokeTimedOutDetails>;
+export const ChainedInvokeTimedOutDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Error: EventError }),
+).annotate({
+  identifier: "ChainedInvokeTimedOutDetails",
+}) as any as S.Schema<ChainedInvokeTimedOutDetails>;
 export interface ChainedInvokeStoppedDetails {
   Error: EventError;
 }
-export const ChainedInvokeStoppedDetails =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Error: EventError })).annotate({
-    identifier: "ChainedInvokeStoppedDetails",
-  }) as any as S.Schema<ChainedInvokeStoppedDetails>;
+export const ChainedInvokeStoppedDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Error: EventError }),
+).annotate({
+  identifier: "ChainedInvokeStoppedDetails",
+}) as any as S.Schema<ChainedInvokeStoppedDetails>;
 export interface CallbackStartedDetails {
   CallbackId: string;
   HeartbeatTimeout?: number;
@@ -1095,2536 +3243,28 @@ export interface GetDurableExecutionHistoryResponse {
   Events: Event[];
   NextMarker?: string;
 }
-export const GetDurableExecutionHistoryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Events: Events, NextMarker: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetDurableExecutionHistoryResponse",
-  }) as any as S.Schema<GetDurableExecutionHistoryResponse>;
+export const GetDurableExecutionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Events: Events, NextMarker: S.optional(S.String) }),
+).annotate({
+  identifier: "GetDurableExecutionHistoryResponse",
+}) as any as S.Schema<GetDurableExecutionHistoryResponse>;
 export interface GetDurableExecutionStateRequest {
   DurableExecutionArn: string;
   CheckpointToken: string;
   Marker?: string;
   MaxItems?: number;
 }
-export const GetDurableExecutionStateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
-      CheckpointToken: S.String.pipe(T.HttpQuery("CheckpointToken")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/state",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetDurableExecutionStateRequest",
-  }) as any as S.Schema<GetDurableExecutionStateRequest>;
-export interface GetDurableExecutionStateResponse {
-  Operations: Operation[];
-  NextMarker?: string;
-}
-export const GetDurableExecutionStateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Operations: Operations, NextMarker: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetDurableExecutionStateResponse",
-  }) as any as S.Schema<GetDurableExecutionStateResponse>;
-export interface GetFunctionEventInvokeConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-}
-export const GetFunctionEventInvokeConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetFunctionEventInvokeConfigRequest",
-  }) as any as S.Schema<GetFunctionEventInvokeConfigRequest>;
-export interface OnSuccess {
-  Destination?: string;
-}
-export const OnSuccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Destination: S.optional(S.String) }),
-).annotate({ identifier: "OnSuccess" }) as any as S.Schema<OnSuccess>;
-export interface OnFailure {
-  Destination?: string;
-}
-export const OnFailure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Destination: S.optional(S.String) }),
-).annotate({ identifier: "OnFailure" }) as any as S.Schema<OnFailure>;
-export interface DestinationConfig {
-  OnSuccess?: OnSuccess;
-  OnFailure?: OnFailure;
-}
-export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+export const GetDurableExecutionStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    OnSuccess: S.optional(OnSuccess),
-    OnFailure: S.optional(OnFailure),
-  }),
-).annotate({
-  identifier: "DestinationConfig",
-}) as any as S.Schema<DestinationConfig>;
-export interface FunctionEventInvokeConfig {
-  LastModified?: Date;
-  FunctionArn?: string;
-  MaximumRetryAttempts?: number;
-  MaximumEventAgeInSeconds?: number;
-  DestinationConfig?: DestinationConfig;
-}
-export const FunctionEventInvokeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    FunctionArn: S.optional(S.String),
-    MaximumRetryAttempts: S.optional(S.Number),
-    MaximumEventAgeInSeconds: S.optional(S.Number),
-    DestinationConfig: S.optional(DestinationConfig),
-  }),
-).annotate({
-  identifier: "FunctionEventInvokeConfig",
-}) as any as S.Schema<FunctionEventInvokeConfig>;
-export type ExecutionStatusList = ExecutionStatus[];
-export const ExecutionStatusList = /*@__PURE__*/ S.Array(ExecutionStatus);
-export interface ListDurableExecutionsByFunctionRequest {
-  FunctionName: string;
-  Qualifier?: string;
-  DurableExecutionName?: string;
-  Statuses?: ExecutionStatus[];
-  StartedAfter?: Date;
-  StartedBefore?: Date;
-  ReverseOrder?: boolean;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListDurableExecutionsByFunctionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      DurableExecutionName: S.optional(S.String).pipe(
-        T.HttpQuery("DurableExecutionName"),
-      ),
-      Statuses: S.optional(ExecutionStatusList).pipe(T.HttpQuery("Statuses")),
-      StartedAfter: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("StartedAfter")),
-      StartedBefore: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("StartedBefore")),
-      ReverseOrder: S.optional(S.Boolean).pipe(T.HttpQuery("ReverseOrder")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-12-01/functions/{FunctionName}/durable-executions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListDurableExecutionsByFunctionRequest",
-  }) as any as S.Schema<ListDurableExecutionsByFunctionRequest>;
-export interface Execution {
-  DurableExecutionArn: string;
-  DurableExecutionName: string;
-  FunctionArn: string;
-  Status: ExecutionStatus;
-  StartTimestamp: Date;
-  EndTimestamp?: Date;
-}
-export const Execution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DurableExecutionArn: S.String,
-    DurableExecutionName: S.String,
-    FunctionArn: S.String,
-    Status: ExecutionStatus,
-    StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
-export type DurableExecutions = Execution[];
-export const DurableExecutions = /*@__PURE__*/ S.Array(Execution);
-export interface ListDurableExecutionsByFunctionResponse {
-  DurableExecutions?: Execution[];
-  NextMarker?: string;
-}
-export const ListDurableExecutionsByFunctionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DurableExecutions: S.optional(DurableExecutions),
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDurableExecutionsByFunctionResponse",
-  }) as any as S.Schema<ListDurableExecutionsByFunctionResponse>;
-export interface ListFunctionEventInvokeConfigsRequest {
-  FunctionName: string;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListFunctionEventInvokeConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config/list",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListFunctionEventInvokeConfigsRequest",
-  }) as any as S.Schema<ListFunctionEventInvokeConfigsRequest>;
-export type FunctionEventInvokeConfigList = FunctionEventInvokeConfig[];
-export const FunctionEventInvokeConfigList =
-  /*@__PURE__*/ S.Array(FunctionEventInvokeConfig);
-export interface ListFunctionEventInvokeConfigsResponse {
-  FunctionEventInvokeConfigs?: FunctionEventInvokeConfig[];
-  NextMarker?: string;
-}
-export const ListFunctionEventInvokeConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionEventInvokeConfigs: S.optional(FunctionEventInvokeConfigList),
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFunctionEventInvokeConfigsResponse",
-  }) as any as S.Schema<ListFunctionEventInvokeConfigsResponse>;
-export interface ListTagsRequest {
-  Resource: string;
-}
-export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Resource: S.String.pipe(T.HttpLabel("Resource")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/2017-03-31/tags/{Resource}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsRequest",
-}) as any as S.Schema<ListTagsRequest>;
-export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export interface ListTagsResponse {
-  Tags?: { [key: string]: string | undefined };
-}
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(Tags) }),
-).annotate({
-  identifier: "ListTagsResponse",
-}) as any as S.Schema<ListTagsResponse>;
-export interface PutFunctionEventInvokeConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-  MaximumRetryAttempts?: number;
-  MaximumEventAgeInSeconds?: number;
-  DestinationConfig?: DestinationConfig;
-}
-export const PutFunctionEventInvokeConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      MaximumRetryAttempts: S.optional(S.Number),
-      MaximumEventAgeInSeconds: S.optional(S.Number),
-      DestinationConfig: S.optional(DestinationConfig),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "PutFunctionEventInvokeConfigRequest",
-  }) as any as S.Schema<PutFunctionEventInvokeConfigRequest>;
-export interface SendDurableExecutionCallbackFailureRequest {
-  CallbackId: string;
-  Error?: ErrorObject;
-}
-export const SendDurableExecutionCallbackFailureRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CallbackId: S.String.pipe(T.HttpLabel("CallbackId")),
-      Error: S.optional(ErrorObject)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ErrorObject" }),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-12-01/durable-execution-callbacks/{CallbackId}/fail",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "SendDurableExecutionCallbackFailureRequest",
-  }) as any as S.Schema<SendDurableExecutionCallbackFailureRequest>;
-export interface SendDurableExecutionCallbackFailureResponse {}
-export const SendDurableExecutionCallbackFailureResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SendDurableExecutionCallbackFailureResponse",
-  }) as any as S.Schema<SendDurableExecutionCallbackFailureResponse>;
-export interface SendDurableExecutionCallbackHeartbeatRequest {
-  CallbackId: string;
-}
-export const SendDurableExecutionCallbackHeartbeatRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CallbackId: S.String.pipe(T.HttpLabel("CallbackId")) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-12-01/durable-execution-callbacks/{CallbackId}/heartbeat",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "SendDurableExecutionCallbackHeartbeatRequest",
-  }) as any as S.Schema<SendDurableExecutionCallbackHeartbeatRequest>;
-export interface SendDurableExecutionCallbackHeartbeatResponse {}
-export const SendDurableExecutionCallbackHeartbeatResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SendDurableExecutionCallbackHeartbeatResponse",
-  }) as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>;
-export interface SendDurableExecutionCallbackSuccessRequest {
-  CallbackId: string;
-  Result?: T.StreamingInputBody;
-}
-export const SendDurableExecutionCallbackSuccessRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CallbackId: S.String.pipe(T.HttpLabel("CallbackId")),
-      Result: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-12-01/durable-execution-callbacks/{CallbackId}/succeed",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "SendDurableExecutionCallbackSuccessRequest",
-  }) as any as S.Schema<SendDurableExecutionCallbackSuccessRequest>;
-export interface SendDurableExecutionCallbackSuccessResponse {}
-export const SendDurableExecutionCallbackSuccessResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SendDurableExecutionCallbackSuccessResponse",
-  }) as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>;
-export interface StopDurableExecutionRequest {
-  DurableExecutionArn: string;
-  Error?: ErrorObject;
-}
-export const StopDurableExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
-      Error: S.optional(ErrorObject)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "ErrorObject" }),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/stop",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StopDurableExecutionRequest",
-  }) as any as S.Schema<StopDurableExecutionRequest>;
-export interface StopDurableExecutionResponse {
-  StopTimestamp: Date;
-}
-export const StopDurableExecutionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StopTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
-  ).annotate({
-    identifier: "StopDurableExecutionResponse",
-  }) as any as S.Schema<StopDurableExecutionResponse>;
-export interface TagResourceRequest {
-  Resource: string;
-  Tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Resource: S.String.pipe(T.HttpLabel("Resource")),
-    Tags: Tags,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/2017-03-31/tags/{Resource}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Key")),
-);
-export interface UntagResourceRequest {
-  Resource: string;
-  TagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Resource: S.String.pipe(T.HttpLabel("Resource")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/2017-03-31/tags/{Resource}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
-export interface UpdateFunctionEventInvokeConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-  MaximumRetryAttempts?: number;
-  MaximumEventAgeInSeconds?: number;
-  DestinationConfig?: DestinationConfig;
-}
-export const UpdateFunctionEventInvokeConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      MaximumRetryAttempts: S.optional(S.Number),
-      MaximumEventAgeInSeconds: S.optional(S.Number),
-      DestinationConfig: S.optional(DestinationConfig),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateFunctionEventInvokeConfigRequest",
-  }) as any as S.Schema<UpdateFunctionEventInvokeConfigRequest>;
-export type CapacityProviderSubnetIds = string[];
-export const CapacityProviderSubnetIds = /*@__PURE__*/ S.Array(S.String);
-export type CapacityProviderSecurityGroupIds = string[];
-export const CapacityProviderSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
-export interface CapacityProviderVpcConfig {
-  SubnetIds: string[];
-  SecurityGroupIds: string[];
-}
-export const CapacityProviderVpcConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubnetIds: CapacityProviderSubnetIds,
-    SecurityGroupIds: CapacityProviderSecurityGroupIds,
-  }),
-).annotate({
-  identifier: "CapacityProviderVpcConfig",
-}) as any as S.Schema<CapacityProviderVpcConfig>;
-export interface CapacityProviderPermissionsConfig {
-  CapacityProviderOperatorRoleArn: string;
-}
-export const CapacityProviderPermissionsConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CapacityProviderOperatorRoleArn: S.String }),
-  ).annotate({
-    identifier: "CapacityProviderPermissionsConfig",
-  }) as any as S.Schema<CapacityProviderPermissionsConfig>;
-export type Architecture = "x86_64" | "arm64" | (string & {});
-export const Architecture = /*@__PURE__*/ S.String;
-export type ArchitecturesList = Architecture[];
-export const ArchitecturesList = /*@__PURE__*/ S.Array(Architecture);
-export type InstanceTypeSet = string[];
-export const InstanceTypeSet = /*@__PURE__*/ S.Array(S.String);
-export interface InstanceRequirements {
-  Architectures?: Architecture[];
-  AllowedInstanceTypes?: string[];
-  ExcludedInstanceTypes?: string[];
-}
-export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Architectures: S.optional(ArchitecturesList),
-    AllowedInstanceTypes: S.optional(InstanceTypeSet),
-    ExcludedInstanceTypes: S.optional(InstanceTypeSet),
-  }),
-).annotate({
-  identifier: "InstanceRequirements",
-}) as any as S.Schema<InstanceRequirements>;
-export type CapacityProviderScalingMode = "Auto" | "Manual" | (string & {});
-export const CapacityProviderScalingMode = /*@__PURE__*/ S.String;
-export type CapacityProviderPredefinedMetricType =
-  | "LambdaCapacityProviderAverageCPUUtilization"
-  | (string & {});
-export const CapacityProviderPredefinedMetricType = /*@__PURE__*/ S.String;
-export interface TargetTrackingScalingPolicy {
-  PredefinedMetricType: CapacityProviderPredefinedMetricType;
-  TargetValue: number;
-}
-export const TargetTrackingScalingPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PredefinedMetricType: CapacityProviderPredefinedMetricType,
-      TargetValue: S.Number,
-    }),
-  ).annotate({
-    identifier: "TargetTrackingScalingPolicy",
-  }) as any as S.Schema<TargetTrackingScalingPolicy>;
-export type CapacityProviderScalingPoliciesList = TargetTrackingScalingPolicy[];
-export const CapacityProviderScalingPoliciesList =
-  /*@__PURE__*/ S.Array(TargetTrackingScalingPolicy);
-export interface CapacityProviderScalingConfig {
-  MaxVCpuCount?: number;
-  ScalingMode?: CapacityProviderScalingMode;
-  ScalingPolicies?: TargetTrackingScalingPolicy[];
-}
-export const CapacityProviderScalingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxVCpuCount: S.optional(S.Number),
-      ScalingMode: S.optional(CapacityProviderScalingMode),
-      ScalingPolicies: S.optional(CapacityProviderScalingPoliciesList),
-    }),
-  ).annotate({
-    identifier: "CapacityProviderScalingConfig",
-  }) as any as S.Schema<CapacityProviderScalingConfig>;
-export type PropagateTagsMode = "None" | "Explicit" | (string & {});
-export const PropagateTagsMode = /*@__PURE__*/ S.String;
-export interface PropagateTags {
-  Mode?: PropagateTagsMode;
-  ExplicitTags?: { [key: string]: string | undefined };
-}
-export const PropagateTags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Mode: S.optional(PropagateTagsMode),
-    ExplicitTags: S.optional(Tags),
-  }),
-).annotate({ identifier: "PropagateTags" }) as any as S.Schema<PropagateTags>;
-export interface CreateCapacityProviderRequest {
-  CapacityProviderName: string;
-  VpcConfig: CapacityProviderVpcConfig;
-  PermissionsConfig: CapacityProviderPermissionsConfig;
-  InstanceRequirements?: InstanceRequirements;
-  CapacityProviderScalingConfig?: CapacityProviderScalingConfig;
-  KmsKeyArn?: string;
-  Tags?: { [key: string]: string | undefined };
-  PropagateTags?: PropagateTags;
-}
-export const CreateCapacityProviderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviderName: S.String,
-      VpcConfig: CapacityProviderVpcConfig,
-      PermissionsConfig: CapacityProviderPermissionsConfig,
-      InstanceRequirements: S.optional(InstanceRequirements),
-      CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
-      KmsKeyArn: S.optional(S.String),
-      Tags: S.optional(Tags),
-      PropagateTags: S.optional(PropagateTags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/2025-11-30/capacity-providers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateCapacityProviderRequest",
-  }) as any as S.Schema<CreateCapacityProviderRequest>;
-export type CapacityProviderState =
-  | "Pending"
-  | "Active"
-  | "Failed"
-  | "Deleting"
-  | (string & {});
-export const CapacityProviderState = /*@__PURE__*/ S.String;
-export interface CapacityProvider {
-  CapacityProviderArn: string;
-  State: CapacityProviderState;
-  VpcConfig: CapacityProviderVpcConfig;
-  PermissionsConfig: CapacityProviderPermissionsConfig;
-  InstanceRequirements?: InstanceRequirements;
-  CapacityProviderScalingConfig?: CapacityProviderScalingConfig;
-  KmsKeyArn?: string;
-  LastModified?: string;
-  PropagateTags?: PropagateTags;
-}
-export const CapacityProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CapacityProviderArn: S.String,
-    State: CapacityProviderState,
-    VpcConfig: CapacityProviderVpcConfig,
-    PermissionsConfig: CapacityProviderPermissionsConfig,
-    InstanceRequirements: S.optional(InstanceRequirements),
-    CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
-    KmsKeyArn: S.optional(S.String),
-    LastModified: S.optional(S.String),
-    PropagateTags: S.optional(PropagateTags),
-  }),
-).annotate({
-  identifier: "CapacityProvider",
-}) as any as S.Schema<CapacityProvider>;
-export interface CreateCapacityProviderResponse {
-  CapacityProvider: CapacityProvider;
-}
-export const CreateCapacityProviderResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CapacityProvider: CapacityProvider }),
-  ).annotate({
-    identifier: "CreateCapacityProviderResponse",
-  }) as any as S.Schema<CreateCapacityProviderResponse>;
-export interface GetCapacityProviderRequest {
-  CapacityProviderName: string;
-}
-export const GetCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/2025-11-30/capacity-providers/{CapacityProviderName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCapacityProviderRequest",
-}) as any as S.Schema<GetCapacityProviderRequest>;
-export interface GetCapacityProviderResponse {
-  CapacityProvider: CapacityProvider;
-}
-export const GetCapacityProviderResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CapacityProvider: CapacityProvider }),
-  ).annotate({
-    identifier: "GetCapacityProviderResponse",
-  }) as any as S.Schema<GetCapacityProviderResponse>;
-export interface UpdateCapacityProviderRequest {
-  CapacityProviderName: string;
-  CapacityProviderScalingConfig?: CapacityProviderScalingConfig;
-  PropagateTags?: PropagateTags;
-}
-export const UpdateCapacityProviderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
-      CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
-      PropagateTags: S.optional(PropagateTags),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2025-11-30/capacity-providers/{CapacityProviderName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateCapacityProviderRequest",
-  }) as any as S.Schema<UpdateCapacityProviderRequest>;
-export interface UpdateCapacityProviderResponse {
-  CapacityProvider: CapacityProvider;
-}
-export const UpdateCapacityProviderResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CapacityProvider: CapacityProvider }),
-  ).annotate({
-    identifier: "UpdateCapacityProviderResponse",
-  }) as any as S.Schema<UpdateCapacityProviderResponse>;
-export interface DeleteCapacityProviderRequest {
-  CapacityProviderName: string;
-}
-export const DeleteCapacityProviderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2025-11-30/capacity-providers/{CapacityProviderName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteCapacityProviderRequest",
-  }) as any as S.Schema<DeleteCapacityProviderRequest>;
-export interface DeleteCapacityProviderResponse {
-  CapacityProvider: CapacityProvider;
-}
-export const DeleteCapacityProviderResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CapacityProvider: CapacityProvider }),
-  ).annotate({
-    identifier: "DeleteCapacityProviderResponse",
-  }) as any as S.Schema<DeleteCapacityProviderResponse>;
-export interface ListCapacityProvidersRequest {
-  State?: CapacityProviderState;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListCapacityProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      State: S.optional(CapacityProviderState).pipe(T.HttpQuery("State")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/2025-11-30/capacity-providers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListCapacityProvidersRequest",
-  }) as any as S.Schema<ListCapacityProvidersRequest>;
-export type CapacityProvidersList = CapacityProvider[];
-export const CapacityProvidersList = /*@__PURE__*/ S.Array(CapacityProvider);
-export interface ListCapacityProvidersResponse {
-  CapacityProviders: CapacityProvider[];
-  NextMarker?: string;
-}
-export const ListCapacityProvidersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviders: CapacityProvidersList,
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListCapacityProvidersResponse",
-  }) as any as S.Schema<ListCapacityProvidersResponse>;
-export interface ListFunctionVersionsByCapacityProviderRequest {
-  CapacityProviderName: string;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListFunctionVersionsByCapacityProviderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-11-30/capacity-providers/{CapacityProviderName}/function-versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListFunctionVersionsByCapacityProviderRequest",
-  }) as any as S.Schema<ListFunctionVersionsByCapacityProviderRequest>;
-export type State =
-  | "Pending"
-  | "Active"
-  | "Inactive"
-  | "Failed"
-  | "Deactivating"
-  | "Deactivated"
-  | "ActiveNonInvocable"
-  | "Deleting"
-  | (string & {});
-export const State = /*@__PURE__*/ S.String;
-export interface FunctionVersionsByCapacityProviderListItem {
-  FunctionArn: string;
-  State: State;
-}
-export const FunctionVersionsByCapacityProviderListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionArn: S.String, State: State }),
-  ).annotate({
-    identifier: "FunctionVersionsByCapacityProviderListItem",
-  }) as any as S.Schema<FunctionVersionsByCapacityProviderListItem>;
-export type FunctionVersionsByCapacityProviderList =
-  FunctionVersionsByCapacityProviderListItem[];
-export const FunctionVersionsByCapacityProviderList =
-  /*@__PURE__*/ S.Array(FunctionVersionsByCapacityProviderListItem);
-export interface ListFunctionVersionsByCapacityProviderResponse {
-  CapacityProviderArn: string;
-  FunctionVersions: FunctionVersionsByCapacityProviderListItem[];
-  NextMarker?: string;
-}
-export const ListFunctionVersionsByCapacityProviderResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviderArn: S.String,
-      FunctionVersions: FunctionVersionsByCapacityProviderList,
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFunctionVersionsByCapacityProviderResponse",
-  }) as any as S.Schema<ListFunctionVersionsByCapacityProviderResponse>;
-export type SigningProfileVersionArns = string[];
-export const SigningProfileVersionArns = /*@__PURE__*/ S.Array(S.String);
-export interface AllowedPublishers {
-  SigningProfileVersionArns: string[];
-}
-export const AllowedPublishers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ SigningProfileVersionArns: SigningProfileVersionArns }),
-).annotate({
-  identifier: "AllowedPublishers",
-}) as any as S.Schema<AllowedPublishers>;
-export type CodeSigningPolicy = "Warn" | "Enforce" | (string & {});
-export const CodeSigningPolicy = /*@__PURE__*/ S.String;
-export interface CodeSigningPolicies {
-  UntrustedArtifactOnDeployment?: CodeSigningPolicy;
-}
-export const CodeSigningPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ UntrustedArtifactOnDeployment: S.optional(CodeSigningPolicy) }),
-).annotate({
-  identifier: "CodeSigningPolicies",
-}) as any as S.Schema<CodeSigningPolicies>;
-export interface CreateCodeSigningConfigRequest {
-  Description?: string;
-  AllowedPublishers: AllowedPublishers;
-  CodeSigningPolicies?: CodeSigningPolicies;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Description: S.optional(S.String),
-      AllowedPublishers: AllowedPublishers,
-      CodeSigningPolicies: S.optional(CodeSigningPolicies),
-      Tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/2020-04-22/code-signing-configs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateCodeSigningConfigRequest",
-  }) as any as S.Schema<CreateCodeSigningConfigRequest>;
-export interface CodeSigningConfig {
-  CodeSigningConfigId: string;
-  CodeSigningConfigArn: string;
-  Description?: string;
-  AllowedPublishers: AllowedPublishers;
-  CodeSigningPolicies: CodeSigningPolicies;
-  LastModified: string;
-}
-export const CodeSigningConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CodeSigningConfigId: S.String,
-    CodeSigningConfigArn: S.String,
-    Description: S.optional(S.String),
-    AllowedPublishers: AllowedPublishers,
-    CodeSigningPolicies: CodeSigningPolicies,
-    LastModified: S.String,
-  }),
-).annotate({
-  identifier: "CodeSigningConfig",
-}) as any as S.Schema<CodeSigningConfig>;
-export interface CreateCodeSigningConfigResponse {
-  CodeSigningConfig: CodeSigningConfig;
-}
-export const CreateCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CodeSigningConfig: CodeSigningConfig }),
-  ).annotate({
-    identifier: "CreateCodeSigningConfigResponse",
-  }) as any as S.Schema<CreateCodeSigningConfigResponse>;
-export interface ListCodeSigningConfigsRequest {
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListCodeSigningConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/2020-04-22/code-signing-configs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListCodeSigningConfigsRequest",
-  }) as any as S.Schema<ListCodeSigningConfigsRequest>;
-export type CodeSigningConfigList = CodeSigningConfig[];
-export const CodeSigningConfigList = /*@__PURE__*/ S.Array(CodeSigningConfig);
-export interface ListCodeSigningConfigsResponse {
-  NextMarker?: string;
-  CodeSigningConfigs?: CodeSigningConfig[];
-}
-export const ListCodeSigningConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextMarker: S.optional(S.String),
-      CodeSigningConfigs: S.optional(CodeSigningConfigList),
-    }),
-  ).annotate({
-    identifier: "ListCodeSigningConfigsResponse",
-  }) as any as S.Schema<ListCodeSigningConfigsResponse>;
-export interface DeleteCodeSigningConfigRequest {
-  CodeSigningConfigArn: string;
-}
-export const DeleteCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteCodeSigningConfigRequest",
-  }) as any as S.Schema<DeleteCodeSigningConfigRequest>;
-export interface DeleteCodeSigningConfigResponse {}
-export const DeleteCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteCodeSigningConfigResponse",
-  }) as any as S.Schema<DeleteCodeSigningConfigResponse>;
-export interface GetCodeSigningConfigRequest {
-  CodeSigningConfigArn: string;
-}
-export const GetCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetCodeSigningConfigRequest",
-  }) as any as S.Schema<GetCodeSigningConfigRequest>;
-export interface GetCodeSigningConfigResponse {
-  CodeSigningConfig: CodeSigningConfig;
-}
-export const GetCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CodeSigningConfig: CodeSigningConfig }),
-  ).annotate({
-    identifier: "GetCodeSigningConfigResponse",
-  }) as any as S.Schema<GetCodeSigningConfigResponse>;
-export interface ListFunctionsByCodeSigningConfigRequest {
-  CodeSigningConfigArn: string;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListFunctionsByCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListFunctionsByCodeSigningConfigRequest",
-  }) as any as S.Schema<ListFunctionsByCodeSigningConfigRequest>;
-export type FunctionArnList = string[];
-export const FunctionArnList = /*@__PURE__*/ S.Array(S.String);
-export interface ListFunctionsByCodeSigningConfigResponse {
-  NextMarker?: string;
-  FunctionArns?: string[];
-}
-export const ListFunctionsByCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextMarker: S.optional(S.String),
-      FunctionArns: S.optional(FunctionArnList),
-    }),
-  ).annotate({
-    identifier: "ListFunctionsByCodeSigningConfigResponse",
-  }) as any as S.Schema<ListFunctionsByCodeSigningConfigResponse>;
-export interface UpdateCodeSigningConfigRequest {
-  CodeSigningConfigArn: string;
-  Description?: string;
-  AllowedPublishers?: AllowedPublishers;
-  CodeSigningPolicies?: CodeSigningPolicies;
-}
-export const UpdateCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
-      Description: S.optional(S.String),
-      AllowedPublishers: S.optional(AllowedPublishers),
-      CodeSigningPolicies: S.optional(CodeSigningPolicies),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateCodeSigningConfigRequest",
-  }) as any as S.Schema<UpdateCodeSigningConfigRequest>;
-export interface UpdateCodeSigningConfigResponse {
-  CodeSigningConfig: CodeSigningConfig;
-}
-export const UpdateCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CodeSigningConfig: CodeSigningConfig }),
-  ).annotate({
-    identifier: "UpdateCodeSigningConfigResponse",
-  }) as any as S.Schema<UpdateCodeSigningConfigResponse>;
-export interface Filter {
-  Pattern?: string;
-}
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pattern: S.optional(S.String) }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
-export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
-export interface FilterCriteria {
-  Filters?: Filter[];
-}
-export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Filters: S.optional(FilterList) }),
-).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
-export type EventSourceMappingMetric =
-  | "EventCount"
-  | "ErrorCount"
-  | "KafkaMetrics"
-  | (string & {});
-export const EventSourceMappingMetric = /*@__PURE__*/ S.String;
-export type EventSourceMappingMetricList = EventSourceMappingMetric[];
-export const EventSourceMappingMetricList = /*@__PURE__*/ S.Array(
-  EventSourceMappingMetric,
-);
-export interface EventSourceMappingMetricsConfig {
-  Metrics?: EventSourceMappingMetric[];
-}
-export const EventSourceMappingMetricsConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Metrics: S.optional(EventSourceMappingMetricList) }),
-  ).annotate({
-    identifier: "EventSourceMappingMetricsConfig",
-  }) as any as S.Schema<EventSourceMappingMetricsConfig>;
-export type EventSourceMappingSystemLogLevel =
-  | "DEBUG"
-  | "INFO"
-  | "WARN"
-  | (string & {});
-export const EventSourceMappingSystemLogLevel = /*@__PURE__*/ S.String;
-export interface EventSourceMappingLoggingConfig {
-  SystemLogLevel?: EventSourceMappingSystemLogLevel;
-}
-export const EventSourceMappingLoggingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SystemLogLevel: S.optional(EventSourceMappingSystemLogLevel) }),
-  ).annotate({
-    identifier: "EventSourceMappingLoggingConfig",
-  }) as any as S.Schema<EventSourceMappingLoggingConfig>;
-export interface ScalingConfig {
-  MaximumConcurrency?: number;
-}
-export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaximumConcurrency: S.optional(S.Number) }),
-).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
-export type EventSourcePosition =
-  | "TRIM_HORIZON"
-  | "LATEST"
-  | "AT_TIMESTAMP"
-  | (string & {});
-export const EventSourcePosition = /*@__PURE__*/ S.String;
-export type Topics = string[];
-export const Topics = /*@__PURE__*/ S.Array(S.String);
-export type Queues = string[];
-export const Queues = /*@__PURE__*/ S.Array(S.String);
-export type SourceAccessType =
-  | "BASIC_AUTH"
-  | "VPC_SUBNET"
-  | "VPC_SECURITY_GROUP"
-  | "SASL_SCRAM_512_AUTH"
-  | "SASL_SCRAM_256_AUTH"
-  | "VIRTUAL_HOST"
-  | "CLIENT_CERTIFICATE_TLS_AUTH"
-  | "SERVER_ROOT_CA_CERTIFICATE"
-  | (string & {});
-export const SourceAccessType = /*@__PURE__*/ S.String;
-export interface SourceAccessConfiguration {
-  Type?: SourceAccessType;
-  URI?: string;
-}
-export const SourceAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.optional(SourceAccessType), URI: S.optional(S.String) }),
-).annotate({
-  identifier: "SourceAccessConfiguration",
-}) as any as S.Schema<SourceAccessConfiguration>;
-export type SourceAccessConfigurations = SourceAccessConfiguration[];
-export const SourceAccessConfigurations = /*@__PURE__*/ S.Array(
-  SourceAccessConfiguration,
-);
-export type EndPointType = "KAFKA_BOOTSTRAP_SERVERS" | (string & {});
-export const EndPointType = /*@__PURE__*/ S.String;
-export type EndpointLists = string[];
-export const EndpointLists = /*@__PURE__*/ S.Array(S.String);
-export type Endpoints = { [key in EndPointType]?: string[] };
-export const Endpoints = /*@__PURE__*/ S.Record(
-  EndPointType,
-  EndpointLists.pipe(S.optional),
-);
-export interface SelfManagedEventSource {
-  Endpoints?: { [key: string]: string[] | undefined };
-}
-export const SelfManagedEventSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Endpoints: S.optional(Endpoints) }),
-).annotate({
-  identifier: "SelfManagedEventSource",
-}) as any as S.Schema<SelfManagedEventSource>;
-export type FunctionResponseType = "ReportBatchItemFailures" | (string & {});
-export const FunctionResponseType = /*@__PURE__*/ S.String;
-export type FunctionResponseTypeList = FunctionResponseType[];
-export const FunctionResponseTypeList =
-  /*@__PURE__*/ S.Array(FunctionResponseType);
-export type SchemaRegistryEventRecordFormat = "JSON" | "SOURCE" | (string & {});
-export const SchemaRegistryEventRecordFormat = /*@__PURE__*/ S.String;
-export type KafkaSchemaRegistryAuthType =
-  | "BASIC_AUTH"
-  | "CLIENT_CERTIFICATE_TLS_AUTH"
-  | "SERVER_ROOT_CA_CERTIFICATE"
-  | (string & {});
-export const KafkaSchemaRegistryAuthType = /*@__PURE__*/ S.String;
-export interface KafkaSchemaRegistryAccessConfig {
-  Type?: KafkaSchemaRegistryAuthType;
-  URI?: string;
-}
-export const KafkaSchemaRegistryAccessConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Type: S.optional(KafkaSchemaRegistryAuthType),
-      URI: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "KafkaSchemaRegistryAccessConfig",
-  }) as any as S.Schema<KafkaSchemaRegistryAccessConfig>;
-export type KafkaSchemaRegistryAccessConfigList =
-  KafkaSchemaRegistryAccessConfig[];
-export const KafkaSchemaRegistryAccessConfigList =
-  /*@__PURE__*/ S.Array(KafkaSchemaRegistryAccessConfig);
-export type KafkaSchemaValidationAttribute = "KEY" | "VALUE" | (string & {});
-export const KafkaSchemaValidationAttribute = /*@__PURE__*/ S.String;
-export interface KafkaSchemaValidationConfig {
-  Attribute?: KafkaSchemaValidationAttribute;
-}
-export const KafkaSchemaValidationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Attribute: S.optional(KafkaSchemaValidationAttribute) }),
-  ).annotate({
-    identifier: "KafkaSchemaValidationConfig",
-  }) as any as S.Schema<KafkaSchemaValidationConfig>;
-export type KafkaSchemaValidationConfigList = KafkaSchemaValidationConfig[];
-export const KafkaSchemaValidationConfigList =
-  /*@__PURE__*/ S.Array(KafkaSchemaValidationConfig);
-export interface KafkaSchemaRegistryConfig {
-  SchemaRegistryURI?: string;
-  EventRecordFormat?: SchemaRegistryEventRecordFormat;
-  AccessConfigs?: KafkaSchemaRegistryAccessConfig[];
-  SchemaValidationConfigs?: KafkaSchemaValidationConfig[];
-}
-export const KafkaSchemaRegistryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SchemaRegistryURI: S.optional(S.String),
-    EventRecordFormat: S.optional(SchemaRegistryEventRecordFormat),
-    AccessConfigs: S.optional(KafkaSchemaRegistryAccessConfigList),
-    SchemaValidationConfigs: S.optional(KafkaSchemaValidationConfigList),
-  }),
-).annotate({
-  identifier: "KafkaSchemaRegistryConfig",
-}) as any as S.Schema<KafkaSchemaRegistryConfig>;
-export interface AmazonManagedKafkaEventSourceConfig {
-  ConsumerGroupId?: string;
-  SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
-}
-export const AmazonManagedKafkaEventSourceConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConsumerGroupId: S.optional(S.String),
-      SchemaRegistryConfig: S.optional(KafkaSchemaRegistryConfig),
-    }),
-  ).annotate({
-    identifier: "AmazonManagedKafkaEventSourceConfig",
-  }) as any as S.Schema<AmazonManagedKafkaEventSourceConfig>;
-export interface SelfManagedKafkaEventSourceConfig {
-  ConsumerGroupId?: string;
-  SchemaRegistryConfig?: KafkaSchemaRegistryConfig;
-}
-export const SelfManagedKafkaEventSourceConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConsumerGroupId: S.optional(S.String),
-      SchemaRegistryConfig: S.optional(KafkaSchemaRegistryConfig),
-    }),
-  ).annotate({
-    identifier: "SelfManagedKafkaEventSourceConfig",
-  }) as any as S.Schema<SelfManagedKafkaEventSourceConfig>;
-export type FullDocument = "UpdateLookup" | "Default" | (string & {});
-export const FullDocument = /*@__PURE__*/ S.String;
-export interface DocumentDBEventSourceConfig {
-  DatabaseName?: string;
-  CollectionName?: string;
-  FullDocument?: FullDocument;
-}
-export const DocumentDBEventSourceConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatabaseName: S.optional(S.String),
-      CollectionName: S.optional(S.String),
-      FullDocument: S.optional(FullDocument),
-    }),
-  ).annotate({
-    identifier: "DocumentDBEventSourceConfig",
-  }) as any as S.Schema<DocumentDBEventSourceConfig>;
-export interface ProvisionedPollerConfig {
-  MinimumPollers?: number;
-  MaximumPollers?: number;
-  PollerGroupName?: string;
-}
-export const ProvisionedPollerConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MinimumPollers: S.optional(S.Number),
-    MaximumPollers: S.optional(S.Number),
-    PollerGroupName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProvisionedPollerConfig",
-}) as any as S.Schema<ProvisionedPollerConfig>;
-export interface CreateEventSourceMappingRequest {
-  EventSourceArn?: string;
-  FunctionName: string;
-  Enabled?: boolean;
-  BatchSize?: number;
-  FilterCriteria?: FilterCriteria;
-  KMSKeyArn?: string;
-  MetricsConfig?: EventSourceMappingMetricsConfig;
-  LoggingConfig?: EventSourceMappingLoggingConfig;
-  ScalingConfig?: ScalingConfig;
-  MaximumBatchingWindowInSeconds?: number;
-  ParallelizationFactor?: number;
-  StartingPosition?: EventSourcePosition;
-  StartingPositionTimestamp?: Date;
-  DestinationConfig?: DestinationConfig;
-  MaximumRecordAgeInSeconds?: number;
-  BisectBatchOnFunctionError?: boolean;
-  MaximumRetryAttempts?: number;
-  Tags?: { [key: string]: string | undefined };
-  TumblingWindowInSeconds?: number;
-  Topics?: string[];
-  Queues?: string[];
-  SourceAccessConfigurations?: SourceAccessConfiguration[];
-  SelfManagedEventSource?: SelfManagedEventSource;
-  FunctionResponseTypes?: FunctionResponseType[];
-  AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
-  SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
-  DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
-  ProvisionedPollerConfig?: ProvisionedPollerConfig;
-}
-export const CreateEventSourceMappingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventSourceArn: S.optional(S.String),
-      FunctionName: S.String,
-      Enabled: S.optional(S.Boolean),
-      BatchSize: S.optional(S.Number),
-      FilterCriteria: S.optional(FilterCriteria),
-      KMSKeyArn: S.optional(S.String),
-      MetricsConfig: S.optional(EventSourceMappingMetricsConfig),
-      LoggingConfig: S.optional(EventSourceMappingLoggingConfig),
-      ScalingConfig: S.optional(ScalingConfig),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-      ParallelizationFactor: S.optional(S.Number),
-      StartingPosition: S.optional(EventSourcePosition),
-      StartingPositionTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      DestinationConfig: S.optional(DestinationConfig),
-      MaximumRecordAgeInSeconds: S.optional(S.Number),
-      BisectBatchOnFunctionError: S.optional(S.Boolean),
-      MaximumRetryAttempts: S.optional(S.Number),
-      Tags: S.optional(Tags),
-      TumblingWindowInSeconds: S.optional(S.Number),
-      Topics: S.optional(Topics),
-      Queues: S.optional(Queues),
-      SourceAccessConfigurations: S.optional(SourceAccessConfigurations),
-      SelfManagedEventSource: S.optional(SelfManagedEventSource),
-      FunctionResponseTypes: S.optional(FunctionResponseTypeList),
-      AmazonManagedKafkaEventSourceConfig: S.optional(
-        AmazonManagedKafkaEventSourceConfig,
-      ),
-      SelfManagedKafkaEventSourceConfig: S.optional(
-        SelfManagedKafkaEventSourceConfig,
-      ),
-      DocumentDBEventSourceConfig: S.optional(DocumentDBEventSourceConfig),
-      ProvisionedPollerConfig: S.optional(ProvisionedPollerConfig),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/2015-03-31/event-source-mappings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateEventSourceMappingRequest",
-  }) as any as S.Schema<CreateEventSourceMappingRequest>;
-export interface FilterCriteriaError {
-  ErrorCode?: string;
-  Message?: string;
-}
-export const FilterCriteriaError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
-).annotate({
-  identifier: "FilterCriteriaError",
-}) as any as S.Schema<FilterCriteriaError>;
-export interface EventSourceMappingConfiguration {
-  UUID?: string;
-  StartingPosition?: EventSourcePosition;
-  StartingPositionTimestamp?: Date;
-  BatchSize?: number;
-  MaximumBatchingWindowInSeconds?: number;
-  ParallelizationFactor?: number;
-  EventSourceArn?: string;
-  FilterCriteria?: FilterCriteria;
-  FilterCriteriaError?: FilterCriteriaError;
-  KMSKeyArn?: string;
-  MetricsConfig?: EventSourceMappingMetricsConfig;
-  LoggingConfig?: EventSourceMappingLoggingConfig;
-  ScalingConfig?: ScalingConfig;
-  FunctionArn?: string;
-  LastModified?: Date;
-  LastProcessingResult?: string;
-  State?: string;
-  StateTransitionReason?: string;
-  DestinationConfig?: DestinationConfig;
-  Topics?: string[];
-  Queues?: string[];
-  SourceAccessConfigurations?: SourceAccessConfiguration[];
-  SelfManagedEventSource?: SelfManagedEventSource;
-  MaximumRecordAgeInSeconds?: number;
-  BisectBatchOnFunctionError?: boolean;
-  MaximumRetryAttempts?: number;
-  TumblingWindowInSeconds?: number;
-  FunctionResponseTypes?: FunctionResponseType[];
-  AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
-  SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
-  DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
-  EventSourceMappingArn?: string;
-  ProvisionedPollerConfig?: ProvisionedPollerConfig;
-}
-export const EventSourceMappingConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UUID: S.optional(S.String),
-      StartingPosition: S.optional(EventSourcePosition),
-      StartingPositionTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      BatchSize: S.optional(S.Number),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-      ParallelizationFactor: S.optional(S.Number),
-      EventSourceArn: S.optional(S.String),
-      FilterCriteria: S.optional(FilterCriteria),
-      FilterCriteriaError: S.optional(FilterCriteriaError),
-      KMSKeyArn: S.optional(S.String),
-      MetricsConfig: S.optional(EventSourceMappingMetricsConfig),
-      LoggingConfig: S.optional(EventSourceMappingLoggingConfig),
-      ScalingConfig: S.optional(ScalingConfig),
-      FunctionArn: S.optional(S.String),
-      LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastProcessingResult: S.optional(S.String),
-      State: S.optional(S.String),
-      StateTransitionReason: S.optional(S.String),
-      DestinationConfig: S.optional(DestinationConfig),
-      Topics: S.optional(Topics),
-      Queues: S.optional(Queues),
-      SourceAccessConfigurations: S.optional(SourceAccessConfigurations),
-      SelfManagedEventSource: S.optional(SelfManagedEventSource),
-      MaximumRecordAgeInSeconds: S.optional(S.Number),
-      BisectBatchOnFunctionError: S.optional(S.Boolean),
-      MaximumRetryAttempts: S.optional(S.Number),
-      TumblingWindowInSeconds: S.optional(S.Number),
-      FunctionResponseTypes: S.optional(FunctionResponseTypeList),
-      AmazonManagedKafkaEventSourceConfig: S.optional(
-        AmazonManagedKafkaEventSourceConfig,
-      ),
-      SelfManagedKafkaEventSourceConfig: S.optional(
-        SelfManagedKafkaEventSourceConfig,
-      ),
-      DocumentDBEventSourceConfig: S.optional(DocumentDBEventSourceConfig),
-      EventSourceMappingArn: S.optional(S.String),
-      ProvisionedPollerConfig: S.optional(ProvisionedPollerConfig),
-    }),
-  ).annotate({
-    identifier: "EventSourceMappingConfiguration",
-  }) as any as S.Schema<EventSourceMappingConfiguration>;
-export interface GetEventSourceMappingRequest {
-  UUID: string;
-}
-export const GetEventSourceMappingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ UUID: S.String.pipe(T.HttpLabel("UUID")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2015-03-31/event-source-mappings/{UUID}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetEventSourceMappingRequest",
-  }) as any as S.Schema<GetEventSourceMappingRequest>;
-export interface UpdateEventSourceMappingRequest {
-  UUID: string;
-  FunctionName?: string;
-  Enabled?: boolean;
-  BatchSize?: number;
-  FilterCriteria?: FilterCriteria;
-  KMSKeyArn?: string;
-  MetricsConfig?: EventSourceMappingMetricsConfig;
-  LoggingConfig?: EventSourceMappingLoggingConfig;
-  ScalingConfig?: ScalingConfig;
-  MaximumBatchingWindowInSeconds?: number;
-  ParallelizationFactor?: number;
-  DestinationConfig?: DestinationConfig;
-  MaximumRecordAgeInSeconds?: number;
-  BisectBatchOnFunctionError?: boolean;
-  MaximumRetryAttempts?: number;
-  TumblingWindowInSeconds?: number;
-  SourceAccessConfigurations?: SourceAccessConfiguration[];
-  FunctionResponseTypes?: FunctionResponseType[];
-  AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
-  SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
-  DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
-  ProvisionedPollerConfig?: ProvisionedPollerConfig;
-}
-export const UpdateEventSourceMappingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UUID: S.String.pipe(T.HttpLabel("UUID")),
-      FunctionName: S.optional(S.String),
-      Enabled: S.optional(S.Boolean),
-      BatchSize: S.optional(S.Number),
-      FilterCriteria: S.optional(FilterCriteria),
-      KMSKeyArn: S.optional(S.String),
-      MetricsConfig: S.optional(EventSourceMappingMetricsConfig),
-      LoggingConfig: S.optional(EventSourceMappingLoggingConfig),
-      ScalingConfig: S.optional(ScalingConfig),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-      ParallelizationFactor: S.optional(S.Number),
-      DestinationConfig: S.optional(DestinationConfig),
-      MaximumRecordAgeInSeconds: S.optional(S.Number),
-      BisectBatchOnFunctionError: S.optional(S.Boolean),
-      MaximumRetryAttempts: S.optional(S.Number),
-      TumblingWindowInSeconds: S.optional(S.Number),
-      SourceAccessConfigurations: S.optional(SourceAccessConfigurations),
-      FunctionResponseTypes: S.optional(FunctionResponseTypeList),
-      AmazonManagedKafkaEventSourceConfig: S.optional(
-        AmazonManagedKafkaEventSourceConfig,
-      ),
-      SelfManagedKafkaEventSourceConfig: S.optional(
-        SelfManagedKafkaEventSourceConfig,
-      ),
-      DocumentDBEventSourceConfig: S.optional(DocumentDBEventSourceConfig),
-      ProvisionedPollerConfig: S.optional(ProvisionedPollerConfig),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2015-03-31/event-source-mappings/{UUID}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateEventSourceMappingRequest",
-  }) as any as S.Schema<UpdateEventSourceMappingRequest>;
-export interface DeleteEventSourceMappingRequest {
-  UUID: string;
-}
-export const DeleteEventSourceMappingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ UUID: S.String.pipe(T.HttpLabel("UUID")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2015-03-31/event-source-mappings/{UUID}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteEventSourceMappingRequest",
-  }) as any as S.Schema<DeleteEventSourceMappingRequest>;
-export interface ListEventSourceMappingsRequest {
-  EventSourceArn?: string;
-  FunctionName?: string;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListEventSourceMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventSourceArn: S.optional(S.String).pipe(T.HttpQuery("EventSourceArn")),
-      FunctionName: S.optional(S.String).pipe(T.HttpQuery("FunctionName")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/2015-03-31/event-source-mappings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListEventSourceMappingsRequest",
-  }) as any as S.Schema<ListEventSourceMappingsRequest>;
-export type EventSourceMappingsList = EventSourceMappingConfiguration[];
-export const EventSourceMappingsList = /*@__PURE__*/ S.Array(
-  EventSourceMappingConfiguration,
-);
-export interface ListEventSourceMappingsResponse {
-  NextMarker?: string;
-  EventSourceMappings?: EventSourceMappingConfiguration[];
-}
-export const ListEventSourceMappingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextMarker: S.optional(S.String),
-      EventSourceMappings: S.optional(EventSourceMappingsList),
-    }),
-  ).annotate({
-    identifier: "ListEventSourceMappingsResponse",
-  }) as any as S.Schema<ListEventSourceMappingsResponse>;
-export type Runtime =
-  | "nodejs"
-  | "nodejs4.3"
-  | "nodejs6.10"
-  | "nodejs8.10"
-  | "nodejs10.x"
-  | "nodejs12.x"
-  | "nodejs14.x"
-  | "nodejs16.x"
-  | "nodejs18.x"
-  | "nodejs20.x"
-  | "nodejs22.x"
-  | "nodejs24.x"
-  | "java8"
-  | "java8.al2"
-  | "java11"
-  | "java17"
-  | "java21"
-  | "java25"
-  | "python2.7"
-  | "python3.6"
-  | "python3.7"
-  | "python3.8"
-  | "python3.9"
-  | "python3.10"
-  | "python3.11"
-  | "python3.12"
-  | "python3.13"
-  | "python3.14"
-  | "dotnetcore1.0"
-  | "dotnetcore2.0"
-  | "dotnetcore2.1"
-  | "dotnetcore3.1"
-  | "dotnet6"
-  | "dotnet8"
-  | "dotnet10"
-  | "nodejs4.3-edge"
-  | "go1.x"
-  | "ruby2.5"
-  | "ruby2.7"
-  | "ruby3.2"
-  | "ruby3.3"
-  | "ruby3.4"
-  | "ruby4.0"
-  | "provided"
-  | "provided.al2"
-  | "provided.al2023"
-  | (string & {});
-export const Runtime = /*@__PURE__*/ S.String;
-export type S3ObjectStorageMode = "COPY" | "REFERENCE" | (string & {});
-export const S3ObjectStorageMode = /*@__PURE__*/ S.String;
-export interface FunctionCode {
-  ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
-  S3Bucket?: string;
-  S3Key?: string;
-  S3ObjectVersion?: string;
-  S3ObjectStorageMode?: S3ObjectStorageMode;
-  ImageUri?: string;
-  SourceKMSKeyArn?: string;
-}
-export const FunctionCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ZipFile: S.optional(SensitiveBlob),
-    S3Bucket: S.optional(S.String),
-    S3Key: S.optional(S.String),
-    S3ObjectVersion: S.optional(S.String),
-    S3ObjectStorageMode: S.optional(S3ObjectStorageMode),
-    ImageUri: S.optional(S.String),
-    SourceKMSKeyArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "FunctionCode" }) as any as S.Schema<FunctionCode>;
-export type FunctionVersionLatestPublished = "LATEST_PUBLISHED" | (string & {});
-export const FunctionVersionLatestPublished = /*@__PURE__*/ S.String;
-export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
-export type SecurityGroupIds = string[];
-export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
-export interface VpcConfig {
-  SubnetIds?: string[];
-  SecurityGroupIds?: string[];
-  Ipv6AllowedForDualStack?: boolean;
-}
-export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubnetIds: S.optional(SubnetIds),
-    SecurityGroupIds: S.optional(SecurityGroupIds),
-    Ipv6AllowedForDualStack: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export type PackageType = "Zip" | "Image" | (string & {});
-export const PackageType = /*@__PURE__*/ S.String;
-export interface DeadLetterConfig {
-  TargetArn?: string;
-}
-export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TargetArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeadLetterConfig",
-}) as any as S.Schema<DeadLetterConfig>;
-export type EnvironmentVariables = {
-  [key: string]: string | redacted.Redacted<string> | undefined;
-};
-export const EnvironmentVariables = /*@__PURE__*/ S.Record(
-  S.String,
-  SensitiveString.pipe(S.optional),
-);
-export interface Environment {
-  Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
-}
-export const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Variables: S.optional(EnvironmentVariables) }),
-).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
-export type TracingMode = "Active" | "PassThrough" | (string & {});
-export const TracingMode = /*@__PURE__*/ S.String;
-export interface TracingConfig {
-  Mode?: TracingMode;
-}
-export const TracingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Mode: S.optional(TracingMode) }),
-).annotate({ identifier: "TracingConfig" }) as any as S.Schema<TracingConfig>;
-export type LayerList = string[];
-export const LayerList = /*@__PURE__*/ S.Array(S.String);
-export interface FileSystemConfig {
-  Arn: string;
-  LocalMountPath: string;
-}
-export const FileSystemConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String, LocalMountPath: S.String }),
-).annotate({
-  identifier: "FileSystemConfig",
-}) as any as S.Schema<FileSystemConfig>;
-export type FileSystemConfigList = FileSystemConfig[];
-export const FileSystemConfigList = /*@__PURE__*/ S.Array(FileSystemConfig);
-export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
-export interface ImageConfig {
-  EntryPoint?: string[];
-  Command?: string[];
-  WorkingDirectory?: string;
-}
-export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EntryPoint: S.optional(StringList),
-    Command: S.optional(StringList),
-    WorkingDirectory: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImageConfig" }) as any as S.Schema<ImageConfig>;
-export interface EphemeralStorage {
-  Size: number;
-}
-export const EphemeralStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Size: S.Number }),
-).annotate({
-  identifier: "EphemeralStorage",
-}) as any as S.Schema<EphemeralStorage>;
-export type SnapStartApplyOn = "PublishedVersions" | "None" | (string & {});
-export const SnapStartApplyOn = /*@__PURE__*/ S.String;
-export interface SnapStart {
-  ApplyOn?: SnapStartApplyOn;
-}
-export const SnapStart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplyOn: S.optional(SnapStartApplyOn) }),
-).annotate({ identifier: "SnapStart" }) as any as S.Schema<SnapStart>;
-export type LogFormat = "JSON" | "Text" | (string & {});
-export const LogFormat = /*@__PURE__*/ S.String;
-export type ApplicationLogLevel =
-  | "TRACE"
-  | "DEBUG"
-  | "INFO"
-  | "WARN"
-  | "ERROR"
-  | "FATAL"
-  | (string & {});
-export const ApplicationLogLevel = /*@__PURE__*/ S.String;
-export type SystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
-export const SystemLogLevel = /*@__PURE__*/ S.String;
-export interface LoggingConfig {
-  LogFormat?: LogFormat;
-  ApplicationLogLevel?: ApplicationLogLevel;
-  SystemLogLevel?: SystemLogLevel;
-  LogGroup?: string;
-}
-export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LogFormat: S.optional(LogFormat),
-    ApplicationLogLevel: S.optional(ApplicationLogLevel),
-    SystemLogLevel: S.optional(SystemLogLevel),
-    LogGroup: S.optional(S.String),
-  }),
-).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
-export type TenantIsolationMode = "PER_TENANT" | (string & {});
-export const TenantIsolationMode = /*@__PURE__*/ S.String;
-export interface TenancyConfig {
-  TenantIsolationMode: TenantIsolationMode;
-}
-export const TenancyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TenantIsolationMode: TenantIsolationMode }),
-).annotate({ identifier: "TenancyConfig" }) as any as S.Schema<TenancyConfig>;
-export interface LambdaManagedInstancesCapacityProviderConfig {
-  CapacityProviderArn: string;
-  PerExecutionEnvironmentMaxConcurrency?: number;
-  ExecutionEnvironmentMemoryGiBPerVCpu?: number;
-}
-export const LambdaManagedInstancesCapacityProviderConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityProviderArn: S.String,
-      PerExecutionEnvironmentMaxConcurrency: S.optional(S.Number),
-      ExecutionEnvironmentMemoryGiBPerVCpu: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "LambdaManagedInstancesCapacityProviderConfig",
-  }) as any as S.Schema<LambdaManagedInstancesCapacityProviderConfig>;
-export interface CapacityProviderConfig {
-  LambdaManagedInstancesCapacityProviderConfig: LambdaManagedInstancesCapacityProviderConfig;
-}
-export const CapacityProviderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LambdaManagedInstancesCapacityProviderConfig:
-      LambdaManagedInstancesCapacityProviderConfig,
-  }),
-).annotate({
-  identifier: "CapacityProviderConfig",
-}) as any as S.Schema<CapacityProviderConfig>;
-export interface DurableConfig {
-  RetentionPeriodInDays?: number;
-  ExecutionTimeout?: number;
-}
-export const DurableConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RetentionPeriodInDays: S.optional(S.Number),
-    ExecutionTimeout: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DurableConfig" }) as any as S.Schema<DurableConfig>;
-export interface CreateFunctionRequest {
-  FunctionName: string;
-  Runtime?: Runtime;
-  Role: string;
-  Handler?: string;
-  Code: FunctionCode;
-  Description?: string;
-  Timeout?: number;
-  MemorySize?: number;
-  Publish?: boolean;
-  PublishTo?: FunctionVersionLatestPublished;
-  VpcConfig?: VpcConfig;
-  PackageType?: PackageType;
-  DeadLetterConfig?: DeadLetterConfig;
-  Environment?: Environment;
-  KMSKeyArn?: string;
-  TracingConfig?: TracingConfig;
-  Tags?: { [key: string]: string | undefined };
-  Layers?: string[];
-  FileSystemConfigs?: FileSystemConfig[];
-  CodeSigningConfigArn?: string;
-  ImageConfig?: ImageConfig;
-  Architectures?: Architecture[];
-  EphemeralStorage?: EphemeralStorage;
-  SnapStart?: SnapStart;
-  LoggingConfig?: LoggingConfig;
-  TenancyConfig?: TenancyConfig;
-  CapacityProviderConfig?: CapacityProviderConfig;
-  DurableConfig?: DurableConfig;
-}
-export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.String,
-    Runtime: S.optional(Runtime),
-    Role: S.String,
-    Handler: S.optional(S.String),
-    Code: FunctionCode,
-    Description: S.optional(S.String),
-    Timeout: S.optional(S.Number),
-    MemorySize: S.optional(S.Number),
-    Publish: S.optional(S.Boolean),
-    PublishTo: S.optional(FunctionVersionLatestPublished),
-    VpcConfig: S.optional(VpcConfig),
-    PackageType: S.optional(PackageType),
-    DeadLetterConfig: S.optional(DeadLetterConfig),
-    Environment: S.optional(Environment),
-    KMSKeyArn: S.optional(S.String),
-    TracingConfig: S.optional(TracingConfig),
-    Tags: S.optional(Tags),
-    Layers: S.optional(LayerList),
-    FileSystemConfigs: S.optional(FileSystemConfigList),
-    CodeSigningConfigArn: S.optional(S.String),
-    ImageConfig: S.optional(ImageConfig),
-    Architectures: S.optional(ArchitecturesList),
-    EphemeralStorage: S.optional(EphemeralStorage),
-    SnapStart: S.optional(SnapStart),
-    LoggingConfig: S.optional(LoggingConfig),
-    TenancyConfig: S.optional(TenancyConfig),
-    CapacityProviderConfig: S.optional(CapacityProviderConfig),
-    DurableConfig: S.optional(DurableConfig),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/2015-03-31/functions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateFunctionRequest",
-}) as any as S.Schema<CreateFunctionRequest>;
-export interface VpcConfigResponse {
-  SubnetIds?: string[];
-  SecurityGroupIds?: string[];
-  VpcId?: string;
-  Ipv6AllowedForDualStack?: boolean;
-}
-export const VpcConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SubnetIds: S.optional(SubnetIds),
-    SecurityGroupIds: S.optional(SecurityGroupIds),
-    VpcId: S.optional(S.String),
-    Ipv6AllowedForDualStack: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VpcConfigResponse",
-}) as any as S.Schema<VpcConfigResponse>;
-export interface EnvironmentError {
-  ErrorCode?: string;
-  Message?: string | redacted.Redacted<string>;
-}
-export const EnvironmentError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ErrorCode: S.optional(S.String),
-    Message: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "EnvironmentError",
-}) as any as S.Schema<EnvironmentError>;
-export interface EnvironmentResponse {
-  Variables?: { [key: string]: string | redacted.Redacted<string> | undefined };
-  Error?: EnvironmentError;
-}
-export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Variables: S.optional(EnvironmentVariables),
-    Error: S.optional(EnvironmentError),
-  }),
-).annotate({
-  identifier: "EnvironmentResponse",
-}) as any as S.Schema<EnvironmentResponse>;
-export interface TracingConfigResponse {
-  Mode?: TracingMode;
-}
-export const TracingConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Mode: S.optional(TracingMode) }),
-).annotate({
-  identifier: "TracingConfigResponse",
-}) as any as S.Schema<TracingConfigResponse>;
-export interface Layer {
-  Arn?: string;
-  CodeSize?: number;
-  SigningProfileVersionArn?: string;
-  SigningJobArn?: string;
-}
-export const Layer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    CodeSize: S.optional(S.Number),
-    SigningProfileVersionArn: S.optional(S.String),
-    SigningJobArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
-export type LayersReferenceList = Layer[];
-export const LayersReferenceList = /*@__PURE__*/ S.Array(Layer);
-export type StateReasonCode =
-  | "Idle"
-  | "Creating"
-  | "Restoring"
-  | "EniLimitExceeded"
-  | "InsufficientRolePermissions"
-  | "InvalidConfiguration"
-  | "InternalError"
-  | "SubnetOutOfIPAddresses"
-  | "InvalidSubnet"
-  | "InvalidSecurityGroup"
-  | "ImageDeleted"
-  | "ImageAccessDenied"
-  | "InvalidImage"
-  | "KMSKeyAccessDenied"
-  | "KMSKeyNotFound"
-  | "InvalidStateKMSKey"
-  | "DisabledKMSKey"
-  | "EFSIOError"
-  | "EFSMountConnectivityError"
-  | "EFSMountFailure"
-  | "EFSMountTimeout"
-  | "InvalidRuntime"
-  | "InvalidZipFileException"
-  | "FunctionError"
-  | "ServiceQuotaExceededException"
-  | "VcpuLimitExceeded"
-  | "CapacityProviderScalingLimitExceeded"
-  | "InsufficientCapacity"
-  | "EC2RequestLimitExceeded"
-  | "FunctionError.InitTimeout"
-  | "FunctionError.RuntimeInitError"
-  | "FunctionError.ExtensionInitError"
-  | "FunctionError.InvalidEntryPoint"
-  | "FunctionError.InvalidWorkingDirectory"
-  | "FunctionError.PermissionDenied"
-  | "FunctionError.TooManyExtensions"
-  | "FunctionError.InitResourceExhausted"
-  | "DisallowedByVpcEncryptionControl"
-  | "DrainingDurableExecutions"
-  | "Creating"
-  | (string & {});
-export const StateReasonCode = /*@__PURE__*/ S.String;
-export type LastUpdateStatus =
-  | "Successful"
-  | "Failed"
-  | "InProgress"
-  | (string & {});
-export const LastUpdateStatus = /*@__PURE__*/ S.String;
-export type LastUpdateStatusReasonCode =
-  | "EniLimitExceeded"
-  | "InsufficientRolePermissions"
-  | "InvalidConfiguration"
-  | "InternalError"
-  | "SubnetOutOfIPAddresses"
-  | "InvalidSubnet"
-  | "InvalidSecurityGroup"
-  | "ImageDeleted"
-  | "ImageAccessDenied"
-  | "InvalidImage"
-  | "KMSKeyAccessDenied"
-  | "KMSKeyNotFound"
-  | "InvalidStateKMSKey"
-  | "DisabledKMSKey"
-  | "EFSIOError"
-  | "EFSMountConnectivityError"
-  | "EFSMountFailure"
-  | "EFSMountTimeout"
-  | "InvalidRuntime"
-  | "InvalidZipFileException"
-  | "FunctionError"
-  | "ServiceQuotaExceededException"
-  | "VcpuLimitExceeded"
-  | "CapacityProviderScalingLimitExceeded"
-  | "InsufficientCapacity"
-  | "EC2RequestLimitExceeded"
-  | "FunctionError.InitTimeout"
-  | "FunctionError.RuntimeInitError"
-  | "FunctionError.ExtensionInitError"
-  | "FunctionError.InvalidEntryPoint"
-  | "FunctionError.InvalidWorkingDirectory"
-  | "FunctionError.PermissionDenied"
-  | "FunctionError.TooManyExtensions"
-  | "FunctionError.InitResourceExhausted"
-  | "DisallowedByVpcEncryptionControl"
-  | "Creating"
-  | (string & {});
-export const LastUpdateStatusReasonCode = /*@__PURE__*/ S.String;
-export interface ImageConfigError {
-  ErrorCode?: string;
-  Message?: string | redacted.Redacted<string>;
-}
-export const ImageConfigError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ErrorCode: S.optional(S.String),
-    Message: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "ImageConfigError",
-}) as any as S.Schema<ImageConfigError>;
-export interface ImageConfigResponse {
-  ImageConfig?: ImageConfig;
-  Error?: ImageConfigError;
-}
-export const ImageConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ImageConfig: S.optional(ImageConfig),
-    Error: S.optional(ImageConfigError),
-  }),
-).annotate({
-  identifier: "ImageConfigResponse",
-}) as any as S.Schema<ImageConfigResponse>;
-export type SnapStartOptimizationStatus = "On" | "Off" | (string & {});
-export const SnapStartOptimizationStatus = /*@__PURE__*/ S.String;
-export interface SnapStartResponse {
-  ApplyOn?: SnapStartApplyOn;
-  OptimizationStatus?: SnapStartOptimizationStatus;
-}
-export const SnapStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplyOn: S.optional(SnapStartApplyOn),
-    OptimizationStatus: S.optional(SnapStartOptimizationStatus),
-  }),
-).annotate({
-  identifier: "SnapStartResponse",
-}) as any as S.Schema<SnapStartResponse>;
-export interface RuntimeVersionError {
-  ErrorCode?: string;
-  Message?: string | redacted.Redacted<string>;
-}
-export const RuntimeVersionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ErrorCode: S.optional(S.String),
-    Message: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "RuntimeVersionError",
-}) as any as S.Schema<RuntimeVersionError>;
-export interface RuntimeVersionConfig {
-  RuntimeVersionArn?: string;
-  Error?: RuntimeVersionError;
-}
-export const RuntimeVersionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuntimeVersionArn: S.optional(S.String),
-    Error: S.optional(RuntimeVersionError),
-  }),
-).annotate({
-  identifier: "RuntimeVersionConfig",
-}) as any as S.Schema<RuntimeVersionConfig>;
-export interface FunctionConfiguration {
-  FunctionName?: string;
-  FunctionArn?: string;
-  Runtime?: Runtime;
-  Role?: string;
-  Handler?: string;
-  CodeSize?: number;
-  Description?: string;
-  Timeout?: number;
-  MemorySize?: number;
-  LastModified?: string;
-  CodeSha256?: string;
-  Version?: string;
-  VpcConfig?: VpcConfigResponse;
-  DeadLetterConfig?: DeadLetterConfig;
-  Environment?: EnvironmentResponse;
-  KMSKeyArn?: string;
-  TracingConfig?: TracingConfigResponse;
-  MasterArn?: string;
-  RevisionId?: string;
-  Layers?: Layer[];
-  State?: State;
-  StateReason?: string;
-  StateReasonCode?: StateReasonCode;
-  LastUpdateStatus?: LastUpdateStatus;
-  LastUpdateStatusReason?: string;
-  LastUpdateStatusReasonCode?: LastUpdateStatusReasonCode;
-  FileSystemConfigs?: FileSystemConfig[];
-  SigningProfileVersionArn?: string;
-  SigningJobArn?: string;
-  PackageType?: PackageType;
-  ImageConfigResponse?: ImageConfigResponse;
-  Architectures?: Architecture[];
-  EphemeralStorage?: EphemeralStorage;
-  SnapStart?: SnapStartResponse;
-  RuntimeVersionConfig?: RuntimeVersionConfig;
-  LoggingConfig?: LoggingConfig;
-  TenancyConfig?: TenancyConfig;
-  CapacityProviderConfig?: CapacityProviderConfig;
-  ConfigSha256?: string;
-  DurableConfig?: DurableConfig;
-}
-export const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.optional(S.String),
-    FunctionArn: S.optional(S.String),
-    Runtime: S.optional(Runtime),
-    Role: S.optional(S.String),
-    Handler: S.optional(S.String),
-    CodeSize: S.optional(S.Number),
-    Description: S.optional(S.String),
-    Timeout: S.optional(S.Number),
-    MemorySize: S.optional(S.Number),
-    LastModified: S.optional(S.String),
-    CodeSha256: S.optional(S.String),
-    Version: S.optional(S.String),
-    VpcConfig: S.optional(VpcConfigResponse),
-    DeadLetterConfig: S.optional(DeadLetterConfig),
-    Environment: S.optional(EnvironmentResponse),
-    KMSKeyArn: S.optional(S.String),
-    TracingConfig: S.optional(TracingConfigResponse),
-    MasterArn: S.optional(S.String),
-    RevisionId: S.optional(S.String),
-    Layers: S.optional(LayersReferenceList),
-    State: S.optional(State),
-    StateReason: S.optional(S.String),
-    StateReasonCode: S.optional(StateReasonCode),
-    LastUpdateStatus: S.optional(LastUpdateStatus),
-    LastUpdateStatusReason: S.optional(S.String),
-    LastUpdateStatusReasonCode: S.optional(LastUpdateStatusReasonCode),
-    FileSystemConfigs: S.optional(FileSystemConfigList),
-    SigningProfileVersionArn: S.optional(S.String),
-    SigningJobArn: S.optional(S.String),
-    PackageType: S.optional(PackageType),
-    ImageConfigResponse: S.optional(ImageConfigResponse),
-    Architectures: S.optional(ArchitecturesList),
-    EphemeralStorage: S.optional(EphemeralStorage),
-    SnapStart: S.optional(SnapStartResponse),
-    RuntimeVersionConfig: S.optional(RuntimeVersionConfig),
-    LoggingConfig: S.optional(LoggingConfig),
-    TenancyConfig: S.optional(TenancyConfig),
-    CapacityProviderConfig: S.optional(CapacityProviderConfig),
-    ConfigSha256: S.optional(S.String),
-    DurableConfig: S.optional(DurableConfig),
-  }),
-).annotate({
-  identifier: "FunctionConfiguration",
-}) as any as S.Schema<FunctionConfiguration>;
-export type FunctionVersion = "ALL" | (string & {});
-export const FunctionVersion = /*@__PURE__*/ S.String;
-export interface ListFunctionsRequest {
-  MasterRegion?: string;
-  FunctionVersion?: FunctionVersion;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MasterRegion: S.optional(S.String).pipe(T.HttpQuery("MasterRegion")),
-    FunctionVersion: S.optional(FunctionVersion).pipe(
-      T.HttpQuery("FunctionVersion"),
-    ),
+    DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
+    CheckpointToken: S.String.pipe(T.HttpQuery("CheckpointToken")),
     Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
     MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
   }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/2015-03-31/functions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListFunctionsRequest",
-}) as any as S.Schema<ListFunctionsRequest>;
-export type FunctionList = FunctionConfiguration[];
-export const FunctionList = /*@__PURE__*/ S.Array(FunctionConfiguration);
-export interface ListFunctionsResponse {
-  NextMarker?: string;
-  Functions?: FunctionConfiguration[];
-}
-export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextMarker: S.optional(S.String),
-    Functions: S.optional(FunctionList),
-  }),
-).annotate({
-  identifier: "ListFunctionsResponse",
-}) as any as S.Schema<ListFunctionsResponse>;
-export interface DeleteFunctionConcurrencyRequest {
-  FunctionName: string;
-}
-export const DeleteFunctionConcurrencyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2017-10-31/functions/{FunctionName}/concurrency",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteFunctionConcurrencyRequest",
-  }) as any as S.Schema<DeleteFunctionConcurrencyRequest>;
-export interface DeleteFunctionConcurrencyResponse {}
-export const DeleteFunctionConcurrencyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteFunctionConcurrencyResponse",
-  }) as any as S.Schema<DeleteFunctionConcurrencyResponse>;
-export interface GetFunctionConcurrencyRequest {
-  FunctionName: string;
-}
-export const GetFunctionConcurrencyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2019-09-30/functions/{FunctionName}/concurrency",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetFunctionConcurrencyRequest",
-  }) as any as S.Schema<GetFunctionConcurrencyRequest>;
-export interface GetFunctionConcurrencyResponse {
-  ReservedConcurrentExecutions?: number;
-}
-export const GetFunctionConcurrencyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "GetFunctionConcurrencyResponse",
-  }) as any as S.Schema<GetFunctionConcurrencyResponse>;
-export interface ListProvisionedConcurrencyConfigsRequest {
-  FunctionName: string;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListProvisionedConcurrencyConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListProvisionedConcurrencyConfigsRequest",
-  }) as any as S.Schema<ListProvisionedConcurrencyConfigsRequest>;
-export type ProvisionedConcurrencyStatusEnum =
-  | "IN_PROGRESS"
-  | "READY"
-  | "FAILED"
-  | (string & {});
-export const ProvisionedConcurrencyStatusEnum = /*@__PURE__*/ S.String;
-export interface ProvisionedConcurrencyConfigListItem {
-  FunctionArn?: string;
-  RequestedProvisionedConcurrentExecutions?: number;
-  AvailableProvisionedConcurrentExecutions?: number;
-  AllocatedProvisionedConcurrentExecutions?: number;
-  Status?: ProvisionedConcurrencyStatusEnum;
-  StatusReason?: string;
-  LastModified?: string;
-}
-export const ProvisionedConcurrencyConfigListItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionArn: S.optional(S.String),
-      RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
-      AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
-      AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
-      Status: S.optional(ProvisionedConcurrencyStatusEnum),
-      StatusReason: S.optional(S.String),
-      LastModified: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedConcurrencyConfigListItem",
-  }) as any as S.Schema<ProvisionedConcurrencyConfigListItem>;
-export type ProvisionedConcurrencyConfigList =
-  ProvisionedConcurrencyConfigListItem[];
-export const ProvisionedConcurrencyConfigList =
-  /*@__PURE__*/ S.Array(ProvisionedConcurrencyConfigListItem);
-export interface ListProvisionedConcurrencyConfigsResponse {
-  ProvisionedConcurrencyConfigs?: ProvisionedConcurrencyConfigListItem[];
-  NextMarker?: string;
-}
-export const ListProvisionedConcurrencyConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedConcurrencyConfigs: S.optional(
-        ProvisionedConcurrencyConfigList,
-      ),
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListProvisionedConcurrencyConfigsResponse",
-  }) as any as S.Schema<ListProvisionedConcurrencyConfigsResponse>;
-export interface PutFunctionConcurrencyRequest {
-  FunctionName: string;
-  ReservedConcurrentExecutions: number;
-}
-export const PutFunctionConcurrencyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      ReservedConcurrentExecutions: S.Number,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2017-10-31/functions/{FunctionName}/concurrency",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "PutFunctionConcurrencyRequest",
-  }) as any as S.Schema<PutFunctionConcurrencyRequest>;
-export interface Concurrency {
-  ReservedConcurrentExecutions?: number;
-}
-export const Concurrency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
-).annotate({ identifier: "Concurrency" }) as any as S.Schema<Concurrency>;
-export interface UpdateFunctionCodeRequest {
-  FunctionName: string;
-  ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
-  S3Bucket?: string;
-  S3Key?: string;
-  S3ObjectVersion?: string;
-  S3ObjectStorageMode?: S3ObjectStorageMode;
-  ImageUri?: string;
-  Architectures?: Architecture[];
-  Publish?: boolean;
-  PublishTo?: FunctionVersionLatestPublished;
-  DryRun?: boolean;
-  RevisionId?: string;
-  SourceKMSKeyArn?: string;
-}
-export const UpdateFunctionCodeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    ZipFile: S.optional(SensitiveBlob),
-    S3Bucket: S.optional(S.String),
-    S3Key: S.optional(S.String),
-    S3ObjectVersion: S.optional(S.String),
-    S3ObjectStorageMode: S.optional(S3ObjectStorageMode),
-    ImageUri: S.optional(S.String),
-    Architectures: S.optional(ArchitecturesList),
-    Publish: S.optional(S.Boolean),
-    PublishTo: S.optional(FunctionVersionLatestPublished),
-    DryRun: S.optional(S.Boolean),
-    RevisionId: S.optional(S.String),
-    SourceKMSKeyArn: S.optional(S.String),
-  }).pipe(
-    T.all(
       T.Http({
-        method: "PUT",
-        uri: "/2015-03-31/functions/{FunctionName}/code",
+        method: "GET",
+        uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/state",
       }),
       svc,
       auth,
@@ -3634,207 +3274,37 @@ export const UpdateFunctionCodeRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "UpdateFunctionCodeRequest",
-}) as any as S.Schema<UpdateFunctionCodeRequest>;
-export interface UpdateFunctionConfigurationRequest {
-  FunctionName: string;
-  Role?: string;
-  Handler?: string;
-  Description?: string;
-  Timeout?: number;
-  MemorySize?: number;
-  VpcConfig?: VpcConfig;
-  Environment?: Environment;
-  Runtime?: Runtime;
-  DeadLetterConfig?: DeadLetterConfig;
-  KMSKeyArn?: string;
-  TracingConfig?: TracingConfig;
-  RevisionId?: string;
-  Layers?: string[];
-  FileSystemConfigs?: FileSystemConfig[];
-  ImageConfig?: ImageConfig;
-  EphemeralStorage?: EphemeralStorage;
-  SnapStart?: SnapStart;
-  LoggingConfig?: LoggingConfig;
-  CapacityProviderConfig?: CapacityProviderConfig;
-  DurableConfig?: DurableConfig;
+  identifier: "GetDurableExecutionStateRequest",
+}) as any as S.Schema<GetDurableExecutionStateRequest>;
+export interface GetDurableExecutionStateResponse {
+  Operations: Operation[];
+  NextMarker?: string;
 }
-export const UpdateFunctionConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Role: S.optional(S.String),
-      Handler: S.optional(S.String),
-      Description: S.optional(S.String),
-      Timeout: S.optional(S.Number),
-      MemorySize: S.optional(S.Number),
-      VpcConfig: S.optional(VpcConfig),
-      Environment: S.optional(Environment),
-      Runtime: S.optional(Runtime),
-      DeadLetterConfig: S.optional(DeadLetterConfig),
-      KMSKeyArn: S.optional(S.String),
-      TracingConfig: S.optional(TracingConfig),
-      RevisionId: S.optional(S.String),
-      Layers: S.optional(LayerList),
-      FileSystemConfigs: S.optional(FileSystemConfigList),
-      ImageConfig: S.optional(ImageConfig),
-      EphemeralStorage: S.optional(EphemeralStorage),
-      SnapStart: S.optional(SnapStart),
-      LoggingConfig: S.optional(LoggingConfig),
-      CapacityProviderConfig: S.optional(CapacityProviderConfig),
-      DurableConfig: S.optional(DurableConfig),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2015-03-31/functions/{FunctionName}/configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDurableExecutionStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Operations: Operations, NextMarker: S.optional(S.String) }),
+).annotate({
+  identifier: "GetDurableExecutionStateResponse",
+}) as any as S.Schema<GetDurableExecutionStateResponse>;
+export interface GetEventSourceMappingRequest {
+  UUID: string;
+}
+export const GetEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UUID: S.String.pipe(T.HttpLabel("UUID")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2015-03-31/event-source-mappings/{UUID}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateFunctionConfigurationRequest",
-  }) as any as S.Schema<UpdateFunctionConfigurationRequest>;
-export type FunctionUrlAuthType = "NONE" | "AWS_IAM" | (string & {});
-export const FunctionUrlAuthType = /*@__PURE__*/ S.String;
-export type HeadersList = string[];
-export const HeadersList = /*@__PURE__*/ S.Array(S.String);
-export type AllowMethodsList = string[];
-export const AllowMethodsList = /*@__PURE__*/ S.Array(S.String);
-export type AllowOriginsList = string[];
-export const AllowOriginsList = /*@__PURE__*/ S.Array(S.String);
-export interface Cors {
-  AllowCredentials?: boolean;
-  AllowHeaders?: string[];
-  AllowMethods?: string[];
-  AllowOrigins?: string[];
-  ExposeHeaders?: string[];
-  MaxAge?: number;
-}
-export const Cors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AllowCredentials: S.optional(S.Boolean),
-    AllowHeaders: S.optional(HeadersList),
-    AllowMethods: S.optional(AllowMethodsList),
-    AllowOrigins: S.optional(AllowOriginsList),
-    ExposeHeaders: S.optional(HeadersList),
-    MaxAge: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Cors" }) as any as S.Schema<Cors>;
-export type InvokeMode = "BUFFERED" | "RESPONSE_STREAM" | (string & {});
-export const InvokeMode = /*@__PURE__*/ S.String;
-export interface CreateFunctionUrlConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-  AuthType: FunctionUrlAuthType;
-  Cors?: Cors;
-  InvokeMode?: InvokeMode;
-}
-export const CreateFunctionUrlConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      AuthType: FunctionUrlAuthType,
-      Cors: S.optional(Cors),
-      InvokeMode: S.optional(InvokeMode),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2021-10-31/functions/{FunctionName}/url",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateFunctionUrlConfigRequest",
-  }) as any as S.Schema<CreateFunctionUrlConfigRequest>;
-export interface CreateFunctionUrlConfigResponse {
-  FunctionUrl: string;
-  FunctionArn: string;
-  AuthType: FunctionUrlAuthType;
-  Cors?: Cors;
-  CreationTime: string;
-  InvokeMode?: InvokeMode;
-}
-export const CreateFunctionUrlConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionUrl: S.String,
-      FunctionArn: S.String,
-      AuthType: FunctionUrlAuthType,
-      Cors: S.optional(Cors),
-      CreationTime: S.String,
-      InvokeMode: S.optional(InvokeMode),
-    }),
-  ).annotate({
-    identifier: "CreateFunctionUrlConfigResponse",
-  }) as any as S.Schema<CreateFunctionUrlConfigResponse>;
-export interface DeleteFunctionCodeSigningConfigRequest {
-  FunctionName: string;
-}
-export const DeleteFunctionCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2020-06-30/functions/{FunctionName}/code-signing-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteFunctionCodeSigningConfigRequest",
-  }) as any as S.Schema<DeleteFunctionCodeSigningConfigRequest>;
-export interface DeleteFunctionCodeSigningConfigResponse {}
-export const DeleteFunctionCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteFunctionCodeSigningConfigResponse",
-  }) as any as S.Schema<DeleteFunctionCodeSigningConfigResponse>;
-export interface DeleteFunctionUrlConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-}
-export const DeleteFunctionUrlConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2021-10-31/functions/{FunctionName}/url",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteFunctionUrlConfigRequest",
-  }) as any as S.Schema<DeleteFunctionUrlConfigRequest>;
-export interface DeleteFunctionUrlConfigResponse {}
-export const DeleteFunctionUrlConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteFunctionUrlConfigResponse",
-  }) as any as S.Schema<DeleteFunctionUrlConfigResponse>;
+  ),
+).annotate({
+  identifier: "GetEventSourceMappingRequest",
+}) as any as S.Schema<GetEventSourceMappingRequest>;
 export interface GetFunctionRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -3856,6 +3326,7 @@ export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFunctionRequest",
 }) as any as S.Schema<GetFunctionRequest>;
+export type SensitiveStringOnServerOnly = string;
 export interface ResolvedS3Object {
   S3Bucket?: string;
   S3Key?: string;
@@ -3904,6 +3375,8 @@ export const FunctionCodeLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FunctionCodeLocation",
 }) as any as S.Schema<FunctionCodeLocation>;
+export type TagsErrorCode = string;
+export type TagsErrorMessage = string;
 export interface TagsError {
   ErrorCode: string;
   Message: string;
@@ -3911,6 +3384,13 @@ export interface TagsError {
 export const TagsError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.String, Message: S.String }),
 ).annotate({ identifier: "TagsError" }) as any as S.Schema<TagsError>;
+export type ReservedConcurrentExecutions = number;
+export interface Concurrency {
+  ReservedConcurrentExecutions?: number;
+}
+export const Concurrency = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
+).annotate({ identifier: "Concurrency" }) as any as S.Schema<Concurrency>;
 export interface GetFunctionResponse {
   Configuration?: FunctionConfiguration;
   Code?: FunctionCodeLocation;
@@ -3932,116 +3412,186 @@ export const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetFunctionCodeSigningConfigRequest {
   FunctionName: string;
 }
-export const GetFunctionCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2020-06-30/functions/{FunctionName}/code-signing-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2020-06-30/functions/{FunctionName}/code-signing-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetFunctionCodeSigningConfigRequest",
-  }) as any as S.Schema<GetFunctionCodeSigningConfigRequest>;
+  ),
+).annotate({
+  identifier: "GetFunctionCodeSigningConfigRequest",
+}) as any as S.Schema<GetFunctionCodeSigningConfigRequest>;
 export interface GetFunctionCodeSigningConfigResponse {
   CodeSigningConfigArn: string;
   FunctionName: string;
 }
-export const GetFunctionCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
-  ).annotate({
-    identifier: "GetFunctionCodeSigningConfigResponse",
-  }) as any as S.Schema<GetFunctionCodeSigningConfigResponse>;
+export const GetFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
+).annotate({
+  identifier: "GetFunctionCodeSigningConfigResponse",
+}) as any as S.Schema<GetFunctionCodeSigningConfigResponse>;
+export interface GetFunctionConcurrencyRequest {
+  FunctionName: string;
+}
+export const GetFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2019-09-30/functions/{FunctionName}/concurrency",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetFunctionConcurrencyRequest",
+}) as any as S.Schema<GetFunctionConcurrencyRequest>;
+export interface GetFunctionConcurrencyResponse {
+  ReservedConcurrentExecutions?: number;
+}
+export const GetFunctionConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReservedConcurrentExecutions: S.optional(S.Number) }),
+).annotate({
+  identifier: "GetFunctionConcurrencyResponse",
+}) as any as S.Schema<GetFunctionConcurrencyResponse>;
 export interface GetFunctionConfigurationRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetFunctionConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2015-03-31/functions/{FunctionName}/configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFunctionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2015-03-31/functions/{FunctionName}/configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetFunctionConfigurationRequest",
-  }) as any as S.Schema<GetFunctionConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetFunctionConfigurationRequest",
+}) as any as S.Schema<GetFunctionConfigurationRequest>;
+export interface GetFunctionEventInvokeConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+}
+export const GetFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetFunctionEventInvokeConfigRequest",
+}) as any as S.Schema<GetFunctionEventInvokeConfigRequest>;
+export type MaximumRetryAttempts = number;
+export type MaximumEventAgeInSeconds = number;
+export interface FunctionEventInvokeConfig {
+  LastModified?: Date;
+  FunctionArn?: string;
+  MaximumRetryAttempts?: number;
+  MaximumEventAgeInSeconds?: number;
+  DestinationConfig?: DestinationConfig;
+}
+export const FunctionEventInvokeConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    FunctionArn: S.optional(S.String),
+    MaximumRetryAttempts: S.optional(S.Number),
+    MaximumEventAgeInSeconds: S.optional(S.Number),
+    DestinationConfig: S.optional(DestinationConfig),
+  }),
+).annotate({
+  identifier: "FunctionEventInvokeConfig",
+}) as any as S.Schema<FunctionEventInvokeConfig>;
+export type UnqualifiedFunctionName = string;
 export interface GetFunctionRecursionConfigRequest {
   FunctionName: string;
 }
-export const GetFunctionRecursionConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2024-08-31/functions/{FunctionName}/recursion-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionName: S.String.pipe(T.HttpLabel("FunctionName")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2024-08-31/functions/{FunctionName}/recursion-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetFunctionRecursionConfigRequest",
-  }) as any as S.Schema<GetFunctionRecursionConfigRequest>;
+  ),
+).annotate({
+  identifier: "GetFunctionRecursionConfigRequest",
+}) as any as S.Schema<GetFunctionRecursionConfigRequest>;
 export type RecursiveLoop = "Allow" | "Terminate" | (string & {});
 export const RecursiveLoop = /*@__PURE__*/ S.String;
+
 export interface GetFunctionRecursionConfigResponse {
   RecursiveLoop?: RecursiveLoop;
 }
-export const GetFunctionRecursionConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RecursiveLoop: S.optional(RecursiveLoop) }),
-  ).annotate({
-    identifier: "GetFunctionRecursionConfigResponse",
-  }) as any as S.Schema<GetFunctionRecursionConfigResponse>;
+export const GetFunctionRecursionConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecursiveLoop: S.optional(RecursiveLoop) }),
+).annotate({
+  identifier: "GetFunctionRecursionConfigResponse",
+}) as any as S.Schema<GetFunctionRecursionConfigResponse>;
+export type PublishedFunctionQualifier = string;
 export interface GetFunctionScalingConfigRequest {
   FunctionName: string;
   Qualifier: string;
 }
-export const GetFunctionScalingConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-11-30/functions/{FunctionName}/function-scaling-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-11-30/functions/{FunctionName}/function-scaling-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetFunctionScalingConfigRequest",
-  }) as any as S.Schema<GetFunctionScalingConfigRequest>;
+  ),
+).annotate({
+  identifier: "GetFunctionScalingConfigRequest",
+}) as any as S.Schema<GetFunctionScalingConfigRequest>;
+export type FunctionScalingConfigExecutionEnvironments = number;
 export interface FunctionScalingConfig {
   MinExecutionEnvironments?: number;
   MaxExecutionEnvironments?: number;
@@ -4059,41 +3609,39 @@ export interface GetFunctionScalingConfigResponse {
   AppliedFunctionScalingConfig?: FunctionScalingConfig;
   RequestedFunctionScalingConfig?: FunctionScalingConfig;
 }
-export const GetFunctionScalingConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionArn: S.optional(S.String),
-      AppliedFunctionScalingConfig: S.optional(FunctionScalingConfig),
-      RequestedFunctionScalingConfig: S.optional(FunctionScalingConfig),
-    }),
-  ).annotate({
-    identifier: "GetFunctionScalingConfigResponse",
-  }) as any as S.Schema<GetFunctionScalingConfigResponse>;
+export const GetFunctionScalingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionArn: S.optional(S.String),
+    AppliedFunctionScalingConfig: S.optional(FunctionScalingConfig),
+    RequestedFunctionScalingConfig: S.optional(FunctionScalingConfig),
+  }),
+).annotate({
+  identifier: "GetFunctionScalingConfigResponse",
+}) as any as S.Schema<GetFunctionScalingConfigResponse>;
 export interface GetFunctionUrlConfigRequest {
   FunctionName: string;
   Qualifier?: string;
 }
-export const GetFunctionUrlConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2021-10-31/functions/{FunctionName}/url",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2021-10-31/functions/{FunctionName}/url",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetFunctionUrlConfigRequest",
-  }) as any as S.Schema<GetFunctionUrlConfigRequest>;
+  ),
+).annotate({
+  identifier: "GetFunctionUrlConfigRequest",
+}) as any as S.Schema<GetFunctionUrlConfigRequest>;
 export interface GetFunctionUrlConfigResponse {
   FunctionUrl: string;
   FunctionArn: string;
@@ -4103,20 +3651,145 @@ export interface GetFunctionUrlConfigResponse {
   LastModifiedTime: string;
   InvokeMode?: InvokeMode;
 }
-export const GetFunctionUrlConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionUrl: S.String,
-      FunctionArn: S.String,
-      AuthType: FunctionUrlAuthType,
-      Cors: S.optional(Cors),
-      CreationTime: S.String,
-      LastModifiedTime: S.String,
-      InvokeMode: S.optional(InvokeMode),
-    }),
-  ).annotate({
-    identifier: "GetFunctionUrlConfigResponse",
-  }) as any as S.Schema<GetFunctionUrlConfigResponse>;
+export const GetFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionUrl: S.String,
+    FunctionArn: S.String,
+    AuthType: FunctionUrlAuthType,
+    Cors: S.optional(Cors),
+    CreationTime: S.String,
+    LastModifiedTime: S.String,
+    InvokeMode: S.optional(InvokeMode),
+  }),
+).annotate({
+  identifier: "GetFunctionUrlConfigResponse",
+}) as any as S.Schema<GetFunctionUrlConfigResponse>;
+export interface GetLayerVersionRequest {
+  LayerName: string;
+  VersionNumber: number;
+}
+export const GetLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
+    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetLayerVersionRequest",
+}) as any as S.Schema<GetLayerVersionRequest>;
+export interface LayerVersionContentOutput {
+  Location?: string;
+  CodeSha256?: string;
+  CodeSize?: number;
+  SigningProfileVersionArn?: string;
+  SigningJobArn?: string;
+  ResolvedS3Object?: ResolvedS3Object;
+}
+export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Location: S.optional(S.String),
+    CodeSha256: S.optional(S.String),
+    CodeSize: S.optional(S.Number),
+    SigningProfileVersionArn: S.optional(S.String),
+    SigningJobArn: S.optional(S.String),
+    ResolvedS3Object: S.optional(ResolvedS3Object),
+  }),
+).annotate({
+  identifier: "LayerVersionContentOutput",
+}) as any as S.Schema<LayerVersionContentOutput>;
+export type LayerArn = string;
+export type CompatibleArchitectures = Architecture[];
+export const CompatibleArchitectures = /*@__PURE__*/ S.Array(Architecture);
+export type CompatibleRuntimes = Runtime[];
+export const CompatibleRuntimes = /*@__PURE__*/ S.Array(Runtime);
+export type LicenseInfo = string;
+export interface GetLayerVersionResponse {
+  Content?: LayerVersionContentOutput;
+  LayerArn?: string;
+  LayerVersionArn?: string;
+  Description?: string;
+  CreatedDate?: string;
+  Version?: number;
+  CompatibleArchitectures?: Architecture[];
+  CompatibleRuntimes?: Runtime[];
+  LicenseInfo?: string;
+}
+export const GetLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Content: S.optional(LayerVersionContentOutput),
+    LayerArn: S.optional(S.String),
+    LayerVersionArn: S.optional(S.String),
+    Description: S.optional(S.String),
+    CreatedDate: S.optional(S.String),
+    Version: S.optional(S.Number),
+    CompatibleArchitectures: S.optional(CompatibleArchitectures),
+    CompatibleRuntimes: S.optional(CompatibleRuntimes),
+    LicenseInfo: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetLayerVersionResponse",
+}) as any as S.Schema<GetLayerVersionResponse>;
+export interface GetLayerVersionByArnRequest {
+  Arn: string;
+}
+export const GetLayerVersionByArnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String.pipe(T.HttpQuery("Arn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2018-10-31/layers?find=LayerVersion" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetLayerVersionByArnRequest",
+}) as any as S.Schema<GetLayerVersionByArnRequest>;
+export interface GetLayerVersionPolicyRequest {
+  LayerName: string;
+  VersionNumber: number;
+}
+export const GetLayerVersionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
+    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetLayerVersionPolicyRequest",
+}) as any as S.Schema<GetLayerVersionPolicyRequest>;
+export interface GetLayerVersionPolicyResponse {
+  Policy?: string;
+  RevisionId?: string;
+}
+export const GetLayerVersionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(S.String), RevisionId: S.optional(S.String) }),
+).annotate({
+  identifier: "GetLayerVersionPolicyResponse",
+}) as any as S.Schema<GetLayerVersionPolicyResponse>;
 export interface GetPolicyRequest {
   FunctionName: string;
   Qualifier?: string;
@@ -4150,20 +3823,20 @@ export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPolicyResponse",
 }) as any as S.Schema<GetPolicyResponse>;
-export interface GetRuntimeManagementConfigRequest {
+export interface GetProvisionedConcurrencyConfigRequest {
   FunctionName: string;
-  Qualifier?: string;
+  Qualifier: string;
 }
-export const GetRuntimeManagementConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
     }).pipe(
       T.all(
         T.Http({
           method: "GET",
-          uri: "/2021-07-20/functions/{FunctionName}/runtime-management-config",
+          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
         }),
         svc,
         auth,
@@ -4172,38 +3845,94 @@ export const GetRuntimeManagementConfigRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRuntimeManagementConfigRequest",
-  }) as any as S.Schema<GetRuntimeManagementConfigRequest>;
+).annotate({
+  identifier: "GetProvisionedConcurrencyConfigRequest",
+}) as any as S.Schema<GetProvisionedConcurrencyConfigRequest>;
+export type PositiveInteger = number;
+export type NonNegativeInteger = number;
+export type ProvisionedConcurrencyStatusEnum =
+  | "IN_PROGRESS"
+  | "READY"
+  | "FAILED"
+  | (string & {});
+export const ProvisionedConcurrencyStatusEnum = /*@__PURE__*/ S.String;
+
+export interface GetProvisionedConcurrencyConfigResponse {
+  RequestedProvisionedConcurrentExecutions?: number;
+  AvailableProvisionedConcurrentExecutions?: number;
+  AllocatedProvisionedConcurrentExecutions?: number;
+  Status?: ProvisionedConcurrencyStatusEnum;
+  StatusReason?: string;
+  LastModified?: string;
+}
+export const GetProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
+      AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
+      AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
+      Status: S.optional(ProvisionedConcurrencyStatusEnum),
+      StatusReason: S.optional(S.String),
+      LastModified: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetProvisionedConcurrencyConfigResponse",
+}) as any as S.Schema<GetProvisionedConcurrencyConfigResponse>;
+export interface GetRuntimeManagementConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+}
+export const GetRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2021-07-20/functions/{FunctionName}/runtime-management-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetRuntimeManagementConfigRequest",
+}) as any as S.Schema<GetRuntimeManagementConfigRequest>;
 export type UpdateRuntimeOn =
   | "Auto"
   | "Manual"
   | "FunctionUpdate"
   | (string & {});
 export const UpdateRuntimeOn = /*@__PURE__*/ S.String;
+
 export interface GetRuntimeManagementConfigResponse {
   UpdateRuntimeOn?: UpdateRuntimeOn;
   FunctionArn?: string;
   RuntimeVersionArn?: string;
 }
-export const GetRuntimeManagementConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpdateRuntimeOn: S.optional(UpdateRuntimeOn),
-      FunctionArn: S.optional(S.String),
-      RuntimeVersionArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetRuntimeManagementConfigResponse",
-  }) as any as S.Schema<GetRuntimeManagementConfigResponse>;
+export const GetRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpdateRuntimeOn: S.optional(UpdateRuntimeOn),
+    FunctionArn: S.optional(S.String),
+    RuntimeVersionArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRuntimeManagementConfigResponse",
+}) as any as S.Schema<GetRuntimeManagementConfigResponse>;
 export type InvocationType =
   | "Event"
   | "RequestResponse"
   | "DryRun"
   | (string & {});
 export const InvocationType = /*@__PURE__*/ S.String;
+
 export type LogType = "None" | "Tail" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export interface InvocationRequest {
   FunctionName: string;
   InvocationType?: InvocationType;
@@ -4296,6 +4025,7 @@ export const InvokeAsyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeAsyncRequest",
 }) as any as S.Schema<InvokeAsyncRequest>;
+export type HttpStatus = number;
 export interface InvokeAsyncResponse {
   Status?: number;
 }
@@ -4309,6 +4039,7 @@ export type ResponseStreamingInvocationType =
   | "DryRun"
   | (string & {});
 export const ResponseStreamingInvocationType = /*@__PURE__*/ S.String;
+
 export interface InvokeWithResponseStreamRequest {
   FunctionName: string;
   InvocationType?: ResponseStreamingInvocationType;
@@ -4318,36 +4049,35 @@ export interface InvokeWithResponseStreamRequest {
   Payload?: T.StreamingInputBody;
   TenantId?: string;
 }
-export const InvokeWithResponseStreamRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      InvocationType: S.optional(ResponseStreamingInvocationType).pipe(
-        T.HttpHeader("X-Amz-Invocation-Type"),
-      ),
-      LogType: S.optional(LogType).pipe(T.HttpHeader("X-Amz-Log-Type")),
-      ClientContext: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amz-Client-Context"),
-      ),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      Payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-      TenantId: S.optional(S.String).pipe(T.HttpHeader("X-Amz-Tenant-Id")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2021-11-15/functions/{FunctionName}/response-streaming-invocations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const InvokeWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    InvocationType: S.optional(ResponseStreamingInvocationType).pipe(
+      T.HttpHeader("X-Amz-Invocation-Type"),
     ),
-  ).annotate({
-    identifier: "InvokeWithResponseStreamRequest",
-  }) as any as S.Schema<InvokeWithResponseStreamRequest>;
+    LogType: S.optional(LogType).pipe(T.HttpHeader("X-Amz-Log-Type")),
+    ClientContext: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amz-Client-Context"),
+    ),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    Payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+    TenantId: S.optional(S.String).pipe(T.HttpHeader("X-Amz-Tenant-Id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2021-11-15/functions/{FunctionName}/response-streaming-invocations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InvokeWithResponseStreamRequest",
+}) as any as S.Schema<InvokeWithResponseStreamRequest>;
 export interface InvokeResponseStreamUpdate {
   Payload?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
@@ -4361,16 +4091,16 @@ export interface InvokeWithResponseStreamCompleteEvent {
   ErrorDetails?: string;
   LogResult?: string;
 }
-export const InvokeWithResponseStreamCompleteEvent =
-  /*@__PURE__*/ S.suspend(() =>
+export const InvokeWithResponseStreamCompleteEvent = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ErrorCode: S.optional(S.String),
       ErrorDetails: S.optional(S.String),
       LogResult: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "InvokeWithResponseStreamCompleteEvent",
-  }) as any as S.Schema<InvokeWithResponseStreamCompleteEvent>;
+).annotate({
+  identifier: "InvokeWithResponseStreamCompleteEvent",
+}) as any as S.Schema<InvokeWithResponseStreamCompleteEvent>;
 export type InvokeWithResponseStreamResponseEvent =
   | { PayloadChunk: InvokeResponseStreamUpdate; InvokeComplete?: never }
   | {
@@ -4396,441 +4126,23 @@ export interface InvokeWithResponseStreamResponse {
   >;
   ResponseStreamContentType?: string;
 }
-export const InvokeWithResponseStreamResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
-      ExecutedVersion: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amz-Executed-Version"),
-      ),
-      EventStream: S.optional(InvokeWithResponseStreamResponseEvent).pipe(
-        T.HttpPayload(),
-      ),
-      ResponseStreamContentType: S.optional(S.String).pipe(
-        T.HttpHeader("Content-Type"),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvokeWithResponseStreamResponse",
-  }) as any as S.Schema<InvokeWithResponseStreamResponse>;
-export interface ListFunctionUrlConfigsRequest {
-  FunctionName: string;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListFunctionUrlConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2021-10-31/functions/{FunctionName}/urls",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListFunctionUrlConfigsRequest",
-  }) as any as S.Schema<ListFunctionUrlConfigsRequest>;
-export interface FunctionUrlConfig {
-  FunctionUrl: string;
-  FunctionArn: string;
-  CreationTime: string;
-  LastModifiedTime: string;
-  Cors?: Cors;
-  AuthType: FunctionUrlAuthType;
-  InvokeMode?: InvokeMode;
-}
-export const FunctionUrlConfig = /*@__PURE__*/ S.suspend(() =>
+export const InvokeWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    FunctionUrl: S.String,
-    FunctionArn: S.String,
-    CreationTime: S.String,
-    LastModifiedTime: S.String,
-    Cors: S.optional(Cors),
-    AuthType: FunctionUrlAuthType,
-    InvokeMode: S.optional(InvokeMode),
+    StatusCode: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    ExecutedVersion: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amz-Executed-Version"),
+    ),
+    EventStream: S.optional(InvokeWithResponseStreamResponseEvent).pipe(
+      T.HttpPayload(),
+    ),
+    ResponseStreamContentType: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Type"),
+    ),
   }),
 ).annotate({
-  identifier: "FunctionUrlConfig",
-}) as any as S.Schema<FunctionUrlConfig>;
-export type FunctionUrlConfigList = FunctionUrlConfig[];
-export const FunctionUrlConfigList = /*@__PURE__*/ S.Array(FunctionUrlConfig);
-export interface ListFunctionUrlConfigsResponse {
-  FunctionUrlConfigs: FunctionUrlConfig[];
-  NextMarker?: string;
-}
-export const ListFunctionUrlConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionUrlConfigs: FunctionUrlConfigList,
-      NextMarker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFunctionUrlConfigsResponse",
-  }) as any as S.Schema<ListFunctionUrlConfigsResponse>;
-export interface PutFunctionCodeSigningConfigRequest {
-  CodeSigningConfigArn: string;
-  FunctionName: string;
-}
-export const PutFunctionCodeSigningConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CodeSigningConfigArn: S.String,
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2020-06-30/functions/{FunctionName}/code-signing-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "PutFunctionCodeSigningConfigRequest",
-  }) as any as S.Schema<PutFunctionCodeSigningConfigRequest>;
-export interface PutFunctionCodeSigningConfigResponse {
-  CodeSigningConfigArn: string;
-  FunctionName: string;
-}
-export const PutFunctionCodeSigningConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
-  ).annotate({
-    identifier: "PutFunctionCodeSigningConfigResponse",
-  }) as any as S.Schema<PutFunctionCodeSigningConfigResponse>;
-export interface PutFunctionRecursionConfigRequest {
-  FunctionName: string;
-  RecursiveLoop: RecursiveLoop;
-}
-export const PutFunctionRecursionConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      RecursiveLoop: RecursiveLoop,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2024-08-31/functions/{FunctionName}/recursion-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "PutFunctionRecursionConfigRequest",
-  }) as any as S.Schema<PutFunctionRecursionConfigRequest>;
-export interface PutFunctionRecursionConfigResponse {
-  RecursiveLoop?: RecursiveLoop;
-}
-export const PutFunctionRecursionConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RecursiveLoop: S.optional(RecursiveLoop) }),
-  ).annotate({
-    identifier: "PutFunctionRecursionConfigResponse",
-  }) as any as S.Schema<PutFunctionRecursionConfigResponse>;
-export interface PutFunctionScalingConfigRequest {
-  FunctionName: string;
-  Qualifier: string;
-  FunctionScalingConfig?: FunctionScalingConfig;
-}
-export const PutFunctionScalingConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
-      FunctionScalingConfig: S.optional(FunctionScalingConfig),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2025-11-30/functions/{FunctionName}/function-scaling-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "PutFunctionScalingConfigRequest",
-  }) as any as S.Schema<PutFunctionScalingConfigRequest>;
-export interface PutFunctionScalingConfigResponse {
-  FunctionState?: State;
-}
-export const PutFunctionScalingConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FunctionState: S.optional(State) }),
-  ).annotate({
-    identifier: "PutFunctionScalingConfigResponse",
-  }) as any as S.Schema<PutFunctionScalingConfigResponse>;
-export interface PutRuntimeManagementConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-  UpdateRuntimeOn: UpdateRuntimeOn;
-  RuntimeVersionArn?: string;
-}
-export const PutRuntimeManagementConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      UpdateRuntimeOn: UpdateRuntimeOn,
-      RuntimeVersionArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2021-07-20/functions/{FunctionName}/runtime-management-config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "PutRuntimeManagementConfigRequest",
-  }) as any as S.Schema<PutRuntimeManagementConfigRequest>;
-export interface PutRuntimeManagementConfigResponse {
-  UpdateRuntimeOn: UpdateRuntimeOn;
-  FunctionArn: string;
-  RuntimeVersionArn?: string;
-}
-export const PutRuntimeManagementConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpdateRuntimeOn: UpdateRuntimeOn,
-      FunctionArn: S.String,
-      RuntimeVersionArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PutRuntimeManagementConfigResponse",
-  }) as any as S.Schema<PutRuntimeManagementConfigResponse>;
-export interface UpdateFunctionUrlConfigRequest {
-  FunctionName: string;
-  Qualifier?: string;
-  AuthType?: FunctionUrlAuthType;
-  Cors?: Cors;
-  InvokeMode?: InvokeMode;
-}
-export const UpdateFunctionUrlConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
-      AuthType: S.optional(FunctionUrlAuthType),
-      Cors: S.optional(Cors),
-      InvokeMode: S.optional(InvokeMode),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/2021-10-31/functions/{FunctionName}/url",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateFunctionUrlConfigRequest",
-  }) as any as S.Schema<UpdateFunctionUrlConfigRequest>;
-export interface UpdateFunctionUrlConfigResponse {
-  FunctionUrl: string;
-  FunctionArn: string;
-  AuthType: FunctionUrlAuthType;
-  Cors?: Cors;
-  CreationTime: string;
-  LastModifiedTime: string;
-  InvokeMode?: InvokeMode;
-}
-export const UpdateFunctionUrlConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionUrl: S.String,
-      FunctionArn: S.String,
-      AuthType: FunctionUrlAuthType,
-      Cors: S.optional(Cors),
-      CreationTime: S.String,
-      LastModifiedTime: S.String,
-      InvokeMode: S.optional(InvokeMode),
-    }),
-  ).annotate({
-    identifier: "UpdateFunctionUrlConfigResponse",
-  }) as any as S.Schema<UpdateFunctionUrlConfigResponse>;
-export type AdditionalVersionWeights = { [key: string]: number | undefined };
-export const AdditionalVersionWeights = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Number.pipe(S.optional),
-);
-export interface AliasRoutingConfiguration {
-  AdditionalVersionWeights?: { [key: string]: number | undefined };
-}
-export const AliasRoutingConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AdditionalVersionWeights: S.optional(AdditionalVersionWeights),
-  }),
-).annotate({
-  identifier: "AliasRoutingConfiguration",
-}) as any as S.Schema<AliasRoutingConfiguration>;
-export interface CreateAliasRequest {
-  FunctionName: string;
-  Name: string;
-  FunctionVersion: string;
-  Description?: string;
-  RoutingConfig?: AliasRoutingConfiguration;
-}
-export const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    Name: S.String,
-    FunctionVersion: S.String,
-    Description: S.optional(S.String),
-    RoutingConfig: S.optional(AliasRoutingConfiguration),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/2015-03-31/functions/{FunctionName}/aliases",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateAliasRequest",
-}) as any as S.Schema<CreateAliasRequest>;
-export interface AliasConfiguration {
-  AliasArn?: string;
-  Name?: string;
-  FunctionVersion?: string;
-  Description?: string;
-  RoutingConfig?: AliasRoutingConfiguration;
-  RevisionId?: string;
-}
-export const AliasConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AliasArn: S.optional(S.String),
-    Name: S.optional(S.String),
-    FunctionVersion: S.optional(S.String),
-    Description: S.optional(S.String),
-    RoutingConfig: S.optional(AliasRoutingConfiguration),
-    RevisionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AliasConfiguration",
-}) as any as S.Schema<AliasConfiguration>;
-export interface GetAliasRequest {
-  FunctionName: string;
-  Name: string;
-}
-export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    Name: S.String.pipe(T.HttpLabel("Name")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAliasRequest",
-}) as any as S.Schema<GetAliasRequest>;
-export interface UpdateAliasRequest {
-  FunctionName: string;
-  Name: string;
-  FunctionVersion?: string;
-  Description?: string;
-  RoutingConfig?: AliasRoutingConfiguration;
-  RevisionId?: string;
-}
-export const UpdateAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    Name: S.String.pipe(T.HttpLabel("Name")),
-    FunctionVersion: S.optional(S.String),
-    Description: S.optional(S.String),
-    RoutingConfig: S.optional(AliasRoutingConfiguration),
-    RevisionId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAliasRequest",
-}) as any as S.Schema<UpdateAliasRequest>;
-export interface DeleteAliasRequest {
-  FunctionName: string;
-  Name: string;
-}
-export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    Name: S.String.pipe(T.HttpLabel("Name")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAliasRequest",
-}) as any as S.Schema<DeleteAliasRequest>;
-export interface DeleteAliasResponse {}
-export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAliasResponse",
-}) as any as S.Schema<DeleteAliasResponse>;
+  identifier: "InvokeWithResponseStreamResponse",
+}) as any as S.Schema<InvokeWithResponseStreamResponse>;
+export type MaxListItems = number;
 export interface ListAliasesRequest {
   FunctionName: string;
   FunctionVersion?: string;
@@ -4873,25 +4185,348 @@ export const ListAliasesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAliasesResponse",
 }) as any as S.Schema<ListAliasesResponse>;
-export interface PublishVersionRequest {
-  FunctionName: string;
-  CodeSha256?: string;
-  Description?: string;
-  RevisionId?: string;
-  PublishTo?: FunctionVersionLatestPublished;
+export type MaxFiftyListItems = number;
+export interface ListCapacityProvidersRequest {
+  State?: CapacityProviderState;
+  Marker?: string;
+  MaxItems?: number;
 }
-export const PublishVersionRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCapacityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    State: S.optional(CapacityProviderState).pipe(T.HttpQuery("State")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2025-11-30/capacity-providers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCapacityProvidersRequest",
+}) as any as S.Schema<ListCapacityProvidersRequest>;
+export type CapacityProvidersList = CapacityProvider[];
+export const CapacityProvidersList = /*@__PURE__*/ S.Array(CapacityProvider);
+export interface ListCapacityProvidersResponse {
+  CapacityProviders: CapacityProvider[];
+  NextMarker?: string;
+}
+export const ListCapacityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityProviders: CapacityProvidersList,
+    NextMarker: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCapacityProvidersResponse",
+}) as any as S.Schema<ListCapacityProvidersResponse>;
+export interface ListCodeSigningConfigsRequest {
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListCodeSigningConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2020-04-22/code-signing-configs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCodeSigningConfigsRequest",
+}) as any as S.Schema<ListCodeSigningConfigsRequest>;
+export type CodeSigningConfigList = CodeSigningConfig[];
+export const CodeSigningConfigList = /*@__PURE__*/ S.Array(CodeSigningConfig);
+export interface ListCodeSigningConfigsResponse {
+  NextMarker?: string;
+  CodeSigningConfigs?: CodeSigningConfig[];
+}
+export const ListCodeSigningConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextMarker: S.optional(S.String),
+    CodeSigningConfigs: S.optional(CodeSigningConfigList),
+  }),
+).annotate({
+  identifier: "ListCodeSigningConfigsResponse",
+}) as any as S.Schema<ListCodeSigningConfigsResponse>;
+export type ExecutionStatusList = ExecutionStatus[];
+export const ExecutionStatusList = /*@__PURE__*/ S.Array(ExecutionStatus);
+export interface ListDurableExecutionsByFunctionRequest {
+  FunctionName: string;
+  Qualifier?: string;
+  DurableExecutionName?: string;
+  Statuses?: ExecutionStatus[];
+  StartedAfter?: Date;
+  StartedBefore?: Date;
+  ReverseOrder?: boolean;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListDurableExecutionsByFunctionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+      DurableExecutionName: S.optional(S.String).pipe(
+        T.HttpQuery("DurableExecutionName"),
+      ),
+      Statuses: S.optional(ExecutionStatusList).pipe(T.HttpQuery("Statuses")),
+      StartedAfter: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ).pipe(T.HttpQuery("StartedAfter")),
+      StartedBefore: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ).pipe(T.HttpQuery("StartedBefore")),
+      ReverseOrder: S.optional(S.Boolean).pipe(T.HttpQuery("ReverseOrder")),
+      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/2025-12-01/functions/{FunctionName}/durable-executions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListDurableExecutionsByFunctionRequest",
+}) as any as S.Schema<ListDurableExecutionsByFunctionRequest>;
+export interface Execution {
+  DurableExecutionArn: string;
+  DurableExecutionName: string;
+  FunctionArn: string;
+  Status: ExecutionStatus;
+  StartTimestamp: Date;
+  EndTimestamp?: Date;
+}
+export const Execution = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DurableExecutionArn: S.String,
+    DurableExecutionName: S.String,
+    FunctionArn: S.String,
+    Status: ExecutionStatus,
+    StartTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
+export type DurableExecutions = Execution[];
+export const DurableExecutions = /*@__PURE__*/ S.Array(Execution);
+export interface ListDurableExecutionsByFunctionResponse {
+  DurableExecutions?: Execution[];
+  NextMarker?: string;
+}
+export const ListDurableExecutionsByFunctionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DurableExecutions: S.optional(DurableExecutions),
+      NextMarker: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListDurableExecutionsByFunctionResponse",
+}) as any as S.Schema<ListDurableExecutionsByFunctionResponse>;
+export interface ListEventSourceMappingsRequest {
+  EventSourceArn?: string;
+  FunctionName?: string;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListEventSourceMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventSourceArn: S.optional(S.String).pipe(T.HttpQuery("EventSourceArn")),
+    FunctionName: S.optional(S.String).pipe(T.HttpQuery("FunctionName")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2015-03-31/event-source-mappings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListEventSourceMappingsRequest",
+}) as any as S.Schema<ListEventSourceMappingsRequest>;
+export type EventSourceMappingsList = EventSourceMappingConfiguration[];
+export const EventSourceMappingsList = /*@__PURE__*/ S.Array(
+  EventSourceMappingConfiguration,
+);
+export interface ListEventSourceMappingsResponse {
+  NextMarker?: string;
+  EventSourceMappings?: EventSourceMappingConfiguration[];
+}
+export const ListEventSourceMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextMarker: S.optional(S.String),
+    EventSourceMappings: S.optional(EventSourceMappingsList),
+  }),
+).annotate({
+  identifier: "ListEventSourceMappingsResponse",
+}) as any as S.Schema<ListEventSourceMappingsResponse>;
+export type MaxFunctionEventInvokeConfigListItems = number;
+export interface ListFunctionEventInvokeConfigsRequest {
+  FunctionName: string;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListFunctionEventInvokeConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config/list",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListFunctionEventInvokeConfigsRequest",
+}) as any as S.Schema<ListFunctionEventInvokeConfigsRequest>;
+export type FunctionEventInvokeConfigList = FunctionEventInvokeConfig[];
+export const FunctionEventInvokeConfigList = /*@__PURE__*/ S.Array(
+  FunctionEventInvokeConfig,
+);
+export interface ListFunctionEventInvokeConfigsResponse {
+  FunctionEventInvokeConfigs?: FunctionEventInvokeConfig[];
+  NextMarker?: string;
+}
+export const ListFunctionEventInvokeConfigsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FunctionEventInvokeConfigs: S.optional(FunctionEventInvokeConfigList),
+      NextMarker: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListFunctionEventInvokeConfigsResponse",
+}) as any as S.Schema<ListFunctionEventInvokeConfigsResponse>;
+export type MasterRegion = string;
+export type FunctionVersion = "ALL" | (string & {});
+export const FunctionVersion = /*@__PURE__*/ S.String;
+
+export interface ListFunctionsRequest {
+  MasterRegion?: string;
+  FunctionVersion?: FunctionVersion;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MasterRegion: S.optional(S.String).pipe(T.HttpQuery("MasterRegion")),
+    FunctionVersion: S.optional(FunctionVersion).pipe(
+      T.HttpQuery("FunctionVersion"),
+    ),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2015-03-31/functions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListFunctionsRequest",
+}) as any as S.Schema<ListFunctionsRequest>;
+export type FunctionList = FunctionConfiguration[];
+export const FunctionList = /*@__PURE__*/ S.Array(FunctionConfiguration);
+export interface ListFunctionsResponse {
+  NextMarker?: string;
+  Functions?: FunctionConfiguration[];
+}
+export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextMarker: S.optional(S.String),
+    Functions: S.optional(FunctionList),
+  }),
+).annotate({
+  identifier: "ListFunctionsResponse",
+}) as any as S.Schema<ListFunctionsResponse>;
+export interface ListFunctionsByCodeSigningConfigRequest {
+  CodeSigningConfigArn: string;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListFunctionsByCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
+      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListFunctionsByCodeSigningConfigRequest",
+}) as any as S.Schema<ListFunctionsByCodeSigningConfigRequest>;
+export type FunctionArnList = string[];
+export const FunctionArnList = /*@__PURE__*/ S.Array(S.String);
+export interface ListFunctionsByCodeSigningConfigResponse {
+  NextMarker?: string;
+  FunctionArns?: string[];
+}
+export const ListFunctionsByCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      NextMarker: S.optional(S.String),
+      FunctionArns: S.optional(FunctionArnList),
+    }),
+).annotate({
+  identifier: "ListFunctionsByCodeSigningConfigResponse",
+}) as any as S.Schema<ListFunctionsByCodeSigningConfigResponse>;
+export type MaxItems = number;
+export interface ListFunctionUrlConfigsRequest {
+  FunctionName: string;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListFunctionUrlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    CodeSha256: S.optional(S.String),
-    Description: S.optional(S.String),
-    RevisionId: S.optional(S.String),
-    PublishTo: S.optional(FunctionVersionLatestPublished),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
   }).pipe(
     T.all(
       T.Http({
-        method: "POST",
-        uri: "/2015-03-31/functions/{FunctionName}/versions",
+        method: "GET",
+        uri: "/2021-10-31/functions/{FunctionName}/urls",
       }),
       svc,
       auth,
@@ -4901,24 +4536,60 @@ export const PublishVersionRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "PublishVersionRequest",
-}) as any as S.Schema<PublishVersionRequest>;
-export interface ListVersionsByFunctionRequest {
-  FunctionName: string;
+  identifier: "ListFunctionUrlConfigsRequest",
+}) as any as S.Schema<ListFunctionUrlConfigsRequest>;
+export interface FunctionUrlConfig {
+  FunctionUrl: string;
+  FunctionArn: string;
+  CreationTime: string;
+  LastModifiedTime: string;
+  Cors?: Cors;
+  AuthType: FunctionUrlAuthType;
+  InvokeMode?: InvokeMode;
+}
+export const FunctionUrlConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionUrl: S.String,
+    FunctionArn: S.String,
+    CreationTime: S.String,
+    LastModifiedTime: S.String,
+    Cors: S.optional(Cors),
+    AuthType: FunctionUrlAuthType,
+    InvokeMode: S.optional(InvokeMode),
+  }),
+).annotate({
+  identifier: "FunctionUrlConfig",
+}) as any as S.Schema<FunctionUrlConfig>;
+export type FunctionUrlConfigList = FunctionUrlConfig[];
+export const FunctionUrlConfigList = /*@__PURE__*/ S.Array(FunctionUrlConfig);
+export interface ListFunctionUrlConfigsResponse {
+  FunctionUrlConfigs: FunctionUrlConfig[];
+  NextMarker?: string;
+}
+export const ListFunctionUrlConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionUrlConfigs: FunctionUrlConfigList,
+    NextMarker: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFunctionUrlConfigsResponse",
+}) as any as S.Schema<ListFunctionUrlConfigsResponse>;
+export interface ListFunctionVersionsByCapacityProviderRequest {
+  CapacityProviderName: string;
   Marker?: string;
   MaxItems?: number;
 }
-export const ListVersionsByFunctionRequest =
+export const ListFunctionVersionsByCapacityProviderRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
       Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
       MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
     }).pipe(
       T.all(
         T.Http({
           method: "GET",
-          uri: "/2015-03-31/functions/{FunctionName}/versions",
+          uri: "/2025-11-30/capacity-providers/{CapacityProviderName}/function-versions",
         }),
         svc,
         auth,
@@ -4928,21 +4599,39 @@ export const ListVersionsByFunctionRequest =
       ),
     ),
   ).annotate({
-    identifier: "ListVersionsByFunctionRequest",
-  }) as any as S.Schema<ListVersionsByFunctionRequest>;
-export interface ListVersionsByFunctionResponse {
-  NextMarker?: string;
-  Versions?: FunctionConfiguration[];
+    identifier: "ListFunctionVersionsByCapacityProviderRequest",
+  }) as any as S.Schema<ListFunctionVersionsByCapacityProviderRequest>;
+export interface FunctionVersionsByCapacityProviderListItem {
+  FunctionArn: string;
+  State: State;
 }
-export const ListVersionsByFunctionResponse =
+export const FunctionVersionsByCapacityProviderListItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ FunctionArn: S.String, State: State }),
+  ).annotate({
+    identifier: "FunctionVersionsByCapacityProviderListItem",
+  }) as any as S.Schema<FunctionVersionsByCapacityProviderListItem>;
+export type FunctionVersionsByCapacityProviderList =
+  FunctionVersionsByCapacityProviderListItem[];
+export const FunctionVersionsByCapacityProviderList = /*@__PURE__*/ S.Array(
+  FunctionVersionsByCapacityProviderListItem,
+);
+export interface ListFunctionVersionsByCapacityProviderResponse {
+  CapacityProviderArn: string;
+  FunctionVersions: FunctionVersionsByCapacityProviderListItem[];
+  NextMarker?: string;
+}
+export const ListFunctionVersionsByCapacityProviderResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      CapacityProviderArn: S.String,
+      FunctionVersions: FunctionVersionsByCapacityProviderList,
       NextMarker: S.optional(S.String),
-      Versions: S.optional(FunctionList),
     }),
   ).annotate({
-    identifier: "ListVersionsByFunctionResponse",
-  }) as any as S.Schema<ListVersionsByFunctionResponse>;
+    identifier: "ListFunctionVersionsByCapacityProviderResponse",
+  }) as any as S.Schema<ListFunctionVersionsByCapacityProviderResponse>;
+export type MaxLayerListItems = number;
 export interface ListLayersRequest {
   CompatibleArchitecture?: Architecture;
   CompatibleRuntime?: Runtime;
@@ -4972,10 +4661,6 @@ export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLayersRequest",
 }) as any as S.Schema<ListLayersRequest>;
-export type CompatibleArchitectures = Architecture[];
-export const CompatibleArchitectures = /*@__PURE__*/ S.Array(Architecture);
-export type CompatibleRuntimes = Runtime[];
-export const CompatibleRuntimes = /*@__PURE__*/ S.Array(Runtime);
 export interface LayerVersionsListItem {
   LayerVersionArn?: string;
   Version?: number;
@@ -5044,10 +4729,7 @@ export const ListLayerVersionsRequest = /*@__PURE__*/ S.suspend(() =>
     MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "GET",
-        uri: "/2018-10-31/layers/{LayerName}/versions",
-      }),
+      T.Http({ method: "GET", uri: "/2018-10-31/layers/{LayerName}/versions" }),
       svc,
       auth,
       proto,
@@ -5072,186 +4754,23 @@ export const ListLayerVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLayerVersionsResponse",
 }) as any as S.Schema<ListLayerVersionsResponse>;
-export interface AddLayerVersionPermissionRequest {
-  LayerName: string;
-  VersionNumber: number;
-  StatementId: string;
-  Action: string;
-  Principal: string;
-  OrganizationId?: string;
-  RevisionId?: string;
+export type MaxProvisionedConcurrencyConfigListItems = number;
+export interface ListProvisionedConcurrencyConfigsRequest {
+  FunctionName: string;
+  Marker?: string;
+  MaxItems?: number;
 }
-export const AddLayerVersionPermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListProvisionedConcurrencyConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      LayerName: S.String.pipe(T.HttpLabel("LayerName")),
-      VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
-      StatementId: S.String,
-      Action: S.String,
-      Principal: S.String,
-      OrganizationId: S.optional(S.String),
-      RevisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "AddLayerVersionPermissionRequest",
-  }) as any as S.Schema<AddLayerVersionPermissionRequest>;
-export interface AddLayerVersionPermissionResponse {
-  Statement?: string;
-  RevisionId?: string;
-}
-export const AddLayerVersionPermissionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Statement: S.optional(S.String),
-      RevisionId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AddLayerVersionPermissionResponse",
-  }) as any as S.Schema<AddLayerVersionPermissionResponse>;
-export interface DeleteLayerVersionRequest {
-  LayerName: string;
-  VersionNumber: number;
-}
-export const DeleteLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
-    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteLayerVersionRequest",
-}) as any as S.Schema<DeleteLayerVersionRequest>;
-export interface DeleteLayerVersionResponse {}
-export const DeleteLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteLayerVersionResponse",
-}) as any as S.Schema<DeleteLayerVersionResponse>;
-export interface GetLayerVersionRequest {
-  LayerName: string;
-  VersionNumber: number;
-}
-export const GetLayerVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
-    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetLayerVersionRequest",
-}) as any as S.Schema<GetLayerVersionRequest>;
-export interface LayerVersionContentOutput {
-  Location?: string;
-  CodeSha256?: string;
-  CodeSize?: number;
-  SigningProfileVersionArn?: string;
-  SigningJobArn?: string;
-  ResolvedS3Object?: ResolvedS3Object;
-}
-export const LayerVersionContentOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Location: S.optional(S.String),
-    CodeSha256: S.optional(S.String),
-    CodeSize: S.optional(S.Number),
-    SigningProfileVersionArn: S.optional(S.String),
-    SigningJobArn: S.optional(S.String),
-    ResolvedS3Object: S.optional(ResolvedS3Object),
-  }),
-).annotate({
-  identifier: "LayerVersionContentOutput",
-}) as any as S.Schema<LayerVersionContentOutput>;
-export interface GetLayerVersionResponse {
-  Content?: LayerVersionContentOutput;
-  LayerArn?: string;
-  LayerVersionArn?: string;
-  Description?: string;
-  CreatedDate?: string;
-  Version?: number;
-  CompatibleArchitectures?: Architecture[];
-  CompatibleRuntimes?: Runtime[];
-  LicenseInfo?: string;
-}
-export const GetLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Content: S.optional(LayerVersionContentOutput),
-    LayerArn: S.optional(S.String),
-    LayerVersionArn: S.optional(S.String),
-    Description: S.optional(S.String),
-    CreatedDate: S.optional(S.String),
-    Version: S.optional(S.Number),
-    CompatibleArchitectures: S.optional(CompatibleArchitectures),
-    CompatibleRuntimes: S.optional(CompatibleRuntimes),
-    LicenseInfo: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetLayerVersionResponse",
-}) as any as S.Schema<GetLayerVersionResponse>;
-export interface GetLayerVersionByArnRequest {
-  Arn: string;
-}
-export const GetLayerVersionByArnRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Arn: S.String.pipe(T.HttpQuery("Arn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/2018-10-31/layers?find=LayerVersion" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetLayerVersionByArnRequest",
-  }) as any as S.Schema<GetLayerVersionByArnRequest>;
-export interface GetLayerVersionPolicyRequest {
-  LayerName: string;
-  VersionNumber: number;
-}
-export const GetLayerVersionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LayerName: S.String.pipe(T.HttpLabel("LayerName")),
-      VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
+      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+      MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
     }).pipe(
       T.all(
         T.Http({
           method: "GET",
-          uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
+          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL",
         }),
         svc,
         auth,
@@ -5260,22 +4779,116 @@ export const GetLayerVersionPolicyRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetLayerVersionPolicyRequest",
-  }) as any as S.Schema<GetLayerVersionPolicyRequest>;
-export interface GetLayerVersionPolicyResponse {
-  Policy?: string;
-  RevisionId?: string;
+).annotate({
+  identifier: "ListProvisionedConcurrencyConfigsRequest",
+}) as any as S.Schema<ListProvisionedConcurrencyConfigsRequest>;
+export interface ProvisionedConcurrencyConfigListItem {
+  FunctionArn?: string;
+  RequestedProvisionedConcurrentExecutions?: number;
+  AvailableProvisionedConcurrentExecutions?: number;
+  AllocatedProvisionedConcurrentExecutions?: number;
+  Status?: ProvisionedConcurrencyStatusEnum;
+  StatusReason?: string;
+  LastModified?: string;
 }
-export const GetLayerVersionPolicyResponse =
+export const ProvisionedConcurrencyConfigListItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FunctionArn: S.optional(S.String),
+      RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
+      AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
+      AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
+      Status: S.optional(ProvisionedConcurrencyStatusEnum),
+      StatusReason: S.optional(S.String),
+      LastModified: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ProvisionedConcurrencyConfigListItem",
+}) as any as S.Schema<ProvisionedConcurrencyConfigListItem>;
+export type ProvisionedConcurrencyConfigList =
+  ProvisionedConcurrencyConfigListItem[];
+export const ProvisionedConcurrencyConfigList = /*@__PURE__*/ S.Array(
+  ProvisionedConcurrencyConfigListItem,
+);
+export interface ListProvisionedConcurrencyConfigsResponse {
+  ProvisionedConcurrencyConfigs?: ProvisionedConcurrencyConfigListItem[];
+  NextMarker?: string;
+}
+export const ListProvisionedConcurrencyConfigsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      Policy: S.optional(S.String),
-      RevisionId: S.optional(S.String),
+      ProvisionedConcurrencyConfigs: S.optional(
+        ProvisionedConcurrencyConfigList,
+      ),
+      NextMarker: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "GetLayerVersionPolicyResponse",
-  }) as any as S.Schema<GetLayerVersionPolicyResponse>;
+    identifier: "ListProvisionedConcurrencyConfigsResponse",
+  }) as any as S.Schema<ListProvisionedConcurrencyConfigsResponse>;
+export type TaggableResource = string;
+export interface ListTagsRequest {
+  Resource: string;
+}
+export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Resource: S.String.pipe(T.HttpLabel("Resource")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2017-03-31/tags/{Resource}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsRequest",
+}) as any as S.Schema<ListTagsRequest>;
+export interface ListTagsResponse {
+  Tags?: { [key: string]: string | undefined };
+}
+export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsResponse",
+}) as any as S.Schema<ListTagsResponse>;
+export interface ListVersionsByFunctionRequest {
+  FunctionName: string;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListVersionsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2015-03-31/functions/{FunctionName}/versions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListVersionsByFunctionRequest",
+}) as any as S.Schema<ListVersionsByFunctionRequest>;
+export interface ListVersionsByFunctionResponse {
+  NextMarker?: string;
+  Versions?: FunctionConfiguration[];
+}
+export const ListVersionsByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextMarker: S.optional(S.String),
+    Versions: S.optional(FunctionList),
+  }),
+).annotate({
+  identifier: "ListVersionsByFunctionResponse",
+}) as any as S.Schema<ListVersionsByFunctionResponse>;
 export interface LayerVersionContentInput {
   S3Bucket?: string;
   S3Key?: string;
@@ -5337,89 +4950,40 @@ export interface PublishLayerVersionResponse {
   CompatibleRuntimes?: Runtime[];
   LicenseInfo?: string;
 }
-export const PublishLayerVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Content: S.optional(LayerVersionContentOutput),
-      LayerArn: S.optional(S.String),
-      LayerVersionArn: S.optional(S.String),
-      Description: S.optional(S.String),
-      CreatedDate: S.optional(S.String),
-      Version: S.optional(S.Number),
-      CompatibleArchitectures: S.optional(CompatibleArchitectures),
-      CompatibleRuntimes: S.optional(CompatibleRuntimes),
-      LicenseInfo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PublishLayerVersionResponse",
-  }) as any as S.Schema<PublishLayerVersionResponse>;
-export interface RemoveLayerVersionPermissionRequest {
-  LayerName: string;
-  VersionNumber: number;
-  StatementId: string;
-  RevisionId?: string;
-}
-export const RemoveLayerVersionPermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LayerName: S.String.pipe(T.HttpLabel("LayerName")),
-      VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
-      StatementId: S.String.pipe(T.HttpLabel("StatementId")),
-      RevisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "RemoveLayerVersionPermissionRequest",
-  }) as any as S.Schema<RemoveLayerVersionPermissionRequest>;
-export interface RemoveLayerVersionPermissionResponse {}
-export const RemoveLayerVersionPermissionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveLayerVersionPermissionResponse",
-  }) as any as S.Schema<RemoveLayerVersionPermissionResponse>;
-export interface AddPermissionRequest {
+export const PublishLayerVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Content: S.optional(LayerVersionContentOutput),
+    LayerArn: S.optional(S.String),
+    LayerVersionArn: S.optional(S.String),
+    Description: S.optional(S.String),
+    CreatedDate: S.optional(S.String),
+    Version: S.optional(S.Number),
+    CompatibleArchitectures: S.optional(CompatibleArchitectures),
+    CompatibleRuntimes: S.optional(CompatibleRuntimes),
+    LicenseInfo: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PublishLayerVersionResponse",
+}) as any as S.Schema<PublishLayerVersionResponse>;
+export interface PublishVersionRequest {
   FunctionName: string;
-  StatementId: string;
-  Action: string;
-  Principal: string;
-  SourceArn?: string;
-  FunctionUrlAuthType?: FunctionUrlAuthType;
-  InvokedViaFunctionUrl?: boolean;
-  SourceAccount?: string;
-  EventSourceToken?: string;
-  Qualifier?: string;
+  CodeSha256?: string;
+  Description?: string;
   RevisionId?: string;
-  PrincipalOrgID?: string;
+  PublishTo?: FunctionVersionLatestPublished;
 }
-export const AddPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+export const PublishVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-    StatementId: S.String,
-    Action: S.String,
-    Principal: S.String,
-    SourceArn: S.optional(S.String),
-    FunctionUrlAuthType: S.optional(FunctionUrlAuthType),
-    InvokedViaFunctionUrl: S.optional(S.Boolean),
-    SourceAccount: S.optional(S.String),
-    EventSourceToken: S.optional(S.String),
-    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    CodeSha256: S.optional(S.String),
+    Description: S.optional(S.String),
     RevisionId: S.optional(S.String),
-    PrincipalOrgID: S.optional(S.String),
+    PublishTo: S.optional(FunctionVersionLatestPublished),
   }).pipe(
     T.all(
       T.Http({
         method: "POST",
-        uri: "/2015-03-31/functions/{FunctionName}/policy",
+        uri: "/2015-03-31/functions/{FunctionName}/versions",
       }),
       svc,
       auth,
@@ -5429,16 +4993,286 @@ export const AddPermissionRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "AddPermissionRequest",
-}) as any as S.Schema<AddPermissionRequest>;
-export interface AddPermissionResponse {
-  Statement?: string;
+  identifier: "PublishVersionRequest",
+}) as any as S.Schema<PublishVersionRequest>;
+export interface PutFunctionCodeSigningConfigRequest {
+  CodeSigningConfigArn: string;
+  FunctionName: string;
 }
-export const AddPermissionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Statement: S.optional(S.String) }),
+export const PutFunctionCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CodeSigningConfigArn: S.String,
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2020-06-30/functions/{FunctionName}/code-signing-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
-  identifier: "AddPermissionResponse",
-}) as any as S.Schema<AddPermissionResponse>;
+  identifier: "PutFunctionCodeSigningConfigRequest",
+}) as any as S.Schema<PutFunctionCodeSigningConfigRequest>;
+export interface PutFunctionCodeSigningConfigResponse {
+  CodeSigningConfigArn: string;
+  FunctionName: string;
+}
+export const PutFunctionCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ CodeSigningConfigArn: S.String, FunctionName: S.String }),
+).annotate({
+  identifier: "PutFunctionCodeSigningConfigResponse",
+}) as any as S.Schema<PutFunctionCodeSigningConfigResponse>;
+export interface PutFunctionConcurrencyRequest {
+  FunctionName: string;
+  ReservedConcurrentExecutions: number;
+}
+export const PutFunctionConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    ReservedConcurrentExecutions: S.Number,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2017-10-31/functions/{FunctionName}/concurrency",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutFunctionConcurrencyRequest",
+}) as any as S.Schema<PutFunctionConcurrencyRequest>;
+export interface PutFunctionEventInvokeConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+  MaximumRetryAttempts?: number;
+  MaximumEventAgeInSeconds?: number;
+  DestinationConfig?: DestinationConfig;
+}
+export const PutFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    MaximumRetryAttempts: S.optional(S.Number),
+    MaximumEventAgeInSeconds: S.optional(S.Number),
+    DestinationConfig: S.optional(DestinationConfig),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutFunctionEventInvokeConfigRequest",
+}) as any as S.Schema<PutFunctionEventInvokeConfigRequest>;
+export interface PutFunctionRecursionConfigRequest {
+  FunctionName: string;
+  RecursiveLoop: RecursiveLoop;
+}
+export const PutFunctionRecursionConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    RecursiveLoop: RecursiveLoop,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2024-08-31/functions/{FunctionName}/recursion-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutFunctionRecursionConfigRequest",
+}) as any as S.Schema<PutFunctionRecursionConfigRequest>;
+export interface PutFunctionRecursionConfigResponse {
+  RecursiveLoop?: RecursiveLoop;
+}
+export const PutFunctionRecursionConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RecursiveLoop: S.optional(RecursiveLoop) }),
+).annotate({
+  identifier: "PutFunctionRecursionConfigResponse",
+}) as any as S.Schema<PutFunctionRecursionConfigResponse>;
+export interface PutFunctionScalingConfigRequest {
+  FunctionName: string;
+  Qualifier: string;
+  FunctionScalingConfig?: FunctionScalingConfig;
+}
+export const PutFunctionScalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
+    FunctionScalingConfig: S.optional(FunctionScalingConfig),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2025-11-30/functions/{FunctionName}/function-scaling-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutFunctionScalingConfigRequest",
+}) as any as S.Schema<PutFunctionScalingConfigRequest>;
+export interface PutFunctionScalingConfigResponse {
+  FunctionState?: State;
+}
+export const PutFunctionScalingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionState: S.optional(State) }),
+).annotate({
+  identifier: "PutFunctionScalingConfigResponse",
+}) as any as S.Schema<PutFunctionScalingConfigResponse>;
+export interface PutProvisionedConcurrencyConfigRequest {
+  FunctionName: string;
+  Qualifier: string;
+  ProvisionedConcurrentExecutions: number;
+}
+export const PutProvisionedConcurrencyConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
+      ProvisionedConcurrentExecutions: S.Number,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PutProvisionedConcurrencyConfigRequest",
+}) as any as S.Schema<PutProvisionedConcurrencyConfigRequest>;
+export interface PutProvisionedConcurrencyConfigResponse {
+  RequestedProvisionedConcurrentExecutions?: number;
+  AllocatedProvisionedConcurrentExecutions?: number;
+  AvailableProvisionedConcurrentExecutions?: number;
+  Status?: ProvisionedConcurrencyStatusEnum;
+  StatusReason?: string;
+  LastModified?: string;
+}
+export const PutProvisionedConcurrencyConfigResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
+      AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
+      AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
+      Status: S.optional(ProvisionedConcurrencyStatusEnum),
+      StatusReason: S.optional(S.String),
+      LastModified: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PutProvisionedConcurrencyConfigResponse",
+}) as any as S.Schema<PutProvisionedConcurrencyConfigResponse>;
+export interface PutRuntimeManagementConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+  UpdateRuntimeOn: UpdateRuntimeOn;
+  RuntimeVersionArn?: string;
+}
+export const PutRuntimeManagementConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    UpdateRuntimeOn: UpdateRuntimeOn,
+    RuntimeVersionArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2021-07-20/functions/{FunctionName}/runtime-management-config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutRuntimeManagementConfigRequest",
+}) as any as S.Schema<PutRuntimeManagementConfigRequest>;
+export interface PutRuntimeManagementConfigResponse {
+  UpdateRuntimeOn: UpdateRuntimeOn;
+  FunctionArn: string;
+  RuntimeVersionArn?: string;
+}
+export const PutRuntimeManagementConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpdateRuntimeOn: UpdateRuntimeOn,
+    FunctionArn: S.String,
+    RuntimeVersionArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutRuntimeManagementConfigResponse",
+}) as any as S.Schema<PutRuntimeManagementConfigResponse>;
+export interface RemoveLayerVersionPermissionRequest {
+  LayerName: string;
+  VersionNumber: number;
+  StatementId: string;
+  RevisionId?: string;
+}
+export const RemoveLayerVersionPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LayerName: S.String.pipe(T.HttpLabel("LayerName")),
+    VersionNumber: S.Number.pipe(T.HttpLabel("VersionNumber")),
+    StatementId: S.String.pipe(T.HttpLabel("StatementId")),
+    RevisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RemoveLayerVersionPermissionRequest",
+}) as any as S.Schema<RemoveLayerVersionPermissionRequest>;
+export interface RemoveLayerVersionPermissionResponse {}
+export const RemoveLayerVersionPermissionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RemoveLayerVersionPermissionResponse",
+}) as any as S.Schema<RemoveLayerVersionPermissionResponse>;
+export type NamespacedStatementId = string;
 export interface RemovePermissionRequest {
   FunctionName: string;
   StatementId: string;
@@ -5473,22 +5307,22 @@ export const RemovePermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemovePermissionResponse",
 }) as any as S.Schema<RemovePermissionResponse>;
-export interface PutProvisionedConcurrencyConfigRequest {
-  FunctionName: string;
-  Qualifier: string;
-  ProvisionedConcurrentExecutions: number;
+export interface SendDurableExecutionCallbackFailureRequest {
+  CallbackId: string;
+  Error?: ErrorObject;
 }
-export const PutProvisionedConcurrencyConfigRequest =
+export const SendDurableExecutionCallbackFailureRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
-      ProvisionedConcurrentExecutions: S.Number,
+      CallbackId: S.String.pipe(T.HttpLabel("CallbackId")),
+      Error: S.optional(ErrorObject)
+        .pipe(T.HttpPayload())
+        .annotate({ identifier: "ErrorObject" }),
     }).pipe(
       T.all(
         T.Http({
-          method: "PUT",
-          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
+          method: "POST",
+          uri: "/2025-12-01/durable-execution-callbacks/{CallbackId}/fail",
         }),
         svc,
         auth,
@@ -5498,350 +5332,616 @@ export const PutProvisionedConcurrencyConfigRequest =
       ),
     ),
   ).annotate({
-    identifier: "PutProvisionedConcurrencyConfigRequest",
-  }) as any as S.Schema<PutProvisionedConcurrencyConfigRequest>;
-export interface PutProvisionedConcurrencyConfigResponse {
-  RequestedProvisionedConcurrentExecutions?: number;
-  AllocatedProvisionedConcurrentExecutions?: number;
-  AvailableProvisionedConcurrentExecutions?: number;
-  Status?: ProvisionedConcurrencyStatusEnum;
-  StatusReason?: string;
-  LastModified?: string;
-}
-export const PutProvisionedConcurrencyConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
-      AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
-      AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
-      Status: S.optional(ProvisionedConcurrencyStatusEnum),
-      StatusReason: S.optional(S.String),
-      LastModified: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PutProvisionedConcurrencyConfigResponse",
-  }) as any as S.Schema<PutProvisionedConcurrencyConfigResponse>;
-export interface GetProvisionedConcurrencyConfigRequest {
-  FunctionName: string;
-  Qualifier: string;
-}
-export const GetProvisionedConcurrencyConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "GetProvisionedConcurrencyConfigRequest",
-  }) as any as S.Schema<GetProvisionedConcurrencyConfigRequest>;
-export interface GetProvisionedConcurrencyConfigResponse {
-  RequestedProvisionedConcurrentExecutions?: number;
-  AvailableProvisionedConcurrentExecutions?: number;
-  AllocatedProvisionedConcurrentExecutions?: number;
-  Status?: ProvisionedConcurrencyStatusEnum;
-  StatusReason?: string;
-  LastModified?: string;
-}
-export const GetProvisionedConcurrencyConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RequestedProvisionedConcurrentExecutions: S.optional(S.Number),
-      AvailableProvisionedConcurrentExecutions: S.optional(S.Number),
-      AllocatedProvisionedConcurrentExecutions: S.optional(S.Number),
-      Status: S.optional(ProvisionedConcurrencyStatusEnum),
-      StatusReason: S.optional(S.String),
-      LastModified: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetProvisionedConcurrencyConfigResponse",
-  }) as any as S.Schema<GetProvisionedConcurrencyConfigResponse>;
-export interface DeleteProvisionedConcurrencyConfigRequest {
-  FunctionName: string;
-  Qualifier: string;
-}
-export const DeleteProvisionedConcurrencyConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
-      Qualifier: S.String.pipe(T.HttpQuery("Qualifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteProvisionedConcurrencyConfigRequest",
-  }) as any as S.Schema<DeleteProvisionedConcurrencyConfigRequest>;
-export interface DeleteProvisionedConcurrencyConfigResponse {}
-export const DeleteProvisionedConcurrencyConfigResponse =
+    identifier: "SendDurableExecutionCallbackFailureRequest",
+  }) as any as S.Schema<SendDurableExecutionCallbackFailureRequest>;
+export interface SendDurableExecutionCallbackFailureResponse {}
+export const SendDurableExecutionCallbackFailureResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteProvisionedConcurrencyConfigResponse",
-  }) as any as S.Schema<DeleteProvisionedConcurrencyConfigResponse>;
+    identifier: "SendDurableExecutionCallbackFailureResponse",
+  }) as any as S.Schema<SendDurableExecutionCallbackFailureResponse>;
+export interface SendDurableExecutionCallbackHeartbeatRequest {
+  CallbackId: string;
+}
+export const SendDurableExecutionCallbackHeartbeatRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ CallbackId: S.String.pipe(T.HttpLabel("CallbackId")) }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/2025-12-01/durable-execution-callbacks/{CallbackId}/heartbeat",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "SendDurableExecutionCallbackHeartbeatRequest",
+  }) as any as S.Schema<SendDurableExecutionCallbackHeartbeatRequest>;
+export interface SendDurableExecutionCallbackHeartbeatResponse {}
+export const SendDurableExecutionCallbackHeartbeatResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "SendDurableExecutionCallbackHeartbeatResponse",
+  }) as any as S.Schema<SendDurableExecutionCallbackHeartbeatResponse>;
+export interface SendDurableExecutionCallbackSuccessRequest {
+  CallbackId: string;
+  Result?: T.StreamingInputBody;
+}
+export const SendDurableExecutionCallbackSuccessRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CallbackId: S.String.pipe(T.HttpLabel("CallbackId")),
+      Result: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/2025-12-01/durable-execution-callbacks/{CallbackId}/succeed",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "SendDurableExecutionCallbackSuccessRequest",
+  }) as any as S.Schema<SendDurableExecutionCallbackSuccessRequest>;
+export interface SendDurableExecutionCallbackSuccessResponse {}
+export const SendDurableExecutionCallbackSuccessResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "SendDurableExecutionCallbackSuccessResponse",
+  }) as any as S.Schema<SendDurableExecutionCallbackSuccessResponse>;
+export interface StopDurableExecutionRequest {
+  DurableExecutionArn: string;
+  Error?: ErrorObject;
+}
+export const StopDurableExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DurableExecutionArn: S.String.pipe(T.HttpLabel("DurableExecutionArn")),
+    Error: S.optional(ErrorObject)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "ErrorObject" }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2025-12-01/durable-executions/{DurableExecutionArn}/stop",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StopDurableExecutionRequest",
+}) as any as S.Schema<StopDurableExecutionRequest>;
+export interface StopDurableExecutionResponse {
+  StopTimestamp: Date;
+}
+export const StopDurableExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StopTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+).annotate({
+  identifier: "StopDurableExecutionResponse",
+}) as any as S.Schema<StopDurableExecutionResponse>;
+export interface TagResourceRequest {
+  Resource: string;
+  Tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Resource: S.String.pipe(T.HttpLabel("Resource")),
+    Tags: Tags,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2017-03-31/tags/{Resource}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("Key")),
+);
+export interface UntagResourceRequest {
+  Resource: string;
+  TagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Resource: S.String.pipe(T.HttpLabel("Resource")),
+    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/2017-03-31/tags/{Resource}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateAliasRequest {
+  FunctionName: string;
+  Name: string;
+  FunctionVersion?: string;
+  Description?: string;
+  RoutingConfig?: AliasRoutingConfiguration;
+  RevisionId?: string;
+}
+export const UpdateAliasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    FunctionVersion: S.optional(S.String),
+    Description: S.optional(S.String),
+    RoutingConfig: S.optional(AliasRoutingConfiguration),
+    RevisionId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAliasRequest",
+}) as any as S.Schema<UpdateAliasRequest>;
+export interface UpdateCapacityProviderRequest {
+  CapacityProviderName: string;
+  CapacityProviderScalingConfig?: CapacityProviderScalingConfig;
+  PropagateTags?: PropagateTags;
+}
+export const UpdateCapacityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityProviderName: S.String.pipe(T.HttpLabel("CapacityProviderName")),
+    CapacityProviderScalingConfig: S.optional(CapacityProviderScalingConfig),
+    PropagateTags: S.optional(PropagateTags),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2025-11-30/capacity-providers/{CapacityProviderName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateCapacityProviderRequest",
+}) as any as S.Schema<UpdateCapacityProviderRequest>;
+export interface UpdateCapacityProviderResponse {
+  CapacityProvider: CapacityProvider;
+}
+export const UpdateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CapacityProvider: CapacityProvider }),
+).annotate({
+  identifier: "UpdateCapacityProviderResponse",
+}) as any as S.Schema<UpdateCapacityProviderResponse>;
+export interface UpdateCodeSigningConfigRequest {
+  CodeSigningConfigArn: string;
+  Description?: string;
+  AllowedPublishers?: AllowedPublishers;
+  CodeSigningPolicies?: CodeSigningPolicies;
+}
+export const UpdateCodeSigningConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CodeSigningConfigArn: S.String.pipe(T.HttpLabel("CodeSigningConfigArn")),
+    Description: S.optional(S.String),
+    AllowedPublishers: S.optional(AllowedPublishers),
+    CodeSigningPolicies: S.optional(CodeSigningPolicies),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateCodeSigningConfigRequest",
+}) as any as S.Schema<UpdateCodeSigningConfigRequest>;
+export interface UpdateCodeSigningConfigResponse {
+  CodeSigningConfig: CodeSigningConfig;
+}
+export const UpdateCodeSigningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CodeSigningConfig: CodeSigningConfig }),
+).annotate({
+  identifier: "UpdateCodeSigningConfigResponse",
+}) as any as S.Schema<UpdateCodeSigningConfigResponse>;
+export interface UpdateEventSourceMappingRequest {
+  UUID: string;
+  FunctionName?: string;
+  Enabled?: boolean;
+  BatchSize?: number;
+  FilterCriteria?: FilterCriteria;
+  KMSKeyArn?: string;
+  MetricsConfig?: EventSourceMappingMetricsConfig;
+  LoggingConfig?: EventSourceMappingLoggingConfig;
+  ScalingConfig?: ScalingConfig;
+  MaximumBatchingWindowInSeconds?: number;
+  ParallelizationFactor?: number;
+  DestinationConfig?: DestinationConfig;
+  MaximumRecordAgeInSeconds?: number;
+  BisectBatchOnFunctionError?: boolean;
+  MaximumRetryAttempts?: number;
+  TumblingWindowInSeconds?: number;
+  SourceAccessConfigurations?: SourceAccessConfiguration[];
+  FunctionResponseTypes?: FunctionResponseType[];
+  AmazonManagedKafkaEventSourceConfig?: AmazonManagedKafkaEventSourceConfig;
+  SelfManagedKafkaEventSourceConfig?: SelfManagedKafkaEventSourceConfig;
+  DocumentDBEventSourceConfig?: DocumentDBEventSourceConfig;
+  ProvisionedPollerConfig?: ProvisionedPollerConfig;
+}
+export const UpdateEventSourceMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UUID: S.String.pipe(T.HttpLabel("UUID")),
+    FunctionName: S.optional(S.String),
+    Enabled: S.optional(S.Boolean),
+    BatchSize: S.optional(S.Number),
+    FilterCriteria: S.optional(FilterCriteria),
+    KMSKeyArn: S.optional(S.String),
+    MetricsConfig: S.optional(EventSourceMappingMetricsConfig),
+    LoggingConfig: S.optional(EventSourceMappingLoggingConfig),
+    ScalingConfig: S.optional(ScalingConfig),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+    ParallelizationFactor: S.optional(S.Number),
+    DestinationConfig: S.optional(DestinationConfig),
+    MaximumRecordAgeInSeconds: S.optional(S.Number),
+    BisectBatchOnFunctionError: S.optional(S.Boolean),
+    MaximumRetryAttempts: S.optional(S.Number),
+    TumblingWindowInSeconds: S.optional(S.Number),
+    SourceAccessConfigurations: S.optional(SourceAccessConfigurations),
+    FunctionResponseTypes: S.optional(FunctionResponseTypeList),
+    AmazonManagedKafkaEventSourceConfig: S.optional(
+      AmazonManagedKafkaEventSourceConfig,
+    ),
+    SelfManagedKafkaEventSourceConfig: S.optional(
+      SelfManagedKafkaEventSourceConfig,
+    ),
+    DocumentDBEventSourceConfig: S.optional(DocumentDBEventSourceConfig),
+    ProvisionedPollerConfig: S.optional(ProvisionedPollerConfig),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2015-03-31/event-source-mappings/{UUID}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateEventSourceMappingRequest",
+}) as any as S.Schema<UpdateEventSourceMappingRequest>;
+export interface UpdateFunctionCodeRequest {
+  FunctionName: string;
+  ZipFile?: Uint8Array | redacted.Redacted<Uint8Array>;
+  S3Bucket?: string;
+  S3Key?: string;
+  S3ObjectVersion?: string;
+  S3ObjectStorageMode?: S3ObjectStorageMode;
+  ImageUri?: string;
+  Architectures?: Architecture[];
+  Publish?: boolean;
+  PublishTo?: FunctionVersionLatestPublished;
+  DryRun?: boolean;
+  RevisionId?: string;
+  SourceKMSKeyArn?: string;
+}
+export const UpdateFunctionCodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    ZipFile: S.optional(SensitiveBlob),
+    S3Bucket: S.optional(S.String),
+    S3Key: S.optional(S.String),
+    S3ObjectVersion: S.optional(S.String),
+    S3ObjectStorageMode: S.optional(S3ObjectStorageMode),
+    ImageUri: S.optional(S.String),
+    Architectures: S.optional(ArchitecturesList),
+    Publish: S.optional(S.Boolean),
+    PublishTo: S.optional(FunctionVersionLatestPublished),
+    DryRun: S.optional(S.Boolean),
+    RevisionId: S.optional(S.String),
+    SourceKMSKeyArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2015-03-31/functions/{FunctionName}/code",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateFunctionCodeRequest",
+}) as any as S.Schema<UpdateFunctionCodeRequest>;
+export interface UpdateFunctionConfigurationRequest {
+  FunctionName: string;
+  Role?: string;
+  Handler?: string;
+  Description?: string;
+  Timeout?: number;
+  MemorySize?: number;
+  VpcConfig?: VpcConfig;
+  Environment?: Environment;
+  Runtime?: Runtime;
+  DeadLetterConfig?: DeadLetterConfig;
+  KMSKeyArn?: string;
+  TracingConfig?: TracingConfig;
+  RevisionId?: string;
+  Layers?: string[];
+  FileSystemConfigs?: FileSystemConfig[];
+  ImageConfig?: ImageConfig;
+  EphemeralStorage?: EphemeralStorage;
+  SnapStart?: SnapStart;
+  LoggingConfig?: LoggingConfig;
+  CapacityProviderConfig?: CapacityProviderConfig;
+  DurableConfig?: DurableConfig;
+}
+export const UpdateFunctionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Role: S.optional(S.String),
+    Handler: S.optional(S.String),
+    Description: S.optional(S.String),
+    Timeout: S.optional(S.Number),
+    MemorySize: S.optional(S.Number),
+    VpcConfig: S.optional(VpcConfig),
+    Environment: S.optional(Environment),
+    Runtime: S.optional(Runtime),
+    DeadLetterConfig: S.optional(DeadLetterConfig),
+    KMSKeyArn: S.optional(S.String),
+    TracingConfig: S.optional(TracingConfig),
+    RevisionId: S.optional(S.String),
+    Layers: S.optional(LayerList),
+    FileSystemConfigs: S.optional(FileSystemConfigList),
+    ImageConfig: S.optional(ImageConfig),
+    EphemeralStorage: S.optional(EphemeralStorage),
+    SnapStart: S.optional(SnapStart),
+    LoggingConfig: S.optional(LoggingConfig),
+    CapacityProviderConfig: S.optional(CapacityProviderConfig),
+    DurableConfig: S.optional(DurableConfig),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2015-03-31/functions/{FunctionName}/configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateFunctionConfigurationRequest",
+}) as any as S.Schema<UpdateFunctionConfigurationRequest>;
+export interface UpdateFunctionEventInvokeConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+  MaximumRetryAttempts?: number;
+  MaximumEventAgeInSeconds?: number;
+  DestinationConfig?: DestinationConfig;
+}
+export const UpdateFunctionEventInvokeConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+      Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+      MaximumRetryAttempts: S.optional(S.Number),
+      MaximumEventAgeInSeconds: S.optional(S.Number),
+      DestinationConfig: S.optional(DestinationConfig),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/2019-09-25/functions/{FunctionName}/event-invoke-config",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateFunctionEventInvokeConfigRequest",
+}) as any as S.Schema<UpdateFunctionEventInvokeConfigRequest>;
+export interface UpdateFunctionUrlConfigRequest {
+  FunctionName: string;
+  Qualifier?: string;
+  AuthType?: FunctionUrlAuthType;
+  Cors?: Cors;
+  InvokeMode?: InvokeMode;
+}
+export const UpdateFunctionUrlConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionName: S.String.pipe(T.HttpLabel("FunctionName")),
+    Qualifier: S.optional(S.String).pipe(T.HttpQuery("Qualifier")),
+    AuthType: S.optional(FunctionUrlAuthType),
+    Cors: S.optional(Cors),
+    InvokeMode: S.optional(InvokeMode),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/2021-10-31/functions/{FunctionName}/url",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateFunctionUrlConfigRequest",
+}) as any as S.Schema<UpdateFunctionUrlConfigRequest>;
+export interface UpdateFunctionUrlConfigResponse {
+  FunctionUrl: string;
+  FunctionArn: string;
+  AuthType: FunctionUrlAuthType;
+  Cors?: Cors;
+  CreationTime: string;
+  LastModifiedTime: string;
+  InvokeMode?: InvokeMode;
+}
+export const UpdateFunctionUrlConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionUrl: S.String,
+    FunctionArn: S.String,
+    AuthType: FunctionUrlAuthType,
+    Cors: S.optional(Cors),
+    CreationTime: S.String,
+    LastModifiedTime: S.String,
+    InvokeMode: S.optional(InvokeMode),
+  }),
+).annotate({
+  identifier: "UpdateFunctionUrlConfigResponse",
+}) as any as S.Schema<UpdateFunctionUrlConfigResponse>;
+export type ThrottleReason =
+  | "ConcurrentInvocationLimitExceeded"
+  | "FunctionInvocationRateLimitExceeded"
+  | "ReservedFunctionConcurrentInvocationLimitExceeded"
+  | "ReservedFunctionInvocationRateLimitExceeded"
+  | "CallerRateLimitExceeded"
+  | "ConcurrentSnapshotCreateLimitExceeded"
+  | (string & {});
+export const ThrottleReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    Type: S.optional(S.String),
-    message: S.optional(S.String),
-    Reason: S.optional(ThrottleReason),
-  },
-).pipe(C.withThrottlingError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class ParseError extends S.TaggedErrorClass<ParseError>()(
-  "ParseError",
-  {},
-) {}
-export class CallbackTimeoutException extends S.TaggedErrorClass<CallbackTimeoutException>()(
-  "CallbackTimeoutException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class CapacityProviderLimitExceededException extends S.TaggedErrorClass<CapacityProviderLimitExceededException>()(
-  "CapacityProviderLimitExceededException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  {},
-) {}
-export class CodeSigningConfigNotFoundException extends S.TaggedErrorClass<CodeSigningConfigNotFoundException>()(
-  "CodeSigningConfigNotFoundException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class CodeStorageExceededException extends S.TaggedErrorClass<CodeStorageExceededException>()(
-  "CodeStorageExceededException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class CodeVerificationFailedException extends S.TaggedErrorClass<CodeVerificationFailedException>()(
-  "CodeVerificationFailedException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class FunctionVersionsPerCapacityProviderLimitExceededException extends S.TaggedErrorClass<FunctionVersionsPerCapacityProviderLimitExceededException>()(
-  "FunctionVersionsPerCapacityProviderLimitExceededException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidCodeSignatureException extends S.TaggedErrorClass<InvalidCodeSignatureException>()(
-  "InvalidCodeSignatureException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
-  "PreconditionFailedException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-) {}
-export class CodeArtifactUserDeletedException extends S.TaggedErrorClass<CodeArtifactUserDeletedException>()(
-  "CodeArtifactUserDeletedException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class CodeArtifactUserFailedException extends S.TaggedErrorClass<CodeArtifactUserFailedException>()(
-  "CodeArtifactUserFailedException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class CodeArtifactUserPendingException extends S.TaggedErrorClass<CodeArtifactUserPendingException>()(
-  "CodeArtifactUserPendingException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class DurableExecutionAlreadyStartedException extends S.TaggedErrorClass<DurableExecutionAlreadyStartedException>()(
-  "DurableExecutionAlreadyStartedException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class EC2AccessDeniedException extends S.TaggedErrorClass<EC2AccessDeniedException>()(
-  "EC2AccessDeniedException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError, C.withAuthError) {}
-export class EC2ThrottledException extends S.TaggedErrorClass<EC2ThrottledException>()(
-  "EC2ThrottledException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class EC2UnexpectedException extends S.TaggedErrorClass<EC2UnexpectedException>()(
-  "EC2UnexpectedException",
-  {
-    Type: S.optional(S.String),
-    Message: S.optional(S.String),
-    EC2ErrorCode: S.optional(S.String),
-  },
-).pipe(C.withServerError) {}
-export class EFSIOException extends S.TaggedErrorClass<EFSIOException>()(
-  "EFSIOException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class EFSMountConnectivityException extends S.TaggedErrorClass<EFSMountConnectivityException>()(
-  "EFSMountConnectivityException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withTimeoutError) {}
-export class EFSMountFailureException extends S.TaggedErrorClass<EFSMountFailureException>()(
-  "EFSMountFailureException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class EFSMountTimeoutException extends S.TaggedErrorClass<EFSMountTimeoutException>()(
-  "EFSMountTimeoutException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withTimeoutError) {}
-export class ENILimitReachedException extends S.TaggedErrorClass<ENILimitReachedException>()(
-  "ENILimitReachedException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ENINotReadyException extends S.TaggedErrorClass<ENINotReadyException>()(
-  "ENINotReadyException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidRequestContentException extends S.TaggedErrorClass<InvalidRequestContentException>()(
-  "InvalidRequestContentException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidRuntimeException extends S.TaggedErrorClass<InvalidRuntimeException>()(
-  "InvalidRuntimeException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidSecurityGroupIDException extends S.TaggedErrorClass<InvalidSecurityGroupIDException>()(
-  "InvalidSecurityGroupIDException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidSubnetIDException extends S.TaggedErrorClass<InvalidSubnetIDException>()(
-  "InvalidSubnetIDException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidZipFileException extends S.TaggedErrorClass<InvalidZipFileException>()(
-  "InvalidZipFileException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
-  "KMSAccessDeniedException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError, C.withAuthError) {}
-export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
-  "KMSDisabledException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
-  "KMSInvalidStateException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
-  "KMSNotFoundException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ModeNotSupportedException extends S.TaggedErrorClass<ModeNotSupportedException>()(
-  "ModeNotSupportedException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NoPublishedVersionException extends S.TaggedErrorClass<NoPublishedVersionException>()(
-  "NoPublishedVersionException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class RecursiveInvocationException extends S.TaggedErrorClass<RecursiveInvocationException>()(
-  "RecursiveInvocationException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class RequestTooLargeException extends S.TaggedErrorClass<RequestTooLargeException>()(
-  "RequestTooLargeException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
-  "ResourceNotReadyException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class S3FilesMountConnectivityException extends S.TaggedErrorClass<S3FilesMountConnectivityException>()(
-  "S3FilesMountConnectivityException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withTimeoutError) {}
-export class S3FilesMountFailureException extends S.TaggedErrorClass<S3FilesMountFailureException>()(
-  "S3FilesMountFailureException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class S3FilesMountTimeoutException extends S.TaggedErrorClass<S3FilesMountTimeoutException>()(
-  "S3FilesMountTimeoutException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withTimeoutError) {}
-export class SerializedRequestEntityTooLargeException extends S.TaggedErrorClass<SerializedRequestEntityTooLargeException>()(
-  "SerializedRequestEntityTooLargeException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class SnapStartException extends S.TaggedErrorClass<SnapStartException>()(
-  "SnapStartException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class SnapStartNotReadyException extends S.TaggedErrorClass<SnapStartNotReadyException>()(
-  "SnapStartNotReadyException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class SnapStartRegenerationFailureException extends S.TaggedErrorClass<SnapStartRegenerationFailureException>()(
-  "SnapStartRegenerationFailureException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class SnapStartTimeoutException extends S.TaggedErrorClass<SnapStartTimeoutException>()(
-  "SnapStartTimeoutException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withTimeoutError) {}
-export class SubnetIPAddressLimitReachedException extends S.TaggedErrorClass<SubnetIPAddressLimitReachedException>()(
-  "SubnetIPAddressLimitReachedException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class UnsupportedMediaTypeException extends S.TaggedErrorClass<UnsupportedMediaTypeException>()(
-  "UnsupportedMediaTypeException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class AliasLimitExceededException extends S.TaggedErrorClass<AliasLimitExceededException>()(
-  "AliasLimitExceededException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PolicyLengthExceededException extends S.TaggedErrorClass<PolicyLengthExceededException>()(
-  "PolicyLengthExceededException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PublicPolicyException extends S.TaggedErrorClass<PublicPolicyException>()(
-  "PublicPolicyException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ProvisionedConcurrencyConfigNotFoundException extends S.TaggedErrorClass<ProvisionedConcurrencyConfigNotFoundException>()(
-  "ProvisionedConcurrencyConfigNotFoundException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
+export type AddLayerVersionPermissionError =
+  | InvalidParameterValueException
+  | PolicyLengthExceededException
+  | PreconditionFailedException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Adds permissions to the resource-based policy of a version of an Lambda layer. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
+ *
+ * To revoke permission, call RemoveLayerVersionPermission with the statement ID that you specified when you added it.
+ */
+export const addLayerVersionPermission: API.OperationMethod<
+  AddLayerVersionPermissionRequest,
+  AddLayerVersionPermissionResponse,
+  AddLayerVersionPermissionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: AddLayerVersionPermissionRequest,
+  output: AddLayerVersionPermissionResponse,
+  errors: [
+    InvalidParameterValueException,
+    PolicyLengthExceededException,
+    PreconditionFailedException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AddLayerVersionPermission",
+}));
 
-//# Operations
+export type AddPermissionError =
+  | InvalidParameterValueException
+  | PolicyLengthExceededException
+  | PreconditionFailedException
+  | PublicPolicyException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Grants a principal permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
+ *
+ * To grant permission to another account, specify the account ID as the `Principal`. To grant permission to an organization defined in Organizations, specify the organization ID as the `PrincipalOrgID`. For Amazon Web Services services, the principal is a domain-style identifier that the service defines, such as `s3.amazonaws.com` or `sns.amazonaws.com`. For Amazon Web Services services, you can also specify the ARN of the associated resource as the `SourceArn`. If you grant permission to a service principal without specifying the source, other accounts could potentially configure resources in their account to invoke your Lambda function.
+ *
+ * This operation adds a statement to a resource-based permissions policy for the function. For more information about function policies, see Using resource-based policies for Lambda.
+ */
+export const addPermission: API.OperationMethod<
+  AddPermissionRequest,
+  AddPermissionResponse,
+  AddPermissionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: AddPermissionRequest,
+  output: AddPermissionResponse,
+  errors: [
+    InvalidParameterValueException,
+    PolicyLengthExceededException,
+    PreconditionFailedException,
+    PublicPolicyException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AddPermission",
+}));
+
 export type CheckpointDurableExecutionError =
   | InvalidParameterValueException
   | ServiceException
@@ -5865,40 +5965,13 @@ export const checkpointDurableExecution: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckpointDurableExecution",
 }));
-export type DeleteFunctionError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Deletes a Lambda function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted. This doesn't require the user to have explicit permissions for DeleteAlias.
- *
- * A deleted Lambda function cannot be recovered. Ensure that you specify the correct function name and version before deleting.
- *
- * To delete Lambda event source mappings that invoke a function, use DeleteEventSourceMapping. For Amazon Web Services services and resources that invoke your function directly, delete the trigger in the service where you originally configured it.
- */
-export const deleteFunction: API.OperationMethod<
-  DeleteFunctionRequest,
-  DeleteFunctionResponse,
-  DeleteFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFunctionRequest,
-  output: DeleteFunctionResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "DeleteFunction",
-}));
-export type DeleteFunctionEventInvokeConfigError =
+
+export type CreateAliasError =
+  | AliasLimitExceededException
   | InvalidParameterValueException
   | ResourceConflictException
   | ResourceNotFoundException
@@ -5908,19 +5981,20 @@ export type DeleteFunctionEventInvokeConfigError =
   | ParseError
   | CommonErrors;
 /**
- * Deletes the configuration for asynchronous invocation for a function, version, or alias.
+ * Creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
  *
- * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
+ * You can also map an alias to split invocation requests between two versions. Use the `RoutingConfig` parameter to specify a second version and the percentage of invocation requests that it receives.
  */
-export const deleteFunctionEventInvokeConfig: API.OperationMethod<
-  DeleteFunctionEventInvokeConfigRequest,
-  DeleteFunctionEventInvokeConfigResponse,
-  DeleteFunctionEventInvokeConfigError,
+export const createAlias: API.OperationMethod<
+  CreateAliasRequest,
+  AliasConfiguration,
+  CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFunctionEventInvokeConfigRequest,
-  output: DeleteFunctionEventInvokeConfigResponse,
+  input: CreateAliasRequest,
+  output: AliasConfiguration,
   errors: [
+    AliasLimitExceededException,
     InvalidParameterValueException,
     ResourceConflictException,
     ResourceNotFoundException,
@@ -5929,537 +6003,11 @@ export const deleteFunctionEventInvokeConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "DeleteFunctionEventInvokeConfig",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateAlias",
 }));
-export type GetAccountSettingsError =
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Retrieves details about your account's limits and usage in an Amazon Web Services Region.
- */
-export const getAccountSettings: API.OperationMethod<
-  GetAccountSettingsRequest,
-  GetAccountSettingsResponse,
-  GetAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSettingsRequest,
-  output: GetAccountSettingsResponse,
-  errors: [ServiceException, TooManyRequestsException],
-  operationName: "GetAccountSettings",
-}));
-export type GetDurableExecutionError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Retrieves detailed information about a specific durable execution, including its current status, input payload, result or error information, and execution metadata such as start time and usage statistics.
- */
-export const getDurableExecution: API.OperationMethod<
-  GetDurableExecutionRequest,
-  GetDurableExecutionResponse,
-  GetDurableExecutionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDurableExecutionRequest,
-  output: GetDurableExecutionResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "GetDurableExecution",
-}));
-export type GetDurableExecutionHistoryError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Retrieves the execution history for a durable execution, showing all the steps, callbacks, and events that occurred during the execution. This provides a detailed audit trail of the execution's progress over time.
- *
- * The history is available while the execution is running and for a retention period after it completes (1-90 days, default 30 days). You can control whether to include execution data such as step results and callback payloads.
- */
-export const getDurableExecutionHistory: API.OperationMethod<
-  GetDurableExecutionHistoryRequest,
-  GetDurableExecutionHistoryResponse,
-  GetDurableExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDurableExecutionHistoryRequest,
-  ) => stream.Stream<
-    GetDurableExecutionHistoryResponse,
-    GetDurableExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDurableExecutionHistoryRequest,
-  ) => stream.Stream<
-    Event,
-    GetDurableExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDurableExecutionHistoryRequest,
-  output: GetDurableExecutionHistoryResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "GetDurableExecutionHistory",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "Events",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type GetDurableExecutionStateError =
-  | InvalidParameterValueException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Retrieves the current execution state required for the replay process during durable function execution. This API is used by the Lambda durable functions SDK to get state information needed for replay. You typically don't need to call this API directly as the SDK handles state management automatically.
- *
- * The response contains operations ordered by start sequence number in ascending order. Completed operations with children don't include child operation details since they don't need to be replayed.
- */
-export const getDurableExecutionState: API.OperationMethod<
-  GetDurableExecutionStateRequest,
-  GetDurableExecutionStateResponse,
-  GetDurableExecutionStateError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDurableExecutionStateRequest,
-  ) => stream.Stream<
-    GetDurableExecutionStateResponse,
-    GetDurableExecutionStateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDurableExecutionStateRequest,
-  ) => stream.Stream<
-    Operation,
-    GetDurableExecutionStateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDurableExecutionStateRequest,
-  output: GetDurableExecutionStateResponse,
-  errors: [
-    InvalidParameterValueException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "GetDurableExecutionState",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "Operations",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type GetFunctionEventInvokeConfigError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Retrieves the configuration for asynchronous invocation for a function, version, or alias.
- *
- * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
- */
-export const getFunctionEventInvokeConfig: API.OperationMethod<
-  GetFunctionEventInvokeConfigRequest,
-  FunctionEventInvokeConfig,
-  GetFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetFunctionEventInvokeConfigRequest,
-  output: FunctionEventInvokeConfig,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "GetFunctionEventInvokeConfig",
-}));
-export type ListDurableExecutionsByFunctionError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns a list of durable executions for a specified Lambda function. You can filter the results by execution name, status, and start time range. This API supports pagination for large result sets.
- */
-export const listDurableExecutionsByFunction: API.OperationMethod<
-  ListDurableExecutionsByFunctionRequest,
-  ListDurableExecutionsByFunctionResponse,
-  ListDurableExecutionsByFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDurableExecutionsByFunctionRequest,
-  ) => stream.Stream<
-    ListDurableExecutionsByFunctionResponse,
-    ListDurableExecutionsByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDurableExecutionsByFunctionRequest,
-  ) => stream.Stream<
-    Execution,
-    ListDurableExecutionsByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDurableExecutionsByFunctionRequest,
-  output: ListDurableExecutionsByFunctionResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListDurableExecutionsByFunction",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "DurableExecutions",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type ListFunctionEventInvokeConfigsError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Retrieves a list of configurations for asynchronous invocation for a function.
- *
- * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
- */
-export const listFunctionEventInvokeConfigs: API.OperationMethod<
-  ListFunctionEventInvokeConfigsRequest,
-  ListFunctionEventInvokeConfigsResponse,
-  ListFunctionEventInvokeConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionEventInvokeConfigsRequest,
-  ) => stream.Stream<
-    ListFunctionEventInvokeConfigsResponse,
-    ListFunctionEventInvokeConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionEventInvokeConfigsRequest,
-  ) => stream.Stream<
-    FunctionEventInvokeConfig,
-    ListFunctionEventInvokeConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFunctionEventInvokeConfigsRequest,
-  output: ListFunctionEventInvokeConfigsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "ListFunctionEventInvokeConfigs",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "FunctionEventInvokeConfigs",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type ListTagsError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Returns a function, event source mapping, or code signing configuration's tags. You can also view function tags with GetFunction.
- */
-export const listTags: API.OperationMethod<
-  ListTagsRequest,
-  ListTagsResponse,
-  ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsRequest,
-  output: ListTagsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "ListTags",
-}));
-export type PutFunctionEventInvokeConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Configures options for asynchronous invocation on a function, version, or alias. If a configuration already exists for a function, version, or alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without affecting existing settings for other options, use UpdateFunctionEventInvokeConfig.
- *
- * By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains events in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous invocation queue for too long, Lambda discards it. To retain discarded events, configure a dead-letter queue with UpdateFunctionConfiguration.
- *
- * To send an invocation record to a queue, topic, S3 bucket, function, or event bus, specify a destination. You can configure separate destinations for successful invocations (on-success) and events that fail all processing attempts (on-failure). You can configure destinations in addition to or instead of a dead-letter queue.
- *
- * S3 buckets are supported only for on-failure destinations. To retain records of successful invocations, use another destination type.
- */
-export const putFunctionEventInvokeConfig: API.OperationMethod<
-  PutFunctionEventInvokeConfigRequest,
-  FunctionEventInvokeConfig,
-  PutFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutFunctionEventInvokeConfigRequest,
-  output: FunctionEventInvokeConfig,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "PutFunctionEventInvokeConfig",
-}));
-export type SendDurableExecutionCallbackFailureError =
-  | CallbackTimeoutException
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Sends a failure response for a callback operation in a durable execution. Use this API when an external system cannot complete a callback operation successfully.
- */
-export const sendDurableExecutionCallbackFailure: API.OperationMethod<
-  SendDurableExecutionCallbackFailureRequest,
-  SendDurableExecutionCallbackFailureResponse,
-  SendDurableExecutionCallbackFailureError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendDurableExecutionCallbackFailureRequest,
-  output: SendDurableExecutionCallbackFailureResponse,
-  errors: [
-    CallbackTimeoutException,
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "SendDurableExecutionCallbackFailure",
-}));
-export type SendDurableExecutionCallbackHeartbeatError =
-  | CallbackTimeoutException
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Sends a heartbeat signal for a long-running callback operation to prevent timeout. Use this API to extend the callback timeout period while the external operation is still in progress.
- */
-export const sendDurableExecutionCallbackHeartbeat: API.OperationMethod<
-  SendDurableExecutionCallbackHeartbeatRequest,
-  SendDurableExecutionCallbackHeartbeatResponse,
-  SendDurableExecutionCallbackHeartbeatError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendDurableExecutionCallbackHeartbeatRequest,
-  output: SendDurableExecutionCallbackHeartbeatResponse,
-  errors: [
-    CallbackTimeoutException,
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "SendDurableExecutionCallbackHeartbeat",
-}));
-export type SendDurableExecutionCallbackSuccessError =
-  | CallbackTimeoutException
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Sends a successful completion response for a callback operation in a durable execution. Use this API when an external system has successfully completed a callback operation.
- */
-export const sendDurableExecutionCallbackSuccess: API.OperationMethod<
-  SendDurableExecutionCallbackSuccessRequest,
-  SendDurableExecutionCallbackSuccessResponse,
-  SendDurableExecutionCallbackSuccessError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendDurableExecutionCallbackSuccessRequest,
-  output: SendDurableExecutionCallbackSuccessResponse,
-  errors: [
-    CallbackTimeoutException,
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "SendDurableExecutionCallbackSuccess",
-}));
-export type StopDurableExecutionError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Stops a running durable execution. The execution transitions to STOPPED status and cannot be resumed. Any in-progress operations are terminated.
- */
-export const stopDurableExecution: API.OperationMethod<
-  StopDurableExecutionRequest,
-  StopDurableExecutionResponse,
-  StopDurableExecutionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StopDurableExecutionRequest,
-  output: StopDurableExecutionResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "StopDurableExecution",
-}));
-export type TagResourceError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Adds tags to a function, event source mapping, or code signing configuration.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Removes tags from a function, event source mapping, or code signing configuration.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "UntagResource",
-}));
-export type UpdateFunctionEventInvokeConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Updates the configuration for asynchronous invocation for a function, version, or alias.
- *
- * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
- */
-export const updateFunctionEventInvokeConfig: API.OperationMethod<
-  UpdateFunctionEventInvokeConfigRequest,
-  FunctionEventInvokeConfig,
-  UpdateFunctionEventInvokeConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFunctionEventInvokeConfigRequest,
-  output: FunctionEventInvokeConfig,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "UpdateFunctionEventInvokeConfig",
-}));
+
 export type CreateCapacityProviderError =
   | CapacityProviderLimitExceededException
   | InvalidParameterValueException
@@ -6485,177 +6033,11 @@ export const createCapacityProvider: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityProvider",
 }));
-export type GetCapacityProviderError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Retrieves information about a specific capacity provider, including its configuration, state, and associated resources.
- */
-export const getCapacityProvider: API.OperationMethod<
-  GetCapacityProviderRequest,
-  GetCapacityProviderResponse,
-  GetCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCapacityProviderRequest,
-  output: GetCapacityProviderResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "GetCapacityProvider",
-}));
-export type UpdateCapacityProviderError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Updates the configuration of an existing capacity provider.
- */
-export const updateCapacityProvider: API.OperationMethod<
-  UpdateCapacityProviderRequest,
-  UpdateCapacityProviderResponse,
-  UpdateCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCapacityProviderRequest,
-  output: UpdateCapacityProviderResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "UpdateCapacityProvider",
-}));
-export type DeleteCapacityProviderError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Deletes a capacity provider. You cannot delete a capacity provider that is currently being used by Lambda functions.
- */
-export const deleteCapacityProvider: API.OperationMethod<
-  DeleteCapacityProviderRequest,
-  DeleteCapacityProviderResponse,
-  DeleteCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCapacityProviderRequest,
-  output: DeleteCapacityProviderResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "DeleteCapacityProvider",
-}));
-export type ListCapacityProvidersError =
-  | InvalidParameterValueException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns a list of capacity providers in your account.
- */
-export const listCapacityProviders: API.OperationMethod<
-  ListCapacityProvidersRequest,
-  ListCapacityProvidersResponse,
-  ListCapacityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapacityProvidersRequest,
-  ) => stream.Stream<
-    ListCapacityProvidersResponse,
-    ListCapacityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapacityProvidersRequest,
-  ) => stream.Stream<
-    CapacityProvider,
-    ListCapacityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCapacityProvidersRequest,
-  output: ListCapacityProvidersResponse,
-  errors: [
-    InvalidParameterValueException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListCapacityProviders",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "CapacityProviders",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type ListFunctionVersionsByCapacityProviderError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns a list of function versions that are configured to use a specific capacity provider.
- */
-export const listFunctionVersionsByCapacityProvider: API.OperationMethod<
-  ListFunctionVersionsByCapacityProviderRequest,
-  ListFunctionVersionsByCapacityProviderResponse,
-  ListFunctionVersionsByCapacityProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionVersionsByCapacityProviderRequest,
-  ) => stream.Stream<
-    ListFunctionVersionsByCapacityProviderResponse,
-    ListFunctionVersionsByCapacityProviderError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionVersionsByCapacityProviderRequest,
-  ) => stream.Stream<
-    FunctionVersionsByCapacityProviderListItem,
-    ListFunctionVersionsByCapacityProviderError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFunctionVersionsByCapacityProviderRequest,
-  output: ListFunctionVersionsByCapacityProviderResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListFunctionVersionsByCapacityProvider",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "FunctionVersions",
-    pageSize: "MaxItems",
-  } as const,
-}));
+
 export type CreateCodeSigningConfigError =
   | InvalidParameterValueException
   | ServiceException
@@ -6672,170 +6054,11 @@ export const createCodeSigningConfig: API.OperationMethod<
   input: CreateCodeSigningConfigRequest,
   output: CreateCodeSigningConfigResponse,
   errors: [InvalidParameterValueException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCodeSigningConfig",
 }));
-export type ListCodeSigningConfigsError =
-  | InvalidParameterValueException
-  | ServiceException
-  | CommonErrors;
-/**
- * Returns a list of code signing configurations. A request returns up to 10,000 configurations per call. You can use the `MaxItems` parameter to return fewer configurations per call.
- */
-export const listCodeSigningConfigs: API.OperationMethod<
-  ListCodeSigningConfigsRequest,
-  ListCodeSigningConfigsResponse,
-  ListCodeSigningConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodeSigningConfigsRequest,
-  ) => stream.Stream<
-    ListCodeSigningConfigsResponse,
-    ListCodeSigningConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodeSigningConfigsRequest,
-  ) => stream.Stream<
-    CodeSigningConfig,
-    ListCodeSigningConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCodeSigningConfigsRequest,
-  output: ListCodeSigningConfigsResponse,
-  errors: [InvalidParameterValueException, ServiceException],
-  operationName: "ListCodeSigningConfigs",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "CodeSigningConfigs",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type DeleteCodeSigningConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Deletes the code signing configuration. You can delete the code signing configuration only if no function is using it.
- */
-export const deleteCodeSigningConfig: API.OperationMethod<
-  DeleteCodeSigningConfigRequest,
-  DeleteCodeSigningConfigResponse,
-  DeleteCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCodeSigningConfigRequest,
-  output: DeleteCodeSigningConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "DeleteCodeSigningConfig",
-}));
-export type GetCodeSigningConfigError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Returns information about the specified code signing configuration.
- */
-export const getCodeSigningConfig: API.OperationMethod<
-  GetCodeSigningConfigRequest,
-  GetCodeSigningConfigResponse,
-  GetCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCodeSigningConfigRequest,
-  output: GetCodeSigningConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "GetCodeSigningConfig",
-}));
-export type ListFunctionsByCodeSigningConfigError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | CommonErrors;
-/**
- * List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
- */
-export const listFunctionsByCodeSigningConfig: API.OperationMethod<
-  ListFunctionsByCodeSigningConfigRequest,
-  ListFunctionsByCodeSigningConfigResponse,
-  ListFunctionsByCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsByCodeSigningConfigRequest,
-  ) => stream.Stream<
-    ListFunctionsByCodeSigningConfigResponse,
-    ListFunctionsByCodeSigningConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsByCodeSigningConfigRequest,
-  ) => stream.Stream<
-    FunctionArn,
-    ListFunctionsByCodeSigningConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFunctionsByCodeSigningConfigRequest,
-  output: ListFunctionsByCodeSigningConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-  ],
-  operationName: "ListFunctionsByCodeSigningConfig",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "FunctionArns",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type UpdateCodeSigningConfigError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | CommonErrors;
-/**
- * Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
- */
-export const updateCodeSigningConfig: API.OperationMethod<
-  UpdateCodeSigningConfigRequest,
-  UpdateCodeSigningConfigResponse,
-  UpdateCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCodeSigningConfigRequest,
-  output: UpdateCodeSigningConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-  ],
-  operationName: "UpdateCodeSigningConfig",
-}));
+
 export type CreateEventSourceMappingError =
   | InvalidParameterValueException
   | ResourceConflictException
@@ -6911,189 +6134,11 @@ export const createEventSourceMapping: API.OperationMethod<
     RequestLimitExceeded,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSourceMapping",
 }));
-export type GetEventSourceMappingError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns details about an event source mapping. You can get the identifier of a mapping from the output of ListEventSourceMappings.
- */
-export const getEventSourceMapping: API.OperationMethod<
-  GetEventSourceMappingRequest,
-  EventSourceMappingConfiguration,
-  GetEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetEventSourceMappingRequest,
-  output: EventSourceMappingConfiguration,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "GetEventSourceMapping",
-}));
-export type UpdateEventSourceMappingError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceInUseException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
- *
- * For details about how to configure different event sources, see the following topics.
- *
- * - Amazon DynamoDB Streams
- *
- * - Amazon Kinesis
- *
- * - Amazon SQS
- *
- * - Amazon MQ and RabbitMQ
- *
- * - Amazon MSK
- *
- * - Apache Kafka
- *
- * - Amazon DocumentDB
- *
- * The following error handling options are available for stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
- *
- * - `BisectBatchOnFunctionError` – If the function returns an error, split the batch in two and retry.
- *
- * - `MaximumRecordAgeInSeconds` – Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires
- *
- * - `MaximumRetryAttempts` – Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
- *
- * - `OnFailure` – Send discarded records to an Amazon SQS queue, Amazon SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see Adding a destination.
- *
- * The following option is available only for DynamoDB and Kinesis event sources:
- *
- * - `ParallelizationFactor` – Process multiple batches from each shard concurrently.
- *
- * For information about which configuration parameters apply to each event source, see the following topics.
- *
- * - Amazon DynamoDB Streams
- *
- * - Amazon Kinesis
- *
- * - Amazon SQS
- *
- * - Amazon MQ and RabbitMQ
- *
- * - Amazon MSK
- *
- * - Apache Kafka
- *
- * - Amazon DocumentDB
- */
-export const updateEventSourceMapping: API.OperationMethod<
-  UpdateEventSourceMappingRequest,
-  EventSourceMappingConfiguration,
-  UpdateEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventSourceMappingRequest,
-  output: EventSourceMappingConfiguration,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceInUseException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "UpdateEventSourceMapping",
-}));
-export type DeleteEventSourceMappingError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceInUseException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Deletes an event source mapping. You can get the identifier of a mapping from the output of ListEventSourceMappings.
- *
- * When you delete an event source mapping, it enters a `Deleting` state and might not be completely deleted for several seconds.
- */
-export const deleteEventSourceMapping: API.OperationMethod<
-  DeleteEventSourceMappingRequest,
-  EventSourceMappingConfiguration,
-  DeleteEventSourceMappingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventSourceMappingRequest,
-  output: EventSourceMappingConfiguration,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceInUseException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "DeleteEventSourceMapping",
-}));
-export type ListEventSourceMappingsError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Lists event source mappings. Specify an `EventSourceArn` to show only event source mappings for a single event source.
- */
-export const listEventSourceMappings: API.OperationMethod<
-  ListEventSourceMappingsRequest,
-  ListEventSourceMappingsResponse,
-  ListEventSourceMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventSourceMappingsRequest,
-  ) => stream.Stream<
-    ListEventSourceMappingsResponse,
-    ListEventSourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventSourceMappingsRequest,
-  ) => stream.Stream<
-    EventSourceMappingConfiguration,
-    ListEventSourceMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventSourceMappingsRequest,
-  output: ListEventSourceMappingsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListEventSourceMappings",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "EventSourceMappings",
-    pageSize: "MaxItems",
-  } as const,
-}));
+
 export type CreateFunctionError =
   | CodeSigningConfigNotFoundException
   | CodeStorageExceededException
@@ -7145,297 +6190,11 @@ export const createFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunction",
 }));
-export type ListFunctionsError =
-  | InvalidParameterValueException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
- *
- * Set `FunctionVersion` to `ALL` to include all published versions of each function in addition to the unpublished version.
- *
- * The `ListFunctions` operation returns a subset of the FunctionConfiguration fields. To get the additional fields (State, StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason, LastUpdateStatusReasonCode, RuntimeVersionConfig) for a function or version, use GetFunction.
- */
-export const listFunctions: API.OperationMethod<
-  ListFunctionsRequest,
-  ListFunctionsResponse,
-  ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    ListFunctionsResponse,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    FunctionConfiguration,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFunctionsRequest,
-  output: ListFunctionsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListFunctions",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "Functions",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type DeleteFunctionConcurrencyError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Removes a concurrent execution limit from a function.
- */
-export const deleteFunctionConcurrency: API.OperationMethod<
-  DeleteFunctionConcurrencyRequest,
-  DeleteFunctionConcurrencyResponse,
-  DeleteFunctionConcurrencyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFunctionConcurrencyRequest,
-  output: DeleteFunctionConcurrencyResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "DeleteFunctionConcurrency",
-}));
-export type GetFunctionConcurrencyError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a function, use PutFunctionConcurrency.
- */
-export const getFunctionConcurrency: API.OperationMethod<
-  GetFunctionConcurrencyRequest,
-  GetFunctionConcurrencyResponse,
-  GetFunctionConcurrencyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetFunctionConcurrencyRequest,
-  output: GetFunctionConcurrencyResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "GetFunctionConcurrency",
-}));
-export type ListProvisionedConcurrencyConfigsError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Retrieves a list of provisioned concurrency configurations for a function.
- */
-export const listProvisionedConcurrencyConfigs: API.OperationMethod<
-  ListProvisionedConcurrencyConfigsRequest,
-  ListProvisionedConcurrencyConfigsResponse,
-  ListProvisionedConcurrencyConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisionedConcurrencyConfigsRequest,
-  ) => stream.Stream<
-    ListProvisionedConcurrencyConfigsResponse,
-    ListProvisionedConcurrencyConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisionedConcurrencyConfigsRequest,
-  ) => stream.Stream<
-    ProvisionedConcurrencyConfigListItem,
-    ListProvisionedConcurrencyConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProvisionedConcurrencyConfigsRequest,
-  output: ListProvisionedConcurrencyConfigsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "ListProvisionedConcurrencyConfigs",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "ProvisionedConcurrencyConfigs",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type PutFunctionConcurrencyError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
- *
- * Concurrency settings apply to the function as a whole, including all published versions and the unpublished version. Reserving concurrency both ensures that your function has capacity to process the specified number of events simultaneously, and prevents it from scaling beyond that level. Use GetFunction to see the current setting for a function.
- *
- * Use GetAccountSettings to see your Regional concurrency limit. You can reserve concurrency for as many functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that aren't configured with a per-function limit. For more information, see Lambda function scaling.
- */
-export const putFunctionConcurrency: API.OperationMethod<
-  PutFunctionConcurrencyRequest,
-  Concurrency,
-  PutFunctionConcurrencyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutFunctionConcurrencyRequest,
-  output: Concurrency,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "PutFunctionConcurrency",
-}));
-export type UpdateFunctionCodeError =
-  | CodeSigningConfigNotFoundException
-  | CodeStorageExceededException
-  | CodeVerificationFailedException
-  | InvalidCodeSignatureException
-  | InvalidParameterValueException
-  | PreconditionFailedException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see Configuring code signing for Lambda.
- *
- * If the function's package type is `Image`, then you must specify the code package in `ImageUri` as the URI of a container image in the Amazon ECR registry.
- *
- * If the function's package type is `Zip`, then you must specify the deployment package as a .zip file archive. Enter the Amazon S3 bucket and key of the code .zip file location. You can also provide the function code inline using the `ZipFile` field.
- *
- * The code in the deployment package must be compatible with the target instruction set architecture of the function (`x86-64` or `arm64`).
- *
- * The function's code is locked when you publish a version. You can't modify the code of a published version, only the unpublished version.
- *
- * For a function defined as a container image, Lambda resolves the image tag to an image digest. In Amazon ECR, if you update the image tag to a new image, Lambda does not automatically update the function.
- */
-export const updateFunctionCode: API.OperationMethod<
-  UpdateFunctionCodeRequest,
-  FunctionConfiguration,
-  UpdateFunctionCodeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFunctionCodeRequest,
-  output: FunctionConfiguration,
-  errors: [
-    CodeSigningConfigNotFoundException,
-    CodeStorageExceededException,
-    CodeVerificationFailedException,
-    InvalidCodeSignatureException,
-    InvalidParameterValueException,
-    PreconditionFailedException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "UpdateFunctionCode",
-}));
-export type UpdateFunctionConfigurationError =
-  | CodeSigningConfigNotFoundException
-  | CodeVerificationFailedException
-  | InvalidCodeSignatureException
-  | InvalidParameterValueException
-  | PreconditionFailedException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Modify the version-specific settings of a Lambda function.
- *
- * When you update a function, Lambda provisions an instance of the function and its supporting resources. If your function connects to a VPC, this process can take a minute. During this time, you can't modify the function, but you can still invoke it. The `LastUpdateStatus`, `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the response from GetFunctionConfiguration indicate when the update is complete and the function is processing events with the new configuration. For more information, see Lambda function states.
- *
- * These settings can vary between versions of a function and are locked when you publish a version. You can't modify the configuration of a published version, only the unpublished version.
- *
- * To configure function concurrency, use PutFunctionConcurrency. To grant invoke permissions to an Amazon Web Services account or Amazon Web Services service, use AddPermission.
- */
-export const updateFunctionConfiguration: API.OperationMethod<
-  UpdateFunctionConfigurationRequest,
-  FunctionConfiguration,
-  UpdateFunctionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFunctionConfigurationRequest,
-  output: FunctionConfiguration,
-  errors: [
-    CodeSigningConfigNotFoundException,
-    CodeVerificationFailedException,
-    InvalidCodeSignatureException,
-    InvalidParameterValueException,
-    PreconditionFailedException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "UpdateFunctionConfiguration",
-}));
+
 export type CreateFunctionUrlConfigError =
   | InvalidParameterValueException
   | ResourceConflictException
@@ -7465,8 +6224,173 @@ export const createFunctionUrlConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunctionUrlConfig",
 }));
+
+export type DeleteAliasError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | CommonErrors;
+/**
+ * Deletes a Lambda function alias.
+ */
+export const deleteAlias: API.OperationMethod<
+  DeleteAliasRequest,
+  DeleteAliasResponse,
+  DeleteAliasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAliasRequest,
+  output: DeleteAliasResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAlias",
+}));
+
+export type DeleteCapacityProviderError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Deletes a capacity provider. You cannot delete a capacity provider that is currently being used by Lambda functions.
+ */
+export const deleteCapacityProvider: API.OperationMethod<
+  DeleteCapacityProviderRequest,
+  DeleteCapacityProviderResponse,
+  DeleteCapacityProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCapacityProviderRequest,
+  output: DeleteCapacityProviderResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCapacityProvider",
+}));
+
+export type DeleteCodeSigningConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Deletes the code signing configuration. You can delete the code signing configuration only if no function is using it.
+ */
+export const deleteCodeSigningConfig: API.OperationMethod<
+  DeleteCodeSigningConfigRequest,
+  DeleteCodeSigningConfigResponse,
+  DeleteCodeSigningConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCodeSigningConfigRequest,
+  output: DeleteCodeSigningConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCodeSigningConfig",
+}));
+
+export type DeleteEventSourceMappingError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceInUseException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Deletes an event source mapping. You can get the identifier of a mapping from the output of ListEventSourceMappings.
+ *
+ * When you delete an event source mapping, it enters a `Deleting` state and might not be completely deleted for several seconds.
+ */
+export const deleteEventSourceMapping: API.OperationMethod<
+  DeleteEventSourceMappingRequest,
+  EventSourceMappingConfiguration,
+  DeleteEventSourceMappingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteEventSourceMappingRequest,
+  output: EventSourceMappingConfiguration,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceInUseException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteEventSourceMapping",
+}));
+
+export type DeleteFunctionError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Deletes a Lambda function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted. This doesn't require the user to have explicit permissions for DeleteAlias.
+ *
+ * A deleted Lambda function cannot be recovered. Ensure that you specify the correct function name and version before deleting.
+ *
+ * To delete Lambda event source mappings that invoke a function, use DeleteEventSourceMapping. For Amazon Web Services services and resources that invoke your function directly, delete the trigger in the service where you originally configured it.
+ */
+export const deleteFunction: API.OperationMethod<
+  DeleteFunctionRequest,
+  DeleteFunctionResponse,
+  DeleteFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteFunctionRequest,
+  output: DeleteFunctionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFunction",
+}));
+
 export type DeleteFunctionCodeSigningConfigError =
   | CodeSigningConfigNotFoundException
   | InvalidParameterValueException
@@ -7494,8 +6418,81 @@ export const deleteFunctionCodeSigningConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionCodeSigningConfig",
 }));
+
+export type DeleteFunctionConcurrencyError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Removes a concurrent execution limit from a function.
+ */
+export const deleteFunctionConcurrency: API.OperationMethod<
+  DeleteFunctionConcurrencyRequest,
+  DeleteFunctionConcurrencyResponse,
+  DeleteFunctionConcurrencyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteFunctionConcurrencyRequest,
+  output: DeleteFunctionConcurrencyResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFunctionConcurrency",
+}));
+
+export type DeleteFunctionEventInvokeConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Deletes the configuration for asynchronous invocation for a function, version, or alias.
+ *
+ * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
+ */
+export const deleteFunctionEventInvokeConfig: API.OperationMethod<
+  DeleteFunctionEventInvokeConfigRequest,
+  DeleteFunctionEventInvokeConfigResponse,
+  DeleteFunctionEventInvokeConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteFunctionEventInvokeConfigRequest,
+  output: DeleteFunctionEventInvokeConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFunctionEventInvokeConfig",
+}));
+
 export type DeleteFunctionUrlConfigError =
   | InvalidParameterValueException
   | ResourceConflictException
@@ -7525,8 +6522,340 @@ export const deleteFunctionUrlConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionUrlConfig",
 }));
+
+export type DeleteLayerVersionError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Deletes a version of an Lambda layer. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
+ */
+export const deleteLayerVersion: API.OperationMethod<
+  DeleteLayerVersionRequest,
+  DeleteLayerVersionResponse,
+  DeleteLayerVersionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLayerVersionRequest,
+  output: DeleteLayerVersionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteLayerVersion",
+}));
+
+export type DeleteProvisionedConcurrencyConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Deletes the provisioned concurrency configuration for a function.
+ */
+export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
+  DeleteProvisionedConcurrencyConfigRequest,
+  DeleteProvisionedConcurrencyConfigResponse,
+  DeleteProvisionedConcurrencyConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProvisionedConcurrencyConfigRequest,
+  output: DeleteProvisionedConcurrencyConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteProvisionedConcurrencyConfig",
+}));
+
+export type GetAccountSettingsError =
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Retrieves details about your account's limits and usage in an Amazon Web Services Region.
+ */
+export const getAccountSettings: API.OperationMethod<
+  GetAccountSettingsRequest,
+  GetAccountSettingsResponse,
+  GetAccountSettingsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAccountSettingsRequest,
+  output: GetAccountSettingsResponse,
+  errors: [ServiceException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAccountSettings",
+}));
+
+export type GetAliasError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns details about a Lambda function alias.
+ */
+export const getAlias: API.OperationMethod<
+  GetAliasRequest,
+  AliasConfiguration,
+  GetAliasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAliasRequest,
+  output: AliasConfiguration,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAlias",
+}));
+
+export type GetCapacityProviderError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific capacity provider, including its configuration, state, and associated resources.
+ */
+export const getCapacityProvider: API.OperationMethod<
+  GetCapacityProviderRequest,
+  GetCapacityProviderResponse,
+  GetCapacityProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCapacityProviderRequest,
+  output: GetCapacityProviderResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCapacityProvider",
+}));
+
+export type GetCodeSigningConfigError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Returns information about the specified code signing configuration.
+ */
+export const getCodeSigningConfig: API.OperationMethod<
+  GetCodeSigningConfigRequest,
+  GetCodeSigningConfigResponse,
+  GetCodeSigningConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCodeSigningConfigRequest,
+  output: GetCodeSigningConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCodeSigningConfig",
+}));
+
+export type GetDurableExecutionError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a specific durable execution, including its current status, input payload, result or error information, and execution metadata such as start time and usage statistics.
+ */
+export const getDurableExecution: API.OperationMethod<
+  GetDurableExecutionRequest,
+  GetDurableExecutionResponse,
+  GetDurableExecutionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDurableExecutionRequest,
+  output: GetDurableExecutionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDurableExecution",
+}));
+
+export type GetDurableExecutionHistoryError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Retrieves the execution history for a durable execution, showing all the steps, callbacks, and events that occurred during the execution. This provides a detailed audit trail of the execution's progress over time.
+ *
+ * The history is available while the execution is running and for a retention period after it completes (1-90 days, default 30 days). You can control whether to include execution data such as step results and callback payloads.
+ */
+export const getDurableExecutionHistory: API.OperationMethod<
+  GetDurableExecutionHistoryRequest,
+  GetDurableExecutionHistoryResponse,
+  GetDurableExecutionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetDurableExecutionHistoryRequest,
+  ) => stream.Stream<
+    GetDurableExecutionHistoryResponse,
+    GetDurableExecutionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetDurableExecutionHistoryRequest,
+  ) => stream.Stream<
+    Event,
+    GetDurableExecutionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: GetDurableExecutionHistoryRequest,
+  output: GetDurableExecutionHistoryResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDurableExecutionHistory",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "Events",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type GetDurableExecutionStateError =
+  | InvalidParameterValueException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Retrieves the current execution state required for the replay process during durable function execution. This API is used by the Lambda durable functions SDK to get state information needed for replay. You typically don't need to call this API directly as the SDK handles state management automatically.
+ *
+ * The response contains operations ordered by start sequence number in ascending order. Completed operations with children don't include child operation details since they don't need to be replayed.
+ */
+export const getDurableExecutionState: API.OperationMethod<
+  GetDurableExecutionStateRequest,
+  GetDurableExecutionStateResponse,
+  GetDurableExecutionStateError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetDurableExecutionStateRequest,
+  ) => stream.Stream<
+    GetDurableExecutionStateResponse,
+    GetDurableExecutionStateError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetDurableExecutionStateRequest,
+  ) => stream.Stream<
+    Operation,
+    GetDurableExecutionStateError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: GetDurableExecutionStateRequest,
+  output: GetDurableExecutionStateResponse,
+  errors: [
+    InvalidParameterValueException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDurableExecutionState",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "Operations",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type GetEventSourceMappingError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns details about an event source mapping. You can get the identifier of a mapping from the output of ListEventSourceMappings.
+ */
+export const getEventSourceMapping: API.OperationMethod<
+  GetEventSourceMappingRequest,
+  EventSourceMappingConfiguration,
+  GetEventSourceMappingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEventSourceMappingRequest,
+  output: EventSourceMappingConfiguration,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetEventSourceMapping",
+}));
+
 export type GetFunctionError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7550,8 +6879,11 @@ export const getFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunction",
 }));
+
 export type GetFunctionCodeSigningConfigError =
   | CodeSigningConfigNotFoundException
   | InvalidParameterValueException
@@ -7577,8 +6909,43 @@ export const getFunctionCodeSigningConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionCodeSigningConfig",
 }));
+
+export type GetFunctionConcurrencyError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a function, use PutFunctionConcurrency.
+ */
+export const getFunctionConcurrency: API.OperationMethod<
+  GetFunctionConcurrencyRequest,
+  GetFunctionConcurrencyResponse,
+  GetFunctionConcurrencyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFunctionConcurrencyRequest,
+  output: GetFunctionConcurrencyResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetFunctionConcurrency",
+}));
+
 export type GetFunctionConfigurationError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7604,8 +6971,45 @@ export const getFunctionConfiguration: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionConfiguration",
 }));
+
+export type GetFunctionEventInvokeConfigError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Retrieves the configuration for asynchronous invocation for a function, version, or alias.
+ *
+ * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
+ */
+export const getFunctionEventInvokeConfig: API.OperationMethod<
+  GetFunctionEventInvokeConfigRequest,
+  FunctionEventInvokeConfig,
+  GetFunctionEventInvokeConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFunctionEventInvokeConfigRequest,
+  output: FunctionEventInvokeConfig,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetFunctionEventInvokeConfig",
+}));
+
 export type GetFunctionRecursionConfigError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7633,8 +7037,11 @@ export const getFunctionRecursionConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionRecursionConfig",
 }));
+
 export type GetFunctionScalingConfigError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7658,8 +7065,11 @@ export const getFunctionScalingConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionScalingConfig",
 }));
+
 export type GetFunctionUrlConfigError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7683,8 +7093,103 @@ export const getFunctionUrlConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionUrlConfig",
 }));
+
+export type GetLayerVersionError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Returns information about a version of an Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+ */
+export const getLayerVersion: API.OperationMethod<
+  GetLayerVersionRequest,
+  GetLayerVersionResponse,
+  GetLayerVersionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLayerVersionRequest,
+  output: GetLayerVersionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetLayerVersion",
+}));
+
+export type GetLayerVersionByArnError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns information about a version of an Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+ */
+export const getLayerVersionByArn: API.OperationMethod<
+  GetLayerVersionByArnRequest,
+  GetLayerVersionResponse,
+  GetLayerVersionByArnError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLayerVersionByArnRequest,
+  output: GetLayerVersionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetLayerVersionByArn",
+}));
+
+export type GetLayerVersionPolicyError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Returns the permission policy for a version of an Lambda layer. For more information, see AddLayerVersionPermission.
+ */
+export const getLayerVersionPolicy: API.OperationMethod<
+  GetLayerVersionPolicyRequest,
+  GetLayerVersionPolicyResponse,
+  GetLayerVersionPolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLayerVersionPolicyRequest,
+  output: GetLayerVersionPolicyResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetLayerVersionPolicy",
+}));
+
 export type GetPolicyError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7708,8 +7213,45 @@ export const getPolicy: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
+
+export type GetProvisionedConcurrencyConfigError =
+  | InvalidParameterValueException
+  | ProvisionedConcurrencyConfigNotFoundException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Retrieves the provisioned concurrency configuration for a function's alias or version.
+ */
+export const getProvisionedConcurrencyConfig: API.OperationMethod<
+  GetProvisionedConcurrencyConfigRequest,
+  GetProvisionedConcurrencyConfigResponse,
+  GetProvisionedConcurrencyConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProvisionedConcurrencyConfigRequest,
+  output: GetProvisionedConcurrencyConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ProvisionedConcurrencyConfigNotFoundException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetProvisionedConcurrencyConfig",
+}));
+
 export type GetRuntimeManagementConfigError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -7733,8 +7275,11 @@ export const getRuntimeManagementConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRuntimeManagementConfig",
 }));
+
 export type InvokeError =
   | CodeArtifactUserDeletedException
   | CodeArtifactUserFailedException
@@ -7854,8 +7399,11 @@ export const invoke: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Invoke",
 }));
+
 export type InvokeAsyncError =
   | EC2AccessDeniedException
   | EC2ThrottledException
@@ -7935,8 +7483,11 @@ export const invokeAsync: API.OperationMethod<
     SnapStartTimeoutException,
     SubnetIPAddressLimitReachedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeAsync",
 }));
+
 export type InvokeWithResponseStreamError =
   | EC2AccessDeniedException
   | EC2ThrottledException
@@ -8028,329 +7579,11 @@ export const invokeWithResponseStream: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedMediaTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeWithResponseStream",
 }));
-export type ListFunctionUrlConfigsError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns a list of Lambda function URLs for the specified function.
- */
-export const listFunctionUrlConfigs: API.OperationMethod<
-  ListFunctionUrlConfigsRequest,
-  ListFunctionUrlConfigsResponse,
-  ListFunctionUrlConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionUrlConfigsRequest,
-  ) => stream.Stream<
-    ListFunctionUrlConfigsResponse,
-    ListFunctionUrlConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionUrlConfigsRequest,
-  ) => stream.Stream<
-    FunctionUrlConfig,
-    ListFunctionUrlConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFunctionUrlConfigsRequest,
-  output: ListFunctionUrlConfigsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListFunctionUrlConfigs",
-  pagination: {
-    inputToken: "Marker",
-    outputToken: "NextMarker",
-    items: "FunctionUrlConfigs",
-    pageSize: "MaxItems",
-  } as const,
-}));
-export type PutFunctionCodeSigningConfigError =
-  | CodeSigningConfigNotFoundException
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
- */
-export const putFunctionCodeSigningConfig: API.OperationMethod<
-  PutFunctionCodeSigningConfigRequest,
-  PutFunctionCodeSigningConfigResponse,
-  PutFunctionCodeSigningConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutFunctionCodeSigningConfigRequest,
-  output: PutFunctionCodeSigningConfigResponse,
-  errors: [
-    CodeSigningConfigNotFoundException,
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "PutFunctionCodeSigningConfig",
-}));
-export type PutFunctionRecursionConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Sets your function's recursive loop detection configuration.
- *
- * When you configure a Lambda function to output to the same service or resource that invokes the function, it's possible to create an infinite recursive loop. For example, a Lambda function might write a message to an Amazon Simple Queue Service (Amazon SQS) queue, which then invokes the same function. This invocation causes the function to write another message to the queue, which in turn invokes the function again.
- *
- * Lambda can detect certain types of recursive loops shortly after they occur. When Lambda detects a recursive loop and your function's recursive loop detection configuration is set to `Terminate`, it stops your function being invoked and notifies you.
- */
-export const putFunctionRecursionConfig: API.OperationMethod<
-  PutFunctionRecursionConfigRequest,
-  PutFunctionRecursionConfigResponse,
-  PutFunctionRecursionConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutFunctionRecursionConfigRequest,
-  output: PutFunctionRecursionConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "PutFunctionRecursionConfig",
-}));
-export type PutFunctionScalingConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Sets the scaling configuration for a Lambda Managed Instances function. The scaling configuration defines the minimum and maximum number of execution environments that can be provisioned for the function, allowing you to control scaling behavior and resource allocation.
- */
-export const putFunctionScalingConfig: API.OperationMethod<
-  PutFunctionScalingConfigRequest,
-  PutFunctionScalingConfigResponse,
-  PutFunctionScalingConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutFunctionScalingConfigRequest,
-  output: PutFunctionScalingConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "PutFunctionScalingConfig",
-}));
-export type PutRuntimeManagementConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Sets the runtime management configuration for a function's version. For more information, see Runtime updates.
- */
-export const putRuntimeManagementConfig: API.OperationMethod<
-  PutRuntimeManagementConfigRequest,
-  PutRuntimeManagementConfigResponse,
-  PutRuntimeManagementConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutRuntimeManagementConfigRequest,
-  output: PutRuntimeManagementConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "PutRuntimeManagementConfig",
-}));
-export type UpdateFunctionUrlConfigError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Updates the configuration for a Lambda function URL.
- */
-export const updateFunctionUrlConfig: API.OperationMethod<
-  UpdateFunctionUrlConfigRequest,
-  UpdateFunctionUrlConfigResponse,
-  UpdateFunctionUrlConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFunctionUrlConfigRequest,
-  output: UpdateFunctionUrlConfigResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "UpdateFunctionUrlConfig",
-}));
-export type CreateAliasError =
-  | AliasLimitExceededException
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
- *
- * You can also map an alias to split invocation requests between two versions. Use the `RoutingConfig` parameter to specify a second version and the percentage of invocation requests that it receives.
- */
-export const createAlias: API.OperationMethod<
-  CreateAliasRequest,
-  AliasConfiguration,
-  CreateAliasError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateAliasRequest,
-  output: AliasConfiguration,
-  errors: [
-    AliasLimitExceededException,
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "CreateAlias",
-}));
-export type GetAliasError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Returns details about a Lambda function alias.
- */
-export const getAlias: API.OperationMethod<
-  GetAliasRequest,
-  AliasConfiguration,
-  GetAliasError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetAliasRequest,
-  output: AliasConfiguration,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "GetAlias",
-}));
-export type UpdateAliasError =
-  | InvalidParameterValueException
-  | PreconditionFailedException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Updates the configuration of a Lambda function alias.
- */
-export const updateAlias: API.OperationMethod<
-  UpdateAliasRequest,
-  AliasConfiguration,
-  UpdateAliasError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAliasRequest,
-  output: AliasConfiguration,
-  errors: [
-    InvalidParameterValueException,
-    PreconditionFailedException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "UpdateAlias",
-}));
-export type DeleteAliasError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | CommonErrors;
-/**
- * Deletes a Lambda function alias.
- */
-export const deleteAlias: API.OperationMethod<
-  DeleteAliasRequest,
-  DeleteAliasResponse,
-  DeleteAliasError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAliasRequest,
-  output: DeleteAliasResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-  ],
-  operationName: "DeleteAlias",
-}));
+
 export type ListAliasesError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -8389,6 +7622,8 @@ export const listAliases: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "Marker",
@@ -8397,12 +7632,196 @@ export const listAliases: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
-export type PublishVersionError =
-  | CodeStorageExceededException
-  | FunctionVersionsPerCapacityProviderLimitExceededException
+
+export type ListCapacityProvidersError =
   | InvalidParameterValueException
-  | PreconditionFailedException
-  | ResourceConflictException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns a list of capacity providers in your account.
+ */
+export const listCapacityProviders: API.OperationMethod<
+  ListCapacityProvidersRequest,
+  ListCapacityProvidersResponse,
+  ListCapacityProvidersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCapacityProvidersRequest,
+  ) => stream.Stream<
+    ListCapacityProvidersResponse,
+    ListCapacityProvidersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCapacityProvidersRequest,
+  ) => stream.Stream<
+    CapacityProvider,
+    ListCapacityProvidersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListCapacityProvidersRequest,
+  output: ListCapacityProvidersResponse,
+  errors: [
+    InvalidParameterValueException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListCapacityProviders",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "CapacityProviders",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type ListCodeSigningConfigsError =
+  | InvalidParameterValueException
+  | ServiceException
+  | CommonErrors;
+/**
+ * Returns a list of code signing configurations. A request returns up to 10,000 configurations per call. You can use the `MaxItems` parameter to return fewer configurations per call.
+ */
+export const listCodeSigningConfigs: API.OperationMethod<
+  ListCodeSigningConfigsRequest,
+  ListCodeSigningConfigsResponse,
+  ListCodeSigningConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCodeSigningConfigsRequest,
+  ) => stream.Stream<
+    ListCodeSigningConfigsResponse,
+    ListCodeSigningConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCodeSigningConfigsRequest,
+  ) => stream.Stream<
+    CodeSigningConfig,
+    ListCodeSigningConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListCodeSigningConfigsRequest,
+  output: ListCodeSigningConfigsResponse,
+  errors: [InvalidParameterValueException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListCodeSigningConfigs",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "CodeSigningConfigs",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type ListDurableExecutionsByFunctionError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns a list of durable executions for a specified Lambda function. You can filter the results by execution name, status, and start time range. This API supports pagination for large result sets.
+ */
+export const listDurableExecutionsByFunction: API.OperationMethod<
+  ListDurableExecutionsByFunctionRequest,
+  ListDurableExecutionsByFunctionResponse,
+  ListDurableExecutionsByFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDurableExecutionsByFunctionRequest,
+  ) => stream.Stream<
+    ListDurableExecutionsByFunctionResponse,
+    ListDurableExecutionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDurableExecutionsByFunctionRequest,
+  ) => stream.Stream<
+    Execution,
+    ListDurableExecutionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListDurableExecutionsByFunctionRequest,
+  output: ListDurableExecutionsByFunctionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListDurableExecutionsByFunction",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "DurableExecutions",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type ListEventSourceMappingsError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Lists event source mappings. Specify an `EventSourceArn` to show only event source mappings for a single event source.
+ */
+export const listEventSourceMappings: API.OperationMethod<
+  ListEventSourceMappingsRequest,
+  ListEventSourceMappingsResponse,
+  ListEventSourceMappingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventSourceMappingsRequest,
+  ) => stream.Stream<
+    ListEventSourceMappingsResponse,
+    ListEventSourceMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventSourceMappingsRequest,
+  ) => stream.Stream<
+    EventSourceMappingConfiguration,
+    ListEventSourceMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListEventSourceMappingsRequest,
+  output: ListEventSourceMappingsResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListEventSourceMappings",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "EventSourceMappings",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type ListFunctionEventInvokeConfigsError =
+  | InvalidParameterValueException
   | ResourceNotFoundException
   | ServiceException
   | TooManyRequestsException
@@ -8410,80 +7829,248 @@ export type PublishVersionError =
   | ParseError
   | CommonErrors;
 /**
- * Creates a version from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
+ * Retrieves a list of configurations for asynchronous invocation for a function.
  *
- * Lambda doesn't publish a version if the function's configuration and code haven't changed since the last version. Use UpdateFunctionCode or UpdateFunctionConfiguration to update the function before publishing a version.
- *
- * Clients can invoke versions directly or with an alias. To create an alias, use CreateAlias.
+ * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
  */
-export const publishVersion: API.OperationMethod<
-  PublishVersionRequest,
-  FunctionConfiguration,
-  PublishVersionError,
+export const listFunctionEventInvokeConfigs: API.OperationMethod<
+  ListFunctionEventInvokeConfigsRequest,
+  ListFunctionEventInvokeConfigsResponse,
+  ListFunctionEventInvokeConfigsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PublishVersionRequest,
-  output: FunctionConfiguration,
+> & {
+  pages: (
+    input: ListFunctionEventInvokeConfigsRequest,
+  ) => stream.Stream<
+    ListFunctionEventInvokeConfigsResponse,
+    ListFunctionEventInvokeConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionEventInvokeConfigsRequest,
+  ) => stream.Stream<
+    FunctionEventInvokeConfig,
+    ListFunctionEventInvokeConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListFunctionEventInvokeConfigsRequest,
+  output: ListFunctionEventInvokeConfigsResponse,
   errors: [
-    CodeStorageExceededException,
-    FunctionVersionsPerCapacityProviderLimitExceededException,
     InvalidParameterValueException,
-    PreconditionFailedException,
-    ResourceConflictException,
     ResourceNotFoundException,
     ServiceException,
     TooManyRequestsException,
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "PublishVersion",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFunctionEventInvokeConfigs",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "FunctionEventInvokeConfigs",
+    pageSize: "MaxItems",
+  } as const,
 }));
-export type ListVersionsByFunctionError =
+
+export type ListFunctionsError =
+  | InvalidParameterValueException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
+ *
+ * Set `FunctionVersion` to `ALL` to include all published versions of each function in addition to the unpublished version.
+ *
+ * The `ListFunctions` operation returns a subset of the FunctionConfiguration fields. To get the additional fields (State, StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason, LastUpdateStatusReasonCode, RuntimeVersionConfig) for a function or version, use GetFunction.
+ */
+export const listFunctions: API.OperationMethod<
+  ListFunctionsRequest,
+  ListFunctionsResponse,
+  ListFunctionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    ListFunctionsResponse,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    FunctionConfiguration,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListFunctionsRequest,
+  output: ListFunctionsResponse,
+  errors: [
+    InvalidParameterValueException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFunctions",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "Functions",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type ListFunctionsByCodeSigningConfigError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | CommonErrors;
+/**
+ * List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
+ */
+export const listFunctionsByCodeSigningConfig: API.OperationMethod<
+  ListFunctionsByCodeSigningConfigRequest,
+  ListFunctionsByCodeSigningConfigResponse,
+  ListFunctionsByCodeSigningConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionsByCodeSigningConfigRequest,
+  ) => stream.Stream<
+    ListFunctionsByCodeSigningConfigResponse,
+    ListFunctionsByCodeSigningConfigError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionsByCodeSigningConfigRequest,
+  ) => stream.Stream<
+    FunctionArn,
+    ListFunctionsByCodeSigningConfigError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListFunctionsByCodeSigningConfigRequest,
+  output: ListFunctionsByCodeSigningConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFunctionsByCodeSigningConfig",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "FunctionArns",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
+export type ListFunctionUrlConfigsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
   | ServiceException
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns a list of versions, with the version-specific configuration of each. Lambda returns up to 50 versions per call.
+ * Returns a list of Lambda function URLs for the specified function.
  */
-export const listVersionsByFunction: API.OperationMethod<
-  ListVersionsByFunctionRequest,
-  ListVersionsByFunctionResponse,
-  ListVersionsByFunctionError,
+export const listFunctionUrlConfigs: API.OperationMethod<
+  ListFunctionUrlConfigsRequest,
+  ListFunctionUrlConfigsResponse,
+  ListFunctionUrlConfigsError,
   Credentials | Region | HttpClient.HttpClient
 > & {
   pages: (
-    input: ListVersionsByFunctionRequest,
+    input: ListFunctionUrlConfigsRequest,
   ) => stream.Stream<
-    ListVersionsByFunctionResponse,
-    ListVersionsByFunctionError,
+    ListFunctionUrlConfigsResponse,
+    ListFunctionUrlConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
   items: (
-    input: ListVersionsByFunctionRequest,
+    input: ListFunctionUrlConfigsRequest,
   ) => stream.Stream<
-    FunctionConfiguration,
-    ListVersionsByFunctionError,
+    FunctionUrlConfig,
+    ListFunctionUrlConfigsError,
     Credentials | Region | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListVersionsByFunctionRequest,
-  output: ListVersionsByFunctionResponse,
+  input: ListFunctionUrlConfigsRequest,
+  output: ListFunctionUrlConfigsResponse,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
     ServiceException,
     TooManyRequestsException,
   ],
-  operationName: "ListVersionsByFunction",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFunctionUrlConfigs",
   pagination: {
     inputToken: "Marker",
     outputToken: "NextMarker",
-    items: "Versions",
+    items: "FunctionUrlConfigs",
     pageSize: "MaxItems",
   } as const,
 }));
+
+export type ListFunctionVersionsByCapacityProviderError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Returns a list of function versions that are configured to use a specific capacity provider.
+ */
+export const listFunctionVersionsByCapacityProvider: API.OperationMethod<
+  ListFunctionVersionsByCapacityProviderRequest,
+  ListFunctionVersionsByCapacityProviderResponse,
+  ListFunctionVersionsByCapacityProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionVersionsByCapacityProviderRequest,
+  ) => stream.Stream<
+    ListFunctionVersionsByCapacityProviderResponse,
+    ListFunctionVersionsByCapacityProviderError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionVersionsByCapacityProviderRequest,
+  ) => stream.Stream<
+    FunctionVersionsByCapacityProviderListItem,
+    ListFunctionVersionsByCapacityProviderError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListFunctionVersionsByCapacityProviderRequest,
+  output: ListFunctionVersionsByCapacityProviderResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFunctionVersionsByCapacityProvider",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "FunctionVersions",
+    pageSize: "MaxItems",
+  } as const,
+}));
+
 export type ListLayersError =
   | InvalidParameterValueException
   | ServiceException
@@ -8520,6 +8107,8 @@ export const listLayers: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLayers",
   pagination: {
     inputToken: "Marker",
@@ -8528,6 +8117,7 @@ export const listLayers: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListLayerVersionsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -8570,6 +8160,8 @@ export const listLayerVersions: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLayerVersions",
   pagination: {
     inputToken: "Marker",
@@ -8578,44 +8170,8 @@ export const listLayerVersions: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
-export type AddLayerVersionPermissionError =
-  | InvalidParameterValueException
-  | PolicyLengthExceededException
-  | PreconditionFailedException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Adds permissions to the resource-based policy of a version of an Lambda layer. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
- *
- * To revoke permission, call RemoveLayerVersionPermission with the statement ID that you specified when you added it.
- */
-export const addLayerVersionPermission: API.OperationMethod<
-  AddLayerVersionPermissionRequest,
-  AddLayerVersionPermissionResponse,
-  AddLayerVersionPermissionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddLayerVersionPermissionRequest,
-  output: AddLayerVersionPermissionResponse,
-  errors: [
-    InvalidParameterValueException,
-    PolicyLengthExceededException,
-    PreconditionFailedException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "AddLayerVersionPermission",
-}));
-export type DeleteLayerVersionError =
+
+export type ListProvisionedConcurrencyConfigsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
   | ServiceException
@@ -8624,16 +8180,31 @@ export type DeleteLayerVersionError =
   | ParseError
   | CommonErrors;
 /**
- * Deletes a version of an Lambda layer. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
+ * Retrieves a list of provisioned concurrency configurations for a function.
  */
-export const deleteLayerVersion: API.OperationMethod<
-  DeleteLayerVersionRequest,
-  DeleteLayerVersionResponse,
-  DeleteLayerVersionError,
+export const listProvisionedConcurrencyConfigs: API.OperationMethod<
+  ListProvisionedConcurrencyConfigsRequest,
+  ListProvisionedConcurrencyConfigsResponse,
+  ListProvisionedConcurrencyConfigsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLayerVersionRequest,
-  output: DeleteLayerVersionResponse,
+> & {
+  pages: (
+    input: ListProvisionedConcurrencyConfigsRequest,
+  ) => stream.Stream<
+    ListProvisionedConcurrencyConfigsResponse,
+    ListProvisionedConcurrencyConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProvisionedConcurrencyConfigsRequest,
+  ) => stream.Stream<
+    ProvisionedConcurrencyConfigListItem,
+    ListProvisionedConcurrencyConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListProvisionedConcurrencyConfigsRequest,
+  output: ListProvisionedConcurrencyConfigsResponse,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -8642,9 +8213,18 @@ export const deleteLayerVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "DeleteLayerVersion",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListProvisionedConcurrencyConfigs",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "ProvisionedConcurrencyConfigs",
+    pageSize: "MaxItems",
+  } as const,
 }));
-export type GetLayerVersionError =
+
+export type ListTagsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
   | ServiceException
@@ -8653,16 +8233,16 @@ export type GetLayerVersionError =
   | ParseError
   | CommonErrors;
 /**
- * Returns information about a version of an Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+ * Returns a function, event source mapping, or code signing configuration's tags. You can also view function tags with GetFunction.
  */
-export const getLayerVersion: API.OperationMethod<
-  GetLayerVersionRequest,
-  GetLayerVersionResponse,
-  GetLayerVersionError,
+export const listTags: API.OperationMethod<
+  ListTagsRequest,
+  ListTagsResponse,
+  ListTagsError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLayerVersionRequest,
-  output: GetLayerVersionResponse,
+  input: ListTagsRequest,
+  output: ListTagsResponse,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -8671,62 +8251,60 @@ export const getLayerVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "GetLayerVersion",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTags",
 }));
-export type GetLayerVersionByArnError =
+
+export type ListVersionsByFunctionError =
   | InvalidParameterValueException
   | ResourceNotFoundException
   | ServiceException
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns information about a version of an Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+ * Returns a list of versions, with the version-specific configuration of each. Lambda returns up to 50 versions per call.
  */
-export const getLayerVersionByArn: API.OperationMethod<
-  GetLayerVersionByArnRequest,
-  GetLayerVersionResponse,
-  GetLayerVersionByArnError,
+export const listVersionsByFunction: API.OperationMethod<
+  ListVersionsByFunctionRequest,
+  ListVersionsByFunctionResponse,
+  ListVersionsByFunctionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetLayerVersionByArnRequest,
-  output: GetLayerVersionResponse,
+> & {
+  pages: (
+    input: ListVersionsByFunctionRequest,
+  ) => stream.Stream<
+    ListVersionsByFunctionResponse,
+    ListVersionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVersionsByFunctionRequest,
+  ) => stream.Stream<
+    FunctionConfiguration,
+    ListVersionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListVersionsByFunctionRequest,
+  output: ListVersionsByFunctionResponse,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
     ServiceException,
     TooManyRequestsException,
   ],
-  operationName: "GetLayerVersionByArn",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListVersionsByFunction",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "NextMarker",
+    items: "Versions",
+    pageSize: "MaxItems",
+  } as const,
 }));
-export type GetLayerVersionPolicyError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Returns the permission policy for a version of an Lambda layer. For more information, see AddLayerVersionPermission.
- */
-export const getLayerVersionPolicy: API.OperationMethod<
-  GetLayerVersionPolicyRequest,
-  GetLayerVersionPolicyResponse,
-  GetLayerVersionPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetLayerVersionPolicyRequest,
-  output: GetLayerVersionPolicyResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "GetLayerVersionPolicy",
-}));
+
 export type PublishLayerVersionError =
   | CodeStorageExceededException
   | InvalidParameterValueException
@@ -8758,44 +8336,16 @@ export const publishLayerVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishLayerVersion",
 }));
-export type RemoveLayerVersionPermissionError =
+
+export type PublishVersionError =
+  | CodeStorageExceededException
+  | FunctionVersionsPerCapacityProviderLimitExceededException
   | InvalidParameterValueException
   | PreconditionFailedException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | RequestLimitExceeded
-  | ParseError
-  | CommonErrors;
-/**
- * Removes a statement from the permissions policy for a version of an Lambda layer. For more information, see AddLayerVersionPermission.
- */
-export const removeLayerVersionPermission: API.OperationMethod<
-  RemoveLayerVersionPermissionRequest,
-  RemoveLayerVersionPermissionResponse,
-  RemoveLayerVersionPermissionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemoveLayerVersionPermissionRequest,
-  output: RemoveLayerVersionPermissionResponse,
-  errors: [
-    InvalidParameterValueException,
-    PreconditionFailedException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-    RequestLimitExceeded,
-    ParseError,
-  ],
-  operationName: "RemoveLayerVersionPermission",
-}));
-export type AddPermissionError =
-  | InvalidParameterValueException
-  | PolicyLengthExceededException
-  | PreconditionFailedException
-  | PublicPolicyException
   | ResourceConflictException
   | ResourceNotFoundException
   | ServiceException
@@ -8804,25 +8354,25 @@ export type AddPermissionError =
   | ParseError
   | CommonErrors;
 /**
- * Grants a principal permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
+ * Creates a version from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
  *
- * To grant permission to another account, specify the account ID as the `Principal`. To grant permission to an organization defined in Organizations, specify the organization ID as the `PrincipalOrgID`. For Amazon Web Services services, the principal is a domain-style identifier that the service defines, such as `s3.amazonaws.com` or `sns.amazonaws.com`. For Amazon Web Services services, you can also specify the ARN of the associated resource as the `SourceArn`. If you grant permission to a service principal without specifying the source, other accounts could potentially configure resources in their account to invoke your Lambda function.
+ * Lambda doesn't publish a version if the function's configuration and code haven't changed since the last version. Use UpdateFunctionCode or UpdateFunctionConfiguration to update the function before publishing a version.
  *
- * This operation adds a statement to a resource-based permissions policy for the function. For more information about function policies, see Using resource-based policies for Lambda.
+ * Clients can invoke versions directly or with an alias. To create an alias, use CreateAlias.
  */
-export const addPermission: API.OperationMethod<
-  AddPermissionRequest,
-  AddPermissionResponse,
-  AddPermissionError,
+export const publishVersion: API.OperationMethod<
+  PublishVersionRequest,
+  FunctionConfiguration,
+  PublishVersionError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddPermissionRequest,
-  output: AddPermissionResponse,
+  input: PublishVersionRequest,
+  output: FunctionConfiguration,
   errors: [
+    CodeStorageExceededException,
+    FunctionVersionsPerCapacityProviderLimitExceededException,
     InvalidParameterValueException,
-    PolicyLengthExceededException,
     PreconditionFailedException,
-    PublicPolicyException,
     ResourceConflictException,
     ResourceNotFoundException,
     ServiceException,
@@ -8830,37 +8380,193 @@ export const addPermission: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "AddPermission",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PublishVersion",
 }));
-export type RemovePermissionError =
+
+export type PutFunctionCodeSigningConfigError =
+  | CodeSigningConfigNotFoundException
   | InvalidParameterValueException
-  | PreconditionFailedException
-  | PublicPolicyException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
+ */
+export const putFunctionCodeSigningConfig: API.OperationMethod<
+  PutFunctionCodeSigningConfigRequest,
+  PutFunctionCodeSigningConfigResponse,
+  PutFunctionCodeSigningConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutFunctionCodeSigningConfigRequest,
+  output: PutFunctionCodeSigningConfigResponse,
+  errors: [
+    CodeSigningConfigNotFoundException,
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFunctionCodeSigningConfig",
+}));
+
+export type PutFunctionConcurrencyError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
+ *
+ * Concurrency settings apply to the function as a whole, including all published versions and the unpublished version. Reserving concurrency both ensures that your function has capacity to process the specified number of events simultaneously, and prevents it from scaling beyond that level. Use GetFunction to see the current setting for a function.
+ *
+ * Use GetAccountSettings to see your Regional concurrency limit. You can reserve concurrency for as many functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that aren't configured with a per-function limit. For more information, see Lambda function scaling.
+ */
+export const putFunctionConcurrency: API.OperationMethod<
+  PutFunctionConcurrencyRequest,
+  Concurrency,
+  PutFunctionConcurrencyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutFunctionConcurrencyRequest,
+  output: Concurrency,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFunctionConcurrency",
+}));
+
+export type PutFunctionEventInvokeConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Configures options for asynchronous invocation on a function, version, or alias. If a configuration already exists for a function, version, or alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without affecting existing settings for other options, use UpdateFunctionEventInvokeConfig.
+ *
+ * By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains events in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous invocation queue for too long, Lambda discards it. To retain discarded events, configure a dead-letter queue with UpdateFunctionConfiguration.
+ *
+ * To send an invocation record to a queue, topic, S3 bucket, function, or event bus, specify a destination. You can configure separate destinations for successful invocations (on-success) and events that fail all processing attempts (on-failure). You can configure destinations in addition to or instead of a dead-letter queue.
+ *
+ * S3 buckets are supported only for on-failure destinations. To retain records of successful invocations, use another destination type.
+ */
+export const putFunctionEventInvokeConfig: API.OperationMethod<
+  PutFunctionEventInvokeConfigRequest,
+  FunctionEventInvokeConfig,
+  PutFunctionEventInvokeConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutFunctionEventInvokeConfigRequest,
+  output: FunctionEventInvokeConfig,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFunctionEventInvokeConfig",
+}));
+
+export type PutFunctionRecursionConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Sets your function's recursive loop detection configuration.
+ *
+ * When you configure a Lambda function to output to the same service or resource that invokes the function, it's possible to create an infinite recursive loop. For example, a Lambda function might write a message to an Amazon Simple Queue Service (Amazon SQS) queue, which then invokes the same function. This invocation causes the function to write another message to the queue, which in turn invokes the function again.
+ *
+ * Lambda can detect certain types of recursive loops shortly after they occur. When Lambda detects a recursive loop and your function's recursive loop detection configuration is set to `Terminate`, it stops your function being invoked and notifies you.
+ */
+export const putFunctionRecursionConfig: API.OperationMethod<
+  PutFunctionRecursionConfigRequest,
+  PutFunctionRecursionConfigResponse,
+  PutFunctionRecursionConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutFunctionRecursionConfigRequest,
+  output: PutFunctionRecursionConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFunctionRecursionConfig",
+}));
+
+export type PutFunctionScalingConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
   | ResourceNotFoundException
   | ServiceException
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Revokes function-use permission from an Amazon Web Services service or another Amazon Web Services account. You can get the ID of the statement from the output of GetPolicy.
+ * Sets the scaling configuration for a Lambda Managed Instances function. The scaling configuration defines the minimum and maximum number of execution environments that can be provisioned for the function, allowing you to control scaling behavior and resource allocation.
  */
-export const removePermission: API.OperationMethod<
-  RemovePermissionRequest,
-  RemovePermissionResponse,
-  RemovePermissionError,
+export const putFunctionScalingConfig: API.OperationMethod<
+  PutFunctionScalingConfigRequest,
+  PutFunctionScalingConfigResponse,
+  PutFunctionScalingConfigError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePermissionRequest,
-  output: RemovePermissionResponse,
+  input: PutFunctionScalingConfigRequest,
+  output: PutFunctionScalingConfigResponse,
   errors: [
     InvalidParameterValueException,
-    PreconditionFailedException,
-    PublicPolicyException,
+    ResourceConflictException,
     ResourceNotFoundException,
     ServiceException,
     TooManyRequestsException,
   ],
-  operationName: "RemovePermission",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFunctionScalingConfig",
 }));
+
 export type PutProvisionedConcurrencyConfigError =
   | InvalidParameterValueException
   | ResourceConflictException
@@ -8890,11 +8596,44 @@ export const putProvisionedConcurrencyConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProvisionedConcurrencyConfig",
 }));
-export type GetProvisionedConcurrencyConfigError =
+
+export type PutRuntimeManagementConfigError =
   | InvalidParameterValueException
-  | ProvisionedConcurrencyConfigNotFoundException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Sets the runtime management configuration for a function's version. For more information, see Runtime updates.
+ */
+export const putRuntimeManagementConfig: API.OperationMethod<
+  PutRuntimeManagementConfigRequest,
+  PutRuntimeManagementConfigResponse,
+  PutRuntimeManagementConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutRuntimeManagementConfigRequest,
+  output: PutRuntimeManagementConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutRuntimeManagementConfig",
+}));
+
+export type RemoveLayerVersionPermissionError =
+  | InvalidParameterValueException
+  | PreconditionFailedException
   | ResourceNotFoundException
   | ServiceException
   | TooManyRequestsException
@@ -8902,28 +8641,181 @@ export type GetProvisionedConcurrencyConfigError =
   | ParseError
   | CommonErrors;
 /**
- * Retrieves the provisioned concurrency configuration for a function's alias or version.
+ * Removes a statement from the permissions policy for a version of an Lambda layer. For more information, see AddLayerVersionPermission.
  */
-export const getProvisionedConcurrencyConfig: API.OperationMethod<
-  GetProvisionedConcurrencyConfigRequest,
-  GetProvisionedConcurrencyConfigResponse,
-  GetProvisionedConcurrencyConfigError,
+export const removeLayerVersionPermission: API.OperationMethod<
+  RemoveLayerVersionPermissionRequest,
+  RemoveLayerVersionPermissionResponse,
+  RemoveLayerVersionPermissionError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProvisionedConcurrencyConfigRequest,
-  output: GetProvisionedConcurrencyConfigResponse,
+  input: RemoveLayerVersionPermissionRequest,
+  output: RemoveLayerVersionPermissionResponse,
   errors: [
     InvalidParameterValueException,
-    ProvisionedConcurrencyConfigNotFoundException,
+    PreconditionFailedException,
     ResourceNotFoundException,
     ServiceException,
     TooManyRequestsException,
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "GetProvisionedConcurrencyConfig",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RemoveLayerVersionPermission",
 }));
-export type DeleteProvisionedConcurrencyConfigError =
+
+export type RemovePermissionError =
+  | InvalidParameterValueException
+  | PreconditionFailedException
+  | PublicPolicyException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Revokes function-use permission from an Amazon Web Services service or another Amazon Web Services account. You can get the ID of the statement from the output of GetPolicy.
+ */
+export const removePermission: API.OperationMethod<
+  RemovePermissionRequest,
+  RemovePermissionResponse,
+  RemovePermissionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RemovePermissionRequest,
+  output: RemovePermissionResponse,
+  errors: [
+    InvalidParameterValueException,
+    PreconditionFailedException,
+    PublicPolicyException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RemovePermission",
+}));
+
+export type SendDurableExecutionCallbackFailureError =
+  | CallbackTimeoutException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Sends a failure response for a callback operation in a durable execution. Use this API when an external system cannot complete a callback operation successfully.
+ */
+export const sendDurableExecutionCallbackFailure: API.OperationMethod<
+  SendDurableExecutionCallbackFailureRequest,
+  SendDurableExecutionCallbackFailureResponse,
+  SendDurableExecutionCallbackFailureError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendDurableExecutionCallbackFailureRequest,
+  output: SendDurableExecutionCallbackFailureResponse,
+  errors: [
+    CallbackTimeoutException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendDurableExecutionCallbackFailure",
+}));
+
+export type SendDurableExecutionCallbackHeartbeatError =
+  | CallbackTimeoutException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Sends a heartbeat signal for a long-running callback operation to prevent timeout. Use this API to extend the callback timeout period while the external operation is still in progress.
+ */
+export const sendDurableExecutionCallbackHeartbeat: API.OperationMethod<
+  SendDurableExecutionCallbackHeartbeatRequest,
+  SendDurableExecutionCallbackHeartbeatResponse,
+  SendDurableExecutionCallbackHeartbeatError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendDurableExecutionCallbackHeartbeatRequest,
+  output: SendDurableExecutionCallbackHeartbeatResponse,
+  errors: [
+    CallbackTimeoutException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendDurableExecutionCallbackHeartbeat",
+}));
+
+export type SendDurableExecutionCallbackSuccessError =
+  | CallbackTimeoutException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Sends a successful completion response for a callback operation in a durable execution. Use this API when an external system has successfully completed a callback operation.
+ */
+export const sendDurableExecutionCallbackSuccess: API.OperationMethod<
+  SendDurableExecutionCallbackSuccessRequest,
+  SendDurableExecutionCallbackSuccessResponse,
+  SendDurableExecutionCallbackSuccessError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendDurableExecutionCallbackSuccessRequest,
+  output: SendDurableExecutionCallbackSuccessResponse,
+  errors: [
+    CallbackTimeoutException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendDurableExecutionCallbackSuccess",
+}));
+
+export type StopDurableExecutionError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Stops a running durable execution. The execution transitions to STOPPED status and cannot be resumed. Any in-progress operations are terminated.
+ */
+export const stopDurableExecution: API.OperationMethod<
+  StopDurableExecutionRequest,
+  StopDurableExecutionResponse,
+  StopDurableExecutionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StopDurableExecutionRequest,
+  output: StopDurableExecutionResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StopDurableExecution",
+}));
+
+export type TagResourceError =
   | InvalidParameterValueException
   | ResourceConflictException
   | ResourceNotFoundException
@@ -8933,16 +8825,16 @@ export type DeleteProvisionedConcurrencyConfigError =
   | ParseError
   | CommonErrors;
 /**
- * Deletes the provisioned concurrency configuration for a function.
+ * Adds tags to a function, event source mapping, or code signing configuration.
  */
-export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
-  DeleteProvisionedConcurrencyConfigRequest,
-  DeleteProvisionedConcurrencyConfigResponse,
-  DeleteProvisionedConcurrencyConfigError,
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProvisionedConcurrencyConfigRequest,
-  output: DeleteProvisionedConcurrencyConfigResponse,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -8952,5 +8844,383 @@ export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
-  operationName: "DeleteProvisionedConcurrencyConfig",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Removes tags from a function, event source mapping, or code signing configuration.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateAliasError =
+  | InvalidParameterValueException
+  | PreconditionFailedException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Updates the configuration of a Lambda function alias.
+ */
+export const updateAlias: API.OperationMethod<
+  UpdateAliasRequest,
+  AliasConfiguration,
+  UpdateAliasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAliasRequest,
+  output: AliasConfiguration,
+  errors: [
+    InvalidParameterValueException,
+    PreconditionFailedException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAlias",
+}));
+
+export type UpdateCapacityProviderError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Updates the configuration of an existing capacity provider.
+ */
+export const updateCapacityProvider: API.OperationMethod<
+  UpdateCapacityProviderRequest,
+  UpdateCapacityProviderResponse,
+  UpdateCapacityProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCapacityProviderRequest,
+  output: UpdateCapacityProviderResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateCapacityProvider",
+}));
+
+export type UpdateCodeSigningConfigError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | CommonErrors;
+/**
+ * Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function.
+ */
+export const updateCodeSigningConfig: API.OperationMethod<
+  UpdateCodeSigningConfigRequest,
+  UpdateCodeSigningConfigResponse,
+  UpdateCodeSigningConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCodeSigningConfigRequest,
+  output: UpdateCodeSigningConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateCodeSigningConfig",
+}));
+
+export type UpdateEventSourceMappingError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceInUseException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
+ *
+ * For details about how to configure different event sources, see the following topics.
+ *
+ * - Amazon DynamoDB Streams
+ *
+ * - Amazon Kinesis
+ *
+ * - Amazon SQS
+ *
+ * - Amazon MQ and RabbitMQ
+ *
+ * - Amazon MSK
+ *
+ * - Apache Kafka
+ *
+ * - Amazon DocumentDB
+ *
+ * The following error handling options are available for stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed Apache Kafka):
+ *
+ * - `BisectBatchOnFunctionError` – If the function returns an error, split the batch in two and retry.
+ *
+ * - `MaximumRecordAgeInSeconds` – Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires
+ *
+ * - `MaximumRetryAttempts` – Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.
+ *
+ * - `OnFailure` – Send discarded records to an Amazon SQS queue, Amazon SNS topic, Kafka topic, or Amazon S3 bucket. For more information, see Adding a destination.
+ *
+ * The following option is available only for DynamoDB and Kinesis event sources:
+ *
+ * - `ParallelizationFactor` – Process multiple batches from each shard concurrently.
+ *
+ * For information about which configuration parameters apply to each event source, see the following topics.
+ *
+ * - Amazon DynamoDB Streams
+ *
+ * - Amazon Kinesis
+ *
+ * - Amazon SQS
+ *
+ * - Amazon MQ and RabbitMQ
+ *
+ * - Amazon MSK
+ *
+ * - Apache Kafka
+ *
+ * - Amazon DocumentDB
+ */
+export const updateEventSourceMapping: API.OperationMethod<
+  UpdateEventSourceMappingRequest,
+  EventSourceMappingConfiguration,
+  UpdateEventSourceMappingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEventSourceMappingRequest,
+  output: EventSourceMappingConfiguration,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceInUseException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateEventSourceMapping",
+}));
+
+export type UpdateFunctionCodeError =
+  | CodeSigningConfigNotFoundException
+  | CodeStorageExceededException
+  | CodeVerificationFailedException
+  | InvalidCodeSignatureException
+  | InvalidParameterValueException
+  | PreconditionFailedException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see Configuring code signing for Lambda.
+ *
+ * If the function's package type is `Image`, then you must specify the code package in `ImageUri` as the URI of a container image in the Amazon ECR registry.
+ *
+ * If the function's package type is `Zip`, then you must specify the deployment package as a .zip file archive. Enter the Amazon S3 bucket and key of the code .zip file location. You can also provide the function code inline using the `ZipFile` field.
+ *
+ * The code in the deployment package must be compatible with the target instruction set architecture of the function (`x86-64` or `arm64`).
+ *
+ * The function's code is locked when you publish a version. You can't modify the code of a published version, only the unpublished version.
+ *
+ * For a function defined as a container image, Lambda resolves the image tag to an image digest. In Amazon ECR, if you update the image tag to a new image, Lambda does not automatically update the function.
+ */
+export const updateFunctionCode: API.OperationMethod<
+  UpdateFunctionCodeRequest,
+  FunctionConfiguration,
+  UpdateFunctionCodeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFunctionCodeRequest,
+  output: FunctionConfiguration,
+  errors: [
+    CodeSigningConfigNotFoundException,
+    CodeStorageExceededException,
+    CodeVerificationFailedException,
+    InvalidCodeSignatureException,
+    InvalidParameterValueException,
+    PreconditionFailedException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateFunctionCode",
+}));
+
+export type UpdateFunctionConfigurationError =
+  | CodeSigningConfigNotFoundException
+  | CodeVerificationFailedException
+  | InvalidCodeSignatureException
+  | InvalidParameterValueException
+  | PreconditionFailedException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Modify the version-specific settings of a Lambda function.
+ *
+ * When you update a function, Lambda provisions an instance of the function and its supporting resources. If your function connects to a VPC, this process can take a minute. During this time, you can't modify the function, but you can still invoke it. The `LastUpdateStatus`, `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the response from GetFunctionConfiguration indicate when the update is complete and the function is processing events with the new configuration. For more information, see Lambda function states.
+ *
+ * These settings can vary between versions of a function and are locked when you publish a version. You can't modify the configuration of a published version, only the unpublished version.
+ *
+ * To configure function concurrency, use PutFunctionConcurrency. To grant invoke permissions to an Amazon Web Services account or Amazon Web Services service, use AddPermission.
+ */
+export const updateFunctionConfiguration: API.OperationMethod<
+  UpdateFunctionConfigurationRequest,
+  FunctionConfiguration,
+  UpdateFunctionConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFunctionConfigurationRequest,
+  output: FunctionConfiguration,
+  errors: [
+    CodeSigningConfigNotFoundException,
+    CodeVerificationFailedException,
+    InvalidCodeSignatureException,
+    InvalidParameterValueException,
+    PreconditionFailedException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateFunctionConfiguration",
+}));
+
+export type UpdateFunctionEventInvokeConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Updates the configuration for asynchronous invocation for a function, version, or alias.
+ *
+ * To configure options for asynchronous invocation, use PutFunctionEventInvokeConfig.
+ */
+export const updateFunctionEventInvokeConfig: API.OperationMethod<
+  UpdateFunctionEventInvokeConfigRequest,
+  FunctionEventInvokeConfig,
+  UpdateFunctionEventInvokeConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFunctionEventInvokeConfigRequest,
+  output: FunctionEventInvokeConfig,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateFunctionEventInvokeConfig",
+}));
+
+export type UpdateFunctionUrlConfigError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | RequestLimitExceeded
+  | ParseError
+  | CommonErrors;
+/**
+ * Updates the configuration for a Lambda function URL.
+ */
+export const updateFunctionUrlConfig: API.OperationMethod<
+  UpdateFunctionUrlConfigRequest,
+  UpdateFunctionUrlConfigResponse,
+  UpdateFunctionUrlConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFunctionUrlConfigRequest,
+  output: UpdateFunctionUrlConfigResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+    RequestLimitExceeded,
+    ParseError,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateFunctionUrlConfig",
 }));

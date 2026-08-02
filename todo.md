@@ -1,0 +1,13 @@
+- strict distilled (runtime check for inputs and output)
+- benchmarking
+  - runtime perf
+  - bundle time
+  - bundle size
+- new website
+  - name and shame apis based on how many patches
+- logging/otel/debug mode
+- unlisted properties
+- readme.md
+- agents.md
+- license.md
+- extract cf docs mirror into its own submodule

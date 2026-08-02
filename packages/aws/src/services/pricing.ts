@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,24 +88,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
+  "ExpiredNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export type FormatVersion = string;
 export type DescribeServicesMaxResults = number;
-export type ErrorMessage = string;
-export type GetAttributeValuesMaxResults = number;
-export type PriceListArn = string;
-export type FileFormat = string;
-export type Field = string;
-export type Value = string;
-export type GetProductsMaxResults = number;
-export type SynthesizedJsonPriceListJsonItem = string;
-export type ServiceCode = string;
-export type EffectiveDate = Date;
-export type RegionCode = string;
-export type CurrencyCode = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface DescribeServicesRequest {
   ServiceCode?: string;
   FormatVersion?: string;
@@ -150,6 +176,7 @@ export const DescribeServicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeServicesResponse",
 }) as any as S.Schema<DescribeServicesResponse>;
+export type GetAttributeValuesMaxResults = number;
 export interface GetAttributeValuesRequest {
   ServiceCode: string;
   AttributeName: string;
@@ -188,6 +215,8 @@ export const GetAttributeValuesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAttributeValuesResponse",
 }) as any as S.Schema<GetAttributeValuesResponse>;
+export type PriceListArn = string;
+export type FileFormat = string;
 export interface GetPriceListFileUrlRequest {
   PriceListArn: string;
   FileFormat: string;
@@ -202,12 +231,11 @@ export const GetPriceListFileUrlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPriceListFileUrlResponse {
   Url?: string;
 }
-export const GetPriceListFileUrlResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Url: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetPriceListFileUrlResponse",
-  }) as any as S.Schema<GetPriceListFileUrlResponse>;
+export const GetPriceListFileUrlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Url: S.optional(S.String) }),
+).annotate({
+  identifier: "GetPriceListFileUrlResponse",
+}) as any as S.Schema<GetPriceListFileUrlResponse>;
 export type FilterType =
   | "TERM_MATCH"
   | "EQUALS"
@@ -216,6 +244,9 @@ export type FilterType =
   | "NONE_OF"
   | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
+
+export type Field = string;
+export type Value = string;
 export interface Filter {
   Type: FilterType;
   Field: string;
@@ -226,6 +257,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type Filters = Filter[];
 export const Filters = /*@__PURE__*/ S.Array(Filter);
+export type GetProductsMaxResults = number;
 export interface GetProductsRequest {
   ServiceCode: string;
   Filters?: Filter[];
@@ -246,6 +278,7 @@ export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProductsRequest",
 }) as any as S.Schema<GetProductsRequest>;
+export type SynthesizedJsonPriceListJsonItem = string;
 export type PriceListJsonItems = string[];
 export const PriceListJsonItems = /*@__PURE__*/ S.Array(S.String);
 export interface GetProductsResponse {
@@ -262,6 +295,11 @@ export const GetProductsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProductsResponse",
 }) as any as S.Schema<GetProductsResponse>;
+export type ServiceCode = string;
+export type EffectiveDate = Date;
+export type RegionCode = string;
+export type CurrencyCode = string;
+export type MaxResults = number;
 export interface ListPriceListsRequest {
   ServiceCode: string;
   EffectiveDate: Date;
@@ -314,44 +352,7 @@ export const ListPriceListsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPriceListsResponse",
 }) as any as S.Schema<ListPriceListsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
-  "ExpiredNextTokenException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { Message: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DescribeServicesError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -396,6 +397,8 @@ export const describeServices: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServices",
   pagination: {
     inputToken: "NextToken",
@@ -404,6 +407,7 @@ export const describeServices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetAttributeValuesError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -448,6 +452,8 @@ export const getAttributeValues: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttributeValues",
   pagination: {
     inputToken: "NextToken",
@@ -456,6 +462,7 @@ export const getAttributeValues: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetPriceListFileUrlError =
   | AccessDeniedException
   | InternalErrorException
@@ -485,8 +492,11 @@ export const getPriceListFileUrl: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPriceListFileUrl",
 }));
+
 export type GetProductsError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -531,6 +541,8 @@ export const getProducts: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProducts",
   pagination: {
     inputToken: "NextToken",
@@ -539,6 +551,7 @@ export const getProducts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPriceListsError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -587,6 +600,8 @@ export const listPriceLists: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPriceLists",
   pagination: {
     inputToken: "NextToken",

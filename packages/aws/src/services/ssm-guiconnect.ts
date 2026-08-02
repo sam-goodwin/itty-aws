@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,67 +84,42 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
-export type AccountId = string;
-export type BucketName = string;
-export type ErrorMessage = string;
-
-//# Schemas
-export interface GetConnectionRecordingPreferencesRequest {}
-export const GetConnectionRecordingPreferencesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetConnectionRecordingPreferencesRequest",
-  }) as any as S.Schema<GetConnectionRecordingPreferencesRequest>;
-export interface S3Bucket {
-  BucketOwner: string;
-  BucketName: string;
-}
-export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ BucketOwner: S.String, BucketName: S.String }),
-).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
-export type S3Buckets = S3Bucket[];
-export const S3Buckets = /*@__PURE__*/ S.Array(S3Bucket);
-export interface RecordingDestinations {
-  S3Buckets: S3Bucket[];
-}
-export const RecordingDestinations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Buckets: S3Buckets }),
-).annotate({
-  identifier: "RecordingDestinations",
-}) as any as S.Schema<RecordingDestinations>;
-export interface ConnectionRecordingPreferences {
-  RecordingDestinations: RecordingDestinations;
-  KMSKeyArn: string;
-}
-export const ConnectionRecordingPreferences =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RecordingDestinations: RecordingDestinations,
-      KMSKeyArn: S.String,
-    }),
-  ).annotate({
-    identifier: "ConnectionRecordingPreferences",
-  }) as any as S.Schema<ConnectionRecordingPreferences>;
-export interface GetConnectionRecordingPreferencesResponse {
-  ClientToken?: string;
-  ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
-}
-export const GetConnectionRecordingPreferencesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClientToken: S.optional(S.String),
-      ConnectionRecordingPreferences: S.optional(
-        ConnectionRecordingPreferences,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConnectionRecordingPreferencesResponse",
-  }) as any as S.Schema<GetConnectionRecordingPreferencesResponse>;
 export interface DeleteConnectionRecordingPreferencesRequest {
   ClientToken?: string;
 }
@@ -175,6 +152,68 @@ export const DeleteConnectionRecordingPreferencesResponse =
   ).annotate({
     identifier: "DeleteConnectionRecordingPreferencesResponse",
   }) as any as S.Schema<DeleteConnectionRecordingPreferencesResponse>;
+export interface GetConnectionRecordingPreferencesRequest {}
+export const GetConnectionRecordingPreferencesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/GetConnectionRecordingPreferences" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetConnectionRecordingPreferencesRequest",
+}) as any as S.Schema<GetConnectionRecordingPreferencesRequest>;
+export type AccountId = string;
+export type BucketName = string;
+export interface S3Bucket {
+  BucketOwner: string;
+  BucketName: string;
+}
+export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BucketOwner: S.String, BucketName: S.String }),
+).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
+export type S3Buckets = S3Bucket[];
+export const S3Buckets = /*@__PURE__*/ S.Array(S3Bucket);
+export interface RecordingDestinations {
+  S3Buckets: S3Bucket[];
+}
+export const RecordingDestinations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3Buckets: S3Buckets }),
+).annotate({
+  identifier: "RecordingDestinations",
+}) as any as S.Schema<RecordingDestinations>;
+export interface ConnectionRecordingPreferences {
+  RecordingDestinations: RecordingDestinations;
+  KMSKeyArn: string;
+}
+export const ConnectionRecordingPreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RecordingDestinations: RecordingDestinations,
+    KMSKeyArn: S.String,
+  }),
+).annotate({
+  identifier: "ConnectionRecordingPreferences",
+}) as any as S.Schema<ConnectionRecordingPreferences>;
+export interface GetConnectionRecordingPreferencesResponse {
+  ClientToken?: string;
+  ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
+}
+export const GetConnectionRecordingPreferencesResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ClientToken: S.optional(S.String),
+      ConnectionRecordingPreferences: S.optional(
+        ConnectionRecordingPreferences,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetConnectionRecordingPreferencesResponse",
+  }) as any as S.Schema<GetConnectionRecordingPreferencesResponse>;
 export interface UpdateConnectionRecordingPreferencesRequest {
   ConnectionRecordingPreferences: ConnectionRecordingPreferences;
   ClientToken?: string;
@@ -215,69 +254,7 @@ export const UpdateConnectionRecordingPreferencesResponse =
   ).annotate({
     identifier: "UpdateConnectionRecordingPreferencesResponse",
   }) as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
-export type GetConnectionRecordingPreferencesError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the preferences specified for recording RDP connections in the requesting Amazon Web Services account and Amazon Web Services Region.
- */
-export const getConnectionRecordingPreferences: API.OperationMethod<
-  GetConnectionRecordingPreferencesRequest,
-  GetConnectionRecordingPreferencesResponse,
-  GetConnectionRecordingPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRecordingPreferencesRequest,
-  output: GetConnectionRecordingPreferencesResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetConnectionRecordingPreferences",
-}));
+export type ErrorMessage = string;
 export type DeleteConnectionRecordingPreferencesError =
   | AccessDeniedException
   | ConflictException
@@ -307,8 +284,45 @@ export const deleteConnectionRecordingPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectionRecordingPreferences",
 }));
+
+export type GetConnectionRecordingPreferencesError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the preferences specified for recording RDP connections in the requesting Amazon Web Services account and Amazon Web Services Region.
+ */
+export const getConnectionRecordingPreferences: API.OperationMethod<
+  GetConnectionRecordingPreferencesRequest,
+  GetConnectionRecordingPreferencesResponse,
+  GetConnectionRecordingPreferencesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectionRecordingPreferencesRequest,
+  output: GetConnectionRecordingPreferencesResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConnectionRecordingPreferences",
+}));
+
 export type UpdateConnectionRecordingPreferencesError =
   | AccessDeniedException
   | ConflictException
@@ -338,5 +352,7 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectionRecordingPreferences",
 }));

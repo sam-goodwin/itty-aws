@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -103,30 +105,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type __integerMin1Max8 = number;
 export type __integerMin1Max100 = number;
-export type __stringMax1024 = string;
-export type __stringMin1Max128 = string;
-export type KafkaClusterClientAuthenticationType = string;
-export type KafkaClusterEncryptionInTransitType = string;
-export type NetworkType = string;
-export type __longMin1 = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ConnectorState = string;
-export type CustomPluginContentType = string;
-export type CustomPluginState = string;
-export type __sensitiveString = string | redacted.Redacted<string>;
-export type __timestampIso8601 = Date;
-export type WorkerConfigurationState = string;
-export type ConnectorOperationState = string;
-export type ConnectorOperationType = string;
-export type ConnectorOperationStepType = string;
-export type ConnectorOperationStepState = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface ScaleInPolicy {
   cpuUtilizationPercentage: number;
 }
@@ -181,6 +201,8 @@ export const ConnectorConfiguration = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type __stringMax1024 = string;
+export type __stringMin1Max128 = string;
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface Vpc {
@@ -208,24 +230,24 @@ export interface KafkaCluster {
 export const KafkaCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apacheKafkaCluster: ApacheKafkaCluster }),
 ).annotate({ identifier: "KafkaCluster" }) as any as S.Schema<KafkaCluster>;
+export type KafkaClusterClientAuthenticationType = string;
 export interface KafkaClusterClientAuthentication {
   authenticationType: string;
 }
-export const KafkaClusterClientAuthentication =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ authenticationType: S.String }),
-  ).annotate({
-    identifier: "KafkaClusterClientAuthentication",
-  }) as any as S.Schema<KafkaClusterClientAuthentication>;
+export const KafkaClusterClientAuthentication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ authenticationType: S.String }),
+).annotate({
+  identifier: "KafkaClusterClientAuthentication",
+}) as any as S.Schema<KafkaClusterClientAuthentication>;
+export type KafkaClusterEncryptionInTransitType = string;
 export interface KafkaClusterEncryptionInTransit {
   encryptionType: string;
 }
-export const KafkaClusterEncryptionInTransit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ encryptionType: S.String }),
-  ).annotate({
-    identifier: "KafkaClusterEncryptionInTransit",
-  }) as any as S.Schema<KafkaClusterEncryptionInTransit>;
+export const KafkaClusterEncryptionInTransit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ encryptionType: S.String }),
+).annotate({
+  identifier: "KafkaClusterEncryptionInTransit",
+}) as any as S.Schema<KafkaClusterEncryptionInTransit>;
 export interface CloudWatchLogsLogDelivery {
   enabled: boolean;
   logGroup?: string;
@@ -276,6 +298,8 @@ export interface LogDelivery {
 export const LogDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workerLogDelivery: WorkerLogDelivery }),
 ).annotate({ identifier: "LogDelivery" }) as any as S.Schema<LogDelivery>;
+export type NetworkType = string;
+export type __longMin1 = number;
 export interface CustomPlugin {
   customPluginArn: string;
   revision: number;
@@ -300,6 +324,8 @@ export const WorkerConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkerConfiguration",
 }) as any as S.Schema<WorkerConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateConnectorRequest {
@@ -347,6 +373,7 @@ export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorRequest",
 }) as any as S.Schema<CreateConnectorRequest>;
+export type ConnectorState = string;
 export interface CreateConnectorResponse {
   connectorArn?: string;
   connectorName?: string;
@@ -361,6 +388,7 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
+export type CustomPluginContentType = string;
 export interface S3Location {
   bucketArn: string;
   fileKey: string;
@@ -408,6 +436,7 @@ export const CreateCustomPluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomPluginRequest",
 }) as any as S.Schema<CreateCustomPluginRequest>;
+export type CustomPluginState = string;
 export interface CreateCustomPluginResponse {
   customPluginArn?: string;
   customPluginState?: string;
@@ -424,49 +453,50 @@ export const CreateCustomPluginResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomPluginResponse",
 }) as any as S.Schema<CreateCustomPluginResponse>;
+export type __sensitiveString = string | redacted.Redacted<string>;
 export interface CreateWorkerConfigurationRequest {
   description?: string;
   name: string;
   propertiesFileContent: string | redacted.Redacted<string>;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateWorkerConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      name: S.String,
-      propertiesFileContent: SensitiveString,
-      tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/worker-configurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateWorkerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    name: S.String,
+    propertiesFileContent: SensitiveString,
+    tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/worker-configurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateWorkerConfigurationRequest",
-  }) as any as S.Schema<CreateWorkerConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "CreateWorkerConfigurationRequest",
+}) as any as S.Schema<CreateWorkerConfigurationRequest>;
+export type __timestampIso8601 = Date;
 export interface WorkerConfigurationRevisionSummary {
   creationTime?: Date;
   description?: string;
   revision?: number;
 }
-export const WorkerConfigurationRevisionSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      description: S.optional(S.String),
-      revision: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "WorkerConfigurationRevisionSummary",
-  }) as any as S.Schema<WorkerConfigurationRevisionSummary>;
+export const WorkerConfigurationRevisionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    description: S.optional(S.String),
+    revision: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WorkerConfigurationRevisionSummary",
+}) as any as S.Schema<WorkerConfigurationRevisionSummary>;
+export type WorkerConfigurationState = string;
 export interface CreateWorkerConfigurationResponse {
   creationTime?: Date;
   latestRevision?: WorkerConfigurationRevisionSummary;
@@ -474,20 +504,19 @@ export interface CreateWorkerConfigurationResponse {
   workerConfigurationArn?: string;
   workerConfigurationState?: string;
 }
-export const CreateWorkerConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      latestRevision: S.optional(WorkerConfigurationRevisionSummary),
-      name: S.optional(S.String),
-      workerConfigurationArn: S.optional(S.String),
-      workerConfigurationState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateWorkerConfigurationResponse",
-  }) as any as S.Schema<CreateWorkerConfigurationResponse>;
+export const CreateWorkerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    latestRevision: S.optional(WorkerConfigurationRevisionSummary),
+    name: S.optional(S.String),
+    workerConfigurationArn: S.optional(S.String),
+    workerConfigurationState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateWorkerConfigurationResponse",
+}) as any as S.Schema<CreateWorkerConfigurationResponse>;
 export interface DeleteConnectorRequest {
   connectorArn: string;
   currentVersion?: string;
@@ -529,10 +558,7 @@ export const DeleteCustomPluginRequest = /*@__PURE__*/ S.suspend(() =>
     customPluginArn: S.String.pipe(T.HttpLabel("customPluginArn")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v1/custom-plugins/{customPluginArn}",
-      }),
+      T.Http({ method: "DELETE", uri: "/v1/custom-plugins/{customPluginArn}" }),
       svc,
       auth,
       proto,
@@ -558,41 +584,39 @@ export const DeleteCustomPluginResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWorkerConfigurationRequest {
   workerConfigurationArn: string;
 }
-export const DeleteWorkerConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workerConfigurationArn: S.String.pipe(
-        T.HttpLabel("workerConfigurationArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v1/worker-configurations/{workerConfigurationArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteWorkerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workerConfigurationArn: S.String.pipe(
+      T.HttpLabel("workerConfigurationArn"),
     ),
-  ).annotate({
-    identifier: "DeleteWorkerConfigurationRequest",
-  }) as any as S.Schema<DeleteWorkerConfigurationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/worker-configurations/{workerConfigurationArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteWorkerConfigurationRequest",
+}) as any as S.Schema<DeleteWorkerConfigurationRequest>;
 export interface DeleteWorkerConfigurationResponse {
   workerConfigurationArn?: string;
   workerConfigurationState?: string;
 }
-export const DeleteWorkerConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workerConfigurationArn: S.optional(S.String),
-      workerConfigurationState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteWorkerConfigurationResponse",
-  }) as any as S.Schema<DeleteWorkerConfigurationResponse>;
+export const DeleteWorkerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workerConfigurationArn: S.optional(S.String),
+    workerConfigurationState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteWorkerConfigurationResponse",
+}) as any as S.Schema<DeleteWorkerConfigurationResponse>;
 export interface DescribeConnectorRequest {
   connectorArn: string;
 }
@@ -650,15 +674,14 @@ export interface ProvisionedCapacityDescription {
   mcuCount?: number;
   workerCount?: number;
 }
-export const ProvisionedCapacityDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mcuCount: S.optional(S.Number),
-      workerCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ProvisionedCapacityDescription",
-  }) as any as S.Schema<ProvisionedCapacityDescription>;
+export const ProvisionedCapacityDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mcuCount: S.optional(S.Number),
+    workerCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ProvisionedCapacityDescription",
+}) as any as S.Schema<ProvisionedCapacityDescription>;
 export interface CapacityDescription {
   autoScaling?: AutoScalingDescription;
   provisionedCapacity?: ProvisionedCapacityDescription;
@@ -685,15 +708,14 @@ export interface ApacheKafkaClusterDescription {
   bootstrapServers?: string;
   vpc?: VpcDescription;
 }
-export const ApacheKafkaClusterDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bootstrapServers: S.optional(S.String),
-      vpc: S.optional(VpcDescription),
-    }),
-  ).annotate({
-    identifier: "ApacheKafkaClusterDescription",
-  }) as any as S.Schema<ApacheKafkaClusterDescription>;
+export const ApacheKafkaClusterDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bootstrapServers: S.optional(S.String),
+    vpc: S.optional(VpcDescription),
+  }),
+).annotate({
+  identifier: "ApacheKafkaClusterDescription",
+}) as any as S.Schema<ApacheKafkaClusterDescription>;
 export interface KafkaClusterDescription {
   apacheKafkaCluster?: ApacheKafkaClusterDescription;
 }
@@ -724,28 +746,27 @@ export interface CloudWatchLogsLogDeliveryDescription {
   enabled?: boolean;
   logGroup?: string;
 }
-export const CloudWatchLogsLogDeliveryDescription =
-  /*@__PURE__*/ S.suspend(() =>
+export const CloudWatchLogsLogDeliveryDescription = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       enabled: S.optional(S.Boolean),
       logGroup: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "CloudWatchLogsLogDeliveryDescription",
-  }) as any as S.Schema<CloudWatchLogsLogDeliveryDescription>;
+).annotate({
+  identifier: "CloudWatchLogsLogDeliveryDescription",
+}) as any as S.Schema<CloudWatchLogsLogDeliveryDescription>;
 export interface FirehoseLogDeliveryDescription {
   deliveryStream?: string;
   enabled?: boolean;
 }
-export const FirehoseLogDeliveryDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deliveryStream: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "FirehoseLogDeliveryDescription",
-  }) as any as S.Schema<FirehoseLogDeliveryDescription>;
+export const FirehoseLogDeliveryDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryStream: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "FirehoseLogDeliveryDescription",
+}) as any as S.Schema<FirehoseLogDeliveryDescription>;
 export interface S3LogDeliveryDescription {
   bucket?: string;
   enabled?: boolean;
@@ -765,16 +786,15 @@ export interface WorkerLogDeliveryDescription {
   firehose?: FirehoseLogDeliveryDescription;
   s3?: S3LogDeliveryDescription;
 }
-export const WorkerLogDeliveryDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudWatchLogs: S.optional(CloudWatchLogsLogDeliveryDescription),
-      firehose: S.optional(FirehoseLogDeliveryDescription),
-      s3: S.optional(S3LogDeliveryDescription),
-    }),
-  ).annotate({
-    identifier: "WorkerLogDeliveryDescription",
-  }) as any as S.Schema<WorkerLogDeliveryDescription>;
+export const WorkerLogDeliveryDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudWatchLogs: S.optional(CloudWatchLogsLogDeliveryDescription),
+    firehose: S.optional(FirehoseLogDeliveryDescription),
+    s3: S.optional(S3LogDeliveryDescription),
+  }),
+).annotate({
+  identifier: "WorkerLogDeliveryDescription",
+}) as any as S.Schema<WorkerLogDeliveryDescription>;
 export interface LogDeliveryDescription {
   workerLogDelivery?: WorkerLogDeliveryDescription;
 }
@@ -810,15 +830,14 @@ export interface WorkerConfigurationDescription {
   revision?: number;
   workerConfigurationArn?: string;
 }
-export const WorkerConfigurationDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      revision: S.optional(S.Number),
-      workerConfigurationArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WorkerConfigurationDescription",
-  }) as any as S.Schema<WorkerConfigurationDescription>;
+export const WorkerConfigurationDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    revision: S.optional(S.Number),
+    workerConfigurationArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkerConfigurationDescription",
+}) as any as S.Schema<WorkerConfigurationDescription>;
 export interface StateDescription {
   code?: string;
   message?: string;
@@ -881,43 +900,42 @@ export const DescribeConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeConnectorOperationRequest {
   connectorOperationArn: string;
 }
-export const DescribeConnectorOperationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectorOperationArn: S.String.pipe(
-        T.HttpLabel("connectorOperationArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/connectorOperations/{connectorOperationArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeConnectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorOperationArn: S.String.pipe(T.HttpLabel("connectorOperationArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/connectorOperations/{connectorOperationArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeConnectorOperationRequest",
-  }) as any as S.Schema<DescribeConnectorOperationRequest>;
+  ),
+).annotate({
+  identifier: "DescribeConnectorOperationRequest",
+}) as any as S.Schema<DescribeConnectorOperationRequest>;
+export type ConnectorOperationState = string;
+export type ConnectorOperationType = string;
+export type ConnectorOperationStepType = string;
+export type ConnectorOperationStepState = string;
 export interface ConnectorOperationStep {
   stepType?: string;
   stepState?: string;
 }
 export const ConnectorOperationStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stepType: S.optional(S.String),
-    stepState: S.optional(S.String),
-  }),
+  S.Struct({ stepType: S.optional(S.String), stepState: S.optional(S.String) }),
 ).annotate({
   identifier: "ConnectorOperationStep",
 }) as any as S.Schema<ConnectorOperationStep>;
 export type __listOfConnectorOperationStep = ConnectorOperationStep[];
-export const __listOfConnectorOperationStep =
-  /*@__PURE__*/ S.Array(ConnectorOperationStep);
+export const __listOfConnectorOperationStep = /*@__PURE__*/ S.Array(
+  ConnectorOperationStep,
+);
 export interface WorkerSetting {
   capacity?: CapacityDescription;
 }
@@ -938,59 +956,54 @@ export interface DescribeConnectorOperationResponse {
   creationTime?: Date;
   endTime?: Date;
 }
-export const DescribeConnectorOperationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectorArn: S.optional(S.String),
-      connectorOperationArn: S.optional(S.String),
-      connectorOperationState: S.optional(S.String),
-      connectorOperationType: S.optional(S.String),
-      operationSteps: S.optional(__listOfConnectorOperationStep),
-      originWorkerSetting: S.optional(WorkerSetting),
-      originConnectorConfiguration: S.optional(ConnectorConfiguration),
-      targetWorkerSetting: S.optional(WorkerSetting),
-      targetConnectorConfiguration: S.optional(ConnectorConfiguration),
-      errorInfo: S.optional(StateDescription),
-      creationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      endTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DescribeConnectorOperationResponse",
-  }) as any as S.Schema<DescribeConnectorOperationResponse>;
+export const DescribeConnectorOperationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorArn: S.optional(S.String),
+    connectorOperationArn: S.optional(S.String),
+    connectorOperationState: S.optional(S.String),
+    connectorOperationType: S.optional(S.String),
+    operationSteps: S.optional(__listOfConnectorOperationStep),
+    originWorkerSetting: S.optional(WorkerSetting),
+    originConnectorConfiguration: S.optional(ConnectorConfiguration),
+    targetWorkerSetting: S.optional(WorkerSetting),
+    targetConnectorConfiguration: S.optional(ConnectorConfiguration),
+    errorInfo: S.optional(StateDescription),
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+  }),
+).annotate({
+  identifier: "DescribeConnectorOperationResponse",
+}) as any as S.Schema<DescribeConnectorOperationResponse>;
 export interface DescribeCustomPluginRequest {
   customPluginArn: string;
 }
-export const DescribeCustomPluginRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customPluginArn: S.String.pipe(T.HttpLabel("customPluginArn")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/custom-plugins/{customPluginArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeCustomPluginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customPluginArn: S.String.pipe(T.HttpLabel("customPluginArn")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/custom-plugins/{customPluginArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeCustomPluginRequest",
-  }) as any as S.Schema<DescribeCustomPluginRequest>;
+  ),
+).annotate({
+  identifier: "DescribeCustomPluginRequest",
+}) as any as S.Schema<DescribeCustomPluginRequest>;
 export interface CustomPluginFileDescription {
   fileMd5?: string;
   fileSize?: number;
 }
-export const CustomPluginFileDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ fileMd5: S.optional(S.String), fileSize: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "CustomPluginFileDescription",
-  }) as any as S.Schema<CustomPluginFileDescription>;
+export const CustomPluginFileDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fileMd5: S.optional(S.String), fileSize: S.optional(S.Number) }),
+).annotate({
+  identifier: "CustomPluginFileDescription",
+}) as any as S.Schema<CustomPluginFileDescription>;
 export interface S3LocationDescription {
   bucketArn?: string;
   fileKey?: string;
@@ -1008,12 +1021,11 @@ export const S3LocationDescription = /*@__PURE__*/ S.suspend(() =>
 export interface CustomPluginLocationDescription {
   s3Location?: S3LocationDescription;
 }
-export const CustomPluginLocationDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ s3Location: S.optional(S3LocationDescription) }),
-  ).annotate({
-    identifier: "CustomPluginLocationDescription",
-  }) as any as S.Schema<CustomPluginLocationDescription>;
+export const CustomPluginLocationDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ s3Location: S.optional(S3LocationDescription) }),
+).annotate({
+  identifier: "CustomPluginLocationDescription",
+}) as any as S.Schema<CustomPluginLocationDescription>;
 export interface CustomPluginRevisionSummary {
   contentType?: string;
   creationTime?: Date;
@@ -1022,21 +1034,20 @@ export interface CustomPluginRevisionSummary {
   location?: CustomPluginLocationDescription;
   revision?: number;
 }
-export const CustomPluginRevisionSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentType: S.optional(S.String),
-      creationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      description: S.optional(S.String),
-      fileDescription: S.optional(CustomPluginFileDescription),
-      location: S.optional(CustomPluginLocationDescription),
-      revision: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CustomPluginRevisionSummary",
-  }) as any as S.Schema<CustomPluginRevisionSummary>;
+export const CustomPluginRevisionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentType: S.optional(S.String),
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    description: S.optional(S.String),
+    fileDescription: S.optional(CustomPluginFileDescription),
+    location: S.optional(CustomPluginLocationDescription),
+    revision: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CustomPluginRevisionSummary",
+}) as any as S.Schema<CustomPluginRevisionSummary>;
 export interface DescribeCustomPluginResponse {
   creationTime?: Date;
   customPluginArn?: string;
@@ -1046,55 +1057,53 @@ export interface DescribeCustomPluginResponse {
   name?: string;
   stateDescription?: StateDescription;
 }
-export const DescribeCustomPluginResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      customPluginArn: S.optional(S.String),
-      customPluginState: S.optional(S.String),
-      description: S.optional(S.String),
-      latestRevision: S.optional(CustomPluginRevisionSummary),
-      name: S.optional(S.String),
-      stateDescription: S.optional(StateDescription),
-    }),
-  ).annotate({
-    identifier: "DescribeCustomPluginResponse",
-  }) as any as S.Schema<DescribeCustomPluginResponse>;
+export const DescribeCustomPluginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    customPluginArn: S.optional(S.String),
+    customPluginState: S.optional(S.String),
+    description: S.optional(S.String),
+    latestRevision: S.optional(CustomPluginRevisionSummary),
+    name: S.optional(S.String),
+    stateDescription: S.optional(StateDescription),
+  }),
+).annotate({
+  identifier: "DescribeCustomPluginResponse",
+}) as any as S.Schema<DescribeCustomPluginResponse>;
 export interface DescribeWorkerConfigurationRequest {
   workerConfigurationArn: string;
 }
-export const DescribeWorkerConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workerConfigurationArn: S.String.pipe(
-        T.HttpLabel("workerConfigurationArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/worker-configurations/{workerConfigurationArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeWorkerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workerConfigurationArn: S.String.pipe(
+      T.HttpLabel("workerConfigurationArn"),
     ),
-  ).annotate({
-    identifier: "DescribeWorkerConfigurationRequest",
-  }) as any as S.Schema<DescribeWorkerConfigurationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/worker-configurations/{workerConfigurationArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeWorkerConfigurationRequest",
+}) as any as S.Schema<DescribeWorkerConfigurationRequest>;
 export interface WorkerConfigurationRevisionDescription {
   creationTime?: Date;
   description?: string;
   propertiesFileContent?: string | redacted.Redacted<string>;
   revision?: number;
 }
-export const WorkerConfigurationRevisionDescription =
-  /*@__PURE__*/ S.suspend(() =>
+export const WorkerConfigurationRevisionDescription = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       creationTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1103,9 +1112,9 @@ export const WorkerConfigurationRevisionDescription =
       propertiesFileContent: S.optional(SensitiveString),
       revision: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "WorkerConfigurationRevisionDescription",
-  }) as any as S.Schema<WorkerConfigurationRevisionDescription>;
+).annotate({
+  identifier: "WorkerConfigurationRevisionDescription",
+}) as any as S.Schema<WorkerConfigurationRevisionDescription>;
 export interface DescribeWorkerConfigurationResponse {
   creationTime?: Date;
   description?: string;
@@ -1114,48 +1123,47 @@ export interface DescribeWorkerConfigurationResponse {
   workerConfigurationArn?: string;
   workerConfigurationState?: string;
 }
-export const DescribeWorkerConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      creationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      description: S.optional(S.String),
-      latestRevision: S.optional(WorkerConfigurationRevisionDescription),
-      name: S.optional(S.String),
-      workerConfigurationArn: S.optional(S.String),
-      workerConfigurationState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DescribeWorkerConfigurationResponse",
-  }) as any as S.Schema<DescribeWorkerConfigurationResponse>;
+export const DescribeWorkerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    description: S.optional(S.String),
+    latestRevision: S.optional(WorkerConfigurationRevisionDescription),
+    name: S.optional(S.String),
+    workerConfigurationArn: S.optional(S.String),
+    workerConfigurationState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeWorkerConfigurationResponse",
+}) as any as S.Schema<DescribeWorkerConfigurationResponse>;
+export type MaxResults = number;
 export interface ListConnectorOperationsRequest {
   connectorArn: string;
   maxResults?: number;
   nextToken?: string;
 }
-export const ListConnectorOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectorArn: S.String.pipe(T.HttpLabel("connectorArn")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/connectors/{connectorArn}/operations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListConnectorOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorArn: S.String.pipe(T.HttpLabel("connectorArn")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/connectors/{connectorArn}/operations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListConnectorOperationsRequest",
-  }) as any as S.Schema<ListConnectorOperationsRequest>;
+  ),
+).annotate({
+  identifier: "ListConnectorOperationsRequest",
+}) as any as S.Schema<ListConnectorOperationsRequest>;
 export interface ConnectorOperationSummary {
   connectorOperationArn?: string;
   connectorOperationType?: string;
@@ -1177,21 +1185,21 @@ export const ConnectorOperationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorOperationSummary",
 }) as any as S.Schema<ConnectorOperationSummary>;
 export type __listOfConnectorOperationSummary = ConnectorOperationSummary[];
-export const __listOfConnectorOperationSummary =
-  /*@__PURE__*/ S.Array(ConnectorOperationSummary);
+export const __listOfConnectorOperationSummary = /*@__PURE__*/ S.Array(
+  ConnectorOperationSummary,
+);
 export interface ListConnectorOperationsResponse {
   connectorOperations?: ConnectorOperationSummary[];
   nextToken?: string;
 }
-export const ListConnectorOperationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectorOperations: S.optional(__listOfConnectorOperationSummary),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListConnectorOperationsResponse",
-  }) as any as S.Schema<ListConnectorOperationsResponse>;
+export const ListConnectorOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorOperations: S.optional(__listOfConnectorOperationSummary),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConnectorOperationsResponse",
+}) as any as S.Schema<ListConnectorOperationsResponse>;
 export interface ListConnectorsRequest {
   connectorNamePrefix?: string;
   maxResults?: number;
@@ -1357,34 +1365,34 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWorkerConfigurationsRequest {
   maxResults?: number;
   nextToken?: string;
   namePrefix?: string;
 }
-export const ListWorkerConfigurationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      namePrefix: S.optional(S.String).pipe(T.HttpQuery("namePrefix")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/worker-configurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListWorkerConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    namePrefix: S.optional(S.String).pipe(T.HttpQuery("namePrefix")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/worker-configurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListWorkerConfigurationsRequest",
-  }) as any as S.Schema<ListWorkerConfigurationsRequest>;
+  ),
+).annotate({
+  identifier: "ListWorkerConfigurationsRequest",
+}) as any as S.Schema<ListWorkerConfigurationsRequest>;
 export interface WorkerConfigurationSummary {
   creationTime?: Date;
   description?: string;
@@ -1408,21 +1416,21 @@ export const WorkerConfigurationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkerConfigurationSummary",
 }) as any as S.Schema<WorkerConfigurationSummary>;
 export type __listOfWorkerConfigurationSummary = WorkerConfigurationSummary[];
-export const __listOfWorkerConfigurationSummary =
-  /*@__PURE__*/ S.Array(WorkerConfigurationSummary);
+export const __listOfWorkerConfigurationSummary = /*@__PURE__*/ S.Array(
+  WorkerConfigurationSummary,
+);
 export interface ListWorkerConfigurationsResponse {
   nextToken?: string;
   workerConfigurations?: WorkerConfigurationSummary[];
 }
-export const ListWorkerConfigurationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      workerConfigurations: S.optional(__listOfWorkerConfigurationSummary),
-    }),
-  ).annotate({
-    identifier: "ListWorkerConfigurationsResponse",
-  }) as any as S.Schema<ListWorkerConfigurationsResponse>;
+export const ListWorkerConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    workerConfigurations: S.optional(__listOfWorkerConfigurationSummary),
+  }),
+).annotate({
+  identifier: "ListWorkerConfigurationsResponse",
+}) as any as S.Schema<ListWorkerConfigurationsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -1537,8 +1545,10 @@ export const CapacityUpdate = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorConfigurationUpdate = {
   [key: string]: string | undefined;
 };
-export const ConnectorConfigurationUpdate =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ConnectorConfigurationUpdate = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface UpdateConnectorRequest {
   capacity?: CapacityUpdate;
   connectorConfiguration?: { [key: string]: string | undefined };
@@ -1578,42 +1588,6 @@ export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateConnectorResponse",
 }) as any as S.Schema<UpdateConnectorResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-
-//# Operations
 export type CreateConnectorError =
   | BadRequestException
   | ConflictException
@@ -1645,8 +1619,11 @@ export const createConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnector",
 }));
+
 export type CreateCustomPluginError =
   | BadRequestException
   | ConflictException
@@ -1678,8 +1655,11 @@ export const createCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomPlugin",
 }));
+
 export type CreateWorkerConfigurationError =
   | BadRequestException
   | ConflictException
@@ -1711,8 +1691,11 @@ export const createWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkerConfiguration",
 }));
+
 export type DeleteConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -1742,8 +1725,11 @@ export const deleteConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnector",
 }));
+
 export type DeleteCustomPluginError =
   | BadRequestException
   | ForbiddenException
@@ -1773,8 +1759,11 @@ export const deleteCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomPlugin",
 }));
+
 export type DeleteWorkerConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -1804,8 +1793,11 @@ export const deleteWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkerConfiguration",
 }));
+
 export type DescribeConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -1835,8 +1827,11 @@ export const describeConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnector",
 }));
+
 export type DescribeConnectorOperationError =
   | BadRequestException
   | ForbiddenException
@@ -1866,8 +1861,11 @@ export const describeConnectorOperation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectorOperation",
 }));
+
 export type DescribeCustomPluginError =
   | BadRequestException
   | ForbiddenException
@@ -1897,8 +1895,11 @@ export const describeCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomPlugin",
 }));
+
 export type DescribeWorkerConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -1928,8 +1929,11 @@ export const describeWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkerConfiguration",
 }));
+
 export type ListConnectorOperationsError =
   | BadRequestException
   | ForbiddenException
@@ -1974,6 +1978,8 @@ export const listConnectorOperations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorOperations",
   pagination: {
     inputToken: "nextToken",
@@ -1982,6 +1988,7 @@ export const listConnectorOperations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListConnectorsError =
   | BadRequestException
   | ForbiddenException
@@ -2026,6 +2033,8 @@ export const listConnectors: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -2034,6 +2043,7 @@ export const listConnectors: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCustomPluginsError =
   | BadRequestException
   | ForbiddenException
@@ -2078,6 +2088,8 @@ export const listCustomPlugins: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomPlugins",
   pagination: {
     inputToken: "nextToken",
@@ -2086,6 +2098,7 @@ export const listCustomPlugins: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2115,8 +2128,11 @@ export const listTagsForResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWorkerConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -2161,6 +2177,8 @@ export const listWorkerConfigurations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkerConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2169,6 +2187,7 @@ export const listWorkerConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConflictException
@@ -2200,8 +2219,11 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2231,8 +2253,11 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -2262,5 +2287,7 @@ export const updateConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnector",
 }));

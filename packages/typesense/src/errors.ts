@@ -1,8 +1,9 @@
 /**
  * Typesense-specific error types.
  *
- * Re-exports common HTTP errors from sdk-core and adds Typesense-specific
- * error matching and API error types.
+ * Re-exports common HTTP errors from core and adds Typesense-specific
+ * error types (unknown-error fallback + parse-error wrapper), matching the
+ * distilled repo's typesense error surface.
  */
 export {
   BadGateway,
@@ -22,7 +23,7 @@ export {
   DEFAULT_ERRORS,
   API_ERRORS,
 } from "@distilled.cloud/core/errors";
-export type { DefaultErrors } from "@distilled.cloud/core/errors";
+import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/errors";
 
 import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
@@ -45,3 +46,15 @@ export class TypesenseParseError extends Schema.TaggedErrorClass<TypesenseParseE
     cause: Schema.Unknown,
   },
 ).pipe(Category.withParseError) {}
+
+/**
+ * Errors that any Typesense operation may surface in addition to
+ * status-matched API errors declared per endpoint.
+ */
+export type ClientErrors = TypesenseParseError | UnknownTypesenseError;
+
+/**
+ * Default Typesense operation errors: the shared HTTP status errors from
+ * core plus the client-level fallback/decode errors.
+ */
+export type DefaultErrors = CoreDefaultErrors | ClientErrors;

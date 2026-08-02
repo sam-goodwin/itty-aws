@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "ZoneTagResourceNotFound": [{ "status": 404 }],
-    "Forbidden": [{ "status": 403 }],
-    "TagPreconditionFailed": [{ "status": 412 }]
-  }
-}

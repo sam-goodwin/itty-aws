@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,35 +87,60 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(S.String),
+    Details: S.optional(
+      S.suspend(() => BadRequestDetails).annotate({
+        identifier: "BadRequestDetails",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ReferencedBy: S.optional(
+      S.suspend(() => StringMap).annotate({ identifier: "StringMap" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type Token = string;
-export type BadRequestReason = string;
-export type InvalidParameterProblem = string;
-export type ResourceType = string;
-export type Identifier = string;
-export type OptionalPollSeconds = number;
-
-//# Schemas
 export interface GetLatestConfigurationRequest {
   ConfigurationToken: string;
 }
-export const GetLatestConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/configuration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetLatestConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationToken: S.String.pipe(T.HttpQuery("configuration_token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/configuration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetLatestConfigurationRequest",
-  }) as any as S.Schema<GetLatestConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetLatestConfigurationRequest",
+}) as any as S.Schema<GetLatestConfigurationRequest>;
 export interface GetLatestConfigurationResponse {
   NextPollConfigurationToken?: string;
   NextPollIntervalInSeconds?: number;
@@ -121,22 +148,58 @@ export interface GetLatestConfigurationResponse {
   Configuration?: T.StreamingOutputBody;
   VersionLabel?: string;
 }
-export const GetLatestConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextPollConfigurationToken: S.optional(S.String).pipe(
-        T.HttpHeader("Next-Poll-Configuration-Token"),
-      ),
-      NextPollIntervalInSeconds: S.optional(S.Number).pipe(
-        T.HttpHeader("Next-Poll-Interval-In-Seconds"),
-      ),
-      ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-      Configuration: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-      VersionLabel: S.optional(S.String).pipe(T.HttpHeader("Version-Label")),
-    }),
-  ).annotate({
-    identifier: "GetLatestConfigurationResponse",
-  }) as any as S.Schema<GetLatestConfigurationResponse>;
+export const GetLatestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextPollConfigurationToken: S.optional(S.String).pipe(
+      T.HttpHeader("Next-Poll-Configuration-Token"),
+    ),
+    NextPollIntervalInSeconds: S.optional(S.Number).pipe(
+      T.HttpHeader("Next-Poll-Interval-In-Seconds"),
+    ),
+    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+    Configuration: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+    VersionLabel: S.optional(S.String).pipe(T.HttpHeader("Version-Label")),
+  }),
+).annotate({
+  identifier: "GetLatestConfigurationResponse",
+}) as any as S.Schema<GetLatestConfigurationResponse>;
+export type Identifier = string;
+export type OptionalPollSeconds = number;
+export interface StartConfigurationSessionRequest {
+  ApplicationIdentifier: string;
+  EnvironmentIdentifier: string;
+  ConfigurationProfileIdentifier: string;
+  RequiredMinimumPollIntervalInSeconds?: number;
+}
+export const StartConfigurationSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationIdentifier: S.String,
+    EnvironmentIdentifier: S.String,
+    ConfigurationProfileIdentifier: S.String,
+    RequiredMinimumPollIntervalInSeconds: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/configurationsessions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartConfigurationSessionRequest",
+}) as any as S.Schema<StartConfigurationSessionRequest>;
+export interface StartConfigurationSessionResponse {
+  InitialConfigurationToken?: string;
+}
+export const StartConfigurationSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
+).annotate({
+  identifier: "StartConfigurationSessionResponse",
+}) as any as S.Schema<StartConfigurationSessionResponse>;
+export type BadRequestReason = string;
+export type InvalidParameterProblem = string;
 export interface InvalidParameterDetail {
   Problem?: string;
 }
@@ -158,74 +221,12 @@ export type BadRequestDetails = {
 export const BadRequestDetails = /*@__PURE__*/ S.Union([
   S.Struct({ InvalidParameters: InvalidParameterMap }),
 ]);
+export type ResourceType = string;
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export interface StartConfigurationSessionRequest {
-  ApplicationIdentifier: string;
-  EnvironmentIdentifier: string;
-  ConfigurationProfileIdentifier: string;
-  RequiredMinimumPollIntervalInSeconds?: number;
-}
-export const StartConfigurationSessionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationIdentifier: S.String,
-      EnvironmentIdentifier: S.String,
-      ConfigurationProfileIdentifier: S.String,
-      RequiredMinimumPollIntervalInSeconds: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/configurationsessions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StartConfigurationSessionRequest",
-  }) as any as S.Schema<StartConfigurationSessionRequest>;
-export interface StartConfigurationSessionResponse {
-  InitialConfigurationToken?: string;
-}
-export const StartConfigurationSessionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InitialConfigurationToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "StartConfigurationSessionResponse",
-  }) as any as S.Schema<StartConfigurationSessionResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(S.String),
-    Details: S.optional(BadRequestDetails),
-  },
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ReferencedBy: S.optional(StringMap),
-  },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-
-//# Operations
 export type GetLatestConfigurationError =
   | BadRequestException
   | InternalServerException
@@ -263,8 +264,11 @@ export const getLatestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLatestConfiguration",
 }));
+
 export type StartConfigurationSessionError =
   | BadRequestException
   | InternalServerException
@@ -291,5 +295,7 @@ export const startConfigurationSession: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigurationSession",
 }));

@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "Forbidden": [{ "status": 403 }],
-    "FraudDetectionNotEntitled": [{ "code": 10400 }]
-  }
+  "description": "Align fraud#Update with distilled cloudflare/fraud putFraud",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.fraud#Update",
+      "path": "/shapes/com.cloudflare.fraud#PutFraud"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.fraud#UpdateRequest",
+      "path": "/shapes/com.cloudflare.fraud#PutFraudRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.fraud#PutFraud/input/target",
+      "value": "com.cloudflare.fraud#PutFraudRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.fraud#UpdateResponse",
+      "path": "/shapes/com.cloudflare.fraud#PutFraudResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.fraud#PutFraud/output/target",
+      "value": "com.cloudflare.fraud#PutFraudResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.fraud#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.fraud#FraudDetectionNotEntitled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10400
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.fraud#PutFraud/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.fraud#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.fraud#FraudDetectionNotEntitled"
+        }
+      ]
+    }
+  ]
 }

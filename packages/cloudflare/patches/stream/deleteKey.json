@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "SigningKeyNotFound": [{ "code": 10003 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align stream#KeysDelete with distilled cloudflare/stream deleteKey",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#KeysDelete",
+      "path": "/shapes/com.cloudflare.stream#DeleteKey"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#KeysDeleteRequest",
+      "path": "/shapes/com.cloudflare.stream#DeleteKeyRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#DeleteKey/input/target",
+      "value": "com.cloudflare.stream#DeleteKeyRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#KeysDeleteResponse",
+      "path": "/shapes/com.cloudflare.stream#DeleteKeyResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#DeleteKey/output/target",
+      "value": "com.cloudflare.stream#DeleteKeyResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#SigningKeyNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#DeleteKey/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.stream#SigningKeyNotFound"
+        },
+        {
+          "target": "com.cloudflare.stream#Forbidden"
+        }
+      ]
+    }
+  ]
 }

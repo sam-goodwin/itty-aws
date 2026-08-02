@@ -1,8 +1,91 @@
 {
-  "errors": {
-    "IndicatorFeedNotFound": [
-      { "status": 403, "message": { "includes": "does not exist" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align intel#IndicatorFeedsPermissionsCreate with distilled cloudflare/intel createIndicatorFeedPermission",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.intel#IndicatorFeedsPermissionsCreate",
+      "path": "/shapes/com.cloudflare.intel#CreateIndicatorFeedPermission"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.intel#IndicatorFeedsPermissionsCreateRequest",
+      "path": "/shapes/com.cloudflare.intel#CreateIndicatorFeedPermissionRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.intel#CreateIndicatorFeedPermission/input/target",
+      "value": "com.cloudflare.intel#CreateIndicatorFeedPermissionRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.intel#IndicatorFeedsPermissionsCreateResponse",
+      "path": "/shapes/com.cloudflare.intel#CreateIndicatorFeedPermissionResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.intel#CreateIndicatorFeedPermission/output/target",
+      "value": "com.cloudflare.intel#CreateIndicatorFeedPermissionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.intel#IndicatorFeedNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403,
+              "message": {
+                "includes": "does not exist"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.intel#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.intel#CreateIndicatorFeedPermission/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.intel#IndicatorFeedNotFound"
+        },
+        {
+          "target": "com.cloudflare.intel#Forbidden"
+        }
+      ]
+    }
+  ]
 }

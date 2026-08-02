@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,52 +85,103 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => AccessDeniedErrorCode).annotate({
+      identifier: "AccessDeniedErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AgentsAlreadyRunningAssessmentException extends S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
+  "AgentsAlreadyRunningAssessmentException",
+  {
+    message: S.String,
+    agents: S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
+      identifier: "AgentAlreadyRunningAssessmentList",
+    }),
+    agentsTruncated: S.Boolean,
+    canRetry: S.Boolean,
+  },
+) {}
+export class AssessmentRunInProgressException extends S.TaggedErrorClass<AssessmentRunInProgressException>()(
+  "AssessmentRunInProgressException",
+  {
+    message: S.String,
+    assessmentRunArns: S.suspend(() => AssessmentRunInProgressArnList).annotate(
+      { identifier: "AssessmentRunInProgressArnList" },
+    ),
+    assessmentRunArnsTruncated: S.Boolean,
+    canRetry: S.Boolean,
+  },
+) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { message: S.String, canRetry: S.Boolean },
+) {}
+export class InvalidCrossAccountRoleException extends S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
+  "InvalidCrossAccountRoleException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
+      identifier: "InvalidCrossAccountRoleErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => InvalidInputErrorCode).annotate({
+      identifier: "InvalidInputErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => LimitExceededErrorCode).annotate({
+      identifier: "LimitExceededErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
+  "NoSuchEntityException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => NoSuchEntityErrorCode).annotate({
+      identifier: "NoSuchEntityErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class PreviewGenerationInProgressException extends S.TaggedErrorClass<PreviewGenerationInProgressException>()(
+  "PreviewGenerationInProgressException",
+  { message: S.String },
+) {}
+export class ServiceTemporarilyUnavailableException extends S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
+  "ServiceTemporarilyUnavailableException",
+  { message: S.String, canRetry: S.Boolean },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
+  "UnsupportedFeatureException",
+  { message: S.String, canRetry: S.Boolean },
+) {}
 export type Arn = string;
+export type AddRemoveAttributesFindingArnList = string[];
+export const AddRemoveAttributesFindingArnList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export type AttributeKey = string;
 export type AttributeValue = string;
-export type ErrorMessage = string;
-export type AssessmentTargetName = string;
-export type AssessmentTemplateName = string;
-export type AssessmentRunDuration = number;
-export type UUID = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AssessmentRunName = string;
-export type Message = string;
-export type FindingCount = number;
-export type ArnCount = number;
-export type Text = string;
-export type ScopeValue = string;
-export type NumericVersion = number;
-export type ServiceName = string;
-export type AgentId = string;
-export type AutoScalingGroup = string;
-export type AmiId = string;
-export type Hostname = string;
-export type Ipv4Address = string;
-export type FindingId = string;
-export type NumericSeverity = number;
-export type IocConfidence = number;
-export type RulesPackageName = string;
-export type Version = string;
-export type ProviderName = string;
-export type Url = string;
-export type PaginationToken = string;
-export type ListMaxResults = number;
-export type MessageType = string;
-export type NamePattern = string;
-export type ListEventSubscriptionsMaxResults = number;
-export type RuleName = string;
-export type PreviewAgentsMaxResults = number;
-export type AgentVersion = string;
-export type OperatingSystem = string;
-export type KernelVersion = string;
-
-//# Schemas
-export type AddRemoveAttributesFindingArnList = string[];
-export const AddRemoveAttributesFindingArnList =
-  /*@__PURE__*/ S.Array(S.String);
 export interface Attribute {
   key: string;
   value?: string;
@@ -142,17 +195,16 @@ export interface AddAttributesToFindingsRequest {
   findingArns: string[];
   attributes: Attribute[];
 }
-export const AddAttributesToFindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findingArns: AddRemoveAttributesFindingArnList,
-      attributes: UserAttributeList,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "AddAttributesToFindingsRequest",
-  }) as any as S.Schema<AddAttributesToFindingsRequest>;
+export const AddAttributesToFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findingArns: AddRemoveAttributesFindingArnList,
+    attributes: UserAttributeList,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "AddAttributesToFindingsRequest",
+}) as any as S.Schema<AddAttributesToFindingsRequest>;
 export type FailedItemErrorCode =
   | "INVALID_ARN"
   | "DUPLICATE_ARN"
@@ -162,6 +214,7 @@ export type FailedItemErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const FailedItemErrorCode = /*@__PURE__*/ S.String;
+
 export interface FailedItemDetails {
   failureCode: FailedItemErrorCode;
   retryable: boolean;
@@ -179,131 +232,40 @@ export const FailedItems = /*@__PURE__*/ S.Record(
 export interface AddAttributesToFindingsResponse {
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const AddAttributesToFindingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ failedItems: FailedItems }),
-  ).annotate({
-    identifier: "AddAttributesToFindingsResponse",
-  }) as any as S.Schema<AddAttributesToFindingsResponse>;
-export type AccessDeniedErrorCode =
-  | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"
-  | "ACCESS_DENIED_TO_ASSESSMENT_TEMPLATE"
-  | "ACCESS_DENIED_TO_ASSESSMENT_RUN"
-  | "ACCESS_DENIED_TO_FINDING"
-  | "ACCESS_DENIED_TO_RESOURCE_GROUP"
-  | "ACCESS_DENIED_TO_RULES_PACKAGE"
-  | "ACCESS_DENIED_TO_SNS_TOPIC"
-  | "ACCESS_DENIED_TO_IAM_ROLE"
-  | (string & {});
-export const AccessDeniedErrorCode = /*@__PURE__*/ S.String;
-export type InvalidInputErrorCode =
-  | "INVALID_ASSESSMENT_TARGET_ARN"
-  | "INVALID_ASSESSMENT_TEMPLATE_ARN"
-  | "INVALID_ASSESSMENT_RUN_ARN"
-  | "INVALID_FINDING_ARN"
-  | "INVALID_RESOURCE_GROUP_ARN"
-  | "INVALID_RULES_PACKAGE_ARN"
-  | "INVALID_RESOURCE_ARN"
-  | "INVALID_SNS_TOPIC_ARN"
-  | "INVALID_IAM_ROLE_ARN"
-  | "INVALID_ASSESSMENT_TARGET_NAME"
-  | "INVALID_ASSESSMENT_TARGET_NAME_PATTERN"
-  | "INVALID_ASSESSMENT_TEMPLATE_NAME"
-  | "INVALID_ASSESSMENT_TEMPLATE_NAME_PATTERN"
-  | "INVALID_ASSESSMENT_TEMPLATE_DURATION"
-  | "INVALID_ASSESSMENT_TEMPLATE_DURATION_RANGE"
-  | "INVALID_ASSESSMENT_RUN_DURATION_RANGE"
-  | "INVALID_ASSESSMENT_RUN_START_TIME_RANGE"
-  | "INVALID_ASSESSMENT_RUN_COMPLETION_TIME_RANGE"
-  | "INVALID_ASSESSMENT_RUN_STATE_CHANGE_TIME_RANGE"
-  | "INVALID_ASSESSMENT_RUN_STATE"
-  | "INVALID_TAG"
-  | "INVALID_TAG_KEY"
-  | "INVALID_TAG_VALUE"
-  | "INVALID_RESOURCE_GROUP_TAG_KEY"
-  | "INVALID_RESOURCE_GROUP_TAG_VALUE"
-  | "INVALID_ATTRIBUTE"
-  | "INVALID_USER_ATTRIBUTE"
-  | "INVALID_USER_ATTRIBUTE_KEY"
-  | "INVALID_USER_ATTRIBUTE_VALUE"
-  | "INVALID_PAGINATION_TOKEN"
-  | "INVALID_MAX_RESULTS"
-  | "INVALID_AGENT_ID"
-  | "INVALID_AUTO_SCALING_GROUP"
-  | "INVALID_RULE_NAME"
-  | "INVALID_SEVERITY"
-  | "INVALID_LOCALE"
-  | "INVALID_EVENT"
-  | "ASSESSMENT_TARGET_NAME_ALREADY_TAKEN"
-  | "ASSESSMENT_TEMPLATE_NAME_ALREADY_TAKEN"
-  | "INVALID_NUMBER_OF_ASSESSMENT_TARGET_ARNS"
-  | "INVALID_NUMBER_OF_ASSESSMENT_TEMPLATE_ARNS"
-  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_ARNS"
-  | "INVALID_NUMBER_OF_FINDING_ARNS"
-  | "INVALID_NUMBER_OF_RESOURCE_GROUP_ARNS"
-  | "INVALID_NUMBER_OF_RULES_PACKAGE_ARNS"
-  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_STATES"
-  | "INVALID_NUMBER_OF_TAGS"
-  | "INVALID_NUMBER_OF_RESOURCE_GROUP_TAGS"
-  | "INVALID_NUMBER_OF_ATTRIBUTES"
-  | "INVALID_NUMBER_OF_USER_ATTRIBUTES"
-  | "INVALID_NUMBER_OF_AGENT_IDS"
-  | "INVALID_NUMBER_OF_AUTO_SCALING_GROUPS"
-  | "INVALID_NUMBER_OF_RULE_NAMES"
-  | "INVALID_NUMBER_OF_SEVERITIES"
-  | (string & {});
-export const InvalidInputErrorCode = /*@__PURE__*/ S.String;
-export type NoSuchEntityErrorCode =
-  | "ASSESSMENT_TARGET_DOES_NOT_EXIST"
-  | "ASSESSMENT_TEMPLATE_DOES_NOT_EXIST"
-  | "ASSESSMENT_RUN_DOES_NOT_EXIST"
-  | "FINDING_DOES_NOT_EXIST"
-  | "RESOURCE_GROUP_DOES_NOT_EXIST"
-  | "RULES_PACKAGE_DOES_NOT_EXIST"
-  | "SNS_TOPIC_DOES_NOT_EXIST"
-  | "IAM_ROLE_DOES_NOT_EXIST"
-  | (string & {});
-export const NoSuchEntityErrorCode = /*@__PURE__*/ S.String;
+export const AddAttributesToFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ failedItems: FailedItems }),
+).annotate({
+  identifier: "AddAttributesToFindingsResponse",
+}) as any as S.Schema<AddAttributesToFindingsResponse>;
+export type AssessmentTargetName = string;
 export interface CreateAssessmentTargetRequest {
   assessmentTargetName: string;
   resourceGroupArn?: string;
 }
-export const CreateAssessmentTargetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTargetName: S.String,
-      resourceGroupArn: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateAssessmentTargetRequest",
-  }) as any as S.Schema<CreateAssessmentTargetRequest>;
+export const CreateAssessmentTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTargetName: S.String,
+    resourceGroupArn: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateAssessmentTargetRequest",
+}) as any as S.Schema<CreateAssessmentTargetRequest>;
 export interface CreateAssessmentTargetResponse {
   assessmentTargetArn: string;
 }
-export const CreateAssessmentTargetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTargetArn: S.String }),
-  ).annotate({
-    identifier: "CreateAssessmentTargetResponse",
-  }) as any as S.Schema<CreateAssessmentTargetResponse>;
-export type InvalidCrossAccountRoleErrorCode =
-  | "ROLE_DOES_NOT_EXIST_OR_INVALID_TRUST_RELATIONSHIP"
-  | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY"
-  | (string & {});
-export const InvalidCrossAccountRoleErrorCode = /*@__PURE__*/ S.String;
-export type LimitExceededErrorCode =
-  | "ASSESSMENT_TARGET_LIMIT_EXCEEDED"
-  | "ASSESSMENT_TEMPLATE_LIMIT_EXCEEDED"
-  | "ASSESSMENT_RUN_LIMIT_EXCEEDED"
-  | "RESOURCE_GROUP_LIMIT_EXCEEDED"
-  | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED"
-  | (string & {});
-export const LimitExceededErrorCode = /*@__PURE__*/ S.String;
+export const CreateAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTargetArn: S.String }),
+).annotate({
+  identifier: "CreateAssessmentTargetResponse",
+}) as any as S.Schema<CreateAssessmentTargetResponse>;
+export type AssessmentTemplateName = string;
+export type AssessmentRunDuration = number;
 export type AssessmentTemplateRulesPackageArnList = string[];
-export const AssessmentTemplateRulesPackageArnList =
-  /*@__PURE__*/ S.Array(S.String);
+export const AssessmentTemplateRulesPackageArnList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface CreateAssessmentTemplateRequest {
   assessmentTargetArn: string;
   assessmentTemplateName: string;
@@ -311,47 +273,48 @@ export interface CreateAssessmentTemplateRequest {
   rulesPackageArns: string[];
   userAttributesForFindings?: Attribute[];
 }
-export const CreateAssessmentTemplateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTargetArn: S.String,
-      assessmentTemplateName: S.String,
-      durationInSeconds: S.Number,
-      rulesPackageArns: AssessmentTemplateRulesPackageArnList,
-      userAttributesForFindings: S.optional(UserAttributeList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateAssessmentTemplateRequest",
-  }) as any as S.Schema<CreateAssessmentTemplateRequest>;
+export const CreateAssessmentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTargetArn: S.String,
+    assessmentTemplateName: S.String,
+    durationInSeconds: S.Number,
+    rulesPackageArns: AssessmentTemplateRulesPackageArnList,
+    userAttributesForFindings: S.optional(UserAttributeList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateAssessmentTemplateRequest",
+}) as any as S.Schema<CreateAssessmentTemplateRequest>;
 export interface CreateAssessmentTemplateResponse {
   assessmentTemplateArn: string;
 }
-export const CreateAssessmentTemplateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTemplateArn: S.String }),
-  ).annotate({
-    identifier: "CreateAssessmentTemplateResponse",
-  }) as any as S.Schema<CreateAssessmentTemplateResponse>;
+export const CreateAssessmentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTemplateArn: S.String }),
+).annotate({
+  identifier: "CreateAssessmentTemplateResponse",
+}) as any as S.Schema<CreateAssessmentTemplateResponse>;
 export interface CreateExclusionsPreviewRequest {
   assessmentTemplateArn: string;
 }
-export const CreateExclusionsPreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTemplateArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateExclusionsPreviewRequest",
-  }) as any as S.Schema<CreateExclusionsPreviewRequest>;
+export const CreateExclusionsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTemplateArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateExclusionsPreviewRequest",
+}) as any as S.Schema<CreateExclusionsPreviewRequest>;
+export type UUID = string;
 export interface CreateExclusionsPreviewResponse {
   previewToken: string;
 }
-export const CreateExclusionsPreviewResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ previewToken: S.String })).annotate({
-    identifier: "CreateExclusionsPreviewResponse",
-  }) as any as S.Schema<CreateExclusionsPreviewResponse>;
+export const CreateExclusionsPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ previewToken: S.String }),
+).annotate({
+  identifier: "CreateExclusionsPreviewResponse",
+}) as any as S.Schema<CreateExclusionsPreviewResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface ResourceGroupTag {
   key: string;
   value?: string;
@@ -376,12 +339,11 @@ export const CreateResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateResourceGroupResponse {
   resourceGroupArn: string;
 }
-export const CreateResourceGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceGroupArn: S.String }),
-  ).annotate({
-    identifier: "CreateResourceGroupResponse",
-  }) as any as S.Schema<CreateResourceGroupResponse>;
+export const CreateResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceGroupArn: S.String }),
+).annotate({
+  identifier: "CreateResourceGroupResponse",
+}) as any as S.Schema<CreateResourceGroupResponse>;
 export interface DeleteAssessmentRunRequest {
   assessmentRunArn: string;
 }
@@ -393,57 +355,56 @@ export const DeleteAssessmentRunRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAssessmentRunRequest",
 }) as any as S.Schema<DeleteAssessmentRunRequest>;
 export interface DeleteAssessmentRunResponse {}
-export const DeleteAssessmentRunResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteAssessmentRunResponse",
-  }) as any as S.Schema<DeleteAssessmentRunResponse>;
-export type AssessmentRunInProgressArnList = string[];
-export const AssessmentRunInProgressArnList = /*@__PURE__*/ S.Array(S.String);
+export const DeleteAssessmentRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAssessmentRunResponse",
+}) as any as S.Schema<DeleteAssessmentRunResponse>;
 export interface DeleteAssessmentTargetRequest {
   assessmentTargetArn: string;
 }
-export const DeleteAssessmentTargetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTargetArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteAssessmentTargetRequest",
-  }) as any as S.Schema<DeleteAssessmentTargetRequest>;
+export const DeleteAssessmentTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTargetArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteAssessmentTargetRequest",
+}) as any as S.Schema<DeleteAssessmentTargetRequest>;
 export interface DeleteAssessmentTargetResponse {}
-export const DeleteAssessmentTargetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteAssessmentTargetResponse",
-  }) as any as S.Schema<DeleteAssessmentTargetResponse>;
+export const DeleteAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAssessmentTargetResponse",
+}) as any as S.Schema<DeleteAssessmentTargetResponse>;
 export interface DeleteAssessmentTemplateRequest {
   assessmentTemplateArn: string;
 }
-export const DeleteAssessmentTemplateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTemplateArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteAssessmentTemplateRequest",
-  }) as any as S.Schema<DeleteAssessmentTemplateRequest>;
+export const DeleteAssessmentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTemplateArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteAssessmentTemplateRequest",
+}) as any as S.Schema<DeleteAssessmentTemplateRequest>;
 export interface DeleteAssessmentTemplateResponse {}
-export const DeleteAssessmentTemplateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteAssessmentTemplateResponse",
-  }) as any as S.Schema<DeleteAssessmentTemplateResponse>;
+export const DeleteAssessmentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAssessmentTemplateResponse",
+}) as any as S.Schema<DeleteAssessmentTemplateResponse>;
 export type BatchDescribeArnList = string[];
 export const BatchDescribeArnList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeAssessmentRunsRequest {
   assessmentRunArns: string[];
 }
-export const DescribeAssessmentRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentRunArns: BatchDescribeArnList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeAssessmentRunsRequest",
-  }) as any as S.Schema<DescribeAssessmentRunsRequest>;
+export const DescribeAssessmentRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentRunArns: BatchDescribeArnList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeAssessmentRunsRequest",
+}) as any as S.Schema<DescribeAssessmentRunsRequest>;
+export type AssessmentRunName = string;
 export type AssessmentRunState =
   | "CREATED"
   | "START_DATA_COLLECTION_PENDING"
@@ -460,6 +421,7 @@ export type AssessmentRunState =
   | "CANCELED"
   | (string & {});
 export const AssessmentRunState = /*@__PURE__*/ S.String;
+
 export type AssessmentRulesPackageArnList = string[];
 export const AssessmentRulesPackageArnList = /*@__PURE__*/ S.Array(S.String);
 export interface AssessmentRunStateChange {
@@ -486,6 +448,8 @@ export type InspectorEvent =
   | "OTHER"
   | (string & {});
 export const InspectorEvent = /*@__PURE__*/ S.String;
+
+export type Message = string;
 export type AssessmentRunNotificationSnsStatusCode =
   | "SUCCESS"
   | "TOPIC_DOES_NOT_EXIST"
@@ -493,6 +457,7 @@ export type AssessmentRunNotificationSnsStatusCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const AssessmentRunNotificationSnsStatusCode = /*@__PURE__*/ S.String;
+
 export interface AssessmentRunNotification {
   date: Date;
   event: InspectorEvent;
@@ -514,8 +479,9 @@ export const AssessmentRunNotification = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssessmentRunNotification",
 }) as any as S.Schema<AssessmentRunNotification>;
 export type AssessmentRunNotificationList = AssessmentRunNotification[];
-export const AssessmentRunNotificationList =
-  /*@__PURE__*/ S.Array(AssessmentRunNotification);
+export const AssessmentRunNotificationList = /*@__PURE__*/ S.Array(
+  AssessmentRunNotification,
+);
 export type Severity =
   | "Low"
   | "Medium"
@@ -524,6 +490,8 @@ export type Severity =
   | "Undefined"
   | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
+export type FindingCount = number;
 export type AssessmentRunFindingCounts = { [key in Severity]?: number };
 export const AssessmentRunFindingCounts = /*@__PURE__*/ S.Record(
   Severity,
@@ -571,23 +539,21 @@ export interface DescribeAssessmentRunsResponse {
   assessmentRuns: AssessmentRun[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const DescribeAssessmentRunsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentRuns: AssessmentRunList, failedItems: FailedItems }),
-  ).annotate({
-    identifier: "DescribeAssessmentRunsResponse",
-  }) as any as S.Schema<DescribeAssessmentRunsResponse>;
+export const DescribeAssessmentRunsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentRuns: AssessmentRunList, failedItems: FailedItems }),
+).annotate({
+  identifier: "DescribeAssessmentRunsResponse",
+}) as any as S.Schema<DescribeAssessmentRunsResponse>;
 export interface DescribeAssessmentTargetsRequest {
   assessmentTargetArns: string[];
 }
-export const DescribeAssessmentTargetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTargetArns: BatchDescribeArnList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeAssessmentTargetsRequest",
-  }) as any as S.Schema<DescribeAssessmentTargetsRequest>;
+export const DescribeAssessmentTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTargetArns: BatchDescribeArnList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeAssessmentTargetsRequest",
+}) as any as S.Schema<DescribeAssessmentTargetsRequest>;
 export interface AssessmentTarget {
   arn: string;
   name: string;
@@ -612,26 +578,25 @@ export interface DescribeAssessmentTargetsResponse {
   assessmentTargets: AssessmentTarget[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const DescribeAssessmentTargetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTargets: AssessmentTargetList,
-      failedItems: FailedItems,
-    }),
-  ).annotate({
-    identifier: "DescribeAssessmentTargetsResponse",
-  }) as any as S.Schema<DescribeAssessmentTargetsResponse>;
+export const DescribeAssessmentTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTargets: AssessmentTargetList,
+    failedItems: FailedItems,
+  }),
+).annotate({
+  identifier: "DescribeAssessmentTargetsResponse",
+}) as any as S.Schema<DescribeAssessmentTargetsResponse>;
 export interface DescribeAssessmentTemplatesRequest {
   assessmentTemplateArns: string[];
 }
-export const DescribeAssessmentTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentTemplateArns: BatchDescribeArnList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeAssessmentTemplatesRequest",
-  }) as any as S.Schema<DescribeAssessmentTemplatesRequest>;
+export const DescribeAssessmentTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentTemplateArns: BatchDescribeArnList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeAssessmentTemplatesRequest",
+}) as any as S.Schema<DescribeAssessmentTemplatesRequest>;
+export type ArnCount = number;
 export interface AssessmentTemplate {
   arn: string;
   name: string;
@@ -664,43 +629,43 @@ export interface DescribeAssessmentTemplatesResponse {
   assessmentTemplates: AssessmentTemplate[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const DescribeAssessmentTemplatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTemplates: AssessmentTemplateList,
-      failedItems: FailedItems,
-    }),
-  ).annotate({
-    identifier: "DescribeAssessmentTemplatesResponse",
-  }) as any as S.Schema<DescribeAssessmentTemplatesResponse>;
+export const DescribeAssessmentTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTemplates: AssessmentTemplateList,
+    failedItems: FailedItems,
+  }),
+).annotate({
+  identifier: "DescribeAssessmentTemplatesResponse",
+}) as any as S.Schema<DescribeAssessmentTemplatesResponse>;
 export interface DescribeCrossAccountAccessRoleRequest {}
-export const DescribeCrossAccountAccessRoleRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeCrossAccountAccessRoleRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DescribeCrossAccountAccessRoleRequest",
-  }) as any as S.Schema<DescribeCrossAccountAccessRoleRequest>;
+).annotate({
+  identifier: "DescribeCrossAccountAccessRoleRequest",
+}) as any as S.Schema<DescribeCrossAccountAccessRoleRequest>;
 export interface DescribeCrossAccountAccessRoleResponse {
   roleArn: string;
   valid: boolean;
   registeredAt: Date;
 }
-export const DescribeCrossAccountAccessRoleResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeCrossAccountAccessRoleResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       roleArn: S.String,
       valid: S.Boolean,
       registeredAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }),
-  ).annotate({
-    identifier: "DescribeCrossAccountAccessRoleResponse",
-  }) as any as S.Schema<DescribeCrossAccountAccessRoleResponse>;
+).annotate({
+  identifier: "DescribeCrossAccountAccessRoleResponse",
+}) as any as S.Schema<DescribeCrossAccountAccessRoleResponse>;
 export type BatchDescribeExclusionsArnList = string[];
 export const BatchDescribeExclusionsArnList = /*@__PURE__*/ S.Array(S.String);
 export type Locale = "EN_US" | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
+
 export interface DescribeExclusionsRequest {
   exclusionArns: string[];
   locale?: Locale;
@@ -715,8 +680,11 @@ export const DescribeExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExclusionsRequest",
 }) as any as S.Schema<DescribeExclusionsRequest>;
+export type Text = string;
 export type ScopeType = "INSTANCE_ID" | "RULES_PACKAGE_ARN" | (string & {});
 export const ScopeType = /*@__PURE__*/ S.String;
+
+export type ScopeValue = string;
 export interface Scope {
   key?: ScopeType;
   value?: string;
@@ -774,6 +742,8 @@ export const DescribeFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFindingsRequest",
 }) as any as S.Schema<DescribeFindingsRequest>;
+export type NumericVersion = number;
+export type ServiceName = string;
 export interface InspectorServiceAttributes {
   schemaVersion: number;
   assessmentRunArn?: string;
@@ -790,6 +760,12 @@ export const InspectorServiceAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InspectorServiceAttributes>;
 export type AssetType = "ec2-instance" | (string & {});
 export const AssetType = /*@__PURE__*/ S.String;
+
+export type AgentId = string;
+export type AutoScalingGroup = string;
+export type AmiId = string;
+export type Hostname = string;
+export type Ipv4Address = string;
 export type Ipv4AddressList = string[];
 export const Ipv4AddressList = /*@__PURE__*/ S.Array(S.String);
 export interface Tag {
@@ -878,6 +854,9 @@ export const AssetAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssetAttributes",
 }) as any as S.Schema<AssetAttributes>;
+export type FindingId = string;
+export type NumericSeverity = number;
+export type IocConfidence = number;
 export interface Finding {
   arn: string;
   schemaVersion?: number;
@@ -934,14 +913,13 @@ export const DescribeFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeResourceGroupsRequest {
   resourceGroupArns: string[];
 }
-export const DescribeResourceGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceGroupArns: BatchDescribeArnList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeResourceGroupsRequest",
-  }) as any as S.Schema<DescribeResourceGroupsRequest>;
+export const DescribeResourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceGroupArns: BatchDescribeArnList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeResourceGroupsRequest",
+}) as any as S.Schema<DescribeResourceGroupsRequest>;
 export interface ResourceGroup {
   arn: string;
   tags: ResourceGroupTag[];
@@ -960,27 +938,28 @@ export interface DescribeResourceGroupsResponse {
   resourceGroups: ResourceGroup[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const DescribeResourceGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceGroups: ResourceGroupList, failedItems: FailedItems }),
-  ).annotate({
-    identifier: "DescribeResourceGroupsResponse",
-  }) as any as S.Schema<DescribeResourceGroupsResponse>;
+export const DescribeResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceGroups: ResourceGroupList, failedItems: FailedItems }),
+).annotate({
+  identifier: "DescribeResourceGroupsResponse",
+}) as any as S.Schema<DescribeResourceGroupsResponse>;
 export interface DescribeRulesPackagesRequest {
   rulesPackageArns: string[];
   locale?: Locale;
 }
-export const DescribeRulesPackagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rulesPackageArns: BatchDescribeArnList,
-      locale: S.optional(Locale),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeRulesPackagesRequest",
-  }) as any as S.Schema<DescribeRulesPackagesRequest>;
+export const DescribeRulesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rulesPackageArns: BatchDescribeArnList,
+    locale: S.optional(Locale),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeRulesPackagesRequest",
+}) as any as S.Schema<DescribeRulesPackagesRequest>;
+export type RulesPackageName = string;
+export type Version = string;
+export type ProviderName = string;
 export interface RulesPackage {
   arn: string;
   name: string;
@@ -1003,16 +982,17 @@ export interface DescribeRulesPackagesResponse {
   rulesPackages: RulesPackage[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const DescribeRulesPackagesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ rulesPackages: RulesPackageList, failedItems: FailedItems }),
-  ).annotate({
-    identifier: "DescribeRulesPackagesResponse",
-  }) as any as S.Schema<DescribeRulesPackagesResponse>;
+export const DescribeRulesPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rulesPackages: RulesPackageList, failedItems: FailedItems }),
+).annotate({
+  identifier: "DescribeRulesPackagesResponse",
+}) as any as S.Schema<DescribeRulesPackagesResponse>;
 export type ReportFileFormat = "HTML" | "PDF" | (string & {});
 export const ReportFileFormat = /*@__PURE__*/ S.String;
+
 export type ReportType = "FINDING" | "FULL" | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
+
 export interface GetAssessmentReportRequest {
   assessmentRunArn: string;
   reportFileFormat: ReportFileFormat;
@@ -1035,16 +1015,19 @@ export type ReportStatus =
   | "COMPLETED"
   | (string & {});
 export const ReportStatus = /*@__PURE__*/ S.String;
+
+export type Url = string;
 export interface GetAssessmentReportResponse {
   status: ReportStatus;
   url?: string;
 }
-export const GetAssessmentReportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ status: ReportStatus, url: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetAssessmentReportResponse",
-  }) as any as S.Schema<GetAssessmentReportResponse>;
+export const GetAssessmentReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: ReportStatus, url: S.optional(S.String) }),
+).annotate({
+  identifier: "GetAssessmentReportResponse",
+}) as any as S.Schema<GetAssessmentReportResponse>;
+export type PaginationToken = string;
+export type ListMaxResults = number;
 export interface GetExclusionsPreviewRequest {
   assessmentTemplateArn: string;
   previewToken: string;
@@ -1052,22 +1035,22 @@ export interface GetExclusionsPreviewRequest {
   maxResults?: number;
   locale?: Locale;
 }
-export const GetExclusionsPreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTemplateArn: S.String,
-      previewToken: S.String,
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-      locale: S.optional(Locale),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetExclusionsPreviewRequest",
-  }) as any as S.Schema<GetExclusionsPreviewRequest>;
+export const GetExclusionsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTemplateArn: S.String,
+    previewToken: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+    locale: S.optional(Locale),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetExclusionsPreviewRequest",
+}) as any as S.Schema<GetExclusionsPreviewRequest>;
 export type PreviewStatus = "WORK_IN_PROGRESS" | "COMPLETED" | (string & {});
 export const PreviewStatus = /*@__PURE__*/ S.String;
+
 export interface ExclusionPreview {
   title: string;
   description: string;
@@ -1093,27 +1076,26 @@ export interface GetExclusionsPreviewResponse {
   exclusionPreviews?: ExclusionPreview[];
   nextToken?: string;
 }
-export const GetExclusionsPreviewResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      previewStatus: PreviewStatus,
-      exclusionPreviews: S.optional(ExclusionPreviewList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetExclusionsPreviewResponse",
-  }) as any as S.Schema<GetExclusionsPreviewResponse>;
+export const GetExclusionsPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    previewStatus: PreviewStatus,
+    exclusionPreviews: S.optional(ExclusionPreviewList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetExclusionsPreviewResponse",
+}) as any as S.Schema<GetExclusionsPreviewResponse>;
 export interface GetTelemetryMetadataRequest {
   assessmentRunArn: string;
 }
-export const GetTelemetryMetadataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assessmentRunArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetTelemetryMetadataRequest",
-  }) as any as S.Schema<GetTelemetryMetadataRequest>;
+export const GetTelemetryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ assessmentRunArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetTelemetryMetadataRequest",
+}) as any as S.Schema<GetTelemetryMetadataRequest>;
+export type MessageType = string;
 export interface TelemetryMetadata {
   messageType: string;
   count: number;
@@ -1133,14 +1115,14 @@ export const TelemetryMetadataList = /*@__PURE__*/ S.Array(TelemetryMetadata);
 export interface GetTelemetryMetadataResponse {
   telemetryMetadata: TelemetryMetadata[];
 }
-export const GetTelemetryMetadataResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ telemetryMetadata: TelemetryMetadataList }),
-  ).annotate({
-    identifier: "GetTelemetryMetadataResponse",
-  }) as any as S.Schema<GetTelemetryMetadataResponse>;
+export const GetTelemetryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ telemetryMetadata: TelemetryMetadataList }),
+).annotate({
+  identifier: "GetTelemetryMetadataResponse",
+}) as any as S.Schema<GetTelemetryMetadataResponse>;
 export type AgentHealth = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
 export const AgentHealth = /*@__PURE__*/ S.String;
+
 export type AgentHealthList = AgentHealth[];
 export const AgentHealthList = /*@__PURE__*/ S.Array(AgentHealth);
 export type AgentHealthCode =
@@ -1152,6 +1134,7 @@ export type AgentHealthCode =
   | "UNKNOWN"
   | (string & {});
 export const AgentHealthCode = /*@__PURE__*/ S.String;
+
 export type AgentHealthCodeList = AgentHealthCode[];
 export const AgentHealthCodeList = /*@__PURE__*/ S.Array(AgentHealthCode);
 export interface AgentFilter {
@@ -1170,19 +1153,18 @@ export interface ListAssessmentRunAgentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAssessmentRunAgentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentRunArn: S.String,
-      filter: S.optional(AgentFilter),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListAssessmentRunAgentsRequest",
-  }) as any as S.Schema<ListAssessmentRunAgentsRequest>;
+export const ListAssessmentRunAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentRunArn: S.String,
+    filter: S.optional(AgentFilter),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListAssessmentRunAgentsRequest",
+}) as any as S.Schema<ListAssessmentRunAgentsRequest>;
 export interface AssessmentRunAgent {
   agentId: string;
   assessmentRunArn: string;
@@ -1211,17 +1193,17 @@ export interface ListAssessmentRunAgentsResponse {
   assessmentRunAgents: AssessmentRunAgent[];
   nextToken?: string;
 }
-export const ListAssessmentRunAgentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentRunAgents: AssessmentRunAgentList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAssessmentRunAgentsResponse",
-  }) as any as S.Schema<ListAssessmentRunAgentsResponse>;
+export const ListAssessmentRunAgentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentRunAgents: AssessmentRunAgentList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAssessmentRunAgentsResponse",
+}) as any as S.Schema<ListAssessmentRunAgentsResponse>;
 export type ListParentArnList = string[];
 export const ListParentArnList = /*@__PURE__*/ S.Array(S.String);
+export type NamePattern = string;
 export type AssessmentRunStateList = AssessmentRunState[];
 export const AssessmentRunStateList = /*@__PURE__*/ S.Array(AssessmentRunState);
 export interface DurationRange {
@@ -1313,31 +1295,29 @@ export interface ListAssessmentTargetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAssessmentTargetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(AssessmentTargetFilter),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListAssessmentTargetsRequest",
-  }) as any as S.Schema<ListAssessmentTargetsRequest>;
+export const ListAssessmentTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(AssessmentTargetFilter),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListAssessmentTargetsRequest",
+}) as any as S.Schema<ListAssessmentTargetsRequest>;
 export interface ListAssessmentTargetsResponse {
   assessmentTargetArns: string[];
   nextToken?: string;
 }
-export const ListAssessmentTargetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTargetArns: ListReturnedArnList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAssessmentTargetsResponse",
-  }) as any as S.Schema<ListAssessmentTargetsResponse>;
+export const ListAssessmentTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTargetArns: ListReturnedArnList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAssessmentTargetsResponse",
+}) as any as S.Schema<ListAssessmentTargetsResponse>;
 export interface AssessmentTemplateFilter {
   namePattern?: string;
   durationRange?: DurationRange;
@@ -1358,49 +1338,47 @@ export interface ListAssessmentTemplatesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAssessmentTemplatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTargetArns: S.optional(ListParentArnList),
-      filter: S.optional(AssessmentTemplateFilter),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListAssessmentTemplatesRequest",
-  }) as any as S.Schema<ListAssessmentTemplatesRequest>;
+export const ListAssessmentTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTargetArns: S.optional(ListParentArnList),
+    filter: S.optional(AssessmentTemplateFilter),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListAssessmentTemplatesRequest",
+}) as any as S.Schema<ListAssessmentTemplatesRequest>;
 export interface ListAssessmentTemplatesResponse {
   assessmentTemplateArns: string[];
   nextToken?: string;
 }
-export const ListAssessmentTemplatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTemplateArns: ListReturnedArnList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAssessmentTemplatesResponse",
-  }) as any as S.Schema<ListAssessmentTemplatesResponse>;
+export const ListAssessmentTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTemplateArns: ListReturnedArnList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAssessmentTemplatesResponse",
+}) as any as S.Schema<ListAssessmentTemplatesResponse>;
+export type ListEventSubscriptionsMaxResults = number;
 export interface ListEventSubscriptionsRequest {
   resourceArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEventSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.optional(S.String),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListEventSubscriptionsRequest",
-  }) as any as S.Schema<ListEventSubscriptionsRequest>;
+export const ListEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.optional(S.String),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListEventSubscriptionsRequest",
+}) as any as S.Schema<ListEventSubscriptionsRequest>;
 export interface EventSubscription {
   event: InspectorEvent;
   subscribedAt: Date;
@@ -1433,15 +1411,14 @@ export interface ListEventSubscriptionsResponse {
   subscriptions: Subscription[];
   nextToken?: string;
 }
-export const ListEventSubscriptionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptions: SubscriptionList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEventSubscriptionsResponse",
-  }) as any as S.Schema<ListEventSubscriptionsResponse>;
+export const ListEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptions: SubscriptionList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEventSubscriptionsResponse",
+}) as any as S.Schema<ListEventSubscriptionsResponse>;
 export interface ListExclusionsRequest {
   assessmentRunArn: string;
   nextToken?: string;
@@ -1474,6 +1451,7 @@ export type AgentIdList = string[];
 export const AgentIdList = /*@__PURE__*/ S.Array(S.String);
 export type AutoScalingGroupList = string[];
 export const AutoScalingGroupList = /*@__PURE__*/ S.Array(S.String);
+export type RuleName = string;
 export type RuleNameList = string[];
 export const RuleNameList = /*@__PURE__*/ S.Array(S.String);
 export type SeverityList = Severity[];
@@ -1571,10 +1549,12 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceResponse {
   tags: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: TagList })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: TagList }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export type PreviewAgentsMaxResults = number;
 export interface PreviewAgentsRequest {
   previewAgentsArn: string;
   nextToken?: string;
@@ -1591,6 +1571,9 @@ export const PreviewAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PreviewAgentsRequest",
 }) as any as S.Schema<PreviewAgentsRequest>;
+export type AgentVersion = string;
+export type OperatingSystem = string;
+export type KernelVersion = string;
 export interface AgentPreview {
   hostname?: string;
   agentId: string;
@@ -1630,45 +1613,44 @@ export const PreviewAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterCrossAccountAccessRoleRequest {
   roleArn: string;
 }
-export const RegisterCrossAccountAccessRoleRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const RegisterCrossAccountAccessRoleRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ roleArn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "RegisterCrossAccountAccessRoleRequest",
-  }) as any as S.Schema<RegisterCrossAccountAccessRoleRequest>;
+).annotate({
+  identifier: "RegisterCrossAccountAccessRoleRequest",
+}) as any as S.Schema<RegisterCrossAccountAccessRoleRequest>;
 export interface RegisterCrossAccountAccessRoleResponse {}
-export const RegisterCrossAccountAccessRoleResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RegisterCrossAccountAccessRoleResponse",
-  }) as any as S.Schema<RegisterCrossAccountAccessRoleResponse>;
+export const RegisterCrossAccountAccessRoleResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RegisterCrossAccountAccessRoleResponse",
+}) as any as S.Schema<RegisterCrossAccountAccessRoleResponse>;
 export type UserAttributeKeyList = string[];
 export const UserAttributeKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface RemoveAttributesFromFindingsRequest {
   findingArns: string[];
   attributeKeys: string[];
 }
-export const RemoveAttributesFromFindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findingArns: AddRemoveAttributesFindingArnList,
-      attributeKeys: UserAttributeKeyList,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "RemoveAttributesFromFindingsRequest",
-  }) as any as S.Schema<RemoveAttributesFromFindingsRequest>;
+export const RemoveAttributesFromFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findingArns: AddRemoveAttributesFindingArnList,
+    attributeKeys: UserAttributeKeyList,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "RemoveAttributesFromFindingsRequest",
+}) as any as S.Schema<RemoveAttributesFromFindingsRequest>;
 export interface RemoveAttributesFromFindingsResponse {
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-export const RemoveAttributesFromFindingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ failedItems: FailedItems }),
-  ).annotate({
-    identifier: "RemoveAttributesFromFindingsResponse",
-  }) as any as S.Schema<RemoveAttributesFromFindingsResponse>;
+export const RemoveAttributesFromFindingsResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ failedItems: FailedItems }),
+).annotate({
+  identifier: "RemoveAttributesFromFindingsResponse",
+}) as any as S.Schema<RemoveAttributesFromFindingsResponse>;
 export interface SetTagsForResourceRequest {
   resourceArn: string;
   tags?: Tag[];
@@ -1708,21 +1690,9 @@ export const StartAssessmentRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartAssessmentRunResponse",
 }) as any as S.Schema<StartAssessmentRunResponse>;
-export interface AgentAlreadyRunningAssessment {
-  agentId: string;
-  assessmentRunArn: string;
-}
-export const AgentAlreadyRunningAssessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ agentId: S.String, assessmentRunArn: S.String }),
-  ).annotate({
-    identifier: "AgentAlreadyRunningAssessment",
-  }) as any as S.Schema<AgentAlreadyRunningAssessment>;
-export type AgentAlreadyRunningAssessmentList = AgentAlreadyRunningAssessment[];
-export const AgentAlreadyRunningAssessmentList =
-  /*@__PURE__*/ S.Array(AgentAlreadyRunningAssessment);
 export type StopAction = "START_EVALUATION" | "SKIP_EVALUATION" | (string & {});
 export const StopAction = /*@__PURE__*/ S.String;
+
 export interface StopAssessmentRunRequest {
   assessmentRunArn: string;
   stopAction?: StopAction;
@@ -1770,107 +1740,158 @@ export interface UnsubscribeFromEventRequest {
   event: InspectorEvent;
   topicArn: string;
 }
-export const UnsubscribeFromEventRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.String,
-      event: InspectorEvent,
-      topicArn: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UnsubscribeFromEventRequest",
-  }) as any as S.Schema<UnsubscribeFromEventRequest>;
+export const UnsubscribeFromEventRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String,
+    event: InspectorEvent,
+    topicArn: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UnsubscribeFromEventRequest",
+}) as any as S.Schema<UnsubscribeFromEventRequest>;
 export interface UnsubscribeFromEventResponse {}
-export const UnsubscribeFromEventResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UnsubscribeFromEventResponse",
-  }) as any as S.Schema<UnsubscribeFromEventResponse>;
+export const UnsubscribeFromEventResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UnsubscribeFromEventResponse",
+}) as any as S.Schema<UnsubscribeFromEventResponse>;
 export interface UpdateAssessmentTargetRequest {
   assessmentTargetArn: string;
   assessmentTargetName: string;
   resourceGroupArn?: string;
 }
-export const UpdateAssessmentTargetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentTargetArn: S.String,
-      assessmentTargetName: S.String,
-      resourceGroupArn: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateAssessmentTargetRequest",
-  }) as any as S.Schema<UpdateAssessmentTargetRequest>;
+export const UpdateAssessmentTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentTargetArn: S.String,
+    assessmentTargetName: S.String,
+    resourceGroupArn: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateAssessmentTargetRequest",
+}) as any as S.Schema<UpdateAssessmentTargetRequest>;
 export interface UpdateAssessmentTargetResponse {}
-export const UpdateAssessmentTargetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateAssessmentTargetResponse",
-  }) as any as S.Schema<UpdateAssessmentTargetResponse>;
+export const UpdateAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateAssessmentTargetResponse",
+}) as any as S.Schema<UpdateAssessmentTargetResponse>;
+export type ErrorMessage = string;
+export type AccessDeniedErrorCode =
+  | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"
+  | "ACCESS_DENIED_TO_ASSESSMENT_TEMPLATE"
+  | "ACCESS_DENIED_TO_ASSESSMENT_RUN"
+  | "ACCESS_DENIED_TO_FINDING"
+  | "ACCESS_DENIED_TO_RESOURCE_GROUP"
+  | "ACCESS_DENIED_TO_RULES_PACKAGE"
+  | "ACCESS_DENIED_TO_SNS_TOPIC"
+  | "ACCESS_DENIED_TO_IAM_ROLE"
+  | (string & {});
+export const AccessDeniedErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String, errorCode: AccessDeniedErrorCode, canRetry: S.Boolean },
-).pipe(C.withAuthError) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.String, canRetry: S.Boolean },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.String, errorCode: InvalidInputErrorCode, canRetry: S.Boolean },
-) {}
-export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
-  "NoSuchEntityException",
-  { message: S.String, errorCode: NoSuchEntityErrorCode, canRetry: S.Boolean },
-) {}
-export class ServiceTemporarilyUnavailableException extends S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
-  "ServiceTemporarilyUnavailableException",
-  { message: S.String, canRetry: S.Boolean },
-).pipe(C.withServerError) {}
-export class InvalidCrossAccountRoleException extends S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
-  "InvalidCrossAccountRoleException",
-  {
-    message: S.String,
-    errorCode: InvalidCrossAccountRoleErrorCode,
-    canRetry: S.Boolean,
-  },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.String, errorCode: LimitExceededErrorCode, canRetry: S.Boolean },
-) {}
-export class PreviewGenerationInProgressException extends S.TaggedErrorClass<PreviewGenerationInProgressException>()(
-  "PreviewGenerationInProgressException",
-  { message: S.String },
-) {}
-export class AssessmentRunInProgressException extends S.TaggedErrorClass<AssessmentRunInProgressException>()(
-  "AssessmentRunInProgressException",
-  {
-    message: S.String,
-    assessmentRunArns: AssessmentRunInProgressArnList,
-    assessmentRunArnsTruncated: S.Boolean,
-    canRetry: S.Boolean,
-  },
-) {}
-export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
-  "UnsupportedFeatureException",
-  { message: S.String, canRetry: S.Boolean },
-) {}
-export class AgentsAlreadyRunningAssessmentException extends S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
-  "AgentsAlreadyRunningAssessmentException",
-  {
-    message: S.String,
-    agents: AgentAlreadyRunningAssessmentList,
-    agentsTruncated: S.Boolean,
-    canRetry: S.Boolean,
-  },
-) {}
+export type InvalidInputErrorCode =
+  | "INVALID_ASSESSMENT_TARGET_ARN"
+  | "INVALID_ASSESSMENT_TEMPLATE_ARN"
+  | "INVALID_ASSESSMENT_RUN_ARN"
+  | "INVALID_FINDING_ARN"
+  | "INVALID_RESOURCE_GROUP_ARN"
+  | "INVALID_RULES_PACKAGE_ARN"
+  | "INVALID_RESOURCE_ARN"
+  | "INVALID_SNS_TOPIC_ARN"
+  | "INVALID_IAM_ROLE_ARN"
+  | "INVALID_ASSESSMENT_TARGET_NAME"
+  | "INVALID_ASSESSMENT_TARGET_NAME_PATTERN"
+  | "INVALID_ASSESSMENT_TEMPLATE_NAME"
+  | "INVALID_ASSESSMENT_TEMPLATE_NAME_PATTERN"
+  | "INVALID_ASSESSMENT_TEMPLATE_DURATION"
+  | "INVALID_ASSESSMENT_TEMPLATE_DURATION_RANGE"
+  | "INVALID_ASSESSMENT_RUN_DURATION_RANGE"
+  | "INVALID_ASSESSMENT_RUN_START_TIME_RANGE"
+  | "INVALID_ASSESSMENT_RUN_COMPLETION_TIME_RANGE"
+  | "INVALID_ASSESSMENT_RUN_STATE_CHANGE_TIME_RANGE"
+  | "INVALID_ASSESSMENT_RUN_STATE"
+  | "INVALID_TAG"
+  | "INVALID_TAG_KEY"
+  | "INVALID_TAG_VALUE"
+  | "INVALID_RESOURCE_GROUP_TAG_KEY"
+  | "INVALID_RESOURCE_GROUP_TAG_VALUE"
+  | "INVALID_ATTRIBUTE"
+  | "INVALID_USER_ATTRIBUTE"
+  | "INVALID_USER_ATTRIBUTE_KEY"
+  | "INVALID_USER_ATTRIBUTE_VALUE"
+  | "INVALID_PAGINATION_TOKEN"
+  | "INVALID_MAX_RESULTS"
+  | "INVALID_AGENT_ID"
+  | "INVALID_AUTO_SCALING_GROUP"
+  | "INVALID_RULE_NAME"
+  | "INVALID_SEVERITY"
+  | "INVALID_LOCALE"
+  | "INVALID_EVENT"
+  | "ASSESSMENT_TARGET_NAME_ALREADY_TAKEN"
+  | "ASSESSMENT_TEMPLATE_NAME_ALREADY_TAKEN"
+  | "INVALID_NUMBER_OF_ASSESSMENT_TARGET_ARNS"
+  | "INVALID_NUMBER_OF_ASSESSMENT_TEMPLATE_ARNS"
+  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_ARNS"
+  | "INVALID_NUMBER_OF_FINDING_ARNS"
+  | "INVALID_NUMBER_OF_RESOURCE_GROUP_ARNS"
+  | "INVALID_NUMBER_OF_RULES_PACKAGE_ARNS"
+  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_STATES"
+  | "INVALID_NUMBER_OF_TAGS"
+  | "INVALID_NUMBER_OF_RESOURCE_GROUP_TAGS"
+  | "INVALID_NUMBER_OF_ATTRIBUTES"
+  | "INVALID_NUMBER_OF_USER_ATTRIBUTES"
+  | "INVALID_NUMBER_OF_AGENT_IDS"
+  | "INVALID_NUMBER_OF_AUTO_SCALING_GROUPS"
+  | "INVALID_NUMBER_OF_RULE_NAMES"
+  | "INVALID_NUMBER_OF_SEVERITIES"
+  | (string & {});
+export const InvalidInputErrorCode = /*@__PURE__*/ S.String;
 
-//# Operations
+export type NoSuchEntityErrorCode =
+  | "ASSESSMENT_TARGET_DOES_NOT_EXIST"
+  | "ASSESSMENT_TEMPLATE_DOES_NOT_EXIST"
+  | "ASSESSMENT_RUN_DOES_NOT_EXIST"
+  | "FINDING_DOES_NOT_EXIST"
+  | "RESOURCE_GROUP_DOES_NOT_EXIST"
+  | "RULES_PACKAGE_DOES_NOT_EXIST"
+  | "SNS_TOPIC_DOES_NOT_EXIST"
+  | "IAM_ROLE_DOES_NOT_EXIST"
+  | (string & {});
+export const NoSuchEntityErrorCode = /*@__PURE__*/ S.String;
+
+export type InvalidCrossAccountRoleErrorCode =
+  | "ROLE_DOES_NOT_EXIST_OR_INVALID_TRUST_RELATIONSHIP"
+  | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY"
+  | (string & {});
+export const InvalidCrossAccountRoleErrorCode = /*@__PURE__*/ S.String;
+
+export type LimitExceededErrorCode =
+  | "ASSESSMENT_TARGET_LIMIT_EXCEEDED"
+  | "ASSESSMENT_TEMPLATE_LIMIT_EXCEEDED"
+  | "ASSESSMENT_RUN_LIMIT_EXCEEDED"
+  | "RESOURCE_GROUP_LIMIT_EXCEEDED"
+  | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED"
+  | (string & {});
+export const LimitExceededErrorCode = /*@__PURE__*/ S.String;
+
+export type AssessmentRunInProgressArnList = string[];
+export const AssessmentRunInProgressArnList = /*@__PURE__*/ S.Array(S.String);
+export interface AgentAlreadyRunningAssessment {
+  agentId: string;
+  assessmentRunArn: string;
+}
+export const AgentAlreadyRunningAssessment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentId: S.String, assessmentRunArn: S.String }),
+).annotate({
+  identifier: "AgentAlreadyRunningAssessment",
+}) as any as S.Schema<AgentAlreadyRunningAssessment>;
+export type AgentAlreadyRunningAssessmentList = AgentAlreadyRunningAssessment[];
+export const AgentAlreadyRunningAssessmentList = /*@__PURE__*/ S.Array(
+  AgentAlreadyRunningAssessment,
+);
 export type AddAttributesToFindingsError =
   | AccessDeniedException
   | InternalException
@@ -1897,8 +1918,11 @@ export const addAttributesToFindings: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddAttributesToFindings",
 }));
+
 export type CreateAssessmentTargetError =
   | AccessDeniedException
   | InternalException
@@ -1935,8 +1959,11 @@ export const createAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessmentTarget",
 }));
+
 export type CreateAssessmentTemplateError =
   | AccessDeniedException
   | InternalException
@@ -1967,8 +1994,11 @@ export const createAssessmentTemplate: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessmentTemplate",
 }));
+
 export type CreateExclusionsPreviewError =
   | AccessDeniedException
   | InternalException
@@ -1998,8 +2028,11 @@ export const createExclusionsPreview: API.OperationMethod<
     PreviewGenerationInProgressException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExclusionsPreview",
 }));
+
 export type CreateResourceGroupError =
   | AccessDeniedException
   | InternalException
@@ -2028,8 +2061,11 @@ export const createResourceGroup: API.OperationMethod<
     LimitExceededException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceGroup",
 }));
+
 export type DeleteAssessmentRunError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2058,8 +2094,11 @@ export const deleteAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentRun",
 }));
+
 export type DeleteAssessmentTargetError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2088,8 +2127,11 @@ export const deleteAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentTarget",
 }));
+
 export type DeleteAssessmentTemplateError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2118,8 +2160,11 @@ export const deleteAssessmentTemplate: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentTemplate",
 }));
+
 export type DescribeAssessmentRunsError =
   | InternalException
   | InvalidInputException
@@ -2137,8 +2182,11 @@ export const describeAssessmentRuns: API.OperationMethod<
   input: DescribeAssessmentRunsRequest,
   output: DescribeAssessmentRunsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssessmentRuns",
 }));
+
 export type DescribeAssessmentTargetsError =
   | InternalException
   | InvalidInputException
@@ -2156,8 +2204,11 @@ export const describeAssessmentTargets: API.OperationMethod<
   input: DescribeAssessmentTargetsRequest,
   output: DescribeAssessmentTargetsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssessmentTargets",
 }));
+
 export type DescribeAssessmentTemplatesError =
   | InternalException
   | InvalidInputException
@@ -2175,8 +2226,11 @@ export const describeAssessmentTemplates: API.OperationMethod<
   input: DescribeAssessmentTemplatesRequest,
   output: DescribeAssessmentTemplatesResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssessmentTemplates",
 }));
+
 export type DescribeCrossAccountAccessRoleError =
   | InternalException
   | CommonErrors;
@@ -2193,8 +2247,11 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   input: DescribeCrossAccountAccessRoleRequest,
   output: DescribeCrossAccountAccessRoleResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCrossAccountAccessRole",
 }));
+
 export type DescribeExclusionsError =
   | InternalException
   | InvalidInputException
@@ -2211,8 +2268,11 @@ export const describeExclusions: API.OperationMethod<
   input: DescribeExclusionsRequest,
   output: DescribeExclusionsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExclusions",
 }));
+
 export type DescribeFindingsError =
   | InternalException
   | InvalidInputException
@@ -2229,8 +2289,11 @@ export const describeFindings: API.OperationMethod<
   input: DescribeFindingsRequest,
   output: DescribeFindingsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFindings",
 }));
+
 export type DescribeResourceGroupsError =
   | InternalException
   | InvalidInputException
@@ -2248,8 +2311,11 @@ export const describeResourceGroups: API.OperationMethod<
   input: DescribeResourceGroupsRequest,
   output: DescribeResourceGroupsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceGroups",
 }));
+
 export type DescribeRulesPackagesError =
   | InternalException
   | InvalidInputException
@@ -2267,8 +2333,11 @@ export const describeRulesPackages: API.OperationMethod<
   input: DescribeRulesPackagesRequest,
   output: DescribeRulesPackagesResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRulesPackages",
 }));
+
 export type GetAssessmentReportError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2299,8 +2368,11 @@ export const getAssessmentReport: API.OperationMethod<
     ServiceTemporarilyUnavailableException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssessmentReport",
 }));
+
 export type GetExclusionsPreviewError =
   | AccessDeniedException
   | InternalException
@@ -2341,6 +2413,8 @@ export const getExclusionsPreview: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExclusionsPreview",
   pagination: {
     inputToken: "nextToken",
@@ -2348,6 +2422,7 @@ export const getExclusionsPreview: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetTelemetryMetadataError =
   | AccessDeniedException
   | InternalException
@@ -2372,8 +2447,11 @@ export const getTelemetryMetadata: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryMetadata",
 }));
+
 export type ListAssessmentRunAgentsError =
   | AccessDeniedException
   | InternalException
@@ -2413,6 +2491,8 @@ export const listAssessmentRunAgents: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentRunAgents",
   pagination: {
     inputToken: "nextToken",
@@ -2420,6 +2500,7 @@ export const listAssessmentRunAgents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentRunsError =
   | AccessDeniedException
   | InternalException
@@ -2459,6 +2540,8 @@ export const listAssessmentRuns: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentRuns",
   pagination: {
     inputToken: "nextToken",
@@ -2466,6 +2549,7 @@ export const listAssessmentRuns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentTargetsError =
   | AccessDeniedException
   | InternalException
@@ -2500,6 +2584,8 @@ export const listAssessmentTargets: API.OperationMethod<
   input: ListAssessmentTargetsRequest,
   output: ListAssessmentTargetsResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentTargets",
   pagination: {
     inputToken: "nextToken",
@@ -2507,6 +2593,7 @@ export const listAssessmentTargets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentTemplatesError =
   | AccessDeniedException
   | InternalException
@@ -2546,6 +2633,8 @@ export const listAssessmentTemplates: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2553,6 +2642,7 @@ export const listAssessmentTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEventSubscriptionsError =
   | AccessDeniedException
   | InternalException
@@ -2592,6 +2682,8 @@ export const listEventSubscriptions: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventSubscriptions",
   pagination: {
     inputToken: "nextToken",
@@ -2599,6 +2691,7 @@ export const listEventSubscriptions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExclusionsError =
   | AccessDeniedException
   | InternalException
@@ -2637,6 +2730,8 @@ export const listExclusions: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExclusions",
   pagination: {
     inputToken: "nextToken",
@@ -2644,6 +2739,7 @@ export const listExclusions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFindingsError =
   | AccessDeniedException
   | InternalException
@@ -2683,6 +2779,8 @@ export const listFindings: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
@@ -2690,6 +2788,7 @@ export const listFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRulesPackagesError =
   | AccessDeniedException
   | InternalException
@@ -2722,6 +2821,8 @@ export const listRulesPackages: API.OperationMethod<
   input: ListRulesPackagesRequest,
   output: ListRulesPackagesResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRulesPackages",
   pagination: {
     inputToken: "nextToken",
@@ -2729,6 +2830,7 @@ export const listRulesPackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalException
@@ -2752,8 +2854,11 @@ export const listTagsForResource: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PreviewAgentsError =
   | AccessDeniedException
   | InternalException
@@ -2795,6 +2900,8 @@ export const previewAgents: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PreviewAgents",
   pagination: {
     inputToken: "nextToken",
@@ -2802,6 +2909,7 @@ export const previewAgents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RegisterCrossAccountAccessRoleError =
   | AccessDeniedException
   | InternalException
@@ -2828,8 +2936,11 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
     InvalidInputException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCrossAccountAccessRole",
 }));
+
 export type RemoveAttributesFromFindingsError =
   | AccessDeniedException
   | InternalException
@@ -2856,8 +2967,11 @@ export const removeAttributesFromFindings: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAttributesFromFindings",
 }));
+
 export type SetTagsForResourceError =
   | AccessDeniedException
   | InternalException
@@ -2884,8 +2998,11 @@ export const setTagsForResource: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTagsForResource",
 }));
+
 export type StartAssessmentRunError =
   | AccessDeniedException
   | AgentsAlreadyRunningAssessmentException
@@ -2919,8 +3036,11 @@ export const startAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssessmentRun",
 }));
+
 export type StopAssessmentRunError =
   | AccessDeniedException
   | InternalException
@@ -2947,8 +3067,11 @@ export const stopAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAssessmentRun",
 }));
+
 export type SubscribeToEventError =
   | AccessDeniedException
   | InternalException
@@ -2977,8 +3100,11 @@ export const subscribeToEvent: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubscribeToEvent",
 }));
+
 export type UnsubscribeFromEventError =
   | AccessDeniedException
   | InternalException
@@ -3005,8 +3131,11 @@ export const unsubscribeFromEvent: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnsubscribeFromEvent",
 }));
+
 export type UpdateAssessmentTargetError =
   | AccessDeniedException
   | InternalException
@@ -3036,5 +3165,7 @@ export const updateAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentTarget",
 }));

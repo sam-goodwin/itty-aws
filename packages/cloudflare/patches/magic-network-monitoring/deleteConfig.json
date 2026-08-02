@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "MnmConfigNotFound": [
-      { "code": 1004, "message": { "includes": "not found" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

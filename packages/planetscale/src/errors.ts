@@ -1,8 +1,11 @@
 /**
  * PlanetScale-specific error types.
  *
- * Re-exports common HTTP errors from sdk-core and adds PlanetScale-specific
- * error matching and API error types.
+ * Re-exports the common HTTP errors from core and adds the PlanetScale
+ * fallback errors. Note the generated service module additionally defines
+ * its own per-status matcher classes (BadRequest/Forbidden/NotFound/…) for
+ * the statuses each operation declares — those share `_tag`s with the core
+ * classes here, so `catchTag` works against either.
  */
 export {
   BadGateway,
@@ -12,6 +15,7 @@ export {
   Forbidden,
   GatewayTimeout,
   InternalServerError,
+  Locked,
   NotFound,
   ServiceUnavailable,
   TooManyRequests,
@@ -27,12 +31,12 @@ import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
 /**
- * PlanetScale API error code mapping.
+ * PlanetScale API error code mapping (v0 surface parity).
  * Maps API error response codes to HTTP error classes.
  */
 export { HTTP_STATUS_MAP as ERROR_CODE_MAP } from "@distilled.cloud/core/errors";
 
-// Unknown PlanetScale error - returned when an error code is not recognized
+/** Unknown PlanetScale error — returned when nothing else matches the failure. */
 export class UnknownPlanetScaleError extends Schema.TaggedErrorClass<UnknownPlanetScaleError>()(
   "UnknownPlanetScaleError",
   {
@@ -42,7 +46,7 @@ export class UnknownPlanetScaleError extends Schema.TaggedErrorClass<UnknownPlan
   },
 ).pipe(Category.withServerError) {}
 
-// Schema parse error wrapper
+/** Schema parse error wrapper (kept for v0 surface parity). */
 export class PlanetScaleParseError extends Schema.TaggedErrorClass<PlanetScaleParseError>()(
   "PlanetScaleParseError",
   {

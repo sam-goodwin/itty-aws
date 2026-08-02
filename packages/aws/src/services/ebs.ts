@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,32 +84,92 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.suspend(() => AccessDeniedExceptionReason).annotate({
+      identifier: "AccessDeniedExceptionReason",
+    }),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConcurrentLimitExceededException extends S.TaggedErrorClass<ConcurrentLimitExceededException>()(
+  "ConcurrentLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidSignatureException extends S.TaggedErrorClass<InvalidSignatureException>()(
+  "InvalidSignatureException",
+  {},
+) {}
+export class RequestThrottledException extends S.TaggedErrorClass<RequestThrottledException>()(
+  "RequestThrottledException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => RequestThrottledExceptionReason).annotate({
+        identifier: "RequestThrottledExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ResourceNotFoundExceptionReason).annotate({
+        identifier: "ResourceNotFoundExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
+        identifier: "ServiceQuotaExceededExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type SnapshotId = string;
 export type ChangedBlocksCount = number;
 export type Checksum = string;
-export type ErrorMessage = string;
-export type BlockIndex = number;
-export type BlockToken = string;
-export type DataLength = number;
-export type PageToken = string;
-export type MaxResults = number;
-export type VolumeSize = number;
-export type BlockSize = number;
-export type Progress = number;
-export type TagKey = string;
-export type TagValue = string;
-export type Description = string;
-export type IdempotencyToken = string;
-export type KmsKeyArn = string | redacted.Redacted<string>;
-export type Timeout = number;
-export type OwnerId = string;
-
-//# Schemas
 export type ChecksumAlgorithm = "SHA256" | (string & {});
 export const ChecksumAlgorithm = /*@__PURE__*/ S.String;
+
 export type ChecksumAggregationMethod = "LINEAR" | (string & {});
 export const ChecksumAggregationMethod = /*@__PURE__*/ S.String;
+
 export interface CompleteSnapshotRequest {
   SnapshotId: string;
   ChangedBlocksCount: number;
@@ -141,6 +203,7 @@ export const CompleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompleteSnapshotRequest>;
 export type Status = "completed" | "pending" | "error" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CompleteSnapshotResponse {
   Status?: Status;
 }
@@ -149,46 +212,8 @@ export const CompleteSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompleteSnapshotResponse",
 }) as any as S.Schema<CompleteSnapshotResponse>;
-export type AccessDeniedExceptionReason =
-  | "UNAUTHORIZED_ACCOUNT"
-  | "DEPENDENCY_ACCESS_DENIED"
-  | (string & {});
-export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
-export type RequestThrottledExceptionReason =
-  | "ACCOUNT_THROTTLED"
-  | "DEPENDENCY_REQUEST_THROTTLED"
-  | "RESOURCE_LEVEL_THROTTLE"
-  | (string & {});
-export const RequestThrottledExceptionReason = /*@__PURE__*/ S.String;
-export type ResourceNotFoundExceptionReason =
-  | "SNAPSHOT_NOT_FOUND"
-  | "GRANT_NOT_FOUND"
-  | "DEPENDENCY_RESOURCE_NOT_FOUND"
-  | "IMAGE_NOT_FOUND"
-  | (string & {});
-export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
-export type ServiceQuotaExceededExceptionReason =
-  | "DEPENDENCY_SERVICE_QUOTA_EXCEEDED"
-  | (string & {});
-export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "INVALID_CUSTOMER_KEY"
-  | "INVALID_PAGE_TOKEN"
-  | "INVALID_BLOCK_TOKEN"
-  | "INVALID_GRANT_TOKEN"
-  | "INVALID_SNAPSHOT_ID"
-  | "UNRELATED_SNAPSHOTS"
-  | "INVALID_BLOCK"
-  | "INVALID_CONTENT_ENCODING"
-  | "INVALID_TAG"
-  | "INVALID_DEPENDENCY_REQUEST"
-  | "INVALID_PARAMETER_VALUE"
-  | "INVALID_VOLUME_SIZE"
-  | "CONFLICTING_BLOCK_UPDATE"
-  | "INVALID_IMAGE_ID"
-  | "WRITE_REQUEST_TIMEOUT"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export type BlockIndex = number;
+export type BlockToken = string;
 export interface GetSnapshotBlockRequest {
   SnapshotId: string;
   BlockIndex: number;
@@ -215,6 +240,7 @@ export const GetSnapshotBlockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSnapshotBlockRequest",
 }) as any as S.Schema<GetSnapshotBlockRequest>;
+export type DataLength = number;
 export interface GetSnapshotBlockResponse {
   DataLength?: number;
   BlockData?: T.StreamingOutputBody;
@@ -233,6 +259,8 @@ export const GetSnapshotBlockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSnapshotBlockResponse",
 }) as any as S.Schema<GetSnapshotBlockResponse>;
+export type PageToken = string;
+export type MaxResults = number;
 export interface ListChangedBlocksRequest {
   FirstSnapshotId?: string;
   SecondSnapshotId: string;
@@ -279,6 +307,8 @@ export const ChangedBlock = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangedBlock" }) as any as S.Schema<ChangedBlock>;
 export type ChangedBlocks = ChangedBlock[];
 export const ChangedBlocks = /*@__PURE__*/ S.Array(ChangedBlock);
+export type VolumeSize = number;
+export type BlockSize = number;
 export interface ListChangedBlocksResponse {
   ChangedBlocks?: ChangedBlock[];
   ExpiryTime?: Date;
@@ -354,6 +384,7 @@ export const ListSnapshotBlocksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSnapshotBlocksResponse",
 }) as any as S.Schema<ListSnapshotBlocksResponse>;
+export type Progress = number;
 export interface PutSnapshotBlockRequest {
   SnapshotId: string;
   BlockIndex: number;
@@ -404,6 +435,8 @@ export const PutSnapshotBlockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutSnapshotBlockResponse",
 }) as any as S.Schema<PutSnapshotBlockResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -413,6 +446,10 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
+export type Description = string;
+export type IdempotencyToken = string;
+export type KmsKeyArn = string | redacted.Redacted<string>;
+export type Timeout = number;
 export interface StartSnapshotRequest {
   VolumeSize: number;
   ParentSnapshotId?: string;
@@ -446,8 +483,10 @@ export const StartSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSnapshotRequest",
 }) as any as S.Schema<StartSnapshotRequest>;
+export type OwnerId = string;
 export type SSEType = "sse-ebs" | "sse-kms" | "none" | (string & {});
 export const SSEType = /*@__PURE__*/ S.String;
+
 export interface StartSnapshotResponse {
   Description?: string;
   SnapshotId?: string;
@@ -478,58 +517,52 @@ export const StartSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSnapshotResponse",
 }) as any as S.Schema<StartSnapshotResponse>;
+export type ErrorMessage = string;
+export type AccessDeniedExceptionReason =
+  | "UNAUTHORIZED_ACCOUNT"
+  | "DEPENDENCY_ACCESS_DENIED"
+  | (string & {});
+export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), Reason: AccessDeniedExceptionReason },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class RequestThrottledException extends S.TaggedErrorClass<RequestThrottledException>()(
-  "RequestThrottledException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(RequestThrottledExceptionReason),
-  },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ResourceNotFoundExceptionReason),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ServiceQuotaExceededExceptionReason),
-  },
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ValidationExceptionReason),
-  },
-).pipe(C.withBadRequestError) {}
-export class InvalidSignatureException extends S.TaggedErrorClass<InvalidSignatureException>()(
-  "InvalidSignatureException",
-  {},
-) {}
-export class ConcurrentLimitExceededException extends S.TaggedErrorClass<ConcurrentLimitExceededException>()(
-  "ConcurrentLimitExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
+export type RequestThrottledExceptionReason =
+  | "ACCOUNT_THROTTLED"
+  | "DEPENDENCY_REQUEST_THROTTLED"
+  | "RESOURCE_LEVEL_THROTTLE"
+  | (string & {});
+export const RequestThrottledExceptionReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export type ResourceNotFoundExceptionReason =
+  | "SNAPSHOT_NOT_FOUND"
+  | "GRANT_NOT_FOUND"
+  | "DEPENDENCY_RESOURCE_NOT_FOUND"
+  | "IMAGE_NOT_FOUND"
+  | (string & {});
+export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+
+export type ServiceQuotaExceededExceptionReason =
+  | "DEPENDENCY_SERVICE_QUOTA_EXCEEDED"
+  | (string & {});
+export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
+
+export type ValidationExceptionReason =
+  | "INVALID_CUSTOMER_KEY"
+  | "INVALID_PAGE_TOKEN"
+  | "INVALID_BLOCK_TOKEN"
+  | "INVALID_GRANT_TOKEN"
+  | "INVALID_SNAPSHOT_ID"
+  | "UNRELATED_SNAPSHOTS"
+  | "INVALID_BLOCK"
+  | "INVALID_CONTENT_ENCODING"
+  | "INVALID_TAG"
+  | "INVALID_DEPENDENCY_REQUEST"
+  | "INVALID_PARAMETER_VALUE"
+  | "INVALID_VOLUME_SIZE"
+  | "CONFLICTING_BLOCK_UPDATE"
+  | "INVALID_IMAGE_ID"
+  | "WRITE_REQUEST_TIMEOUT"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
 export type CompleteSnapshotError =
   | AccessDeniedException
   | InternalServerException
@@ -566,8 +599,11 @@ export const completeSnapshot: API.OperationMethod<
     ValidationException,
     InvalidSignatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteSnapshot",
 }));
+
 export type GetSnapshotBlockError =
   | AccessDeniedException
   | InternalServerException
@@ -600,8 +636,11 @@ export const getSnapshotBlock: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshotBlock",
 }));
+
 export type ListChangedBlocksError =
   | AccessDeniedException
   | InternalServerException
@@ -650,6 +689,8 @@ export const listChangedBlocks: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChangedBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -657,6 +698,7 @@ export const listChangedBlocks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSnapshotBlocksError =
   | AccessDeniedException
   | InternalServerException
@@ -704,6 +746,8 @@ export const listSnapshotBlocks: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSnapshotBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -711,6 +755,7 @@ export const listSnapshotBlocks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutSnapshotBlockError =
   | AccessDeniedException
   | InternalServerException
@@ -749,8 +794,11 @@ export const putSnapshotBlock: API.OperationMethod<
     ValidationException,
     InvalidSignatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSnapshotBlock",
 }));
+
 export type StartSnapshotError =
   | AccessDeniedException
   | ConcurrentLimitExceededException
@@ -791,5 +839,7 @@ export const startSnapshot: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSnapshot",
 }));

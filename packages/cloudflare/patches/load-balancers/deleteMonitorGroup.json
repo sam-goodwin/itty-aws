@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "MonitorGroupNotFound": [{ "code": 1001 }],
-    "MonitorGroupInUse": [{ "code": 1002, "message": { "includes": "still referenced" } }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

@@ -1,0 +1,62 @@
+{
+  "description": "Align resource_tagging#AccountTagsGet with distilled cloudflare/resource-tagging getAccountTag",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#AccountTagsGet",
+      "path": "/shapes/com.cloudflare.resource_tagging#GetAccountTag"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#AccountTagsGetRequest",
+      "path": "/shapes/com.cloudflare.resource_tagging#GetAccountTagRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_tagging#GetAccountTag/input/target",
+      "value": "com.cloudflare.resource_tagging#GetAccountTagRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#AccountTagsGetResponse",
+      "path": "/shapes/com.cloudflare.resource_tagging#GetAccountTagResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_tagging#GetAccountTag/output/target",
+      "value": "com.cloudflare.resource_tagging#GetAccountTagResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#GetAccountTag/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.resource_tagging#Forbidden"
+        }
+      ]
+    }
+  ]
+}

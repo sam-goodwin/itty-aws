@@ -1,8 +1,97 @@
 {
-  "errors": {
-    "SettingUnavailableForPlan": [
-      { "status": 403, "message": { "includes": "not available for your plan" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align cache#CacheReserveGet with distilled cloudflare/cache getCacheReserve",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#CacheReserveGet",
+      "path": "/shapes/com.cloudflare.cache#GetCacheReserve"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#CacheReserveGetRequest",
+      "path": "/shapes/com.cloudflare.cache#GetCacheReserveRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.cache#GetCacheReserve/input/target",
+      "value": "com.cloudflare.cache#GetCacheReserveRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#CacheReserveGetResponse",
+      "path": "/shapes/com.cloudflare.cache#GetCacheReserveResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.cache#GetCacheReserve/output/target",
+      "value": "com.cloudflare.cache#GetCacheReserveResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#SettingUnavailableForPlan",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403,
+              "message": {
+                "includes": "not available for your plan"
+              }
+            },
+            {
+              "code": 1135,
+              "message": {
+                "includes": "not available for your plan"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#GetCacheReserve/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.cache#SettingUnavailableForPlan"
+        },
+        {
+          "target": "com.cloudflare.cache#Forbidden"
+        }
+      ]
+    }
+  ]
 }

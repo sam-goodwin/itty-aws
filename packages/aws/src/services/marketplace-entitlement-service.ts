@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -116,14 +118,19 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+) {}
 export type ProductCode = string;
-export type FilterValue = string;
-export type NonEmptyString = string;
-export type PageSizeInteger = number;
-export type ErrorMessage = string;
-
-//# Schemas
 export type GetEntitlementFilterName =
   | "CUSTOMER_IDENTIFIER"
   | "DIMENSION"
@@ -131,6 +138,8 @@ export type GetEntitlementFilterName =
   | "LICENSE_ARN"
   | (string & {});
 export const GetEntitlementFilterName = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValueList = string[];
 export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export type GetEntitlementFilters = {
@@ -140,6 +149,8 @@ export const GetEntitlementFilters = /*@__PURE__*/ S.Record(
   GetEntitlementFilterName,
   FilterValueList.pipe(S.optional),
 );
+export type NonEmptyString = string;
+export type PageSizeInteger = number;
 export interface GetEntitlementsRequest {
   ProductCode: string;
   Filter?: { [key: string]: string[] | undefined };
@@ -208,22 +219,7 @@ export const GetEntitlementsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEntitlementsResult",
 }) as any as S.Schema<GetEntitlementsResult>;
-
-//# Errors
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type GetEntitlementsError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -261,6 +257,8 @@ export const getEntitlements: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEntitlements",
   pagination: {
     inputToken: "NextToken",

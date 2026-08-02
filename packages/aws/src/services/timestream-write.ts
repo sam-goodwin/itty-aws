@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -100,31 +102,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
+  "InvalidEndpointException",
+  { Message: S.optional(S.String) },
+  T.HttpError(421),
+) {}
+export class RejectedRecordsException extends S.TaggedErrorClass<RejectedRecordsException>()(
+  "RejectedRecordsException",
+  {
+    Message: S.optional(S.String),
+    RejectedRecords: S.optional(
+      S.suspend(() => RejectedRecords).annotate({
+        identifier: "RejectedRecords",
+      }),
+    ),
+  },
+  T.HttpError(419),
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TimestreamNotOnboarded extends S.TaggedErrorClass<TimestreamNotOnboarded>()(
+  "TimestreamNotOnboarded",
+  { Message: S.String },
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: {
+      includes: "Only existing Timestream for LiveAnalytics customers",
+    },
+  }),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientRequestToken = string | redacted.Redacted<string>;
 export type StringValue256 = string;
-export type SchemaName = string;
-export type S3BucketName = string;
-export type S3ObjectKey = string;
-export type StringValue1 = string;
-export type S3ObjectKeyPrefix = string;
-export type StringValue2048 = string;
-export type ResourceCreateAPIName = string;
-export type RecordVersion = number;
-export type BatchLoadTaskId = string;
-export type ErrorMessage = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceName = string;
-export type MemoryStoreRetentionPeriodInHours = number;
-export type MagneticStoreRetentionPeriodInDays = number;
-export type PageLimit = number;
-export type PaginationLimit = number;
-export type AmazonResourceName = string;
-export type SchemaValue = string;
-export type RecordIndex = number;
-
-//# Schemas
 export type TimeUnit =
   | "MILLISECONDS"
   | "SECONDS"
@@ -132,6 +173,8 @@ export type TimeUnit =
   | "NANOSECONDS"
   | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
+
+export type SchemaName = string;
 export interface DimensionMapping {
   SourceColumn?: string;
   DestinationColumn?: string;
@@ -154,24 +197,25 @@ export type ScalarMeasureValueType =
   | "TIMESTAMP"
   | (string & {});
 export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
+
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
   MeasureValueType?: ScalarMeasureValueType;
 }
-export const MultiMeasureAttributeMapping =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SourceColumn: S.String,
-      TargetMultiMeasureAttributeName: S.optional(S.String),
-      MeasureValueType: S.optional(ScalarMeasureValueType),
-    }),
-  ).annotate({
-    identifier: "MultiMeasureAttributeMapping",
-  }) as any as S.Schema<MultiMeasureAttributeMapping>;
+export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceColumn: S.String,
+    TargetMultiMeasureAttributeName: S.optional(S.String),
+    MeasureValueType: S.optional(ScalarMeasureValueType),
+  }),
+).annotate({
+  identifier: "MultiMeasureAttributeMapping",
+}) as any as S.Schema<MultiMeasureAttributeMapping>;
 export type MultiMeasureAttributeMappingList = MultiMeasureAttributeMapping[];
-export const MultiMeasureAttributeMappingList =
-  /*@__PURE__*/ S.Array(MultiMeasureAttributeMapping);
+export const MultiMeasureAttributeMappingList = /*@__PURE__*/ S.Array(
+  MultiMeasureAttributeMapping,
+);
 export interface MultiMeasureMappings {
   TargetMultiMeasureName?: string;
   MultiMeasureAttributeMappings: MultiMeasureAttributeMapping[];
@@ -193,6 +237,7 @@ export type MeasureValueType =
   | "MULTI"
   | (string & {});
 export const MeasureValueType = /*@__PURE__*/ S.String;
+
 export interface MixedMeasureMapping {
   MeasureName?: string;
   SourceColumn?: string;
@@ -232,6 +277,8 @@ export const DataModel = /*@__PURE__*/ S.suspend(() =>
     MeasureNameColumn: S.optional(S.String),
   }),
 ).annotate({ identifier: "DataModel" }) as any as S.Schema<DataModel>;
+export type S3BucketName = string;
+export type S3ObjectKey = string;
 export interface DataModelS3Configuration {
   BucketName?: string;
   ObjectKey?: string;
@@ -265,6 +312,7 @@ export const DataSourceS3Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataSourceS3Configuration",
 }) as any as S.Schema<DataSourceS3Configuration>;
+export type StringValue1 = string;
 export interface CsvConfiguration {
   ColumnSeparator?: string;
   EscapeChar?: string;
@@ -285,6 +333,7 @@ export const CsvConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CsvConfiguration>;
 export type BatchLoadDataFormat = "CSV" | (string & {});
 export const BatchLoadDataFormat = /*@__PURE__*/ S.String;
+
 export interface DataSourceConfiguration {
   DataSourceS3Configuration: DataSourceS3Configuration;
   CsvConfiguration?: CsvConfiguration;
@@ -299,8 +348,11 @@ export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataSourceConfiguration",
 }) as any as S.Schema<DataSourceConfiguration>;
+export type S3ObjectKeyPrefix = string;
 export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
 export const S3EncryptionOption = /*@__PURE__*/ S.String;
+
+export type StringValue2048 = string;
 export interface ReportS3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
@@ -325,6 +377,8 @@ export const ReportConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReportConfiguration",
 }) as any as S.Schema<ReportConfiguration>;
+export type ResourceCreateAPIName = string;
+export type RecordVersion = number;
 export interface CreateBatchLoadTaskRequest {
   ClientToken?: string | redacted.Redacted<string>;
   DataModelConfiguration?: DataModelConfiguration;
@@ -349,13 +403,17 @@ export const CreateBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBatchLoadTaskRequest",
 }) as any as S.Schema<CreateBatchLoadTaskRequest>;
+export type BatchLoadTaskId = string;
 export interface CreateBatchLoadTaskResponse {
   TaskId: string;
 }
-export const CreateBatchLoadTaskResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ TaskId: S.String })).annotate({
-    identifier: "CreateBatchLoadTaskResponse",
-  }) as any as S.Schema<CreateBatchLoadTaskResponse>;
+export const CreateBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TaskId: S.String }),
+).annotate({
+  identifier: "CreateBatchLoadTaskResponse",
+}) as any as S.Schema<CreateBatchLoadTaskResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -381,6 +439,7 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatabaseRequest",
 }) as any as S.Schema<CreateDatabaseRequest>;
+export type ResourceName = string;
 export interface Database {
   Arn?: string;
   DatabaseName?: string;
@@ -409,6 +468,8 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatabaseResponse",
 }) as any as S.Schema<CreateDatabaseResponse>;
+export type MemoryStoreRetentionPeriodInHours = number;
+export type MagneticStoreRetentionPeriodInDays = number;
 export interface RetentionProperties {
   MemoryStoreRetentionPeriodInHours: number;
   MagneticStoreRetentionPeriodInDays: number;
@@ -440,34 +501,34 @@ export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
 export interface MagneticStoreRejectedDataLocation {
   S3Configuration?: S3Configuration;
 }
-export const MagneticStoreRejectedDataLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ S3Configuration: S.optional(S3Configuration) }),
-  ).annotate({
-    identifier: "MagneticStoreRejectedDataLocation",
-  }) as any as S.Schema<MagneticStoreRejectedDataLocation>;
+export const MagneticStoreRejectedDataLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3Configuration: S.optional(S3Configuration) }),
+).annotate({
+  identifier: "MagneticStoreRejectedDataLocation",
+}) as any as S.Schema<MagneticStoreRejectedDataLocation>;
 export interface MagneticStoreWriteProperties {
   EnableMagneticStoreWrites: boolean;
   MagneticStoreRejectedDataLocation?: MagneticStoreRejectedDataLocation;
 }
-export const MagneticStoreWriteProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EnableMagneticStoreWrites: S.Boolean,
-      MagneticStoreRejectedDataLocation: S.optional(
-        MagneticStoreRejectedDataLocation,
-      ),
-    }),
-  ).annotate({
-    identifier: "MagneticStoreWriteProperties",
-  }) as any as S.Schema<MagneticStoreWriteProperties>;
+export const MagneticStoreWriteProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnableMagneticStoreWrites: S.Boolean,
+    MagneticStoreRejectedDataLocation: S.optional(
+      MagneticStoreRejectedDataLocation,
+    ),
+  }),
+).annotate({
+  identifier: "MagneticStoreWriteProperties",
+}) as any as S.Schema<MagneticStoreWriteProperties>;
 export type PartitionKeyType = "DIMENSION" | "MEASURE" | (string & {});
 export const PartitionKeyType = /*@__PURE__*/ S.String;
+
 export type PartitionKeyEnforcementLevel =
   | "REQUIRED"
   | "OPTIONAL"
   | (string & {});
 export const PartitionKeyEnforcementLevel = /*@__PURE__*/ S.String;
+
 export interface PartitionKey {
   Type: PartitionKeyType;
   Name?: string;
@@ -512,6 +573,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTableRequest>;
 export type TableStatus = "ACTIVE" | "DELETING" | "RESTORING" | (string & {});
 export const TableStatus = /*@__PURE__*/ S.String;
+
 export interface Table {
   Arn?: string;
   TableName?: string;
@@ -582,14 +644,13 @@ export const DeleteTableResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeBatchLoadTaskRequest {
   TaskId: string;
 }
-export const DescribeBatchLoadTaskRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TaskId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeBatchLoadTaskRequest",
-  }) as any as S.Schema<DescribeBatchLoadTaskRequest>;
+export const DescribeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TaskId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeBatchLoadTaskRequest",
+}) as any as S.Schema<DescribeBatchLoadTaskRequest>;
 export interface BatchLoadProgressReport {
   RecordsProcessed?: number;
   RecordsIngested?: number;
@@ -619,6 +680,7 @@ export type BatchLoadStatus =
   | "PENDING_RESUME"
   | (string & {});
 export const BatchLoadStatus = /*@__PURE__*/ S.String;
+
 export interface BatchLoadTaskDescription {
   TaskId?: string;
   ErrorMessage?: string;
@@ -658,12 +720,11 @@ export const BatchLoadTaskDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeBatchLoadTaskResponse {
   BatchLoadTaskDescription: BatchLoadTaskDescription;
 }
-export const DescribeBatchLoadTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BatchLoadTaskDescription: BatchLoadTaskDescription }),
-  ).annotate({
-    identifier: "DescribeBatchLoadTaskResponse",
-  }) as any as S.Schema<DescribeBatchLoadTaskResponse>;
+export const DescribeBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BatchLoadTaskDescription: BatchLoadTaskDescription }),
+).annotate({
+  identifier: "DescribeBatchLoadTaskResponse",
+}) as any as S.Schema<DescribeBatchLoadTaskResponse>;
 export interface DescribeDatabaseRequest {
   DatabaseName: string;
 }
@@ -726,6 +787,7 @@ export const DescribeTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTableResponse",
 }) as any as S.Schema<DescribeTableResponse>;
+export type PageLimit = number;
 export interface ListBatchLoadTasksRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -778,6 +840,7 @@ export const ListBatchLoadTasksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBatchLoadTasksResponse",
 }) as any as S.Schema<ListBatchLoadTasksResponse>;
+export type PaginationLimit = number;
 export interface ListDatabasesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -833,6 +896,7 @@ export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTablesResponse",
 }) as any as S.Schema<ListTablesResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -846,12 +910,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ResumeBatchLoadTaskRequest {
   TaskId: string;
 }
@@ -863,10 +926,11 @@ export const ResumeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeBatchLoadTaskRequest",
 }) as any as S.Schema<ResumeBatchLoadTaskRequest>;
 export interface ResumeBatchLoadTaskResponse {}
-export const ResumeBatchLoadTaskResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ResumeBatchLoadTaskResponse",
-  }) as any as S.Schema<ResumeBatchLoadTaskResponse>;
+export const ResumeBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResumeBatchLoadTaskResponse",
+}) as any as S.Schema<ResumeBatchLoadTaskResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
@@ -950,8 +1014,10 @@ export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTableResponse",
 }) as any as S.Schema<UpdateTableResponse>;
+export type SchemaValue = string;
 export type DimensionValueType = "VARCHAR" | (string & {});
 export const DimensionValueType = /*@__PURE__*/ S.String;
+
 export interface Dimension {
   Name: string;
   Value: string;
@@ -1040,6 +1106,8 @@ export const WriteRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WriteRecordsResponse",
 }) as any as S.Schema<WriteRecordsResponse>;
+export type ErrorMessage = string;
+export type RecordIndex = number;
 export interface RejectedRecord {
   RecordIndex?: number;
   Reason?: string;
@@ -1054,59 +1122,6 @@ export const RejectedRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RejectedRecord" }) as any as S.Schema<RejectedRecord>;
 export type RejectedRecords = RejectedRecord[];
 export const RejectedRecords = /*@__PURE__*/ S.Array(RejectedRecord);
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-).pipe(C.withServerError) {}
-export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
-  "InvalidEndpointException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-).pipe(C.withBadRequestError) {}
-export class TimestreamNotOnboarded extends S.TaggedErrorClass<TimestreamNotOnboarded>()(
-  "TimestreamNotOnboarded",
-  { Message: S.String },
-  T.SyntheticError({
-    from: "AccessDeniedException",
-    message: {
-      includes: "Only existing Timestream for LiveAnalytics customers",
-    },
-  }),
-).pipe(C.withAuthError) {}
-export class RejectedRecordsException extends S.TaggedErrorClass<RejectedRecordsException>()(
-  "RejectedRecordsException",
-  {
-    Message: S.optional(S.String),
-    RejectedRecords: S.optional(RejectedRecords),
-  },
-) {}
-
-//# Operations
 export type CreateBatchLoadTaskError =
   | AccessDeniedException
   | ConflictException
@@ -1146,8 +1161,11 @@ export const createBatchLoadTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchLoadTask",
 }));
+
 export type CreateDatabaseError =
   | AccessDeniedException
   | ConflictException
@@ -1181,8 +1199,11 @@ export const createDatabase: API.OperationMethod<
     ValidationException,
     TimestreamNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatabase",
 }));
+
 export type CreateTableError =
   | AccessDeniedException
   | ConflictException
@@ -1219,8 +1240,11 @@ export const createTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
+
 export type DeleteDatabaseError =
   | AccessDeniedException
   | InternalServerException
@@ -1259,8 +1283,11 @@ export const deleteDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatabase",
 }));
+
 export type DeleteTableError =
   | AccessDeniedException
   | InternalServerException
@@ -1296,8 +1323,11 @@ export const deleteTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
+
 export type DescribeBatchLoadTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -1326,8 +1356,11 @@ export const describeBatchLoadTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBatchLoadTask",
 }));
+
 export type DescribeDatabaseError =
   | AccessDeniedException
   | InternalServerException
@@ -1358,8 +1391,11 @@ export const describeDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatabase",
 }));
+
 export type DescribeEndpointsError =
   | InternalServerException
   | ThrottlingException
@@ -1399,8 +1435,11 @@ export const describeEndpoints: API.OperationMethod<
     ValidationException,
     TimestreamNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
 }));
+
 export type DescribeTableError =
   | AccessDeniedException
   | InternalServerException
@@ -1431,8 +1470,11 @@ export const describeTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTable",
 }));
+
 export type ListBatchLoadTasksError =
   | AccessDeniedException
   | InternalServerException
@@ -1475,6 +1517,8 @@ export const listBatchLoadTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchLoadTasks",
   pagination: {
     inputToken: "NextToken",
@@ -1482,6 +1526,7 @@ export const listBatchLoadTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatabasesError =
   | AccessDeniedException
   | InternalServerException
@@ -1524,6 +1569,8 @@ export const listDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -1531,6 +1578,7 @@ export const listDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTablesError =
   | AccessDeniedException
   | InternalServerException
@@ -1575,6 +1623,8 @@ export const listTables: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",
@@ -1582,6 +1632,7 @@ export const listTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidEndpointException
   | ResourceNotFoundException
@@ -1605,8 +1656,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ResumeBatchLoadTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -1634,8 +1688,11 @@ export const resumeBatchLoadTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeBatchLoadTask",
 }));
+
 export type TagResourceError =
   | InvalidEndpointException
   | ResourceNotFoundException
@@ -1663,8 +1720,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidEndpointException
   | ResourceNotFoundException
@@ -1690,8 +1750,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDatabaseError =
   | AccessDeniedException
   | InternalServerException
@@ -1726,8 +1789,11 @@ export const updateDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatabase",
 }));
+
 export type UpdateTableError =
   | AccessDeniedException
   | InternalServerException
@@ -1761,8 +1827,11 @@ export const updateTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));
+
 export type WriteRecordsError =
   | AccessDeniedException
   | InternalServerException
@@ -1834,5 +1903,7 @@ export const writeRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "WriteRecords",
 }));

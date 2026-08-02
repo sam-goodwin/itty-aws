@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,121 +88,173 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ActionExecutionNotFoundException extends S.TaggedErrorClass<ActionExecutionNotFoundException>()(
+  "ActionExecutionNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ActionNotFoundException extends S.TaggedErrorClass<ActionNotFoundException>()(
+  "ActionNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ActionTypeNotFoundException extends S.TaggedErrorClass<ActionTypeNotFoundException>()(
+  "ActionTypeNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ApprovalAlreadyCompletedException extends S.TaggedErrorClass<ApprovalAlreadyCompletedException>()(
+  "ApprovalAlreadyCompletedException",
+  { message: S.optional(S.String) },
+) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+) {}
+export class ConcurrentPipelineExecutionsLimitExceededException extends S.TaggedErrorClass<ConcurrentPipelineExecutionsLimitExceededException>()(
+  "ConcurrentPipelineExecutionsLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ConditionNotOverridableException extends S.TaggedErrorClass<ConditionNotOverridableException>()(
+  "ConditionNotOverridableException",
+  { message: S.optional(S.String) },
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DuplicatedStopRequestException extends S.TaggedErrorClass<DuplicatedStopRequestException>()(
+  "DuplicatedStopRequestException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidActionDeclarationException extends S.TaggedErrorClass<InvalidActionDeclarationException>()(
+  "InvalidActionDeclarationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidApprovalTokenException extends S.TaggedErrorClass<InvalidApprovalTokenException>()(
+  "InvalidApprovalTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
+  "InvalidArnException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidBlockerDeclarationException extends S.TaggedErrorClass<InvalidBlockerDeclarationException>()(
+  "InvalidBlockerDeclarationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidClientTokenException extends S.TaggedErrorClass<InvalidClientTokenException>()(
+  "InvalidClientTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidJobException extends S.TaggedErrorClass<InvalidJobException>()(
+  "InvalidJobException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidJobStateException extends S.TaggedErrorClass<InvalidJobStateException>()(
+  "InvalidJobStateException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidNonceException extends S.TaggedErrorClass<InvalidNonceException>()(
+  "InvalidNonceException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidStageDeclarationException extends S.TaggedErrorClass<InvalidStageDeclarationException>()(
+  "InvalidStageDeclarationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidStructureException extends S.TaggedErrorClass<InvalidStructureException>()(
+  "InvalidStructureException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTagsException extends S.TaggedErrorClass<InvalidTagsException>()(
+  "InvalidTagsException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidWebhookAuthenticationParametersException extends S.TaggedErrorClass<InvalidWebhookAuthenticationParametersException>()(
+  "InvalidWebhookAuthenticationParametersException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidWebhookFilterPatternException extends S.TaggedErrorClass<InvalidWebhookFilterPatternException>()(
+  "InvalidWebhookFilterPatternException",
+  { message: S.optional(S.String) },
+) {}
+export class JobNotFoundException extends S.TaggedErrorClass<JobNotFoundException>()(
+  "JobNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class NotLatestPipelineExecutionException extends S.TaggedErrorClass<NotLatestPipelineExecutionException>()(
+  "NotLatestPipelineExecutionException",
+  { message: S.optional(S.String) },
+) {}
+export class OutputVariablesSizeExceededException extends S.TaggedErrorClass<OutputVariablesSizeExceededException>()(
+  "OutputVariablesSizeExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineExecutionNotFoundException extends S.TaggedErrorClass<PipelineExecutionNotFoundException>()(
+  "PipelineExecutionNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineExecutionNotStoppableException extends S.TaggedErrorClass<PipelineExecutionNotStoppableException>()(
+  "PipelineExecutionNotStoppableException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineExecutionOutdatedException extends S.TaggedErrorClass<PipelineExecutionOutdatedException>()(
+  "PipelineExecutionOutdatedException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineNameInUseException extends S.TaggedErrorClass<PipelineNameInUseException>()(
+  "PipelineNameInUseException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
+  "PipelineNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineVersionNotFoundException extends S.TaggedErrorClass<PipelineVersionNotFoundException>()(
+  "PipelineVersionNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class RequestFailedException extends S.TaggedErrorClass<RequestFailedException>()(
+  "RequestFailedException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class StageNotFoundException extends S.TaggedErrorClass<StageNotFoundException>()(
+  "StageNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class StageNotRetryableException extends S.TaggedErrorClass<StageNotRetryableException>()(
+  "StageNotRetryableException",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+) {}
+export class UnableToRollbackStageException extends S.TaggedErrorClass<UnableToRollbackStageException>()(
+  "UnableToRollbackStageException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+) {}
+export class WebhookNotFoundException extends S.TaggedErrorClass<WebhookNotFoundException>()(
+  "WebhookNotFoundException",
+  {},
+) {}
 export type JobId = string;
 export type Nonce = string;
-export type Message = string;
-export type ThirdPartyJobId = string;
-export type ClientToken = string;
-export type ActionProvider = string;
-export type Version = string;
-export type Url = string;
-export type UrlTemplate = string;
-export type ActionConfigurationKey = string;
-export type Description = string;
-export type MinimumArtifactCount = number;
-export type MaximumArtifactCount = number;
-export type TagKey = string;
-export type TagValue = string;
-export type PipelineName = string;
-export type RoleArn = string;
-export type ArtifactStoreLocation = string;
-export type EncryptionKeyId = string;
-export type AWSRegionName = string;
-export type StageName = string;
-export type BlockerName = string;
-export type ActionName = string;
-export type ActionRunOrder = number;
-export type ActionConfigurationValue = string;
-export type Command = string;
-export type ArtifactName = string;
-export type FilePath = string;
-export type OutputVariable = string;
-export type ActionNamespace = string;
-export type ActionTimeout = number;
-export type EnvironmentVariableName = string;
-export type EnvironmentVariableValue = string;
-export type RuleName = string;
-export type RuleProvider = string;
-export type RuleConfigurationKey = string;
-export type RuleConfigurationValue = string;
-export type RuleTimeout = number;
-export type PipelineVersion = number;
-export type PipelineVariableName = string;
-export type PipelineVariableValue = string;
-export type PipelineVariableDescription = string;
-export type GitTagNamePattern = string;
-export type GitBranchNamePattern = string;
-export type GitFilePathPattern = string;
-export type WebhookName = string;
-export type DisabledReason = string;
-export type ActionTypeOwner = string;
-export type ActionTypeDescription = string;
-export type LambdaFunctionArn = string;
-export type AccountId = string;
-export type ServicePrincipal = string;
-export type PolicyStatementsTemplate = string;
-export type JobTimeout = number;
-export type MinimumActionTypeArtifactCount = number;
-export type MaximumActionTypeArtifactCount = number;
-export type AllowedAccount = string;
-export type PropertyDescription = string;
-export type ActionExecutionId = string;
-export type PipelineArn = string;
-export type PipelineExecutionId = string;
-export type Revision = string;
-export type S3BucketName = string;
-export type S3ObjectKey = string;
-export type AccessKeyId = string | redacted.Redacted<string>;
-export type SecretAccessKey = string | redacted.Redacted<string>;
-export type SessionToken = string | redacted.Redacted<string>;
-export type ContinuationToken = string;
-export type PipelineExecutionStatusSummary = string;
-export type RevisionChangeIdentifier = string;
-export type RevisionSummary = string;
-export type TriggerDetail = string;
-export type Enabled = boolean;
-export type LastChangedBy = string;
-export type LastChangedAt = Date;
-export type ExecutionSummary = string;
-export type ActionExecutionToken = string;
-export type LastUpdatedBy = string;
-export type ExecutionId = string;
-export type Percentage = number;
-export type Code = string;
-export type LogStreamARN = string;
-export type RuleExecutionId = string;
-export type RuleExecutionToken = string;
-export type RetryAttempt = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type ExternalExecutionId = string;
-export type ExternalExecutionSummary = string;
-export type OutputVariablesKey = string;
-export type OutputVariablesValue = string;
-export type TargetFilterValue = string;
-export type StopPipelineExecutionReason = string;
-export type MaxPipelines = number;
-export type ResourceArn = string;
-export type JsonPath = string;
-export type MatchEquals = string;
-export type WebhookAuthConfigurationAllowedIPRange = string;
-export type WebhookAuthConfigurationSecretToken = string;
-export type WebhookUrl = string;
-export type WebhookErrorMessage = string;
-export type WebhookErrorCode = string;
-export type WebhookLastTriggered = Date;
-export type WebhookArn = string;
-export type MaxBatchSize = number;
-export type ActionConfigurationQueryableValue = string;
-export type ClientId = string;
-export type ApprovalSummary = string;
-export type ApprovalToken = string;
-export type ClientRequestToken = string;
-
-//# Schemas
 export interface AcknowledgeJobInput {
   jobId: string;
   nonce: string;
@@ -230,6 +284,7 @@ export type JobStatus =
   | "Failed"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface AcknowledgeJobOutput {
   status?: JobStatus;
 }
@@ -238,6 +293,8 @@ export const AcknowledgeJobOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcknowledgeJobOutput",
 }) as any as S.Schema<AcknowledgeJobOutput>;
+export type ThirdPartyJobId = string;
+export type ClientToken = string;
 export interface AcknowledgeThirdPartyJobInput {
   jobId: string;
   nonce: string;
@@ -276,6 +333,11 @@ export type ActionCategory =
   | "Compute"
   | (string & {});
 export const ActionCategory = /*@__PURE__*/ S.String;
+
+export type ActionProvider = string;
+export type Version = string;
+export type Url = string;
+export type UrlTemplate = string;
 export interface ActionTypeSettings {
   thirdPartyConfigurationUrl?: string;
   entityUrlTemplate?: string;
@@ -292,12 +354,15 @@ export const ActionTypeSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionTypeSettings",
 }) as any as S.Schema<ActionTypeSettings>;
+export type ActionConfigurationKey = string;
+export type Description = string;
 export type ActionConfigurationPropertyType =
   | "String"
   | "Number"
   | "Boolean"
   | (string & {});
 export const ActionConfigurationPropertyType = /*@__PURE__*/ S.String;
+
 export interface ActionConfigurationProperty {
   name: string;
   required: boolean;
@@ -324,6 +389,8 @@ export type ActionConfigurationPropertyList = ActionConfigurationProperty[];
 export const ActionConfigurationPropertyList = /*@__PURE__*/ S.Array(
   ActionConfigurationProperty,
 );
+export type MinimumArtifactCount = number;
+export type MaximumArtifactCount = number;
 export interface ArtifactDetails {
   minimumCount: number;
   maximumCount: number;
@@ -333,6 +400,8 @@ export const ArtifactDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ArtifactDetails",
 }) as any as S.Schema<ArtifactDetails>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -378,6 +447,7 @@ export const CreateCustomActionTypeInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomActionTypeInput>;
 export type ActionOwner = "AWS" | "ThirdParty" | "Custom" | (string & {});
 export const ActionOwner = /*@__PURE__*/ S.String;
+
 export interface ActionTypeId {
   category: ActionCategory;
   owner: ActionOwner;
@@ -417,10 +487,16 @@ export const CreateCustomActionTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomActionTypeOutput",
 }) as any as S.Schema<CreateCustomActionTypeOutput>;
+export type PipelineName = string;
+export type RoleArn = string;
 export type ArtifactStoreType = "S3" | (string & {});
 export const ArtifactStoreType = /*@__PURE__*/ S.String;
+
+export type ArtifactStoreLocation = string;
+export type EncryptionKeyId = string;
 export type EncryptionKeyType = "KMS" | (string & {});
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
+
 export interface EncryptionKey {
   id: string;
   type: EncryptionKeyType;
@@ -440,13 +516,17 @@ export const ArtifactStore = /*@__PURE__*/ S.suspend(() =>
     encryptionKey: S.optional(EncryptionKey),
   }),
 ).annotate({ identifier: "ArtifactStore" }) as any as S.Schema<ArtifactStore>;
+export type AWSRegionName = string;
 export type ArtifactStoreMap = { [key: string]: ArtifactStore | undefined };
 export const ArtifactStoreMap = /*@__PURE__*/ S.Record(
   S.String,
   ArtifactStore.pipe(S.optional),
 );
+export type StageName = string;
+export type BlockerName = string;
 export type BlockerType = "Schedule" | (string & {});
 export const BlockerType = /*@__PURE__*/ S.String;
+
 export interface BlockerDeclaration {
   name: string;
   type: BlockerType;
@@ -459,13 +539,19 @@ export const BlockerDeclaration = /*@__PURE__*/ S.suspend(() =>
 export type StageBlockerDeclarationList = BlockerDeclaration[];
 export const StageBlockerDeclarationList =
   /*@__PURE__*/ S.Array(BlockerDeclaration);
+export type ActionName = string;
+export type ActionRunOrder = number;
+export type ActionConfigurationValue = string;
 export type ActionConfigurationMap = { [key: string]: string | undefined };
 export const ActionConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type Command = string;
 export type CommandList = string[];
 export const CommandList = /*@__PURE__*/ S.Array(S.String);
+export type ArtifactName = string;
+export type FilePath = string;
 export type FilePathList = string[];
 export const FilePathList = /*@__PURE__*/ S.Array(S.String);
 export interface OutputArtifact {
@@ -485,13 +571,19 @@ export const InputArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputArtifact" }) as any as S.Schema<InputArtifact>;
 export type InputArtifactList = InputArtifact[];
 export const InputArtifactList = /*@__PURE__*/ S.Array(InputArtifact);
+export type OutputVariable = string;
 export type OutputVariableList = string[];
 export const OutputVariableList = /*@__PURE__*/ S.Array(S.String);
+export type ActionNamespace = string;
+export type ActionTimeout = number;
+export type EnvironmentVariableName = string;
+export type EnvironmentVariableValue = string;
 export type EnvironmentVariableType =
   | "PLAINTEXT"
   | "SECRETS_MANAGER"
   | (string & {});
 export const EnvironmentVariableType = /*@__PURE__*/ S.String;
+
 export interface EnvironmentVariable {
   name: string;
   value: string;
@@ -548,8 +640,10 @@ export const StageActionDeclarationList =
   /*@__PURE__*/ S.Array(ActionDeclaration);
 export type Result = "ROLLBACK" | "FAIL" | "RETRY" | "SKIP" | (string & {});
 export const Result = /*@__PURE__*/ S.String;
+
 export type StageRetryMode = "FAILED_ACTIONS" | "ALL_ACTIONS" | (string & {});
 export const StageRetryMode = /*@__PURE__*/ S.String;
+
 export interface RetryConfiguration {
   retryMode?: StageRetryMode;
 }
@@ -558,10 +652,14 @@ export const RetryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetryConfiguration",
 }) as any as S.Schema<RetryConfiguration>;
+export type RuleName = string;
 export type RuleCategory = "Rule" | (string & {});
 export const RuleCategory = /*@__PURE__*/ S.String;
+
 export type RuleOwner = "AWS" | (string & {});
 export const RuleOwner = /*@__PURE__*/ S.String;
+
+export type RuleProvider = string;
 export interface RuleTypeId {
   category: RuleCategory;
   owner?: RuleOwner;
@@ -576,11 +674,14 @@ export const RuleTypeId = /*@__PURE__*/ S.suspend(() =>
     version: S.optional(S.String),
   }),
 ).annotate({ identifier: "RuleTypeId" }) as any as S.Schema<RuleTypeId>;
+export type RuleConfigurationKey = string;
+export type RuleConfigurationValue = string;
 export type RuleConfigurationMap = { [key: string]: string | undefined };
 export const RuleConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type RuleTimeout = number;
 export interface RuleDeclaration {
   name: string;
   ruleTypeId: RuleTypeId;
@@ -672,14 +773,20 @@ export const StageDeclaration = /*@__PURE__*/ S.suspend(() =>
 export type PipelineStageDeclarationList = StageDeclaration[];
 export const PipelineStageDeclarationList =
   /*@__PURE__*/ S.Array(StageDeclaration);
+export type PipelineVersion = number;
 export type ExecutionMode =
   | "QUEUED"
   | "SUPERSEDED"
   | "PARALLEL"
   | (string & {});
 export const ExecutionMode = /*@__PURE__*/ S.String;
+
 export type PipelineType = "V1" | "V2" | (string & {});
 export const PipelineType = /*@__PURE__*/ S.String;
+
+export type PipelineVariableName = string;
+export type PipelineVariableValue = string;
+export type PipelineVariableDescription = string;
 export interface PipelineVariableDeclaration {
   name: string;
   defaultValue?: string;
@@ -702,6 +809,8 @@ export type PipelineTriggerProviderType =
   | "CodeStarSourceConnection"
   | (string & {});
 export const PipelineTriggerProviderType = /*@__PURE__*/ S.String;
+
+export type GitTagNamePattern = string;
 export type GitTagPatternList = string[];
 export const GitTagPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitTagFilterCriteria {
@@ -716,6 +825,7 @@ export const GitTagFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GitTagFilterCriteria",
 }) as any as S.Schema<GitTagFilterCriteria>;
+export type GitBranchNamePattern = string;
 export type GitBranchPatternList = string[];
 export const GitBranchPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitBranchFilterCriteria {
@@ -730,6 +840,7 @@ export const GitBranchFilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GitBranchFilterCriteria",
 }) as any as S.Schema<GitBranchFilterCriteria>;
+export type GitFilePathPattern = string;
 export type GitFilePathPatternList = string[];
 export const GitFilePathPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitFilePathFilterCriteria {
@@ -764,6 +875,7 @@ export type GitPullRequestEventType =
   | "CLOSED"
   | (string & {});
 export const GitPullRequestEventType = /*@__PURE__*/ S.String;
+
 export type GitPullRequestEventTypeList = GitPullRequestEventType[];
 export const GitPullRequestEventTypeList = /*@__PURE__*/ S.Array(
   GitPullRequestEventType,
@@ -928,6 +1040,7 @@ export const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePipelineResponse",
 }) as any as S.Schema<DeletePipelineResponse>;
+export type WebhookName = string;
 export interface DeleteWebhookInput {
   name: string;
 }
@@ -979,6 +1092,8 @@ export const DeregisterWebhookWithThirdPartyOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeregisterWebhookWithThirdPartyOutput>;
 export type StageTransitionType = "Inbound" | "Outbound" | (string & {});
 export const StageTransitionType = /*@__PURE__*/ S.String;
+
+export type DisabledReason = string;
 export interface DisableStageTransitionInput {
   pipelineName: string;
   stageName: string;
@@ -1041,6 +1156,7 @@ export const EnableStageTransitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableStageTransitionResponse",
 }) as any as S.Schema<EnableStageTransitionResponse>;
+export type ActionTypeOwner = string;
 export interface GetActionTypeInput {
   category: ActionCategory;
   owner: string;
@@ -1067,6 +1183,8 @@ export const GetActionTypeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActionTypeInput",
 }) as any as S.Schema<GetActionTypeInput>;
+export type ActionTypeDescription = string;
+export type LambdaFunctionArn = string;
 export interface LambdaExecutorConfiguration {
   lambdaFunctionArn: string;
 }
@@ -1075,8 +1193,10 @@ export const LambdaExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaExecutorConfiguration",
 }) as any as S.Schema<LambdaExecutorConfiguration>;
+export type AccountId = string;
 export type PollingAccountList = string[];
 export const PollingAccountList = /*@__PURE__*/ S.Array(S.String);
+export type ServicePrincipal = string;
 export type PollingServicePrincipalList = string[];
 export const PollingServicePrincipalList = /*@__PURE__*/ S.Array(S.String);
 export interface JobWorkerExecutorConfiguration {
@@ -1105,6 +1225,9 @@ export const ExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecutorConfiguration>;
 export type ExecutorType = "JobWorker" | "Lambda" | (string & {});
 export const ExecutorType = /*@__PURE__*/ S.String;
+
+export type PolicyStatementsTemplate = string;
+export type JobTimeout = number;
 export interface ActionTypeExecutor {
   configuration: ExecutorConfiguration;
   type: ExecutorType;
@@ -1137,6 +1260,8 @@ export const ActionTypeIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionTypeIdentifier",
 }) as any as S.Schema<ActionTypeIdentifier>;
+export type MinimumActionTypeArtifactCount = number;
+export type MaximumActionTypeArtifactCount = number;
 export interface ActionTypeArtifactDetails {
   minimumCount: number;
   maximumCount: number;
@@ -1146,6 +1271,7 @@ export const ActionTypeArtifactDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionTypeArtifactDetails",
 }) as any as S.Schema<ActionTypeArtifactDetails>;
+export type AllowedAccount = string;
 export type AllowedAccounts = string[];
 export const AllowedAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface ActionTypePermissions {
@@ -1156,6 +1282,7 @@ export const ActionTypePermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionTypePermissions",
 }) as any as S.Schema<ActionTypePermissions>;
+export type PropertyDescription = string;
 export interface ActionTypeProperty {
   name: string;
   optional: boolean;
@@ -1256,6 +1383,7 @@ export interface StageContext {
 export const StageContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String) }),
 ).annotate({ identifier: "StageContext" }) as any as S.Schema<StageContext>;
+export type ActionExecutionId = string;
 export interface ActionContext {
   name?: string;
   actionExecutionId?: string;
@@ -1266,6 +1394,8 @@ export const ActionContext = /*@__PURE__*/ S.suspend(() =>
     actionExecutionId: S.optional(S.String),
   }),
 ).annotate({ identifier: "ActionContext" }) as any as S.Schema<ActionContext>;
+export type PipelineArn = string;
+export type PipelineExecutionId = string;
 export interface PipelineContext {
   pipelineName?: string;
   stage?: StageContext;
@@ -1284,8 +1414,12 @@ export const PipelineContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipelineContext",
 }) as any as S.Schema<PipelineContext>;
+export type Revision = string;
 export type ArtifactLocationType = "S3" | (string & {});
 export const ArtifactLocationType = /*@__PURE__*/ S.String;
+
+export type S3BucketName = string;
+export type S3ObjectKey = string;
 export interface S3ArtifactLocation {
   bucketName: string;
   objectKey: string;
@@ -1321,6 +1455,9 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 export type ArtifactList = Artifact[];
 export const ArtifactList = /*@__PURE__*/ S.Array(Artifact);
+export type AccessKeyId = string | redacted.Redacted<string>;
+export type SecretAccessKey = string | redacted.Redacted<string>;
+export type SessionToken = string | redacted.Redacted<string>;
 export interface AWSSessionCredentials {
   accessKeyId: string | redacted.Redacted<string>;
   secretAccessKey: string | redacted.Redacted<string>;
@@ -1335,6 +1472,7 @@ export const AWSSessionCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AWSSessionCredentials",
 }) as any as S.Schema<AWSSessionCredentials>;
+export type ContinuationToken = string;
 export interface JobData {
   actionTypeId?: ActionTypeId;
   actionConfiguration?: ActionConfiguration;
@@ -1455,6 +1593,10 @@ export type PipelineExecutionStatus =
   | "Failed"
   | (string & {});
 export const PipelineExecutionStatus = /*@__PURE__*/ S.String;
+
+export type PipelineExecutionStatusSummary = string;
+export type RevisionChangeIdentifier = string;
+export type RevisionSummary = string;
 export interface ArtifactRevision {
   name?: string;
   revisionId?: string;
@@ -1502,6 +1644,8 @@ export type TriggerType =
   | "AutomatedRollback"
   | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
+
+export type TriggerDetail = string;
 export interface ExecutionTrigger {
   triggerType?: TriggerType;
   triggerDetail?: string;
@@ -1516,6 +1660,7 @@ export const ExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecutionTrigger>;
 export type ExecutionType = "STANDARD" | "ROLLBACK" | (string & {});
 export const ExecutionType = /*@__PURE__*/ S.String;
+
 export interface PipelineRollbackMetadata {
   rollbackTargetPipelineExecutionId?: string;
 }
@@ -1590,6 +1735,7 @@ export type StageExecutionStatus =
   | "Skipped"
   | (string & {});
 export const StageExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface StageExecution {
   pipelineExecutionId: string;
   status: StageExecutionStatus;
@@ -1604,6 +1750,9 @@ export const StageExecution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageExecution" }) as any as S.Schema<StageExecution>;
 export type StageExecutionList = StageExecution[];
 export const StageExecutionList = /*@__PURE__*/ S.Array(StageExecution);
+export type Enabled = boolean;
+export type LastChangedBy = string;
+export type LastChangedAt = Date;
 export interface TransitionState {
   enabled?: boolean;
   lastChangedBy?: string;
@@ -1639,6 +1788,14 @@ export type ActionExecutionStatus =
   | "Failed"
   | (string & {});
 export const ActionExecutionStatus = /*@__PURE__*/ S.String;
+
+export type ExecutionSummary = string;
+export type ActionExecutionToken = string;
+export type LastUpdatedBy = string;
+export type ExecutionId = string;
+export type Percentage = number;
+export type Code = string;
+export type Message = string;
 export interface ErrorDetails {
   code?: string;
   message?: string;
@@ -1646,6 +1803,7 @@ export interface ErrorDetails {
 export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
+export type LogStreamARN = string;
 export interface ActionExecution {
   actionExecutionId?: string;
   status?: ActionExecutionStatus;
@@ -1706,6 +1864,7 @@ export type ConditionExecutionStatus =
   | "Overridden"
   | (string & {});
 export const ConditionExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface StageConditionsExecution {
   status?: ConditionExecutionStatus;
   summary?: string;
@@ -1746,6 +1905,7 @@ export const RuleRevision = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "RuleRevision" }) as any as S.Schema<RuleRevision>;
+export type RuleExecutionId = string;
 export type RuleExecutionStatus =
   | "InProgress"
   | "Abandoned"
@@ -1753,6 +1913,8 @@ export type RuleExecutionStatus =
   | "Failed"
   | (string & {});
 export const RuleExecutionStatus = /*@__PURE__*/ S.String;
+
+export type RuleExecutionToken = string;
 export interface RuleExecution {
   ruleExecutionId?: string;
   status?: RuleExecutionStatus;
@@ -1821,11 +1983,13 @@ export const StageConditionState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StageConditionState",
 }) as any as S.Schema<StageConditionState>;
+export type RetryAttempt = number;
 export type RetryTrigger =
   | "AutomatedStageRetry"
   | "ManualStageRetry"
   | (string & {});
 export const RetryTrigger = /*@__PURE__*/ S.String;
+
 export interface RetryStageMetadata {
   autoStageRetryAttempt?: number;
   manualStageRetryAttempt?: number;
@@ -1953,6 +2117,7 @@ export const GetThirdPartyJobDetailsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThirdPartyJobDetailsOutput>;
 export type StartTimeRange = "Latest" | "All" | (string & {});
 export const StartTimeRange = /*@__PURE__*/ S.String;
+
 export interface LatestInPipelineExecutionFilter {
   pipelineExecutionId: string;
   startTimeRange: StartTimeRange;
@@ -1974,6 +2139,8 @@ export const ActionExecutionFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionExecutionFilter",
 }) as any as S.Schema<ActionExecutionFilter>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListActionExecutionsInput {
   pipelineName: string;
   filter?: ActionExecutionFilter;
@@ -2007,6 +2174,8 @@ export const ResolvedActionConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type S3Bucket = string;
+export type S3Key = string;
 export interface S3Location {
   bucket?: string;
   key?: string;
@@ -2045,6 +2214,8 @@ export const ActionExecutionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionExecutionInput",
 }) as any as S.Schema<ActionExecutionInput>;
+export type ExternalExecutionId = string;
+export type ExternalExecutionSummary = string;
 export interface ActionExecutionResult {
   externalExecutionId?: string;
   externalExecutionSummary?: string;
@@ -2063,6 +2234,8 @@ export const ActionExecutionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionExecutionResult",
 }) as any as S.Schema<ActionExecutionResult>;
+export type OutputVariablesKey = string;
+export type OutputVariablesValue = string;
 export type OutputVariablesMap = { [key: string]: string | undefined };
 export const OutputVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2168,6 +2341,8 @@ export const ListActionTypesOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListActionTypesOutput>;
 export type TargetFilterName = "TARGET_STATUS" | (string & {});
 export const TargetFilterName = /*@__PURE__*/ S.String;
+
+export type TargetFilterValue = string;
 export type TargetFilterValueList = string[];
 export const TargetFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TargetFilter {
@@ -2338,6 +2513,7 @@ export const SourceRevision = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceRevision" }) as any as S.Schema<SourceRevision>;
 export type SourceRevisionList = SourceRevision[];
 export const SourceRevisionList = /*@__PURE__*/ S.Array(SourceRevision);
+export type StopPipelineExecutionReason = string;
 export interface StopExecutionTrigger {
   reason?: string;
 }
@@ -2392,6 +2568,7 @@ export const ListPipelineExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPipelineExecutionsOutput",
 }) as any as S.Schema<ListPipelineExecutionsOutput>;
+export type MaxPipelines = number;
 export interface ListPipelinesInput {
   nextToken?: string;
   maxResults?: number;
@@ -2626,6 +2803,7 @@ export type RuleConfigurationPropertyType =
   | "Boolean"
   | (string & {});
 export const RuleConfigurationPropertyType = /*@__PURE__*/ S.String;
+
 export interface RuleConfigurationProperty {
   name: string;
   required: boolean;
@@ -2676,6 +2854,7 @@ export const ListRuleTypesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRuleTypesOutput",
 }) as any as S.Schema<ListRuleTypesOutput>;
+export type ResourceArn = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
   nextToken?: string;
@@ -2733,6 +2912,8 @@ export const ListWebhooksInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWebhooksInput",
 }) as any as S.Schema<ListWebhooksInput>;
+export type JsonPath = string;
+export type MatchEquals = string;
 export interface WebhookFilterRule {
   jsonPath: string;
   matchEquals?: string;
@@ -2750,6 +2931,9 @@ export type WebhookAuthenticationType =
   | "UNAUTHENTICATED"
   | (string & {});
 export const WebhookAuthenticationType = /*@__PURE__*/ S.String;
+
+export type WebhookAuthConfigurationAllowedIPRange = string;
+export type WebhookAuthConfigurationSecretToken = string;
 export interface WebhookAuthConfiguration {
   AllowedIPRange?: string;
   SecretToken?: string | redacted.Redacted<string>;
@@ -2782,6 +2966,11 @@ export const WebhookDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebhookDefinition",
 }) as any as S.Schema<WebhookDefinition>;
+export type WebhookUrl = string;
+export type WebhookErrorMessage = string;
+export type WebhookErrorCode = string;
+export type WebhookLastTriggered = Date;
+export type WebhookArn = string;
 export interface ListWebhookItem {
   definition: WebhookDefinition;
   url: string;
@@ -2820,6 +3009,7 @@ export const ListWebhooksOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebhooksOutput>;
 export type ConditionType = "BEFORE_ENTRY" | "ON_SUCCESS" | (string & {});
 export const ConditionType = /*@__PURE__*/ S.String;
+
 export interface OverrideStageConditionInput {
   pipelineName: string;
   stageName: string;
@@ -2852,6 +3042,8 @@ export const OverrideStageConditionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OverrideStageConditionResponse",
 }) as any as S.Schema<OverrideStageConditionResponse>;
+export type MaxBatchSize = number;
+export type ActionConfigurationQueryableValue = string;
 export type QueryParamMap = { [key: string]: string | undefined };
 export const QueryParamMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2927,6 +3119,7 @@ export const PollForThirdPartyJobsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PollForThirdPartyJobsInput",
 }) as any as S.Schema<PollForThirdPartyJobsInput>;
+export type ClientId = string;
 export interface ThirdPartyJob {
   clientId?: string;
   jobId?: string;
@@ -2982,8 +3175,10 @@ export const PutActionRevisionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutActionRevisionOutput",
 }) as any as S.Schema<PutActionRevisionOutput>;
+export type ApprovalSummary = string;
 export type ApprovalStatus = "Approved" | "Rejected" | (string & {});
 export const ApprovalStatus = /*@__PURE__*/ S.String;
+
 export interface ApprovalResult {
   summary: string;
   status: ApprovalStatus;
@@ -2991,6 +3186,7 @@ export interface ApprovalResult {
 export const ApprovalResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ summary: S.String, status: ApprovalStatus }),
 ).annotate({ identifier: "ApprovalResult" }) as any as S.Schema<ApprovalResult>;
+export type ApprovalToken = string;
 export interface PutApprovalResultInput {
   pipelineName: string;
   stageName: string;
@@ -3038,6 +3234,7 @@ export type FailureType =
   | "SystemUnavailable"
   | (string & {});
 export const FailureType = /*@__PURE__*/ S.String;
+
 export interface FailureDetails {
   type: FailureType;
   message: string;
@@ -3331,6 +3528,7 @@ export const PipelineVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelineVariable>;
 export type PipelineVariableList = PipelineVariable[];
 export const PipelineVariableList = /*@__PURE__*/ S.Array(PipelineVariable);
+export type ClientRequestToken = string;
 export type SourceRevisionType =
   | "COMMIT_ID"
   | "IMAGE_DIGEST"
@@ -3338,6 +3536,7 @@ export type SourceRevisionType =
   | "S3_OBJECT_KEY"
   | (string & {});
 export const SourceRevisionType = /*@__PURE__*/ S.String;
+
 export interface SourceRevisionOverride {
   actionName: string;
   revisionType: SourceRevisionType;
@@ -3526,175 +3725,6 @@ export const UpdatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePipelineOutput",
 }) as any as S.Schema<UpdatePipelineOutput>;
-
-//# Errors
-export class InvalidNonceException extends S.TaggedErrorClass<InvalidNonceException>()(
-  "InvalidNonceException",
-  { message: S.optional(S.String) },
-) {}
-export class JobNotFoundException extends S.TaggedErrorClass<JobNotFoundException>()(
-  "JobNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidClientTokenException extends S.TaggedErrorClass<InvalidClientTokenException>()(
-  "InvalidClientTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagsException extends S.TaggedErrorClass<InvalidTagsException>()(
-  "InvalidTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidActionDeclarationException extends S.TaggedErrorClass<InvalidActionDeclarationException>()(
-  "InvalidActionDeclarationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidBlockerDeclarationException extends S.TaggedErrorClass<InvalidBlockerDeclarationException>()(
-  "InvalidBlockerDeclarationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidStageDeclarationException extends S.TaggedErrorClass<InvalidStageDeclarationException>()(
-  "InvalidStageDeclarationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidStructureException extends S.TaggedErrorClass<InvalidStructureException>()(
-  "InvalidStructureException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineNameInUseException extends S.TaggedErrorClass<PipelineNameInUseException>()(
-  "PipelineNameInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class WebhookNotFoundException extends S.TaggedErrorClass<WebhookNotFoundException>()(
-  "WebhookNotFoundException",
-  {},
-) {}
-export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
-  "PipelineNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class StageNotFoundException extends S.TaggedErrorClass<StageNotFoundException>()(
-  "StageNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ActionTypeNotFoundException extends S.TaggedErrorClass<ActionTypeNotFoundException>()(
-  "ActionTypeNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineVersionNotFoundException extends S.TaggedErrorClass<PipelineVersionNotFoundException>()(
-  "PipelineVersionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineExecutionNotFoundException extends S.TaggedErrorClass<PipelineExecutionNotFoundException>()(
-  "PipelineExecutionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidJobException extends S.TaggedErrorClass<InvalidJobException>()(
-  "InvalidJobException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class ActionExecutionNotFoundException extends S.TaggedErrorClass<ActionExecutionNotFoundException>()(
-  "ActionExecutionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ConcurrentPipelineExecutionsLimitExceededException extends S.TaggedErrorClass<ConcurrentPipelineExecutionsLimitExceededException>()(
-  "ConcurrentPipelineExecutionsLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ConditionNotOverridableException extends S.TaggedErrorClass<ConditionNotOverridableException>()(
-  "ConditionNotOverridableException",
-  { message: S.optional(S.String) },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class NotLatestPipelineExecutionException extends S.TaggedErrorClass<NotLatestPipelineExecutionException>()(
-  "NotLatestPipelineExecutionException",
-  { message: S.optional(S.String) },
-) {}
-export class ActionNotFoundException extends S.TaggedErrorClass<ActionNotFoundException>()(
-  "ActionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ApprovalAlreadyCompletedException extends S.TaggedErrorClass<ApprovalAlreadyCompletedException>()(
-  "ApprovalAlreadyCompletedException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidApprovalTokenException extends S.TaggedErrorClass<InvalidApprovalTokenException>()(
-  "InvalidApprovalTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidJobStateException extends S.TaggedErrorClass<InvalidJobStateException>()(
-  "InvalidJobStateException",
-  { message: S.optional(S.String) },
-) {}
-export class OutputVariablesSizeExceededException extends S.TaggedErrorClass<OutputVariablesSizeExceededException>()(
-  "OutputVariablesSizeExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidWebhookAuthenticationParametersException extends S.TaggedErrorClass<InvalidWebhookAuthenticationParametersException>()(
-  "InvalidWebhookAuthenticationParametersException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidWebhookFilterPatternException extends S.TaggedErrorClass<InvalidWebhookFilterPatternException>()(
-  "InvalidWebhookFilterPatternException",
-  { message: S.optional(S.String) },
-) {}
-export class StageNotRetryableException extends S.TaggedErrorClass<StageNotRetryableException>()(
-  "StageNotRetryableException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineExecutionOutdatedException extends S.TaggedErrorClass<PipelineExecutionOutdatedException>()(
-  "PipelineExecutionOutdatedException",
-  { message: S.optional(S.String) },
-) {}
-export class UnableToRollbackStageException extends S.TaggedErrorClass<UnableToRollbackStageException>()(
-  "UnableToRollbackStageException",
-  { message: S.optional(S.String) },
-) {}
-export class DuplicatedStopRequestException extends S.TaggedErrorClass<DuplicatedStopRequestException>()(
-  "DuplicatedStopRequestException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineExecutionNotStoppableException extends S.TaggedErrorClass<PipelineExecutionNotStoppableException>()(
-  "PipelineExecutionNotStoppableException",
-  { message: S.optional(S.String) },
-) {}
-export class RequestFailedException extends S.TaggedErrorClass<RequestFailedException>()(
-  "RequestFailedException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type AcknowledgeJobError =
   | InvalidNonceException
   | JobNotFoundException
@@ -3713,8 +3743,11 @@ export const acknowledgeJob: API.OperationMethod<
   input: AcknowledgeJobInput,
   output: AcknowledgeJobOutput,
   errors: [InvalidNonceException, JobNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcknowledgeJob",
 }));
+
 export type AcknowledgeThirdPartyJobError =
   | InvalidClientTokenException
   | InvalidNonceException
@@ -3739,8 +3772,11 @@ export const acknowledgeThirdPartyJob: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcknowledgeThirdPartyJob",
 }));
+
 export type CreateCustomActionTypeError =
   | ConcurrentModificationException
   | InvalidTagsException
@@ -3767,8 +3803,11 @@ export const createCustomActionType: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomActionType",
 }));
+
 export type CreatePipelineError =
   | ConcurrentModificationException
   | InvalidActionDeclarationException
@@ -3809,8 +3848,11 @@ export const createPipeline: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipeline",
 }));
+
 export type DeleteCustomActionTypeError =
   | ConcurrentModificationException
   | ValidationException
@@ -3834,8 +3876,11 @@ export const deleteCustomActionType: API.OperationMethod<
   input: DeleteCustomActionTypeInput,
   output: DeleteCustomActionTypeResponse,
   errors: [ConcurrentModificationException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomActionType",
 }));
+
 export type DeletePipelineError =
   | ConcurrentModificationException
   | ValidationException
@@ -3852,8 +3897,11 @@ export const deletePipeline: API.OperationMethod<
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
   errors: [ConcurrentModificationException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipeline",
 }));
+
 export type DeleteWebhookError =
   | ConcurrentModificationException
   | ValidationException
@@ -3873,8 +3921,11 @@ export const deleteWebhook: API.OperationMethod<
   input: DeleteWebhookInput,
   output: DeleteWebhookOutput,
   errors: [ConcurrentModificationException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebhook",
 }));
+
 export type DeregisterWebhookWithThirdPartyError =
   | ValidationException
   | WebhookNotFoundException
@@ -3893,8 +3944,11 @@ export const deregisterWebhookWithThirdParty: API.OperationMethod<
   input: DeregisterWebhookWithThirdPartyInput,
   output: DeregisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterWebhookWithThirdParty",
 }));
+
 export type DisableStageTransitionError =
   | PipelineNotFoundException
   | StageNotFoundException
@@ -3917,8 +3971,11 @@ export const disableStageTransition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableStageTransition",
 }));
+
 export type EnableStageTransitionError =
   | PipelineNotFoundException
   | StageNotFoundException
@@ -3940,8 +3997,11 @@ export const enableStageTransition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableStageTransition",
 }));
+
 export type GetActionTypeError =
   | ActionTypeNotFoundException
   | ValidationException
@@ -3960,8 +4020,11 @@ export const getActionType: API.OperationMethod<
   input: GetActionTypeInput,
   output: GetActionTypeOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActionType",
 }));
+
 export type GetJobDetailsError =
   | JobNotFoundException
   | ValidationException
@@ -3983,8 +4046,11 @@ export const getJobDetails: API.OperationMethod<
   input: GetJobDetailsInput,
   output: GetJobDetailsOutput,
   errors: [JobNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobDetails",
 }));
+
 export type GetPipelineError =
   | PipelineNotFoundException
   | PipelineVersionNotFoundException
@@ -4008,8 +4074,11 @@ export const getPipeline: API.OperationMethod<
     PipelineVersionNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipeline",
 }));
+
 export type GetPipelineExecutionError =
   | PipelineExecutionNotFoundException
   | PipelineNotFoundException
@@ -4033,8 +4102,11 @@ export const getPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineExecution",
 }));
+
 export type GetPipelineStateError =
   | PipelineNotFoundException
   | ValidationException
@@ -4056,8 +4128,11 @@ export const getPipelineState: API.OperationMethod<
   input: GetPipelineStateInput,
   output: GetPipelineStateOutput,
   errors: [PipelineNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineState",
 }));
+
 export type GetThirdPartyJobDetailsError =
   | InvalidClientTokenException
   | InvalidJobException
@@ -4087,8 +4162,11 @@ export const getThirdPartyJobDetails: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThirdPartyJobDetails",
 }));
+
 export type ListActionExecutionsError =
   | InvalidNextTokenException
   | PipelineExecutionNotFoundException
@@ -4127,6 +4205,8 @@ export const listActionExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActionExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4135,6 +4215,7 @@ export const listActionExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListActionTypesError =
   | InvalidNextTokenException
   | ValidationException
@@ -4167,6 +4248,8 @@ export const listActionTypes: API.OperationMethod<
   input: ListActionTypesInput,
   output: ListActionTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActionTypes",
   pagination: {
     inputToken: "nextToken",
@@ -4174,6 +4257,7 @@ export const listActionTypes: API.OperationMethod<
     items: "actionTypes",
   } as const,
 }));
+
 export type ListDeployActionExecutionTargetsError =
   | ActionExecutionNotFoundException
   | InvalidNextTokenException
@@ -4212,6 +4296,8 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployActionExecutionTargets",
   pagination: {
     inputToken: "nextToken",
@@ -4220,6 +4306,7 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPipelineExecutionsError =
   | InvalidNextTokenException
   | PipelineNotFoundException
@@ -4260,6 +4347,8 @@ export const listPipelineExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4268,6 +4357,7 @@ export const listPipelineExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPipelinesError =
   | InvalidNextTokenException
   | ValidationException
@@ -4299,6 +4389,8 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelines",
   pagination: {
     inputToken: "nextToken",
@@ -4307,6 +4399,7 @@ export const listPipelines: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRuleExecutionsError =
   | InvalidNextTokenException
   | PipelineExecutionNotFoundException
@@ -4346,6 +4439,8 @@ export const listRuleExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4354,6 +4449,7 @@ export const listRuleExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRuleTypesError =
   | InvalidNextTokenException
   | ValidationException
@@ -4372,8 +4468,11 @@ export const listRuleTypes: API.OperationMethod<
   input: ListRuleTypesInput,
   output: ListRuleTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleTypes",
 }));
+
 export type ListTagsForResourceError =
   | InvalidArnException
   | InvalidNextTokenException
@@ -4413,6 +4512,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -4421,6 +4522,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListWebhooksError =
   | InvalidNextTokenException
   | ValidationException
@@ -4456,6 +4558,8 @@ export const listWebhooks: API.OperationMethod<
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebhooks",
   pagination: {
     inputToken: "NextToken",
@@ -4464,6 +4568,7 @@ export const listWebhooks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type OverrideStageConditionError =
   | ConcurrentPipelineExecutionsLimitExceededException
   | ConditionNotOverridableException
@@ -4495,8 +4600,11 @@ export const overrideStageCondition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OverrideStageCondition",
 }));
+
 export type PollForJobsError =
   | ActionTypeNotFoundException
   | ValidationException
@@ -4521,8 +4629,11 @@ export const pollForJobs: API.OperationMethod<
   input: PollForJobsInput,
   output: PollForJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForJobs",
 }));
+
 export type PollForThirdPartyJobsError =
   | ActionTypeNotFoundException
   | ValidationException
@@ -4544,8 +4655,11 @@ export const pollForThirdPartyJobs: API.OperationMethod<
   input: PollForThirdPartyJobsInput,
   output: PollForThirdPartyJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForThirdPartyJobs",
 }));
+
 export type PutActionRevisionError =
   | ActionNotFoundException
   | ConcurrentPipelineExecutionsLimitExceededException
@@ -4572,8 +4686,11 @@ export const putActionRevision: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutActionRevision",
 }));
+
 export type PutApprovalResultError =
   | ActionNotFoundException
   | ApprovalAlreadyCompletedException
@@ -4602,8 +4719,11 @@ export const putApprovalResult: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApprovalResult",
 }));
+
 export type PutJobFailureResultError =
   | InvalidJobStateException
   | JobNotFoundException
@@ -4622,8 +4742,11 @@ export const putJobFailureResult: API.OperationMethod<
   input: PutJobFailureResultInput,
   output: PutJobFailureResultResponse,
   errors: [InvalidJobStateException, JobNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutJobFailureResult",
 }));
+
 export type PutJobSuccessResultError =
   | InvalidJobStateException
   | JobNotFoundException
@@ -4648,8 +4771,11 @@ export const putJobSuccessResult: API.OperationMethod<
     OutputVariablesSizeExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutJobSuccessResult",
 }));
+
 export type PutThirdPartyJobFailureResultError =
   | InvalidClientTokenException
   | InvalidJobStateException
@@ -4674,8 +4800,11 @@ export const putThirdPartyJobFailureResult: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutThirdPartyJobFailureResult",
 }));
+
 export type PutThirdPartyJobSuccessResultError =
   | InvalidClientTokenException
   | InvalidJobStateException
@@ -4700,8 +4829,11 @@ export const putThirdPartyJobSuccessResult: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutThirdPartyJobSuccessResult",
 }));
+
 export type PutWebhookError =
   | ConcurrentModificationException
   | InvalidTagsException
@@ -4750,8 +4882,11 @@ export const putWebhook: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutWebhook",
 }));
+
 export type RegisterWebhookWithThirdPartyError =
   | ValidationException
   | WebhookNotFoundException
@@ -4769,8 +4904,11 @@ export const registerWebhookWithThirdParty: API.OperationMethod<
   input: RegisterWebhookWithThirdPartyInput,
   output: RegisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterWebhookWithThirdParty",
 }));
+
 export type RetryStageExecutionError =
   | ConcurrentPipelineExecutionsLimitExceededException
   | ConflictException
@@ -4807,8 +4945,11 @@ export const retryStageExecution: API.OperationMethod<
     StageNotRetryableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryStageExecution",
 }));
+
 export type RollbackStageError =
   | ConflictException
   | PipelineExecutionNotFoundException
@@ -4838,8 +4979,11 @@ export const rollbackStage: API.OperationMethod<
     UnableToRollbackStageException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackStage",
 }));
+
 export type StartPipelineExecutionError =
   | ConcurrentPipelineExecutionsLimitExceededException
   | ConflictException
@@ -4864,8 +5008,11 @@ export const startPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPipelineExecution",
 }));
+
 export type StopPipelineExecutionError =
   | ConflictException
   | DuplicatedStopRequestException
@@ -4896,8 +5043,11 @@ export const stopPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPipelineExecution",
 }));
+
 export type TagResourceError =
   | ConcurrentModificationException
   | InvalidArnException
@@ -4926,8 +5076,11 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ConcurrentModificationException
   | InvalidArnException
@@ -4953,8 +5106,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateActionTypeError =
   | ActionTypeNotFoundException
   | RequestFailedException
@@ -4979,8 +5135,11 @@ export const updateActionType: API.OperationMethod<
     RequestFailedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateActionType",
 }));
+
 export type UpdatePipelineError =
   | InvalidActionDeclarationException
   | InvalidBlockerDeclarationException
@@ -5011,5 +5170,7 @@ export const updatePipeline: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipeline",
 }));

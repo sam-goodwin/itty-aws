@@ -8,7 +8,6 @@
  * for that SDK without wrapping every call with `Effect.retry`.
  */
 import * as Config from "effect/Config";
-import * as ConfigProvider from "effect/ConfigProvider";
 import * as Context from "effect/Context";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
@@ -84,9 +83,7 @@ export const jittered = Schedule.addDelay(() =>
  */
 export const capped = (max: Duration.Duration) =>
   Schedule.modifyDelay(({ duration }) =>
-    Effect.succeed(
-      Duration.isGreaterThan(duration, max) ? Duration.millis(5000) : duration,
-    ),
+    Effect.succeed(Duration.isGreaterThan(duration, max) ? max : duration),
   );
 
 // ============================================================================
@@ -148,12 +145,6 @@ export const readServerRetryHintCapMsFromEnv = (): number =>
   Effect.runSync(
     serverRetryHintCapMsConfig.pipe(
       Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
-      // The default ConfigProvider caches env reads; use a fresh provider so
-      // each call observes the current process.env value.
-      Effect.provideService(
-        ConfigProvider.ConfigProvider,
-        ConfigProvider.fromEnv(),
-      ),
     ),
   );
 
@@ -166,10 +157,6 @@ const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
     }
     return yield* serverRetryHintCapMsConfig.pipe(
       Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS),
-      Effect.provideService(
-        ConfigProvider.ConfigProvider,
-        ConfigProvider.fromEnv(),
-      ),
     );
   });
 
@@ -223,25 +210,37 @@ const honorServerHint = (
  * - Honors `error.retryAfter` (server-provided hint) with precedence, capped
  *   by {@link DEFAULT_SERVER_RETRY_HINT_CAP_MS} by default; override with
  *   `DISTILLED_SERVER_RETRY_HINT_CAP_MS` or {@link ServerRetryHintCapMs}
- * - Otherwise uses exponential backoff starting at 100ms with a factor of 2
+ * - Otherwise uses exponential backoff starting at 250ms with a factor of 2,
+ *   capped at 5s per delay
  * - Ensures at least 500ms delay for throttling errors
- * - Limits to 5 retry attempts
+ * - Limits to 8 retry attempts
  * - Applies jitter to avoid thundering herd
+ *
+ * The 250ms/5s-cap/8-attempt shape (~20s of total patience) comes from
+ * alchemy's Cloudflare provider suite, where transient auth blips under
+ * high request concurrency routinely outlast a short 5-attempt/3s policy
+ * while a genuinely broken credential still fails within seconds.
  */
 export const makeDefault: Factory = (lastError) => ({
   while: (error) => isTransientError(error),
+  // The 5s cap applies to the exponential backoff BEFORE the server hint is
+  // considered, so a server-provided retryAfter longer than 5s is honored in
+  // full (bounded only by the 60s hint cap inside honorServerHint). Capping
+  // after the hint would silently clamp e.g. a Retry-After: 30 to 5s.
   schedule: Schedule.max([
     pipe(
-      Schedule.exponential(100, 2),
+      Schedule.exponential(250, 2),
+      capped(Duration.seconds(5)),
       honorServerHint(lastError, (duration, error) => {
         if (isThrottling(error) && Duration.toMillis(duration) < 500) {
           return Duration.millis(500);
         }
         return duration;
       }),
+      jittered,
     ),
-    Schedule.recurs(5),
-  ]).pipe(jittered),
+    Schedule.recurs(8),
+  ]),
 });
 
 /**
@@ -252,8 +251,8 @@ export const throttlingFactory: Factory = (lastError) => ({
   while: (error) => isThrottling(error),
   schedule: pipe(
     Schedule.exponential(1000, 2),
-    honorServerHint(lastError),
     capped(Duration.seconds(5)),
+    honorServerHint(lastError),
     jittered,
   ),
 });
@@ -282,8 +281,8 @@ export const transientFactory: Factory = (lastError) => ({
   while: isTransientError,
   schedule: pipe(
     Schedule.exponential(1000, 2),
-    honorServerHint(lastError),
     capped(Duration.seconds(5)),
+    honorServerHint(lastError),
     jittered,
   ),
 });

@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "ZonePurged": [{ "message": { "includes": "has been purged" } }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

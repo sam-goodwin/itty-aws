@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -84,50 +86,87 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AccountSetupInProgressException extends S.TaggedErrorClass<AccountSetupInProgressException>()(
+  "AccountSetupInProgressException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(428),
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class OperationFailureException extends S.TaggedErrorClass<OperationFailureException>()(
+  "OperationFailureException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RegionSetupInProgressException extends S.TaggedErrorClass<RegionSetupInProgressException>()(
+  "RegionSetupInProgressException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(428),
+) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class UnauthenticatedException extends S.TaggedErrorClass<UnauthenticatedException>()(
+  "UnauthenticatedException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type ResourceName = string;
-export type NonEmptyString = string;
-export type IsoDate = Date;
-export type Port = number;
-export type BucketName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type BucketAccessLogPrefix = string;
-export type BucketCorsRuleId = string;
-export type BucketCorsAllowedMethod = string;
-export type IAMAccessKeyId = string | redacted.Redacted<string>;
-export type CertificateName = string;
-export type DomainName = string;
-export type SerialNumber = string;
-export type RequestFailureReason = string;
-export type InUseResourceCount = number;
-export type KeyAlgorithm = string;
-export type IssuerCA = string;
-export type EligibleToRenew = string;
-export type RenewalStatusReason = string;
-export type RevocationReason = string;
-export type StringMax256 = string;
-export type ContainerServiceName = string;
-export type ContainerServiceScale = number;
-export type ContainerName = string;
-export type TimeOfDay = string;
-export type DomainEntryType = string;
-export type DomainEntryOptionsKeys = string;
-export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type Base64 = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type AutoSnapshotDate = string;
-export type ResourceArn = string;
-export type MetricPeriod = number;
-export type IncludeCertificateDetails = boolean;
-export type IpAddress = string;
-export type Ipv6Address = string;
-export type SetupHistoryPageToken = string;
-export type SetupDomainName = string;
-export type ContainerLabel = string;
-export type EmailAddress = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface AllocateStaticIpRequest {
   staticIpName: string;
 }
@@ -145,6 +184,7 @@ export const AllocateStaticIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllocateStaticIpRequest",
 }) as any as S.Schema<AllocateStaticIpRequest>;
+export type NonEmptyString = string;
 export type ResourceType =
   | "ContainerService"
   | "Instance"
@@ -168,6 +208,8 @@ export type ResourceType =
   | "Bucket"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type IsoDate = Date;
 export type RegionName =
   | "us-east-1"
   | "us-east-2"
@@ -191,6 +233,7 @@ export type RegionName =
   | "sa-east-1"
   | (string & {});
 export const RegionName = /*@__PURE__*/ S.String;
+
 export interface ResourceLocation {
   availabilityZone?: string;
   regionName?: RegionName;
@@ -289,6 +332,7 @@ export type OperationType =
   | "SetupInstanceHttps"
   | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
 export type OperationStatus =
   | "NotStarted"
   | "Started"
@@ -297,6 +341,7 @@ export type OperationStatus =
   | "Succeeded"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
 export interface Operation {
   id?: string;
   resourceName?: string;
@@ -343,8 +388,8 @@ export interface AttachCertificateToDistributionRequest {
   distributionName: string;
   certificateName: string;
 }
-export const AttachCertificateToDistributionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const AttachCertificateToDistributionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ distributionName: S.String, certificateName: S.String }).pipe(
       T.all(
         T.Http({
@@ -358,18 +403,17 @@ export const AttachCertificateToDistributionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AttachCertificateToDistributionRequest",
-  }) as any as S.Schema<AttachCertificateToDistributionRequest>;
+).annotate({
+  identifier: "AttachCertificateToDistributionRequest",
+}) as any as S.Schema<AttachCertificateToDistributionRequest>;
 export interface AttachCertificateToDistributionResult {
   operation?: Operation;
 }
-export const AttachCertificateToDistributionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "AttachCertificateToDistributionResult",
-  }) as any as S.Schema<AttachCertificateToDistributionResult>;
+export const AttachCertificateToDistributionResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "AttachCertificateToDistributionResult",
+}) as any as S.Schema<AttachCertificateToDistributionResult>;
 export interface AttachDiskRequest {
   diskName: string;
   instanceName: string;
@@ -409,8 +453,8 @@ export interface AttachInstancesToLoadBalancerRequest {
   loadBalancerName: string;
   instanceNames: string[];
 }
-export const AttachInstancesToLoadBalancerRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const AttachInstancesToLoadBalancerRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       loadBalancerName: S.String,
       instanceNames: ResourceNameList,
@@ -427,24 +471,23 @@ export const AttachInstancesToLoadBalancerRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AttachInstancesToLoadBalancerRequest",
-  }) as any as S.Schema<AttachInstancesToLoadBalancerRequest>;
+).annotate({
+  identifier: "AttachInstancesToLoadBalancerRequest",
+}) as any as S.Schema<AttachInstancesToLoadBalancerRequest>;
 export interface AttachInstancesToLoadBalancerResult {
   operations?: Operation[];
 }
-export const AttachInstancesToLoadBalancerResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "AttachInstancesToLoadBalancerResult",
-  }) as any as S.Schema<AttachInstancesToLoadBalancerResult>;
+export const AttachInstancesToLoadBalancerResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "AttachInstancesToLoadBalancerResult",
+}) as any as S.Schema<AttachInstancesToLoadBalancerResult>;
 export interface AttachLoadBalancerTlsCertificateRequest {
   loadBalancerName: string;
   certificateName: string;
 }
-export const AttachLoadBalancerTlsCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const AttachLoadBalancerTlsCertificateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ loadBalancerName: S.String, certificateName: S.String }).pipe(
       T.all(
         T.Http({
@@ -458,18 +501,17 @@ export const AttachLoadBalancerTlsCertificateRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AttachLoadBalancerTlsCertificateRequest",
-  }) as any as S.Schema<AttachLoadBalancerTlsCertificateRequest>;
+).annotate({
+  identifier: "AttachLoadBalancerTlsCertificateRequest",
+}) as any as S.Schema<AttachLoadBalancerTlsCertificateRequest>;
 export interface AttachLoadBalancerTlsCertificateResult {
   operations?: Operation[];
 }
-export const AttachLoadBalancerTlsCertificateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "AttachLoadBalancerTlsCertificateResult",
-  }) as any as S.Schema<AttachLoadBalancerTlsCertificateResult>;
+export const AttachLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "AttachLoadBalancerTlsCertificateResult",
+}) as any as S.Schema<AttachLoadBalancerTlsCertificateResult>;
 export interface AttachStaticIpRequest {
   staticIpName: string;
   instanceName: string;
@@ -496,6 +538,7 @@ export const AttachStaticIpResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachStaticIpResult",
 }) as any as S.Schema<AttachStaticIpResult>;
+export type Port = number;
 export type NetworkProtocol =
   | "tcp"
   | "all"
@@ -504,6 +547,7 @@ export type NetworkProtocol =
   | "icmpv6"
   | (string & {});
 export const NetworkProtocol = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface PortInfo {
@@ -528,33 +572,31 @@ export interface CloseInstancePublicPortsRequest {
   portInfo: PortInfo;
   instanceName: string;
 }
-export const CloseInstancePublicPortsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ portInfo: PortInfo, instanceName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CloseInstancePublicPorts",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CloseInstancePublicPortsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ portInfo: PortInfo, instanceName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CloseInstancePublicPorts",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CloseInstancePublicPortsRequest",
-  }) as any as S.Schema<CloseInstancePublicPortsRequest>;
+  ),
+).annotate({
+  identifier: "CloseInstancePublicPortsRequest",
+}) as any as S.Schema<CloseInstancePublicPortsRequest>;
 export interface CloseInstancePublicPortsResult {
   operation?: Operation;
 }
-export const CloseInstancePublicPortsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "CloseInstancePublicPortsResult",
-  }) as any as S.Schema<CloseInstancePublicPortsResult>;
+export const CloseInstancePublicPortsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "CloseInstancePublicPortsResult",
+}) as any as S.Schema<CloseInstancePublicPortsResult>;
 export interface CopySnapshotRequest {
   sourceSnapshotName?: string;
   sourceResourceName?: string;
@@ -592,6 +634,9 @@ export const CopySnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopySnapshotResult",
 }) as any as S.Schema<CopySnapshotResult>;
+export type BucketName = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key?: string;
   value?: string;
@@ -628,6 +673,7 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBucketRequest>;
 export type AccessType = "public" | "private" | (string & {});
 export const AccessType = /*@__PURE__*/ S.String;
+
 export interface AccessRules {
   getObject?: AccessType;
   allowPublicOverrides?: boolean;
@@ -645,10 +691,7 @@ export interface ResourceReceivingAccess {
   resourceType?: string;
 }
 export const ResourceReceivingAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  }),
+  S.Struct({ name: S.optional(S.String), resourceType: S.optional(S.String) }),
 ).annotate({
   identifier: "ResourceReceivingAccess",
 }) as any as S.Schema<ResourceReceivingAccess>;
@@ -663,6 +706,7 @@ export interface BucketState {
 export const BucketState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "BucketState" }) as any as S.Schema<BucketState>;
+export type BucketAccessLogPrefix = string;
 export interface BucketAccessLogConfig {
   enabled: boolean;
   destination?: string;
@@ -677,6 +721,8 @@ export const BucketAccessLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BucketAccessLogConfig",
 }) as any as S.Schema<BucketAccessLogConfig>;
+export type BucketCorsRuleId = string;
+export type BucketCorsAllowedMethod = string;
 export type BucketCorsAllowedMethods = string[];
 export const BucketCorsAllowedMethods = /*@__PURE__*/ S.Array(S.String);
 export type BucketCorsAllowedOrigins = string[];
@@ -768,26 +814,27 @@ export const CreateBucketResult = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBucketAccessKeyRequest {
   bucketName: string;
 }
-export const CreateBucketAccessKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ bucketName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CreateBucketAccessKey",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateBucketAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bucketName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CreateBucketAccessKey",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateBucketAccessKeyRequest",
-  }) as any as S.Schema<CreateBucketAccessKeyRequest>;
+  ),
+).annotate({
+  identifier: "CreateBucketAccessKeyRequest",
+}) as any as S.Schema<CreateBucketAccessKeyRequest>;
+export type IAMAccessKeyId = string | redacted.Redacted<string>;
 export type StatusType = "Active" | "Inactive" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export interface AccessKeyLastUsed {
   lastUsedDate?: Date;
   region?: string;
@@ -822,15 +869,16 @@ export interface CreateBucketAccessKeyResult {
   accessKey?: AccessKey;
   operations?: Operation[];
 }
-export const CreateBucketAccessKeyResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKey: S.optional(AccessKey),
-      operations: S.optional(OperationList),
-    }),
-  ).annotate({
-    identifier: "CreateBucketAccessKeyResult",
-  }) as any as S.Schema<CreateBucketAccessKeyResult>;
+export const CreateBucketAccessKeyResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessKey: S.optional(AccessKey),
+    operations: S.optional(OperationList),
+  }),
+).annotate({
+  identifier: "CreateBucketAccessKeyResult",
+}) as any as S.Schema<CreateBucketAccessKeyResult>;
+export type CertificateName = string;
+export type DomainName = string;
 export type SubjectAlternativeNameList = string[];
 export const SubjectAlternativeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateCertificateRequest {
@@ -868,6 +916,8 @@ export type CertificateStatus =
   | "FAILED"
   | (string & {});
 export const CertificateStatus = /*@__PURE__*/ S.String;
+
+export type SerialNumber = string;
 export interface ResourceRecord {
   name?: string;
   type?: string;
@@ -886,6 +936,7 @@ export type DnsRecordCreationStateCode =
   | "FAILED"
   | (string & {});
 export const DnsRecordCreationStateCode = /*@__PURE__*/ S.String;
+
 export interface DnsRecordCreationState {
   code?: DnsRecordCreationStateCode;
   message?: string;
@@ -904,6 +955,7 @@ export type CertificateDomainValidationStatus =
   | "SUCCESS"
   | (string & {});
 export const CertificateDomainValidationStatus = /*@__PURE__*/ S.String;
+
 export interface DomainValidationRecord {
   domainName?: string;
   resourceRecord?: ResourceRecord;
@@ -924,6 +976,11 @@ export type DomainValidationRecordList = DomainValidationRecord[];
 export const DomainValidationRecordList = /*@__PURE__*/ S.Array(
   DomainValidationRecord,
 );
+export type RequestFailureReason = string;
+export type InUseResourceCount = number;
+export type KeyAlgorithm = string;
+export type IssuerCA = string;
+export type EligibleToRenew = string;
 export type RenewalStatus =
   | "PendingAutoRenewal"
   | "PendingValidation"
@@ -931,6 +988,8 @@ export type RenewalStatus =
   | "Failed"
   | (string & {});
 export const RenewalStatus = /*@__PURE__*/ S.String;
+
+export type RenewalStatusReason = string;
 export interface RenewalSummary {
   domainValidationRecords?: DomainValidationRecord[];
   renewalStatus?: RenewalStatus;
@@ -945,6 +1004,7 @@ export const RenewalSummary = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "RenewalSummary" }) as any as S.Schema<RenewalSummary>;
+export type RevocationReason = string;
 export interface Certificate {
   arn?: string;
   name?: string;
@@ -1030,6 +1090,7 @@ export type PortInfoSourceType =
   | "CLOSED"
   | (string & {});
 export const PortInfoSourceType = /*@__PURE__*/ S.String;
+
 export interface InstanceEntry {
   sourceName: string;
   instanceType: string;
@@ -1051,35 +1112,35 @@ export const InstanceEntryList = /*@__PURE__*/ S.Array(InstanceEntry);
 export interface CreateCloudFormationStackRequest {
   instances: InstanceEntry[];
 }
-export const CreateCloudFormationStackRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ instances: InstanceEntryList }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CreateCloudFormationStack",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateCloudFormationStackRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ instances: InstanceEntryList }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CreateCloudFormationStack",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateCloudFormationStackRequest",
-  }) as any as S.Schema<CreateCloudFormationStackRequest>;
+  ),
+).annotate({
+  identifier: "CreateCloudFormationStackRequest",
+}) as any as S.Schema<CreateCloudFormationStackRequest>;
 export interface CreateCloudFormationStackResult {
   operations?: Operation[];
 }
-export const CreateCloudFormationStackResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateCloudFormationStackResult",
-  }) as any as S.Schema<CreateCloudFormationStackResult>;
+export const CreateCloudFormationStackResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateCloudFormationStackResult",
+}) as any as S.Schema<CreateCloudFormationStackResult>;
 export type ContactProtocol = "Email" | "SMS" | (string & {});
 export const ContactProtocol = /*@__PURE__*/ S.String;
+
+export type StringMax256 = string;
 export interface CreateContactMethodRequest {
   protocol: ContactProtocol;
   contactEndpoint: string;
@@ -1092,10 +1153,7 @@ export const CreateContactMethodRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(TagList),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/CreateContactMethod",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/CreateContactMethod" }),
       svc,
       auth,
       proto,
@@ -1114,6 +1172,7 @@ export const CreateContactMethodResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContactMethodResult",
 }) as any as S.Schema<CreateContactMethodResult>;
+export type ContainerServiceName = string;
 export type ContainerServicePowerName =
   | "nano"
   | "micro"
@@ -1123,17 +1182,20 @@ export type ContainerServicePowerName =
   | "xlarge"
   | (string & {});
 export const ContainerServicePowerName = /*@__PURE__*/ S.String;
+
+export type ContainerServiceScale = number;
 export type ContainerServicePublicDomainsList = string[];
-export const ContainerServicePublicDomainsList =
-  /*@__PURE__*/ S.Array(S.String);
+export const ContainerServicePublicDomainsList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export type ContainerServicePublicDomains = {
   [key: string]: string[] | undefined;
 };
-export const ContainerServicePublicDomains =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ContainerServicePublicDomainsList.pipe(S.optional),
-  );
+export const ContainerServicePublicDomains = /*@__PURE__*/ S.Record(
+  S.String,
+  ContainerServicePublicDomainsList.pipe(S.optional),
+);
+export type ContainerName = string;
 export type Environment = { [key: string]: string | undefined };
 export const Environment = /*@__PURE__*/ S.Record(
   S.String,
@@ -1146,6 +1208,7 @@ export type ContainerServiceProtocol =
   | "UDP"
   | (string & {});
 export const ContainerServiceProtocol = /*@__PURE__*/ S.String;
+
 export type PortMap = { [key: string]: ContainerServiceProtocol | undefined };
 export const PortMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1178,19 +1241,18 @@ export interface ContainerServiceHealthCheckConfig {
   path?: string;
   successCodes?: string;
 }
-export const ContainerServiceHealthCheckConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      healthyThreshold: S.optional(S.Number),
-      unhealthyThreshold: S.optional(S.Number),
-      timeoutSeconds: S.optional(S.Number),
-      intervalSeconds: S.optional(S.Number),
-      path: S.optional(S.String),
-      successCodes: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ContainerServiceHealthCheckConfig",
-  }) as any as S.Schema<ContainerServiceHealthCheckConfig>;
+export const ContainerServiceHealthCheckConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    healthyThreshold: S.optional(S.Number),
+    unhealthyThreshold: S.optional(S.Number),
+    timeoutSeconds: S.optional(S.Number),
+    intervalSeconds: S.optional(S.Number),
+    path: S.optional(S.String),
+    successCodes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerServiceHealthCheckConfig",
+}) as any as S.Schema<ContainerServiceHealthCheckConfig>;
 export interface EndpointRequest {
   containerName: string;
   containerPort: number;
@@ -1209,15 +1271,14 @@ export interface ContainerServiceDeploymentRequest {
   containers?: { [key: string]: Container | undefined };
   publicEndpoint?: EndpointRequest;
 }
-export const ContainerServiceDeploymentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      containers: S.optional(ContainerMap),
-      publicEndpoint: S.optional(EndpointRequest),
-    }),
-  ).annotate({
-    identifier: "ContainerServiceDeploymentRequest",
-  }) as any as S.Schema<ContainerServiceDeploymentRequest>;
+export const ContainerServiceDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    containers: S.optional(ContainerMap),
+    publicEndpoint: S.optional(EndpointRequest),
+  }),
+).annotate({
+  identifier: "ContainerServiceDeploymentRequest",
+}) as any as S.Schema<ContainerServiceDeploymentRequest>;
 export interface ContainerServiceECRImagePullerRoleRequest {
   isActive?: boolean;
 }
@@ -1230,14 +1291,13 @@ export const ContainerServiceECRImagePullerRoleRequest =
 export interface PrivateRegistryAccessRequest {
   ecrImagePullerRole?: ContainerServiceECRImagePullerRoleRequest;
 }
-export const PrivateRegistryAccessRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ecrImagePullerRole: S.optional(ContainerServiceECRImagePullerRoleRequest),
-    }),
-  ).annotate({
-    identifier: "PrivateRegistryAccessRequest",
-  }) as any as S.Schema<PrivateRegistryAccessRequest>;
+export const PrivateRegistryAccessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ecrImagePullerRole: S.optional(ContainerServiceECRImagePullerRoleRequest),
+  }),
+).annotate({
+  identifier: "PrivateRegistryAccessRequest",
+}) as any as S.Schema<PrivateRegistryAccessRequest>;
 export interface CreateContainerServiceRequest {
   serviceName: string;
   power: ContainerServicePowerName;
@@ -1247,32 +1307,28 @@ export interface CreateContainerServiceRequest {
   deployment?: ContainerServiceDeploymentRequest;
   privateRegistryAccess?: PrivateRegistryAccessRequest;
 }
-export const CreateContainerServiceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String,
-      power: ContainerServicePowerName,
-      scale: S.Number,
-      tags: S.optional(TagList),
-      publicDomainNames: S.optional(ContainerServicePublicDomains),
-      deployment: S.optional(ContainerServiceDeploymentRequest),
-      privateRegistryAccess: S.optional(PrivateRegistryAccessRequest),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/container-services",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateContainerServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String,
+    power: ContainerServicePowerName,
+    scale: S.Number,
+    tags: S.optional(TagList),
+    publicDomainNames: S.optional(ContainerServicePublicDomains),
+    deployment: S.optional(ContainerServiceDeploymentRequest),
+    privateRegistryAccess: S.optional(PrivateRegistryAccessRequest),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/container-services" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateContainerServiceRequest",
-  }) as any as S.Schema<CreateContainerServiceRequest>;
+  ),
+).annotate({
+  identifier: "CreateContainerServiceRequest",
+}) as any as S.Schema<CreateContainerServiceRequest>;
 export type ContainerServiceState =
   | "PENDING"
   | "READY"
@@ -1283,6 +1339,7 @@ export type ContainerServiceState =
   | "DEPLOYING"
   | (string & {});
 export const ContainerServiceState = /*@__PURE__*/ S.String;
+
 export type ContainerServiceStateDetailCode =
   | "CREATING_SYSTEM_RESOURCES"
   | "CREATING_NETWORK_INFRASTRUCTURE"
@@ -1295,19 +1352,19 @@ export type ContainerServiceStateDetailCode =
   | "UNKNOWN_ERROR"
   | (string & {});
 export const ContainerServiceStateDetailCode = /*@__PURE__*/ S.String;
+
 export interface ContainerServiceStateDetail {
   code?: ContainerServiceStateDetailCode;
   message?: string;
 }
-export const ContainerServiceStateDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(ContainerServiceStateDetailCode),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ContainerServiceStateDetail",
-  }) as any as S.Schema<ContainerServiceStateDetail>;
+export const ContainerServiceStateDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(ContainerServiceStateDetailCode),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerServiceStateDetail",
+}) as any as S.Schema<ContainerServiceStateDetail>;
 export type ContainerServiceDeploymentState =
   | "ACTIVATING"
   | "ACTIVE"
@@ -1315,6 +1372,7 @@ export type ContainerServiceDeploymentState =
   | "FAILED"
   | (string & {});
 export const ContainerServiceDeploymentState = /*@__PURE__*/ S.String;
+
 export interface ContainerServiceEndpoint {
   containerName?: string;
   containerPort?: number;
@@ -1351,15 +1409,14 @@ export interface ContainerServiceECRImagePullerRole {
   isActive?: boolean;
   principalArn?: string;
 }
-export const ContainerServiceECRImagePullerRole =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isActive: S.optional(S.Boolean),
-      principalArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ContainerServiceECRImagePullerRole",
-  }) as any as S.Schema<ContainerServiceECRImagePullerRole>;
+export const ContainerServiceECRImagePullerRole = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isActive: S.optional(S.Boolean),
+    principalArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerServiceECRImagePullerRole",
+}) as any as S.Schema<ContainerServiceECRImagePullerRole>;
 export interface PrivateRegistryAccess {
   ecrImagePullerRole?: ContainerServiceECRImagePullerRole;
 }
@@ -1419,19 +1476,18 @@ export const ContainerService = /*@__PURE__*/ S.suspend(() =>
 export interface CreateContainerServiceResult {
   containerService?: ContainerService;
 }
-export const CreateContainerServiceResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ containerService: S.optional(ContainerService) }),
-  ).annotate({
-    identifier: "CreateContainerServiceResult",
-  }) as any as S.Schema<CreateContainerServiceResult>;
+export const CreateContainerServiceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ containerService: S.optional(ContainerService) }),
+).annotate({
+  identifier: "CreateContainerServiceResult",
+}) as any as S.Schema<CreateContainerServiceResult>;
 export interface CreateContainerServiceDeploymentRequest {
   serviceName: string;
   containers?: { [key: string]: Container | undefined };
   publicEndpoint?: EndpointRequest;
 }
-export const CreateContainerServiceDeploymentRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateContainerServiceDeploymentRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceName: S.String.pipe(T.HttpLabel("serviceName")),
       containers: S.optional(ContainerMap),
@@ -1449,18 +1505,17 @@ export const CreateContainerServiceDeploymentRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateContainerServiceDeploymentRequest",
-  }) as any as S.Schema<CreateContainerServiceDeploymentRequest>;
+).annotate({
+  identifier: "CreateContainerServiceDeploymentRequest",
+}) as any as S.Schema<CreateContainerServiceDeploymentRequest>;
 export interface CreateContainerServiceDeploymentResult {
   containerService?: ContainerService;
 }
-export const CreateContainerServiceDeploymentResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ containerService: S.optional(ContainerService) }),
-  ).annotate({
-    identifier: "CreateContainerServiceDeploymentResult",
-  }) as any as S.Schema<CreateContainerServiceDeploymentResult>;
+export const CreateContainerServiceDeploymentResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ containerService: S.optional(ContainerService) }),
+).annotate({
+  identifier: "CreateContainerServiceDeploymentResult",
+}) as any as S.Schema<CreateContainerServiceDeploymentResult>;
 export interface CreateContainerServiceRegistryLoginRequest {}
 export const CreateContainerServiceRegistryLoginRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1486,17 +1541,16 @@ export interface ContainerServiceRegistryLogin {
   expiresAt?: Date;
   registry?: string;
 }
-export const ContainerServiceRegistryLogin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String),
-      expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      registry: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ContainerServiceRegistryLogin",
-  }) as any as S.Schema<ContainerServiceRegistryLogin>;
+export const ContainerServiceRegistryLogin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.optional(S.String),
+    password: S.optional(S.String),
+    expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    registry: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ContainerServiceRegistryLogin",
+}) as any as S.Schema<ContainerServiceRegistryLogin>;
 export interface CreateContainerServiceRegistryLoginResult {
   registryLogin?: ContainerServiceRegistryLogin;
 }
@@ -1508,6 +1562,8 @@ export const CreateContainerServiceRegistryLoginResult =
   }) as any as S.Schema<CreateContainerServiceRegistryLoginResult>;
 export type AddOnType = "AutoSnapshot" | "StopInstanceOnIdle" | (string & {});
 export const AddOnType = /*@__PURE__*/ S.String;
+
+export type TimeOfDay = string;
 export interface AutoSnapshotAddOnRequest {
   snapshotTimeOfDay?: string;
 }
@@ -1521,10 +1577,7 @@ export interface StopInstanceOnIdleRequest {
   duration?: string;
 }
 export const StopInstanceOnIdleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    threshold: S.optional(S.String),
-    duration: S.optional(S.String),
-  }),
+  S.Struct({ threshold: S.optional(S.String), duration: S.optional(S.String) }),
 ).annotate({
   identifier: "StopInstanceOnIdleRequest",
 }) as any as S.Schema<StopInstanceOnIdleRequest>;
@@ -1588,43 +1641,41 @@ export interface CreateDiskFromSnapshotRequest {
   restoreDate?: string;
   useLatestRestorableAutoSnapshot?: boolean;
 }
-export const CreateDiskFromSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      diskName: S.String,
-      diskSnapshotName: S.optional(S.String),
-      availabilityZone: S.String,
-      sizeInGb: S.Number,
-      tags: S.optional(TagList),
-      addOns: S.optional(AddOnRequestList),
-      sourceDiskName: S.optional(S.String),
-      restoreDate: S.optional(S.String),
-      useLatestRestorableAutoSnapshot: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CreateDiskFromSnapshot",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDiskFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    diskName: S.String,
+    diskSnapshotName: S.optional(S.String),
+    availabilityZone: S.String,
+    sizeInGb: S.Number,
+    tags: S.optional(TagList),
+    addOns: S.optional(AddOnRequestList),
+    sourceDiskName: S.optional(S.String),
+    restoreDate: S.optional(S.String),
+    useLatestRestorableAutoSnapshot: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CreateDiskFromSnapshot",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDiskFromSnapshotRequest",
-  }) as any as S.Schema<CreateDiskFromSnapshotRequest>;
+  ),
+).annotate({
+  identifier: "CreateDiskFromSnapshotRequest",
+}) as any as S.Schema<CreateDiskFromSnapshotRequest>;
 export interface CreateDiskFromSnapshotResult {
   operations?: Operation[];
 }
-export const CreateDiskFromSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateDiskFromSnapshotResult",
-  }) as any as S.Schema<CreateDiskFromSnapshotResult>;
+export const CreateDiskFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateDiskFromSnapshotResult",
+}) as any as S.Schema<CreateDiskFromSnapshotResult>;
 export interface CreateDiskSnapshotRequest {
   diskName?: string;
   diskSnapshotName: string;
@@ -1639,10 +1690,7 @@ export const CreateDiskSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(TagList),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/CreateDiskSnapshot",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/CreateDiskSnapshot" }),
       svc,
       auth,
       proto,
@@ -1666,12 +1714,14 @@ export type OriginProtocolPolicyEnum =
   | "https-only"
   | (string & {});
 export const OriginProtocolPolicyEnum = /*@__PURE__*/ S.String;
+
 export type OriginIpAddressTypeEnum =
   | "ipv4"
   | "ipv6"
   | "dualstack"
   | (string & {});
 export const OriginIpAddressTypeEnum = /*@__PURE__*/ S.String;
+
 export interface InputOrigin {
   name?: string;
   regionName?: RegionName;
@@ -1690,6 +1740,7 @@ export const InputOrigin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputOrigin" }) as any as S.Schema<InputOrigin>;
 export type BehaviorEnum = "dont-cache" | "cache" | (string & {});
 export const BehaviorEnum = /*@__PURE__*/ S.String;
+
 export interface CacheBehavior {
   behavior?: BehaviorEnum;
 }
@@ -1698,6 +1749,7 @@ export const CacheBehavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheBehavior" }) as any as S.Schema<CacheBehavior>;
 export type ForwardValues = "none" | "allow-list" | "all" | (string & {});
 export const ForwardValues = /*@__PURE__*/ S.String;
+
 export interface CookieObject {
   option?: ForwardValues;
   cookiesAllowList?: string[];
@@ -1726,6 +1778,7 @@ export type HeaderEnum =
   | "Referer"
   | (string & {});
 export const HeaderEnum = /*@__PURE__*/ S.String;
+
 export type HeaderForwardList = HeaderEnum[];
 export const HeaderForwardList = /*@__PURE__*/ S.Array(HeaderEnum);
 export interface HeaderObject {
@@ -1785,6 +1838,7 @@ export type CacheBehaviorList = CacheBehaviorPerPath[];
 export const CacheBehaviorList = /*@__PURE__*/ S.Array(CacheBehaviorPerPath);
 export type IpAddressType = "dualstack" | "ipv4" | "ipv6" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
 export type ViewerMinimumTlsProtocolVersionEnum =
   | "TLSv1.1_2016"
   | "TLSv1.2_2018"
@@ -1792,6 +1846,7 @@ export type ViewerMinimumTlsProtocolVersionEnum =
   | "TLSv1.2_2021"
   | (string & {});
 export const ViewerMinimumTlsProtocolVersionEnum = /*@__PURE__*/ S.String;
+
 export interface CreateDistributionRequest {
   distributionName: string;
   origin: InputOrigin;
@@ -1820,10 +1875,7 @@ export const CreateDistributionRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/CreateDistribution",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/CreateDistribution" }),
       svc,
       auth,
       proto,
@@ -1940,6 +1992,8 @@ export const CreateDomainResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainResult",
 }) as any as S.Schema<CreateDomainResult>;
+export type DomainEntryType = string;
+export type DomainEntryOptionsKeys = string;
 export type DomainEntryOptions = { [key: string]: string | undefined };
 export const DomainEntryOptions = /*@__PURE__*/ S.Record(
   S.String,
@@ -1992,8 +2046,8 @@ export const CreateDomainEntryResult = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGUISessionAccessDetailsRequest {
   resourceName: string;
 }
-export const CreateGUISessionAccessDetailsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateGUISessionAccessDetailsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ resourceName: S.String }).pipe(
       T.all(
         T.Http({
@@ -2007,9 +2061,9 @@ export const CreateGUISessionAccessDetailsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateGUISessionAccessDetailsRequest",
-  }) as any as S.Schema<CreateGUISessionAccessDetailsRequest>;
+).annotate({
+  identifier: "CreateGUISessionAccessDetailsRequest",
+}) as any as S.Schema<CreateGUISessionAccessDetailsRequest>;
 export type Status =
   | "startExpired"
   | "notStarted"
@@ -2023,6 +2077,8 @@ export type Status =
   | "failedStoppingGUISession"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
 export interface Session {
   name?: string;
   url?: string | redacted.Redacted<string>;
@@ -2044,18 +2100,17 @@ export interface CreateGUISessionAccessDetailsResult {
   failureReason?: string;
   sessions?: Session[];
 }
-export const CreateGUISessionAccessDetailsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-      status: S.optional(Status),
-      percentageComplete: S.optional(S.Number),
-      failureReason: S.optional(S.String),
-      sessions: S.optional(Sessions),
-    }),
-  ).annotate({
-    identifier: "CreateGUISessionAccessDetailsResult",
-  }) as any as S.Schema<CreateGUISessionAccessDetailsResult>;
+export const CreateGUISessionAccessDetailsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.optional(S.String),
+    status: S.optional(Status),
+    percentageComplete: S.optional(S.Number),
+    failureReason: S.optional(S.String),
+    sessions: S.optional(Sessions),
+  }),
+).annotate({
+  identifier: "CreateGUISessionAccessDetailsResult",
+}) as any as S.Schema<CreateGUISessionAccessDetailsResult>;
 export interface CreateInstancesRequest {
   instanceNames: string[];
   availabilityZone: string;
@@ -2133,83 +2188,79 @@ export interface CreateInstancesFromSnapshotRequest {
   restoreDate?: string;
   useLatestRestorableAutoSnapshot?: boolean;
 }
-export const CreateInstancesFromSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceNames: StringList,
-      attachedDiskMapping: S.optional(AttachedDiskMap),
-      availabilityZone: S.String,
-      instanceSnapshotName: S.optional(S.String),
-      bundleId: S.String,
-      userData: S.optional(S.String),
-      keyPairName: S.optional(S.String),
-      tags: S.optional(TagList),
-      addOns: S.optional(AddOnRequestList),
-      ipAddressType: S.optional(IpAddressType),
-      sourceInstanceName: S.optional(S.String),
-      restoreDate: S.optional(S.String),
-      useLatestRestorableAutoSnapshot: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CreateInstancesFromSnapshot",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateInstancesFromSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceNames: StringList,
+    attachedDiskMapping: S.optional(AttachedDiskMap),
+    availabilityZone: S.String,
+    instanceSnapshotName: S.optional(S.String),
+    bundleId: S.String,
+    userData: S.optional(S.String),
+    keyPairName: S.optional(S.String),
+    tags: S.optional(TagList),
+    addOns: S.optional(AddOnRequestList),
+    ipAddressType: S.optional(IpAddressType),
+    sourceInstanceName: S.optional(S.String),
+    restoreDate: S.optional(S.String),
+    useLatestRestorableAutoSnapshot: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CreateInstancesFromSnapshot",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateInstancesFromSnapshotRequest",
-  }) as any as S.Schema<CreateInstancesFromSnapshotRequest>;
+  ),
+).annotate({
+  identifier: "CreateInstancesFromSnapshotRequest",
+}) as any as S.Schema<CreateInstancesFromSnapshotRequest>;
 export interface CreateInstancesFromSnapshotResult {
   operations?: Operation[];
 }
-export const CreateInstancesFromSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateInstancesFromSnapshotResult",
-  }) as any as S.Schema<CreateInstancesFromSnapshotResult>;
+export const CreateInstancesFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateInstancesFromSnapshotResult",
+}) as any as S.Schema<CreateInstancesFromSnapshotResult>;
 export interface CreateInstanceSnapshotRequest {
   instanceSnapshotName: string;
   instanceName: string;
   tags?: Tag[];
 }
-export const CreateInstanceSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceSnapshotName: S.String,
-      instanceName: S.String,
-      tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CreateInstanceSnapshot",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateInstanceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceSnapshotName: S.String,
+    instanceName: S.String,
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CreateInstanceSnapshot",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateInstanceSnapshotRequest",
-  }) as any as S.Schema<CreateInstanceSnapshotRequest>;
+  ),
+).annotate({
+  identifier: "CreateInstanceSnapshotRequest",
+}) as any as S.Schema<CreateInstanceSnapshotRequest>;
 export interface CreateInstanceSnapshotResult {
   operations?: Operation[];
 }
-export const CreateInstanceSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateInstanceSnapshotResult",
-  }) as any as S.Schema<CreateInstanceSnapshotResult>;
+export const CreateInstanceSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateInstanceSnapshotResult",
+}) as any as S.Schema<CreateInstanceSnapshotResult>;
 export interface CreateKeyPairRequest {
   keyPairName: string;
   tags?: Tag[];
@@ -2228,6 +2279,7 @@ export const CreateKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyPairRequest",
 }) as any as S.Schema<CreateKeyPairRequest>;
+export type Base64 = string;
 export interface KeyPair {
   name?: string;
   arn?: string;
@@ -2292,10 +2344,7 @@ export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
     tlsPolicyName: S.optional(S.String),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/CreateLoadBalancer",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/CreateLoadBalancer" }),
       svc,
       auth,
       proto,
@@ -2321,8 +2370,8 @@ export interface CreateLoadBalancerTlsCertificateRequest {
   certificateAlternativeNames?: string[];
   tags?: Tag[];
 }
-export const CreateLoadBalancerTlsCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateLoadBalancerTlsCertificateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       loadBalancerName: S.String,
       certificateName: S.String,
@@ -2342,18 +2391,18 @@ export const CreateLoadBalancerTlsCertificateRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateLoadBalancerTlsCertificateRequest",
-  }) as any as S.Schema<CreateLoadBalancerTlsCertificateRequest>;
+).annotate({
+  identifier: "CreateLoadBalancerTlsCertificateRequest",
+}) as any as S.Schema<CreateLoadBalancerTlsCertificateRequest>;
 export interface CreateLoadBalancerTlsCertificateResult {
   operations?: Operation[];
 }
-export const CreateLoadBalancerTlsCertificateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateLoadBalancerTlsCertificateResult",
-  }) as any as S.Schema<CreateLoadBalancerTlsCertificateResult>;
+export const CreateLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateLoadBalancerTlsCertificateResult",
+}) as any as S.Schema<CreateLoadBalancerTlsCertificateResult>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface CreateRelationalDatabaseRequest {
   relationalDatabaseName: string;
   availabilityZone?: string;
@@ -2367,45 +2416,43 @@ export interface CreateRelationalDatabaseRequest {
   publiclyAccessible?: boolean;
   tags?: Tag[];
 }
-export const CreateRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseName: S.String,
-      availabilityZone: S.optional(S.String),
-      relationalDatabaseBlueprintId: S.String,
-      relationalDatabaseBundleId: S.String,
-      masterDatabaseName: S.String,
-      masterUsername: S.String,
-      masterUserPassword: S.optional(SensitiveString),
-      preferredBackupWindow: S.optional(S.String),
-      preferredMaintenanceWindow: S.optional(S.String),
-      publiclyAccessible: S.optional(S.Boolean),
-      tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/CreateRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseName: S.String,
+    availabilityZone: S.optional(S.String),
+    relationalDatabaseBlueprintId: S.String,
+    relationalDatabaseBundleId: S.String,
+    masterDatabaseName: S.String,
+    masterUsername: S.String,
+    masterUserPassword: S.optional(SensitiveString),
+    preferredBackupWindow: S.optional(S.String),
+    preferredMaintenanceWindow: S.optional(S.String),
+    publiclyAccessible: S.optional(S.Boolean),
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/CreateRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateRelationalDatabaseRequest",
-  }) as any as S.Schema<CreateRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "CreateRelationalDatabaseRequest",
+}) as any as S.Schema<CreateRelationalDatabaseRequest>;
 export interface CreateRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const CreateRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateRelationalDatabaseResult",
-  }) as any as S.Schema<CreateRelationalDatabaseResult>;
+export const CreateRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateRelationalDatabaseResult",
+}) as any as S.Schema<CreateRelationalDatabaseResult>;
 export interface CreateRelationalDatabaseFromSnapshotRequest {
   relationalDatabaseName: string;
   availabilityZone?: string;
@@ -2459,8 +2506,8 @@ export interface CreateRelationalDatabaseSnapshotRequest {
   relationalDatabaseSnapshotName: string;
   tags?: Tag[];
 }
-export const CreateRelationalDatabaseSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateRelationalDatabaseSnapshotRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       relationalDatabaseName: S.String,
       relationalDatabaseSnapshotName: S.String,
@@ -2478,18 +2525,17 @@ export const CreateRelationalDatabaseSnapshotRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateRelationalDatabaseSnapshotRequest",
-  }) as any as S.Schema<CreateRelationalDatabaseSnapshotRequest>;
+).annotate({
+  identifier: "CreateRelationalDatabaseSnapshotRequest",
+}) as any as S.Schema<CreateRelationalDatabaseSnapshotRequest>;
 export interface CreateRelationalDatabaseSnapshotResult {
   operations?: Operation[];
 }
-export const CreateRelationalDatabaseSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "CreateRelationalDatabaseSnapshotResult",
-  }) as any as S.Schema<CreateRelationalDatabaseSnapshotResult>;
+export const CreateRelationalDatabaseSnapshotResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "CreateRelationalDatabaseSnapshotResult",
+}) as any as S.Schema<CreateRelationalDatabaseSnapshotResult>;
 export interface DeleteAlarmRequest {
   alarmName: string;
 }
@@ -2518,6 +2564,7 @@ export const DeleteAlarmResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAlarmResult",
 }) as any as S.Schema<DeleteAlarmResult>;
+export type AutoSnapshotDate = string;
 export interface DeleteAutoSnapshotRequest {
   resourceName: string;
   date: string;
@@ -2525,10 +2572,7 @@ export interface DeleteAutoSnapshotRequest {
 export const DeleteAutoSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceName: S.String, date: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/DeleteAutoSnapshot",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/DeleteAutoSnapshot" }),
       svc,
       auth,
       proto,
@@ -2577,33 +2621,31 @@ export interface DeleteBucketAccessKeyRequest {
   bucketName: string;
   accessKeyId: string;
 }
-export const DeleteBucketAccessKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ bucketName: S.String, accessKeyId: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/DeleteBucketAccessKey",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteBucketAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bucketName: S.String, accessKeyId: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/DeleteBucketAccessKey",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteBucketAccessKeyRequest",
-  }) as any as S.Schema<DeleteBucketAccessKeyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteBucketAccessKeyRequest",
+}) as any as S.Schema<DeleteBucketAccessKeyRequest>;
 export interface DeleteBucketAccessKeyResult {
   operations?: Operation[];
 }
-export const DeleteBucketAccessKeyResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "DeleteBucketAccessKeyResult",
-  }) as any as S.Schema<DeleteBucketAccessKeyResult>;
+export const DeleteBucketAccessKeyResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "DeleteBucketAccessKeyResult",
+}) as any as S.Schema<DeleteBucketAccessKeyResult>;
 export interface DeleteCertificateRequest {
   certificateName: string;
 }
@@ -2635,10 +2677,7 @@ export interface DeleteContactMethodRequest {
 export const DeleteContactMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ protocol: ContactProtocol }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/DeleteContactMethod",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/DeleteContactMethod" }),
       svc,
       auth,
       proto,
@@ -2661,27 +2700,26 @@ export interface DeleteContainerImageRequest {
   serviceName: string;
   image: string;
 }
-export const DeleteContainerImageRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.HttpLabel("serviceName")),
-      image: S.String.pipe(T.HttpLabel("image")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/ls/api/2016-11-28/container-services/{serviceName}/images/{image}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteContainerImageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.HttpLabel("serviceName")),
+    image: S.String.pipe(T.HttpLabel("image")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/ls/api/2016-11-28/container-services/{serviceName}/images/{image}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteContainerImageRequest",
-  }) as any as S.Schema<DeleteContainerImageRequest>;
+  ),
+).annotate({
+  identifier: "DeleteContainerImageRequest",
+}) as any as S.Schema<DeleteContainerImageRequest>;
 export interface DeleteContainerImageResult {}
 export const DeleteContainerImageResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -2691,29 +2729,29 @@ export const DeleteContainerImageResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteContainerServiceRequest {
   serviceName: string;
 }
-export const DeleteContainerServiceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ serviceName: S.String.pipe(T.HttpLabel("serviceName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/ls/api/2016-11-28/container-services/{serviceName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteContainerServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceName: S.String.pipe(T.HttpLabel("serviceName")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/ls/api/2016-11-28/container-services/{serviceName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteContainerServiceRequest",
-  }) as any as S.Schema<DeleteContainerServiceRequest>;
+  ),
+).annotate({
+  identifier: "DeleteContainerServiceRequest",
+}) as any as S.Schema<DeleteContainerServiceRequest>;
 export interface DeleteContainerServiceResult {}
-export const DeleteContainerServiceResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteContainerServiceResult",
-  }) as any as S.Schema<DeleteContainerServiceResult>;
+export const DeleteContainerServiceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteContainerServiceResult",
+}) as any as S.Schema<DeleteContainerServiceResult>;
 export interface DeleteDiskRequest {
   diskName: string;
   forceDeleteAddOns?: boolean;
@@ -2749,10 +2787,7 @@ export interface DeleteDiskSnapshotRequest {
 export const DeleteDiskSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ diskSnapshotName: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/DeleteDiskSnapshot",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/DeleteDiskSnapshot" }),
       svc,
       auth,
       proto,
@@ -2777,10 +2812,7 @@ export interface DeleteDistributionRequest {
 export const DeleteDistributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ distributionName: S.optional(S.String) }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/DeleteDistribution",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/DeleteDistribution" }),
       svc,
       auth,
       proto,
@@ -2882,33 +2914,31 @@ export const DeleteInstanceResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInstanceSnapshotRequest {
   instanceSnapshotName: string;
 }
-export const DeleteInstanceSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ instanceSnapshotName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/DeleteInstanceSnapshot",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteInstanceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ instanceSnapshotName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/DeleteInstanceSnapshot",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteInstanceSnapshotRequest",
-  }) as any as S.Schema<DeleteInstanceSnapshotRequest>;
+  ),
+).annotate({
+  identifier: "DeleteInstanceSnapshotRequest",
+}) as any as S.Schema<DeleteInstanceSnapshotRequest>;
 export interface DeleteInstanceSnapshotResult {
   operations?: Operation[];
 }
-export const DeleteInstanceSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "DeleteInstanceSnapshotResult",
-  }) as any as S.Schema<DeleteInstanceSnapshotResult>;
+export const DeleteInstanceSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "DeleteInstanceSnapshotResult",
+}) as any as S.Schema<DeleteInstanceSnapshotResult>;
 export interface DeleteKeyPairRequest {
   keyPairName: string;
   expectedFingerprint?: string;
@@ -2944,10 +2974,7 @@ export interface DeleteKnownHostKeysRequest {
 export const DeleteKnownHostKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceName: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/DeleteKnownHostKeys",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/DeleteKnownHostKeys" }),
       svc,
       auth,
       proto,
@@ -2972,10 +2999,7 @@ export interface DeleteLoadBalancerRequest {
 export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ loadBalancerName: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/DeleteLoadBalancer",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/DeleteLoadBalancer" }),
       svc,
       auth,
       proto,
@@ -2999,8 +3023,8 @@ export interface DeleteLoadBalancerTlsCertificateRequest {
   certificateName: string;
   force?: boolean;
 }
-export const DeleteLoadBalancerTlsCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteLoadBalancerTlsCertificateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       loadBalancerName: S.String,
       certificateName: S.String,
@@ -3018,59 +3042,56 @@ export const DeleteLoadBalancerTlsCertificateRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteLoadBalancerTlsCertificateRequest",
-  }) as any as S.Schema<DeleteLoadBalancerTlsCertificateRequest>;
+).annotate({
+  identifier: "DeleteLoadBalancerTlsCertificateRequest",
+}) as any as S.Schema<DeleteLoadBalancerTlsCertificateRequest>;
 export interface DeleteLoadBalancerTlsCertificateResult {
   operations?: Operation[];
 }
-export const DeleteLoadBalancerTlsCertificateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "DeleteLoadBalancerTlsCertificateResult",
-  }) as any as S.Schema<DeleteLoadBalancerTlsCertificateResult>;
+export const DeleteLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "DeleteLoadBalancerTlsCertificateResult",
+}) as any as S.Schema<DeleteLoadBalancerTlsCertificateResult>;
 export interface DeleteRelationalDatabaseRequest {
   relationalDatabaseName: string;
   skipFinalSnapshot?: boolean;
   finalRelationalDatabaseSnapshotName?: string;
 }
-export const DeleteRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseName: S.String,
-      skipFinalSnapshot: S.optional(S.Boolean),
-      finalRelationalDatabaseSnapshotName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/DeleteRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseName: S.String,
+    skipFinalSnapshot: S.optional(S.Boolean),
+    finalRelationalDatabaseSnapshotName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/DeleteRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteRelationalDatabaseRequest",
-  }) as any as S.Schema<DeleteRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "DeleteRelationalDatabaseRequest",
+}) as any as S.Schema<DeleteRelationalDatabaseRequest>;
 export interface DeleteRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const DeleteRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "DeleteRelationalDatabaseResult",
-  }) as any as S.Schema<DeleteRelationalDatabaseResult>;
+export const DeleteRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "DeleteRelationalDatabaseResult",
+}) as any as S.Schema<DeleteRelationalDatabaseResult>;
 export interface DeleteRelationalDatabaseSnapshotRequest {
   relationalDatabaseSnapshotName: string;
 }
-export const DeleteRelationalDatabaseSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteRelationalDatabaseSnapshotRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ relationalDatabaseSnapshotName: S.String }).pipe(
       T.all(
         T.Http({
@@ -3084,23 +3105,22 @@ export const DeleteRelationalDatabaseSnapshotRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteRelationalDatabaseSnapshotRequest",
-  }) as any as S.Schema<DeleteRelationalDatabaseSnapshotRequest>;
+).annotate({
+  identifier: "DeleteRelationalDatabaseSnapshotRequest",
+}) as any as S.Schema<DeleteRelationalDatabaseSnapshotRequest>;
 export interface DeleteRelationalDatabaseSnapshotResult {
   operations?: Operation[];
 }
-export const DeleteRelationalDatabaseSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "DeleteRelationalDatabaseSnapshotResult",
-  }) as any as S.Schema<DeleteRelationalDatabaseSnapshotResult>;
+export const DeleteRelationalDatabaseSnapshotResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "DeleteRelationalDatabaseSnapshotResult",
+}) as any as S.Schema<DeleteRelationalDatabaseSnapshotResult>;
 export interface DetachCertificateFromDistributionRequest {
   distributionName: string;
 }
-export const DetachCertificateFromDistributionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DetachCertificateFromDistributionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ distributionName: S.String }).pipe(
       T.all(
         T.Http({
@@ -3114,18 +3134,17 @@ export const DetachCertificateFromDistributionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DetachCertificateFromDistributionRequest",
-  }) as any as S.Schema<DetachCertificateFromDistributionRequest>;
+).annotate({
+  identifier: "DetachCertificateFromDistributionRequest",
+}) as any as S.Schema<DetachCertificateFromDistributionRequest>;
 export interface DetachCertificateFromDistributionResult {
   operation?: Operation;
 }
-export const DetachCertificateFromDistributionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "DetachCertificateFromDistributionResult",
-  }) as any as S.Schema<DetachCertificateFromDistributionResult>;
+export const DetachCertificateFromDistributionResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "DetachCertificateFromDistributionResult",
+}) as any as S.Schema<DetachCertificateFromDistributionResult>;
 export interface DetachDiskRequest {
   diskName: string;
 }
@@ -3155,8 +3174,8 @@ export interface DetachInstancesFromLoadBalancerRequest {
   loadBalancerName: string;
   instanceNames: string[];
 }
-export const DetachInstancesFromLoadBalancerRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DetachInstancesFromLoadBalancerRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       loadBalancerName: S.String,
       instanceNames: ResourceNameList,
@@ -3173,18 +3192,17 @@ export const DetachInstancesFromLoadBalancerRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DetachInstancesFromLoadBalancerRequest",
-  }) as any as S.Schema<DetachInstancesFromLoadBalancerRequest>;
+).annotate({
+  identifier: "DetachInstancesFromLoadBalancerRequest",
+}) as any as S.Schema<DetachInstancesFromLoadBalancerRequest>;
 export interface DetachInstancesFromLoadBalancerResult {
   operations?: Operation[];
 }
-export const DetachInstancesFromLoadBalancerResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "DetachInstancesFromLoadBalancerResult",
-  }) as any as S.Schema<DetachInstancesFromLoadBalancerResult>;
+export const DetachInstancesFromLoadBalancerResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "DetachInstancesFromLoadBalancerResult",
+}) as any as S.Schema<DetachInstancesFromLoadBalancerResult>;
 export interface DetachStaticIpRequest {
   staticIpName: string;
 }
@@ -3237,39 +3255,37 @@ export const DisableAddOnResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableAddOnResult",
 }) as any as S.Schema<DisableAddOnResult>;
 export interface DownloadDefaultKeyPairRequest {}
-export const DownloadDefaultKeyPairRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/DownloadDefaultKeyPair",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DownloadDefaultKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/DownloadDefaultKeyPair",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DownloadDefaultKeyPairRequest",
-  }) as any as S.Schema<DownloadDefaultKeyPairRequest>;
+  ),
+).annotate({
+  identifier: "DownloadDefaultKeyPairRequest",
+}) as any as S.Schema<DownloadDefaultKeyPairRequest>;
 export interface DownloadDefaultKeyPairResult {
   publicKeyBase64?: string;
   privateKeyBase64?: string;
   createdAt?: Date;
 }
-export const DownloadDefaultKeyPairResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      publicKeyBase64: S.optional(S.String),
-      privateKeyBase64: S.optional(S.String),
-      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "DownloadDefaultKeyPairResult",
-  }) as any as S.Schema<DownloadDefaultKeyPairResult>;
+export const DownloadDefaultKeyPairResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicKeyBase64: S.optional(S.String),
+    privateKeyBase64: S.optional(S.String),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DownloadDefaultKeyPairResult",
+}) as any as S.Schema<DownloadDefaultKeyPairResult>;
 export interface EnableAddOnRequest {
   resourceName: string;
   addOnRequest: AddOnRequest;
@@ -3375,6 +3391,7 @@ export const GetAlarmsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAlarmsRequest",
 }) as any as S.Schema<GetAlarmsRequest>;
+export type ResourceArn = string;
 export interface MonitoredResourceInfo {
   arn?: string;
   name?: string;
@@ -3396,6 +3413,8 @@ export type ComparisonOperator =
   | "LessThanOrEqualToThreshold"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type MetricPeriod = number;
 export type TreatMissingData =
   | "breaching"
   | "notBreaching"
@@ -3403,6 +3422,7 @@ export type TreatMissingData =
   | "missing"
   | (string & {});
 export const TreatMissingData = /*@__PURE__*/ S.String;
+
 export type MetricStatistic =
   | "Minimum"
   | "Maximum"
@@ -3411,6 +3431,7 @@ export type MetricStatistic =
   | "SampleCount"
   | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
+
 export type MetricName =
   | "CPUUtilization"
   | "NetworkIn"
@@ -3439,8 +3460,10 @@ export type MetricName =
   | "BurstCapacityPercentage"
   | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
+
 export type AlarmState = "OK" | "ALARM" | "INSUFFICIENT_DATA" | (string & {});
 export const AlarmState = /*@__PURE__*/ S.String;
+
 export type MetricUnit =
   | "Seconds"
   | "Microseconds"
@@ -3471,6 +3494,7 @@ export type MetricUnit =
   | "None"
   | (string & {});
 export const MetricUnit = /*@__PURE__*/ S.String;
+
 export type ContactProtocolsList = ContactProtocol[];
 export const ContactProtocolsList = /*@__PURE__*/ S.Array(ContactProtocol);
 export type NotificationTriggerList = AlarmState[];
@@ -3561,6 +3585,7 @@ export type AutoSnapshotStatus =
   | "NotFound"
   | (string & {});
 export const AutoSnapshotStatus = /*@__PURE__*/ S.String;
+
 export interface AttachedDisk {
   path?: string;
   sizeInGb?: number;
@@ -3605,6 +3630,7 @@ export const GetAutoSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutoSnapshotsResult>;
 export type AppCategory = "LfR" | (string & {});
 export const AppCategory = /*@__PURE__*/ S.String;
+
 export interface GetBlueprintsRequest {
   includeInactive?: boolean;
   pageToken?: string;
@@ -3630,8 +3656,10 @@ export const GetBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBlueprintsRequest>;
 export type BlueprintType = "os" | "app" | (string & {});
 export const BlueprintType = /*@__PURE__*/ S.String;
+
 export type InstancePlatform = "LINUX_UNIX" | "WINDOWS" | (string & {});
 export const InstancePlatform = /*@__PURE__*/ S.String;
+
 export interface Blueprint {
   blueprintId?: string;
   name?: string;
@@ -3684,10 +3712,7 @@ export interface GetBucketAccessKeysRequest {
 export const GetBucketAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/GetBucketAccessKeys",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/GetBucketAccessKeys" }),
       svc,
       auth,
       proto,
@@ -3758,6 +3783,7 @@ export type BucketMetricName =
   | "NumberOfObjects"
   | (string & {});
 export const BucketMetricName = /*@__PURE__*/ S.String;
+
 export type MetricStatisticList = MetricStatistic[];
 export const MetricStatisticList = /*@__PURE__*/ S.Array(MetricStatistic);
 export interface GetBucketMetricDataRequest {
@@ -3780,10 +3806,7 @@ export const GetBucketMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
     unit: MetricUnit,
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/GetBucketMetricData",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/GetBucketMetricData" }),
       svc,
       auth,
       proto,
@@ -3864,6 +3887,7 @@ export type AccountLevelBpaSyncStatus =
   | "Defaulted"
   | (string & {});
 export const AccountLevelBpaSyncStatus = /*@__PURE__*/ S.String;
+
 export type BPAStatusMessage =
   | "DEFAULTED_FOR_SLR_MISSING"
   | "SYNC_ON_HOLD"
@@ -3871,6 +3895,7 @@ export type BPAStatusMessage =
   | "Unknown"
   | (string & {});
 export const BPAStatusMessage = /*@__PURE__*/ S.String;
+
 export interface AccountLevelBpaSync {
   status?: AccountLevelBpaSyncStatus;
   lastSyncedAt?: Date;
@@ -3976,6 +4001,7 @@ export const GetBundlesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBundlesResult>;
 export type CertificateStatusList = CertificateStatus[];
 export const CertificateStatusList = /*@__PURE__*/ S.Array(CertificateStatus);
+export type IncludeCertificateDetails = boolean;
 export interface GetCertificatesRequest {
   certificateStatuses?: CertificateStatus[];
   includeCertificateDetails?: boolean;
@@ -4018,8 +4044,8 @@ export const GetCertificatesResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetCloudFormationStackRecordsRequest {
   pageToken?: string;
 }
-export const GetCloudFormationStackRecordsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetCloudFormationStackRecordsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ pageToken: S.optional(S.String) }).pipe(
       T.all(
         T.Http({
@@ -4033,34 +4059,36 @@ export const GetCloudFormationStackRecordsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetCloudFormationStackRecordsRequest",
-  }) as any as S.Schema<GetCloudFormationStackRecordsRequest>;
+).annotate({
+  identifier: "GetCloudFormationStackRecordsRequest",
+}) as any as S.Schema<GetCloudFormationStackRecordsRequest>;
 export type RecordState = "Started" | "Succeeded" | "Failed" | (string & {});
 export const RecordState = /*@__PURE__*/ S.String;
+
 export type CloudFormationStackRecordSourceType =
   | "ExportSnapshotRecord"
   | (string & {});
 export const CloudFormationStackRecordSourceType = /*@__PURE__*/ S.String;
+
 export interface CloudFormationStackRecordSourceInfo {
   resourceType?: CloudFormationStackRecordSourceType;
   name?: string;
   arn?: string;
 }
-export const CloudFormationStackRecordSourceInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceType: S.optional(CloudFormationStackRecordSourceType),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CloudFormationStackRecordSourceInfo",
-  }) as any as S.Schema<CloudFormationStackRecordSourceInfo>;
+export const CloudFormationStackRecordSourceInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(CloudFormationStackRecordSourceType),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CloudFormationStackRecordSourceInfo",
+}) as any as S.Schema<CloudFormationStackRecordSourceInfo>;
 export type CloudFormationStackRecordSourceInfoList =
   CloudFormationStackRecordSourceInfo[];
-export const CloudFormationStackRecordSourceInfoList =
-  /*@__PURE__*/ S.Array(CloudFormationStackRecordSourceInfo);
+export const CloudFormationStackRecordSourceInfoList = /*@__PURE__*/ S.Array(
+  CloudFormationStackRecordSourceInfo,
+);
 export interface DestinationInfo {
   id?: string;
   service?: string;
@@ -4095,21 +4123,21 @@ export const CloudFormationStackRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudFormationStackRecord",
 }) as any as S.Schema<CloudFormationStackRecord>;
 export type CloudFormationStackRecordList = CloudFormationStackRecord[];
-export const CloudFormationStackRecordList =
-  /*@__PURE__*/ S.Array(CloudFormationStackRecord);
+export const CloudFormationStackRecordList = /*@__PURE__*/ S.Array(
+  CloudFormationStackRecord,
+);
 export interface GetCloudFormationStackRecordsResult {
   cloudFormationStackRecords?: CloudFormationStackRecord[];
   nextPageToken?: string;
 }
-export const GetCloudFormationStackRecordsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudFormationStackRecords: S.optional(CloudFormationStackRecordList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetCloudFormationStackRecordsResult",
-  }) as any as S.Schema<GetCloudFormationStackRecordsResult>;
+export const GetCloudFormationStackRecordsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudFormationStackRecords: S.optional(CloudFormationStackRecordList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetCloudFormationStackRecordsResult",
+}) as any as S.Schema<GetCloudFormationStackRecordsResult>;
 export interface GetContactMethodsRequest {
   protocols?: ContactProtocol[];
 }
@@ -4135,6 +4163,7 @@ export type ContactMethodStatus =
   | "Invalid"
   | (string & {});
 export const ContactMethodStatus = /*@__PURE__*/ S.String;
+
 export interface ContactMethod {
   contactEndpoint?: string;
   status?: ContactMethodStatus;
@@ -4172,43 +4201,44 @@ export const GetContactMethodsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContactMethodsResult",
 }) as any as S.Schema<GetContactMethodsResult>;
 export interface GetContainerAPIMetadataRequest {}
-export const GetContainerAPIMetadataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/ls/api/2016-11-28/container-api-metadata",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetContainerAPIMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/ls/api/2016-11-28/container-api-metadata",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetContainerAPIMetadataRequest",
-  }) as any as S.Schema<GetContainerAPIMetadataRequest>;
+  ),
+).annotate({
+  identifier: "GetContainerAPIMetadataRequest",
+}) as any as S.Schema<GetContainerAPIMetadataRequest>;
 export type ContainerServiceMetadataEntry = {
   [key: string]: string | undefined;
 };
-export const ContainerServiceMetadataEntry =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ContainerServiceMetadataEntry = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export type ContainerServiceMetadataEntryList = {
   [key: string]: string | undefined;
 }[];
-export const ContainerServiceMetadataEntryList =
-  /*@__PURE__*/ S.Array(ContainerServiceMetadataEntry);
+export const ContainerServiceMetadataEntryList = /*@__PURE__*/ S.Array(
+  ContainerServiceMetadataEntry,
+);
 export interface GetContainerAPIMetadataResult {
   metadata?: { [key: string]: string | undefined }[];
 }
-export const GetContainerAPIMetadataResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ metadata: S.optional(ContainerServiceMetadataEntryList) }),
-  ).annotate({
-    identifier: "GetContainerAPIMetadataResult",
-  }) as any as S.Schema<GetContainerAPIMetadataResult>;
+export const GetContainerAPIMetadataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ metadata: S.optional(ContainerServiceMetadataEntryList) }),
+).annotate({
+  identifier: "GetContainerAPIMetadataResult",
+}) as any as S.Schema<GetContainerAPIMetadataResult>;
 export interface GetContainerImagesRequest {
   serviceName: string;
 }
@@ -4318,8 +4348,8 @@ export const GetContainerLogResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetContainerServiceDeploymentsRequest {
   serviceName: string;
 }
-export const GetContainerServiceDeploymentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetContainerServiceDeploymentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ serviceName: S.String.pipe(T.HttpLabel("serviceName")) }).pipe(
       T.all(
         T.Http({
@@ -4333,26 +4363,27 @@ export const GetContainerServiceDeploymentsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetContainerServiceDeploymentsRequest",
-  }) as any as S.Schema<GetContainerServiceDeploymentsRequest>;
+).annotate({
+  identifier: "GetContainerServiceDeploymentsRequest",
+}) as any as S.Schema<GetContainerServiceDeploymentsRequest>;
 export type ContainerServiceDeploymentList = ContainerServiceDeployment[];
-export const ContainerServiceDeploymentList =
-  /*@__PURE__*/ S.Array(ContainerServiceDeployment);
+export const ContainerServiceDeploymentList = /*@__PURE__*/ S.Array(
+  ContainerServiceDeployment,
+);
 export interface GetContainerServiceDeploymentsResult {
   deployments?: ContainerServiceDeployment[];
 }
-export const GetContainerServiceDeploymentsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ deployments: S.optional(ContainerServiceDeploymentList) }),
-  ).annotate({
-    identifier: "GetContainerServiceDeploymentsResult",
-  }) as any as S.Schema<GetContainerServiceDeploymentsResult>;
+export const GetContainerServiceDeploymentsResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ deployments: S.optional(ContainerServiceDeploymentList) }),
+).annotate({
+  identifier: "GetContainerServiceDeploymentsResult",
+}) as any as S.Schema<GetContainerServiceDeploymentsResult>;
 export type ContainerServiceMetricName =
   | "CPUUtilization"
   | "MemoryUtilization"
   | (string & {});
 export const ContainerServiceMetricName = /*@__PURE__*/ S.String;
+
 export interface GetContainerServiceMetricDataRequest {
   serviceName: string;
   metricName: ContainerServiceMetricName;
@@ -4361,8 +4392,8 @@ export interface GetContainerServiceMetricDataRequest {
   period: number;
   statistics: MetricStatistic[];
 }
-export const GetContainerServiceMetricDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetContainerServiceMetricDataRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceName: S.String.pipe(T.HttpLabel("serviceName")),
       metricName: ContainerServiceMetricName.pipe(T.HttpQuery("metricName")),
@@ -4387,41 +4418,39 @@ export const GetContainerServiceMetricDataRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetContainerServiceMetricDataRequest",
-  }) as any as S.Schema<GetContainerServiceMetricDataRequest>;
+).annotate({
+  identifier: "GetContainerServiceMetricDataRequest",
+}) as any as S.Schema<GetContainerServiceMetricDataRequest>;
 export interface GetContainerServiceMetricDataResult {
   metricName?: ContainerServiceMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetContainerServiceMetricDataResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metricName: S.optional(ContainerServiceMetricName),
-      metricData: S.optional(MetricDatapointList),
-    }),
-  ).annotate({
-    identifier: "GetContainerServiceMetricDataResult",
-  }) as any as S.Schema<GetContainerServiceMetricDataResult>;
+export const GetContainerServiceMetricDataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metricName: S.optional(ContainerServiceMetricName),
+    metricData: S.optional(MetricDatapointList),
+  }),
+).annotate({
+  identifier: "GetContainerServiceMetricDataResult",
+}) as any as S.Schema<GetContainerServiceMetricDataResult>;
 export interface GetContainerServicePowersRequest {}
-export const GetContainerServicePowersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/ls/api/2016-11-28/container-service-powers",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetContainerServicePowersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/ls/api/2016-11-28/container-service-powers",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetContainerServicePowersRequest",
-  }) as any as S.Schema<GetContainerServicePowersRequest>;
+  ),
+).annotate({
+  identifier: "GetContainerServicePowersRequest",
+}) as any as S.Schema<GetContainerServicePowersRequest>;
 export interface ContainerServicePower {
   powerId?: string;
   price?: number;
@@ -4449,43 +4478,40 @@ export const ContainerServicePowerList = /*@__PURE__*/ S.Array(
 export interface GetContainerServicePowersResult {
   powers?: ContainerServicePower[];
 }
-export const GetContainerServicePowersResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ powers: S.optional(ContainerServicePowerList) }),
-  ).annotate({
-    identifier: "GetContainerServicePowersResult",
-  }) as any as S.Schema<GetContainerServicePowersResult>;
+export const GetContainerServicePowersResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ powers: S.optional(ContainerServicePowerList) }),
+).annotate({
+  identifier: "GetContainerServicePowersResult",
+}) as any as S.Schema<GetContainerServicePowersResult>;
 export interface GetContainerServicesRequest {
   serviceName?: string;
 }
-export const GetContainerServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.optional(S.String).pipe(T.HttpQuery("serviceName")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/ls/api/2016-11-28/container-services" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetContainerServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.optional(S.String).pipe(T.HttpQuery("serviceName")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ls/api/2016-11-28/container-services" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetContainerServicesRequest",
-  }) as any as S.Schema<GetContainerServicesRequest>;
+  ),
+).annotate({
+  identifier: "GetContainerServicesRequest",
+}) as any as S.Schema<GetContainerServicesRequest>;
 export type ContainerServiceList = ContainerService[];
 export const ContainerServiceList = /*@__PURE__*/ S.Array(ContainerService);
 export interface ContainerServicesListResult {
   containerServices?: ContainerService[];
 }
-export const ContainerServicesListResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ containerServices: S.optional(ContainerServiceList) }),
-  ).annotate({
-    identifier: "ContainerServicesListResult",
-  }) as any as S.Schema<ContainerServicesListResult>;
+export const ContainerServicesListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ containerServices: S.optional(ContainerServiceList) }),
+).annotate({
+  identifier: "ContainerServicesListResult",
+}) as any as S.Schema<ContainerServicesListResult>;
 export interface GetCostEstimateRequest {
   resourceName: string;
   startTime: Date;
@@ -4517,8 +4543,10 @@ export type PricingUnit =
   | "Queries"
   | (string & {});
 export const PricingUnit = /*@__PURE__*/ S.String;
+
 export type Currency = "USD" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
+
 export interface TimePeriod {
   start?: Date;
   end?: Date;
@@ -4632,6 +4660,7 @@ export type DiskState =
   | "unknown"
   | (string & {});
 export const DiskState = /*@__PURE__*/ S.String;
+
 export type AutoMountStatus =
   | "Failed"
   | "Pending"
@@ -4639,6 +4668,7 @@ export type AutoMountStatus =
   | "NotMounted"
   | (string & {});
 export const AutoMountStatus = /*@__PURE__*/ S.String;
+
 export interface Disk {
   name?: string;
   arn?: string;
@@ -4740,6 +4770,7 @@ export type DiskSnapshotState =
   | "unknown"
   | (string & {});
 export const DiskSnapshotState = /*@__PURE__*/ S.String;
+
 export interface DiskSnapshot {
   name?: string;
   arn?: string;
@@ -4816,24 +4847,23 @@ export const GetDiskSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDiskSnapshotsResult",
 }) as any as S.Schema<GetDiskSnapshotsResult>;
 export interface GetDistributionBundlesRequest {}
-export const GetDistributionBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetDistributionBundles",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDistributionBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetDistributionBundles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDistributionBundlesRequest",
-  }) as any as S.Schema<GetDistributionBundlesRequest>;
+  ),
+).annotate({
+  identifier: "GetDistributionBundlesRequest",
+}) as any as S.Schema<GetDistributionBundlesRequest>;
 export interface DistributionBundle {
   bundleId?: string;
   name?: string;
@@ -4857,17 +4887,16 @@ export const DistributionBundleList = /*@__PURE__*/ S.Array(DistributionBundle);
 export interface GetDistributionBundlesResult {
   bundles?: DistributionBundle[];
 }
-export const GetDistributionBundlesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ bundles: S.optional(DistributionBundleList) }),
-  ).annotate({
-    identifier: "GetDistributionBundlesResult",
-  }) as any as S.Schema<GetDistributionBundlesResult>;
+export const GetDistributionBundlesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bundles: S.optional(DistributionBundleList) }),
+).annotate({
+  identifier: "GetDistributionBundlesResult",
+}) as any as S.Schema<GetDistributionBundlesResult>;
 export interface GetDistributionLatestCacheResetRequest {
   distributionName?: string;
 }
-export const GetDistributionLatestCacheResetRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDistributionLatestCacheResetRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ distributionName: S.optional(S.String) }).pipe(
       T.all(
         T.Http({
@@ -4881,22 +4910,22 @@ export const GetDistributionLatestCacheResetRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetDistributionLatestCacheResetRequest",
-  }) as any as S.Schema<GetDistributionLatestCacheResetRequest>;
+).annotate({
+  identifier: "GetDistributionLatestCacheResetRequest",
+}) as any as S.Schema<GetDistributionLatestCacheResetRequest>;
 export interface GetDistributionLatestCacheResetResult {
   status?: string;
   createTime?: Date;
 }
-export const GetDistributionLatestCacheResetResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDistributionLatestCacheResetResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: S.optional(S.String),
       createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
-  ).annotate({
-    identifier: "GetDistributionLatestCacheResetResult",
-  }) as any as S.Schema<GetDistributionLatestCacheResetResult>;
+).annotate({
+  identifier: "GetDistributionLatestCacheResetResult",
+}) as any as S.Schema<GetDistributionLatestCacheResetResult>;
 export type DistributionMetricName =
   | "Requests"
   | "BytesDownloaded"
@@ -4906,6 +4935,7 @@ export type DistributionMetricName =
   | "Http5xxErrorRate"
   | (string & {});
 export const DistributionMetricName = /*@__PURE__*/ S.String;
+
 export interface GetDistributionMetricDataRequest {
   distributionName: string;
   metricName: DistributionMetricName;
@@ -4915,45 +4945,43 @@ export interface GetDistributionMetricDataRequest {
   unit: MetricUnit;
   statistics: MetricStatistic[];
 }
-export const GetDistributionMetricDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      distributionName: S.String,
-      metricName: DistributionMetricName,
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      period: S.Number,
-      unit: MetricUnit,
-      statistics: MetricStatisticList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetDistributionMetricData",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDistributionMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    distributionName: S.String,
+    metricName: DistributionMetricName,
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    period: S.Number,
+    unit: MetricUnit,
+    statistics: MetricStatisticList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetDistributionMetricData",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDistributionMetricDataRequest",
-  }) as any as S.Schema<GetDistributionMetricDataRequest>;
+  ),
+).annotate({
+  identifier: "GetDistributionMetricDataRequest",
+}) as any as S.Schema<GetDistributionMetricDataRequest>;
 export interface GetDistributionMetricDataResult {
   metricName?: DistributionMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetDistributionMetricDataResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metricName: S.optional(DistributionMetricName),
-      metricData: S.optional(MetricDatapointList),
-    }),
-  ).annotate({
-    identifier: "GetDistributionMetricDataResult",
-  }) as any as S.Schema<GetDistributionMetricDataResult>;
+export const GetDistributionMetricDataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metricName: S.optional(DistributionMetricName),
+    metricData: S.optional(MetricDatapointList),
+  }),
+).annotate({
+  identifier: "GetDistributionMetricDataResult",
+}) as any as S.Schema<GetDistributionMetricDataResult>;
 export interface GetDistributionsRequest {
   distributionName?: string;
   pageToken?: string;
@@ -5015,6 +5043,7 @@ export type NameServersUpdateStateCode =
   | "STARTED"
   | (string & {});
 export const NameServersUpdateStateCode = /*@__PURE__*/ S.String;
+
 export interface NameServersUpdateState {
   code?: NameServersUpdateStateCode;
   message?: string;
@@ -5034,6 +5063,7 @@ export type R53HostedZoneDeletionStateCode =
   | "STARTED"
   | (string & {});
 export const R53HostedZoneDeletionStateCode = /*@__PURE__*/ S.String;
+
 export interface R53HostedZoneDeletionState {
   code?: R53HostedZoneDeletionStateCode;
   message?: string;
@@ -5050,15 +5080,14 @@ export interface RegisteredDomainDelegationInfo {
   nameServersUpdateState?: NameServersUpdateState;
   r53HostedZoneDeletionState?: R53HostedZoneDeletionState;
 }
-export const RegisteredDomainDelegationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nameServersUpdateState: S.optional(NameServersUpdateState),
-      r53HostedZoneDeletionState: S.optional(R53HostedZoneDeletionState),
-    }),
-  ).annotate({
-    identifier: "RegisteredDomainDelegationInfo",
-  }) as any as S.Schema<RegisteredDomainDelegationInfo>;
+export const RegisteredDomainDelegationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nameServersUpdateState: S.optional(NameServersUpdateState),
+    r53HostedZoneDeletionState: S.optional(R53HostedZoneDeletionState),
+  }),
+).annotate({
+  identifier: "RegisteredDomainDelegationInfo",
+}) as any as S.Schema<RegisteredDomainDelegationInfo>;
 export interface Domain {
   name?: string;
   arn?: string;
@@ -5125,29 +5154,29 @@ export const GetDomainsResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetExportSnapshotRecordsRequest {
   pageToken?: string;
 }
-export const GetExportSnapshotRecordsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ pageToken: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetExportSnapshotRecords",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetExportSnapshotRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pageToken: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetExportSnapshotRecords",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetExportSnapshotRecordsRequest",
-  }) as any as S.Schema<GetExportSnapshotRecordsRequest>;
+  ),
+).annotate({
+  identifier: "GetExportSnapshotRecordsRequest",
+}) as any as S.Schema<GetExportSnapshotRecordsRequest>;
 export type ExportSnapshotRecordSourceType =
   | "InstanceSnapshot"
   | "DiskSnapshot"
   | (string & {});
 export const ExportSnapshotRecordSourceType = /*@__PURE__*/ S.String;
+
 export interface DiskInfo {
   name?: string;
   path?: string;
@@ -5196,21 +5225,20 @@ export interface ExportSnapshotRecordSourceInfo {
   instanceSnapshotInfo?: InstanceSnapshotInfo;
   diskSnapshotInfo?: DiskSnapshotInfo;
 }
-export const ExportSnapshotRecordSourceInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceType: S.optional(ExportSnapshotRecordSourceType),
-      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      name: S.optional(S.String),
-      arn: S.optional(S.String),
-      fromResourceName: S.optional(S.String),
-      fromResourceArn: S.optional(S.String),
-      instanceSnapshotInfo: S.optional(InstanceSnapshotInfo),
-      diskSnapshotInfo: S.optional(DiskSnapshotInfo),
-    }),
-  ).annotate({
-    identifier: "ExportSnapshotRecordSourceInfo",
-  }) as any as S.Schema<ExportSnapshotRecordSourceInfo>;
+export const ExportSnapshotRecordSourceInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(ExportSnapshotRecordSourceType),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    fromResourceName: S.optional(S.String),
+    fromResourceArn: S.optional(S.String),
+    instanceSnapshotInfo: S.optional(InstanceSnapshotInfo),
+    diskSnapshotInfo: S.optional(DiskSnapshotInfo),
+  }),
+).annotate({
+  identifier: "ExportSnapshotRecordSourceInfo",
+}) as any as S.Schema<ExportSnapshotRecordSourceInfo>;
 export interface ExportSnapshotRecord {
   name?: string;
   arn?: string;
@@ -5242,15 +5270,14 @@ export interface GetExportSnapshotRecordsResult {
   exportSnapshotRecords?: ExportSnapshotRecord[];
   nextPageToken?: string;
 }
-export const GetExportSnapshotRecordsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exportSnapshotRecords: S.optional(ExportSnapshotRecordList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetExportSnapshotRecordsResult",
-  }) as any as S.Schema<GetExportSnapshotRecordsResult>;
+export const GetExportSnapshotRecordsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exportSnapshotRecords: S.optional(ExportSnapshotRecordList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetExportSnapshotRecordsResult",
+}) as any as S.Schema<GetExportSnapshotRecordsResult>;
 export interface GetInstanceRequest {
   instanceName: string;
 }
@@ -5268,6 +5295,8 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceRequest",
 }) as any as S.Schema<GetInstanceRequest>;
+export type IpAddress = string;
+export type Ipv6Address = string;
 export type Ipv6AddressList = string[];
 export const Ipv6AddressList = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceHardware {
@@ -5294,8 +5323,10 @@ export const MonthlyTransfer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonthlyTransfer>;
 export type PortAccessType = "Public" | "Private" | (string & {});
 export const PortAccessType = /*@__PURE__*/ S.String;
+
 export type AccessDirection = "inbound" | "outbound" | (string & {});
 export const AccessDirection = /*@__PURE__*/ S.String;
+
 export interface InstancePortInfo {
   fromPort?: number;
   toPort?: number;
@@ -5347,12 +5378,16 @@ export const InstanceState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceState" }) as any as S.Schema<InstanceState>;
 export type InstanceMetadataState = "pending" | "applied" | (string & {});
 export const InstanceMetadataState = /*@__PURE__*/ S.String;
+
 export type HttpTokens = "optional" | "required" | (string & {});
 export const HttpTokens = /*@__PURE__*/ S.String;
+
 export type HttpEndpoint = "disabled" | "enabled" | (string & {});
 export const HttpEndpoint = /*@__PURE__*/ S.String;
+
 export type HttpProtocolIpv6 = "disabled" | "enabled" | (string & {});
 export const HttpProtocolIpv6 = /*@__PURE__*/ S.String;
+
 export interface InstanceMetadataOptions {
   state?: InstanceMetadataState;
   httpTokens?: HttpTokens;
@@ -5431,31 +5466,31 @@ export const GetInstanceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInstanceResult>;
 export type InstanceAccessProtocol = "ssh" | "rdp" | (string & {});
 export const InstanceAccessProtocol = /*@__PURE__*/ S.String;
+
 export interface GetInstanceAccessDetailsRequest {
   instanceName: string;
   protocol?: InstanceAccessProtocol;
 }
-export const GetInstanceAccessDetailsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceName: S.String,
-      protocol: S.optional(InstanceAccessProtocol),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetInstanceAccessDetails",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetInstanceAccessDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceName: S.String,
+    protocol: S.optional(InstanceAccessProtocol),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetInstanceAccessDetails",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetInstanceAccessDetailsRequest",
-  }) as any as S.Schema<GetInstanceAccessDetailsRequest>;
+  ),
+).annotate({
+  identifier: "GetInstanceAccessDetailsRequest",
+}) as any as S.Schema<GetInstanceAccessDetailsRequest>;
 export interface PasswordData {
   ciphertext?: string;
   keyPairName?: string;
@@ -5523,12 +5558,11 @@ export const InstanceAccessDetails = /*@__PURE__*/ S.suspend(() =>
 export interface GetInstanceAccessDetailsResult {
   accessDetails?: InstanceAccessDetails;
 }
-export const GetInstanceAccessDetailsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ accessDetails: S.optional(InstanceAccessDetails) }),
-  ).annotate({
-    identifier: "GetInstanceAccessDetailsResult",
-  }) as any as S.Schema<GetInstanceAccessDetailsResult>;
+export const GetInstanceAccessDetailsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accessDetails: S.optional(InstanceAccessDetails) }),
+).annotate({
+  identifier: "GetInstanceAccessDetailsResult",
+}) as any as S.Schema<GetInstanceAccessDetailsResult>;
 export type InstanceMetricName =
   | "CPUUtilization"
   | "NetworkIn"
@@ -5541,6 +5575,7 @@ export type InstanceMetricName =
   | "MetadataNoToken"
   | (string & {});
 export const InstanceMetricName = /*@__PURE__*/ S.String;
+
 export interface GetInstanceMetricDataRequest {
   instanceName: string;
   metricName: InstanceMetricName;
@@ -5550,68 +5585,66 @@ export interface GetInstanceMetricDataRequest {
   unit: MetricUnit;
   statistics: MetricStatistic[];
 }
-export const GetInstanceMetricDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceName: S.String,
-      metricName: InstanceMetricName,
-      period: S.Number,
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      unit: MetricUnit,
-      statistics: MetricStatisticList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetInstanceMetricData",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetInstanceMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceName: S.String,
+    metricName: InstanceMetricName,
+    period: S.Number,
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    unit: MetricUnit,
+    statistics: MetricStatisticList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetInstanceMetricData",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetInstanceMetricDataRequest",
-  }) as any as S.Schema<GetInstanceMetricDataRequest>;
+  ),
+).annotate({
+  identifier: "GetInstanceMetricDataRequest",
+}) as any as S.Schema<GetInstanceMetricDataRequest>;
 export interface GetInstanceMetricDataResult {
   metricName?: InstanceMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetInstanceMetricDataResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metricName: S.optional(InstanceMetricName),
-      metricData: S.optional(MetricDatapointList),
-    }),
-  ).annotate({
-    identifier: "GetInstanceMetricDataResult",
-  }) as any as S.Schema<GetInstanceMetricDataResult>;
+export const GetInstanceMetricDataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metricName: S.optional(InstanceMetricName),
+    metricData: S.optional(MetricDatapointList),
+  }),
+).annotate({
+  identifier: "GetInstanceMetricDataResult",
+}) as any as S.Schema<GetInstanceMetricDataResult>;
 export interface GetInstancePortStatesRequest {
   instanceName: string;
 }
-export const GetInstancePortStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ instanceName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetInstancePortStates",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetInstancePortStatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ instanceName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetInstancePortStates",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetInstancePortStatesRequest",
-  }) as any as S.Schema<GetInstancePortStatesRequest>;
+  ),
+).annotate({
+  identifier: "GetInstancePortStatesRequest",
+}) as any as S.Schema<GetInstancePortStatesRequest>;
 export type PortState = "open" | "closed" | (string & {});
 export const PortState = /*@__PURE__*/ S.String;
+
 export interface InstancePortState {
   fromPort?: number;
   toPort?: number;
@@ -5639,12 +5672,11 @@ export const InstancePortStateList = /*@__PURE__*/ S.Array(InstancePortState);
 export interface GetInstancePortStatesResult {
   portStates?: InstancePortState[];
 }
-export const GetInstancePortStatesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ portStates: S.optional(InstancePortStateList) }),
-  ).annotate({
-    identifier: "GetInstancePortStatesResult",
-  }) as any as S.Schema<GetInstancePortStatesResult>;
+export const GetInstancePortStatesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ portStates: S.optional(InstancePortStateList) }),
+).annotate({
+  identifier: "GetInstancePortStatesResult",
+}) as any as S.Schema<GetInstancePortStatesResult>;
 export interface GetInstancesRequest {
   pageToken?: string;
 }
@@ -5682,10 +5714,7 @@ export interface GetInstanceSnapshotRequest {
 export const GetInstanceSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceSnapshotName: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/GetInstanceSnapshot",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/GetInstanceSnapshot" }),
       svc,
       auth,
       proto,
@@ -5702,6 +5731,7 @@ export type InstanceSnapshotState =
   | "available"
   | (string & {});
 export const InstanceSnapshotState = /*@__PURE__*/ S.String;
+
 export interface InstanceSnapshot {
   name?: string;
   arn?: string;
@@ -5753,24 +5783,23 @@ export const GetInstanceSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetInstanceSnapshotsRequest {
   pageToken?: string;
 }
-export const GetInstanceSnapshotsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ pageToken: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetInstanceSnapshots",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetInstanceSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pageToken: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetInstanceSnapshots",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetInstanceSnapshotsRequest",
-  }) as any as S.Schema<GetInstanceSnapshotsRequest>;
+  ),
+).annotate({
+  identifier: "GetInstanceSnapshotsRequest",
+}) as any as S.Schema<GetInstanceSnapshotsRequest>;
 export type InstanceSnapshotList = InstanceSnapshot[];
 export const InstanceSnapshotList = /*@__PURE__*/ S.Array(InstanceSnapshot);
 export interface GetInstanceSnapshotsResult {
@@ -5895,8 +5924,10 @@ export type LoadBalancerState =
   | "unknown"
   | (string & {});
 export const LoadBalancerState = /*@__PURE__*/ S.String;
+
 export type LoadBalancerProtocol = "HTTP_HTTPS" | "HTTP" | (string & {});
 export const LoadBalancerProtocol = /*@__PURE__*/ S.String;
+
 export type PortList = number[];
 export const PortList = /*@__PURE__*/ S.Array(S.Number);
 export type InstanceHealthState =
@@ -5908,6 +5939,7 @@ export type InstanceHealthState =
   | "unavailable"
   | (string & {});
 export const InstanceHealthState = /*@__PURE__*/ S.String;
+
 export type InstanceHealthReason =
   | "Lb.RegistrationInProgress"
   | "Lb.InitialHealthChecking"
@@ -5922,6 +5954,7 @@ export type InstanceHealthReason =
   | "Instance.IpUnusable"
   | (string & {});
 export const InstanceHealthReason = /*@__PURE__*/ S.String;
+
 export interface InstanceHealthSummary {
   instanceName?: string;
   instanceHealth?: InstanceHealthState;
@@ -5944,16 +5977,16 @@ export interface LoadBalancerTlsCertificateSummary {
   name?: string;
   isAttached?: boolean;
 }
-export const LoadBalancerTlsCertificateSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ name: S.optional(S.String), isAttached: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "LoadBalancerTlsCertificateSummary",
-  }) as any as S.Schema<LoadBalancerTlsCertificateSummary>;
+export const LoadBalancerTlsCertificateSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.optional(S.String), isAttached: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "LoadBalancerTlsCertificateSummary",
+}) as any as S.Schema<LoadBalancerTlsCertificateSummary>;
 export type LoadBalancerTlsCertificateSummaryList =
   LoadBalancerTlsCertificateSummary[];
-export const LoadBalancerTlsCertificateSummaryList =
-  /*@__PURE__*/ S.Array(LoadBalancerTlsCertificateSummary);
+export const LoadBalancerTlsCertificateSummaryList = /*@__PURE__*/ S.Array(
+  LoadBalancerTlsCertificateSummary,
+);
 export type LoadBalancerAttributeName =
   | "HealthCheckPath"
   | "SessionStickinessEnabled"
@@ -5962,11 +5995,14 @@ export type LoadBalancerAttributeName =
   | "TlsPolicyName"
   | (string & {});
 export const LoadBalancerAttributeName = /*@__PURE__*/ S.String;
+
 export type LoadBalancerConfigurationOptions = {
   [key in LoadBalancerAttributeName]?: string;
 };
-export const LoadBalancerConfigurationOptions =
-  /*@__PURE__*/ S.Record(LoadBalancerAttributeName, S.String.pipe(S.optional));
+export const LoadBalancerConfigurationOptions = /*@__PURE__*/ S.Record(
+  LoadBalancerAttributeName,
+  S.String.pipe(S.optional),
+);
 export interface LoadBalancer {
   name?: string;
   arn?: string;
@@ -6034,6 +6070,7 @@ export type LoadBalancerMetricName =
   | "RequestCount"
   | (string & {});
 export const LoadBalancerMetricName = /*@__PURE__*/ S.String;
+
 export interface GetLoadBalancerMetricDataRequest {
   loadBalancerName: string;
   metricName: LoadBalancerMetricName;
@@ -6043,45 +6080,43 @@ export interface GetLoadBalancerMetricDataRequest {
   unit: MetricUnit;
   statistics: MetricStatistic[];
 }
-export const GetLoadBalancerMetricDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      loadBalancerName: S.String,
-      metricName: LoadBalancerMetricName,
-      period: S.Number,
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      unit: MetricUnit,
-      statistics: MetricStatisticList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetLoadBalancerMetricData",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetLoadBalancerMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    loadBalancerName: S.String,
+    metricName: LoadBalancerMetricName,
+    period: S.Number,
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    unit: MetricUnit,
+    statistics: MetricStatisticList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetLoadBalancerMetricData",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetLoadBalancerMetricDataRequest",
-  }) as any as S.Schema<GetLoadBalancerMetricDataRequest>;
+  ),
+).annotate({
+  identifier: "GetLoadBalancerMetricDataRequest",
+}) as any as S.Schema<GetLoadBalancerMetricDataRequest>;
 export interface GetLoadBalancerMetricDataResult {
   metricName?: LoadBalancerMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetLoadBalancerMetricDataResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metricName: S.optional(LoadBalancerMetricName),
-      metricData: S.optional(MetricDatapointList),
-    }),
-  ).annotate({
-    identifier: "GetLoadBalancerMetricDataResult",
-  }) as any as S.Schema<GetLoadBalancerMetricDataResult>;
+export const GetLoadBalancerMetricDataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metricName: S.optional(LoadBalancerMetricName),
+    metricData: S.optional(MetricDatapointList),
+  }),
+).annotate({
+  identifier: "GetLoadBalancerMetricDataResult",
+}) as any as S.Schema<GetLoadBalancerMetricDataResult>;
 export interface GetLoadBalancersRequest {
   pageToken?: string;
 }
@@ -6116,8 +6151,8 @@ export const GetLoadBalancersResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetLoadBalancerTlsCertificatesRequest {
   loadBalancerName: string;
 }
-export const GetLoadBalancerTlsCertificatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetLoadBalancerTlsCertificatesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ loadBalancerName: S.String }).pipe(
       T.all(
         T.Http({
@@ -6131,9 +6166,9 @@ export const GetLoadBalancerTlsCertificatesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetLoadBalancerTlsCertificatesRequest",
-  }) as any as S.Schema<GetLoadBalancerTlsCertificatesRequest>;
+).annotate({
+  identifier: "GetLoadBalancerTlsCertificatesRequest",
+}) as any as S.Schema<GetLoadBalancerTlsCertificatesRequest>;
 export type LoadBalancerTlsCertificateStatus =
   | "PENDING_VALIDATION"
   | "ISSUED"
@@ -6145,12 +6180,14 @@ export type LoadBalancerTlsCertificateStatus =
   | "UNKNOWN"
   | (string & {});
 export const LoadBalancerTlsCertificateStatus = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTlsCertificateDomainStatus =
   | "PENDING_VALIDATION"
   | "FAILED"
   | "SUCCESS"
   | (string & {});
 export const LoadBalancerTlsCertificateDomainStatus = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   | "SUCCEEDED"
   | "STARTED"
@@ -6158,6 +6195,7 @@ export type LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   | (string & {});
 export const LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   /*@__PURE__*/ S.String;
+
 export interface LoadBalancerTlsCertificateDnsRecordCreationState {
   code?: LoadBalancerTlsCertificateDnsRecordCreationStateCode;
   message?: string;
@@ -6206,6 +6244,7 @@ export type LoadBalancerTlsCertificateFailureReason =
   | "OTHER"
   | (string & {});
 export const LoadBalancerTlsCertificateFailureReason = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTlsCertificateRenewalStatus =
   | "PENDING_AUTO_RENEWAL"
   | "PENDING_VALIDATION"
@@ -6213,6 +6252,7 @@ export type LoadBalancerTlsCertificateRenewalStatus =
   | "FAILED"
   | (string & {});
 export const LoadBalancerTlsCertificateRenewalStatus = /*@__PURE__*/ S.String;
+
 export interface LoadBalancerTlsCertificateDomainValidationOption {
   domainName?: string;
   validationStatus?: LoadBalancerTlsCertificateDomainStatus;
@@ -6234,17 +6274,17 @@ export interface LoadBalancerTlsCertificateRenewalSummary {
   renewalStatus?: LoadBalancerTlsCertificateRenewalStatus;
   domainValidationOptions?: LoadBalancerTlsCertificateDomainValidationOption[];
 }
-export const LoadBalancerTlsCertificateRenewalSummary =
-  /*@__PURE__*/ S.suspend(() =>
+export const LoadBalancerTlsCertificateRenewalSummary = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       renewalStatus: S.optional(LoadBalancerTlsCertificateRenewalStatus),
       domainValidationOptions: S.optional(
         LoadBalancerTlsCertificateDomainValidationOptionList,
       ),
     }),
-  ).annotate({
-    identifier: "LoadBalancerTlsCertificateRenewalSummary",
-  }) as any as S.Schema<LoadBalancerTlsCertificateRenewalSummary>;
+).annotate({
+  identifier: "LoadBalancerTlsCertificateRenewalSummary",
+}) as any as S.Schema<LoadBalancerTlsCertificateRenewalSummary>;
 export type LoadBalancerTlsCertificateRevocationReason =
   | "UNSPECIFIED"
   | "KEY_COMPROMISE"
@@ -6259,6 +6299,7 @@ export type LoadBalancerTlsCertificateRevocationReason =
   | (string & {});
 export const LoadBalancerTlsCertificateRevocationReason =
   /*@__PURE__*/ S.String;
+
 export interface LoadBalancerTlsCertificate {
   name?: string;
   arn?: string;
@@ -6320,38 +6361,38 @@ export const LoadBalancerTlsCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadBalancerTlsCertificate",
 }) as any as S.Schema<LoadBalancerTlsCertificate>;
 export type LoadBalancerTlsCertificateList = LoadBalancerTlsCertificate[];
-export const LoadBalancerTlsCertificateList =
-  /*@__PURE__*/ S.Array(LoadBalancerTlsCertificate);
+export const LoadBalancerTlsCertificateList = /*@__PURE__*/ S.Array(
+  LoadBalancerTlsCertificate,
+);
 export interface GetLoadBalancerTlsCertificatesResult {
   tlsCertificates?: LoadBalancerTlsCertificate[];
 }
-export const GetLoadBalancerTlsCertificatesResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetLoadBalancerTlsCertificatesResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ tlsCertificates: S.optional(LoadBalancerTlsCertificateList) }),
-  ).annotate({
-    identifier: "GetLoadBalancerTlsCertificatesResult",
-  }) as any as S.Schema<GetLoadBalancerTlsCertificatesResult>;
+).annotate({
+  identifier: "GetLoadBalancerTlsCertificatesResult",
+}) as any as S.Schema<GetLoadBalancerTlsCertificatesResult>;
 export interface GetLoadBalancerTlsPoliciesRequest {
   pageToken?: string;
 }
-export const GetLoadBalancerTlsPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ pageToken: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetLoadBalancerTlsPolicies",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetLoadBalancerTlsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pageToken: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetLoadBalancerTlsPolicies",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetLoadBalancerTlsPoliciesRequest",
-  }) as any as S.Schema<GetLoadBalancerTlsPoliciesRequest>;
+  ),
+).annotate({
+  identifier: "GetLoadBalancerTlsPoliciesRequest",
+}) as any as S.Schema<GetLoadBalancerTlsPoliciesRequest>;
 export interface LoadBalancerTlsPolicy {
   name?: string;
   isDefault?: boolean;
@@ -6378,15 +6419,14 @@ export interface GetLoadBalancerTlsPoliciesResult {
   tlsPolicies?: LoadBalancerTlsPolicy[];
   nextPageToken?: string;
 }
-export const GetLoadBalancerTlsPoliciesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tlsPolicies: S.optional(LoadBalancerTlsPolicyList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetLoadBalancerTlsPoliciesResult",
-  }) as any as S.Schema<GetLoadBalancerTlsPoliciesResult>;
+export const GetLoadBalancerTlsPoliciesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tlsPolicies: S.optional(LoadBalancerTlsPolicyList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetLoadBalancerTlsPoliciesResult",
+}) as any as S.Schema<GetLoadBalancerTlsPoliciesResult>;
 export interface GetOperationRequest {
   operationId: string;
 }
@@ -6445,39 +6485,37 @@ export interface GetOperationsForResourceRequest {
   resourceName: string;
   pageToken?: string;
 }
-export const GetOperationsForResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceName: S.String, pageToken: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetOperationsForResource",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetOperationsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceName: S.String, pageToken: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetOperationsForResource",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetOperationsForResourceRequest",
-  }) as any as S.Schema<GetOperationsForResourceRequest>;
+  ),
+).annotate({
+  identifier: "GetOperationsForResourceRequest",
+}) as any as S.Schema<GetOperationsForResourceRequest>;
 export interface GetOperationsForResourceResult {
   operations?: Operation[];
   nextPageCount?: string;
   nextPageToken?: string;
 }
-export const GetOperationsForResourceResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      operations: S.optional(OperationList),
-      nextPageCount: S.optional(S.String),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetOperationsForResourceResult",
-  }) as any as S.Schema<GetOperationsForResourceResult>;
+export const GetOperationsForResourceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operations: S.optional(OperationList),
+    nextPageCount: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetOperationsForResourceResult",
+}) as any as S.Schema<GetOperationsForResourceResult>;
 export interface GetRegionsRequest {
   includeAvailabilityZones?: boolean;
   includeRelationalDatabaseAvailabilityZones?: boolean;
@@ -6541,24 +6579,23 @@ export const GetRegionsResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetRelationalDatabaseRequest {
   relationalDatabaseName: string;
 }
-export const GetRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ relationalDatabaseName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ relationalDatabaseName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseRequest",
-  }) as any as S.Schema<GetRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "GetRelationalDatabaseRequest",
+}) as any as S.Schema<GetRelationalDatabaseRequest>;
 export interface RelationalDatabaseHardware {
   cpuCount?: number;
   diskSizeInGb?: number;
@@ -6578,16 +6615,16 @@ export interface PendingModifiedRelationalDatabaseValues {
   engineVersion?: string;
   backupRetentionEnabled?: boolean;
 }
-export const PendingModifiedRelationalDatabaseValues =
-  /*@__PURE__*/ S.suspend(() =>
+export const PendingModifiedRelationalDatabaseValues = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       masterUserPassword: S.optional(S.String),
       engineVersion: S.optional(S.String),
       backupRetentionEnabled: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "PendingModifiedRelationalDatabaseValues",
-  }) as any as S.Schema<PendingModifiedRelationalDatabaseValues>;
+).annotate({
+  identifier: "PendingModifiedRelationalDatabaseValues",
+}) as any as S.Schema<PendingModifiedRelationalDatabaseValues>;
 export interface RelationalDatabaseEndpoint {
   port?: number;
   address?: string;
@@ -6682,17 +6719,16 @@ export const RelationalDatabase = /*@__PURE__*/ S.suspend(() =>
 export interface GetRelationalDatabaseResult {
   relationalDatabase?: RelationalDatabase;
 }
-export const GetRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ relationalDatabase: S.optional(RelationalDatabase) }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseResult",
-  }) as any as S.Schema<GetRelationalDatabaseResult>;
+export const GetRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ relationalDatabase: S.optional(RelationalDatabase) }),
+).annotate({
+  identifier: "GetRelationalDatabaseResult",
+}) as any as S.Schema<GetRelationalDatabaseResult>;
 export interface GetRelationalDatabaseBlueprintsRequest {
   pageToken?: string;
 }
-export const GetRelationalDatabaseBlueprintsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseBlueprintsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ pageToken: S.optional(S.String) }).pipe(
       T.all(
         T.Http({
@@ -6706,11 +6742,12 @@ export const GetRelationalDatabaseBlueprintsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseBlueprintsRequest",
-  }) as any as S.Schema<GetRelationalDatabaseBlueprintsRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseBlueprintsRequest",
+}) as any as S.Schema<GetRelationalDatabaseBlueprintsRequest>;
 export type RelationalDatabaseEngine = "mysql" | (string & {});
 export const RelationalDatabaseEngine = /*@__PURE__*/ S.String;
+
 export interface RelationalDatabaseBlueprint {
   blueprintId?: string;
   engine?: RelationalDatabaseEngine;
@@ -6719,60 +6756,59 @@ export interface RelationalDatabaseBlueprint {
   engineVersionDescription?: string;
   isEngineDefault?: boolean;
 }
-export const RelationalDatabaseBlueprint =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      blueprintId: S.optional(S.String),
-      engine: S.optional(RelationalDatabaseEngine),
-      engineVersion: S.optional(S.String),
-      engineDescription: S.optional(S.String),
-      engineVersionDescription: S.optional(S.String),
-      isEngineDefault: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "RelationalDatabaseBlueprint",
-  }) as any as S.Schema<RelationalDatabaseBlueprint>;
+export const RelationalDatabaseBlueprint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    blueprintId: S.optional(S.String),
+    engine: S.optional(RelationalDatabaseEngine),
+    engineVersion: S.optional(S.String),
+    engineDescription: S.optional(S.String),
+    engineVersionDescription: S.optional(S.String),
+    isEngineDefault: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RelationalDatabaseBlueprint",
+}) as any as S.Schema<RelationalDatabaseBlueprint>;
 export type RelationalDatabaseBlueprintList = RelationalDatabaseBlueprint[];
-export const RelationalDatabaseBlueprintList =
-  /*@__PURE__*/ S.Array(RelationalDatabaseBlueprint);
+export const RelationalDatabaseBlueprintList = /*@__PURE__*/ S.Array(
+  RelationalDatabaseBlueprint,
+);
 export interface GetRelationalDatabaseBlueprintsResult {
   blueprints?: RelationalDatabaseBlueprint[];
   nextPageToken?: string;
 }
-export const GetRelationalDatabaseBlueprintsResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseBlueprintsResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       blueprints: S.optional(RelationalDatabaseBlueprintList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseBlueprintsResult",
-  }) as any as S.Schema<GetRelationalDatabaseBlueprintsResult>;
+).annotate({
+  identifier: "GetRelationalDatabaseBlueprintsResult",
+}) as any as S.Schema<GetRelationalDatabaseBlueprintsResult>;
 export interface GetRelationalDatabaseBundlesRequest {
   pageToken?: string;
   includeInactive?: boolean;
 }
-export const GetRelationalDatabaseBundlesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String),
-      includeInactive: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetRelationalDatabaseBundles",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRelationalDatabaseBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String),
+    includeInactive: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetRelationalDatabaseBundles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseBundlesRequest",
-  }) as any as S.Schema<GetRelationalDatabaseBundlesRequest>;
+  ),
+).annotate({
+  identifier: "GetRelationalDatabaseBundlesRequest",
+}) as any as S.Schema<GetRelationalDatabaseBundlesRequest>;
 export interface RelationalDatabaseBundle {
   bundleId?: string;
   name?: string;
@@ -6807,42 +6843,40 @@ export interface GetRelationalDatabaseBundlesResult {
   bundles?: RelationalDatabaseBundle[];
   nextPageToken?: string;
 }
-export const GetRelationalDatabaseBundlesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bundles: S.optional(RelationalDatabaseBundleList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseBundlesResult",
-  }) as any as S.Schema<GetRelationalDatabaseBundlesResult>;
+export const GetRelationalDatabaseBundlesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundles: S.optional(RelationalDatabaseBundleList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRelationalDatabaseBundlesResult",
+}) as any as S.Schema<GetRelationalDatabaseBundlesResult>;
 export interface GetRelationalDatabaseEventsRequest {
   relationalDatabaseName: string;
   durationInMinutes?: number;
   pageToken?: string;
 }
-export const GetRelationalDatabaseEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseName: S.String,
-      durationInMinutes: S.optional(S.Number),
-      pageToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetRelationalDatabaseEvents",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRelationalDatabaseEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseName: S.String,
+    durationInMinutes: S.optional(S.Number),
+    pageToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetRelationalDatabaseEvents",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseEventsRequest",
-  }) as any as S.Schema<GetRelationalDatabaseEventsRequest>;
+  ),
+).annotate({
+  identifier: "GetRelationalDatabaseEventsRequest",
+}) as any as S.Schema<GetRelationalDatabaseEventsRequest>;
 export interface RelationalDatabaseEvent {
   resource?: string;
   createdAt?: Date;
@@ -6867,15 +6901,14 @@ export interface GetRelationalDatabaseEventsResult {
   relationalDatabaseEvents?: RelationalDatabaseEvent[];
   nextPageToken?: string;
 }
-export const GetRelationalDatabaseEventsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseEvents: S.optional(RelationalDatabaseEventList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseEventsResult",
-  }) as any as S.Schema<GetRelationalDatabaseEventsResult>;
+export const GetRelationalDatabaseEventsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseEvents: S.optional(RelationalDatabaseEventList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRelationalDatabaseEventsResult",
+}) as any as S.Schema<GetRelationalDatabaseEventsResult>;
 export interface GetRelationalDatabaseLogEventsRequest {
   relationalDatabaseName: string;
   logStreamName: string;
@@ -6884,8 +6917,8 @@ export interface GetRelationalDatabaseLogEventsRequest {
   startFromHead?: boolean;
   pageToken?: string;
 }
-export const GetRelationalDatabaseLogEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseLogEventsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       relationalDatabaseName: S.String,
       logStreamName: S.String,
@@ -6906,9 +6939,9 @@ export const GetRelationalDatabaseLogEventsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseLogEventsRequest",
-  }) as any as S.Schema<GetRelationalDatabaseLogEventsRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseLogEventsRequest",
+}) as any as S.Schema<GetRelationalDatabaseLogEventsRequest>;
 export interface LogEvent {
   createdAt?: Date;
   message?: string;
@@ -6926,21 +6959,21 @@ export interface GetRelationalDatabaseLogEventsResult {
   nextBackwardToken?: string;
   nextForwardToken?: string;
 }
-export const GetRelationalDatabaseLogEventsResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseLogEventsResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceLogEvents: S.optional(LogEventList),
       nextBackwardToken: S.optional(S.String),
       nextForwardToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseLogEventsResult",
-  }) as any as S.Schema<GetRelationalDatabaseLogEventsResult>;
+).annotate({
+  identifier: "GetRelationalDatabaseLogEventsResult",
+}) as any as S.Schema<GetRelationalDatabaseLogEventsResult>;
 export interface GetRelationalDatabaseLogStreamsRequest {
   relationalDatabaseName: string;
 }
-export const GetRelationalDatabaseLogStreamsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseLogStreamsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ relationalDatabaseName: S.String }).pipe(
       T.all(
         T.Http({
@@ -6954,24 +6987,24 @@ export const GetRelationalDatabaseLogStreamsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseLogStreamsRequest",
-  }) as any as S.Schema<GetRelationalDatabaseLogStreamsRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseLogStreamsRequest",
+}) as any as S.Schema<GetRelationalDatabaseLogStreamsRequest>;
 export interface GetRelationalDatabaseLogStreamsResult {
   logStreams?: string[];
 }
-export const GetRelationalDatabaseLogStreamsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ logStreams: S.optional(StringList) }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseLogStreamsResult",
-  }) as any as S.Schema<GetRelationalDatabaseLogStreamsResult>;
+export const GetRelationalDatabaseLogStreamsResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ logStreams: S.optional(StringList) }),
+).annotate({
+  identifier: "GetRelationalDatabaseLogStreamsResult",
+}) as any as S.Schema<GetRelationalDatabaseLogStreamsResult>;
 export type RelationalDatabasePasswordVersion =
   | "CURRENT"
   | "PREVIOUS"
   | "PENDING"
   | (string & {});
 export const RelationalDatabasePasswordVersion = /*@__PURE__*/ S.String;
+
 export interface GetRelationalDatabaseMasterUserPasswordRequest {
   relationalDatabaseName: string;
   passwordVersion?: RelationalDatabasePasswordVersion;
@@ -7019,6 +7052,7 @@ export type RelationalDatabaseMetricName =
   | "NetworkTransmitThroughput"
   | (string & {});
 export const RelationalDatabaseMetricName = /*@__PURE__*/ S.String;
+
 export interface GetRelationalDatabaseMetricDataRequest {
   relationalDatabaseName: string;
   metricName: RelationalDatabaseMetricName;
@@ -7028,8 +7062,8 @@ export interface GetRelationalDatabaseMetricDataRequest {
   unit: MetricUnit;
   statistics: MetricStatistic[];
 }
-export const GetRelationalDatabaseMetricDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseMetricDataRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       relationalDatabaseName: S.String,
       metricName: RelationalDatabaseMetricName,
@@ -7051,28 +7085,28 @@ export const GetRelationalDatabaseMetricDataRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseMetricDataRequest",
-  }) as any as S.Schema<GetRelationalDatabaseMetricDataRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseMetricDataRequest",
+}) as any as S.Schema<GetRelationalDatabaseMetricDataRequest>;
 export interface GetRelationalDatabaseMetricDataResult {
   metricName?: RelationalDatabaseMetricName;
   metricData?: MetricDatapoint[];
 }
-export const GetRelationalDatabaseMetricDataResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseMetricDataResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       metricName: S.optional(RelationalDatabaseMetricName),
       metricData: S.optional(MetricDatapointList),
     }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseMetricDataResult",
-  }) as any as S.Schema<GetRelationalDatabaseMetricDataResult>;
+).annotate({
+  identifier: "GetRelationalDatabaseMetricDataResult",
+}) as any as S.Schema<GetRelationalDatabaseMetricDataResult>;
 export interface GetRelationalDatabaseParametersRequest {
   relationalDatabaseName: string;
   pageToken?: string;
 }
-export const GetRelationalDatabaseParametersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseParametersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       relationalDatabaseName: S.String,
       pageToken: S.optional(S.String),
@@ -7089,9 +7123,9 @@ export const GetRelationalDatabaseParametersRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseParametersRequest",
-  }) as any as S.Schema<GetRelationalDatabaseParametersRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseParametersRequest",
+}) as any as S.Schema<GetRelationalDatabaseParametersRequest>;
 export interface RelationalDatabaseParameter {
   allowedValues?: string;
   applyMethod?: string;
@@ -7102,78 +7136,76 @@ export interface RelationalDatabaseParameter {
   parameterName?: string;
   parameterValue?: string;
 }
-export const RelationalDatabaseParameter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowedValues: S.optional(S.String),
-      applyMethod: S.optional(S.String),
-      applyType: S.optional(S.String),
-      dataType: S.optional(S.String),
-      description: S.optional(S.String),
-      isModifiable: S.optional(S.Boolean),
-      parameterName: S.optional(S.String),
-      parameterValue: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RelationalDatabaseParameter",
-  }) as any as S.Schema<RelationalDatabaseParameter>;
+export const RelationalDatabaseParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedValues: S.optional(S.String),
+    applyMethod: S.optional(S.String),
+    applyType: S.optional(S.String),
+    dataType: S.optional(S.String),
+    description: S.optional(S.String),
+    isModifiable: S.optional(S.Boolean),
+    parameterName: S.optional(S.String),
+    parameterValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RelationalDatabaseParameter",
+}) as any as S.Schema<RelationalDatabaseParameter>;
 export type RelationalDatabaseParameterList = RelationalDatabaseParameter[];
-export const RelationalDatabaseParameterList =
-  /*@__PURE__*/ S.Array(RelationalDatabaseParameter);
+export const RelationalDatabaseParameterList = /*@__PURE__*/ S.Array(
+  RelationalDatabaseParameter,
+);
 export interface GetRelationalDatabaseParametersResult {
   parameters?: RelationalDatabaseParameter[];
   nextPageToken?: string;
 }
-export const GetRelationalDatabaseParametersResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseParametersResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parameters: S.optional(RelationalDatabaseParameterList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseParametersResult",
-  }) as any as S.Schema<GetRelationalDatabaseParametersResult>;
+).annotate({
+  identifier: "GetRelationalDatabaseParametersResult",
+}) as any as S.Schema<GetRelationalDatabaseParametersResult>;
 export interface GetRelationalDatabasesRequest {
   pageToken?: string;
 }
-export const GetRelationalDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ pageToken: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/GetRelationalDatabases",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRelationalDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pageToken: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/GetRelationalDatabases",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabasesRequest",
-  }) as any as S.Schema<GetRelationalDatabasesRequest>;
+  ),
+).annotate({
+  identifier: "GetRelationalDatabasesRequest",
+}) as any as S.Schema<GetRelationalDatabasesRequest>;
 export type RelationalDatabaseList = RelationalDatabase[];
 export const RelationalDatabaseList = /*@__PURE__*/ S.Array(RelationalDatabase);
 export interface GetRelationalDatabasesResult {
   relationalDatabases?: RelationalDatabase[];
   nextPageToken?: string;
 }
-export const GetRelationalDatabasesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabases: S.optional(RelationalDatabaseList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetRelationalDatabasesResult",
-  }) as any as S.Schema<GetRelationalDatabasesResult>;
+export const GetRelationalDatabasesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabases: S.optional(RelationalDatabaseList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRelationalDatabasesResult",
+}) as any as S.Schema<GetRelationalDatabasesResult>;
 export interface GetRelationalDatabaseSnapshotRequest {
   relationalDatabaseSnapshotName: string;
 }
-export const GetRelationalDatabaseSnapshotRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseSnapshotRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ relationalDatabaseSnapshotName: S.String }).pipe(
       T.all(
         T.Http({
@@ -7187,9 +7219,9 @@ export const GetRelationalDatabaseSnapshotRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseSnapshotRequest",
-  }) as any as S.Schema<GetRelationalDatabaseSnapshotRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseSnapshotRequest",
+}) as any as S.Schema<GetRelationalDatabaseSnapshotRequest>;
 export interface RelationalDatabaseSnapshot {
   name?: string;
   arn?: string;
@@ -7231,19 +7263,18 @@ export const RelationalDatabaseSnapshot = /*@__PURE__*/ S.suspend(() =>
 export interface GetRelationalDatabaseSnapshotResult {
   relationalDatabaseSnapshot?: RelationalDatabaseSnapshot;
 }
-export const GetRelationalDatabaseSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseSnapshot: S.optional(RelationalDatabaseSnapshot),
-    }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseSnapshotResult",
-  }) as any as S.Schema<GetRelationalDatabaseSnapshotResult>;
+export const GetRelationalDatabaseSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseSnapshot: S.optional(RelationalDatabaseSnapshot),
+  }),
+).annotate({
+  identifier: "GetRelationalDatabaseSnapshotResult",
+}) as any as S.Schema<GetRelationalDatabaseSnapshotResult>;
 export interface GetRelationalDatabaseSnapshotsRequest {
   pageToken?: string;
 }
-export const GetRelationalDatabaseSnapshotsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseSnapshotsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ pageToken: S.optional(S.String) }).pipe(
       T.all(
         T.Http({
@@ -7257,25 +7288,27 @@ export const GetRelationalDatabaseSnapshotsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRelationalDatabaseSnapshotsRequest",
-  }) as any as S.Schema<GetRelationalDatabaseSnapshotsRequest>;
+).annotate({
+  identifier: "GetRelationalDatabaseSnapshotsRequest",
+}) as any as S.Schema<GetRelationalDatabaseSnapshotsRequest>;
 export type RelationalDatabaseSnapshotList = RelationalDatabaseSnapshot[];
-export const RelationalDatabaseSnapshotList =
-  /*@__PURE__*/ S.Array(RelationalDatabaseSnapshot);
+export const RelationalDatabaseSnapshotList = /*@__PURE__*/ S.Array(
+  RelationalDatabaseSnapshot,
+);
 export interface GetRelationalDatabaseSnapshotsResult {
   relationalDatabaseSnapshots?: RelationalDatabaseSnapshot[];
   nextPageToken?: string;
 }
-export const GetRelationalDatabaseSnapshotsResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRelationalDatabaseSnapshotsResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       relationalDatabaseSnapshots: S.optional(RelationalDatabaseSnapshotList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetRelationalDatabaseSnapshotsResult",
-  }) as any as S.Schema<GetRelationalDatabaseSnapshotsResult>;
+).annotate({
+  identifier: "GetRelationalDatabaseSnapshotsResult",
+}) as any as S.Schema<GetRelationalDatabaseSnapshotsResult>;
+export type SetupHistoryPageToken = string;
 export interface GetSetupHistoryRequest {
   resourceName: string;
   pageToken?: string;
@@ -7294,10 +7327,12 @@ export const GetSetupHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSetupHistoryRequest",
 }) as any as S.Schema<GetSetupHistoryRequest>;
+export type SetupDomainName = string;
 export type SetupDomainNameList = string[];
 export const SetupDomainNameList = /*@__PURE__*/ S.Array(S.String);
 export type CertificateProvider = "LetsEncrypt" | (string & {});
 export const CertificateProvider = /*@__PURE__*/ S.String;
+
 export interface SetupRequest {
   instanceName?: string;
   domainNames?: string[];
@@ -7330,6 +7365,7 @@ export const SetupHistoryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetupHistoryResource>;
 export type SetupStatus = "succeeded" | "failed" | "inProgress" | (string & {});
 export const SetupStatus = /*@__PURE__*/ S.String;
+
 export interface SetupExecutionDetails {
   command?: string;
   dateTime?: Date;
@@ -7519,33 +7555,31 @@ export interface OpenInstancePublicPortsRequest {
   portInfo: PortInfo;
   instanceName: string;
 }
-export const OpenInstancePublicPortsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ portInfo: PortInfo, instanceName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/OpenInstancePublicPorts",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const OpenInstancePublicPortsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ portInfo: PortInfo, instanceName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/OpenInstancePublicPorts",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "OpenInstancePublicPortsRequest",
-  }) as any as S.Schema<OpenInstancePublicPortsRequest>;
+  ),
+).annotate({
+  identifier: "OpenInstancePublicPortsRequest",
+}) as any as S.Schema<OpenInstancePublicPortsRequest>;
 export interface OpenInstancePublicPortsResult {
   operation?: Operation;
 }
-export const OpenInstancePublicPortsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "OpenInstancePublicPortsResult",
-  }) as any as S.Schema<OpenInstancePublicPortsResult>;
+export const OpenInstancePublicPortsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "OpenInstancePublicPortsResult",
+}) as any as S.Schema<OpenInstancePublicPortsResult>;
 export interface PeerVpcRequest {}
 export const PeerVpcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -7618,33 +7652,31 @@ export interface PutInstancePublicPortsRequest {
   portInfos: PortInfo[];
   instanceName: string;
 }
-export const PutInstancePublicPortsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ portInfos: PortInfoList, instanceName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/PutInstancePublicPorts",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutInstancePublicPortsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ portInfos: PortInfoList, instanceName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/PutInstancePublicPorts",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutInstancePublicPortsRequest",
-  }) as any as S.Schema<PutInstancePublicPortsRequest>;
+  ),
+).annotate({
+  identifier: "PutInstancePublicPortsRequest",
+}) as any as S.Schema<PutInstancePublicPortsRequest>;
 export interface PutInstancePublicPortsResult {
   operation?: Operation;
 }
-export const PutInstancePublicPortsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "PutInstancePublicPortsResult",
-  }) as any as S.Schema<PutInstancePublicPortsResult>;
+export const PutInstancePublicPortsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "PutInstancePublicPortsResult",
+}) as any as S.Schema<PutInstancePublicPortsResult>;
 export interface RebootInstanceRequest {
   instanceName: string;
 }
@@ -7673,69 +7705,66 @@ export const RebootInstanceResult = /*@__PURE__*/ S.suspend(() =>
 export interface RebootRelationalDatabaseRequest {
   relationalDatabaseName: string;
 }
-export const RebootRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ relationalDatabaseName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/RebootRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RebootRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ relationalDatabaseName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/RebootRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RebootRelationalDatabaseRequest",
-  }) as any as S.Schema<RebootRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "RebootRelationalDatabaseRequest",
+}) as any as S.Schema<RebootRelationalDatabaseRequest>;
 export interface RebootRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const RebootRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "RebootRelationalDatabaseResult",
-  }) as any as S.Schema<RebootRelationalDatabaseResult>;
+export const RebootRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "RebootRelationalDatabaseResult",
+}) as any as S.Schema<RebootRelationalDatabaseResult>;
+export type ContainerLabel = string;
 export interface RegisterContainerImageRequest {
   serviceName: string;
   label: string;
   digest: string;
 }
-export const RegisterContainerImageRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.HttpLabel("serviceName")),
-      label: S.String,
-      digest: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/container-services/{serviceName}/images",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterContainerImageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.HttpLabel("serviceName")),
+    label: S.String,
+    digest: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/container-services/{serviceName}/images",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterContainerImageRequest",
-  }) as any as S.Schema<RegisterContainerImageRequest>;
+  ),
+).annotate({
+  identifier: "RegisterContainerImageRequest",
+}) as any as S.Schema<RegisterContainerImageRequest>;
 export interface RegisterContainerImageResult {
   containerImage?: ContainerImage;
 }
-export const RegisterContainerImageResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ containerImage: S.optional(ContainerImage) }),
-  ).annotate({
-    identifier: "RegisterContainerImageResult",
-  }) as any as S.Schema<RegisterContainerImageResult>;
+export const RegisterContainerImageResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ containerImage: S.optional(ContainerImage) }),
+).annotate({
+  identifier: "RegisterContainerImageResult",
+}) as any as S.Schema<RegisterContainerImageResult>;
 export interface ReleaseStaticIpRequest {
   staticIpName: string;
 }
@@ -7764,46 +7793,45 @@ export const ReleaseStaticIpResult = /*@__PURE__*/ S.suspend(() =>
 export interface ResetDistributionCacheRequest {
   distributionName?: string;
 }
-export const ResetDistributionCacheRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ distributionName: S.optional(S.String) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/ResetDistributionCache",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResetDistributionCacheRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ distributionName: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/ResetDistributionCache",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ResetDistributionCacheRequest",
-  }) as any as S.Schema<ResetDistributionCacheRequest>;
+  ),
+).annotate({
+  identifier: "ResetDistributionCacheRequest",
+}) as any as S.Schema<ResetDistributionCacheRequest>;
 export interface ResetDistributionCacheResult {
   status?: string;
   createTime?: Date;
   operation?: Operation;
 }
-export const ResetDistributionCacheResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(S.String),
-      createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      operation: S.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "ResetDistributionCacheResult",
-  }) as any as S.Schema<ResetDistributionCacheResult>;
+export const ResetDistributionCacheResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(S.String),
+    createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    operation: S.optional(Operation),
+  }),
+).annotate({
+  identifier: "ResetDistributionCacheResult",
+}) as any as S.Schema<ResetDistributionCacheResult>;
 export type ContactMethodVerificationProtocol = "Email" | (string & {});
 export const ContactMethodVerificationProtocol = /*@__PURE__*/ S.String;
+
 export interface SendContactMethodVerificationRequest {
   protocol: ContactMethodVerificationProtocol;
 }
-export const SendContactMethodVerificationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const SendContactMethodVerificationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ protocol: ContactMethodVerificationProtocol }).pipe(
       T.all(
         T.Http({
@@ -7817,18 +7845,17 @@ export const SendContactMethodVerificationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "SendContactMethodVerificationRequest",
-  }) as any as S.Schema<SendContactMethodVerificationRequest>;
+).annotate({
+  identifier: "SendContactMethodVerificationRequest",
+}) as any as S.Schema<SendContactMethodVerificationRequest>;
 export interface SendContactMethodVerificationResult {
   operations?: Operation[];
 }
-export const SendContactMethodVerificationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "SendContactMethodVerificationResult",
-  }) as any as S.Schema<SendContactMethodVerificationResult>;
+export const SendContactMethodVerificationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "SendContactMethodVerificationResult",
+}) as any as S.Schema<SendContactMethodVerificationResult>;
 export interface SetIpAddressTypeRequest {
   resourceType: ResourceType;
   resourceName: string;
@@ -7864,42 +7891,42 @@ export const SetIpAddressTypeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetIpAddressTypeResult>;
 export type ResourceBucketAccess = "allow" | "deny" | (string & {});
 export const ResourceBucketAccess = /*@__PURE__*/ S.String;
+
 export interface SetResourceAccessForBucketRequest {
   resourceName: string;
   bucketName: string;
   access: ResourceBucketAccess;
 }
-export const SetResourceAccessForBucketRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.String,
-      bucketName: S.String,
-      access: ResourceBucketAccess,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/SetResourceAccessForBucket",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetResourceAccessForBucketRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.String,
+    bucketName: S.String,
+    access: ResourceBucketAccess,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/SetResourceAccessForBucket",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetResourceAccessForBucketRequest",
-  }) as any as S.Schema<SetResourceAccessForBucketRequest>;
+  ),
+).annotate({
+  identifier: "SetResourceAccessForBucketRequest",
+}) as any as S.Schema<SetResourceAccessForBucketRequest>;
 export interface SetResourceAccessForBucketResult {
   operations?: Operation[];
 }
-export const SetResourceAccessForBucketResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "SetResourceAccessForBucketResult",
-  }) as any as S.Schema<SetResourceAccessForBucketResult>;
+export const SetResourceAccessForBucketResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "SetResourceAccessForBucketResult",
+}) as any as S.Schema<SetResourceAccessForBucketResult>;
+export type EmailAddress = string | redacted.Redacted<string>;
 export interface SetupInstanceHttpsRequest {
   instanceName: string;
   emailAddress: string | redacted.Redacted<string>;
@@ -7989,33 +8016,31 @@ export const StartInstanceResult = /*@__PURE__*/ S.suspend(() =>
 export interface StartRelationalDatabaseRequest {
   relationalDatabaseName: string;
 }
-export const StartRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ relationalDatabaseName: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/StartRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ relationalDatabaseName: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/StartRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartRelationalDatabaseRequest",
-  }) as any as S.Schema<StartRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "StartRelationalDatabaseRequest",
+}) as any as S.Schema<StartRelationalDatabaseRequest>;
 export interface StartRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const StartRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "StartRelationalDatabaseResult",
-  }) as any as S.Schema<StartRelationalDatabaseResult>;
+export const StartRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "StartRelationalDatabaseResult",
+}) as any as S.Schema<StartRelationalDatabaseResult>;
 export interface StopGUISessionRequest {
   resourceName: string;
 }
@@ -8071,36 +8096,34 @@ export interface StopRelationalDatabaseRequest {
   relationalDatabaseName: string;
   relationalDatabaseSnapshotName?: string;
 }
-export const StopRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseName: S.String,
-      relationalDatabaseSnapshotName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/StopRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseName: S.String,
+    relationalDatabaseSnapshotName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/StopRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StopRelationalDatabaseRequest",
-  }) as any as S.Schema<StopRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "StopRelationalDatabaseRequest",
+}) as any as S.Schema<StopRelationalDatabaseRequest>;
 export interface StopRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const StopRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "StopRelationalDatabaseResult",
-  }) as any as S.Schema<StopRelationalDatabaseResult>;
+export const StopRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "StopRelationalDatabaseResult",
+}) as any as S.Schema<StopRelationalDatabaseResult>;
 export interface TagResourceRequest {
   resourceName: string;
   resourceArn?: string;
@@ -8268,10 +8291,7 @@ export interface UpdateBucketBundleRequest {
 export const UpdateBucketBundleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String, bundleId: S.String }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/UpdateBucketBundle",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/UpdateBucketBundle" }),
       svc,
       auth,
       proto,
@@ -8298,40 +8318,38 @@ export interface UpdateContainerServiceRequest {
   publicDomainNames?: { [key: string]: string[] | undefined };
   privateRegistryAccess?: PrivateRegistryAccessRequest;
 }
-export const UpdateContainerServiceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.HttpLabel("serviceName")),
-      power: S.optional(ContainerServicePowerName),
-      scale: S.optional(S.Number),
-      isDisabled: S.optional(S.Boolean),
-      publicDomainNames: S.optional(ContainerServicePublicDomains),
-      privateRegistryAccess: S.optional(PrivateRegistryAccessRequest),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/ls/api/2016-11-28/container-services/{serviceName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateContainerServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.HttpLabel("serviceName")),
+    power: S.optional(ContainerServicePowerName),
+    scale: S.optional(S.Number),
+    isDisabled: S.optional(S.Boolean),
+    publicDomainNames: S.optional(ContainerServicePublicDomains),
+    privateRegistryAccess: S.optional(PrivateRegistryAccessRequest),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/ls/api/2016-11-28/container-services/{serviceName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateContainerServiceRequest",
-  }) as any as S.Schema<UpdateContainerServiceRequest>;
+  ),
+).annotate({
+  identifier: "UpdateContainerServiceRequest",
+}) as any as S.Schema<UpdateContainerServiceRequest>;
 export interface UpdateContainerServiceResult {
   containerService?: ContainerService;
 }
-export const UpdateContainerServiceResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ containerService: S.optional(ContainerService) }),
-  ).annotate({
-    identifier: "UpdateContainerServiceResult",
-  }) as any as S.Schema<UpdateContainerServiceResult>;
+export const UpdateContainerServiceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ containerService: S.optional(ContainerService) }),
+).annotate({
+  identifier: "UpdateContainerServiceResult",
+}) as any as S.Schema<UpdateContainerServiceResult>;
 export interface UpdateDistributionRequest {
   distributionName: string;
   origin?: InputOrigin;
@@ -8358,10 +8376,7 @@ export const UpdateDistributionRequest = /*@__PURE__*/ S.suspend(() =>
     useDefaultCertificate: S.optional(S.Boolean),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/ls/api/2016-11-28/UpdateDistribution",
-      }),
+      T.Http({ method: "POST", uri: "/ls/api/2016-11-28/UpdateDistribution" }),
       svc,
       auth,
       proto,
@@ -8384,36 +8399,34 @@ export interface UpdateDistributionBundleRequest {
   distributionName?: string;
   bundleId?: string;
 }
-export const UpdateDistributionBundleRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      distributionName: S.optional(S.String),
-      bundleId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/UpdateDistributionBundle",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDistributionBundleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    distributionName: S.optional(S.String),
+    bundleId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/UpdateDistributionBundle",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDistributionBundleRequest",
-  }) as any as S.Schema<UpdateDistributionBundleRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDistributionBundleRequest",
+}) as any as S.Schema<UpdateDistributionBundleRequest>;
 export interface UpdateDistributionBundleResult {
   operation?: Operation;
 }
-export const UpdateDistributionBundleResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "UpdateDistributionBundleResult",
-  }) as any as S.Schema<UpdateDistributionBundleResult>;
+export const UpdateDistributionBundleResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "UpdateDistributionBundleResult",
+}) as any as S.Schema<UpdateDistributionBundleResult>;
 export interface UpdateDomainEntryRequest {
   domainName: string;
   domainEntry: DomainEntry;
@@ -8447,8 +8460,8 @@ export interface UpdateInstanceMetadataOptionsRequest {
   httpPutResponseHopLimit?: number;
   httpProtocolIpv6?: HttpProtocolIpv6;
 }
-export const UpdateInstanceMetadataOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateInstanceMetadataOptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       instanceName: S.String,
       httpTokens: S.optional(HttpTokens),
@@ -8468,54 +8481,51 @@ export const UpdateInstanceMetadataOptionsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateInstanceMetadataOptionsRequest",
-  }) as any as S.Schema<UpdateInstanceMetadataOptionsRequest>;
+).annotate({
+  identifier: "UpdateInstanceMetadataOptionsRequest",
+}) as any as S.Schema<UpdateInstanceMetadataOptionsRequest>;
 export interface UpdateInstanceMetadataOptionsResult {
   operation?: Operation;
 }
-export const UpdateInstanceMetadataOptionsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operation: S.optional(Operation) }),
-  ).annotate({
-    identifier: "UpdateInstanceMetadataOptionsResult",
-  }) as any as S.Schema<UpdateInstanceMetadataOptionsResult>;
+export const UpdateInstanceMetadataOptionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operation: S.optional(Operation) }),
+).annotate({
+  identifier: "UpdateInstanceMetadataOptionsResult",
+}) as any as S.Schema<UpdateInstanceMetadataOptionsResult>;
 export interface UpdateLoadBalancerAttributeRequest {
   loadBalancerName: string;
   attributeName: LoadBalancerAttributeName;
   attributeValue: string;
 }
-export const UpdateLoadBalancerAttributeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      loadBalancerName: S.String,
-      attributeName: LoadBalancerAttributeName,
-      attributeValue: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/UpdateLoadBalancerAttribute",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateLoadBalancerAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    loadBalancerName: S.String,
+    attributeName: LoadBalancerAttributeName,
+    attributeValue: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/UpdateLoadBalancerAttribute",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateLoadBalancerAttributeRequest",
-  }) as any as S.Schema<UpdateLoadBalancerAttributeRequest>;
+  ),
+).annotate({
+  identifier: "UpdateLoadBalancerAttributeRequest",
+}) as any as S.Schema<UpdateLoadBalancerAttributeRequest>;
 export interface UpdateLoadBalancerAttributeResult {
   operations?: Operation[];
 }
-export const UpdateLoadBalancerAttributeResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "UpdateLoadBalancerAttributeResult",
-  }) as any as S.Schema<UpdateLoadBalancerAttributeResult>;
+export const UpdateLoadBalancerAttributeResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "UpdateLoadBalancerAttributeResult",
+}) as any as S.Schema<UpdateLoadBalancerAttributeResult>;
 export interface UpdateRelationalDatabaseRequest {
   relationalDatabaseName: string;
   masterUserPassword?: string | redacted.Redacted<string>;
@@ -8529,45 +8539,43 @@ export interface UpdateRelationalDatabaseRequest {
   caCertificateIdentifier?: string;
   relationalDatabaseBlueprintId?: string;
 }
-export const UpdateRelationalDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      relationalDatabaseName: S.String,
-      masterUserPassword: S.optional(SensitiveString),
-      rotateMasterUserPassword: S.optional(S.Boolean),
-      preferredBackupWindow: S.optional(S.String),
-      preferredMaintenanceWindow: S.optional(S.String),
-      enableBackupRetention: S.optional(S.Boolean),
-      disableBackupRetention: S.optional(S.Boolean),
-      publiclyAccessible: S.optional(S.Boolean),
-      applyImmediately: S.optional(S.Boolean),
-      caCertificateIdentifier: S.optional(S.String),
-      relationalDatabaseBlueprintId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ls/api/2016-11-28/UpdateRelationalDatabase",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateRelationalDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relationalDatabaseName: S.String,
+    masterUserPassword: S.optional(SensitiveString),
+    rotateMasterUserPassword: S.optional(S.Boolean),
+    preferredBackupWindow: S.optional(S.String),
+    preferredMaintenanceWindow: S.optional(S.String),
+    enableBackupRetention: S.optional(S.Boolean),
+    disableBackupRetention: S.optional(S.Boolean),
+    publiclyAccessible: S.optional(S.Boolean),
+    applyImmediately: S.optional(S.Boolean),
+    caCertificateIdentifier: S.optional(S.String),
+    relationalDatabaseBlueprintId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/ls/api/2016-11-28/UpdateRelationalDatabase",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateRelationalDatabaseRequest",
-  }) as any as S.Schema<UpdateRelationalDatabaseRequest>;
+  ),
+).annotate({
+  identifier: "UpdateRelationalDatabaseRequest",
+}) as any as S.Schema<UpdateRelationalDatabaseRequest>;
 export interface UpdateRelationalDatabaseResult {
   operations?: Operation[];
 }
-export const UpdateRelationalDatabaseResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "UpdateRelationalDatabaseResult",
-  }) as any as S.Schema<UpdateRelationalDatabaseResult>;
+export const UpdateRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "UpdateRelationalDatabaseResult",
+}) as any as S.Schema<UpdateRelationalDatabaseResult>;
 export interface UpdateRelationalDatabaseParametersRequest {
   relationalDatabaseName: string;
   parameters: RelationalDatabaseParameter[];
@@ -8596,88 +8604,11 @@ export const UpdateRelationalDatabaseParametersRequest =
 export interface UpdateRelationalDatabaseParametersResult {
   operations?: Operation[];
 }
-export const UpdateRelationalDatabaseParametersResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ operations: S.optional(OperationList) }),
-  ).annotate({
-    identifier: "UpdateRelationalDatabaseParametersResult",
-  }) as any as S.Schema<UpdateRelationalDatabaseParametersResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-).pipe(C.withAuthError) {}
-export class AccountSetupInProgressException extends S.TaggedErrorClass<AccountSetupInProgressException>()(
-  "AccountSetupInProgressException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class OperationFailureException extends S.TaggedErrorClass<OperationFailureException>()(
-  "OperationFailureException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class RegionSetupInProgressException extends S.TaggedErrorClass<RegionSetupInProgressException>()(
-  "RegionSetupInProgressException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-).pipe(C.withServerError) {}
-export class UnauthenticatedException extends S.TaggedErrorClass<UnauthenticatedException>()(
-  "UnauthenticatedException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-).pipe(C.withAuthError) {}
-
-//# Operations
+export const UpdateRelationalDatabaseParametersResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ operations: S.optional(OperationList) }),
+).annotate({
+  identifier: "UpdateRelationalDatabaseParametersResult",
+}) as any as S.Schema<UpdateRelationalDatabaseParametersResult>;
 export type AllocateStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8709,8 +8640,11 @@ export const allocateStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateStaticIp",
 }));
+
 export type AttachCertificateToDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -8751,8 +8685,11 @@ export const attachCertificateToDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachCertificateToDistribution",
 }));
+
 export type AttachDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8789,8 +8726,11 @@ export const attachDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachDisk",
 }));
+
 export type AttachInstancesToLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8829,8 +8769,11 @@ export const attachInstancesToLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachInstancesToLoadBalancer",
 }));
+
 export type AttachLoadBalancerTlsCertificateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8872,8 +8815,11 @@ export const attachLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachLoadBalancerTlsCertificate",
 }));
+
 export type AttachStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8905,8 +8851,11 @@ export const attachStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachStaticIp",
 }));
+
 export type CloseInstancePublicPortsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8942,8 +8891,11 @@ export const closeInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloseInstancePublicPorts",
 }));
+
 export type CopySnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8986,8 +8938,11 @@ export const copySnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopySnapshot",
 }));
+
 export type CreateBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -9018,8 +8973,11 @@ export const createBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucket",
 }));
+
 export type CreateBucketAccessKeyError =
   | AccessDeniedException
   | InvalidInputException
@@ -9058,8 +9016,11 @@ export const createBucketAccessKey: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucketAccessKey",
 }));
+
 export type CreateCertificateError =
   | AccessDeniedException
   | InvalidInputException
@@ -9099,8 +9060,11 @@ export const createCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCertificate",
 }));
+
 export type CreateCloudFormationStackError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9138,8 +9102,11 @@ export const createCloudFormationStack: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFormationStack",
 }));
+
 export type CreateContactMethodError =
   | AccessDeniedException
   | InvalidInputException
@@ -9177,8 +9144,11 @@ export const createContactMethod: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactMethod",
 }));
+
 export type CreateContainerServiceError =
   | AccessDeniedException
   | InvalidInputException
@@ -9210,8 +9180,11 @@ export const createContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerService",
 }));
+
 export type CreateContainerServiceDeploymentError =
   | AccessDeniedException
   | InvalidInputException
@@ -9250,8 +9223,11 @@ export const createContainerServiceDeployment: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerServiceDeployment",
 }));
+
 export type CreateContainerServiceRegistryLoginError =
   | AccessDeniedException
   | InvalidInputException
@@ -9297,8 +9273,11 @@ export const createContainerServiceRegistryLogin: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerServiceRegistryLogin",
 }));
+
 export type CreateDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9334,8 +9313,11 @@ export const createDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDisk",
 }));
+
 export type CreateDiskFromSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9373,8 +9355,11 @@ export const createDiskFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDiskFromSnapshot",
 }));
+
 export type CreateDiskSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9427,8 +9412,11 @@ export const createDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDiskSnapshot",
 }));
+
 export type CreateDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -9460,8 +9448,11 @@ export const createDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistribution",
 }));
+
 export type CreateDomainError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9496,8 +9487,11 @@ export const createDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreateDomainEntryError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9535,8 +9529,11 @@ export const createDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainEntry",
 }));
+
 export type CreateGUISessionAccessDetailsError =
   | AccessDeniedException
   | InvalidInputException
@@ -9569,8 +9566,11 @@ export const createGUISessionAccessDetails: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGUISessionAccessDetails",
 }));
+
 export type CreateInstancesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9605,8 +9605,11 @@ export const createInstances: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstances",
 }));
+
 export type CreateInstancesFromSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9643,8 +9646,11 @@ export const createInstancesFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstancesFromSnapshot",
 }));
+
 export type CreateInstanceSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9680,8 +9686,11 @@ export const createInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceSnapshot",
 }));
+
 export type CreateKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9721,8 +9730,11 @@ export const createKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyPair",
 }));
+
 export type CreateLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9763,8 +9775,11 @@ export const createLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancer",
 }));
+
 export type CreateLoadBalancerTlsCertificateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9802,8 +9817,11 @@ export const createLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancerTlsCertificate",
 }));
+
 export type CreateRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9838,8 +9856,11 @@ export const createRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationalDatabase",
 }));
+
 export type CreateRelationalDatabaseFromSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9879,8 +9900,11 @@ export const createRelationalDatabaseFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationalDatabaseFromSnapshot",
 }));
+
 export type CreateRelationalDatabaseSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9916,8 +9940,11 @@ export const createRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationalDatabaseSnapshot",
 }));
+
 export type DeleteAlarmError =
   | AccessDeniedException
   | InvalidInputException
@@ -9952,8 +9979,11 @@ export const deleteAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlarm",
 }));
+
 export type DeleteAutoSnapshotError =
   | AccessDeniedException
   | InvalidInputException
@@ -9983,8 +10013,11 @@ export const deleteAutoSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutoSnapshot",
 }));
+
 export type DeleteBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -10015,8 +10048,11 @@ export const deleteBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucket",
 }));
+
 export type DeleteBucketAccessKeyError =
   | AccessDeniedException
   | InvalidInputException
@@ -10049,8 +10085,11 @@ export const deleteBucketAccessKey: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketAccessKey",
 }));
+
 export type DeleteCertificateError =
   | AccessDeniedException
   | InvalidInputException
@@ -10083,8 +10122,11 @@ export const deleteCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
+
 export type DeleteContactMethodError =
   | AccessDeniedException
   | InvalidInputException
@@ -10119,8 +10161,11 @@ export const deleteContactMethod: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactMethod",
 }));
+
 export type DeleteContainerImageError =
   | AccessDeniedException
   | InvalidInputException
@@ -10149,8 +10194,11 @@ export const deleteContainerImage: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerImage",
 }));
+
 export type DeleteContainerServiceError =
   | AccessDeniedException
   | InvalidInputException
@@ -10178,8 +10226,11 @@ export const deleteContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerService",
 }));
+
 export type DeleteDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10218,8 +10269,11 @@ export const deleteDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDisk",
 }));
+
 export type DeleteDiskSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10261,8 +10315,11 @@ export const deleteDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDiskSnapshot",
 }));
+
 export type DeleteDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -10290,8 +10347,11 @@ export const deleteDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDistribution",
 }));
+
 export type DeleteDomainError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10327,8 +10387,11 @@ export const deleteDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteDomainEntryError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10364,8 +10427,11 @@ export const deleteDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainEntry",
 }));
+
 export type DeleteInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10401,8 +10467,11 @@ export const deleteInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstance",
 }));
+
 export type DeleteInstanceSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10439,8 +10508,11 @@ export const deleteInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceSnapshot",
 }));
+
 export type DeleteKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10481,8 +10553,11 @@ export const deleteKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyPair",
 }));
+
 export type DeleteKnownHostKeysError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10521,8 +10596,11 @@ export const deleteKnownHostKeys: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKnownHostKeys",
 }));
+
 export type DeleteLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10560,8 +10638,11 @@ export const deleteLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancer",
 }));
+
 export type DeleteLoadBalancerTlsCertificateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10597,8 +10678,11 @@ export const deleteLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancerTlsCertificate",
 }));
+
 export type DeleteRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10634,8 +10718,11 @@ export const deleteRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRelationalDatabase",
 }));
+
 export type DeleteRelationalDatabaseSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10671,8 +10758,11 @@ export const deleteRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRelationalDatabaseSnapshot",
 }));
+
 export type DetachCertificateFromDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -10704,8 +10794,11 @@ export const detachCertificateFromDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachCertificateFromDistribution",
 }));
+
 export type DetachDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10743,8 +10836,11 @@ export const detachDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachDisk",
 }));
+
 export type DetachInstancesFromLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10783,8 +10879,11 @@ export const detachInstancesFromLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachInstancesFromLoadBalancer",
 }));
+
 export type DetachStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10816,8 +10915,11 @@ export const detachStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachStaticIp",
 }));
+
 export type DisableAddOnError =
   | AccessDeniedException
   | InvalidInputException
@@ -10847,8 +10949,11 @@ export const disableAddOn: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAddOn",
 }));
+
 export type DownloadDefaultKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10883,8 +10988,11 @@ export const downloadDefaultKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DownloadDefaultKeyPair",
 }));
+
 export type EnableAddOnError =
   | AccessDeniedException
   | InvalidInputException
@@ -10915,8 +11023,11 @@ export const enableAddOn: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAddOn",
 }));
+
 export type ExportSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10962,8 +11073,11 @@ export const exportSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportSnapshot",
 }));
+
 export type GetActiveNamesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10995,8 +11109,11 @@ export const getActiveNames: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActiveNames",
 }));
+
 export type GetAlarmsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11033,8 +11150,11 @@ export const getAlarms: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAlarms",
 }));
+
 export type GetAutoSnapshotsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11065,8 +11185,11 @@ export const getAutoSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoSnapshots",
 }));
+
 export type GetBlueprintsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11106,8 +11229,11 @@ export const getBlueprints: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprints",
 }));
+
 export type GetBucketAccessKeysError =
   | AccessDeniedException
   | InvalidInputException
@@ -11139,8 +11265,11 @@ export const getBucketAccessKeys: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketAccessKeys",
 }));
+
 export type GetBucketBundlesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11172,8 +11301,11 @@ export const getBucketBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketBundles",
 }));
+
 export type GetBucketMetricDataError =
   | AccessDeniedException
   | InvalidInputException
@@ -11205,8 +11337,11 @@ export const getBucketMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketMetricData",
 }));
+
 export type GetBucketsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11239,8 +11374,11 @@ export const getBuckets: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuckets",
 }));
+
 export type GetBundlesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11280,8 +11418,11 @@ export const getBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBundles",
 }));
+
 export type GetCertificatesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11313,8 +11454,11 @@ export const getCertificates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificates",
 }));
+
 export type GetCloudFormationStackRecordsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11350,8 +11494,11 @@ export const getCloudFormationStackRecords: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudFormationStackRecords",
 }));
+
 export type GetContactMethodsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11387,8 +11534,11 @@ export const getContactMethods: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactMethods",
 }));
+
 export type GetContainerAPIMetadataError =
   | AccessDeniedException
   | RegionSetupInProgressException
@@ -11413,8 +11563,11 @@ export const getContainerAPIMetadata: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerAPIMetadata",
 }));
+
 export type GetContainerImagesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11447,8 +11600,11 @@ export const getContainerImages: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerImages",
 }));
+
 export type GetContainerLogError =
   | AccessDeniedException
   | InvalidInputException
@@ -11485,8 +11641,11 @@ export const getContainerLog: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerLog",
 }));
+
 export type GetContainerServiceDeploymentsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11525,8 +11684,11 @@ export const getContainerServiceDeployments: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServiceDeployments",
 }));
+
 export type GetContainerServiceMetricDataError =
   | AccessDeniedException
   | InvalidInputException
@@ -11558,8 +11720,11 @@ export const getContainerServiceMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServiceMetricData",
 }));
+
 export type GetContainerServicePowersError =
   | AccessDeniedException
   | InvalidInputException
@@ -11591,8 +11756,11 @@ export const getContainerServicePowers: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServicePowers",
 }));
+
 export type GetContainerServicesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11620,8 +11788,11 @@ export const getContainerServices: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServices",
 }));
+
 export type GetCostEstimateError =
   | AccessDeniedException
   | InvalidInputException
@@ -11650,8 +11821,11 @@ export const getCostEstimate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostEstimate",
 }));
+
 export type GetDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11683,8 +11857,11 @@ export const getDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDisk",
 }));
+
 export type GetDisksError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11716,8 +11893,11 @@ export const getDisks: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDisks",
 }));
+
 export type GetDiskSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11749,8 +11929,11 @@ export const getDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiskSnapshot",
 }));
+
 export type GetDiskSnapshotsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11783,8 +11966,11 @@ export const getDiskSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiskSnapshots",
 }));
+
 export type GetDistributionBundlesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11816,8 +12002,11 @@ export const getDistributionBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionBundles",
 }));
+
 export type GetDistributionLatestCacheResetError =
   | AccessDeniedException
   | InvalidInputException
@@ -11846,8 +12035,11 @@ export const getDistributionLatestCacheReset: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionLatestCacheReset",
 }));
+
 export type GetDistributionMetricDataError =
   | AccessDeniedException
   | InvalidInputException
@@ -11880,8 +12072,11 @@ export const getDistributionMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionMetricData",
 }));
+
 export type GetDistributionsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11910,8 +12105,11 @@ export const getDistributions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributions",
 }));
+
 export type GetDomainError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11943,8 +12141,11 @@ export const getDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomain",
 }));
+
 export type GetDomainsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11976,8 +12177,11 @@ export const getDomains: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomains",
 }));
+
 export type GetExportSnapshotRecordsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12014,8 +12218,11 @@ export const getExportSnapshotRecords: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportSnapshotRecords",
 }));
+
 export type GetInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12048,8 +12255,11 @@ export const getInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstance",
 }));
+
 export type GetInstanceAccessDetailsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12086,8 +12296,11 @@ export const getInstanceAccessDetails: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceAccessDetails",
 }));
+
 export type GetInstanceMetricDataError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12124,8 +12337,11 @@ export const getInstanceMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceMetricData",
 }));
+
 export type GetInstancePortStatesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12158,8 +12374,11 @@ export const getInstancePortStates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstancePortStates",
 }));
+
 export type GetInstancesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12192,8 +12411,11 @@ export const getInstances: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstances",
 }));
+
 export type GetInstanceSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12225,8 +12447,11 @@ export const getInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceSnapshot",
 }));
+
 export type GetInstanceSnapshotsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12258,8 +12483,11 @@ export const getInstanceSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceSnapshots",
 }));
+
 export type GetInstanceStateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12291,8 +12519,11 @@ export const getInstanceState: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceState",
 }));
+
 export type GetKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12324,8 +12555,11 @@ export const getKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyPair",
 }));
+
 export type GetKeyPairsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12357,8 +12591,11 @@ export const getKeyPairs: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyPairs",
 }));
+
 export type GetLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12390,8 +12627,11 @@ export const getLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancer",
 }));
+
 export type GetLoadBalancerMetricDataError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12427,8 +12667,11 @@ export const getLoadBalancerMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancerMetricData",
 }));
+
 export type GetLoadBalancersError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12460,8 +12703,11 @@ export const getLoadBalancers: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancers",
 }));
+
 export type GetLoadBalancerTlsCertificatesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12499,8 +12745,11 @@ export const getLoadBalancerTlsCertificates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancerTlsCertificates",
 }));
+
 export type GetLoadBalancerTlsPoliciesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12532,8 +12781,11 @@ export const getLoadBalancerTlsPolicies: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancerTlsPolicies",
 }));
+
 export type GetOperationError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12566,8 +12818,11 @@ export const getOperation: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperation",
 }));
+
 export type GetOperationsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12603,8 +12858,11 @@ export const getOperations: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperations",
 }));
+
 export type GetOperationsForResourceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12636,8 +12894,11 @@ export const getOperationsForResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperationsForResource",
 }));
+
 export type GetRegionsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12671,8 +12932,11 @@ export const getRegions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegions",
 }));
+
 export type GetRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12704,8 +12968,11 @@ export const getRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabase",
 }));
+
 export type GetRelationalDatabaseBlueprintsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12741,8 +13008,11 @@ export const getRelationalDatabaseBlueprints: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseBlueprints",
 }));
+
 export type GetRelationalDatabaseBundlesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12778,8 +13048,11 @@ export const getRelationalDatabaseBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseBundles",
 }));
+
 export type GetRelationalDatabaseEventsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12811,8 +13084,11 @@ export const getRelationalDatabaseEvents: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseEvents",
 }));
+
 export type GetRelationalDatabaseLogEventsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12844,8 +13120,11 @@ export const getRelationalDatabaseLogEvents: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseLogEvents",
 }));
+
 export type GetRelationalDatabaseLogStreamsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12877,8 +13156,11 @@ export const getRelationalDatabaseLogStreams: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseLogStreams",
 }));
+
 export type GetRelationalDatabaseMasterUserPasswordError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12915,8 +13197,11 @@ export const getRelationalDatabaseMasterUserPassword: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseMasterUserPassword",
 }));
+
 export type GetRelationalDatabaseMetricDataError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12952,8 +13237,11 @@ export const getRelationalDatabaseMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseMetricData",
 }));
+
 export type GetRelationalDatabaseParametersError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12990,8 +13278,11 @@ export const getRelationalDatabaseParameters: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseParameters",
 }));
+
 export type GetRelationalDatabasesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13023,8 +13314,11 @@ export const getRelationalDatabases: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabases",
 }));
+
 export type GetRelationalDatabaseSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13056,8 +13350,11 @@ export const getRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseSnapshot",
 }));
+
 export type GetRelationalDatabaseSnapshotsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13089,8 +13386,11 @@ export const getRelationalDatabaseSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseSnapshots",
 }));
+
 export type GetSetupHistoryError =
   | AccessDeniedException
   | InvalidInputException
@@ -13119,8 +13419,11 @@ export const getSetupHistory: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSetupHistory",
 }));
+
 export type GetStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13152,8 +13455,11 @@ export const getStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStaticIp",
 }));
+
 export type GetStaticIpsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13185,8 +13491,11 @@ export const getStaticIps: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStaticIps",
 }));
+
 export type ImportKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13218,8 +13527,11 @@ export const importKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportKeyPair",
 }));
+
 export type IsVpcPeeredError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13251,8 +13563,11 @@ export const isVpcPeered: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IsVpcPeered",
 }));
+
 export type OpenInstancePublicPortsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13289,8 +13604,11 @@ export const openInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OpenInstancePublicPorts",
 }));
+
 export type PeerVpcError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13322,8 +13640,11 @@ export const peerVpc: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PeerVpc",
 }));
+
 export type PutAlarmError =
   | AccessDeniedException
   | InvalidInputException
@@ -13369,8 +13690,11 @@ export const putAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAlarm",
 }));
+
 export type PutInstancePublicPortsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13411,8 +13735,11 @@ export const putInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInstancePublicPorts",
 }));
+
 export type RebootInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13448,8 +13775,11 @@ export const rebootInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootInstance",
 }));
+
 export type RebootRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13485,8 +13815,11 @@ export const rebootRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootRelationalDatabase",
 }));
+
 export type RegisterContainerImageError =
   | AccessDeniedException
   | InvalidInputException
@@ -13519,8 +13852,11 @@ export const registerContainerImage: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterContainerImage",
 }));
+
 export type ReleaseStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13552,8 +13888,11 @@ export const releaseStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseStaticIp",
 }));
+
 export type ResetDistributionCacheError =
   | AccessDeniedException
   | InvalidInputException
@@ -13585,8 +13924,11 @@ export const resetDistributionCache: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetDistributionCache",
 }));
+
 export type SendContactMethodVerificationError =
   | AccessDeniedException
   | InvalidInputException
@@ -13629,8 +13971,11 @@ export const sendContactMethodVerification: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendContactMethodVerification",
 }));
+
 export type SetIpAddressTypeError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13666,8 +14011,11 @@ export const setIpAddressType: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIpAddressType",
 }));
+
 export type SetResourceAccessForBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -13699,8 +14047,11 @@ export const setResourceAccessForBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetResourceAccessForBucket",
 }));
+
 export type SetupInstanceHttpsError =
   | AccessDeniedException
   | InvalidInputException
@@ -13732,8 +14083,11 @@ export const setupInstanceHttps: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetupInstanceHttps",
 }));
+
 export type StartGUISessionError =
   | AccessDeniedException
   | InvalidInputException
@@ -13763,8 +14117,11 @@ export const startGUISession: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartGUISession",
 }));
+
 export type StartInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13805,8 +14162,11 @@ export const startInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInstance",
 }));
+
 export type StartRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13843,8 +14203,11 @@ export const startRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRelationalDatabase",
 }));
+
 export type StopGUISessionError =
   | AccessDeniedException
   | InvalidInputException
@@ -13874,8 +14237,11 @@ export const stopGUISession: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopGUISession",
 }));
+
 export type StopInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13915,8 +14281,11 @@ export const stopInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInstance",
 }));
+
 export type StopRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13956,8 +14325,11 @@ export const stopRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRelationalDatabase",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13995,8 +14367,11 @@ export const tagResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestAlarmError =
   | AccessDeniedException
   | InvalidInputException
@@ -14034,8 +14409,11 @@ export const testAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestAlarm",
 }));
+
 export type UnpeerVpcError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14067,8 +14445,11 @@ export const unpeerVpc: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnpeerVpc",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14105,8 +14486,11 @@ export const untagResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -14137,8 +14521,11 @@ export const updateBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBucket",
 }));
+
 export type UpdateBucketBundleError =
   | AccessDeniedException
   | InvalidInputException
@@ -14180,8 +14567,11 @@ export const updateBucketBundle: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBucketBundle",
 }));
+
 export type UpdateContainerServiceError =
   | AccessDeniedException
   | InvalidInputException
@@ -14210,8 +14600,11 @@ export const updateContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContainerService",
 }));
+
 export type UpdateDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -14241,8 +14634,11 @@ export const updateDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistribution",
 }));
+
 export type UpdateDistributionBundleError =
   | AccessDeniedException
   | InvalidInputException
@@ -14281,8 +14677,11 @@ export const updateDistributionBundle: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistributionBundle",
 }));
+
 export type UpdateDomainEntryError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14318,8 +14717,11 @@ export const updateDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainEntry",
 }));
+
 export type UpdateInstanceMetadataOptionsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14356,8 +14758,11 @@ export const updateInstanceMetadataOptions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceMetadataOptions",
 }));
+
 export type UpdateLoadBalancerAttributeError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14394,8 +14799,11 @@ export const updateLoadBalancerAttribute: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoadBalancerAttribute",
 }));
+
 export type UpdateRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14434,8 +14842,11 @@ export const updateRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelationalDatabase",
 }));
+
 export type UpdateRelationalDatabaseParametersError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14478,5 +14889,7 @@ export const updateRelationalDatabaseParameters: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelationalDatabaseParameters",
 }));

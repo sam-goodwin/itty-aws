@@ -1,169 +1,87 @@
+#!/usr/bin/env bun
 /**
- * Axiom SDK Code Generator
+ * generate — turn the Smithy JSON models in .generated-specs into the Axiom
+ * Effect SDK.
  *
- * The Axiom API ships as three OpenAPI 3.0 specs in
- * specs/docs/restapi/versions/:
- *   - v2.json               — the main control-plane API (served under /v2)
- *   - v1-edge-ingest.json   — ingest endpoints (served under /v1)
- *   - v1-edge-query.json    — query endpoints (served under /v1)
+ * Input:  .generated-specs/{v2,edge_ingest,edge_query}.json  (written by
+ *         scripts/convert.ts)
+ * Output: src/services/{v2,edge_ingest,edge_query}.ts  +  services/index.ts
  *
- * Each spec's paths are prefixed with its version during preprocessing so
- * all operations share a single base URL (https://api.axiom.co). Preprocessed
- * specs are cached at packages/axiom/.generated-specs/.
- *
- * Generated files land in src/operations/{v2,v1-edge-ingest,v1-edge-query}/
- * and are re-exported from src/operations/index.ts.
- *
- * Post-processing: the shared OpenAPI generator does not quote dashed
- * property keys (e.g. `dataset-id`, `apl-source-id`) on Struct fields,
- * producing invalid TypeScript. We fix this after generation.
+ * The smithy→SDK compiler and CLI pipeline live in
+ * `@distilled.cloud/core/codegen`; this script is Axiom's provider spec.
+ * Axiom keeps the wire's member names on the TS surface (v0 parity — the
+ * wire is already camelCase, with a handful of dashed parameter names like
+ * `dataset-id` that the emitter quotes), so no member renaming or wire
+ * dictionaries appear here. No Axiom list endpoint paginates.
  */
-import * as fs from "fs";
-import * as path from "path";
-import { generateFromOpenAPI } from "@distilled.cloud/core/openapi/generate";
+import type { SdkSpec } from "@distilled.cloud/core/codegen/generator";
+import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 
-const rootDir = path.join(import.meta.dir, "..");
-const specsDir = path.join(rootDir, "specs/docs/restapi/versions");
-const cacheDir = path.join(rootDir, ".generated-specs");
-const operationsDir = path.join(rootDir, "src/operations");
-const patchesDir = path.join(rootDir, "patches");
+const NULLABLE_TRAIT = "com.distilled.openapi#nullable";
+const ERROR_MATCHERS_TRAIT = "com.distilled.openapi#errorMatchers";
+const RAW_RESPONSE_TRAIT = "com.distilled.openapi#rawResponse";
+const SENSITIVE_TRAIT = "smithy.api#sensitive";
 
-interface Version {
-  /** Subdirectory name under src/operations/ */
-  name: string;
-  /** Filename under specs/docs/restapi/versions/ */
-  specFile: string;
-  /** Path prefix to apply (the real server URL segment, e.g. "/v2") */
-  pathPrefix: string;
-  /**
-   * Subpath alias to expose in src/ as a barrel re-export. If set, the
-   * generator writes src/{alias}.ts re-exporting the version's index. The
-   * package.json exports the alias as `./{alias}` (e.g. "edge-ingest" →
-   * `@distilled.cloud/axiom/edge-ingest`). The default v2 version has no
-   * alias because it is re-exported from the package root.
-   */
-  alias?: string;
-}
+/** Axiom's provider spec for the shared smithy→SDK compiler. */
+const axiomSpec: SdkSpec = {
+  nullableTrait: NULLABLE_TRAIT,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 
-const VERSIONS: Version[] = [
-  { name: "v2", specFile: "v2.json", pathPrefix: "/v2" },
-  {
-    name: "v1-edge-ingest",
-    specFile: "v1-edge-ingest.json",
-    pathPrefix: "/v1",
-    alias: "edge-ingest",
+  extraBindings: [
+    {
+      // Sole member of a synthesized wrapper for bare array/scalar response
+      // bodies; as the response's only member, the response IS the payload.
+      trait: RAW_RESPONSE_TRAIT,
+      binding: "rawResponse",
+      pipe: "T.RawResponse()",
+      rootPipe: "T.RawResponseRoot()",
+    },
+  ],
+
+  // Sensitive strings (notifier API keys, token secrets): the schema member
+  // carries T.SensitiveValue; the REST protocol delivers Redacted values and
+  // accepts string | Redacted on input.
+  memberTraitPipes: {
+    [SENSITIVE_TRAIT]: "T.SensitiveValue",
   },
-  {
-    name: "v1-edge-query",
-    specFile: "v1-edge-query.json",
-    pathPrefix: "/v1",
-    alias: "edge-query",
+  memberTsType: (m) =>
+    SENSITIVE_TRAIT in m.traits
+      ? `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`
+      : undefined,
+
+  // Unions surface as TS type unions over an opaque schema — the REST
+  // protocol passes union content through verbatim (wire names ARE the TS
+  // names for Axiom), so no runtime case discrimination is needed.
+  union: ({ name, caseTargets, tsRef }) => [
+    `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
+    `export const ${name} = /*@__PURE__*/ S.Unknown as any as S.Schema<${name}>;\n`,
+  ],
+
+  operationDecl: {
+    contextType: "AxiomOpContext",
+    commonErrorType: "AxiomOpError",
+    commonErrorClasses: ["UnknownAxiomError"],
+    protocol: "AxiomProtocol",
+    retry: "Retry.Retry",
   },
-];
 
-/**
- * Rewrite a spec so all operation paths are prefixed with the version segment
- * and the server is a single, canonical host. Returns the path of the
- * preprocessed spec file on disk.
- */
-function preprocessSpec(version: Version): string {
-  const specPath = path.join(specsDir, version.specFile);
-  const spec = JSON.parse(fs.readFileSync(specPath, "utf-8"));
+  sourceNote: ".generated-specs (specs/docs restapi/versions)",
 
-  const newPaths: Record<string, unknown> = {};
-  for (const [pathKey, pathItem] of Object.entries(spec.paths ?? {})) {
-    newPaths[`${version.pathPrefix}${pathKey}`] = pathItem;
-  }
-  spec.paths = newPaths;
-  spec.servers = [{ url: "https://api.axiom.co" }];
+  // Sensitive member types reference Redacted; pull the import in when used.
+  postProcess: (code) =>
+    code.includes("Redacted.Redacted<")
+      ? code.replace(
+          `import * as S from "@distilled.cloud/core/schema";\n`,
+          `import * as S from "@distilled.cloud/core/schema";\nimport * as Redacted from "effect/Redacted";\n`,
+        )
+      : code,
+};
 
-  fs.mkdirSync(cacheDir, { recursive: true });
-  const outPath = path.join(cacheDir, version.specFile);
-  fs.writeFileSync(outPath, JSON.stringify(spec, null, 2));
-  return outPath;
-}
-
-/**
- * Quote struct property keys that contain dashes on generated files.
- *
- * The core generator emits lines like:
- *     dataset-id: Schema.String.pipe(T.PathParam()),
- * which is invalid TS. We rewrite those keys to quoted strings.
- */
-function quoteDashedKeys(content: string): string {
-  return content.replace(
-    /^(\s+)([A-Za-z_$][A-Za-z0-9_$-]*-[A-Za-z0-9_$-]+)(\??:\s)/gm,
-    (_m, lead, name, trail) => `${lead}"${name}"${trail}`,
-  );
-}
-
-function postProcessDir(dir: string): void {
-  for (const entry of fs.readdirSync(dir)) {
-    if (!entry.endsWith(".ts")) continue;
-    const full = path.join(dir, entry);
-    const before = fs.readFileSync(full, "utf-8");
-    const after = quoteDashedKeys(before);
-    if (after !== before) fs.writeFileSync(full, after);
-  }
-}
-
-/** Ensure per-version patch directory exists (applyAllPatches globs *.patch.json). */
-function ensurePatchDir(versionName: string): string {
-  const dir = path.join(patchesDir, versionName);
-  fs.mkdirSync(dir, { recursive: true });
-  return dir;
-}
-
-/** Remove previously generated files for a version so stale ops don't linger. */
-function cleanOutputDir(dir: string): void {
-  if (!fs.existsSync(dir)) return;
-  for (const entry of fs.readdirSync(dir)) {
-    if (entry.endsWith(".ts")) fs.rmSync(path.join(dir, entry));
-  }
-}
-
-for (const version of VERSIONS) {
-  const specPath = preprocessSpec(version);
-  const outputDir = path.join(operationsDir, version.name);
-  fs.mkdirSync(outputDir, { recursive: true });
-  cleanOutputDir(outputDir);
-
-  generateFromOpenAPI({
-    specPath,
-    patchDir: ensurePatchDir(version.name),
-    outputDir,
-    importPrefix: "../..",
-    clientImport: "../../client",
-    traitsImport: "../../traits",
-    sensitiveImport: "../../sensitive",
-    errorsImport: "../../errors",
-    includeOperationErrors: true,
-    skipDeprecated: true,
-  });
-
-  postProcessDir(outputDir);
-}
-
-// Default barrel under operations/: only the primary (v2) version. Other
-// versions are exposed via their own subpath aliases (see below).
-const defaultVersion = VERSIONS.find((v) => !v.alias);
-if (!defaultVersion) {
-  throw new Error("Expected exactly one default (alias-less) version");
-}
-fs.writeFileSync(
-  path.join(operationsDir, "index.ts"),
-  `export * from "./${defaultVersion.name}/index.ts";\n`,
-);
-
-// Per-alias barrel files under src/ (e.g. src/edge-ingest.ts) so users can
-// import via `@distilled.cloud/axiom/edge-ingest`.
-const srcDir = path.join(rootDir, "src");
-for (const v of VERSIONS) {
-  if (!v.alias) continue;
-  fs.writeFileSync(
-    path.join(srcDir, `${v.alias}.ts`),
-    `export * from "./operations/${v.name}/index.ts";\n`,
-  );
-}
-
-console.log(`\nGenerated operations for ${VERSIONS.length} version(s).`);
+runGeneratorCli({
+  description: "Generate the Axiom Effect SDK from the Smithy models",
+  root: `${import.meta.dir}/..`,
+  // patches/ holds OpenAPI-document patches consumed by scripts/convert.ts;
+  // there is no smithy-model patch chain.
+  patchesDir: false,
+  spec: () => axiomSpec,
+});

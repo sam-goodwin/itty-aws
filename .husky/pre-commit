@@ -1,2 +1,2 @@
-bun fmt
+bun format
 git update-index --again

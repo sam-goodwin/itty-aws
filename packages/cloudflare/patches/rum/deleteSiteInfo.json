@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "SiteNotFound": [{ "code": 10015 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align rum#SiteInfoDelete with distilled cloudflare/rum deleteSiteInfo",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#SiteInfoDelete",
+      "path": "/shapes/com.cloudflare.rum#DeleteSiteInfo"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#SiteInfoDeleteRequest",
+      "path": "/shapes/com.cloudflare.rum#DeleteSiteInfoRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#DeleteSiteInfo/input/target",
+      "value": "com.cloudflare.rum#DeleteSiteInfoRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#SiteInfoDeleteResponse",
+      "path": "/shapes/com.cloudflare.rum#DeleteSiteInfoResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#DeleteSiteInfo/output/target",
+      "value": "com.cloudflare.rum#DeleteSiteInfoResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#SiteNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10015
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#DeleteSiteInfo/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.rum#SiteNotFound"
+        },
+        {
+          "target": "com.cloudflare.rum#Forbidden"
+        }
+      ]
+    }
+  ]
 }

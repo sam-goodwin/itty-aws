@@ -1,10 +1,18 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
+/**
+ * Axiom credentials — hand-written.
+ *
+ * API-compatible port of the distilled v0 axiom credentials module: the
+ * `Credentials` service holds an *effect* that resolves the current
+ * credentials on every request (the protocol layer resolves it per request
+ * on the calling fiber).
+ */
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
+import { ConfigError } from "@distilled.cloud/core/errors";
 
 /** Default base URL for Axiom Cloud. Self-hosted users can override via AXIOM_URL. */
 export const DEFAULT_API_BASE_URL = "https://api.axiom.co";
@@ -25,6 +33,23 @@ export class Credentials extends Context.Service<
   Effect.Effect<Config>
 >()("AxiomCredentials") {}
 
+/** Layer from a plain API token + optional base URL / org ID. */
+export const fromApiKey = (config: {
+  readonly apiKey: string | Redacted.Redacted<string>;
+  readonly apiBaseUrl?: string;
+  readonly orgId?: string;
+}): Layer.Layer<Credentials> =>
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      apiKey: Redacted.isRedacted(config.apiKey)
+        ? config.apiKey
+        : Redacted.make(config.apiKey),
+      apiBaseUrl: config.apiBaseUrl ?? DEFAULT_API_BASE_URL,
+      orgId: config.orgId,
+    }),
+  );
+
 const envConfig = EffectConfig.all({
   apiToken: EffectConfig.option(EffectConfig.string("AXIOM_TOKEN")),
   apiKey: EffectConfig.option(EffectConfig.string("AXIOM_API_KEY")),
@@ -42,7 +67,7 @@ const envConfig = EffectConfig.all({
  *   regional edge deployments). Defaults to `https://api.axiom.co`.
  * - `AXIOM_ORG_ID` (optional) — organization ID, required for PATs.
  */
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
   Credentials,
   Effect.gen(function* () {
     const config = yield* envConfig.pipe(

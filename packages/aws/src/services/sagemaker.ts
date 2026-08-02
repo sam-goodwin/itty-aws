@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -92,730 +94,73 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+) {}
+export class EndpointAlreadyExists extends S.TaggedErrorClass<EndpointAlreadyExists>()(
+  "EndpointAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Cannot create already existing endpoint" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class EndpointConfigAlreadyExists extends S.TaggedErrorClass<EndpointConfigAlreadyExists>()(
+  "EndpointConfigAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: {
+      includes: "Cannot create already existing endpoint configuration",
+    },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class EndpointConfigNotFound extends S.TaggedErrorClass<EndpointConfigNotFound>()(
+  "EndpointConfigNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Could not find endpoint configuration" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class EndpointNotFound extends S.TaggedErrorClass<EndpointNotFound>()(
+  "EndpointNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: 'Could not find endpoint "' },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ModelAlreadyExists extends S.TaggedErrorClass<ModelAlreadyExists>()(
+  "ModelAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Cannot create already existing model" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class ModelNotFound extends S.TaggedErrorClass<ModelNotFound>()(
+  "ModelNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Could not find model" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ResourceInUse extends S.TaggedErrorClass<ResourceInUse>()(
+  "ResourceInUse",
+  { Message: S.optional(S.String) },
+).pipe(C.withDependencyViolationError) {}
+export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
+  "ResourceLimitExceeded",
+  { Message: S.optional(S.String) },
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
+  "ResourceNotFound",
+  { Message: S.optional(S.String) },
+) {}
 export type AssociationEntityArn = string;
-export type FailureReason = string;
-export type ResourceArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ExperimentEntityName = string;
-export type TrialComponentArn = string;
-export type TrialArn = string;
-export type ClusterArn = string;
-export type ClusterNodeId = string;
-export type VolumeId = string;
-export type VolumeDeviceName = string;
-export type ClusterNameOrArn = string;
-export type ClusterInstanceGroupName = string;
-export type BatchAddIncrementCount = number;
-export type ClusterAvailabilityZone = string;
-export type ClusterNodeLogicalId = string;
-export type InstanceGroupName = string;
-export type BatchAddFailureCount = number;
-export type ModelPackageArn = string;
-export type EntityName = string;
-export type ModelPackageVersion = number;
-export type EntityDescription = string;
-export type CreationTime = Date;
-export type ContainerHostname = string;
-export type ContainerImage = string;
-export type ImageDigest = string;
-export type Url = string;
-export type S3ModelUri = string;
-export type AcceptEula = boolean;
-export type HubContentArn = string;
-export type ProductId = string;
-export type EnvironmentKey = string;
-export type EnvironmentValue = string;
-export type DataInputConfig = string;
-export type ModelPackageFrameworkVersion = string;
-export type AdditionalModelChannelName = string;
-export type S3Uri = string;
-export type HubContentName = string;
-export type HubContentVersion = string;
-export type RecipeName = string;
-export type ContentType = string;
-export type ResponseMIMEType = string;
-export type SourceUri = string;
-export type String256 = string;
-export type ExperimentDescription = string;
-export type StringParameterValue = string;
-export type MetadataPropertyValue = string;
-export type ActionArn = string;
-export type AIEntityName = string;
-export type AIResourceIdentifier = string;
-export type AIMlflowResourceArn = string;
-export type AIMlflowExperimentName = string;
-export type AIMlflowRunName = string;
-export type RoleArn = string;
-export type SecurityGroupId = string;
-export type SubnetId = string;
-export type AIBenchmarkJobArn = string;
-export type AIRecommendationAllowOptimization = boolean;
-export type AIMlReservationArn = string;
-export type AIRecommendationJobArn = string;
-export type AIChannelName = string;
-export type AIWorkloadConfigArn = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type HyperParameterValue = string;
-export type MetricName = string;
-export type MetricRegex = string;
-export type ChannelName = string;
-export type HyperParameterKey = string;
-export type AttributeName = string;
-export type FileSystemId = string;
-export type DirectoryPath = string;
-export type HubDataSetArn = string;
-export type Seed = number;
-export type KmsKeyId = string;
-export type TrainingInstanceCount = number;
-export type OptionalVolumeSizeInGB = number;
-export type KeepAlivePeriodInSeconds = number;
-export type TrainingPlanArn = string;
-export type MaxRuntimeInSeconds = number;
-export type MaxWaitTimeInSeconds = number;
-export type MaxPendingTimeInSeconds = number;
-export type MaxConcurrentTransforms = number;
-export type MaxPayloadInMB = number;
-export type TransformEnvironmentKey = string;
-export type TransformEnvironmentValue = string;
-export type Accept = string;
-export type TransformInstanceCount = number;
-export type TransformAmiVersion = string;
-export type CertifyForMarketplace = boolean;
-export type AlgorithmArn = string;
-export type DomainId = string;
-export type UserProfileName = string;
-export type SpaceName = string;
-export type AppName = string;
-export type ImageArn = string;
-export type ImageVersionArn = string;
-export type ImageVersionAlias = string;
-export type StudioLifecycleConfigArn = string;
-export type StudioResourceSpecTrainingPlanArn = string;
-export type AppArn = string;
-export type AppImageConfigName = string;
-export type KernelName = string;
-export type KernelDisplayName = string;
-export type MountPath = string;
-export type DefaultUid = number;
-export type DefaultGid = number;
-export type NonEmptyString64 = string;
-export type NonEmptyString256 = string;
-export type AppImageConfigArn = string;
-export type ArtifactPropertyValue = string;
-export type ArtifactArn = string;
-export type AutoMLJobName = string;
-export type TargetAttributeName = string;
-export type SampleWeightAttributeName = string;
-export type MaxCandidates = number;
-export type MaxRuntimePerTrainingJobInSeconds = number;
-export type MaxAutoMLJobRuntimeInSeconds = number;
-export type ValidationFraction = number;
-export type GenerateCandidateDefinitionsOnly = boolean;
-export type AutoGenerateEndpointName = boolean;
-export type EndpointName = string;
-export type AutoMLJobArn = string;
-export type ContentColumn = string;
-export type TargetLabelColumn = string;
-export type ForecastFrequency = string;
-export type ForecastHorizon = number;
-export type ForecastQuantile = string;
-export type TransformationAttributeName = string;
-export type FillingTransformationValue = string;
-export type TimestampAttributeName = string;
-export type ItemIdentifierAttributeName = string;
-export type GroupingAttributeName = string;
-export type CountryCode = string;
-export type BaseModelName = string;
-export type TextGenerationHyperParameterKey = string;
-export type TextGenerationHyperParameterValue = string;
-export type ClusterName = string;
-export type ClusterInstanceCount = number;
-export type ClusterLifeCycleConfigFileName = string;
-export type ClusterThreadsPerCore = number;
-export type ClusterEbsVolumeSizeInGB = number;
-export type ClusterDnsName = string;
-export type ClusterMountName = string;
-export type ClusterFsxMountPath = string;
-export type CronScheduleExpression = string;
-export type NodeUnavailabilityValue = number;
-export type WaitTimeIntervalInSeconds = number;
-export type AlarmName = string;
-export type ImageId = string;
-export type ImageReleaseVersion = string;
-export type ClusterKubernetesLabelKey = string;
-export type ClusterKubernetesLabelValue = string;
-export type ClusterKubernetesTaintKey = string;
-export type ClusterKubernetesTaintValue = string;
-export type ClusterPartitionName = string;
-export type FSxLustreSizeInGiB = number;
-export type FSxLustrePerUnitStorageThroughput = number;
-export type EksClusterArn = string;
-export type ClusterInstanceMemoryAllocationPercentage = number;
-export type ClusterSchedulerPriorityClassName = string;
-export type PriorityWeight = number;
-export type ClusterSchedulerConfigArn = string;
-export type ClusterSchedulerConfigId = string;
-export type GitConfigUrl = string;
-export type Branch = string;
-export type SecretArn = string;
-export type CodeRepositoryArn = string;
-export type FrameworkVersion = string;
-export type CompilerOptions = string;
-export type NeoVpcSecurityGroupId = string;
-export type NeoVpcSubnetId = string;
-export type CompilationJobArn = string;
-export type InstanceCount = number;
-export type AcceleratorsAmount = number;
-export type VCpuAmount = number;
-export type MemoryInGiBAmount = number;
-export type BorrowLimit = number;
-export type ComputeQuotaTargetTeamName = string;
-export type FairShareWeight = number;
-export type ComputeQuotaArn = string;
-export type ComputeQuotaId = string;
-export type ContextName = string;
-export type ContextArn = string;
-export type MonitoringJobDefinitionName = string;
-export type ProcessingJobName = string;
-export type ImageUri = string;
-export type ContainerEntrypointString = string;
-export type ContainerArgument = string;
-export type ProcessingEnvironmentKey = string;
-export type ProcessingEnvironmentValue = string;
-export type ProcessingLocalPath = string;
-export type ProbabilityThresholdAttribute = number;
-export type MonitoringTimeOffsetString = string;
-export type ExcludeFeaturesAttribute = string;
-export type DestinationS3Uri = string;
-export type MonitoringS3Uri = string;
-export type ProcessingInstanceCount = number;
-export type ProcessingVolumeSizeInGB = number;
-export type MonitoringMaxRuntimeInSeconds = number;
-export type MonitoringJobDefinitionArn = string;
-export type DeviceFleetDescription = string;
-export type EnableIotRoleAlias = boolean;
-export type DomainName = string;
-export type RepositoryUrl = string;
-export type ImageName = string;
-export type ImageVersionNumber = number;
-export type IdleTimeoutInMinutes = number;
-export type SpaceEbsVolumeSizeInGb = number;
-export type LandingUri = string;
-export type Uid = number;
-export type Gid = number;
-export type FileSystemPath = string;
-export type String1024 = string;
-export type S3SchemaUri = string;
-export type ImageVersionAliasPattern = string;
-export type AccountId = string;
-export type QProfileArn = string;
-export type RegionName = string;
-export type UnifiedStudioDomainId = string;
-export type UnifiedStudioProjectId = string;
-export type UnifiedStudioEnvironmentId = string;
-export type SingleSignOnApplicationArn = string;
-export type VpcId = string;
-export type DomainArn = string;
-export type Percentage = number;
-export type DeviceName = string;
-export type EdgeDeploymentPlanArn = string;
-export type EdgeVersion = string;
-export type EndpointConfigName = string;
-export type WaitIntervalInSeconds = number;
-export type CapacitySizeValue = number;
-export type TerminationWaitInSeconds = number;
-export type MaximumExecutionTimeoutInSeconds = number;
-export type EndpointArn = string;
-export type VariantName = string;
-export type ModelName = string;
-export type InitialTaskCount = number;
-export type InstancePoolPriority = number;
-export type VariantInstanceProvisionTimeoutInSeconds = number;
-export type VariantWeight = number;
-export type ServerlessMemorySizeInMB = number;
-export type ServerlessMaxConcurrency = number;
-export type ServerlessProvisionedConcurrency = number;
-export type ProductionVariantVolumeSizeInGB = number;
-export type ProductionVariantModelDataDownloadTimeoutInSeconds = number;
-export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds =
-  number;
-export type ProductionVariantSSMAccess = boolean;
-export type ManagedInstanceScalingMinInstanceCount = number;
-export type ManagedInstanceScalingMaxInstanceCount = number;
-export type ManagedInstanceScalingMaximumStepSize = number;
-export type ManagedInstanceScalingCooldownInMinutes = number;
-export type MlReservationArn = string;
-export type EnableCapture = boolean;
-export type SamplingPercentage = number;
-export type CsvContentType = string;
-export type JsonContentType = string;
-export type MaxConcurrentInvocationsPerInstance = number;
-export type SnsTopicArn = string;
-export type ClarifyEnableExplanations = string;
-export type ClarifyFeaturesAttribute = string;
-export type ClarifyContentTemplate = string;
-export type ClarifyMaxRecordCount = number;
-export type ClarifyMaxPayloadInMB = number;
-export type ClarifyProbabilityIndex = number;
-export type ClarifyLabelIndex = number;
-export type ClarifyProbabilityAttribute = string;
-export type ClarifyLabelAttribute = string;
-export type ClarifyHeader = string;
-export type ClarifyMimeType = string;
-export type ClarifyShapBaseline = string;
-export type ClarifyShapNumberOfSamples = number;
-export type ClarifyShapUseLogit = boolean;
-export type ClarifyShapSeed = number;
-export type EnableEnhancedMetrics = boolean;
-export type EnableDetailedObservability = boolean;
-export type EndpointConfigArn = string;
-export type ExperimentArn = string;
-export type FeatureGroupName = string;
-export type FeatureName = string;
-export type Dimension = number;
-export type TtlDurationValue = number;
-export type TableName = string;
-export type Catalog = string;
-export type Database = string;
-export type CapacityUnit = number;
-export type Description = string;
-export type FeatureGroupArn = string;
-export type FlowDefinitionName = string;
-export type HumanLoopActivationConditions = string;
-export type WorkteamArn = string;
-export type HumanTaskUiArn = string;
-export type FlowDefinitionTaskTitle = string;
-export type FlowDefinitionTaskDescription = string;
-export type FlowDefinitionTaskCount = number;
-export type FlowDefinitionTaskAvailabilityLifetimeInSeconds = number;
-export type FlowDefinitionTaskTimeLimitInSeconds = number;
-export type FlowDefinitionTaskKeyword = string;
-export type Dollars = number;
-export type Cents = number;
-export type TenthFractionsOfACent = number;
-export type FlowDefinitionArn = string;
-export type HubName = string;
-export type HubDescription = string;
-export type HubDisplayName = string;
-export type HubSearchKeyword = string;
-export type S3OutputPath = string;
-export type HubArn = string;
-export type HubNameOrArn = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type LongS3Uri = string;
-export type LocalPath = string;
-export type SageMakerPublicHubContentArn = string;
-export type HumanTaskUiName = string;
-export type TemplateContent = string;
-export type HyperParameterTuningJobName = string;
-export type HyperbandStrategyMinResource = number;
-export type HyperbandStrategyMaxResource = number;
-export type MaxNumberOfTrainingJobs = number;
-export type MaxParallelTrainingJobs = number;
-export type HyperParameterTuningMaxRuntimeInSeconds = number;
-export type ParameterKey = string;
-export type TargetObjectiveMetricValue = number;
-export type MaxNumberOfTrainingJobsNotImproving = number;
-export type RandomSeed = number;
-export type HyperParameterTrainingJobDefinitionName = string;
-export type AlgorithmImage = string;
-export type ArnOrName = string;
-export type VolumeSizeInGB = number;
-export type MaximumRetryAttempts = number;
-export type HyperParameterTrainingJobEnvironmentKey = string;
-export type HyperParameterTrainingJobEnvironmentValue = string;
-export type HyperParameterTuningJobArn = string;
-export type ImageDescription = string;
-export type ImageDisplayName = string;
-export type ImageBaseImage = string;
-export type ClientToken = string;
-export type SageMakerImageVersionAlias = string;
-export type MLFramework = string;
-export type ProgrammingLang = string;
-export type Horovod = boolean;
-export type ReleaseNotes = string;
-export type InferenceComponentName = string;
-export type MetricsEndpointPath = string;
-export type NumberOfCpuCores = number;
-export type NumberOfAcceleratorDevices = number;
-export type MemoryInMb = number;
-export type EnableCaching = boolean;
-export type AvailabilityZoneBalanceMaxImbalance = number;
-export type InferenceComponentCopyCount = number;
-export type InferenceComponentArn = string;
-export type InferenceExperimentName = string;
-export type InferenceExperimentDescription = string;
-export type ModelVariantName = string;
-export type TaskCount = number;
-export type InferenceExperimentArn = string;
-export type RecommendationJobName = string;
-export type JobDurationInSeconds = number;
-export type InitialNumberOfUsers = number;
-export type SpawnRate = number;
-export type TrafficDurationInSeconds = number;
-export type NumberOfSteps = number;
-export type UsersPerStep = number;
-export type MaxNumberOfTests = number;
-export type MaxParallelOfTests = number;
-export type InferenceSpecificationName = string;
-export type String64 = string;
-export type String128 = string;
-export type RecommendationJobFrameworkVersion = string;
-export type RecommendationJobSupportedContentType = string;
-export type RecommendationJobDataInputConfig = string;
-export type RecommendationJobSupportedResponseMIMEType = string;
-export type RecommendationJobVpcSecurityGroupId = string;
-export type RecommendationJobVpcSubnetId = string;
-export type RecommendationJobDescription = string;
-export type RecommendationJobArn = string;
-export type JobName = string;
-export type JobSchemaVersion = string;
-export type JobConfigDocument = string;
-export type JobArn = string;
-export type LabelingJobName = string;
-export type LabelAttributeName = string;
-export type MaxHumanLabeledObjectCount = number;
-export type MaxPercentageOfInputDatasetLabeled = number;
-export type LabelingJobAlgorithmSpecificationArn = string;
-export type ModelArn = string;
-export type LambdaFunctionArn = string;
-export type TaskKeyword = string;
-export type TaskTitle = string;
-export type TaskDescription = string;
-export type NumberOfHumanWorkersPerDataObject = number;
-export type TaskTimeLimitInSeconds = number;
-export type TaskAvailabilityLifetimeInSeconds = number;
-export type MaxConcurrentTaskCount = number;
-export type LabelingJobArn = string;
-export type MlflowAppName = string;
-export type WeeklyMaintenanceWindowStart = string;
-export type MlflowAppArn = string;
-export type TrackingServerName = string;
-export type MlflowVersion = string;
-export type TrackingServerArn = string;
-export type RepositoryCredentialsProviderArn = string;
-export type VersionedArnOrName = string;
-export type ModelCardContent = string | redacted.Redacted<string>;
-export type ModelCardArn = string;
-export type ModelCardNameOrArn = string;
-export type ModelCardExportJobArn = string;
-export type ContentDigest = string;
-export type CustomerMetadataKey = string;
-export type CustomerMetadataValue = string;
-export type ModelPackageSourceUri = string;
-export type StageDescription = string;
-export type ModelPackageGroupArn = string;
-export type MonitoringScheduleName = string;
-export type ScheduleExpression = string;
-export type MonitoringScheduleArn = string;
-export type NotebookInstanceName = string;
-export type NotebookInstanceLifecycleConfigName = string;
-export type NotebookInstanceVolumeSizeInGB = number;
-export type CodeRepositoryNameOrUrl = string;
-export type PlatformIdentifier = string;
-export type MinimumInstanceMetadataServiceVersion = string;
-export type NotebookInstanceArn = string;
-export type NotebookInstanceLifecycleConfigContent = string;
-export type NotebookInstanceLifecycleConfigArn = string;
-export type OptimizationModelAcceptEula = boolean;
-export type OptimizationJobMaxInstanceCount = number;
-export type OptimizationContainerImage = string;
-export type OptimizationVpcSecurityGroupId = string;
-export type OptimizationVpcSubnetId = string;
-export type OptimizationJobArn = string;
-export type PartnerAppName = string;
-export type WeeklyScheduleTimeFormat = string;
-export type GroupNamePattern = string;
-export type PartnerAppArn = string;
-export type ExpiresInSeconds = number;
-export type SessionExpirationDurationInSeconds = number;
-export type String2048 = string;
-export type PipelineName = string;
-export type PipelineDefinition = string;
-export type BucketName = string;
-export type Key = string;
-export type VersionId = string;
-export type PipelineDescription = string;
-export type IdempotencyToken = string;
-export type MaxParallelExecutionSteps = number;
-export type PipelineArn = string;
-export type PresignedDomainUrl = string;
-export type MlflowAppUrl = string;
-export type TrackingServerUrl = string;
-export type NotebookInstanceUrl = string;
-export type AppManaged = boolean;
-export type AthenaCatalog = string;
-export type AthenaDatabase = string;
-export type AthenaQueryString = string;
-export type AthenaWorkGroup = string;
-export type RedshiftClusterId = string;
-export type RedshiftDatabase = string;
-export type RedshiftUserName = string;
-export type RedshiftQueryString = string;
-export type ProcessingMaxRuntimeInSeconds = number;
-export type ProcessingJobArn = string;
-export type ProjectEntityName = string;
-export type ServiceCatalogEntityId = string;
-export type ProvisioningParameterKey = string;
-export type ProvisioningParameterValue = string;
-export type CfnTemplateName = string;
-export type CfnTemplateURL = string;
-export type CfnStackParameterKey = string;
-export type CfnStackParameterValue = string;
-export type ProjectArn = string;
-export type ProjectId = string;
-export type SpaceArn = string;
-export type StudioLifecycleConfigName = string;
-export type StudioLifecycleConfigContent = string;
-export type TrainingJobName = string;
-export type TrainingContainerEntrypointString = string;
-export type TrainingContainerArgument = string;
-export type TrainingRepositoryCredentialsProviderArn = string;
-export type ConfigKey = string;
-export type ConfigValue = string;
-export type CollectionName = string;
-export type RuleConfigurationName = string;
-export type ProfilingIntervalInMilliseconds = number;
-export type DisableProfiler = boolean;
-export type TrainingEnvironmentKey = string;
-export type TrainingEnvironmentValue = string;
-export type EnableRemoteDebug = boolean;
-export type EnableInfraCheck = boolean;
-export type EnableSessionTagChaining = boolean;
-export type ServerlessJobBaseModelArn = string;
-export type EvaluatorArn = string;
-export type MlFlowResourceArn = string;
-export type MlflowExperimentName = string;
-export type MlflowRunName = string;
-export type TrainingJobArn = string;
-export type TrainingPlanName = string;
-export type TrainingPlanOfferingId = string;
-export type SpareInstanceCountPerUltraServer = number;
-export type TransformJobName = string;
-export type InvocationsTimeoutInSeconds = number;
-export type InvocationsMaxRetries = number;
-export type JsonPath = string;
-export type TransformJobArn = string;
-export type TrialComponentStatusMessage = string;
-export type TrialComponentKey320 = string;
-export type DoubleParameterValue = number;
-export type TrialComponentKey128 = string;
-export type MediaType = string;
-export type TrialComponentArtifactValue = string;
-export type SingleSignOnUserIdentifier = string;
-export type UserProfileArn = string;
-export type CognitoUserPool = string;
-export type ClientId = string;
-export type ClientSecret = string | redacted.Redacted<string>;
-export type OidcEndpoint = string;
-export type Scope = string;
-export type AuthenticationRequestExtraParamsKey = string;
-export type AuthenticationRequestExtraParamsValue = string;
-export type Cidr = string;
-export type WorkforceName = string;
-export type WorkforceVpcId = string;
-export type WorkforceSecurityGroupId = string;
-export type WorkforceSubnetId = string;
-export type WorkforceArn = string;
-export type WorkteamName = string;
-export type CognitoUserGroup = string;
-export type Group = string;
-export type String200 = string;
-export type NotificationTopicArn = string;
-export type Success = boolean;
-export type ExperimentEntityNameOrArn = string;
-export type LineageGroupArn = string;
-export type AIInferenceSpecificationName = string;
-export type AIRecommendationInstanceCount = number;
-export type AIRecommendationCopyCountPerInstance = number;
-export type AutoMLFailureReason = string;
-export type CandidateName = string;
-export type MetricValue = number;
-export type CandidateStepArn = string;
-export type CandidateStepName = string;
-export type ExplainabilityLocation = string;
-export type ModelInsightsLocation = string;
-export type BacktestResultsLocation = string;
-export type CandidateDefinitionNotebookLocation = string;
-export type DataExplorationNotebookLocation = string;
-export type ClusterNonNegativeInstanceCount = number;
-export type InstanceGroupTrainingPlanStatus = string;
-export type ActiveClusterOperationCount = number;
-export type EventId = string;
-export type TargetCount = number;
-export type ClusterPrivatePrimaryIp = string;
-export type ClusterPrivatePrimaryIpv6 = string;
-export type ClusterPrivateDnsHostname = string;
-export type ClusterAvailabilityZoneId = string;
-export type LastModifiedTime = Date;
-export type InferenceImage = string;
-export type ArtifactDigest = string;
-export type ContextNameOrArn = string;
-export type DeviceArn = string;
-export type DeviceDescription = string;
-export type ThingName = string;
-export type DeviceFleetArn = string;
-export type IotRoleAlias = string;
-export type ResourceId = string;
-export type DeploymentStageMaxResults = number;
-export type EdgePackagingJobArn = string;
-export type EdgePresetDeploymentArtifact = string;
-export type VariantStatusMessage = string;
-export type Ec2CapacityReservationId = string;
-export type ExperimentSourceArn = string;
-export type SourceType = string;
-export type FeatureGroupNameOrArn = string;
-export type BlockedReason = string;
-export type OnlineStoreTotalSizeBytes = number;
-export type FeatureDescription = string;
-export type FeatureParameterKey = string;
-export type FeatureParameterValue = string;
-export type DocumentSchemaVersion = string;
-export type HubContentDisplayName = string;
-export type HubContentDescription = string;
-export type HubContentMarkdown = string;
-export type HubContentDocument = string;
-export type ReferenceMinVersion = string;
-export type HubContentSearchKeyword = string;
-export type DependencyOriginPath = string;
-export type DependencyCopyPath = string;
-export type TemplateUrl = string;
-export type TemplateContentSha256 = string;
-export type TrainingJobStatusCounter = number;
-export type ObjectiveStatusCounter = number;
-export type ImageContainerImage = string;
-export type InferenceExperimentStatusReason = string;
-export type UtilizationMetric = number;
-export type ModelSetupTime = number;
-export type InitialInstanceCount = number;
-export type RecommendationJobCompilationJobName = string;
-export type InvocationEndTime = Date;
-export type InvocationStartTime = Date;
-export type LabelCounter = number;
-export type JobReferenceCode = string;
-export type ApprovalDescription = string;
-export type NetworkInterfaceId = string;
-export type MajorMinorVersion = string;
-export type PipelineNameOrArn = string;
-export type PipelineVersionId = number;
-export type PipelineVersionName = string;
-export type PipelineVersionDescription = string;
-export type PipelineExecutionArn = string;
-export type PipelineExecutionName = string;
-export type PipelineExecutionDescription = string;
-export type PipelineExecutionFailureReason = string;
-export type MLflowArn = string;
-export type MlflowExperimentEntityName = string;
-export type ExitMessage = string;
-export type ProvisionedProductStatusMessage = string;
-export type CfnStackName = string;
-export type CfnStackId = string;
-export type CfnStackStatusMessage = string;
-export type ReservedCapacityArn = string;
-export type AvailabilityZone = string;
-export type ReservedCapacityDurationHours = number;
-export type ReservedCapacityDurationMinutes = number;
-export type TotalInstanceCount = number;
-export type AvailableInstanceCount = number;
-export type InUseInstanceCount = number;
-export type UltraServerType = string;
-export type UltraServerCount = number;
-export type AvailableSpareInstanceCount = number;
-export type UnhealthyInstanceCount = number;
-export type EfsUid = string;
-export type ResourceRetainedBillableTimeInSeconds = number;
-export type StatusMessage = string;
-export type TrainingTimeInSeconds = number;
-export type BillableTimeInSeconds = number;
-export type BillableTokenCount = number;
-export type StatusDetails = string;
-export type MlflowExperimentId = string;
-export type MlflowRunId = string;
-export type TotalStepCountPerEpoch = number;
-export type TrainingStepIndex = number;
-export type TrainingEpochIndex = number;
-export type TrainingEpochCount = number;
-export type TrainingPlanStatusMessage = string;
-export type TrainingPlanDurationHours = number;
-export type TrainingPlanDurationMinutes = number;
-export type CurrencyCode = string;
-export type AvailabilityZoneId = string;
-export type TrainingPlanExtensionOfferingId = string;
-export type TrainingPlanExtensionDurationHours = number;
-export type TrialSourceArn = string;
-export type TrialComponentSourceArn = string;
-export type OptionalDouble = number;
-export type OptionalInteger = number;
-export type WorkforceVpcEndpointId = string;
-export type WorkforceFailureReason = string;
-export type LineageGroupNameOrArn = string;
-export type ResourcePolicyString = string;
-export type PolicyString = string;
-export type UtilizationPercentagePerCore = number;
-export type PropertyNameHint = string;
-export type ResourcePropertyName = string;
-export type NameContains = string;
-export type AutoMLNameContains = string;
-export type AutoMLMaxResults = number;
-export type AutoMLMaxResultsForTrials = number;
-export type ClusterEventMaxResults = number;
-export type IncludeNodeLogicalIdsBoolean = boolean;
-export type CodeRepositoryNameContains = string;
-export type ListMaxResults = number;
-export type PaginationToken = string;
-export type EndpointConfigNameContains = string;
-export type EndpointNameContains = string;
-export type FeatureGroupNameContains = string;
-export type FeatureGroupMaxResults = number;
-export type ImageNameContains = string;
-export type InferenceComponentNameContains = string;
-export type RecommendationFailureReason = string;
-export type JobReferenceCodeContains = string;
-export type ModelNameContains = string;
-export type MonitoringAlertName = string;
-export type MonitoringDatapointsToAlert = number;
-export type MonitoringEvaluationPeriod = number;
-export type NotebookInstanceLifecycleConfigNameContains = string;
-export type NotebookInstanceNameContains = string;
-export type CodeRepositoryContains = string;
-export type OptimizationType = string;
-export type String3072 = string;
-export type StepName = string;
-export type StepDisplayName = string;
-export type StepDescription = string;
-export type CallbackToken = string;
-export type PipelineParameterName = string;
-export type ResourceCatalogName = string;
-export type ResourceCatalogArn = string;
-export type ResourceCatalogDescription = string;
-export type ListTagsMaxResults = number;
-export type ConfiguredSpareInstanceCount = number;
-export type String40 = string;
-export type QueryLineageMaxDepth = number;
-export type QueryLineageMaxResults = number;
-export type String8192 = string;
-export type TaskInput = string;
-export type FilterValue = string;
-export type VisibilityConditionsKey = string;
-export type VisibilityConditionsValue = string;
-export type ReservedCapacityInstanceCount = number;
-export type TrainingPlanDurationHoursInput = number;
-export type ResourceIdentifier = string;
-export type SessionId = string;
-export type StreamUrl = string;
-export type TokenValue = string;
-export type ImageDeleteProperty = string;
-export type DisassociateNotebookInstanceLifecycleConfig = boolean;
-export type DisassociateNotebookInstanceAcceleratorTypes = boolean;
-export type DisassociateDefaultCodeRepository = boolean;
-export type DisassociateAdditionalCodeRepositories = boolean;
-export type TrialComponentKey256 = string;
-
-//# Schemas
 export type AssociationEdgeType =
   | "ContributedTo"
   | "AssociatedWith"
@@ -824,6 +169,7 @@ export type AssociationEdgeType =
   | "SameAs"
   | (string & {});
 export const AssociationEdgeType = /*@__PURE__*/ S.String;
+
 export interface AddAssociationRequest {
   SourceArn?: string;
   DestinationArn?: string;
@@ -860,6 +206,9 @@ export const AddAssociationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddAssociationResponse",
 }) as any as S.Schema<AddAssociationResponse>;
+export type ResourceArn = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -895,6 +244,7 @@ export interface AddTagsOutput {
 export const AddTagsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "AddTagsOutput" }) as any as S.Schema<AddTagsOutput>;
+export type ExperimentEntityName = string;
 export interface AssociateTrialComponentRequest {
   TrialComponentName?: string;
   TrialName?: string;
@@ -917,6 +267,8 @@ export const AssociateTrialComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateTrialComponentRequest",
 }) as any as S.Schema<AssociateTrialComponentRequest>;
+export type TrialComponentArn = string;
+export type TrialArn = string;
 export interface AssociateTrialComponentResponse {
   TrialComponentArn?: string;
   TrialArn?: string;
@@ -929,6 +281,9 @@ export const AssociateTrialComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateTrialComponentResponse",
 }) as any as S.Schema<AssociateTrialComponentResponse>;
+export type ClusterArn = string;
+export type ClusterNodeId = string;
+export type VolumeId = string;
 export interface AttachClusterNodeVolumeRequest {
   ClusterArn?: string;
   NodeId?: string;
@@ -961,6 +316,8 @@ export type VolumeAttachmentStatus =
   | "busy"
   | (string & {});
 export const VolumeAttachmentStatus = /*@__PURE__*/ S.String;
+
+export type VolumeDeviceName = string;
 export interface AttachClusterNodeVolumeResponse {
   ClusterArn: string;
   NodeId: string;
@@ -981,6 +338,10 @@ export const AttachClusterNodeVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachClusterNodeVolumeResponse",
 }) as any as S.Schema<AttachClusterNodeVolumeResponse>;
+export type ClusterNameOrArn = string;
+export type ClusterInstanceGroupName = string;
+export type BatchAddIncrementCount = number;
+export type ClusterAvailabilityZone = string;
 export type ClusterAvailabilityZones = string[];
 export const ClusterAvailabilityZones = /*@__PURE__*/ S.Array(S.String);
 export type ClusterInstanceType =
@@ -1109,6 +470,7 @@ export type ClusterInstanceType =
   | "ml.p6-b300.48xlarge"
   | (string & {});
 export const ClusterInstanceType = /*@__PURE__*/ S.String;
+
 export type ClusterInstanceTypes = ClusterInstanceType[];
 export const ClusterInstanceTypes = /*@__PURE__*/ S.Array(ClusterInstanceType);
 export interface AddClusterNodeSpecification {
@@ -1155,6 +517,7 @@ export const BatchAddClusterNodesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchAddClusterNodesRequest",
 }) as any as S.Schema<BatchAddClusterNodesRequest>;
+export type ClusterNodeLogicalId = string;
 export type ClusterInstanceStatus =
   | "Running"
   | "Failure"
@@ -1165,6 +528,7 @@ export type ClusterInstanceStatus =
   | "NotFound"
   | (string & {});
 export const ClusterInstanceStatus = /*@__PURE__*/ S.String;
+
 export interface NodeAdditionResult {
   NodeLogicalId: string;
   InstanceGroupName: string;
@@ -1185,6 +549,7 @@ export const NodeAdditionResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeAdditionResult>;
 export type NodeAdditionResultList = NodeAdditionResult[];
 export const NodeAdditionResultList = /*@__PURE__*/ S.Array(NodeAdditionResult);
+export type InstanceGroupName = string;
 export type BatchAddClusterNodesErrorCode =
   | "InstanceGroupNotFound"
   | "InvalidInstanceGroupStatus"
@@ -1192,6 +557,8 @@ export type BatchAddClusterNodesErrorCode =
   | "IncompatibleInstanceTypes"
   | (string & {});
 export const BatchAddClusterNodesErrorCode = /*@__PURE__*/ S.String;
+
+export type BatchAddFailureCount = number;
 export interface BatchAddClusterNodesError_ {
   InstanceGroupName: string;
   ErrorCode: BatchAddClusterNodesErrorCode;
@@ -1262,6 +629,7 @@ export type BatchDeleteClusterNodesErrorCode =
   | "NodeIdInUse"
   | (string & {});
 export const BatchDeleteClusterNodesErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchDeleteClusterNodesError_ {
   Code?: BatchDeleteClusterNodesErrorCode;
   Message?: string;
@@ -1324,6 +692,7 @@ export const BatchDeleteClusterNodesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteClusterNodesResponse",
 }) as any as S.Schema<BatchDeleteClusterNodesResponse>;
+export type ModelPackageArn = string;
 export type ModelPackageArnList = string[];
 export const ModelPackageArnList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDescribeModelPackageInput {
@@ -1344,10 +713,22 @@ export const BatchDescribeModelPackageInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDescribeModelPackageInput",
 }) as any as S.Schema<BatchDescribeModelPackageInput>;
+export type EntityName = string;
+export type ModelPackageVersion = number;
+export type EntityDescription = string;
+export type CreationTime = Date;
+export type ContainerHostname = string;
+export type ContainerImage = string;
+export type ImageDigest = string;
+export type Url = string;
+export type S3ModelUri = string;
 export type S3ModelDataType = "S3Prefix" | "S3Object" | (string & {});
 export const S3ModelDataType = /*@__PURE__*/ S.String;
+
 export type ModelCompressionType = "None" | "Gzip" | (string & {});
 export const ModelCompressionType = /*@__PURE__*/ S.String;
+
+export type AcceptEula = boolean;
 export interface ModelAccessConfig {
   AcceptEula?: boolean;
 }
@@ -1356,6 +737,7 @@ export const ModelAccessConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelAccessConfig",
 }) as any as S.Schema<ModelAccessConfig>;
+export type HubContentArn = string;
 export interface InferenceHubAccessConfig {
   HubContentArn?: string;
 }
@@ -1396,17 +778,23 @@ export const ModelDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelDataSource",
 }) as any as S.Schema<ModelDataSource>;
+export type ProductId = string;
+export type EnvironmentKey = string;
+export type EnvironmentValue = string;
 export type EnvironmentMap = { [key: string]: string | undefined };
 export const EnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type DataInputConfig = string;
 export interface ModelInput {
   DataInputConfig?: string;
 }
 export const ModelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DataInputConfig: S.optional(S.String) }),
 ).annotate({ identifier: "ModelInput" }) as any as S.Schema<ModelInput>;
+export type ModelPackageFrameworkVersion = string;
+export type AdditionalModelChannelName = string;
 export interface AdditionalModelDataSource {
   ChannelName?: string;
   S3DataSource?: S3ModelDataSource;
@@ -1428,8 +816,11 @@ export type AdditionalS3DataSourceDataType =
   | "S3Prefix"
   | (string & {});
 export const AdditionalS3DataSourceDataType = /*@__PURE__*/ S.String;
+
+export type S3Uri = string;
 export type CompressionType = "None" | "Gzip" | (string & {});
 export const CompressionType = /*@__PURE__*/ S.String;
+
 export interface AdditionalS3DataSource {
   S3DataType?: AdditionalS3DataSourceDataType;
   S3Uri?: string;
@@ -1446,6 +837,9 @@ export const AdditionalS3DataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdditionalS3DataSource",
 }) as any as S.Schema<AdditionalS3DataSource>;
+export type HubContentName = string;
+export type HubContentVersion = string;
+export type RecipeName = string;
 export interface BaseModel {
   HubContentName?: string;
   HubContentVersion?: string;
@@ -1614,6 +1008,7 @@ export type TransformInstanceType =
   | "ml.g6.48xlarge"
   | (string & {});
 export const TransformInstanceType = /*@__PURE__*/ S.String;
+
 export type TransformInstanceTypes = TransformInstanceType[];
 export const TransformInstanceTypes = /*@__PURE__*/ S.Array(
   TransformInstanceType,
@@ -1892,12 +1287,15 @@ export type ProductionVariantInstanceType =
   | "ml.p5.4xlarge"
   | (string & {});
 export const ProductionVariantInstanceType = /*@__PURE__*/ S.String;
+
 export type RealtimeInferenceInstanceTypes = ProductionVariantInstanceType[];
 export const RealtimeInferenceInstanceTypes = /*@__PURE__*/ S.Array(
   ProductionVariantInstanceType,
 );
+export type ContentType = string;
 export type ContentTypes = string[];
 export const ContentTypes = /*@__PURE__*/ S.Array(S.String);
+export type ResponseMIMEType = string;
 export type ResponseMIMETypes = string[];
 export const ResponseMIMETypes = /*@__PURE__*/ S.Array(S.String);
 export interface InferenceSpecification {
@@ -1928,17 +1326,20 @@ export type ModelPackageStatus =
   | "Deleting"
   | (string & {});
 export const ModelPackageStatus = /*@__PURE__*/ S.String;
+
 export type ModelApprovalStatus =
   | "Approved"
   | "Rejected"
   | "PendingManualApproval"
   | (string & {});
 export const ModelApprovalStatus = /*@__PURE__*/ S.String;
+
 export type ModelPackageRegistrationType =
   | "Logged"
   | "Registered"
   | (string & {});
 export const ModelPackageRegistrationType = /*@__PURE__*/ S.String;
+
 export interface BatchDescribeModelPackageSummary {
   ModelPackageGroupName?: string;
   ModelPackageVersion?: number;
@@ -2088,6 +1489,7 @@ export type BatchRebootClusterNodesErrorCode =
   | "InternalServerError"
   | (string & {});
 export const BatchRebootClusterNodesErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchRebootClusterNodesError_ {
   NodeId?: string;
   ErrorCode?: BatchRebootClusterNodesErrorCode;
@@ -2181,6 +1583,7 @@ export type BatchReplaceClusterNodesErrorCode =
   | "InternalServerError"
   | (string & {});
 export const BatchReplaceClusterNodesErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchReplaceClusterNodesError_ {
   NodeId?: string;
   ErrorCode?: BatchReplaceClusterNodesErrorCode;
@@ -2243,6 +1646,8 @@ export const BatchReplaceClusterNodesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchReplaceClusterNodesResponse",
 }) as any as S.Schema<BatchReplaceClusterNodesResponse>;
+export type SourceUri = string;
+export type String256 = string;
 export interface ActionSource {
   SourceUri?: string;
   SourceType?: string;
@@ -2255,6 +1660,7 @@ export const ActionSource = /*@__PURE__*/ S.suspend(() =>
     SourceId: S.optional(S.String),
   }),
 ).annotate({ identifier: "ActionSource" }) as any as S.Schema<ActionSource>;
+export type ExperimentDescription = string;
 export type ActionStatus =
   | "Unknown"
   | "InProgress"
@@ -2264,11 +1670,14 @@ export type ActionStatus =
   | "Stopped"
   | (string & {});
 export const ActionStatus = /*@__PURE__*/ S.String;
+
+export type StringParameterValue = string;
 export type LineageEntityParameters = { [key: string]: string | undefined };
 export const LineageEntityParameters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type MetadataPropertyValue = string;
 export interface MetadataProperties {
   CommitId?: string;
   Repository?: string;
@@ -2319,6 +1728,7 @@ export const CreateActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActionRequest",
 }) as any as S.Schema<CreateActionRequest>;
+export type ActionArn = string;
 export interface CreateActionResponse {
   ActionArn?: string;
 }
@@ -2327,6 +1737,8 @@ export const CreateActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActionResponse",
 }) as any as S.Schema<CreateActionResponse>;
+export type AIEntityName = string;
+export type AIResourceIdentifier = string;
 export interface AIBenchmarkInferenceComponent {
   Identifier?: string;
 }
@@ -2357,6 +1769,9 @@ export type AIBenchmarkTarget = { Endpoint: AIBenchmarkEndpoint };
 export const AIBenchmarkTarget = /*@__PURE__*/ S.Union([
   S.Struct({ Endpoint: AIBenchmarkEndpoint }),
 ]);
+export type AIMlflowResourceArn = string;
+export type AIMlflowExperimentName = string;
+export type AIMlflowRunName = string;
 export interface AIMlflowConfig {
   MlflowResourceArn?: string;
   MlflowExperimentName?: string;
@@ -2381,8 +1796,11 @@ export const AIBenchmarkOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIBenchmarkOutputConfig",
 }) as any as S.Schema<AIBenchmarkOutputConfig>;
+export type RoleArn = string;
+export type SecurityGroupId = string;
 export type VpcSecurityGroupIds = string[];
 export const VpcSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type SubnetId = string;
 export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
 export interface VpcConfig {
@@ -2435,6 +1853,7 @@ export const CreateAIBenchmarkJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAIBenchmarkJobRequest",
 }) as any as S.Schema<CreateAIBenchmarkJobRequest>;
+export type AIBenchmarkJobArn = string;
 export interface CreateAIBenchmarkJobResponse {
   AIBenchmarkJobArn: string;
 }
@@ -2475,6 +1894,7 @@ export type AIRecommendationMetric =
   | "cost"
   | (string & {});
 export const AIRecommendationMetric = /*@__PURE__*/ S.String;
+
 export interface AIRecommendationConstraint {
   Metric?: AIRecommendationMetric;
 }
@@ -2497,6 +1917,7 @@ export const AIRecommendationPerformanceTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AIRecommendationPerformanceTarget>;
 export type AIRecommendationInferenceFramework = "LMI" | "VLLM" | (string & {});
 export const AIRecommendationInferenceFramework = /*@__PURE__*/ S.String;
+
 export interface AIRecommendationInferenceSpecification {
   Framework?: AIRecommendationInferenceFramework;
 }
@@ -2505,6 +1926,7 @@ export const AIRecommendationInferenceSpecification = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AIRecommendationInferenceSpecification",
 }) as any as S.Schema<AIRecommendationInferenceSpecification>;
+export type AIRecommendationAllowOptimization = boolean;
 export type AIRecommendationInstanceType =
   | "ml.g5.xlarge"
   | "ml.g5.2xlarge"
@@ -2548,6 +1970,7 @@ export type AIRecommendationInstanceType =
   | "ml.p6-b200.48xlarge"
   | (string & {});
 export const AIRecommendationInstanceType = /*@__PURE__*/ S.String;
+
 export type AIRecommendationInstanceTypeList = AIRecommendationInstanceType[];
 export const AIRecommendationInstanceTypeList = /*@__PURE__*/ S.Array(
   AIRecommendationInstanceType,
@@ -2556,6 +1979,8 @@ export type AICapacityReservationPreference =
   | "capacity-reservations-only"
   | (string & {});
 export const AICapacityReservationPreference = /*@__PURE__*/ S.String;
+
+export type AIMlReservationArn = string;
 export type AIMlReservationArnList = string[];
 export const AIMlReservationArnList = /*@__PURE__*/ S.Array(S.String);
 export interface AICapacityReservationConfig {
@@ -2620,6 +2045,7 @@ export const CreateAIRecommendationJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAIRecommendationJobRequest",
 }) as any as S.Schema<CreateAIRecommendationJobRequest>;
+export type AIRecommendationJobArn = string;
 export interface CreateAIRecommendationJobResponse {
   AIRecommendationJobArn: string;
 }
@@ -2628,6 +2054,7 @@ export const CreateAIRecommendationJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAIRecommendationJobResponse",
 }) as any as S.Schema<CreateAIRecommendationJobResponse>;
+export type AIChannelName = string;
 export interface AIWorkloadS3DataSource {
   S3Uri?: string;
 }
@@ -2702,6 +2129,7 @@ export const CreateAIWorkloadConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAIWorkloadConfigRequest",
 }) as any as S.Schema<CreateAIWorkloadConfigRequest>;
+export type AIWorkloadConfigArn = string;
 export interface CreateAIWorkloadConfigResponse {
   AIWorkloadConfigArn: string;
 }
@@ -2710,6 +2138,7 @@ export const CreateAIWorkloadConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAIWorkloadConfigResponse",
 }) as any as S.Schema<CreateAIWorkloadConfigResponse>;
+export type ParameterName = string;
 export type ParameterType =
   | "Integer"
   | "Continuous"
@@ -2717,6 +2146,8 @@ export type ParameterType =
   | "FreeText"
   | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
+
+export type ParameterValue = string;
 export interface IntegerParameterRangeSpecification {
   MinValue?: string;
   MaxValue?: string;
@@ -2767,6 +2198,7 @@ export const ParameterRange = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "ParameterRange" }) as any as S.Schema<ParameterRange>;
+export type HyperParameterValue = string;
 export interface HyperParameterSpecification {
   Name?: string;
   Description?: string;
@@ -2941,9 +2373,12 @@ export type TrainingInstanceType =
   | "ml.g7e.48xlarge"
   | (string & {});
 export const TrainingInstanceType = /*@__PURE__*/ S.String;
+
 export type TrainingInstanceTypes = TrainingInstanceType[];
 export const TrainingInstanceTypes =
   /*@__PURE__*/ S.Array(TrainingInstanceType);
+export type MetricName = string;
+export type MetricRegex = string;
 export interface MetricDefinition {
   Name?: string;
   Regex?: string;
@@ -2955,10 +2390,12 @@ export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDefinition>;
 export type MetricDefinitionList = MetricDefinition[];
 export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
+export type ChannelName = string;
 export type CompressionTypes = CompressionType[];
 export const CompressionTypes = /*@__PURE__*/ S.Array(CompressionType);
 export type TrainingInputMode = "Pipe" | "File" | "FastFile" | (string & {});
 export const TrainingInputMode = /*@__PURE__*/ S.String;
+
 export type InputModes = TrainingInputMode[];
 export const InputModes = /*@__PURE__*/ S.Array(TrainingInputMode);
 export interface ChannelSpecification {
@@ -2989,6 +2426,7 @@ export type HyperParameterTuningJobObjectiveType =
   | "Minimize"
   | (string & {});
 export const HyperParameterTuningJobObjectiveType = /*@__PURE__*/ S.String;
+
 export interface HyperParameterTuningJobObjective {
   Type?: HyperParameterTuningJobObjectiveType;
   MetricName?: string;
@@ -3034,6 +2472,7 @@ export const TrainingSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrainingSpecification",
 }) as any as S.Schema<TrainingSpecification>;
+export type HyperParameterKey = string;
 export type HyperParameters = { [key: string]: string | undefined };
 export const HyperParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -3046,11 +2485,14 @@ export type S3DataType =
   | "Converse"
   | (string & {});
 export const S3DataType = /*@__PURE__*/ S.String;
+
 export type S3DataDistribution =
   | "FullyReplicated"
   | "ShardedByS3Key"
   | (string & {});
 export const S3DataDistribution = /*@__PURE__*/ S.String;
+
+export type AttributeName = string;
 export type AttributeNames = string[];
 export const AttributeNames = /*@__PURE__*/ S.Array(S.String);
 export type InstanceGroupNames = string[];
@@ -3083,10 +2525,14 @@ export const S3DataSource = /*@__PURE__*/ S.suspend(() =>
     HubAccessConfig: S.optional(HubAccessConfig),
   }),
 ).annotate({ identifier: "S3DataSource" }) as any as S.Schema<S3DataSource>;
+export type FileSystemId = string;
 export type FileSystemAccessMode = "rw" | "ro" | (string & {});
 export const FileSystemAccessMode = /*@__PURE__*/ S.String;
+
 export type FileSystemType = "EFS" | "FSxLustre" | (string & {});
 export const FileSystemType = /*@__PURE__*/ S.String;
+
+export type DirectoryPath = string;
 export interface FileSystemDataSource {
   FileSystemId?: string;
   FileSystemAccessMode?: FileSystemAccessMode;
@@ -3103,6 +2549,7 @@ export const FileSystemDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FileSystemDataSource",
 }) as any as S.Schema<FileSystemDataSource>;
+export type HubDataSetArn = string;
 export interface DatasetSource {
   DatasetArn: string;
 }
@@ -3123,6 +2570,8 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 export type RecordWrapper = "None" | "RecordIO" | (string & {});
 export const RecordWrapper = /*@__PURE__*/ S.String;
+
+export type Seed = number;
 export interface ShuffleConfig {
   Seed?: number;
 }
@@ -3151,8 +2600,10 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 export type InputDataConfig = Channel[];
 export const InputDataConfig = /*@__PURE__*/ S.Array(Channel);
+export type KmsKeyId = string;
 export type OutputCompressionType = "GZIP" | "NONE" | (string & {});
 export const OutputCompressionType = /*@__PURE__*/ S.String;
+
 export interface OutputDataConfig {
   KmsKeyId?: string;
   S3OutputPath?: string;
@@ -3167,6 +2618,9 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutputDataConfig",
 }) as any as S.Schema<OutputDataConfig>;
+export type TrainingInstanceCount = number;
+export type OptionalVolumeSizeInGB = number;
+export type KeepAlivePeriodInSeconds = number;
 export interface InstanceGroup {
   InstanceType?: TrainingInstanceType;
   InstanceCount?: number;
@@ -3181,6 +2635,7 @@ export const InstanceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceGroup" }) as any as S.Schema<InstanceGroup>;
 export type InstanceGroups = InstanceGroup[];
 export const InstanceGroups = /*@__PURE__*/ S.Array(InstanceGroup);
+export type TrainingPlanArn = string;
 export interface PlacementSpecification {
   UltraServerId?: string;
   InstanceCount?: number;
@@ -3231,6 +2686,9 @@ export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
     InstancePlacementConfig: S.optional(InstancePlacementConfig),
   }),
 ).annotate({ identifier: "ResourceConfig" }) as any as S.Schema<ResourceConfig>;
+export type MaxRuntimeInSeconds = number;
+export type MaxWaitTimeInSeconds = number;
+export type MaxPendingTimeInSeconds = number;
 export interface StoppingCondition {
   MaxRuntimeInSeconds?: number;
   MaxWaitTimeInSeconds?: number;
@@ -3265,8 +2723,13 @@ export const TrainingJobDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrainingJobDefinition",
 }) as any as S.Schema<TrainingJobDefinition>;
+export type MaxConcurrentTransforms = number;
+export type MaxPayloadInMB = number;
 export type BatchStrategy = "MultiRecord" | "SingleRecord" | (string & {});
 export const BatchStrategy = /*@__PURE__*/ S.String;
+
+export type TransformEnvironmentKey = string;
+export type TransformEnvironmentValue = string;
 export type TransformEnvironmentMap = { [key: string]: string | undefined };
 export const TransformEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3296,6 +2759,7 @@ export type SplitType =
   | "TFRecord"
   | (string & {});
 export const SplitType = /*@__PURE__*/ S.String;
+
 export interface TransformInput {
   DataSource?: TransformDataSource;
   ContentType?: string;
@@ -3310,8 +2774,10 @@ export const TransformInput = /*@__PURE__*/ S.suspend(() =>
     SplitType: S.optional(SplitType),
   }),
 ).annotate({ identifier: "TransformInput" }) as any as S.Schema<TransformInput>;
+export type Accept = string;
 export type AssemblyType = "None" | "Line" | (string & {});
 export const AssemblyType = /*@__PURE__*/ S.String;
+
 export interface TransformOutput {
   S3OutputPath?: string;
   Accept?: string;
@@ -3328,6 +2794,8 @@ export const TransformOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TransformOutput",
 }) as any as S.Schema<TransformOutput>;
+export type TransformInstanceCount = number;
+export type TransformAmiVersion = string;
 export interface TransformResources {
   InstanceType?: TransformInstanceType;
   InstanceCount?: number;
@@ -3396,6 +2864,7 @@ export const AlgorithmValidationSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AlgorithmValidationSpecification",
 }) as any as S.Schema<AlgorithmValidationSpecification>;
+export type CertifyForMarketplace = boolean;
 export interface CreateAlgorithmInput {
   AlgorithmName?: string;
   AlgorithmDescription?: string;
@@ -3428,6 +2897,7 @@ export const CreateAlgorithmInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAlgorithmInput",
 }) as any as S.Schema<CreateAlgorithmInput>;
+export type AlgorithmArn = string;
 export interface CreateAlgorithmOutput {
   AlgorithmArn: string;
 }
@@ -3436,6 +2906,9 @@ export const CreateAlgorithmOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAlgorithmOutput",
 }) as any as S.Schema<CreateAlgorithmOutput>;
+export type DomainId = string;
+export type UserProfileName = string;
+export type SpaceName = string;
 export type AppType =
   | "JupyterServer"
   | "KernelGateway"
@@ -3448,6 +2921,11 @@ export type AppType =
   | "Canvas"
   | (string & {});
 export const AppType = /*@__PURE__*/ S.String;
+
+export type AppName = string;
+export type ImageArn = string;
+export type ImageVersionArn = string;
+export type ImageVersionAlias = string;
 export type AppInstanceType =
   | "system"
   | "ml.t3.micro"
@@ -3621,6 +3099,9 @@ export type AppInstanceType =
   | "ml.g7e.48xlarge"
   | (string & {});
 export const AppInstanceType = /*@__PURE__*/ S.String;
+
+export type StudioLifecycleConfigArn = string;
+export type StudioResourceSpecTrainingPlanArn = string;
 export interface ResourceSpec {
   SageMakerImageArn?: string;
   SageMakerImageVersionArn?: string;
@@ -3673,6 +3154,7 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
+export type AppArn = string;
 export interface CreateAppResponse {
   AppArn?: string;
 }
@@ -3681,6 +3163,9 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
+export type AppImageConfigName = string;
+export type KernelName = string;
+export type KernelDisplayName = string;
 export interface KernelSpec {
   Name?: string;
   DisplayName?: string;
@@ -3690,6 +3175,9 @@ export const KernelSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KernelSpec" }) as any as S.Schema<KernelSpec>;
 export type KernelSpecs = KernelSpec[];
 export const KernelSpecs = /*@__PURE__*/ S.Array(KernelSpec);
+export type MountPath = string;
+export type DefaultUid = number;
+export type DefaultGid = number;
 export interface FileSystemConfig {
   MountPath?: string;
   DefaultUid?: number;
@@ -3716,8 +3204,10 @@ export const KernelGatewayImageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KernelGatewayImageConfig",
 }) as any as S.Schema<KernelGatewayImageConfig>;
+export type NonEmptyString64 = string;
 export type CustomImageContainerArguments = string[];
 export const CustomImageContainerArguments = /*@__PURE__*/ S.Array(S.String);
+export type NonEmptyString256 = string;
 export type CustomImageContainerEntrypoint = string[];
 export const CustomImageContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
 export type CustomImageContainerEnvironmentVariables = {
@@ -3795,6 +3285,7 @@ export const CreateAppImageConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppImageConfigRequest",
 }) as any as S.Schema<CreateAppImageConfigRequest>;
+export type AppImageConfigArn = string;
 export interface CreateAppImageConfigResponse {
   AppImageConfigArn?: string;
 }
@@ -3810,6 +3301,7 @@ export type ArtifactSourceIdType =
   | "Custom"
   | (string & {});
 export const ArtifactSourceIdType = /*@__PURE__*/ S.String;
+
 export interface ArtifactSourceType {
   SourceIdType?: ArtifactSourceIdType;
   Value?: string;
@@ -3834,6 +3326,7 @@ export const ArtifactSource = /*@__PURE__*/ S.suspend(() =>
     SourceTypes: S.optional(ArtifactSourceTypes),
   }),
 ).annotate({ identifier: "ArtifactSource" }) as any as S.Schema<ArtifactSource>;
+export type ArtifactPropertyValue = string;
 export type ArtifactProperties = { [key: string]: string | undefined };
 export const ArtifactProperties = /*@__PURE__*/ S.Record(
   S.String,
@@ -3869,6 +3362,7 @@ export const CreateArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateArtifactRequest",
 }) as any as S.Schema<CreateArtifactRequest>;
+export type ArtifactArn = string;
 export interface CreateArtifactResponse {
   ArtifactArn?: string;
 }
@@ -3877,12 +3371,14 @@ export const CreateArtifactResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateArtifactResponse",
 }) as any as S.Schema<CreateArtifactResponse>;
+export type AutoMLJobName = string;
 export type AutoMLS3DataType =
   | "ManifestFile"
   | "S3Prefix"
   | "AugmentedManifestFile"
   | (string & {});
 export const AutoMLS3DataType = /*@__PURE__*/ S.String;
+
 export interface AutoMLS3DataSource {
   S3DataType?: AutoMLS3DataType;
   S3Uri?: string;
@@ -3903,8 +3399,11 @@ export const AutoMLDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoMLDataSource",
 }) as any as S.Schema<AutoMLDataSource>;
+export type TargetAttributeName = string;
 export type AutoMLChannelType = "training" | "validation" | (string & {});
 export const AutoMLChannelType = /*@__PURE__*/ S.String;
+
+export type SampleWeightAttributeName = string;
 export interface AutoMLChannel {
   DataSource?: AutoMLDataSource;
   CompressionType?: CompressionType;
@@ -3943,6 +3442,7 @@ export type ProblemType =
   | "Regression"
   | (string & {});
 export const ProblemType = /*@__PURE__*/ S.String;
+
 export type AutoMLMetricEnum =
   | "Accuracy"
   | "MSE"
@@ -3963,6 +3463,7 @@ export type AutoMLMetricEnum =
   | "AverageWeightedQuantileLoss"
   | (string & {});
 export const AutoMLMetricEnum = /*@__PURE__*/ S.String;
+
 export interface AutoMLJobObjective {
   MetricName?: AutoMLMetricEnum;
 }
@@ -3971,6 +3472,9 @@ export const AutoMLJobObjective = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoMLJobObjective",
 }) as any as S.Schema<AutoMLJobObjective>;
+export type MaxCandidates = number;
+export type MaxRuntimePerTrainingJobInSeconds = number;
+export type MaxAutoMLJobRuntimeInSeconds = number;
 export interface AutoMLJobCompletionCriteria {
   MaxCandidates?: number;
   MaxRuntimePerTrainingJobInSeconds?: number;
@@ -4017,6 +3521,7 @@ export type AutoMLAlgorithm =
   | "ets"
   | (string & {});
 export const AutoMLAlgorithm = /*@__PURE__*/ S.String;
+
 export type AutoMLAlgorithms = AutoMLAlgorithm[];
 export const AutoMLAlgorithms = /*@__PURE__*/ S.Array(AutoMLAlgorithm);
 export interface AutoMLAlgorithmConfig {
@@ -4043,6 +3548,7 @@ export const AutoMLCandidateGenerationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoMLCandidateGenerationConfig",
 }) as any as S.Schema<AutoMLCandidateGenerationConfig>;
+export type ValidationFraction = number;
 export interface AutoMLDataSplitConfig {
   ValidationFraction?: number;
 }
@@ -4057,6 +3563,7 @@ export type AutoMLMode =
   | "HYPERPARAMETER_TUNING"
   | (string & {});
 export const AutoMLMode = /*@__PURE__*/ S.String;
+
 export interface AutoMLJobConfig {
   CompletionCriteria?: AutoMLJobCompletionCriteria;
   SecurityConfig?: AutoMLSecurityConfig;
@@ -4075,6 +3582,9 @@ export const AutoMLJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoMLJobConfig",
 }) as any as S.Schema<AutoMLJobConfig>;
+export type GenerateCandidateDefinitionsOnly = boolean;
+export type AutoGenerateEndpointName = boolean;
+export type EndpointName = string;
 export interface ModelDeployConfig {
   AutoGenerateEndpointName?: boolean;
   EndpointName?: string;
@@ -4125,6 +3635,7 @@ export const CreateAutoMLJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAutoMLJobRequest",
 }) as any as S.Schema<CreateAutoMLJobRequest>;
+export type AutoMLJobArn = string;
 export interface CreateAutoMLJobResponse {
   AutoMLJobArn: string;
 }
@@ -4159,6 +3670,8 @@ export const ImageClassificationJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageClassificationJobConfig",
 }) as any as S.Schema<ImageClassificationJobConfig>;
+export type ContentColumn = string;
+export type TargetLabelColumn = string;
 export interface TextClassificationJobConfig {
   CompletionCriteria?: AutoMLJobCompletionCriteria;
   ContentColumn?: string;
@@ -4173,8 +3686,12 @@ export const TextClassificationJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TextClassificationJobConfig",
 }) as any as S.Schema<TextClassificationJobConfig>;
+export type ForecastFrequency = string;
+export type ForecastHorizon = number;
+export type ForecastQuantile = string;
 export type ForecastQuantiles = string[];
 export const ForecastQuantiles = /*@__PURE__*/ S.Array(S.String);
+export type TransformationAttributeName = string;
 export type FillingType =
   | "frontfill"
   | "middlefill"
@@ -4186,6 +3703,8 @@ export type FillingType =
   | "futurefill_value"
   | (string & {});
 export const FillingType = /*@__PURE__*/ S.String;
+
+export type FillingTransformationValue = string;
 export type FillingTransformationMap = { [key in FillingType]?: string };
 export const FillingTransformationMap = /*@__PURE__*/ S.Record(
   FillingType,
@@ -4206,6 +3725,7 @@ export type AggregationTransformationValue =
   | "max"
   | (string & {});
 export const AggregationTransformationValue = /*@__PURE__*/ S.String;
+
 export type AggregationTransformations = {
   [key: string]: AggregationTransformationValue | undefined;
 };
@@ -4227,6 +3747,9 @@ export const TimeSeriesTransformations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TimeSeriesTransformations",
 }) as any as S.Schema<TimeSeriesTransformations>;
+export type TimestampAttributeName = string;
+export type ItemIdentifierAttributeName = string;
+export type GroupingAttributeName = string;
 export type GroupingAttributeNames = string[];
 export const GroupingAttributeNames = /*@__PURE__*/ S.Array(S.String);
 export interface TimeSeriesConfig {
@@ -4245,6 +3768,7 @@ export const TimeSeriesConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TimeSeriesConfig",
 }) as any as S.Schema<TimeSeriesConfig>;
+export type CountryCode = string;
 export interface HolidayConfigAttributes {
   CountryCode?: string;
 }
@@ -4313,6 +3837,9 @@ export const TabularJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TabularJobConfig",
 }) as any as S.Schema<TabularJobConfig>;
+export type BaseModelName = string;
+export type TextGenerationHyperParameterKey = string;
+export type TextGenerationHyperParameterValue = string;
 export type TextGenerationHyperParameters = {
   [key: string]: string | undefined;
 };
@@ -4445,6 +3972,8 @@ export const CreateAutoMLJobV2Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAutoMLJobV2Response",
 }) as any as S.Schema<CreateAutoMLJobV2Response>;
+export type ClusterName = string;
+export type ClusterInstanceCount = number;
 export interface ClusterInstanceRequirements {
   InstanceTypes?: ClusterInstanceType[];
 }
@@ -4453,6 +3982,7 @@ export const ClusterInstanceRequirements = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterInstanceRequirements",
 }) as any as S.Schema<ClusterInstanceRequirements>;
+export type ClusterLifeCycleConfigFileName = string;
 export interface ClusterLifeCycleConfig {
   SourceS3Uri?: string;
   OnCreate?: string;
@@ -4467,6 +3997,8 @@ export const ClusterLifeCycleConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterLifeCycleConfig",
 }) as any as S.Schema<ClusterLifeCycleConfig>;
+export type ClusterThreadsPerCore = number;
+export type ClusterEbsVolumeSizeInGB = number;
 export interface ClusterEbsVolumeConfig {
   VolumeSizeInGB?: number;
   VolumeKmsKeyId?: string;
@@ -4481,6 +4013,9 @@ export const ClusterEbsVolumeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterEbsVolumeConfig",
 }) as any as S.Schema<ClusterEbsVolumeConfig>;
+export type ClusterDnsName = string;
+export type ClusterMountName = string;
+export type ClusterFsxMountPath = string;
 export interface ClusterFsxLustreConfig {
   DnsName: string;
   MountName: string;
@@ -4534,14 +4069,18 @@ export type DeepHealthCheckType =
   | "InstanceConnectivity"
   | (string & {});
 export const DeepHealthCheckType = /*@__PURE__*/ S.String;
+
 export type OnStartDeepHealthChecks = DeepHealthCheckType[];
 export const OnStartDeepHealthChecks =
   /*@__PURE__*/ S.Array(DeepHealthCheckType);
+export type CronScheduleExpression = string;
 export type NodeUnavailabilityType =
   | "INSTANCE_COUNT"
   | "CAPACITY_PERCENTAGE"
   | (string & {});
 export const NodeUnavailabilityType = /*@__PURE__*/ S.String;
+
+export type NodeUnavailabilityValue = number;
 export interface CapacitySizeConfig {
   Type?: NodeUnavailabilityType;
   Value?: number;
@@ -4566,6 +4105,8 @@ export const RollingDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RollingDeploymentPolicy",
 }) as any as S.Schema<RollingDeploymentPolicy>;
+export type WaitTimeIntervalInSeconds = number;
+export type AlarmName = string;
 export interface AlarmDetails {
   AlarmName?: string;
 }
@@ -4600,11 +4141,13 @@ export const ScheduledUpdateConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduledUpdateConfig",
 }) as any as S.Schema<ScheduledUpdateConfig>;
+export type ImageId = string;
 export type ClusterPatchingStrategy =
   | "WhenIdle"
   | "WhenAllIdle"
   | (string & {});
 export const ClusterPatchingStrategy = /*@__PURE__*/ S.String;
+
 export interface ClusterPatchSchedule {
   NextPatchDate?: Date;
 }
@@ -4629,17 +4172,23 @@ export const ClusterAutoPatchConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterAutoPatchConfig",
 }) as any as S.Schema<ClusterAutoPatchConfig>;
+export type ImageReleaseVersion = string;
+export type ClusterKubernetesLabelKey = string;
+export type ClusterKubernetesLabelValue = string;
 export type ClusterKubernetesLabels = { [key: string]: string | undefined };
 export const ClusterKubernetesLabels = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClusterKubernetesTaintKey = string;
+export type ClusterKubernetesTaintValue = string;
 export type ClusterKubernetesTaintEffect =
   | "NoSchedule"
   | "PreferNoSchedule"
   | "NoExecute"
   | (string & {});
 export const ClusterKubernetesTaintEffect = /*@__PURE__*/ S.String;
+
 export interface ClusterKubernetesTaint {
   Key: string;
   Value?: string;
@@ -4676,6 +4225,8 @@ export type ClusterSlurmNodeType =
   | "Compute"
   | (string & {});
 export const ClusterSlurmNodeType = /*@__PURE__*/ S.String;
+
+export type ClusterPartitionName = string;
 export type ClusterPartitionNames = string[];
 export const ClusterPartitionNames = /*@__PURE__*/ S.Array(S.String);
 export interface ClusterSlurmConfig {
@@ -4716,6 +4267,7 @@ export const ClusterCapacityRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterCapacityRequirements>;
 export type ClusterInterfaceType = "efa" | "efa-only" | (string & {});
 export const ClusterInterfaceType = /*@__PURE__*/ S.String;
+
 export interface ClusterNetworkInterface {
   InterfaceType?: ClusterInterfaceType;
 }
@@ -4777,6 +4329,8 @@ export type ClusterInstanceGroupSpecifications =
 export const ClusterInstanceGroupSpecifications = /*@__PURE__*/ S.Array(
   ClusterInstanceGroupSpecification,
 );
+export type FSxLustreSizeInGiB = number;
+export type FSxLustrePerUnitStorageThroughput = number;
 export interface FSxLustreConfig {
   SizeInGiB?: number;
   PerUnitStorageThroughput?: number;
@@ -4837,6 +4391,7 @@ export type ClusterFSxLustreDeletionPolicy =
   | "Keep"
   | (string & {});
 export const ClusterFSxLustreDeletionPolicy = /*@__PURE__*/ S.String;
+
 export interface ClusterSharedEnvironmentConfig {
   FSxLustreDeletionPolicy?: ClusterFSxLustreDeletionPolicy;
   FSxLustreConfig?: FSxLustreConfig;
@@ -4860,6 +4415,7 @@ export const ClusterRestrictedInstanceGroupsConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ClusterRestrictedInstanceGroupsConfig",
 }) as any as S.Schema<ClusterRestrictedInstanceGroupsConfig>;
+export type EksClusterArn = string;
 export interface ClusterOrchestratorEksConfig {
   ClusterArn?: string;
 }
@@ -4874,6 +4430,7 @@ export type ClusterSlurmConfigStrategy =
   | "Merge"
   | (string & {});
 export const ClusterSlurmConfigStrategy = /*@__PURE__*/ S.String;
+
 export interface ClusterOrchestratorSlurmConfig {
   SlurmConfigStrategy?: ClusterSlurmConfigStrategy;
 }
@@ -4896,8 +4453,11 @@ export const ClusterOrchestrator = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterOrchestrator>;
 export type ClusterNodeRecovery = "Automatic" | "None" | (string & {});
 export const ClusterNodeRecovery = /*@__PURE__*/ S.String;
+
 export type ClusterConfigMode = "Enable" | "Disable" | (string & {});
 export const ClusterConfigMode = /*@__PURE__*/ S.String;
+
+export type ClusterInstanceMemoryAllocationPercentage = number;
 export interface ClusterTieredStorageConfig {
   Mode?: ClusterConfigMode;
   InstanceMemoryAllocationPercentage?: number;
@@ -4912,10 +4472,13 @@ export const ClusterTieredStorageConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterTieredStorageConfig>;
 export type ClusterNodeProvisioningMode = "Continuous" | (string & {});
 export const ClusterNodeProvisioningMode = /*@__PURE__*/ S.String;
+
 export type ClusterAutoScalingMode = "Enable" | "Disable" | (string & {});
 export const ClusterAutoScalingMode = /*@__PURE__*/ S.String;
+
 export type ClusterAutoScalerType = "Karpenter" | (string & {});
 export const ClusterAutoScalerType = /*@__PURE__*/ S.String;
+
 export interface ClusterAutoScalingConfig {
   Mode: ClusterAutoScalingMode;
   AutoScalerType?: ClusterAutoScalerType;
@@ -4982,6 +4545,8 @@ export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterResponse",
 }) as any as S.Schema<CreateClusterResponse>;
+export type ClusterSchedulerPriorityClassName = string;
+export type PriorityWeight = number;
 export interface PriorityClass {
   Name?: string;
   Weight?: number;
@@ -4993,8 +4558,10 @@ export type PriorityClassList = PriorityClass[];
 export const PriorityClassList = /*@__PURE__*/ S.Array(PriorityClass);
 export type FairShare = "Enabled" | "Disabled" | (string & {});
 export const FairShare = /*@__PURE__*/ S.String;
+
 export type IdleResourceSharing = "Enabled" | "Disabled" | (string & {});
 export const IdleResourceSharing = /*@__PURE__*/ S.String;
+
 export interface SchedulerConfig {
   PriorityClasses?: PriorityClass[];
   FairShare?: FairShare;
@@ -5037,6 +4604,8 @@ export const CreateClusterSchedulerConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterSchedulerConfigRequest",
 }) as any as S.Schema<CreateClusterSchedulerConfigRequest>;
+export type ClusterSchedulerConfigArn = string;
+export type ClusterSchedulerConfigId = string;
 export interface CreateClusterSchedulerConfigResponse {
   ClusterSchedulerConfigArn: string;
   ClusterSchedulerConfigId: string;
@@ -5050,6 +4619,9 @@ export const CreateClusterSchedulerConfigResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateClusterSchedulerConfigResponse",
 }) as any as S.Schema<CreateClusterSchedulerConfigResponse>;
+export type GitConfigUrl = string;
+export type Branch = string;
+export type SecretArn = string;
 export interface GitConfig {
   RepositoryUrl?: string;
   Branch?: string;
@@ -5086,6 +4658,7 @@ export const CreateCodeRepositoryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCodeRepositoryInput",
 }) as any as S.Schema<CreateCodeRepositoryInput>;
+export type CodeRepositoryArn = string;
 export interface CreateCodeRepositoryOutput {
   CodeRepositoryArn: string;
 }
@@ -5106,6 +4679,8 @@ export type Framework =
   | "SKLEARN"
   | (string & {});
 export const Framework = /*@__PURE__*/ S.String;
+
+export type FrameworkVersion = string;
 export interface InputConfig {
   S3Uri?: string;
   DataInputConfig?: string;
@@ -5160,8 +4735,10 @@ export type TargetDevice =
   | "imx8mplus"
   | (string & {});
 export const TargetDevice = /*@__PURE__*/ S.String;
+
 export type TargetPlatformOs = "ANDROID" | "LINUX" | (string & {});
 export const TargetPlatformOs = /*@__PURE__*/ S.String;
+
 export type TargetPlatformArch =
   | "X86_64"
   | "X86"
@@ -5170,6 +4747,7 @@ export type TargetPlatformArch =
   | "ARM_EABIHF"
   | (string & {});
 export const TargetPlatformArch = /*@__PURE__*/ S.String;
+
 export type TargetPlatformAccelerator =
   | "INTEL_GRAPHICS"
   | "MALI"
@@ -5177,6 +4755,7 @@ export type TargetPlatformAccelerator =
   | "NNA"
   | (string & {});
 export const TargetPlatformAccelerator = /*@__PURE__*/ S.String;
+
 export interface TargetPlatform {
   Os?: TargetPlatformOs;
   Arch?: TargetPlatformArch;
@@ -5189,6 +4768,7 @@ export const TargetPlatform = /*@__PURE__*/ S.suspend(() =>
     Accelerator: S.optional(TargetPlatformAccelerator),
   }),
 ).annotate({ identifier: "TargetPlatform" }) as any as S.Schema<TargetPlatform>;
+export type CompilerOptions = string;
 export interface OutputConfig {
   S3OutputLocation?: string;
   TargetDevice?: TargetDevice;
@@ -5205,8 +4785,10 @@ export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
     KmsKeyId: S.optional(S.String),
   }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
+export type NeoVpcSecurityGroupId = string;
 export type NeoVpcSecurityGroupIds = string[];
 export const NeoVpcSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type NeoVpcSubnetId = string;
 export type NeoVpcSubnets = string[];
 export const NeoVpcSubnets = /*@__PURE__*/ S.Array(S.String);
 export interface NeoVpcConfig {
@@ -5253,6 +4835,7 @@ export const CreateCompilationJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCompilationJobRequest",
 }) as any as S.Schema<CreateCompilationJobRequest>;
+export type CompilationJobArn = string;
 export interface CreateCompilationJobResponse {
   CompilationJobArn: string;
 }
@@ -5261,6 +4844,10 @@ export const CreateCompilationJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCompilationJobResponse",
 }) as any as S.Schema<CreateCompilationJobResponse>;
+export type InstanceCount = number;
+export type AcceleratorsAmount = number;
+export type VCpuAmount = number;
+export type MemoryInGiBAmount = number;
 export type MIGProfileType =
   | "mig-1g.5gb"
   | "mig-1g.10gb"
@@ -5292,6 +4879,7 @@ export type MIGProfileType =
   | "mig-7g.186gb"
   | (string & {});
 export const MIGProfileType = /*@__PURE__*/ S.String;
+
 export interface AcceleratorPartitionConfig {
   Type?: MIGProfileType;
   Count?: number;
@@ -5331,6 +4919,8 @@ export type ResourceSharingStrategy =
   | "LendAndBorrow"
   | (string & {});
 export const ResourceSharingStrategy = /*@__PURE__*/ S.String;
+
+export type BorrowLimit = number;
 export type AbsoluteBorrowLimitResourceList = ComputeQuotaResourceConfig[];
 export const AbsoluteBorrowLimitResourceList = /*@__PURE__*/ S.Array(
   ComputeQuotaResourceConfig,
@@ -5351,6 +4941,7 @@ export const ResourceSharingConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSharingConfig>;
 export type PreemptTeamTasks = "Never" | "LowerPriority" | (string & {});
 export const PreemptTeamTasks = /*@__PURE__*/ S.String;
+
 export interface ComputeQuotaConfig {
   ComputeQuotaResources?: ComputeQuotaResourceConfig[];
   ResourceSharingConfig?: ResourceSharingConfig;
@@ -5365,6 +4956,8 @@ export const ComputeQuotaConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeQuotaConfig",
 }) as any as S.Schema<ComputeQuotaConfig>;
+export type ComputeQuotaTargetTeamName = string;
+export type FairShareWeight = number;
 export interface ComputeQuotaTarget {
   TeamName?: string;
   FairShareWeight?: number;
@@ -5379,6 +4972,7 @@ export const ComputeQuotaTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeQuotaTarget>;
 export type ActivationState = "Enabled" | "Disabled" | (string & {});
 export const ActivationState = /*@__PURE__*/ S.String;
+
 export interface CreateComputeQuotaRequest {
   Name?: string;
   Description?: string;
@@ -5411,6 +5005,8 @@ export const CreateComputeQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComputeQuotaRequest",
 }) as any as S.Schema<CreateComputeQuotaRequest>;
+export type ComputeQuotaArn = string;
+export type ComputeQuotaId = string;
 export interface CreateComputeQuotaResponse {
   ComputeQuotaArn: string;
   ComputeQuotaId: string;
@@ -5423,6 +5019,7 @@ export const CreateComputeQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComputeQuotaResponse",
 }) as any as S.Schema<CreateComputeQuotaResponse>;
+export type ContextName = string;
 export interface ContextSource {
   SourceUri?: string;
   SourceType?: string;
@@ -5465,6 +5062,7 @@ export const CreateContextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContextRequest",
 }) as any as S.Schema<CreateContextRequest>;
+export type ContextArn = string;
 export interface CreateContextResponse {
   ContextArn?: string;
 }
@@ -5473,6 +5071,8 @@ export const CreateContextResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContextResponse",
 }) as any as S.Schema<CreateContextResponse>;
+export type MonitoringJobDefinitionName = string;
+export type ProcessingJobName = string;
 export interface MonitoringConstraintsResource {
   S3Uri?: string;
 }
@@ -5503,10 +5103,15 @@ export const DataQualityBaselineConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataQualityBaselineConfig",
 }) as any as S.Schema<DataQualityBaselineConfig>;
+export type ImageUri = string;
+export type ContainerEntrypointString = string;
 export type ContainerEntrypoint = string[];
 export const ContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
+export type ContainerArgument = string;
 export type MonitoringContainerArguments = string[];
 export const MonitoringContainerArguments = /*@__PURE__*/ S.Array(S.String);
+export type ProcessingEnvironmentKey = string;
+export type ProcessingEnvironmentValue = string;
 export type MonitoringEnvironmentMap = { [key: string]: string | undefined };
 export const MonitoringEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5532,13 +5137,19 @@ export const DataQualityAppSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataQualityAppSpecification",
 }) as any as S.Schema<DataQualityAppSpecification>;
+export type ProcessingLocalPath = string;
 export type ProcessingS3InputMode = "Pipe" | "File" | (string & {});
 export const ProcessingS3InputMode = /*@__PURE__*/ S.String;
+
 export type ProcessingS3DataDistributionType =
   | "FullyReplicated"
   | "ShardedByS3Key"
   | (string & {});
 export const ProcessingS3DataDistributionType = /*@__PURE__*/ S.String;
+
+export type ProbabilityThresholdAttribute = number;
+export type MonitoringTimeOffsetString = string;
+export type ExcludeFeaturesAttribute = string;
 export interface EndpointInput {
   EndpointName?: string;
   LocalPath?: string;
@@ -5567,6 +5178,7 @@ export const EndpointInput = /*@__PURE__*/ S.suspend(() =>
     ExcludeFeaturesAttribute: S.optional(S.String),
   }),
 ).annotate({ identifier: "EndpointInput" }) as any as S.Schema<EndpointInput>;
+export type DestinationS3Uri = string;
 export interface MonitoringCsvDatasetFormat {
   Header?: boolean;
 }
@@ -5647,8 +5259,10 @@ export const DataQualityJobInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataQualityJobInput",
 }) as any as S.Schema<DataQualityJobInput>;
+export type MonitoringS3Uri = string;
 export type ProcessingS3UploadMode = "Continuous" | "EndOfJob" | (string & {});
 export const ProcessingS3UploadMode = /*@__PURE__*/ S.String;
+
 export interface MonitoringS3Output {
   S3Uri?: string;
   LocalPath?: string;
@@ -5685,6 +5299,7 @@ export const MonitoringOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitoringOutputConfig",
 }) as any as S.Schema<MonitoringOutputConfig>;
+export type ProcessingInstanceCount = number;
 export type ProcessingInstanceType =
   | "ml.t3.medium"
   | "ml.t3.large"
@@ -5815,6 +5430,8 @@ export type ProcessingInstanceType =
   | "ml.g7e.48xlarge"
   | (string & {});
 export const ProcessingInstanceType = /*@__PURE__*/ S.String;
+
+export type ProcessingVolumeSizeInGB = number;
 export interface MonitoringClusterConfig {
   InstanceCount?: number;
   InstanceType?: ProcessingInstanceType;
@@ -5853,6 +5470,7 @@ export const MonitoringNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitoringNetworkConfig",
 }) as any as S.Schema<MonitoringNetworkConfig>;
+export type MonitoringMaxRuntimeInSeconds = number;
 export interface MonitoringStoppingCondition {
   MaxRuntimeInSeconds?: number;
 }
@@ -5900,6 +5518,7 @@ export const CreateDataQualityJobDefinitionRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDataQualityJobDefinitionRequest",
 }) as any as S.Schema<CreateDataQualityJobDefinitionRequest>;
+export type MonitoringJobDefinitionArn = string;
 export interface CreateDataQualityJobDefinitionResponse {
   JobDefinitionArn: string;
 }
@@ -5908,8 +5527,10 @@ export const CreateDataQualityJobDefinitionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDataQualityJobDefinitionResponse",
 }) as any as S.Schema<CreateDataQualityJobDefinitionResponse>;
+export type DeviceFleetDescription = string;
 export type EdgePresetDeploymentType = "GreengrassV2Component" | (string & {});
 export const EdgePresetDeploymentType = /*@__PURE__*/ S.String;
+
 export interface EdgeOutputConfig {
   S3OutputLocation?: string;
   KmsKeyId?: string;
@@ -5926,6 +5547,7 @@ export const EdgeOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EdgeOutputConfig",
 }) as any as S.Schema<EdgeOutputConfig>;
+export type EnableIotRoleAlias = boolean;
 export interface CreateDeviceFleetRequest {
   DeviceFleetName?: string;
   RoleArn?: string;
@@ -5962,12 +5584,15 @@ export const CreateDeviceFleetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeviceFleetResponse",
 }) as any as S.Schema<CreateDeviceFleetResponse>;
+export type DomainName = string;
 export type AuthMode = "SSO" | "IAM" | (string & {});
 export const AuthMode = /*@__PURE__*/ S.String;
+
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type NotebookOutputOption = "Allowed" | "Disabled" | (string & {});
 export const NotebookOutputOption = /*@__PURE__*/ S.String;
+
 export interface SharingSettings {
   NotebookOutputOption?: NotebookOutputOption;
   S3OutputPath?: string;
@@ -5984,6 +5609,7 @@ export const SharingSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SharingSettings>;
 export type LifecycleConfigArns = string[];
 export const LifecycleConfigArns = /*@__PURE__*/ S.Array(S.String);
+export type RepositoryUrl = string;
 export interface CodeRepository {
   RepositoryUrl?: string;
 }
@@ -6006,6 +5632,8 @@ export const JupyterServerAppSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JupyterServerAppSettings",
 }) as any as S.Schema<JupyterServerAppSettings>;
+export type ImageName = string;
+export type ImageVersionNumber = number;
 export interface CustomImage {
   ImageName?: string;
   ImageVersionNumber?: number;
@@ -6047,11 +5675,13 @@ export type RStudioServerProAccessStatus =
   | "DISABLED"
   | (string & {});
 export const RStudioServerProAccessStatus = /*@__PURE__*/ S.String;
+
 export type RStudioServerProUserGroup =
   | "R_STUDIO_ADMIN"
   | "R_STUDIO_USER"
   | (string & {});
 export const RStudioServerProUserGroup = /*@__PURE__*/ S.String;
+
 export interface RStudioServerProAppSettings {
   AccessStatus?: RStudioServerProAccessStatus;
   UserGroup?: RStudioServerProUserGroup;
@@ -6078,6 +5708,7 @@ export const RSessionAppSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RSessionAppSettings>;
 export type FeatureStatus = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureStatus = /*@__PURE__*/ S.String;
+
 export interface TimeSeriesForecastingSettings {
   Status?: FeatureStatus;
   AmazonForecastRoleArn?: string;
@@ -6116,6 +5747,7 @@ export const WorkspaceSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceSettings>;
 export type DataSourceName = "SalesforceGenie" | "Snowflake" | (string & {});
 export const DataSourceName = /*@__PURE__*/ S.String;
+
 export interface IdentityProviderOAuthSetting {
   DataSourceName?: DataSourceName;
   Status?: FeatureStatus;
@@ -6194,6 +5826,8 @@ export const CanvasAppSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CanvasAppSettings>;
 export type LifecycleManagement = "ENABLED" | "DISABLED" | (string & {});
 export const LifecycleManagement = /*@__PURE__*/ S.String;
+
+export type IdleTimeoutInMinutes = number;
 export interface IdleSettings {
   LifecycleManagement?: LifecycleManagement;
   IdleTimeoutInMinutes?: number;
@@ -6270,6 +5904,7 @@ export const JupyterLabAppSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JupyterLabAppSettings",
 }) as any as S.Schema<JupyterLabAppSettings>;
+export type SpaceEbsVolumeSizeInGb = number;
 export interface DefaultEbsStorageSettings {
   DefaultEbsVolumeSizeInGb?: number;
   MaximumEbsVolumeSizeInGb?: number;
@@ -6292,8 +5927,12 @@ export const DefaultSpaceStorageSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefaultSpaceStorageSettings",
 }) as any as S.Schema<DefaultSpaceStorageSettings>;
+export type LandingUri = string;
 export type StudioWebPortal = "ENABLED" | "DISABLED" | (string & {});
 export const StudioWebPortal = /*@__PURE__*/ S.String;
+
+export type Uid = number;
+export type Gid = number;
 export interface CustomPosixUserConfig {
   Uid?: number;
   Gid?: number;
@@ -6303,6 +5942,7 @@ export const CustomPosixUserConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomPosixUserConfig",
 }) as any as S.Schema<CustomPosixUserConfig>;
+export type FileSystemPath = string;
 export interface EFSFileSystemConfig {
   FileSystemId?: string;
   FileSystemPath?: string;
@@ -6327,6 +5967,8 @@ export const FSxLustreFileSystemConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FSxLustreFileSystemConfig",
 }) as any as S.Schema<FSxLustreFileSystemConfig>;
+export type String1024 = string;
+export type S3SchemaUri = string;
 export interface S3FileSystemConfig {
   MountPath?: string;
   S3Uri?: string;
@@ -6387,6 +6029,7 @@ export type MlTools =
   | "Evaluators"
   | (string & {});
 export const MlTools = /*@__PURE__*/ S.String;
+
 export type HiddenMlToolsList = MlTools[];
 export const HiddenMlToolsList = /*@__PURE__*/ S.Array(MlTools);
 export type HiddenAppTypesList = AppType[];
@@ -6395,6 +6038,8 @@ export type HiddenInstanceTypesList = AppInstanceType[];
 export const HiddenInstanceTypesList = /*@__PURE__*/ S.Array(AppInstanceType);
 export type SageMakerImageName = "sagemaker_distribution" | (string & {});
 export const SageMakerImageName = /*@__PURE__*/ S.String;
+
+export type ImageVersionAliasPattern = string;
 export type VersionAliasesList = string[];
 export const VersionAliasesList = /*@__PURE__*/ S.Array(S.String);
 export interface HiddenSageMakerImage {
@@ -6417,6 +6062,7 @@ export type ExecutionRoleSessionNameMode =
   | "USER_IDENTITY"
   | (string & {});
 export const ExecutionRoleSessionNameMode = /*@__PURE__*/ S.String;
+
 export interface StudioWebPortalSettings {
   HiddenMlTools?: MlTools[];
   HiddenAppTypes?: AppType[];
@@ -6443,6 +6089,7 @@ export type AutoMountHomeEFS =
   | "DefaultAsDomain"
   | (string & {});
 export const AutoMountHomeEFS = /*@__PURE__*/ S.String;
+
 export interface UserSettings {
   ExecutionRole?: string;
   SecurityGroups?: string[];
@@ -6508,6 +6155,7 @@ export type ExecutionRoleIdentityConfig =
   | "DISABLED"
   | (string & {});
 export const ExecutionRoleIdentityConfig = /*@__PURE__*/ S.String;
+
 export interface TrustedIdentityPropagationSettings {
   Status?: FeatureStatus;
 }
@@ -6516,6 +6164,7 @@ export const TrustedIdentityPropagationSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrustedIdentityPropagationSettings",
 }) as any as S.Schema<TrustedIdentityPropagationSettings>;
+export type AccountId = string;
 export type VpcOnlyTrustedAccounts = string[];
 export const VpcOnlyTrustedAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface DockerSettings {
@@ -6530,6 +6179,7 @@ export const DockerSettings = /*@__PURE__*/ S.suspend(() =>
     RootlessDocker: S.optional(FeatureStatus),
   }),
 ).annotate({ identifier: "DockerSettings" }) as any as S.Schema<DockerSettings>;
+export type QProfileArn = string;
 export interface AmazonQSettings {
   Status?: FeatureStatus;
   QProfileArn?: string;
@@ -6542,6 +6192,11 @@ export const AmazonQSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmazonQSettings",
 }) as any as S.Schema<AmazonQSettings>;
+export type RegionName = string;
+export type UnifiedStudioDomainId = string;
+export type UnifiedStudioProjectId = string;
+export type UnifiedStudioEnvironmentId = string;
+export type SingleSignOnApplicationArn = string;
 export interface UnifiedStudioSettings {
   StudioWebPortalAccess?: FeatureStatus;
   DomainAccountId?: string;
@@ -6568,6 +6223,7 @@ export const UnifiedStudioSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnifiedStudioSettings>;
 export type IPAddressType = "ipv4" | "dualstack" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
+
 export interface DomainSettings {
   SecurityGroupIds?: string[];
   RStudioServerProDomainSettings?: RStudioServerProDomainSettings;
@@ -6592,17 +6248,22 @@ export const DomainSettings = /*@__PURE__*/ S.suspend(() =>
     IpAddressType: S.optional(IPAddressType),
   }),
 ).annotate({ identifier: "DomainSettings" }) as any as S.Schema<DomainSettings>;
+export type VpcId = string;
 export type AppNetworkAccessType =
   | "PublicInternetOnly"
   | "VpcOnly"
   | (string & {});
 export const AppNetworkAccessType = /*@__PURE__*/ S.String;
+
 export type AppSecurityGroupManagement = "Service" | "Customer" | (string & {});
 export const AppSecurityGroupManagement = /*@__PURE__*/ S.String;
+
 export type HomeEfsFileSystemCreation = "Enabled" | "Disabled" | (string & {});
 export const HomeEfsFileSystemCreation = /*@__PURE__*/ S.String;
+
 export type TagPropagation = "ENABLED" | "DISABLED" | (string & {});
 export const TagPropagation = /*@__PURE__*/ S.String;
+
 export interface DefaultSpaceSettings {
   ExecutionRole?: string;
   SecurityGroups?: string[];
@@ -6673,6 +6334,7 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainRequest",
 }) as any as S.Schema<CreateDomainRequest>;
+export type DomainArn = string;
 export interface CreateDomainResponse {
   DomainArn?: string;
   DomainId?: string;
@@ -6709,6 +6371,9 @@ export type DeviceSubsetType =
   | "NAMECONTAINS"
   | (string & {});
 export const DeviceSubsetType = /*@__PURE__*/ S.String;
+
+export type Percentage = number;
+export type DeviceName = string;
 export type DeviceNames = string[];
 export const DeviceNames = /*@__PURE__*/ S.Array(S.String);
 export interface DeviceSelectionConfig {
@@ -6732,6 +6397,7 @@ export type FailureHandlingPolicy =
   | "DO_NOTHING"
   | (string & {});
 export const FailureHandlingPolicy = /*@__PURE__*/ S.String;
+
 export interface EdgeDeploymentConfig {
   FailureHandlingPolicy?: FailureHandlingPolicy;
 }
@@ -6784,6 +6450,7 @@ export const CreateEdgeDeploymentPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEdgeDeploymentPlanRequest",
 }) as any as S.Schema<CreateEdgeDeploymentPlanRequest>;
+export type EdgeDeploymentPlanArn = string;
 export interface CreateEdgeDeploymentPlanResponse {
   EdgeDeploymentPlanArn: string;
 }
@@ -6820,6 +6487,7 @@ export const CreateEdgeDeploymentStageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEdgeDeploymentStageResponse",
 }) as any as S.Schema<CreateEdgeDeploymentStageResponse>;
+export type EdgeVersion = string;
 export interface CreateEdgePackagingJobRequest {
   EdgePackagingJobName?: string;
   CompilationJobName?: string;
@@ -6860,17 +6528,22 @@ export const CreateEdgePackagingJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEdgePackagingJobResponse",
 }) as any as S.Schema<CreateEdgePackagingJobResponse>;
+export type EndpointConfigName = string;
 export type TrafficRoutingConfigType =
   | "ALL_AT_ONCE"
   | "CANARY"
   | "LINEAR"
   | (string & {});
 export const TrafficRoutingConfigType = /*@__PURE__*/ S.String;
+
+export type WaitIntervalInSeconds = number;
 export type CapacitySizeType =
   | "INSTANCE_COUNT"
   | "CAPACITY_PERCENT"
   | (string & {});
 export const CapacitySizeType = /*@__PURE__*/ S.String;
+
+export type CapacitySizeValue = number;
 export interface CapacitySize {
   Type?: CapacitySizeType;
   Value?: number;
@@ -6894,6 +6567,8 @@ export const TrafficRoutingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrafficRoutingConfig",
 }) as any as S.Schema<TrafficRoutingConfig>;
+export type TerminationWaitInSeconds = number;
+export type MaximumExecutionTimeoutInSeconds = number;
 export interface BlueGreenUpdatePolicy {
   TrafficRoutingConfiguration?: TrafficRoutingConfig;
   TerminationWaitInSeconds?: number;
@@ -6980,6 +6655,7 @@ export const CreateEndpointInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointInput",
 }) as any as S.Schema<CreateEndpointInput>;
+export type EndpointArn = string;
 export interface CreateEndpointOutput {
   EndpointArn: string;
 }
@@ -6988,6 +6664,10 @@ export const CreateEndpointOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointOutput",
 }) as any as S.Schema<CreateEndpointOutput>;
+export type VariantName = string;
+export type ModelName = string;
+export type InitialTaskCount = number;
+export type InstancePoolPriority = number;
 export interface InstancePool {
   InstanceType?: ProductionVariantInstanceType;
   ModelNameOverride?: string;
@@ -7002,6 +6682,8 @@ export const InstancePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstancePool" }) as any as S.Schema<InstancePool>;
 export type InstancePoolList = InstancePool[];
 export const InstancePoolList = /*@__PURE__*/ S.Array(InstancePool);
+export type VariantInstanceProvisionTimeoutInSeconds = number;
+export type VariantWeight = number;
 export type ProductionVariantAcceleratorType =
   | "ml.eia1.medium"
   | "ml.eia1.large"
@@ -7011,6 +6693,7 @@ export type ProductionVariantAcceleratorType =
   | "ml.eia2.xlarge"
   | (string & {});
 export const ProductionVariantAcceleratorType = /*@__PURE__*/ S.String;
+
 export interface ProductionVariantCoreDumpConfig {
   DestinationS3Uri?: string;
   KmsKeyId?: string;
@@ -7023,6 +6706,9 @@ export const ProductionVariantCoreDumpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductionVariantCoreDumpConfig",
 }) as any as S.Schema<ProductionVariantCoreDumpConfig>;
+export type ServerlessMemorySizeInMB = number;
+export type ServerlessMaxConcurrency = number;
+export type ServerlessProvisionedConcurrency = number;
 export interface ProductionVariantServerlessConfig {
   MemorySizeInMB?: number;
   MaxConcurrency?: number;
@@ -7037,16 +6723,27 @@ export const ProductionVariantServerlessConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductionVariantServerlessConfig",
 }) as any as S.Schema<ProductionVariantServerlessConfig>;
+export type ProductionVariantVolumeSizeInGB = number;
+export type ProductionVariantModelDataDownloadTimeoutInSeconds = number;
+export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds =
+  number;
+export type ProductionVariantSSMAccess = boolean;
 export type ManagedInstanceScalingStatus =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
 export const ManagedInstanceScalingStatus = /*@__PURE__*/ S.String;
+
+export type ManagedInstanceScalingMinInstanceCount = number;
+export type ManagedInstanceScalingMaxInstanceCount = number;
 export type ManagedInstanceScalingScaleInStrategy =
   | "IDLE_RELEASE"
   | "CONSOLIDATION"
   | (string & {});
 export const ManagedInstanceScalingScaleInStrategy = /*@__PURE__*/ S.String;
+
+export type ManagedInstanceScalingMaximumStepSize = number;
+export type ManagedInstanceScalingCooldownInMinutes = number;
 export interface ProductionVariantManagedInstanceScalingScaleInPolicy {
   Strategy?: ManagedInstanceScalingScaleInStrategy;
   MaximumStepSize?: number;
@@ -7086,6 +6783,7 @@ export type RoutingStrategy =
   | "RANDOM"
   | (string & {});
 export const RoutingStrategy = /*@__PURE__*/ S.String;
+
 export interface ProductionVariantRoutingConfig {
   RoutingStrategy?: RoutingStrategy;
 }
@@ -7102,10 +6800,13 @@ export type ProductionVariantInferenceAmiVersion =
   | "al2023-ami-sagemaker-inference-gpu-4-1"
   | (string & {});
 export const ProductionVariantInferenceAmiVersion = /*@__PURE__*/ S.String;
+
 export type CapacityReservationPreference =
   | "capacity-reservations-only"
   | (string & {});
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
+
+export type MlReservationArn = string;
 export interface ProductionVariantCapacityReservationConfig {
   CapacityReservationPreference?: CapacityReservationPreference;
   MlReservationArn?: string;
@@ -7167,8 +6868,11 @@ export const ProductionVariant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductionVariant>;
 export type ProductionVariantList = ProductionVariant[];
 export const ProductionVariantList = /*@__PURE__*/ S.Array(ProductionVariant);
+export type EnableCapture = boolean;
+export type SamplingPercentage = number;
 export type CaptureMode = "Input" | "Output" | "InputAndOutput" | (string & {});
 export const CaptureMode = /*@__PURE__*/ S.String;
+
 export interface CaptureOption {
   CaptureMode?: CaptureMode;
 }
@@ -7177,8 +6881,10 @@ export const CaptureOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CaptureOption" }) as any as S.Schema<CaptureOption>;
 export type CaptureOptionList = CaptureOption[];
 export const CaptureOptionList = /*@__PURE__*/ S.Array(CaptureOption);
+export type CsvContentType = string;
 export type CsvContentTypes = string[];
 export const CsvContentTypes = /*@__PURE__*/ S.Array(S.String);
+export type JsonContentType = string;
 export type JsonContentTypes = string[];
 export const JsonContentTypes = /*@__PURE__*/ S.Array(S.String);
 export interface CaptureContentTypeHeader {
@@ -7213,6 +6919,7 @@ export const DataCaptureConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataCaptureConfig",
 }) as any as S.Schema<DataCaptureConfig>;
+export type MaxConcurrentInvocationsPerInstance = number;
 export interface AsyncInferenceClientConfig {
   MaxConcurrentInvocationsPerInstance?: number;
 }
@@ -7221,11 +6928,13 @@ export const AsyncInferenceClientConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AsyncInferenceClientConfig",
 }) as any as S.Schema<AsyncInferenceClientConfig>;
+export type SnsTopicArn = string;
 export type AsyncNotificationTopicTypes =
   | "SUCCESS_NOTIFICATION_TOPIC"
   | "ERROR_NOTIFICATION_TOPIC"
   | (string & {});
 export const AsyncNotificationTopicTypes = /*@__PURE__*/ S.String;
+
 export type AsyncNotificationTopicTypeList = AsyncNotificationTopicTypes[];
 export const AsyncNotificationTopicTypeList = /*@__PURE__*/ S.Array(
   AsyncNotificationTopicTypes,
@@ -7272,6 +6981,16 @@ export const AsyncInferenceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AsyncInferenceConfig",
 }) as any as S.Schema<AsyncInferenceConfig>;
+export type ClarifyEnableExplanations = string;
+export type ClarifyFeaturesAttribute = string;
+export type ClarifyContentTemplate = string;
+export type ClarifyMaxRecordCount = number;
+export type ClarifyMaxPayloadInMB = number;
+export type ClarifyProbabilityIndex = number;
+export type ClarifyLabelIndex = number;
+export type ClarifyProbabilityAttribute = string;
+export type ClarifyLabelAttribute = string;
+export type ClarifyHeader = string;
 export type ClarifyLabelHeaders = string[];
 export const ClarifyLabelHeaders = /*@__PURE__*/ S.Array(S.String);
 export type ClarifyFeatureHeaders = string[];
@@ -7282,6 +7001,7 @@ export type ClarifyFeatureType =
   | "text"
   | (string & {});
 export const ClarifyFeatureType = /*@__PURE__*/ S.String;
+
 export type ClarifyFeatureTypes = ClarifyFeatureType[];
 export const ClarifyFeatureTypes = /*@__PURE__*/ S.Array(ClarifyFeatureType);
 export interface ClarifyInferenceConfig {
@@ -7314,6 +7034,8 @@ export const ClarifyInferenceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClarifyInferenceConfig",
 }) as any as S.Schema<ClarifyInferenceConfig>;
+export type ClarifyMimeType = string;
+export type ClarifyShapBaseline = string;
 export interface ClarifyShapBaselineConfig {
   MimeType?: string;
   ShapBaseline?: string;
@@ -7328,6 +7050,9 @@ export const ClarifyShapBaselineConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClarifyShapBaselineConfig",
 }) as any as S.Schema<ClarifyShapBaselineConfig>;
+export type ClarifyShapNumberOfSamples = number;
+export type ClarifyShapUseLogit = boolean;
+export type ClarifyShapSeed = number;
 export type ClarifyTextLanguage =
   | "af"
   | "sq"
@@ -7391,12 +7116,14 @@ export type ClarifyTextLanguage =
   | "xx"
   | (string & {});
 export const ClarifyTextLanguage = /*@__PURE__*/ S.String;
+
 export type ClarifyTextGranularity =
   | "token"
   | "sentence"
   | "paragraph"
   | (string & {});
 export const ClarifyTextGranularity = /*@__PURE__*/ S.String;
+
 export interface ClarifyTextConfig {
   Language?: ClarifyTextLanguage;
   Granularity?: ClarifyTextGranularity;
@@ -7449,6 +7176,8 @@ export const ExplainerConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExplainerConfig",
 }) as any as S.Schema<ExplainerConfig>;
+export type EnableEnhancedMetrics = boolean;
+export type EnableDetailedObservability = boolean;
 export type MetricPublishFrequencyInSeconds =
   | 10
   | 30
@@ -7456,10 +7185,9 @@ export type MetricPublishFrequencyInSeconds =
   | 120
   | 180
   | 240
-  | 300;
-export const MetricPublishFrequencyInSeconds = /*@__PURE__*/ S.Literals([
-  10, 30, 60, 120, 180, 240, 300,
-]);
+  | 300
+  | (number & {});
+export const MetricPublishFrequencyInSeconds = /*@__PURE__*/ S.Number;
 export interface MetricsConfig {
   EnableEnhancedMetrics?: boolean;
   EnableDetailedObservability?: boolean;
@@ -7516,6 +7244,7 @@ export const CreateEndpointConfigInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointConfigInput",
 }) as any as S.Schema<CreateEndpointConfigInput>;
+export type EndpointConfigArn = string;
 export interface CreateEndpointConfigOutput {
   EndpointConfigArn: string;
 }
@@ -7550,6 +7279,7 @@ export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExperimentRequest",
 }) as any as S.Schema<CreateExperimentRequest>;
+export type ExperimentArn = string;
 export interface CreateExperimentResponse {
   ExperimentArn?: string;
 }
@@ -7558,10 +7288,15 @@ export const CreateExperimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExperimentResponse",
 }) as any as S.Schema<CreateExperimentResponse>;
+export type FeatureGroupName = string;
+export type FeatureName = string;
 export type FeatureType = "Integral" | "Fractional" | "String" | (string & {});
 export const FeatureType = /*@__PURE__*/ S.String;
+
 export type CollectionType = "List" | "Set" | "Vector" | (string & {});
 export const CollectionType = /*@__PURE__*/ S.String;
+
+export type Dimension = number;
 export interface VectorConfig {
   Dimension?: number;
 }
@@ -7606,6 +7341,8 @@ export type TtlDurationUnit =
   | "Weeks"
   | (string & {});
 export const TtlDurationUnit = /*@__PURE__*/ S.String;
+
+export type TtlDurationValue = number;
 export interface TtlDuration {
   Unit?: TtlDurationUnit;
   Value?: number;
@@ -7615,6 +7352,7 @@ export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TtlDuration" }) as any as S.Schema<TtlDuration>;
 export type StorageType = "Standard" | "InMemory" | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
+
 export interface OnlineStoreConfig {
   SecurityConfig?: OnlineStoreSecurityConfig;
   EnableOnlineStore?: boolean;
@@ -7645,6 +7383,9 @@ export const S3StorageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3StorageConfig",
 }) as any as S.Schema<S3StorageConfig>;
+export type TableName = string;
+export type Catalog = string;
+export type Database = string;
 export interface DataCatalogConfig {
   TableName?: string;
   Catalog?: string;
@@ -7661,6 +7402,7 @@ export const DataCatalogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCatalogConfig>;
 export type TableFormat = "Default" | "Glue" | "Iceberg" | (string & {});
 export const TableFormat = /*@__PURE__*/ S.String;
+
 export interface OfflineStoreConfig {
   S3StorageConfig?: S3StorageConfig;
   DisableGlueTableCreation?: boolean;
@@ -7679,6 +7421,8 @@ export const OfflineStoreConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OfflineStoreConfig>;
 export type ThroughputMode = "OnDemand" | "Provisioned" | (string & {});
 export const ThroughputMode = /*@__PURE__*/ S.String;
+
+export type CapacityUnit = number;
 export interface ThroughputConfig {
   ThroughputMode?: ThroughputMode;
   ProvisionedReadCapacityUnits?: number;
@@ -7693,6 +7437,7 @@ export const ThroughputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ThroughputConfig",
 }) as any as S.Schema<ThroughputConfig>;
+export type Description = string;
 export interface CreateFeatureGroupRequest {
   FeatureGroupName?: string;
   RecordIdentifierFeatureName?: string;
@@ -7731,6 +7476,7 @@ export const CreateFeatureGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFeatureGroupRequest",
 }) as any as S.Schema<CreateFeatureGroupRequest>;
+export type FeatureGroupArn = string;
 export interface CreateFeatureGroupResponse {
   FeatureGroupArn: string;
 }
@@ -7739,11 +7485,13 @@ export const CreateFeatureGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFeatureGroupResponse",
 }) as any as S.Schema<CreateFeatureGroupResponse>;
+export type FlowDefinitionName = string;
 export type AwsManagedHumanLoopRequestSource =
   | "AWS/Rekognition/DetectModerationLabels/Image/V3"
   | "AWS/Textract/AnalyzeDocument/Forms/V1"
   | (string & {});
 export const AwsManagedHumanLoopRequestSource = /*@__PURE__*/ S.String;
+
 export interface HumanLoopRequestSource {
   AwsManagedHumanLoopRequestSource?: AwsManagedHumanLoopRequestSource;
 }
@@ -7756,6 +7504,7 @@ export const HumanLoopRequestSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HumanLoopRequestSource",
 }) as any as S.Schema<HumanLoopRequestSource>;
+export type HumanLoopActivationConditions = string;
 export interface HumanLoopActivationConditionsConfig {
   HumanLoopActivationConditions?: string;
 }
@@ -7776,8 +7525,19 @@ export const HumanLoopActivationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HumanLoopActivationConfig",
 }) as any as S.Schema<HumanLoopActivationConfig>;
+export type WorkteamArn = string;
+export type HumanTaskUiArn = string;
+export type FlowDefinitionTaskTitle = string;
+export type FlowDefinitionTaskDescription = string;
+export type FlowDefinitionTaskCount = number;
+export type FlowDefinitionTaskAvailabilityLifetimeInSeconds = number;
+export type FlowDefinitionTaskTimeLimitInSeconds = number;
+export type FlowDefinitionTaskKeyword = string;
 export type FlowDefinitionTaskKeywords = string[];
 export const FlowDefinitionTaskKeywords = /*@__PURE__*/ S.Array(S.String);
+export type Dollars = number;
+export type Cents = number;
+export type TenthFractionsOfACent = number;
 export interface USD {
   Dollars?: number;
   Cents?: number;
@@ -7868,6 +7628,7 @@ export const CreateFlowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowDefinitionRequest",
 }) as any as S.Schema<CreateFlowDefinitionRequest>;
+export type FlowDefinitionArn = string;
 export interface CreateFlowDefinitionResponse {
   FlowDefinitionArn: string;
 }
@@ -7876,8 +7637,13 @@ export const CreateFlowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowDefinitionResponse",
 }) as any as S.Schema<CreateFlowDefinitionResponse>;
+export type HubName = string;
+export type HubDescription = string;
+export type HubDisplayName = string;
+export type HubSearchKeyword = string;
 export type HubSearchKeywordList = string[];
 export const HubSearchKeywordList = /*@__PURE__*/ S.Array(S.String);
+export type S3OutputPath = string;
 export interface HubS3StorageConfig {
   S3OutputPath?: string;
 }
@@ -7916,6 +7682,7 @@ export const CreateHubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHubRequest",
 }) as any as S.Schema<CreateHubRequest>;
+export type HubArn = string;
 export interface CreateHubResponse {
   HubArn: string;
 }
@@ -7924,6 +7691,7 @@ export const CreateHubResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHubResponse",
 }) as any as S.Schema<CreateHubResponse>;
+export type HubNameOrArn = string;
 export type HubContentType =
   | "Model"
   | "Notebook"
@@ -7932,6 +7700,7 @@ export type HubContentType =
   | "JsonDoc"
   | (string & {});
 export const HubContentType = /*@__PURE__*/ S.String;
+
 export interface PresignedUrlAccessConfig {
   AcceptEula?: boolean;
   ExpectedS3Url?: string;
@@ -7944,6 +7713,8 @@ export const PresignedUrlAccessConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PresignedUrlAccessConfig",
 }) as any as S.Schema<PresignedUrlAccessConfig>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface CreateHubContentPresignedUrlsRequest {
   HubName?: string;
   HubContentType?: HubContentType;
@@ -7977,6 +7748,8 @@ export const CreateHubContentPresignedUrlsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateHubContentPresignedUrlsRequest",
 }) as any as S.Schema<CreateHubContentPresignedUrlsRequest>;
+export type LongS3Uri = string;
+export type LocalPath = string;
 export interface AuthorizedUrl {
   Url?: string;
   LocalPath?: string;
@@ -7999,6 +7772,7 @@ export const CreateHubContentPresignedUrlsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateHubContentPresignedUrlsResponse",
 }) as any as S.Schema<CreateHubContentPresignedUrlsResponse>;
+export type SageMakerPublicHubContentArn = string;
 export interface CreateHubContentReferenceRequest {
   HubName?: string;
   SageMakerPublicHubContentArn?: string;
@@ -8039,6 +7813,8 @@ export const CreateHubContentReferenceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHubContentReferenceResponse",
 }) as any as S.Schema<CreateHubContentReferenceResponse>;
+export type HumanTaskUiName = string;
+export type TemplateContent = string;
 export interface UiTemplate {
   Content?: string;
 }
@@ -8077,6 +7853,7 @@ export const CreateHumanTaskUiResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHumanTaskUiResponse",
 }) as any as S.Schema<CreateHumanTaskUiResponse>;
+export type HyperParameterTuningJobName = string;
 export type HyperParameterTuningJobStrategyType =
   | "Bayesian"
   | "Random"
@@ -8084,6 +7861,9 @@ export type HyperParameterTuningJobStrategyType =
   | "Grid"
   | (string & {});
 export const HyperParameterTuningJobStrategyType = /*@__PURE__*/ S.String;
+
+export type HyperbandStrategyMinResource = number;
+export type HyperbandStrategyMaxResource = number;
 export interface HyperbandStrategyConfig {
   MinResource?: number;
   MaxResource?: number;
@@ -8105,6 +7885,9 @@ export const HyperParameterTuningJobStrategyConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "HyperParameterTuningJobStrategyConfig",
 }) as any as S.Schema<HyperParameterTuningJobStrategyConfig>;
+export type MaxNumberOfTrainingJobs = number;
+export type MaxParallelTrainingJobs = number;
+export type HyperParameterTuningMaxRuntimeInSeconds = number;
 export interface ResourceLimits {
   MaxNumberOfTrainingJobs?: number;
   MaxParallelTrainingJobs?: number;
@@ -8117,6 +7900,7 @@ export const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
     MaxRuntimeInSeconds: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ResourceLimits" }) as any as S.Schema<ResourceLimits>;
+export type ParameterKey = string;
 export type HyperParameterScalingType =
   | "Auto"
   | "Linear"
@@ -8124,6 +7908,7 @@ export type HyperParameterScalingType =
   | "ReverseLogarithmic"
   | (string & {});
 export const HyperParameterScalingType = /*@__PURE__*/ S.String;
+
 export interface IntegerParameterRange {
   Name?: string;
   MinValue?: string;
@@ -8204,6 +7989,9 @@ export const ParameterRanges = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParameterRanges>;
 export type TrainingJobEarlyStoppingType = "Off" | "Auto" | (string & {});
 export const TrainingJobEarlyStoppingType = /*@__PURE__*/ S.String;
+
+export type TargetObjectiveMetricValue = number;
+export type MaxNumberOfTrainingJobsNotImproving = number;
 export interface BestObjectiveNotImproving {
   MaxNumberOfTrainingJobsNotImproving?: number;
 }
@@ -8214,6 +8002,7 @@ export const BestObjectiveNotImproving = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BestObjectiveNotImproving>;
 export type CompleteOnConvergence = "Disabled" | "Enabled" | (string & {});
 export const CompleteOnConvergence = /*@__PURE__*/ S.String;
+
 export interface ConvergenceDetected {
   CompleteOnConvergence?: CompleteOnConvergence;
 }
@@ -8236,6 +8025,7 @@ export const TuningJobCompletionCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TuningJobCompletionCriteria",
 }) as any as S.Schema<TuningJobCompletionCriteria>;
+export type RandomSeed = number;
 export interface HyperParameterTuningJobConfig {
   Strategy?: HyperParameterTuningJobStrategyType;
   StrategyConfig?: HyperParameterTuningJobStrategyConfig;
@@ -8262,6 +8052,9 @@ export const HyperParameterTuningJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HyperParameterTuningJobConfig",
 }) as any as S.Schema<HyperParameterTuningJobConfig>;
+export type HyperParameterTrainingJobDefinitionName = string;
+export type AlgorithmImage = string;
+export type ArnOrName = string;
 export interface HyperParameterAlgorithmSpecification {
   TrainingImage?: string;
   TrainingInputMode?: TrainingInputMode;
@@ -8283,6 +8076,8 @@ export type HyperParameterTuningAllocationStrategy =
   | "Prioritized"
   | (string & {});
 export const HyperParameterTuningAllocationStrategy = /*@__PURE__*/ S.String;
+
+export type VolumeSizeInGB = number;
 export interface HyperParameterTuningInstanceConfig {
   InstanceType?: TrainingInstanceType;
   InstanceCount?: number;
@@ -8331,12 +8126,15 @@ export const CheckpointConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckpointConfig",
 }) as any as S.Schema<CheckpointConfig>;
+export type MaximumRetryAttempts = number;
 export interface RetryStrategy {
   MaximumRetryAttempts?: number;
 }
 export const RetryStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaximumRetryAttempts: S.optional(S.Number) }),
 ).annotate({ identifier: "RetryStrategy" }) as any as S.Schema<RetryStrategy>;
+export type HyperParameterTrainingJobEnvironmentKey = string;
+export type HyperParameterTrainingJobEnvironmentValue = string;
 export type HyperParameterTrainingJobEnvironmentMap = {
   [key: string]: string | undefined;
 };
@@ -8412,6 +8210,7 @@ export type HyperParameterTuningJobWarmStartType =
   | "TransferLearning"
   | (string & {});
 export const HyperParameterTuningJobWarmStartType = /*@__PURE__*/ S.String;
+
 export interface HyperParameterTuningJobWarmStartConfig {
   ParentHyperParameterTuningJobs?: ParentHyperParameterTuningJob[];
   WarmStartType?: HyperParameterTuningJobWarmStartType;
@@ -8429,6 +8228,7 @@ export const HyperParameterTuningJobWarmStartConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HyperParameterTuningJobWarmStartConfig>;
 export type AutotuneMode = "Enabled" | (string & {});
 export const AutotuneMode = /*@__PURE__*/ S.String;
+
 export interface Autotune {
   Mode?: AutotuneMode;
 }
@@ -8468,6 +8268,7 @@ export const CreateHyperParameterTuningJobRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateHyperParameterTuningJobRequest",
 }) as any as S.Schema<CreateHyperParameterTuningJobRequest>;
+export type HyperParameterTuningJobArn = string;
 export interface CreateHyperParameterTuningJobResponse {
   HyperParameterTuningJobArn: string;
 }
@@ -8476,6 +8277,8 @@ export const CreateHyperParameterTuningJobResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateHyperParameterTuningJobResponse",
 }) as any as S.Schema<CreateHyperParameterTuningJobResponse>;
+export type ImageDescription = string;
+export type ImageDisplayName = string;
 export interface CreateImageRequest {
   Description?: string;
   DisplayName?: string;
@@ -8512,6 +8315,9 @@ export const CreateImageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImageResponse",
 }) as any as S.Schema<CreateImageResponse>;
+export type ImageBaseImage = string;
+export type ClientToken = string;
+export type SageMakerImageVersionAlias = string;
 export type SageMakerImageVersionAliases = string[];
 export const SageMakerImageVersionAliases = /*@__PURE__*/ S.Array(S.String);
 export type VendorGuidance =
@@ -8521,14 +8327,21 @@ export type VendorGuidance =
   | "ARCHIVED"
   | (string & {});
 export const VendorGuidance = /*@__PURE__*/ S.String;
+
 export type JobType =
   | "TRAINING"
   | "INFERENCE"
   | "NOTEBOOK_KERNEL"
   | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
+
+export type MLFramework = string;
+export type ProgrammingLang = string;
 export type Processor = "CPU" | "GPU" | (string & {});
 export const Processor = /*@__PURE__*/ S.String;
+
+export type Horovod = boolean;
+export type ReleaseNotes = string;
 export interface CreateImageVersionRequest {
   BaseImage?: string;
   ClientToken?: string;
@@ -8577,6 +8390,8 @@ export const CreateImageVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImageVersionResponse",
 }) as any as S.Schema<CreateImageVersionResponse>;
+export type InferenceComponentName = string;
+export type MetricsEndpointPath = string;
 export interface MetricsEndpoint {
   MetricsEndpointPath?: string;
   MetricPublishFrequencyInSeconds?: MetricPublishFrequencyInSeconds;
@@ -8630,6 +8445,9 @@ export const InferenceComponentStartupParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceComponentStartupParameters",
 }) as any as S.Schema<InferenceComponentStartupParameters>;
+export type NumberOfCpuCores = number;
+export type NumberOfAcceleratorDevices = number;
+export type MemoryInMb = number;
 export interface InferenceComponentComputeResourceRequirements {
   NumberOfCpuCoresRequired?: number;
   NumberOfAcceleratorDevicesRequired?: number;
@@ -8647,6 +8465,7 @@ export const InferenceComponentComputeResourceRequirements =
   ).annotate({
     identifier: "InferenceComponentComputeResourceRequirements",
   }) as any as S.Schema<InferenceComponentComputeResourceRequirements>;
+export type EnableCaching = boolean;
 export interface InferenceComponentDataCacheConfig {
   EnableCaching?: boolean;
 }
@@ -8660,10 +8479,13 @@ export type InferenceComponentPlacementStrategy =
   | "BINPACK"
   | (string & {});
 export const InferenceComponentPlacementStrategy = /*@__PURE__*/ S.String;
+
 export type AvailabilityZoneBalanceEnforcementMode =
   | "PERMISSIVE"
   | (string & {});
 export const AvailabilityZoneBalanceEnforcementMode = /*@__PURE__*/ S.String;
+
+export type AvailabilityZoneBalanceMaxImbalance = number;
 export interface InferenceComponentAvailabilityZoneBalance {
   EnforcementMode?: AvailabilityZoneBalanceEnforcementMode;
   MaxImbalance?: number;
@@ -8722,6 +8544,7 @@ export type InferenceComponentSpecificationList =
 export const InferenceComponentSpecificationList = /*@__PURE__*/ S.Array(
   InferenceComponentSpecification,
 );
+export type InferenceComponentCopyCount = number;
 export interface InferenceComponentRuntimeConfig {
   CopyCount?: number;
 }
@@ -8762,6 +8585,7 @@ export const CreateInferenceComponentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInferenceComponentInput",
 }) as any as S.Schema<CreateInferenceComponentInput>;
+export type InferenceComponentArn = string;
 export interface CreateInferenceComponentOutput {
   InferenceComponentArn: string;
 }
@@ -8770,8 +8594,10 @@ export const CreateInferenceComponentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInferenceComponentOutput",
 }) as any as S.Schema<CreateInferenceComponentOutput>;
+export type InferenceExperimentName = string;
 export type InferenceExperimentType = "ShadowMode" | (string & {});
 export const InferenceExperimentType = /*@__PURE__*/ S.String;
+
 export interface InferenceExperimentSchedule {
   StartTime?: Date;
   EndTime?: Date;
@@ -8784,8 +8610,12 @@ export const InferenceExperimentSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceExperimentSchedule",
 }) as any as S.Schema<InferenceExperimentSchedule>;
+export type InferenceExperimentDescription = string;
+export type ModelVariantName = string;
 export type ModelInfrastructureType = "RealTimeInference" | (string & {});
 export const ModelInfrastructureType = /*@__PURE__*/ S.String;
+
+export type TaskCount = number;
 export interface RealTimeInferenceConfig {
   InstanceType?: ProductionVariantInstanceType;
   InstanceCount?: number;
@@ -8909,6 +8739,7 @@ export const CreateInferenceExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInferenceExperimentRequest",
 }) as any as S.Schema<CreateInferenceExperimentRequest>;
+export type InferenceExperimentArn = string;
 export interface CreateInferenceExperimentResponse {
   InferenceExperimentArn: string;
 }
@@ -8917,10 +8748,17 @@ export const CreateInferenceExperimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInferenceExperimentResponse",
 }) as any as S.Schema<CreateInferenceExperimentResponse>;
+export type RecommendationJobName = string;
 export type RecommendationJobType = "Default" | "Advanced" | (string & {});
 export const RecommendationJobType = /*@__PURE__*/ S.String;
+
+export type JobDurationInSeconds = number;
 export type TrafficType = "PHASES" | "STAIRS" | (string & {});
 export const TrafficType = /*@__PURE__*/ S.String;
+
+export type InitialNumberOfUsers = number;
+export type SpawnRate = number;
+export type TrafficDurationInSeconds = number;
 export interface Phase {
   InitialNumberOfUsers?: number;
   SpawnRate?: number;
@@ -8935,6 +8773,8 @@ export const Phase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Phase" }) as any as S.Schema<Phase>;
 export type Phases = Phase[];
 export const Phases = /*@__PURE__*/ S.Array(Phase);
+export type NumberOfSteps = number;
+export type UsersPerStep = number;
 export interface Stairs {
   DurationInSeconds?: number;
   NumberOfSteps?: number;
@@ -8959,6 +8799,8 @@ export const TrafficPattern = /*@__PURE__*/ S.suspend(() =>
     Stairs: S.optional(Stairs),
   }),
 ).annotate({ identifier: "TrafficPattern" }) as any as S.Schema<TrafficPattern>;
+export type MaxNumberOfTests = number;
+export type MaxParallelOfTests = number;
 export interface RecommendationJobResourceLimit {
   MaxNumberOfTests?: number;
   MaxParallelOfTests?: number;
@@ -8971,6 +8813,9 @@ export const RecommendationJobResourceLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecommendationJobResourceLimit",
 }) as any as S.Schema<RecommendationJobResourceLimit>;
+export type InferenceSpecificationName = string;
+export type String64 = string;
+export type String128 = string;
 export type CategoricalParameterRangeValues = string[];
 export const CategoricalParameterRangeValues = /*@__PURE__*/ S.Array(S.String);
 export interface CategoricalParameter {
@@ -9016,6 +8861,8 @@ export type EndpointInputConfigurations = EndpointInputConfiguration[];
 export const EndpointInputConfigurations = /*@__PURE__*/ S.Array(
   EndpointInputConfiguration,
 );
+export type RecommendationJobFrameworkVersion = string;
+export type RecommendationJobSupportedContentType = string;
 export type RecommendationJobSupportedContentTypes = string[];
 export const RecommendationJobSupportedContentTypes = /*@__PURE__*/ S.Array(
   S.String,
@@ -9041,6 +8888,9 @@ export type RecommendationJobSupportedEndpointType =
   | "Serverless"
   | (string & {});
 export const RecommendationJobSupportedEndpointType = /*@__PURE__*/ S.String;
+
+export type RecommendationJobDataInputConfig = string;
+export type RecommendationJobSupportedResponseMIMEType = string;
 export type RecommendationJobSupportedResponseMIMETypes = string[];
 export const RecommendationJobSupportedResponseMIMETypes =
   /*@__PURE__*/ S.Array(S.String);
@@ -9082,10 +8932,12 @@ export const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointInfo" }) as any as S.Schema<EndpointInfo>;
 export type Endpoints = EndpointInfo[];
 export const Endpoints = /*@__PURE__*/ S.Array(EndpointInfo);
+export type RecommendationJobVpcSecurityGroupId = string;
 export type RecommendationJobVpcSecurityGroupIds = string[];
 export const RecommendationJobVpcSecurityGroupIds = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type RecommendationJobVpcSubnetId = string;
 export type RecommendationJobVpcSubnets = string[];
 export const RecommendationJobVpcSubnets = /*@__PURE__*/ S.Array(S.String);
 export interface RecommendationJobVpcConfig {
@@ -9128,6 +8980,7 @@ export const RecommendationJobInputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecommendationJobInputConfig",
 }) as any as S.Schema<RecommendationJobInputConfig>;
+export type RecommendationJobDescription = string;
 export interface ModelLatencyThreshold {
   Percentile?: string;
   ValueInMilliseconds?: number;
@@ -9146,6 +8999,7 @@ export const ModelLatencyThresholds = /*@__PURE__*/ S.Array(
 );
 export type FlatInvocations = "Continue" | "Stop" | (string & {});
 export const FlatInvocations = /*@__PURE__*/ S.String;
+
 export interface RecommendationJobStoppingConditions {
   MaxInvocations?: number;
   ModelLatencyThresholds?: ModelLatencyThreshold[];
@@ -9215,6 +9069,7 @@ export const CreateInferenceRecommendationsJobRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateInferenceRecommendationsJobRequest",
 }) as any as S.Schema<CreateInferenceRecommendationsJobRequest>;
+export type RecommendationJobArn = string;
 export interface CreateInferenceRecommendationsJobResponse {
   JobArn: string;
 }
@@ -9224,8 +9079,12 @@ export const CreateInferenceRecommendationsJobResponse =
   ).annotate({
     identifier: "CreateInferenceRecommendationsJobResponse",
   }) as any as S.Schema<CreateInferenceRecommendationsJobResponse>;
+export type JobName = string;
 export type JobCategory = "AgentRFT" | "AgentRFTEvaluation" | (string & {});
 export const JobCategory = /*@__PURE__*/ S.String;
+
+export type JobSchemaVersion = string;
+export type JobConfigDocument = string;
 export interface CreateJobRequest {
   JobName?: string;
   RoleArn?: string;
@@ -9256,6 +9115,7 @@ export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobRequest",
 }) as any as S.Schema<CreateJobRequest>;
+export type JobArn = string;
 export interface CreateJobResponse {
   JobArn: string;
 }
@@ -9264,6 +9124,8 @@ export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobResponse",
 }) as any as S.Schema<CreateJobResponse>;
+export type LabelingJobName = string;
+export type LabelAttributeName = string;
 export interface LabelingJobS3DataSource {
   ManifestS3Uri?: string;
 }
@@ -9297,6 +9159,7 @@ export type ContentClassifier =
   | "FreeOfAdultContent"
   | (string & {});
 export const ContentClassifier = /*@__PURE__*/ S.String;
+
 export type ContentClassifiers = ContentClassifier[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface LabelingJobDataAttributes {
@@ -9333,6 +9196,8 @@ export const LabelingJobOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LabelingJobOutputConfig",
 }) as any as S.Schema<LabelingJobOutputConfig>;
+export type MaxHumanLabeledObjectCount = number;
+export type MaxPercentageOfInputDatasetLabeled = number;
 export interface LabelingJobStoppingConditions {
   MaxHumanLabeledObjectCount?: number;
   MaxPercentageOfInputDatasetLabeled?: number;
@@ -9345,6 +9210,8 @@ export const LabelingJobStoppingConditions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LabelingJobStoppingConditions",
 }) as any as S.Schema<LabelingJobStoppingConditions>;
+export type LabelingJobAlgorithmSpecificationArn = string;
+export type ModelArn = string;
 export interface LabelingJobResourceConfig {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
@@ -9381,8 +9248,16 @@ export const UiConfig = /*@__PURE__*/ S.suspend(() =>
     HumanTaskUiArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "UiConfig" }) as any as S.Schema<UiConfig>;
+export type LambdaFunctionArn = string;
+export type TaskKeyword = string;
 export type TaskKeywords = string[];
 export const TaskKeywords = /*@__PURE__*/ S.Array(S.String);
+export type TaskTitle = string;
+export type TaskDescription = string;
+export type NumberOfHumanWorkersPerDataObject = number;
+export type TaskTimeLimitInSeconds = number;
+export type TaskAvailabilityLifetimeInSeconds = number;
+export type MaxConcurrentTaskCount = number;
 export interface AnnotationConsolidationConfig {
   AnnotationConsolidationLambdaArn?: string;
 }
@@ -9461,6 +9336,7 @@ export const CreateLabelingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLabelingJobRequest",
 }) as any as S.Schema<CreateLabelingJobRequest>;
+export type LabelingJobArn = string;
 export interface CreateLabelingJobResponse {
   LabelingJobArn: string;
 }
@@ -9469,13 +9345,17 @@ export const CreateLabelingJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLabelingJobResponse",
 }) as any as S.Schema<CreateLabelingJobResponse>;
+export type MlflowAppName = string;
 export type ModelRegistrationMode =
   | "AutoModelRegistrationEnabled"
   | "AutoModelRegistrationDisabled"
   | (string & {});
 export const ModelRegistrationMode = /*@__PURE__*/ S.String;
+
+export type WeeklyMaintenanceWindowStart = string;
 export type AccountDefaultStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AccountDefaultStatus = /*@__PURE__*/ S.String;
+
 export type DefaultDomainIdList = string[];
 export const DefaultDomainIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateMlflowAppRequest {
@@ -9512,6 +9392,7 @@ export const CreateMlflowAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMlflowAppRequest",
 }) as any as S.Schema<CreateMlflowAppRequest>;
+export type MlflowAppArn = string;
 export interface CreateMlflowAppResponse {
   Arn?: string;
 }
@@ -9520,8 +9401,11 @@ export const CreateMlflowAppResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMlflowAppResponse",
 }) as any as S.Schema<CreateMlflowAppResponse>;
+export type TrackingServerName = string;
 export type TrackingServerSize = "Small" | "Medium" | "Large" | (string & {});
 export const TrackingServerSize = /*@__PURE__*/ S.String;
+
+export type MlflowVersion = string;
 export interface CreateMlflowTrackingServerRequest {
   TrackingServerName?: string;
   ArtifactStoreUri?: string;
@@ -9560,6 +9444,7 @@ export const CreateMlflowTrackingServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMlflowTrackingServerRequest",
 }) as any as S.Schema<CreateMlflowTrackingServerRequest>;
+export type TrackingServerArn = string;
 export interface CreateMlflowTrackingServerResponse {
   TrackingServerArn?: string;
 }
@@ -9570,6 +9455,8 @@ export const CreateMlflowTrackingServerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMlflowTrackingServerResponse>;
 export type RepositoryAccessMode = "Platform" | "Vpc" | (string & {});
 export const RepositoryAccessMode = /*@__PURE__*/ S.String;
+
+export type RepositoryCredentialsProviderArn = string;
 export interface RepositoryAuthConfig {
   RepositoryCredentialsProviderArn?: string;
 }
@@ -9590,8 +9477,11 @@ export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageConfig" }) as any as S.Schema<ImageConfig>;
 export type ContainerMode = "SingleModel" | "MultiModel" | (string & {});
 export const ContainerMode = /*@__PURE__*/ S.String;
+
+export type VersionedArnOrName = string;
 export type ModelCacheSetting = "Enabled" | "Disabled" | (string & {});
 export const ModelCacheSetting = /*@__PURE__*/ S.String;
+
 export interface MultiModelConfig {
   ModelCacheSetting?: ModelCacheSetting;
 }
@@ -9637,6 +9527,7 @@ export const ContainerDefinitionList =
   /*@__PURE__*/ S.Array(ContainerDefinition);
 export type InferenceExecutionMode = "Serial" | "Direct" | (string & {});
 export const InferenceExecutionMode = /*@__PURE__*/ S.String;
+
 export interface InferenceExecutionConfig {
   Mode?: InferenceExecutionMode;
 }
@@ -9789,6 +9680,7 @@ export const ModelCardSecurityConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelCardSecurityConfig",
 }) as any as S.Schema<ModelCardSecurityConfig>;
+export type ModelCardContent = string | redacted.Redacted<string>;
 export type ModelCardStatus =
   | "Draft"
   | "PendingReview"
@@ -9796,6 +9688,7 @@ export type ModelCardStatus =
   | "Archived"
   | (string & {});
 export const ModelCardStatus = /*@__PURE__*/ S.String;
+
 export interface CreateModelCardRequest {
   ModelCardName?: string;
   SecurityConfig?: ModelCardSecurityConfig;
@@ -9824,6 +9717,7 @@ export const CreateModelCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelCardRequest",
 }) as any as S.Schema<CreateModelCardRequest>;
+export type ModelCardArn = string;
 export interface CreateModelCardResponse {
   ModelCardArn: string;
 }
@@ -9832,6 +9726,7 @@ export const CreateModelCardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelCardResponse",
 }) as any as S.Schema<CreateModelCardResponse>;
+export type ModelCardNameOrArn = string;
 export interface ModelCardExportOutputConfig {
   S3OutputPath?: string;
 }
@@ -9866,6 +9761,7 @@ export const CreateModelCardExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelCardExportJobRequest",
 }) as any as S.Schema<CreateModelCardExportJobRequest>;
+export type ModelCardExportJobArn = string;
 export interface CreateModelCardExportJobResponse {
   ModelCardExportJobArn: string;
 }
@@ -10018,6 +9914,7 @@ export const SourceAlgorithmSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceAlgorithmSpecification",
 }) as any as S.Schema<SourceAlgorithmSpecification>;
+export type ContentDigest = string;
 export interface MetricsSource {
   ContentType?: string;
   ContentDigest?: string;
@@ -10084,6 +9981,8 @@ export const ModelMetrics = /*@__PURE__*/ S.suspend(() =>
     Explainability: S.optional(Explainability),
   }),
 ).annotate({ identifier: "ModelMetrics" }) as any as S.Schema<ModelMetrics>;
+export type CustomerMetadataKey = string;
+export type CustomerMetadataValue = string;
 export type CustomerMetadataMap = { [key: string]: string | undefined };
 export const CustomerMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -10197,6 +10096,8 @@ export const AdditionalInferenceSpecifications = /*@__PURE__*/ S.Array(
 );
 export type SkipModelValidation = "All" | "None" | (string & {});
 export const SkipModelValidation = /*@__PURE__*/ S.String;
+
+export type ModelPackageSourceUri = string;
 export interface ModelPackageSecurityConfig {
   KmsKeyId?: string;
 }
@@ -10217,6 +10118,7 @@ export const ModelPackageModelCard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelPackageModelCard",
 }) as any as S.Schema<ModelPackageModelCard>;
+export type StageDescription = string;
 export interface ModelLifeCycle {
   Stage?: string;
   StageStatus?: string;
@@ -10231,6 +10133,7 @@ export const ModelLifeCycle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelLifeCycle" }) as any as S.Schema<ModelLifeCycle>;
 export type ManagedStorageType = "Restricted" | (string & {});
 export const ManagedStorageType = /*@__PURE__*/ S.String;
+
 export interface CreateModelPackageInput {
   ModelPackageName?: string;
   ModelPackageGroupName?: string;
@@ -10343,6 +10246,7 @@ export const CreateModelPackageGroupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelPackageGroupInput",
 }) as any as S.Schema<CreateModelPackageGroupInput>;
+export type ModelPackageGroupArn = string;
 export interface CreateModelPackageGroupOutput {
   ModelPackageGroupArn: string;
 }
@@ -10369,6 +10273,7 @@ export type MonitoringProblemType =
   | "Regression"
   | (string & {});
 export const MonitoringProblemType = /*@__PURE__*/ S.String;
+
 export interface ModelQualityAppSpecification {
   ImageUri?: string;
   ContainerEntrypoint?: string[];
@@ -10452,6 +10357,8 @@ export const CreateModelQualityJobDefinitionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateModelQualityJobDefinitionResponse",
 }) as any as S.Schema<CreateModelQualityJobDefinitionResponse>;
+export type MonitoringScheduleName = string;
+export type ScheduleExpression = string;
 export interface ScheduleConfig {
   ScheduleExpression?: string;
   DataAnalysisStartTime?: string;
@@ -10555,6 +10462,7 @@ export type MonitoringType =
   | "ModelExplainability"
   | (string & {});
 export const MonitoringType = /*@__PURE__*/ S.String;
+
 export interface MonitoringScheduleConfig {
   ScheduleConfig?: ScheduleConfig;
   MonitoringJobDefinition?: MonitoringJobDefinition;
@@ -10595,6 +10503,7 @@ export const CreateMonitoringScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitoringScheduleRequest",
 }) as any as S.Schema<CreateMonitoringScheduleRequest>;
+export type MonitoringScheduleArn = string;
 export interface CreateMonitoringScheduleResponse {
   MonitoringScheduleArn: string;
 }
@@ -10603,6 +10512,7 @@ export const CreateMonitoringScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitoringScheduleResponse",
 }) as any as S.Schema<CreateMonitoringScheduleResponse>;
+export type NotebookInstanceName = string;
 export type InstanceType =
   | "ml.t2.medium"
   | "ml.t2.large"
@@ -10789,8 +10699,12 @@ export type InstanceType =
   | "ml.g6e.48xlarge"
   | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
+
+export type NotebookInstanceLifecycleConfigName = string;
 export type DirectInternetAccess = "Enabled" | "Disabled" | (string & {});
 export const DirectInternetAccess = /*@__PURE__*/ S.String;
+
+export type NotebookInstanceVolumeSizeInGB = number;
 export type NotebookInstanceAcceleratorType =
   | "ml.eia1.medium"
   | "ml.eia1.large"
@@ -10800,17 +10714,22 @@ export type NotebookInstanceAcceleratorType =
   | "ml.eia2.xlarge"
   | (string & {});
 export const NotebookInstanceAcceleratorType = /*@__PURE__*/ S.String;
+
 export type NotebookInstanceAcceleratorTypes =
   NotebookInstanceAcceleratorType[];
 export const NotebookInstanceAcceleratorTypes = /*@__PURE__*/ S.Array(
   NotebookInstanceAcceleratorType,
 );
+export type CodeRepositoryNameOrUrl = string;
 export type AdditionalCodeRepositoryNamesOrUrls = string[];
 export const AdditionalCodeRepositoryNamesOrUrls = /*@__PURE__*/ S.Array(
   S.String,
 );
 export type RootAccess = "Enabled" | "Disabled" | (string & {});
 export const RootAccess = /*@__PURE__*/ S.String;
+
+export type PlatformIdentifier = string;
+export type MinimumInstanceMetadataServiceVersion = string;
 export interface InstanceMetadataServiceConfiguration {
   MinimumInstanceMetadataServiceVersion?: string;
 }
@@ -10874,6 +10793,7 @@ export const CreateNotebookInstanceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotebookInstanceInput",
 }) as any as S.Schema<CreateNotebookInstanceInput>;
+export type NotebookInstanceArn = string;
 export interface CreateNotebookInstanceOutput {
   NotebookInstanceArn?: string;
 }
@@ -10882,6 +10802,7 @@ export const CreateNotebookInstanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotebookInstanceOutput",
 }) as any as S.Schema<CreateNotebookInstanceOutput>;
+export type NotebookInstanceLifecycleConfigContent = string;
 export interface NotebookInstanceLifecycleHook {
   Content?: string;
 }
@@ -10922,6 +10843,7 @@ export const CreateNotebookInstanceLifecycleConfigInput =
   ).annotate({
     identifier: "CreateNotebookInstanceLifecycleConfigInput",
   }) as any as S.Schema<CreateNotebookInstanceLifecycleConfigInput>;
+export type NotebookInstanceLifecycleConfigArn = string;
 export interface CreateNotebookInstanceLifecycleConfigOutput {
   NotebookInstanceLifecycleConfigArn?: string;
 }
@@ -10933,6 +10855,7 @@ export const CreateNotebookInstanceLifecycleConfigOutput =
   ).annotate({
     identifier: "CreateNotebookInstanceLifecycleConfigOutput",
   }) as any as S.Schema<CreateNotebookInstanceLifecycleConfigOutput>;
+export type OptimizationModelAcceptEula = boolean;
 export interface OptimizationModelAccessConfig {
   AcceptEula?: boolean;
 }
@@ -11018,6 +10941,8 @@ export type OptimizationJobDeploymentInstanceType =
   | "ml.trn1n.32xlarge"
   | (string & {});
 export const OptimizationJobDeploymentInstanceType = /*@__PURE__*/ S.String;
+
+export type OptimizationJobMaxInstanceCount = number;
 export type OptimizationJobEnvironmentVariables = {
   [key: string]: string | undefined;
 };
@@ -11025,6 +10950,7 @@ export const OptimizationJobEnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type OptimizationContainerImage = string;
 export interface ModelQuantizationConfig {
   Image?: string;
   OverrideEnvironment?: { [key: string]: string | undefined };
@@ -11063,11 +10989,13 @@ export const ModelShardingConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelShardingConfig>;
 export type ModelSpeculativeDecodingTechnique = "EAGLE" | (string & {});
 export const ModelSpeculativeDecodingTechnique = /*@__PURE__*/ S.String;
+
 export type ModelSpeculativeDecodingS3DataType =
   | "S3Prefix"
   | "ManifestFile"
   | (string & {});
 export const ModelSpeculativeDecodingS3DataType = /*@__PURE__*/ S.String;
+
 export interface ModelSpeculativeDecodingTrainingDataSource {
   S3Uri?: string;
   S3DataType?: ModelSpeculativeDecodingS3DataType;
@@ -11140,8 +11068,10 @@ export const OptimizationJobOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OptimizationJobOutputConfig",
 }) as any as S.Schema<OptimizationJobOutputConfig>;
+export type OptimizationVpcSecurityGroupId = string;
 export type OptimizationVpcSecurityGroupIds = string[];
 export const OptimizationVpcSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type OptimizationVpcSubnetId = string;
 export type OptimizationVpcSubnets = string[];
 export const OptimizationVpcSubnets = /*@__PURE__*/ S.Array(S.String);
 export interface OptimizationVpcConfig {
@@ -11196,6 +11126,7 @@ export const CreateOptimizationJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOptimizationJobRequest",
 }) as any as S.Schema<CreateOptimizationJobRequest>;
+export type OptimizationJobArn = string;
 export interface CreateOptimizationJobResponse {
   OptimizationJobArn: string;
 }
@@ -11204,6 +11135,7 @@ export const CreateOptimizationJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOptimizationJobResponse",
 }) as any as S.Schema<CreateOptimizationJobResponse>;
+export type PartnerAppName = string;
 export type PartnerAppType =
   | "lakera-guard"
   | "comet"
@@ -11211,6 +11143,8 @@ export type PartnerAppType =
   | "fiddler"
   | (string & {});
 export const PartnerAppType = /*@__PURE__*/ S.String;
+
+export type WeeklyScheduleTimeFormat = string;
 export interface PartnerAppMaintenanceConfig {
   MaintenanceWindowStart?: string;
 }
@@ -11226,6 +11160,7 @@ export const PartnerAppArguments = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type GroupNamePattern = string;
 export type AssignedGroupPatternsList = string[];
 export const AssignedGroupPatternsList = /*@__PURE__*/ S.Array(S.String);
 export type GroupPatternsList = string[];
@@ -11260,6 +11195,7 @@ export const PartnerAppConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartnerAppConfig>;
 export type PartnerAppAuthType = "IAM" | (string & {});
 export const PartnerAppAuthType = /*@__PURE__*/ S.String;
+
 export interface CreatePartnerAppRequest {
   Name?: string;
   Type?: PartnerAppType;
@@ -11302,6 +11238,7 @@ export const CreatePartnerAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePartnerAppRequest",
 }) as any as S.Schema<CreatePartnerAppRequest>;
+export type PartnerAppArn = string;
 export interface CreatePartnerAppResponse {
   Arn?: string;
 }
@@ -11310,6 +11247,8 @@ export const CreatePartnerAppResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePartnerAppResponse",
 }) as any as S.Schema<CreatePartnerAppResponse>;
+export type ExpiresInSeconds = number;
+export type SessionExpirationDurationInSeconds = number;
 export interface CreatePartnerAppPresignedUrlRequest {
   Arn?: string;
   ExpiresInSeconds?: number;
@@ -11334,6 +11273,7 @@ export const CreatePartnerAppPresignedUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePartnerAppPresignedUrlRequest",
 }) as any as S.Schema<CreatePartnerAppPresignedUrlRequest>;
+export type String2048 = string;
 export interface CreatePartnerAppPresignedUrlResponse {
   Url?: string;
 }
@@ -11342,6 +11282,11 @@ export const CreatePartnerAppPresignedUrlResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreatePartnerAppPresignedUrlResponse",
 }) as any as S.Schema<CreatePartnerAppPresignedUrlResponse>;
+export type PipelineName = string;
+export type PipelineDefinition = string;
+export type BucketName = string;
+export type Key = string;
+export type VersionId = string;
 export interface PipelineDefinitionS3Location {
   Bucket?: string;
   ObjectKey?: string;
@@ -11356,6 +11301,9 @@ export const PipelineDefinitionS3Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipelineDefinitionS3Location",
 }) as any as S.Schema<PipelineDefinitionS3Location>;
+export type PipelineDescription = string;
+export type IdempotencyToken = string;
+export type MaxParallelExecutionSteps = number;
 export interface ParallelismConfiguration {
   MaxParallelExecutionSteps?: number;
 }
@@ -11400,6 +11348,7 @@ export const CreatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipelineRequest",
 }) as any as S.Schema<CreatePipelineRequest>;
+export type PipelineArn = string;
 export interface CreatePipelineResponse {
   PipelineArn?: string;
 }
@@ -11438,6 +11387,7 @@ export const CreatePresignedDomainUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePresignedDomainUrlRequest",
 }) as any as S.Schema<CreatePresignedDomainUrlRequest>;
+export type PresignedDomainUrl = string;
 export interface CreatePresignedDomainUrlResponse {
   AuthorizedUrl?: string;
 }
@@ -11470,6 +11420,7 @@ export const CreatePresignedMlflowAppUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePresignedMlflowAppUrlRequest",
 }) as any as S.Schema<CreatePresignedMlflowAppUrlRequest>;
+export type MlflowAppUrl = string;
 export interface CreatePresignedMlflowAppUrlResponse {
   AuthorizedUrl?: string;
 }
@@ -11503,6 +11454,7 @@ export const CreatePresignedMlflowTrackingServerUrlRequest =
   ).annotate({
     identifier: "CreatePresignedMlflowTrackingServerUrlRequest",
   }) as any as S.Schema<CreatePresignedMlflowTrackingServerUrlRequest>;
+export type TrackingServerUrl = string;
 export interface CreatePresignedMlflowTrackingServerUrlResponse {
   AuthorizedUrl?: string;
 }
@@ -11535,6 +11487,7 @@ export const CreatePresignedNotebookInstanceUrlInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreatePresignedNotebookInstanceUrlInput",
 }) as any as S.Schema<CreatePresignedNotebookInstanceUrlInput>;
+export type NotebookInstanceUrl = string;
 export interface CreatePresignedNotebookInstanceUrlOutput {
   AuthorizedUrl?: string;
 }
@@ -11543,10 +11496,13 @@ export const CreatePresignedNotebookInstanceUrlOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreatePresignedNotebookInstanceUrlOutput",
 }) as any as S.Schema<CreatePresignedNotebookInstanceUrlOutput>;
+export type AppManaged = boolean;
 export type ProcessingS3DataType = "ManifestFile" | "S3Prefix" | (string & {});
 export const ProcessingS3DataType = /*@__PURE__*/ S.String;
+
 export type ProcessingS3CompressionType = "None" | "Gzip" | (string & {});
 export const ProcessingS3CompressionType = /*@__PURE__*/ S.String;
+
 export interface ProcessingS3Input {
   S3Uri?: string;
   LocalPath?: string;
@@ -11567,6 +11523,10 @@ export const ProcessingS3Input = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProcessingS3Input",
 }) as any as S.Schema<ProcessingS3Input>;
+export type AthenaCatalog = string;
+export type AthenaDatabase = string;
+export type AthenaQueryString = string;
+export type AthenaWorkGroup = string;
 export type AthenaResultFormat =
   | "PARQUET"
   | "ORC"
@@ -11575,12 +11535,14 @@ export type AthenaResultFormat =
   | "TEXTFILE"
   | (string & {});
 export const AthenaResultFormat = /*@__PURE__*/ S.String;
+
 export type AthenaResultCompressionType =
   | "GZIP"
   | "SNAPPY"
   | "ZLIB"
   | (string & {});
 export const AthenaResultCompressionType = /*@__PURE__*/ S.String;
+
 export interface AthenaDatasetDefinition {
   Catalog?: string;
   Database?: string;
@@ -11605,8 +11567,13 @@ export const AthenaDatasetDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AthenaDatasetDefinition",
 }) as any as S.Schema<AthenaDatasetDefinition>;
+export type RedshiftClusterId = string;
+export type RedshiftDatabase = string;
+export type RedshiftUserName = string;
+export type RedshiftQueryString = string;
 export type RedshiftResultFormat = "PARQUET" | "CSV" | (string & {});
 export const RedshiftResultFormat = /*@__PURE__*/ S.String;
+
 export type RedshiftResultCompressionType =
   | "None"
   | "GZIP"
@@ -11615,6 +11582,7 @@ export type RedshiftResultCompressionType =
   | "SNAPPY"
   | (string & {});
 export const RedshiftResultCompressionType = /*@__PURE__*/ S.String;
+
 export interface RedshiftDatasetDefinition {
   ClusterId?: string;
   Database?: string;
@@ -11646,8 +11614,10 @@ export type DataDistributionType =
   | "ShardedByS3Key"
   | (string & {});
 export const DataDistributionType = /*@__PURE__*/ S.String;
+
 export type InputMode = "Pipe" | "File" | (string & {});
 export const InputMode = /*@__PURE__*/ S.String;
+
 export interface DatasetDefinition {
   AthenaDatasetDefinition?: AthenaDatasetDefinition;
   RedshiftDatasetDefinition?: RedshiftDatasetDefinition;
@@ -11760,6 +11730,7 @@ export const ProcessingResources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProcessingResources",
 }) as any as S.Schema<ProcessingResources>;
+export type ProcessingMaxRuntimeInSeconds = number;
 export interface ProcessingStoppingCondition {
   MaxRuntimeInSeconds?: number;
 }
@@ -11845,6 +11816,7 @@ export const CreateProcessingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProcessingJobRequest",
 }) as any as S.Schema<CreateProcessingJobRequest>;
+export type ProcessingJobArn = string;
 export interface CreateProcessingJobResponse {
   ProcessingJobArn: string;
 }
@@ -11853,6 +11825,10 @@ export const CreateProcessingJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProcessingJobResponse",
 }) as any as S.Schema<CreateProcessingJobResponse>;
+export type ProjectEntityName = string;
+export type ServiceCatalogEntityId = string;
+export type ProvisioningParameterKey = string;
+export type ProvisioningParameterValue = string;
 export interface ProvisioningParameter {
   Key?: string;
   Value?: string;
@@ -11882,6 +11858,10 @@ export const ServiceCatalogProvisioningDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceCatalogProvisioningDetails",
 }) as any as S.Schema<ServiceCatalogProvisioningDetails>;
+export type CfnTemplateName = string;
+export type CfnTemplateURL = string;
+export type CfnStackParameterKey = string;
+export type CfnStackParameterValue = string;
 export interface CfnStackCreateParameter {
   Key?: string;
   Value?: string;
@@ -11953,6 +11933,8 @@ export const CreateProjectInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectInput",
 }) as any as S.Schema<CreateProjectInput>;
+export type ProjectArn = string;
+export type ProjectId = string;
 export interface CreateProjectOutput {
   ProjectArn: string;
   ProjectId: string;
@@ -12100,6 +12082,7 @@ export const OwnershipSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OwnershipSettings>;
 export type SharingType = "Private" | "Shared" | (string & {});
 export const SharingType = /*@__PURE__*/ S.String;
+
 export interface SpaceSharingSettings {
   SharingType?: SharingType;
 }
@@ -12140,6 +12123,7 @@ export const CreateSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSpaceRequest",
 }) as any as S.Schema<CreateSpaceRequest>;
+export type SpaceArn = string;
 export interface CreateSpaceResponse {
   SpaceArn?: string;
 }
@@ -12148,6 +12132,8 @@ export const CreateSpaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSpaceResponse",
 }) as any as S.Schema<CreateSpaceResponse>;
+export type StudioLifecycleConfigName = string;
+export type StudioLifecycleConfigContent = string;
 export type StudioLifecycleConfigAppType =
   | "JupyterServer"
   | "KernelGateway"
@@ -12155,6 +12141,7 @@ export type StudioLifecycleConfigAppType =
   | "JupyterLab"
   | (string & {});
 export const StudioLifecycleConfigAppType = /*@__PURE__*/ S.String;
+
 export interface CreateStudioLifecycleConfigRequest {
   StudioLifecycleConfigName?: string;
   StudioLifecycleConfigContent?: string;
@@ -12189,12 +12176,17 @@ export const CreateStudioLifecycleConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStudioLifecycleConfigResponse",
 }) as any as S.Schema<CreateStudioLifecycleConfigResponse>;
+export type TrainingJobName = string;
+export type TrainingContainerEntrypointString = string;
 export type TrainingContainerEntrypoint = string[];
 export const TrainingContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
+export type TrainingContainerArgument = string;
 export type TrainingContainerArguments = string[];
 export const TrainingContainerArguments = /*@__PURE__*/ S.Array(S.String);
 export type TrainingRepositoryAccessMode = "Platform" | "Vpc" | (string & {});
 export const TrainingRepositoryAccessMode = /*@__PURE__*/ S.String;
+
+export type TrainingRepositoryCredentialsProviderArn = string;
 export interface TrainingRepositoryAuthConfig {
   TrainingRepositoryCredentialsProviderArn?: string;
 }
@@ -12239,11 +12231,14 @@ export const AlgorithmSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AlgorithmSpecification",
 }) as any as S.Schema<AlgorithmSpecification>;
+export type ConfigKey = string;
+export type ConfigValue = string;
 export type HookParameters = { [key: string]: string | undefined };
 export const HookParameters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type CollectionName = string;
 export type CollectionParameters = { [key: string]: string | undefined };
 export const CollectionParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -12281,6 +12276,7 @@ export const DebugHookConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DebugHookConfig",
 }) as any as S.Schema<DebugHookConfig>;
+export type RuleConfigurationName = string;
 export type RuleParameters = { [key: string]: string | undefined };
 export const RuleParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -12324,11 +12320,13 @@ export const TensorBoardOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TensorBoardOutputConfig",
 }) as any as S.Schema<TensorBoardOutputConfig>;
+export type ProfilingIntervalInMilliseconds = number;
 export type ProfilingParameters = { [key: string]: string | undefined };
 export const ProfilingParameters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type DisableProfiler = boolean;
 export interface ProfilerConfig {
   S3OutputPath?: string;
   ProfilingIntervalInMilliseconds?: number;
@@ -12369,11 +12367,14 @@ export type ProfilerRuleConfigurations = ProfilerRuleConfiguration[];
 export const ProfilerRuleConfigurations = /*@__PURE__*/ S.Array(
   ProfilerRuleConfiguration,
 );
+export type TrainingEnvironmentKey = string;
+export type TrainingEnvironmentValue = string;
 export type TrainingEnvironmentMap = { [key: string]: string | undefined };
 export const TrainingEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type EnableRemoteDebug = boolean;
 export interface RemoteDebugConfig {
   EnableRemoteDebug?: boolean;
 }
@@ -12382,6 +12383,7 @@ export const RemoteDebugConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoteDebugConfig",
 }) as any as S.Schema<RemoteDebugConfig>;
+export type EnableInfraCheck = boolean;
 export interface InfraCheckConfig {
   EnableInfraCheck?: boolean;
 }
@@ -12390,6 +12392,7 @@ export const InfraCheckConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InfraCheckConfig",
 }) as any as S.Schema<InfraCheckConfig>;
+export type EnableSessionTagChaining = boolean;
 export interface SessionChainingConfig {
   EnableSessionTagChaining?: boolean;
 }
@@ -12398,8 +12401,10 @@ export const SessionChainingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionChainingConfig",
 }) as any as S.Schema<SessionChainingConfig>;
+export type ServerlessJobBaseModelArn = string;
 export type ServerlessJobType = "FineTuning" | "Evaluation" | (string & {});
 export const ServerlessJobType = /*@__PURE__*/ S.String;
+
 export type CustomizationTechnique =
   | "SFT"
   | "DPO"
@@ -12407,14 +12412,18 @@ export type CustomizationTechnique =
   | "RLAIF"
   | (string & {});
 export const CustomizationTechnique = /*@__PURE__*/ S.String;
+
 export type Peft = "LORA" | (string & {});
 export const Peft = /*@__PURE__*/ S.String;
+
 export type EvaluationType =
   | "LLMAJEvaluation"
   | "CustomScorerEvaluation"
   | "BenchmarkEvaluation"
   | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
+export type EvaluatorArn = string;
 export interface ServerlessJobConfig {
   BaseModelArn: string;
   AcceptEula?: boolean;
@@ -12437,6 +12446,9 @@ export const ServerlessJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerlessJobConfig",
 }) as any as S.Schema<ServerlessJobConfig>;
+export type MlFlowResourceArn = string;
+export type MlflowExperimentName = string;
+export type MlflowRunName = string;
 export interface MlflowConfig {
   MlflowResourceArn: string;
   MlflowExperimentName?: string;
@@ -12535,6 +12547,7 @@ export const CreateTrainingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrainingJobRequest",
 }) as any as S.Schema<CreateTrainingJobRequest>;
+export type TrainingJobArn = string;
 export interface CreateTrainingJobResponse {
   TrainingJobArn: string;
 }
@@ -12543,6 +12556,9 @@ export const CreateTrainingJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrainingJobResponse",
 }) as any as S.Schema<CreateTrainingJobResponse>;
+export type TrainingPlanName = string;
+export type TrainingPlanOfferingId = string;
+export type SpareInstanceCountPerUltraServer = number;
 export interface CreateTrainingPlanRequest {
   TrainingPlanName?: string;
   TrainingPlanOfferingId?: string;
@@ -12577,6 +12593,9 @@ export const CreateTrainingPlanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrainingPlanResponse",
 }) as any as S.Schema<CreateTrainingPlanResponse>;
+export type TransformJobName = string;
+export type InvocationsTimeoutInSeconds = number;
+export type InvocationsMaxRetries = number;
 export interface ModelClientConfig {
   InvocationsTimeoutInSeconds?: number;
   InvocationsMaxRetries?: number;
@@ -12603,8 +12622,10 @@ export const BatchDataCaptureConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDataCaptureConfig",
 }) as any as S.Schema<BatchDataCaptureConfig>;
+export type JsonPath = string;
 export type JoinSource = "Input" | "None" | (string & {});
 export const JoinSource = /*@__PURE__*/ S.String;
+
 export interface DataProcessing {
   InputFilter?: string;
   OutputFilter?: string;
@@ -12663,6 +12684,7 @@ export const CreateTransformJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTransformJobRequest",
 }) as any as S.Schema<CreateTransformJobRequest>;
+export type TransformJobArn = string;
 export interface CreateTransformJobResponse {
   TransformJobArn: string;
 }
@@ -12715,6 +12737,8 @@ export type TrialComponentPrimaryStatus =
   | "Stopped"
   | (string & {});
 export const TrialComponentPrimaryStatus = /*@__PURE__*/ S.String;
+
+export type TrialComponentStatusMessage = string;
 export interface TrialComponentStatus {
   PrimaryStatus?: TrialComponentPrimaryStatus;
   Message?: string;
@@ -12727,6 +12751,8 @@ export const TrialComponentStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrialComponentStatus",
 }) as any as S.Schema<TrialComponentStatus>;
+export type TrialComponentKey320 = string;
+export type DoubleParameterValue = number;
 export type TrialComponentParameterValue =
   | { StringValue: string; NumberValue?: never }
   | { StringValue?: never; NumberValue: number };
@@ -12741,6 +12767,9 @@ export const TrialComponentParameters = /*@__PURE__*/ S.Record(
   S.String,
   TrialComponentParameterValue.pipe(S.optional),
 );
+export type TrialComponentKey128 = string;
+export type MediaType = string;
+export type TrialComponentArtifactValue = string;
 export interface TrialComponentArtifact {
   MediaType?: string;
   Value?: string;
@@ -12803,6 +12832,7 @@ export const CreateTrialComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrialComponentResponse",
 }) as any as S.Schema<CreateTrialComponentResponse>;
+export type SingleSignOnUserIdentifier = string;
 export interface CreateUserProfileRequest {
   DomainId?: string;
   UserProfileName?: string;
@@ -12833,6 +12863,7 @@ export const CreateUserProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserProfileRequest",
 }) as any as S.Schema<CreateUserProfileRequest>;
+export type UserProfileArn = string;
 export interface CreateUserProfileResponse {
   UserProfileArn?: string;
 }
@@ -12841,6 +12872,8 @@ export const CreateUserProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserProfileResponse",
 }) as any as S.Schema<CreateUserProfileResponse>;
+export type CognitoUserPool = string;
+export type ClientId = string;
 export interface CognitoConfig {
   UserPool?: string;
   ClientId?: string;
@@ -12848,6 +12881,11 @@ export interface CognitoConfig {
 export const CognitoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserPool: S.optional(S.String), ClientId: S.optional(S.String) }),
 ).annotate({ identifier: "CognitoConfig" }) as any as S.Schema<CognitoConfig>;
+export type ClientSecret = string | redacted.Redacted<string>;
+export type OidcEndpoint = string;
+export type Scope = string;
+export type AuthenticationRequestExtraParamsKey = string;
+export type AuthenticationRequestExtraParamsValue = string;
 export type AuthenticationRequestExtraParams = {
   [key: string]: string | undefined;
 };
@@ -12883,6 +12921,7 @@ export const OidcConfig = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "OidcConfig" }) as any as S.Schema<OidcConfig>;
+export type Cidr = string;
 export type Cidrs = string[];
 export const Cidrs = /*@__PURE__*/ S.Array(S.String);
 export interface SourceIpConfig {
@@ -12891,8 +12930,12 @@ export interface SourceIpConfig {
 export const SourceIpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cidrs: S.optional(Cidrs) }),
 ).annotate({ identifier: "SourceIpConfig" }) as any as S.Schema<SourceIpConfig>;
+export type WorkforceName = string;
+export type WorkforceVpcId = string;
+export type WorkforceSecurityGroupId = string;
 export type WorkforceSecurityGroupIds = string[];
 export const WorkforceSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type WorkforceSubnetId = string;
 export type WorkforceSubnets = string[];
 export const WorkforceSubnets = /*@__PURE__*/ S.Array(S.String);
 export interface WorkforceVpcConfigRequest {
@@ -12911,6 +12954,7 @@ export const WorkforceVpcConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkforceVpcConfigRequest>;
 export type WorkforceIpAddressType = "ipv4" | "dualstack" | (string & {});
 export const WorkforceIpAddressType = /*@__PURE__*/ S.String;
+
 export interface CreateWorkforceRequest {
   CognitoConfig?: CognitoConfig;
   OidcConfig?: OidcConfig;
@@ -12943,6 +12987,7 @@ export const CreateWorkforceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkforceRequest",
 }) as any as S.Schema<CreateWorkforceRequest>;
+export type WorkforceArn = string;
 export interface CreateWorkforceResponse {
   WorkforceArn: string;
 }
@@ -12951,6 +12996,8 @@ export const CreateWorkforceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkforceResponse",
 }) as any as S.Schema<CreateWorkforceResponse>;
+export type WorkteamName = string;
+export type CognitoUserGroup = string;
 export interface CognitoMemberDefinition {
   UserPool?: string;
   UserGroup?: string;
@@ -12965,6 +13012,7 @@ export const CognitoMemberDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CognitoMemberDefinition",
 }) as any as S.Schema<CognitoMemberDefinition>;
+export type Group = string;
 export type Groups = string[];
 export const Groups = /*@__PURE__*/ S.Array(S.String);
 export interface OidcMemberDefinition {
@@ -12989,6 +13037,8 @@ export const MemberDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MemberDefinition>;
 export type MemberDefinitions = MemberDefinition[];
 export const MemberDefinitions = /*@__PURE__*/ S.Array(MemberDefinition);
+export type String200 = string;
+export type NotificationTopicArn = string;
 export interface NotificationConfiguration {
   NotificationTopicArn?: string;
 }
@@ -12999,6 +13049,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationConfiguration>;
 export type EnabledOrDisabled = "Enabled" | "Disabled" | (string & {});
 export const EnabledOrDisabled = /*@__PURE__*/ S.String;
+
 export interface IamPolicyConstraints {
   SourceIp?: EnabledOrDisabled;
   VpcSourceIp?: EnabledOrDisabled;
@@ -13514,6 +13565,7 @@ export const DeleteDeviceFleetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDeviceFleetResponse>;
 export type RetentionType = "Retain" | "Delete" | (string & {});
 export const RetentionType = /*@__PURE__*/ S.String;
+
 export interface RetentionPolicy {
   HomeEfsFileSystem?: RetentionType;
 }
@@ -14670,6 +14722,7 @@ export const DeleteWorkteamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteWorkteamRequest",
 }) as any as S.Schema<DeleteWorkteamRequest>;
+export type Success = boolean;
 export interface DeleteWorkteamResponse {
   Success: boolean;
 }
@@ -14706,6 +14759,7 @@ export const DeregisterDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterDevicesResponse",
 }) as any as S.Schema<DeregisterDevicesResponse>;
+export type ExperimentEntityNameOrArn = string;
 export interface DescribeActionRequest {
   ActionName?: string;
 }
@@ -14750,6 +14804,7 @@ export const UserContext = /*@__PURE__*/ S.suspend(() =>
     IamIdentity: S.optional(IamIdentity),
   }),
 ).annotate({ identifier: "UserContext" }) as any as S.Schema<UserContext>;
+export type LineageGroupArn = string;
 export interface DescribeActionResponse {
   ActionName?: string;
   ActionArn?: string;
@@ -14812,6 +14867,8 @@ export type AIBenchmarkJobStatus =
   | "Stopped"
   | (string & {});
 export const AIBenchmarkJobStatus = /*@__PURE__*/ S.String;
+
+export type FailureReason = string;
 export interface AICloudWatchLogs {
   LogGroupArn?: string;
   LogStreamName?: string;
@@ -14908,6 +14965,7 @@ export type AIRecommendationJobStatus =
   | "Stopped"
   | (string & {});
 export const AIRecommendationJobStatus = /*@__PURE__*/ S.String;
+
 export interface AIRecommendationOutputResult {
   S3OutputLocation?: string;
   ModelPackageGroupIdentifier?: string;
@@ -14927,6 +14985,7 @@ export type AIRecommendationOptimizationType =
   | "KernelTuning"
   | (string & {});
 export const AIRecommendationOptimizationType = /*@__PURE__*/ S.String;
+
 export type AIRecommendationOptimizationConfigMap = {
   [key: string]: string | undefined;
 };
@@ -14951,6 +15010,9 @@ export type AIRecommendationOptimizationDetailList =
 export const AIRecommendationOptimizationDetailList = /*@__PURE__*/ S.Array(
   AIRecommendationOptimizationDetail,
 );
+export type AIInferenceSpecificationName = string;
+export type AIRecommendationInstanceCount = number;
+export type AIRecommendationCopyCountPerInstance = number;
 export interface AIRecommendationInstanceDetail {
   InstanceType?: AIRecommendationInstanceType;
   InstanceCount?: number;
@@ -15184,6 +15246,7 @@ export type AlgorithmStatus =
   | "Deleting"
   | (string & {});
 export const AlgorithmStatus = /*@__PURE__*/ S.String;
+
 export type DetailedAlgorithmStatus =
   | "NotStarted"
   | "InProgress"
@@ -15191,6 +15254,7 @@ export type DetailedAlgorithmStatus =
   | "Failed"
   | (string & {});
 export const DetailedAlgorithmStatus = /*@__PURE__*/ S.String;
+
 export interface AlgorithmStatusItem {
   Name?: string;
   Status?: DetailedAlgorithmStatus;
@@ -15420,6 +15484,7 @@ export type AppStatus =
   | "Pending"
   | (string & {});
 export const AppStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeAppResponse {
   AppArn?: string;
   AppType?: AppType;
@@ -15580,6 +15645,7 @@ export const DescribeAutoMLJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAutoMLJobRequest",
 }) as any as S.Schema<DescribeAutoMLJobRequest>;
+export type AutoMLFailureReason = string;
 export interface AutoMLPartialFailureReason {
   PartialFailureMessage?: string;
 }
@@ -15592,8 +15658,11 @@ export type AutoMLPartialFailureReasons = AutoMLPartialFailureReason[];
 export const AutoMLPartialFailureReasons = /*@__PURE__*/ S.Array(
   AutoMLPartialFailureReason,
 );
+export type CandidateName = string;
 export type AutoMLJobObjectiveType = "Maximize" | "Minimize" | (string & {});
 export const AutoMLJobObjectiveType = /*@__PURE__*/ S.String;
+
+export type MetricValue = number;
 export interface FinalAutoMLJobObjectiveMetric {
   Type?: AutoMLJobObjectiveType;
   MetricName?: AutoMLMetricEnum;
@@ -15616,12 +15685,16 @@ export type ObjectiveStatus =
   | "Failed"
   | (string & {});
 export const ObjectiveStatus = /*@__PURE__*/ S.String;
+
 export type CandidateStepType =
   | "AWS::SageMaker::TrainingJob"
   | "AWS::SageMaker::TransformJob"
   | "AWS::SageMaker::ProcessingJob"
   | (string & {});
 export const CandidateStepType = /*@__PURE__*/ S.String;
+
+export type CandidateStepArn = string;
+export type CandidateStepName = string;
 export interface AutoMLCandidateStep {
   CandidateStepType?: CandidateStepType;
   CandidateStepArn?: string;
@@ -15646,6 +15719,7 @@ export type CandidateStatus =
   | "Stopping"
   | (string & {});
 export const CandidateStatus = /*@__PURE__*/ S.String;
+
 export interface AutoMLContainerDefinition {
   Image?: string;
   ModelDataUrl?: string;
@@ -15664,6 +15738,9 @@ export type AutoMLContainerDefinitions = AutoMLContainerDefinition[];
 export const AutoMLContainerDefinitions = /*@__PURE__*/ S.Array(
   AutoMLContainerDefinition,
 );
+export type ExplainabilityLocation = string;
+export type ModelInsightsLocation = string;
+export type BacktestResultsLocation = string;
 export interface CandidateArtifactLocations {
   Explainability?: string;
   ModelInsights?: string;
@@ -15707,8 +15784,10 @@ export type AutoMLMetricExtendedEnum =
   | "TrainingLoss"
   | (string & {});
 export const AutoMLMetricExtendedEnum = /*@__PURE__*/ S.String;
+
 export type MetricSetSource = "Train" | "Validation" | "Test" | (string & {});
 export const MetricSetSource = /*@__PURE__*/ S.String;
+
 export interface MetricDatum {
   MetricName?: AutoMLMetricEnum;
   StandardMetricName?: AutoMLMetricExtendedEnum;
@@ -15739,6 +15818,7 @@ export const CandidateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CandidateProperties>;
 export type AutoMLProcessingUnit = "CPU" | "GPU" | (string & {});
 export const AutoMLProcessingUnit = /*@__PURE__*/ S.String;
+
 export type AutoMLInferenceContainerDefinitions = {
   [key in AutoMLProcessingUnit]?: AutoMLContainerDefinition[];
 };
@@ -15792,6 +15872,7 @@ export type AutoMLJobStatus =
   | "Stopping"
   | (string & {});
 export const AutoMLJobStatus = /*@__PURE__*/ S.String;
+
 export type AutoMLJobSecondaryStatus =
   | "Starting"
   | "MaxCandidatesReached"
@@ -15814,6 +15895,9 @@ export type AutoMLJobSecondaryStatus =
   | "PreTraining"
   | (string & {});
 export const AutoMLJobSecondaryStatus = /*@__PURE__*/ S.String;
+
+export type CandidateDefinitionNotebookLocation = string;
+export type DataExplorationNotebookLocation = string;
 export interface AutoMLJobArtifacts {
   CandidateDefinitionNotebookLocation?: string;
   DataExplorationNotebookLocation?: string;
@@ -15980,6 +16064,7 @@ export type AutoMLProblemTypeConfigName =
   | "TextGeneration"
   | (string & {});
 export const AutoMLProblemTypeConfigName = /*@__PURE__*/ S.String;
+
 export interface TabularResolvedAttributes {
   ProblemType?: ProblemType;
 }
@@ -16161,6 +16246,8 @@ export type ClusterStatus =
   | "Updating"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
+
+export type ClusterNonNegativeInstanceCount = number;
 export interface ClusterInstanceRequirementDetails {
   CurrentInstanceTypes?: ClusterInstanceType[];
   DesiredInstanceTypes?: ClusterInstanceType[];
@@ -16201,6 +16288,8 @@ export type InstanceGroupStatus =
   | "Deleting"
   | (string & {});
 export const InstanceGroupStatus = /*@__PURE__*/ S.String;
+
+export type InstanceGroupTrainingPlanStatus = string;
 export interface ClusterPatchScheduleDetails {
   NextPatchDate?: Date;
 }
@@ -16234,8 +16323,11 @@ export type ClusterImageVersionStatus =
   | "EndOfLife"
   | (string & {});
 export const ClusterImageVersionStatus = /*@__PURE__*/ S.String;
+
 export type ActiveClusterOperationName = "Scaling" | (string & {});
 export const ActiveClusterOperationName = /*@__PURE__*/ S.String;
+
+export type ActiveClusterOperationCount = number;
 export type ActiveOperations = { [key in ActiveClusterOperationName]?: number };
 export const ActiveOperations = /*@__PURE__*/ S.Record(
   ActiveClusterOperationName,
@@ -16266,6 +16358,7 @@ export type SoftwareUpdateStatus =
   | "RollbackComplete"
   | (string & {});
 export const SoftwareUpdateStatus = /*@__PURE__*/ S.String;
+
 export interface ClusterSlurmConfigDetails {
   NodeType: ClusterSlurmNodeType;
   PartitionNames?: string[];
@@ -16455,6 +16548,7 @@ export type ClusterAutoScalingStatus =
   | "Deleting"
   | (string & {});
 export const ClusterAutoScalingStatus = /*@__PURE__*/ S.String;
+
 export interface ClusterAutoScalingConfigOutput {
   Mode: ClusterAutoScalingMode;
   AutoScalerType?: ClusterAutoScalerType;
@@ -16607,6 +16701,7 @@ export const DescribeClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClusterResponse",
 }) as any as S.Schema<DescribeClusterResponse>;
+export type EventId = string;
 export interface DescribeClusterEventRequest {
   EventId?: string;
   ClusterName?: string;
@@ -16635,6 +16730,7 @@ export type ClusterEventResourceType =
   | "Instance"
   | (string & {});
 export const ClusterEventResourceType = /*@__PURE__*/ S.String;
+
 export type EksRoleAccessEntries = string[];
 export const EksRoleAccessEntries = /*@__PURE__*/ S.Array(S.String);
 export interface ClusterMetadata {
@@ -16653,6 +16749,7 @@ export const ClusterMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterMetadata>;
 export type CapacityReservationType = "ODCR" | "CRG" | (string & {});
 export const CapacityReservationType = /*@__PURE__*/ S.String;
+
 export interface CapacityReservation {
   Arn?: string;
   Type?: CapacityReservationType;
@@ -16685,6 +16782,7 @@ export const InstanceGroupMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceGroupMetadata",
 }) as any as S.Schema<InstanceGroupMetadata>;
+export type TargetCount = number;
 export interface InstanceGroupScalingMetadata {
   InstanceCount?: number;
   TargetCount?: number;
@@ -16790,6 +16888,7 @@ export const EventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventDetails" }) as any as S.Schema<EventDetails>;
 export type ClusterEventLevel = "Info" | "Warn" | "Error" | (string & {});
 export const ClusterEventLevel = /*@__PURE__*/ S.String;
+
 export interface ClusterEventDetail {
   EventId?: string;
   ClusterArn?: string;
@@ -16868,6 +16967,10 @@ export const ClusterInstanceStatusDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterInstanceStatusDetails",
 }) as any as S.Schema<ClusterInstanceStatusDetails>;
+export type ClusterPrivatePrimaryIp = string;
+export type ClusterPrivatePrimaryIpv6 = string;
+export type ClusterPrivateDnsHostname = string;
+export type ClusterAvailabilityZoneId = string;
 export interface ClusterInstancePlacement {
   AvailabilityZone?: string;
   AvailabilityZoneId?: string;
@@ -16907,6 +17010,7 @@ export const ClusterKubernetesConfigNodeDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterKubernetesConfigNodeDetails>;
 export type ClusterCapacityType = "Spot" | "OnDemand" | (string & {});
 export const ClusterCapacityType = /*@__PURE__*/ S.String;
+
 export interface ClusterNodeDetails {
   InstanceGroupName?: string;
   InstanceId?: string;
@@ -17019,12 +17123,14 @@ export type SchedulerResourceStatus =
   | "Deleted"
   | (string & {});
 export const SchedulerResourceStatus = /*@__PURE__*/ S.String;
+
 export type SchedulerConfigComponent =
   | "PriorityClasses"
   | "FairShare"
   | "IdleResourceSharing"
   | (string & {});
 export const SchedulerConfigComponent = /*@__PURE__*/ S.String;
+
 export type StatusDetailsMap = {
   [key in SchedulerConfigComponent]?: SchedulerResourceStatus;
 };
@@ -17094,6 +17200,7 @@ export const DescribeCodeRepositoryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCodeRepositoryInput",
 }) as any as S.Schema<DescribeCodeRepositoryInput>;
+export type LastModifiedTime = Date;
 export interface DescribeCodeRepositoryOutput {
   CodeRepositoryName: string;
   CodeRepositoryArn: string;
@@ -17141,12 +17248,15 @@ export type CompilationJobStatus =
   | "STOPPED"
   | (string & {});
 export const CompilationJobStatus = /*@__PURE__*/ S.String;
+
+export type InferenceImage = string;
 export interface ModelArtifacts {
   S3ModelArtifacts?: string;
 }
 export const ModelArtifacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3ModelArtifacts: S.optional(S.String) }),
 ).annotate({ identifier: "ModelArtifacts" }) as any as S.Schema<ModelArtifacts>;
+export type ArtifactDigest = string;
 export interface ModelDigests {
   ArtifactDigest?: string;
 }
@@ -17302,6 +17412,7 @@ export const DescribeComputeQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeComputeQuotaResponse",
 }) as any as S.Schema<DescribeComputeQuotaResponse>;
+export type ContextNameOrArn = string;
 export interface DescribeContextRequest {
   ContextName?: string;
 }
@@ -17458,6 +17569,9 @@ export const DescribeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceRequest",
 }) as any as S.Schema<DescribeDeviceRequest>;
+export type DeviceArn = string;
+export type DeviceDescription = string;
+export type ThingName = string;
 export interface EdgeModel {
   ModelName?: string;
   ModelVersion?: string;
@@ -17530,6 +17644,8 @@ export const DescribeDeviceFleetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceFleetRequest",
 }) as any as S.Schema<DescribeDeviceFleetRequest>;
+export type DeviceFleetArn = string;
+export type IotRoleAlias = string;
 export interface DescribeDeviceFleetResponse {
   DeviceFleetName: string;
   DeviceFleetArn: string;
@@ -17574,6 +17690,7 @@ export const DescribeDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainRequest",
 }) as any as S.Schema<DescribeDomainRequest>;
+export type ResourceId = string;
 export type DomainStatus =
   | "Deleting"
   | "Failed"
@@ -17584,6 +17701,7 @@ export type DomainStatus =
   | "Delete_Failed"
   | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeDomainResponse {
   DomainArn?: string;
   DomainId?: string;
@@ -17709,6 +17827,7 @@ export const DescribeDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainResponse",
 }) as any as S.Schema<DescribeDomainResponse>;
+export type DeploymentStageMaxResults = number;
 export interface DescribeEdgeDeploymentPlanRequest {
   EdgeDeploymentPlanName?: string;
   NextToken?: string;
@@ -17744,6 +17863,7 @@ export type StageStatus =
   | "STOPPED"
   | (string & {});
 export const StageStatus = /*@__PURE__*/ S.String;
+
 export interface EdgeDeploymentStatus {
   StageStatus?: StageStatus;
   EdgeDeploymentSuccessInStage?: number;
@@ -17853,6 +17973,7 @@ export const DescribeEdgePackagingJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEdgePackagingJobRequest",
 }) as any as S.Schema<DescribeEdgePackagingJobRequest>;
+export type EdgePackagingJobArn = string;
 export type EdgePackagingJobStatus =
   | "STARTING"
   | "INPROGRESS"
@@ -17862,8 +17983,11 @@ export type EdgePackagingJobStatus =
   | "STOPPED"
   | (string & {});
 export const EdgePackagingJobStatus = /*@__PURE__*/ S.String;
+
+export type EdgePresetDeploymentArtifact = string;
 export type EdgePresetDeploymentStatus = "COMPLETED" | "FAILED" | (string & {});
 export const EdgePresetDeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface EdgePresetDeploymentOutput {
   Type?: EdgePresetDeploymentType;
   Artifact?: string;
@@ -17977,6 +18101,8 @@ export type VariantStatus =
   | "Baking"
   | (string & {});
 export const VariantStatus = /*@__PURE__*/ S.String;
+
+export type VariantStatusMessage = string;
 export interface ProductionVariantStatus {
   Status?: VariantStatus;
   StatusMessage?: string;
@@ -17995,6 +18121,7 @@ export type ProductionVariantStatusList = ProductionVariantStatus[];
 export const ProductionVariantStatusList = /*@__PURE__*/ S.Array(
   ProductionVariantStatus,
 );
+export type Ec2CapacityReservationId = string;
 export interface Ec2CapacityReservation {
   Ec2CapacityReservationId?: string;
   TotalInstanceCount?: number;
@@ -18078,6 +18205,7 @@ export const ProductionVariantSummaryList = /*@__PURE__*/ S.Array(
 );
 export type CaptureStatus = "Started" | "Stopped" | (string & {});
 export const CaptureStatus = /*@__PURE__*/ S.String;
+
 export interface DataCaptureConfigSummary {
   EnableCapture?: boolean;
   CaptureStatus?: CaptureStatus;
@@ -18108,6 +18236,7 @@ export type EndpointStatus =
   | "UpdateRollbackFailed"
   | (string & {});
 export const EndpointStatus = /*@__PURE__*/ S.String;
+
 export interface PendingProductionVariantSummary {
   VariantName?: string;
   DeployedImages?: DeployedImage[];
@@ -18476,6 +18605,8 @@ export const DescribeExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExperimentRequest",
 }) as any as S.Schema<DescribeExperimentRequest>;
+export type ExperimentSourceArn = string;
+export type SourceType = string;
 export interface ExperimentSource {
   SourceArn?: string;
   SourceType?: string;
@@ -18516,6 +18647,7 @@ export const DescribeExperimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExperimentResponse",
 }) as any as S.Schema<DescribeExperimentResponse>;
+export type FeatureGroupNameOrArn = string;
 export interface DescribeFeatureGroupRequest {
   FeatureGroupName?: string;
   NextToken?: string;
@@ -18560,12 +18692,15 @@ export type FeatureGroupStatus =
   | "DeleteFailed"
   | (string & {});
 export const FeatureGroupStatus = /*@__PURE__*/ S.String;
+
 export type OfflineStoreStatusValue =
   | "Active"
   | "Blocked"
   | "Disabled"
   | (string & {});
 export const OfflineStoreStatusValue = /*@__PURE__*/ S.String;
+
+export type BlockedReason = string;
 export interface OfflineStoreStatus {
   Status?: OfflineStoreStatusValue;
   BlockedReason?: string;
@@ -18584,6 +18719,7 @@ export type LastUpdateStatusValue =
   | "InProgress"
   | (string & {});
 export const LastUpdateStatusValue = /*@__PURE__*/ S.String;
+
 export interface LastUpdateStatus {
   Status?: LastUpdateStatusValue;
   FailureReason?: string;
@@ -18596,6 +18732,7 @@ export const LastUpdateStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LastUpdateStatus",
 }) as any as S.Schema<LastUpdateStatus>;
+export type OnlineStoreTotalSizeBytes = number;
 export interface DescribeFeatureGroupResponse {
   FeatureGroupArn: string;
   FeatureGroupName: string;
@@ -18676,6 +18813,9 @@ export const DescribeFeatureMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFeatureMetadataRequest",
 }) as any as S.Schema<DescribeFeatureMetadataRequest>;
+export type FeatureDescription = string;
+export type FeatureParameterKey = string;
+export type FeatureParameterValue = string;
 export interface FeatureParameter {
   Key?: string;
   Value?: string;
@@ -18738,6 +18878,7 @@ export type FlowDefinitionStatus =
   | "Deleting"
   | (string & {});
 export const FlowDefinitionStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeFlowDefinitionResponse {
   FlowDefinitionArn: string;
   FlowDefinitionName: string;
@@ -18806,6 +18947,7 @@ export type HubStatus =
   | "DeleteFailed"
   | (string & {});
 export const HubStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeHubResponse {
   HubName: string;
   HubArn: string;
@@ -18862,14 +19004,24 @@ export const DescribeHubContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHubContentRequest",
 }) as any as S.Schema<DescribeHubContentRequest>;
+export type DocumentSchemaVersion = string;
+export type HubContentDisplayName = string;
+export type HubContentDescription = string;
+export type HubContentMarkdown = string;
+export type HubContentDocument = string;
+export type ReferenceMinVersion = string;
 export type HubContentSupportStatus =
   | "Supported"
   | "Deprecated"
   | "Restricted"
   | (string & {});
 export const HubContentSupportStatus = /*@__PURE__*/ S.String;
+
+export type HubContentSearchKeyword = string;
 export type HubContentSearchKeywordList = string[];
 export const HubContentSearchKeywordList = /*@__PURE__*/ S.Array(S.String);
+export type DependencyOriginPath = string;
+export type DependencyCopyPath = string;
 export interface HubContentDependency {
   DependencyOriginPath?: string;
   DependencyCopyPath?: string;
@@ -18895,6 +19047,7 @@ export type HubContentStatus =
   | "PendingDelete"
   | (string & {});
 export const HubContentStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeHubContentResponse {
   HubContentName: string;
   HubContentArn: string;
@@ -18965,6 +19118,9 @@ export const DescribeHumanTaskUiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeHumanTaskUiRequest>;
 export type HumanTaskUiStatus = "Active" | "Deleting" | (string & {});
 export const HumanTaskUiStatus = /*@__PURE__*/ S.String;
+
+export type TemplateUrl = string;
+export type TemplateContentSha256 = string;
 export interface UiTemplateInfo {
   Url?: string;
   ContentSha256?: string;
@@ -19019,6 +19175,8 @@ export type HyperParameterTuningJobStatus =
   | "DeleteFailed"
   | (string & {});
 export const HyperParameterTuningJobStatus = /*@__PURE__*/ S.String;
+
+export type TrainingJobStatusCounter = number;
 export interface TrainingJobStatusCounters {
   Completed?: number;
   InProgress?: number;
@@ -19037,6 +19195,7 @@ export const TrainingJobStatusCounters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrainingJobStatusCounters",
 }) as any as S.Schema<TrainingJobStatusCounters>;
+export type ObjectiveStatusCounter = number;
 export interface ObjectiveStatusCounters {
   Succeeded?: number;
   Pending?: number;
@@ -19060,6 +19219,7 @@ export type TrainingJobStatus =
   | "Deleting"
   | (string & {});
 export const TrainingJobStatus = /*@__PURE__*/ S.String;
+
 export interface FinalHyperParameterTuningJobObjectiveMetric {
   Type?: HyperParameterTuningJobObjectiveType;
   MetricName?: string;
@@ -19427,6 +19587,7 @@ export type ImageStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const ImageStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeImageResponse {
   CreationTime?: Date;
   Description?: string;
@@ -19479,6 +19640,7 @@ export const DescribeImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImageVersionRequest",
 }) as any as S.Schema<DescribeImageVersionRequest>;
+export type ImageContainerImage = string;
 export type ImageVersionStatus =
   | "CREATING"
   | "CREATED"
@@ -19487,6 +19649,7 @@ export type ImageVersionStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const ImageVersionStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeImageVersionResponse {
   BaseImage?: string;
   ContainerImage?: string;
@@ -19644,11 +19807,13 @@ export type InferenceComponentStatus =
   | "Deleting"
   | (string & {});
 export const InferenceComponentStatus = /*@__PURE__*/ S.String;
+
 export type InferenceComponentCapacitySizeType =
   | "COPY_COUNT"
   | "CAPACITY_PERCENT"
   | (string & {});
 export const InferenceComponentCapacitySizeType = /*@__PURE__*/ S.String;
+
 export interface InferenceComponentCapacitySize {
   Type?: InferenceComponentCapacitySizeType;
   Value?: number;
@@ -19812,6 +19977,8 @@ export type InferenceExperimentStatus =
   | "Cancelled"
   | (string & {});
 export const InferenceExperimentStatus = /*@__PURE__*/ S.String;
+
+export type InferenceExperimentStatusReason = string;
 export interface EndpointMetadata {
   EndpointName?: string;
   EndpointConfigName?: string;
@@ -19836,6 +20003,7 @@ export type ModelVariantStatus =
   | "Deleted"
   | (string & {});
 export const ModelVariantStatus = /*@__PURE__*/ S.String;
+
 export interface ModelVariantConfigSummary {
   ModelName?: string;
   VariantName?: string;
@@ -19947,6 +20115,9 @@ export type RecommendationJobStatus =
   | "DELETED"
   | (string & {});
 export const RecommendationJobStatus = /*@__PURE__*/ S.String;
+
+export type UtilizationMetric = number;
+export type ModelSetupTime = number;
 export interface RecommendationMetrics {
   CostPerHour?: number;
   CostPerInference?: number;
@@ -19969,6 +20140,7 @@ export const RecommendationMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecommendationMetrics",
 }) as any as S.Schema<RecommendationMetrics>;
+export type InitialInstanceCount = number;
 export interface EndpointOutputConfiguration {
   EndpointName?: string;
   VariantName?: string;
@@ -20004,6 +20176,7 @@ export const EnvironmentParameter = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentParameters = EnvironmentParameter[];
 export const EnvironmentParameters =
   /*@__PURE__*/ S.Array(EnvironmentParameter);
+export type RecommendationJobCompilationJobName = string;
 export interface ModelConfiguration {
   InferenceSpecificationName?: string;
   EnvironmentParameters?: EnvironmentParameter[];
@@ -20018,6 +20191,8 @@ export const ModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelConfiguration",
 }) as any as S.Schema<ModelConfiguration>;
+export type InvocationEndTime = Date;
+export type InvocationStartTime = Date;
 export interface InferenceRecommendation {
   RecommendationId?: string;
   Metrics?: RecommendationMetrics;
@@ -20184,6 +20359,7 @@ export type JobStatus =
   | "DeleteFailed"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export type JobSecondaryStatus =
   | "Starting"
   | "Downloading"
@@ -20202,6 +20378,7 @@ export type JobSecondaryStatus =
   | "DeleteFailed"
   | (string & {});
 export const JobSecondaryStatus = /*@__PURE__*/ S.String;
+
 export interface JobSecondaryStatusTransition {
   Status?: JobSecondaryStatus;
   StartTime?: Date;
@@ -20326,6 +20503,8 @@ export type LabelingJobStatus =
   | "Stopped"
   | (string & {});
 export const LabelingJobStatus = /*@__PURE__*/ S.String;
+
+export type LabelCounter = number;
 export interface LabelCounters {
   TotalLabeled?: number;
   HumanLabeled?: number;
@@ -20342,6 +20521,7 @@ export const LabelCounters = /*@__PURE__*/ S.suspend(() =>
     Unlabeled: S.optional(S.Number),
   }),
 ).annotate({ identifier: "LabelCounters" }) as any as S.Schema<LabelCounters>;
+export type JobReferenceCode = string;
 export interface LabelingJobOutput {
   OutputDatasetS3Uri?: string;
   FinalActiveLearningModelArn?: string;
@@ -20497,12 +20677,14 @@ export type MlflowAppStatus =
   | "Deleted"
   | (string & {});
 export const MlflowAppStatus = /*@__PURE__*/ S.String;
+
 export type MaintenanceStatus =
   | "MaintenanceInProgress"
   | "MaintenanceComplete"
   | "MaintenanceFailed"
   | (string & {});
 export const MaintenanceStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeMlflowAppResponse {
   Arn?: string;
   Name?: string;
@@ -20581,14 +20763,17 @@ export type TrackingServerStatus =
   | "MaintenanceFailed"
   | (string & {});
 export const TrackingServerStatus = /*@__PURE__*/ S.String;
+
 export type TrackingServerMaintenanceStatus =
   | "MaintenanceInProgress"
   | "MaintenanceComplete"
   | "MaintenanceFailed"
   | (string & {});
 export const TrackingServerMaintenanceStatus = /*@__PURE__*/ S.String;
+
 export type IsTrackingServerActive = "Active" | "Inactive" | (string & {});
 export const IsTrackingServerActive = /*@__PURE__*/ S.String;
+
 export interface DescribeMlflowTrackingServerResponse {
   TrackingServerArn?: string;
   TrackingServerName?: string;
@@ -20663,6 +20848,7 @@ export type RecommendationStatus =
   | "NOT_APPLICABLE"
   | (string & {});
 export const RecommendationStatus = /*@__PURE__*/ S.String;
+
 export interface RealTimeInferenceRecommendation {
   RecommendationId?: string;
   InstanceType?: ProductionVariantInstanceType;
@@ -20891,6 +21077,7 @@ export const DescribeModelBiasJobDefinitionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeModelBiasJobDefinitionResponse>;
 export type IncludedData = "AllData" | "MetadataOnly" | (string & {});
 export const IncludedData = /*@__PURE__*/ S.String;
+
 export interface DescribeModelCardRequest {
   ModelCardName?: string;
   ModelCardVersion?: number;
@@ -20924,6 +21111,7 @@ export type ModelCardProcessingStatus =
   | "DeleteFailed"
   | (string & {});
 export const ModelCardProcessingStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeModelCardResponse {
   ModelCardArn: string;
   ModelCardName: string;
@@ -20980,6 +21168,7 @@ export type ModelCardExportJobStatus =
   | "Failed"
   | (string & {});
 export const ModelCardExportJobStatus = /*@__PURE__*/ S.String;
+
 export interface ModelCardExportArtifacts {
   S3ExportArtifacts?: string;
 }
@@ -21132,6 +21321,7 @@ export type DetailedModelPackageStatus =
   | "Failed"
   | (string & {});
 export const DetailedModelPackageStatus = /*@__PURE__*/ S.String;
+
 export interface ModelPackageStatusItem {
   Name?: string;
   Status?: DetailedModelPackageStatus;
@@ -21162,6 +21352,7 @@ export const ModelPackageStatusDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelPackageStatusDetails",
 }) as any as S.Schema<ModelPackageStatusDetails>;
+export type ApprovalDescription = string;
 export interface DescribeModelPackageOutput {
   ModelPackageName: string;
   ModelPackageGroupName?: string;
@@ -21422,6 +21613,7 @@ export type ModelPackageGroupStatus =
   | "DeleteFailed"
   | (string & {});
 export const ModelPackageGroupStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeModelPackageGroupOutput {
   ModelPackageGroupName: string;
   ModelPackageGroupArn: string;
@@ -21552,6 +21744,7 @@ export type ScheduleStatus =
   | "Stopped"
   | (string & {});
 export const ScheduleStatus = /*@__PURE__*/ S.String;
+
 export type ExecutionStatus =
   | "Pending"
   | "Completed"
@@ -21562,6 +21755,7 @@ export type ExecutionStatus =
   | "Stopped"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface MonitoringExecutionSummary {
   MonitoringScheduleName?: string;
   ScheduledTime?: Date;
@@ -21699,6 +21893,8 @@ export type NotebookInstanceStatus =
   | "Updating"
   | (string & {});
 export const NotebookInstanceStatus = /*@__PURE__*/ S.String;
+
+export type NetworkInterfaceId = string;
 export interface DescribeNotebookInstanceOutput {
   NotebookInstanceArn?: string;
   NotebookInstanceName?: string;
@@ -21830,6 +22026,7 @@ export type OptimizationJobStatus =
   | "STOPPED"
   | (string & {});
 export const OptimizationJobStatus = /*@__PURE__*/ S.String;
+
 export interface OptimizationOutput {
   RecommendedInferenceImage?: string;
 }
@@ -21929,6 +22126,7 @@ export type PartnerAppStatus =
   | "Deleted"
   | (string & {});
 export const PartnerAppStatus = /*@__PURE__*/ S.String;
+
 export interface ErrorInfo {
   Code?: string;
   Reason?: string;
@@ -21936,6 +22134,7 @@ export interface ErrorInfo {
 export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Code: S.optional(S.String), Reason: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
+export type MajorMinorVersion = string;
 export type ReleaseNotesList = string[];
 export const ReleaseNotesList = /*@__PURE__*/ S.Array(S.String);
 export interface AvailableUpgrade {
@@ -22000,6 +22199,8 @@ export const DescribePartnerAppResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePartnerAppResponse",
 }) as any as S.Schema<DescribePartnerAppResponse>;
+export type PipelineNameOrArn = string;
+export type PipelineVersionId = number;
 export interface DescribePipelineRequest {
   PipelineName?: string;
   PipelineVersionId?: number;
@@ -22024,6 +22225,9 @@ export const DescribePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePipelineRequest>;
 export type PipelineStatus = "Active" | "Deleting" | (string & {});
 export const PipelineStatus = /*@__PURE__*/ S.String;
+
+export type PipelineVersionName = string;
+export type PipelineVersionDescription = string;
 export interface DescribePipelineResponse {
   PipelineArn?: string;
   PipelineName?: string;
@@ -22066,6 +22270,7 @@ export const DescribePipelineResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipelineResponse",
 }) as any as S.Schema<DescribePipelineResponse>;
+export type PipelineExecutionArn = string;
 export interface DescribePipelineDefinitionForExecutionRequest {
   PipelineExecutionArn?: string;
 }
@@ -22116,6 +22321,7 @@ export const DescribePipelineExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipelineExecutionRequest",
 }) as any as S.Schema<DescribePipelineExecutionRequest>;
+export type PipelineExecutionName = string;
 export type PipelineExecutionStatus =
   | "Executing"
   | "Stopping"
@@ -22124,6 +22330,8 @@ export type PipelineExecutionStatus =
   | "Succeeded"
   | (string & {});
 export const PipelineExecutionStatus = /*@__PURE__*/ S.String;
+
+export type PipelineExecutionDescription = string;
 export interface PipelineExperimentConfig {
   ExperimentName?: string;
   TrialName?: string;
@@ -22136,6 +22344,7 @@ export const PipelineExperimentConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipelineExperimentConfig",
 }) as any as S.Schema<PipelineExperimentConfig>;
+export type PipelineExecutionFailureReason = string;
 export interface SelectedStep {
   StepName?: string;
 }
@@ -22156,6 +22365,8 @@ export const SelectiveExecutionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelectiveExecutionConfig",
 }) as any as S.Schema<SelectiveExecutionConfig>;
+export type MLflowArn = string;
+export type MlflowExperimentEntityName = string;
 export interface MLflowConfiguration {
   MlflowResourceArn?: string;
   MlflowExperimentName?: string;
@@ -22238,6 +22449,8 @@ export type ProcessingJobStatus =
   | "Stopped"
   | (string & {});
 export const ProcessingJobStatus = /*@__PURE__*/ S.String;
+
+export type ExitMessage = string;
 export interface DescribeProcessingJobResponse {
   ProcessingInputs?: (ProcessingInput & {
     InputName: string;
@@ -22360,6 +22573,7 @@ export const DescribeProjectInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProjectInput",
 }) as any as S.Schema<DescribeProjectInput>;
+export type ProvisionedProductStatusMessage = string;
 export interface ServiceCatalogProvisionedProductDetails {
   ProvisionedProductId?: string;
   ProvisionedProductStatusMessage?: string;
@@ -22386,6 +22600,7 @@ export type ProjectStatus =
   | "UpdateFailed"
   | (string & {});
 export const ProjectStatus = /*@__PURE__*/ S.String;
+
 export interface CfnStackParameter {
   Key?: string;
   Value?: string;
@@ -22397,6 +22612,9 @@ export const CfnStackParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CfnStackParameter>;
 export type CfnStackParameters = CfnStackParameter[];
 export const CfnStackParameters = /*@__PURE__*/ S.Array(CfnStackParameter);
+export type CfnStackName = string;
+export type CfnStackId = string;
+export type CfnStackStatusMessage = string;
 export interface CfnStackDetail {
   Name?: string;
   Id?: string;
@@ -22488,6 +22706,7 @@ export const DescribeProjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProjectOutput",
 }) as any as S.Schema<DescribeProjectOutput>;
+export type ReservedCapacityArn = string;
 export interface DescribeReservedCapacityRequest {
   ReservedCapacityArn?: string;
 }
@@ -22508,6 +22727,7 @@ export const DescribeReservedCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReservedCapacityRequest>;
 export type ReservedCapacityType = "UltraServer" | "Instance" | (string & {});
 export const ReservedCapacityType = /*@__PURE__*/ S.String;
+
 export type ReservedCapacityStatus =
   | "Pending"
   | "Active"
@@ -22516,6 +22736,10 @@ export type ReservedCapacityStatus =
   | "Failed"
   | (string & {});
 export const ReservedCapacityStatus = /*@__PURE__*/ S.String;
+
+export type AvailabilityZone = string;
+export type ReservedCapacityDurationHours = number;
+export type ReservedCapacityDurationMinutes = number;
 export type ReservedCapacityInstanceType =
   | "ml.p4d.24xlarge"
   | "ml.p5.48xlarge"
@@ -22530,6 +22754,14 @@ export type ReservedCapacityInstanceType =
   | "ml.p6-b300.48xlarge"
   | (string & {});
 export const ReservedCapacityInstanceType = /*@__PURE__*/ S.String;
+
+export type TotalInstanceCount = number;
+export type AvailableInstanceCount = number;
+export type InUseInstanceCount = number;
+export type UltraServerType = string;
+export type UltraServerCount = number;
+export type AvailableSpareInstanceCount = number;
+export type UnhealthyInstanceCount = number;
 export interface UltraServerSummary {
   UltraServerType?: string;
   InstanceType?: ReservedCapacityInstanceType;
@@ -22607,6 +22839,7 @@ export const DescribeSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSpaceRequest",
 }) as any as S.Schema<DescribeSpaceRequest>;
+export type EfsUid = string;
 export type SpaceStatus =
   | "Deleting"
   | "Failed"
@@ -22617,6 +22850,7 @@ export type SpaceStatus =
   | "Delete_Failed"
   | (string & {});
 export const SpaceStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeSpaceResponse {
   DomainId?: string;
   SpaceArn?: string;
@@ -22797,6 +23031,7 @@ export type SecondaryStatus =
   | "Pending"
   | (string & {});
 export const SecondaryStatus = /*@__PURE__*/ S.String;
+
 export type WarmPoolResourceStatus =
   | "Available"
   | "Terminated"
@@ -22804,6 +23039,8 @@ export type WarmPoolResourceStatus =
   | "InUse"
   | (string & {});
 export const WarmPoolResourceStatus = /*@__PURE__*/ S.String;
+
+export type ResourceRetainedBillableTimeInSeconds = number;
 export interface WarmPoolStatus {
   Status?: WarmPoolResourceStatus;
   ResourceRetainedBillableTimeInSeconds?: number;
@@ -22816,6 +23053,7 @@ export const WarmPoolStatus = /*@__PURE__*/ S.suspend(() =>
     ReusedByJob: S.optional(S.String),
   }),
 ).annotate({ identifier: "WarmPoolStatus" }) as any as S.Schema<WarmPoolStatus>;
+export type StatusMessage = string;
 export interface SecondaryStatusTransition {
   Status?: SecondaryStatus;
   StartTime?: Date;
@@ -22850,6 +23088,9 @@ export const MetricData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricData" }) as any as S.Schema<MetricData>;
 export type FinalMetricDataList = MetricData[];
 export const FinalMetricDataList = /*@__PURE__*/ S.Array(MetricData);
+export type TrainingTimeInSeconds = number;
+export type BillableTimeInSeconds = number;
+export type BillableTokenCount = number;
 export type RuleEvaluationStatus =
   | "InProgress"
   | "NoIssuesFound"
@@ -22859,6 +23100,8 @@ export type RuleEvaluationStatus =
   | "Stopped"
   | (string & {});
 export const RuleEvaluationStatus = /*@__PURE__*/ S.String;
+
+export type StatusDetails = string;
 export interface DebugRuleEvaluationStatus {
   RuleConfigurationName?: string;
   RuleEvaluationJobArn?: string;
@@ -22909,6 +23152,9 @@ export const ProfilerRuleEvaluationStatuses = /*@__PURE__*/ S.Array(
 );
 export type ProfilingStatus = "Enabled" | "Disabled" | (string & {});
 export const ProfilingStatus = /*@__PURE__*/ S.String;
+
+export type MlflowExperimentId = string;
+export type MlflowRunId = string;
 export interface MlflowDetails {
   MlflowExperimentId?: string;
   MlflowRunId?: string;
@@ -22919,6 +23165,10 @@ export const MlflowDetails = /*@__PURE__*/ S.suspend(() =>
     MlflowRunId: S.optional(S.String),
   }),
 ).annotate({ identifier: "MlflowDetails" }) as any as S.Schema<MlflowDetails>;
+export type TotalStepCountPerEpoch = number;
+export type TrainingStepIndex = number;
+export type TrainingEpochIndex = number;
+export type TrainingEpochCount = number;
 export interface TrainingProgressInfo {
   TotalStepCountPerEpoch?: number;
   CurrentStep?: number;
@@ -23129,6 +23379,11 @@ export type TrainingPlanStatus =
   | "Failed"
   | (string & {});
 export const TrainingPlanStatus = /*@__PURE__*/ S.String;
+
+export type TrainingPlanStatusMessage = string;
+export type TrainingPlanDurationHours = number;
+export type TrainingPlanDurationMinutes = number;
+export type CurrencyCode = string;
 export type SageMakerResourceName =
   | "training-job"
   | "hyperpod-cluster"
@@ -23136,10 +23391,12 @@ export type SageMakerResourceName =
   | "studio-apps"
   | (string & {});
 export const SageMakerResourceName = /*@__PURE__*/ S.String;
+
 export type SageMakerResourceNames = SageMakerResourceName[];
 export const SageMakerResourceNames = /*@__PURE__*/ S.Array(
   SageMakerResourceName,
 );
+export type AvailabilityZoneId = string;
 export interface ReservedCapacitySummary {
   ReservedCapacityArn?: string;
   ReservedCapacityType?: ReservedCapacityType;
@@ -23252,6 +23509,8 @@ export const DescribeTrainingPlanExtensionHistoryRequest =
   ).annotate({
     identifier: "DescribeTrainingPlanExtensionHistoryRequest",
   }) as any as S.Schema<DescribeTrainingPlanExtensionHistoryRequest>;
+export type TrainingPlanExtensionOfferingId = string;
+export type TrainingPlanExtensionDurationHours = number;
 export interface TrainingPlanExtension {
   TrainingPlanExtensionOfferingId?: string;
   ExtendedAt?: Date;
@@ -23327,6 +23586,7 @@ export type TransformJobStatus =
   | "Stopped"
   | (string & {});
 export const TransformJobStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeTransformJobResponse {
   TransformJobName: string;
   TransformJobArn: string;
@@ -23409,6 +23669,7 @@ export const DescribeTrialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTrialRequest",
 }) as any as S.Schema<DescribeTrialRequest>;
+export type TrialSourceArn = string;
 export interface TrialSource {
   SourceArn?: string;
   SourceType?: string;
@@ -23467,6 +23728,7 @@ export const DescribeTrialComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTrialComponentRequest",
 }) as any as S.Schema<DescribeTrialComponentRequest>;
+export type TrialComponentSourceArn = string;
 export interface TrialComponentSource {
   SourceArn?: string;
   SourceType?: string;
@@ -23479,6 +23741,8 @@ export const TrialComponentSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrialComponentSource",
 }) as any as S.Schema<TrialComponentSource>;
+export type OptionalDouble = number;
+export type OptionalInteger = number;
 export interface TrialComponentMetricSummary {
   MetricName?: string;
   SourceArn?: string;
@@ -23598,6 +23862,7 @@ export type UserProfileStatus =
   | "Delete_Failed"
   | (string & {});
 export const UserProfileStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeUserProfileResponse {
   DomainId?: string;
   UserProfileArn?: string;
@@ -23712,6 +23977,7 @@ export const OidcConfigForResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OidcConfigForResponse",
 }) as any as S.Schema<OidcConfigForResponse>;
+export type WorkforceVpcEndpointId = string;
 export interface WorkforceVpcConfigResponse {
   VpcId?: string;
   SecurityGroupIds?: string[];
@@ -23736,6 +24002,8 @@ export type WorkforceStatus =
   | "Active"
   | (string & {});
 export const WorkforceStatus = /*@__PURE__*/ S.String;
+
+export type WorkforceFailureReason = string;
 export interface Workforce {
   WorkforceName?: string;
   WorkforceArn?: string;
@@ -24106,6 +24374,7 @@ export const GetDeviceFleetReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeviceFleetReportResponse",
 }) as any as S.Schema<GetDeviceFleetReportResponse>;
+export type LineageGroupNameOrArn = string;
 export interface GetLineageGroupPolicyRequest {
   LineageGroupName?: string;
 }
@@ -24124,6 +24393,7 @@ export const GetLineageGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLineageGroupPolicyRequest",
 }) as any as S.Schema<GetLineageGroupPolicyRequest>;
+export type ResourcePolicyString = string;
 export interface GetLineageGroupPolicyResponse {
   LineageGroupArn?: string;
   ResourcePolicy?: string;
@@ -24154,6 +24424,7 @@ export const GetModelPackageGroupPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetModelPackageGroupPolicyInput",
 }) as any as S.Schema<GetModelPackageGroupPolicyInput>;
+export type PolicyString = string;
 export interface GetModelPackageGroupPolicyOutput {
   ResourcePolicy: string;
 }
@@ -24184,6 +24455,7 @@ export type SagemakerServicecatalogStatus =
   | "Disabled"
   | (string & {});
 export const SagemakerServicecatalogStatus = /*@__PURE__*/ S.String;
+
 export interface GetSagemakerServicecatalogPortfolioStatusOutput {
   Status?: SagemakerServicecatalogStatus;
 }
@@ -24193,6 +24465,7 @@ export const GetSagemakerServicecatalogPortfolioStatusOutput =
   ).annotate({
     identifier: "GetSagemakerServicecatalogPortfolioStatusOutput",
   }) as any as S.Schema<GetSagemakerServicecatalogPortfolioStatusOutput>;
+export type UtilizationPercentagePerCore = number;
 export interface ScalingPolicyObjective {
   MinInvocationsPerMinute?: number;
   MaxInvocationsPerMinute?: number;
@@ -24262,6 +24535,7 @@ export type Statistic =
   | "Sum"
   | (string & {});
 export const Statistic = /*@__PURE__*/ S.String;
+
 export interface CustomizedMetricSpecification {
   MetricName?: string;
   Namespace?: string;
@@ -24367,6 +24641,8 @@ export type ResourceType =
   | "Job"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type PropertyNameHint = string;
 export interface PropertyNameQuery {
   PropertyNameHint?: string;
 }
@@ -24405,6 +24681,7 @@ export const GetSearchSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSearchSuggestionsRequest",
 }) as any as S.Schema<GetSearchSuggestionsRequest>;
+export type ResourcePropertyName = string;
 export interface PropertyNameSuggestion {
   PropertyName?: string;
 }
@@ -24483,8 +24760,10 @@ export const ImportHubContentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportHubContentResponse>;
 export type SortActionsBy = "Name" | "CreationTime" | (string & {});
 export const SortActionsBy = /*@__PURE__*/ S.String;
+
 export type SortOrder = "Ascending" | "Descending" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface ListActionsRequest {
   SourceUri?: string;
   ActionType?: string;
@@ -24557,12 +24836,14 @@ export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListActionsResponse",
 }) as any as S.Schema<ListActionsResponse>;
+export type NameContains = string;
 export type ListAIBenchmarkJobsSortBy =
   | "Name"
   | "CreationTime"
   | "Status"
   | (string & {});
 export const ListAIBenchmarkJobsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListAIBenchmarkJobsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -24648,6 +24929,7 @@ export type ListAIRecommendationJobsSortBy =
   | "Status"
   | (string & {});
 export const ListAIRecommendationJobsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListAIRecommendationJobsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -24730,6 +25012,7 @@ export type ListAIWorkloadConfigsSortBy =
   | "CreationTime"
   | (string & {});
 export const ListAIWorkloadConfigsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListAIWorkloadConfigsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -24802,6 +25085,7 @@ export const ListAIWorkloadConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAIWorkloadConfigsResponse>;
 export type AlgorithmSortBy = "Name" | "CreationTime" | (string & {});
 export const AlgorithmSortBy = /*@__PURE__*/ S.String;
+
 export interface ListAlgorithmsInput {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -24921,6 +25205,7 @@ export type AppImageConfigSortKey =
   | "Name"
   | (string & {});
 export const AppImageConfigSortKey = /*@__PURE__*/ S.String;
+
 export interface ListAppImageConfigsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -25009,6 +25294,7 @@ export const ListAppImageConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppImageConfigsResponse>;
 export type AppSortKey = "CreationTime" | (string & {});
 export const AppSortKey = /*@__PURE__*/ S.String;
+
 export interface ListAppsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -25078,6 +25364,7 @@ export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppsResponse>;
 export type SortArtifactsBy = "CreationTime" | (string & {});
 export const SortArtifactsBy = /*@__PURE__*/ S.String;
+
 export interface ListArtifactsRequest {
   SourceUri?: string;
   ArtifactType?: string;
@@ -25164,6 +25451,7 @@ export type SortAssociationsBy =
   | "CreationTime"
   | (string & {});
 export const SortAssociationsBy = /*@__PURE__*/ S.String;
+
 export interface ListAssociationsRequest {
   SourceArn?: string;
   DestinationArn?: string;
@@ -25244,10 +25532,14 @@ export const ListAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssociationsResponse",
 }) as any as S.Schema<ListAssociationsResponse>;
+export type AutoMLNameContains = string;
 export type AutoMLSortOrder = "Ascending" | "Descending" | (string & {});
 export const AutoMLSortOrder = /*@__PURE__*/ S.String;
+
 export type AutoMLSortBy = "Name" | "CreationTime" | "Status" | (string & {});
 export const AutoMLSortBy = /*@__PURE__*/ S.String;
+
+export type AutoMLMaxResults = number;
 export interface ListAutoMLJobsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -25349,6 +25641,8 @@ export type CandidateSortBy =
   | "FinalObjectiveMetricValue"
   | (string & {});
 export const CandidateSortBy = /*@__PURE__*/ S.String;
+
+export type AutoMLMaxResultsForTrials = number;
 export interface ListCandidatesForAutoMLJobRequest {
   AutoMLJobName?: string;
   StatusEquals?: CandidateStatus;
@@ -25429,6 +25723,8 @@ export const ListCandidatesForAutoMLJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCandidatesForAutoMLJobResponse>;
 export type EventSortBy = "EventTime" | (string & {});
 export const EventSortBy = /*@__PURE__*/ S.String;
+
+export type ClusterEventMaxResults = number;
 export interface ListClusterEventsRequest {
   ClusterName?: string;
   InstanceGroupName?: string;
@@ -25517,6 +25813,8 @@ export const ListClusterEventsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListClusterEventsResponse>;
 export type ClusterSortBy = "CREATION_TIME" | "NAME" | (string & {});
 export const ClusterSortBy = /*@__PURE__*/ S.String;
+
+export type IncludeNodeLogicalIdsBoolean = boolean;
 export interface ListClusterNodesRequest {
   ClusterName?: string;
   CreationTimeAfter?: Date;
@@ -25694,6 +25992,7 @@ export type SortClusterSchedulerConfigBy =
   | "Status"
   | (string & {});
 export const SortClusterSchedulerConfigBy = /*@__PURE__*/ S.String;
+
 export interface ListClusterSchedulerConfigsRequest {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -25780,17 +26079,20 @@ export const ListClusterSchedulerConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListClusterSchedulerConfigsResponse",
 }) as any as S.Schema<ListClusterSchedulerConfigsResponse>;
+export type CodeRepositoryNameContains = string;
 export type CodeRepositorySortBy =
   | "Name"
   | "CreationTime"
   | "LastModifiedTime"
   | (string & {});
 export const CodeRepositorySortBy = /*@__PURE__*/ S.String;
+
 export type CodeRepositorySortOrder =
   | "Ascending"
   | "Descending"
   | (string & {});
 export const CodeRepositorySortOrder = /*@__PURE__*/ S.String;
+
 export interface ListCodeRepositoriesInput {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -25883,6 +26185,7 @@ export type ListCompilationJobsSortBy =
   | "Status"
   | (string & {});
 export const ListCompilationJobsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListCompilationJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -25993,6 +26296,7 @@ export type SortQuotaBy =
   | "ClusterArn"
   | (string & {});
 export const SortQuotaBy = /*@__PURE__*/ S.String;
+
 export interface ListComputeQuotasRequest {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -26106,6 +26410,7 @@ export const ListComputeQuotasResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListComputeQuotasResponse>;
 export type SortContextsBy = "Name" | "CreationTime" | (string & {});
 export const SortContextsBy = /*@__PURE__*/ S.String;
+
 export interface ListContextsRequest {
   SourceUri?: string;
   ContextType?: string;
@@ -26181,6 +26486,7 @@ export type MonitoringJobDefinitionSortKey =
   | "CreationTime"
   | (string & {});
 export const MonitoringJobDefinitionSortKey = /*@__PURE__*/ S.String;
+
 export interface ListDataQualityJobDefinitionsRequest {
   EndpointName?: string;
   SortBy?: MonitoringJobDefinitionSortKey;
@@ -26259,12 +26565,14 @@ export const ListDataQualityJobDefinitionsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListDataQualityJobDefinitionsResponse",
 }) as any as S.Schema<ListDataQualityJobDefinitionsResponse>;
+export type ListMaxResults = number;
 export type ListDeviceFleetsSortBy =
   | "NAME"
   | "CREATION_TIME"
   | "LAST_MODIFIED_TIME"
   | (string & {});
 export const ListDeviceFleetsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListDeviceFleetsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -26502,6 +26810,7 @@ export type ListEdgeDeploymentPlansSortBy =
   | "LAST_MODIFIED_TIME"
   | (string & {});
 export const ListEdgeDeploymentPlansSortBy = /*@__PURE__*/ S.String;
+
 export interface ListEdgeDeploymentPlansRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -26605,6 +26914,7 @@ export type ListEdgePackagingJobsSortBy =
   | "STATUS"
   | (string & {});
 export const ListEdgePackagingJobsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListEdgePackagingJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -26701,8 +27011,12 @@ export const ListEdgePackagingJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEdgePackagingJobsResponse>;
 export type EndpointConfigSortKey = "Name" | "CreationTime" | (string & {});
 export const EndpointConfigSortKey = /*@__PURE__*/ S.String;
+
 export type OrderKey = "Ascending" | "Descending" | (string & {});
 export const OrderKey = /*@__PURE__*/ S.String;
+
+export type PaginationToken = string;
+export type EndpointConfigNameContains = string;
 export interface ListEndpointConfigsInput {
   SortBy?: EndpointConfigSortKey;
   SortOrder?: OrderKey;
@@ -26779,6 +27093,8 @@ export type EndpointSortKey =
   | "Status"
   | (string & {});
 export const EndpointSortKey = /*@__PURE__*/ S.String;
+
+export type EndpointNameContains = string;
 export interface ListEndpointsInput {
   SortBy?: EndpointSortKey;
   SortOrder?: OrderKey;
@@ -26867,6 +27183,7 @@ export const ListEndpointsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEndpointsOutput>;
 export type SortExperimentsBy = "Name" | "CreationTime" | (string & {});
 export const SortExperimentsBy = /*@__PURE__*/ S.String;
+
 export interface ListExperimentsRequest {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -26935,8 +27252,10 @@ export const ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExperimentsResponse",
 }) as any as S.Schema<ListExperimentsResponse>;
+export type FeatureGroupNameContains = string;
 export type FeatureGroupSortOrder = "Ascending" | "Descending" | (string & {});
 export const FeatureGroupSortOrder = /*@__PURE__*/ S.String;
+
 export type FeatureGroupSortBy =
   | "Name"
   | "FeatureGroupStatus"
@@ -26944,6 +27263,8 @@ export type FeatureGroupSortBy =
   | "CreationTime"
   | (string & {});
 export const FeatureGroupSortBy = /*@__PURE__*/ S.String;
+
+export type FeatureGroupMaxResults = number;
 export interface ListFeatureGroupsRequest {
   NameContains?: string;
   FeatureGroupStatusEquals?: FeatureGroupStatus;
@@ -27100,6 +27421,7 @@ export type HubContentSortBy =
   | "HubContentStatus"
   | (string & {});
 export const HubContentSortBy = /*@__PURE__*/ S.String;
+
 export interface ListHubContentsRequest {
   HubName?: string;
   HubContentType?: HubContentType;
@@ -27269,6 +27591,7 @@ export type HubSortBy =
   | "AccountIdOwner"
   | (string & {});
 export const HubSortBy = /*@__PURE__*/ S.String;
+
 export interface ListHubsRequest {
   NameContains?: string;
   CreationTimeBefore?: Date;
@@ -27427,6 +27750,7 @@ export type HyperParameterTuningJobSortByOptions =
   | "CreationTime"
   | (string & {});
 export const HyperParameterTuningJobSortByOptions = /*@__PURE__*/ S.String;
+
 export interface ListHyperParameterTuningJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -27535,14 +27859,17 @@ export const ListHyperParameterTuningJobsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListHyperParameterTuningJobsResponse",
 }) as any as S.Schema<ListHyperParameterTuningJobsResponse>;
+export type ImageNameContains = string;
 export type ImageSortBy =
   | "CREATION_TIME"
   | "LAST_MODIFIED_TIME"
   | "IMAGE_NAME"
   | (string & {});
 export const ImageSortBy = /*@__PURE__*/ S.String;
+
 export type ImageSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const ImageSortOrder = /*@__PURE__*/ S.String;
+
 export interface ListImagesRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -27637,8 +27964,10 @@ export type ImageVersionSortBy =
   | "VERSION"
   | (string & {});
 export const ImageVersionSortBy = /*@__PURE__*/ S.String;
+
 export type ImageVersionSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const ImageVersionSortOrder = /*@__PURE__*/ S.String;
+
 export interface ListImageVersionsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -27732,6 +28061,8 @@ export type InferenceComponentSortKey =
   | "Status"
   | (string & {});
 export const InferenceComponentSortKey = /*@__PURE__*/ S.String;
+
+export type InferenceComponentNameContains = string;
 export interface ListInferenceComponentsInput {
   SortBy?: InferenceComponentSortKey;
   SortOrder?: OrderKey;
@@ -27838,6 +28169,7 @@ export type SortInferenceExperimentsBy =
   | "Status"
   | (string & {});
 export const SortInferenceExperimentsBy = /*@__PURE__*/ S.String;
+
 export interface ListInferenceExperimentsRequest {
   NameContains?: string;
   Type?: InferenceExperimentType;
@@ -27944,6 +28276,7 @@ export type ListInferenceRecommendationsJobsSortBy =
   | "Status"
   | (string & {});
 export const ListInferenceRecommendationsJobsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListInferenceRecommendationsJobsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -28059,6 +28392,7 @@ export const ListInferenceRecommendationsJobsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListInferenceRecommendationsJobsResponse>;
 export type RecommendationStepType = "BENCHMARK" | (string & {});
 export const RecommendationStepType = /*@__PURE__*/ S.String;
+
 export interface ListInferenceRecommendationsJobStepsRequest {
   JobName?: string;
   Status?: RecommendationJobStatus;
@@ -28088,6 +28422,7 @@ export const ListInferenceRecommendationsJobStepsRequest =
   ).annotate({
     identifier: "ListInferenceRecommendationsJobStepsRequest",
   }) as any as S.Schema<ListInferenceRecommendationsJobStepsRequest>;
+export type RecommendationFailureReason = string;
 export interface RecommendationJobInferenceBenchmark {
   Metrics?: RecommendationMetrics;
   EndpointMetrics?: InferenceMetrics;
@@ -28175,6 +28510,7 @@ export const ListInferenceRecommendationsJobStepsResponse =
   }) as any as S.Schema<ListInferenceRecommendationsJobStepsResponse>;
 export type SortBy = "Name" | "CreationTime" | "Status" | (string & {});
 export const SortBy = /*@__PURE__*/ S.String;
+
 export interface ListJobsRequest {
   JobCategory?: JobCategory;
   NextToken?: string;
@@ -28428,10 +28764,12 @@ export const ListLabelingJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLabelingJobsResponse",
 }) as any as S.Schema<ListLabelingJobsResponse>;
+export type JobReferenceCodeContains = string;
 export type ListLabelingJobsForWorkteamSortByOptions =
   | "CreationTime"
   | (string & {});
 export const ListLabelingJobsForWorkteamSortByOptions = /*@__PURE__*/ S.String;
+
 export interface ListLabelingJobsForWorkteamRequest {
   WorkteamArn?: string;
   MaxResults?: number;
@@ -28526,6 +28864,7 @@ export const ListLabelingJobsForWorkteamResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLabelingJobsForWorkteamResponse>;
 export type SortLineageGroupsBy = "Name" | "CreationTime" | (string & {});
 export const SortLineageGroupsBy = /*@__PURE__*/ S.String;
+
 export interface ListLineageGroupsRequest {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -28596,6 +28935,7 @@ export type SortMlflowAppBy =
   | "Status"
   | (string & {});
 export const SortMlflowAppBy = /*@__PURE__*/ S.String;
+
 export interface ListMlflowAppsRequest {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -28676,6 +29016,7 @@ export type SortTrackingServerBy =
   | "Status"
   | (string & {});
 export const SortTrackingServerBy = /*@__PURE__*/ S.String;
+
 export interface ListMlflowTrackingServersRequest {
   CreatedAfter?: Date;
   CreatedBefore?: Date;
@@ -28811,11 +29152,13 @@ export type ModelCardExportJobSortBy =
   | "Status"
   | (string & {});
 export const ModelCardExportJobSortBy = /*@__PURE__*/ S.String;
+
 export type ModelCardExportJobSortOrder =
   | "Ascending"
   | "Descending"
   | (string & {});
 export const ModelCardExportJobSortOrder = /*@__PURE__*/ S.String;
+
 export interface ListModelCardExportJobsRequest {
   ModelCardName?: string;
   ModelCardVersion?: number;
@@ -28906,8 +29249,10 @@ export const ListModelCardExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListModelCardExportJobsResponse>;
 export type ModelCardSortBy = "Name" | "CreationTime" | (string & {});
 export const ModelCardSortBy = /*@__PURE__*/ S.String;
+
 export type ModelCardSortOrder = "Ascending" | "Descending" | (string & {});
 export const ModelCardSortOrder = /*@__PURE__*/ S.String;
+
 export interface ListModelCardsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -28987,6 +29332,7 @@ export const ListModelCardsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListModelCardsResponse>;
 export type ModelCardVersionSortBy = "Version" | (string & {});
 export const ModelCardVersionSortBy = /*@__PURE__*/ S.String;
+
 export interface ListModelCardVersionsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -29133,6 +29479,7 @@ export type ModelMetadataFilterType =
   | "FrameworkVersion"
   | (string & {});
 export const ModelMetadataFilterType = /*@__PURE__*/ S.String;
+
 export interface ModelMetadataFilter {
   Name?: ModelMetadataFilterType;
   Value?: string;
@@ -29220,11 +29567,13 @@ export const ListModelMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListModelMetadataResponse>;
 export type ModelPackageGroupSortBy = "Name" | "CreationTime" | (string & {});
 export const ModelPackageGroupSortBy = /*@__PURE__*/ S.String;
+
 export type CrossAccountFilterOption =
   | "SameAccount"
   | "CrossAccount"
   | (string & {});
 export const CrossAccountFilterOption = /*@__PURE__*/ S.String;
+
 export interface ListModelPackageGroupsInput {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -29310,8 +29659,10 @@ export type ModelPackageType =
   | "Both"
   | (string & {});
 export const ModelPackageType = /*@__PURE__*/ S.String;
+
 export type ModelPackageSortBy = "Name" | "CreationTime" | (string & {});
 export const ModelPackageSortBy = /*@__PURE__*/ S.String;
+
 export interface ListModelPackagesInput {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -29464,6 +29815,8 @@ export const ListModelQualityJobDefinitionsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListModelQualityJobDefinitionsResponse>;
 export type ModelSortKey = "Name" | "CreationTime" | (string & {});
 export const ModelSortKey = /*@__PURE__*/ S.String;
+
+export type ModelNameContains = string;
 export interface ListModelsInput {
   SortBy?: ModelSortKey;
   SortOrder?: OrderKey;
@@ -29530,13 +29883,16 @@ export const ListModelsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelsOutput",
 }) as any as S.Schema<ListModelsOutput>;
+export type MonitoringAlertName = string;
 export type MonitoringAlertHistorySortKey =
   | "CreationTime"
   | "Status"
   | (string & {});
 export const MonitoringAlertHistorySortKey = /*@__PURE__*/ S.String;
+
 export type MonitoringAlertStatus = "InAlert" | "OK" | (string & {});
 export const MonitoringAlertStatus = /*@__PURE__*/ S.String;
+
 export interface ListMonitoringAlertHistoryRequest {
   MonitoringScheduleName?: string;
   MonitoringAlertName?: string;
@@ -29638,6 +29994,8 @@ export const ListMonitoringAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMonitoringAlertsRequest",
 }) as any as S.Schema<ListMonitoringAlertsRequest>;
+export type MonitoringDatapointsToAlert = number;
+export type MonitoringEvaluationPeriod = number;
 export interface ModelDashboardIndicatorAction {
   Enabled?: boolean;
 }
@@ -29710,6 +30068,7 @@ export type MonitoringExecutionSortKey =
   | "Status"
   | (string & {});
 export const MonitoringExecutionSortKey = /*@__PURE__*/ S.String;
+
 export interface ListMonitoringExecutionsRequest {
   MonitoringScheduleName?: string;
   EndpointName?: string;
@@ -29798,6 +30157,7 @@ export type MonitoringScheduleSortKey =
   | "Status"
   | (string & {});
 export const MonitoringScheduleSortKey = /*@__PURE__*/ S.String;
+
 export interface ListMonitoringSchedulesRequest {
   EndpointName?: string;
   SortBy?: MonitoringScheduleSortKey;
@@ -29904,11 +30264,14 @@ export type NotebookInstanceLifecycleConfigSortKey =
   | "LastModifiedTime"
   | (string & {});
 export const NotebookInstanceLifecycleConfigSortKey = /*@__PURE__*/ S.String;
+
 export type NotebookInstanceLifecycleConfigSortOrder =
   | "Ascending"
   | "Descending"
   | (string & {});
 export const NotebookInstanceLifecycleConfigSortOrder = /*@__PURE__*/ S.String;
+
+export type NotebookInstanceLifecycleConfigNameContains = string;
 export interface ListNotebookInstanceLifecycleConfigsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -30002,11 +30365,15 @@ export type NotebookInstanceSortKey =
   | "Status"
   | (string & {});
 export const NotebookInstanceSortKey = /*@__PURE__*/ S.String;
+
 export type NotebookInstanceSortOrder =
   | "Ascending"
   | "Descending"
   | (string & {});
 export const NotebookInstanceSortOrder = /*@__PURE__*/ S.String;
+
+export type NotebookInstanceNameContains = string;
+export type CodeRepositoryContains = string;
 export interface ListNotebookInstancesInput {
   NextToken?: string;
   MaxResults?: number;
@@ -30114,6 +30481,7 @@ export type ListOptimizationJobsSortBy =
   | "Status"
   | (string & {});
 export const ListOptimizationJobsSortBy = /*@__PURE__*/ S.String;
+
 export interface ListOptimizationJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -30162,6 +30530,7 @@ export const ListOptimizationJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOptimizationJobsRequest",
 }) as any as S.Schema<ListOptimizationJobsRequest>;
+export type OptimizationType = string;
 export type OptimizationTypes = string[];
 export const OptimizationTypes = /*@__PURE__*/ S.Array(S.String);
 export interface OptimizationJobSummary {
@@ -30280,6 +30649,7 @@ export type SortPipelineExecutionsBy =
   | "PipelineExecutionArn"
   | (string & {});
 export const SortPipelineExecutionsBy = /*@__PURE__*/ S.String;
+
 export interface ListPipelineExecutionsRequest {
   PipelineName?: string;
   CreatedAfter?: Date;
@@ -30312,6 +30682,7 @@ export const ListPipelineExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPipelineExecutionsRequest",
 }) as any as S.Schema<ListPipelineExecutionsRequest>;
+export type String3072 = string;
 export interface PipelineExecutionSummary {
   PipelineExecutionArn?: string;
   StartTime?: Date;
@@ -30374,6 +30745,9 @@ export const ListPipelineExecutionStepsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPipelineExecutionStepsRequest",
 }) as any as S.Schema<ListPipelineExecutionStepsRequest>;
+export type StepName = string;
+export type StepDisplayName = string;
+export type StepDescription = string;
 export type StepStatus =
   | "Starting"
   | "Executing"
@@ -30383,6 +30757,7 @@ export type StepStatus =
   | "Succeeded"
   | (string & {});
 export const StepStatus = /*@__PURE__*/ S.String;
+
 export interface CacheHitResult {
   SourcePipelineExecutionArn?: string;
 }
@@ -30439,6 +30814,7 @@ export const RegisterModelStepMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisterModelStepMetadata>;
 export type ConditionOutcome = "True" | "False" | (string & {});
 export const ConditionOutcome = /*@__PURE__*/ S.String;
+
 export interface ConditionStepMetadata {
   Outcome?: ConditionOutcome;
 }
@@ -30447,6 +30823,7 @@ export const ConditionStepMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConditionStepMetadata",
 }) as any as S.Schema<ConditionStepMetadata>;
+export type CallbackToken = string;
 export interface OutputParameter {
   Name?: string;
   Value?: string;
@@ -30826,6 +31203,7 @@ export const ListPipelineParametersForExecutionRequest =
   ).annotate({
     identifier: "ListPipelineParametersForExecutionRequest",
   }) as any as S.Schema<ListPipelineParametersForExecutionRequest>;
+export type PipelineParameterName = string;
 export interface Parameter {
   Name?: string;
   Value?: string;
@@ -30853,6 +31231,7 @@ export const ListPipelineParametersForExecutionResponse =
   }) as any as S.Schema<ListPipelineParametersForExecutionResponse>;
 export type SortPipelinesBy = "Name" | "CreationTime" | (string & {});
 export const SortPipelinesBy = /*@__PURE__*/ S.String;
+
 export interface ListPipelinesRequest {
   PipelineNamePrefix?: string;
   CreatedAfter?: Date;
@@ -31089,8 +31468,10 @@ export const ListProcessingJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProcessingJobsResponse>;
 export type ProjectSortBy = "Name" | "CreationTime" | (string & {});
 export const ProjectSortBy = /*@__PURE__*/ S.String;
+
 export type ProjectSortOrder = "Ascending" | "Descending" | (string & {});
 export const ProjectSortOrder = /*@__PURE__*/ S.String;
+
 export interface ListProjectsInput {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -31165,13 +31546,16 @@ export const ListProjectsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProjectsOutput",
 }) as any as S.Schema<ListProjectsOutput>;
+export type ResourceCatalogName = string;
 export type ResourceCatalogSortOrder =
   | "Ascending"
   | "Descending"
   | (string & {});
 export const ResourceCatalogSortOrder = /*@__PURE__*/ S.String;
+
 export type ResourceCatalogSortBy = "CreationTime" | (string & {});
 export const ResourceCatalogSortBy = /*@__PURE__*/ S.String;
+
 export interface ListResourceCatalogsRequest {
   NameContains?: string;
   CreationTimeAfter?: Date;
@@ -31208,6 +31592,8 @@ export const ListResourceCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourceCatalogsRequest",
 }) as any as S.Schema<ListResourceCatalogsRequest>;
+export type ResourceCatalogArn = string;
+export type ResourceCatalogDescription = string;
 export interface ResourceCatalog {
   ResourceCatalogArn?: string;
   ResourceCatalogName?: string;
@@ -31245,6 +31631,7 @@ export const ListResourceCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceCatalogsResponse>;
 export type SpaceSortKey = "CreationTime" | "LastModifiedTime" | (string & {});
 export const SpaceSortKey = /*@__PURE__*/ S.String;
+
 export interface ListSpacesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -31390,6 +31777,7 @@ export type DeviceDeploymentStatus =
   | "STOPPED"
   | (string & {});
 export const DeviceDeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface DeviceDeploymentSummary {
   EdgeDeploymentPlanArn?: string;
   EdgeDeploymentPlanName?: string;
@@ -31450,6 +31838,7 @@ export type StudioLifecycleConfigSortKey =
   | "Name"
   | (string & {});
 export const StudioLifecycleConfigSortKey = /*@__PURE__*/ S.String;
+
 export interface ListStudioLifecycleConfigsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -31570,6 +31959,7 @@ export const ListSubscribedWorkteamsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubscribedWorkteamsResponse",
 }) as any as S.Schema<ListSubscribedWorkteamsResponse>;
+export type ListTagsMaxResults = number;
 export interface ListTagsInput {
   ResourceArn?: string;
   NextToken?: string;
@@ -31708,6 +32098,7 @@ export type TrainingJobSortByOptions =
   | "FinalObjectiveMetricValue"
   | (string & {});
 export const TrainingJobSortByOptions = /*@__PURE__*/ S.String;
+
 export interface ListTrainingJobsForHyperParameterTuningJobRequest {
   HyperParameterTuningJobName?: string;
   NextToken?: string;
@@ -31773,10 +32164,13 @@ export type TrainingPlanSortBy =
   | "Status"
   | (string & {});
 export const TrainingPlanSortBy = /*@__PURE__*/ S.String;
+
 export type TrainingPlanSortOrder = "Ascending" | "Descending" | (string & {});
 export const TrainingPlanSortOrder = /*@__PURE__*/ S.String;
+
 export type TrainingPlanFilterName = "Status" | (string & {});
 export const TrainingPlanFilterName = /*@__PURE__*/ S.String;
+
 export interface TrainingPlanFilter {
   Name?: TrainingPlanFilterName;
   Value?: string;
@@ -31982,6 +32376,7 @@ export const ListTransformJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTransformJobsResponse>;
 export type SortTrialComponentsBy = "Name" | "CreationTime" | (string & {});
 export const SortTrialComponentsBy = /*@__PURE__*/ S.String;
+
 export interface ListTrialComponentsRequest {
   ExperimentName?: string;
   TrialName?: string;
@@ -32072,6 +32467,7 @@ export const ListTrialComponentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrialComponentsResponse>;
 export type SortTrialsBy = "Name" | "CreationTime" | (string & {});
 export const SortTrialsBy = /*@__PURE__*/ S.String;
+
 export interface ListTrialsRequest {
   ExperimentName?: string;
   TrialComponentName?: string;
@@ -32167,12 +32563,14 @@ export const ListUltraServersByReservedCapacityRequest =
   ).annotate({
     identifier: "ListUltraServersByReservedCapacityRequest",
   }) as any as S.Schema<ListUltraServersByReservedCapacityRequest>;
+export type ConfiguredSpareInstanceCount = number;
 export type UltraServerHealthStatus =
   | "OK"
   | "Impaired"
   | "Insufficient-Data"
   | (string & {});
 export const UltraServerHealthStatus = /*@__PURE__*/ S.String;
+
 export interface UltraServer {
   UltraServerId?: string;
   UltraServerType?: string;
@@ -32227,6 +32625,7 @@ export type UserProfileSortKey =
   | "LastModifiedTime"
   | (string & {});
 export const UserProfileSortKey = /*@__PURE__*/ S.String;
+
 export interface ListUserProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -32293,6 +32692,7 @@ export const ListUserProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserProfilesResponse>;
 export type ListWorkforcesSortByOptions = "Name" | "CreateDate" | (string & {});
 export const ListWorkforcesSortByOptions = /*@__PURE__*/ S.String;
+
 export interface ListWorkforcesRequest {
   SortBy?: ListWorkforcesSortByOptions;
   SortOrder?: SortOrder;
@@ -32350,6 +32750,7 @@ export const ListWorkforcesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkforcesResponse>;
 export type ListWorkteamsSortByOptions = "Name" | "CreateDate" | (string & {});
 export const ListWorkteamsSortByOptions = /*@__PURE__*/ S.String;
+
 export interface ListWorkteamsRequest {
   SortBy?: ListWorkteamsSortByOptions;
   SortOrder?: SortOrder;
@@ -32437,6 +32838,8 @@ export type QueryLineageStartArns = string[];
 export const QueryLineageStartArns = /*@__PURE__*/ S.Array(S.String);
 export type Direction = "Both" | "Ascendants" | "Descendants" | (string & {});
 export const Direction = /*@__PURE__*/ S.String;
+
+export type String40 = string;
 export type QueryTypes = string[];
 export const QueryTypes = /*@__PURE__*/ S.Array(S.String);
 export type LineageType =
@@ -32446,6 +32849,7 @@ export type LineageType =
   | "Action"
   | (string & {});
 export const LineageType = /*@__PURE__*/ S.String;
+
 export type QueryLineageTypes = LineageType[];
 export const QueryLineageTypes = /*@__PURE__*/ S.Array(LineageType);
 export type QueryProperties = { [key: string]: string | undefined };
@@ -32473,6 +32877,9 @@ export const QueryFilters = /*@__PURE__*/ S.suspend(() =>
     Properties: S.optional(QueryProperties),
   }),
 ).annotate({ identifier: "QueryFilters" }) as any as S.Schema<QueryFilters>;
+export type QueryLineageMaxDepth = number;
+export type QueryLineageMaxResults = number;
+export type String8192 = string;
 export interface QueryLineageRequest {
   StartArns?: string[];
   Direction?: Direction;
@@ -32591,6 +32998,7 @@ export const RegisterDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisterDevicesResponse",
 }) as any as S.Schema<RegisterDevicesResponse>;
+export type TaskInput = string;
 export interface RenderableTask {
   Input?: string;
 }
@@ -32689,6 +33097,8 @@ export type Operator =
   | "In"
   | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export interface Filter {
   Name?: string;
   Operator?: Operator;
@@ -32723,6 +33133,7 @@ export const SearchExpressionList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchExpressionList>;
 export type BooleanOperator = "And" | "Or" | (string & {});
 export const BooleanOperator = /*@__PURE__*/ S.String;
+
 export interface SearchExpression {
   Filters?: Filter[];
   NestedFilters?: NestedFilters[];
@@ -32745,6 +33156,9 @@ export const SearchExpression = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchExpression>;
 export type SearchSortOrder = "Ascending" | "Descending" | (string & {});
 export const SearchSortOrder = /*@__PURE__*/ S.String;
+
+export type VisibilityConditionsKey = string;
+export type VisibilityConditionsValue = string;
 export interface VisibilityConditions {
   Key?: string;
   Value?: string;
@@ -33836,6 +34250,7 @@ export type SearchResultsList = SearchRecord[];
 export const SearchResultsList = /*@__PURE__*/ S.Array(SearchRecord);
 export type Relation = "EqualTo" | "GreaterThanOrEqualTo" | (string & {});
 export const Relation = /*@__PURE__*/ S.String;
+
 export interface TotalHits {
   Value?: number;
   Relation?: Relation;
@@ -34895,6 +35310,8 @@ export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
     TotalHits: S.optional(TotalHits),
   }).pipe(ns),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
+export type ReservedCapacityInstanceCount = number;
+export type TrainingPlanDurationHoursInput = number;
 export interface SearchTrainingPlanOfferingsRequest {
   InstanceType?: ReservedCapacityInstanceType;
   InstanceCount?: number;
@@ -35343,6 +35760,7 @@ export const StartPipelineExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartPipelineExecutionResponse",
 }) as any as S.Schema<StartPipelineExecutionResponse>;
+export type ResourceIdentifier = string;
 export interface StartSessionRequest {
   ResourceIdentifier?: string;
 }
@@ -35361,6 +35779,9 @@ export const StartSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSessionRequest",
 }) as any as S.Schema<StartSessionRequest>;
+export type SessionId = string;
+export type StreamUrl = string;
+export type TokenValue = string;
 export interface StartSessionResponse {
   SessionId?: string;
   StreamUrl?: string;
@@ -35557,6 +35978,7 @@ export type ModelVariantAction =
   | "Promote"
   | (string & {});
 export const ModelVariantAction = /*@__PURE__*/ S.String;
+
 export type ModelVariantActionMap = {
   [key: string]: ModelVariantAction | undefined;
 };
@@ -35569,6 +35991,7 @@ export type InferenceExperimentStopDesiredState =
   | "Cancelled"
   | (string & {});
 export const InferenceExperimentStopDesiredState = /*@__PURE__*/ S.String;
+
 export interface StopInferenceExperimentRequest {
   Name?: string;
   ModelVariantActions?: { [key: string]: ModelVariantAction | undefined };
@@ -36404,6 +36827,7 @@ export type VariantPropertyType =
   | "DataCaptureConfig"
   | (string & {});
 export const VariantPropertyType = /*@__PURE__*/ S.String;
+
 export interface VariantProperty {
   VariantPropertyType?: VariantPropertyType;
 }
@@ -36765,6 +37189,7 @@ export const UpdateHubContentReferenceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateHubContentReferenceResponse",
 }) as any as S.Schema<UpdateHubContentReferenceResponse>;
+export type ImageDeleteProperty = string;
 export type ImageDeletePropertyList = string[];
 export const ImageDeletePropertyList = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateImageRequest {
@@ -37193,6 +37618,10 @@ export const UpdateMonitoringScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateMonitoringScheduleResponse",
 }) as any as S.Schema<UpdateMonitoringScheduleResponse>;
+export type DisassociateNotebookInstanceLifecycleConfig = boolean;
+export type DisassociateNotebookInstanceAcceleratorTypes = boolean;
+export type DisassociateDefaultCodeRepository = boolean;
+export type DisassociateAdditionalCodeRepositories = boolean;
 export interface UpdateNotebookInstanceInput {
   NotebookInstanceName?: string;
   InstanceType?: InstanceType;
@@ -37663,6 +38092,7 @@ export const UpdateTrialResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrialResponse",
 }) as any as S.Schema<UpdateTrialResponse>;
+export type TrialComponentKey256 = string;
 export type ListTrialComponentKey256 = string[];
 export const ListTrialComponentKey256 = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateTrialComponentRequest {
@@ -37841,84 +38271,6 @@ export const UpdateWorkteamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkteamResponse",
 }) as any as S.Schema<UpdateWorkteamResponse>;
-
-//# Errors
-export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
-  "ResourceLimitExceeded",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceInUse extends S.TaggedErrorClass<ResourceInUse>()(
-  "ResourceInUse",
-  { Message: S.optional(S.String) },
-).pipe(C.withDependencyViolationError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class ClusterSchedulerConfigAlreadyExists extends S.TaggedErrorClass<ClusterSchedulerConfigAlreadyExists>()(
-  "ClusterSchedulerConfigAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "ClusterSchedulerConfig record already exists" },
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class EndpointConfigNotFound extends S.TaggedErrorClass<EndpointConfigNotFound>()(
-  "EndpointConfigNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Could not find endpoint configuration" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class EndpointAlreadyExists extends S.TaggedErrorClass<EndpointAlreadyExists>()(
-  "EndpointAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Cannot create already existing endpoint" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class EndpointConfigAlreadyExists extends S.TaggedErrorClass<EndpointConfigAlreadyExists>()(
-  "EndpointConfigAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: {
-      includes: "Cannot create already existing endpoint configuration",
-    },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class ModelAlreadyExists extends S.TaggedErrorClass<ModelAlreadyExists>()(
-  "ModelAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Cannot create already existing model" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class EndpointNotFound extends S.TaggedErrorClass<EndpointNotFound>()(
-  "EndpointNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: 'Could not find endpoint "' },
-  }),
-).pipe(C.withNotFoundError) {}
-export class ModelNotFound extends S.TaggedErrorClass<ModelNotFound>()(
-  "ModelNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Could not find model" },
-  }),
-).pipe(C.withNotFoundError) {}
-
-//# Operations
 export type AddAssociationError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -37935,8 +38287,11 @@ export const addAssociation: API.OperationMethod<
   input: AddAssociationRequest,
   output: AddAssociationResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddAssociation",
 }));
+
 export type AddTagsError = CommonErrors;
 /**
  * Adds or overwrites one or more tags for the specified SageMaker resource. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints.
@@ -37956,8 +38311,11 @@ export const addTags: API.OperationMethod<
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
+
 export type AssociateTrialComponentError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -37974,8 +38332,11 @@ export const associateTrialComponent: API.OperationMethod<
   input: AssociateTrialComponentRequest,
   output: AssociateTrialComponentResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTrialComponent",
 }));
+
 export type AttachClusterNodeVolumeError = ResourceNotFound | CommonErrors;
 /**
  * Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a node in your EKS orchestrated HyperPod cluster.
@@ -37991,8 +38352,11 @@ export const attachClusterNodeVolume: API.OperationMethod<
   input: AttachClusterNodeVolumeRequest,
   output: AttachClusterNodeVolumeResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachClusterNodeVolume",
 }));
+
 export type BatchAddClusterNodesError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -38011,8 +38375,11 @@ export const batchAddClusterNodes: API.OperationMethod<
   input: BatchAddClusterNodesRequest,
   output: BatchAddClusterNodesResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAddClusterNodes",
 }));
+
 export type BatchDeleteClusterNodesError = ResourceNotFound | CommonErrors;
 /**
  * Deletes specific nodes within a SageMaker HyperPod cluster. `BatchDeleteClusterNodes` accepts a cluster name and a list of node IDs.
@@ -38030,8 +38397,11 @@ export const batchDeleteClusterNodes: API.OperationMethod<
   input: BatchDeleteClusterNodesRequest,
   output: BatchDeleteClusterNodesResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteClusterNodes",
 }));
+
 export type BatchDescribeModelPackageError = CommonErrors;
 /**
  * This action batch describes a list of versioned model packages
@@ -38045,8 +38415,11 @@ export const batchDescribeModelPackage: API.OperationMethod<
   input: BatchDescribeModelPackageInput,
   output: BatchDescribeModelPackageOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDescribeModelPackage",
 }));
+
 export type BatchRebootClusterNodesError = ResourceNotFound | CommonErrors;
 /**
  * Reboots specific nodes within a SageMaker HyperPod cluster using a soft recovery mechanism. `BatchRebootClusterNodes` performs a graceful reboot of the specified nodes by calling the Amazon Elastic Compute Cloud `RebootInstances` API, which attempts to cleanly shut down the operating system before restarting the instance.
@@ -38068,8 +38441,11 @@ export const batchRebootClusterNodes: API.OperationMethod<
   input: BatchRebootClusterNodesRequest,
   output: BatchRebootClusterNodesResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRebootClusterNodes",
 }));
+
 export type BatchReplaceClusterNodesError = ResourceNotFound | CommonErrors;
 /**
  * Replaces specific nodes within a SageMaker HyperPod cluster with new hardware. `BatchReplaceClusterNodes` terminates the specified instances and provisions new replacement instances with the same configuration but fresh hardware. The Amazon Machine Image (AMI) and instance configuration remain the same.
@@ -38093,8 +38469,11 @@ export const batchReplaceClusterNodes: API.OperationMethod<
   input: BatchReplaceClusterNodesRequest,
   output: BatchReplaceClusterNodesResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchReplaceClusterNodes",
 }));
+
 export type CreateActionError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates an *action*. An action is a lineage tracking entity that represents an action or activity. For example, a model deployment or an HPO job. Generally, an action involves at least one input or output artifact. For more information, see Amazon SageMaker ML Lineage Tracking.
@@ -38108,8 +38487,11 @@ export const createAction: API.OperationMethod<
   input: CreateActionRequest,
   output: CreateActionResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAction",
 }));
+
 export type CreateAIBenchmarkJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38127,8 +38509,11 @@ export const createAIBenchmarkJob: API.OperationMethod<
   input: CreateAIBenchmarkJobRequest,
   output: CreateAIBenchmarkJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIBenchmarkJob",
 }));
+
 export type CreateAIRecommendationJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38146,8 +38531,11 @@ export const createAIRecommendationJob: API.OperationMethod<
   input: CreateAIRecommendationJobRequest,
   output: CreateAIRecommendationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIRecommendationJob",
 }));
+
 export type CreateAIWorkloadConfigError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38164,8 +38552,11 @@ export const createAIWorkloadConfig: API.OperationMethod<
   input: CreateAIWorkloadConfigRequest,
   output: CreateAIWorkloadConfigResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIWorkloadConfig",
 }));
+
 export type CreateAlgorithmError = CommonErrors;
 /**
  * Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace.
@@ -38179,8 +38570,11 @@ export const createAlgorithm: API.OperationMethod<
   input: CreateAlgorithmInput,
   output: CreateAlgorithmOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlgorithm",
 }));
+
 export type CreateAppError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38197,8 +38591,11 @@ export const createApp: API.OperationMethod<
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApp",
 }));
+
 export type CreateAppImageConfigError = ResourceInUse | CommonErrors;
 /**
  * Creates a configuration for running a SageMaker AI image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
@@ -38212,8 +38609,11 @@ export const createAppImageConfig: API.OperationMethod<
   input: CreateAppImageConfigRequest,
   output: CreateAppImageConfigResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppImageConfig",
 }));
+
 export type CreateArtifactError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates an *artifact*. An artifact is a lineage tracking entity that represents a URI addressable object or data. Some examples are the S3 URI of a dataset and the ECR registry path of an image. For more information, see Amazon SageMaker ML Lineage Tracking.
@@ -38227,8 +38627,11 @@ export const createArtifact: API.OperationMethod<
   input: CreateArtifactRequest,
   output: CreateArtifactResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateArtifact",
 }));
+
 export type CreateAutoMLJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38257,8 +38660,11 @@ export const createAutoMLJob: API.OperationMethod<
   input: CreateAutoMLJobRequest,
   output: CreateAutoMLJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutoMLJob",
 }));
+
 export type CreateAutoMLJobV2Error =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38291,8 +38697,11 @@ export const createAutoMLJobV2: API.OperationMethod<
   input: CreateAutoMLJobV2Request,
   output: CreateAutoMLJobV2Response,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutoMLJobV2",
 }));
+
 export type CreateClusterError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38309,12 +38718,14 @@ export const createCluster: API.OperationMethod<
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateClusterSchedulerConfigError =
   | ConflictException
   | ResourceLimitExceeded
-  | ClusterSchedulerConfigAlreadyExists
   | CommonErrors;
 /**
  * Create cluster policy configuration. This policy is used for task prioritization and fair-share allocation of idle compute. This helps prioritize critical workloads and distributes idle compute across entities.
@@ -38327,13 +38738,12 @@ export const createClusterSchedulerConfig: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterSchedulerConfigRequest,
   output: CreateClusterSchedulerConfigResponse,
-  errors: [
-    ConflictException,
-    ResourceLimitExceeded,
-    ClusterSchedulerConfigAlreadyExists,
-  ],
+  errors: [ConflictException, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSchedulerConfig",
 }));
+
 export type CreateCodeRepositoryError = CommonErrors;
 /**
  * Creates a Git repository as a resource in your SageMaker AI account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker AI account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
@@ -38349,8 +38759,11 @@ export const createCodeRepository: API.OperationMethod<
   input: CreateCodeRepositoryInput,
   output: CreateCodeRepositoryOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCodeRepository",
 }));
+
 export type CreateCompilationJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38383,8 +38796,11 @@ export const createCompilationJob: API.OperationMethod<
   input: CreateCompilationJobRequest,
   output: CreateCompilationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCompilationJob",
 }));
+
 export type CreateComputeQuotaError =
   | ConflictException
   | ResourceLimitExceeded
@@ -38401,8 +38817,11 @@ export const createComputeQuota: API.OperationMethod<
   input: CreateComputeQuotaRequest,
   output: CreateComputeQuotaResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComputeQuota",
 }));
+
 export type CreateContextError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates a *context*. A context is a lineage tracking entity that represents a logical grouping of other tracking or experiment entities. Some examples are an endpoint and a model package. For more information, see Amazon SageMaker ML Lineage Tracking.
@@ -38416,8 +38835,11 @@ export const createContext: API.OperationMethod<
   input: CreateContextRequest,
   output: CreateContextResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContext",
 }));
+
 export type CreateDataQualityJobDefinitionError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38434,8 +38856,11 @@ export const createDataQualityJobDefinition: API.OperationMethod<
   input: CreateDataQualityJobDefinitionRequest,
   output: CreateDataQualityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataQualityJobDefinition",
 }));
+
 export type CreateDeviceFleetError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38452,8 +38877,11 @@ export const createDeviceFleet: API.OperationMethod<
   input: CreateDeviceFleetRequest,
   output: CreateDeviceFleetResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeviceFleet",
 }));
+
 export type CreateDomainError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38490,8 +38918,11 @@ export const createDomain: API.OperationMethod<
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreateEdgeDeploymentPlanError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -38507,8 +38938,11 @@ export const createEdgeDeploymentPlan: API.OperationMethod<
   input: CreateEdgeDeploymentPlanRequest,
   output: CreateEdgeDeploymentPlanResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEdgeDeploymentPlan",
 }));
+
 export type CreateEdgeDeploymentStageError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -38524,8 +38958,11 @@ export const createEdgeDeploymentStage: API.OperationMethod<
   input: CreateEdgeDeploymentStageRequest,
   output: CreateEdgeDeploymentStageResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEdgeDeploymentStage",
 }));
+
 export type CreateEdgePackagingJobError = ResourceLimitExceeded | CommonErrors;
 /**
  * Starts a SageMaker Edge Manager model packaging job. Edge Manager will use the model artifacts from the Amazon Simple Storage Service bucket that you specify. After the model has been packaged, Amazon SageMaker saves the resulting artifacts to an S3 bucket that you specify.
@@ -38539,8 +38976,11 @@ export const createEdgePackagingJob: API.OperationMethod<
   input: CreateEdgePackagingJobRequest,
   output: CreateEdgePackagingJobResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEdgePackagingJob",
 }));
+
 export type CreateEndpointError =
   | ResourceLimitExceeded
   | EndpointConfigNotFound
@@ -38594,8 +39034,11 @@ export const createEndpoint: API.OperationMethod<
     EndpointConfigNotFound,
     EndpointAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpoint",
 }));
+
 export type CreateEndpointConfigError =
   | ResourceLimitExceeded
   | EndpointConfigAlreadyExists
@@ -38620,8 +39063,11 @@ export const createEndpointConfig: API.OperationMethod<
   input: CreateEndpointConfigInput,
   output: CreateEndpointConfigOutput,
   errors: [ResourceLimitExceeded, EndpointConfigAlreadyExists],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpointConfig",
 }));
+
 export type CreateExperimentError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates a SageMaker *experiment*. An experiment is a collection of *trials* that are observed, compared and evaluated as a group. A trial is a set of steps, called *trial components*, that produce a machine learning model.
@@ -38647,8 +39093,11 @@ export const createExperiment: API.OperationMethod<
   input: CreateExperimentRequest,
   output: CreateExperimentResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExperiment",
 }));
+
 export type CreateFeatureGroupError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38671,8 +39120,11 @@ export const createFeatureGroup: API.OperationMethod<
   input: CreateFeatureGroupRequest,
   output: CreateFeatureGroupResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFeatureGroup",
 }));
+
 export type CreateFlowDefinitionError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38689,8 +39141,11 @@ export const createFlowDefinition: API.OperationMethod<
   input: CreateFlowDefinitionRequest,
   output: CreateFlowDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlowDefinition",
 }));
+
 export type CreateHubError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38707,8 +39162,11 @@ export const createHub: API.OperationMethod<
   input: CreateHubRequest,
   output: CreateHubResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHub",
 }));
+
 export type CreateHubContentPresignedUrlsError = CommonErrors;
 /**
  * Creates presigned URLs for accessing hub content artifacts. This operation generates time-limited, secure URLs that allow direct download of model artifacts and associated files from Amazon SageMaker hub content, including gated models that require end-user license agreement acceptance.
@@ -38737,6 +39195,8 @@ export const createHubContentPresignedUrls: API.OperationMethod<
   input: CreateHubContentPresignedUrlsRequest,
   output: CreateHubContentPresignedUrlsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHubContentPresignedUrls",
   pagination: {
     inputToken: "NextToken",
@@ -38745,6 +39205,7 @@ export const createHubContentPresignedUrls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type CreateHubContentReferenceError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38762,8 +39223,11 @@ export const createHubContentReference: API.OperationMethod<
   input: CreateHubContentReferenceRequest,
   output: CreateHubContentReferenceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHubContentReference",
 }));
+
 export type CreateHumanTaskUiError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38780,8 +39244,11 @@ export const createHumanTaskUi: API.OperationMethod<
   input: CreateHumanTaskUiRequest,
   output: CreateHumanTaskUiResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHumanTaskUi",
 }));
+
 export type CreateHyperParameterTuningJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38802,8 +39269,11 @@ export const createHyperParameterTuningJob: API.OperationMethod<
   input: CreateHyperParameterTuningJobRequest,
   output: CreateHyperParameterTuningJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHyperParameterTuningJob",
 }));
+
 export type CreateImageError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38820,8 +39290,11 @@ export const createImage: API.OperationMethod<
   input: CreateImageRequest,
   output: CreateImageResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImage",
 }));
+
 export type CreateImageVersionError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38839,8 +39312,11 @@ export const createImageVersion: API.OperationMethod<
   input: CreateImageVersionRequest,
   output: CreateImageVersionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImageVersion",
 }));
+
 export type CreateInferenceComponentError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -38856,8 +39332,11 @@ export const createInferenceComponent: API.OperationMethod<
   input: CreateInferenceComponentInput,
   output: CreateInferenceComponentOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInferenceComponent",
 }));
+
 export type CreateInferenceExperimentError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38880,8 +39359,11 @@ export const createInferenceExperiment: API.OperationMethod<
   input: CreateInferenceExperimentRequest,
   output: CreateInferenceExperimentResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInferenceExperiment",
 }));
+
 export type CreateInferenceRecommendationsJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38898,8 +39380,11 @@ export const createInferenceRecommendationsJob: API.OperationMethod<
   input: CreateInferenceRecommendationsJobRequest,
   output: CreateInferenceRecommendationsJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInferenceRecommendationsJob",
 }));
+
 export type CreateJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38935,8 +39420,11 @@ export const createJob: API.OperationMethod<
   input: CreateJobRequest,
   output: CreateJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
+
 export type CreateLabelingJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -38969,8 +39457,11 @@ export const createLabelingJob: API.OperationMethod<
   input: CreateLabelingJobRequest,
   output: CreateLabelingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLabelingJob",
 }));
+
 export type CreateMlflowAppError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates an MLflow Tracking Server using a general purpose Amazon S3 bucket as the artifact store.
@@ -38984,8 +39475,11 @@ export const createMlflowApp: API.OperationMethod<
   input: CreateMlflowAppRequest,
   output: CreateMlflowAppResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMlflowApp",
 }));
+
 export type CreateMlflowTrackingServerError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -39001,8 +39495,11 @@ export const createMlflowTrackingServer: API.OperationMethod<
   input: CreateMlflowTrackingServerRequest,
   output: CreateMlflowTrackingServerResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMlflowTrackingServer",
 }));
+
 export type CreateModelError =
   | ResourceLimitExceeded
   | ModelAlreadyExists
@@ -39027,8 +39524,11 @@ export const createModel: API.OperationMethod<
   input: CreateModelInput,
   output: CreateModelOutput,
   errors: [ResourceLimitExceeded, ModelAlreadyExists],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModel",
 }));
+
 export type CreateModelBiasJobDefinitionError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39045,8 +39545,11 @@ export const createModelBiasJobDefinition: API.OperationMethod<
   input: CreateModelBiasJobDefinitionRequest,
   output: CreateModelBiasJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelBiasJobDefinition",
 }));
+
 export type CreateModelCardError =
   | ConflictException
   | ResourceLimitExceeded
@@ -39065,8 +39568,11 @@ export const createModelCard: API.OperationMethod<
   input: CreateModelCardRequest,
   output: CreateModelCardResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelCard",
 }));
+
 export type CreateModelCardExportJobError =
   | ConflictException
   | ResourceLimitExceeded
@@ -39084,8 +39590,11 @@ export const createModelCardExportJob: API.OperationMethod<
   input: CreateModelCardExportJobRequest,
   output: CreateModelCardExportJobResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelCardExportJob",
 }));
+
 export type CreateModelExplainabilityJobDefinitionError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39102,8 +39611,11 @@ export const createModelExplainabilityJobDefinition: API.OperationMethod<
   input: CreateModelExplainabilityJobDefinitionRequest,
   output: CreateModelExplainabilityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelExplainabilityJobDefinition",
 }));
+
 export type CreateModelPackageError =
   | ConflictException
   | ResourceLimitExceeded
@@ -39128,8 +39640,11 @@ export const createModelPackage: API.OperationMethod<
   input: CreateModelPackageInput,
   output: CreateModelPackageOutput,
   errors: [ConflictException, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelPackage",
 }));
+
 export type CreateModelPackageGroupError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates a model group. A model group contains a group of model versions.
@@ -39143,8 +39658,11 @@ export const createModelPackageGroup: API.OperationMethod<
   input: CreateModelPackageGroupInput,
   output: CreateModelPackageGroupOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelPackageGroup",
 }));
+
 export type CreateModelQualityJobDefinitionError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39161,8 +39679,11 @@ export const createModelQualityJobDefinition: API.OperationMethod<
   input: CreateModelQualityJobDefinitionRequest,
   output: CreateModelQualityJobDefinitionResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelQualityJobDefinition",
 }));
+
 export type CreateMonitoringScheduleError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39179,8 +39700,11 @@ export const createMonitoringSchedule: API.OperationMethod<
   input: CreateMonitoringScheduleRequest,
   output: CreateMonitoringScheduleResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMonitoringSchedule",
 }));
+
 export type CreateNotebookInstanceError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates an SageMaker AI notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
@@ -39212,8 +39736,11 @@ export const createNotebookInstance: API.OperationMethod<
   input: CreateNotebookInstanceInput,
   output: CreateNotebookInstanceOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotebookInstance",
 }));
+
 export type CreateNotebookInstanceLifecycleConfigError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -39241,8 +39768,11 @@ export const createNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: CreateNotebookInstanceLifecycleConfigInput,
   output: CreateNotebookInstanceLifecycleConfigOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotebookInstanceLifecycleConfig",
 }));
+
 export type CreateOptimizationJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39261,8 +39791,11 @@ export const createOptimizationJob: API.OperationMethod<
   input: CreateOptimizationJobRequest,
   output: CreateOptimizationJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOptimizationJob",
 }));
+
 export type CreatePartnerAppError =
   | ConflictException
   | ResourceLimitExceeded
@@ -39279,8 +39812,11 @@ export const createPartnerApp: API.OperationMethod<
   input: CreatePartnerAppRequest,
   output: CreatePartnerAppResponse,
   errors: [ConflictException, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartnerApp",
 }));
+
 export type CreatePartnerAppPresignedUrlError = ResourceNotFound | CommonErrors;
 /**
  * Creates a presigned URL to access an Amazon SageMaker Partner AI App.
@@ -39294,8 +39830,11 @@ export const createPartnerAppPresignedUrl: API.OperationMethod<
   input: CreatePartnerAppPresignedUrlRequest,
   output: CreatePartnerAppPresignedUrlResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartnerAppPresignedUrl",
 }));
+
 export type CreatePipelineError =
   | ConflictException
   | ResourceLimitExceeded
@@ -39313,8 +39852,11 @@ export const createPipeline: API.OperationMethod<
   input: CreatePipelineRequest,
   output: CreatePipelineResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipeline",
 }));
+
 export type CreatePresignedDomainUrlError = ResourceNotFound | CommonErrors;
 /**
  * Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to the domain, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System volume. This operation can only be called when the authentication mode equals IAM.
@@ -39336,8 +39878,11 @@ export const createPresignedDomainUrl: API.OperationMethod<
   input: CreatePresignedDomainUrlRequest,
   output: CreatePresignedDomainUrlResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedDomainUrl",
 }));
+
 export type CreatePresignedMlflowAppUrlError = ResourceNotFound | CommonErrors;
 /**
  * Returns a presigned URL that you can use to connect to the MLflow UI attached to your MLflow App. For more information, see Launch the MLflow UI using a presigned URL.
@@ -39351,8 +39896,11 @@ export const createPresignedMlflowAppUrl: API.OperationMethod<
   input: CreatePresignedMlflowAppUrlRequest,
   output: CreatePresignedMlflowAppUrlResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedMlflowAppUrl",
 }));
+
 export type CreatePresignedMlflowTrackingServerUrlError =
   | ResourceNotFound
   | CommonErrors;
@@ -39368,8 +39916,11 @@ export const createPresignedMlflowTrackingServerUrl: API.OperationMethod<
   input: CreatePresignedMlflowTrackingServerUrlRequest,
   output: CreatePresignedMlflowTrackingServerUrlResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedMlflowTrackingServerUrl",
 }));
+
 export type CreatePresignedNotebookInstanceUrlError = CommonErrors;
 /**
  * Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the SageMaker AI console, when you choose `Open` next to a notebook instance, SageMaker AI opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
@@ -39389,8 +39940,11 @@ export const createPresignedNotebookInstanceUrl: API.OperationMethod<
   input: CreatePresignedNotebookInstanceUrlInput,
   output: CreatePresignedNotebookInstanceUrlOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedNotebookInstanceUrl",
 }));
+
 export type CreateProcessingJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39408,8 +39962,11 @@ export const createProcessingJob: API.OperationMethod<
   input: CreateProcessingJobRequest,
   output: CreateProcessingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProcessingJob",
 }));
+
 export type CreateProjectError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model.
@@ -39423,8 +39980,11 @@ export const createProject: API.OperationMethod<
   input: CreateProjectInput,
   output: CreateProjectOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
+
 export type CreateSpaceError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39441,8 +40001,11 @@ export const createSpace: API.OperationMethod<
   input: CreateSpaceRequest,
   output: CreateSpaceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSpace",
 }));
+
 export type CreateStudioLifecycleConfigError = ResourceInUse | CommonErrors;
 /**
  * Creates a new Amazon SageMaker AI Studio Lifecycle Configuration.
@@ -39456,8 +40019,11 @@ export const createStudioLifecycleConfig: API.OperationMethod<
   input: CreateStudioLifecycleConfigRequest,
   output: CreateStudioLifecycleConfigResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStudioLifecycleConfig",
 }));
+
 export type CreateTrainingJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39505,8 +40071,11 @@ export const createTrainingJob: API.OperationMethod<
   input: CreateTrainingJobRequest,
   output: CreateTrainingJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrainingJob",
 }));
+
 export type CreateTrainingPlanError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39554,8 +40123,11 @@ export const createTrainingPlan: API.OperationMethod<
   input: CreateTrainingPlanRequest,
   output: CreateTrainingPlanResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrainingPlan",
 }));
+
 export type CreateTransformJobError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39589,8 +40161,11 @@ export const createTransformJob: API.OperationMethod<
   input: CreateTransformJobRequest,
   output: CreateTransformJobResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransformJob",
 }));
+
 export type CreateTrialError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -39613,8 +40188,11 @@ export const createTrial: API.OperationMethod<
   input: CreateTrialRequest,
   output: CreateTrialResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrial",
 }));
+
 export type CreateTrialComponentError = ResourceLimitExceeded | CommonErrors;
 /**
  * Creates a *trial component*, which is a stage of a machine learning *trial*. A trial is composed of one or more trial components. A trial component can be used in multiple trials.
@@ -39634,8 +40212,11 @@ export const createTrialComponent: API.OperationMethod<
   input: CreateTrialComponentRequest,
   output: CreateTrialComponentResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrialComponent",
 }));
+
 export type CreateUserProfileError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39652,8 +40233,11 @@ export const createUserProfile: API.OperationMethod<
   input: CreateUserProfileRequest,
   output: CreateUserProfileResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserProfile",
 }));
+
 export type CreateWorkforceError = CommonErrors;
 /**
  * Use this operation to create a workforce. This operation will return an error if a workforce already exists in the Amazon Web Services Region that you specify. You can only create one workforce in each Amazon Web Services Region per Amazon Web Services account.
@@ -39673,8 +40257,11 @@ export const createWorkforce: API.OperationMethod<
   input: CreateWorkforceRequest,
   output: CreateWorkforceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkforce",
 }));
+
 export type CreateWorkteamError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -39693,8 +40280,11 @@ export const createWorkteam: API.OperationMethod<
   input: CreateWorkteamRequest,
   output: CreateWorkteamResponse,
   errors: [ResourceInUse, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkteam",
 }));
+
 export type DeleteActionError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an action.
@@ -39708,8 +40298,11 @@ export const deleteAction: API.OperationMethod<
   input: DeleteActionRequest,
   output: DeleteActionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAction",
 }));
+
 export type DeleteAIBenchmarkJobError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the specified AI benchmark job.
@@ -39723,8 +40316,11 @@ export const deleteAIBenchmarkJob: API.OperationMethod<
   input: DeleteAIBenchmarkJobRequest,
   output: DeleteAIBenchmarkJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIBenchmarkJob",
 }));
+
 export type DeleteAIRecommendationJobError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the specified AI recommendation job.
@@ -39738,8 +40334,11 @@ export const deleteAIRecommendationJob: API.OperationMethod<
   input: DeleteAIRecommendationJobRequest,
   output: DeleteAIRecommendationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIRecommendationJob",
 }));
+
 export type DeleteAIWorkloadConfigError =
   | ResourceInUse
   | ResourceNotFound
@@ -39756,8 +40355,11 @@ export const deleteAIWorkloadConfig: API.OperationMethod<
   input: DeleteAIWorkloadConfigRequest,
   output: DeleteAIWorkloadConfigResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIWorkloadConfig",
 }));
+
 export type DeleteAlgorithmError = ConflictException | CommonErrors;
 /**
  * Removes the specified algorithm from your account.
@@ -39771,8 +40373,11 @@ export const deleteAlgorithm: API.OperationMethod<
   input: DeleteAlgorithmInput,
   output: DeleteAlgorithmResponse,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlgorithm",
 }));
+
 export type DeleteAppError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Used to stop and delete an app.
@@ -39786,8 +40391,11 @@ export const deleteApp: API.OperationMethod<
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApp",
 }));
+
 export type DeleteAppImageConfigError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an AppImageConfig.
@@ -39801,8 +40409,11 @@ export const deleteAppImageConfig: API.OperationMethod<
   input: DeleteAppImageConfigRequest,
   output: DeleteAppImageConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppImageConfig",
 }));
+
 export type DeleteArtifactError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an artifact. Either `ArtifactArn` or `Source` must be specified.
@@ -39816,8 +40427,11 @@ export const deleteArtifact: API.OperationMethod<
   input: DeleteArtifactRequest,
   output: DeleteArtifactResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteArtifact",
 }));
+
 export type DeleteAssociationError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an association.
@@ -39831,8 +40445,11 @@ export const deleteAssociation: API.OperationMethod<
   input: DeleteAssociationRequest,
   output: DeleteAssociationResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssociation",
 }));
+
 export type DeleteClusterError =
   | ConflictException
   | ResourceNotFound
@@ -39849,8 +40466,11 @@ export const deleteCluster: API.OperationMethod<
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteClusterSchedulerConfigError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the cluster policy of the cluster.
@@ -39864,8 +40484,11 @@ export const deleteClusterSchedulerConfig: API.OperationMethod<
   input: DeleteClusterSchedulerConfigRequest,
   output: DeleteClusterSchedulerConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSchedulerConfig",
 }));
+
 export type DeleteCodeRepositoryError = CommonErrors;
 /**
  * Deletes the specified Git repository from your account.
@@ -39879,8 +40502,11 @@ export const deleteCodeRepository: API.OperationMethod<
   input: DeleteCodeRepositoryInput,
   output: DeleteCodeRepositoryResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCodeRepository",
 }));
+
 export type DeleteCompilationJobError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the specified compilation job. This action deletes only the compilation job resource in Amazon SageMaker AI. It doesn't delete other resources that are related to that job, such as the model artifacts that the job creates, the compilation logs in CloudWatch, the compiled model, or the IAM role.
@@ -39896,8 +40522,11 @@ export const deleteCompilationJob: API.OperationMethod<
   input: DeleteCompilationJobRequest,
   output: DeleteCompilationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCompilationJob",
 }));
+
 export type DeleteComputeQuotaError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the compute allocation from the cluster.
@@ -39911,8 +40540,11 @@ export const deleteComputeQuota: API.OperationMethod<
   input: DeleteComputeQuotaRequest,
   output: DeleteComputeQuotaResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComputeQuota",
 }));
+
 export type DeleteContextError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an context.
@@ -39926,8 +40558,11 @@ export const deleteContext: API.OperationMethod<
   input: DeleteContextRequest,
   output: DeleteContextResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContext",
 }));
+
 export type DeleteDataQualityJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -39943,8 +40578,11 @@ export const deleteDataQualityJobDefinition: API.OperationMethod<
   input: DeleteDataQualityJobDefinitionRequest,
   output: DeleteDataQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataQualityJobDefinition",
 }));
+
 export type DeleteDeviceFleetError = ResourceInUse | CommonErrors;
 /**
  * Deletes a fleet.
@@ -39958,8 +40596,11 @@ export const deleteDeviceFleet: API.OperationMethod<
   input: DeleteDeviceFleetRequest,
   output: DeleteDeviceFleetResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeviceFleet",
 }));
+
 export type DeleteDomainError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using IAM Identity Center. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts.
@@ -39973,8 +40614,11 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteEdgeDeploymentPlanError = ResourceInUse | CommonErrors;
 /**
  * Deletes an edge deployment plan if (and only if) all the stages in the plan are inactive or there are no stages in the plan.
@@ -39988,8 +40632,11 @@ export const deleteEdgeDeploymentPlan: API.OperationMethod<
   input: DeleteEdgeDeploymentPlanRequest,
   output: DeleteEdgeDeploymentPlanResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEdgeDeploymentPlan",
 }));
+
 export type DeleteEdgeDeploymentStageError = ResourceInUse | CommonErrors;
 /**
  * Delete a stage in an edge deployment plan if (and only if) the stage is inactive.
@@ -40003,8 +40650,11 @@ export const deleteEdgeDeploymentStage: API.OperationMethod<
   input: DeleteEdgeDeploymentStageRequest,
   output: DeleteEdgeDeploymentStageResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEdgeDeploymentStage",
 }));
+
 export type DeleteEndpointError = EndpointNotFound | CommonErrors;
 /**
  * Deletes an endpoint. SageMaker frees up all of the resources that were deployed when the endpoint was created.
@@ -40022,8 +40672,11 @@ export const deleteEndpoint: API.OperationMethod<
   input: DeleteEndpointInput,
   output: DeleteEndpointResponse,
   errors: [EndpointNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeleteEndpointConfigError = EndpointConfigNotFound | CommonErrors;
 /**
  * Deletes an endpoint configuration. The `DeleteEndpointConfig` API deletes only the specified configuration. It does not delete endpoints created using the configuration.
@@ -40039,8 +40692,11 @@ export const deleteEndpointConfig: API.OperationMethod<
   input: DeleteEndpointConfigInput,
   output: DeleteEndpointConfigResponse,
   errors: [EndpointConfigNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpointConfig",
 }));
+
 export type DeleteExperimentError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an SageMaker experiment. All trials associated with the experiment must be deleted first. Use the ListTrials API to get a list of the trials associated with the experiment.
@@ -40054,8 +40710,11 @@ export const deleteExperiment: API.OperationMethod<
   input: DeleteExperimentRequest,
   output: DeleteExperimentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExperiment",
 }));
+
 export type DeleteFeatureGroupError = ResourceNotFound | CommonErrors;
 /**
  * Delete the `FeatureGroup` and any data that was written to the `OnlineStore` of the `FeatureGroup`. Data cannot be accessed from the `OnlineStore` immediately after `DeleteFeatureGroup` is called.
@@ -40073,8 +40732,11 @@ export const deleteFeatureGroup: API.OperationMethod<
   input: DeleteFeatureGroupRequest,
   output: DeleteFeatureGroupResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFeatureGroup",
 }));
+
 export type DeleteFlowDefinitionError =
   | ResourceInUse
   | ResourceNotFound
@@ -40091,8 +40753,11 @@ export const deleteFlowDefinition: API.OperationMethod<
   input: DeleteFlowDefinitionRequest,
   output: DeleteFlowDefinitionResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlowDefinition",
 }));
+
 export type DeleteHubError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Delete a hub.
@@ -40106,8 +40771,11 @@ export const deleteHub: API.OperationMethod<
   input: DeleteHubRequest,
   output: DeleteHubResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHub",
 }));
+
 export type DeleteHubContentError =
   | ResourceInUse
   | ResourceNotFound
@@ -40124,8 +40792,11 @@ export const deleteHubContent: API.OperationMethod<
   input: DeleteHubContentRequest,
   output: DeleteHubContentResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHubContent",
 }));
+
 export type DeleteHubContentReferenceError = ResourceNotFound | CommonErrors;
 /**
  * Delete a hub content reference in order to remove a model from a private hub.
@@ -40139,8 +40810,11 @@ export const deleteHubContentReference: API.OperationMethod<
   input: DeleteHubContentReferenceRequest,
   output: DeleteHubContentReferenceResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHubContentReference",
 }));
+
 export type DeleteHumanTaskUiError = ResourceNotFound | CommonErrors;
 /**
  * Use this operation to delete a human task user interface (worker task template).
@@ -40156,8 +40830,11 @@ export const deleteHumanTaskUi: API.OperationMethod<
   input: DeleteHumanTaskUiRequest,
   output: DeleteHumanTaskUiResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHumanTaskUi",
 }));
+
 export type DeleteHyperParameterTuningJobError = CommonErrors;
 /**
  * Deletes a hyperparameter tuning job. The `DeleteHyperParameterTuningJob` API deletes only the tuning job entry that was created in SageMaker when you called the `CreateHyperParameterTuningJob` API. It does not delete training jobs, artifacts, or the IAM role that you specified when creating the model.
@@ -40171,8 +40848,11 @@ export const deleteHyperParameterTuningJob: API.OperationMethod<
   input: DeleteHyperParameterTuningJobRequest,
   output: DeleteHyperParameterTuningJobResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHyperParameterTuningJob",
 }));
+
 export type DeleteImageError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Deletes a SageMaker AI image and all versions of the image. The container images aren't deleted.
@@ -40186,8 +40866,11 @@ export const deleteImage: API.OperationMethod<
   input: DeleteImageRequest,
   output: DeleteImageResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImage",
 }));
+
 export type DeleteImageVersionError =
   | ResourceInUse
   | ResourceNotFound
@@ -40204,8 +40887,11 @@ export const deleteImageVersion: API.OperationMethod<
   input: DeleteImageVersionRequest,
   output: DeleteImageVersionResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImageVersion",
 }));
+
 export type DeleteInferenceComponentError = CommonErrors;
 /**
  * Deletes an inference component.
@@ -40219,8 +40905,11 @@ export const deleteInferenceComponent: API.OperationMethod<
   input: DeleteInferenceComponentInput,
   output: DeleteInferenceComponentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInferenceComponent",
 }));
+
 export type DeleteInferenceExperimentError =
   | ConflictException
   | ResourceNotFound
@@ -40239,8 +40928,11 @@ export const deleteInferenceExperiment: API.OperationMethod<
   input: DeleteInferenceExperimentRequest,
   output: DeleteInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInferenceExperiment",
 }));
+
 export type DeleteJobError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Deletes a job. This operation is idempotent. If the job is currently running, you must stop it before deleting it by calling `StopJob`.
@@ -40262,8 +40954,11 @@ export const deleteJob: API.OperationMethod<
   input: DeleteJobRequest,
   output: DeleteJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
+
 export type DeleteMlflowAppError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an MLflow App.
@@ -40277,8 +40972,11 @@ export const deleteMlflowApp: API.OperationMethod<
   input: DeleteMlflowAppRequest,
   output: DeleteMlflowAppResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMlflowApp",
 }));
+
 export type DeleteMlflowTrackingServerError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an MLflow Tracking Server. For more information, see Clean up MLflow resources.
@@ -40292,8 +40990,11 @@ export const deleteMlflowTrackingServer: API.OperationMethod<
   input: DeleteMlflowTrackingServerRequest,
   output: DeleteMlflowTrackingServerResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMlflowTrackingServer",
 }));
+
 export type DeleteModelError = ModelNotFound | CommonErrors;
 /**
  * Deletes a model. The `DeleteModel` API deletes only the model entry that was created in SageMaker when you called the `CreateModel` API. It does not delete model artifacts, inference code, or the IAM role that you specified when creating the model.
@@ -40307,8 +41008,11 @@ export const deleteModel: API.OperationMethod<
   input: DeleteModelInput,
   output: DeleteModelResponse,
   errors: [ModelNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModel",
 }));
+
 export type DeleteModelBiasJobDefinitionError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an Amazon SageMaker AI model bias job definition.
@@ -40322,8 +41026,11 @@ export const deleteModelBiasJobDefinition: API.OperationMethod<
   input: DeleteModelBiasJobDefinitionRequest,
   output: DeleteModelBiasJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelBiasJobDefinition",
 }));
+
 export type DeleteModelCardError =
   | ConflictException
   | ResourceNotFound
@@ -40340,8 +41047,11 @@ export const deleteModelCard: API.OperationMethod<
   input: DeleteModelCardRequest,
   output: DeleteModelCardResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelCard",
 }));
+
 export type DeleteModelExplainabilityJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -40357,8 +41067,11 @@ export const deleteModelExplainabilityJobDefinition: API.OperationMethod<
   input: DeleteModelExplainabilityJobDefinitionRequest,
   output: DeleteModelExplainabilityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelExplainabilityJobDefinition",
 }));
+
 export type DeleteModelPackageError = ConflictException | CommonErrors;
 /**
  * Deletes a model package.
@@ -40374,8 +41087,11 @@ export const deleteModelPackage: API.OperationMethod<
   input: DeleteModelPackageInput,
   output: DeleteModelPackageResponse,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelPackage",
 }));
+
 export type DeleteModelPackageGroupError = ConflictException | CommonErrors;
 /**
  * Deletes the specified model group.
@@ -40389,8 +41105,11 @@ export const deleteModelPackageGroup: API.OperationMethod<
   input: DeleteModelPackageGroupInput,
   output: DeleteModelPackageGroupResponse,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelPackageGroup",
 }));
+
 export type DeleteModelPackageGroupPolicyError = CommonErrors;
 /**
  * Deletes a model group resource policy.
@@ -40404,8 +41123,11 @@ export const deleteModelPackageGroupPolicy: API.OperationMethod<
   input: DeleteModelPackageGroupPolicyInput,
   output: DeleteModelPackageGroupPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelPackageGroupPolicy",
 }));
+
 export type DeleteModelQualityJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -40421,8 +41143,11 @@ export const deleteModelQualityJobDefinition: API.OperationMethod<
   input: DeleteModelQualityJobDefinitionRequest,
   output: DeleteModelQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelQualityJobDefinition",
 }));
+
 export type DeleteMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
  * Deletes a monitoring schedule. Also stops the schedule had not already been stopped. This does not delete the job execution history of the monitoring schedule.
@@ -40436,8 +41161,11 @@ export const deleteMonitoringSchedule: API.OperationMethod<
   input: DeleteMonitoringScheduleRequest,
   output: DeleteMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMonitoringSchedule",
 }));
+
 export type DeleteNotebookInstanceError = CommonErrors;
 /**
  * Deletes an SageMaker AI notebook instance. Before you can delete a notebook instance, you must call the `StopNotebookInstance` API.
@@ -40453,8 +41181,11 @@ export const deleteNotebookInstance: API.OperationMethod<
   input: DeleteNotebookInstanceInput,
   output: DeleteNotebookInstanceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotebookInstance",
 }));
+
 export type DeleteNotebookInstanceLifecycleConfigError = CommonErrors;
 /**
  * Deletes a notebook instance lifecycle configuration.
@@ -40468,8 +41199,11 @@ export const deleteNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: DeleteNotebookInstanceLifecycleConfigInput,
   output: DeleteNotebookInstanceLifecycleConfigResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotebookInstanceLifecycleConfig",
 }));
+
 export type DeleteOptimizationJobError = ResourceNotFound | CommonErrors;
 /**
  * Deletes an optimization job.
@@ -40483,8 +41217,11 @@ export const deleteOptimizationJob: API.OperationMethod<
   input: DeleteOptimizationJobRequest,
   output: DeleteOptimizationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOptimizationJob",
 }));
+
 export type DeletePartnerAppError =
   | ConflictException
   | ResourceNotFound
@@ -40501,8 +41238,11 @@ export const deletePartnerApp: API.OperationMethod<
   input: DeletePartnerAppRequest,
   output: DeletePartnerAppResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartnerApp",
 }));
+
 export type DeletePipelineError =
   | ConflictException
   | ResourceNotFound
@@ -40519,8 +41259,11 @@ export const deletePipeline: API.OperationMethod<
   input: DeletePipelineRequest,
   output: DeletePipelineResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipeline",
 }));
+
 export type DeleteProcessingJobError =
   | ResourceInUse
   | ResourceNotFound
@@ -40537,8 +41280,11 @@ export const deleteProcessingJob: API.OperationMethod<
   input: DeleteProcessingJobRequest,
   output: DeleteProcessingJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProcessingJob",
 }));
+
 export type DeleteProjectError = ConflictException | CommonErrors;
 /**
  * Delete the specified project.
@@ -40552,8 +41298,11 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectInput,
   output: DeleteProjectResponse,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
+
 export type DeleteSpaceError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Used to delete a space.
@@ -40567,8 +41316,11 @@ export const deleteSpace: API.OperationMethod<
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpace",
 }));
+
 export type DeleteStudioLifecycleConfigError =
   | ResourceInUse
   | ResourceNotFound
@@ -40585,8 +41337,11 @@ export const deleteStudioLifecycleConfig: API.OperationMethod<
   input: DeleteStudioLifecycleConfigRequest,
   output: DeleteStudioLifecycleConfigResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStudioLifecycleConfig",
 }));
+
 export type DeleteTagsError = CommonErrors;
 /**
  * Deletes the specified tags from an SageMaker resource.
@@ -40606,8 +41361,11 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsInput,
   output: DeleteTagsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteTrainingJobError =
   | ResourceInUse
   | ResourceNotFound
@@ -40624,8 +41382,11 @@ export const deleteTrainingJob: API.OperationMethod<
   input: DeleteTrainingJobRequest,
   output: DeleteTrainingJobResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrainingJob",
 }));
+
 export type DeleteTrialError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the specified trial. All trial components that make up the trial must be deleted first. Use the DescribeTrialComponent API to get the list of trial components.
@@ -40639,8 +41400,11 @@ export const deleteTrial: API.OperationMethod<
   input: DeleteTrialRequest,
   output: DeleteTrialResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrial",
 }));
+
 export type DeleteTrialComponentError = ResourceNotFound | CommonErrors;
 /**
  * Deletes the specified trial component. A trial component must be disassociated from all trials before the trial component can be deleted. To disassociate a trial component from a trial, call the DisassociateTrialComponent API.
@@ -40654,8 +41418,11 @@ export const deleteTrialComponent: API.OperationMethod<
   input: DeleteTrialComponentRequest,
   output: DeleteTrialComponentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrialComponent",
 }));
+
 export type DeleteUserProfileError =
   | ResourceInUse
   | ResourceNotFound
@@ -40672,8 +41439,11 @@ export const deleteUserProfile: API.OperationMethod<
   input: DeleteUserProfileRequest,
   output: DeleteUserProfileResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserProfile",
 }));
+
 export type DeleteWorkforceError = CommonErrors;
 /**
  * Use this operation to delete a workforce.
@@ -40691,8 +41461,11 @@ export const deleteWorkforce: API.OperationMethod<
   input: DeleteWorkforceRequest,
   output: DeleteWorkforceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkforce",
 }));
+
 export type DeleteWorkteamError = ResourceLimitExceeded | CommonErrors;
 /**
  * Deletes an existing work team. This operation can't be undone.
@@ -40706,8 +41479,11 @@ export const deleteWorkteam: API.OperationMethod<
   input: DeleteWorkteamRequest,
   output: DeleteWorkteamResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkteam",
 }));
+
 export type DeregisterDevicesError = CommonErrors;
 /**
  * Deregisters the specified devices. After you deregister a device, you will need to re-register the devices.
@@ -40721,8 +41497,11 @@ export const deregisterDevices: API.OperationMethod<
   input: DeregisterDevicesRequest,
   output: DeregisterDevicesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterDevices",
 }));
+
 export type DescribeActionError = ResourceNotFound | CommonErrors;
 /**
  * Describes an action.
@@ -40736,8 +41515,11 @@ export const describeAction: API.OperationMethod<
   input: DescribeActionRequest,
   output: DescribeActionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAction",
 }));
+
 export type DescribeAIBenchmarkJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns details of an AI benchmark job, including its status, configuration, target endpoint, and timing information.
@@ -40751,8 +41533,11 @@ export const describeAIBenchmarkJob: API.OperationMethod<
   input: DescribeAIBenchmarkJobRequest,
   output: DescribeAIBenchmarkJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAIBenchmarkJob",
 }));
+
 export type DescribeAIRecommendationJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns details of an AI recommendation job, including its status, model source, performance targets, optimization recommendations, and deployment configurations.
@@ -40766,8 +41551,11 @@ export const describeAIRecommendationJob: API.OperationMethod<
   input: DescribeAIRecommendationJobRequest,
   output: DescribeAIRecommendationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAIRecommendationJob",
 }));
+
 export type DescribeAIWorkloadConfigError = ResourceNotFound | CommonErrors;
 /**
  * Returns details of an AI workload configuration, including the dataset configuration, benchmark tool settings, tags, and creation time.
@@ -40781,8 +41569,11 @@ export const describeAIWorkloadConfig: API.OperationMethod<
   input: DescribeAIWorkloadConfigRequest,
   output: DescribeAIWorkloadConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAIWorkloadConfig",
 }));
+
 export type DescribeAlgorithmError = CommonErrors;
 /**
  * Returns a description of the specified algorithm that is in your account.
@@ -40796,8 +41587,11 @@ export const describeAlgorithm: API.OperationMethod<
   input: DescribeAlgorithmInput,
   output: DescribeAlgorithmOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlgorithm",
 }));
+
 export type DescribeAppError = ResourceNotFound | CommonErrors;
 /**
  * Describes the app.
@@ -40811,8 +41605,11 @@ export const describeApp: API.OperationMethod<
   input: DescribeAppRequest,
   output: DescribeAppResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApp",
 }));
+
 export type DescribeAppImageConfigError = ResourceNotFound | CommonErrors;
 /**
  * Describes an AppImageConfig.
@@ -40826,8 +41623,11 @@ export const describeAppImageConfig: API.OperationMethod<
   input: DescribeAppImageConfigRequest,
   output: DescribeAppImageConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppImageConfig",
 }));
+
 export type DescribeArtifactError = ResourceNotFound | CommonErrors;
 /**
  * Describes an artifact.
@@ -40841,8 +41641,11 @@ export const describeArtifact: API.OperationMethod<
   input: DescribeArtifactRequest,
   output: DescribeArtifactResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeArtifact",
 }));
+
 export type DescribeAutoMLJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about an AutoML job created by calling CreateAutoMLJob.
@@ -40858,8 +41661,11 @@ export const describeAutoMLJob: API.OperationMethod<
   input: DescribeAutoMLJobRequest,
   output: DescribeAutoMLJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutoMLJob",
 }));
+
 export type DescribeAutoMLJobV2Error = ResourceNotFound | CommonErrors;
 /**
  * Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob.
@@ -40873,8 +41679,11 @@ export const describeAutoMLJobV2: API.OperationMethod<
   input: DescribeAutoMLJobV2Request,
   output: DescribeAutoMLJobV2Response,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutoMLJobV2",
 }));
+
 export type DescribeClusterError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves information of a SageMaker HyperPod cluster.
@@ -40888,8 +41697,11 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterRequest,
   output: DescribeClusterResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
+
 export type DescribeClusterEventError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves detailed information about a specific event for a given HyperPod cluster. This functionality is only supported when the `NodeProvisioningMode` is set to `Continuous`.
@@ -40903,8 +41715,11 @@ export const describeClusterEvent: API.OperationMethod<
   input: DescribeClusterEventRequest,
   output: DescribeClusterEventResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterEvent",
 }));
+
 export type DescribeClusterNodeError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves information of a node (also called a *instance* interchangeably) of a SageMaker HyperPod cluster.
@@ -40918,8 +41733,11 @@ export const describeClusterNode: API.OperationMethod<
   input: DescribeClusterNodeRequest,
   output: DescribeClusterNodeResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterNode",
 }));
+
 export type DescribeClusterSchedulerConfigError =
   | ResourceNotFound
   | CommonErrors;
@@ -40935,8 +41753,11 @@ export const describeClusterSchedulerConfig: API.OperationMethod<
   input: DescribeClusterSchedulerConfigRequest,
   output: DescribeClusterSchedulerConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSchedulerConfig",
 }));
+
 export type DescribeCodeRepositoryError = CommonErrors;
 /**
  * Gets details about the specified Git repository.
@@ -40950,8 +41771,11 @@ export const describeCodeRepository: API.OperationMethod<
   input: DescribeCodeRepositoryInput,
   output: DescribeCodeRepositoryOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCodeRepository",
 }));
+
 export type DescribeCompilationJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about a model compilation job.
@@ -40967,8 +41791,11 @@ export const describeCompilationJob: API.OperationMethod<
   input: DescribeCompilationJobRequest,
   output: DescribeCompilationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCompilationJob",
 }));
+
 export type DescribeComputeQuotaError = ResourceNotFound | CommonErrors;
 /**
  * Description of the compute allocation definition.
@@ -40982,8 +41809,11 @@ export const describeComputeQuota: API.OperationMethod<
   input: DescribeComputeQuotaRequest,
   output: DescribeComputeQuotaResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComputeQuota",
 }));
+
 export type DescribeContextError = ResourceNotFound | CommonErrors;
 /**
  * Describes a context.
@@ -40997,8 +41827,11 @@ export const describeContext: API.OperationMethod<
   input: DescribeContextRequest,
   output: DescribeContextResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContext",
 }));
+
 export type DescribeDataQualityJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -41014,8 +41847,11 @@ export const describeDataQualityJobDefinition: API.OperationMethod<
   input: DescribeDataQualityJobDefinitionRequest,
   output: DescribeDataQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataQualityJobDefinition",
 }));
+
 export type DescribeDeviceError = ResourceNotFound | CommonErrors;
 /**
  * Describes the device.
@@ -41029,8 +41865,11 @@ export const describeDevice: API.OperationMethod<
   input: DescribeDeviceRequest,
   output: DescribeDeviceResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDevice",
 }));
+
 export type DescribeDeviceFleetError = ResourceNotFound | CommonErrors;
 /**
  * A description of the fleet the device belongs to.
@@ -41044,8 +41883,11 @@ export const describeDeviceFleet: API.OperationMethod<
   input: DescribeDeviceFleetRequest,
   output: DescribeDeviceFleetResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeviceFleet",
 }));
+
 export type DescribeDomainError = ResourceNotFound | CommonErrors;
 /**
  * The description of the domain.
@@ -41059,8 +41901,11 @@ export const describeDomain: API.OperationMethod<
   input: DescribeDomainRequest,
   output: DescribeDomainResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomain",
 }));
+
 export type DescribeEdgeDeploymentPlanError = ResourceNotFound | CommonErrors;
 /**
  * Describes an edge deployment plan with deployment status per stage.
@@ -41074,8 +41919,11 @@ export const describeEdgeDeploymentPlan: API.OperationMethod<
   input: DescribeEdgeDeploymentPlanRequest,
   output: DescribeEdgeDeploymentPlanResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEdgeDeploymentPlan",
 }));
+
 export type DescribeEdgePackagingJobError = ResourceNotFound | CommonErrors;
 /**
  * A description of edge packaging jobs.
@@ -41089,8 +41937,11 @@ export const describeEdgePackagingJob: API.OperationMethod<
   input: DescribeEdgePackagingJobRequest,
   output: DescribeEdgePackagingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEdgePackagingJob",
 }));
+
 export type DescribeEndpointError = EndpointNotFound | CommonErrors;
 /**
  * Returns the description of an endpoint.
@@ -41104,8 +41955,11 @@ export const describeEndpoint: API.OperationMethod<
   input: DescribeEndpointInput,
   output: DescribeEndpointOutput,
   errors: [EndpointNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoint",
 }));
+
 export type DescribeEndpointConfigError = EndpointConfigNotFound | CommonErrors;
 /**
  * Returns the description of an endpoint configuration created using the `CreateEndpointConfig` API.
@@ -41119,8 +41973,11 @@ export const describeEndpointConfig: API.OperationMethod<
   input: DescribeEndpointConfigInput,
   output: DescribeEndpointConfigOutput,
   errors: [EndpointConfigNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointConfig",
 }));
+
 export type DescribeExperimentError = ResourceNotFound | CommonErrors;
 /**
  * Provides a list of an experiment's properties.
@@ -41134,8 +41991,11 @@ export const describeExperiment: API.OperationMethod<
   input: DescribeExperimentRequest,
   output: DescribeExperimentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExperiment",
 }));
+
 export type DescribeFeatureGroupError = ResourceNotFound | CommonErrors;
 /**
  * Use this operation to describe a `FeatureGroup`. The response includes information on the creation time, `FeatureGroup` name, the unique identifier for each `FeatureGroup`, and more.
@@ -41149,8 +42009,11 @@ export const describeFeatureGroup: API.OperationMethod<
   input: DescribeFeatureGroupRequest,
   output: DescribeFeatureGroupResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFeatureGroup",
 }));
+
 export type DescribeFeatureMetadataError = ResourceNotFound | CommonErrors;
 /**
  * Shows the metadata for a feature within a feature group.
@@ -41164,8 +42027,11 @@ export const describeFeatureMetadata: API.OperationMethod<
   input: DescribeFeatureMetadataRequest,
   output: DescribeFeatureMetadataResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFeatureMetadata",
 }));
+
 export type DescribeFlowDefinitionError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about the specified flow definition.
@@ -41179,8 +42045,11 @@ export const describeFlowDefinition: API.OperationMethod<
   input: DescribeFlowDefinitionRequest,
   output: DescribeFlowDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowDefinition",
 }));
+
 export type DescribeHubError = ResourceNotFound | CommonErrors;
 /**
  * Describes a hub.
@@ -41194,8 +42063,11 @@ export const describeHub: API.OperationMethod<
   input: DescribeHubRequest,
   output: DescribeHubResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHub",
 }));
+
 export type DescribeHubContentError = ResourceNotFound | CommonErrors;
 /**
  * Describe the content of a hub.
@@ -41209,8 +42081,11 @@ export const describeHubContent: API.OperationMethod<
   input: DescribeHubContentRequest,
   output: DescribeHubContentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHubContent",
 }));
+
 export type DescribeHumanTaskUiError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about the requested human task user interface (worker task template).
@@ -41224,8 +42099,11 @@ export const describeHumanTaskUi: API.OperationMethod<
   input: DescribeHumanTaskUiRequest,
   output: DescribeHumanTaskUiResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHumanTaskUi",
 }));
+
 export type DescribeHyperParameterTuningJobError =
   | ResourceNotFound
   | CommonErrors;
@@ -41241,8 +42119,11 @@ export const describeHyperParameterTuningJob: API.OperationMethod<
   input: DescribeHyperParameterTuningJobRequest,
   output: DescribeHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHyperParameterTuningJob",
 }));
+
 export type DescribeImageError = ResourceNotFound | CommonErrors;
 /**
  * Describes a SageMaker AI image.
@@ -41256,8 +42137,11 @@ export const describeImage: API.OperationMethod<
   input: DescribeImageRequest,
   output: DescribeImageResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImage",
 }));
+
 export type DescribeImageVersionError = ResourceNotFound | CommonErrors;
 /**
  * Describes a version of a SageMaker AI image.
@@ -41271,8 +42155,11 @@ export const describeImageVersion: API.OperationMethod<
   input: DescribeImageVersionRequest,
   output: DescribeImageVersionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageVersion",
 }));
+
 export type DescribeInferenceComponentError = CommonErrors;
 /**
  * Returns information about an inference component.
@@ -41286,8 +42173,11 @@ export const describeInferenceComponent: API.OperationMethod<
   input: DescribeInferenceComponentInput,
   output: DescribeInferenceComponentOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInferenceComponent",
 }));
+
 export type DescribeInferenceExperimentError = ResourceNotFound | CommonErrors;
 /**
  * Returns details about an inference experiment.
@@ -41301,8 +42191,11 @@ export const describeInferenceExperiment: API.OperationMethod<
   input: DescribeInferenceExperimentRequest,
   output: DescribeInferenceExperimentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInferenceExperiment",
 }));
+
 export type DescribeInferenceRecommendationsJobError =
   | ResourceNotFound
   | CommonErrors;
@@ -41318,8 +42211,11 @@ export const describeInferenceRecommendationsJob: API.OperationMethod<
   input: DescribeInferenceRecommendationsJobRequest,
   output: DescribeInferenceRecommendationsJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInferenceRecommendationsJob",
 }));
+
 export type DescribeJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns detailed information about a job, including its current status, secondary status, configuration, and timestamps. Use `SecondaryStatus` for granular progress tracking and `SecondaryStatusTransitions` to see the full history of status changes with timestamps.
@@ -41343,8 +42239,11 @@ export const describeJob: API.OperationMethod<
   input: DescribeJobRequest,
   output: DescribeJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
+
 export type DescribeJobSchemaVersionError = ResourceNotFound | CommonErrors;
 /**
  * Returns the JSON schema for a specified job category and schema version. Use this schema to validate your `JobConfigDocument` before calling `CreateJob`. If you don't specify a schema version, the latest version is returned. The schema defines required fields, allowed values, and constraints for the job configuration.
@@ -41364,8 +42263,11 @@ export const describeJobSchemaVersion: API.OperationMethod<
   input: DescribeJobSchemaVersionRequest,
   output: DescribeJobSchemaVersionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobSchemaVersion",
 }));
+
 export type DescribeLabelingJobError = ResourceNotFound | CommonErrors;
 /**
  * Gets information about a labeling job.
@@ -41379,8 +42281,11 @@ export const describeLabelingJob: API.OperationMethod<
   input: DescribeLabelingJobRequest,
   output: DescribeLabelingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLabelingJob",
 }));
+
 export type DescribeLineageGroupError = ResourceNotFound | CommonErrors;
 /**
  * Provides a list of properties for the requested lineage group. For more information, see Cross-Account Lineage Tracking in the *Amazon SageMaker Developer Guide*.
@@ -41394,8 +42299,11 @@ export const describeLineageGroup: API.OperationMethod<
   input: DescribeLineageGroupRequest,
   output: DescribeLineageGroupResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLineageGroup",
 }));
+
 export type DescribeMlflowAppError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about an MLflow App.
@@ -41409,8 +42317,11 @@ export const describeMlflowApp: API.OperationMethod<
   input: DescribeMlflowAppRequest,
   output: DescribeMlflowAppResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMlflowApp",
 }));
+
 export type DescribeMlflowTrackingServerError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about an MLflow Tracking Server.
@@ -41424,8 +42335,11 @@ export const describeMlflowTrackingServer: API.OperationMethod<
   input: DescribeMlflowTrackingServerRequest,
   output: DescribeMlflowTrackingServerResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMlflowTrackingServer",
 }));
+
 export type DescribeModelError = ModelNotFound | CommonErrors;
 /**
  * Describes a model that you created using the `CreateModel` API.
@@ -41439,8 +42353,11 @@ export const describeModel: API.OperationMethod<
   input: DescribeModelInput,
   output: DescribeModelOutput,
   errors: [ModelNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModel",
 }));
+
 export type DescribeModelBiasJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -41456,8 +42373,11 @@ export const describeModelBiasJobDefinition: API.OperationMethod<
   input: DescribeModelBiasJobDefinitionRequest,
   output: DescribeModelBiasJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelBiasJobDefinition",
 }));
+
 export type DescribeModelCardError = ResourceNotFound | CommonErrors;
 /**
  * Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card.
@@ -41473,8 +42393,11 @@ export const describeModelCard: API.OperationMethod<
   input: DescribeModelCardRequest,
   output: DescribeModelCardResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelCard",
 }));
+
 export type DescribeModelCardExportJobError = ResourceNotFound | CommonErrors;
 /**
  * Describes an Amazon SageMaker Model Card export job.
@@ -41488,8 +42411,11 @@ export const describeModelCardExportJob: API.OperationMethod<
   input: DescribeModelCardExportJobRequest,
   output: DescribeModelCardExportJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelCardExportJob",
 }));
+
 export type DescribeModelExplainabilityJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -41505,8 +42431,11 @@ export const describeModelExplainabilityJobDefinition: API.OperationMethod<
   input: DescribeModelExplainabilityJobDefinitionRequest,
   output: DescribeModelExplainabilityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelExplainabilityJobDefinition",
 }));
+
 export type DescribeModelPackageError = CommonErrors;
 /**
  * Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace.
@@ -41524,8 +42453,11 @@ export const describeModelPackage: API.OperationMethod<
   input: DescribeModelPackageInput,
   output: DescribeModelPackageOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelPackage",
 }));
+
 export type DescribeModelPackageGroupError = CommonErrors;
 /**
  * Gets a description for the specified model group.
@@ -41539,8 +42471,11 @@ export const describeModelPackageGroup: API.OperationMethod<
   input: DescribeModelPackageGroupInput,
   output: DescribeModelPackageGroupOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelPackageGroup",
 }));
+
 export type DescribeModelQualityJobDefinitionError =
   | ResourceNotFound
   | CommonErrors;
@@ -41556,8 +42491,11 @@ export const describeModelQualityJobDefinition: API.OperationMethod<
   input: DescribeModelQualityJobDefinitionRequest,
   output: DescribeModelQualityJobDefinitionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelQualityJobDefinition",
 }));
+
 export type DescribeMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
  * Describes the schedule for a monitoring job.
@@ -41571,8 +42509,11 @@ export const describeMonitoringSchedule: API.OperationMethod<
   input: DescribeMonitoringScheduleRequest,
   output: DescribeMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMonitoringSchedule",
 }));
+
 export type DescribeNotebookInstanceError = CommonErrors;
 /**
  * Returns information about a notebook instance.
@@ -41586,8 +42527,11 @@ export const describeNotebookInstance: API.OperationMethod<
   input: DescribeNotebookInstanceInput,
   output: DescribeNotebookInstanceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotebookInstance",
 }));
+
 export type DescribeNotebookInstanceLifecycleConfigError = CommonErrors;
 /**
  * Returns a description of a notebook instance lifecycle configuration.
@@ -41603,8 +42547,11 @@ export const describeNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: DescribeNotebookInstanceLifecycleConfigInput,
   output: DescribeNotebookInstanceLifecycleConfigOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotebookInstanceLifecycleConfig",
 }));
+
 export type DescribeOptimizationJobError = ResourceNotFound | CommonErrors;
 /**
  * Provides the properties of the specified optimization job.
@@ -41618,8 +42565,11 @@ export const describeOptimizationJob: API.OperationMethod<
   input: DescribeOptimizationJobRequest,
   output: DescribeOptimizationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOptimizationJob",
 }));
+
 export type DescribePartnerAppError = ResourceNotFound | CommonErrors;
 /**
  * Gets information about a SageMaker Partner AI App.
@@ -41633,8 +42583,11 @@ export const describePartnerApp: API.OperationMethod<
   input: DescribePartnerAppRequest,
   output: DescribePartnerAppResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePartnerApp",
 }));
+
 export type DescribePipelineError = ResourceNotFound | CommonErrors;
 /**
  * Describes the details of a pipeline.
@@ -41648,8 +42601,11 @@ export const describePipeline: API.OperationMethod<
   input: DescribePipelineRequest,
   output: DescribePipelineResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePipeline",
 }));
+
 export type DescribePipelineDefinitionForExecutionError =
   | ResourceNotFound
   | CommonErrors;
@@ -41665,8 +42621,11 @@ export const describePipelineDefinitionForExecution: API.OperationMethod<
   input: DescribePipelineDefinitionForExecutionRequest,
   output: DescribePipelineDefinitionForExecutionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePipelineDefinitionForExecution",
 }));
+
 export type DescribePipelineExecutionError = ResourceNotFound | CommonErrors;
 /**
  * Describes the details of a pipeline execution.
@@ -41680,8 +42639,11 @@ export const describePipelineExecution: API.OperationMethod<
   input: DescribePipelineExecutionRequest,
   output: DescribePipelineExecutionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePipelineExecution",
 }));
+
 export type DescribeProcessingJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns a description of a processing job.
@@ -41695,8 +42657,11 @@ export const describeProcessingJob: API.OperationMethod<
   input: DescribeProcessingJobRequest,
   output: DescribeProcessingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProcessingJob",
 }));
+
 export type DescribeProjectError = CommonErrors;
 /**
  * Describes the details of a project.
@@ -41710,8 +42675,11 @@ export const describeProject: API.OperationMethod<
   input: DescribeProjectInput,
   output: DescribeProjectOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProject",
 }));
+
 export type DescribeReservedCapacityError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves details about a reserved capacity.
@@ -41725,8 +42693,11 @@ export const describeReservedCapacity: API.OperationMethod<
   input: DescribeReservedCapacityRequest,
   output: DescribeReservedCapacityResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedCapacity",
 }));
+
 export type DescribeSpaceError = ResourceNotFound | CommonErrors;
 /**
  * Describes the space.
@@ -41740,8 +42711,11 @@ export const describeSpace: API.OperationMethod<
   input: DescribeSpaceRequest,
   output: DescribeSpaceResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpace",
 }));
+
 export type DescribeStudioLifecycleConfigError =
   | ResourceNotFound
   | CommonErrors;
@@ -41757,8 +42731,11 @@ export const describeStudioLifecycleConfig: API.OperationMethod<
   input: DescribeStudioLifecycleConfigRequest,
   output: DescribeStudioLifecycleConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStudioLifecycleConfig",
 }));
+
 export type DescribeSubscribedWorkteamError = CommonErrors;
 /**
  * Gets information about a work team provided by a vendor. It returns details about the subscription with a vendor in the Amazon Web Services Marketplace.
@@ -41772,8 +42749,11 @@ export const describeSubscribedWorkteam: API.OperationMethod<
   input: DescribeSubscribedWorkteamRequest,
   output: DescribeSubscribedWorkteamResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubscribedWorkteam",
 }));
+
 export type DescribeTrainingJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about a training job.
@@ -41789,8 +42769,11 @@ export const describeTrainingJob: API.OperationMethod<
   input: DescribeTrainingJobRequest,
   output: DescribeTrainingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrainingJob",
 }));
+
 export type DescribeTrainingPlanError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves detailed information about a specific training plan.
@@ -41804,8 +42787,11 @@ export const describeTrainingPlan: API.OperationMethod<
   input: DescribeTrainingPlanRequest,
   output: DescribeTrainingPlanResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrainingPlan",
 }));
+
 export type DescribeTrainingPlanExtensionHistoryError =
   | ResourceNotFound
   | CommonErrors;
@@ -41836,6 +42822,8 @@ export const describeTrainingPlanExtensionHistory: API.OperationMethod<
   input: DescribeTrainingPlanExtensionHistoryRequest,
   output: DescribeTrainingPlanExtensionHistoryResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrainingPlanExtensionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -41844,6 +42832,7 @@ export const describeTrainingPlanExtensionHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransformJobError = ResourceNotFound | CommonErrors;
 /**
  * Returns information about a transform job.
@@ -41857,8 +42846,11 @@ export const describeTransformJob: API.OperationMethod<
   input: DescribeTransformJobRequest,
   output: DescribeTransformJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransformJob",
 }));
+
 export type DescribeTrialError = ResourceNotFound | CommonErrors;
 /**
  * Provides a list of a trial's properties.
@@ -41872,8 +42864,11 @@ export const describeTrial: API.OperationMethod<
   input: DescribeTrialRequest,
   output: DescribeTrialResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrial",
 }));
+
 export type DescribeTrialComponentError = ResourceNotFound | CommonErrors;
 /**
  * Provides a list of a trials component's properties.
@@ -41887,8 +42882,11 @@ export const describeTrialComponent: API.OperationMethod<
   input: DescribeTrialComponentRequest,
   output: DescribeTrialComponentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrialComponent",
 }));
+
 export type DescribeUserProfileError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -41905,8 +42903,11 @@ export const describeUserProfile: API.OperationMethod<
   input: DescribeUserProfileRequest,
   output: DescribeUserProfileResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserProfile",
 }));
+
 export type DescribeWorkforceError = CommonErrors;
 /**
  * Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (CIDRs). Allowable IP address ranges are the IP addresses that workers can use to access tasks.
@@ -41922,8 +42923,11 @@ export const describeWorkforce: API.OperationMethod<
   input: DescribeWorkforceRequest,
   output: DescribeWorkforceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkforce",
 }));
+
 export type DescribeWorkteamError = CommonErrors;
 /**
  * Gets information about a specific work team. You can see information such as the creation date, the last updated date, membership information, and the work team's Amazon Resource Name (ARN).
@@ -41937,8 +42941,11 @@ export const describeWorkteam: API.OperationMethod<
   input: DescribeWorkteamRequest,
   output: DescribeWorkteamResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkteam",
 }));
+
 export type DetachClusterNodeVolumeError = ResourceNotFound | CommonErrors;
 /**
  * Detaches your Amazon Elastic Block Store (Amazon EBS) volume from a node in your EKS orchestrated SageMaker HyperPod cluster.
@@ -41954,8 +42961,11 @@ export const detachClusterNodeVolume: API.OperationMethod<
   input: DetachClusterNodeVolumeRequest,
   output: DetachClusterNodeVolumeResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachClusterNodeVolume",
 }));
+
 export type DisableSagemakerServicecatalogPortfolioError = CommonErrors;
 /**
  * Disables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
@@ -41969,8 +42979,11 @@ export const disableSagemakerServicecatalogPortfolio: API.OperationMethod<
   input: DisableSagemakerServicecatalogPortfolioInput,
   output: DisableSagemakerServicecatalogPortfolioOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSagemakerServicecatalogPortfolio",
 }));
+
 export type DisassociateTrialComponentError = ResourceNotFound | CommonErrors;
 /**
  * Disassociates a trial component from a trial. This doesn't effect other trials the component is associated with. Before you can delete a component, you must disassociate the component from all trials it is associated with. To associate a trial component with a trial, call the AssociateTrialComponent API.
@@ -41986,8 +42999,11 @@ export const disassociateTrialComponent: API.OperationMethod<
   input: DisassociateTrialComponentRequest,
   output: DisassociateTrialComponentResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTrialComponent",
 }));
+
 export type EnableSagemakerServicecatalogPortfolioError = CommonErrors;
 /**
  * Enables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
@@ -42001,8 +43017,11 @@ export const enableSagemakerServicecatalogPortfolio: API.OperationMethod<
   input: EnableSagemakerServicecatalogPortfolioInput,
   output: EnableSagemakerServicecatalogPortfolioOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSagemakerServicecatalogPortfolio",
 }));
+
 export type ExtendTrainingPlanError = ResourceNotFound | CommonErrors;
 /**
  * Extends an existing training plan by purchasing an extension offering. This allows you to add additional compute capacity time to your training plan without creating a new plan or reconfiguring your workloads.
@@ -42020,8 +43039,11 @@ export const extendTrainingPlan: API.OperationMethod<
   input: ExtendTrainingPlanRequest,
   output: ExtendTrainingPlanResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExtendTrainingPlan",
 }));
+
 export type GetDeviceFleetReportError = CommonErrors;
 /**
  * Describes a fleet.
@@ -42035,8 +43057,11 @@ export const getDeviceFleetReport: API.OperationMethod<
   input: GetDeviceFleetReportRequest,
   output: GetDeviceFleetReportResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeviceFleetReport",
 }));
+
 export type GetLineageGroupPolicyError = ResourceNotFound | CommonErrors;
 /**
  * The resource policy for the lineage group.
@@ -42050,8 +43075,11 @@ export const getLineageGroupPolicy: API.OperationMethod<
   input: GetLineageGroupPolicyRequest,
   output: GetLineageGroupPolicyResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLineageGroupPolicy",
 }));
+
 export type GetModelPackageGroupPolicyError = CommonErrors;
 /**
  * Gets a resource policy that manages access for a model group. For information about resource policies, see Identity-based policies and resource-based policies in the *Amazon Web Services Identity and Access Management User Guide.*.
@@ -42065,8 +43093,11 @@ export const getModelPackageGroupPolicy: API.OperationMethod<
   input: GetModelPackageGroupPolicyInput,
   output: GetModelPackageGroupPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelPackageGroupPolicy",
 }));
+
 export type GetSagemakerServicecatalogPortfolioStatusError = CommonErrors;
 /**
  * Gets the status of Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
@@ -42080,8 +43111,11 @@ export const getSagemakerServicecatalogPortfolioStatus: API.OperationMethod<
   input: GetSagemakerServicecatalogPortfolioStatusInput,
   output: GetSagemakerServicecatalogPortfolioStatusOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSagemakerServicecatalogPortfolioStatus",
 }));
+
 export type GetScalingConfigurationRecommendationError =
   | ResourceNotFound
   | CommonErrors;
@@ -42097,8 +43131,11 @@ export const getScalingConfigurationRecommendation: API.OperationMethod<
   input: GetScalingConfigurationRecommendationRequest,
   output: GetScalingConfigurationRecommendationResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScalingConfigurationRecommendation",
 }));
+
 export type GetSearchSuggestionsError = CommonErrors;
 /**
  * An auto-complete API for the search functionality in the SageMaker console. It returns suggestions of possible matches for the property name to use in `Search` queries. Provides suggestions for `HyperParameters`, `Tags`, and `Metrics`.
@@ -42112,8 +43149,11 @@ export const getSearchSuggestions: API.OperationMethod<
   input: GetSearchSuggestionsRequest,
   output: GetSearchSuggestionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSearchSuggestions",
 }));
+
 export type ImportHubContentError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -42131,8 +43171,11 @@ export const importHubContent: API.OperationMethod<
   input: ImportHubContentRequest,
   output: ImportHubContentResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportHubContent",
 }));
+
 export type ListActionsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the actions in your account and their properties.
@@ -42161,6 +43204,8 @@ export const listActions: API.OperationMethod<
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActions",
   pagination: {
     inputToken: "NextToken",
@@ -42169,6 +43214,7 @@ export const listActions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAIBenchmarkJobsError = CommonErrors;
 /**
  * Returns a list of AI benchmark jobs in your account. You can filter the results by name, status, and creation time, and sort the results. The response is paginated.
@@ -42197,6 +43243,8 @@ export const listAIBenchmarkJobs: API.OperationMethod<
   input: ListAIBenchmarkJobsRequest,
   output: ListAIBenchmarkJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIBenchmarkJobs",
   pagination: {
     inputToken: "NextToken",
@@ -42205,6 +43253,7 @@ export const listAIBenchmarkJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAIRecommendationJobsError = CommonErrors;
 /**
  * Returns a list of AI recommendation jobs in your account. You can filter the results by name, status, and creation time, and sort the results. The response is paginated.
@@ -42233,6 +43282,8 @@ export const listAIRecommendationJobs: API.OperationMethod<
   input: ListAIRecommendationJobsRequest,
   output: ListAIRecommendationJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIRecommendationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -42241,6 +43292,7 @@ export const listAIRecommendationJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAIWorkloadConfigsError = CommonErrors;
 /**
  * Returns a list of AI workload configurations in your account. You can filter the results by name and creation time, and sort the results. The response is paginated.
@@ -42269,6 +43321,8 @@ export const listAIWorkloadConfigs: API.OperationMethod<
   input: ListAIWorkloadConfigsRequest,
   output: ListAIWorkloadConfigsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIWorkloadConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -42277,6 +43331,7 @@ export const listAIWorkloadConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAlgorithmsError = CommonErrors;
 /**
  * Lists the machine learning algorithms that have been created.
@@ -42305,6 +43360,8 @@ export const listAlgorithms: API.OperationMethod<
   input: ListAlgorithmsInput,
   output: ListAlgorithmsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlgorithms",
   pagination: {
     inputToken: "NextToken",
@@ -42313,6 +43370,7 @@ export const listAlgorithms: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAliasesError = ResourceNotFound | CommonErrors;
 /**
  * Lists the aliases of a specified image or image version.
@@ -42341,6 +43399,8 @@ export const listAliases: API.OperationMethod<
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
@@ -42349,6 +43409,7 @@ export const listAliases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppImageConfigsError = CommonErrors;
 /**
  * Lists the AppImageConfigs in your account and their properties. The list can be filtered by creation time or modified time, and whether the AppImageConfig name contains a specified string.
@@ -42377,6 +43438,8 @@ export const listAppImageConfigs: API.OperationMethod<
   input: ListAppImageConfigsRequest,
   output: ListAppImageConfigsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppImageConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -42385,6 +43448,7 @@ export const listAppImageConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppsError = CommonErrors;
 /**
  * Lists apps.
@@ -42413,6 +43477,8 @@ export const listApps: API.OperationMethod<
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApps",
   pagination: {
     inputToken: "NextToken",
@@ -42421,6 +43487,7 @@ export const listApps: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListArtifactsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the artifacts in your account and their properties.
@@ -42449,6 +43516,8 @@ export const listArtifacts: API.OperationMethod<
   input: ListArtifactsRequest,
   output: ListArtifactsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArtifacts",
   pagination: {
     inputToken: "NextToken",
@@ -42457,6 +43526,7 @@ export const listArtifacts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAssociationsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the associations in your account and their properties.
@@ -42485,6 +43555,8 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -42493,6 +43565,7 @@ export const listAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAutoMLJobsError = CommonErrors;
 /**
  * Request a list of jobs.
@@ -42521,6 +43594,8 @@ export const listAutoMLJobs: API.OperationMethod<
   input: ListAutoMLJobsRequest,
   output: ListAutoMLJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutoMLJobs",
   pagination: {
     inputToken: "NextToken",
@@ -42529,6 +43604,7 @@ export const listAutoMLJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCandidatesForAutoMLJobError = ResourceNotFound | CommonErrors;
 /**
  * List the candidates created for the job.
@@ -42557,6 +43633,8 @@ export const listCandidatesForAutoMLJob: API.OperationMethod<
   input: ListCandidatesForAutoMLJobRequest,
   output: ListCandidatesForAutoMLJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCandidatesForAutoMLJob",
   pagination: {
     inputToken: "NextToken",
@@ -42565,6 +43643,7 @@ export const listCandidatesForAutoMLJob: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClusterEventsError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves a list of event summaries for a specified HyperPod cluster. The operation supports filtering, sorting, and pagination of results. This functionality is only supported when the `NodeProvisioningMode` is set to `Continuous`.
@@ -42593,6 +43672,8 @@ export const listClusterEvents: API.OperationMethod<
   input: ListClusterEventsRequest,
   output: ListClusterEventsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterEvents",
   pagination: {
     inputToken: "NextToken",
@@ -42601,6 +43682,7 @@ export const listClusterEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClusterNodesError = ResourceNotFound | CommonErrors;
 /**
  * Retrieves the list of instances (also called *nodes* interchangeably) in a SageMaker HyperPod cluster.
@@ -42629,6 +43711,8 @@ export const listClusterNodes: API.OperationMethod<
   input: ListClusterNodesRequest,
   output: ListClusterNodesResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterNodes",
   pagination: {
     inputToken: "NextToken",
@@ -42637,6 +43721,7 @@ export const listClusterNodes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClustersError = CommonErrors;
 /**
  * Retrieves the list of SageMaker HyperPod clusters.
@@ -42665,6 +43750,8 @@ export const listClusters: API.OperationMethod<
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
@@ -42673,6 +43760,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClusterSchedulerConfigsError = CommonErrors;
 /**
  * List the cluster policy configurations.
@@ -42701,6 +43789,8 @@ export const listClusterSchedulerConfigs: API.OperationMethod<
   input: ListClusterSchedulerConfigsRequest,
   output: ListClusterSchedulerConfigsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterSchedulerConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -42709,6 +43799,7 @@ export const listClusterSchedulerConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCodeRepositoriesError = CommonErrors;
 /**
  * Gets a list of the Git repositories in your account.
@@ -42737,6 +43828,8 @@ export const listCodeRepositories: API.OperationMethod<
   input: ListCodeRepositoriesInput,
   output: ListCodeRepositoriesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeRepositories",
   pagination: {
     inputToken: "NextToken",
@@ -42745,6 +43838,7 @@ export const listCodeRepositories: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCompilationJobsError = CommonErrors;
 /**
  * Lists model compilation jobs that satisfy various filters.
@@ -42775,6 +43869,8 @@ export const listCompilationJobs: API.OperationMethod<
   input: ListCompilationJobsRequest,
   output: ListCompilationJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCompilationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -42783,6 +43879,7 @@ export const listCompilationJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComputeQuotasError = CommonErrors;
 /**
  * List the resource allocation definitions.
@@ -42811,6 +43908,8 @@ export const listComputeQuotas: API.OperationMethod<
   input: ListComputeQuotasRequest,
   output: ListComputeQuotasResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComputeQuotas",
   pagination: {
     inputToken: "NextToken",
@@ -42819,6 +43918,7 @@ export const listComputeQuotas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListContextsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the contexts in your account and their properties.
@@ -42847,6 +43947,8 @@ export const listContexts: API.OperationMethod<
   input: ListContextsRequest,
   output: ListContextsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContexts",
   pagination: {
     inputToken: "NextToken",
@@ -42855,6 +43957,7 @@ export const listContexts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataQualityJobDefinitionsError = CommonErrors;
 /**
  * Lists the data quality job definitions in your account.
@@ -42883,6 +43986,8 @@ export const listDataQualityJobDefinitions: API.OperationMethod<
   input: ListDataQualityJobDefinitionsRequest,
   output: ListDataQualityJobDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityJobDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -42891,6 +43996,7 @@ export const listDataQualityJobDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDeviceFleetsError = CommonErrors;
 /**
  * Returns a list of devices in the fleet.
@@ -42919,6 +44025,8 @@ export const listDeviceFleets: API.OperationMethod<
   input: ListDeviceFleetsRequest,
   output: ListDeviceFleetsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeviceFleets",
   pagination: {
     inputToken: "NextToken",
@@ -42927,6 +44035,7 @@ export const listDeviceFleets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDevicesError = CommonErrors;
 /**
  * A list of devices.
@@ -42955,6 +44064,8 @@ export const listDevices: API.OperationMethod<
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevices",
   pagination: {
     inputToken: "NextToken",
@@ -42963,6 +44074,7 @@ export const listDevices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDomainsError = CommonErrors;
 /**
  * Lists the domains.
@@ -42991,6 +44103,8 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "NextToken",
@@ -42999,6 +44113,7 @@ export const listDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEdgeDeploymentPlansError = CommonErrors;
 /**
  * Lists all edge deployment plans.
@@ -43027,6 +44142,8 @@ export const listEdgeDeploymentPlans: API.OperationMethod<
   input: ListEdgeDeploymentPlansRequest,
   output: ListEdgeDeploymentPlansResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEdgeDeploymentPlans",
   pagination: {
     inputToken: "NextToken",
@@ -43035,6 +44152,7 @@ export const listEdgeDeploymentPlans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEdgePackagingJobsError = CommonErrors;
 /**
  * Returns a list of edge packaging jobs.
@@ -43063,6 +44181,8 @@ export const listEdgePackagingJobs: API.OperationMethod<
   input: ListEdgePackagingJobsRequest,
   output: ListEdgePackagingJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEdgePackagingJobs",
   pagination: {
     inputToken: "NextToken",
@@ -43071,6 +44191,7 @@ export const listEdgePackagingJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEndpointConfigsError = CommonErrors;
 /**
  * Lists endpoint configurations.
@@ -43099,6 +44220,8 @@ export const listEndpointConfigs: API.OperationMethod<
   input: ListEndpointConfigsInput,
   output: ListEndpointConfigsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpointConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -43107,6 +44230,7 @@ export const listEndpointConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEndpointsError = CommonErrors;
 /**
  * Lists endpoints.
@@ -43135,6 +44259,8 @@ export const listEndpoints: API.OperationMethod<
   input: ListEndpointsInput,
   output: ListEndpointsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -43143,6 +44269,7 @@ export const listEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExperimentsError = CommonErrors;
 /**
  * Lists all the experiments in your account. The list can be filtered to show only experiments that were created in a specific time range. The list can be sorted by experiment name or creation time.
@@ -43171,6 +44298,8 @@ export const listExperiments: API.OperationMethod<
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperiments",
   pagination: {
     inputToken: "NextToken",
@@ -43179,6 +44308,7 @@ export const listExperiments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFeatureGroupsError = CommonErrors;
 /**
  * List `FeatureGroup`s based on given filter and order.
@@ -43207,6 +44337,8 @@ export const listFeatureGroups: API.OperationMethod<
   input: ListFeatureGroupsRequest,
   output: ListFeatureGroupsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFeatureGroups",
   pagination: {
     inputToken: "NextToken",
@@ -43215,6 +44347,7 @@ export const listFeatureGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFlowDefinitionsError = CommonErrors;
 /**
  * Returns information about the flow definitions in your account.
@@ -43243,6 +44376,8 @@ export const listFlowDefinitions: API.OperationMethod<
   input: ListFlowDefinitionsRequest,
   output: ListFlowDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlowDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -43251,6 +44386,7 @@ export const listFlowDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHubContentsError = ResourceNotFound | CommonErrors;
 /**
  * List the contents of a hub.
@@ -43264,8 +44400,11 @@ export const listHubContents: API.OperationMethod<
   input: ListHubContentsRequest,
   output: ListHubContentsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHubContents",
 }));
+
 export type ListHubContentVersionsError = ResourceNotFound | CommonErrors;
 /**
  * List hub content versions.
@@ -43279,8 +44418,11 @@ export const listHubContentVersions: API.OperationMethod<
   input: ListHubContentVersionsRequest,
   output: ListHubContentVersionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHubContentVersions",
 }));
+
 export type ListHubsError = CommonErrors;
 /**
  * List all existing hubs.
@@ -43294,8 +44436,11 @@ export const listHubs: API.OperationMethod<
   input: ListHubsRequest,
   output: ListHubsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHubs",
 }));
+
 export type ListHumanTaskUisError = CommonErrors;
 /**
  * Returns information about the human task user interfaces in your account.
@@ -43324,6 +44469,8 @@ export const listHumanTaskUis: API.OperationMethod<
   input: ListHumanTaskUisRequest,
   output: ListHumanTaskUisResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHumanTaskUis",
   pagination: {
     inputToken: "NextToken",
@@ -43332,6 +44479,7 @@ export const listHumanTaskUis: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHyperParameterTuningJobsError = CommonErrors;
 /**
  * Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account.
@@ -43360,6 +44508,8 @@ export const listHyperParameterTuningJobs: API.OperationMethod<
   input: ListHyperParameterTuningJobsRequest,
   output: ListHyperParameterTuningJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHyperParameterTuningJobs",
   pagination: {
     inputToken: "NextToken",
@@ -43368,6 +44518,7 @@ export const listHyperParameterTuningJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListImagesError = CommonErrors;
 /**
  * Lists the images in your account and their properties. The list can be filtered by creation time or modified time, and whether the image name contains a specified string.
@@ -43396,6 +44547,8 @@ export const listImages: API.OperationMethod<
   input: ListImagesRequest,
   output: ListImagesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImages",
   pagination: {
     inputToken: "NextToken",
@@ -43404,6 +44557,7 @@ export const listImages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListImageVersionsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the versions of a specified image and their properties. The list can be filtered by creation time or modified time.
@@ -43432,6 +44586,8 @@ export const listImageVersions: API.OperationMethod<
   input: ListImageVersionsRequest,
   output: ListImageVersionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageVersions",
   pagination: {
     inputToken: "NextToken",
@@ -43440,6 +44596,7 @@ export const listImageVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceComponentsError = CommonErrors;
 /**
  * Lists the inference components in your account and their properties.
@@ -43468,6 +44625,8 @@ export const listInferenceComponents: API.OperationMethod<
   input: ListInferenceComponentsInput,
   output: ListInferenceComponentsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceComponents",
   pagination: {
     inputToken: "NextToken",
@@ -43476,6 +44635,7 @@ export const listInferenceComponents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceExperimentsError = CommonErrors;
 /**
  * Returns the list of all inference experiments.
@@ -43504,6 +44664,8 @@ export const listInferenceExperiments: API.OperationMethod<
   input: ListInferenceExperimentsRequest,
   output: ListInferenceExperimentsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceExperiments",
   pagination: {
     inputToken: "NextToken",
@@ -43512,6 +44674,7 @@ export const listInferenceExperiments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceRecommendationsJobsError = CommonErrors;
 /**
  * Lists recommendation jobs that satisfy various filters.
@@ -43540,6 +44703,8 @@ export const listInferenceRecommendationsJobs: API.OperationMethod<
   input: ListInferenceRecommendationsJobsRequest,
   output: ListInferenceRecommendationsJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceRecommendationsJobs",
   pagination: {
     inputToken: "NextToken",
@@ -43548,6 +44713,7 @@ export const listInferenceRecommendationsJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceRecommendationsJobStepsError =
   | ResourceNotFound
   | CommonErrors;
@@ -43580,6 +44746,8 @@ export const listInferenceRecommendationsJobSteps: API.OperationMethod<
   input: ListInferenceRecommendationsJobStepsRequest,
   output: ListInferenceRecommendationsJobStepsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceRecommendationsJobSteps",
   pagination: {
     inputToken: "NextToken",
@@ -43588,6 +44756,7 @@ export const listInferenceRecommendationsJobSteps: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobsError = CommonErrors;
 /**
  * Lists jobs in a specified category. You can filter results by creation time, last modified time, name, and status. Results are sorted by the field you specify in `SortBy`. Use pagination to retrieve large result sets efficiently.
@@ -43622,6 +44791,8 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -43630,6 +44801,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobSchemaVersionsError = ResourceNotFound | CommonErrors;
 /**
  * Lists available configuration schema versions for a specified job category. Use the schema versions with `DescribeJobSchemaVersion` to retrieve the full schema document.
@@ -43664,6 +44836,8 @@ export const listJobSchemaVersions: API.OperationMethod<
   input: ListJobSchemaVersionsRequest,
   output: ListJobSchemaVersionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobSchemaVersions",
   pagination: {
     inputToken: "NextToken",
@@ -43672,6 +44846,7 @@ export const listJobSchemaVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLabelingJobsError = CommonErrors;
 /**
  * Gets a list of labeling jobs.
@@ -43700,6 +44875,8 @@ export const listLabelingJobs: API.OperationMethod<
   input: ListLabelingJobsRequest,
   output: ListLabelingJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLabelingJobs",
   pagination: {
     inputToken: "NextToken",
@@ -43708,6 +44885,7 @@ export const listLabelingJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLabelingJobsForWorkteamError = ResourceNotFound | CommonErrors;
 /**
  * Gets a list of labeling jobs assigned to a specified work team.
@@ -43736,6 +44914,8 @@ export const listLabelingJobsForWorkteam: API.OperationMethod<
   input: ListLabelingJobsForWorkteamRequest,
   output: ListLabelingJobsForWorkteamResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLabelingJobsForWorkteam",
   pagination: {
     inputToken: "NextToken",
@@ -43744,6 +44924,7 @@ export const listLabelingJobsForWorkteam: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLineageGroupsError = CommonErrors;
 /**
  * A list of lineage groups shared with your Amazon Web Services account. For more information, see Cross-Account Lineage Tracking in the *Amazon SageMaker Developer Guide*.
@@ -43772,6 +44953,8 @@ export const listLineageGroups: API.OperationMethod<
   input: ListLineageGroupsRequest,
   output: ListLineageGroupsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLineageGroups",
   pagination: {
     inputToken: "NextToken",
@@ -43780,6 +44963,7 @@ export const listLineageGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMlflowAppsError = CommonErrors;
 /**
  * Lists all MLflow Apps
@@ -43808,6 +44992,8 @@ export const listMlflowApps: API.OperationMethod<
   input: ListMlflowAppsRequest,
   output: ListMlflowAppsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMlflowApps",
   pagination: {
     inputToken: "NextToken",
@@ -43816,6 +45002,7 @@ export const listMlflowApps: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMlflowTrackingServersError = CommonErrors;
 /**
  * Lists all MLflow Tracking Servers.
@@ -43844,6 +45031,8 @@ export const listMlflowTrackingServers: API.OperationMethod<
   input: ListMlflowTrackingServersRequest,
   output: ListMlflowTrackingServersResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMlflowTrackingServers",
   pagination: {
     inputToken: "NextToken",
@@ -43852,6 +45041,7 @@ export const listMlflowTrackingServers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelBiasJobDefinitionsError = CommonErrors;
 /**
  * Lists model bias jobs definitions that satisfy various filters.
@@ -43880,6 +45070,8 @@ export const listModelBiasJobDefinitions: API.OperationMethod<
   input: ListModelBiasJobDefinitionsRequest,
   output: ListModelBiasJobDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelBiasJobDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -43888,6 +45080,7 @@ export const listModelBiasJobDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelCardExportJobsError = CommonErrors;
 /**
  * List the export jobs for the Amazon SageMaker Model Card.
@@ -43916,6 +45109,8 @@ export const listModelCardExportJobs: API.OperationMethod<
   input: ListModelCardExportJobsRequest,
   output: ListModelCardExportJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelCardExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -43924,6 +45119,7 @@ export const listModelCardExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelCardsError = CommonErrors;
 /**
  * List existing model cards.
@@ -43952,6 +45148,8 @@ export const listModelCards: API.OperationMethod<
   input: ListModelCardsRequest,
   output: ListModelCardsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelCards",
   pagination: {
     inputToken: "NextToken",
@@ -43960,6 +45158,7 @@ export const listModelCards: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelCardVersionsError = ResourceNotFound | CommonErrors;
 /**
  * List existing versions of an Amazon SageMaker Model Card.
@@ -43988,6 +45187,8 @@ export const listModelCardVersions: API.OperationMethod<
   input: ListModelCardVersionsRequest,
   output: ListModelCardVersionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelCardVersions",
   pagination: {
     inputToken: "NextToken",
@@ -43996,6 +45197,7 @@ export const listModelCardVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelExplainabilityJobDefinitionsError = CommonErrors;
 /**
  * Lists model explainability job definitions that satisfy various filters.
@@ -44024,6 +45226,8 @@ export const listModelExplainabilityJobDefinitions: API.OperationMethod<
   input: ListModelExplainabilityJobDefinitionsRequest,
   output: ListModelExplainabilityJobDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelExplainabilityJobDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -44032,6 +45236,7 @@ export const listModelExplainabilityJobDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelMetadataError = CommonErrors;
 /**
  * Lists the domain, framework, task, and model name of standard machine learning models found in common model zoos.
@@ -44060,6 +45265,8 @@ export const listModelMetadata: API.OperationMethod<
   input: ListModelMetadataRequest,
   output: ListModelMetadataResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -44068,6 +45275,7 @@ export const listModelMetadata: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelPackageGroupsError = CommonErrors;
 /**
  * Gets a list of the model groups in your Amazon Web Services account.
@@ -44096,6 +45304,8 @@ export const listModelPackageGroups: API.OperationMethod<
   input: ListModelPackageGroupsInput,
   output: ListModelPackageGroupsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelPackageGroups",
   pagination: {
     inputToken: "NextToken",
@@ -44104,6 +45314,7 @@ export const listModelPackageGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelPackagesError = CommonErrors;
 /**
  * Lists the model packages that have been created.
@@ -44132,6 +45343,8 @@ export const listModelPackages: API.OperationMethod<
   input: ListModelPackagesInput,
   output: ListModelPackagesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelPackages",
   pagination: {
     inputToken: "NextToken",
@@ -44140,6 +45353,7 @@ export const listModelPackages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelQualityJobDefinitionsError = CommonErrors;
 /**
  * Gets a list of model quality monitoring job definitions in your account.
@@ -44168,6 +45382,8 @@ export const listModelQualityJobDefinitions: API.OperationMethod<
   input: ListModelQualityJobDefinitionsRequest,
   output: ListModelQualityJobDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelQualityJobDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -44176,6 +45392,7 @@ export const listModelQualityJobDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelsError = CommonErrors;
 /**
  * Lists models created with the `CreateModel` API.
@@ -44204,6 +45421,8 @@ export const listModels: API.OperationMethod<
   input: ListModelsInput,
   output: ListModelsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModels",
   pagination: {
     inputToken: "NextToken",
@@ -44212,6 +45431,7 @@ export const listModels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitoringAlertHistoryError = ResourceNotFound | CommonErrors;
 /**
  * Gets a list of past alerts in a model monitoring schedule.
@@ -44240,6 +45460,8 @@ export const listMonitoringAlertHistory: API.OperationMethod<
   input: ListMonitoringAlertHistoryRequest,
   output: ListMonitoringAlertHistoryResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitoringAlertHistory",
   pagination: {
     inputToken: "NextToken",
@@ -44248,6 +45470,7 @@ export const listMonitoringAlertHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitoringAlertsError = ResourceNotFound | CommonErrors;
 /**
  * Gets the alerts for a single monitoring schedule.
@@ -44276,6 +45499,8 @@ export const listMonitoringAlerts: API.OperationMethod<
   input: ListMonitoringAlertsRequest,
   output: ListMonitoringAlertsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitoringAlerts",
   pagination: {
     inputToken: "NextToken",
@@ -44284,6 +45509,7 @@ export const listMonitoringAlerts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitoringExecutionsError = CommonErrors;
 /**
  * Returns list of all monitoring job executions.
@@ -44312,6 +45538,8 @@ export const listMonitoringExecutions: API.OperationMethod<
   input: ListMonitoringExecutionsRequest,
   output: ListMonitoringExecutionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitoringExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -44320,6 +45548,7 @@ export const listMonitoringExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitoringSchedulesError = CommonErrors;
 /**
  * Returns list of all monitoring schedules.
@@ -44348,6 +45577,8 @@ export const listMonitoringSchedules: API.OperationMethod<
   input: ListMonitoringSchedulesRequest,
   output: ListMonitoringSchedulesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitoringSchedules",
   pagination: {
     inputToken: "NextToken",
@@ -44356,6 +45587,7 @@ export const listMonitoringSchedules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotebookInstanceLifecycleConfigsError = CommonErrors;
 /**
  * Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API.
@@ -44384,6 +45616,8 @@ export const listNotebookInstanceLifecycleConfigs: API.OperationMethod<
   input: ListNotebookInstanceLifecycleConfigsInput,
   output: ListNotebookInstanceLifecycleConfigsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotebookInstanceLifecycleConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -44392,6 +45626,7 @@ export const listNotebookInstanceLifecycleConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotebookInstancesError = CommonErrors;
 /**
  * Returns a list of the SageMaker AI notebook instances in the requester's account in an Amazon Web Services Region.
@@ -44420,6 +45655,8 @@ export const listNotebookInstances: API.OperationMethod<
   input: ListNotebookInstancesInput,
   output: ListNotebookInstancesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotebookInstances",
   pagination: {
     inputToken: "NextToken",
@@ -44428,6 +45665,7 @@ export const listNotebookInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOptimizationJobsError = CommonErrors;
 /**
  * Lists the optimization jobs in your account and their properties.
@@ -44456,6 +45694,8 @@ export const listOptimizationJobs: API.OperationMethod<
   input: ListOptimizationJobsRequest,
   output: ListOptimizationJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOptimizationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -44464,6 +45704,7 @@ export const listOptimizationJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPartnerAppsError = CommonErrors;
 /**
  * Lists all of the SageMaker Partner AI Apps in an account.
@@ -44492,6 +45733,8 @@ export const listPartnerApps: API.OperationMethod<
   input: ListPartnerAppsRequest,
   output: ListPartnerAppsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPartnerApps",
   pagination: {
     inputToken: "NextToken",
@@ -44500,6 +45743,7 @@ export const listPartnerApps: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelineExecutionsError = ResourceNotFound | CommonErrors;
 /**
  * Gets a list of the pipeline executions.
@@ -44528,6 +45772,8 @@ export const listPipelineExecutions: API.OperationMethod<
   input: ListPipelineExecutionsRequest,
   output: ListPipelineExecutionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -44536,6 +45782,7 @@ export const listPipelineExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelineExecutionStepsError = ResourceNotFound | CommonErrors;
 /**
  * Gets a list of `PipeLineExecutionStep` objects.
@@ -44564,6 +45811,8 @@ export const listPipelineExecutionSteps: API.OperationMethod<
   input: ListPipelineExecutionStepsRequest,
   output: ListPipelineExecutionStepsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineExecutionSteps",
   pagination: {
     inputToken: "NextToken",
@@ -44572,6 +45821,7 @@ export const listPipelineExecutionSteps: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelineParametersForExecutionError =
   | ResourceNotFound
   | CommonErrors;
@@ -44602,6 +45852,8 @@ export const listPipelineParametersForExecution: API.OperationMethod<
   input: ListPipelineParametersForExecutionRequest,
   output: ListPipelineParametersForExecutionResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineParametersForExecution",
   pagination: {
     inputToken: "NextToken",
@@ -44610,6 +45862,7 @@ export const listPipelineParametersForExecution: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelinesError = CommonErrors;
 /**
  * Gets a list of pipelines.
@@ -44638,6 +45891,8 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesRequest,
   output: ListPipelinesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelines",
   pagination: {
     inputToken: "NextToken",
@@ -44646,6 +45901,7 @@ export const listPipelines: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelineVersionsError = ResourceNotFound | CommonErrors;
 /**
  * Gets a list of all versions of the pipeline.
@@ -44674,6 +45930,8 @@ export const listPipelineVersions: API.OperationMethod<
   input: ListPipelineVersionsRequest,
   output: ListPipelineVersionsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineVersions",
   pagination: {
     inputToken: "NextToken",
@@ -44682,6 +45940,7 @@ export const listPipelineVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProcessingJobsError = CommonErrors;
 /**
  * Lists processing jobs that satisfy various filters.
@@ -44710,6 +45969,8 @@ export const listProcessingJobs: API.OperationMethod<
   input: ListProcessingJobsRequest,
   output: ListProcessingJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProcessingJobs",
   pagination: {
     inputToken: "NextToken",
@@ -44718,6 +45979,7 @@ export const listProcessingJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProjectsError = CommonErrors;
 /**
  * Gets a list of the projects in an Amazon Web Services account.
@@ -44746,6 +46008,8 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjects",
   pagination: {
     inputToken: "NextToken",
@@ -44753,6 +46017,7 @@ export const listProjects: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceCatalogsError = CommonErrors;
 /**
  * Lists Amazon SageMaker Catalogs based on given filters and orders. The maximum number of `ResourceCatalog`s viewable is 1000.
@@ -44781,6 +46046,8 @@ export const listResourceCatalogs: API.OperationMethod<
   input: ListResourceCatalogsRequest,
   output: ListResourceCatalogsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceCatalogs",
   pagination: {
     inputToken: "NextToken",
@@ -44789,6 +46056,7 @@ export const listResourceCatalogs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSpacesError = CommonErrors;
 /**
  * Lists spaces.
@@ -44817,6 +46085,8 @@ export const listSpaces: API.OperationMethod<
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpaces",
   pagination: {
     inputToken: "NextToken",
@@ -44825,6 +46095,7 @@ export const listSpaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStageDevicesError = CommonErrors;
 /**
  * Lists devices allocated to the stage, containing detailed device information and deployment status.
@@ -44853,6 +46124,8 @@ export const listStageDevices: API.OperationMethod<
   input: ListStageDevicesRequest,
   output: ListStageDevicesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStageDevices",
   pagination: {
     inputToken: "NextToken",
@@ -44861,6 +46134,7 @@ export const listStageDevices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStudioLifecycleConfigsError = ResourceInUse | CommonErrors;
 /**
  * Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your Amazon Web Services Account.
@@ -44889,6 +46163,8 @@ export const listStudioLifecycleConfigs: API.OperationMethod<
   input: ListStudioLifecycleConfigsRequest,
   output: ListStudioLifecycleConfigsResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStudioLifecycleConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -44897,6 +46173,7 @@ export const listStudioLifecycleConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubscribedWorkteamsError = CommonErrors;
 /**
  * Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace. The list may be empty if no work team satisfies the filter specified in the `NameContains` parameter.
@@ -44925,6 +46202,8 @@ export const listSubscribedWorkteams: API.OperationMethod<
   input: ListSubscribedWorkteamsRequest,
   output: ListSubscribedWorkteamsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscribedWorkteams",
   pagination: {
     inputToken: "NextToken",
@@ -44933,6 +46212,7 @@ export const listSubscribedWorkteams: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsError = CommonErrors;
 /**
  * Returns the tags for the specified SageMaker resource.
@@ -44961,6 +46241,8 @@ export const listTags: API.OperationMethod<
   input: ListTagsInput,
   output: ListTagsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
@@ -44969,6 +46251,7 @@ export const listTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTrainingJobsError = CommonErrors;
 /**
  * Lists training jobs.
@@ -45009,6 +46292,8 @@ export const listTrainingJobs: API.OperationMethod<
   input: ListTrainingJobsRequest,
   output: ListTrainingJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainingJobs",
   pagination: {
     inputToken: "NextToken",
@@ -45017,6 +46302,7 @@ export const listTrainingJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTrainingJobsForHyperParameterTuningJobError =
   | ResourceNotFound
   | CommonErrors;
@@ -45047,6 +46333,8 @@ export const listTrainingJobsForHyperParameterTuningJob: API.OperationMethod<
   input: ListTrainingJobsForHyperParameterTuningJobRequest,
   output: ListTrainingJobsForHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainingJobsForHyperParameterTuningJob",
   pagination: {
     inputToken: "NextToken",
@@ -45055,6 +46343,7 @@ export const listTrainingJobsForHyperParameterTuningJob: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTrainingPlansError = CommonErrors;
 /**
  * Retrieves a list of training plans for the current account.
@@ -45083,6 +46372,8 @@ export const listTrainingPlans: API.OperationMethod<
   input: ListTrainingPlansRequest,
   output: ListTrainingPlansResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainingPlans",
   pagination: {
     inputToken: "NextToken",
@@ -45091,6 +46382,7 @@ export const listTrainingPlans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTransformJobsError = CommonErrors;
 /**
  * Lists transform jobs.
@@ -45119,6 +46411,8 @@ export const listTransformJobs: API.OperationMethod<
   input: ListTransformJobsRequest,
   output: ListTransformJobsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransformJobs",
   pagination: {
     inputToken: "NextToken",
@@ -45127,6 +46421,7 @@ export const listTransformJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTrialComponentsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the trial components in your account. You can sort the list by trial component name or creation time. You can filter the list to show only components that were created in a specific time range. You can also filter on one of the following:
@@ -45161,6 +46456,8 @@ export const listTrialComponents: API.OperationMethod<
   input: ListTrialComponentsRequest,
   output: ListTrialComponentsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrialComponents",
   pagination: {
     inputToken: "NextToken",
@@ -45169,6 +46466,7 @@ export const listTrialComponents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTrialsError = ResourceNotFound | CommonErrors;
 /**
  * Lists the trials in your account. Specify an experiment name to limit the list to the trials that are part of that experiment. Specify a trial component name to limit the list to the trials that associated with that trial component. The list can be filtered to show only trials that were created in a specific time range. The list can be sorted by trial name or creation time.
@@ -45197,6 +46495,8 @@ export const listTrials: API.OperationMethod<
   input: ListTrialsRequest,
   output: ListTrialsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrials",
   pagination: {
     inputToken: "NextToken",
@@ -45205,6 +46505,7 @@ export const listTrials: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUltraServersByReservedCapacityError =
   | ResourceNotFound
   | CommonErrors;
@@ -45235,6 +46536,8 @@ export const listUltraServersByReservedCapacity: API.OperationMethod<
   input: ListUltraServersByReservedCapacityRequest,
   output: ListUltraServersByReservedCapacityResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUltraServersByReservedCapacity",
   pagination: {
     inputToken: "NextToken",
@@ -45243,6 +46546,7 @@ export const listUltraServersByReservedCapacity: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUserProfilesError = CommonErrors;
 /**
  * Lists user profiles.
@@ -45271,6 +46575,8 @@ export const listUserProfiles: API.OperationMethod<
   input: ListUserProfilesRequest,
   output: ListUserProfilesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -45279,6 +46585,7 @@ export const listUserProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkforcesError = CommonErrors;
 /**
  * Use this operation to list all private and vendor workforces in an Amazon Web Services Region. Note that you can only have one private workforce per Amazon Web Services Region.
@@ -45307,6 +46614,8 @@ export const listWorkforces: API.OperationMethod<
   input: ListWorkforcesRequest,
   output: ListWorkforcesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkforces",
   pagination: {
     inputToken: "NextToken",
@@ -45315,6 +46624,7 @@ export const listWorkforces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkteamsError = CommonErrors;
 /**
  * Gets a list of private work teams that you have defined in a region. The list may be empty if no work team satisfies the filter specified in the `NameContains` parameter.
@@ -45343,6 +46653,8 @@ export const listWorkteams: API.OperationMethod<
   input: ListWorkteamsRequest,
   output: ListWorkteamsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkteams",
   pagination: {
     inputToken: "NextToken",
@@ -45351,6 +46663,7 @@ export const listWorkteams: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutModelPackageGroupPolicyError = ConflictException | CommonErrors;
 /**
  * Adds a resouce policy to control access to a model group. For information about resoure policies, see Identity-based policies and resource-based policies in the *Amazon Web Services Identity and Access Management User Guide.*.
@@ -45364,8 +46677,11 @@ export const putModelPackageGroupPolicy: API.OperationMethod<
   input: PutModelPackageGroupPolicyInput,
   output: PutModelPackageGroupPolicyOutput,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutModelPackageGroupPolicy",
 }));
+
 export type QueryLineageError = ResourceNotFound | CommonErrors;
 /**
  * Use this action to inspect your lineage and discover relationships between entities. For more information, see Querying Lineage Entities in the *Amazon SageMaker Developer Guide*.
@@ -45394,6 +46710,8 @@ export const queryLineage: API.OperationMethod<
   input: QueryLineageRequest,
   output: QueryLineageResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryLineage",
   pagination: {
     inputToken: "NextToken",
@@ -45401,6 +46719,7 @@ export const queryLineage: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type RegisterDevicesError = ResourceLimitExceeded | CommonErrors;
 /**
  * Register devices.
@@ -45414,8 +46733,11 @@ export const registerDevices: API.OperationMethod<
   input: RegisterDevicesRequest,
   output: RegisterDevicesResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDevices",
 }));
+
 export type RenderUiTemplateError = ResourceNotFound | CommonErrors;
 /**
  * Renders the UI template so that you can preview the worker's experience.
@@ -45429,8 +46751,11 @@ export const renderUiTemplate: API.OperationMethod<
   input: RenderUiTemplateRequest,
   output: RenderUiTemplateResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenderUiTemplate",
 }));
+
 export type RetryPipelineExecutionError =
   | ConflictException
   | ResourceLimitExceeded
@@ -45448,8 +46773,11 @@ export const retryPipelineExecution: API.OperationMethod<
   input: RetryPipelineExecutionRequest,
   output: RetryPipelineExecutionResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryPipelineExecution",
 }));
+
 export type SearchError = CommonErrors;
 /**
  * Finds SageMaker resources that match a search query. Matching resources are returned as a list of `SearchRecord` objects in the response. You can sort the search results by any resource property in a ascending or descending order.
@@ -45482,6 +46810,8 @@ export const search: API.OperationMethod<
   input: SearchRequest,
   output: SearchResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Search",
   pagination: {
     inputToken: "NextToken",
@@ -45490,6 +46820,7 @@ export const search: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchTrainingPlanOfferingsError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -45511,8 +46842,11 @@ export const searchTrainingPlanOfferings: API.OperationMethod<
   input: SearchTrainingPlanOfferingsRequest,
   output: SearchTrainingPlanOfferingsResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTrainingPlanOfferings",
 }));
+
 export type SendPipelineExecutionStepFailureError =
   | ConflictException
   | ResourceLimitExceeded
@@ -45530,8 +46864,11 @@ export const sendPipelineExecutionStepFailure: API.OperationMethod<
   input: SendPipelineExecutionStepFailureRequest,
   output: SendPipelineExecutionStepFailureResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendPipelineExecutionStepFailure",
 }));
+
 export type SendPipelineExecutionStepSuccessError =
   | ConflictException
   | ResourceLimitExceeded
@@ -45549,8 +46886,11 @@ export const sendPipelineExecutionStepSuccess: API.OperationMethod<
   input: SendPipelineExecutionStepSuccessRequest,
   output: SendPipelineExecutionStepSuccessResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendPipelineExecutionStepSuccess",
 }));
+
 export type StartClusterHealthCheckError = ResourceNotFound | CommonErrors;
 /**
  * Start deep health checks for a SageMaker HyperPod cluster. You can use DescribeClusterNode API to track progress of the deep health checks. The unhealthy nodes will be automatically rebooted or replaced. Please see Resilience-related Kubernetes labels by SageMaker HyperPod for details.
@@ -45564,8 +46904,11 @@ export const startClusterHealthCheck: API.OperationMethod<
   input: StartClusterHealthCheckRequest,
   output: StartClusterHealthCheckResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartClusterHealthCheck",
 }));
+
 export type StartEdgeDeploymentStageError = CommonErrors;
 /**
  * Starts a stage in an edge deployment plan.
@@ -45579,8 +46922,11 @@ export const startEdgeDeploymentStage: API.OperationMethod<
   input: StartEdgeDeploymentStageRequest,
   output: StartEdgeDeploymentStageResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEdgeDeploymentStage",
 }));
+
 export type StartInferenceExperimentError =
   | ConflictException
   | ResourceNotFound
@@ -45597,8 +46943,11 @@ export const startInferenceExperiment: API.OperationMethod<
   input: StartInferenceExperimentRequest,
   output: StartInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInferenceExperiment",
 }));
+
 export type StartMlflowTrackingServerError =
   | ConflictException
   | ResourceNotFound
@@ -45615,8 +46964,11 @@ export const startMlflowTrackingServer: API.OperationMethod<
   input: StartMlflowTrackingServerRequest,
   output: StartMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMlflowTrackingServer",
 }));
+
 export type StartMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
  * Starts a previously stopped monitoring schedule.
@@ -45632,8 +46984,11 @@ export const startMonitoringSchedule: API.OperationMethod<
   input: StartMonitoringScheduleRequest,
   output: StartMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMonitoringSchedule",
 }));
+
 export type StartNotebookInstanceError = ResourceLimitExceeded | CommonErrors;
 /**
  * Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker AI sets the notebook instance status to `InService`. A notebook instance's status must be `InService` before you can connect to your Jupyter notebook.
@@ -45647,8 +47002,11 @@ export const startNotebookInstance: API.OperationMethod<
   input: StartNotebookInstanceInput,
   output: StartNotebookInstanceResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNotebookInstance",
 }));
+
 export type StartPipelineExecutionError =
   | ConflictException
   | ResourceLimitExceeded
@@ -45666,8 +47024,11 @@ export const startPipelineExecution: API.OperationMethod<
   input: StartPipelineExecutionRequest,
   output: StartPipelineExecutionResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPipelineExecution",
 }));
+
 export type StartSessionError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -45684,8 +47045,11 @@ export const startSession: API.OperationMethod<
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSession",
 }));
+
 export type StopAIBenchmarkJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a running AI benchmark job.
@@ -45699,8 +47063,11 @@ export const stopAIBenchmarkJob: API.OperationMethod<
   input: StopAIBenchmarkJobRequest,
   output: StopAIBenchmarkJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAIBenchmarkJob",
 }));
+
 export type StopAIRecommendationJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a running AI recommendation job.
@@ -45714,8 +47081,11 @@ export const stopAIRecommendationJob: API.OperationMethod<
   input: StopAIRecommendationJobRequest,
   output: StopAIRecommendationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAIRecommendationJob",
 }));
+
 export type StopAutoMLJobError = ResourceNotFound | CommonErrors;
 /**
  * A method for forcing a running job to shut down.
@@ -45729,8 +47099,11 @@ export const stopAutoMLJob: API.OperationMethod<
   input: StopAutoMLJobRequest,
   output: StopAutoMLJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAutoMLJob",
 }));
+
 export type StopCompilationJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a model compilation job.
@@ -45748,8 +47121,11 @@ export const stopCompilationJob: API.OperationMethod<
   input: StopCompilationJobRequest,
   output: StopCompilationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCompilationJob",
 }));
+
 export type StopEdgeDeploymentStageError = CommonErrors;
 /**
  * Stops a stage in an edge deployment plan.
@@ -45763,8 +47139,11 @@ export const stopEdgeDeploymentStage: API.OperationMethod<
   input: StopEdgeDeploymentStageRequest,
   output: StopEdgeDeploymentStageResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEdgeDeploymentStage",
 }));
+
 export type StopEdgePackagingJobError = CommonErrors;
 /**
  * Request to stop an edge packaging job.
@@ -45778,8 +47157,11 @@ export const stopEdgePackagingJob: API.OperationMethod<
   input: StopEdgePackagingJobRequest,
   output: StopEdgePackagingJobResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEdgePackagingJob",
 }));
+
 export type StopHyperParameterTuningJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched.
@@ -45795,8 +47177,11 @@ export const stopHyperParameterTuningJob: API.OperationMethod<
   input: StopHyperParameterTuningJobRequest,
   output: StopHyperParameterTuningJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopHyperParameterTuningJob",
 }));
+
 export type StopInferenceExperimentError =
   | ConflictException
   | ResourceNotFound
@@ -45813,8 +47198,11 @@ export const stopInferenceExperiment: API.OperationMethod<
   input: StopInferenceExperimentRequest,
   output: StopInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInferenceExperiment",
 }));
+
 export type StopInferenceRecommendationsJobError =
   | ResourceNotFound
   | CommonErrors;
@@ -45830,8 +47218,11 @@ export const stopInferenceRecommendationsJob: API.OperationMethod<
   input: StopInferenceRecommendationsJobRequest,
   output: StopInferenceRecommendationsJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInferenceRecommendationsJob",
 }));
+
 export type StopJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a running job. When you call `StopJob`, Amazon SageMaker sets the job status to `Stopping`. After the job stops, the status changes to `Stopped`. Partial results may be available in the output location if the job was in progress. To delete a stopped job, call `DeleteJob`.
@@ -45853,8 +47244,11 @@ export const stopJob: API.OperationMethod<
   input: StopJobRequest,
   output: StopJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopJob",
 }));
+
 export type StopLabelingJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a running labeling job. A job that is stopped cannot be restarted. Any results obtained before the job is stopped are placed in the Amazon S3 output bucket.
@@ -45868,8 +47262,11 @@ export const stopLabelingJob: API.OperationMethod<
   input: StopLabelingJobRequest,
   output: StopLabelingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopLabelingJob",
 }));
+
 export type StopMlflowTrackingServerError =
   | ConflictException
   | ResourceNotFound
@@ -45886,8 +47283,11 @@ export const stopMlflowTrackingServer: API.OperationMethod<
   input: StopMlflowTrackingServerRequest,
   output: StopMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMlflowTrackingServer",
 }));
+
 export type StopMonitoringScheduleError = ResourceNotFound | CommonErrors;
 /**
  * Stops a previously started monitoring schedule.
@@ -45901,8 +47301,11 @@ export const stopMonitoringSchedule: API.OperationMethod<
   input: StopMonitoringScheduleRequest,
   output: StopMonitoringScheduleResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMonitoringSchedule",
 }));
+
 export type StopNotebookInstanceError = CommonErrors;
 /**
  * Terminates the ML compute instance. Before terminating the instance, SageMaker AI disconnects the ML storage volume from it. SageMaker AI preserves the ML storage volume. SageMaker AI stops charging you for the ML compute instance when you call `StopNotebookInstance`.
@@ -45918,8 +47321,11 @@ export const stopNotebookInstance: API.OperationMethod<
   input: StopNotebookInstanceInput,
   output: StopNotebookInstanceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopNotebookInstance",
 }));
+
 export type StopOptimizationJobError = ResourceNotFound | CommonErrors;
 /**
  * Ends a running inference optimization job.
@@ -45933,8 +47339,11 @@ export const stopOptimizationJob: API.OperationMethod<
   input: StopOptimizationJobRequest,
   output: StopOptimizationJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopOptimizationJob",
 }));
+
 export type StopPipelineExecutionError =
   | ConflictException
   | ResourceNotFound
@@ -45963,8 +47372,11 @@ export const stopPipelineExecution: API.OperationMethod<
   input: StopPipelineExecutionRequest,
   output: StopPipelineExecutionResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPipelineExecution",
 }));
+
 export type StopProcessingJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a processing job.
@@ -45978,8 +47390,11 @@ export const stopProcessingJob: API.OperationMethod<
   input: StopProcessingJobRequest,
   output: StopProcessingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopProcessingJob",
 }));
+
 export type StopTrainingJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a training job. To stop a job, SageMaker sends the algorithm the `SIGTERM` signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of the training is not lost.
@@ -45995,8 +47410,11 @@ export const stopTrainingJob: API.OperationMethod<
   input: StopTrainingJobRequest,
   output: StopTrainingJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTrainingJob",
 }));
+
 export type StopTransformJobError = ResourceNotFound | CommonErrors;
 /**
  * Stops a batch transform job.
@@ -46012,8 +47430,11 @@ export const stopTransformJob: API.OperationMethod<
   input: StopTransformJobRequest,
   output: StopTransformJobResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTransformJob",
 }));
+
 export type UpdateActionError =
   | ConflictException
   | ResourceNotFound
@@ -46030,8 +47451,11 @@ export const updateAction: API.OperationMethod<
   input: UpdateActionRequest,
   output: UpdateActionResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAction",
 }));
+
 export type UpdateAppImageConfigError = ResourceNotFound | CommonErrors;
 /**
  * Updates the properties of an AppImageConfig.
@@ -46045,8 +47469,11 @@ export const updateAppImageConfig: API.OperationMethod<
   input: UpdateAppImageConfigRequest,
   output: UpdateAppImageConfigResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppImageConfig",
 }));
+
 export type UpdateArtifactError =
   | ConflictException
   | ResourceNotFound
@@ -46063,8 +47490,11 @@ export const updateArtifact: API.OperationMethod<
   input: UpdateArtifactRequest,
   output: UpdateArtifactResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateArtifact",
 }));
+
 export type UpdateClusterError =
   | ConflictException
   | ResourceLimitExceeded
@@ -46082,8 +47512,11 @@ export const updateCluster: API.OperationMethod<
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
+
 export type UpdateClusterSchedulerConfigError =
   | ConflictException
   | ResourceLimitExceeded
@@ -46101,8 +47534,11 @@ export const updateClusterSchedulerConfig: API.OperationMethod<
   input: UpdateClusterSchedulerConfigRequest,
   output: UpdateClusterSchedulerConfigResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterSchedulerConfig",
 }));
+
 export type UpdateClusterSoftwareError =
   | ConflictException
   | ResourceNotFound
@@ -46121,8 +47557,11 @@ export const updateClusterSoftware: API.OperationMethod<
   input: UpdateClusterSoftwareRequest,
   output: UpdateClusterSoftwareResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterSoftware",
 }));
+
 export type UpdateCodeRepositoryError = ConflictException | CommonErrors;
 /**
  * Updates the specified Git repository with the specified values.
@@ -46136,8 +47575,11 @@ export const updateCodeRepository: API.OperationMethod<
   input: UpdateCodeRepositoryInput,
   output: UpdateCodeRepositoryOutput,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCodeRepository",
 }));
+
 export type UpdateComputeQuotaError =
   | ConflictException
   | ResourceLimitExceeded
@@ -46155,8 +47597,11 @@ export const updateComputeQuota: API.OperationMethod<
   input: UpdateComputeQuotaRequest,
   output: UpdateComputeQuotaResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComputeQuota",
 }));
+
 export type UpdateContextError =
   | ConflictException
   | ResourceNotFound
@@ -46173,8 +47618,11 @@ export const updateContext: API.OperationMethod<
   input: UpdateContextRequest,
   output: UpdateContextResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContext",
 }));
+
 export type UpdateDeviceFleetError = ResourceInUse | CommonErrors;
 /**
  * Updates a fleet of devices.
@@ -46188,8 +47636,11 @@ export const updateDeviceFleet: API.OperationMethod<
   input: UpdateDeviceFleetRequest,
   output: UpdateDeviceFleetResponse,
   errors: [ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeviceFleet",
 }));
+
 export type UpdateDevicesError = CommonErrors;
 /**
  * Updates one or more devices in a fleet.
@@ -46203,8 +47654,11 @@ export const updateDevices: API.OperationMethod<
   input: UpdateDevicesRequest,
   output: UpdateDevicesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevices",
 }));
+
 export type UpdateDomainError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -46222,8 +47676,11 @@ export const updateDomain: API.OperationMethod<
   input: UpdateDomainRequest,
   output: UpdateDomainResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomain",
 }));
+
 export type UpdateEndpointError =
   | ResourceLimitExceeded
   | EndpointConfigNotFound
@@ -46247,8 +47704,11 @@ export const updateEndpoint: API.OperationMethod<
   input: UpdateEndpointInput,
   output: UpdateEndpointOutput,
   errors: [ResourceLimitExceeded, EndpointConfigNotFound, EndpointNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpoint",
 }));
+
 export type UpdateEndpointWeightsAndCapacitiesError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -46264,8 +47724,11 @@ export const updateEndpointWeightsAndCapacities: API.OperationMethod<
   input: UpdateEndpointWeightsAndCapacitiesInput,
   output: UpdateEndpointWeightsAndCapacitiesOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpointWeightsAndCapacities",
 }));
+
 export type UpdateExperimentError =
   | ConflictException
   | ResourceNotFound
@@ -46282,8 +47745,11 @@ export const updateExperiment: API.OperationMethod<
   input: UpdateExperimentRequest,
   output: UpdateExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExperiment",
 }));
+
 export type UpdateFeatureGroupError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -46304,8 +47770,11 @@ export const updateFeatureGroup: API.OperationMethod<
   input: UpdateFeatureGroupRequest,
   output: UpdateFeatureGroupResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFeatureGroup",
 }));
+
 export type UpdateFeatureMetadataError = ResourceNotFound | CommonErrors;
 /**
  * Updates the description and parameters of the feature group.
@@ -46319,8 +47788,11 @@ export const updateFeatureMetadata: API.OperationMethod<
   input: UpdateFeatureMetadataRequest,
   output: UpdateFeatureMetadataResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFeatureMetadata",
 }));
+
 export type UpdateHubError = ResourceNotFound | CommonErrors;
 /**
  * Update a hub.
@@ -46334,8 +47806,11 @@ export const updateHub: API.OperationMethod<
   input: UpdateHubRequest,
   output: UpdateHubResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHub",
 }));
+
 export type UpdateHubContentError =
   | ResourceInUse
   | ResourceNotFound
@@ -46368,8 +47843,11 @@ export const updateHubContent: API.OperationMethod<
   input: UpdateHubContentRequest,
   output: UpdateHubContentResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHubContent",
 }));
+
 export type UpdateHubContentReferenceError =
   | ResourceInUse
   | ResourceNotFound
@@ -46392,8 +47870,11 @@ export const updateHubContentReference: API.OperationMethod<
   input: UpdateHubContentReferenceRequest,
   output: UpdateHubContentReferenceResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHubContentReference",
 }));
+
 export type UpdateImageError = ResourceInUse | ResourceNotFound | CommonErrors;
 /**
  * Updates the properties of a SageMaker AI image. To change the image's tags, use the AddTags and DeleteTags APIs.
@@ -46407,8 +47888,11 @@ export const updateImage: API.OperationMethod<
   input: UpdateImageRequest,
   output: UpdateImageResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImage",
 }));
+
 export type UpdateImageVersionError =
   | ResourceInUse
   | ResourceNotFound
@@ -46425,8 +47909,11 @@ export const updateImageVersion: API.OperationMethod<
   input: UpdateImageVersionRequest,
   output: UpdateImageVersionResponse,
   errors: [ResourceInUse, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImageVersion",
 }));
+
 export type UpdateInferenceComponentError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -46442,8 +47929,11 @@ export const updateInferenceComponent: API.OperationMethod<
   input: UpdateInferenceComponentInput,
   output: UpdateInferenceComponentOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInferenceComponent",
 }));
+
 export type UpdateInferenceComponentRuntimeConfigError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -46459,8 +47949,11 @@ export const updateInferenceComponentRuntimeConfig: API.OperationMethod<
   input: UpdateInferenceComponentRuntimeConfigInput,
   output: UpdateInferenceComponentRuntimeConfigOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInferenceComponentRuntimeConfig",
 }));
+
 export type UpdateInferenceExperimentError =
   | ConflictException
   | ResourceNotFound
@@ -46477,8 +47970,11 @@ export const updateInferenceExperiment: API.OperationMethod<
   input: UpdateInferenceExperimentRequest,
   output: UpdateInferenceExperimentResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInferenceExperiment",
 }));
+
 export type UpdateMlflowAppError =
   | ConflictException
   | ResourceNotFound
@@ -46495,8 +47991,11 @@ export const updateMlflowApp: API.OperationMethod<
   input: UpdateMlflowAppRequest,
   output: UpdateMlflowAppResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMlflowApp",
 }));
+
 export type UpdateMlflowTrackingServerError =
   | ConflictException
   | ResourceLimitExceeded
@@ -46514,8 +48013,11 @@ export const updateMlflowTrackingServer: API.OperationMethod<
   input: UpdateMlflowTrackingServerRequest,
   output: UpdateMlflowTrackingServerResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMlflowTrackingServer",
 }));
+
 export type UpdateModelCardError =
   | ConflictException
   | ResourceLimitExceeded
@@ -46535,8 +48037,11 @@ export const updateModelCard: API.OperationMethod<
   input: UpdateModelCardRequest,
   output: UpdateModelCardResponse,
   errors: [ConflictException, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModelCard",
 }));
+
 export type UpdateModelPackageError = ConflictException | CommonErrors;
 /**
  * Updates a versioned model.
@@ -46550,8 +48055,11 @@ export const updateModelPackage: API.OperationMethod<
   input: UpdateModelPackageInput,
   output: UpdateModelPackageOutput,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModelPackage",
 }));
+
 export type UpdateMonitoringAlertError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -46568,8 +48076,11 @@ export const updateMonitoringAlert: API.OperationMethod<
   input: UpdateMonitoringAlertRequest,
   output: UpdateMonitoringAlertResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMonitoringAlert",
 }));
+
 export type UpdateMonitoringScheduleError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -46586,8 +48097,11 @@ export const updateMonitoringSchedule: API.OperationMethod<
   input: UpdateMonitoringScheduleRequest,
   output: UpdateMonitoringScheduleResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMonitoringSchedule",
 }));
+
 export type UpdateNotebookInstanceError = ResourceLimitExceeded | CommonErrors;
 /**
  * Updates a notebook instance. NotebookInstance updates include upgrading or downgrading the ML compute instance used for your notebook instance to accommodate changes in your workload requirements.
@@ -46603,8 +48117,11 @@ export const updateNotebookInstance: API.OperationMethod<
   input: UpdateNotebookInstanceInput,
   output: UpdateNotebookInstanceOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotebookInstance",
 }));
+
 export type UpdateNotebookInstanceLifecycleConfigError =
   | ResourceLimitExceeded
   | CommonErrors;
@@ -46622,8 +48139,11 @@ export const updateNotebookInstanceLifecycleConfig: API.OperationMethod<
   input: UpdateNotebookInstanceLifecycleConfigInput,
   output: UpdateNotebookInstanceLifecycleConfigOutput,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotebookInstanceLifecycleConfig",
 }));
+
 export type UpdatePartnerAppError =
   | ConflictException
   | ResourceNotFound
@@ -46640,8 +48160,11 @@ export const updatePartnerApp: API.OperationMethod<
   input: UpdatePartnerAppRequest,
   output: UpdatePartnerAppResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePartnerApp",
 }));
+
 export type UpdatePipelineError =
   | ConflictException
   | ResourceNotFound
@@ -46658,8 +48181,11 @@ export const updatePipeline: API.OperationMethod<
   input: UpdatePipelineRequest,
   output: UpdatePipelineResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipeline",
 }));
+
 export type UpdatePipelineExecutionError =
   | ConflictException
   | ResourceNotFound
@@ -46676,8 +48202,11 @@ export const updatePipelineExecution: API.OperationMethod<
   input: UpdatePipelineExecutionRequest,
   output: UpdatePipelineExecutionResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipelineExecution",
 }));
+
 export type UpdatePipelineVersionError =
   | ConflictException
   | ResourceNotFound
@@ -46694,8 +48223,11 @@ export const updatePipelineVersion: API.OperationMethod<
   input: UpdatePipelineVersionRequest,
   output: UpdatePipelineVersionResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipelineVersion",
 }));
+
 export type UpdateProjectError = ConflictException | CommonErrors;
 /**
  * Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model.
@@ -46711,8 +48243,11 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectInput,
   output: UpdateProjectOutput,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProject",
 }));
+
 export type UpdateSpaceError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -46732,8 +48267,11 @@ export const updateSpace: API.OperationMethod<
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpace",
 }));
+
 export type UpdateTrainingJobError =
   | ResourceLimitExceeded
   | ResourceNotFound
@@ -46750,8 +48288,11 @@ export const updateTrainingJob: API.OperationMethod<
   input: UpdateTrainingJobRequest,
   output: UpdateTrainingJobResponse,
   errors: [ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrainingJob",
 }));
+
 export type UpdateTrialError =
   | ConflictException
   | ResourceNotFound
@@ -46768,8 +48309,11 @@ export const updateTrial: API.OperationMethod<
   input: UpdateTrialRequest,
   output: UpdateTrialResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrial",
 }));
+
 export type UpdateTrialComponentError =
   | ConflictException
   | ResourceNotFound
@@ -46786,8 +48330,11 @@ export const updateTrialComponent: API.OperationMethod<
   input: UpdateTrialComponentRequest,
   output: UpdateTrialComponentResponse,
   errors: [ConflictException, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrialComponent",
 }));
+
 export type UpdateUserProfileError =
   | ResourceInUse
   | ResourceLimitExceeded
@@ -46805,8 +48352,11 @@ export const updateUserProfile: API.OperationMethod<
   input: UpdateUserProfileRequest,
   output: UpdateUserProfileResponse,
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserProfile",
 }));
+
 export type UpdateWorkforceError = ConflictException | CommonErrors;
 /**
  * Use this operation to update your workforce. You can use this operation to require that workers use specific IP addresses to work on tasks and to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce configuration.
@@ -46836,8 +48386,11 @@ export const updateWorkforce: API.OperationMethod<
   input: UpdateWorkforceRequest,
   output: UpdateWorkforceResponse,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkforce",
 }));
+
 export type UpdateWorkteamError = ResourceLimitExceeded | CommonErrors;
 /**
  * Updates an existing work team with new member definitions or description.
@@ -46851,5 +48404,7 @@ export const updateWorkteam: API.OperationMethod<
   input: UpdateWorkteamRequest,
   output: UpdateWorkteamResponse,
   errors: [ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkteam",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,255 +85,74 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type MonitorArn = string;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export type ResourceName = string;
+export type Arn = string;
+export type SetOfARNs = string[];
+export const SetOfARNs = /*@__PURE__*/ S.Array(S.String);
 export type TagKey = string;
 export type TagValue = string;
-export type InternetEventId = string;
-export type Arn = string;
-export type InternetEventType = string;
-export type InternetEventStatus = string;
-export type InternetEventMaxResults = number;
-export type ResourceName = string;
-export type MaxCityNetworksToMonitor = number;
-export type LogDeliveryStatus = string;
-export type TrafficPercentageToMonitor = number;
-export type Percentage = number;
-export type LocalHealthEventsConfigStatus = string;
-export type MonitorConfigState = string;
-export type AccountId = string;
-export type MonitorProcessingStatusCode = string;
-export type MaxResults = number;
-export type QueryMaxResults = number;
-export type QueryStatus = string;
-export type QueryType = string;
-export type Operator = string;
-export type HealthEventName = string;
-export type HealthEventStatus = string;
-export type TriangulationEventType = string;
-export type HealthEventImpactType = string;
-
-//# Schemas
-export interface ListTagsForResourceInput {
-  ResourceArn: string;
-}
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceInput",
-}) as any as S.Schema<ListTagsForResourceInput>;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export interface ListTagsForResourceOutput {
-  Tags?: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
-export interface TagResourceInput {
-  ResourceArn: string;
-  Tags: { [key: string]: string | undefined };
-}
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Tags: TagMap,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceInput",
-}) as any as S.Schema<TagResourceInput>;
-export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
-export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceInput {
-  ResourceArn: string;
-  TagKeys: string[];
-}
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceInput",
-}) as any as S.Schema<UntagResourceInput>;
-export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
-export interface GetInternetEventInput {
-  EventId: string;
-}
-export const GetInternetEventInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EventId: S.String.pipe(T.HttpLabel("EventId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v20210603/InternetEvents/{EventId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetInternetEventInput",
-}) as any as S.Schema<GetInternetEventInput>;
-export interface ClientLocation {
-  ASName: string;
-  ASNumber: number;
-  Country: string;
-  Subdivision?: string;
-  Metro?: string;
-  City: string;
-  Latitude: number;
-  Longitude: number;
-}
-export const ClientLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ASName: S.String,
-    ASNumber: S.Number,
-    Country: S.String,
-    Subdivision: S.optional(S.String),
-    Metro: S.optional(S.String),
-    City: S.String,
-    Latitude: S.Number,
-    Longitude: S.Number,
-  }),
-).annotate({ identifier: "ClientLocation" }) as any as S.Schema<ClientLocation>;
-export interface GetInternetEventOutput {
-  EventId: string;
-  EventArn: string;
-  StartedAt: Date;
-  EndedAt?: Date;
-  ClientLocation: ClientLocation;
-  EventType: string;
-  EventStatus: string;
-}
-export const GetInternetEventOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventId: S.String,
-    EventArn: S.String,
-    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ClientLocation: ClientLocation,
-    EventType: S.String,
-    EventStatus: S.String,
-  }),
-).annotate({
-  identifier: "GetInternetEventOutput",
-}) as any as S.Schema<GetInternetEventOutput>;
-export interface ListInternetEventsInput {
-  NextToken?: string;
-  MaxResults?: number;
-  StartTime?: Date;
-  EndTime?: Date;
-  EventStatus?: string;
-  EventType?: string;
-}
-export const ListInternetEventsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(
-      T.HttpQuery("InternetEventMaxResults"),
-    ),
-    StartTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ).pipe(T.HttpQuery("StartTime")),
-    EndTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ).pipe(T.HttpQuery("EndTime")),
-    EventStatus: S.optional(S.String).pipe(T.HttpQuery("EventStatus")),
-    EventType: S.optional(S.String).pipe(T.HttpQuery("EventType")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v20210603/InternetEvents" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListInternetEventsInput",
-}) as any as S.Schema<ListInternetEventsInput>;
-export interface InternetEventSummary {
-  EventId: string;
-  EventArn: string;
-  StartedAt: Date;
-  EndedAt?: Date;
-  ClientLocation: ClientLocation;
-  EventType: string;
-  EventStatus: string;
-}
-export const InternetEventSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventId: S.String,
-    EventArn: S.String,
-    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    ClientLocation: ClientLocation,
-    EventType: S.String,
-    EventStatus: S.String,
-  }),
-).annotate({
-  identifier: "InternetEventSummary",
-}) as any as S.Schema<InternetEventSummary>;
-export type InternetEventsList = InternetEventSummary[];
-export const InternetEventsList = /*@__PURE__*/ S.Array(InternetEventSummary);
-export interface ListInternetEventsOutput {
-  InternetEvents: InternetEventSummary[];
-  NextToken?: string;
-}
-export const ListInternetEventsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InternetEvents: InternetEventsList,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListInternetEventsOutput",
-}) as any as S.Schema<ListInternetEventsOutput>;
-export type SetOfARNs = string[];
-export const SetOfARNs = /*@__PURE__*/ S.Array(S.String);
+export type MaxCityNetworksToMonitor = number;
+export type LogDeliveryStatus = string;
 export interface S3Config {
   BucketName?: string;
   BucketPrefix?: string;
@@ -347,12 +168,14 @@ export const S3Config = /*@__PURE__*/ S.suspend(() =>
 export interface InternetMeasurementsLogDelivery {
   S3Config?: S3Config;
 }
-export const InternetMeasurementsLogDelivery =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ S3Config: S.optional(S3Config) }),
-  ).annotate({
-    identifier: "InternetMeasurementsLogDelivery",
-  }) as any as S.Schema<InternetMeasurementsLogDelivery>;
+export const InternetMeasurementsLogDelivery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ S3Config: S.optional(S3Config) }),
+).annotate({
+  identifier: "InternetMeasurementsLogDelivery",
+}) as any as S.Schema<InternetMeasurementsLogDelivery>;
+export type TrafficPercentageToMonitor = number;
+export type Percentage = number;
+export type LocalHealthEventsConfigStatus = string;
 export interface LocalHealthEventsConfig {
   Status?: string;
   HealthScoreThreshold?: number;
@@ -418,6 +241,8 @@ export const CreateMonitorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitorInput",
 }) as any as S.Schema<CreateMonitorInput>;
+export type MonitorArn = string;
+export type MonitorConfigState = string;
 export interface CreateMonitorOutput {
   Arn: string;
   Status: string;
@@ -427,109 +252,6 @@ export const CreateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMonitorOutput",
 }) as any as S.Schema<CreateMonitorOutput>;
-export interface GetMonitorInput {
-  MonitorName: string;
-  LinkedAccountId?: string;
-}
-export const GetMonitorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-    LinkedAccountId: S.optional(S.String).pipe(T.HttpQuery("LinkedAccountId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v20210603/Monitors/{MonitorName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetMonitorInput",
-}) as any as S.Schema<GetMonitorInput>;
-export interface GetMonitorOutput {
-  MonitorName: string;
-  MonitorArn: string;
-  Resources: string[];
-  Status: string;
-  CreatedAt: Date;
-  ModifiedAt: Date;
-  ProcessingStatus?: string;
-  ProcessingStatusInfo?: string;
-  Tags?: { [key: string]: string | undefined };
-  MaxCityNetworksToMonitor?: number;
-  InternetMeasurementsLogDelivery?: InternetMeasurementsLogDelivery;
-  TrafficPercentageToMonitor?: number;
-  HealthEventsConfig?: HealthEventsConfig;
-}
-export const GetMonitorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String,
-    MonitorArn: S.String,
-    Resources: SetOfARNs,
-    Status: S.String,
-    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ProcessingStatus: S.optional(S.String),
-    ProcessingStatusInfo: S.optional(S.String),
-    Tags: S.optional(TagMap),
-    MaxCityNetworksToMonitor: S.optional(S.Number),
-    InternetMeasurementsLogDelivery: S.optional(
-      InternetMeasurementsLogDelivery,
-    ),
-    TrafficPercentageToMonitor: S.optional(S.Number),
-    HealthEventsConfig: S.optional(HealthEventsConfig),
-  }),
-).annotate({
-  identifier: "GetMonitorOutput",
-}) as any as S.Schema<GetMonitorOutput>;
-export interface UpdateMonitorInput {
-  MonitorName: string;
-  ResourcesToAdd?: string[];
-  ResourcesToRemove?: string[];
-  Status?: string;
-  ClientToken?: string;
-  MaxCityNetworksToMonitor?: number;
-  InternetMeasurementsLogDelivery?: InternetMeasurementsLogDelivery;
-  TrafficPercentageToMonitor?: number;
-  HealthEventsConfig?: HealthEventsConfig;
-}
-export const UpdateMonitorInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-    ResourcesToAdd: S.optional(SetOfARNs),
-    ResourcesToRemove: S.optional(SetOfARNs),
-    Status: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    MaxCityNetworksToMonitor: S.optional(S.Number),
-    InternetMeasurementsLogDelivery: S.optional(
-      InternetMeasurementsLogDelivery,
-    ),
-    TrafficPercentageToMonitor: S.optional(S.Number),
-    HealthEventsConfig: S.optional(HealthEventsConfig),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/v20210603/Monitors/{MonitorName}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateMonitorInput",
-}) as any as S.Schema<UpdateMonitorInput>;
-export interface UpdateMonitorOutput {
-  MonitorArn: string;
-  Status: string;
-}
-export const UpdateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MonitorArn: S.String, Status: S.String }),
-).annotate({
-  identifier: "UpdateMonitorOutput",
-}) as any as S.Schema<UpdateMonitorOutput>;
 export interface DeleteMonitorInput {
   MonitorName: string;
 }
@@ -553,231 +275,8 @@ export const DeleteMonitorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteMonitorOutput",
 }) as any as S.Schema<DeleteMonitorOutput>;
-export interface ListMonitorsInput {
-  NextToken?: string;
-  MaxResults?: number;
-  MonitorStatus?: string;
-  IncludeLinkedAccounts?: boolean;
-}
-export const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    MonitorStatus: S.optional(S.String).pipe(T.HttpQuery("MonitorStatus")),
-    IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
-      T.HttpQuery("IncludeLinkedAccounts"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v20210603/Monitors" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListMonitorsInput",
-}) as any as S.Schema<ListMonitorsInput>;
-export interface Monitor {
-  MonitorName: string;
-  MonitorArn: string;
-  Status: string;
-  ProcessingStatus?: string;
-}
-export const Monitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String,
-    MonitorArn: S.String,
-    Status: S.String,
-    ProcessingStatus: S.optional(S.String),
-  }),
-).annotate({ identifier: "Monitor" }) as any as S.Schema<Monitor>;
-export type MonitorList = Monitor[];
-export const MonitorList = /*@__PURE__*/ S.Array(Monitor);
-export interface ListMonitorsOutput {
-  Monitors: Monitor[];
-  NextToken?: string;
-}
-export const ListMonitorsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Monitors: MonitorList, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMonitorsOutput",
-}) as any as S.Schema<ListMonitorsOutput>;
-export interface GetQueryResultsInput {
-  MonitorName: string;
-  QueryId: string;
-  NextToken?: string;
-  MaxResults?: number;
-}
-export const GetQueryResultsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-    QueryId: S.String.pipe(T.HttpLabel("QueryId")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetQueryResultsInput",
-}) as any as S.Schema<GetQueryResultsInput>;
-export interface QueryField {
-  Name?: string;
-  Type?: string;
-}
-export const QueryField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
-).annotate({ identifier: "QueryField" }) as any as S.Schema<QueryField>;
-export type QueryFields = QueryField[];
-export const QueryFields = /*@__PURE__*/ S.Array(QueryField);
-export type QueryRow = string[];
-export const QueryRow = /*@__PURE__*/ S.Array(S.String);
-export type QueryData = string[][];
-export const QueryData = /*@__PURE__*/ S.Array(QueryRow);
-export interface GetQueryResultsOutput {
-  Fields: QueryField[];
-  Data?: string[][];
-  NextToken?: string;
-}
-export const GetQueryResultsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Fields: QueryFields,
-    Data: S.optional(QueryData),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetQueryResultsOutput",
-}) as any as S.Schema<GetQueryResultsOutput>;
-export interface GetQueryStatusInput {
-  MonitorName: string;
-  QueryId: string;
-}
-export const GetQueryStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-    QueryId: S.String.pipe(T.HttpLabel("QueryId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Status",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetQueryStatusInput",
-}) as any as S.Schema<GetQueryStatusInput>;
-export interface GetQueryStatusOutput {
-  Status: string;
-}
-export const GetQueryStatusOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Status: S.String }),
-).annotate({
-  identifier: "GetQueryStatusOutput",
-}) as any as S.Schema<GetQueryStatusOutput>;
-export type FilterList = string[];
-export const FilterList = /*@__PURE__*/ S.Array(S.String);
-export interface FilterParameter {
-  Field?: string;
-  Operator?: string;
-  Values?: string[];
-}
-export const FilterParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Field: S.optional(S.String),
-    Operator: S.optional(S.String),
-    Values: S.optional(FilterList),
-  }),
-).annotate({
-  identifier: "FilterParameter",
-}) as any as S.Schema<FilterParameter>;
-export type FilterParameters = FilterParameter[];
-export const FilterParameters = /*@__PURE__*/ S.Array(FilterParameter);
-export interface StartQueryInput {
-  MonitorName: string;
-  StartTime: Date;
-  EndTime: Date;
-  QueryType: string;
-  FilterParameters?: FilterParameter[];
-  LinkedAccountId?: string;
-}
-export const StartQueryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-    StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    EndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    QueryType: S.String,
-    FilterParameters: S.optional(FilterParameters),
-    LinkedAccountId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/v20210603/Monitors/{MonitorName}/Queries",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartQueryInput",
-}) as any as S.Schema<StartQueryInput>;
-export interface StartQueryOutput {
-  QueryId: string;
-}
-export const StartQueryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ QueryId: S.String }),
-).annotate({
-  identifier: "StartQueryOutput",
-}) as any as S.Schema<StartQueryOutput>;
-export interface StopQueryInput {
-  MonitorName: string;
-  QueryId: string;
-}
-export const StopQueryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-    QueryId: S.String.pipe(T.HttpLabel("QueryId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "StopQueryInput" }) as any as S.Schema<StopQueryInput>;
-export interface StopQueryOutput {}
-export const StopQueryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StopQueryOutput",
-}) as any as S.Schema<StopQueryOutput>;
+export type HealthEventName = string;
+export type AccountId = string;
 export interface GetHealthEventInput {
   MonitorName: string;
   EventId: string;
@@ -804,6 +303,7 @@ export const GetHealthEventInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHealthEventInput",
 }) as any as S.Schema<GetHealthEventInput>;
+export type HealthEventStatus = string;
 export interface Network {
   ASName: string;
   ASNumber: number;
@@ -813,6 +313,7 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 export type NetworkList = Network[];
 export const NetworkList = /*@__PURE__*/ S.Array(Network);
+export type TriangulationEventType = string;
 export interface NetworkImpairment {
   Networks: Network[];
   AsPath: Network[];
@@ -921,6 +422,7 @@ export const ImpactedLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImpactedLocation>;
 export type ImpactedLocationsList = ImpactedLocation[];
 export const ImpactedLocationsList = /*@__PURE__*/ S.Array(ImpactedLocation);
+export type HealthEventImpactType = string;
 export interface GetHealthEventOutput {
   EventArn: string;
   EventId: string;
@@ -953,6 +455,218 @@ export const GetHealthEventOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHealthEventOutput",
 }) as any as S.Schema<GetHealthEventOutput>;
+export type InternetEventId = string;
+export interface GetInternetEventInput {
+  EventId: string;
+}
+export const GetInternetEventInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventId: S.String.pipe(T.HttpLabel("EventId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v20210603/InternetEvents/{EventId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetInternetEventInput",
+}) as any as S.Schema<GetInternetEventInput>;
+export interface ClientLocation {
+  ASName: string;
+  ASNumber: number;
+  Country: string;
+  Subdivision?: string;
+  Metro?: string;
+  City: string;
+  Latitude: number;
+  Longitude: number;
+}
+export const ClientLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ASName: S.String,
+    ASNumber: S.Number,
+    Country: S.String,
+    Subdivision: S.optional(S.String),
+    Metro: S.optional(S.String),
+    City: S.String,
+    Latitude: S.Number,
+    Longitude: S.Number,
+  }),
+).annotate({ identifier: "ClientLocation" }) as any as S.Schema<ClientLocation>;
+export type InternetEventType = string;
+export type InternetEventStatus = string;
+export interface GetInternetEventOutput {
+  EventId: string;
+  EventArn: string;
+  StartedAt: Date;
+  EndedAt?: Date;
+  ClientLocation: ClientLocation;
+  EventType: string;
+  EventStatus: string;
+}
+export const GetInternetEventOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventId: S.String,
+    EventArn: S.String,
+    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    ClientLocation: ClientLocation,
+    EventType: S.String,
+    EventStatus: S.String,
+  }),
+).annotate({
+  identifier: "GetInternetEventOutput",
+}) as any as S.Schema<GetInternetEventOutput>;
+export interface GetMonitorInput {
+  MonitorName: string;
+  LinkedAccountId?: string;
+}
+export const GetMonitorInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
+    LinkedAccountId: S.optional(S.String).pipe(T.HttpQuery("LinkedAccountId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v20210603/Monitors/{MonitorName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetMonitorInput",
+}) as any as S.Schema<GetMonitorInput>;
+export type MonitorProcessingStatusCode = string;
+export interface GetMonitorOutput {
+  MonitorName: string;
+  MonitorArn: string;
+  Resources: string[];
+  Status: string;
+  CreatedAt: Date;
+  ModifiedAt: Date;
+  ProcessingStatus?: string;
+  ProcessingStatusInfo?: string;
+  Tags?: { [key: string]: string | undefined };
+  MaxCityNetworksToMonitor?: number;
+  InternetMeasurementsLogDelivery?: InternetMeasurementsLogDelivery;
+  TrafficPercentageToMonitor?: number;
+  HealthEventsConfig?: HealthEventsConfig;
+}
+export const GetMonitorOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String,
+    MonitorArn: S.String,
+    Resources: SetOfARNs,
+    Status: S.String,
+    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ProcessingStatus: S.optional(S.String),
+    ProcessingStatusInfo: S.optional(S.String),
+    Tags: S.optional(TagMap),
+    MaxCityNetworksToMonitor: S.optional(S.Number),
+    InternetMeasurementsLogDelivery: S.optional(
+      InternetMeasurementsLogDelivery,
+    ),
+    TrafficPercentageToMonitor: S.optional(S.Number),
+    HealthEventsConfig: S.optional(HealthEventsConfig),
+  }),
+).annotate({
+  identifier: "GetMonitorOutput",
+}) as any as S.Schema<GetMonitorOutput>;
+export type QueryMaxResults = number;
+export interface GetQueryResultsInput {
+  MonitorName: string;
+  QueryId: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const GetQueryResultsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
+    QueryId: S.String.pipe(T.HttpLabel("QueryId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetQueryResultsInput",
+}) as any as S.Schema<GetQueryResultsInput>;
+export interface QueryField {
+  Name?: string;
+  Type?: string;
+}
+export const QueryField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
+).annotate({ identifier: "QueryField" }) as any as S.Schema<QueryField>;
+export type QueryFields = QueryField[];
+export const QueryFields = /*@__PURE__*/ S.Array(QueryField);
+export type QueryRow = string[];
+export const QueryRow = /*@__PURE__*/ S.Array(S.String);
+export type QueryData = string[][];
+export const QueryData = /*@__PURE__*/ S.Array(QueryRow);
+export interface GetQueryResultsOutput {
+  Fields: QueryField[];
+  Data?: string[][];
+  NextToken?: string;
+}
+export const GetQueryResultsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Fields: QueryFields,
+    Data: S.optional(QueryData),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetQueryResultsOutput",
+}) as any as S.Schema<GetQueryResultsOutput>;
+export interface GetQueryStatusInput {
+  MonitorName: string;
+  QueryId: string;
+}
+export const GetQueryStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
+    QueryId: S.String.pipe(T.HttpLabel("QueryId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Status",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetQueryStatusInput",
+}) as any as S.Schema<GetQueryStatusInput>;
+export type QueryStatus = string;
+export interface GetQueryStatusOutput {
+  Status: string;
+}
+export const GetQueryStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.String }),
+).annotate({
+  identifier: "GetQueryStatusOutput",
+}) as any as S.Schema<GetQueryStatusOutput>;
+export type MaxResults = number;
 export interface ListHealthEventsInput {
   MonitorName: string;
   StartTime?: Date;
@@ -1028,154 +742,454 @@ export interface ListHealthEventsOutput {
   NextToken?: string;
 }
 export const ListHealthEventsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HealthEvents: HealthEventList,
-    NextToken: S.optional(S.String),
-  }),
+  S.Struct({ HealthEvents: HealthEventList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListHealthEventsOutput",
 }) as any as S.Schema<ListHealthEventsOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {},
-).pipe(C.withNotFoundError) {}
-
-//# Operations
-export type ListTagsForResourceError =
+export type InternetEventMaxResults = number;
+export interface ListInternetEventsInput {
+  NextToken?: string;
+  MaxResults?: number;
+  StartTime?: Date;
+  EndTime?: Date;
+  EventStatus?: string;
+  EventType?: string;
+}
+export const ListInternetEventsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(
+      T.HttpQuery("InternetEventMaxResults"),
+    ),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("StartTime")),
+    EndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("EndTime")),
+    EventStatus: S.optional(S.String).pipe(T.HttpQuery("EventStatus")),
+    EventType: S.optional(S.String).pipe(T.HttpQuery("EventType")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v20210603/InternetEvents" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListInternetEventsInput",
+}) as any as S.Schema<ListInternetEventsInput>;
+export interface InternetEventSummary {
+  EventId: string;
+  EventArn: string;
+  StartedAt: Date;
+  EndedAt?: Date;
+  ClientLocation: ClientLocation;
+  EventType: string;
+  EventStatus: string;
+}
+export const InternetEventSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventId: S.String,
+    EventArn: S.String,
+    StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    ClientLocation: ClientLocation,
+    EventType: S.String,
+    EventStatus: S.String,
+  }),
+).annotate({
+  identifier: "InternetEventSummary",
+}) as any as S.Schema<InternetEventSummary>;
+export type InternetEventsList = InternetEventSummary[];
+export const InternetEventsList = /*@__PURE__*/ S.Array(InternetEventSummary);
+export interface ListInternetEventsOutput {
+  InternetEvents: InternetEventSummary[];
+  NextToken?: string;
+}
+export const ListInternetEventsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InternetEvents: InternetEventsList,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListInternetEventsOutput",
+}) as any as S.Schema<ListInternetEventsOutput>;
+export interface ListMonitorsInput {
+  NextToken?: string;
+  MaxResults?: number;
+  MonitorStatus?: string;
+  IncludeLinkedAccounts?: boolean;
+}
+export const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    MonitorStatus: S.optional(S.String).pipe(T.HttpQuery("MonitorStatus")),
+    IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
+      T.HttpQuery("IncludeLinkedAccounts"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v20210603/Monitors" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMonitorsInput",
+}) as any as S.Schema<ListMonitorsInput>;
+export interface Monitor {
+  MonitorName: string;
+  MonitorArn: string;
+  Status: string;
+  ProcessingStatus?: string;
+}
+export const Monitor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String,
+    MonitorArn: S.String,
+    Status: S.String,
+    ProcessingStatus: S.optional(S.String),
+  }),
+).annotate({ identifier: "Monitor" }) as any as S.Schema<Monitor>;
+export type MonitorList = Monitor[];
+export const MonitorList = /*@__PURE__*/ S.Array(Monitor);
+export interface ListMonitorsOutput {
+  Monitors: Monitor[];
+  NextToken?: string;
+}
+export const ListMonitorsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Monitors: MonitorList, NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListMonitorsOutput",
+}) as any as S.Schema<ListMonitorsOutput>;
+export interface ListTagsForResourceInput {
+  ResourceArn: string;
+}
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceInput",
+}) as any as S.Schema<ListTagsForResourceInput>;
+export interface ListTagsForResourceOutput {
+  Tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceOutput",
+}) as any as S.Schema<ListTagsForResourceOutput>;
+export type QueryType = string;
+export type Operator = string;
+export type FilterList = string[];
+export const FilterList = /*@__PURE__*/ S.Array(S.String);
+export interface FilterParameter {
+  Field?: string;
+  Operator?: string;
+  Values?: string[];
+}
+export const FilterParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Field: S.optional(S.String),
+    Operator: S.optional(S.String),
+    Values: S.optional(FilterList),
+  }),
+).annotate({
+  identifier: "FilterParameter",
+}) as any as S.Schema<FilterParameter>;
+export type FilterParameters = FilterParameter[];
+export const FilterParameters = /*@__PURE__*/ S.Array(FilterParameter);
+export interface StartQueryInput {
+  MonitorName: string;
+  StartTime: Date;
+  EndTime: Date;
+  QueryType: string;
+  FilterParameters?: FilterParameter[];
+  LinkedAccountId?: string;
+}
+export const StartQueryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
+    StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    EndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    QueryType: S.String,
+    FilterParameters: S.optional(FilterParameters),
+    LinkedAccountId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v20210603/Monitors/{MonitorName}/Queries",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartQueryInput",
+}) as any as S.Schema<StartQueryInput>;
+export interface StartQueryOutput {
+  QueryId: string;
+}
+export const StartQueryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ QueryId: S.String }),
+).annotate({
+  identifier: "StartQueryOutput",
+}) as any as S.Schema<StartQueryOutput>;
+export interface StopQueryInput {
+  MonitorName: string;
+  QueryId: string;
+}
+export const StopQueryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
+    QueryId: S.String.pipe(T.HttpLabel("QueryId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "StopQueryInput" }) as any as S.Schema<StopQueryInput>;
+export interface StopQueryOutput {}
+export const StopQueryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopQueryOutput",
+}) as any as S.Schema<StopQueryOutput>;
+export interface TagResourceInput {
+  ResourceArn: string;
+  Tags: { [key: string]: string | undefined };
+}
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    Tags: TagMap,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceInput",
+}) as any as S.Schema<TagResourceInput>;
+export interface TagResourceOutput {}
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceOutput",
+}) as any as S.Schema<TagResourceOutput>;
+export type TagKeys = string[];
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceInput {
+  ResourceArn: string;
+  TagKeys: string[];
+}
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceInput",
+}) as any as S.Schema<UntagResourceInput>;
+export interface UntagResourceOutput {}
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceOutput",
+}) as any as S.Schema<UntagResourceOutput>;
+export interface UpdateMonitorInput {
+  MonitorName: string;
+  ResourcesToAdd?: string[];
+  ResourcesToRemove?: string[];
+  Status?: string;
+  ClientToken?: string;
+  MaxCityNetworksToMonitor?: number;
+  InternetMeasurementsLogDelivery?: InternetMeasurementsLogDelivery;
+  TrafficPercentageToMonitor?: number;
+  HealthEventsConfig?: HealthEventsConfig;
+}
+export const UpdateMonitorInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
+    ResourcesToAdd: S.optional(SetOfARNs),
+    ResourcesToRemove: S.optional(SetOfARNs),
+    Status: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    MaxCityNetworksToMonitor: S.optional(S.Number),
+    InternetMeasurementsLogDelivery: S.optional(
+      InternetMeasurementsLogDelivery,
+    ),
+    TrafficPercentageToMonitor: S.optional(S.Number),
+    HealthEventsConfig: S.optional(HealthEventsConfig),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/v20210603/Monitors/{MonitorName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateMonitorInput",
+}) as any as S.Schema<UpdateMonitorInput>;
+export interface UpdateMonitorOutput {
+  MonitorArn: string;
+  Status: string;
+}
+export const UpdateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MonitorArn: S.String, Status: S.String }),
+).annotate({
+  identifier: "UpdateMonitorOutput",
+}) as any as S.Schema<UpdateMonitorOutput>;
+export type CreateMonitorError =
   | AccessDeniedException
-  | BadRequestException
-  | InternalServerErrorException
-  | NotFoundException
-  | TooManyRequestsException
+  | ConflictException
+  | InternalServerException
+  | LimitExceededException
+  | ThrottlingException
+  | ValidationException
   | CommonErrors;
 /**
- * Lists the tags for a resource. Tags are supported only for monitors in Amazon CloudWatch Internet Monitor.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
-  errors: [
-    AccessDeniedException,
-    BadRequestException,
-    InternalServerErrorException,
-    NotFoundException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | AccessDeniedException
-  | BadRequestException
-  | InternalServerErrorException
-  | NotFoundException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Adds a tag to a resource. Tags are supported only for monitors in Amazon CloudWatch Internet Monitor. You can add a maximum of 50 tags in Internet Monitor.
+ * Creates a monitor in Amazon CloudWatch Internet Monitor. A monitor is built based on information from the application resources that you add: VPCs,
+ * Network Load Balancers (NLBs), Amazon CloudFront distributions, and Amazon WorkSpaces directories. Internet Monitor then publishes internet measurements from Amazon Web Services
+ * that are specific to the *city-networks*. That is, the locations and ASNs (typically internet service providers or ISPs),
+ * where clients access your application. For more information, see Using Amazon CloudWatch Internet Monitor in the Amazon CloudWatch User
+ * Guide.
  *
- * A minimum of one tag is required for this call. It returns an error if you use the `TagResource` request with 0 tags.
+ * When you create a monitor, you choose the percentage of traffic that you want to monitor. You can also set a maximum limit for the
+ * number of city-networks where client traffic is monitored, that caps the total traffic that Internet Monitor monitors. A city-network
+ * maximum is the limit of city-networks, but you only pay for the number of city-networks that are actually monitored. You can update your monitor
+ * at any time to change the percentage of traffic to monitor or the city-networks maximum. For more information, see Choosing a city-network maximum value in the *Amazon CloudWatch User Guide*.
  */
-export const tagResource: API.OperationMethod<
-  TagResourceInput,
-  TagResourceOutput,
-  TagResourceError,
+export const createMonitor: API.OperationMethod<
+  CreateMonitorInput,
+  CreateMonitorOutput,
+  CreateMonitorError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: CreateMonitorInput,
+  output: CreateMonitorOutput,
   errors: [
     AccessDeniedException,
-    BadRequestException,
-    InternalServerErrorException,
-    NotFoundException,
-    TooManyRequestsException,
+    ConflictException,
+    InternalServerException,
+    LimitExceededException,
+    ThrottlingException,
+    ValidationException,
   ],
-  operationName: "TagResource",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateMonitor",
 }));
-export type UntagResourceError =
+
+export type DeleteMonitorError =
   | AccessDeniedException
-  | BadRequestException
-  | InternalServerErrorException
-  | NotFoundException
-  | TooManyRequestsException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
- * Removes a tag from a resource.
+ * Deletes a monitor in Amazon CloudWatch Internet Monitor.
  */
-export const untagResource: API.OperationMethod<
-  UntagResourceInput,
-  UntagResourceOutput,
-  UntagResourceError,
+export const deleteMonitor: API.OperationMethod<
+  DeleteMonitorInput,
+  DeleteMonitorOutput,
+  DeleteMonitorError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: DeleteMonitorInput,
+  output: DeleteMonitorOutput,
   errors: [
     AccessDeniedException,
-    BadRequestException,
-    InternalServerErrorException,
-    NotFoundException,
-    TooManyRequestsException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+    ResourceNotFoundException,
   ],
-  operationName: "UntagResource",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteMonitor",
 }));
+
+export type GetHealthEventError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information that Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor. This information includes the impacted locations,
+ * and all the information related to the event, by location.
+ *
+ * The information returned includes the impact on performance, availability, and round-trip time, information about the network providers (ASNs),
+ * the event type, and so on.
+ *
+ * Information rolled up at the global traffic level is also returned, including the impact type and total traffic impact.
+ */
+export const getHealthEvent: API.OperationMethod<
+  GetHealthEventInput,
+  GetHealthEventOutput,
+  GetHealthEventError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHealthEventInput,
+  output: GetHealthEventOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetHealthEvent",
+}));
+
 export type GetInternetEventError =
   | AccessDeniedException
   | InternalServerException
@@ -1205,8 +1219,190 @@ export const getInternetEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInternetEvent",
 }));
+
+export type GetMonitorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name. The information returned includes the Amazon Resource Name (ARN), create time,
+ * modified time, resources included in the monitor, and status information.
+ */
+export const getMonitor: API.OperationMethod<
+  GetMonitorInput,
+  GetMonitorOutput,
+  GetMonitorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMonitorInput,
+  output: GetMonitorOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetMonitor",
+}));
+
+export type GetQueryResultsError =
+  | AccessDeniedException
+  | InternalServerException
+  | LimitExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Return the data for a query with the Amazon CloudWatch Internet Monitor query interface. Specify the query that you want to return results for by providing
+ * a `QueryId` and a monitor name.
+ *
+ * For more information about using the query interface, including examples, see
+ * Using the Amazon CloudWatch Internet Monitor query interface
+ * in the Amazon CloudWatch Internet Monitor User Guide.
+ */
+export const getQueryResults: API.OperationMethod<
+  GetQueryResultsInput,
+  GetQueryResultsOutput,
+  GetQueryResultsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetQueryResultsInput,
+  ) => stream.Stream<
+    GetQueryResultsOutput,
+    GetQueryResultsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetQueryResultsInput,
+  ) => stream.Stream<
+    unknown,
+    GetQueryResultsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: GetQueryResultsInput,
+  output: GetQueryResultsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    LimitExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetQueryResults",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type GetQueryStatusError =
+  | AccessDeniedException
+  | InternalServerException
+  | LimitExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor.
+ * When you run a query, check the status to make sure that the query has `SUCCEEDED` before you review the results.
+ *
+ * - `QUEUED`: The query is scheduled to run.
+ *
+ * - `RUNNING`: The query is in progress but not complete.
+ *
+ * - `SUCCEEDED`: The query completed sucessfully.
+ *
+ * - `FAILED`: The query failed due to an error.
+ *
+ * - `CANCELED`: The query was canceled.
+ */
+export const getQueryStatus: API.OperationMethod<
+  GetQueryStatusInput,
+  GetQueryStatusOutput,
+  GetQueryStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQueryStatusInput,
+  output: GetQueryStatusOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    LimitExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetQueryStatus",
+}));
+
+export type ListHealthEventsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all health events for a monitor in Amazon CloudWatch Internet Monitor. Returns information for health events including the event start and end times, and
+ * the status.
+ *
+ * Health events that have start times during the time frame that is requested are not included in the list of health events.
+ */
+export const listHealthEvents: API.OperationMethod<
+  ListHealthEventsInput,
+  ListHealthEventsOutput,
+  ListHealthEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListHealthEventsInput,
+  ) => stream.Stream<
+    ListHealthEventsOutput,
+    ListHealthEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListHealthEventsInput,
+  ) => stream.Stream<
+    HealthEvent,
+    ListHealthEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListHealthEventsInput,
+  output: ListHealthEventsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListHealthEvents",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "HealthEvents",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListInternetEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -1254,6 +1450,8 @@ export const listInternetEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInternetEvents",
   pagination: {
     inputToken: "NextToken",
@@ -1262,132 +1460,7 @@ export const listInternetEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateMonitorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | LimitExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a monitor in Amazon CloudWatch Internet Monitor. A monitor is built based on information from the application resources that you add: VPCs,
- * Network Load Balancers (NLBs), Amazon CloudFront distributions, and Amazon WorkSpaces directories. Internet Monitor then publishes internet measurements from Amazon Web Services
- * that are specific to the *city-networks*. That is, the locations and ASNs (typically internet service providers or ISPs),
- * where clients access your application. For more information, see Using Amazon CloudWatch Internet Monitor in the Amazon CloudWatch User
- * Guide.
- *
- * When you create a monitor, you choose the percentage of traffic that you want to monitor. You can also set a maximum limit for the
- * number of city-networks where client traffic is monitored, that caps the total traffic that Internet Monitor monitors. A city-network
- * maximum is the limit of city-networks, but you only pay for the number of city-networks that are actually monitored. You can update your monitor
- * at any time to change the percentage of traffic to monitor or the city-networks maximum. For more information, see Choosing a city-network maximum value in the *Amazon CloudWatch User Guide*.
- */
-export const createMonitor: API.OperationMethod<
-  CreateMonitorInput,
-  CreateMonitorOutput,
-  CreateMonitorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateMonitorInput,
-  output: CreateMonitorOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    LimitExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateMonitor",
-}));
-export type GetMonitorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name. The information returned includes the Amazon Resource Name (ARN), create time,
- * modified time, resources included in the monitor, and status information.
- */
-export const getMonitor: API.OperationMethod<
-  GetMonitorInput,
-  GetMonitorOutput,
-  GetMonitorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitorInput,
-  output: GetMonitorOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-    ResourceNotFoundException,
-  ],
-  operationName: "GetMonitor",
-}));
-export type UpdateMonitorError =
-  | AccessDeniedException
-  | InternalServerException
-  | LimitExceededException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates a monitor. You can update a monitor to change the percentage of traffic to monitor or the maximum number of city-networks
- * (locations and ASNs), to add or remove resources, or to change the status of the monitor. Note that you can't change the name of a monitor.
- *
- * The city-network maximum that you choose is the limit, but you only pay for the number of city-networks that are actually monitored.
- * For more information, see Choosing a city-network maximum value in the *Amazon CloudWatch User Guide*.
- */
-export const updateMonitor: API.OperationMethod<
-  UpdateMonitorInput,
-  UpdateMonitorOutput,
-  UpdateMonitorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMonitorInput,
-  output: UpdateMonitorOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    LimitExceededException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UpdateMonitor",
-}));
-export type DeleteMonitorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Deletes a monitor in Amazon CloudWatch Internet Monitor.
- */
-export const deleteMonitor: API.OperationMethod<
-  DeleteMonitorInput,
-  DeleteMonitorOutput,
-  DeleteMonitorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMonitorInput,
-  output: DeleteMonitorOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-    ResourceNotFoundException,
-  ],
-  operationName: "DeleteMonitor",
-}));
+
 export type ListMonitorsError =
   | AccessDeniedException
   | InternalServerException
@@ -1426,6 +1499,8 @@ export const listMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitors",
   pagination: {
     inputToken: "NextToken",
@@ -1434,96 +1509,37 @@ export const listMonitors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type GetQueryResultsError =
+
+export type ListTagsForResourceError =
   | AccessDeniedException
-  | InternalServerException
-  | LimitExceededException
-  | ThrottlingException
-  | ValidationException
+  | BadRequestException
+  | InternalServerErrorException
+  | NotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
- * Return the data for a query with the Amazon CloudWatch Internet Monitor query interface. Specify the query that you want to return results for by providing
- * a `QueryId` and a monitor name.
- *
- * For more information about using the query interface, including examples, see
- * Using the Amazon CloudWatch Internet Monitor query interface
- * in the Amazon CloudWatch Internet Monitor User Guide.
+ * Lists the tags for a resource. Tags are supported only for monitors in Amazon CloudWatch Internet Monitor.
  */
-export const getQueryResults: API.OperationMethod<
-  GetQueryResultsInput,
-  GetQueryResultsOutput,
-  GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    GetQueryResultsOutput,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetQueryResultsInput,
-  output: GetQueryResultsOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    LimitExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetQueryResults",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type GetQueryStatusError =
-  | AccessDeniedException
-  | InternalServerException
-  | LimitExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor.
- * When you run a query, check the status to make sure that the query has `SUCCEEDED` before you review the results.
- *
- * - `QUEUED`: The query is scheduled to run.
- *
- * - `RUNNING`: The query is in progress but not complete.
- *
- * - `SUCCEEDED`: The query completed sucessfully.
- *
- * - `FAILED`: The query failed due to an error.
- *
- * - `CANCELED`: The query was canceled.
- */
-export const getQueryStatus: API.OperationMethod<
-  GetQueryStatusInput,
-  GetQueryStatusOutput,
-  GetQueryStatusError,
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceInput,
+  ListTagsForResourceOutput,
+  ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryStatusInput,
-  output: GetQueryStatusOutput,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [
     AccessDeniedException,
-    InternalServerException,
-    LimitExceededException,
-    ThrottlingException,
-    ValidationException,
+    BadRequestException,
+    InternalServerErrorException,
+    NotFoundException,
+    TooManyRequestsException,
   ],
-  operationName: "GetQueryStatus",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
 }));
+
 export type StartQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1555,8 +1571,11 @@ export const startQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQuery",
 }));
+
 export type StopQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1582,85 +1601,105 @@ export const stopQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQuery",
 }));
-export type GetHealthEventError =
+
+export type TagResourceError =
   | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
+  | BadRequestException
+  | InternalServerErrorException
+  | NotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
- * Gets information that Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor. This information includes the impacted locations,
- * and all the information related to the event, by location.
+ * Adds a tag to a resource. Tags are supported only for monitors in Amazon CloudWatch Internet Monitor. You can add a maximum of 50 tags in Internet Monitor.
  *
- * The information returned includes the impact on performance, availability, and round-trip time, information about the network providers (ASNs),
- * the event type, and so on.
- *
- * Information rolled up at the global traffic level is also returned, including the impact type and total traffic impact.
+ * A minimum of one tag is required for this call. It returns an error if you use the `TagResource` request with 0 tags.
  */
-export const getHealthEvent: API.OperationMethod<
-  GetHealthEventInput,
-  GetHealthEventOutput,
-  GetHealthEventError,
+export const tagResource: API.OperationMethod<
+  TagResourceInput,
+  TagResourceOutput,
+  TagResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthEventInput,
-  output: GetHealthEventOutput,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [
     AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
+    BadRequestException,
+    InternalServerErrorException,
+    NotFoundException,
+    TooManyRequestsException,
   ],
-  operationName: "GetHealthEvent",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
 }));
-export type ListHealthEventsError =
+
+export type UntagResourceError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerErrorException
+  | NotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Removes a tag from a resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceInput,
+  UntagResourceOutput,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerErrorException,
+    NotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateMonitorError =
   | AccessDeniedException
   | InternalServerException
+  | LimitExceededException
+  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Lists all health events for a monitor in Amazon CloudWatch Internet Monitor. Returns information for health events including the event start and end times, and
- * the status.
+ * Updates a monitor. You can update a monitor to change the percentage of traffic to monitor or the maximum number of city-networks
+ * (locations and ASNs), to add or remove resources, or to change the status of the monitor. Note that you can't change the name of a monitor.
  *
- * Health events that have start times during the time frame that is requested are not included in the list of health events.
+ * The city-network maximum that you choose is the limit, but you only pay for the number of city-networks that are actually monitored.
+ * For more information, see Choosing a city-network maximum value in the *Amazon CloudWatch User Guide*.
  */
-export const listHealthEvents: API.OperationMethod<
-  ListHealthEventsInput,
-  ListHealthEventsOutput,
-  ListHealthEventsError,
+export const updateMonitor: API.OperationMethod<
+  UpdateMonitorInput,
+  UpdateMonitorOutput,
+  UpdateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHealthEventsInput,
-  ) => stream.Stream<
-    ListHealthEventsOutput,
-    ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHealthEventsInput,
-  ) => stream.Stream<
-    HealthEvent,
-    ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListHealthEventsInput,
-  output: ListHealthEventsOutput,
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMonitorInput,
+  output: UpdateMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
+    LimitExceededException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
-  operationName: "ListHealthEvents",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "HealthEvents",
-    pageSize: "MaxResults",
-  } as const,
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateMonitor",
 }));

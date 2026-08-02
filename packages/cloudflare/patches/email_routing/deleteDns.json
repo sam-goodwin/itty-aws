@@ -1,0 +1,38 @@
+{
+  "description": "Align email_routing#DnsDelete with distilled cloudflare/email-routing deleteDns",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_routing#DnsDelete",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDns"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_routing#DnsDeleteRequest",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDnsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDns/input/target",
+      "value": "com.cloudflare.email_routing#DeleteDnsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_routing#DnsDeleteResponse",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDnsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDns/output/target",
+      "value": "com.cloudflare.email_routing#DeleteDnsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_routing#DeleteDns/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    }
+  ]
+}

@@ -1,13 +1,22 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
+/**
+ * Azure credentials — hand-written.
+ *
+ * API-compatible port of the distilled v0 Azure credentials module: the
+ * `Credentials` service holds an *effect* that resolves the current
+ * credentials on every request (the protocol layer resolves it per request
+ * on the calling fiber). The user supplies a pre-acquired OAuth2 bearer
+ * token — there is no token-acquisition flow (v0 parity).
+ */
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
+import { ConfigError } from "@distilled.cloud/core/errors";
 
 /**
- * Default base URL for Azure Resource Manager (ARM) API.
+ * Default base URL for the Azure Resource Manager (ARM) API.
  */
 export const DEFAULT_API_BASE_URL = "https://management.azure.com";
 
@@ -44,7 +53,7 @@ const envConfig = EffectConfig.all({
  * - `AZURE_TENANT_ID` — Azure tenant/directory ID (optional)
  * - `AZURE_API_BASE_URL` — Optional override for the API base URL
  */
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
   Credentials,
   envConfig.pipe(
     Effect.mapError(

@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "CustomNameserversNotEnabled": [
-      { "code": 1002, "message": { "includes": "not enabled" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

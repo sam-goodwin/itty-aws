@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "AccessReferenceNotFound": [
-      { "status": 400, "message": { "includes": "not found" } }
-    ]
-  }
-}

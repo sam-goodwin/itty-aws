@@ -35,13 +35,7 @@
     }
   },
   "errorCategories": {
-    "AnomalyMonitorAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ],
-    "AnomalySubscriptionAlreadyExists": [
-      "AlreadyExistsError",
-      "ConflictError"
-    ]
+    "AnomalyMonitorAlreadyExists": ["AlreadyExistsError", "ConflictError"],
+    "AnomalySubscriptionAlreadyExists": ["AlreadyExistsError", "ConflictError"]
   }
 }

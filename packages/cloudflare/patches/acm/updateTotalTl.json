@@ -1,14 +1,166 @@
 {
-  "errors": {
-    "InvalidObjectIdentifier": [{ "code": 7003 }],
-    "AdvancedCertificateManagerRequired": [{ "code": 1450 }],
-    "NoStateChange": [{ "code": 1467 }],
-    "PreviousJobInProgress": [{ "code": 1482 }],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "validity_period": { "type": "number" }
+  "description": "Align acm#TotalTlsEdit with distilled cloudflare/acm updateTotalTl",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.acm#TotalTlsEdit",
+      "path": "/shapes/com.cloudflare.acm#UpdateTotalTl"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.acm#TotalTlsEditRequest",
+      "path": "/shapes/com.cloudflare.acm#UpdateTotalTlRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.acm#UpdateTotalTl/input/target",
+      "value": "com.cloudflare.acm#UpdateTotalTlRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.acm#TotalTlsEditResponse",
+      "path": "/shapes/com.cloudflare.acm#UpdateTotalTlResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.acm#UpdateTotalTl/output/target",
+      "value": "com.cloudflare.acm#UpdateTotalTlResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#InvalidObjectIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#AdvancedCertificateManagerRequired",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1450
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#NoStateChange",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1467
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#PreviousJobInProgress",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1482
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#UpdateTotalTl/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.acm#InvalidObjectIdentifier"
+        },
+        {
+          "target": "com.cloudflare.acm#AdvancedCertificateManagerRequired"
+        },
+        {
+          "target": "com.cloudflare.acm#NoStateChange"
+        },
+        {
+          "target": "com.cloudflare.acm#PreviousJobInProgress"
+        },
+        {
+          "target": "com.cloudflare.acm#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

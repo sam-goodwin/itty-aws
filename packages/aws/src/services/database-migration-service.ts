@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -95,17 +97,110 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type MigrationProjectIdentifier = string;
-export type Iso8601DateTime = Date;
-export type SecretString = string | redacted.Redacted<string>;
-export type ResourceArn = string;
-export type ReplicationInstanceClass = string;
-export type CertificateWallet = Uint8Array;
-export type Marker = string;
-
-//# Schemas
+export class AccessDeniedFault extends S.TaggedErrorClass<AccessDeniedFault>()(
+  "AccessDeniedFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class CollectorNotFoundFault extends S.TaggedErrorClass<CollectorNotFoundFault>()(
+  "CollectorNotFoundFault",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class FailedDependencyFault extends S.TaggedErrorClass<FailedDependencyFault>()(
+  "FailedDependencyFault",
+  { message: S.optional(S.String) },
+) {}
+export class InsufficientResourceCapacityFault extends S.TaggedErrorClass<InsufficientResourceCapacityFault>()(
+  "InsufficientResourceCapacityFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidCertificateFault extends S.TaggedErrorClass<InvalidCertificateFault>()(
+  "InvalidCertificateFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidOperationFault extends S.TaggedErrorClass<InvalidOperationFault>()(
+  "InvalidOperationFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidResourceStateFault extends S.TaggedErrorClass<InvalidResourceStateFault>()(
+  "InvalidResourceStateFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  { message: S.optional(S.String) },
+) {}
+export class KMSAccessDeniedFault extends S.TaggedErrorClass<KMSAccessDeniedFault>()(
+  "KMSAccessDeniedFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class KMSDisabledFault extends S.TaggedErrorClass<KMSDisabledFault>()(
+  "KMSDisabledFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSFault extends S.TaggedErrorClass<KMSFault>()("KMSFault", {
+  message: S.optional(S.String),
+}) {}
+export class KMSInvalidStateFault extends S.TaggedErrorClass<KMSInvalidStateFault>()(
+  "KMSInvalidStateFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
+  "KMSKeyNotAccessibleFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSNotFoundFault extends S.TaggedErrorClass<KMSNotFoundFault>()(
+  "KMSNotFoundFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSThrottlingFault extends S.TaggedErrorClass<KMSThrottlingFault>()(
+  "KMSThrottlingFault",
+  { message: S.optional(S.String) },
+) {}
+export class ReplicationSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
+  "ReplicationSubnetGroupDoesNotCoverEnoughAZs",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceAlreadyExistsFault extends S.TaggedErrorClass<ResourceAlreadyExistsFault>()(
+  "ResourceAlreadyExistsFault",
+  { message: S.optional(S.String), resourceArn: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
+  "ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceQuotaExceededFault extends S.TaggedErrorClass<ResourceQuotaExceededFault>()(
+  "ResourceQuotaExceededFault",
+  { message: S.optional(S.String) },
+) {}
+export class S3AccessDeniedFault extends S.TaggedErrorClass<S3AccessDeniedFault>()(
+  "S3AccessDeniedFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class S3ResourceNotFoundFault extends S.TaggedErrorClass<S3ResourceNotFoundFault>()(
+  "S3ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+) {}
+export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  "SNSInvalidTopicFault",
+  { message: S.optional(S.String) },
+) {}
+export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  "SNSNoAuthorizationFault",
+  { message: S.optional(S.String) },
+) {}
+export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
+  "StorageQuotaExceededFault",
+  { message: S.optional(S.String) },
+) {}
+export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  "SubnetAlreadyInUse",
+  { message: S.optional(S.String) },
+).pipe(C.withDependencyViolationError) {}
+export class UpgradeDependencyFailureFault extends S.TaggedErrorClass<UpgradeDependencyFailureFault>()(
+  "UpgradeDependencyFailureFault",
+  { message: S.optional(S.String) },
+) {}
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -152,8 +247,8 @@ export interface ApplyPendingMaintenanceActionMessage {
   ApplyAction: string;
   OptInType: string;
 }
-export const ApplyPendingMaintenanceActionMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const ApplyPendingMaintenanceActionMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReplicationInstanceArn: S.String,
       ApplyAction: S.String,
@@ -169,9 +264,9 @@ export const ApplyPendingMaintenanceActionMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ApplyPendingMaintenanceActionMessage",
-  }) as any as S.Schema<ApplyPendingMaintenanceActionMessage>;
+).annotate({
+  identifier: "ApplyPendingMaintenanceActionMessage",
+}) as any as S.Schema<ApplyPendingMaintenanceActionMessage>;
 export interface PendingMaintenanceAction {
   Action?: string;
   AutoAppliedAfterDate?: Date;
@@ -199,40 +294,38 @@ export const PendingMaintenanceAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "PendingMaintenanceAction",
 }) as any as S.Schema<PendingMaintenanceAction>;
 export type PendingMaintenanceActionDetails = PendingMaintenanceAction[];
-export const PendingMaintenanceActionDetails =
-  /*@__PURE__*/ S.Array(
-    PendingMaintenanceAction.pipe(
-      T.XmlName("PendingMaintenanceAction"),
-    ).annotate({ identifier: "PendingMaintenanceAction" }),
-  );
+export const PendingMaintenanceActionDetails = /*@__PURE__*/ S.Array(
+  PendingMaintenanceAction.pipe(T.XmlName("PendingMaintenanceAction")).annotate(
+    { identifier: "PendingMaintenanceAction" },
+  ),
+);
 export interface ResourcePendingMaintenanceActions {
   ResourceIdentifier?: string;
   PendingMaintenanceActionDetails?: PendingMaintenanceAction[];
 }
-export const ResourcePendingMaintenanceActions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceIdentifier: S.optional(S.String),
-      PendingMaintenanceActionDetails: S.optional(
-        PendingMaintenanceActionDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcePendingMaintenanceActions",
-  }) as any as S.Schema<ResourcePendingMaintenanceActions>;
+export const ResourcePendingMaintenanceActions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceIdentifier: S.optional(S.String),
+    PendingMaintenanceActionDetails: S.optional(
+      PendingMaintenanceActionDetails,
+    ),
+  }),
+).annotate({
+  identifier: "ResourcePendingMaintenanceActions",
+}) as any as S.Schema<ResourcePendingMaintenanceActions>;
 export interface ApplyPendingMaintenanceActionResponse {
   ResourcePendingMaintenanceActions?: ResourcePendingMaintenanceActions;
 }
-export const ApplyPendingMaintenanceActionResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ApplyPendingMaintenanceActionResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ResourcePendingMaintenanceActions: S.optional(
         ResourcePendingMaintenanceActions,
       ),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ApplyPendingMaintenanceActionResponse",
-  }) as any as S.Schema<ApplyPendingMaintenanceActionResponse>;
+).annotate({
+  identifier: "ApplyPendingMaintenanceActionResponse",
+}) as any as S.Schema<ApplyPendingMaintenanceActionResponse>;
 export interface RecommendationSettings {
   InstanceSizingType: string;
   WorkloadType: string;
@@ -246,71 +339,70 @@ export interface StartRecommendationsRequestEntry {
   DatabaseId: string;
   Settings: RecommendationSettings;
 }
-export const StartRecommendationsRequestEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatabaseId: S.String, Settings: RecommendationSettings }),
-  ).annotate({
-    identifier: "StartRecommendationsRequestEntry",
-  }) as any as S.Schema<StartRecommendationsRequestEntry>;
+export const StartRecommendationsRequestEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatabaseId: S.String, Settings: RecommendationSettings }),
+).annotate({
+  identifier: "StartRecommendationsRequestEntry",
+}) as any as S.Schema<StartRecommendationsRequestEntry>;
 export type StartRecommendationsRequestEntryList =
   StartRecommendationsRequestEntry[];
-export const StartRecommendationsRequestEntryList =
-  /*@__PURE__*/ S.Array(StartRecommendationsRequestEntry);
+export const StartRecommendationsRequestEntryList = /*@__PURE__*/ S.Array(
+  StartRecommendationsRequestEntry,
+);
 export interface BatchStartRecommendationsRequest {
   Data?: StartRecommendationsRequestEntry[];
 }
-export const BatchStartRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Data: S.optional(StartRecommendationsRequestEntryList) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchStartRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Data: S.optional(StartRecommendationsRequestEntryList) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchStartRecommendationsRequest",
-  }) as any as S.Schema<BatchStartRecommendationsRequest>;
+  ),
+).annotate({
+  identifier: "BatchStartRecommendationsRequest",
+}) as any as S.Schema<BatchStartRecommendationsRequest>;
 export interface BatchStartRecommendationsErrorEntry {
   DatabaseId?: string;
   Message?: string;
   Code?: string;
 }
-export const BatchStartRecommendationsErrorEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatabaseId: S.optional(S.String),
-      Message: S.optional(S.String),
-      Code: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchStartRecommendationsErrorEntry",
-  }) as any as S.Schema<BatchStartRecommendationsErrorEntry>;
+export const BatchStartRecommendationsErrorEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatabaseId: S.optional(S.String),
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchStartRecommendationsErrorEntry",
+}) as any as S.Schema<BatchStartRecommendationsErrorEntry>;
 export type BatchStartRecommendationsErrorEntryList =
   BatchStartRecommendationsErrorEntry[];
-export const BatchStartRecommendationsErrorEntryList =
-  /*@__PURE__*/ S.Array(BatchStartRecommendationsErrorEntry);
+export const BatchStartRecommendationsErrorEntryList = /*@__PURE__*/ S.Array(
+  BatchStartRecommendationsErrorEntry,
+);
 export interface BatchStartRecommendationsResponse {
   ErrorEntries?: BatchStartRecommendationsErrorEntry[];
 }
-export const BatchStartRecommendationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ErrorEntries: S.optional(BatchStartRecommendationsErrorEntryList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "BatchStartRecommendationsResponse",
-  }) as any as S.Schema<BatchStartRecommendationsResponse>;
+export const BatchStartRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorEntries: S.optional(BatchStartRecommendationsErrorEntryList),
+  }).pipe(ns),
+).annotate({
+  identifier: "BatchStartRecommendationsResponse",
+}) as any as S.Schema<BatchStartRecommendationsResponse>;
+export type MigrationProjectIdentifier = string;
 export interface CancelMetadataModelConversionMessage {
   MigrationProjectIdentifier: string;
   RequestIdentifier: string;
 }
-export const CancelMetadataModelConversionMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const CancelMetadataModelConversionMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       RequestIdentifier: S.String,
@@ -325,9 +417,9 @@ export const CancelMetadataModelConversionMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CancelMetadataModelConversionMessage",
-  }) as any as S.Schema<CancelMetadataModelConversionMessage>;
+).annotate({
+  identifier: "CancelMetadataModelConversionMessage",
+}) as any as S.Schema<CancelMetadataModelConversionMessage>;
 export interface DefaultErrorDetails {
   Message?: string;
 }
@@ -403,44 +495,41 @@ export const SchemaConversionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CancelMetadataModelConversionResponse {
   Request?: SchemaConversionRequest;
 }
-export const CancelMetadataModelConversionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Request: S.optional(SchemaConversionRequest) }).pipe(ns),
-  ).annotate({
-    identifier: "CancelMetadataModelConversionResponse",
-  }) as any as S.Schema<CancelMetadataModelConversionResponse>;
+export const CancelMetadataModelConversionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Request: S.optional(SchemaConversionRequest) }).pipe(ns),
+).annotate({
+  identifier: "CancelMetadataModelConversionResponse",
+}) as any as S.Schema<CancelMetadataModelConversionResponse>;
 export interface CancelMetadataModelCreationMessage {
   MigrationProjectIdentifier: string;
   RequestIdentifier: string;
 }
-export const CancelMetadataModelCreationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      RequestIdentifier: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelMetadataModelCreationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    RequestIdentifier: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelMetadataModelCreationMessage",
-  }) as any as S.Schema<CancelMetadataModelCreationMessage>;
+  ),
+).annotate({
+  identifier: "CancelMetadataModelCreationMessage",
+}) as any as S.Schema<CancelMetadataModelCreationMessage>;
 export interface CancelMetadataModelCreationResponse {
   Request?: SchemaConversionRequest;
 }
-export const CancelMetadataModelCreationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Request: S.optional(SchemaConversionRequest) }).pipe(ns),
-  ).annotate({
-    identifier: "CancelMetadataModelCreationResponse",
-  }) as any as S.Schema<CancelMetadataModelCreationResponse>;
+export const CancelMetadataModelCreationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Request: S.optional(SchemaConversionRequest) }).pipe(ns),
+).annotate({
+  identifier: "CancelMetadataModelCreationResponse",
+}) as any as S.Schema<CancelMetadataModelCreationResponse>;
 export interface CancelReplicationTaskAssessmentRunMessage {
   ReplicationTaskAssessmentRunArn: string;
 }
@@ -464,15 +553,15 @@ export interface ReplicationTaskAssessmentRunProgress {
   IndividualAssessmentCount?: number;
   IndividualAssessmentCompletedCount?: number;
 }
-export const ReplicationTaskAssessmentRunProgress =
-  /*@__PURE__*/ S.suspend(() =>
+export const ReplicationTaskAssessmentRunProgress = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       IndividualAssessmentCount: S.optional(S.Number),
       IndividualAssessmentCompletedCount: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "ReplicationTaskAssessmentRunProgress",
-  }) as any as S.Schema<ReplicationTaskAssessmentRunProgress>;
+).annotate({
+  identifier: "ReplicationTaskAssessmentRunProgress",
+}) as any as S.Schema<ReplicationTaskAssessmentRunProgress>;
 export interface ReplicationTaskAssessmentRunResultStatistic {
   Passed?: number;
   Failed?: number;
@@ -510,29 +599,28 @@ export interface ReplicationTaskAssessmentRun {
   IsLatestTaskAssessmentRun?: boolean;
   ResultStatistic?: ReplicationTaskAssessmentRunResultStatistic;
 }
-export const ReplicationTaskAssessmentRun =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskAssessmentRunArn: S.optional(S.String),
-      ReplicationTaskArn: S.optional(S.String),
-      Status: S.optional(S.String),
-      ReplicationTaskAssessmentRunCreationDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      AssessmentProgress: S.optional(ReplicationTaskAssessmentRunProgress),
-      LastFailureMessage: S.optional(S.String),
-      ServiceAccessRoleArn: S.optional(S.String),
-      ResultLocationBucket: S.optional(S.String),
-      ResultLocationFolder: S.optional(S.String),
-      ResultEncryptionMode: S.optional(S.String),
-      ResultKmsKeyArn: S.optional(S.String),
-      AssessmentRunName: S.optional(S.String),
-      IsLatestTaskAssessmentRun: S.optional(S.Boolean),
-      ResultStatistic: S.optional(ReplicationTaskAssessmentRunResultStatistic),
-    }),
-  ).annotate({
-    identifier: "ReplicationTaskAssessmentRun",
-  }) as any as S.Schema<ReplicationTaskAssessmentRun>;
+export const ReplicationTaskAssessmentRun = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskAssessmentRunArn: S.optional(S.String),
+    ReplicationTaskArn: S.optional(S.String),
+    Status: S.optional(S.String),
+    ReplicationTaskAssessmentRunCreationDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    AssessmentProgress: S.optional(ReplicationTaskAssessmentRunProgress),
+    LastFailureMessage: S.optional(S.String),
+    ServiceAccessRoleArn: S.optional(S.String),
+    ResultLocationBucket: S.optional(S.String),
+    ResultLocationFolder: S.optional(S.String),
+    ResultEncryptionMode: S.optional(S.String),
+    ResultKmsKeyArn: S.optional(S.String),
+    AssessmentRunName: S.optional(S.String),
+    IsLatestTaskAssessmentRun: S.optional(S.Boolean),
+    ResultStatistic: S.optional(ReplicationTaskAssessmentRunResultStatistic),
+  }),
+).annotate({
+  identifier: "ReplicationTaskAssessmentRun",
+}) as any as S.Schema<ReplicationTaskAssessmentRun>;
 export interface CancelReplicationTaskAssessmentRunResponse {
   ReplicationTaskAssessmentRun?: ReplicationTaskAssessmentRun;
 }
@@ -550,6 +638,8 @@ export type MigrationTypeValue =
   | "full-load-and-cdc"
   | (string & {});
 export const MigrationTypeValue = /*@__PURE__*/ S.String;
+
+export type Iso8601DateTime = Date;
 export interface SourceDataSetting {
   CDCStartPosition?: string;
   CDCStartTime?: Date;
@@ -578,6 +668,7 @@ export type TablePreparationMode =
   | "drop-tables-on-target"
   | (string & {});
 export const TablePreparationMode = /*@__PURE__*/ S.String;
+
 export interface TargetDataSetting {
   TablePreparationMode?: TablePreparationMode;
 }
@@ -588,6 +679,7 @@ export const TargetDataSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetDataSetting>;
 export type TargetDataSettings = TargetDataSetting[];
 export const TargetDataSettings = /*@__PURE__*/ S.Array(TargetDataSetting);
+export type SecretString = string | redacted.Redacted<string>;
 export interface CreateDataMigrationMessage {
   DataMigrationName?: string;
   MigrationProjectIdentifier: string;
@@ -721,12 +813,11 @@ export const DataMigration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataMigrationResponse {
   DataMigration?: DataMigration;
 }
-export const CreateDataMigrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DataMigration: S.optional(DataMigration) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateDataMigrationResponse",
-  }) as any as S.Schema<CreateDataMigrationResponse>;
+export const CreateDataMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DataMigration: S.optional(DataMigration) }).pipe(ns),
+).annotate({
+  identifier: "CreateDataMigrationResponse",
+}) as any as S.Schema<CreateDataMigrationResponse>;
 export interface RedshiftDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -734,18 +825,17 @@ export interface RedshiftDataProviderSettings {
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
-export const RedshiftDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      DatabaseName: S.optional(S.String),
-      S3Path: S.optional(S.String),
-      S3AccessRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RedshiftDataProviderSettings",
-  }) as any as S.Schema<RedshiftDataProviderSettings>;
+export const RedshiftDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    DatabaseName: S.optional(S.String),
+    S3Path: S.optional(S.String),
+    S3AccessRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RedshiftDataProviderSettings",
+}) as any as S.Schema<RedshiftDataProviderSettings>;
 export type DmsSslModeValue =
   | "none"
   | "require"
@@ -753,6 +843,7 @@ export type DmsSslModeValue =
   | "verify-full"
   | (string & {});
 export const DmsSslModeValue = /*@__PURE__*/ S.String;
+
 export interface PostgreSqlDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -762,20 +853,19 @@ export interface PostgreSqlDataProviderSettings {
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
-export const PostgreSqlDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      DatabaseName: S.optional(S.String),
-      SslMode: S.optional(DmsSslModeValue),
-      CertificateArn: S.optional(S.String),
-      S3Path: S.optional(S.String),
-      S3AccessRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PostgreSqlDataProviderSettings",
-  }) as any as S.Schema<PostgreSqlDataProviderSettings>;
+export const PostgreSqlDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    DatabaseName: S.optional(S.String),
+    SslMode: S.optional(DmsSslModeValue),
+    CertificateArn: S.optional(S.String),
+    S3Path: S.optional(S.String),
+    S3AccessRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgreSqlDataProviderSettings",
+}) as any as S.Schema<PostgreSqlDataProviderSettings>;
 export interface MySqlDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -836,19 +926,18 @@ export interface SybaseAseDataProviderSettings {
   EncryptPassword?: boolean;
   CertificateArn?: string;
 }
-export const SybaseAseDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      DatabaseName: S.optional(S.String),
-      SslMode: S.optional(DmsSslModeValue),
-      EncryptPassword: S.optional(S.Boolean),
-      CertificateArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SybaseAseDataProviderSettings",
-  }) as any as S.Schema<SybaseAseDataProviderSettings>;
+export const SybaseAseDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    DatabaseName: S.optional(S.String),
+    SslMode: S.optional(DmsSslModeValue),
+    EncryptPassword: S.optional(S.Boolean),
+    CertificateArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SybaseAseDataProviderSettings",
+}) as any as S.Schema<SybaseAseDataProviderSettings>;
 export interface MicrosoftSqlServerDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -858,8 +947,8 @@ export interface MicrosoftSqlServerDataProviderSettings {
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
-export const MicrosoftSqlServerDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
+export const MicrosoftSqlServerDataProviderSettings = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ServerName: S.optional(S.String),
       Port: S.optional(S.Number),
@@ -869,9 +958,9 @@ export const MicrosoftSqlServerDataProviderSettings =
       S3Path: S.optional(S.String),
       S3AccessRoleArn: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "MicrosoftSqlServerDataProviderSettings",
-  }) as any as S.Schema<MicrosoftSqlServerDataProviderSettings>;
+).annotate({
+  identifier: "MicrosoftSqlServerDataProviderSettings",
+}) as any as S.Schema<MicrosoftSqlServerDataProviderSettings>;
 export interface DocDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -898,19 +987,18 @@ export interface MariaDbDataProviderSettings {
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
-export const MariaDbDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      SslMode: S.optional(DmsSslModeValue),
-      CertificateArn: S.optional(S.String),
-      S3Path: S.optional(S.String),
-      S3AccessRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MariaDbDataProviderSettings",
-  }) as any as S.Schema<MariaDbDataProviderSettings>;
+export const MariaDbDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    SslMode: S.optional(DmsSslModeValue),
+    CertificateArn: S.optional(S.String),
+    S3Path: S.optional(S.String),
+    S3AccessRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MariaDbDataProviderSettings",
+}) as any as S.Schema<MariaDbDataProviderSettings>;
 export interface IbmDb2LuwDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -922,22 +1010,21 @@ export interface IbmDb2LuwDataProviderSettings {
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
-export const IbmDb2LuwDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      DatabaseName: S.optional(S.String),
-      SslMode: S.optional(DmsSslModeValue),
-      CertificateArn: S.optional(S.String),
-      EncryptionAlgorithm: S.optional(S.Number),
-      SecurityMechanism: S.optional(S.Number),
-      S3Path: S.optional(S.String),
-      S3AccessRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "IbmDb2LuwDataProviderSettings",
-  }) as any as S.Schema<IbmDb2LuwDataProviderSettings>;
+export const IbmDb2LuwDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    DatabaseName: S.optional(S.String),
+    SslMode: S.optional(DmsSslModeValue),
+    CertificateArn: S.optional(S.String),
+    EncryptionAlgorithm: S.optional(S.Number),
+    SecurityMechanism: S.optional(S.Number),
+    S3Path: S.optional(S.String),
+    S3AccessRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IbmDb2LuwDataProviderSettings",
+}) as any as S.Schema<IbmDb2LuwDataProviderSettings>;
 export interface IbmDb2zOsDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -947,28 +1034,29 @@ export interface IbmDb2zOsDataProviderSettings {
   S3Path?: string;
   S3AccessRoleArn?: string;
 }
-export const IbmDb2zOsDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      DatabaseName: S.optional(S.String),
-      SslMode: S.optional(DmsSslModeValue),
-      CertificateArn: S.optional(S.String),
-      S3Path: S.optional(S.String),
-      S3AccessRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "IbmDb2zOsDataProviderSettings",
-  }) as any as S.Schema<IbmDb2zOsDataProviderSettings>;
+export const IbmDb2zOsDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    DatabaseName: S.optional(S.String),
+    SslMode: S.optional(DmsSslModeValue),
+    CertificateArn: S.optional(S.String),
+    S3Path: S.optional(S.String),
+    S3AccessRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IbmDb2zOsDataProviderSettings",
+}) as any as S.Schema<IbmDb2zOsDataProviderSettings>;
 export type AuthTypeValue = "no" | "password" | (string & {});
 export const AuthTypeValue = /*@__PURE__*/ S.String;
+
 export type AuthMechanismValue =
   | "default"
   | "mongodb_cr"
   | "scram_sha_1"
   | (string & {});
 export const AuthMechanismValue = /*@__PURE__*/ S.String;
+
 export interface MongoDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -979,21 +1067,20 @@ export interface MongoDbDataProviderSettings {
   AuthSource?: string;
   AuthMechanism?: AuthMechanismValue;
 }
-export const MongoDbDataProviderSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerName: S.optional(S.String),
-      Port: S.optional(S.Number),
-      DatabaseName: S.optional(S.String),
-      SslMode: S.optional(DmsSslModeValue),
-      CertificateArn: S.optional(S.String),
-      AuthType: S.optional(AuthTypeValue),
-      AuthSource: S.optional(S.String),
-      AuthMechanism: S.optional(AuthMechanismValue),
-    }),
-  ).annotate({
-    identifier: "MongoDbDataProviderSettings",
-  }) as any as S.Schema<MongoDbDataProviderSettings>;
+export const MongoDbDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerName: S.optional(S.String),
+    Port: S.optional(S.Number),
+    DatabaseName: S.optional(S.String),
+    SslMode: S.optional(DmsSslModeValue),
+    CertificateArn: S.optional(S.String),
+    AuthType: S.optional(AuthTypeValue),
+    AuthSource: S.optional(S.String),
+    AuthMechanism: S.optional(AuthMechanismValue),
+  }),
+).annotate({
+  identifier: "MongoDbDataProviderSettings",
+}) as any as S.Schema<MongoDbDataProviderSettings>;
 export type DataProviderSettings =
   | {
       RedshiftSettings: RedshiftDataProviderSettings;
@@ -1215,6 +1302,7 @@ export const CreateDataProviderResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDataProviderResponse>;
 export type ReplicationEndpointTypeValue = "source" | "target" | (string & {});
 export const ReplicationEndpointTypeValue = /*@__PURE__*/ S.String;
+
 export interface DynamoDbSettings {
   ServiceAccessRoleArn: string;
 }
@@ -1225,18 +1313,23 @@ export const DynamoDbSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamoDbSettings>;
 export type CompressionTypeValue = "none" | "gzip" | (string & {});
 export const CompressionTypeValue = /*@__PURE__*/ S.String;
+
 export type EncryptionModeValue = "sse-s3" | "sse-kms" | (string & {});
 export const EncryptionModeValue = /*@__PURE__*/ S.String;
+
 export type DataFormatValue = "csv" | "parquet" | (string & {});
 export const DataFormatValue = /*@__PURE__*/ S.String;
+
 export type EncodingTypeValue =
   | "plain"
   | "plain-dictionary"
   | "rle-dictionary"
   | (string & {});
 export const EncodingTypeValue = /*@__PURE__*/ S.String;
+
 export type ParquetVersionValue = "parquet-1-0" | "parquet-2-0" | (string & {});
 export const ParquetVersionValue = /*@__PURE__*/ S.String;
+
 export type DatePartitionSequenceValue =
   | "YYYYMMDD"
   | "YYYYMMDDHH"
@@ -1245,6 +1338,7 @@ export type DatePartitionSequenceValue =
   | "DDMMYYYY"
   | (string & {});
 export const DatePartitionSequenceValue = /*@__PURE__*/ S.String;
+
 export type DatePartitionDelimiterValue =
   | "SLASH"
   | "UNDERSCORE"
@@ -1252,6 +1346,7 @@ export type DatePartitionDelimiterValue =
   | "NONE"
   | (string & {});
 export const DatePartitionDelimiterValue = /*@__PURE__*/ S.String;
+
 export type CannedAclForObjectsValue =
   | "none"
   | "private"
@@ -1263,6 +1358,7 @@ export type CannedAclForObjectsValue =
   | "bucket-owner-full-control"
   | (string & {});
 export const CannedAclForObjectsValue = /*@__PURE__*/ S.String;
+
 export interface S3Settings {
   ServiceAccessRoleArn?: string;
   ExternalTableDefinition?: string;
@@ -1365,6 +1461,7 @@ export const DmsTransferSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DmsTransferSettings>;
 export type NestingLevelValue = "none" | "one" | (string & {});
 export const NestingLevelValue = /*@__PURE__*/ S.String;
+
 export interface MongoDbSettings {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
@@ -1407,6 +1504,7 @@ export const MongoDbSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MongoDbSettings>;
 export type MessageFormatValue = "json" | "json-unformatted" | (string & {});
 export const MessageFormatValue = /*@__PURE__*/ S.String;
+
 export interface KinesisSettings {
   StreamArn?: string;
   MessageFormat?: MessageFormatValue;
@@ -1444,13 +1542,16 @@ export type KafkaSecurityProtocol =
   | "sasl-ssl"
   | (string & {});
 export const KafkaSecurityProtocol = /*@__PURE__*/ S.String;
+
 export type KafkaSaslMechanism = "scram-sha-512" | "plain" | (string & {});
 export const KafkaSaslMechanism = /*@__PURE__*/ S.String;
+
 export type KafkaSslEndpointIdentificationAlgorithm =
   | "none"
   | "https"
   | (string & {});
 export const KafkaSslEndpointIdentificationAlgorithm = /*@__PURE__*/ S.String;
+
 export interface KafkaSettings {
   Broker?: string;
   Topic?: string;
@@ -1617,16 +1718,20 @@ export type PluginNameValue =
   | "pglogical"
   | (string & {});
 export const PluginNameValue = /*@__PURE__*/ S.String;
+
 export type LongVarcharMappingType =
   | "wstring"
   | "clob"
   | "nclob"
   | (string & {});
 export const LongVarcharMappingType = /*@__PURE__*/ S.String;
+
 export type DatabaseMode = "default" | "babelfish" | (string & {});
 export const DatabaseMode = /*@__PURE__*/ S.String;
+
 export type PostgreSQLAuthenticationMethod = "password" | "iam" | (string & {});
 export const PostgreSQLAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface PostgreSQLSettings {
   AfterConnectScript?: string;
   CaptureDdls?: boolean;
@@ -1694,8 +1799,10 @@ export type TargetDbType =
   | "multiple-databases"
   | (string & {});
 export const TargetDbType = /*@__PURE__*/ S.String;
+
 export type MySQLAuthenticationMethod = "password" | "iam" | (string & {});
 export const MySQLAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface MySQLSettings {
   AfterConnectScript?: string;
   CleanSourceMetadataOnMismatch?: boolean;
@@ -1740,11 +1847,13 @@ export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type CharLengthSemantics = "default" | "char" | "byte" | (string & {});
 export const CharLengthSemantics = /*@__PURE__*/ S.String;
+
 export type OracleAuthenticationMethod =
   | "password"
   | "kerberos"
   | (string & {});
 export const OracleAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface OracleSettings {
   AddSupplementalLogging?: boolean;
   ArchivedLogDestId?: number;
@@ -1865,6 +1974,7 @@ export type SafeguardPolicy =
   | "shared-automatic-truncation"
   | (string & {});
 export const SafeguardPolicy = /*@__PURE__*/ S.String;
+
 export type TlogAccessMode =
   | "BackupOnly"
   | "PreferBackup"
@@ -1872,11 +1982,13 @@ export type TlogAccessMode =
   | "TlogOnly"
   | (string & {});
 export const TlogAccessMode = /*@__PURE__*/ S.String;
+
 export type SqlServerAuthenticationMethod =
   | "password"
   | "kerberos"
   | (string & {});
 export const SqlServerAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface MicrosoftSQLServerSettings {
   Port?: number;
   BcpPacketSize?: number;
@@ -1992,12 +2104,14 @@ export type SslSecurityProtocolValue =
   | "ssl-encryption"
   | (string & {});
 export const SslSecurityProtocolValue = /*@__PURE__*/ S.String;
+
 export type RedisAuthTypeValue =
   | "none"
   | "auth-role"
   | "auth-token"
   | (string & {});
 export const RedisAuthTypeValue = /*@__PURE__*/ S.String;
+
 export interface RedisSettings {
   ServerName: string;
   Port: number;
@@ -2275,30 +2389,29 @@ export interface CreateEventSubscriptionMessage {
   Enabled?: boolean;
   Tags?: Tag[];
 }
-export const CreateEventSubscriptionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubscriptionName: S.String,
-      SnsTopicArn: S.String,
-      SourceType: S.optional(S.String),
-      EventCategories: S.optional(EventCategoriesList),
-      SourceIds: S.optional(SourceIdsList),
-      Enabled: S.optional(S.Boolean),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubscriptionName: S.String,
+    SnsTopicArn: S.String,
+    SourceType: S.optional(S.String),
+    EventCategories: S.optional(EventCategoriesList),
+    SourceIds: S.optional(SourceIdsList),
+    Enabled: S.optional(S.Boolean),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEventSubscriptionMessage",
-  }) as any as S.Schema<CreateEventSubscriptionMessage>;
+  ),
+).annotate({
+  identifier: "CreateEventSubscriptionMessage",
+}) as any as S.Schema<CreateEventSubscriptionMessage>;
 export interface EventSubscription {
   CustomerAwsId?: string;
   CustSubscriptionId?: string;
@@ -2328,39 +2441,37 @@ export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEventSubscriptionResponse {
   EventSubscription?: EventSubscription;
 }
-export const CreateEventSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateEventSubscriptionResponse",
-  }) as any as S.Schema<CreateEventSubscriptionResponse>;
+export const CreateEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+).annotate({
+  identifier: "CreateEventSubscriptionResponse",
+}) as any as S.Schema<CreateEventSubscriptionResponse>;
 export interface CreateFleetAdvisorCollectorRequest {
   CollectorName: string;
   Description?: string;
   ServiceAccessRoleArn: string;
   S3BucketName: string;
 }
-export const CreateFleetAdvisorCollectorRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CollectorName: S.String,
-      Description: S.optional(S.String),
-      ServiceAccessRoleArn: S.String,
-      S3BucketName: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateFleetAdvisorCollectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectorName: S.String,
+    Description: S.optional(S.String),
+    ServiceAccessRoleArn: S.String,
+    S3BucketName: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateFleetAdvisorCollectorRequest",
-  }) as any as S.Schema<CreateFleetAdvisorCollectorRequest>;
+  ),
+).annotate({
+  identifier: "CreateFleetAdvisorCollectorRequest",
+}) as any as S.Schema<CreateFleetAdvisorCollectorRequest>;
 export interface CreateFleetAdvisorCollectorResponse {
   CollectorReferencedId?: string;
   CollectorName?: string;
@@ -2368,18 +2479,17 @@ export interface CreateFleetAdvisorCollectorResponse {
   ServiceAccessRoleArn?: string;
   S3BucketName?: string;
 }
-export const CreateFleetAdvisorCollectorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CollectorReferencedId: S.optional(S.String),
-      CollectorName: S.optional(S.String),
-      Description: S.optional(S.String),
-      ServiceAccessRoleArn: S.optional(S.String),
-      S3BucketName: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateFleetAdvisorCollectorResponse",
-  }) as any as S.Schema<CreateFleetAdvisorCollectorResponse>;
+export const CreateFleetAdvisorCollectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CollectorReferencedId: S.optional(S.String),
+    CollectorName: S.optional(S.String),
+    Description: S.optional(S.String),
+    ServiceAccessRoleArn: S.optional(S.String),
+    S3BucketName: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateFleetAdvisorCollectorResponse",
+}) as any as S.Schema<CreateFleetAdvisorCollectorResponse>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateInstanceProfileMessage {
@@ -2393,32 +2503,31 @@ export interface CreateInstanceProfileMessage {
   SubnetGroupIdentifier?: string;
   VpcSecurityGroups?: string[];
 }
-export const CreateInstanceProfileMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AvailabilityZone: S.optional(S.String),
-      KmsKeyArn: S.optional(S.String),
-      PubliclyAccessible: S.optional(S.Boolean),
-      Tags: S.optional(TagList),
-      NetworkType: S.optional(S.String),
-      InstanceProfileName: S.optional(S.String),
-      Description: S.optional(S.String),
-      SubnetGroupIdentifier: S.optional(S.String),
-      VpcSecurityGroups: S.optional(StringList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateInstanceProfileMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AvailabilityZone: S.optional(S.String),
+    KmsKeyArn: S.optional(S.String),
+    PubliclyAccessible: S.optional(S.Boolean),
+    Tags: S.optional(TagList),
+    NetworkType: S.optional(S.String),
+    InstanceProfileName: S.optional(S.String),
+    Description: S.optional(S.String),
+    SubnetGroupIdentifier: S.optional(S.String),
+    VpcSecurityGroups: S.optional(StringList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateInstanceProfileMessage",
-  }) as any as S.Schema<CreateInstanceProfileMessage>;
+  ),
+).annotate({
+  identifier: "CreateInstanceProfileMessage",
+}) as any as S.Schema<CreateInstanceProfileMessage>;
 export interface InstanceProfile {
   InstanceProfileArn?: string;
   AvailabilityZone?: string;
@@ -2452,31 +2561,30 @@ export const InstanceProfile = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstanceProfileResponse {
   InstanceProfile?: InstanceProfile;
 }
-export const CreateInstanceProfileResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceProfile: S.optional(InstanceProfile) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateInstanceProfileResponse",
-  }) as any as S.Schema<CreateInstanceProfileResponse>;
+export const CreateInstanceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceProfile: S.optional(InstanceProfile) }).pipe(ns),
+).annotate({
+  identifier: "CreateInstanceProfileResponse",
+}) as any as S.Schema<CreateInstanceProfileResponse>;
 export interface DataProviderDescriptorDefinition {
   DataProviderIdentifier: string;
   SecretsManagerSecretId?: string;
   SecretsManagerAccessRoleArn?: string;
 }
-export const DataProviderDescriptorDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataProviderIdentifier: S.String,
-      SecretsManagerSecretId: S.optional(S.String),
-      SecretsManagerAccessRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DataProviderDescriptorDefinition",
-  }) as any as S.Schema<DataProviderDescriptorDefinition>;
+export const DataProviderDescriptorDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataProviderIdentifier: S.String,
+    SecretsManagerSecretId: S.optional(S.String),
+    SecretsManagerAccessRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataProviderDescriptorDefinition",
+}) as any as S.Schema<DataProviderDescriptorDefinition>;
 export type DataProviderDescriptorDefinitionList =
   DataProviderDescriptorDefinition[];
-export const DataProviderDescriptorDefinitionList =
-  /*@__PURE__*/ S.Array(DataProviderDescriptorDefinition);
+export const DataProviderDescriptorDefinitionList = /*@__PURE__*/ S.Array(
+  DataProviderDescriptorDefinition,
+);
 export interface SCApplicationAttributes {
   S3BucketPath?: string;
   S3BucketRoleArn?: string;
@@ -2499,33 +2607,30 @@ export interface CreateMigrationProjectMessage {
   Tags?: Tag[];
   SchemaConversionApplicationAttributes?: SCApplicationAttributes;
 }
-export const CreateMigrationProjectMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectName: S.optional(S.String),
-      SourceDataProviderDescriptors: DataProviderDescriptorDefinitionList,
-      TargetDataProviderDescriptors: DataProviderDescriptorDefinitionList,
-      InstanceProfileIdentifier: S.String,
-      TransformationRules: S.optional(S.String),
-      Description: S.optional(S.String),
-      Tags: S.optional(TagList),
-      SchemaConversionApplicationAttributes: S.optional(
-        SCApplicationAttributes,
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMigrationProjectMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectName: S.optional(S.String),
+    SourceDataProviderDescriptors: DataProviderDescriptorDefinitionList,
+    TargetDataProviderDescriptors: DataProviderDescriptorDefinitionList,
+    InstanceProfileIdentifier: S.String,
+    TransformationRules: S.optional(S.String),
+    Description: S.optional(S.String),
+    Tags: S.optional(TagList),
+    SchemaConversionApplicationAttributes: S.optional(SCApplicationAttributes),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateMigrationProjectMessage",
-  }) as any as S.Schema<CreateMigrationProjectMessage>;
+  ),
+).annotate({
+  identifier: "CreateMigrationProjectMessage",
+}) as any as S.Schema<CreateMigrationProjectMessage>;
 export interface DataProviderDescriptor {
   SecretsManagerSecretId?: string;
   SecretsManagerAccessRoleArn?: string;
@@ -2579,12 +2684,11 @@ export const MigrationProject = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMigrationProjectResponse {
   MigrationProject?: MigrationProject;
 }
-export const CreateMigrationProjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MigrationProject: S.optional(MigrationProject) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateMigrationProjectResponse",
-  }) as any as S.Schema<CreateMigrationProjectResponse>;
+export const CreateMigrationProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MigrationProject: S.optional(MigrationProject) }).pipe(ns),
+).annotate({
+  identifier: "CreateMigrationProjectResponse",
+}) as any as S.Schema<CreateMigrationProjectResponse>;
 export interface ComputeConfig {
   AvailabilityZone?: string;
   DnsNameServers?: string;
@@ -2621,33 +2725,32 @@ export interface CreateReplicationConfigMessage {
   ResourceIdentifier?: string;
   Tags?: Tag[];
 }
-export const CreateReplicationConfigMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationConfigIdentifier: S.String,
-      SourceEndpointArn: S.String,
-      TargetEndpointArn: S.String,
-      ComputeConfig: ComputeConfig,
-      ReplicationType: MigrationTypeValue,
-      TableMappings: S.String,
-      ReplicationSettings: S.optional(S.String),
-      SupplementalSettings: S.optional(S.String),
-      ResourceIdentifier: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateReplicationConfigMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationConfigIdentifier: S.String,
+    SourceEndpointArn: S.String,
+    TargetEndpointArn: S.String,
+    ComputeConfig: ComputeConfig,
+    ReplicationType: MigrationTypeValue,
+    TableMappings: S.String,
+    ReplicationSettings: S.optional(S.String),
+    SupplementalSettings: S.optional(S.String),
+    ResourceIdentifier: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateReplicationConfigMessage",
-  }) as any as S.Schema<CreateReplicationConfigMessage>;
+  ),
+).annotate({
+  identifier: "CreateReplicationConfigMessage",
+}) as any as S.Schema<CreateReplicationConfigMessage>;
 export interface ReplicationConfig {
   ReplicationConfigIdentifier?: string;
   ReplicationConfigArn?: string;
@@ -2687,12 +2790,12 @@ export const ReplicationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CreateReplicationConfigResponse {
   ReplicationConfig?: ReplicationConfig;
 }
-export const CreateReplicationConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationConfig: S.optional(ReplicationConfig) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateReplicationConfigResponse",
-  }) as any as S.Schema<CreateReplicationConfigResponse>;
+export const CreateReplicationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationConfig: S.optional(ReplicationConfig) }).pipe(ns),
+).annotate({
+  identifier: "CreateReplicationConfigResponse",
+}) as any as S.Schema<CreateReplicationConfigResponse>;
+export type ReplicationInstanceClass = string;
 export type VpcSecurityGroupIdList = string[];
 export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("VpcSecurityGroupId")),
@@ -2702,16 +2805,15 @@ export interface KerberosAuthenticationSettings {
   KeyCacheSecretIamArn?: string;
   Krb5FileContents?: string;
 }
-export const KerberosAuthenticationSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyCacheSecretId: S.optional(S.String),
-      KeyCacheSecretIamArn: S.optional(S.String),
-      Krb5FileContents: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "KerberosAuthenticationSettings",
-  }) as any as S.Schema<KerberosAuthenticationSettings>;
+export const KerberosAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyCacheSecretId: S.optional(S.String),
+    KeyCacheSecretIamArn: S.optional(S.String),
+    Krb5FileContents: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KerberosAuthenticationSettings",
+}) as any as S.Schema<KerberosAuthenticationSettings>;
 export interface CreateReplicationInstanceMessage {
   ReplicationInstanceIdentifier: string;
   AllocatedStorage?: number;
@@ -2731,42 +2833,39 @@ export interface CreateReplicationInstanceMessage {
   NetworkType?: string;
   KerberosAuthenticationSettings?: KerberosAuthenticationSettings;
 }
-export const CreateReplicationInstanceMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationInstanceIdentifier: S.String,
-      AllocatedStorage: S.optional(S.Number),
-      ReplicationInstanceClass: S.String,
-      VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      AvailabilityZone: S.optional(S.String),
-      ReplicationSubnetGroupIdentifier: S.optional(S.String),
-      PreferredMaintenanceWindow: S.optional(S.String),
-      MultiAZ: S.optional(S.Boolean),
-      EngineVersion: S.optional(S.String),
-      AutoMinorVersionUpgrade: S.optional(S.Boolean),
-      Tags: S.optional(TagList),
-      KmsKeyId: S.optional(S.String),
-      PubliclyAccessible: S.optional(S.Boolean),
-      DnsNameServers: S.optional(S.String),
-      ResourceIdentifier: S.optional(S.String),
-      NetworkType: S.optional(S.String),
-      KerberosAuthenticationSettings: S.optional(
-        KerberosAuthenticationSettings,
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateReplicationInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationInstanceIdentifier: S.String,
+    AllocatedStorage: S.optional(S.Number),
+    ReplicationInstanceClass: S.String,
+    VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    AvailabilityZone: S.optional(S.String),
+    ReplicationSubnetGroupIdentifier: S.optional(S.String),
+    PreferredMaintenanceWindow: S.optional(S.String),
+    MultiAZ: S.optional(S.Boolean),
+    EngineVersion: S.optional(S.String),
+    AutoMinorVersionUpgrade: S.optional(S.Boolean),
+    Tags: S.optional(TagList),
+    KmsKeyId: S.optional(S.String),
+    PubliclyAccessible: S.optional(S.Boolean),
+    DnsNameServers: S.optional(S.String),
+    ResourceIdentifier: S.optional(S.String),
+    NetworkType: S.optional(S.String),
+    KerberosAuthenticationSettings: S.optional(KerberosAuthenticationSettings),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateReplicationInstanceMessage",
-  }) as any as S.Schema<CreateReplicationInstanceMessage>;
+  ),
+).annotate({
+  identifier: "CreateReplicationInstanceMessage",
+}) as any as S.Schema<CreateReplicationInstanceMessage>;
 export interface VpcSecurityGroupMembership {
   VpcSecurityGroupId?: string;
   Status?: string;
@@ -2780,12 +2879,11 @@ export const VpcSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpcSecurityGroupMembership",
 }) as any as S.Schema<VpcSecurityGroupMembership>;
 export type VpcSecurityGroupMembershipList = VpcSecurityGroupMembership[];
-export const VpcSecurityGroupMembershipList =
-  /*@__PURE__*/ S.Array(
-    VpcSecurityGroupMembership.pipe(
-      T.XmlName("VpcSecurityGroupMembership"),
-    ).annotate({ identifier: "VpcSecurityGroupMembership" }),
-  );
+export const VpcSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
+  VpcSecurityGroupMembership.pipe(
+    T.XmlName("VpcSecurityGroupMembership"),
+  ).annotate({ identifier: "VpcSecurityGroupMembership" }),
+);
 export interface AvailabilityZone {
   Name?: string;
 }
@@ -2839,27 +2937,29 @@ export interface ReplicationPendingModifiedValues {
   EngineVersion?: string;
   NetworkType?: string;
 }
-export const ReplicationPendingModifiedValues =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationInstanceClass: S.optional(S.String),
-      AllocatedStorage: S.optional(S.Number),
-      MultiAZ: S.optional(S.Boolean),
-      EngineVersion: S.optional(S.String),
-      NetworkType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ReplicationPendingModifiedValues",
-  }) as any as S.Schema<ReplicationPendingModifiedValues>;
+export const ReplicationPendingModifiedValues = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationInstanceClass: S.optional(S.String),
+    AllocatedStorage: S.optional(S.Number),
+    MultiAZ: S.optional(S.Boolean),
+    EngineVersion: S.optional(S.String),
+    NetworkType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicationPendingModifiedValues",
+}) as any as S.Schema<ReplicationPendingModifiedValues>;
 export type ReplicationInstancePublicIpAddressList = string[];
-export const ReplicationInstancePublicIpAddressList =
-  /*@__PURE__*/ S.Array(S.String);
+export const ReplicationInstancePublicIpAddressList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export type ReplicationInstancePrivateIpAddressList = string[];
-export const ReplicationInstancePrivateIpAddressList =
-  /*@__PURE__*/ S.Array(S.String);
+export const ReplicationInstancePrivateIpAddressList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export type ReplicationInstanceIpv6AddressList = string[];
-export const ReplicationInstanceIpv6AddressList =
-  /*@__PURE__*/ S.Array(S.String);
+export const ReplicationInstanceIpv6AddressList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface ReplicationInstance {
   ReplicationInstanceIdentifier?: string;
   ReplicationInstanceClass?: string;
@@ -2931,12 +3031,11 @@ export const ReplicationInstance = /*@__PURE__*/ S.suspend(() =>
 export interface CreateReplicationInstanceResponse {
   ReplicationInstance?: ReplicationInstance;
 }
-export const CreateReplicationInstanceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateReplicationInstanceResponse",
-  }) as any as S.Schema<CreateReplicationInstanceResponse>;
+export const CreateReplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
+).annotate({
+  identifier: "CreateReplicationInstanceResponse",
+}) as any as S.Schema<CreateReplicationInstanceResponse>;
 export type SubnetIdentifierList = string[];
 export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SubnetIdentifier")),
@@ -2947,38 +3046,37 @@ export interface CreateReplicationSubnetGroupMessage {
   SubnetIds: string[];
   Tags?: Tag[];
 }
-export const CreateReplicationSubnetGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationSubnetGroupIdentifier: S.String,
-      ReplicationSubnetGroupDescription: S.String,
-      SubnetIds: SubnetIdentifierList,
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateReplicationSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationSubnetGroupIdentifier: S.String,
+    ReplicationSubnetGroupDescription: S.String,
+    SubnetIds: SubnetIdentifierList,
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateReplicationSubnetGroupMessage",
-  }) as any as S.Schema<CreateReplicationSubnetGroupMessage>;
+  ),
+).annotate({
+  identifier: "CreateReplicationSubnetGroupMessage",
+}) as any as S.Schema<CreateReplicationSubnetGroupMessage>;
 export interface CreateReplicationSubnetGroupResponse {
   ReplicationSubnetGroup?: ReplicationSubnetGroup;
 }
-export const CreateReplicationSubnetGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateReplicationSubnetGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReplicationSubnetGroup: S.optional(ReplicationSubnetGroup),
     }).pipe(ns),
-  ).annotate({
-    identifier: "CreateReplicationSubnetGroupResponse",
-  }) as any as S.Schema<CreateReplicationSubnetGroupResponse>;
+).annotate({
+  identifier: "CreateReplicationSubnetGroupResponse",
+}) as any as S.Schema<CreateReplicationSubnetGroupResponse>;
 export interface CreateReplicationTaskMessage {
   ReplicationTaskIdentifier: string;
   SourceEndpointArn: string;
@@ -2994,36 +3092,35 @@ export interface CreateReplicationTaskMessage {
   TaskData?: string;
   ResourceIdentifier?: string;
 }
-export const CreateReplicationTaskMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskIdentifier: S.String,
-      SourceEndpointArn: S.String,
-      TargetEndpointArn: S.String,
-      ReplicationInstanceArn: S.String,
-      MigrationType: MigrationTypeValue,
-      TableMappings: S.String,
-      ReplicationTaskSettings: S.optional(S.String),
-      CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      CdcStartPosition: S.optional(S.String),
-      CdcStopPosition: S.optional(S.String),
-      Tags: S.optional(TagList),
-      TaskData: S.optional(S.String),
-      ResourceIdentifier: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateReplicationTaskMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskIdentifier: S.String,
+    SourceEndpointArn: S.String,
+    TargetEndpointArn: S.String,
+    ReplicationInstanceArn: S.String,
+    MigrationType: MigrationTypeValue,
+    TableMappings: S.String,
+    ReplicationTaskSettings: S.optional(S.String),
+    CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CdcStartPosition: S.optional(S.String),
+    CdcStopPosition: S.optional(S.String),
+    Tags: S.optional(TagList),
+    TaskData: S.optional(S.String),
+    ResourceIdentifier: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateReplicationTaskMessage",
-  }) as any as S.Schema<CreateReplicationTaskMessage>;
+  ),
+).annotate({
+  identifier: "CreateReplicationTaskMessage",
+}) as any as S.Schema<CreateReplicationTaskMessage>;
 export interface ReplicationTaskStats {
   FullLoadProgressPercent?: number;
   ElapsedTimeMillis?: number;
@@ -3111,12 +3208,11 @@ export const ReplicationTask = /*@__PURE__*/ S.suspend(() =>
 export interface CreateReplicationTaskResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const CreateReplicationTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateReplicationTaskResponse",
-  }) as any as S.Schema<CreateReplicationTaskResponse>;
+export const CreateReplicationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "CreateReplicationTaskResponse",
+}) as any as S.Schema<CreateReplicationTaskResponse>;
 export interface DeleteCertificateMessage {
   CertificateArn: string;
 }
@@ -3135,6 +3231,7 @@ export const DeleteCertificateMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteCertificateMessage",
 }) as any as S.Schema<DeleteCertificateMessage>;
+export type CertificateWallet = Uint8Array;
 export interface Certificate {
   CertificateIdentifier?: string;
   CertificateCreationDate?: Date;
@@ -3239,12 +3336,11 @@ export const DeleteDataMigrationMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataMigrationResponse {
   DataMigration?: DataMigration;
 }
-export const DeleteDataMigrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DataMigration: S.optional(DataMigration) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteDataMigrationResponse",
-  }) as any as S.Schema<DeleteDataMigrationResponse>;
+export const DeleteDataMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DataMigration: S.optional(DataMigration) }).pipe(ns),
+).annotate({
+  identifier: "DeleteDataMigrationResponse",
+}) as any as S.Schema<DeleteDataMigrationResponse>;
 export interface DeleteDataProviderMessage {
   DataProviderIdentifier: string;
 }
@@ -3300,31 +3396,29 @@ export const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEventSubscriptionMessage {
   SubscriptionName: string;
 }
-export const DeleteEventSubscriptionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SubscriptionName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SubscriptionName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEventSubscriptionMessage",
-  }) as any as S.Schema<DeleteEventSubscriptionMessage>;
+  ),
+).annotate({
+  identifier: "DeleteEventSubscriptionMessage",
+}) as any as S.Schema<DeleteEventSubscriptionMessage>;
 export interface DeleteEventSubscriptionResponse {
   EventSubscription?: EventSubscription;
 }
-export const DeleteEventSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteEventSubscriptionResponse",
-  }) as any as S.Schema<DeleteEventSubscriptionResponse>;
+export const DeleteEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+).annotate({
+  identifier: "DeleteEventSubscriptionResponse",
+}) as any as S.Schema<DeleteEventSubscriptionResponse>;
 export interface DeleteCollectorRequest {
   CollectorReferencedId: string;
 }
@@ -3344,202 +3438,191 @@ export const DeleteCollectorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCollectorRequest",
 }) as any as S.Schema<DeleteCollectorRequest>;
 export interface DeleteFleetAdvisorCollectorResponse {}
-export const DeleteFleetAdvisorCollectorResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteFleetAdvisorCollectorResponse",
-  }) as any as S.Schema<DeleteFleetAdvisorCollectorResponse>;
+export const DeleteFleetAdvisorCollectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteFleetAdvisorCollectorResponse",
+}) as any as S.Schema<DeleteFleetAdvisorCollectorResponse>;
 export interface DeleteFleetAdvisorDatabasesRequest {
   DatabaseIds: string[];
 }
-export const DeleteFleetAdvisorDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatabaseIds: StringList }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteFleetAdvisorDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatabaseIds: StringList }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteFleetAdvisorDatabasesRequest",
-  }) as any as S.Schema<DeleteFleetAdvisorDatabasesRequest>;
+  ),
+).annotate({
+  identifier: "DeleteFleetAdvisorDatabasesRequest",
+}) as any as S.Schema<DeleteFleetAdvisorDatabasesRequest>;
 export interface DeleteFleetAdvisorDatabasesResponse {
   DatabaseIds?: string[];
 }
-export const DeleteFleetAdvisorDatabasesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatabaseIds: S.optional(StringList) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteFleetAdvisorDatabasesResponse",
-  }) as any as S.Schema<DeleteFleetAdvisorDatabasesResponse>;
+export const DeleteFleetAdvisorDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatabaseIds: S.optional(StringList) }).pipe(ns),
+).annotate({
+  identifier: "DeleteFleetAdvisorDatabasesResponse",
+}) as any as S.Schema<DeleteFleetAdvisorDatabasesResponse>;
 export interface DeleteInstanceProfileMessage {
   InstanceProfileIdentifier: string;
 }
-export const DeleteInstanceProfileMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceProfileIdentifier: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteInstanceProfileMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceProfileIdentifier: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteInstanceProfileMessage",
-  }) as any as S.Schema<DeleteInstanceProfileMessage>;
+  ),
+).annotate({
+  identifier: "DeleteInstanceProfileMessage",
+}) as any as S.Schema<DeleteInstanceProfileMessage>;
 export interface DeleteInstanceProfileResponse {
   InstanceProfile?: InstanceProfile;
 }
-export const DeleteInstanceProfileResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceProfile: S.optional(InstanceProfile) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteInstanceProfileResponse",
-  }) as any as S.Schema<DeleteInstanceProfileResponse>;
+export const DeleteInstanceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceProfile: S.optional(InstanceProfile) }).pipe(ns),
+).annotate({
+  identifier: "DeleteInstanceProfileResponse",
+}) as any as S.Schema<DeleteInstanceProfileResponse>;
 export interface DeleteMigrationProjectMessage {
   MigrationProjectIdentifier: string;
 }
-export const DeleteMigrationProjectMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteMigrationProjectMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteMigrationProjectMessage",
-  }) as any as S.Schema<DeleteMigrationProjectMessage>;
+  ),
+).annotate({
+  identifier: "DeleteMigrationProjectMessage",
+}) as any as S.Schema<DeleteMigrationProjectMessage>;
 export interface DeleteMigrationProjectResponse {
   MigrationProject?: MigrationProject;
 }
-export const DeleteMigrationProjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MigrationProject: S.optional(MigrationProject) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteMigrationProjectResponse",
-  }) as any as S.Schema<DeleteMigrationProjectResponse>;
+export const DeleteMigrationProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MigrationProject: S.optional(MigrationProject) }).pipe(ns),
+).annotate({
+  identifier: "DeleteMigrationProjectResponse",
+}) as any as S.Schema<DeleteMigrationProjectResponse>;
 export interface DeleteReplicationConfigMessage {
   ReplicationConfigArn: string;
 }
-export const DeleteReplicationConfigMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationConfigArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReplicationConfigMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationConfigArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReplicationConfigMessage",
-  }) as any as S.Schema<DeleteReplicationConfigMessage>;
+  ),
+).annotate({
+  identifier: "DeleteReplicationConfigMessage",
+}) as any as S.Schema<DeleteReplicationConfigMessage>;
 export interface DeleteReplicationConfigResponse {
   ReplicationConfig?: ReplicationConfig;
 }
-export const DeleteReplicationConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationConfig: S.optional(ReplicationConfig) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteReplicationConfigResponse",
-  }) as any as S.Schema<DeleteReplicationConfigResponse>;
+export const DeleteReplicationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationConfig: S.optional(ReplicationConfig) }).pipe(ns),
+).annotate({
+  identifier: "DeleteReplicationConfigResponse",
+}) as any as S.Schema<DeleteReplicationConfigResponse>;
 export interface DeleteReplicationInstanceMessage {
   ReplicationInstanceArn: string;
 }
-export const DeleteReplicationInstanceMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationInstanceArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReplicationInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationInstanceArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReplicationInstanceMessage",
-  }) as any as S.Schema<DeleteReplicationInstanceMessage>;
+  ),
+).annotate({
+  identifier: "DeleteReplicationInstanceMessage",
+}) as any as S.Schema<DeleteReplicationInstanceMessage>;
 export interface DeleteReplicationInstanceResponse {
   ReplicationInstance?: ReplicationInstance;
 }
-export const DeleteReplicationInstanceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteReplicationInstanceResponse",
-  }) as any as S.Schema<DeleteReplicationInstanceResponse>;
+export const DeleteReplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
+).annotate({
+  identifier: "DeleteReplicationInstanceResponse",
+}) as any as S.Schema<DeleteReplicationInstanceResponse>;
 export interface DeleteReplicationSubnetGroupMessage {
   ReplicationSubnetGroupIdentifier: string;
 }
-export const DeleteReplicationSubnetGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationSubnetGroupIdentifier: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReplicationSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationSubnetGroupIdentifier: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReplicationSubnetGroupMessage",
-  }) as any as S.Schema<DeleteReplicationSubnetGroupMessage>;
+  ),
+).annotate({
+  identifier: "DeleteReplicationSubnetGroupMessage",
+}) as any as S.Schema<DeleteReplicationSubnetGroupMessage>;
 export interface DeleteReplicationSubnetGroupResponse {}
-export const DeleteReplicationSubnetGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteReplicationSubnetGroupResponse",
-  }) as any as S.Schema<DeleteReplicationSubnetGroupResponse>;
+export const DeleteReplicationSubnetGroupResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteReplicationSubnetGroupResponse",
+}) as any as S.Schema<DeleteReplicationSubnetGroupResponse>;
 export interface DeleteReplicationTaskMessage {
   ReplicationTaskArn: string;
 }
-export const DeleteReplicationTaskMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTaskArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReplicationTaskMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTaskArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReplicationTaskMessage",
-  }) as any as S.Schema<DeleteReplicationTaskMessage>;
+  ),
+).annotate({
+  identifier: "DeleteReplicationTaskMessage",
+}) as any as S.Schema<DeleteReplicationTaskMessage>;
 export interface DeleteReplicationTaskResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const DeleteReplicationTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteReplicationTaskResponse",
-  }) as any as S.Schema<DeleteReplicationTaskResponse>;
+export const DeleteReplicationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "DeleteReplicationTaskResponse",
+}) as any as S.Schema<DeleteReplicationTaskResponse>;
 export interface DeleteReplicationTaskAssessmentRunMessage {
   ReplicationTaskAssessmentRunArn: string;
 }
@@ -3571,22 +3654,21 @@ export const DeleteReplicationTaskAssessmentRunResponse =
     identifier: "DeleteReplicationTaskAssessmentRunResponse",
   }) as any as S.Schema<DeleteReplicationTaskAssessmentRunResponse>;
 export interface DescribeAccountAttributesMessage {}
-export const DescribeAccountAttributesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAccountAttributesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAccountAttributesMessage",
-  }) as any as S.Schema<DescribeAccountAttributesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeAccountAttributesMessage",
+}) as any as S.Schema<DescribeAccountAttributesMessage>;
 export interface AccountQuota {
   AccountQuotaName?: string;
   Used?: number;
@@ -3609,15 +3691,14 @@ export interface DescribeAccountAttributesResponse {
   AccountQuotas?: AccountQuota[];
   UniqueAccountIdentifier?: string;
 }
-export const DescribeAccountAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountQuotas: S.optional(AccountQuotaList),
-      UniqueAccountIdentifier: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAccountAttributesResponse",
-  }) as any as S.Schema<DescribeAccountAttributesResponse>;
+export const DescribeAccountAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountQuotas: S.optional(AccountQuotaList),
+    UniqueAccountIdentifier: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeAccountAttributesResponse",
+}) as any as S.Schema<DescribeAccountAttributesResponse>;
 export interface DescribeApplicableIndividualAssessmentsMessage {
   ReplicationTaskArn?: string;
   ReplicationInstanceArn?: string;
@@ -3688,26 +3769,25 @@ export interface DescribeCertificatesMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeCertificatesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeCertificatesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeCertificatesMessage",
-  }) as any as S.Schema<DescribeCertificatesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeCertificatesMessage",
+}) as any as S.Schema<DescribeCertificatesMessage>;
 export type CertificateList = Certificate[];
 export const CertificateList = /*@__PURE__*/ S.Array(
   Certificate.pipe(T.XmlName("Certificate")).annotate({
@@ -3718,15 +3798,14 @@ export interface DescribeCertificatesResponse {
   Marker?: string;
   Certificates?: Certificate[];
 }
-export const DescribeCertificatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      Certificates: S.optional(CertificateList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeCertificatesResponse",
-  }) as any as S.Schema<DescribeCertificatesResponse>;
+export const DescribeCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    Certificates: S.optional(CertificateList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeCertificatesResponse",
+}) as any as S.Schema<DescribeCertificatesResponse>;
 export interface DescribeConnectionsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
@@ -3761,20 +3840,19 @@ export interface DescribeConnectionsResponse {
   Marker?: string;
   Connections?: Connection[];
 }
-export const DescribeConnectionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      Connections: S.optional(ConnectionList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeConnectionsResponse",
-  }) as any as S.Schema<DescribeConnectionsResponse>;
+export const DescribeConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    Connections: S.optional(ConnectionList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeConnectionsResponse",
+}) as any as S.Schema<DescribeConnectionsResponse>;
 export interface DescribeConversionConfigurationMessage {
   MigrationProjectIdentifier: string;
 }
-export const DescribeConversionConfigurationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeConversionConfigurationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
       T.all(
         ns,
@@ -3786,22 +3864,23 @@ export const DescribeConversionConfigurationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeConversionConfigurationMessage",
-  }) as any as S.Schema<DescribeConversionConfigurationMessage>;
+).annotate({
+  identifier: "DescribeConversionConfigurationMessage",
+}) as any as S.Schema<DescribeConversionConfigurationMessage>;
 export interface DescribeConversionConfigurationResponse {
   MigrationProjectIdentifier?: string;
   ConversionConfiguration?: string;
 }
-export const DescribeConversionConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeConversionConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.optional(S.String),
       ConversionConfiguration: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeConversionConfigurationResponse",
-  }) as any as S.Schema<DescribeConversionConfigurationResponse>;
+).annotate({
+  identifier: "DescribeConversionConfigurationResponse",
+}) as any as S.Schema<DescribeConversionConfigurationResponse>;
+export type Marker = string;
 export interface DescribeDataMigrationsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
@@ -3809,68 +3888,65 @@ export interface DescribeDataMigrationsMessage {
   WithoutSettings?: boolean;
   WithoutStatistics?: boolean;
 }
-export const DescribeDataMigrationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      WithoutSettings: S.optional(S.Boolean),
-      WithoutStatistics: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDataMigrationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    WithoutSettings: S.optional(S.Boolean),
+    WithoutStatistics: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDataMigrationsMessage",
-  }) as any as S.Schema<DescribeDataMigrationsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeDataMigrationsMessage",
+}) as any as S.Schema<DescribeDataMigrationsMessage>;
 export type DataMigrations = DataMigration[];
 export const DataMigrations = /*@__PURE__*/ S.Array(DataMigration);
 export interface DescribeDataMigrationsResponse {
   DataMigrations?: DataMigration[];
   Marker?: string;
 }
-export const DescribeDataMigrationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataMigrations: S.optional(DataMigrations),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDataMigrationsResponse",
-  }) as any as S.Schema<DescribeDataMigrationsResponse>;
+export const DescribeDataMigrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataMigrations: S.optional(DataMigrations),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDataMigrationsResponse",
+}) as any as S.Schema<DescribeDataMigrationsResponse>;
 export interface DescribeDataProvidersMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDataProvidersMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDataProvidersMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDataProvidersMessage",
-  }) as any as S.Schema<DescribeDataProvidersMessage>;
+  ),
+).annotate({
+  identifier: "DescribeDataProvidersMessage",
+}) as any as S.Schema<DescribeDataProvidersMessage>;
 export type DataProviderList = DataProvider[];
 export const DataProviderList = /*@__PURE__*/ S.Array(
   DataProvider.pipe(T.XmlName("DataProvider")).annotate({
@@ -3881,15 +3957,14 @@ export interface DescribeDataProvidersResponse {
   Marker?: string;
   DataProviders?: DataProvider[];
 }
-export const DescribeDataProvidersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      DataProviders: S.optional(DataProviderList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDataProvidersResponse",
-  }) as any as S.Schema<DescribeDataProvidersResponse>;
+export const DescribeDataProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    DataProviders: S.optional(DataProviderList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDataProvidersResponse",
+}) as any as S.Schema<DescribeDataProvidersResponse>;
 export interface DescribeEndpointsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
@@ -3935,26 +4010,25 @@ export interface DescribeEndpointSettingsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEndpointSettingsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EngineName: S.String,
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEndpointSettingsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EngineName: S.String,
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEndpointSettingsMessage",
-  }) as any as S.Schema<DescribeEndpointSettingsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEndpointSettingsMessage",
+}) as any as S.Schema<DescribeEndpointSettingsMessage>;
 export type EndpointSettingTypeValue =
   | "string"
   | "boolean"
@@ -3962,6 +4036,7 @@ export type EndpointSettingTypeValue =
   | "enum"
   | (string & {});
 export const EndpointSettingTypeValue = /*@__PURE__*/ S.String;
+
 export type EndpointSettingEnumValues = string[];
 export const EndpointSettingEnumValues = /*@__PURE__*/ S.Array(S.String);
 export interface EndpointSetting {
@@ -3996,40 +4071,38 @@ export interface DescribeEndpointSettingsResponse {
   Marker?: string;
   EndpointSettings?: EndpointSetting[];
 }
-export const DescribeEndpointSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      EndpointSettings: S.optional(EndpointSettingsList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeEndpointSettingsResponse",
-  }) as any as S.Schema<DescribeEndpointSettingsResponse>;
+export const DescribeEndpointSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    EndpointSettings: S.optional(EndpointSettingsList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeEndpointSettingsResponse",
+}) as any as S.Schema<DescribeEndpointSettingsResponse>;
 export interface DescribeEndpointTypesMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEndpointTypesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEndpointTypesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEndpointTypesMessage",
-  }) as any as S.Schema<DescribeEndpointTypesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEndpointTypesMessage",
+}) as any as S.Schema<DescribeEndpointTypesMessage>;
 export interface SupportedEndpointType {
   EngineName?: string;
   SupportsCDC?: boolean;
@@ -4058,40 +4131,39 @@ export interface DescribeEndpointTypesResponse {
   Marker?: string;
   SupportedEndpointTypes?: SupportedEndpointType[];
 }
-export const DescribeEndpointTypesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      SupportedEndpointTypes: S.optional(SupportedEndpointTypeList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeEndpointTypesResponse",
-  }) as any as S.Schema<DescribeEndpointTypesResponse>;
+export const DescribeEndpointTypesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    SupportedEndpointTypes: S.optional(SupportedEndpointTypeList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeEndpointTypesResponse",
+}) as any as S.Schema<DescribeEndpointTypesResponse>;
 export interface DescribeEngineVersionsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEngineVersionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEngineVersionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEngineVersionsMessage",
-  }) as any as S.Schema<DescribeEngineVersionsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEngineVersionsMessage",
+}) as any as S.Schema<DescribeEngineVersionsMessage>;
 export type ReleaseStatusValues = "beta" | "prod" | (string & {});
 export const ReleaseStatusValues = /*@__PURE__*/ S.String;
+
 export type AvailableUpgradesList = string[];
 export const AvailableUpgradesList = /*@__PURE__*/ S.Array(S.String);
 export interface EngineVersion {
@@ -4132,38 +4204,36 @@ export interface DescribeEngineVersionsResponse {
   EngineVersions?: EngineVersion[];
   Marker?: string;
 }
-export const DescribeEngineVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EngineVersions: S.optional(EngineVersionList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeEngineVersionsResponse",
-  }) as any as S.Schema<DescribeEngineVersionsResponse>;
+export const DescribeEngineVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EngineVersions: S.optional(EngineVersionList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeEngineVersionsResponse",
+}) as any as S.Schema<DescribeEngineVersionsResponse>;
 export interface DescribeEventCategoriesMessage {
   SourceType?: string;
   Filters?: Filter[];
 }
-export const DescribeEventCategoriesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SourceType: S.optional(S.String),
-      Filters: S.optional(FilterList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceType: S.optional(S.String),
+    Filters: S.optional(FilterList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEventCategoriesMessage",
-  }) as any as S.Schema<DescribeEventCategoriesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEventCategoriesMessage",
+}) as any as S.Schema<DescribeEventCategoriesMessage>;
 export interface EventCategoryGroup {
   SourceType?: string;
   EventCategories?: string[];
@@ -4185,16 +4255,16 @@ export const EventCategoryGroupList = /*@__PURE__*/ S.Array(
 export interface DescribeEventCategoriesResponse {
   EventCategoryGroupList?: EventCategoryGroup[];
 }
-export const DescribeEventCategoriesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventCategoryGroupList: S.optional(EventCategoryGroupList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeEventCategoriesResponse",
-  }) as any as S.Schema<DescribeEventCategoriesResponse>;
+export const DescribeEventCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventCategoryGroupList: S.optional(EventCategoryGroupList) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "DescribeEventCategoriesResponse",
+}) as any as S.Schema<DescribeEventCategoriesResponse>;
 export type SourceType = "replication-instance" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -4269,27 +4339,26 @@ export interface DescribeEventSubscriptionsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEventSubscriptionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubscriptionName: S.optional(S.String),
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubscriptionName: S.optional(S.String),
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEventSubscriptionsMessage",
-  }) as any as S.Schema<DescribeEventSubscriptionsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEventSubscriptionsMessage",
+}) as any as S.Schema<DescribeEventSubscriptionsMessage>;
 export type EventSubscriptionsList = EventSubscription[];
 export const EventSubscriptionsList = /*@__PURE__*/ S.Array(
   EventSubscription.pipe(T.XmlName("EventSubscription")).annotate({
@@ -4300,23 +4369,22 @@ export interface DescribeEventSubscriptionsResponse {
   Marker?: string;
   EventSubscriptionsList?: EventSubscription[];
 }
-export const DescribeEventSubscriptionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      EventSubscriptionsList: S.optional(EventSubscriptionsList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeEventSubscriptionsResponse",
-  }) as any as S.Schema<DescribeEventSubscriptionsResponse>;
+export const DescribeEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    EventSubscriptionsList: S.optional(EventSubscriptionsList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeEventSubscriptionsResponse",
+}) as any as S.Schema<DescribeEventSubscriptionsResponse>;
 export interface DescribeExtensionPackAssociationsMessage {
   MigrationProjectIdentifier: string;
   Filters?: Filter[];
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeExtensionPackAssociationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeExtensionPackAssociationsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       Filters: S.optional(FilterList),
@@ -4333,9 +4401,9 @@ export const DescribeExtensionPackAssociationsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeExtensionPackAssociationsMessage",
-  }) as any as S.Schema<DescribeExtensionPackAssociationsMessage>;
+).annotate({
+  identifier: "DescribeExtensionPackAssociationsMessage",
+}) as any as S.Schema<DescribeExtensionPackAssociationsMessage>;
 export type SchemaConversionRequestList = SchemaConversionRequest[];
 export const SchemaConversionRequestList = /*@__PURE__*/ S.Array(
   SchemaConversionRequest,
@@ -4358,8 +4426,8 @@ export interface DescribeFleetAdvisorCollectorsRequest {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeFleetAdvisorCollectorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeFleetAdvisorCollectorsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Filters: S.optional(FilterList),
       MaxRecords: S.optional(S.Number),
@@ -4375,17 +4443,19 @@ export const DescribeFleetAdvisorCollectorsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorCollectorsRequest",
-  }) as any as S.Schema<DescribeFleetAdvisorCollectorsRequest>;
+).annotate({
+  identifier: "DescribeFleetAdvisorCollectorsRequest",
+}) as any as S.Schema<DescribeFleetAdvisorCollectorsRequest>;
 export type VersionStatus =
   | "UP_TO_DATE"
   | "OUTDATED"
   | "UNSUPPORTED"
   | (string & {});
 export const VersionStatus = /*@__PURE__*/ S.String;
+
 export type CollectorStatus = "UNREGISTERED" | "ACTIVE" | (string & {});
 export const CollectorStatus = /*@__PURE__*/ S.String;
+
 export interface CollectorHealthCheck {
   CollectorStatus?: CollectorStatus;
   LocalCollectorS3Access?: boolean;
@@ -4452,22 +4522,22 @@ export interface DescribeFleetAdvisorCollectorsResponse {
   Collectors?: CollectorResponse[];
   NextToken?: string;
 }
-export const DescribeFleetAdvisorCollectorsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeFleetAdvisorCollectorsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Collectors: S.optional(CollectorResponses),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorCollectorsResponse",
-  }) as any as S.Schema<DescribeFleetAdvisorCollectorsResponse>;
+).annotate({
+  identifier: "DescribeFleetAdvisorCollectorsResponse",
+}) as any as S.Schema<DescribeFleetAdvisorCollectorsResponse>;
 export interface DescribeFleetAdvisorDatabasesRequest {
   Filters?: Filter[];
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeFleetAdvisorDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeFleetAdvisorDatabasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Filters: S.optional(FilterList),
       MaxRecords: S.optional(S.Number),
@@ -4483,9 +4553,9 @@ export const DescribeFleetAdvisorDatabasesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorDatabasesRequest",
-  }) as any as S.Schema<DescribeFleetAdvisorDatabasesRequest>;
+).annotate({
+  identifier: "DescribeFleetAdvisorDatabasesRequest",
+}) as any as S.Schema<DescribeFleetAdvisorDatabasesRequest>;
 export interface ServerShortInfoResponse {
   ServerId?: string;
   IpAddress?: string;
@@ -4509,8 +4579,8 @@ export interface DatabaseInstanceSoftwareDetailsResponse {
   OsArchitecture?: number;
   Tooltip?: string;
 }
-export const DatabaseInstanceSoftwareDetailsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DatabaseInstanceSoftwareDetailsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Engine: S.optional(S.String),
       EngineVersion: S.optional(S.String),
@@ -4520,9 +4590,9 @@ export const DatabaseInstanceSoftwareDetailsResponse =
       OsArchitecture: S.optional(S.Number),
       Tooltip: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DatabaseInstanceSoftwareDetailsResponse",
-  }) as any as S.Schema<DatabaseInstanceSoftwareDetailsResponse>;
+).annotate({
+  identifier: "DatabaseInstanceSoftwareDetailsResponse",
+}) as any as S.Schema<DatabaseInstanceSoftwareDetailsResponse>;
 export interface CollectorShortInfoResponse {
   CollectorReferencedId?: string;
   CollectorName?: string;
@@ -4565,21 +4635,21 @@ export interface DescribeFleetAdvisorDatabasesResponse {
   Databases?: DatabaseResponse[];
   NextToken?: string;
 }
-export const DescribeFleetAdvisorDatabasesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeFleetAdvisorDatabasesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Databases: S.optional(DatabaseList),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorDatabasesResponse",
-  }) as any as S.Schema<DescribeFleetAdvisorDatabasesResponse>;
+).annotate({
+  identifier: "DescribeFleetAdvisorDatabasesResponse",
+}) as any as S.Schema<DescribeFleetAdvisorDatabasesResponse>;
 export interface DescribeFleetAdvisorLsaAnalysisRequest {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeFleetAdvisorLsaAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeFleetAdvisorLsaAnalysisRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MaxRecords: S.optional(S.Number),
       NextToken: S.optional(S.String),
@@ -4594,39 +4664,39 @@ export const DescribeFleetAdvisorLsaAnalysisRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorLsaAnalysisRequest",
-  }) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisRequest>;
+).annotate({
+  identifier: "DescribeFleetAdvisorLsaAnalysisRequest",
+}) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisRequest>;
 export interface FleetAdvisorLsaAnalysisResponse {
   LsaAnalysisId?: string;
   Status?: string;
 }
-export const FleetAdvisorLsaAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LsaAnalysisId: S.optional(S.String),
-      Status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FleetAdvisorLsaAnalysisResponse",
-  }) as any as S.Schema<FleetAdvisorLsaAnalysisResponse>;
+export const FleetAdvisorLsaAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LsaAnalysisId: S.optional(S.String),
+    Status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FleetAdvisorLsaAnalysisResponse",
+}) as any as S.Schema<FleetAdvisorLsaAnalysisResponse>;
 export type FleetAdvisorLsaAnalysisResponseList =
   FleetAdvisorLsaAnalysisResponse[];
-export const FleetAdvisorLsaAnalysisResponseList =
-  /*@__PURE__*/ S.Array(FleetAdvisorLsaAnalysisResponse);
+export const FleetAdvisorLsaAnalysisResponseList = /*@__PURE__*/ S.Array(
+  FleetAdvisorLsaAnalysisResponse,
+);
 export interface DescribeFleetAdvisorLsaAnalysisResponse {
   Analysis?: FleetAdvisorLsaAnalysisResponse[];
   NextToken?: string;
 }
-export const DescribeFleetAdvisorLsaAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeFleetAdvisorLsaAnalysisResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Analysis: S.optional(FleetAdvisorLsaAnalysisResponseList),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorLsaAnalysisResponse",
-  }) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisResponse>;
+).annotate({
+  identifier: "DescribeFleetAdvisorLsaAnalysisResponse",
+}) as any as S.Schema<DescribeFleetAdvisorLsaAnalysisResponse>;
 export interface DescribeFleetAdvisorSchemaObjectSummaryRequest {
   Filters?: Filter[];
   MaxRecords?: number;
@@ -4659,18 +4729,17 @@ export interface FleetAdvisorSchemaObjectResponse {
   CodeLineCount?: number;
   CodeSize?: number;
 }
-export const FleetAdvisorSchemaObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaId: S.optional(S.String),
-      ObjectType: S.optional(S.String),
-      NumberOfObjects: S.optional(S.Number),
-      CodeLineCount: S.optional(S.Number),
-      CodeSize: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "FleetAdvisorSchemaObjectResponse",
-  }) as any as S.Schema<FleetAdvisorSchemaObjectResponse>;
+export const FleetAdvisorSchemaObjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaId: S.optional(S.String),
+    ObjectType: S.optional(S.String),
+    NumberOfObjects: S.optional(S.Number),
+    CodeLineCount: S.optional(S.Number),
+    CodeSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "FleetAdvisorSchemaObjectResponse",
+}) as any as S.Schema<FleetAdvisorSchemaObjectResponse>;
 export type FleetAdvisorSchemaObjectList = FleetAdvisorSchemaObjectResponse[];
 export const FleetAdvisorSchemaObjectList = /*@__PURE__*/ S.Array(
   FleetAdvisorSchemaObjectResponse,
@@ -4693,26 +4762,25 @@ export interface DescribeFleetAdvisorSchemasRequest {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeFleetAdvisorSchemasRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeFleetAdvisorSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorSchemasRequest",
-  }) as any as S.Schema<DescribeFleetAdvisorSchemasRequest>;
+  ),
+).annotate({
+  identifier: "DescribeFleetAdvisorSchemasRequest",
+}) as any as S.Schema<DescribeFleetAdvisorSchemasRequest>;
 export interface DatabaseShortInfoResponse {
   DatabaseId?: string;
   DatabaseName?: string;
@@ -4777,40 +4845,38 @@ export interface DescribeFleetAdvisorSchemasResponse {
   FleetAdvisorSchemas?: SchemaResponse[];
   NextToken?: string;
 }
-export const DescribeFleetAdvisorSchemasResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FleetAdvisorSchemas: S.optional(FleetAdvisorSchemaList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeFleetAdvisorSchemasResponse",
-  }) as any as S.Schema<DescribeFleetAdvisorSchemasResponse>;
+export const DescribeFleetAdvisorSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FleetAdvisorSchemas: S.optional(FleetAdvisorSchemaList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeFleetAdvisorSchemasResponse",
+}) as any as S.Schema<DescribeFleetAdvisorSchemasResponse>;
 export interface DescribeInstanceProfilesMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeInstanceProfilesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInstanceProfilesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInstanceProfilesMessage",
-  }) as any as S.Schema<DescribeInstanceProfilesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeInstanceProfilesMessage",
+}) as any as S.Schema<DescribeInstanceProfilesMessage>;
 export type InstanceProfileList = InstanceProfile[];
 export const InstanceProfileList = /*@__PURE__*/ S.Array(
   InstanceProfile.pipe(T.XmlName("InstanceProfile")).annotate({
@@ -4821,42 +4887,41 @@ export interface DescribeInstanceProfilesResponse {
   Marker?: string;
   InstanceProfiles?: InstanceProfile[];
 }
-export const DescribeInstanceProfilesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      InstanceProfiles: S.optional(InstanceProfileList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeInstanceProfilesResponse",
-  }) as any as S.Schema<DescribeInstanceProfilesResponse>;
+export const DescribeInstanceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    InstanceProfiles: S.optional(InstanceProfileList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeInstanceProfilesResponse",
+}) as any as S.Schema<DescribeInstanceProfilesResponse>;
 export type OriginTypeValue = "SOURCE" | "TARGET" | (string & {});
 export const OriginTypeValue = /*@__PURE__*/ S.String;
+
 export interface DescribeMetadataModelMessage {
   SelectionRules: string;
   MigrationProjectIdentifier: string;
   Origin: OriginTypeValue;
 }
-export const DescribeMetadataModelMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SelectionRules: S.String,
-      MigrationProjectIdentifier: S.String,
-      Origin: OriginTypeValue,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeMetadataModelMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SelectionRules: S.String,
+    MigrationProjectIdentifier: S.String,
+    Origin: OriginTypeValue,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeMetadataModelMessage",
-  }) as any as S.Schema<DescribeMetadataModelMessage>;
+  ),
+).annotate({
+  identifier: "DescribeMetadataModelMessage",
+}) as any as S.Schema<DescribeMetadataModelMessage>;
 export interface MetadataModelReference {
   MetadataModelName?: string;
   SelectionRules?: string;
@@ -4879,25 +4944,24 @@ export interface DescribeMetadataModelResponse {
   TargetMetadataModels?: MetadataModelReference[];
   Definition?: string;
 }
-export const DescribeMetadataModelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MetadataModelName: S.optional(S.String),
-      MetadataModelType: S.optional(S.String),
-      TargetMetadataModels: S.optional(MetadataModelReferenceList),
-      Definition: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMetadataModelResponse",
-  }) as any as S.Schema<DescribeMetadataModelResponse>;
+export const DescribeMetadataModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MetadataModelName: S.optional(S.String),
+    MetadataModelType: S.optional(S.String),
+    TargetMetadataModels: S.optional(MetadataModelReferenceList),
+    Definition: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeMetadataModelResponse",
+}) as any as S.Schema<DescribeMetadataModelResponse>;
 export interface DescribeMetadataModelAssessmentsMessage {
   MigrationProjectIdentifier: string;
   Filters?: Filter[];
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeMetadataModelAssessmentsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelAssessmentsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       Filters: S.optional(FilterList),
@@ -4914,22 +4978,22 @@ export const DescribeMetadataModelAssessmentsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMetadataModelAssessmentsMessage",
-  }) as any as S.Schema<DescribeMetadataModelAssessmentsMessage>;
+).annotate({
+  identifier: "DescribeMetadataModelAssessmentsMessage",
+}) as any as S.Schema<DescribeMetadataModelAssessmentsMessage>;
 export interface DescribeMetadataModelAssessmentsResponse {
   Marker?: string;
   Requests?: SchemaConversionRequest[];
 }
-export const DescribeMetadataModelAssessmentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelAssessmentsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       Requests: S.optional(SchemaConversionRequestList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMetadataModelAssessmentsResponse",
-  }) as any as S.Schema<DescribeMetadataModelAssessmentsResponse>;
+).annotate({
+  identifier: "DescribeMetadataModelAssessmentsResponse",
+}) as any as S.Schema<DescribeMetadataModelAssessmentsResponse>;
 export interface DescribeMetadataModelChildrenMessage {
   SelectionRules: string;
   MigrationProjectIdentifier: string;
@@ -4937,8 +5001,8 @@ export interface DescribeMetadataModelChildrenMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeMetadataModelChildrenMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelChildrenMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       SelectionRules: S.String,
       MigrationProjectIdentifier: S.String,
@@ -4956,30 +5020,30 @@ export const DescribeMetadataModelChildrenMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMetadataModelChildrenMessage",
-  }) as any as S.Schema<DescribeMetadataModelChildrenMessage>;
+).annotate({
+  identifier: "DescribeMetadataModelChildrenMessage",
+}) as any as S.Schema<DescribeMetadataModelChildrenMessage>;
 export interface DescribeMetadataModelChildrenResponse {
   Marker?: string;
   MetadataModelChildren?: MetadataModelReference[];
 }
-export const DescribeMetadataModelChildrenResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelChildrenResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       MetadataModelChildren: S.optional(MetadataModelReferenceList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMetadataModelChildrenResponse",
-  }) as any as S.Schema<DescribeMetadataModelChildrenResponse>;
+).annotate({
+  identifier: "DescribeMetadataModelChildrenResponse",
+}) as any as S.Schema<DescribeMetadataModelChildrenResponse>;
 export interface DescribeMetadataModelConversionsMessage {
   MigrationProjectIdentifier: string;
   Filters?: Filter[];
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeMetadataModelConversionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelConversionsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       Filters: S.optional(FilterList),
@@ -4996,30 +5060,30 @@ export const DescribeMetadataModelConversionsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMetadataModelConversionsMessage",
-  }) as any as S.Schema<DescribeMetadataModelConversionsMessage>;
+).annotate({
+  identifier: "DescribeMetadataModelConversionsMessage",
+}) as any as S.Schema<DescribeMetadataModelConversionsMessage>;
 export interface DescribeMetadataModelConversionsResponse {
   Marker?: string;
   Requests?: SchemaConversionRequest[];
 }
-export const DescribeMetadataModelConversionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelConversionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       Requests: S.optional(SchemaConversionRequestList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMetadataModelConversionsResponse",
-  }) as any as S.Schema<DescribeMetadataModelConversionsResponse>;
+).annotate({
+  identifier: "DescribeMetadataModelConversionsResponse",
+}) as any as S.Schema<DescribeMetadataModelConversionsResponse>;
 export interface DescribeMetadataModelCreationsMessage {
   Filters?: Filter[];
   Marker?: string;
   MaxRecords?: number;
   MigrationProjectIdentifier: string;
 }
-export const DescribeMetadataModelCreationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelCreationsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Filters: S.optional(FilterList),
       Marker: S.optional(S.String),
@@ -5036,22 +5100,22 @@ export const DescribeMetadataModelCreationsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeMetadataModelCreationsMessage",
-  }) as any as S.Schema<DescribeMetadataModelCreationsMessage>;
+).annotate({
+  identifier: "DescribeMetadataModelCreationsMessage",
+}) as any as S.Schema<DescribeMetadataModelCreationsMessage>;
 export interface DescribeMetadataModelCreationsResponse {
   Marker?: string;
   Requests?: SchemaConversionRequest[];
 }
-export const DescribeMetadataModelCreationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelCreationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       Requests: S.optional(SchemaConversionRequestList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMetadataModelCreationsResponse",
-  }) as any as S.Schema<DescribeMetadataModelCreationsResponse>;
+).annotate({
+  identifier: "DescribeMetadataModelCreationsResponse",
+}) as any as S.Schema<DescribeMetadataModelCreationsResponse>;
 export interface DescribeMetadataModelExportsAsScriptMessage {
   MigrationProjectIdentifier: string;
   Filters?: Filter[];
@@ -5138,65 +5202,63 @@ export interface DescribeMetadataModelImportsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeMetadataModelImportsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      Filters: S.optional(FilterList),
-      Marker: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeMetadataModelImportsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    Filters: S.optional(FilterList),
+    Marker: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeMetadataModelImportsMessage",
-  }) as any as S.Schema<DescribeMetadataModelImportsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeMetadataModelImportsMessage",
+}) as any as S.Schema<DescribeMetadataModelImportsMessage>;
 export interface DescribeMetadataModelImportsResponse {
   Marker?: string;
   Requests?: SchemaConversionRequest[];
 }
-export const DescribeMetadataModelImportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeMetadataModelImportsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       Requests: S.optional(SchemaConversionRequestList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMetadataModelImportsResponse",
-  }) as any as S.Schema<DescribeMetadataModelImportsResponse>;
+).annotate({
+  identifier: "DescribeMetadataModelImportsResponse",
+}) as any as S.Schema<DescribeMetadataModelImportsResponse>;
 export interface DescribeMigrationProjectsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeMigrationProjectsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeMigrationProjectsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeMigrationProjectsMessage",
-  }) as any as S.Schema<DescribeMigrationProjectsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeMigrationProjectsMessage",
+}) as any as S.Schema<DescribeMigrationProjectsMessage>;
 export type MigrationProjectList = MigrationProject[];
 export const MigrationProjectList = /*@__PURE__*/ S.Array(
   MigrationProject.pipe(T.XmlName("MigrationProject")).annotate({
@@ -5207,15 +5269,14 @@ export interface DescribeMigrationProjectsResponse {
   Marker?: string;
   MigrationProjects?: MigrationProject[];
 }
-export const DescribeMigrationProjectsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      MigrationProjects: S.optional(MigrationProjectList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeMigrationProjectsResponse",
-  }) as any as S.Schema<DescribeMigrationProjectsResponse>;
+export const DescribeMigrationProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    MigrationProjects: S.optional(MigrationProjectList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeMigrationProjectsResponse",
+}) as any as S.Schema<DescribeMigrationProjectsResponse>;
 export interface DescribeOrderableReplicationInstancesMessage {
   MaxRecords?: number;
   Marker?: string;
@@ -5252,29 +5313,27 @@ export interface OrderableReplicationInstance {
   AvailabilityZones?: string[];
   ReleaseStatus?: ReleaseStatusValues;
 }
-export const OrderableReplicationInstance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EngineVersion: S.optional(S.String),
-      ReplicationInstanceClass: S.optional(S.String),
-      StorageType: S.optional(S.String),
-      MinAllocatedStorage: S.optional(S.Number),
-      MaxAllocatedStorage: S.optional(S.Number),
-      DefaultAllocatedStorage: S.optional(S.Number),
-      IncludedAllocatedStorage: S.optional(S.Number),
-      AvailabilityZones: S.optional(AvailabilityZonesList),
-      ReleaseStatus: S.optional(ReleaseStatusValues),
-    }),
-  ).annotate({
-    identifier: "OrderableReplicationInstance",
-  }) as any as S.Schema<OrderableReplicationInstance>;
+export const OrderableReplicationInstance = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EngineVersion: S.optional(S.String),
+    ReplicationInstanceClass: S.optional(S.String),
+    StorageType: S.optional(S.String),
+    MinAllocatedStorage: S.optional(S.Number),
+    MaxAllocatedStorage: S.optional(S.Number),
+    DefaultAllocatedStorage: S.optional(S.Number),
+    IncludedAllocatedStorage: S.optional(S.Number),
+    AvailabilityZones: S.optional(AvailabilityZonesList),
+    ReleaseStatus: S.optional(ReleaseStatusValues),
+  }),
+).annotate({
+  identifier: "OrderableReplicationInstance",
+}) as any as S.Schema<OrderableReplicationInstance>;
 export type OrderableReplicationInstanceList = OrderableReplicationInstance[];
-export const OrderableReplicationInstanceList =
-  /*@__PURE__*/ S.Array(
-    OrderableReplicationInstance.pipe(
-      T.XmlName("OrderableReplicationInstance"),
-    ).annotate({ identifier: "OrderableReplicationInstance" }),
-  );
+export const OrderableReplicationInstanceList = /*@__PURE__*/ S.Array(
+  OrderableReplicationInstance.pipe(
+    T.XmlName("OrderableReplicationInstance"),
+  ).annotate({ identifier: "OrderableReplicationInstance" }),
+);
 export interface DescribeOrderableReplicationInstancesResponse {
   OrderableReplicationInstances?: OrderableReplicationInstance[];
   Marker?: string;
@@ -5296,8 +5355,8 @@ export interface DescribePendingMaintenanceActionsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribePendingMaintenanceActionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribePendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReplicationInstanceArn: S.optional(S.String),
       Filters: S.optional(FilterList),
@@ -5314,9 +5373,9 @@ export const DescribePendingMaintenanceActionsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribePendingMaintenanceActionsMessage",
-  }) as any as S.Schema<DescribePendingMaintenanceActionsMessage>;
+).annotate({
+  identifier: "DescribePendingMaintenanceActionsMessage",
+}) as any as S.Schema<DescribePendingMaintenanceActionsMessage>;
 export type PendingMaintenanceActions = ResourcePendingMaintenanceActions[];
 export const PendingMaintenanceActions = /*@__PURE__*/ S.Array(
   ResourcePendingMaintenanceActions.pipe(
@@ -5341,8 +5400,8 @@ export interface DescribeRecommendationLimitationsRequest {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeRecommendationLimitationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeRecommendationLimitationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Filters: S.optional(FilterList),
       MaxRecords: S.optional(S.Number),
@@ -5358,9 +5417,9 @@ export const DescribeRecommendationLimitationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeRecommendationLimitationsRequest",
-  }) as any as S.Schema<DescribeRecommendationLimitationsRequest>;
+).annotate({
+  identifier: "DescribeRecommendationLimitationsRequest",
+}) as any as S.Schema<DescribeRecommendationLimitationsRequest>;
 export interface Limitation {
   DatabaseId?: string;
   EngineName?: string;
@@ -5399,26 +5458,25 @@ export interface DescribeRecommendationsRequest {
   MaxRecords?: number;
   NextToken?: string;
 }
-export const DescribeRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeRecommendationsRequest",
-  }) as any as S.Schema<DescribeRecommendationsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeRecommendationsRequest",
+}) as any as S.Schema<DescribeRecommendationsRequest>;
 export interface RdsRequirements {
   EngineEdition?: string;
   InstanceVcpu?: number;
@@ -5513,40 +5571,39 @@ export interface DescribeRecommendationsResponse {
   NextToken?: string;
   Recommendations?: Recommendation[];
 }
-export const DescribeRecommendationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Recommendations: S.optional(RecommendationList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeRecommendationsResponse",
-  }) as any as S.Schema<DescribeRecommendationsResponse>;
+export const DescribeRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Recommendations: S.optional(RecommendationList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeRecommendationsResponse",
+}) as any as S.Schema<DescribeRecommendationsResponse>;
 export interface DescribeRefreshSchemasStatusMessage {
   EndpointArn: string;
 }
-export const DescribeRefreshSchemasStatusMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EndpointArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeRefreshSchemasStatusMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EndpointArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeRefreshSchemasStatusMessage",
-  }) as any as S.Schema<DescribeRefreshSchemasStatusMessage>;
+  ),
+).annotate({
+  identifier: "DescribeRefreshSchemasStatusMessage",
+}) as any as S.Schema<DescribeRefreshSchemasStatusMessage>;
 export type RefreshSchemasStatusTypeValue =
   | "successful"
   | "failed"
   | "refreshing"
   | (string & {});
 export const RefreshSchemasStatusTypeValue = /*@__PURE__*/ S.String;
+
 export interface RefreshSchemasStatus {
   EndpointArn?: string;
   ReplicationInstanceArn?: string;
@@ -5570,39 +5627,38 @@ export const RefreshSchemasStatus = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeRefreshSchemasStatusResponse {
   RefreshSchemasStatus?: RefreshSchemasStatus;
 }
-export const DescribeRefreshSchemasStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeRefreshSchemasStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ RefreshSchemasStatus: S.optional(RefreshSchemasStatus) }).pipe(
       ns,
     ),
-  ).annotate({
-    identifier: "DescribeRefreshSchemasStatusResponse",
-  }) as any as S.Schema<DescribeRefreshSchemasStatusResponse>;
+).annotate({
+  identifier: "DescribeRefreshSchemasStatusResponse",
+}) as any as S.Schema<DescribeRefreshSchemasStatusResponse>;
 export interface DescribeReplicationConfigsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeReplicationConfigsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReplicationConfigsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReplicationConfigsMessage",
-  }) as any as S.Schema<DescribeReplicationConfigsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeReplicationConfigsMessage",
+}) as any as S.Schema<DescribeReplicationConfigsMessage>;
 export type ReplicationConfigList = ReplicationConfig[];
 export const ReplicationConfigList = /*@__PURE__*/ S.Array(
   ReplicationConfig.pipe(T.XmlName("ReplicationConfig")).annotate({
@@ -5613,40 +5669,38 @@ export interface DescribeReplicationConfigsResponse {
   Marker?: string;
   ReplicationConfigs?: ReplicationConfig[];
 }
-export const DescribeReplicationConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      ReplicationConfigs: S.optional(ReplicationConfigList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReplicationConfigsResponse",
-  }) as any as S.Schema<DescribeReplicationConfigsResponse>;
+export const DescribeReplicationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    ReplicationConfigs: S.optional(ReplicationConfigList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeReplicationConfigsResponse",
+}) as any as S.Schema<DescribeReplicationConfigsResponse>;
 export interface DescribeReplicationInstancesMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeReplicationInstancesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReplicationInstancesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReplicationInstancesMessage",
-  }) as any as S.Schema<DescribeReplicationInstancesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeReplicationInstancesMessage",
+}) as any as S.Schema<DescribeReplicationInstancesMessage>;
 export type ReplicationInstanceList = ReplicationInstance[];
 export const ReplicationInstanceList = /*@__PURE__*/ S.Array(
   ReplicationInstance.pipe(T.XmlName("ReplicationInstance")).annotate({
@@ -5657,15 +5711,15 @@ export interface DescribeReplicationInstancesResponse {
   Marker?: string;
   ReplicationInstances?: ReplicationInstance[];
 }
-export const DescribeReplicationInstancesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeReplicationInstancesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       ReplicationInstances: S.optional(ReplicationInstanceList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReplicationInstancesResponse",
-  }) as any as S.Schema<DescribeReplicationInstancesResponse>;
+).annotate({
+  identifier: "DescribeReplicationInstancesResponse",
+}) as any as S.Schema<DescribeReplicationInstancesResponse>;
 export interface DescribeReplicationInstanceTaskLogsMessage {
   ReplicationInstanceArn: string;
   MaxRecords?: number;
@@ -5706,8 +5760,9 @@ export const ReplicationInstanceTaskLog = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationInstanceTaskLog",
 }) as any as S.Schema<ReplicationInstanceTaskLog>;
 export type ReplicationInstanceTaskLogsList = ReplicationInstanceTaskLog[];
-export const ReplicationInstanceTaskLogsList =
-  /*@__PURE__*/ S.Array(ReplicationInstanceTaskLog);
+export const ReplicationInstanceTaskLogsList = /*@__PURE__*/ S.Array(
+  ReplicationInstanceTaskLog,
+);
 export interface DescribeReplicationInstanceTaskLogsResponse {
   ReplicationInstanceArn?: string;
   ReplicationInstanceTaskLogs?: ReplicationInstanceTaskLog[];
@@ -5728,26 +5783,25 @@ export interface DescribeReplicationsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeReplicationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReplicationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReplicationsMessage",
-  }) as any as S.Schema<DescribeReplicationsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeReplicationsMessage",
+}) as any as S.Schema<DescribeReplicationsMessage>;
 export interface ProvisionData {
   ProvisionState?: string;
   ProvisionedCapacityUnits?: number;
@@ -5783,29 +5837,29 @@ export interface PremigrationAssessmentStatus {
   ResultKmsKeyArn?: string;
   ResultStatistic?: ReplicationTaskAssessmentRunResultStatistic;
 }
-export const PremigrationAssessmentStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PremigrationAssessmentRunArn: S.optional(S.String),
-      FailOnAssessmentFailure: S.optional(S.Boolean),
-      Status: S.optional(S.String),
-      PremigrationAssessmentRunCreationDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      AssessmentProgress: S.optional(ReplicationTaskAssessmentRunProgress),
-      LastFailureMessage: S.optional(S.String),
-      ResultLocationBucket: S.optional(S.String),
-      ResultLocationFolder: S.optional(S.String),
-      ResultEncryptionMode: S.optional(S.String),
-      ResultKmsKeyArn: S.optional(S.String),
-      ResultStatistic: S.optional(ReplicationTaskAssessmentRunResultStatistic),
-    }),
-  ).annotate({
-    identifier: "PremigrationAssessmentStatus",
-  }) as any as S.Schema<PremigrationAssessmentStatus>;
+export const PremigrationAssessmentStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PremigrationAssessmentRunArn: S.optional(S.String),
+    FailOnAssessmentFailure: S.optional(S.Boolean),
+    Status: S.optional(S.String),
+    PremigrationAssessmentRunCreationDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    AssessmentProgress: S.optional(ReplicationTaskAssessmentRunProgress),
+    LastFailureMessage: S.optional(S.String),
+    ResultLocationBucket: S.optional(S.String),
+    ResultLocationFolder: S.optional(S.String),
+    ResultEncryptionMode: S.optional(S.String),
+    ResultKmsKeyArn: S.optional(S.String),
+    ResultStatistic: S.optional(ReplicationTaskAssessmentRunResultStatistic),
+  }),
+).annotate({
+  identifier: "PremigrationAssessmentStatus",
+}) as any as S.Schema<PremigrationAssessmentStatus>;
 export type PremigrationAssessmentStatusList = PremigrationAssessmentStatus[];
-export const PremigrationAssessmentStatusList =
-  /*@__PURE__*/ S.Array(PremigrationAssessmentStatus);
+export const PremigrationAssessmentStatusList = /*@__PURE__*/ S.Array(
+  PremigrationAssessmentStatus,
+);
 export interface ReplicationStats {
   FullLoadProgressPercent?: number;
   ElapsedTimeMillis?: number;
@@ -5908,22 +5962,21 @@ export interface DescribeReplicationsResponse {
   Marker?: string;
   Replications?: Replication[];
 }
-export const DescribeReplicationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      Replications: S.optional(ReplicationList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReplicationsResponse",
-  }) as any as S.Schema<DescribeReplicationsResponse>;
+export const DescribeReplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    Replications: S.optional(ReplicationList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeReplicationsResponse",
+}) as any as S.Schema<DescribeReplicationsResponse>;
 export interface DescribeReplicationSubnetGroupsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeReplicationSubnetGroupsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeReplicationSubnetGroupsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Filters: S.optional(FilterList),
       MaxRecords: S.optional(S.Number),
@@ -5939,9 +5992,9 @@ export const DescribeReplicationSubnetGroupsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeReplicationSubnetGroupsMessage",
-  }) as any as S.Schema<DescribeReplicationSubnetGroupsMessage>;
+).annotate({
+  identifier: "DescribeReplicationSubnetGroupsMessage",
+}) as any as S.Schema<DescribeReplicationSubnetGroupsMessage>;
 export type ReplicationSubnetGroups = ReplicationSubnetGroup[];
 export const ReplicationSubnetGroups = /*@__PURE__*/ S.Array(
   ReplicationSubnetGroup.pipe(T.XmlName("ReplicationSubnetGroup")).annotate({
@@ -5952,15 +6005,15 @@ export interface DescribeReplicationSubnetGroupsResponse {
   Marker?: string;
   ReplicationSubnetGroups?: ReplicationSubnetGroup[];
 }
-export const DescribeReplicationSubnetGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeReplicationSubnetGroupsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Marker: S.optional(S.String),
       ReplicationSubnetGroups: S.optional(ReplicationSubnetGroups),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReplicationSubnetGroupsResponse",
-  }) as any as S.Schema<DescribeReplicationSubnetGroupsResponse>;
+).annotate({
+  identifier: "DescribeReplicationSubnetGroupsResponse",
+}) as any as S.Schema<DescribeReplicationSubnetGroupsResponse>;
 export interface DescribeReplicationTableStatisticsMessage {
   ReplicationConfigArn: string;
   MaxRecords?: number;
@@ -6108,30 +6161,28 @@ export interface ReplicationTaskAssessmentResult {
   AssessmentResults?: string;
   S3ObjectUrl?: string | redacted.Redacted<string>;
 }
-export const ReplicationTaskAssessmentResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskIdentifier: S.optional(S.String),
-      ReplicationTaskArn: S.optional(S.String),
-      ReplicationTaskLastAssessmentDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      AssessmentStatus: S.optional(S.String),
-      AssessmentResultsFile: S.optional(S.String),
-      AssessmentResults: S.optional(S.String),
-      S3ObjectUrl: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "ReplicationTaskAssessmentResult",
-  }) as any as S.Schema<ReplicationTaskAssessmentResult>;
+export const ReplicationTaskAssessmentResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskIdentifier: S.optional(S.String),
+    ReplicationTaskArn: S.optional(S.String),
+    ReplicationTaskLastAssessmentDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    AssessmentStatus: S.optional(S.String),
+    AssessmentResultsFile: S.optional(S.String),
+    AssessmentResults: S.optional(S.String),
+    S3ObjectUrl: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "ReplicationTaskAssessmentResult",
+}) as any as S.Schema<ReplicationTaskAssessmentResult>;
 export type ReplicationTaskAssessmentResultList =
   ReplicationTaskAssessmentResult[];
-export const ReplicationTaskAssessmentResultList =
-  /*@__PURE__*/ S.Array(
-    ReplicationTaskAssessmentResult.pipe(
-      T.XmlName("ReplicationTaskAssessmentResult"),
-    ).annotate({ identifier: "ReplicationTaskAssessmentResult" }),
-  );
+export const ReplicationTaskAssessmentResultList = /*@__PURE__*/ S.Array(
+  ReplicationTaskAssessmentResult.pipe(
+    T.XmlName("ReplicationTaskAssessmentResult"),
+  ).annotate({ identifier: "ReplicationTaskAssessmentResult" }),
+);
 export interface DescribeReplicationTaskAssessmentResultsResponse {
   Marker?: string;
   BucketName?: string;
@@ -6175,8 +6226,9 @@ export const DescribeReplicationTaskAssessmentRunsMessage =
     identifier: "DescribeReplicationTaskAssessmentRunsMessage",
   }) as any as S.Schema<DescribeReplicationTaskAssessmentRunsMessage>;
 export type ReplicationTaskAssessmentRunList = ReplicationTaskAssessmentRun[];
-export const ReplicationTaskAssessmentRunList =
-  /*@__PURE__*/ S.Array(ReplicationTaskAssessmentRun);
+export const ReplicationTaskAssessmentRunList = /*@__PURE__*/ S.Array(
+  ReplicationTaskAssessmentRun,
+);
 export interface DescribeReplicationTaskAssessmentRunsResponse {
   Marker?: string;
   ReplicationTaskAssessmentRuns?: ReplicationTaskAssessmentRun[];
@@ -6224,24 +6276,24 @@ export interface ReplicationTaskIndividualAssessment {
   Status?: string;
   ReplicationTaskIndividualAssessmentStartDate?: Date;
 }
-export const ReplicationTaskIndividualAssessment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskIndividualAssessmentArn: S.optional(S.String),
-      ReplicationTaskAssessmentRunArn: S.optional(S.String),
-      IndividualAssessmentName: S.optional(S.String),
-      Status: S.optional(S.String),
-      ReplicationTaskIndividualAssessmentStartDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ReplicationTaskIndividualAssessment",
-  }) as any as S.Schema<ReplicationTaskIndividualAssessment>;
+export const ReplicationTaskIndividualAssessment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskIndividualAssessmentArn: S.optional(S.String),
+    ReplicationTaskAssessmentRunArn: S.optional(S.String),
+    IndividualAssessmentName: S.optional(S.String),
+    Status: S.optional(S.String),
+    ReplicationTaskIndividualAssessmentStartDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "ReplicationTaskIndividualAssessment",
+}) as any as S.Schema<ReplicationTaskIndividualAssessment>;
 export type ReplicationTaskIndividualAssessmentList =
   ReplicationTaskIndividualAssessment[];
-export const ReplicationTaskIndividualAssessmentList =
-  /*@__PURE__*/ S.Array(ReplicationTaskIndividualAssessment);
+export const ReplicationTaskIndividualAssessmentList = /*@__PURE__*/ S.Array(
+  ReplicationTaskIndividualAssessment,
+);
 export interface DescribeReplicationTaskIndividualAssessmentsResponse {
   Marker?: string;
   ReplicationTaskIndividualAssessments?: ReplicationTaskIndividualAssessment[];
@@ -6263,27 +6315,26 @@ export interface DescribeReplicationTasksMessage {
   Marker?: string;
   WithoutSettings?: boolean;
 }
-export const DescribeReplicationTasksMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Filters: S.optional(FilterList),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      WithoutSettings: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReplicationTasksMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(FilterList),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    WithoutSettings: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReplicationTasksMessage",
-  }) as any as S.Schema<DescribeReplicationTasksMessage>;
+  ),
+).annotate({
+  identifier: "DescribeReplicationTasksMessage",
+}) as any as S.Schema<DescribeReplicationTasksMessage>;
 export type ReplicationTaskList = ReplicationTask[];
 export const ReplicationTaskList = /*@__PURE__*/ S.Array(
   ReplicationTask.pipe(T.XmlName("ReplicationTask")).annotate({
@@ -6294,15 +6345,14 @@ export interface DescribeReplicationTasksResponse {
   Marker?: string;
   ReplicationTasks?: ReplicationTask[];
 }
-export const DescribeReplicationTasksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      ReplicationTasks: S.optional(ReplicationTaskList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReplicationTasksResponse",
-  }) as any as S.Schema<DescribeReplicationTasksResponse>;
+export const DescribeReplicationTasksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    ReplicationTasks: S.optional(ReplicationTaskList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeReplicationTasksResponse",
+}) as any as S.Schema<DescribeReplicationTasksResponse>;
 export interface DescribeSchemasMessage {
   EndpointArn: string;
   MaxRecords?: number;
@@ -6347,27 +6397,26 @@ export interface DescribeTableStatisticsMessage {
   Marker?: string;
   Filters?: Filter[];
 }
-export const DescribeTableStatisticsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskArn: S.String,
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      Filters: S.optional(FilterList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeTableStatisticsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskArn: S.String,
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    Filters: S.optional(FilterList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeTableStatisticsMessage",
-  }) as any as S.Schema<DescribeTableStatisticsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeTableStatisticsMessage",
+}) as any as S.Schema<DescribeTableStatisticsMessage>;
 export type TableStatisticsList = TableStatistics[];
 export const TableStatisticsList = /*@__PURE__*/ S.Array(TableStatistics);
 export interface DescribeTableStatisticsResponse {
@@ -6375,18 +6424,18 @@ export interface DescribeTableStatisticsResponse {
   TableStatistics?: TableStatistics[];
   Marker?: string;
 }
-export const DescribeTableStatisticsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskArn: S.optional(S.String),
-      TableStatistics: S.optional(TableStatisticsList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeTableStatisticsResponse",
-  }) as any as S.Schema<DescribeTableStatisticsResponse>;
+export const DescribeTableStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskArn: S.optional(S.String),
+    TableStatistics: S.optional(TableStatisticsList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeTableStatisticsResponse",
+}) as any as S.Schema<DescribeTableStatisticsResponse>;
 export type AssessmentReportType = "pdf" | "csv" | (string & {});
 export const AssessmentReportType = /*@__PURE__*/ S.String;
+
 export type AssessmentReportTypesList = AssessmentReportType[];
 export const AssessmentReportTypesList =
   /*@__PURE__*/ S.Array(AssessmentReportType);
@@ -6396,8 +6445,8 @@ export interface ExportMetadataModelAssessmentMessage {
   FileName?: string;
   AssessmentReportTypes?: AssessmentReportType[];
 }
-export const ExportMetadataModelAssessmentMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const ExportMetadataModelAssessmentMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       SelectionRules: S.String,
@@ -6414,67 +6463,65 @@ export const ExportMetadataModelAssessmentMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ExportMetadataModelAssessmentMessage",
-  }) as any as S.Schema<ExportMetadataModelAssessmentMessage>;
+).annotate({
+  identifier: "ExportMetadataModelAssessmentMessage",
+}) as any as S.Schema<ExportMetadataModelAssessmentMessage>;
 export interface ExportMetadataModelAssessmentResultEntry {
   S3ObjectKey?: string;
   ObjectURL?: string;
 }
-export const ExportMetadataModelAssessmentResultEntry =
-  /*@__PURE__*/ S.suspend(() =>
+export const ExportMetadataModelAssessmentResultEntry = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       S3ObjectKey: S.optional(S.String),
       ObjectURL: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ExportMetadataModelAssessmentResultEntry",
-  }) as any as S.Schema<ExportMetadataModelAssessmentResultEntry>;
+).annotate({
+  identifier: "ExportMetadataModelAssessmentResultEntry",
+}) as any as S.Schema<ExportMetadataModelAssessmentResultEntry>;
 export interface ExportMetadataModelAssessmentResponse {
   PdfReport?: ExportMetadataModelAssessmentResultEntry;
   CsvReport?: ExportMetadataModelAssessmentResultEntry;
 }
-export const ExportMetadataModelAssessmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ExportMetadataModelAssessmentResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PdfReport: S.optional(ExportMetadataModelAssessmentResultEntry),
       CsvReport: S.optional(ExportMetadataModelAssessmentResultEntry),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ExportMetadataModelAssessmentResponse",
-  }) as any as S.Schema<ExportMetadataModelAssessmentResponse>;
+).annotate({
+  identifier: "ExportMetadataModelAssessmentResponse",
+}) as any as S.Schema<ExportMetadataModelAssessmentResponse>;
 export interface GetTargetSelectionRulesMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
 }
-export const GetTargetSelectionRulesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      SelectionRules: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTargetSelectionRulesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    SelectionRules: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTargetSelectionRulesMessage",
-  }) as any as S.Schema<GetTargetSelectionRulesMessage>;
+  ),
+).annotate({
+  identifier: "GetTargetSelectionRulesMessage",
+}) as any as S.Schema<GetTargetSelectionRulesMessage>;
 export interface GetTargetSelectionRulesResponse {
   TargetSelectionRules?: string;
 }
-export const GetTargetSelectionRulesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TargetSelectionRules: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "GetTargetSelectionRulesResponse",
-  }) as any as S.Schema<GetTargetSelectionRulesResponse>;
+export const GetTargetSelectionRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TargetSelectionRules: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "GetTargetSelectionRulesResponse",
+}) as any as S.Schema<GetTargetSelectionRulesResponse>;
 export interface ImportCertificateMessage {
   CertificateIdentifier: string;
   CertificatePem?: string | redacted.Redacted<string>;
@@ -6538,18 +6585,17 @@ export const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   TagList?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ModifyConversionConfigurationMessage {
   MigrationProjectIdentifier: string;
   ConversionConfiguration: string;
 }
-export const ModifyConversionConfigurationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const ModifyConversionConfigurationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       ConversionConfiguration: S.String,
@@ -6564,18 +6610,17 @@ export const ModifyConversionConfigurationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ModifyConversionConfigurationMessage",
-  }) as any as S.Schema<ModifyConversionConfigurationMessage>;
+).annotate({
+  identifier: "ModifyConversionConfigurationMessage",
+}) as any as S.Schema<ModifyConversionConfigurationMessage>;
 export interface ModifyConversionConfigurationResponse {
   MigrationProjectIdentifier?: string;
 }
-export const ModifyConversionConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MigrationProjectIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyConversionConfigurationResponse",
-  }) as any as S.Schema<ModifyConversionConfigurationResponse>;
+export const ModifyConversionConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ MigrationProjectIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "ModifyConversionConfigurationResponse",
+}) as any as S.Schema<ModifyConversionConfigurationResponse>;
 export interface ModifyDataMigrationMessage {
   DataMigrationIdentifier: string;
   DataMigrationName?: string;
@@ -6615,12 +6660,11 @@ export const ModifyDataMigrationMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyDataMigrationResponse {
   DataMigration?: DataMigration;
 }
-export const ModifyDataMigrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DataMigration: S.optional(DataMigration) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyDataMigrationResponse",
-  }) as any as S.Schema<ModifyDataMigrationResponse>;
+export const ModifyDataMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DataMigration: S.optional(DataMigration) }).pipe(ns),
+).annotate({
+  identifier: "ModifyDataMigrationResponse",
+}) as any as S.Schema<ModifyDataMigrationResponse>;
 export interface ModifyDataProviderMessage {
   DataProviderIdentifier: string;
   DataProviderName?: string;
@@ -6762,37 +6806,35 @@ export interface ModifyEventSubscriptionMessage {
   EventCategories?: string[];
   Enabled?: boolean;
 }
-export const ModifyEventSubscriptionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubscriptionName: S.String,
-      SnsTopicArn: S.optional(S.String),
-      SourceType: S.optional(S.String),
-      EventCategories: S.optional(EventCategoriesList),
-      Enabled: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubscriptionName: S.String,
+    SnsTopicArn: S.optional(S.String),
+    SourceType: S.optional(S.String),
+    EventCategories: S.optional(EventCategoriesList),
+    Enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyEventSubscriptionMessage",
-  }) as any as S.Schema<ModifyEventSubscriptionMessage>;
+  ),
+).annotate({
+  identifier: "ModifyEventSubscriptionMessage",
+}) as any as S.Schema<ModifyEventSubscriptionMessage>;
 export interface ModifyEventSubscriptionResponse {
   EventSubscription?: EventSubscription;
 }
-export const ModifyEventSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyEventSubscriptionResponse",
-  }) as any as S.Schema<ModifyEventSubscriptionResponse>;
+export const ModifyEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+).annotate({
+  identifier: "ModifyEventSubscriptionResponse",
+}) as any as S.Schema<ModifyEventSubscriptionResponse>;
 export interface ModifyInstanceProfileMessage {
   InstanceProfileIdentifier: string;
   AvailabilityZone?: string;
@@ -6804,41 +6846,39 @@ export interface ModifyInstanceProfileMessage {
   SubnetGroupIdentifier?: string;
   VpcSecurityGroups?: string[];
 }
-export const ModifyInstanceProfileMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstanceProfileIdentifier: S.String,
-      AvailabilityZone: S.optional(S.String),
-      KmsKeyArn: S.optional(S.String),
-      PubliclyAccessible: S.optional(S.Boolean),
-      NetworkType: S.optional(S.String),
-      InstanceProfileName: S.optional(S.String),
-      Description: S.optional(S.String),
-      SubnetGroupIdentifier: S.optional(S.String),
-      VpcSecurityGroups: S.optional(StringList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyInstanceProfileMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceProfileIdentifier: S.String,
+    AvailabilityZone: S.optional(S.String),
+    KmsKeyArn: S.optional(S.String),
+    PubliclyAccessible: S.optional(S.Boolean),
+    NetworkType: S.optional(S.String),
+    InstanceProfileName: S.optional(S.String),
+    Description: S.optional(S.String),
+    SubnetGroupIdentifier: S.optional(S.String),
+    VpcSecurityGroups: S.optional(StringList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyInstanceProfileMessage",
-  }) as any as S.Schema<ModifyInstanceProfileMessage>;
+  ),
+).annotate({
+  identifier: "ModifyInstanceProfileMessage",
+}) as any as S.Schema<ModifyInstanceProfileMessage>;
 export interface ModifyInstanceProfileResponse {
   InstanceProfile?: InstanceProfile;
 }
-export const ModifyInstanceProfileResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InstanceProfile: S.optional(InstanceProfile) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyInstanceProfileResponse",
-  }) as any as S.Schema<ModifyInstanceProfileResponse>;
+export const ModifyInstanceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InstanceProfile: S.optional(InstanceProfile) }).pipe(ns),
+).annotate({
+  identifier: "ModifyInstanceProfileResponse",
+}) as any as S.Schema<ModifyInstanceProfileResponse>;
 export interface ModifyMigrationProjectMessage {
   MigrationProjectIdentifier: string;
   MigrationProjectName?: string;
@@ -6849,46 +6889,42 @@ export interface ModifyMigrationProjectMessage {
   Description?: string;
   SchemaConversionApplicationAttributes?: SCApplicationAttributes;
 }
-export const ModifyMigrationProjectMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      MigrationProjectName: S.optional(S.String),
-      SourceDataProviderDescriptors: S.optional(
-        DataProviderDescriptorDefinitionList,
-      ),
-      TargetDataProviderDescriptors: S.optional(
-        DataProviderDescriptorDefinitionList,
-      ),
-      InstanceProfileIdentifier: S.optional(S.String),
-      TransformationRules: S.optional(S.String),
-      Description: S.optional(S.String),
-      SchemaConversionApplicationAttributes: S.optional(
-        SCApplicationAttributes,
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyMigrationProjectMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    MigrationProjectName: S.optional(S.String),
+    SourceDataProviderDescriptors: S.optional(
+      DataProviderDescriptorDefinitionList,
     ),
-  ).annotate({
-    identifier: "ModifyMigrationProjectMessage",
-  }) as any as S.Schema<ModifyMigrationProjectMessage>;
+    TargetDataProviderDescriptors: S.optional(
+      DataProviderDescriptorDefinitionList,
+    ),
+    InstanceProfileIdentifier: S.optional(S.String),
+    TransformationRules: S.optional(S.String),
+    Description: S.optional(S.String),
+    SchemaConversionApplicationAttributes: S.optional(SCApplicationAttributes),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ModifyMigrationProjectMessage",
+}) as any as S.Schema<ModifyMigrationProjectMessage>;
 export interface ModifyMigrationProjectResponse {
   MigrationProject?: MigrationProject;
 }
-export const ModifyMigrationProjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MigrationProject: S.optional(MigrationProject) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyMigrationProjectResponse",
-  }) as any as S.Schema<ModifyMigrationProjectResponse>;
+export const ModifyMigrationProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MigrationProject: S.optional(MigrationProject) }).pipe(ns),
+).annotate({
+  identifier: "ModifyMigrationProjectResponse",
+}) as any as S.Schema<ModifyMigrationProjectResponse>;
 export interface ModifyReplicationConfigMessage {
   ReplicationConfigArn: string;
   ReplicationConfigIdentifier?: string;
@@ -6900,41 +6936,39 @@ export interface ModifyReplicationConfigMessage {
   SourceEndpointArn?: string;
   TargetEndpointArn?: string;
 }
-export const ModifyReplicationConfigMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationConfigArn: S.String,
-      ReplicationConfigIdentifier: S.optional(S.String),
-      ReplicationType: S.optional(MigrationTypeValue),
-      TableMappings: S.optional(S.String),
-      ReplicationSettings: S.optional(S.String),
-      SupplementalSettings: S.optional(S.String),
-      ComputeConfig: S.optional(ComputeConfig),
-      SourceEndpointArn: S.optional(S.String),
-      TargetEndpointArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyReplicationConfigMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationConfigArn: S.String,
+    ReplicationConfigIdentifier: S.optional(S.String),
+    ReplicationType: S.optional(MigrationTypeValue),
+    TableMappings: S.optional(S.String),
+    ReplicationSettings: S.optional(S.String),
+    SupplementalSettings: S.optional(S.String),
+    ComputeConfig: S.optional(ComputeConfig),
+    SourceEndpointArn: S.optional(S.String),
+    TargetEndpointArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyReplicationConfigMessage",
-  }) as any as S.Schema<ModifyReplicationConfigMessage>;
+  ),
+).annotate({
+  identifier: "ModifyReplicationConfigMessage",
+}) as any as S.Schema<ModifyReplicationConfigMessage>;
 export interface ModifyReplicationConfigResponse {
   ReplicationConfig?: ReplicationConfig;
 }
-export const ModifyReplicationConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationConfig: S.optional(ReplicationConfig) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyReplicationConfigResponse",
-  }) as any as S.Schema<ModifyReplicationConfigResponse>;
+export const ModifyReplicationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationConfig: S.optional(ReplicationConfig) }).pipe(ns),
+).annotate({
+  identifier: "ModifyReplicationConfigResponse",
+}) as any as S.Schema<ModifyReplicationConfigResponse>;
 export interface ModifyReplicationInstanceMessage {
   ReplicationInstanceArn: string;
   AllocatedStorage?: number;
@@ -6950,83 +6984,78 @@ export interface ModifyReplicationInstanceMessage {
   NetworkType?: string;
   KerberosAuthenticationSettings?: KerberosAuthenticationSettings;
 }
-export const ModifyReplicationInstanceMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationInstanceArn: S.String,
-      AllocatedStorage: S.optional(S.Number),
-      ApplyImmediately: S.optional(S.Boolean),
-      ReplicationInstanceClass: S.optional(S.String),
-      VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      PreferredMaintenanceWindow: S.optional(S.String),
-      MultiAZ: S.optional(S.Boolean),
-      EngineVersion: S.optional(S.String),
-      AllowMajorVersionUpgrade: S.optional(S.Boolean),
-      AutoMinorVersionUpgrade: S.optional(S.Boolean),
-      ReplicationInstanceIdentifier: S.optional(S.String),
-      NetworkType: S.optional(S.String),
-      KerberosAuthenticationSettings: S.optional(
-        KerberosAuthenticationSettings,
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyReplicationInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationInstanceArn: S.String,
+    AllocatedStorage: S.optional(S.Number),
+    ApplyImmediately: S.optional(S.Boolean),
+    ReplicationInstanceClass: S.optional(S.String),
+    VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    PreferredMaintenanceWindow: S.optional(S.String),
+    MultiAZ: S.optional(S.Boolean),
+    EngineVersion: S.optional(S.String),
+    AllowMajorVersionUpgrade: S.optional(S.Boolean),
+    AutoMinorVersionUpgrade: S.optional(S.Boolean),
+    ReplicationInstanceIdentifier: S.optional(S.String),
+    NetworkType: S.optional(S.String),
+    KerberosAuthenticationSettings: S.optional(KerberosAuthenticationSettings),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyReplicationInstanceMessage",
-  }) as any as S.Schema<ModifyReplicationInstanceMessage>;
+  ),
+).annotate({
+  identifier: "ModifyReplicationInstanceMessage",
+}) as any as S.Schema<ModifyReplicationInstanceMessage>;
 export interface ModifyReplicationInstanceResponse {
   ReplicationInstance?: ReplicationInstance;
 }
-export const ModifyReplicationInstanceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyReplicationInstanceResponse",
-  }) as any as S.Schema<ModifyReplicationInstanceResponse>;
+export const ModifyReplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
+).annotate({
+  identifier: "ModifyReplicationInstanceResponse",
+}) as any as S.Schema<ModifyReplicationInstanceResponse>;
 export interface ModifyReplicationSubnetGroupMessage {
   ReplicationSubnetGroupIdentifier: string;
   ReplicationSubnetGroupDescription?: string;
   SubnetIds: string[];
 }
-export const ModifyReplicationSubnetGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationSubnetGroupIdentifier: S.String,
-      ReplicationSubnetGroupDescription: S.optional(S.String),
-      SubnetIds: SubnetIdentifierList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyReplicationSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationSubnetGroupIdentifier: S.String,
+    ReplicationSubnetGroupDescription: S.optional(S.String),
+    SubnetIds: SubnetIdentifierList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyReplicationSubnetGroupMessage",
-  }) as any as S.Schema<ModifyReplicationSubnetGroupMessage>;
+  ),
+).annotate({
+  identifier: "ModifyReplicationSubnetGroupMessage",
+}) as any as S.Schema<ModifyReplicationSubnetGroupMessage>;
 export interface ModifyReplicationSubnetGroupResponse {
   ReplicationSubnetGroup?: ReplicationSubnetGroup;
 }
-export const ModifyReplicationSubnetGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ModifyReplicationSubnetGroupResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReplicationSubnetGroup: S.optional(ReplicationSubnetGroup),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyReplicationSubnetGroupResponse",
-  }) as any as S.Schema<ModifyReplicationSubnetGroupResponse>;
+).annotate({
+  identifier: "ModifyReplicationSubnetGroupResponse",
+}) as any as S.Schema<ModifyReplicationSubnetGroupResponse>;
 export interface ModifyReplicationTaskMessage {
   ReplicationTaskArn: string;
   ReplicationTaskIdentifier?: string;
@@ -7038,41 +7067,39 @@ export interface ModifyReplicationTaskMessage {
   CdcStopPosition?: string;
   TaskData?: string;
 }
-export const ModifyReplicationTaskMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskArn: S.String,
-      ReplicationTaskIdentifier: S.optional(S.String),
-      MigrationType: S.optional(MigrationTypeValue),
-      TableMappings: S.optional(S.String),
-      ReplicationTaskSettings: S.optional(S.String),
-      CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      CdcStartPosition: S.optional(S.String),
-      CdcStopPosition: S.optional(S.String),
-      TaskData: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyReplicationTaskMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskArn: S.String,
+    ReplicationTaskIdentifier: S.optional(S.String),
+    MigrationType: S.optional(MigrationTypeValue),
+    TableMappings: S.optional(S.String),
+    ReplicationTaskSettings: S.optional(S.String),
+    CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CdcStartPosition: S.optional(S.String),
+    CdcStopPosition: S.optional(S.String),
+    TaskData: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyReplicationTaskMessage",
-  }) as any as S.Schema<ModifyReplicationTaskMessage>;
+  ),
+).annotate({
+  identifier: "ModifyReplicationTaskMessage",
+}) as any as S.Schema<ModifyReplicationTaskMessage>;
 export interface ModifyReplicationTaskResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const ModifyReplicationTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyReplicationTaskResponse",
-  }) as any as S.Schema<ModifyReplicationTaskResponse>;
+export const ModifyReplicationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "ModifyReplicationTaskResponse",
+}) as any as S.Schema<ModifyReplicationTaskResponse>;
 export interface MoveReplicationTaskMessage {
   ReplicationTaskArn: string;
   TargetReplicationInstanceArn: string;
@@ -7098,46 +7125,43 @@ export const MoveReplicationTaskMessage = /*@__PURE__*/ S.suspend(() =>
 export interface MoveReplicationTaskResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const MoveReplicationTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "MoveReplicationTaskResponse",
-  }) as any as S.Schema<MoveReplicationTaskResponse>;
+export const MoveReplicationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "MoveReplicationTaskResponse",
+}) as any as S.Schema<MoveReplicationTaskResponse>;
 export interface RebootReplicationInstanceMessage {
   ReplicationInstanceArn: string;
   ForceFailover?: boolean;
   ForcePlannedFailover?: boolean;
 }
-export const RebootReplicationInstanceMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationInstanceArn: S.String,
-      ForceFailover: S.optional(S.Boolean),
-      ForcePlannedFailover: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RebootReplicationInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationInstanceArn: S.String,
+    ForceFailover: S.optional(S.Boolean),
+    ForcePlannedFailover: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RebootReplicationInstanceMessage",
-  }) as any as S.Schema<RebootReplicationInstanceMessage>;
+  ),
+).annotate({
+  identifier: "RebootReplicationInstanceMessage",
+}) as any as S.Schema<RebootReplicationInstanceMessage>;
 export interface RebootReplicationInstanceResponse {
   ReplicationInstance?: ReplicationInstance;
 }
-export const RebootReplicationInstanceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
-  ).annotate({
-    identifier: "RebootReplicationInstanceResponse",
-  }) as any as S.Schema<RebootReplicationInstanceResponse>;
+export const RebootReplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationInstance: S.optional(ReplicationInstance) }).pipe(ns),
+).annotate({
+  identifier: "RebootReplicationInstanceResponse",
+}) as any as S.Schema<RebootReplicationInstanceResponse>;
 export interface RefreshSchemasMessage {
   EndpointArn: string;
   ReplicationInstanceArn: string;
@@ -7176,40 +7200,39 @@ export type TableListToReload = TableToReload[];
 export const TableListToReload = /*@__PURE__*/ S.Array(TableToReload);
 export type ReloadOptionValue = "data-reload" | "validate-only" | (string & {});
 export const ReloadOptionValue = /*@__PURE__*/ S.String;
+
 export interface ReloadReplicationTablesMessage {
   ReplicationConfigArn: string;
   TablesToReload: TableToReload[];
   ReloadOption?: ReloadOptionValue;
 }
-export const ReloadReplicationTablesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationConfigArn: S.String,
-      TablesToReload: TableListToReload,
-      ReloadOption: S.optional(ReloadOptionValue),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ReloadReplicationTablesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationConfigArn: S.String,
+    TablesToReload: TableListToReload,
+    ReloadOption: S.optional(ReloadOptionValue),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ReloadReplicationTablesMessage",
-  }) as any as S.Schema<ReloadReplicationTablesMessage>;
+  ),
+).annotate({
+  identifier: "ReloadReplicationTablesMessage",
+}) as any as S.Schema<ReloadReplicationTablesMessage>;
 export interface ReloadReplicationTablesResponse {
   ReplicationConfigArn?: string;
 }
-export const ReloadReplicationTablesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationConfigArn: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "ReloadReplicationTablesResponse",
-  }) as any as S.Schema<ReloadReplicationTablesResponse>;
+export const ReloadReplicationTablesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationConfigArn: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "ReloadReplicationTablesResponse",
+}) as any as S.Schema<ReloadReplicationTablesResponse>;
 export interface ReloadTablesMessage {
   ReplicationTaskArn: string;
   TablesToReload: TableToReload[];
@@ -7248,63 +7271,62 @@ export interface RemoveTagsFromResourceMessage {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const RemoveTagsFromResourceMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceArn: S.String, TagKeys: KeyList }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveTagsFromResourceMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String, TagKeys: KeyList }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RemoveTagsFromResourceMessage",
-  }) as any as S.Schema<RemoveTagsFromResourceMessage>;
+  ),
+).annotate({
+  identifier: "RemoveTagsFromResourceMessage",
+}) as any as S.Schema<RemoveTagsFromResourceMessage>;
 export interface RemoveTagsFromResourceResponse {}
-export const RemoveTagsFromResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveTagsFromResourceResponse",
-  }) as any as S.Schema<RemoveTagsFromResourceResponse>;
+export const RemoveTagsFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveTagsFromResourceResponse",
+}) as any as S.Schema<RemoveTagsFromResourceResponse>;
 export interface RunFleetAdvisorLsaAnalysisRequest {}
-export const RunFleetAdvisorLsaAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RunFleetAdvisorLsaAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RunFleetAdvisorLsaAnalysisRequest",
-  }) as any as S.Schema<RunFleetAdvisorLsaAnalysisRequest>;
+  ),
+).annotate({
+  identifier: "RunFleetAdvisorLsaAnalysisRequest",
+}) as any as S.Schema<RunFleetAdvisorLsaAnalysisRequest>;
 export interface RunFleetAdvisorLsaAnalysisResponse {
   LsaAnalysisId?: string;
   Status?: string;
 }
-export const RunFleetAdvisorLsaAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LsaAnalysisId: S.optional(S.String),
-      Status: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "RunFleetAdvisorLsaAnalysisResponse",
-  }) as any as S.Schema<RunFleetAdvisorLsaAnalysisResponse>;
+export const RunFleetAdvisorLsaAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LsaAnalysisId: S.optional(S.String),
+    Status: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "RunFleetAdvisorLsaAnalysisResponse",
+}) as any as S.Schema<RunFleetAdvisorLsaAnalysisResponse>;
 export type StartReplicationMigrationTypeValue =
   | "reload-target"
   | "resume-processing"
   | "start-replication"
   | (string & {});
 export const StartReplicationMigrationTypeValue = /*@__PURE__*/ S.String;
+
 export interface StartDataMigrationMessage {
   DataMigrationIdentifier: string;
   StartType: StartReplicationMigrationTypeValue;
@@ -7338,8 +7360,8 @@ export const StartDataMigrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StartExtensionPackAssociationMessage {
   MigrationProjectIdentifier: string;
 }
-export const StartExtensionPackAssociationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const StartExtensionPackAssociationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ MigrationProjectIdentifier: S.String }).pipe(
       T.all(
         ns,
@@ -7351,82 +7373,77 @@ export const StartExtensionPackAssociationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartExtensionPackAssociationMessage",
-  }) as any as S.Schema<StartExtensionPackAssociationMessage>;
+).annotate({
+  identifier: "StartExtensionPackAssociationMessage",
+}) as any as S.Schema<StartExtensionPackAssociationMessage>;
 export interface StartExtensionPackAssociationResponse {
   RequestIdentifier?: string;
 }
-export const StartExtensionPackAssociationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartExtensionPackAssociationResponse",
-  }) as any as S.Schema<StartExtensionPackAssociationResponse>;
+export const StartExtensionPackAssociationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartExtensionPackAssociationResponse",
+}) as any as S.Schema<StartExtensionPackAssociationResponse>;
 export interface StartMetadataModelAssessmentMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
 }
-export const StartMetadataModelAssessmentMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      SelectionRules: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMetadataModelAssessmentMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    SelectionRules: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMetadataModelAssessmentMessage",
-  }) as any as S.Schema<StartMetadataModelAssessmentMessage>;
+  ),
+).annotate({
+  identifier: "StartMetadataModelAssessmentMessage",
+}) as any as S.Schema<StartMetadataModelAssessmentMessage>;
 export interface StartMetadataModelAssessmentResponse {
   RequestIdentifier?: string;
 }
-export const StartMetadataModelAssessmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartMetadataModelAssessmentResponse",
-  }) as any as S.Schema<StartMetadataModelAssessmentResponse>;
+export const StartMetadataModelAssessmentResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartMetadataModelAssessmentResponse",
+}) as any as S.Schema<StartMetadataModelAssessmentResponse>;
 export interface StartMetadataModelConversionMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
 }
-export const StartMetadataModelConversionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      SelectionRules: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMetadataModelConversionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    SelectionRules: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMetadataModelConversionMessage",
-  }) as any as S.Schema<StartMetadataModelConversionMessage>;
+  ),
+).annotate({
+  identifier: "StartMetadataModelConversionMessage",
+}) as any as S.Schema<StartMetadataModelConversionMessage>;
 export interface StartMetadataModelConversionResponse {
   RequestIdentifier?: string;
 }
-export const StartMetadataModelConversionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartMetadataModelConversionResponse",
-  }) as any as S.Schema<StartMetadataModelConversionResponse>;
+export const StartMetadataModelConversionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartMetadataModelConversionResponse",
+}) as any as S.Schema<StartMetadataModelConversionResponse>;
 export interface StatementProperties {
   Definition: string;
 }
@@ -7447,44 +7464,42 @@ export interface StartMetadataModelCreationMessage {
   MetadataModelName: string;
   Properties: MetadataModelProperties;
 }
-export const StartMetadataModelCreationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      SelectionRules: S.String,
-      MetadataModelName: S.String,
-      Properties: MetadataModelProperties,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMetadataModelCreationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    SelectionRules: S.String,
+    MetadataModelName: S.String,
+    Properties: MetadataModelProperties,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMetadataModelCreationMessage",
-  }) as any as S.Schema<StartMetadataModelCreationMessage>;
+  ),
+).annotate({
+  identifier: "StartMetadataModelCreationMessage",
+}) as any as S.Schema<StartMetadataModelCreationMessage>;
 export interface StartMetadataModelCreationResponse {
   RequestIdentifier?: string;
 }
-export const StartMetadataModelCreationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartMetadataModelCreationResponse",
-  }) as any as S.Schema<StartMetadataModelCreationResponse>;
+export const StartMetadataModelCreationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartMetadataModelCreationResponse",
+}) as any as S.Schema<StartMetadataModelCreationResponse>;
 export interface StartMetadataModelExportAsScriptMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
   Origin: OriginTypeValue;
   FileName?: string;
 }
-export const StartMetadataModelExportAsScriptMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const StartMetadataModelExportAsScriptMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       SelectionRules: S.String,
@@ -7501,25 +7516,24 @@ export const StartMetadataModelExportAsScriptMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartMetadataModelExportAsScriptMessage",
-  }) as any as S.Schema<StartMetadataModelExportAsScriptMessage>;
+).annotate({
+  identifier: "StartMetadataModelExportAsScriptMessage",
+}) as any as S.Schema<StartMetadataModelExportAsScriptMessage>;
 export interface StartMetadataModelExportAsScriptResponse {
   RequestIdentifier?: string;
 }
-export const StartMetadataModelExportAsScriptResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartMetadataModelExportAsScriptResponse",
-  }) as any as S.Schema<StartMetadataModelExportAsScriptResponse>;
+export const StartMetadataModelExportAsScriptResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartMetadataModelExportAsScriptResponse",
+}) as any as S.Schema<StartMetadataModelExportAsScriptResponse>;
 export interface StartMetadataModelExportToTargetMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
   OverwriteExtensionPack?: boolean;
 }
-export const StartMetadataModelExportToTargetMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const StartMetadataModelExportToTargetMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MigrationProjectIdentifier: S.String,
       SelectionRules: S.String,
@@ -7535,79 +7549,76 @@ export const StartMetadataModelExportToTargetMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartMetadataModelExportToTargetMessage",
-  }) as any as S.Schema<StartMetadataModelExportToTargetMessage>;
+).annotate({
+  identifier: "StartMetadataModelExportToTargetMessage",
+}) as any as S.Schema<StartMetadataModelExportToTargetMessage>;
 export interface StartMetadataModelExportToTargetResponse {
   RequestIdentifier?: string;
 }
-export const StartMetadataModelExportToTargetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartMetadataModelExportToTargetResponse",
-  }) as any as S.Schema<StartMetadataModelExportToTargetResponse>;
+export const StartMetadataModelExportToTargetResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartMetadataModelExportToTargetResponse",
+}) as any as S.Schema<StartMetadataModelExportToTargetResponse>;
 export interface StartMetadataModelImportMessage {
   MigrationProjectIdentifier: string;
   SelectionRules: string;
   Origin: OriginTypeValue;
   Refresh?: boolean;
 }
-export const StartMetadataModelImportMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MigrationProjectIdentifier: S.String,
-      SelectionRules: S.String,
-      Origin: OriginTypeValue,
-      Refresh: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMetadataModelImportMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MigrationProjectIdentifier: S.String,
+    SelectionRules: S.String,
+    Origin: OriginTypeValue,
+    Refresh: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMetadataModelImportMessage",
-  }) as any as S.Schema<StartMetadataModelImportMessage>;
+  ),
+).annotate({
+  identifier: "StartMetadataModelImportMessage",
+}) as any as S.Schema<StartMetadataModelImportMessage>;
 export interface StartMetadataModelImportResponse {
   RequestIdentifier?: string;
 }
-export const StartMetadataModelImportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartMetadataModelImportResponse",
-  }) as any as S.Schema<StartMetadataModelImportResponse>;
+export const StartMetadataModelImportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestIdentifier: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartMetadataModelImportResponse",
+}) as any as S.Schema<StartMetadataModelImportResponse>;
 export interface StartRecommendationsRequest {
   DatabaseId: string;
   Settings: RecommendationSettings;
 }
-export const StartRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DatabaseId: S.String, Settings: RecommendationSettings }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DatabaseId: S.String, Settings: RecommendationSettings }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartRecommendationsRequest",
-  }) as any as S.Schema<StartRecommendationsRequest>;
+  ),
+).annotate({
+  identifier: "StartRecommendationsRequest",
+}) as any as S.Schema<StartRecommendationsRequest>;
 export interface StartRecommendationsResponse {}
-export const StartRecommendationsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StartRecommendationsResponse",
-  }) as any as S.Schema<StartRecommendationsResponse>;
+export const StartRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StartRecommendationsResponse",
+}) as any as S.Schema<StartRecommendationsResponse>;
 export interface StartReplicationMessage {
   ReplicationConfigArn: string;
   StartReplicationType: string;
@@ -7652,6 +7663,7 @@ export type StartReplicationTaskTypeValue =
   | "reload-target"
   | (string & {});
 export const StartReplicationTaskTypeValue = /*@__PURE__*/ S.String;
+
 export interface StartReplicationTaskMessage {
   ReplicationTaskArn: string;
   StartReplicationTaskType: StartReplicationTaskTypeValue;
@@ -7659,42 +7671,40 @@ export interface StartReplicationTaskMessage {
   CdcStartPosition?: string;
   CdcStopPosition?: string;
 }
-export const StartReplicationTaskMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReplicationTaskArn: S.String,
-      StartReplicationTaskType: StartReplicationTaskTypeValue,
-      CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      CdcStartPosition: S.optional(S.String),
-      CdcStopPosition: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartReplicationTaskMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReplicationTaskArn: S.String,
+    StartReplicationTaskType: StartReplicationTaskTypeValue,
+    CdcStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CdcStartPosition: S.optional(S.String),
+    CdcStopPosition: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartReplicationTaskMessage",
-  }) as any as S.Schema<StartReplicationTaskMessage>;
+  ),
+).annotate({
+  identifier: "StartReplicationTaskMessage",
+}) as any as S.Schema<StartReplicationTaskMessage>;
 export interface StartReplicationTaskResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const StartReplicationTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "StartReplicationTaskResponse",
-  }) as any as S.Schema<StartReplicationTaskResponse>;
+export const StartReplicationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "StartReplicationTaskResponse",
+}) as any as S.Schema<StartReplicationTaskResponse>;
 export interface StartReplicationTaskAssessmentMessage {
   ReplicationTaskArn: string;
 }
-export const StartReplicationTaskAssessmentMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const StartReplicationTaskAssessmentMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ ReplicationTaskArn: S.String }).pipe(
       T.all(
         ns,
@@ -7706,18 +7716,17 @@ export const StartReplicationTaskAssessmentMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartReplicationTaskAssessmentMessage",
-  }) as any as S.Schema<StartReplicationTaskAssessmentMessage>;
+).annotate({
+  identifier: "StartReplicationTaskAssessmentMessage",
+}) as any as S.Schema<StartReplicationTaskAssessmentMessage>;
 export interface StartReplicationTaskAssessmentResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const StartReplicationTaskAssessmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "StartReplicationTaskAssessmentResponse",
-  }) as any as S.Schema<StartReplicationTaskAssessmentResponse>;
+export const StartReplicationTaskAssessmentResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "StartReplicationTaskAssessmentResponse",
+}) as any as S.Schema<StartReplicationTaskAssessmentResponse>;
 export type IncludeTestList = string[];
 export const IncludeTestList = /*@__PURE__*/ S.Array(S.String);
 export type ExcludeTestList = string[];
@@ -7734,8 +7743,8 @@ export interface StartReplicationTaskAssessmentRunMessage {
   Exclude?: string[];
   Tags?: Tag[];
 }
-export const StartReplicationTaskAssessmentRunMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const StartReplicationTaskAssessmentRunMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReplicationTaskArn: S.String,
       ServiceAccessRoleArn: S.String,
@@ -7758,9 +7767,9 @@ export const StartReplicationTaskAssessmentRunMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartReplicationTaskAssessmentRunMessage",
-  }) as any as S.Schema<StartReplicationTaskAssessmentRunMessage>;
+).annotate({
+  identifier: "StartReplicationTaskAssessmentRunMessage",
+}) as any as S.Schema<StartReplicationTaskAssessmentRunMessage>;
 export interface StartReplicationTaskAssessmentRunResponse {
   ReplicationTaskAssessmentRun?: ReplicationTaskAssessmentRun;
 }
@@ -7845,12 +7854,11 @@ export const StopReplicationTaskMessage = /*@__PURE__*/ S.suspend(() =>
 export interface StopReplicationTaskResponse {
   ReplicationTask?: ReplicationTask;
 }
-export const StopReplicationTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
-  ).annotate({
-    identifier: "StopReplicationTaskResponse",
-  }) as any as S.Schema<StopReplicationTaskResponse>;
+export const StopReplicationTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicationTask: S.optional(ReplicationTask) }).pipe(ns),
+).annotate({
+  identifier: "StopReplicationTaskResponse",
+}) as any as S.Schema<StopReplicationTaskResponse>;
 export interface TestConnectionMessage {
   ReplicationInstanceArn: string;
   EndpointArn: string;
@@ -7881,8 +7889,8 @@ export const TestConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSubscriptionsToEventBridgeMessage {
   ForceMove?: boolean;
 }
-export const UpdateSubscriptionsToEventBridgeMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateSubscriptionsToEventBridgeMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ ForceMove: S.optional(S.Boolean) }).pipe(
       T.all(
         ns,
@@ -7894,125 +7902,19 @@ export const UpdateSubscriptionsToEventBridgeMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateSubscriptionsToEventBridgeMessage",
-  }) as any as S.Schema<UpdateSubscriptionsToEventBridgeMessage>;
+).annotate({
+  identifier: "UpdateSubscriptionsToEventBridgeMessage",
+}) as any as S.Schema<UpdateSubscriptionsToEventBridgeMessage>;
 export interface UpdateSubscriptionsToEventBridgeResponse {
   Result?: string;
 }
-export const UpdateSubscriptionsToEventBridgeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Result: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateSubscriptionsToEventBridgeResponse",
-  }) as any as S.Schema<UpdateSubscriptionsToEventBridgeResponse>;
-
-//# Errors
-export class InvalidResourceStateFault extends S.TaggedErrorClass<InvalidResourceStateFault>()(
-  "InvalidResourceStateFault",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
-  "ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-) {}
-export class AccessDeniedFault extends S.TaggedErrorClass<AccessDeniedFault>()(
-  "AccessDeniedFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class FailedDependencyFault extends S.TaggedErrorClass<FailedDependencyFault>()(
-  "FailedDependencyFault",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidOperationFault extends S.TaggedErrorClass<InvalidOperationFault>()(
-  "InvalidOperationFault",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceAlreadyExistsFault extends S.TaggedErrorClass<ResourceAlreadyExistsFault>()(
-  "ResourceAlreadyExistsFault",
-  { message: S.optional(S.String), resourceArn: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceQuotaExceededFault extends S.TaggedErrorClass<ResourceQuotaExceededFault>()(
-  "ResourceQuotaExceededFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
-  "KMSKeyNotAccessibleFault",
-  { message: S.optional(S.String) },
-) {}
-export class S3AccessDeniedFault extends S.TaggedErrorClass<S3AccessDeniedFault>()(
-  "S3AccessDeniedFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KMSAccessDeniedFault extends S.TaggedErrorClass<KMSAccessDeniedFault>()(
-  "KMSAccessDeniedFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KMSDisabledFault extends S.TaggedErrorClass<KMSDisabledFault>()(
-  "KMSDisabledFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSInvalidStateFault extends S.TaggedErrorClass<KMSInvalidStateFault>()(
-  "KMSInvalidStateFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSNotFoundFault extends S.TaggedErrorClass<KMSNotFoundFault>()(
-  "KMSNotFoundFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSThrottlingFault extends S.TaggedErrorClass<KMSThrottlingFault>()(
-  "KMSThrottlingFault",
-  { message: S.optional(S.String) },
-) {}
-export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
-  "SNSInvalidTopicFault",
-  { message: S.optional(S.String) },
-) {}
-export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
-  "SNSNoAuthorizationFault",
-  { message: S.optional(S.String) },
-) {}
-export class S3ResourceNotFoundFault extends S.TaggedErrorClass<S3ResourceNotFoundFault>()(
-  "S3ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  { message: S.optional(S.String) },
-) {}
-export class ReplicationSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
-  "ReplicationSubnetGroupDoesNotCoverEnoughAZs",
-  { message: S.optional(S.String) },
-) {}
-export class InsufficientResourceCapacityFault extends S.TaggedErrorClass<InsufficientResourceCapacityFault>()(
-  "InsufficientResourceCapacityFault",
-  { message: S.optional(S.String) },
-) {}
-export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
-  "StorageQuotaExceededFault",
-  { message: S.optional(S.String) },
-) {}
-export class CollectorNotFoundFault extends S.TaggedErrorClass<CollectorNotFoundFault>()(
-  "CollectorNotFoundFault",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidCertificateFault extends S.TaggedErrorClass<InvalidCertificateFault>()(
-  "InvalidCertificateFault",
-  { message: S.optional(S.String) },
-) {}
-export class UpgradeDependencyFailureFault extends S.TaggedErrorClass<UpgradeDependencyFailureFault>()(
-  "UpgradeDependencyFailureFault",
-  { message: S.optional(S.String) },
-) {}
-export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
-  "SubnetAlreadyInUse",
-  { message: S.optional(S.String) },
-).pipe(C.withDependencyViolationError) {}
-export class KMSFault extends S.TaggedErrorClass<KMSFault>()("KMSFault", {
-  message: S.optional(S.String),
-}) {}
-
-//# Operations
+export const UpdateSubscriptionsToEventBridgeResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Result: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateSubscriptionsToEventBridgeResponse",
+}) as any as S.Schema<UpdateSubscriptionsToEventBridgeResponse>;
+export type ExceptionMessage = string;
+export type ResourceArn = string;
 export type AddTagsToResourceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8035,8 +7937,11 @@ export const addTagsToResource: API.OperationMethod<
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type ApplyPendingMaintenanceActionError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -8053,8 +7958,11 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
+
 export type BatchStartRecommendationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8080,8 +7988,11 @@ export const batchStartRecommendations: API.OperationMethod<
   input: BatchStartRecommendationsRequest,
   output: BatchStartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStartRecommendations",
 }));
+
 export type CancelMetadataModelConversionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8099,8 +8010,11 @@ export const cancelMetadataModelConversion: API.OperationMethod<
   input: CancelMetadataModelConversionMessage,
   output: CancelMetadataModelConversionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataModelConversion",
 }));
+
 export type CancelMetadataModelCreationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8118,8 +8032,11 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   input: CancelMetadataModelCreationMessage,
   output: CancelMetadataModelCreationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataModelCreation",
 }));
+
 export type CancelReplicationTaskAssessmentRunError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8141,8 +8058,11 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   input: CancelReplicationTaskAssessmentRunMessage,
   output: CancelReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelReplicationTaskAssessmentRun",
 }));
+
 export type CreateDataMigrationError =
   | FailedDependencyFault
   | InvalidOperationFault
@@ -8168,8 +8088,11 @@ export const createDataMigration: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataMigration",
 }));
+
 export type CreateDataProviderError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8194,8 +8117,11 @@ export const createDataProvider: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataProvider",
 }));
+
 export type CreateEndpointError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8232,8 +8158,11 @@ export const createEndpoint: API.OperationMethod<
     ResourceQuotaExceededFault,
     S3AccessDeniedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpoint",
 }));
+
 export type CreateEventSubscriptionError =
   | KMSAccessDeniedFault
   | KMSDisabledFault
@@ -8284,8 +8213,11 @@ export const createEventSubscription: API.OperationMethod<
     SNSInvalidTopicFault,
     SNSNoAuthorizationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSubscription",
 }));
+
 export type CreateFleetAdvisorCollectorError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8313,8 +8245,11 @@ export const createFleetAdvisorCollector: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleetAdvisorCollector",
 }));
+
 export type CreateInstanceProfileError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8348,8 +8283,11 @@ export const createInstanceProfile: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
+
 export type CreateMigrationProjectError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8382,8 +8320,11 @@ export const createMigrationProject: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMigrationProject",
 }));
+
 export type CreateReplicationConfigError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8417,8 +8358,11 @@ export const createReplicationConfig: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationConfig",
 }));
+
 export type CreateReplicationInstanceError =
   | AccessDeniedFault
   | InsufficientResourceCapacityFault
@@ -8463,8 +8407,11 @@ export const createReplicationInstance: API.OperationMethod<
     ResourceQuotaExceededFault,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationInstance",
 }));
+
 export type CreateReplicationSubnetGroupError =
   | AccessDeniedFault
   | InvalidSubnet
@@ -8502,8 +8449,11 @@ export const createReplicationSubnetGroup: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationSubnetGroup",
 }));
+
 export type CreateReplicationTaskError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8531,8 +8481,11 @@ export const createReplicationTask: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationTask",
 }));
+
 export type DeleteCertificateError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8549,8 +8502,11 @@ export const deleteCertificate: API.OperationMethod<
   input: DeleteCertificateMessage,
   output: DeleteCertificateResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
+
 export type DeleteConnectionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8568,8 +8524,11 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionMessage,
   output: DeleteConnectionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteDataMigrationError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -8591,8 +8550,11 @@ export const deleteDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataMigration",
 }));
+
 export type DeleteDataProviderError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8619,8 +8581,11 @@ export const deleteDataProvider: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataProvider",
 }));
+
 export type DeleteEndpointError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8640,8 +8605,11 @@ export const deleteEndpoint: API.OperationMethod<
   input: DeleteEndpointMessage,
   output: DeleteEndpointResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeleteEventSubscriptionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8659,8 +8627,11 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
+
 export type DeleteFleetAdvisorCollectorError =
   | AccessDeniedFault
   | CollectorNotFoundFault
@@ -8684,8 +8655,11 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
     CollectorNotFoundFault,
     InvalidResourceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleetAdvisorCollector",
 }));
+
 export type DeleteFleetAdvisorDatabasesError =
   | AccessDeniedFault
   | InvalidOperationFault
@@ -8705,8 +8679,11 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   input: DeleteFleetAdvisorDatabasesRequest,
   output: DeleteFleetAdvisorDatabasesResponse,
   errors: [AccessDeniedFault, InvalidOperationFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleetAdvisorDatabases",
 }));
+
 export type DeleteInstanceProfileError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8733,8 +8710,11 @@ export const deleteInstanceProfile: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
+
 export type DeleteMigrationProjectError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8760,8 +8740,11 @@ export const deleteMigrationProject: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMigrationProject",
 }));
+
 export type DeleteReplicationConfigError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8782,8 +8765,11 @@ export const deleteReplicationConfig: API.OperationMethod<
   input: DeleteReplicationConfigMessage,
   output: DeleteReplicationConfigResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationConfig",
 }));
+
 export type DeleteReplicationInstanceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8803,8 +8789,11 @@ export const deleteReplicationInstance: API.OperationMethod<
   input: DeleteReplicationInstanceMessage,
   output: DeleteReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationInstance",
 }));
+
 export type DeleteReplicationSubnetGroupError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8822,8 +8811,11 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   input: DeleteReplicationSubnetGroupMessage,
   output: DeleteReplicationSubnetGroupResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationSubnetGroup",
 }));
+
 export type DeleteReplicationTaskError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8840,8 +8832,11 @@ export const deleteReplicationTask: API.OperationMethod<
   input: DeleteReplicationTaskMessage,
   output: DeleteReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationTask",
 }));
+
 export type DeleteReplicationTaskAssessmentRunError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8863,8 +8858,11 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   input: DeleteReplicationTaskAssessmentRunMessage,
   output: DeleteReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationTaskAssessmentRun",
 }));
+
 export type DescribeAccountAttributesError = CommonErrors;
 /**
  * Lists all of the DMS attributes for a customer account. These attributes include DMS
@@ -8885,8 +8883,11 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesMessage,
   output: DescribeAccountAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
+
 export type DescribeApplicableIndividualAssessmentsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8937,6 +8938,8 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
   input: DescribeApplicableIndividualAssessmentsMessage,
   output: DescribeApplicableIndividualAssessmentsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicableIndividualAssessments",
   pagination: {
     inputToken: "Marker",
@@ -8944,6 +8947,7 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeCertificatesError = ResourceNotFoundFault | CommonErrors;
 /**
  * Provides a description of the certificate.
@@ -8972,6 +8976,8 @@ export const describeCertificates: API.OperationMethod<
   input: DescribeCertificatesMessage,
   output: DescribeCertificatesResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificates",
   pagination: {
     inputToken: "Marker",
@@ -8979,6 +8985,7 @@ export const describeCertificates: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeConnectionsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Describes the status of the connections that have been made between the replication
@@ -9008,6 +9015,8 @@ export const describeConnections: API.OperationMethod<
   input: DescribeConnectionsMessage,
   output: DescribeConnectionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnections",
   pagination: {
     inputToken: "Marker",
@@ -9015,6 +9024,7 @@ export const describeConnections: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeConversionConfigurationError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9030,8 +9040,11 @@ export const describeConversionConfiguration: API.OperationMethod<
   input: DescribeConversionConfigurationMessage,
   output: DescribeConversionConfigurationResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConversionConfiguration",
 }));
+
 export type DescribeDataMigrationsError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -9068,6 +9081,8 @@ export const describeDataMigrations: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataMigrations",
   pagination: {
     inputToken: "Marker",
@@ -9076,6 +9091,7 @@ export const describeDataMigrations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataProvidersError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -9109,6 +9125,8 @@ export const describeDataProviders: API.OperationMethod<
   input: DescribeDataProvidersMessage,
   output: DescribeDataProvidersResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataProviders",
   pagination: {
     inputToken: "Marker",
@@ -9116,6 +9134,7 @@ export const describeDataProviders: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Returns information about the endpoints for your account in the current region.
@@ -9144,6 +9163,8 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsMessage,
   output: DescribeEndpointsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
   pagination: {
     inputToken: "Marker",
@@ -9151,6 +9172,7 @@ export const describeEndpoints: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointSettingsError = CommonErrors;
 /**
  * Returns information about the possible endpoint settings available when you create an
@@ -9180,6 +9202,8 @@ export const describeEndpointSettings: API.OperationMethod<
   input: DescribeEndpointSettingsMessage,
   output: DescribeEndpointSettingsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointSettings",
   pagination: {
     inputToken: "Marker",
@@ -9187,6 +9211,7 @@ export const describeEndpointSettings: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointTypesError = CommonErrors;
 /**
  * Returns information about the type of endpoints available.
@@ -9215,6 +9240,8 @@ export const describeEndpointTypes: API.OperationMethod<
   input: DescribeEndpointTypesMessage,
   output: DescribeEndpointTypesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointTypes",
   pagination: {
     inputToken: "Marker",
@@ -9222,6 +9249,7 @@ export const describeEndpointTypes: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEngineVersionsError = CommonErrors;
 /**
  * Returns information about the replication instance versions used in the project.
@@ -9250,6 +9278,8 @@ export const describeEngineVersions: API.OperationMethod<
   input: DescribeEngineVersionsMessage,
   output: DescribeEngineVersionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngineVersions",
   pagination: {
     inputToken: "Marker",
@@ -9257,6 +9287,7 @@ export const describeEngineVersions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventCategoriesError = CommonErrors;
 /**
  * Lists categories for all event source types, or, if specified, for a specified source
@@ -9272,8 +9303,11 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: DescribeEventCategoriesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventCategories",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Lists events for a given source identifier and source type. You can also specify a
@@ -9304,6 +9338,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: DescribeEventsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -9311,6 +9347,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventSubscriptionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9347,6 +9384,8 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: DescribeEventSubscriptionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -9354,6 +9393,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeExtensionPackAssociationsError = CommonErrors;
 /**
  * Returns a paginated list of extension pack associations for the specified migration
@@ -9384,6 +9424,8 @@ export const describeExtensionPackAssociations: API.OperationMethod<
   input: DescribeExtensionPackAssociationsMessage,
   output: DescribeExtensionPackAssociationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExtensionPackAssociations",
   pagination: {
     inputToken: "Marker",
@@ -9391,6 +9433,7 @@ export const describeExtensionPackAssociations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorCollectorsError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9423,6 +9466,8 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
   input: DescribeFleetAdvisorCollectorsRequest,
   output: DescribeFleetAdvisorCollectorsResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorCollectors",
   pagination: {
     inputToken: "NextToken",
@@ -9430,6 +9475,7 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorDatabasesError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9462,6 +9508,8 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
   input: DescribeFleetAdvisorDatabasesRequest,
   output: DescribeFleetAdvisorDatabasesResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -9469,6 +9517,7 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorLsaAnalysisError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9502,6 +9551,8 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
   input: DescribeFleetAdvisorLsaAnalysisRequest,
   output: DescribeFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorLsaAnalysis",
   pagination: {
     inputToken: "NextToken",
@@ -9509,6 +9560,7 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorSchemaObjectSummaryError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9542,6 +9594,8 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
   input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
   output: DescribeFleetAdvisorSchemaObjectSummaryResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorSchemaObjectSummary",
   pagination: {
     inputToken: "NextToken",
@@ -9549,6 +9603,7 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorSchemasError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9581,6 +9636,8 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
   input: DescribeFleetAdvisorSchemasRequest,
   output: DescribeFleetAdvisorSchemasResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -9588,6 +9645,7 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeInstanceProfilesError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -9621,6 +9679,8 @@ export const describeInstanceProfiles: API.OperationMethod<
   input: DescribeInstanceProfilesMessage,
   output: DescribeInstanceProfilesResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceProfiles",
   pagination: {
     inputToken: "Marker",
@@ -9628,6 +9688,7 @@ export const describeInstanceProfiles: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelError =
   | AccessDeniedFault
   | ResourceNotFoundFault
@@ -9644,8 +9705,11 @@ export const describeMetadataModel: API.OperationMethod<
   input: DescribeMetadataModelMessage,
   output: DescribeMetadataModelResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModel",
 }));
+
 export type DescribeMetadataModelAssessmentsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9677,6 +9741,8 @@ export const describeMetadataModelAssessments: API.OperationMethod<
   input: DescribeMetadataModelAssessmentsMessage,
   output: DescribeMetadataModelAssessmentsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelAssessments",
   pagination: {
     inputToken: "Marker",
@@ -9684,6 +9750,7 @@ export const describeMetadataModelAssessments: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelChildrenError =
   | AccessDeniedFault
   | ResourceNotFoundFault
@@ -9715,6 +9782,8 @@ export const describeMetadataModelChildren: API.OperationMethod<
   input: DescribeMetadataModelChildrenMessage,
   output: DescribeMetadataModelChildrenResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelChildren",
   pagination: {
     inputToken: "Marker",
@@ -9723,6 +9792,7 @@ export const describeMetadataModelChildren: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelConversionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9753,6 +9823,8 @@ export const describeMetadataModelConversions: API.OperationMethod<
   input: DescribeMetadataModelConversionsMessage,
   output: DescribeMetadataModelConversionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelConversions",
   pagination: {
     inputToken: "Marker",
@@ -9760,6 +9832,7 @@ export const describeMetadataModelConversions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelCreationsError =
   | AccessDeniedFault
   | ResourceNotFoundFault
@@ -9791,6 +9864,8 @@ export const describeMetadataModelCreations: API.OperationMethod<
   input: DescribeMetadataModelCreationsMessage,
   output: DescribeMetadataModelCreationsResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelCreations",
   pagination: {
     inputToken: "Marker",
@@ -9799,6 +9874,7 @@ export const describeMetadataModelCreations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelExportsAsScriptError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9829,6 +9905,8 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
   input: DescribeMetadataModelExportsAsScriptMessage,
   output: DescribeMetadataModelExportsAsScriptResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelExportsAsScript",
   pagination: {
     inputToken: "Marker",
@@ -9836,6 +9914,7 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelExportsToTargetError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9866,6 +9945,8 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
   input: DescribeMetadataModelExportsToTargetMessage,
   output: DescribeMetadataModelExportsToTargetResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelExportsToTarget",
   pagination: {
     inputToken: "Marker",
@@ -9873,6 +9954,7 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelImportsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9903,6 +9985,8 @@ export const describeMetadataModelImports: API.OperationMethod<
   input: DescribeMetadataModelImportsMessage,
   output: DescribeMetadataModelImportsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelImports",
   pagination: {
     inputToken: "Marker",
@@ -9910,6 +9994,7 @@ export const describeMetadataModelImports: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMigrationProjectsError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -9943,6 +10028,8 @@ export const describeMigrationProjects: API.OperationMethod<
   input: DescribeMigrationProjectsMessage,
   output: DescribeMigrationProjectsResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMigrationProjects",
   pagination: {
     inputToken: "Marker",
@@ -9950,6 +10037,7 @@ export const describeMigrationProjects: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeOrderableReplicationInstancesError = CommonErrors;
 /**
  * Returns information about the replication instance types that can be created in the
@@ -9979,6 +10067,8 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
   input: DescribeOrderableReplicationInstancesMessage,
   output: DescribeOrderableReplicationInstancesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrderableReplicationInstances",
   pagination: {
     inputToken: "Marker",
@@ -9986,6 +10076,7 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribePendingMaintenanceActionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10017,6 +10108,8 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   input: DescribePendingMaintenanceActionsMessage,
   output: DescribePendingMaintenanceActionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePendingMaintenanceActions",
   pagination: {
     inputToken: "Marker",
@@ -10024,6 +10117,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeRecommendationLimitationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10058,6 +10152,8 @@ export const describeRecommendationLimitations: API.OperationMethod<
   input: DescribeRecommendationLimitationsRequest,
   output: DescribeRecommendationLimitationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommendationLimitations",
   pagination: {
     inputToken: "NextToken",
@@ -10065,6 +10161,7 @@ export const describeRecommendationLimitations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeRecommendationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10099,6 +10196,8 @@ export const describeRecommendations: API.OperationMethod<
   input: DescribeRecommendationsRequest,
   output: DescribeRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommendations",
   pagination: {
     inputToken: "NextToken",
@@ -10106,6 +10205,7 @@ export const describeRecommendations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeRefreshSchemasStatusError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10122,8 +10222,11 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   input: DescribeRefreshSchemasStatusMessage,
   output: DescribeRefreshSchemasStatusResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRefreshSchemasStatus",
 }));
+
 export type DescribeReplicationConfigsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10155,6 +10258,8 @@ export const describeReplicationConfigs: API.OperationMethod<
   input: DescribeReplicationConfigsMessage,
   output: DescribeReplicationConfigsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationConfigs",
   pagination: {
     inputToken: "Marker",
@@ -10162,6 +10267,7 @@ export const describeReplicationConfigs: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationInstancesError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10193,6 +10299,8 @@ export const describeReplicationInstances: API.OperationMethod<
   input: DescribeReplicationInstancesMessage,
   output: DescribeReplicationInstancesResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationInstances",
   pagination: {
     inputToken: "Marker",
@@ -10200,6 +10308,7 @@ export const describeReplicationInstances: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationInstanceTaskLogsError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10231,6 +10340,8 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
   input: DescribeReplicationInstanceTaskLogsMessage,
   output: DescribeReplicationInstanceTaskLogsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationInstanceTaskLogs",
   pagination: {
     inputToken: "Marker",
@@ -10238,6 +10349,7 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Provides details on replication progress by returning status information for one or more
@@ -10267,6 +10379,8 @@ export const describeReplications: API.OperationMethod<
   input: DescribeReplicationsMessage,
   output: DescribeReplicationsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplications",
   pagination: {
     inputToken: "Marker",
@@ -10274,6 +10388,7 @@ export const describeReplications: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationSubnetGroupsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10304,6 +10419,8 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
   input: DescribeReplicationSubnetGroupsMessage,
   output: DescribeReplicationSubnetGroupsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -10311,6 +10428,7 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTableStatisticsError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10343,6 +10461,8 @@ export const describeReplicationTableStatistics: API.OperationMethod<
   input: DescribeReplicationTableStatisticsMessage,
   output: DescribeReplicationTableStatisticsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTableStatistics",
   pagination: {
     inputToken: "Marker",
@@ -10350,6 +10470,7 @@ export const describeReplicationTableStatistics: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTaskAssessmentResultsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10384,6 +10505,8 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
   input: DescribeReplicationTaskAssessmentResultsMessage,
   output: DescribeReplicationTaskAssessmentResultsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTaskAssessmentResults",
   pagination: {
     inputToken: "Marker",
@@ -10391,6 +10514,7 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTaskAssessmentRunsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10429,6 +10553,8 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
   input: DescribeReplicationTaskAssessmentRunsMessage,
   output: DescribeReplicationTaskAssessmentRunsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTaskAssessmentRuns",
   pagination: {
     inputToken: "Marker",
@@ -10436,6 +10562,7 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTaskIndividualAssessmentsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10469,6 +10596,8 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
   input: DescribeReplicationTaskIndividualAssessmentsMessage,
   output: DescribeReplicationTaskIndividualAssessmentsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTaskIndividualAssessments",
   pagination: {
     inputToken: "Marker",
@@ -10476,6 +10605,7 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTasksError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10507,6 +10637,8 @@ export const describeReplicationTasks: API.OperationMethod<
   input: DescribeReplicationTasksMessage,
   output: DescribeReplicationTasksResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTasks",
   pagination: {
     inputToken: "Marker",
@@ -10514,6 +10646,7 @@ export const describeReplicationTasks: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeSchemasError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10545,6 +10678,8 @@ export const describeSchemas: API.OperationMethod<
   input: DescribeSchemasMessage,
   output: DescribeSchemasResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchemas",
   pagination: {
     inputToken: "Marker",
@@ -10552,6 +10687,7 @@ export const describeSchemas: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeTableStatisticsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10589,6 +10725,8 @@ export const describeTableStatistics: API.OperationMethod<
   input: DescribeTableStatisticsMessage,
   output: DescribeTableStatisticsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTableStatistics",
   pagination: {
     inputToken: "Marker",
@@ -10596,6 +10734,7 @@ export const describeTableStatistics: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type ExportMetadataModelAssessmentError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10612,8 +10751,11 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   input: ExportMetadataModelAssessmentMessage,
   output: ExportMetadataModelAssessmentResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportMetadataModelAssessment",
 }));
+
 export type GetTargetSelectionRulesError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10631,8 +10773,11 @@ export const getTargetSelectionRules: API.OperationMethod<
   input: GetTargetSelectionRulesMessage,
   output: GetTargetSelectionRulesResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTargetSelectionRules",
 }));
+
 export type ImportCertificateError =
   | InvalidCertificateFault
   | KMSKeyNotAccessibleFault
@@ -10656,8 +10801,11 @@ export const importCertificate: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCertificate",
 }));
+
 export type ListTagsForResourceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10678,8 +10826,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceMessage,
   output: ListTagsForResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ModifyConversionConfigurationError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10696,8 +10847,11 @@ export const modifyConversionConfiguration: API.OperationMethod<
   input: ModifyConversionConfigurationMessage,
   output: ModifyConversionConfigurationResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyConversionConfiguration",
 }));
+
 export type ModifyDataMigrationError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -10719,8 +10873,11 @@ export const modifyDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDataMigration",
 }));
+
 export type ModifyDataProviderError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -10747,8 +10904,11 @@ export const modifyDataProvider: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDataProvider",
 }));
+
 export type ModifyEndpointError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10781,8 +10941,11 @@ export const modifyEndpoint: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEndpoint",
 }));
+
 export type ModifyEventSubscriptionError =
   | AccessDeniedFault
   | KMSAccessDeniedFault
@@ -10818,8 +10981,11 @@ export const modifyEventSubscription: API.OperationMethod<
     SNSInvalidTopicFault,
     SNSNoAuthorizationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
+
 export type ModifyInstanceProfileError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -10852,8 +11018,11 @@ export const modifyInstanceProfile: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceProfile",
 }));
+
 export type ModifyMigrationProjectError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -10883,8 +11052,11 @@ export const modifyMigrationProject: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyMigrationProject",
 }));
+
 export type ModifyReplicationConfigError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10920,8 +11092,11 @@ export const modifyReplicationConfig: API.OperationMethod<
     ReplicationSubnetGroupDoesNotCoverEnoughAZs,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationConfig",
 }));
+
 export type ModifyReplicationInstanceError =
   | AccessDeniedFault
   | InsufficientResourceCapacityFault
@@ -10954,8 +11129,11 @@ export const modifyReplicationInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     UpgradeDependencyFailureFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationInstance",
 }));
+
 export type ModifyReplicationSubnetGroupError =
   | AccessDeniedFault
   | InvalidSubnet
@@ -10983,8 +11161,11 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
     ResourceQuotaExceededFault,
     SubnetAlreadyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationSubnetGroup",
 }));
+
 export type ModifyReplicationTaskError =
   | InvalidResourceStateFault
   | KMSKeyNotAccessibleFault
@@ -11013,8 +11194,11 @@ export const modifyReplicationTask: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationTask",
 }));
+
 export type MoveReplicationTaskError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11042,8 +11226,11 @@ export const moveReplicationTask: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MoveReplicationTask",
 }));
+
 export type RebootReplicationInstanceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11061,8 +11248,11 @@ export const rebootReplicationInstance: API.OperationMethod<
   input: RebootReplicationInstanceMessage,
   output: RebootReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootReplicationInstance",
 }));
+
 export type RefreshSchemasError =
   | InvalidResourceStateFault
   | KMSKeyNotAccessibleFault
@@ -11088,8 +11278,11 @@ export const refreshSchemas: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RefreshSchemas",
 }));
+
 export type ReloadReplicationTablesError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11110,8 +11303,11 @@ export const reloadReplicationTables: API.OperationMethod<
   input: ReloadReplicationTablesMessage,
   output: ReloadReplicationTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReloadReplicationTables",
 }));
+
 export type ReloadTablesError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11131,8 +11327,11 @@ export const reloadTables: API.OperationMethod<
   input: ReloadTablesMessage,
   output: ReloadTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReloadTables",
 }));
+
 export type RemoveTagsFromResourceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11153,8 +11352,11 @@ export const removeTagsFromResource: API.OperationMethod<
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
+
 export type RunFleetAdvisorLsaAnalysisError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11173,8 +11375,11 @@ export const runFleetAdvisorLsaAnalysis: API.OperationMethod<
   input: RunFleetAdvisorLsaAnalysisRequest,
   output: RunFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunFleetAdvisorLsaAnalysis",
 }));
+
 export type StartDataMigrationError =
   | FailedDependencyFault
   | InvalidOperationFault
@@ -11200,8 +11405,11 @@ export const startDataMigration: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataMigration",
 }));
+
 export type StartExtensionPackAssociationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11235,8 +11443,11 @@ export const startExtensionPackAssociation: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExtensionPackAssociation",
 }));
+
 export type StartMetadataModelAssessmentError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11271,8 +11482,11 @@ export const startMetadataModelAssessment: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelAssessment",
 }));
+
 export type StartMetadataModelConversionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11304,8 +11518,11 @@ export const startMetadataModelConversion: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelConversion",
 }));
+
 export type StartMetadataModelCreationError =
   | AccessDeniedFault
   | ResourceAlreadyExistsFault
@@ -11331,8 +11548,11 @@ export const startMetadataModelCreation: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelCreation",
 }));
+
 export type StartMetadataModelExportAsScriptError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11365,8 +11585,11 @@ export const startMetadataModelExportAsScript: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelExportAsScript",
 }));
+
 export type StartMetadataModelExportToTargetError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11398,8 +11621,11 @@ export const startMetadataModelExportToTarget: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelExportToTarget",
 }));
+
 export type StartMetadataModelImportError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11434,8 +11660,11 @@ export const startMetadataModelImport: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelImport",
 }));
+
 export type StartRecommendationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11458,8 +11687,11 @@ export const startRecommendations: API.OperationMethod<
   input: StartRecommendationsRequest,
   output: StartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRecommendations",
 }));
+
 export type StartReplicationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11481,8 +11713,11 @@ export const startReplication: API.OperationMethod<
   input: StartReplicationMessage,
   output: StartReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplication",
 }));
+
 export type StartReplicationTaskError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11503,8 +11738,11 @@ export const startReplicationTask: API.OperationMethod<
   input: StartReplicationTaskMessage,
   output: StartReplicationTaskResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplicationTask",
 }));
+
 export type StartReplicationTaskAssessmentError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11534,8 +11772,11 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   input: StartReplicationTaskAssessmentMessage,
   output: StartReplicationTaskAssessmentResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplicationTaskAssessment",
 }));
+
 export type StartReplicationTaskAssessmentRunError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11582,8 +11823,11 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplicationTaskAssessmentRun",
 }));
+
 export type StopDataMigrationError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -11605,8 +11849,11 @@ export const stopDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDataMigration",
 }));
+
 export type StopReplicationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11626,8 +11873,11 @@ export const stopReplication: API.OperationMethod<
   input: StopReplicationMessage,
   output: StopReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplication",
 }));
+
 export type StopReplicationTaskError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11644,8 +11894,11 @@ export const stopReplicationTask: API.OperationMethod<
   input: StopReplicationTaskMessage,
   output: StopReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplicationTask",
 }));
+
 export type TestConnectionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11671,8 +11924,11 @@ export const testConnection: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestConnection",
 }));
+
 export type UpdateSubscriptionsToEventBridgeError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11700,5 +11956,7 @@ export const updateSubscriptionsToEventBridge: API.OperationMethod<
   input: UpdateSubscriptionsToEventBridgeMessage,
   output: UpdateSubscriptionsToEventBridgeResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriptionsToEventBridge",
 }));

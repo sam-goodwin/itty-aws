@@ -1,10 +1,120 @@
 {
-  "errors": {
-    "ImagesAccessNotEnabled": [{ "code": 5403 }],
-    "VariantNameNotAllowed": [{ "code": 5400 }],
-    "VariantNotFound": [
-      { "code": 5401 },
-      { "status": 404, "message": { "includes": "not found" } }
-    ]
-  }
+  "description": "Align images#V1VariantsGet with distilled cloudflare/images getV1Variant",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V1VariantsGet",
+      "path": "/shapes/com.cloudflare.images#GetV1Variant"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V1VariantsGetRequest",
+      "path": "/shapes/com.cloudflare.images#GetV1VariantRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.images#GetV1Variant/input/target",
+      "value": "com.cloudflare.images#GetV1VariantRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V1VariantsGetResponse",
+      "path": "/shapes/com.cloudflare.images#GetV1VariantResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.images#GetV1Variant/output/target",
+      "value": "com.cloudflare.images#GetV1VariantResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#ImagesAccessNotEnabled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#VariantNameNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5400
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#VariantNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5401
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#GetV1Variant/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.images#ImagesAccessNotEnabled"
+        },
+        {
+          "target": "com.cloudflare.images#VariantNameNotAllowed"
+        },
+        {
+          "target": "com.cloudflare.images#VariantNotFound"
+        }
+      ]
+    }
+  ]
 }

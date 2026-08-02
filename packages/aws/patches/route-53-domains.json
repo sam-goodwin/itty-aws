@@ -46,8 +46,6 @@
     }
   },
   "errorCategories": {
-    "DomainNotFound": [
-      "NotFoundError"
-    ]
+    "DomainNotFound": ["NotFoundError"]
   }
 }

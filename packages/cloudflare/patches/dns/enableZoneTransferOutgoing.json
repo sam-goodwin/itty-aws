@@ -1,1 +1,62 @@
-{ "errors": { "OutgoingZoneTransfersNotAllowed": [{ "status": 401 }] } }
+{
+  "description": "Align dns#ZoneTransfersOutgoingEnable with distilled cloudflare/dns enableZoneTransferOutgoing",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersOutgoingEnable",
+      "path": "/shapes/com.cloudflare.dns#EnableZoneTransferOutgoing"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersOutgoingEnableRequest",
+      "path": "/shapes/com.cloudflare.dns#EnableZoneTransferOutgoingRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns#EnableZoneTransferOutgoing/input/target",
+      "value": "com.cloudflare.dns#EnableZoneTransferOutgoingRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersOutgoingEnableResponse",
+      "path": "/shapes/com.cloudflare.dns#EnableZoneTransferOutgoingResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns#EnableZoneTransferOutgoing/output/target",
+      "value": "com.cloudflare.dns#EnableZoneTransferOutgoingResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#OutgoingZoneTransfersNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 401
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#EnableZoneTransferOutgoing/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.dns#OutgoingZoneTransfersNotAllowed"
+        }
+      ]
+    }
+  ]
+}

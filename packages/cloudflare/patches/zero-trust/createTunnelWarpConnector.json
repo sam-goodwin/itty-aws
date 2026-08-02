@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "DuplicateTunnelName": [{ "code": 1013 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

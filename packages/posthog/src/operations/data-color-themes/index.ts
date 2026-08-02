@@ -1,6 +1,0 @@
-export * from "./dataColorThemesList.ts";
-export * from "./dataColorThemesCreate.ts";
-export * from "./dataColorThemesRetrieve.ts";
-export * from "./dataColorThemesUpdate.ts";
-export * from "./dataColorThemesPartialUpdate.ts";
-export * from "./dataColorThemesDestroy.ts";

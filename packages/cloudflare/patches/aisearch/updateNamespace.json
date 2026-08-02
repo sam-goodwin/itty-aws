@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "NamespaceNotFound": [{ "code": 7063 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

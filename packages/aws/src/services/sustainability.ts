@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -110,13 +112,26 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Month = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type ModelVersion = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface TimePeriod {
   Start: Date;
   End: Date;
@@ -133,6 +148,7 @@ export type Dimension =
   | "SERVICE"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
 export type DimensionList = Dimension[];
 export const DimensionList = /*@__PURE__*/ S.Array(Dimension);
 export type DimensionValueList = string[];
@@ -160,6 +176,7 @@ export type EmissionsType =
   | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS"
   | (string & {});
 export const EmissionsType = /*@__PURE__*/ S.String;
+
 export type EmissionsTypeList = EmissionsType[];
 export const EmissionsTypeList = /*@__PURE__*/ S.Array(EmissionsType);
 export type TimeGranularity =
@@ -170,6 +187,8 @@ export type TimeGranularity =
   | "MONTHLY"
   | (string & {});
 export const TimeGranularity = /*@__PURE__*/ S.String;
+
+export type Month = number;
 export interface GranularityConfiguration {
   FiscalYearStartMonth?: number;
 }
@@ -178,6 +197,8 @@ export const GranularityConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GranularityConfiguration",
 }) as any as S.Schema<GranularityConfiguration>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface GetEstimatedCarbonEmissionsRequest {
   TimePeriod: TimePeriod;
   GroupBy?: Dimension[];
@@ -188,37 +209,38 @@ export interface GetEstimatedCarbonEmissionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetEstimatedCarbonEmissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TimePeriod: TimePeriod,
-      GroupBy: S.optional(DimensionList),
-      FilterBy: S.optional(FilterExpression),
-      EmissionsTypes: S.optional(EmissionsTypeList),
-      Granularity: S.optional(TimeGranularity),
-      GranularityConfiguration: S.optional(GranularityConfiguration),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/estimated-carbon-emissions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEstimatedCarbonEmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TimePeriod: TimePeriod,
+    GroupBy: S.optional(DimensionList),
+    FilterBy: S.optional(FilterExpression),
+    EmissionsTypes: S.optional(EmissionsTypeList),
+    Granularity: S.optional(TimeGranularity),
+    GranularityConfiguration: S.optional(GranularityConfiguration),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/estimated-carbon-emissions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetEstimatedCarbonEmissionsRequest",
-  }) as any as S.Schema<GetEstimatedCarbonEmissionsRequest>;
+  ),
+).annotate({
+  identifier: "GetEstimatedCarbonEmissionsRequest",
+}) as any as S.Schema<GetEstimatedCarbonEmissionsRequest>;
 export type DimensionsMap = { [key in Dimension]?: string };
 export const DimensionsMap = /*@__PURE__*/ S.Record(
   Dimension,
   S.String.pipe(S.optional),
 );
+export type ModelVersion = string;
 export type EmissionsUnit = "MTCO2e" | (string & {});
 export const EmissionsUnit = /*@__PURE__*/ S.String;
+
 export interface Emissions {
   Value: number;
   Unit: EmissionsUnit;
@@ -255,15 +277,14 @@ export interface GetEstimatedCarbonEmissionsResponse {
   Results: EstimatedCarbonEmissions[];
   NextToken?: string;
 }
-export const GetEstimatedCarbonEmissionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Results: EstimatedCarbonEmissionsList,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetEstimatedCarbonEmissionsResponse",
-  }) as any as S.Schema<GetEstimatedCarbonEmissionsResponse>;
+export const GetEstimatedCarbonEmissionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Results: EstimatedCarbonEmissionsList,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetEstimatedCarbonEmissionsResponse",
+}) as any as S.Schema<GetEstimatedCarbonEmissionsResponse>;
 export interface GetEstimatedCarbonEmissionsDimensionValuesRequest {
   TimePeriod: TimePeriod;
   Dimensions: Dimension[];
@@ -315,28 +336,6 @@ export const GetEstimatedCarbonEmissionsDimensionValuesResponse =
   ).annotate({
     identifier: "GetEstimatedCarbonEmissionsDimensionValuesResponse",
   }) as any as S.Schema<GetEstimatedCarbonEmissionsDimensionValuesResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.Retryable(),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type GetEstimatedCarbonEmissionsError =
   | AccessDeniedException
   | InternalServerException
@@ -375,6 +374,8 @@ export const getEstimatedCarbonEmissions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEstimatedCarbonEmissions",
   pagination: {
     inputToken: "NextToken",
@@ -383,6 +384,7 @@ export const getEstimatedCarbonEmissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetEstimatedCarbonEmissionsDimensionValuesError =
   | AccessDeniedException
   | InternalServerException
@@ -421,6 +423,8 @@ export const getEstimatedCarbonEmissionsDimensionValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEstimatedCarbonEmissionsDimensionValues",
   pagination: {
     inputToken: "NextToken",

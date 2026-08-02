@@ -1,11 +1,6 @@
 {
   "name": "@distilled.cloud/core",
-  "version": "0.30.2",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alchemy-run/distilled",
-    "directory": "packages/core"
-  },
+  "version": "0.0.0",
   "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
@@ -14,84 +9,27 @@
     "src"
   ],
   "exports": {
-    "./category": {
-      "types": "./lib/category.d.ts",
-      "bun": "./src/category.ts",
-      "default": "./lib/category.js"
+    ".": {
+      "types": "./lib/index.d.ts",
+      "bun": "./src/index.ts",
+      "worker": "./src/index.ts",
+      "import": "./lib/index.js"
     },
-    "./client": {
-      "types": "./lib/client.d.ts",
-      "bun": "./src/client.ts",
-      "default": "./lib/client.js"
-    },
-    "./errors": {
-      "types": "./lib/errors.d.ts",
-      "bun": "./src/errors.ts",
-      "default": "./lib/errors.js"
-    },
-    "./json-patch": {
-      "types": "./lib/json-patch.d.ts",
-      "bun": "./src/json-patch.ts",
-      "default": "./lib/json-patch.js"
-    },
-    "./pagination": {
-      "types": "./lib/pagination.d.ts",
-      "bun": "./src/pagination.ts",
-      "default": "./lib/pagination.js"
-    },
-    "./retry": {
-      "types": "./lib/retry.d.ts",
-      "bun": "./src/retry.ts",
-      "default": "./lib/retry.js"
-    },
-    "./retry-after": {
-      "types": "./lib/retry-after.d.ts",
-      "bun": "./src/retry-after.ts",
-      "default": "./lib/retry-after.js"
-    },
-    "./schema": {
-      "types": "./lib/schema.d.ts",
-      "bun": "./src/schema.ts",
-      "default": "./lib/schema.js"
-    },
-    "./schemas": {
-      "types": "./lib/schemas.d.ts",
-      "bun": "./src/schemas.ts",
-      "default": "./lib/schemas.js"
-    },
-    "./sensitive": {
-      "types": "./lib/sensitive.d.ts",
-      "bun": "./src/sensitive.ts",
-      "default": "./lib/sensitive.js"
-    },
-    "./traits": {
-      "types": "./lib/traits.d.ts",
-      "bun": "./src/traits.ts",
-      "default": "./lib/traits.js"
-    },
-    "./openapi/generate": {
-      "bun": "./scripts/generate-openapi.ts",
-      "default": "./scripts/generate-openapi.ts"
-    },
-    "./graphql/generate": {
-      "bun": "./scripts/generate-graphql.ts",
-      "default": "./scripts/generate-graphql.ts"
+    "./*": {
+      "types": "./lib/*.d.ts",
+      "bun": "./src/*.ts",
+      "worker": "./src/*.ts",
+      "import": "./lib/*.js"
     }
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsc -b",
-    "fmt": "oxfmt --write src",
-    "lint": "oxlint --fix src",
-    "check": "tsc && oxlint src && oxfmt --check src",
-    "test": "bunx vitest run test --exclude specs --passWithNoTests",
-    "publish:npm": "bun run build && bun publish --access public"
+    "build": "tsc -b"
   },
   "devDependencies": {
+    "@effect/platform-bun": "catalog:",
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
-    "dotenv": "catalog:",
-    "vitest": "catalog:"
+    "effect": "catalog:"
   },
   "peerDependencies": {
     "effect": "catalog:"

@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "GatewayNotFound": [{ "code": 7002 }],
-    "DatasetNameAlreadyExists": [
-      { "status": 400, "message": { "includes": "already exists" } }
-    ]
-  }
-}

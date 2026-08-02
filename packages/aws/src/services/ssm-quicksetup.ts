@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,15 +85,42 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type IAMRoleArn = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ConfigurationParametersMap = { [key: string]: string | undefined };
 export const ConfigurationParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type IAMRoleArn = string;
 export interface ConfigurationDefinitionInput {
   Type: string;
   Parameters: { [key: string]: string | undefined };
@@ -99,21 +128,21 @@ export interface ConfigurationDefinitionInput {
   LocalDeploymentExecutionRoleName?: string;
   LocalDeploymentAdministrationRoleArn?: string;
 }
-export const ConfigurationDefinitionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Type: S.String,
-      Parameters: ConfigurationParametersMap,
-      TypeVersion: S.optional(S.String),
-      LocalDeploymentExecutionRoleName: S.optional(S.String),
-      LocalDeploymentAdministrationRoleArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationDefinitionInput",
-  }) as any as S.Schema<ConfigurationDefinitionInput>;
+export const ConfigurationDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.String,
+    Parameters: ConfigurationParametersMap,
+    TypeVersion: S.optional(S.String),
+    LocalDeploymentExecutionRoleName: S.optional(S.String),
+    LocalDeploymentAdministrationRoleArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigurationDefinitionInput",
+}) as any as S.Schema<ConfigurationDefinitionInput>;
 export type ConfigurationDefinitionsInputList = ConfigurationDefinitionInput[];
-export const ConfigurationDefinitionsInputList =
-  /*@__PURE__*/ S.Array(ConfigurationDefinitionInput);
+export const ConfigurationDefinitionsInputList = /*@__PURE__*/ S.Array(
+  ConfigurationDefinitionInput,
+);
 export type TagsMap = { [key: string]: string | undefined };
 export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -125,56 +154,56 @@ export interface CreateConfigurationManagerInput {
   ConfigurationDefinitions: ConfigurationDefinitionInput[];
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateConfigurationManagerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      ConfigurationDefinitions: ConfigurationDefinitionsInputList,
-      Tags: S.optional(TagsMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/configurationManager" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateConfigurationManagerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    ConfigurationDefinitions: ConfigurationDefinitionsInputList,
+    Tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/configurationManager" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateConfigurationManagerInput",
-  }) as any as S.Schema<CreateConfigurationManagerInput>;
+  ),
+).annotate({
+  identifier: "CreateConfigurationManagerInput",
+}) as any as S.Schema<CreateConfigurationManagerInput>;
 export interface CreateConfigurationManagerOutput {
   ManagerArn: string;
 }
-export const CreateConfigurationManagerOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ ManagerArn: S.String })).annotate({
-    identifier: "CreateConfigurationManagerOutput",
-  }) as any as S.Schema<CreateConfigurationManagerOutput>;
+export const CreateConfigurationManagerOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ManagerArn: S.String }),
+).annotate({
+  identifier: "CreateConfigurationManagerOutput",
+}) as any as S.Schema<CreateConfigurationManagerOutput>;
 export interface DeleteConfigurationManagerInput {
   ManagerArn: string;
 }
-export const DeleteConfigurationManagerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/configurationManager/{ManagerArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteConfigurationManagerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/configurationManager/{ManagerArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteConfigurationManagerInput",
-  }) as any as S.Schema<DeleteConfigurationManagerInput>;
+  ),
+).annotate({
+  identifier: "DeleteConfigurationManagerInput",
+}) as any as S.Schema<DeleteConfigurationManagerInput>;
 export interface DeleteConfigurationManagerResponse {}
-export const DeleteConfigurationManagerResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteConfigurationManagerResponse",
-  }) as any as S.Schema<DeleteConfigurationManagerResponse>;
+export const DeleteConfigurationManagerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConfigurationManagerResponse",
+}) as any as S.Schema<DeleteConfigurationManagerResponse>;
 export interface GetConfigurationInput {
   ConfigurationId: string;
 }
@@ -196,6 +225,7 @@ export const GetConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationInput>;
 export type StatusType = "Deployment" | "AsyncExecutions" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export type Status =
   | "INITIALIZING"
   | "DEPLOYING"
@@ -209,6 +239,7 @@ export type Status =
   | "NONE"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export type StatusDetails = { [key: string]: string | undefined };
 export const StatusDetails = /*@__PURE__*/ S.Record(
   S.String,
@@ -269,21 +300,20 @@ export const GetConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigurationManagerInput {
   ManagerArn: string;
 }
-export const GetConfigurationManagerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/configurationManager/{ManagerArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetConfigurationManagerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/configurationManager/{ManagerArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetConfigurationManagerInput",
-  }) as any as S.Schema<GetConfigurationManagerInput>;
+  ),
+).annotate({
+  identifier: "GetConfigurationManagerInput",
+}) as any as S.Schema<GetConfigurationManagerInput>;
 export interface ConfigurationDefinition {
   Type: string;
   Parameters: { [key: string]: string | undefined };
@@ -318,29 +348,35 @@ export interface GetConfigurationManagerOutput {
   ConfigurationDefinitions?: ConfigurationDefinition[];
   Tags?: { [key: string]: string | undefined };
 }
-export const GetConfigurationManagerOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ManagerArn: S.String,
-      Description: S.optional(S.String),
-      Name: S.optional(S.String),
-      CreatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      LastModifiedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      StatusSummaries: S.optional(StatusSummariesList),
-      ConfigurationDefinitions: S.optional(ConfigurationDefinitionsList),
-      Tags: S.optional(TagsMap),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationManagerOutput",
-  }) as any as S.Schema<GetConfigurationManagerOutput>;
+export const GetConfigurationManagerOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagerArn: S.String,
+    Description: S.optional(S.String),
+    Name: S.optional(S.String),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    LastModifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    StatusSummaries: S.optional(StatusSummariesList),
+    ConfigurationDefinitions: S.optional(ConfigurationDefinitionsList),
+    Tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetConfigurationManagerOutput",
+}) as any as S.Schema<GetConfigurationManagerOutput>;
 export interface GetServiceSettingsRequest {}
 export const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "GET", uri: "/serviceSettings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetServiceSettingsRequest",
@@ -377,46 +413,45 @@ export interface ListConfigurationManagersInput {
   MaxItems?: number;
   Filters?: Filter[];
 }
-export const ListConfigurationManagersInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StartingToken: S.optional(S.String),
-      MaxItems: S.optional(S.Number),
-      Filters: S.optional(FiltersList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/listConfigurationManagers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListConfigurationManagersInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartingToken: S.optional(S.String),
+    MaxItems: S.optional(S.Number),
+    Filters: S.optional(FiltersList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/listConfigurationManagers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListConfigurationManagersInput",
-  }) as any as S.Schema<ListConfigurationManagersInput>;
+  ),
+).annotate({
+  identifier: "ListConfigurationManagersInput",
+}) as any as S.Schema<ListConfigurationManagersInput>;
 export interface ConfigurationDefinitionSummary {
   Id?: string;
   Type?: string;
   TypeVersion?: string;
   FirstClassParameters?: { [key: string]: string | undefined };
 }
-export const ConfigurationDefinitionSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.optional(S.String),
-      Type: S.optional(S.String),
-      TypeVersion: S.optional(S.String),
-      FirstClassParameters: S.optional(ConfigurationParametersMap),
-    }),
-  ).annotate({
-    identifier: "ConfigurationDefinitionSummary",
-  }) as any as S.Schema<ConfigurationDefinitionSummary>;
+export const ConfigurationDefinitionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Type: S.optional(S.String),
+    TypeVersion: S.optional(S.String),
+    FirstClassParameters: S.optional(ConfigurationParametersMap),
+  }),
+).annotate({
+  identifier: "ConfigurationDefinitionSummary",
+}) as any as S.Schema<ConfigurationDefinitionSummary>;
 export type ConfigurationDefinitionSummariesList =
   ConfigurationDefinitionSummary[];
-export const ConfigurationDefinitionSummariesList =
-  /*@__PURE__*/ S.Array(ConfigurationDefinitionSummary);
+export const ConfigurationDefinitionSummariesList = /*@__PURE__*/ S.Array(
+  ConfigurationDefinitionSummary,
+);
 export interface ConfigurationManagerSummary {
   ManagerArn: string;
   Description?: string;
@@ -424,20 +459,19 @@ export interface ConfigurationManagerSummary {
   StatusSummaries?: StatusSummary[];
   ConfigurationDefinitionSummaries?: ConfigurationDefinitionSummary[];
 }
-export const ConfigurationManagerSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ManagerArn: S.String,
-      Description: S.optional(S.String),
-      Name: S.optional(S.String),
-      StatusSummaries: S.optional(StatusSummariesList),
-      ConfigurationDefinitionSummaries: S.optional(
-        ConfigurationDefinitionSummariesList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationManagerSummary",
-  }) as any as S.Schema<ConfigurationManagerSummary>;
+export const ConfigurationManagerSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagerArn: S.String,
+    Description: S.optional(S.String),
+    Name: S.optional(S.String),
+    StatusSummaries: S.optional(StatusSummariesList),
+    ConfigurationDefinitionSummaries: S.optional(
+      ConfigurationDefinitionSummariesList,
+    ),
+  }),
+).annotate({
+  identifier: "ConfigurationManagerSummary",
+}) as any as S.Schema<ConfigurationManagerSummary>;
 export type ConfigurationManagerList = ConfigurationManagerSummary[];
 export const ConfigurationManagerList = /*@__PURE__*/ S.Array(
   ConfigurationManagerSummary,
@@ -446,15 +480,14 @@ export interface ListConfigurationManagersOutput {
   ConfigurationManagersList?: ConfigurationManagerSummary[];
   NextToken?: string;
 }
-export const ListConfigurationManagersOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationManagersList: S.optional(ConfigurationManagerList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListConfigurationManagersOutput",
-  }) as any as S.Schema<ListConfigurationManagersOutput>;
+export const ListConfigurationManagersOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationManagersList: S.optional(ConfigurationManagerList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConfigurationManagersOutput",
+}) as any as S.Schema<ListConfigurationManagersOutput>;
 export interface ListConfigurationsInput {
   StartingToken?: string;
   MaxItems?: number;
@@ -529,7 +562,14 @@ export const ListConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListQuickSetupTypesRequest {}
 export const ListQuickSetupTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "GET", uri: "/listQuickSetupTypes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "ListQuickSetupTypesRequest",
@@ -582,10 +622,11 @@ export const Tags = /*@__PURE__*/ S.Array(TagEntry);
 export interface ListTagsForResourceResponse {
   Tags?: TagEntry[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
@@ -650,65 +691,65 @@ export interface UpdateConfigurationDefinitionInput {
   LocalDeploymentExecutionRoleName?: string;
   LocalDeploymentAdministrationRoleArn?: string;
 }
-export const UpdateConfigurationDefinitionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      TypeVersion: S.optional(S.String),
-      Parameters: S.optional(ConfigurationParametersMap),
-      LocalDeploymentExecutionRoleName: S.optional(S.String),
-      LocalDeploymentAdministrationRoleArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/configurationDefinition/{ManagerArn}/{Id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateConfigurationDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    TypeVersion: S.optional(S.String),
+    Parameters: S.optional(ConfigurationParametersMap),
+    LocalDeploymentExecutionRoleName: S.optional(S.String),
+    LocalDeploymentAdministrationRoleArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/configurationDefinition/{ManagerArn}/{Id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateConfigurationDefinitionInput",
-  }) as any as S.Schema<UpdateConfigurationDefinitionInput>;
+  ),
+).annotate({
+  identifier: "UpdateConfigurationDefinitionInput",
+}) as any as S.Schema<UpdateConfigurationDefinitionInput>;
 export interface UpdateConfigurationDefinitionResponse {}
-export const UpdateConfigurationDefinitionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateConfigurationDefinitionResponse",
-  }) as any as S.Schema<UpdateConfigurationDefinitionResponse>;
+export const UpdateConfigurationDefinitionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateConfigurationDefinitionResponse",
+}) as any as S.Schema<UpdateConfigurationDefinitionResponse>;
 export interface UpdateConfigurationManagerInput {
   ManagerArn: string;
   Name?: string;
   Description?: string;
 }
-export const UpdateConfigurationManagerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/configurationManager/{ManagerArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateConfigurationManagerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagerArn: S.String.pipe(T.HttpLabel("ManagerArn")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/configurationManager/{ManagerArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateConfigurationManagerInput",
-  }) as any as S.Schema<UpdateConfigurationManagerInput>;
+  ),
+).annotate({
+  identifier: "UpdateConfigurationManagerInput",
+}) as any as S.Schema<UpdateConfigurationManagerInput>;
 export interface UpdateConfigurationManagerResponse {}
-export const UpdateConfigurationManagerResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateConfigurationManagerResponse",
-  }) as any as S.Schema<UpdateConfigurationManagerResponse>;
+export const UpdateConfigurationManagerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateConfigurationManagerResponse",
+}) as any as S.Schema<UpdateConfigurationManagerResponse>;
 export interface UpdateServiceSettingsInput {
   ExplorerEnablingRoleArn?: string;
 }
@@ -727,40 +768,11 @@ export const UpdateServiceSettingsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServiceSettingsInput",
 }) as any as S.Schema<UpdateServiceSettingsInput>;
 export interface UpdateServiceSettingsResponse {}
-export const UpdateServiceSettingsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateServiceSettingsResponse",
-  }) as any as S.Schema<UpdateServiceSettingsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.Retryable(),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateServiceSettingsResponse",
+}) as any as S.Schema<UpdateServiceSettingsResponse>;
 export type CreateConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -788,8 +800,11 @@ export const createConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationManager",
 }));
+
 export type DeleteConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -817,8 +832,11 @@ export const deleteConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationManager",
 }));
+
 export type GetConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -846,8 +864,11 @@ export const getConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguration",
 }));
+
 export type GetConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -875,8 +896,11 @@ export const getConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationManager",
 }));
+
 export type GetServiceSettingsError =
   | AccessDeniedException
   | ConflictException
@@ -900,8 +924,11 @@ export const getServiceSettings: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceSettings",
 }));
+
 export type ListConfigurationManagersError =
   | AccessDeniedException
   | ConflictException
@@ -942,6 +969,8 @@ export const listConfigurationManagers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationManagers",
   pagination: {
     inputToken: "StartingToken",
@@ -950,6 +979,7 @@ export const listConfigurationManagers: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -990,6 +1020,8 @@ export const listConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurations",
   pagination: {
     inputToken: "StartingToken",
@@ -998,6 +1030,7 @@ export const listConfigurations: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListQuickSetupTypesError =
   | AccessDeniedException
   | ConflictException
@@ -1021,8 +1054,11 @@ export const listQuickSetupTypes: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuickSetupTypes",
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1050,8 +1086,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1079,8 +1118,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1108,8 +1150,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConfigurationDefinitionError =
   | AccessDeniedException
   | ConflictException
@@ -1137,8 +1182,11 @@ export const updateConfigurationDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationDefinition",
 }));
+
 export type UpdateConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -1166,8 +1214,11 @@ export const updateConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationManager",
 }));
+
 export type UpdateServiceSettingsError =
   | AccessDeniedException
   | ConflictException
@@ -1193,5 +1244,7 @@ export const updateServiceSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSettings",
 }));

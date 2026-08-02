@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -107,23 +109,27 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
 export type TunnelId = string;
 export type DeleteFlag = boolean;
-export type ErrorMessage = string;
-export type TunnelArn = string;
-export type Description = string;
-export type ThingName = string;
-export type Service = string;
-export type TimeoutInMin = number;
-export type TagKey = string;
-export type TagValue = string;
-export type AmazonResourceName = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type ClientAccessToken = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface CloseTunnelRequest {
   tunnelId: string;
   delete?: boolean;
@@ -168,10 +174,13 @@ export const DescribeTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTunnelRequest",
 }) as any as S.Schema<DescribeTunnelRequest>;
+export type TunnelArn = string;
 export type TunnelStatus = "OPEN" | "CLOSED" | (string & {});
 export const TunnelStatus = /*@__PURE__*/ S.String;
+
 export type ConnectionStatus = "CONNECTED" | "DISCONNECTED" | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface ConnectionState {
   status?: ConnectionStatus;
   lastUpdatedAt?: Date;
@@ -184,6 +193,9 @@ export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionState",
 }) as any as S.Schema<ConnectionState>;
+export type Description = string;
+export type ThingName = string;
+export type Service = string;
 export type ServiceList = string[];
 export const ServiceList = /*@__PURE__*/ S.Array(S.String);
 export interface DestinationConfig {
@@ -195,12 +207,15 @@ export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DestinationConfig",
 }) as any as S.Schema<DestinationConfig>;
+export type TimeoutInMin = number;
 export interface TimeoutConfig {
   maxLifetimeTimeoutMinutes?: number;
 }
 export const TimeoutConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxLifetimeTimeoutMinutes: S.optional(S.Number) }),
 ).annotate({ identifier: "TimeoutConfig" }) as any as S.Schema<TimeoutConfig>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -246,6 +261,7 @@ export const DescribeTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTunnelResponse",
 }) as any as S.Schema<DescribeTunnelResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -266,12 +282,13 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListTunnelsRequest {
   thingName?: string;
   maxResults?: number;
@@ -352,6 +369,7 @@ export const OpenTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenTunnelRequest",
 }) as any as S.Schema<OpenTunnelRequest>;
+export type ClientAccessToken = string | redacted.Redacted<string>;
 export interface OpenTunnelResponse {
   tunnelId?: string;
   tunnelArn?: string;
@@ -370,45 +388,44 @@ export const OpenTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenTunnelResponse>;
 export type ClientMode = "SOURCE" | "DESTINATION" | "ALL" | (string & {});
 export const ClientMode = /*@__PURE__*/ S.String;
+
 export interface RotateTunnelAccessTokenRequest {
   tunnelId: string;
   clientMode: ClientMode;
   destinationConfig?: DestinationConfig;
 }
-export const RotateTunnelAccessTokenRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelId: S.String.pipe(T.HttpLabel("tunnelId")),
-      clientMode: ClientMode,
-      destinationConfig: S.optional(DestinationConfig),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/tunnel/{tunnelId}/rotate" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RotateTunnelAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tunnelId: S.String.pipe(T.HttpLabel("tunnelId")),
+    clientMode: ClientMode,
+    destinationConfig: S.optional(DestinationConfig),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tunnel/{tunnelId}/rotate" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RotateTunnelAccessTokenRequest",
-  }) as any as S.Schema<RotateTunnelAccessTokenRequest>;
+  ),
+).annotate({
+  identifier: "RotateTunnelAccessTokenRequest",
+}) as any as S.Schema<RotateTunnelAccessTokenRequest>;
 export interface RotateTunnelAccessTokenResponse {
   tunnelArn?: string;
   sourceAccessToken?: string | redacted.Redacted<string>;
   destinationAccessToken?: string | redacted.Redacted<string>;
 }
-export const RotateTunnelAccessTokenResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tunnelArn: S.optional(S.String),
-      sourceAccessToken: S.optional(SensitiveString),
-      destinationAccessToken: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "RotateTunnelAccessTokenResponse",
-  }) as any as S.Schema<RotateTunnelAccessTokenResponse>;
+export const RotateTunnelAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tunnelArn: S.optional(S.String),
+    sourceAccessToken: S.optional(SensitiveString),
+    destinationAccessToken: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "RotateTunnelAccessTokenResponse",
+}) as any as S.Schema<RotateTunnelAccessTokenResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -459,20 +476,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CloseTunnelError = ResourceNotFoundException | CommonErrors;
 /**
  * Closes a tunnel identified by the unique tunnel id. When a `CloseTunnel`
@@ -490,8 +494,11 @@ export const closeTunnel: API.OperationMethod<
   input: CloseTunnelRequest,
   output: CloseTunnelResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloseTunnel",
 }));
+
 export type DescribeTunnelError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about a tunnel identified by the unique tunnel id.
@@ -507,8 +514,11 @@ export const describeTunnel: API.OperationMethod<
   input: DescribeTunnelRequest,
   output: DescribeTunnelResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTunnel",
 }));
+
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Lists the tags for the specified resource.
@@ -522,8 +532,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTunnelsError = CommonErrors;
 /**
  * List all tunnels for an Amazon Web Services account. Tunnels are listed by creation time in
@@ -555,6 +568,8 @@ export const listTunnels: API.OperationMethod<
   input: ListTunnelsRequest,
   output: ListTunnelsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTunnels",
   pagination: {
     inputToken: "nextToken",
@@ -562,6 +577,7 @@ export const listTunnels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type OpenTunnelError = LimitExceededException | CommonErrors;
 /**
  * Creates a new tunnel, and returns two client access tokens for clients to use to
@@ -578,8 +594,11 @@ export const openTunnel: API.OperationMethod<
   input: OpenTunnelRequest,
   output: OpenTunnelResponse,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OpenTunnel",
 }));
+
 export type RotateTunnelAccessTokenError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -603,8 +622,11 @@ export const rotateTunnelAccessToken: API.OperationMethod<
   input: RotateTunnelAccessTokenRequest,
   output: RotateTunnelAccessTokenResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateTunnelAccessToken",
 }));
+
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * A resource tag.
@@ -618,8 +640,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Removes a tag from a resource.
@@ -633,5 +658,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

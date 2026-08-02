@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "Forbidden": [{ "status": 403 }],
-    "CloudConnectorRulesNotFound": [
-      { "code": 10003, "message": { "includes": "could not find entrypoint ruleset" } }
-    ]
-  }
-}

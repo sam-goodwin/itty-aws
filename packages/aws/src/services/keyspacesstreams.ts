@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -50,17 +52,57 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(
+      S.suspend(() => ValidationExceptionType).annotate({
+        identifier: "ValidationExceptionType",
+      }),
+    ),
+  },
+  T.all(
+    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type ShardIterator = string;
-export type SequenceNumber = string;
-export type StreamArn = string;
-export type ShardId = string;
-export type ShardIdToken = string;
-export type KeyspaceName = string;
-export type TableName = string;
-export type StreamArnToken = string;
-
-//# Schemas
 export interface GetRecordsInput {
   shardIterator: string;
   maxResults?: number;
@@ -74,6 +116,7 @@ export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRecordsInput>;
 export type OriginType = "USER" | "REPLICATION" | "TTL" | (string & {});
 export const OriginType = /*@__PURE__*/ S.String;
+
 export interface KeyspacesMetadata {
   expirationTime?: string;
   writeTime?: string;
@@ -946,6 +989,7 @@ export const KeyspacesRow = /*@__PURE__*/ S.suspend(() =>
     rowMetadata: S.optional(KeyspacesMetadata),
   }),
 ).annotate({ identifier: "KeyspacesRow" }) as any as S.Schema<KeyspacesRow>;
+export type SequenceNumber = string;
 export interface Record {
   eventVersion?: string;
   createdAt?: Date;
@@ -972,6 +1016,7 @@ export type RecordList = Record[];
 export const RecordList = /*@__PURE__*/ S.Array(Record);
 export type IteratorPosition = "AT_TIP" | "BEHIND_TIP" | (string & {});
 export const IteratorPosition = /*@__PURE__*/ S.String;
+
 export interface IteratorDescription {
   iteratorPosition?: IteratorPosition;
 }
@@ -994,13 +1039,8 @@ export const GetRecordsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecordsOutput",
 }) as any as S.Schema<GetRecordsOutput>;
-export type ValidationExceptionType =
-  | "InvalidFormat"
-  | "TrimmedDataAccess"
-  | "ExpiredIterator"
-  | "ExpiredNextToken"
-  | (string & {});
-export const ValidationExceptionType = /*@__PURE__*/ S.String;
+export type StreamArn = string;
+export type ShardId = string;
 export type ShardIteratorType =
   | "TRIM_HORIZON"
   | "LATEST"
@@ -1008,6 +1048,7 @@ export type ShardIteratorType =
   | "AFTER_SEQUENCE_NUMBER"
   | (string & {});
 export const ShardIteratorType = /*@__PURE__*/ S.String;
+
 export interface GetShardIteratorInput {
   streamArn: string;
   shardId: string;
@@ -1036,6 +1077,7 @@ export const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetShardIteratorOutput>;
 export type ShardFilterType = "CHILD_SHARDS" | (string & {});
 export const ShardFilterType = /*@__PURE__*/ S.String;
+
 export interface ShardFilter {
   type?: ShardFilterType;
   shardId?: string;
@@ -1046,6 +1088,7 @@ export const ShardFilter = /*@__PURE__*/ S.suspend(() =>
     shardId: S.optional(S.String),
   }),
 ).annotate({ identifier: "ShardFilter" }) as any as S.Schema<ShardFilter>;
+export type ShardIdToken = string;
 export interface GetStreamInput {
   streamArn: string;
   maxResults?: number;
@@ -1069,6 +1112,7 @@ export type StreamStatus =
   | "DISABLED"
   | (string & {});
 export const StreamStatus = /*@__PURE__*/ S.String;
+
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
@@ -1076,6 +1120,9 @@ export type StreamViewType =
   | "KEYS_ONLY"
   | (string & {});
 export const StreamViewType = /*@__PURE__*/ S.String;
+
+export type KeyspaceName = string;
+export type TableName = string;
 export interface SequenceNumberRange {
   startingSequenceNumber?: string;
   endingSequenceNumber?: string;
@@ -1130,6 +1177,7 @@ export const GetStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStreamOutput",
 }) as any as S.Schema<GetStreamOutput>;
+export type StreamArnToken = string;
 export interface ListStreamsInput {
   keyspaceName?: string;
   tableName?: string;
@@ -1176,38 +1224,14 @@ export const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStreamsOutput",
 }) as any as S.Schema<ListStreamsOutput>;
+export type ValidationExceptionType =
+  | "InvalidFormat"
+  | "TrimmedDataAccess"
+  | "ExpiredIterator"
+  | "ExpiredNextToken"
+  | (string & {});
+export const ValidationExceptionType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(ValidationExceptionType),
-  },
-  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type GetRecordsError =
   | AccessDeniedException
   | InternalServerException
@@ -1233,8 +1257,11 @@ export const getRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecords",
 }));
+
 export type GetShardIteratorError =
   | AccessDeniedException
   | InternalServerException
@@ -1260,8 +1287,11 @@ export const getShardIterator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetShardIterator",
 }));
+
 export type GetStreamError =
   | AccessDeniedException
   | InternalServerException
@@ -1302,6 +1332,8 @@ export const getStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStream",
   pagination: {
     inputToken: "nextToken",
@@ -1310,6 +1342,7 @@ export const getStream: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListStreamsError =
   | AccessDeniedException
   | InternalServerException
@@ -1350,6 +1383,8 @@ export const listStreams: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",

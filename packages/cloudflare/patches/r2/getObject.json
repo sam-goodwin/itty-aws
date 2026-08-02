@@ -1,9 +1,0 @@
-{
-  "errors": {
-    "NoSuchKey": [
-      { "status": 404, "message": { "includes": "specified key does not exist" } }
-    ],
-    "NoSuchBucket": [{ "code": 10006 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
-}

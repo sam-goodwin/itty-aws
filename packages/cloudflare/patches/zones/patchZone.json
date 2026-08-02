@@ -1,7 +1,65 @@
 {
-  "errors": {
-    "InvalidZoneIdentifier": [
-      { "code": 9109, "message": { "includes": "Invalid zone identifier" } }
-    ]
-  }
+  "description": "Align zones#Edit with distilled cloudflare/zones patchZone",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#Edit",
+      "path": "/shapes/com.cloudflare.zones#PatchZone"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#EditRequest",
+      "path": "/shapes/com.cloudflare.zones#PatchZoneRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#PatchZone/input/target",
+      "value": "com.cloudflare.zones#PatchZoneRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#EditResponse",
+      "path": "/shapes/com.cloudflare.zones#PatchZoneResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#PatchZone/output/target",
+      "value": "com.cloudflare.zones#PatchZoneResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#InvalidZoneIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 9109,
+              "message": {
+                "includes": "Invalid zone identifier"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#PatchZone/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zones#InvalidZoneIdentifier"
+        }
+      ]
+    }
+  ]
 }

@@ -1,12 +1,67 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }]
-  },
-  "response": {
-    "properties": {
-      "buckets[].location": {
-        "addValues": ["APAC", "EEUR", "ENAM", "WEUR", "WNAM", "OC"]
+  "description": "Align r2#BucketsList with distilled cloudflare/r2 listBuckets",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsList",
+      "path": "/shapes/com.cloudflare.r2#ListBuckets"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsListRequest",
+      "path": "/shapes/com.cloudflare.r2#ListBucketsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#ListBuckets/input/target",
+      "value": "com.cloudflare.r2#ListBucketsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsListResponse",
+      "path": "/shapes/com.cloudflare.r2#ListBucketsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#ListBuckets/output/target",
+      "value": "com.cloudflare.r2#ListBucketsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#ListBuckets/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#InvalidRoute"
+        }
+      ]
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#ListBucketsRequest/members/cf_r2_jurisdiction",
+      "path": "/shapes/com.cloudflare.r2#ListBucketsRequest/members/jurisdiction"
     }
-  }
+  ]
 }

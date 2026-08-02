@@ -1,143 +1,62 @@
 {
-  "errors": {
-    "WorkerNotFound": [{ "code": 10007 }],
-    "InvalidWorkerScript": [{ "code": 10068 }],
-    "InternalServerError": [
-      {
-        "code": 10002,
-        "message": { "includes": "An unknown error has occurred" }
-      }
-    ],
-    "ScriptStartupError": [{ "code": 10021 }],
-    "ScriptModuleNotFound": [
-      {
-        "code": 10021,
-        "message": { "includes": "No such module" }
-      }
-    ],
-    "SecretsStoreBindingNotFound": [{ "code": 10182 }],
-    "KVNamespaceNotFound": [{ "code": 10041 }],
-    "R2BucketNotFound": [{ "code": 10085 }],
-    "D1DatabaseNotFound": [{ "code": 10181 }],
-    "QueueNotFound": [{ "code": 11000 }],
-    "ServiceBindingNotFound": [{ "code": 10144 }],
-    "DurableObjectClassNotFound": [{ "code": 10061 }],
-    "HyperdriveConfigNotFound": [{ "code": 10157 }],
-    "VectorizeIndexNotFound": [{ "code": 10159 }],
-    "DispatchNamespaceNotFound": [{ "code": 100119 }],
-    "MtlsCertificateNotFound": [{ "code": 100143 }]
-  },
-  "request": {
-    "properties": {
-      "metadata.bindings[].json": { "type": "unknown" },
-      "metadata.bindings[?type=durable_object_namespace].class_name": {
-        "optional": false
-      },
-      "metadata.bindings[?type=workflow].class_name": {
-        "optional": false
-      },
-      "metadata.bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
+  "description": "Align workers#ScriptsVersionsCreate with distilled cloudflare/workers createScriptVersion",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsVersionsCreate",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptVersion"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsVersionsCreateRequest",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptVersionRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptVersion/input/target",
+      "value": "com.cloudflare.workers#CreateScriptVersionRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsVersionsCreateResponse",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptVersionResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptVersion/output/target",
+      "value": "com.cloudflare.workers#CreateScriptVersionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#WorkerNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
           },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
+          "message": {
+            "target": "smithy.api#String"
           }
-        ]
-      },
-      "metadata.cache": {
-        "optional": true,
-        "wireKey": "cache_options",
-        "definition": {
-          "kind": "object",
-          "properties": [
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
             {
-              "name": "enabled",
-              "required": false,
-              "type": { "kind": "primitive", "value": "boolean" }
-            },
-            {
-              "name": "cross_version_cache",
-              "required": false,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "code": 10007
             }
           ]
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptVersion/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#WorkerNotFound"
+        }
+      ]
     }
-  },
-  "response": {
-    "properties": {
-      "resources.bindings[].json": { "type": "unknown" },
-      "resources.bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
-          },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
+  ]
 }

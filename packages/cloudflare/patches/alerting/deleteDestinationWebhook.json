@@ -1,6 +1,52 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "InternalServerError": [{ "code": 15000 }]
-  }
+  "description": "Align alerting#DestinationsWebhooksDelete with distilled cloudflare/alerting deleteDestinationWebhook",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#DestinationsWebhooksDelete",
+      "path": "/shapes/com.cloudflare.alerting#DeleteDestinationWebhook"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#DestinationsWebhooksDeleteRequest",
+      "path": "/shapes/com.cloudflare.alerting#DeleteDestinationWebhookRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#DeleteDestinationWebhook/input/target",
+      "value": "com.cloudflare.alerting#DeleteDestinationWebhookRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#DeleteDestinationWebhook/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.alerting#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

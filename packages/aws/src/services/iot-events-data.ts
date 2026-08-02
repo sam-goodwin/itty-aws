@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,72 +84,72 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type RequestId = string;
 export type AlarmModelName = string;
 export type KeyValue = string;
 export type Note = string;
-export type ErrorMessage = string;
-export type MessageId = string;
-export type DetectorModelName = string;
-export type EphemeralInputName = string;
-export type Payload = Uint8Array;
-export type EpochMilliTimestamp = number;
-export type SnoozeDuration = number;
-export type StateName = string;
-export type VariableName = string;
-export type VariableValue = string;
-export type TimerName = string;
-export type Seconds = number;
-export type AlarmModelVersion = string;
-export type InputPropertyValue = string;
-export type ThresholdValue = string;
-export type Severity = number;
-export type DetectorModelVersion = string;
-export type NextToken = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface AcknowledgeAlarmActionRequest {
   requestId: string;
   alarmModelName: string;
   keyValue?: string;
   note?: string;
 }
-export const AcknowledgeAlarmActionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requestId: S.String,
-      alarmModelName: S.String,
-      keyValue: S.optional(S.String),
-      note: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AcknowledgeAlarmActionRequest",
-  }) as any as S.Schema<AcknowledgeAlarmActionRequest>;
+export const AcknowledgeAlarmActionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.String,
+    alarmModelName: S.String,
+    keyValue: S.optional(S.String),
+    note: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AcknowledgeAlarmActionRequest",
+}) as any as S.Schema<AcknowledgeAlarmActionRequest>;
 export type AcknowledgeAlarmActionRequests = AcknowledgeAlarmActionRequest[];
-export const AcknowledgeAlarmActionRequests =
-  /*@__PURE__*/ S.Array(AcknowledgeAlarmActionRequest);
+export const AcknowledgeAlarmActionRequests = /*@__PURE__*/ S.Array(
+  AcknowledgeAlarmActionRequest,
+);
 export interface BatchAcknowledgeAlarmRequest {
   acknowledgeActionRequests: AcknowledgeAlarmActionRequest[];
 }
-export const BatchAcknowledgeAlarmRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acknowledgeActionRequests: AcknowledgeAlarmActionRequests,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/alarms/acknowledge" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchAcknowledgeAlarmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ acknowledgeActionRequests: AcknowledgeAlarmActionRequests }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/alarms/acknowledge" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchAcknowledgeAlarmRequest",
-  }) as any as S.Schema<BatchAcknowledgeAlarmRequest>;
+  ),
+).annotate({
+  identifier: "BatchAcknowledgeAlarmRequest",
+}) as any as S.Schema<BatchAcknowledgeAlarmRequest>;
 export type ErrorCode =
   | "ResourceNotFoundException"
   | "InvalidRequestException"
@@ -156,6 +158,8 @@ export type ErrorCode =
   | "ThrottlingException"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface BatchAlarmActionErrorEntry {
   requestId?: string;
   errorCode?: ErrorCode;
@@ -177,12 +181,13 @@ export const BatchAlarmActionErrorEntries = /*@__PURE__*/ S.Array(
 export interface BatchAcknowledgeAlarmResponse {
   errorEntries?: BatchAlarmActionErrorEntry[];
 }
-export const BatchAcknowledgeAlarmResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ errorEntries: S.optional(BatchAlarmActionErrorEntries) }),
-  ).annotate({
-    identifier: "BatchAcknowledgeAlarmResponse",
-  }) as any as S.Schema<BatchAcknowledgeAlarmResponse>;
+export const BatchAcknowledgeAlarmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ errorEntries: S.optional(BatchAlarmActionErrorEntries) }),
+).annotate({
+  identifier: "BatchAcknowledgeAlarmResponse",
+}) as any as S.Schema<BatchAcknowledgeAlarmResponse>;
+export type MessageId = string;
+export type DetectorModelName = string;
 export interface DeleteDetectorRequest {
   messageId: string;
   detectorModelName: string;
@@ -223,32 +228,31 @@ export interface BatchDeleteDetectorErrorEntry {
   errorCode?: ErrorCode;
   errorMessage?: string;
 }
-export const BatchDeleteDetectorErrorEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      messageId: S.optional(S.String),
-      errorCode: S.optional(ErrorCode),
-      errorMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteDetectorErrorEntry",
-  }) as any as S.Schema<BatchDeleteDetectorErrorEntry>;
+export const BatchDeleteDetectorErrorEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messageId: S.optional(S.String),
+    errorCode: S.optional(ErrorCode),
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchDeleteDetectorErrorEntry",
+}) as any as S.Schema<BatchDeleteDetectorErrorEntry>;
 export type BatchDeleteDetectorErrorEntries = BatchDeleteDetectorErrorEntry[];
-export const BatchDeleteDetectorErrorEntries =
-  /*@__PURE__*/ S.Array(BatchDeleteDetectorErrorEntry);
+export const BatchDeleteDetectorErrorEntries = /*@__PURE__*/ S.Array(
+  BatchDeleteDetectorErrorEntry,
+);
 export interface BatchDeleteDetectorResponse {
   batchDeleteDetectorErrorEntries?: BatchDeleteDetectorErrorEntry[];
 }
-export const BatchDeleteDetectorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchDeleteDetectorErrorEntries: S.optional(
-        BatchDeleteDetectorErrorEntries,
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteDetectorResponse",
-  }) as any as S.Schema<BatchDeleteDetectorResponse>;
+export const BatchDeleteDetectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchDeleteDetectorErrorEntries: S.optional(
+      BatchDeleteDetectorErrorEntries,
+    ),
+  }),
+).annotate({
+  identifier: "BatchDeleteDetectorResponse",
+}) as any as S.Schema<BatchDeleteDetectorResponse>;
 export interface DisableAlarmActionRequest {
   requestId: string;
   alarmModelName: string;
@@ -339,6 +343,9 @@ export const BatchEnableAlarmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchEnableAlarmResponse",
 }) as any as S.Schema<BatchEnableAlarmResponse>;
+export type EphemeralInputName = string;
+export type Payload = Uint8Array;
+export type EpochMilliTimestamp = number;
 export interface TimestampValue {
   timeInMillis?: number;
 }
@@ -451,6 +458,7 @@ export const BatchResetAlarmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchResetAlarmResponse",
 }) as any as S.Schema<BatchResetAlarmResponse>;
+export type SnoozeDuration = number;
 export interface SnoozeAlarmActionRequest {
   requestId: string;
   alarmModelName: string;
@@ -498,6 +506,9 @@ export const BatchSnoozeAlarmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchSnoozeAlarmResponse",
 }) as any as S.Schema<BatchSnoozeAlarmResponse>;
+export type StateName = string;
+export type VariableName = string;
+export type VariableValue = string;
 export interface VariableDefinition {
   name: string;
   value: string;
@@ -509,6 +520,8 @@ export const VariableDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VariableDefinition>;
 export type VariableDefinitions = VariableDefinition[];
 export const VariableDefinitions = /*@__PURE__*/ S.Array(VariableDefinition);
+export type TimerName = string;
+export type Seconds = number;
 export interface TimerDefinition {
   name: string;
   seconds: number;
@@ -576,32 +589,31 @@ export interface BatchUpdateDetectorErrorEntry {
   errorCode?: ErrorCode;
   errorMessage?: string;
 }
-export const BatchUpdateDetectorErrorEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      messageId: S.optional(S.String),
-      errorCode: S.optional(ErrorCode),
-      errorMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateDetectorErrorEntry",
-  }) as any as S.Schema<BatchUpdateDetectorErrorEntry>;
+export const BatchUpdateDetectorErrorEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messageId: S.optional(S.String),
+    errorCode: S.optional(ErrorCode),
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchUpdateDetectorErrorEntry",
+}) as any as S.Schema<BatchUpdateDetectorErrorEntry>;
 export type BatchUpdateDetectorErrorEntries = BatchUpdateDetectorErrorEntry[];
-export const BatchUpdateDetectorErrorEntries =
-  /*@__PURE__*/ S.Array(BatchUpdateDetectorErrorEntry);
+export const BatchUpdateDetectorErrorEntries = /*@__PURE__*/ S.Array(
+  BatchUpdateDetectorErrorEntry,
+);
 export interface BatchUpdateDetectorResponse {
   batchUpdateDetectorErrorEntries?: BatchUpdateDetectorErrorEntry[];
 }
-export const BatchUpdateDetectorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchUpdateDetectorErrorEntries: S.optional(
-        BatchUpdateDetectorErrorEntries,
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateDetectorResponse",
-  }) as any as S.Schema<BatchUpdateDetectorResponse>;
+export const BatchUpdateDetectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchUpdateDetectorErrorEntries: S.optional(
+      BatchUpdateDetectorErrorEntries,
+    ),
+  }),
+).annotate({
+  identifier: "BatchUpdateDetectorResponse",
+}) as any as S.Schema<BatchUpdateDetectorResponse>;
 export interface DescribeAlarmRequest {
   alarmModelName: string;
   keyValue?: string;
@@ -623,6 +635,7 @@ export const DescribeAlarmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAlarmRequest",
 }) as any as S.Schema<DescribeAlarmRequest>;
+export type AlarmModelVersion = string;
 export type AlarmStateName =
   | "DISABLED"
   | "NORMAL"
@@ -632,6 +645,8 @@ export type AlarmStateName =
   | "LATCHED"
   | (string & {});
 export const AlarmStateName = /*@__PURE__*/ S.String;
+
+export type InputPropertyValue = string;
 export type ComparisonOperator =
   | "GREATER"
   | "GREATER_OR_EQUAL"
@@ -641,6 +656,8 @@ export type ComparisonOperator =
   | "NOT_EQUAL"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type ThresholdValue = string;
 export interface SimpleRuleEvaluation {
   inputPropertyValue?: string;
   operator?: ComparisonOperator;
@@ -669,6 +686,7 @@ export type CustomerActionName =
   | "RESET"
   | (string & {});
 export const CustomerActionName = /*@__PURE__*/ S.String;
+
 export interface SnoozeActionConfiguration {
   snoozeDuration?: number;
   note?: string;
@@ -700,12 +718,11 @@ export const DisableActionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface AcknowledgeActionConfiguration {
   note?: string;
 }
-export const AcknowledgeActionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ note: S.optional(S.String) }),
-  ).annotate({
-    identifier: "AcknowledgeActionConfiguration",
-  }) as any as S.Schema<AcknowledgeActionConfiguration>;
+export const AcknowledgeActionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ note: S.optional(S.String) }),
+).annotate({
+  identifier: "AcknowledgeActionConfiguration",
+}) as any as S.Schema<AcknowledgeActionConfiguration>;
 export interface ResetActionConfiguration {
   note?: string;
 }
@@ -734,8 +751,10 @@ export const CustomerAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerAction" }) as any as S.Schema<CustomerAction>;
 export type EventType = "STATE_CHANGE" | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type TriggerType = "SNOOZE_TIMEOUT" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
+
 export interface StateChangeConfiguration {
   triggerType?: TriggerType;
 }
@@ -768,6 +787,7 @@ export const AlarmState = /*@__PURE__*/ S.suspend(() =>
     systemEvent: S.optional(SystemEvent),
   }),
 ).annotate({ identifier: "AlarmState" }) as any as S.Schema<AlarmState>;
+export type Severity = number;
 export interface Alarm {
   alarmModelName?: string;
   alarmModelVersion?: string;
@@ -820,6 +840,7 @@ export const DescribeDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDetectorRequest",
 }) as any as S.Schema<DescribeDetectorRequest>;
+export type DetectorModelVersion = string;
 export interface Variable {
   name: string;
   value: string;
@@ -875,6 +896,8 @@ export const DescribeDetectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDetectorResponse",
 }) as any as S.Schema<DescribeDetectorResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListAlarmsRequest {
   alarmModelName: string;
   nextToken?: string;
@@ -997,30 +1020,6 @@ export const ListDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDetectorsResponse",
 }) as any as S.Schema<ListDetectorsResponse>;
-
-//# Errors
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type BatchAcknowledgeAlarmError =
   | InternalFailureException
   | InvalidRequestException
@@ -1045,8 +1044,11 @@ export const batchAcknowledgeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAcknowledgeAlarm",
 }));
+
 export type BatchDeleteDetectorError =
   | InternalFailureException
   | InvalidRequestException
@@ -1070,8 +1072,11 @@ export const batchDeleteDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteDetector",
 }));
+
 export type BatchDisableAlarmError =
   | InternalFailureException
   | InvalidRequestException
@@ -1096,8 +1101,11 @@ export const batchDisableAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisableAlarm",
 }));
+
 export type BatchEnableAlarmError =
   | InternalFailureException
   | InvalidRequestException
@@ -1122,8 +1130,11 @@ export const batchEnableAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchEnableAlarm",
 }));
+
 export type BatchPutMessageError =
   | InternalFailureException
   | InvalidRequestException
@@ -1151,8 +1162,11 @@ export const batchPutMessage: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutMessage",
 }));
+
 export type BatchResetAlarmError =
   | InternalFailureException
   | InvalidRequestException
@@ -1177,8 +1191,11 @@ export const batchResetAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchResetAlarm",
 }));
+
 export type BatchSnoozeAlarmError =
   | InternalFailureException
   | InvalidRequestException
@@ -1203,8 +1220,11 @@ export const batchSnoozeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchSnoozeAlarm",
 }));
+
 export type BatchUpdateDetectorError =
   | InternalFailureException
   | InvalidRequestException
@@ -1229,8 +1249,11 @@ export const batchUpdateDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateDetector",
 }));
+
 export type DescribeAlarmError =
   | InternalFailureException
   | InvalidRequestException
@@ -1256,8 +1279,11 @@ export const describeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarm",
 }));
+
 export type DescribeDetectorError =
   | InternalFailureException
   | InvalidRequestException
@@ -1283,8 +1309,11 @@ export const describeDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetector",
 }));
+
 export type ListAlarmsError =
   | InternalFailureException
   | InvalidRequestException
@@ -1311,8 +1340,11 @@ export const listAlarms: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarms",
 }));
+
 export type ListDetectorsError =
   | InternalFailureException
   | InvalidRequestException
@@ -1338,5 +1370,7 @@ export const listDetectors: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectors",
 }));

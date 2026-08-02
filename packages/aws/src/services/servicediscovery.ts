@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -92,39 +94,95 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CustomHealthNotFound extends S.TaggedErrorClass<CustomHealthNotFound>()(
+  "CustomHealthNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class DuplicateRequest extends S.TaggedErrorClass<DuplicateRequest>()(
+  "DuplicateRequest",
+  { Message: S.optional(S.String), DuplicateOperationId: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InstanceNotFound extends S.TaggedErrorClass<InstanceNotFound>()(
+  "InstanceNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
+  "InvalidInput",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NamespaceAlreadyExists extends S.TaggedErrorClass<NamespaceAlreadyExists>()(
+  "NamespaceAlreadyExists",
+  {
+    Message: S.optional(S.String),
+    CreatorRequestId: S.optional(S.String),
+    NamespaceId: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class NamespaceNotFound extends S.TaggedErrorClass<NamespaceNotFound>()(
+  "NamespaceNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class OperationNotFound extends S.TaggedErrorClass<OperationNotFound>()(
+  "OperationNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceInUse extends S.TaggedErrorClass<ResourceInUse>()(
+  "ResourceInUse",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withDependencyViolationError) {}
+export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
+  "ResourceLimitExceeded",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withThrottlingError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceAlreadyExists extends S.TaggedErrorClass<ServiceAlreadyExists>()(
+  "ServiceAlreadyExists",
+  {
+    Message: S.optional(S.String),
+    CreatorRequestId: S.optional(S.String),
+    ServiceId: S.optional(S.String),
+    ServiceArn: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ServiceAttributesLimitExceededException extends S.TaggedErrorClass<ServiceAttributesLimitExceededException>()(
+  "ServiceAttributesLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceNotFound extends S.TaggedErrorClass<ServiceNotFound>()(
+  "ServiceNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type NamespaceNameHttp = string;
 export type ResourceId = string;
 export type ResourceDescription = string;
 export type TagKey = string;
 export type TagValue = string;
-export type OperationId = string;
-export type ErrorMessage = string;
-export type AmazonResourceName = string;
-export type NamespaceNamePrivate = string;
-export type RecordTTL = number;
-export type NamespaceNamePublic = string;
-export type ServiceName = string;
-export type Arn = string;
-export type ResourcePath = string;
-export type FailureThreshold = number;
-export type AWSAccountId = string;
-export type ResourceCount = number;
-export type ServiceAttributeKey = string;
-export type NamespaceName = string;
-export type DiscoverMaxResults = number;
-export type AttrKey = string;
-export type AttrValue = string;
-export type Revision = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type Message = string;
-export type Code = string;
-export type ServiceAttributeValue = string;
-export type FilterValue = string;
-export type InstanceId = string;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value: string;
@@ -152,6 +210,7 @@ export const CreateHttpNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHttpNamespaceRequest",
 }) as any as S.Schema<CreateHttpNamespaceRequest>;
+export type OperationId = string;
 export interface CreateHttpNamespaceResponse {
   OperationId?: string;
 }
@@ -160,6 +219,8 @@ export const CreateHttpNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHttpNamespaceResponse",
 }) as any as S.Schema<CreateHttpNamespaceResponse>;
+export type NamespaceNamePrivate = string;
+export type RecordTTL = number;
 export interface SOA {
   TTL?: number;
 }
@@ -212,6 +273,7 @@ export const CreatePrivateDnsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePrivateDnsNamespaceResponse",
 }) as any as S.Schema<CreatePrivateDnsNamespaceResponse>;
+export type NamespaceNamePublic = string;
 export interface PublicDnsPropertiesMutable {
   SOA: SOA;
 }
@@ -256,10 +318,14 @@ export const CreatePublicDnsNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePublicDnsNamespaceResponse",
 }) as any as S.Schema<CreatePublicDnsNamespaceResponse>;
+export type ServiceName = string;
+export type Arn = string;
 export type RoutingPolicy = "MULTIVALUE" | "WEIGHTED" | (string & {});
 export const RoutingPolicy = /*@__PURE__*/ S.String;
+
 export type RecordType = "SRV" | "A" | "AAAA" | "CNAME" | (string & {});
 export const RecordType = /*@__PURE__*/ S.String;
+
 export interface DnsRecord {
   Type: RecordType;
   TTL: number;
@@ -283,6 +349,9 @@ export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
 export type HealthCheckType = "HTTP" | "HTTPS" | "TCP" | (string & {});
 export const HealthCheckType = /*@__PURE__*/ S.String;
+
+export type ResourcePath = string;
+export type FailureThreshold = number;
 export interface HealthCheckConfig {
   Type: HealthCheckType;
   ResourcePath?: string;
@@ -307,6 +376,7 @@ export const HealthCheckCustomConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthCheckCustomConfig>;
 export type ServiceTypeOption = "HTTP" | (string & {});
 export const ServiceTypeOption = /*@__PURE__*/ S.String;
+
 export interface CreateServiceRequest {
   Name: string;
   NamespaceId?: string;
@@ -335,8 +405,11 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceRequest",
 }) as any as S.Schema<CreateServiceRequest>;
+export type AWSAccountId = string;
+export type ResourceCount = number;
 export type ServiceType = "HTTP" | "DNS_HTTP" | "DNS" | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
+
 export interface Service {
   Id?: string;
   Arn?: string;
@@ -413,6 +486,7 @@ export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteServiceResponse",
 }) as any as S.Schema<DeleteServiceResponse>;
+export type ServiceAttributeKey = string;
 export type ServiceAttributeKeyList = string[];
 export const ServiceAttributeKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteServiceAttributesRequest {
@@ -451,6 +525,10 @@ export const DeregisterInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterInstanceResponse",
 }) as any as S.Schema<DeregisterInstanceResponse>;
+export type NamespaceName = string;
+export type DiscoverMaxResults = number;
+export type AttrKey = string;
+export type AttrValue = string;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -463,6 +541,7 @@ export type HealthStatusFilter =
   | "HEALTHY_OR_ELSE_ALL"
   | (string & {});
 export const HealthStatusFilter = /*@__PURE__*/ S.String;
+
 export interface DiscoverInstancesRequest {
   NamespaceName: string;
   ServiceName: string;
@@ -489,6 +568,7 @@ export const DiscoverInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoverInstancesRequest>;
 export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
 export const HealthStatus = /*@__PURE__*/ S.String;
+
 export interface HttpInstanceSummary {
   InstanceId?: string;
   NamespaceName?: string;
@@ -510,6 +590,7 @@ export const HttpInstanceSummary = /*@__PURE__*/ S.suspend(() =>
 export type HttpInstanceSummaryList = HttpInstanceSummary[];
 export const HttpInstanceSummaryList =
   /*@__PURE__*/ S.Array(HttpInstanceSummary);
+export type Revision = number;
 export interface DiscoverInstancesResponse {
   Instances?: HttpInstanceSummary[];
   InstancesRevision?: number;
@@ -587,6 +668,8 @@ export type InstanceIdList = string[];
 export const InstanceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("InstanceId")),
 );
+export type MaxResults = number;
+export type NextToken = string;
 export interface GetInstancesHealthStatusRequest {
   ServiceId: string;
   Instances?: string[];
@@ -640,6 +723,7 @@ export type NamespaceType =
   | "HTTP"
   | (string & {});
 export const NamespaceType = /*@__PURE__*/ S.String;
+
 export interface DnsProperties {
   HostedZoneId?: string;
   SOA?: SOA;
@@ -719,6 +803,7 @@ export type OperationType =
   | "DEREGISTER_INSTANCE"
   | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
 export type OperationStatus =
   | "SUBMITTED"
   | "PENDING"
@@ -726,12 +811,16 @@ export type OperationStatus =
   | "FAIL"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
+export type Message = string;
+export type Code = string;
 export type OperationTargetType =
   | "NAMESPACE"
   | "SERVICE"
   | "INSTANCE"
   | (string & {});
 export const OperationTargetType = /*@__PURE__*/ S.String;
+
 export type OperationTargetsMap = { [key in OperationTargetType]?: string };
 export const OperationTargetsMap = /*@__PURE__*/ S.Record(
   OperationTargetType,
@@ -797,6 +886,7 @@ export const GetServiceAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceAttributesRequest",
 }) as any as S.Schema<GetServiceAttributesRequest>;
+export type ServiceAttributeValue = string;
 export type ServiceAttributesMap = { [key: string]: string | undefined };
 export const ServiceAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -881,6 +971,8 @@ export type NamespaceFilterName =
   | "RESOURCE_OWNER"
   | (string & {});
 export const NamespaceFilterName = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -892,6 +984,7 @@ export type FilterCondition =
   | "BEGINS_WITH"
   | (string & {});
 export const FilterCondition = /*@__PURE__*/ S.String;
+
 export interface NamespaceFilter {
   Name: NamespaceFilterName;
   Values: string[];
@@ -976,6 +1069,7 @@ export type OperationFilterName =
   | "UPDATE_DATE"
   | (string & {});
 export const OperationFilterName = /*@__PURE__*/ S.String;
+
 export interface OperationFilter {
   Name: OperationFilterName;
   Values: string[];
@@ -1044,6 +1138,7 @@ export type ServiceFilterName =
   | "RESOURCE_OWNER"
   | (string & {});
 export const ServiceFilterName = /*@__PURE__*/ S.String;
+
 export interface ServiceFilter {
   Name: ServiceFilterName;
   Values: string[];
@@ -1122,6 +1217,7 @@ export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServicesResponse",
 }) as any as S.Schema<ListServicesResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -1140,6 +1236,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type InstanceId = string;
 export interface RegisterInstanceRequest {
   ServiceId: string;
   InstanceId: string;
@@ -1236,6 +1333,7 @@ export const UpdateHttpNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateHttpNamespaceResponse>;
 export type CustomHealthStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CustomHealthStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateInstanceCustomHealthStatusRequest {
   ServiceId: string;
   InstanceId: string;
@@ -1425,94 +1523,7 @@ export const UpdateServiceAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceAttributesResponse",
 }) as any as S.Schema<UpdateServiceAttributesResponse>;
-
-//# Errors
-export class DuplicateRequest extends S.TaggedErrorClass<DuplicateRequest>()(
-  "DuplicateRequest",
-  { Message: S.optional(S.String), DuplicateOperationId: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
-  "InvalidInput",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NamespaceAlreadyExists extends S.TaggedErrorClass<NamespaceAlreadyExists>()(
-  "NamespaceAlreadyExists",
-  {
-    Message: S.optional(S.String),
-    CreatorRequestId: S.optional(S.String),
-    NamespaceId: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
-  "ResourceLimitExceeded",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withThrottlingError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NamespaceNotFound extends S.TaggedErrorClass<NamespaceNotFound>()(
-  "NamespaceNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceAlreadyExists extends S.TaggedErrorClass<ServiceAlreadyExists>()(
-  "ServiceAlreadyExists",
-  {
-    Message: S.optional(S.String),
-    CreatorRequestId: S.optional(S.String),
-    ServiceId: S.optional(S.String),
-    ServiceArn: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ResourceInUse extends S.TaggedErrorClass<ResourceInUse>()(
-  "ResourceInUse",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withDependencyViolationError) {}
-export class ServiceNotFound extends S.TaggedErrorClass<ServiceNotFound>()(
-  "ServiceNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InstanceNotFound extends S.TaggedErrorClass<InstanceNotFound>()(
-  "InstanceNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class OperationNotFound extends S.TaggedErrorClass<OperationNotFound>()(
-  "OperationNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class CustomHealthNotFound extends S.TaggedErrorClass<CustomHealthNotFound>()(
-  "CustomHealthNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceAttributesLimitExceededException extends S.TaggedErrorClass<ServiceAttributesLimitExceededException>()(
-  "ServiceAttributesLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateHttpNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -1543,8 +1554,11 @@ export const createHttpNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHttpNamespace",
 }));
+
 export type CreatePrivateDnsNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -1577,8 +1591,11 @@ export const createPrivateDnsNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrivateDnsNamespace",
 }));
+
 export type CreatePublicDnsNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -1612,8 +1629,11 @@ export const createPublicDnsNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePublicDnsNamespace",
 }));
+
 export type CreateServiceError =
   | InvalidInput
   | NamespaceNotFound
@@ -1661,8 +1681,11 @@ export const createService: API.OperationMethod<
     ServiceAlreadyExists,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
+
 export type DeleteNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -1682,8 +1705,11 @@ export const deleteNamespace: API.OperationMethod<
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamespace",
 }));
+
 export type DeleteServiceError =
   | InvalidInput
   | ResourceInUse
@@ -1702,8 +1728,11 @@ export const deleteService: API.OperationMethod<
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [InvalidInput, ResourceInUse, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
+
 export type DeleteServiceAttributesError =
   | InvalidInput
   | ServiceNotFound
@@ -1720,8 +1749,11 @@ export const deleteServiceAttributes: API.OperationMethod<
   input: DeleteServiceAttributesRequest,
   output: DeleteServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceAttributes",
 }));
+
 export type DeregisterInstanceError =
   | DuplicateRequest
   | InstanceNotFound
@@ -1748,8 +1780,11 @@ export const deregisterInstance: API.OperationMethod<
     ResourceInUse,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterInstance",
 }));
+
 export type DiscoverInstancesError =
   | InvalidInput
   | NamespaceNotFound
@@ -1777,9 +1812,12 @@ export const discoverInstances: API.OperationMethod<
     RequestLimitExceeded,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverInstances",
   endpointHostPrefix: "data-",
 }));
+
 export type DiscoverInstancesRevisionError =
   | InvalidInput
   | NamespaceNotFound
@@ -1803,9 +1841,12 @@ export const discoverInstancesRevision: API.OperationMethod<
     RequestLimitExceeded,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverInstancesRevision",
   endpointHostPrefix: "data-",
 }));
+
 export type GetInstanceError =
   | InstanceNotFound
   | InvalidInput
@@ -1823,8 +1864,11 @@ export const getInstance: API.OperationMethod<
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstance",
 }));
+
 export type GetInstancesHealthStatusError =
   | InstanceNotFound
   | InvalidInput
@@ -1862,6 +1906,8 @@ export const getInstancesHealthStatus: API.OperationMethod<
   input: GetInstancesHealthStatusRequest,
   output: GetInstancesHealthStatusResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstancesHealthStatus",
   pagination: {
     inputToken: "NextToken",
@@ -1869,6 +1915,7 @@ export const getInstancesHealthStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetNamespaceError = InvalidInput | NamespaceNotFound | CommonErrors;
 /**
  * Gets information about a namespace.
@@ -1882,8 +1929,11 @@ export const getNamespace: API.OperationMethod<
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [InvalidInput, NamespaceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNamespace",
 }));
+
 export type GetOperationError = InvalidInput | OperationNotFound | CommonErrors;
 /**
  * Gets information about any operation that returns an operation ID in the response, such as a
@@ -1900,8 +1950,11 @@ export const getOperation: API.OperationMethod<
   input: GetOperationRequest,
   output: GetOperationResponse,
   errors: [InvalidInput, OperationNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperation",
 }));
+
 export type GetServiceError = InvalidInput | ServiceNotFound | CommonErrors;
 /**
  * Gets the settings for a specified service.
@@ -1915,8 +1968,11 @@ export const getService: API.OperationMethod<
   input: GetServiceRequest,
   output: GetServiceResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
+
 export type GetServiceAttributesError =
   | InvalidInput
   | ServiceNotFound
@@ -1933,8 +1989,11 @@ export const getServiceAttributes: API.OperationMethod<
   input: GetServiceAttributesRequest,
   output: GetServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceAttributes",
 }));
+
 export type ListInstancesError = InvalidInput | ServiceNotFound | CommonErrors;
 /**
  * Lists summary information about the instances that you registered by using a specified
@@ -1964,6 +2023,8 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
@@ -1971,6 +2032,7 @@ export const listInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNamespacesError = InvalidInput | CommonErrors;
 /**
  * Lists summary information about the namespaces that were created by the current Amazon Web Services account and shared with the current Amazon Web Services account.
@@ -1999,6 +2061,8 @@ export const listNamespaces: API.OperationMethod<
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamespaces",
   pagination: {
     inputToken: "NextToken",
@@ -2006,6 +2070,7 @@ export const listNamespaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOperationsError = InvalidInput | CommonErrors;
 /**
  * Lists operations that match the criteria that you specify.
@@ -2034,6 +2099,8 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2041,6 +2108,7 @@ export const listOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServicesError = InvalidInput | CommonErrors;
 /**
  * Lists summary information for all the services that are associated with one or more
@@ -2070,6 +2138,8 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -2077,6 +2147,7 @@ export const listServices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidInput
   | ResourceNotFoundException
@@ -2093,8 +2164,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterInstanceError =
   | DuplicateRequest
   | InvalidInput
@@ -2152,8 +2226,11 @@ export const registerInstance: API.OperationMethod<
     ResourceLimitExceeded,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterInstance",
 }));
+
 export type TagResourceError =
   | InvalidInput
   | ResourceNotFoundException
@@ -2171,8 +2248,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException, TooManyTagsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidInput
   | ResourceNotFoundException
@@ -2189,8 +2269,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateHttpNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -2210,8 +2293,11 @@ export const updateHttpNamespace: API.OperationMethod<
   input: UpdateHttpNamespaceRequest,
   output: UpdateHttpNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHttpNamespace",
 }));
+
 export type UpdateInstanceCustomHealthStatusError =
   | CustomHealthNotFound
   | InstanceNotFound
@@ -2243,8 +2329,11 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
     InvalidInput,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceCustomHealthStatus",
 }));
+
 export type UpdatePrivateDnsNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -2264,8 +2353,11 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   input: UpdatePrivateDnsNamespaceRequest,
   output: UpdatePrivateDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrivateDnsNamespace",
 }));
+
 export type UpdatePublicDnsNamespaceError =
   | DuplicateRequest
   | InvalidInput
@@ -2284,8 +2376,11 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   input: UpdatePublicDnsNamespaceRequest,
   output: UpdatePublicDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePublicDnsNamespace",
 }));
+
 export type UpdateServiceError =
   | DuplicateRequest
   | InvalidInput
@@ -2331,8 +2426,11 @@ export const updateService: API.OperationMethod<
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
   errors: [DuplicateRequest, InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateService",
 }));
+
 export type UpdateServiceAttributesError =
   | InvalidInput
   | ServiceAttributesLimitExceededException
@@ -2354,5 +2452,7 @@ export const updateServiceAttributes: API.OperationMethod<
     ServiceAttributesLimitExceededException,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceAttributes",
 }));

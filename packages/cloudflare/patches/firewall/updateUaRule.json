@@ -1,41 +1,123 @@
 {
-  "errors": {
-    "UaRuleNotFound": [
-      {
-        "code": 10001,
-        "message": { "includes": "firewalluablock.api.not_found" }
-      },
-      { "status": 404 }
-    ],
-    "DuplicateUaRule": [
-      {
-        "code": 10009,
-        "message": { "includes": "firewalluablock.api.duplicate_of_existing" }
-      }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "request": {
-    "properties": {
-      "configuration": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "target",
-                "required": false,
-                "type": { "kind": "literal", "value": "ua" }
-              },
-              {
-                "name": "value",
-                "required": false,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
+  "description": "Align firewall#UaRulesUpdate with distilled cloudflare/firewall updateUaRule",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#UaRulesUpdate",
+      "path": "/shapes/com.cloudflare.firewall#UpdateUaRule"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#UaRulesUpdateRequest",
+      "path": "/shapes/com.cloudflare.firewall#UpdateUaRuleRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.firewall#UpdateUaRule/input/target",
+      "value": "com.cloudflare.firewall#UpdateUaRuleRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#UaRulesUpdateResponse",
+      "path": "/shapes/com.cloudflare.firewall#UpdateUaRuleResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.firewall#UpdateUaRule/output/target",
+      "value": "com.cloudflare.firewall#UpdateUaRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#UaRuleNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
           }
-        ]
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10001,
+              "message": {
+                "includes": "firewalluablock.api.not_found"
+              }
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#DuplicateUaRule",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10009,
+              "message": {
+                "includes": "firewalluablock.api.duplicate_of_existing"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#UpdateUaRule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.firewall#UaRuleNotFound"
+        },
+        {
+          "target": "com.cloudflare.firewall#DuplicateUaRule"
+        },
+        {
+          "target": "com.cloudflare.firewall#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

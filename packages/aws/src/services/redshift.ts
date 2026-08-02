@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -89,37 +91,1453 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type PartnerIntegrationAccountId = string;
-export type PartnerIntegrationClusterIdentifier = string;
-export type PartnerIntegrationDatabaseName = string;
-export type PartnerIntegrationPartnerName = string;
-export type AuthenticationProfileNameString = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type CatalogNameString = string;
-export type CustomDomainNameString = string;
-export type CustomDomainCertificateArnString = string;
-export type SourceArn = string;
-export type TargetArn = string;
-export type IntegrationName = string;
-export type IntegrationDescription = string;
-export type IntegrationArn = string;
-export type Description = string;
-export type RedshiftIdcApplicationName = string;
-export type IdentityNamespaceString = string;
-export type IdcDisplayNameString = string;
-export type InboundIntegrationArn = string;
-export type S3KeyPrefixValue = string;
-export type PartnerIntegrationStatusMessage = string;
-
-//# Schemas
+export class AccessToClusterDeniedFault extends S.TaggedErrorClass<AccessToClusterDeniedFault>()(
+  "AccessToClusterDeniedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessToClusterDenied", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AccessToSnapshotDeniedFault extends S.TaggedErrorClass<AccessToSnapshotDeniedFault>()(
+  "AccessToSnapshotDeniedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessToSnapshotDenied", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthenticationProfileAlreadyExistsFault extends S.TaggedErrorClass<AuthenticationProfileAlreadyExistsFault>()(
+  "AuthenticationProfileAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthenticationProfileAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class AuthenticationProfileNotFoundFault extends S.TaggedErrorClass<AuthenticationProfileNotFoundFault>()(
+  "AuthenticationProfileNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthenticationProfileNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthenticationProfileQuotaExceededFault extends S.TaggedErrorClass<AuthenticationProfileQuotaExceededFault>()(
+  "AuthenticationProfileQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthenticationProfileQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthorizationAlreadyExistsFault extends S.TaggedErrorClass<AuthorizationAlreadyExistsFault>()(
+  "AuthorizationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthorizationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class AuthorizationNotFoundFault extends S.TaggedErrorClass<AuthorizationNotFoundFault>()(
+  "AuthorizationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthorizationQuotaExceededFault extends S.TaggedErrorClass<AuthorizationQuotaExceededFault>()(
+  "AuthorizationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthorizationQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BatchDeleteRequestSizeExceededFault extends S.TaggedErrorClass<BatchDeleteRequestSizeExceededFault>()(
+  "BatchDeleteRequestSizeExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "BatchDeleteRequestSizeExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BatchModifyClusterSnapshotsLimitExceededFault extends S.TaggedErrorClass<BatchModifyClusterSnapshotsLimitExceededFault>()(
+  "BatchModifyClusterSnapshotsLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "BatchModifyClusterSnapshotsLimitExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BucketNotFoundFault extends S.TaggedErrorClass<BucketNotFoundFault>()(
+  "BucketNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "BucketNotFoundFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
+  "ClusterAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
+  "ClusterNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterOnLatestRevisionFault extends S.TaggedErrorClass<ClusterOnLatestRevisionFault>()(
+  "ClusterOnLatestRevisionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterOnLatestRevision", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterParameterGroupAlreadyExistsFault>()(
+  "ClusterParameterGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterParameterGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterParameterGroupNotFoundFault extends S.TaggedErrorClass<ClusterParameterGroupNotFoundFault>()(
+  "ClusterParameterGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterParameterGroupNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterParameterGroupQuotaExceededFault>()(
+  "ClusterParameterGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterParameterGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterQuotaExceededFault extends S.TaggedErrorClass<ClusterQuotaExceededFault>()(
+  "ClusterQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSecurityGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSecurityGroupAlreadyExistsFault>()(
+  "ClusterSecurityGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSecurityGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterSecurityGroupNotFoundFault extends S.TaggedErrorClass<ClusterSecurityGroupNotFoundFault>()(
+  "ClusterSecurityGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSecurityGroupNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSecurityGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSecurityGroupQuotaExceededFault>()(
+  "ClusterSecurityGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "QuotaExceeded.ClusterSecurityGroup",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSnapshotAlreadyExistsFault extends S.TaggedErrorClass<ClusterSnapshotAlreadyExistsFault>()(
+  "ClusterSnapshotAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSnapshotAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterSnapshotNotFoundFault extends S.TaggedErrorClass<ClusterSnapshotNotFoundFault>()(
+  "ClusterSnapshotNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterSnapshotNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSnapshotQuotaExceededFault extends S.TaggedErrorClass<ClusterSnapshotQuotaExceededFault>()(
+  "ClusterSnapshotQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSnapshotQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSubnetGroupAlreadyExistsFault>()(
+  "ClusterSubnetGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterSubnetGroupNotFoundFault extends S.TaggedErrorClass<ClusterSubnetGroupNotFoundFault>()(
+  "ClusterSubnetGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetGroupNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetGroupQuotaExceededFault>()(
+  "ClusterSubnetGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSubnetQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetQuotaExceededFault>()(
+  "ClusterSubnetQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConflictPolicyUpdateFault extends S.TaggedErrorClass<ConflictPolicyUpdateFault>()(
+  "ConflictPolicyUpdateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConflictPolicyUpdateFault",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class CopyToRegionDisabledFault extends S.TaggedErrorClass<CopyToRegionDisabledFault>()(
+  "CopyToRegionDisabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CopyToRegionDisabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomCnameAssociationFault extends S.TaggedErrorClass<CustomCnameAssociationFault>()(
+  "CustomCnameAssociationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomCnameAssociationFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomDomainAssociationNotFoundFault extends S.TaggedErrorClass<CustomDomainAssociationNotFoundFault>()(
+  "CustomDomainAssociationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomDomainAssociationNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DependentServiceAccessDeniedFault extends S.TaggedErrorClass<DependentServiceAccessDeniedFault>()(
+  "DependentServiceAccessDeniedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DependentServiceAccessDenied",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class DependentServiceRequestThrottlingFault extends S.TaggedErrorClass<DependentServiceRequestThrottlingFault>()(
+  "DependentServiceRequestThrottlingFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DependentServiceRequestThrottlingFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DependentServiceUnavailableFault extends S.TaggedErrorClass<DependentServiceUnavailableFault>()(
+  "DependentServiceUnavailableFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DependentServiceUnavailableFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withServerError) {}
+export class EndpointAlreadyExistsFault extends S.TaggedErrorClass<EndpointAlreadyExistsFault>()(
+  "EndpointAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EndpointAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointAuthorizationAlreadyExistsFault extends S.TaggedErrorClass<EndpointAuthorizationAlreadyExistsFault>()(
+  "EndpointAuthorizationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointAuthorizationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointAuthorizationNotFoundFault extends S.TaggedErrorClass<EndpointAuthorizationNotFoundFault>()(
+  "EndpointAuthorizationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointAuthorizationNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointAuthorizationsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointAuthorizationsPerClusterLimitExceededFault>()(
+  "EndpointAuthorizationsPerClusterLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointAuthorizationsPerClusterLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointNotFoundFault extends S.TaggedErrorClass<EndpointNotFoundFault>()(
+  "EndpointNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EndpointNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointsPerAuthorizationLimitExceededFault extends S.TaggedErrorClass<EndpointsPerAuthorizationLimitExceededFault>()(
+  "EndpointsPerAuthorizationLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointsPerAuthorizationLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointsPerClusterLimitExceededFault>()(
+  "EndpointsPerClusterLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointsPerClusterLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventSubscriptionQuotaExceededFault extends S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
+  "EventSubscriptionQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventSubscriptionQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmClientCertificateAlreadyExistsFault extends S.TaggedErrorClass<HsmClientCertificateAlreadyExistsFault>()(
+  "HsmClientCertificateAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmClientCertificateAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class HsmClientCertificateNotFoundFault extends S.TaggedErrorClass<HsmClientCertificateNotFoundFault>()(
+  "HsmClientCertificateNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmClientCertificateNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmClientCertificateQuotaExceededFault extends S.TaggedErrorClass<HsmClientCertificateQuotaExceededFault>()(
+  "HsmClientCertificateQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmClientCertificateQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmConfigurationAlreadyExistsFault extends S.TaggedErrorClass<HsmConfigurationAlreadyExistsFault>()(
+  "HsmConfigurationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmConfigurationAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class HsmConfigurationNotFoundFault extends S.TaggedErrorClass<HsmConfigurationNotFoundFault>()(
+  "HsmConfigurationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmConfigurationNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmConfigurationQuotaExceededFault extends S.TaggedErrorClass<HsmConfigurationQuotaExceededFault>()(
+  "HsmConfigurationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmConfigurationQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IncompatibleOrderableOptions extends S.TaggedErrorClass<IncompatibleOrderableOptions>()(
+  "IncompatibleOrderableOptions",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IncompatibleOrderableOptions",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InProgressTableRestoreQuotaExceededFault extends S.TaggedErrorClass<InProgressTableRestoreQuotaExceededFault>()(
+  "InProgressTableRestoreQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InProgressTableRestoreQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
+  "InsufficientClusterCapacityFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientClusterCapacity",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientS3BucketPolicyFault extends S.TaggedErrorClass<InsufficientS3BucketPolicyFault>()(
+  "InsufficientS3BucketPolicyFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientS3BucketPolicyFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationAlreadyExistsFault extends S.TaggedErrorClass<IntegrationAlreadyExistsFault>()(
+  "IntegrationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
+  "IntegrationConflictOperationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationConflictOperationFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationConflictStateFault extends S.TaggedErrorClass<IntegrationConflictStateFault>()(
+  "IntegrationConflictStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationConflictStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
+  "IntegrationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
+  "IntegrationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationSourceNotFoundFault extends S.TaggedErrorClass<IntegrationSourceNotFoundFault>()(
+  "IntegrationSourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationSourceNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationTargetNotFoundFault extends S.TaggedErrorClass<IntegrationTargetNotFoundFault>()(
+  "IntegrationTargetNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationTargetNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidAuthenticationProfileRequestFault extends S.TaggedErrorClass<InvalidAuthenticationProfileRequestFault>()(
+  "InvalidAuthenticationProfileRequestFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidAuthenticationProfileRequestFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidAuthorizationStateFault extends S.TaggedErrorClass<InvalidAuthorizationStateFault>()(
+  "InvalidAuthorizationStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidAuthorizationState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterParameterGroupStateFault extends S.TaggedErrorClass<InvalidClusterParameterGroupStateFault>()(
+  "InvalidClusterParameterGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterParameterGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSecurityGroupStateFault extends S.TaggedErrorClass<InvalidClusterSecurityGroupStateFault>()(
+  "InvalidClusterSecurityGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSecurityGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSnapshotScheduleStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotScheduleStateFault>()(
+  "InvalidClusterSnapshotScheduleStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSnapshotScheduleState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSnapshotStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotStateFault>()(
+  "InvalidClusterSnapshotStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSnapshotState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
+  "InvalidClusterStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSubnetGroupStateFault extends S.TaggedErrorClass<InvalidClusterSubnetGroupStateFault>()(
+  "InvalidClusterSubnetGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSubnetGroupStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSubnetStateFault extends S.TaggedErrorClass<InvalidClusterSubnetStateFault>()(
+  "InvalidClusterSubnetStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSubnetStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterTrackFault extends S.TaggedErrorClass<InvalidClusterTrackFault>()(
+  "InvalidClusterTrackFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidClusterTrack", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDataShareFault extends S.TaggedErrorClass<InvalidDataShareFault>()(
+  "InvalidDataShareFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidDataShareFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidElasticIpFault extends S.TaggedErrorClass<InvalidElasticIpFault>()(
+  "InvalidElasticIpFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidElasticIpFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEndpointStateFault extends S.TaggedErrorClass<InvalidEndpointStateFault>()(
+  "InvalidEndpointStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidEndpointState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidHsmClientCertificateStateFault extends S.TaggedErrorClass<InvalidHsmClientCertificateStateFault>()(
+  "InvalidHsmClientCertificateStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidHsmClientCertificateStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidHsmConfigurationStateFault extends S.TaggedErrorClass<InvalidHsmConfigurationStateFault>()(
+  "InvalidHsmConfigurationStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidHsmConfigurationStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidNamespaceFault extends S.TaggedErrorClass<InvalidNamespaceFault>()(
+  "InvalidNamespaceFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidNamespaceFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidPolicyFault extends S.TaggedErrorClass<InvalidPolicyFault>()(
+  "InvalidPolicyFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidPolicyFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidReservedNodeStateFault extends S.TaggedErrorClass<InvalidReservedNodeStateFault>()(
+  "InvalidReservedNodeStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidReservedNodeState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
+  "InvalidRestoreFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidRestore", httpResponseCode: 406 }),
+    T.HttpError(406),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRetentionPeriodFault extends S.TaggedErrorClass<InvalidRetentionPeriodFault>()(
+  "InvalidRetentionPeriodFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidRetentionPeriodFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3BucketNameFault extends S.TaggedErrorClass<InvalidS3BucketNameFault>()(
+  "InvalidS3BucketNameFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidS3BucketNameFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3KeyPrefixFault extends S.TaggedErrorClass<InvalidS3KeyPrefixFault>()(
+  "InvalidS3KeyPrefixFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidS3KeyPrefixFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidScheduledActionFault extends S.TaggedErrorClass<InvalidScheduledActionFault>()(
+  "InvalidScheduledActionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidScheduledAction", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidScheduleFault extends S.TaggedErrorClass<InvalidScheduleFault>()(
+  "InvalidScheduleFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSnapshotCopyGrantStateFault extends S.TaggedErrorClass<InvalidSnapshotCopyGrantStateFault>()(
+  "InvalidSnapshotCopyGrantStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidSnapshotCopyGrantStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubscriptionStateFault extends S.TaggedErrorClass<InvalidSubscriptionStateFault>()(
+  "InvalidSubscriptionStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidSubscriptionStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTableRestoreArgumentFault extends S.TaggedErrorClass<InvalidTableRestoreArgumentFault>()(
+  "InvalidTableRestoreArgumentFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidTableRestoreArgument",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTagFault extends S.TaggedErrorClass<InvalidTagFault>()(
+  "InvalidTagFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTagFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidUsageLimitFault extends S.TaggedErrorClass<InvalidUsageLimitFault>()(
+  "InvalidUsageLimitFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidUsageLimit", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
+  "InvalidVPCNetworkStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidVPCNetworkStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class Ipv6CidrBlockNotFoundFault extends S.TaggedErrorClass<Ipv6CidrBlockNotFoundFault>()(
+  "Ipv6CidrBlockNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "Ipv6CidrBlockNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
+  "LimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceededFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NumberOfNodesPerClusterLimitExceededFault extends S.TaggedErrorClass<NumberOfNodesPerClusterLimitExceededFault>()(
+  "NumberOfNodesPerClusterLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NumberOfNodesPerClusterLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NumberOfNodesQuotaExceededFault extends S.TaggedErrorClass<NumberOfNodesQuotaExceededFault>()(
+  "NumberOfNodesQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NumberOfNodesQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PartnerNotFoundFault extends S.TaggedErrorClass<PartnerNotFoundFault>()(
+  "PartnerNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PartnerNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RedshiftIdcApplicationAlreadyExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationAlreadyExistsFault>()(
+  "RedshiftIdcApplicationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftIdcApplicationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class RedshiftIdcApplicationNotExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationNotExistsFault>()(
+  "RedshiftIdcApplicationNotExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftIdcApplicationNotExists",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RedshiftIdcApplicationQuotaExceededFault extends S.TaggedErrorClass<RedshiftIdcApplicationQuotaExceededFault>()(
+  "RedshiftIdcApplicationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftIdcApplicationQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RedshiftInvalidParameterFault extends S.TaggedErrorClass<RedshiftInvalidParameterFault>()(
+  "RedshiftInvalidParameterFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftInvalidParameter",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeAlreadyExistsFault extends S.TaggedErrorClass<ReservedNodeAlreadyExistsFault>()(
+  "ReservedNodeAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeAlreadyExists",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ReservedNodeAlreadyMigratedFault extends S.TaggedErrorClass<ReservedNodeAlreadyMigratedFault>()(
+  "ReservedNodeAlreadyMigratedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeAlreadyMigrated",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeExchangeNotFoundFault extends S.TaggedErrorClass<ReservedNodeExchangeNotFoundFault>()(
+  "ReservedNodeExchangeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeExchangeNotFond",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeNotFoundFault extends S.TaggedErrorClass<ReservedNodeNotFoundFault>()(
+  "ReservedNodeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ReservedNodeNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeOfferingNotFoundFault extends S.TaggedErrorClass<ReservedNodeOfferingNotFoundFault>()(
+  "ReservedNodeOfferingNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeOfferingNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeQuotaExceededFault extends S.TaggedErrorClass<ReservedNodeQuotaExceededFault>()(
+  "ReservedNodeQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResizeNotFoundFault extends S.TaggedErrorClass<ResizeNotFoundFault>()(
+  "ResizeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResizeNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
+  "ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFoundFault", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduledActionAlreadyExistsFault extends S.TaggedErrorClass<ScheduledActionAlreadyExistsFault>()(
+  "ScheduledActionAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduledActionAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ScheduledActionNotFoundFault extends S.TaggedErrorClass<ScheduledActionNotFoundFault>()(
+  "ScheduledActionNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ScheduledActionNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduledActionQuotaExceededFault extends S.TaggedErrorClass<ScheduledActionQuotaExceededFault>()(
+  "ScheduledActionQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduledActionQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduledActionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduledActionTypeUnsupportedFault>()(
+  "ScheduledActionTypeUnsupportedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduledActionTypeUnsupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduleDefinitionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduleDefinitionTypeUnsupportedFault>()(
+  "ScheduleDefinitionTypeUnsupportedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduleDefinitionTypeUnsupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyAlreadyDisabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyDisabledFault>()(
+  "SnapshotCopyAlreadyDisabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyAlreadyDisabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyAlreadyEnabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyEnabledFault>()(
+  "SnapshotCopyAlreadyEnabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyAlreadyEnabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyDisabledFault extends S.TaggedErrorClass<SnapshotCopyDisabledFault>()(
+  "SnapshotCopyDisabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyDisabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyGrantAlreadyExistsFault extends S.TaggedErrorClass<SnapshotCopyGrantAlreadyExistsFault>()(
+  "SnapshotCopyGrantAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyGrantAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SnapshotCopyGrantNotFoundFault extends S.TaggedErrorClass<SnapshotCopyGrantNotFoundFault>()(
+  "SnapshotCopyGrantNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyGrantNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyGrantQuotaExceededFault extends S.TaggedErrorClass<SnapshotCopyGrantQuotaExceededFault>()(
+  "SnapshotCopyGrantQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyGrantQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotScheduleAlreadyExistsFault extends S.TaggedErrorClass<SnapshotScheduleAlreadyExistsFault>()(
+  "SnapshotScheduleAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SnapshotScheduleNotFoundFault extends S.TaggedErrorClass<SnapshotScheduleNotFoundFault>()(
+  "SnapshotScheduleNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleNotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotScheduleQuotaExceededFault extends S.TaggedErrorClass<SnapshotScheduleQuotaExceededFault>()(
+  "SnapshotScheduleQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotScheduleUpdateInProgressFault extends S.TaggedErrorClass<SnapshotScheduleUpdateInProgressFault>()(
+  "SnapshotScheduleUpdateInProgressFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleUpdateInProgress",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  "SNSInvalidTopicFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSInvalidTopic", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  "SNSNoAuthorizationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSNoAuthorization", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSTopicArnNotFoundFault extends S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
+  "SNSTopicArnNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSTopicArnNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SourceNotFoundFault extends S.TaggedErrorClass<SourceNotFoundFault>()(
+  "SourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SourceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  "SubnetAlreadyInUse",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetAlreadyInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
+export class SubscriptionAlreadyExistFault extends S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
+  "SubscriptionAlreadyExistFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionAlreadyExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionCategoryNotFoundFault extends S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
+  "SubscriptionCategoryNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionCategoryNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionEventIdNotFoundFault extends S.TaggedErrorClass<SubscriptionEventIdNotFoundFault>()(
+  "SubscriptionEventIdNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionEventIdNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionNotFoundFault extends S.TaggedErrorClass<SubscriptionNotFoundFault>()(
+  "SubscriptionNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubscriptionNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionSeverityNotFoundFault extends S.TaggedErrorClass<SubscriptionSeverityNotFoundFault>()(
+  "SubscriptionSeverityNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionSeverityNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TableLimitExceededFault extends S.TaggedErrorClass<TableLimitExceededFault>()(
+  "TableLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TableLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TableRestoreNotFoundFault extends S.TaggedErrorClass<TableRestoreNotFoundFault>()(
+  "TableRestoreNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TableRestoreNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagLimitExceededFault extends S.TaggedErrorClass<TagLimitExceededFault>()(
+  "TagLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagLimitExceededFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
+  "UnauthorizedOperation",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnauthorizedOperation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAuthError) {}
+export class UnauthorizedPartnerIntegrationFault extends S.TaggedErrorClass<UnauthorizedPartnerIntegrationFault>()(
+  "UnauthorizedPartnerIntegrationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "UnauthorizedPartnerIntegration",
+      httpResponseCode: 401,
+    }),
+    T.HttpError(401),
+  ),
+).pipe(C.withAuthError) {}
+export class UnknownSnapshotCopyRegionFault extends S.TaggedErrorClass<UnknownSnapshotCopyRegionFault>()(
+  "UnknownSnapshotCopyRegionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "UnknownSnapshotCopyRegionFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationFault extends S.TaggedErrorClass<UnsupportedOperationFault>()(
+  "UnsupportedOperationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOptionFault extends S.TaggedErrorClass<UnsupportedOptionFault>()(
+  "UnsupportedOptionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedOptionFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UsageLimitAlreadyExistsFault extends S.TaggedErrorClass<UsageLimitAlreadyExistsFault>()(
+  "UsageLimitAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UsageLimitAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class UsageLimitNotFoundFault extends S.TaggedErrorClass<UsageLimitNotFoundFault>()(
+  "UsageLimitNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UsageLimitNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
 export interface AcceptReservedNodeExchangeInputMessage {
   ReservedNodeId?: string;
   TargetReservedNodeOfferingId?: string;
 }
-export const AcceptReservedNodeExchangeInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const AcceptReservedNodeExchangeInputMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReservedNodeId: S.optional(S.String),
       TargetReservedNodeOfferingId: S.optional(S.String),
@@ -134,9 +1552,9 @@ export const AcceptReservedNodeExchangeInputMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AcceptReservedNodeExchangeInputMessage",
-  }) as any as S.Schema<AcceptReservedNodeExchangeInputMessage>;
+).annotate({
+  identifier: "AcceptReservedNodeExchangeInputMessage",
+}) as any as S.Schema<AcceptReservedNodeExchangeInputMessage>;
 export interface RecurringCharge {
   RecurringChargeAmount?: number;
   RecurringChargeFrequency?: string;
@@ -157,6 +1575,7 @@ export const RecurringChargeList = /*@__PURE__*/ S.Array(
 );
 export type ReservedNodeOfferingType = "Regular" | "Upgradable" | (string & {});
 export const ReservedNodeOfferingType = /*@__PURE__*/ S.String;
+
 export interface ReservedNode {
   ReservedNodeId?: string;
   ReservedNodeOfferingId?: string;
@@ -194,52 +1613,53 @@ export const ReservedNode = /*@__PURE__*/ S.suspend(() =>
 export interface AcceptReservedNodeExchangeOutputMessage {
   ExchangedReservedNode?: ReservedNode;
 }
-export const AcceptReservedNodeExchangeOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ExchangedReservedNode: S.optional(ReservedNode) }).pipe(ns),
-  ).annotate({
-    identifier: "AcceptReservedNodeExchangeOutputMessage",
-  }) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>;
+export const AcceptReservedNodeExchangeOutputMessage = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ ExchangedReservedNode: S.optional(ReservedNode) }).pipe(ns),
+).annotate({
+  identifier: "AcceptReservedNodeExchangeOutputMessage",
+}) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>;
+export type PartnerIntegrationAccountId = string;
+export type PartnerIntegrationClusterIdentifier = string;
+export type PartnerIntegrationDatabaseName = string;
+export type PartnerIntegrationPartnerName = string;
 export interface PartnerIntegrationInputMessage {
   AccountId?: string;
   ClusterIdentifier?: string;
   DatabaseName?: string;
   PartnerName?: string;
 }
-export const PartnerIntegrationInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      DatabaseName: S.optional(S.String),
-      PartnerName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PartnerIntegrationInputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    DatabaseName: S.optional(S.String),
+    PartnerName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PartnerIntegrationInputMessage",
-  }) as any as S.Schema<PartnerIntegrationInputMessage>;
+  ),
+).annotate({
+  identifier: "PartnerIntegrationInputMessage",
+}) as any as S.Schema<PartnerIntegrationInputMessage>;
 export interface PartnerIntegrationOutputMessage {
   DatabaseName?: string;
   PartnerName?: string;
 }
-export const PartnerIntegrationOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DatabaseName: S.optional(S.String),
-      PartnerName: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "PartnerIntegrationOutputMessage",
-  }) as any as S.Schema<PartnerIntegrationOutputMessage>;
+export const PartnerIntegrationOutputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DatabaseName: S.optional(S.String),
+    PartnerName: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "PartnerIntegrationOutputMessage",
+}) as any as S.Schema<PartnerIntegrationOutputMessage>;
 export interface AssociateDataShareConsumerMessage {
   DataShareArn?: string;
   AssociateEntireAccount?: boolean;
@@ -247,28 +1667,27 @@ export interface AssociateDataShareConsumerMessage {
   ConsumerRegion?: string;
   AllowWrites?: boolean;
 }
-export const AssociateDataShareConsumerMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataShareArn: S.optional(S.String),
-      AssociateEntireAccount: S.optional(S.Boolean),
-      ConsumerArn: S.optional(S.String),
-      ConsumerRegion: S.optional(S.String),
-      AllowWrites: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateDataShareConsumerMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataShareArn: S.optional(S.String),
+    AssociateEntireAccount: S.optional(S.Boolean),
+    ConsumerArn: S.optional(S.String),
+    ConsumerRegion: S.optional(S.String),
+    AllowWrites: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateDataShareConsumerMessage",
-  }) as any as S.Schema<AssociateDataShareConsumerMessage>;
+  ),
+).annotate({
+  identifier: "AssociateDataShareConsumerMessage",
+}) as any as S.Schema<AssociateDataShareConsumerMessage>;
 export type DataShareStatus =
   | "ACTIVE"
   | "PENDING_AUTHORIZATION"
@@ -278,6 +1697,7 @@ export type DataShareStatus =
   | "AVAILABLE"
   | (string & {});
 export const DataShareStatus = /*@__PURE__*/ S.String;
+
 export interface DataShareAssociation {
   ConsumerIdentifier?: string;
   Status?: DataShareStatus;
@@ -309,6 +1729,7 @@ export const DataShareAssociationList =
   /*@__PURE__*/ S.Array(DataShareAssociation);
 export type DataShareType = "INTERNAL" | (string & {});
 export const DataShareType = /*@__PURE__*/ S.String;
+
 export interface DataShare {
   DataShareArn?: string;
   ProducerArn?: string;
@@ -465,28 +1886,28 @@ export interface AuthorizeEndpointAccessMessage {
   Account?: string;
   VpcIds?: string[];
 }
-export const AuthorizeEndpointAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      Account: S.optional(S.String),
-      VpcIds: S.optional(VpcIdentifierList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AuthorizeEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    Account: S.optional(S.String),
+    VpcIds: S.optional(VpcIdentifierList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AuthorizeEndpointAccessMessage",
-  }) as any as S.Schema<AuthorizeEndpointAccessMessage>;
+  ),
+).annotate({
+  identifier: "AuthorizeEndpointAccessMessage",
+}) as any as S.Schema<AuthorizeEndpointAccessMessage>;
 export type AuthorizationStatus = "Authorized" | "Revoking" | (string & {});
 export const AuthorizationStatus = /*@__PURE__*/ S.String;
+
 export interface EndpointAuthorization {
   Grantor?: string;
   Grantee?: string;
@@ -521,27 +1942,26 @@ export interface AuthorizeSnapshotAccessMessage {
   SnapshotClusterIdentifier?: string;
   AccountWithRestoreAccess?: string;
 }
-export const AuthorizeSnapshotAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotIdentifier: S.optional(S.String),
-      SnapshotArn: S.optional(S.String),
-      SnapshotClusterIdentifier: S.optional(S.String),
-      AccountWithRestoreAccess: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AuthorizeSnapshotAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotIdentifier: S.optional(S.String),
+    SnapshotArn: S.optional(S.String),
+    SnapshotClusterIdentifier: S.optional(S.String),
+    AccountWithRestoreAccess: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AuthorizeSnapshotAccessMessage",
-  }) as any as S.Schema<AuthorizeSnapshotAccessMessage>;
+  ),
+).annotate({
+  identifier: "AuthorizeSnapshotAccessMessage",
+}) as any as S.Schema<AuthorizeSnapshotAccessMessage>;
 export interface AccountWithRestoreAccess {
   AccountId?: string;
   AccountAlias?: string;
@@ -555,12 +1975,11 @@ export const AccountWithRestoreAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountWithRestoreAccess",
 }) as any as S.Schema<AccountWithRestoreAccess>;
 export type AccountsWithRestoreAccessList = AccountWithRestoreAccess[];
-export const AccountsWithRestoreAccessList =
-  /*@__PURE__*/ S.Array(
-    AccountWithRestoreAccess.pipe(
-      T.XmlName("AccountWithRestoreAccess"),
-    ).annotate({ identifier: "AccountWithRestoreAccess" }),
-  );
+export const AccountsWithRestoreAccessList = /*@__PURE__*/ S.Array(
+  AccountWithRestoreAccess.pipe(T.XmlName("AccountWithRestoreAccess")).annotate(
+    { identifier: "AccountWithRestoreAccess" },
+  ),
+);
 export type RestorableNodeTypeList = string[];
 export const RestorableNodeTypeList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("NodeType")),
@@ -654,63 +2073,57 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 export interface AuthorizeSnapshotAccessResult {
   Snapshot?: Snapshot;
 }
-export const AuthorizeSnapshotAccessResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
-  ).annotate({
-    identifier: "AuthorizeSnapshotAccessResult",
-  }) as any as S.Schema<AuthorizeSnapshotAccessResult>;
+export const AuthorizeSnapshotAccessResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
+).annotate({
+  identifier: "AuthorizeSnapshotAccessResult",
+}) as any as S.Schema<AuthorizeSnapshotAccessResult>;
 export interface DeleteClusterSnapshotMessage {
   SnapshotIdentifier?: string;
   SnapshotClusterIdentifier?: string;
 }
-export const DeleteClusterSnapshotMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotIdentifier: S.optional(S.String),
-      SnapshotClusterIdentifier: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotIdentifier: S.optional(S.String),
+    SnapshotClusterIdentifier: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteClusterSnapshotMessage",
-  }) as any as S.Schema<DeleteClusterSnapshotMessage>;
+  ),
+).annotate({
+  identifier: "DeleteClusterSnapshotMessage",
+}) as any as S.Schema<DeleteClusterSnapshotMessage>;
 export type DeleteClusterSnapshotMessageList = DeleteClusterSnapshotMessage[];
-export const DeleteClusterSnapshotMessageList =
-  /*@__PURE__*/ S.Array(
-    DeleteClusterSnapshotMessage.pipe(
-      T.XmlName("DeleteClusterSnapshotMessage"),
-    ).annotate({ identifier: "DeleteClusterSnapshotMessage" }),
-  );
+export const DeleteClusterSnapshotMessageList = /*@__PURE__*/ S.Array(
+  DeleteClusterSnapshotMessage.pipe(
+    T.XmlName("DeleteClusterSnapshotMessage"),
+  ).annotate({ identifier: "DeleteClusterSnapshotMessage" }),
+);
 export interface BatchDeleteClusterSnapshotsRequest {
   Identifiers?: DeleteClusterSnapshotMessage[];
 }
-export const BatchDeleteClusterSnapshotsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Identifiers: S.optional(DeleteClusterSnapshotMessageList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchDeleteClusterSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifiers: S.optional(DeleteClusterSnapshotMessageList) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchDeleteClusterSnapshotsRequest",
-  }) as any as S.Schema<BatchDeleteClusterSnapshotsRequest>;
+  ),
+).annotate({
+  identifier: "BatchDeleteClusterSnapshotsRequest",
+}) as any as S.Schema<BatchDeleteClusterSnapshotsRequest>;
 export type SnapshotIdentifierList = string[];
 export const SnapshotIdentifierList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("String")),
@@ -732,50 +2145,47 @@ export const SnapshotErrorMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotErrorMessage",
 }) as any as S.Schema<SnapshotErrorMessage>;
 export type BatchSnapshotOperationErrorList = SnapshotErrorMessage[];
-export const BatchSnapshotOperationErrorList =
-  /*@__PURE__*/ S.Array(
-    SnapshotErrorMessage.pipe(T.XmlName("SnapshotErrorMessage")).annotate({
-      identifier: "SnapshotErrorMessage",
-    }),
-  );
+export const BatchSnapshotOperationErrorList = /*@__PURE__*/ S.Array(
+  SnapshotErrorMessage.pipe(T.XmlName("SnapshotErrorMessage")).annotate({
+    identifier: "SnapshotErrorMessage",
+  }),
+);
 export interface BatchDeleteClusterSnapshotsResult {
   Resources?: string[];
   Errors?: SnapshotErrorMessage[];
 }
-export const BatchDeleteClusterSnapshotsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Resources: S.optional(SnapshotIdentifierList),
-      Errors: S.optional(BatchSnapshotOperationErrorList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "BatchDeleteClusterSnapshotsResult",
-  }) as any as S.Schema<BatchDeleteClusterSnapshotsResult>;
+export const BatchDeleteClusterSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Resources: S.optional(SnapshotIdentifierList),
+    Errors: S.optional(BatchSnapshotOperationErrorList),
+  }).pipe(ns),
+).annotate({
+  identifier: "BatchDeleteClusterSnapshotsResult",
+}) as any as S.Schema<BatchDeleteClusterSnapshotsResult>;
 export interface BatchModifyClusterSnapshotsMessage {
   SnapshotIdentifierList?: string[];
   ManualSnapshotRetentionPeriod?: number;
   Force?: boolean;
 }
-export const BatchModifyClusterSnapshotsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotIdentifierList: S.optional(SnapshotIdentifierList),
-      ManualSnapshotRetentionPeriod: S.optional(S.Number),
-      Force: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchModifyClusterSnapshotsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotIdentifierList: S.optional(SnapshotIdentifierList),
+    ManualSnapshotRetentionPeriod: S.optional(S.Number),
+    Force: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchModifyClusterSnapshotsMessage",
-  }) as any as S.Schema<BatchModifyClusterSnapshotsMessage>;
+  ),
+).annotate({
+  identifier: "BatchModifyClusterSnapshotsMessage",
+}) as any as S.Schema<BatchModifyClusterSnapshotsMessage>;
 export type BatchSnapshotOperationErrors = SnapshotErrorMessage[];
 export const BatchSnapshotOperationErrors = /*@__PURE__*/ S.Array(
   SnapshotErrorMessage.pipe(T.XmlName("SnapshotErrorMessage")).annotate({
@@ -786,15 +2196,15 @@ export interface BatchModifyClusterSnapshotsOutputMessage {
   Resources?: string[];
   Errors?: SnapshotErrorMessage[];
 }
-export const BatchModifyClusterSnapshotsOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchModifyClusterSnapshotsOutputMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Resources: S.optional(SnapshotIdentifierList),
       Errors: S.optional(BatchSnapshotOperationErrors),
     }).pipe(ns),
-  ).annotate({
-    identifier: "BatchModifyClusterSnapshotsOutputMessage",
-  }) as any as S.Schema<BatchModifyClusterSnapshotsOutputMessage>;
+).annotate({
+  identifier: "BatchModifyClusterSnapshotsOutputMessage",
+}) as any as S.Schema<BatchModifyClusterSnapshotsOutputMessage>;
 export interface CancelResizeMessage {
   ClusterIdentifier?: string;
 }
@@ -893,42 +2303,42 @@ export const CopyClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyClusterSnapshotResult",
 }) as any as S.Schema<CopyClusterSnapshotResult>;
+export type AuthenticationProfileNameString = string;
 export interface CreateAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-export const CreateAuthenticationProfileMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationProfileName: S.optional(S.String),
-      AuthenticationProfileContent: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateAuthenticationProfileMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationProfileName: S.optional(S.String),
+    AuthenticationProfileContent: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateAuthenticationProfileMessage",
-  }) as any as S.Schema<CreateAuthenticationProfileMessage>;
+  ),
+).annotate({
+  identifier: "CreateAuthenticationProfileMessage",
+}) as any as S.Schema<CreateAuthenticationProfileMessage>;
 export interface CreateAuthenticationProfileResult {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-export const CreateAuthenticationProfileResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationProfileName: S.optional(S.String),
-      AuthenticationProfileContent: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateAuthenticationProfileResult",
-  }) as any as S.Schema<CreateAuthenticationProfileResult>;
+export const CreateAuthenticationProfileResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationProfileName: S.optional(S.String),
+    AuthenticationProfileContent: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateAuthenticationProfileResult",
+}) as any as S.Schema<CreateAuthenticationProfileResult>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export type ClusterSecurityGroupNameList = string[];
 export const ClusterSecurityGroupNameList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ClusterSecurityGroupName")),
@@ -947,6 +2357,8 @@ export type AquaConfigurationStatus =
   | "auto"
   | (string & {});
 export const AquaConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type CatalogNameString = string;
 export interface CreateClusterMessage {
   DBName?: string;
   ClusterIdentifier?: string;
@@ -1105,23 +2517,21 @@ export interface ClusterSecurityGroupMembership {
   ClusterSecurityGroupName?: string;
   Status?: string;
 }
-export const ClusterSecurityGroupMembership =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterSecurityGroupName: S.optional(S.String),
-      Status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ClusterSecurityGroupMembership",
-  }) as any as S.Schema<ClusterSecurityGroupMembership>;
+export const ClusterSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterSecurityGroupName: S.optional(S.String),
+    Status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterSecurityGroupMembership",
+}) as any as S.Schema<ClusterSecurityGroupMembership>;
 export type ClusterSecurityGroupMembershipList =
   ClusterSecurityGroupMembership[];
-export const ClusterSecurityGroupMembershipList =
-  /*@__PURE__*/ S.Array(
-    ClusterSecurityGroupMembership.pipe(
-      T.XmlName("ClusterSecurityGroup"),
-    ).annotate({ identifier: "ClusterSecurityGroupMembership" }),
-  );
+export const ClusterSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
+  ClusterSecurityGroupMembership.pipe(
+    T.XmlName("ClusterSecurityGroup"),
+  ).annotate({ identifier: "ClusterSecurityGroupMembership" }),
+);
 export interface VpcSecurityGroupMembership {
   VpcSecurityGroupId?: string;
   Status?: string;
@@ -1135,12 +2545,11 @@ export const VpcSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpcSecurityGroupMembership",
 }) as any as S.Schema<VpcSecurityGroupMembership>;
 export type VpcSecurityGroupMembershipList = VpcSecurityGroupMembership[];
-export const VpcSecurityGroupMembershipList =
-  /*@__PURE__*/ S.Array(
-    VpcSecurityGroupMembership.pipe(T.XmlName("VpcSecurityGroup")).annotate({
-      identifier: "VpcSecurityGroupMembership",
-    }),
-  );
+export const VpcSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
+  VpcSecurityGroupMembership.pipe(T.XmlName("VpcSecurityGroup")).annotate({
+    identifier: "VpcSecurityGroupMembership",
+  }),
+);
 export interface ClusterParameterStatus {
   ParameterName?: string;
   ParameterApplyStatus?: string;
@@ -1164,23 +2573,21 @@ export interface ClusterParameterGroupStatus {
   ParameterApplyStatus?: string;
   ClusterParameterStatusList?: ClusterParameterStatus[];
 }
-export const ClusterParameterGroupStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      ParameterApplyStatus: S.optional(S.String),
-      ClusterParameterStatusList: S.optional(ClusterParameterStatusList),
-    }),
-  ).annotate({
-    identifier: "ClusterParameterGroupStatus",
-  }) as any as S.Schema<ClusterParameterGroupStatus>;
+export const ClusterParameterGroupStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    ParameterApplyStatus: S.optional(S.String),
+    ClusterParameterStatusList: S.optional(ClusterParameterStatusList),
+  }),
+).annotate({
+  identifier: "ClusterParameterGroupStatus",
+}) as any as S.Schema<ClusterParameterGroupStatus>;
 export type ClusterParameterGroupStatusList = ClusterParameterGroupStatus[];
-export const ClusterParameterGroupStatusList =
-  /*@__PURE__*/ S.Array(
-    ClusterParameterGroupStatus.pipe(
-      T.XmlName("ClusterParameterGroup"),
-    ).annotate({ identifier: "ClusterParameterGroupStatus" }),
-  );
+export const ClusterParameterGroupStatusList = /*@__PURE__*/ S.Array(
+  ClusterParameterGroupStatus.pipe(T.XmlName("ClusterParameterGroup")).annotate(
+    { identifier: "ClusterParameterGroupStatus" },
+  ),
+);
 export interface PendingModifiedValues {
   MasterUserPassword?: string | redacted.Redacted<string>;
   NodeType?: string;
@@ -1337,14 +2744,14 @@ export const DeferredMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeferredMaintenanceWindow",
 }) as any as S.Schema<DeferredMaintenanceWindow>;
 export type DeferredMaintenanceWindowsList = DeferredMaintenanceWindow[];
-export const DeferredMaintenanceWindowsList =
-  /*@__PURE__*/ S.Array(
-    DeferredMaintenanceWindow.pipe(
-      T.XmlName("DeferredMaintenanceWindow"),
-    ).annotate({ identifier: "DeferredMaintenanceWindow" }),
-  );
+export const DeferredMaintenanceWindowsList = /*@__PURE__*/ S.Array(
+  DeferredMaintenanceWindow.pipe(
+    T.XmlName("DeferredMaintenanceWindow"),
+  ).annotate({ identifier: "DeferredMaintenanceWindow" }),
+);
 export type ScheduleState = "MODIFYING" | "ACTIVE" | "FAILED" | (string & {});
 export const ScheduleState = /*@__PURE__*/ S.String;
+
 export interface ResizeInfo {
   ResizeType?: string;
   AllowCancelResize?: boolean;
@@ -1357,6 +2764,7 @@ export const ResizeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeInfo" }) as any as S.Schema<ResizeInfo>;
 export type AquaStatus = "enabled" | "disabled" | "applying" | (string & {});
 export const AquaStatus = /*@__PURE__*/ S.String;
+
 export interface AquaConfiguration {
   AquaStatus?: AquaStatus;
   AquaConfigurationStatus?: AquaConfigurationStatus;
@@ -1378,6 +2786,7 @@ export type ReservedNodeExchangeStatusType =
   | "FAILED"
   | (string & {});
 export const ReservedNodeExchangeStatusType = /*@__PURE__*/ S.String;
+
 export interface ReservedNodeExchangeStatus {
   ReservedNodeExchangeRequestId?: string;
   Status?: ReservedNodeExchangeStatusType;
@@ -1572,27 +2981,26 @@ export interface CreateClusterParameterGroupMessage {
   Description?: string;
   Tags?: Tag[];
 }
-export const CreateClusterParameterGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      ParameterGroupFamily: S.optional(S.String),
-      Description: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    ParameterGroupFamily: S.optional(S.String),
+    Description: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateClusterParameterGroupMessage",
-  }) as any as S.Schema<CreateClusterParameterGroupMessage>;
+  ),
+).annotate({
+  identifier: "CreateClusterParameterGroupMessage",
+}) as any as S.Schema<CreateClusterParameterGroupMessage>;
 export interface ClusterParameterGroup {
   ParameterGroupName?: string;
   ParameterGroupFamily?: string;
@@ -1612,86 +3020,79 @@ export const ClusterParameterGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CreateClusterParameterGroupResult {
   ClusterParameterGroup?: ClusterParameterGroup;
 }
-export const CreateClusterParameterGroupResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterParameterGroup: S.optional(ClusterParameterGroup) }).pipe(
-      ns,
-    ),
-  ).annotate({
-    identifier: "CreateClusterParameterGroupResult",
-  }) as any as S.Schema<CreateClusterParameterGroupResult>;
+export const CreateClusterParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterParameterGroup: S.optional(ClusterParameterGroup) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "CreateClusterParameterGroupResult",
+}) as any as S.Schema<CreateClusterParameterGroupResult>;
 export interface CreateClusterSecurityGroupMessage {
   ClusterSecurityGroupName?: string;
   Description?: string;
   Tags?: Tag[];
 }
-export const CreateClusterSecurityGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterSecurityGroupName: S.optional(S.String),
-      Description: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateClusterSecurityGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterSecurityGroupName: S.optional(S.String),
+    Description: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateClusterSecurityGroupMessage",
-  }) as any as S.Schema<CreateClusterSecurityGroupMessage>;
+  ),
+).annotate({
+  identifier: "CreateClusterSecurityGroupMessage",
+}) as any as S.Schema<CreateClusterSecurityGroupMessage>;
 export interface CreateClusterSecurityGroupResult {
   ClusterSecurityGroup?: ClusterSecurityGroup;
 }
-export const CreateClusterSecurityGroupResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterSecurityGroup: S.optional(ClusterSecurityGroup) }).pipe(
-      ns,
-    ),
-  ).annotate({
-    identifier: "CreateClusterSecurityGroupResult",
-  }) as any as S.Schema<CreateClusterSecurityGroupResult>;
+export const CreateClusterSecurityGroupResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterSecurityGroup: S.optional(ClusterSecurityGroup) }).pipe(ns),
+).annotate({
+  identifier: "CreateClusterSecurityGroupResult",
+}) as any as S.Schema<CreateClusterSecurityGroupResult>;
 export interface CreateClusterSnapshotMessage {
   SnapshotIdentifier?: string;
   ClusterIdentifier?: string;
   ManualSnapshotRetentionPeriod?: number;
   Tags?: Tag[];
 }
-export const CreateClusterSnapshotMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotIdentifier: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      ManualSnapshotRetentionPeriod: S.optional(S.Number),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotIdentifier: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    ManualSnapshotRetentionPeriod: S.optional(S.Number),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateClusterSnapshotMessage",
-  }) as any as S.Schema<CreateClusterSnapshotMessage>;
+  ),
+).annotate({
+  identifier: "CreateClusterSnapshotMessage",
+}) as any as S.Schema<CreateClusterSnapshotMessage>;
 export interface CreateClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-export const CreateClusterSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateClusterSnapshotResult",
-  }) as any as S.Schema<CreateClusterSnapshotResult>;
+export const CreateClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
+).annotate({
+  identifier: "CreateClusterSnapshotResult",
+}) as any as S.Schema<CreateClusterSnapshotResult>;
 export type SubnetIdentifierList = string[];
 export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SubnetIdentifier")),
@@ -1702,27 +3103,26 @@ export interface CreateClusterSubnetGroupMessage {
   SubnetIds?: string[];
   Tags?: Tag[];
 }
-export const CreateClusterSubnetGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterSubnetGroupName: S.optional(S.String),
-      Description: S.optional(S.String),
-      SubnetIds: S.optional(SubnetIdentifierList),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateClusterSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterSubnetGroupName: S.optional(S.String),
+    Description: S.optional(S.String),
+    SubnetIds: S.optional(SubnetIdentifierList),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateClusterSubnetGroupMessage",
-  }) as any as S.Schema<CreateClusterSubnetGroupMessage>;
+  ),
+).annotate({
+  identifier: "CreateClusterSubnetGroupMessage",
+}) as any as S.Schema<CreateClusterSubnetGroupMessage>;
 export interface SupportedPlatform {
   Name?: string;
 }
@@ -1794,19 +3194,20 @@ export const ClusterSubnetGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CreateClusterSubnetGroupResult {
   ClusterSubnetGroup?: ClusterSubnetGroup;
 }
-export const CreateClusterSubnetGroupResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterSubnetGroup: S.optional(ClusterSubnetGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateClusterSubnetGroupResult",
-  }) as any as S.Schema<CreateClusterSubnetGroupResult>;
+export const CreateClusterSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterSubnetGroup: S.optional(ClusterSubnetGroup) }).pipe(ns),
+).annotate({
+  identifier: "CreateClusterSubnetGroupResult",
+}) as any as S.Schema<CreateClusterSubnetGroupResult>;
+export type CustomDomainNameString = string;
+export type CustomDomainCertificateArnString = string;
 export interface CreateCustomDomainAssociationMessage {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
 }
-export const CreateCustomDomainAssociationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomDomainAssociationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CustomDomainName: S.optional(S.String),
       CustomDomainCertificateArn: S.optional(S.String),
@@ -1822,26 +3223,25 @@ export const CreateCustomDomainAssociationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateCustomDomainAssociationMessage",
-  }) as any as S.Schema<CreateCustomDomainAssociationMessage>;
+).annotate({
+  identifier: "CreateCustomDomainAssociationMessage",
+}) as any as S.Schema<CreateCustomDomainAssociationMessage>;
 export interface CreateCustomDomainAssociationResult {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
   CustomDomainCertExpiryTime?: string;
 }
-export const CreateCustomDomainAssociationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomDomainName: S.optional(S.String),
-      CustomDomainCertificateArn: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      CustomDomainCertExpiryTime: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateCustomDomainAssociationResult",
-  }) as any as S.Schema<CreateCustomDomainAssociationResult>;
+export const CreateCustomDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomDomainName: S.optional(S.String),
+    CustomDomainCertificateArn: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    CustomDomainCertExpiryTime: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateCustomDomainAssociationResult",
+}) as any as S.Schema<CreateCustomDomainAssociationResult>;
 export interface CreateEndpointAccessMessage {
   ClusterIdentifier?: string;
   ResourceOwner?: string;
@@ -1849,28 +3249,27 @@ export interface CreateEndpointAccessMessage {
   SubnetGroupName?: string;
   VpcSecurityGroupIds?: string[];
 }
-export const CreateEndpointAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      ResourceOwner: S.optional(S.String),
-      EndpointName: S.optional(S.String),
-      SubnetGroupName: S.optional(S.String),
-      VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    ResourceOwner: S.optional(S.String),
+    EndpointName: S.optional(S.String),
+    SubnetGroupName: S.optional(S.String),
+    VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEndpointAccessMessage",
-  }) as any as S.Schema<CreateEndpointAccessMessage>;
+  ),
+).annotate({
+  identifier: "CreateEndpointAccessMessage",
+}) as any as S.Schema<CreateEndpointAccessMessage>;
 export interface EndpointAccess {
   ClusterIdentifier?: string;
   ResourceOwner?: string;
@@ -1917,31 +3316,30 @@ export interface CreateEventSubscriptionMessage {
   Enabled?: boolean;
   Tags?: Tag[];
 }
-export const CreateEventSubscriptionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubscriptionName: S.optional(S.String),
-      SnsTopicArn: S.optional(S.String),
-      SourceType: S.optional(S.String),
-      SourceIds: S.optional(SourceIdsList),
-      EventCategories: S.optional(EventCategoriesList),
-      Severity: S.optional(S.String),
-      Enabled: S.optional(S.Boolean),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubscriptionName: S.optional(S.String),
+    SnsTopicArn: S.optional(S.String),
+    SourceType: S.optional(S.String),
+    SourceIds: S.optional(SourceIdsList),
+    EventCategories: S.optional(EventCategoriesList),
+    Severity: S.optional(S.String),
+    Enabled: S.optional(S.Boolean),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEventSubscriptionMessage",
-  }) as any as S.Schema<CreateEventSubscriptionMessage>;
+  ),
+).annotate({
+  identifier: "CreateEventSubscriptionMessage",
+}) as any as S.Schema<CreateEventSubscriptionMessage>;
 export interface EventSubscription {
   CustomerAwsId?: string;
   CustSubscriptionId?: string;
@@ -1977,35 +3375,33 @@ export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const CreateEventSubscriptionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateEventSubscriptionResult",
-  }) as any as S.Schema<CreateEventSubscriptionResult>;
+export const CreateEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+).annotate({
+  identifier: "CreateEventSubscriptionResult",
+}) as any as S.Schema<CreateEventSubscriptionResult>;
 export interface CreateHsmClientCertificateMessage {
   HsmClientCertificateIdentifier?: string;
   Tags?: Tag[];
 }
-export const CreateHsmClientCertificateMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HsmClientCertificateIdentifier: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateHsmClientCertificateMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HsmClientCertificateIdentifier: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateHsmClientCertificateMessage",
-  }) as any as S.Schema<CreateHsmClientCertificateMessage>;
+  ),
+).annotate({
+  identifier: "CreateHsmClientCertificateMessage",
+}) as any as S.Schema<CreateHsmClientCertificateMessage>;
 export interface HsmClientCertificate {
   HsmClientCertificateIdentifier?: string;
   HsmClientCertificatePublicKey?: string;
@@ -2023,14 +3419,11 @@ export const HsmClientCertificate = /*@__PURE__*/ S.suspend(() =>
 export interface CreateHsmClientCertificateResult {
   HsmClientCertificate?: HsmClientCertificate;
 }
-export const CreateHsmClientCertificateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ HsmClientCertificate: S.optional(HsmClientCertificate) }).pipe(
-      ns,
-    ),
-  ).annotate({
-    identifier: "CreateHsmClientCertificateResult",
-  }) as any as S.Schema<CreateHsmClientCertificateResult>;
+export const CreateHsmClientCertificateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HsmClientCertificate: S.optional(HsmClientCertificate) }).pipe(ns),
+).annotate({
+  identifier: "CreateHsmClientCertificateResult",
+}) as any as S.Schema<CreateHsmClientCertificateResult>;
 export interface CreateHsmConfigurationMessage {
   HsmConfigurationIdentifier?: string;
   Description?: string;
@@ -2040,30 +3433,29 @@ export interface CreateHsmConfigurationMessage {
   HsmServerPublicCertificate?: string;
   Tags?: Tag[];
 }
-export const CreateHsmConfigurationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HsmConfigurationIdentifier: S.optional(S.String),
-      Description: S.optional(S.String),
-      HsmIpAddress: S.optional(S.String),
-      HsmPartitionName: S.optional(S.String),
-      HsmPartitionPassword: S.optional(S.String),
-      HsmServerPublicCertificate: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateHsmConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HsmConfigurationIdentifier: S.optional(S.String),
+    Description: S.optional(S.String),
+    HsmIpAddress: S.optional(S.String),
+    HsmPartitionName: S.optional(S.String),
+    HsmPartitionPassword: S.optional(S.String),
+    HsmServerPublicCertificate: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateHsmConfigurationMessage",
-  }) as any as S.Schema<CreateHsmConfigurationMessage>;
+  ),
+).annotate({
+  identifier: "CreateHsmConfigurationMessage",
+}) as any as S.Schema<CreateHsmConfigurationMessage>;
 export interface HsmConfiguration {
   HsmConfigurationIdentifier?: string;
   Description?: string;
@@ -2085,17 +3477,20 @@ export const HsmConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateHsmConfigurationResult {
   HsmConfiguration?: HsmConfiguration;
 }
-export const CreateHsmConfigurationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ HsmConfiguration: S.optional(HsmConfiguration) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateHsmConfigurationResult",
-  }) as any as S.Schema<CreateHsmConfigurationResult>;
+export const CreateHsmConfigurationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HsmConfiguration: S.optional(HsmConfiguration) }).pipe(ns),
+).annotate({
+  identifier: "CreateHsmConfigurationResult",
+}) as any as S.Schema<CreateHsmConfigurationResult>;
+export type SourceArn = string;
+export type TargetArn = string;
+export type IntegrationName = string;
 export type EncryptionContextMap = { [key: string]: string | undefined };
 export const EncryptionContextMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type IntegrationDescription = string;
 export interface CreateIntegrationMessage {
   SourceArn?: string;
   TargetArn?: string;
@@ -2128,6 +3523,7 @@ export const CreateIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIntegrationMessage",
 }) as any as S.Schema<CreateIntegrationMessage>;
+export type IntegrationArn = string;
 export type ZeroETLIntegrationStatus =
   | "creating"
   | "active"
@@ -2138,6 +3534,7 @@ export type ZeroETLIntegrationStatus =
   | "needs_attention"
   | (string & {});
 export const ZeroETLIntegrationStatus = /*@__PURE__*/ S.String;
+
 export interface IntegrationError {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -2156,6 +3553,7 @@ export const IntegrationErrorList = /*@__PURE__*/ S.Array(
     identifier: "IntegrationError",
   }),
 );
+export type Description = string;
 export interface Integration {
   IntegrationArn?: string;
   IntegrationName?: string;
@@ -2186,6 +3584,9 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagList),
   }).pipe(ns),
 ).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
+export type RedshiftIdcApplicationName = string;
+export type IdentityNamespaceString = string;
+export type IdcDisplayNameString = string;
 export type AuthorizedAudienceList = string[];
 export const AuthorizedAudienceList = /*@__PURE__*/ S.Array(S.String);
 export interface AuthorizedTokenIssuer {
@@ -2206,6 +3607,7 @@ export const AuthorizedTokenIssuerList = /*@__PURE__*/ S.Array(
 );
 export type ServiceAuthorization = "Enabled" | "Disabled" | (string & {});
 export const ServiceAuthorization = /*@__PURE__*/ S.String;
+
 export interface LakeFormationQuery {
   Authorization?: ServiceAuthorization;
 }
@@ -2221,8 +3623,9 @@ export const LakeFormationScopeUnion = /*@__PURE__*/ S.Union([
   S.Struct({ LakeFormationQuery: LakeFormationQuery }),
 ]);
 export type LakeFormationServiceIntegrations = LakeFormationScopeUnion[];
-export const LakeFormationServiceIntegrations =
-  /*@__PURE__*/ S.Array(LakeFormationScopeUnion);
+export const LakeFormationServiceIntegrations = /*@__PURE__*/ S.Array(
+  LakeFormationScopeUnion,
+);
 export interface ReadWriteAccess {
   Authorization?: ServiceAuthorization;
 }
@@ -2236,8 +3639,9 @@ export const S3AccessGrantsScopeUnion = /*@__PURE__*/ S.Union([
   S.Struct({ ReadWriteAccess: ReadWriteAccess }),
 ]);
 export type S3AccessGrantsServiceIntegrations = S3AccessGrantsScopeUnion[];
-export const S3AccessGrantsServiceIntegrations =
-  /*@__PURE__*/ S.Array(S3AccessGrantsScopeUnion);
+export const S3AccessGrantsServiceIntegrations = /*@__PURE__*/ S.Array(
+  S3AccessGrantsScopeUnion,
+);
 export interface Connect {
   Authorization?: ServiceAuthorization;
 }
@@ -2278,6 +3682,7 @@ export const ServiceIntegrationList = /*@__PURE__*/ S.Array(
 );
 export type ApplicationType = "None" | "Lakehouse" | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
+
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("TagKey")),
@@ -2294,33 +3699,32 @@ export interface CreateRedshiftIdcApplicationMessage {
   Tags?: Tag[];
   SsoTagKeys?: string[];
 }
-export const CreateRedshiftIdcApplicationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IdcInstanceArn: S.optional(S.String),
-      RedshiftIdcApplicationName: S.optional(S.String),
-      IdentityNamespace: S.optional(S.String),
-      IdcDisplayName: S.optional(S.String),
-      IamRoleArn: S.optional(S.String),
-      AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
-      ServiceIntegrations: S.optional(ServiceIntegrationList),
-      ApplicationType: S.optional(ApplicationType),
-      Tags: S.optional(TagList),
-      SsoTagKeys: S.optional(TagKeyList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateRedshiftIdcApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdcInstanceArn: S.optional(S.String),
+    RedshiftIdcApplicationName: S.optional(S.String),
+    IdentityNamespace: S.optional(S.String),
+    IdcDisplayName: S.optional(S.String),
+    IamRoleArn: S.optional(S.String),
+    AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
+    ServiceIntegrations: S.optional(ServiceIntegrationList),
+    ApplicationType: S.optional(ApplicationType),
+    Tags: S.optional(TagList),
+    SsoTagKeys: S.optional(TagKeyList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateRedshiftIdcApplicationMessage",
-  }) as any as S.Schema<CreateRedshiftIdcApplicationMessage>;
+  ),
+).annotate({
+  identifier: "CreateRedshiftIdcApplicationMessage",
+}) as any as S.Schema<CreateRedshiftIdcApplicationMessage>;
 export interface RedshiftIdcApplication {
   IdcInstanceArn?: string;
   RedshiftIdcApplicationName?: string;
@@ -2358,14 +3762,13 @@ export const RedshiftIdcApplication = /*@__PURE__*/ S.suspend(() =>
 export interface CreateRedshiftIdcApplicationResult {
   RedshiftIdcApplication?: RedshiftIdcApplication;
 }
-export const CreateRedshiftIdcApplicationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RedshiftIdcApplication: S.optional(RedshiftIdcApplication),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateRedshiftIdcApplicationResult",
-  }) as any as S.Schema<CreateRedshiftIdcApplicationResult>;
+export const CreateRedshiftIdcApplicationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RedshiftIdcApplication: S.optional(RedshiftIdcApplication) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "CreateRedshiftIdcApplicationResult",
+}) as any as S.Schema<CreateRedshiftIdcApplicationResult>;
 export interface ResizeClusterMessage {
   ClusterIdentifier?: string;
   ClusterType?: string;
@@ -2458,37 +3861,35 @@ export interface CreateScheduledActionMessage {
   EndTime?: Date;
   Enable?: boolean;
 }
-export const CreateScheduledActionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScheduledActionName: S.optional(S.String),
-      TargetAction: S.optional(ScheduledActionType),
-      Schedule: S.optional(S.String),
-      IamRole: S.optional(S.String),
-      ScheduledActionDescription: S.optional(S.String),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Enable: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateScheduledActionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScheduledActionName: S.optional(S.String),
+    TargetAction: S.optional(ScheduledActionType),
+    Schedule: S.optional(S.String),
+    IamRole: S.optional(S.String),
+    ScheduledActionDescription: S.optional(S.String),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-  ).annotate({
-    identifier: "CreateScheduledActionMessage",
-  }) as any as S.Schema<CreateScheduledActionMessage>;
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    Enable: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateScheduledActionMessage",
+}) as any as S.Schema<CreateScheduledActionMessage>;
 export type ScheduledActionState = "ACTIVE" | "DISABLED" | (string & {});
 export const ScheduledActionState = /*@__PURE__*/ S.String;
+
 export type ScheduledActionTimeList = Date[];
 export const ScheduledActionTimeList = /*@__PURE__*/ S.Array(
   T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
@@ -2532,26 +3933,25 @@ export interface CreateSnapshotCopyGrantMessage {
   KmsKeyId?: string;
   Tags?: Tag[];
 }
-export const CreateSnapshotCopyGrantMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotCopyGrantName: S.optional(S.String),
-      KmsKeyId: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSnapshotCopyGrantMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotCopyGrantName: S.optional(S.String),
+    KmsKeyId: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSnapshotCopyGrantMessage",
-  }) as any as S.Schema<CreateSnapshotCopyGrantMessage>;
+  ),
+).annotate({
+  identifier: "CreateSnapshotCopyGrantMessage",
+}) as any as S.Schema<CreateSnapshotCopyGrantMessage>;
 export interface SnapshotCopyGrant {
   SnapshotCopyGrantName?: string;
   KmsKeyId?: string;
@@ -2569,12 +3969,11 @@ export const SnapshotCopyGrant = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSnapshotCopyGrantResult {
   SnapshotCopyGrant?: SnapshotCopyGrant;
 }
-export const CreateSnapshotCopyGrantResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SnapshotCopyGrant: S.optional(SnapshotCopyGrant) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateSnapshotCopyGrantResult",
-  }) as any as S.Schema<CreateSnapshotCopyGrantResult>;
+export const CreateSnapshotCopyGrantResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SnapshotCopyGrant: S.optional(SnapshotCopyGrant) }).pipe(ns),
+).annotate({
+  identifier: "CreateSnapshotCopyGrantResult",
+}) as any as S.Schema<CreateSnapshotCopyGrantResult>;
 export type ScheduleDefinitionList = string[];
 export const ScheduleDefinitionList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ScheduleDefinition")),
@@ -2587,29 +3986,28 @@ export interface CreateSnapshotScheduleMessage {
   DryRun?: boolean;
   NextInvocations?: number;
 }
-export const CreateSnapshotScheduleMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScheduleDefinitions: S.optional(ScheduleDefinitionList),
-      ScheduleIdentifier: S.optional(S.String),
-      ScheduleDescription: S.optional(S.String),
-      Tags: S.optional(TagList),
-      DryRun: S.optional(S.Boolean),
-      NextInvocations: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSnapshotScheduleMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScheduleDefinitions: S.optional(ScheduleDefinitionList),
+    ScheduleIdentifier: S.optional(S.String),
+    ScheduleDescription: S.optional(S.String),
+    Tags: S.optional(TagList),
+    DryRun: S.optional(S.Boolean),
+    NextInvocations: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSnapshotScheduleMessage",
-  }) as any as S.Schema<CreateSnapshotScheduleMessage>;
+  ),
+).annotate({
+  identifier: "CreateSnapshotScheduleMessage",
+}) as any as S.Schema<CreateSnapshotScheduleMessage>;
 export type ScheduledSnapshotTimeList = Date[];
 export const ScheduledSnapshotTimeList = /*@__PURE__*/ S.Array(
   T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
@@ -2620,15 +4018,14 @@ export interface ClusterAssociatedToSchedule {
   ClusterIdentifier?: string;
   ScheduleAssociationState?: ScheduleState;
 }
-export const ClusterAssociatedToSchedule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      ScheduleAssociationState: S.optional(ScheduleState),
-    }),
-  ).annotate({
-    identifier: "ClusterAssociatedToSchedule",
-  }) as any as S.Schema<ClusterAssociatedToSchedule>;
+export const ClusterAssociatedToSchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    ScheduleAssociationState: S.optional(ScheduleState),
+  }),
+).annotate({
+  identifier: "ClusterAssociatedToSchedule",
+}) as any as S.Schema<ClusterAssociatedToSchedule>;
 export type AssociatedClusterList = ClusterAssociatedToSchedule[];
 export const AssociatedClusterList = /*@__PURE__*/ S.Array(
   ClusterAssociatedToSchedule.pipe(
@@ -2692,16 +4089,20 @@ export type UsageLimitFeatureType =
   | "extra-compute-for-automatic-optimization"
   | (string & {});
 export const UsageLimitFeatureType = /*@__PURE__*/ S.String;
+
 export type UsageLimitLimitType = "time" | "data-scanned" | (string & {});
 export const UsageLimitLimitType = /*@__PURE__*/ S.String;
+
 export type UsageLimitPeriod = "daily" | "weekly" | "monthly" | (string & {});
 export const UsageLimitPeriod = /*@__PURE__*/ S.String;
+
 export type UsageLimitBreachAction =
   | "log"
   | "emit-metric"
   | "disable"
   | (string & {});
 export const UsageLimitBreachAction = /*@__PURE__*/ S.String;
+
 export interface CreateUsageLimitMessage {
   ClusterIdentifier?: string;
   FeatureType?: UsageLimitFeatureType;
@@ -2760,53 +4161,50 @@ export interface DeauthorizeDataShareMessage {
   DataShareArn?: string;
   ConsumerIdentifier?: string;
 }
-export const DeauthorizeDataShareMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataShareArn: S.optional(S.String),
-      ConsumerIdentifier: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeauthorizeDataShareMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataShareArn: S.optional(S.String),
+    ConsumerIdentifier: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeauthorizeDataShareMessage",
-  }) as any as S.Schema<DeauthorizeDataShareMessage>;
+  ),
+).annotate({
+  identifier: "DeauthorizeDataShareMessage",
+}) as any as S.Schema<DeauthorizeDataShareMessage>;
 export interface DeleteAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
 }
-export const DeleteAuthenticationProfileMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAuthenticationProfileMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteAuthenticationProfileMessage",
-  }) as any as S.Schema<DeleteAuthenticationProfileMessage>;
+  ),
+).annotate({
+  identifier: "DeleteAuthenticationProfileMessage",
+}) as any as S.Schema<DeleteAuthenticationProfileMessage>;
 export interface DeleteAuthenticationProfileResult {
   AuthenticationProfileName?: string;
 }
-export const DeleteAuthenticationProfileResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteAuthenticationProfileResult",
-  }) as any as S.Schema<DeleteAuthenticationProfileResult>;
+export const DeleteAuthenticationProfileResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "DeleteAuthenticationProfileResult",
+}) as any as S.Schema<DeleteAuthenticationProfileResult>;
 export interface DeleteClusterMessage {
   ClusterIdentifier?: string;
   SkipFinalClusterSnapshot?: boolean;
@@ -2844,90 +4242,89 @@ export const DeleteClusterResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterParameterGroupMessage {
   ParameterGroupName?: string;
 }
-export const DeleteClusterParameterGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroupName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroupName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteClusterParameterGroupMessage",
-  }) as any as S.Schema<DeleteClusterParameterGroupMessage>;
+  ),
+).annotate({
+  identifier: "DeleteClusterParameterGroupMessage",
+}) as any as S.Schema<DeleteClusterParameterGroupMessage>;
 export interface DeleteClusterParameterGroupResponse {}
-export const DeleteClusterParameterGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteClusterParameterGroupResponse",
-  }) as any as S.Schema<DeleteClusterParameterGroupResponse>;
+export const DeleteClusterParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteClusterParameterGroupResponse",
+}) as any as S.Schema<DeleteClusterParameterGroupResponse>;
 export interface DeleteClusterSecurityGroupMessage {
   ClusterSecurityGroupName?: string;
 }
-export const DeleteClusterSecurityGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterSecurityGroupName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteClusterSecurityGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterSecurityGroupName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteClusterSecurityGroupMessage",
-  }) as any as S.Schema<DeleteClusterSecurityGroupMessage>;
+  ),
+).annotate({
+  identifier: "DeleteClusterSecurityGroupMessage",
+}) as any as S.Schema<DeleteClusterSecurityGroupMessage>;
 export interface DeleteClusterSecurityGroupResponse {}
-export const DeleteClusterSecurityGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteClusterSecurityGroupResponse",
-  }) as any as S.Schema<DeleteClusterSecurityGroupResponse>;
+export const DeleteClusterSecurityGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteClusterSecurityGroupResponse",
+}) as any as S.Schema<DeleteClusterSecurityGroupResponse>;
 export interface DeleteClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-export const DeleteClusterSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteClusterSnapshotResult",
-  }) as any as S.Schema<DeleteClusterSnapshotResult>;
+export const DeleteClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
+).annotate({
+  identifier: "DeleteClusterSnapshotResult",
+}) as any as S.Schema<DeleteClusterSnapshotResult>;
 export interface DeleteClusterSubnetGroupMessage {
   ClusterSubnetGroupName?: string;
 }
-export const DeleteClusterSubnetGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterSubnetGroupName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteClusterSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterSubnetGroupName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteClusterSubnetGroupMessage",
-  }) as any as S.Schema<DeleteClusterSubnetGroupMessage>;
+  ),
+).annotate({
+  identifier: "DeleteClusterSubnetGroupMessage",
+}) as any as S.Schema<DeleteClusterSubnetGroupMessage>;
 export interface DeleteClusterSubnetGroupResponse {}
-export const DeleteClusterSubnetGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteClusterSubnetGroupResponse",
-  }) as any as S.Schema<DeleteClusterSubnetGroupResponse>;
+export const DeleteClusterSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteClusterSubnetGroupResponse",
+}) as any as S.Schema<DeleteClusterSubnetGroupResponse>;
 export interface DeleteCustomDomainAssociationMessage {
   ClusterIdentifier?: string;
   CustomDomainName?: string;
 }
-export const DeleteCustomDomainAssociationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomDomainAssociationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterIdentifier: S.optional(S.String),
       CustomDomainName: S.optional(S.String),
@@ -2942,105 +4339,105 @@ export const DeleteCustomDomainAssociationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteCustomDomainAssociationMessage",
-  }) as any as S.Schema<DeleteCustomDomainAssociationMessage>;
+).annotate({
+  identifier: "DeleteCustomDomainAssociationMessage",
+}) as any as S.Schema<DeleteCustomDomainAssociationMessage>;
 export interface DeleteCustomDomainAssociationResponse {}
-export const DeleteCustomDomainAssociationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteCustomDomainAssociationResponse",
-  }) as any as S.Schema<DeleteCustomDomainAssociationResponse>;
+export const DeleteCustomDomainAssociationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteCustomDomainAssociationResponse",
+}) as any as S.Schema<DeleteCustomDomainAssociationResponse>;
 export interface DeleteEndpointAccessMessage {
   EndpointName?: string;
 }
-export const DeleteEndpointAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EndpointName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EndpointName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEndpointAccessMessage",
-  }) as any as S.Schema<DeleteEndpointAccessMessage>;
+  ),
+).annotate({
+  identifier: "DeleteEndpointAccessMessage",
+}) as any as S.Schema<DeleteEndpointAccessMessage>;
 export interface DeleteEventSubscriptionMessage {
   SubscriptionName?: string;
 }
-export const DeleteEventSubscriptionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SubscriptionName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SubscriptionName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEventSubscriptionMessage",
-  }) as any as S.Schema<DeleteEventSubscriptionMessage>;
+  ),
+).annotate({
+  identifier: "DeleteEventSubscriptionMessage",
+}) as any as S.Schema<DeleteEventSubscriptionMessage>;
 export interface DeleteEventSubscriptionResponse {}
-export const DeleteEventSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteEventSubscriptionResponse",
-  }) as any as S.Schema<DeleteEventSubscriptionResponse>;
+export const DeleteEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteEventSubscriptionResponse",
+}) as any as S.Schema<DeleteEventSubscriptionResponse>;
 export interface DeleteHsmClientCertificateMessage {
   HsmClientCertificateIdentifier?: string;
 }
-export const DeleteHsmClientCertificateMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ HsmClientCertificateIdentifier: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteHsmClientCertificateMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HsmClientCertificateIdentifier: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteHsmClientCertificateMessage",
-  }) as any as S.Schema<DeleteHsmClientCertificateMessage>;
+  ),
+).annotate({
+  identifier: "DeleteHsmClientCertificateMessage",
+}) as any as S.Schema<DeleteHsmClientCertificateMessage>;
 export interface DeleteHsmClientCertificateResponse {}
-export const DeleteHsmClientCertificateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteHsmClientCertificateResponse",
-  }) as any as S.Schema<DeleteHsmClientCertificateResponse>;
+export const DeleteHsmClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteHsmClientCertificateResponse",
+}) as any as S.Schema<DeleteHsmClientCertificateResponse>;
 export interface DeleteHsmConfigurationMessage {
   HsmConfigurationIdentifier?: string;
 }
-export const DeleteHsmConfigurationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ HsmConfigurationIdentifier: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteHsmConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HsmConfigurationIdentifier: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteHsmConfigurationMessage",
-  }) as any as S.Schema<DeleteHsmConfigurationMessage>;
+  ),
+).annotate({
+  identifier: "DeleteHsmConfigurationMessage",
+}) as any as S.Schema<DeleteHsmConfigurationMessage>;
 export interface DeleteHsmConfigurationResponse {}
-export const DeleteHsmConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteHsmConfigurationResponse",
-  }) as any as S.Schema<DeleteHsmConfigurationResponse>;
+export const DeleteHsmConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteHsmConfigurationResponse",
+}) as any as S.Schema<DeleteHsmConfigurationResponse>;
 export interface DeleteIntegrationMessage {
   IntegrationArn?: string;
 }
@@ -3062,123 +4459,123 @@ export const DeleteIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRedshiftIdcApplicationMessage {
   RedshiftIdcApplicationArn?: string;
 }
-export const DeleteRedshiftIdcApplicationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RedshiftIdcApplicationArn: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteRedshiftIdcApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RedshiftIdcApplicationArn: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteRedshiftIdcApplicationMessage",
-  }) as any as S.Schema<DeleteRedshiftIdcApplicationMessage>;
+  ),
+).annotate({
+  identifier: "DeleteRedshiftIdcApplicationMessage",
+}) as any as S.Schema<DeleteRedshiftIdcApplicationMessage>;
 export interface DeleteRedshiftIdcApplicationResponse {}
-export const DeleteRedshiftIdcApplicationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteRedshiftIdcApplicationResponse",
-  }) as any as S.Schema<DeleteRedshiftIdcApplicationResponse>;
+export const DeleteRedshiftIdcApplicationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteRedshiftIdcApplicationResponse",
+}) as any as S.Schema<DeleteRedshiftIdcApplicationResponse>;
 export interface DeleteResourcePolicyMessage {
   ResourceArn?: string;
 }
-export const DeleteResourcePolicyMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteResourcePolicyMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyMessage",
-  }) as any as S.Schema<DeleteResourcePolicyMessage>;
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyMessage",
+}) as any as S.Schema<DeleteResourcePolicyMessage>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteScheduledActionMessage {
   ScheduledActionName?: string;
 }
-export const DeleteScheduledActionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ScheduledActionName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteScheduledActionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ScheduledActionName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteScheduledActionMessage",
-  }) as any as S.Schema<DeleteScheduledActionMessage>;
+  ),
+).annotate({
+  identifier: "DeleteScheduledActionMessage",
+}) as any as S.Schema<DeleteScheduledActionMessage>;
 export interface DeleteScheduledActionResponse {}
-export const DeleteScheduledActionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteScheduledActionResponse",
-  }) as any as S.Schema<DeleteScheduledActionResponse>;
+export const DeleteScheduledActionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteScheduledActionResponse",
+}) as any as S.Schema<DeleteScheduledActionResponse>;
 export interface DeleteSnapshotCopyGrantMessage {
   SnapshotCopyGrantName?: string;
 }
-export const DeleteSnapshotCopyGrantMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SnapshotCopyGrantName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSnapshotCopyGrantMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SnapshotCopyGrantName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSnapshotCopyGrantMessage",
-  }) as any as S.Schema<DeleteSnapshotCopyGrantMessage>;
+  ),
+).annotate({
+  identifier: "DeleteSnapshotCopyGrantMessage",
+}) as any as S.Schema<DeleteSnapshotCopyGrantMessage>;
 export interface DeleteSnapshotCopyGrantResponse {}
-export const DeleteSnapshotCopyGrantResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteSnapshotCopyGrantResponse",
-  }) as any as S.Schema<DeleteSnapshotCopyGrantResponse>;
+export const DeleteSnapshotCopyGrantResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteSnapshotCopyGrantResponse",
+}) as any as S.Schema<DeleteSnapshotCopyGrantResponse>;
 export interface DeleteSnapshotScheduleMessage {
   ScheduleIdentifier?: string;
 }
-export const DeleteSnapshotScheduleMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ScheduleIdentifier: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSnapshotScheduleMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ScheduleIdentifier: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSnapshotScheduleMessage",
-  }) as any as S.Schema<DeleteSnapshotScheduleMessage>;
+  ),
+).annotate({
+  identifier: "DeleteSnapshotScheduleMessage",
+}) as any as S.Schema<DeleteSnapshotScheduleMessage>;
 export interface DeleteSnapshotScheduleResponse {}
-export const DeleteSnapshotScheduleResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteSnapshotScheduleResponse",
-  }) as any as S.Schema<DeleteSnapshotScheduleResponse>;
+export const DeleteSnapshotScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteSnapshotScheduleResponse",
+}) as any as S.Schema<DeleteSnapshotScheduleResponse>;
 export interface DeleteTagsMessage {
   ResourceName?: string;
   TagKeys?: string[];
@@ -3270,39 +4667,38 @@ export interface DeregisterNamespaceInputMessage {
   NamespaceIdentifier?: NamespaceIdentifierUnion;
   ConsumerIdentifiers?: string[];
 }
-export const DeregisterNamespaceInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NamespaceIdentifier: S.optional(NamespaceIdentifierUnion),
-      ConsumerIdentifiers: S.optional(ConsumerIdentifierList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeregisterNamespaceInputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NamespaceIdentifier: S.optional(NamespaceIdentifierUnion),
+    ConsumerIdentifiers: S.optional(ConsumerIdentifierList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeregisterNamespaceInputMessage",
-  }) as any as S.Schema<DeregisterNamespaceInputMessage>;
+  ),
+).annotate({
+  identifier: "DeregisterNamespaceInputMessage",
+}) as any as S.Schema<DeregisterNamespaceInputMessage>;
 export type NamespaceRegistrationStatus =
   | "Registering"
   | "Deregistering"
   | (string & {});
 export const NamespaceRegistrationStatus = /*@__PURE__*/ S.String;
+
 export interface DeregisterNamespaceOutputMessage {
   Status?: NamespaceRegistrationStatus;
 }
-export const DeregisterNamespaceOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: S.optional(NamespaceRegistrationStatus) }).pipe(ns),
-  ).annotate({
-    identifier: "DeregisterNamespaceOutputMessage",
-  }) as any as S.Schema<DeregisterNamespaceOutputMessage>;
+export const DeregisterNamespaceOutputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(NamespaceRegistrationStatus) }).pipe(ns),
+).annotate({
+  identifier: "DeregisterNamespaceOutputMessage",
+}) as any as S.Schema<DeregisterNamespaceOutputMessage>;
 export type AttributeNameList = string[];
 export const AttributeNameList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("AttributeName")),
@@ -3310,22 +4706,21 @@ export const AttributeNameList = /*@__PURE__*/ S.Array(
 export interface DescribeAccountAttributesMessage {
   AttributeNames?: string[];
 }
-export const DescribeAccountAttributesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AttributeNames: S.optional(AttributeNameList) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAccountAttributesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AttributeNames: S.optional(AttributeNameList) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAccountAttributesMessage",
-  }) as any as S.Schema<DescribeAccountAttributesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeAccountAttributesMessage",
+}) as any as S.Schema<DescribeAccountAttributesMessage>;
 export interface AttributeValueTarget {
   AttributeValue?: string;
 }
@@ -3369,8 +4764,8 @@ export const AccountAttributeList = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAuthenticationProfilesMessage {
   AuthenticationProfileName?: string;
 }
-export const DescribeAuthenticationProfilesMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeAuthenticationProfilesMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ AuthenticationProfileName: S.optional(S.String) }).pipe(
       T.all(
         ns,
@@ -3382,9 +4777,9 @@ export const DescribeAuthenticationProfilesMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeAuthenticationProfilesMessage",
-  }) as any as S.Schema<DescribeAuthenticationProfilesMessage>;
+).annotate({
+  identifier: "DescribeAuthenticationProfilesMessage",
+}) as any as S.Schema<DescribeAuthenticationProfilesMessage>;
 export interface AuthenticationProfile {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
@@ -3404,39 +4799,38 @@ export const AuthenticationProfileList = /*@__PURE__*/ S.Array(
 export interface DescribeAuthenticationProfilesResult {
   AuthenticationProfiles?: AuthenticationProfile[];
 }
-export const DescribeAuthenticationProfilesResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeAuthenticationProfilesResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AuthenticationProfiles: S.optional(AuthenticationProfileList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAuthenticationProfilesResult",
-  }) as any as S.Schema<DescribeAuthenticationProfilesResult>;
+).annotate({
+  identifier: "DescribeAuthenticationProfilesResult",
+}) as any as S.Schema<DescribeAuthenticationProfilesResult>;
 export interface DescribeClusterDbRevisionsMessage {
   ClusterIdentifier?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeClusterDbRevisionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClusterDbRevisionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeClusterDbRevisionsMessage",
-  }) as any as S.Schema<DescribeClusterDbRevisionsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeClusterDbRevisionsMessage",
+}) as any as S.Schema<DescribeClusterDbRevisionsMessage>;
 export interface RevisionTarget {
   DatabaseRevision?: string;
   Description?: string;
@@ -3504,8 +4898,8 @@ export interface DescribeClusterParameterGroupsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeClusterParameterGroupsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ParameterGroupName: S.optional(S.String),
       MaxRecords: S.optional(S.Number),
@@ -3523,9 +4917,9 @@ export const DescribeClusterParameterGroupsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeClusterParameterGroupsMessage",
-  }) as any as S.Schema<DescribeClusterParameterGroupsMessage>;
+).annotate({
+  identifier: "DescribeClusterParameterGroupsMessage",
+}) as any as S.Schema<DescribeClusterParameterGroupsMessage>;
 export type ParameterGroupList = ClusterParameterGroup[];
 export const ParameterGroupList = /*@__PURE__*/ S.Array(
   ClusterParameterGroup.pipe(T.XmlName("ClusterParameterGroup")).annotate({
@@ -3536,44 +4930,43 @@ export interface ClusterParameterGroupsMessage {
   Marker?: string;
   ParameterGroups?: ClusterParameterGroup[];
 }
-export const ClusterParameterGroupsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      ParameterGroups: S.optional(ParameterGroupList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ClusterParameterGroupsMessage",
-  }) as any as S.Schema<ClusterParameterGroupsMessage>;
+export const ClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    ParameterGroups: S.optional(ParameterGroupList),
+  }).pipe(ns),
+).annotate({
+  identifier: "ClusterParameterGroupsMessage",
+}) as any as S.Schema<ClusterParameterGroupsMessage>;
 export interface DescribeClusterParametersMessage {
   ParameterGroupName?: string;
   Source?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeClusterParametersMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      Source: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    Source: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeClusterParametersMessage",
-  }) as any as S.Schema<DescribeClusterParametersMessage>;
+  ),
+).annotate({
+  identifier: "DescribeClusterParametersMessage",
+}) as any as S.Schema<DescribeClusterParametersMessage>;
 export type ParameterApplyType = "static" | "dynamic" | (string & {});
 export const ParameterApplyType = /*@__PURE__*/ S.String;
+
 export interface Parameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -3606,15 +4999,14 @@ export interface ClusterParameterGroupDetails {
   Parameters?: Parameter[];
   Marker?: string;
 }
-export const ClusterParameterGroupDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Parameters: S.optional(ParametersList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ClusterParameterGroupDetails",
-  }) as any as S.Schema<ClusterParameterGroupDetails>;
+export const ClusterParameterGroupDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Parameters: S.optional(ParametersList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ClusterParameterGroupDetails",
+}) as any as S.Schema<ClusterParameterGroupDetails>;
 export interface DescribeClustersMessage {
   ClusterIdentifier?: string;
   MaxRecords?: number;
@@ -3666,8 +5058,8 @@ export interface DescribeClusterSecurityGroupsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeClusterSecurityGroupsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeClusterSecurityGroupsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterSecurityGroupName: S.optional(S.String),
       MaxRecords: S.optional(S.Number),
@@ -3685,9 +5077,9 @@ export const DescribeClusterSecurityGroupsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeClusterSecurityGroupsMessage",
-  }) as any as S.Schema<DescribeClusterSecurityGroupsMessage>;
+).annotate({
+  identifier: "DescribeClusterSecurityGroupsMessage",
+}) as any as S.Schema<DescribeClusterSecurityGroupsMessage>;
 export type ClusterSecurityGroups = ClusterSecurityGroup[];
 export const ClusterSecurityGroups = /*@__PURE__*/ S.Array(
   ClusterSecurityGroup.pipe(T.XmlName("ClusterSecurityGroup")).annotate({
@@ -3698,23 +5090,24 @@ export interface ClusterSecurityGroupMessage {
   Marker?: string;
   ClusterSecurityGroups?: ClusterSecurityGroup[];
 }
-export const ClusterSecurityGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      ClusterSecurityGroups: S.optional(ClusterSecurityGroups),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ClusterSecurityGroupMessage",
-  }) as any as S.Schema<ClusterSecurityGroupMessage>;
+export const ClusterSecurityGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    ClusterSecurityGroups: S.optional(ClusterSecurityGroups),
+  }).pipe(ns),
+).annotate({
+  identifier: "ClusterSecurityGroupMessage",
+}) as any as S.Schema<ClusterSecurityGroupMessage>;
 export type SnapshotAttributeToSortBy =
   | "SOURCE_TYPE"
   | "TOTAL_SIZE"
   | "CREATE_TIME"
   | (string & {});
 export const SnapshotAttributeToSortBy = /*@__PURE__*/ S.String;
+
 export type SortByOrder = "ASC" | "DESC" | (string & {});
 export const SortByOrder = /*@__PURE__*/ S.String;
+
 export interface SnapshotSortingEntity {
   Attribute?: SnapshotAttributeToSortBy;
   SortOrder?: SortByOrder;
@@ -3748,40 +5141,37 @@ export interface DescribeClusterSnapshotsMessage {
   ClusterExists?: boolean;
   SortingEntities?: SnapshotSortingEntity[];
 }
-export const DescribeClusterSnapshotsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      SnapshotIdentifier: S.optional(S.String),
-      SnapshotArn: S.optional(S.String),
-      SnapshotType: S.optional(S.String),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      OwnerAccount: S.optional(S.String),
-      TagKeys: S.optional(TagKeyList),
-      TagValues: S.optional(TagValueList),
-      ClusterExists: S.optional(S.Boolean),
-      SortingEntities: S.optional(SnapshotSortingEntityList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClusterSnapshotsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    SnapshotIdentifier: S.optional(S.String),
+    SnapshotArn: S.optional(S.String),
+    SnapshotType: S.optional(S.String),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-  ).annotate({
-    identifier: "DescribeClusterSnapshotsMessage",
-  }) as any as S.Schema<DescribeClusterSnapshotsMessage>;
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    OwnerAccount: S.optional(S.String),
+    TagKeys: S.optional(TagKeyList),
+    TagValues: S.optional(TagValueList),
+    ClusterExists: S.optional(S.Boolean),
+    SortingEntities: S.optional(SnapshotSortingEntityList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeClusterSnapshotsMessage",
+}) as any as S.Schema<DescribeClusterSnapshotsMessage>;
 export type SnapshotList = Snapshot[];
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot.pipe(T.XmlName("Snapshot")).annotate({ identifier: "Snapshot" }),
@@ -3805,28 +5195,27 @@ export interface DescribeClusterSubnetGroupsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeClusterSubnetGroupsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterSubnetGroupName: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      TagKeys: S.optional(TagKeyList),
-      TagValues: S.optional(TagValueList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClusterSubnetGroupsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterSubnetGroupName: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    TagKeys: S.optional(TagKeyList),
+    TagValues: S.optional(TagValueList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeClusterSubnetGroupsMessage",
-  }) as any as S.Schema<DescribeClusterSubnetGroupsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeClusterSubnetGroupsMessage",
+}) as any as S.Schema<DescribeClusterSubnetGroupsMessage>;
 export type ClusterSubnetGroups = ClusterSubnetGroup[];
 export const ClusterSubnetGroups = /*@__PURE__*/ S.Array(
   ClusterSubnetGroup.pipe(T.XmlName("ClusterSubnetGroup")).annotate({
@@ -3850,26 +5239,25 @@ export interface DescribeClusterTracksMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeClusterTracksMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaintenanceTrackName: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClusterTracksMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaintenanceTrackName: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeClusterTracksMessage",
-  }) as any as S.Schema<DescribeClusterTracksMessage>;
+  ),
+).annotate({
+  identifier: "DescribeClusterTracksMessage",
+}) as any as S.Schema<DescribeClusterTracksMessage>;
 export interface SupportedOperation {
   OperationName?: string;
 }
@@ -3940,27 +5328,26 @@ export interface DescribeClusterVersionsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeClusterVersionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterVersion: S.optional(S.String),
-      ClusterParameterGroupFamily: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeClusterVersionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterVersion: S.optional(S.String),
+    ClusterParameterGroupFamily: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeClusterVersionsMessage",
-  }) as any as S.Schema<DescribeClusterVersionsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeClusterVersionsMessage",
+}) as any as S.Schema<DescribeClusterVersionsMessage>;
 export interface ClusterVersion {
   ClusterVersion?: string;
   ClusterParameterGroupFamily?: string;
@@ -3997,8 +5384,8 @@ export interface DescribeCustomDomainAssociationsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeCustomDomainAssociationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeCustomDomainAssociationsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CustomDomainName: S.optional(S.String),
       CustomDomainCertificateArn: S.optional(S.String),
@@ -4015,9 +5402,9 @@ export const DescribeCustomDomainAssociationsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeCustomDomainAssociationsMessage",
-  }) as any as S.Schema<DescribeCustomDomainAssociationsMessage>;
+).annotate({
+  identifier: "DescribeCustomDomainAssociationsMessage",
+}) as any as S.Schema<DescribeCustomDomainAssociationsMessage>;
 export interface CertificateAssociation {
   CustomDomainName?: string;
   ClusterIdentifier?: string;
@@ -4060,15 +5447,14 @@ export interface CustomDomainAssociationsMessage {
   Marker?: string;
   Associations?: Association[];
 }
-export const CustomDomainAssociationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      Associations: S.optional(AssociationList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CustomDomainAssociationsMessage",
-  }) as any as S.Schema<CustomDomainAssociationsMessage>;
+export const CustomDomainAssociationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    Associations: S.optional(AssociationList),
+  }).pipe(ns),
+).annotate({
+  identifier: "CustomDomainAssociationsMessage",
+}) as any as S.Schema<CustomDomainAssociationsMessage>;
 export interface DescribeDataSharesMessage {
   DataShareArn?: string;
   MaxRecords?: number;
@@ -4109,14 +5495,15 @@ export const DescribeDataSharesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDataSharesResult>;
 export type DataShareStatusForConsumer = "ACTIVE" | "AVAILABLE" | (string & {});
 export const DataShareStatusForConsumer = /*@__PURE__*/ S.String;
+
 export interface DescribeDataSharesForConsumerMessage {
   ConsumerArn?: string;
   Status?: DataShareStatusForConsumer;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDataSharesForConsumerMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeDataSharesForConsumerMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ConsumerArn: S.optional(S.String),
       Status: S.optional(DataShareStatusForConsumer),
@@ -4133,22 +5520,21 @@ export const DescribeDataSharesForConsumerMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeDataSharesForConsumerMessage",
-  }) as any as S.Schema<DescribeDataSharesForConsumerMessage>;
+).annotate({
+  identifier: "DescribeDataSharesForConsumerMessage",
+}) as any as S.Schema<DescribeDataSharesForConsumerMessage>;
 export interface DescribeDataSharesForConsumerResult {
   DataShares?: DataShare[];
   Marker?: string;
 }
-export const DescribeDataSharesForConsumerResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataShares: S.optional(DataShareList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDataSharesForConsumerResult",
-  }) as any as S.Schema<DescribeDataSharesForConsumerResult>;
+export const DescribeDataSharesForConsumerResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataShares: S.optional(DataShareList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDataSharesForConsumerResult",
+}) as any as S.Schema<DescribeDataSharesForConsumerResult>;
 export type DataShareStatusForProducer =
   | "ACTIVE"
   | "AUTHORIZED"
@@ -4157,14 +5543,15 @@ export type DataShareStatusForProducer =
   | "REJECTED"
   | (string & {});
 export const DataShareStatusForProducer = /*@__PURE__*/ S.String;
+
 export interface DescribeDataSharesForProducerMessage {
   ProducerArn?: string;
   Status?: DataShareStatusForProducer;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDataSharesForProducerMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeDataSharesForProducerMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ProducerArn: S.optional(S.String),
       Status: S.optional(DataShareStatusForProducer),
@@ -4181,29 +5568,28 @@ export const DescribeDataSharesForProducerMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeDataSharesForProducerMessage",
-  }) as any as S.Schema<DescribeDataSharesForProducerMessage>;
+).annotate({
+  identifier: "DescribeDataSharesForProducerMessage",
+}) as any as S.Schema<DescribeDataSharesForProducerMessage>;
 export interface DescribeDataSharesForProducerResult {
   DataShares?: DataShare[];
   Marker?: string;
 }
-export const DescribeDataSharesForProducerResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataShares: S.optional(DataShareList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDataSharesForProducerResult",
-  }) as any as S.Schema<DescribeDataSharesForProducerResult>;
+export const DescribeDataSharesForProducerResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataShares: S.optional(DataShareList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDataSharesForProducerResult",
+}) as any as S.Schema<DescribeDataSharesForProducerResult>;
 export interface DescribeDefaultClusterParametersMessage {
   ParameterGroupFamily?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDefaultClusterParametersMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeDefaultClusterParametersMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ParameterGroupFamily: S.optional(S.String),
       MaxRecords: S.optional(S.Number),
@@ -4219,9 +5605,9 @@ export const DescribeDefaultClusterParametersMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeDefaultClusterParametersMessage",
-  }) as any as S.Schema<DescribeDefaultClusterParametersMessage>;
+).annotate({
+  identifier: "DescribeDefaultClusterParametersMessage",
+}) as any as S.Schema<DescribeDefaultClusterParametersMessage>;
 export interface DefaultClusterParameters {
   ParameterGroupFamily?: string;
   Marker?: string;
@@ -4239,14 +5625,14 @@ export const DefaultClusterParameters = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDefaultClusterParametersResult {
   DefaultClusterParameters?: DefaultClusterParameters;
 }
-export const DescribeDefaultClusterParametersResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeDefaultClusterParametersResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DefaultClusterParameters: S.optional(DefaultClusterParameters),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDefaultClusterParametersResult",
-  }) as any as S.Schema<DescribeDefaultClusterParametersResult>;
+).annotate({
+  identifier: "DescribeDefaultClusterParametersResult",
+}) as any as S.Schema<DescribeDefaultClusterParametersResult>;
 export interface DescribeEndpointAccessMessage {
   ClusterIdentifier?: string;
   ResourceOwner?: string;
@@ -4255,29 +5641,28 @@ export interface DescribeEndpointAccessMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEndpointAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      ResourceOwner: S.optional(S.String),
-      EndpointName: S.optional(S.String),
-      VpcId: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    ResourceOwner: S.optional(S.String),
+    EndpointName: S.optional(S.String),
+    VpcId: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEndpointAccessMessage",
-  }) as any as S.Schema<DescribeEndpointAccessMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEndpointAccessMessage",
+}) as any as S.Schema<DescribeEndpointAccessMessage>;
 export type EndpointAccesses = EndpointAccess[];
 export const EndpointAccesses = /*@__PURE__*/ S.Array(EndpointAccess);
 export interface EndpointAccessList {
@@ -4299,8 +5684,8 @@ export interface DescribeEndpointAuthorizationMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEndpointAuthorizationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeEndpointAuthorizationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterIdentifier: S.optional(S.String),
       Account: S.optional(S.String),
@@ -4318,9 +5703,9 @@ export const DescribeEndpointAuthorizationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeEndpointAuthorizationMessage",
-  }) as any as S.Schema<DescribeEndpointAuthorizationMessage>;
+).annotate({
+  identifier: "DescribeEndpointAuthorizationMessage",
+}) as any as S.Schema<DescribeEndpointAuthorizationMessage>;
 export type EndpointAuthorizations = EndpointAuthorization[];
 export const EndpointAuthorizations = /*@__PURE__*/ S.Array(
   EndpointAuthorization,
@@ -4340,22 +5725,21 @@ export const EndpointAuthorizationList = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeEventCategoriesMessage {
   SourceType?: string;
 }
-export const DescribeEventCategoriesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SourceType: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SourceType: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEventCategoriesMessage",
-  }) as any as S.Schema<DescribeEventCategoriesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEventCategoriesMessage",
+}) as any as S.Schema<DescribeEventCategoriesMessage>;
 export interface EventInfoMap {
   EventId?: string;
   EventCategories?: string[];
@@ -4398,9 +5782,9 @@ export interface EventCategoriesMessage {
   EventCategoriesMapList?: EventCategoriesMap[];
 }
 export const EventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EventCategoriesMapList: S.optional(EventCategoriesMapList),
-  }).pipe(ns),
+  S.Struct({ EventCategoriesMapList: S.optional(EventCategoriesMapList) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "EventCategoriesMessage",
 }) as any as S.Schema<EventCategoriesMessage>;
@@ -4412,6 +5796,7 @@ export type SourceType =
   | "scheduled-action"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -4487,28 +5872,27 @@ export interface DescribeEventSubscriptionsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeEventSubscriptionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubscriptionName: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      TagKeys: S.optional(TagKeyList),
-      TagValues: S.optional(TagValueList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeEventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubscriptionName: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    TagKeys: S.optional(TagKeyList),
+    TagValues: S.optional(TagValueList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeEventSubscriptionsMessage",
-  }) as any as S.Schema<DescribeEventSubscriptionsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeEventSubscriptionsMessage",
+}) as any as S.Schema<DescribeEventSubscriptionsMessage>;
 export type EventSubscriptionsList = EventSubscription[];
 export const EventSubscriptionsList = /*@__PURE__*/ S.Array(
   EventSubscription.pipe(T.XmlName("EventSubscription")).annotate({
@@ -4534,8 +5918,8 @@ export interface DescribeHsmClientCertificatesMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeHsmClientCertificatesMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeHsmClientCertificatesMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       HsmClientCertificateIdentifier: S.optional(S.String),
       MaxRecords: S.optional(S.Number),
@@ -4553,9 +5937,9 @@ export const DescribeHsmClientCertificatesMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeHsmClientCertificatesMessage",
-  }) as any as S.Schema<DescribeHsmClientCertificatesMessage>;
+).annotate({
+  identifier: "DescribeHsmClientCertificatesMessage",
+}) as any as S.Schema<DescribeHsmClientCertificatesMessage>;
 export type HsmClientCertificateList = HsmClientCertificate[];
 export const HsmClientCertificateList = /*@__PURE__*/ S.Array(
   HsmClientCertificate.pipe(T.XmlName("HsmClientCertificate")).annotate({
@@ -4566,15 +5950,14 @@ export interface HsmClientCertificateMessage {
   Marker?: string;
   HsmClientCertificates?: HsmClientCertificate[];
 }
-export const HsmClientCertificateMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      HsmClientCertificates: S.optional(HsmClientCertificateList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "HsmClientCertificateMessage",
-  }) as any as S.Schema<HsmClientCertificateMessage>;
+export const HsmClientCertificateMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    HsmClientCertificates: S.optional(HsmClientCertificateList),
+  }).pipe(ns),
+).annotate({
+  identifier: "HsmClientCertificateMessage",
+}) as any as S.Schema<HsmClientCertificateMessage>;
 export interface DescribeHsmConfigurationsMessage {
   HsmConfigurationIdentifier?: string;
   MaxRecords?: number;
@@ -4582,28 +5965,27 @@ export interface DescribeHsmConfigurationsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeHsmConfigurationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      HsmConfigurationIdentifier: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      TagKeys: S.optional(TagKeyList),
-      TagValues: S.optional(TagValueList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeHsmConfigurationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HsmConfigurationIdentifier: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    TagKeys: S.optional(TagKeyList),
+    TagValues: S.optional(TagValueList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeHsmConfigurationsMessage",
-  }) as any as S.Schema<DescribeHsmConfigurationsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeHsmConfigurationsMessage",
+}) as any as S.Schema<DescribeHsmConfigurationsMessage>;
 export type HsmConfigurationList = HsmConfiguration[];
 export const HsmConfigurationList = /*@__PURE__*/ S.Array(
   HsmConfiguration.pipe(T.XmlName("HsmConfiguration")).annotate({
@@ -4622,33 +6004,33 @@ export const HsmConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HsmConfigurationMessage",
 }) as any as S.Schema<HsmConfigurationMessage>;
+export type InboundIntegrationArn = string;
 export interface DescribeInboundIntegrationsMessage {
   IntegrationArn?: string;
   TargetArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeInboundIntegrationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IntegrationArn: S.optional(S.String),
-      TargetArn: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeInboundIntegrationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IntegrationArn: S.optional(S.String),
+    TargetArn: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeInboundIntegrationsMessage",
-  }) as any as S.Schema<DescribeInboundIntegrationsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeInboundIntegrationsMessage",
+}) as any as S.Schema<DescribeInboundIntegrationsMessage>;
 export interface InboundIntegration {
   IntegrationArn?: string;
   SourceArn?: string;
@@ -4698,9 +6080,11 @@ export type DescribeIntegrationsFilterName =
   | "status"
   | (string & {});
 export const DescribeIntegrationsFilterName = /*@__PURE__*/ S.String;
+
 export type DescribeIntegrationsFilterValueList = string[];
-export const DescribeIntegrationsFilterValueList =
-  /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Value")));
+export const DescribeIntegrationsFilterValueList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("Value")),
+);
 export interface DescribeIntegrationsFilter {
   Name?: DescribeIntegrationsFilterName;
   Values?: string[];
@@ -4714,39 +6098,37 @@ export const DescribeIntegrationsFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeIntegrationsFilter",
 }) as any as S.Schema<DescribeIntegrationsFilter>;
 export type DescribeIntegrationsFilterList = DescribeIntegrationsFilter[];
-export const DescribeIntegrationsFilterList =
-  /*@__PURE__*/ S.Array(
-    DescribeIntegrationsFilter.pipe(
-      T.XmlName("DescribeIntegrationsFilter"),
-    ).annotate({ identifier: "DescribeIntegrationsFilter" }),
-  );
+export const DescribeIntegrationsFilterList = /*@__PURE__*/ S.Array(
+  DescribeIntegrationsFilter.pipe(
+    T.XmlName("DescribeIntegrationsFilter"),
+  ).annotate({ identifier: "DescribeIntegrationsFilter" }),
+);
 export interface DescribeIntegrationsMessage {
   IntegrationArn?: string;
   MaxRecords?: number;
   Marker?: string;
   Filters?: DescribeIntegrationsFilter[];
 }
-export const DescribeIntegrationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IntegrationArn: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      Filters: S.optional(DescribeIntegrationsFilterList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeIntegrationsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IntegrationArn: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    Filters: S.optional(DescribeIntegrationsFilterList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeIntegrationsMessage",
-  }) as any as S.Schema<DescribeIntegrationsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeIntegrationsMessage",
+}) as any as S.Schema<DescribeIntegrationsMessage>;
 export type IntegrationList = Integration[];
 export const IntegrationList = /*@__PURE__*/ S.Array(
   Integration.pipe(T.XmlName("Integration")).annotate({
@@ -4770,24 +6152,25 @@ export const IntegrationsMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeLoggingStatusMessage {
   ClusterIdentifier?: string;
 }
-export const DescribeLoggingStatusMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeLoggingStatusMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeLoggingStatusMessage",
-  }) as any as S.Schema<DescribeLoggingStatusMessage>;
+  ),
+).annotate({
+  identifier: "DescribeLoggingStatusMessage",
+}) as any as S.Schema<DescribeLoggingStatusMessage>;
+export type S3KeyPrefixValue = string;
 export type LogDestinationType = "s3" | "cloudwatch" | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
+
 export type LogTypeList = string[];
 export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface LoggingStatus {
@@ -4822,6 +6205,7 @@ export type ActionType =
   | "resize-cluster"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
 export type NodeConfigurationOptionsFilterName =
   | "NodeType"
   | "NumberOfNodes"
@@ -4829,6 +6213,7 @@ export type NodeConfigurationOptionsFilterName =
   | "Mode"
   | (string & {});
 export const NodeConfigurationOptionsFilterName = /*@__PURE__*/ S.String;
+
 export type OperatorType =
   | "eq"
   | "lt"
@@ -4839,29 +6224,28 @@ export type OperatorType =
   | "between"
   | (string & {});
 export const OperatorType = /*@__PURE__*/ S.String;
+
 export interface NodeConfigurationOptionsFilter {
   Name?: NodeConfigurationOptionsFilterName;
   Operator?: OperatorType;
   Values?: string[];
 }
-export const NodeConfigurationOptionsFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(NodeConfigurationOptionsFilterName),
-      Operator: S.optional(OperatorType),
-      Values: S.optional(ValueStringList).pipe(T.XmlName("Value")),
-    }),
-  ).annotate({
-    identifier: "NodeConfigurationOptionsFilter",
-  }) as any as S.Schema<NodeConfigurationOptionsFilter>;
+export const NodeConfigurationOptionsFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(NodeConfigurationOptionsFilterName),
+    Operator: S.optional(OperatorType),
+    Values: S.optional(ValueStringList).pipe(T.XmlName("Value")),
+  }),
+).annotate({
+  identifier: "NodeConfigurationOptionsFilter",
+}) as any as S.Schema<NodeConfigurationOptionsFilter>;
 export type NodeConfigurationOptionsFilterList =
   NodeConfigurationOptionsFilter[];
-export const NodeConfigurationOptionsFilterList =
-  /*@__PURE__*/ S.Array(
-    NodeConfigurationOptionsFilter.pipe(
-      T.XmlName("NodeConfigurationOptionsFilter"),
-    ).annotate({ identifier: "NodeConfigurationOptionsFilter" }),
-  );
+export const NodeConfigurationOptionsFilterList = /*@__PURE__*/ S.Array(
+  NodeConfigurationOptionsFilter.pipe(
+    T.XmlName("NodeConfigurationOptionsFilter"),
+  ).annotate({ identifier: "NodeConfigurationOptionsFilter" }),
+);
 export interface DescribeNodeConfigurationOptionsMessage {
   ActionType?: ActionType;
   ClusterIdentifier?: string;
@@ -4872,8 +6256,8 @@ export interface DescribeNodeConfigurationOptionsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeNodeConfigurationOptionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeNodeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ActionType: S.optional(ActionType),
       ClusterIdentifier: S.optional(S.String),
@@ -4896,11 +6280,12 @@ export const DescribeNodeConfigurationOptionsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeNodeConfigurationOptionsMessage",
-  }) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>;
+).annotate({
+  identifier: "DescribeNodeConfigurationOptionsMessage",
+}) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>;
 export type Mode = "standard" | "high-performance" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
+
 export interface NodeConfigurationOption {
   NodeType?: string;
   NumberOfNodes?: number;
@@ -4927,23 +6312,22 @@ export interface NodeConfigurationOptionsMessage {
   NodeConfigurationOptionList?: NodeConfigurationOption[];
   Marker?: string;
 }
-export const NodeConfigurationOptionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NodeConfigurationOptionList: S.optional(NodeConfigurationOptionList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "NodeConfigurationOptionsMessage",
-  }) as any as S.Schema<NodeConfigurationOptionsMessage>;
+export const NodeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NodeConfigurationOptionList: S.optional(NodeConfigurationOptionList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "NodeConfigurationOptionsMessage",
+}) as any as S.Schema<NodeConfigurationOptionsMessage>;
 export interface DescribeOrderableClusterOptionsMessage {
   ClusterVersion?: string;
   NodeType?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeOrderableClusterOptionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeOrderableClusterOptionsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterVersion: S.optional(S.String),
       NodeType: S.optional(S.String),
@@ -4960,9 +6344,9 @@ export const DescribeOrderableClusterOptionsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeOrderableClusterOptionsMessage",
-  }) as any as S.Schema<DescribeOrderableClusterOptionsMessage>;
+).annotate({
+  identifier: "DescribeOrderableClusterOptionsMessage",
+}) as any as S.Schema<DescribeOrderableClusterOptionsMessage>;
 export type AvailabilityZoneList = AvailabilityZone[];
 export const AvailabilityZoneList = /*@__PURE__*/ S.Array(
   AvailabilityZone.pipe(T.XmlName("AvailabilityZone")).annotate({
@@ -4995,42 +6379,40 @@ export interface OrderableClusterOptionsMessage {
   OrderableClusterOptions?: OrderableClusterOption[];
   Marker?: string;
 }
-export const OrderableClusterOptionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OrderableClusterOptions: S.optional(OrderableClusterOptionsList),
-      Marker: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "OrderableClusterOptionsMessage",
-  }) as any as S.Schema<OrderableClusterOptionsMessage>;
+export const OrderableClusterOptionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrderableClusterOptions: S.optional(OrderableClusterOptionsList),
+    Marker: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "OrderableClusterOptionsMessage",
+}) as any as S.Schema<OrderableClusterOptionsMessage>;
 export interface DescribePartnersInputMessage {
   AccountId?: string;
   ClusterIdentifier?: string;
   DatabaseName?: string;
   PartnerName?: string;
 }
-export const DescribePartnersInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      DatabaseName: S.optional(S.String),
-      PartnerName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribePartnersInputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    DatabaseName: S.optional(S.String),
+    PartnerName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribePartnersInputMessage",
-  }) as any as S.Schema<DescribePartnersInputMessage>;
+  ),
+).annotate({
+  identifier: "DescribePartnersInputMessage",
+}) as any as S.Schema<DescribePartnersInputMessage>;
 export type PartnerIntegrationStatus =
   | "Active"
   | "Inactive"
@@ -5038,6 +6420,8 @@ export type PartnerIntegrationStatus =
   | "ConnectionFailure"
   | (string & {});
 export const PartnerIntegrationStatus = /*@__PURE__*/ S.String;
+
+export type PartnerIntegrationStatusMessage = string;
 export interface PartnerIntegrationInfo {
   DatabaseName?: string;
   PartnerName?: string;
@@ -5071,21 +6455,20 @@ export const PartnerIntegrationInfoList = /*@__PURE__*/ S.Array(
 export interface DescribePartnersOutputMessage {
   PartnerIntegrationInfoList?: PartnerIntegrationInfo[];
 }
-export const DescribePartnersOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PartnerIntegrationInfoList: S.optional(PartnerIntegrationInfoList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribePartnersOutputMessage",
-  }) as any as S.Schema<DescribePartnersOutputMessage>;
+export const DescribePartnersOutputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PartnerIntegrationInfoList: S.optional(PartnerIntegrationInfoList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribePartnersOutputMessage",
+}) as any as S.Schema<DescribePartnersOutputMessage>;
 export interface DescribeRedshiftIdcApplicationsMessage {
   RedshiftIdcApplicationArn?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeRedshiftIdcApplicationsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeRedshiftIdcApplicationsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RedshiftIdcApplicationArn: S.optional(S.String),
       MaxRecords: S.optional(S.Number),
@@ -5101,9 +6484,9 @@ export const DescribeRedshiftIdcApplicationsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeRedshiftIdcApplicationsMessage",
-  }) as any as S.Schema<DescribeRedshiftIdcApplicationsMessage>;
+).annotate({
+  identifier: "DescribeRedshiftIdcApplicationsMessage",
+}) as any as S.Schema<DescribeRedshiftIdcApplicationsMessage>;
 export type RedshiftIdcApplicationList = RedshiftIdcApplication[];
 export const RedshiftIdcApplicationList = /*@__PURE__*/ S.Array(
   RedshiftIdcApplication,
@@ -5112,15 +6495,15 @@ export interface DescribeRedshiftIdcApplicationsResult {
   RedshiftIdcApplications?: RedshiftIdcApplication[];
   Marker?: string;
 }
-export const DescribeRedshiftIdcApplicationsResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeRedshiftIdcApplicationsResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RedshiftIdcApplications: S.optional(RedshiftIdcApplicationList),
       Marker: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeRedshiftIdcApplicationsResult",
-  }) as any as S.Schema<DescribeRedshiftIdcApplicationsResult>;
+).annotate({
+  identifier: "DescribeRedshiftIdcApplicationsResult",
+}) as any as S.Schema<DescribeRedshiftIdcApplicationsResult>;
 export interface DescribeReservedNodeExchangeStatusInputMessage {
   ReservedNodeId?: string;
   ReservedNodeExchangeRequestId?: string;
@@ -5149,12 +6532,11 @@ export const DescribeReservedNodeExchangeStatusInputMessage =
     identifier: "DescribeReservedNodeExchangeStatusInputMessage",
   }) as any as S.Schema<DescribeReservedNodeExchangeStatusInputMessage>;
 export type ReservedNodeExchangeStatusList = ReservedNodeExchangeStatus[];
-export const ReservedNodeExchangeStatusList =
-  /*@__PURE__*/ S.Array(
-    ReservedNodeExchangeStatus.pipe(
-      T.XmlName("ReservedNodeExchangeStatus"),
-    ).annotate({ identifier: "ReservedNodeExchangeStatus" }),
-  );
+export const ReservedNodeExchangeStatusList = /*@__PURE__*/ S.Array(
+  ReservedNodeExchangeStatus.pipe(
+    T.XmlName("ReservedNodeExchangeStatus"),
+  ).annotate({ identifier: "ReservedNodeExchangeStatus" }),
+);
 export interface DescribeReservedNodeExchangeStatusOutputMessage {
   ReservedNodeExchangeStatusDetails?: ReservedNodeExchangeStatus[];
   Marker?: string;
@@ -5175,8 +6557,8 @@ export interface DescribeReservedNodeOfferingsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeReservedNodeOfferingsMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeReservedNodeOfferingsMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReservedNodeOfferingId: S.optional(S.String),
       MaxRecords: S.optional(S.Number),
@@ -5192,9 +6574,9 @@ export const DescribeReservedNodeOfferingsMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeReservedNodeOfferingsMessage",
-  }) as any as S.Schema<DescribeReservedNodeOfferingsMessage>;
+).annotate({
+  identifier: "DescribeReservedNodeOfferingsMessage",
+}) as any as S.Schema<DescribeReservedNodeOfferingsMessage>;
 export interface ReservedNodeOffering {
   ReservedNodeOfferingId?: string;
   NodeType?: string;
@@ -5231,40 +6613,38 @@ export interface ReservedNodeOfferingsMessage {
   Marker?: string;
   ReservedNodeOfferings?: ReservedNodeOffering[];
 }
-export const ReservedNodeOfferingsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Marker: S.optional(S.String),
-      ReservedNodeOfferings: S.optional(ReservedNodeOfferingList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ReservedNodeOfferingsMessage",
-  }) as any as S.Schema<ReservedNodeOfferingsMessage>;
+export const ReservedNodeOfferingsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Marker: S.optional(S.String),
+    ReservedNodeOfferings: S.optional(ReservedNodeOfferingList),
+  }).pipe(ns),
+).annotate({
+  identifier: "ReservedNodeOfferingsMessage",
+}) as any as S.Schema<ReservedNodeOfferingsMessage>;
 export interface DescribeReservedNodesMessage {
   ReservedNodeId?: string;
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeReservedNodesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReservedNodeId: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReservedNodesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReservedNodeId: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReservedNodesMessage",
-  }) as any as S.Schema<DescribeReservedNodesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeReservedNodesMessage",
+}) as any as S.Schema<DescribeReservedNodesMessage>;
 export type ReservedNodeList = ReservedNode[];
 export const ReservedNodeList = /*@__PURE__*/ S.Array(
   ReservedNode.pipe(T.XmlName("ReservedNode")).annotate({
@@ -5307,11 +6687,13 @@ export type ScheduledActionTypeValues =
   | "ResumeCluster"
   | (string & {});
 export const ScheduledActionTypeValues = /*@__PURE__*/ S.String;
+
 export type ScheduledActionFilterName =
   | "cluster-identifier"
   | "iam-role"
   | (string & {});
 export const ScheduledActionFilterName = /*@__PURE__*/ S.String;
+
 export interface ScheduledActionFilter {
   Name?: ScheduledActionFilterName;
   Values?: string[];
@@ -5340,35 +6722,32 @@ export interface DescribeScheduledActionsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeScheduledActionsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScheduledActionName: S.optional(S.String),
-      TargetActionType: S.optional(ScheduledActionTypeValues),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Active: S.optional(S.Boolean),
-      Filters: S.optional(ScheduledActionFilterList),
-      Marker: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeScheduledActionsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScheduledActionName: S.optional(S.String),
+    TargetActionType: S.optional(ScheduledActionTypeValues),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-  ).annotate({
-    identifier: "DescribeScheduledActionsMessage",
-  }) as any as S.Schema<DescribeScheduledActionsMessage>;
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    Active: S.optional(S.Boolean),
+    Filters: S.optional(ScheduledActionFilterList),
+    Marker: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeScheduledActionsMessage",
+}) as any as S.Schema<DescribeScheduledActionsMessage>;
 export type ScheduledActionList = ScheduledAction[];
 export const ScheduledActionList = /*@__PURE__*/ S.Array(
   ScheduledAction.pipe(T.XmlName("ScheduledAction")).annotate({
@@ -5400,28 +6779,27 @@ export interface DescribeSnapshotCopyGrantsMessage {
   TagKeys?: string[];
   TagValues?: string[];
 }
-export const DescribeSnapshotCopyGrantsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotCopyGrantName: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-      TagKeys: S.optional(TagKeyList),
-      TagValues: S.optional(TagValueList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSnapshotCopyGrantsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotCopyGrantName: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+    TagKeys: S.optional(TagKeyList),
+    TagValues: S.optional(TagValueList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeSnapshotCopyGrantsMessage",
-  }) as any as S.Schema<DescribeSnapshotCopyGrantsMessage>;
+  ),
+).annotate({
+  identifier: "DescribeSnapshotCopyGrantsMessage",
+}) as any as S.Schema<DescribeSnapshotCopyGrantsMessage>;
 export type SnapshotCopyGrantList = SnapshotCopyGrant[];
 export const SnapshotCopyGrantList = /*@__PURE__*/ S.Array(
   SnapshotCopyGrant.pipe(T.XmlName("SnapshotCopyGrant")).annotate({
@@ -5448,29 +6826,28 @@ export interface DescribeSnapshotSchedulesMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribeSnapshotSchedulesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      ScheduleIdentifier: S.optional(S.String),
-      TagKeys: S.optional(TagKeyList),
-      TagValues: S.optional(TagValueList),
-      Marker: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSnapshotSchedulesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    ScheduleIdentifier: S.optional(S.String),
+    TagKeys: S.optional(TagKeyList),
+    TagValues: S.optional(TagValueList),
+    Marker: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeSnapshotSchedulesMessage",
-  }) as any as S.Schema<DescribeSnapshotSchedulesMessage>;
+  ),
+).annotate({
+  identifier: "DescribeSnapshotSchedulesMessage",
+}) as any as S.Schema<DescribeSnapshotSchedulesMessage>;
 export type SnapshotScheduleList = SnapshotSchedule[];
 export const SnapshotScheduleList = /*@__PURE__*/ S.Array(
   SnapshotSchedule.pipe(T.XmlName("SnapshotSchedule")).annotate({
@@ -5481,15 +6858,15 @@ export interface DescribeSnapshotSchedulesOutputMessage {
   SnapshotSchedules?: SnapshotSchedule[];
   Marker?: string;
 }
-export const DescribeSnapshotSchedulesOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeSnapshotSchedulesOutputMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       SnapshotSchedules: S.optional(SnapshotScheduleList),
       Marker: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeSnapshotSchedulesOutputMessage",
-  }) as any as S.Schema<DescribeSnapshotSchedulesOutputMessage>;
+).annotate({
+  identifier: "DescribeSnapshotSchedulesOutputMessage",
+}) as any as S.Schema<DescribeSnapshotSchedulesOutputMessage>;
 export interface DescribeStorageRequest {}
 export const DescribeStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -5524,27 +6901,26 @@ export interface DescribeTableRestoreStatusMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeTableRestoreStatusMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      TableRestoreRequestId: S.optional(S.String),
-      MaxRecords: S.optional(S.Number),
-      Marker: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeTableRestoreStatusMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    TableRestoreRequestId: S.optional(S.String),
+    MaxRecords: S.optional(S.Number),
+    Marker: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeTableRestoreStatusMessage",
-  }) as any as S.Schema<DescribeTableRestoreStatusMessage>;
+  ),
+).annotate({
+  identifier: "DescribeTableRestoreStatusMessage",
+}) as any as S.Schema<DescribeTableRestoreStatusMessage>;
 export type TableRestoreStatusType =
   | "PENDING"
   | "IN_PROGRESS"
@@ -5553,6 +6929,7 @@ export type TableRestoreStatusType =
   | "CANCELED"
   | (string & {});
 export const TableRestoreStatusType = /*@__PURE__*/ S.String;
+
 export interface TableRestoreStatus {
   TableRestoreRequestId?: string;
   Status?: TableRestoreStatusType;
@@ -5763,8 +7140,8 @@ export interface DisassociateDataShareConsumerMessage {
   ConsumerArn?: string;
   ConsumerRegion?: string;
 }
-export const DisassociateDataShareConsumerMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const DisassociateDataShareConsumerMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DataShareArn: S.optional(S.String),
       DisassociateEntireAccount: S.optional(S.Boolean),
@@ -5781,9 +7158,9 @@ export const DisassociateDataShareConsumerMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DisassociateDataShareConsumerMessage",
-  }) as any as S.Schema<DisassociateDataShareConsumerMessage>;
+).annotate({
+  identifier: "DisassociateDataShareConsumerMessage",
+}) as any as S.Schema<DisassociateDataShareConsumerMessage>;
 export interface EnableLoggingMessage {
   ClusterIdentifier?: string;
   BucketName?: string;
@@ -5851,31 +7228,29 @@ export const EnableSnapshotCopyResult = /*@__PURE__*/ S.suspend(() =>
 export interface FailoverPrimaryComputeInputMessage {
   ClusterIdentifier?: string;
 }
-export const FailoverPrimaryComputeInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const FailoverPrimaryComputeInputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterIdentifier: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "FailoverPrimaryComputeInputMessage",
-  }) as any as S.Schema<FailoverPrimaryComputeInputMessage>;
+  ),
+).annotate({
+  identifier: "FailoverPrimaryComputeInputMessage",
+}) as any as S.Schema<FailoverPrimaryComputeInputMessage>;
 export interface FailoverPrimaryComputeResult {
   Cluster?: Cluster;
 }
-export const FailoverPrimaryComputeResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "FailoverPrimaryComputeResult",
-  }) as any as S.Schema<FailoverPrimaryComputeResult>;
+export const FailoverPrimaryComputeResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "FailoverPrimaryComputeResult",
+}) as any as S.Schema<FailoverPrimaryComputeResult>;
 export type DbGroupList = string[];
 export const DbGroupList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("DbGroup")),
@@ -5889,30 +7264,29 @@ export interface GetClusterCredentialsMessage {
   DbGroups?: string[];
   CustomDomainName?: string;
 }
-export const GetClusterCredentialsMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DbUser: S.optional(S.String),
-      DbName: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      DurationSeconds: S.optional(S.Number),
-      AutoCreate: S.optional(S.Boolean),
-      DbGroups: S.optional(DbGroupList),
-      CustomDomainName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetClusterCredentialsMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DbUser: S.optional(S.String),
+    DbName: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    DurationSeconds: S.optional(S.Number),
+    AutoCreate: S.optional(S.Boolean),
+    DbGroups: S.optional(DbGroupList),
+    CustomDomainName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetClusterCredentialsMessage",
-  }) as any as S.Schema<GetClusterCredentialsMessage>;
+  ),
+).annotate({
+  identifier: "GetClusterCredentialsMessage",
+}) as any as S.Schema<GetClusterCredentialsMessage>;
 export interface ClusterCredentials {
   DbUser?: string;
   DbPassword?: string | redacted.Redacted<string>;
@@ -5935,27 +7309,26 @@ export interface GetClusterCredentialsWithIAMMessage {
   DurationSeconds?: number;
   CustomDomainName?: string;
 }
-export const GetClusterCredentialsWithIAMMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DbName: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      DurationSeconds: S.optional(S.Number),
-      CustomDomainName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetClusterCredentialsWithIAMMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DbName: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    DurationSeconds: S.optional(S.Number),
+    CustomDomainName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetClusterCredentialsWithIAMMessage",
-  }) as any as S.Schema<GetClusterCredentialsWithIAMMessage>;
+  ),
+).annotate({
+  identifier: "GetClusterCredentialsWithIAMMessage",
+}) as any as S.Schema<GetClusterCredentialsWithIAMMessage>;
 export interface ClusterExtendedCredentials {
   DbUser?: string;
   DbPassword?: string | redacted.Redacted<string>;
@@ -5983,42 +7356,41 @@ export const ClusterIdentifierList = /*@__PURE__*/ S.Array(
 export interface GetIdentityCenterAuthTokenRequest {
   ClusterIds?: string[];
 }
-export const GetIdentityCenterAuthTokenRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterIds: S.optional(ClusterIdentifierList) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetIdentityCenterAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterIds: S.optional(ClusterIdentifierList) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetIdentityCenterAuthTokenRequest",
-  }) as any as S.Schema<GetIdentityCenterAuthTokenRequest>;
+  ),
+).annotate({
+  identifier: "GetIdentityCenterAuthTokenRequest",
+}) as any as S.Schema<GetIdentityCenterAuthTokenRequest>;
 export interface GetIdentityCenterAuthTokenResponse {
   Token?: string | redacted.Redacted<string>;
   ExpirationTime?: Date;
 }
-export const GetIdentityCenterAuthTokenResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Token: S.optional(SensitiveString),
-      ExpirationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetIdentityCenterAuthTokenResponse",
-  }) as any as S.Schema<GetIdentityCenterAuthTokenResponse>;
+export const GetIdentityCenterAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Token: S.optional(SensitiveString),
+    ExpirationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetIdentityCenterAuthTokenResponse",
+}) as any as S.Schema<GetIdentityCenterAuthTokenResponse>;
 export type ReservedNodeExchangeActionType =
   | "restore-cluster"
   | "resize-cluster"
   | (string & {});
 export const ReservedNodeExchangeActionType = /*@__PURE__*/ S.String;
+
 export interface GetReservedNodeExchangeConfigurationOptionsInputMessage {
   ActionType?: ReservedNodeExchangeActionType;
   ClusterIdentifier?: string;
@@ -6053,24 +7425,22 @@ export interface ReservedNodeConfigurationOption {
   TargetReservedNodeCount?: number;
   TargetReservedNodeOffering?: ReservedNodeOffering;
 }
-export const ReservedNodeConfigurationOption =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SourceReservedNode: S.optional(ReservedNode),
-      TargetReservedNodeCount: S.optional(S.Number),
-      TargetReservedNodeOffering: S.optional(ReservedNodeOffering),
-    }),
-  ).annotate({
-    identifier: "ReservedNodeConfigurationOption",
-  }) as any as S.Schema<ReservedNodeConfigurationOption>;
+export const ReservedNodeConfigurationOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceReservedNode: S.optional(ReservedNode),
+    TargetReservedNodeCount: S.optional(S.Number),
+    TargetReservedNodeOffering: S.optional(ReservedNodeOffering),
+  }),
+).annotate({
+  identifier: "ReservedNodeConfigurationOption",
+}) as any as S.Schema<ReservedNodeConfigurationOption>;
 export type ReservedNodeConfigurationOptionList =
   ReservedNodeConfigurationOption[];
-export const ReservedNodeConfigurationOptionList =
-  /*@__PURE__*/ S.Array(
-    ReservedNodeConfigurationOption.pipe(
-      T.XmlName("ReservedNodeConfigurationOption"),
-    ).annotate({ identifier: "ReservedNodeConfigurationOption" }),
-  );
+export const ReservedNodeConfigurationOptionList = /*@__PURE__*/ S.Array(
+  ReservedNodeConfigurationOption.pipe(
+    T.XmlName("ReservedNodeConfigurationOption"),
+  ).annotate({ identifier: "ReservedNodeConfigurationOption" }),
+);
 export interface GetReservedNodeExchangeConfigurationOptionsOutputMessage {
   Marker?: string;
   ReservedNodeConfigurationOptionList?: ReservedNodeConfigurationOption[];
@@ -6185,8 +7555,10 @@ export const ListRecommendationsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRecommendationsMessage>;
 export type ImpactRankingType = "HIGH" | "MEDIUM" | "LOW" | (string & {});
 export const ImpactRankingType = /*@__PURE__*/ S.String;
+
 export type RecommendedActionType = "SQL" | "CLI" | (string & {});
 export const RecommendedActionType = /*@__PURE__*/ S.String;
+
 export interface RecommendedAction {
   Text?: string;
   Database?: string;
@@ -6306,38 +7678,36 @@ export interface ModifyAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-export const ModifyAuthenticationProfileMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationProfileName: S.optional(S.String),
-      AuthenticationProfileContent: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyAuthenticationProfileMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationProfileName: S.optional(S.String),
+    AuthenticationProfileContent: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyAuthenticationProfileMessage",
-  }) as any as S.Schema<ModifyAuthenticationProfileMessage>;
+  ),
+).annotate({
+  identifier: "ModifyAuthenticationProfileMessage",
+}) as any as S.Schema<ModifyAuthenticationProfileMessage>;
 export interface ModifyAuthenticationProfileResult {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
 }
-export const ModifyAuthenticationProfileResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationProfileName: S.optional(S.String),
-      AuthenticationProfileContent: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyAuthenticationProfileResult",
-  }) as any as S.Schema<ModifyAuthenticationProfileResult>;
+export const ModifyAuthenticationProfileResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationProfileName: S.optional(S.String),
+    AuthenticationProfileContent: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ModifyAuthenticationProfileResult",
+}) as any as S.Schema<ModifyAuthenticationProfileResult>;
 export interface ModifyClusterMessage {
   ClusterIdentifier?: string;
   ClusterType?: string;
@@ -6428,70 +7798,66 @@ export interface ModifyClusterDbRevisionMessage {
   ClusterIdentifier?: string;
   RevisionTarget?: string;
 }
-export const ModifyClusterDbRevisionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      RevisionTarget: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyClusterDbRevisionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    RevisionTarget: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyClusterDbRevisionMessage",
-  }) as any as S.Schema<ModifyClusterDbRevisionMessage>;
+  ),
+).annotate({
+  identifier: "ModifyClusterDbRevisionMessage",
+}) as any as S.Schema<ModifyClusterDbRevisionMessage>;
 export interface ModifyClusterDbRevisionResult {
   Cluster?: Cluster;
 }
-export const ModifyClusterDbRevisionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyClusterDbRevisionResult",
-  }) as any as S.Schema<ModifyClusterDbRevisionResult>;
+export const ModifyClusterDbRevisionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "ModifyClusterDbRevisionResult",
+}) as any as S.Schema<ModifyClusterDbRevisionResult>;
 export interface ModifyClusterIamRolesMessage {
   ClusterIdentifier?: string;
   AddIamRoles?: string[];
   RemoveIamRoles?: string[];
   DefaultIamRoleArn?: string;
 }
-export const ModifyClusterIamRolesMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      AddIamRoles: S.optional(IamRoleArnList),
-      RemoveIamRoles: S.optional(IamRoleArnList),
-      DefaultIamRoleArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyClusterIamRolesMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    AddIamRoles: S.optional(IamRoleArnList),
+    RemoveIamRoles: S.optional(IamRoleArnList),
+    DefaultIamRoleArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyClusterIamRolesMessage",
-  }) as any as S.Schema<ModifyClusterIamRolesMessage>;
+  ),
+).annotate({
+  identifier: "ModifyClusterIamRolesMessage",
+}) as any as S.Schema<ModifyClusterIamRolesMessage>;
 export interface ModifyClusterIamRolesResult {
   Cluster?: Cluster;
 }
-export const ModifyClusterIamRolesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyClusterIamRolesResult",
-  }) as any as S.Schema<ModifyClusterIamRolesResult>;
+export const ModifyClusterIamRolesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "ModifyClusterIamRolesResult",
+}) as any as S.Schema<ModifyClusterIamRolesResult>;
 export interface ModifyClusterMaintenanceMessage {
   ClusterIdentifier?: string;
   DeferMaintenance?: boolean;
@@ -6500,119 +7866,113 @@ export interface ModifyClusterMaintenanceMessage {
   DeferMaintenanceEndTime?: Date;
   DeferMaintenanceDuration?: number;
 }
-export const ModifyClusterMaintenanceMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      DeferMaintenance: S.optional(S.Boolean),
-      DeferMaintenanceIdentifier: S.optional(S.String),
-      DeferMaintenanceStartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      DeferMaintenanceEndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      DeferMaintenanceDuration: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyClusterMaintenanceMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    DeferMaintenance: S.optional(S.Boolean),
+    DeferMaintenanceIdentifier: S.optional(S.String),
+    DeferMaintenanceStartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-  ).annotate({
-    identifier: "ModifyClusterMaintenanceMessage",
-  }) as any as S.Schema<ModifyClusterMaintenanceMessage>;
+    DeferMaintenanceEndTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    DeferMaintenanceDuration: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ModifyClusterMaintenanceMessage",
+}) as any as S.Schema<ModifyClusterMaintenanceMessage>;
 export interface ModifyClusterMaintenanceResult {
   Cluster?: Cluster;
 }
-export const ModifyClusterMaintenanceResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyClusterMaintenanceResult",
-  }) as any as S.Schema<ModifyClusterMaintenanceResult>;
+export const ModifyClusterMaintenanceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "ModifyClusterMaintenanceResult",
+}) as any as S.Schema<ModifyClusterMaintenanceResult>;
 export interface ModifyClusterParameterGroupMessage {
   ParameterGroupName?: string;
   Parameters?: Parameter[];
 }
-export const ModifyClusterParameterGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      Parameters: S.optional(ParametersList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    Parameters: S.optional(ParametersList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyClusterParameterGroupMessage",
-  }) as any as S.Schema<ModifyClusterParameterGroupMessage>;
+  ),
+).annotate({
+  identifier: "ModifyClusterParameterGroupMessage",
+}) as any as S.Schema<ModifyClusterParameterGroupMessage>;
 export interface ClusterParameterGroupNameMessage {
   ParameterGroupName?: string;
   ParameterGroupStatus?: string;
 }
-export const ClusterParameterGroupNameMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      ParameterGroupStatus: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ClusterParameterGroupNameMessage",
-  }) as any as S.Schema<ClusterParameterGroupNameMessage>;
+export const ClusterParameterGroupNameMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    ParameterGroupStatus: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ClusterParameterGroupNameMessage",
+}) as any as S.Schema<ClusterParameterGroupNameMessage>;
 export interface ModifyClusterSnapshotMessage {
   SnapshotIdentifier?: string;
   ManualSnapshotRetentionPeriod?: number;
   Force?: boolean;
 }
-export const ModifyClusterSnapshotMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotIdentifier: S.optional(S.String),
-      ManualSnapshotRetentionPeriod: S.optional(S.Number),
-      Force: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotIdentifier: S.optional(S.String),
+    ManualSnapshotRetentionPeriod: S.optional(S.Number),
+    Force: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyClusterSnapshotMessage",
-  }) as any as S.Schema<ModifyClusterSnapshotMessage>;
+  ),
+).annotate({
+  identifier: "ModifyClusterSnapshotMessage",
+}) as any as S.Schema<ModifyClusterSnapshotMessage>;
 export interface ModifyClusterSnapshotResult {
   Snapshot?: Snapshot;
 }
-export const ModifyClusterSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyClusterSnapshotResult",
-  }) as any as S.Schema<ModifyClusterSnapshotResult>;
+export const ModifyClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns),
+).annotate({
+  identifier: "ModifyClusterSnapshotResult",
+}) as any as S.Schema<ModifyClusterSnapshotResult>;
 export interface ModifyClusterSnapshotScheduleMessage {
   ClusterIdentifier?: string;
   ScheduleIdentifier?: string;
   DisassociateSchedule?: boolean;
 }
-export const ModifyClusterSnapshotScheduleMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const ModifyClusterSnapshotScheduleMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterIdentifier: S.optional(S.String),
       ScheduleIdentifier: S.optional(S.String),
@@ -6628,55 +7988,54 @@ export const ModifyClusterSnapshotScheduleMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ModifyClusterSnapshotScheduleMessage",
-  }) as any as S.Schema<ModifyClusterSnapshotScheduleMessage>;
+).annotate({
+  identifier: "ModifyClusterSnapshotScheduleMessage",
+}) as any as S.Schema<ModifyClusterSnapshotScheduleMessage>;
 export interface ModifyClusterSnapshotScheduleResponse {}
-export const ModifyClusterSnapshotScheduleResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ModifyClusterSnapshotScheduleResponse",
-  }) as any as S.Schema<ModifyClusterSnapshotScheduleResponse>;
+export const ModifyClusterSnapshotScheduleResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ModifyClusterSnapshotScheduleResponse",
+}) as any as S.Schema<ModifyClusterSnapshotScheduleResponse>;
 export interface ModifyClusterSubnetGroupMessage {
   ClusterSubnetGroupName?: string;
   Description?: string;
   SubnetIds?: string[];
 }
-export const ModifyClusterSubnetGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterSubnetGroupName: S.optional(S.String),
-      Description: S.optional(S.String),
-      SubnetIds: S.optional(SubnetIdentifierList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyClusterSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterSubnetGroupName: S.optional(S.String),
+    Description: S.optional(S.String),
+    SubnetIds: S.optional(SubnetIdentifierList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyClusterSubnetGroupMessage",
-  }) as any as S.Schema<ModifyClusterSubnetGroupMessage>;
+  ),
+).annotate({
+  identifier: "ModifyClusterSubnetGroupMessage",
+}) as any as S.Schema<ModifyClusterSubnetGroupMessage>;
 export interface ModifyClusterSubnetGroupResult {
   ClusterSubnetGroup?: ClusterSubnetGroup;
 }
-export const ModifyClusterSubnetGroupResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ClusterSubnetGroup: S.optional(ClusterSubnetGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyClusterSubnetGroupResult",
-  }) as any as S.Schema<ModifyClusterSubnetGroupResult>;
+export const ModifyClusterSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ClusterSubnetGroup: S.optional(ClusterSubnetGroup) }).pipe(ns),
+).annotate({
+  identifier: "ModifyClusterSubnetGroupResult",
+}) as any as S.Schema<ModifyClusterSubnetGroupResult>;
 export interface ModifyCustomDomainAssociationMessage {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
 }
-export const ModifyCustomDomainAssociationMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const ModifyCustomDomainAssociationMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CustomDomainName: S.optional(S.String),
       CustomDomainCertificateArn: S.optional(S.String),
@@ -6692,49 +8051,47 @@ export const ModifyCustomDomainAssociationMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ModifyCustomDomainAssociationMessage",
-  }) as any as S.Schema<ModifyCustomDomainAssociationMessage>;
+).annotate({
+  identifier: "ModifyCustomDomainAssociationMessage",
+}) as any as S.Schema<ModifyCustomDomainAssociationMessage>;
 export interface ModifyCustomDomainAssociationResult {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
   ClusterIdentifier?: string;
   CustomDomainCertExpiryTime?: string;
 }
-export const ModifyCustomDomainAssociationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomDomainName: S.optional(S.String),
-      CustomDomainCertificateArn: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      CustomDomainCertExpiryTime: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyCustomDomainAssociationResult",
-  }) as any as S.Schema<ModifyCustomDomainAssociationResult>;
+export const ModifyCustomDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomDomainName: S.optional(S.String),
+    CustomDomainCertificateArn: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    CustomDomainCertExpiryTime: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ModifyCustomDomainAssociationResult",
+}) as any as S.Schema<ModifyCustomDomainAssociationResult>;
 export interface ModifyEndpointAccessMessage {
   EndpointName?: string;
   VpcSecurityGroupIds?: string[];
 }
-export const ModifyEndpointAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EndpointName: S.optional(S.String),
-      VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EndpointName: S.optional(S.String),
+    VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyEndpointAccessMessage",
-  }) as any as S.Schema<ModifyEndpointAccessMessage>;
+  ),
+).annotate({
+  identifier: "ModifyEndpointAccessMessage",
+}) as any as S.Schema<ModifyEndpointAccessMessage>;
 export interface ModifyEventSubscriptionMessage {
   SubscriptionName?: string;
   SnsTopicArn?: string;
@@ -6744,39 +8101,37 @@ export interface ModifyEventSubscriptionMessage {
   Severity?: string;
   Enabled?: boolean;
 }
-export const ModifyEventSubscriptionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubscriptionName: S.optional(S.String),
-      SnsTopicArn: S.optional(S.String),
-      SourceType: S.optional(S.String),
-      SourceIds: S.optional(SourceIdsList),
-      EventCategories: S.optional(EventCategoriesList),
-      Severity: S.optional(S.String),
-      Enabled: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubscriptionName: S.optional(S.String),
+    SnsTopicArn: S.optional(S.String),
+    SourceType: S.optional(S.String),
+    SourceIds: S.optional(SourceIdsList),
+    EventCategories: S.optional(EventCategoriesList),
+    Severity: S.optional(S.String),
+    Enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyEventSubscriptionMessage",
-  }) as any as S.Schema<ModifyEventSubscriptionMessage>;
+  ),
+).annotate({
+  identifier: "ModifyEventSubscriptionMessage",
+}) as any as S.Schema<ModifyEventSubscriptionMessage>;
 export interface ModifyEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const ModifyEventSubscriptionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyEventSubscriptionResult",
-  }) as any as S.Schema<ModifyEventSubscriptionResult>;
+export const ModifyEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
+).annotate({
+  identifier: "ModifyEventSubscriptionResult",
+}) as any as S.Schema<ModifyEventSubscriptionResult>;
 export interface ModifyIntegrationMessage {
   IntegrationArn?: string;
   Description?: string;
@@ -6803,11 +8158,13 @@ export const ModifyIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyIntegrationMessage>;
 export type LakehouseRegistration = "Register" | "Deregister" | (string & {});
 export const LakehouseRegistration = /*@__PURE__*/ S.String;
+
 export type LakehouseIdcRegistration =
   | "Associate"
   | "Disassociate"
   | (string & {});
 export const LakehouseIdcRegistration = /*@__PURE__*/ S.String;
+
 export interface ModifyLakehouseConfigurationMessage {
   ClusterIdentifier?: string;
   LakehouseRegistration?: LakehouseRegistration;
@@ -6816,29 +8173,28 @@ export interface ModifyLakehouseConfigurationMessage {
   LakehouseIdcApplicationArn?: string;
   DryRun?: boolean;
 }
-export const ModifyLakehouseConfigurationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      LakehouseRegistration: S.optional(LakehouseRegistration),
-      CatalogName: S.optional(S.String),
-      LakehouseIdcRegistration: S.optional(LakehouseIdcRegistration),
-      LakehouseIdcApplicationArn: S.optional(S.String),
-      DryRun: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyLakehouseConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    LakehouseRegistration: S.optional(LakehouseRegistration),
+    CatalogName: S.optional(S.String),
+    LakehouseIdcRegistration: S.optional(LakehouseIdcRegistration),
+    LakehouseIdcApplicationArn: S.optional(S.String),
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyLakehouseConfigurationMessage",
-  }) as any as S.Schema<ModifyLakehouseConfigurationMessage>;
+  ),
+).annotate({
+  identifier: "ModifyLakehouseConfigurationMessage",
+}) as any as S.Schema<ModifyLakehouseConfigurationMessage>;
 export interface LakehouseConfiguration {
   ClusterIdentifier?: string;
   LakehouseIdcApplicationArn?: string;
@@ -6863,40 +8219,38 @@ export interface ModifyRedshiftIdcApplicationMessage {
   AuthorizedTokenIssuerList?: AuthorizedTokenIssuer[];
   ServiceIntegrations?: ServiceIntegrationsUnion[];
 }
-export const ModifyRedshiftIdcApplicationMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RedshiftIdcApplicationArn: S.optional(S.String),
-      IdentityNamespace: S.optional(S.String),
-      IamRoleArn: S.optional(S.String),
-      IdcDisplayName: S.optional(S.String),
-      AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
-      ServiceIntegrations: S.optional(ServiceIntegrationList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyRedshiftIdcApplicationMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RedshiftIdcApplicationArn: S.optional(S.String),
+    IdentityNamespace: S.optional(S.String),
+    IamRoleArn: S.optional(S.String),
+    IdcDisplayName: S.optional(S.String),
+    AuthorizedTokenIssuerList: S.optional(AuthorizedTokenIssuerList),
+    ServiceIntegrations: S.optional(ServiceIntegrationList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifyRedshiftIdcApplicationMessage",
-  }) as any as S.Schema<ModifyRedshiftIdcApplicationMessage>;
+  ),
+).annotate({
+  identifier: "ModifyRedshiftIdcApplicationMessage",
+}) as any as S.Schema<ModifyRedshiftIdcApplicationMessage>;
 export interface ModifyRedshiftIdcApplicationResult {
   RedshiftIdcApplication?: RedshiftIdcApplication;
 }
-export const ModifyRedshiftIdcApplicationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RedshiftIdcApplication: S.optional(RedshiftIdcApplication),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ModifyRedshiftIdcApplicationResult",
-  }) as any as S.Schema<ModifyRedshiftIdcApplicationResult>;
+export const ModifyRedshiftIdcApplicationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RedshiftIdcApplication: S.optional(RedshiftIdcApplication) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "ModifyRedshiftIdcApplicationResult",
+}) as any as S.Schema<ModifyRedshiftIdcApplicationResult>;
 export interface ModifyScheduledActionMessage {
   ScheduledActionName?: string;
   TargetAction?: ScheduledActionType;
@@ -6907,42 +8261,39 @@ export interface ModifyScheduledActionMessage {
   EndTime?: Date;
   Enable?: boolean;
 }
-export const ModifyScheduledActionMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScheduledActionName: S.optional(S.String),
-      TargetAction: S.optional(ScheduledActionType),
-      Schedule: S.optional(S.String),
-      IamRole: S.optional(S.String),
-      ScheduledActionDescription: S.optional(S.String),
-      StartTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      EndTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Enable: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifyScheduledActionMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScheduledActionName: S.optional(S.String),
+    TargetAction: S.optional(ScheduledActionType),
+    Schedule: S.optional(S.String),
+    IamRole: S.optional(S.String),
+    ScheduledActionDescription: S.optional(S.String),
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-  ).annotate({
-    identifier: "ModifyScheduledActionMessage",
-  }) as any as S.Schema<ModifyScheduledActionMessage>;
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    Enable: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ModifyScheduledActionMessage",
+}) as any as S.Schema<ModifyScheduledActionMessage>;
 export interface ModifySnapshotCopyRetentionPeriodMessage {
   ClusterIdentifier?: string;
   RetentionPeriod?: number;
   Manual?: boolean;
 }
-export const ModifySnapshotCopyRetentionPeriodMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const ModifySnapshotCopyRetentionPeriodMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterIdentifier: S.optional(S.String),
       RetentionPeriod: S.optional(S.Number),
@@ -6958,41 +8309,39 @@ export const ModifySnapshotCopyRetentionPeriodMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ModifySnapshotCopyRetentionPeriodMessage",
-  }) as any as S.Schema<ModifySnapshotCopyRetentionPeriodMessage>;
+).annotate({
+  identifier: "ModifySnapshotCopyRetentionPeriodMessage",
+}) as any as S.Schema<ModifySnapshotCopyRetentionPeriodMessage>;
 export interface ModifySnapshotCopyRetentionPeriodResult {
   Cluster?: Cluster;
 }
-export const ModifySnapshotCopyRetentionPeriodResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "ModifySnapshotCopyRetentionPeriodResult",
-  }) as any as S.Schema<ModifySnapshotCopyRetentionPeriodResult>;
+export const ModifySnapshotCopyRetentionPeriodResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "ModifySnapshotCopyRetentionPeriodResult",
+}) as any as S.Schema<ModifySnapshotCopyRetentionPeriodResult>;
 export interface ModifySnapshotScheduleMessage {
   ScheduleIdentifier?: string;
   ScheduleDefinitions?: string[];
 }
-export const ModifySnapshotScheduleMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ScheduleIdentifier: S.optional(S.String),
-      ScheduleDefinitions: S.optional(ScheduleDefinitionList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ModifySnapshotScheduleMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ScheduleIdentifier: S.optional(S.String),
+    ScheduleDefinitions: S.optional(ScheduleDefinitionList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ModifySnapshotScheduleMessage",
-  }) as any as S.Schema<ModifySnapshotScheduleMessage>;
+  ),
+).annotate({
+  identifier: "ModifySnapshotScheduleMessage",
+}) as any as S.Schema<ModifySnapshotScheduleMessage>;
 export interface ModifyUsageLimitMessage {
   UsageLimitId?: string;
   Amount?: number;
@@ -7029,34 +8378,32 @@ export interface PurchaseReservedNodeOfferingMessage {
   ReservedNodeOfferingId?: string;
   NodeCount?: number;
 }
-export const PurchaseReservedNodeOfferingMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReservedNodeOfferingId: S.optional(S.String),
-      NodeCount: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PurchaseReservedNodeOfferingMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReservedNodeOfferingId: S.optional(S.String),
+    NodeCount: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PurchaseReservedNodeOfferingMessage",
-  }) as any as S.Schema<PurchaseReservedNodeOfferingMessage>;
+  ),
+).annotate({
+  identifier: "PurchaseReservedNodeOfferingMessage",
+}) as any as S.Schema<PurchaseReservedNodeOfferingMessage>;
 export interface PurchaseReservedNodeOfferingResult {
   ReservedNode?: ReservedNode;
 }
-export const PurchaseReservedNodeOfferingResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReservedNode: S.optional(ReservedNode) }).pipe(ns),
-  ).annotate({
-    identifier: "PurchaseReservedNodeOfferingResult",
-  }) as any as S.Schema<PurchaseReservedNodeOfferingResult>;
+export const PurchaseReservedNodeOfferingResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReservedNode: S.optional(ReservedNode) }).pipe(ns),
+).annotate({
+  identifier: "PurchaseReservedNodeOfferingResult",
+}) as any as S.Schema<PurchaseReservedNodeOfferingResult>;
 export interface PutResourcePolicyMessage {
   ResourceArn?: string;
   Policy?: string;
@@ -7117,34 +8464,32 @@ export interface RegisterNamespaceInputMessage {
   NamespaceIdentifier?: NamespaceIdentifierUnion;
   ConsumerIdentifiers?: string[];
 }
-export const RegisterNamespaceInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NamespaceIdentifier: S.optional(NamespaceIdentifierUnion),
-      ConsumerIdentifiers: S.optional(ConsumerIdentifierList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterNamespaceInputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NamespaceIdentifier: S.optional(NamespaceIdentifierUnion),
+    ConsumerIdentifiers: S.optional(ConsumerIdentifierList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterNamespaceInputMessage",
-  }) as any as S.Schema<RegisterNamespaceInputMessage>;
+  ),
+).annotate({
+  identifier: "RegisterNamespaceInputMessage",
+}) as any as S.Schema<RegisterNamespaceInputMessage>;
 export interface RegisterNamespaceOutputMessage {
   Status?: NamespaceRegistrationStatus;
 }
-export const RegisterNamespaceOutputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: S.optional(NamespaceRegistrationStatus) }).pipe(ns),
-  ).annotate({
-    identifier: "RegisterNamespaceOutputMessage",
-  }) as any as S.Schema<RegisterNamespaceOutputMessage>;
+export const RegisterNamespaceOutputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(NamespaceRegistrationStatus) }).pipe(ns),
+).annotate({
+  identifier: "RegisterNamespaceOutputMessage",
+}) as any as S.Schema<RegisterNamespaceOutputMessage>;
 export interface RejectDataShareMessage {
   DataShareArn?: string;
 }
@@ -7168,26 +8513,25 @@ export interface ResetClusterParameterGroupMessage {
   ResetAllParameters?: boolean;
   Parameters?: Parameter[];
 }
-export const ResetClusterParameterGroupMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.optional(S.String),
-      ResetAllParameters: S.optional(S.Boolean),
-      Parameters: S.optional(ParametersList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResetClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.optional(S.String),
+    ResetAllParameters: S.optional(S.Boolean),
+    Parameters: S.optional(ParametersList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ResetClusterParameterGroupMessage",
-  }) as any as S.Schema<ResetClusterParameterGroupMessage>;
+  ),
+).annotate({
+  identifier: "ResetClusterParameterGroupMessage",
+}) as any as S.Schema<ResetClusterParameterGroupMessage>;
 export interface ResizeClusterResult {
   Cluster?: Cluster;
 }
@@ -7237,71 +8581,69 @@ export interface RestoreFromClusterSnapshotMessage {
   CatalogName?: string;
   RedshiftIdcApplicationArn?: string;
 }
-export const RestoreFromClusterSnapshotMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      SnapshotIdentifier: S.optional(S.String),
-      SnapshotArn: S.optional(S.String),
-      SnapshotClusterIdentifier: S.optional(S.String),
-      Port: S.optional(S.Number),
-      AvailabilityZone: S.optional(S.String),
-      AllowVersionUpgrade: S.optional(S.Boolean),
-      ClusterSubnetGroupName: S.optional(S.String),
-      PubliclyAccessible: S.optional(S.Boolean),
-      OwnerAccount: S.optional(S.String),
-      HsmClientCertificateIdentifier: S.optional(S.String),
-      HsmConfigurationIdentifier: S.optional(S.String),
-      ElasticIp: S.optional(S.String),
-      ClusterParameterGroupName: S.optional(S.String),
-      ClusterSecurityGroups: S.optional(ClusterSecurityGroupNameList),
-      VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      PreferredMaintenanceWindow: S.optional(S.String),
-      AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
-      ManualSnapshotRetentionPeriod: S.optional(S.Number),
-      KmsKeyId: S.optional(S.String),
-      NodeType: S.optional(S.String),
-      EnhancedVpcRouting: S.optional(S.Boolean),
-      AdditionalInfo: S.optional(S.String),
-      IamRoles: S.optional(IamRoleArnList),
-      MaintenanceTrackName: S.optional(S.String),
-      SnapshotScheduleIdentifier: S.optional(S.String),
-      NumberOfNodes: S.optional(S.Number),
-      AvailabilityZoneRelocation: S.optional(S.Boolean),
-      AquaConfigurationStatus: S.optional(AquaConfigurationStatus),
-      DefaultIamRoleArn: S.optional(S.String),
-      ReservedNodeId: S.optional(S.String),
-      TargetReservedNodeOfferingId: S.optional(S.String),
-      Encrypted: S.optional(S.Boolean),
-      ManageMasterPassword: S.optional(S.Boolean),
-      MasterPasswordSecretKmsKeyId: S.optional(S.String),
-      IpAddressType: S.optional(S.String),
-      MultiAZ: S.optional(S.Boolean),
-      CatalogName: S.optional(S.String),
-      RedshiftIdcApplicationArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestoreFromClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    SnapshotIdentifier: S.optional(S.String),
+    SnapshotArn: S.optional(S.String),
+    SnapshotClusterIdentifier: S.optional(S.String),
+    Port: S.optional(S.Number),
+    AvailabilityZone: S.optional(S.String),
+    AllowVersionUpgrade: S.optional(S.Boolean),
+    ClusterSubnetGroupName: S.optional(S.String),
+    PubliclyAccessible: S.optional(S.Boolean),
+    OwnerAccount: S.optional(S.String),
+    HsmClientCertificateIdentifier: S.optional(S.String),
+    HsmConfigurationIdentifier: S.optional(S.String),
+    ElasticIp: S.optional(S.String),
+    ClusterParameterGroupName: S.optional(S.String),
+    ClusterSecurityGroups: S.optional(ClusterSecurityGroupNameList),
+    VpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    PreferredMaintenanceWindow: S.optional(S.String),
+    AutomatedSnapshotRetentionPeriod: S.optional(S.Number),
+    ManualSnapshotRetentionPeriod: S.optional(S.Number),
+    KmsKeyId: S.optional(S.String),
+    NodeType: S.optional(S.String),
+    EnhancedVpcRouting: S.optional(S.Boolean),
+    AdditionalInfo: S.optional(S.String),
+    IamRoles: S.optional(IamRoleArnList),
+    MaintenanceTrackName: S.optional(S.String),
+    SnapshotScheduleIdentifier: S.optional(S.String),
+    NumberOfNodes: S.optional(S.Number),
+    AvailabilityZoneRelocation: S.optional(S.Boolean),
+    AquaConfigurationStatus: S.optional(AquaConfigurationStatus),
+    DefaultIamRoleArn: S.optional(S.String),
+    ReservedNodeId: S.optional(S.String),
+    TargetReservedNodeOfferingId: S.optional(S.String),
+    Encrypted: S.optional(S.Boolean),
+    ManageMasterPassword: S.optional(S.Boolean),
+    MasterPasswordSecretKmsKeyId: S.optional(S.String),
+    IpAddressType: S.optional(S.String),
+    MultiAZ: S.optional(S.Boolean),
+    CatalogName: S.optional(S.String),
+    RedshiftIdcApplicationArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RestoreFromClusterSnapshotMessage",
-  }) as any as S.Schema<RestoreFromClusterSnapshotMessage>;
+  ),
+).annotate({
+  identifier: "RestoreFromClusterSnapshotMessage",
+}) as any as S.Schema<RestoreFromClusterSnapshotMessage>;
 export interface RestoreFromClusterSnapshotResult {
   Cluster?: Cluster;
 }
-export const RestoreFromClusterSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "RestoreFromClusterSnapshotResult",
-  }) as any as S.Schema<RestoreFromClusterSnapshotResult>;
+export const RestoreFromClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "RestoreFromClusterSnapshotResult",
+}) as any as S.Schema<RestoreFromClusterSnapshotResult>;
 export interface RestoreTableFromClusterSnapshotMessage {
   ClusterIdentifier?: string;
   SnapshotIdentifier?: string;
@@ -7313,8 +8655,8 @@ export interface RestoreTableFromClusterSnapshotMessage {
   NewTableName?: string;
   EnableCaseSensitiveIdentifier?: boolean;
 }
-export const RestoreTableFromClusterSnapshotMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const RestoreTableFromClusterSnapshotMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterIdentifier: S.optional(S.String),
       SnapshotIdentifier: S.optional(S.String),
@@ -7336,18 +8678,18 @@ export const RestoreTableFromClusterSnapshotMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "RestoreTableFromClusterSnapshotMessage",
-  }) as any as S.Schema<RestoreTableFromClusterSnapshotMessage>;
+).annotate({
+  identifier: "RestoreTableFromClusterSnapshotMessage",
+}) as any as S.Schema<RestoreTableFromClusterSnapshotMessage>;
 export interface RestoreTableFromClusterSnapshotResult {
   TableRestoreStatus?: TableRestoreStatus;
 }
-export const RestoreTableFromClusterSnapshotResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const RestoreTableFromClusterSnapshotResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ TableRestoreStatus: S.optional(TableRestoreStatus) }).pipe(ns),
-  ).annotate({
-    identifier: "RestoreTableFromClusterSnapshotResult",
-  }) as any as S.Schema<RestoreTableFromClusterSnapshotResult>;
+).annotate({
+  identifier: "RestoreTableFromClusterSnapshotResult",
+}) as any as S.Schema<RestoreTableFromClusterSnapshotResult>;
 export interface ResumeClusterResult {
   Cluster?: Cluster;
 }
@@ -7362,8 +8704,8 @@ export interface RevokeClusterSecurityGroupIngressMessage {
   EC2SecurityGroupName?: string;
   EC2SecurityGroupOwnerId?: string;
 }
-export const RevokeClusterSecurityGroupIngressMessage =
-  /*@__PURE__*/ S.suspend(() =>
+export const RevokeClusterSecurityGroupIngressMessage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ClusterSecurityGroupName: S.optional(S.String),
       CIDRIP: S.optional(S.String),
@@ -7380,74 +8722,72 @@ export const RevokeClusterSecurityGroupIngressMessage =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "RevokeClusterSecurityGroupIngressMessage",
-  }) as any as S.Schema<RevokeClusterSecurityGroupIngressMessage>;
+).annotate({
+  identifier: "RevokeClusterSecurityGroupIngressMessage",
+}) as any as S.Schema<RevokeClusterSecurityGroupIngressMessage>;
 export interface RevokeClusterSecurityGroupIngressResult {
   ClusterSecurityGroup?: ClusterSecurityGroup;
 }
-export const RevokeClusterSecurityGroupIngressResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const RevokeClusterSecurityGroupIngressResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ ClusterSecurityGroup: S.optional(ClusterSecurityGroup) }).pipe(
       ns,
     ),
-  ).annotate({
-    identifier: "RevokeClusterSecurityGroupIngressResult",
-  }) as any as S.Schema<RevokeClusterSecurityGroupIngressResult>;
+).annotate({
+  identifier: "RevokeClusterSecurityGroupIngressResult",
+}) as any as S.Schema<RevokeClusterSecurityGroupIngressResult>;
 export interface RevokeEndpointAccessMessage {
   ClusterIdentifier?: string;
   Account?: string;
   VpcIds?: string[];
   Force?: boolean;
 }
-export const RevokeEndpointAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterIdentifier: S.optional(S.String),
-      Account: S.optional(S.String),
-      VpcIds: S.optional(VpcIdentifierList),
-      Force: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RevokeEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterIdentifier: S.optional(S.String),
+    Account: S.optional(S.String),
+    VpcIds: S.optional(VpcIdentifierList),
+    Force: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RevokeEndpointAccessMessage",
-  }) as any as S.Schema<RevokeEndpointAccessMessage>;
+  ),
+).annotate({
+  identifier: "RevokeEndpointAccessMessage",
+}) as any as S.Schema<RevokeEndpointAccessMessage>;
 export interface RevokeSnapshotAccessMessage {
   SnapshotIdentifier?: string;
   SnapshotArn?: string;
   SnapshotClusterIdentifier?: string;
   AccountWithRestoreAccess?: string;
 }
-export const RevokeSnapshotAccessMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SnapshotIdentifier: S.optional(S.String),
-      SnapshotArn: S.optional(S.String),
-      SnapshotClusterIdentifier: S.optional(S.String),
-      AccountWithRestoreAccess: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RevokeSnapshotAccessMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SnapshotIdentifier: S.optional(S.String),
+    SnapshotArn: S.optional(S.String),
+    SnapshotClusterIdentifier: S.optional(S.String),
+    AccountWithRestoreAccess: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RevokeSnapshotAccessMessage",
-  }) as any as S.Schema<RevokeSnapshotAccessMessage>;
+  ),
+).annotate({
+  identifier: "RevokeSnapshotAccessMessage",
+}) as any as S.Schema<RevokeSnapshotAccessMessage>;
 export interface RevokeSnapshotAccessResult {
   Snapshot?: Snapshot;
 }
@@ -7490,1006 +8830,29 @@ export interface UpdatePartnerStatusInputMessage {
   Status?: PartnerIntegrationStatus;
   StatusMessage?: string;
 }
-export const UpdatePartnerStatusInputMessage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.optional(S.String),
-      ClusterIdentifier: S.optional(S.String),
-      DatabaseName: S.optional(S.String),
-      PartnerName: S.optional(S.String),
-      Status: S.optional(PartnerIntegrationStatus),
-      StatusMessage: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdatePartnerStatusInputMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.optional(S.String),
+    ClusterIdentifier: S.optional(S.String),
+    DatabaseName: S.optional(S.String),
+    PartnerName: S.optional(S.String),
+    Status: S.optional(PartnerIntegrationStatus),
+    StatusMessage: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdatePartnerStatusInputMessage",
-  }) as any as S.Schema<UpdatePartnerStatusInputMessage>;
-
-//# Errors
-export class DependentServiceUnavailableFault extends S.TaggedErrorClass<DependentServiceUnavailableFault>()(
-  "DependentServiceUnavailableFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "DependentServiceUnavailableFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withServerError) {}
-export class InvalidReservedNodeStateFault extends S.TaggedErrorClass<InvalidReservedNodeStateFault>()(
-  "InvalidReservedNodeStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidReservedNodeState", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeAlreadyExistsFault extends S.TaggedErrorClass<ReservedNodeAlreadyExistsFault>()(
-  "ReservedNodeAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ReservedNodeAlreadyExists", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ReservedNodeAlreadyMigratedFault extends S.TaggedErrorClass<ReservedNodeAlreadyMigratedFault>()(
-  "ReservedNodeAlreadyMigratedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ReservedNodeAlreadyMigrated",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeNotFoundFault extends S.TaggedErrorClass<ReservedNodeNotFoundFault>()(
-  "ReservedNodeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ReservedNodeNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeOfferingNotFoundFault extends S.TaggedErrorClass<ReservedNodeOfferingNotFoundFault>()(
-  "ReservedNodeOfferingNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ReservedNodeOfferingNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationFault extends S.TaggedErrorClass<UnsupportedOperationFault>()(
-  "UnsupportedOperationFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
-  "ClusterNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class PartnerNotFoundFault extends S.TaggedErrorClass<PartnerNotFoundFault>()(
-  "PartnerNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "PartnerNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedPartnerIntegrationFault extends S.TaggedErrorClass<UnauthorizedPartnerIntegrationFault>()(
-  "UnauthorizedPartnerIntegrationFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnauthorizedPartnerIntegration",
-    httpResponseCode: 401,
-  }),
-).pipe(C.withAuthError) {}
-export class InvalidDataShareFault extends S.TaggedErrorClass<InvalidDataShareFault>()(
-  "InvalidDataShareFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDataShareFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidNamespaceFault extends S.TaggedErrorClass<InvalidNamespaceFault>()(
-  "InvalidNamespaceFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidNamespaceFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class AuthorizationAlreadyExistsFault extends S.TaggedErrorClass<AuthorizationAlreadyExistsFault>()(
-  "AuthorizationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AuthorizationAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AuthorizationQuotaExceededFault extends S.TaggedErrorClass<AuthorizationQuotaExceededFault>()(
-  "AuthorizationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AuthorizationQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSecurityGroupNotFoundFault extends S.TaggedErrorClass<ClusterSecurityGroupNotFoundFault>()(
-  "ClusterSecurityGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSecurityGroupNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSecurityGroupStateFault extends S.TaggedErrorClass<InvalidClusterSecurityGroupStateFault>()(
-  "InvalidClusterSecurityGroupStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidClusterSecurityGroupState",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EndpointAuthorizationAlreadyExistsFault extends S.TaggedErrorClass<EndpointAuthorizationAlreadyExistsFault>()(
-  "EndpointAuthorizationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EndpointAuthorizationAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointAuthorizationsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointAuthorizationsPerClusterLimitExceededFault>()(
-  "EndpointAuthorizationsPerClusterLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EndpointAuthorizationsPerClusterLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidAuthorizationStateFault extends S.TaggedErrorClass<InvalidAuthorizationStateFault>()(
-  "InvalidAuthorizationStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidAuthorizationState", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
-  "InvalidClusterStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSnapshotNotFoundFault extends S.TaggedErrorClass<ClusterSnapshotNotFoundFault>()(
-  "ClusterSnapshotNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterSnapshotNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class DependentServiceRequestThrottlingFault extends S.TaggedErrorClass<DependentServiceRequestThrottlingFault>()(
-  "DependentServiceRequestThrottlingFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "DependentServiceRequestThrottlingFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSnapshotStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotStateFault>()(
-  "InvalidClusterSnapshotStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidClusterSnapshotState",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
-  "LimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LimitExceededFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class BatchDeleteRequestSizeExceededFault extends S.TaggedErrorClass<BatchDeleteRequestSizeExceededFault>()(
-  "BatchDeleteRequestSizeExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "BatchDeleteRequestSizeExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class BatchModifyClusterSnapshotsLimitExceededFault extends S.TaggedErrorClass<BatchModifyClusterSnapshotsLimitExceededFault>()(
-  "BatchModifyClusterSnapshotsLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "BatchModifyClusterSnapshotsLimitExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidRetentionPeriodFault extends S.TaggedErrorClass<InvalidRetentionPeriodFault>()(
-  "InvalidRetentionPeriodFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidRetentionPeriodFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResizeNotFoundFault extends S.TaggedErrorClass<ResizeNotFoundFault>()(
-  "ResizeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResizeNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSnapshotAlreadyExistsFault extends S.TaggedErrorClass<ClusterSnapshotAlreadyExistsFault>()(
-  "ClusterSnapshotAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSnapshotAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterSnapshotQuotaExceededFault extends S.TaggedErrorClass<ClusterSnapshotQuotaExceededFault>()(
-  "ClusterSnapshotQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSnapshotQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class AuthenticationProfileAlreadyExistsFault extends S.TaggedErrorClass<AuthenticationProfileAlreadyExistsFault>()(
-  "AuthenticationProfileAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AuthenticationProfileAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AuthenticationProfileQuotaExceededFault extends S.TaggedErrorClass<AuthenticationProfileQuotaExceededFault>()(
-  "AuthenticationProfileQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AuthenticationProfileQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidAuthenticationProfileRequestFault extends S.TaggedErrorClass<InvalidAuthenticationProfileRequestFault>()(
-  "InvalidAuthenticationProfileRequestFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidAuthenticationProfileRequestFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
-  "ClusterAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterParameterGroupNotFoundFault extends S.TaggedErrorClass<ClusterParameterGroupNotFoundFault>()(
-  "ClusterParameterGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterParameterGroupNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ClusterQuotaExceededFault extends S.TaggedErrorClass<ClusterQuotaExceededFault>()(
-  "ClusterQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterQuotaExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSubnetGroupNotFoundFault extends S.TaggedErrorClass<ClusterSubnetGroupNotFoundFault>()(
-  "ClusterSubnetGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSubnetGroupNotFoundFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class DependentServiceAccessDeniedFault extends S.TaggedErrorClass<DependentServiceAccessDeniedFault>()(
-  "DependentServiceAccessDeniedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "DependentServiceAccessDenied",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class HsmClientCertificateNotFoundFault extends S.TaggedErrorClass<HsmClientCertificateNotFoundFault>()(
-  "HsmClientCertificateNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HsmClientCertificateNotFoundFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class HsmConfigurationNotFoundFault extends S.TaggedErrorClass<HsmConfigurationNotFoundFault>()(
-  "HsmConfigurationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HsmConfigurationNotFoundFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
-  "InsufficientClusterCapacityFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientClusterCapacity",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSubnetGroupStateFault extends S.TaggedErrorClass<InvalidClusterSubnetGroupStateFault>()(
-  "InvalidClusterSubnetGroupStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidClusterSubnetGroupStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterTrackFault extends S.TaggedErrorClass<InvalidClusterTrackFault>()(
-  "InvalidClusterTrackFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidClusterTrack", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidElasticIpFault extends S.TaggedErrorClass<InvalidElasticIpFault>()(
-  "InvalidElasticIpFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidElasticIpFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidTagFault extends S.TaggedErrorClass<InvalidTagFault>()(
-  "InvalidTagFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTagFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
-  "InvalidVPCNetworkStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidVPCNetworkStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class Ipv6CidrBlockNotFoundFault extends S.TaggedErrorClass<Ipv6CidrBlockNotFoundFault>()(
-  "Ipv6CidrBlockNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "Ipv6CidrBlockNotFoundFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class NumberOfNodesPerClusterLimitExceededFault extends S.TaggedErrorClass<NumberOfNodesPerClusterLimitExceededFault>()(
-  "NumberOfNodesPerClusterLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NumberOfNodesPerClusterLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class NumberOfNodesQuotaExceededFault extends S.TaggedErrorClass<NumberOfNodesQuotaExceededFault>()(
-  "NumberOfNodesQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NumberOfNodesQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class RedshiftIdcApplicationNotExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationNotExistsFault>()(
-  "RedshiftIdcApplicationNotExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "RedshiftIdcApplicationNotExists",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotScheduleNotFoundFault extends S.TaggedErrorClass<SnapshotScheduleNotFoundFault>()(
-  "SnapshotScheduleNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SnapshotScheduleNotFound", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TagLimitExceededFault extends S.TaggedErrorClass<TagLimitExceededFault>()(
-  "TagLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TagLimitExceededFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
-  "UnauthorizedOperation",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnauthorizedOperation", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class ClusterParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterParameterGroupAlreadyExistsFault>()(
-  "ClusterParameterGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterParameterGroupAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterParameterGroupQuotaExceededFault>()(
-  "ClusterParameterGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterParameterGroupQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSecurityGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSecurityGroupAlreadyExistsFault>()(
-  "ClusterSecurityGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSecurityGroupAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterSecurityGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSecurityGroupQuotaExceededFault>()(
-  "ClusterSecurityGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "QuotaExceeded.ClusterSecurityGroup",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSubnetGroupAlreadyExistsFault>()(
-  "ClusterSubnetGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSubnetGroupAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetGroupQuotaExceededFault>()(
-  "ClusterSubnetGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSubnetGroupQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ClusterSubnetQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetQuotaExceededFault>()(
-  "ClusterSubnetQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterSubnetQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CustomCnameAssociationFault extends S.TaggedErrorClass<CustomCnameAssociationFault>()(
-  "CustomCnameAssociationFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomCnameAssociationFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class AccessToClusterDeniedFault extends S.TaggedErrorClass<AccessToClusterDeniedFault>()(
-  "AccessToClusterDeniedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessToClusterDenied", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class EndpointAlreadyExistsFault extends S.TaggedErrorClass<EndpointAlreadyExistsFault>()(
-  "EndpointAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EndpointAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointsPerAuthorizationLimitExceededFault extends S.TaggedErrorClass<EndpointsPerAuthorizationLimitExceededFault>()(
-  "EndpointsPerAuthorizationLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EndpointsPerAuthorizationLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EndpointsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointsPerClusterLimitExceededFault>()(
-  "EndpointsPerClusterLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EndpointsPerClusterLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EventSubscriptionQuotaExceededFault extends S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
-  "EventSubscriptionQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EventSubscriptionQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
-  "SNSInvalidTopicFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SNSInvalidTopic", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
-  "SNSNoAuthorizationFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SNSNoAuthorization", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SNSTopicArnNotFoundFault extends S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
-  "SNSTopicArnNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SNSTopicArnNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class SourceNotFoundFault extends S.TaggedErrorClass<SourceNotFoundFault>()(
-  "SourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SourceNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionAlreadyExistFault extends S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
-  "SubscriptionAlreadyExistFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubscriptionAlreadyExist", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionCategoryNotFoundFault extends S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
-  "SubscriptionCategoryNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SubscriptionCategoryNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionEventIdNotFoundFault extends S.TaggedErrorClass<SubscriptionEventIdNotFoundFault>()(
-  "SubscriptionEventIdNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SubscriptionEventIdNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionSeverityNotFoundFault extends S.TaggedErrorClass<SubscriptionSeverityNotFoundFault>()(
-  "SubscriptionSeverityNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SubscriptionSeverityNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class HsmClientCertificateAlreadyExistsFault extends S.TaggedErrorClass<HsmClientCertificateAlreadyExistsFault>()(
-  "HsmClientCertificateAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HsmClientCertificateAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class HsmClientCertificateQuotaExceededFault extends S.TaggedErrorClass<HsmClientCertificateQuotaExceededFault>()(
-  "HsmClientCertificateQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HsmClientCertificateQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class HsmConfigurationAlreadyExistsFault extends S.TaggedErrorClass<HsmConfigurationAlreadyExistsFault>()(
-  "HsmConfigurationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HsmConfigurationAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class HsmConfigurationQuotaExceededFault extends S.TaggedErrorClass<HsmConfigurationQuotaExceededFault>()(
-  "HsmConfigurationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "HsmConfigurationQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IntegrationAlreadyExistsFault extends S.TaggedErrorClass<IntegrationAlreadyExistsFault>()(
-  "IntegrationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IntegrationAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
-  "IntegrationConflictOperationFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IntegrationConflictOperationFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
-  "IntegrationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IntegrationQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IntegrationSourceNotFoundFault extends S.TaggedErrorClass<IntegrationSourceNotFoundFault>()(
-  "IntegrationSourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IntegrationSourceNotFoundFault",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IntegrationTargetNotFoundFault extends S.TaggedErrorClass<IntegrationTargetNotFoundFault>()(
-  "IntegrationTargetNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IntegrationTargetNotFoundFault",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class RedshiftIdcApplicationAlreadyExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationAlreadyExistsFault>()(
-  "RedshiftIdcApplicationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "RedshiftIdcApplicationAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class RedshiftIdcApplicationQuotaExceededFault extends S.TaggedErrorClass<RedshiftIdcApplicationQuotaExceededFault>()(
-  "RedshiftIdcApplicationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "RedshiftIdcApplicationQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidScheduledActionFault extends S.TaggedErrorClass<InvalidScheduledActionFault>()(
-  "InvalidScheduledActionFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidScheduledAction", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidScheduleFault extends S.TaggedErrorClass<InvalidScheduleFault>()(
-  "InvalidScheduleFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ScheduledActionAlreadyExistsFault extends S.TaggedErrorClass<ScheduledActionAlreadyExistsFault>()(
-  "ScheduledActionAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ScheduledActionAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ScheduledActionQuotaExceededFault extends S.TaggedErrorClass<ScheduledActionQuotaExceededFault>()(
-  "ScheduledActionQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ScheduledActionQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ScheduledActionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduledActionTypeUnsupportedFault>()(
-  "ScheduledActionTypeUnsupportedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ScheduledActionTypeUnsupported",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyGrantAlreadyExistsFault extends S.TaggedErrorClass<SnapshotCopyGrantAlreadyExistsFault>()(
-  "SnapshotCopyGrantAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotCopyGrantAlreadyExistsFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class SnapshotCopyGrantQuotaExceededFault extends S.TaggedErrorClass<SnapshotCopyGrantQuotaExceededFault>()(
-  "SnapshotCopyGrantQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotCopyGrantQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ScheduleDefinitionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduleDefinitionTypeUnsupportedFault>()(
-  "ScheduleDefinitionTypeUnsupportedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ScheduleDefinitionTypeUnsupported",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotScheduleAlreadyExistsFault extends S.TaggedErrorClass<SnapshotScheduleAlreadyExistsFault>()(
-  "SnapshotScheduleAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotScheduleAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class SnapshotScheduleQuotaExceededFault extends S.TaggedErrorClass<SnapshotScheduleQuotaExceededFault>()(
-  "SnapshotScheduleQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotScheduleQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
-  "ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundFault", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidUsageLimitFault extends S.TaggedErrorClass<InvalidUsageLimitFault>()(
-  "InvalidUsageLimitFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidUsageLimit", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class UsageLimitAlreadyExistsFault extends S.TaggedErrorClass<UsageLimitAlreadyExistsFault>()(
-  "UsageLimitAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UsageLimitAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AuthenticationProfileNotFoundFault extends S.TaggedErrorClass<AuthenticationProfileNotFoundFault>()(
-  "AuthenticationProfileNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AuthenticationProfileNotFoundFault",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterParameterGroupStateFault extends S.TaggedErrorClass<InvalidClusterParameterGroupStateFault>()(
-  "InvalidClusterParameterGroupStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidClusterParameterGroupState",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSubnetStateFault extends S.TaggedErrorClass<InvalidClusterSubnetStateFault>()(
-  "InvalidClusterSubnetStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidClusterSubnetStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CustomDomainAssociationNotFoundFault extends S.TaggedErrorClass<CustomDomainAssociationNotFoundFault>()(
-  "CustomDomainAssociationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomDomainAssociationNotFoundFault",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class EndpointNotFoundFault extends S.TaggedErrorClass<EndpointNotFoundFault>()(
-  "EndpointNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EndpointNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidEndpointStateFault extends S.TaggedErrorClass<InvalidEndpointStateFault>()(
-  "InvalidEndpointStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidEndpointState", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubscriptionStateFault extends S.TaggedErrorClass<InvalidSubscriptionStateFault>()(
-  "InvalidSubscriptionStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidSubscriptionStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionNotFoundFault extends S.TaggedErrorClass<SubscriptionNotFoundFault>()(
-  "SubscriptionNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubscriptionNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidHsmClientCertificateStateFault extends S.TaggedErrorClass<InvalidHsmClientCertificateStateFault>()(
-  "InvalidHsmClientCertificateStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidHsmClientCertificateStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidHsmConfigurationStateFault extends S.TaggedErrorClass<InvalidHsmConfigurationStateFault>()(
-  "InvalidHsmConfigurationStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidHsmConfigurationStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IntegrationConflictStateFault extends S.TaggedErrorClass<IntegrationConflictStateFault>()(
-  "IntegrationConflictStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IntegrationConflictStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
-  "IntegrationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "IntegrationNotFoundFault", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ScheduledActionNotFoundFault extends S.TaggedErrorClass<ScheduledActionNotFoundFault>()(
-  "ScheduledActionNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ScheduledActionNotFound", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidSnapshotCopyGrantStateFault extends S.TaggedErrorClass<InvalidSnapshotCopyGrantStateFault>()(
-  "InvalidSnapshotCopyGrantStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidSnapshotCopyGrantStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyGrantNotFoundFault extends S.TaggedErrorClass<SnapshotCopyGrantNotFoundFault>()(
-  "SnapshotCopyGrantNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotCopyGrantNotFoundFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSnapshotScheduleStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotScheduleStateFault>()(
-  "InvalidClusterSnapshotScheduleStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidClusterSnapshotScheduleState",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class UsageLimitNotFoundFault extends S.TaggedErrorClass<UsageLimitNotFoundFault>()(
-  "UsageLimitNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UsageLimitNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class AccessToSnapshotDeniedFault extends S.TaggedErrorClass<AccessToSnapshotDeniedFault>()(
-  "AccessToSnapshotDeniedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessToSnapshotDenied", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeExchangeNotFoundFault extends S.TaggedErrorClass<ReservedNodeExchangeNotFoundFault>()(
-  "ReservedNodeExchangeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ReservedNodeExchangeNotFond",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class TableRestoreNotFoundFault extends S.TaggedErrorClass<TableRestoreNotFoundFault>()(
-  "TableRestoreNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TableRestoreNotFoundFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyAlreadyDisabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyDisabledFault>()(
-  "SnapshotCopyAlreadyDisabledFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotCopyAlreadyDisabledFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class BucketNotFoundFault extends S.TaggedErrorClass<BucketNotFoundFault>()(
-  "BucketNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "BucketNotFoundFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientS3BucketPolicyFault extends S.TaggedErrorClass<InsufficientS3BucketPolicyFault>()(
-  "InsufficientS3BucketPolicyFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientS3BucketPolicyFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3BucketNameFault extends S.TaggedErrorClass<InvalidS3BucketNameFault>()(
-  "InvalidS3BucketNameFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidS3BucketNameFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3KeyPrefixFault extends S.TaggedErrorClass<InvalidS3KeyPrefixFault>()(
-  "InvalidS3KeyPrefixFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidS3KeyPrefixFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class CopyToRegionDisabledFault extends S.TaggedErrorClass<CopyToRegionDisabledFault>()(
-  "CopyToRegionDisabledFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "CopyToRegionDisabledFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class IncompatibleOrderableOptions extends S.TaggedErrorClass<IncompatibleOrderableOptions>()(
-  "IncompatibleOrderableOptions",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "IncompatibleOrderableOptions",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyAlreadyEnabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyEnabledFault>()(
-  "SnapshotCopyAlreadyEnabledFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotCopyAlreadyEnabledFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class UnknownSnapshotCopyRegionFault extends S.TaggedErrorClass<UnknownSnapshotCopyRegionFault>()(
-  "UnknownSnapshotCopyRegionFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "UnknownSnapshotCopyRegionFault",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class RedshiftInvalidParameterFault extends S.TaggedErrorClass<RedshiftInvalidParameterFault>()(
-  "RedshiftInvalidParameterFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "RedshiftInvalidParameter", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidPolicyFault extends S.TaggedErrorClass<InvalidPolicyFault>()(
-  "InvalidPolicyFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidPolicyFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TableLimitExceededFault extends S.TaggedErrorClass<TableLimitExceededFault>()(
-  "TableLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TableLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOptionFault extends S.TaggedErrorClass<UnsupportedOptionFault>()(
-  "UnsupportedOptionFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "UnsupportedOptionFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ClusterOnLatestRevisionFault extends S.TaggedErrorClass<ClusterOnLatestRevisionFault>()(
-  "ClusterOnLatestRevisionFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterOnLatestRevision", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
-  "SubnetAlreadyInUse",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetAlreadyInUse", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
-export class SnapshotCopyDisabledFault extends S.TaggedErrorClass<SnapshotCopyDisabledFault>()(
-  "SnapshotCopyDisabledFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SnapshotCopyDisabledFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SnapshotScheduleUpdateInProgressFault extends S.TaggedErrorClass<SnapshotScheduleUpdateInProgressFault>()(
-  "SnapshotScheduleUpdateInProgressFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SnapshotScheduleUpdateInProgress",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeQuotaExceededFault extends S.TaggedErrorClass<ReservedNodeQuotaExceededFault>()(
-  "ReservedNodeQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ReservedNodeQuotaExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ConflictPolicyUpdateFault extends S.TaggedErrorClass<ConflictPolicyUpdateFault>()(
-  "ConflictPolicyUpdateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConflictPolicyUpdateFault", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
-  "InvalidRestoreFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidRestore", httpResponseCode: 406 }),
-).pipe(C.withBadRequestError) {}
-export class InProgressTableRestoreQuotaExceededFault extends S.TaggedErrorClass<InProgressTableRestoreQuotaExceededFault>()(
-  "InProgressTableRestoreQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InProgressTableRestoreQuotaExceededFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidTableRestoreArgumentFault extends S.TaggedErrorClass<InvalidTableRestoreArgumentFault>()(
-  "InvalidTableRestoreArgumentFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidTableRestoreArgument",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class AuthorizationNotFoundFault extends S.TaggedErrorClass<AuthorizationNotFoundFault>()(
-  "AuthorizationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class EndpointAuthorizationNotFoundFault extends S.TaggedErrorClass<EndpointAuthorizationNotFoundFault>()(
-  "EndpointAuthorizationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "EndpointAuthorizationNotFound",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+  ),
+).annotate({
+  identifier: "UpdatePartnerStatusInputMessage",
+}) as any as S.Schema<UpdatePartnerStatusInputMessage>;
+export type ExceptionMessage = string;
 export type AcceptReservedNodeExchangeError =
   | DependentServiceUnavailableFault
   | InvalidReservedNodeStateFault
@@ -8520,8 +8883,11 @@ export const acceptReservedNodeExchange: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptReservedNodeExchange",
 }));
+
 export type AddPartnerError =
   | ClusterNotFoundFault
   | PartnerNotFoundFault
@@ -8547,8 +8913,11 @@ export const addPartner: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPartner",
 }));
+
 export type AssociateDataShareConsumerError =
   | InvalidDataShareFault
   | InvalidNamespaceFault
@@ -8567,8 +8936,11 @@ export const associateDataShareConsumer: API.OperationMethod<
   input: AssociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDataShareConsumer",
 }));
+
 export type AuthorizeClusterSecurityGroupIngressError =
   | AuthorizationAlreadyExistsFault
   | AuthorizationQuotaExceededFault
@@ -8610,8 +8982,11 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeClusterSecurityGroupIngress",
 }));
+
 export type AuthorizeDataShareError = InvalidDataShareFault | CommonErrors;
 /**
  * From a data producer account, authorizes the sharing of a datashare with one or more
@@ -8627,8 +9002,11 @@ export const authorizeDataShare: API.OperationMethod<
   input: AuthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeDataShare",
 }));
+
 export type AuthorizeEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointAuthorizationAlreadyExistsFault
@@ -8656,8 +9034,11 @@ export const authorizeEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeEndpointAccess",
 }));
+
 export type AuthorizeSnapshotAccessError =
   | AuthorizationAlreadyExistsFault
   | AuthorizationQuotaExceededFault
@@ -8692,8 +9073,11 @@ export const authorizeSnapshotAccess: API.OperationMethod<
     LimitExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeSnapshotAccess",
 }));
+
 export type BatchDeleteClusterSnapshotsError =
   | BatchDeleteRequestSizeExceededFault
   | CommonErrors;
@@ -8709,8 +9093,11 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   input: BatchDeleteClusterSnapshotsRequest,
   output: BatchDeleteClusterSnapshotsResult,
   errors: [BatchDeleteRequestSizeExceededFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteClusterSnapshots",
 }));
+
 export type BatchModifyClusterSnapshotsError =
   | BatchModifyClusterSnapshotsLimitExceededFault
   | InvalidRetentionPeriodFault
@@ -8730,8 +9117,11 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
     BatchModifyClusterSnapshotsLimitExceededFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchModifyClusterSnapshots",
 }));
+
 export type CancelResizeError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -8755,8 +9145,11 @@ export const cancelResize: API.OperationMethod<
     ResizeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelResize",
 }));
+
 export type CopyClusterSnapshotError =
   | ClusterNotFoundFault
   | ClusterSnapshotAlreadyExistsFault
@@ -8796,8 +9189,11 @@ export const copyClusterSnapshot: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyClusterSnapshot",
 }));
+
 export type CreateAuthenticationProfileError =
   | AuthenticationProfileAlreadyExistsFault
   | AuthenticationProfileQuotaExceededFault
@@ -8819,8 +9215,11 @@ export const createAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileQuotaExceededFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAuthenticationProfile",
 }));
+
 export type CreateClusterError =
   | ClusterAlreadyExistsFault
   | ClusterParameterGroupNotFoundFault
@@ -8915,8 +9314,11 @@ export const createCluster: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateClusterParameterGroupError =
   | ClusterParameterGroupAlreadyExistsFault
   | ClusterParameterGroupQuotaExceededFault
@@ -8950,8 +9352,11 @@ export const createClusterParameterGroup: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterParameterGroup",
 }));
+
 export type CreateClusterSecurityGroupError =
   | ClusterSecurityGroupAlreadyExistsFault
   | ClusterSecurityGroupQuotaExceededFault
@@ -8980,8 +9385,11 @@ export const createClusterSecurityGroup: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSecurityGroup",
 }));
+
 export type CreateClusterSnapshotError =
   | ClusterNotFoundFault
   | ClusterSnapshotAlreadyExistsFault
@@ -9016,8 +9424,11 @@ export const createClusterSnapshot: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSnapshot",
 }));
+
 export type CreateClusterSubnetGroupError =
   | ClusterSubnetGroupAlreadyExistsFault
   | ClusterSubnetGroupQuotaExceededFault
@@ -9055,8 +9466,11 @@ export const createClusterSubnetGroup: API.OperationMethod<
     TagLimitExceededFault,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSubnetGroup",
 }));
+
 export type CreateCustomDomainAssociationError =
   | ClusterNotFoundFault
   | CustomCnameAssociationFault
@@ -9079,8 +9493,11 @@ export const createCustomDomainAssociation: API.OperationMethod<
     CustomCnameAssociationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomDomainAssociation",
 }));
+
 export type CreateEndpointAccessError =
   | AccessToClusterDeniedFault
   | ClusterNotFoundFault
@@ -9116,8 +9533,11 @@ export const createEndpointAccess: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpointAccess",
 }));
+
 export type CreateEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
   | InvalidTagFault
@@ -9173,8 +9593,11 @@ export const createEventSubscription: API.OperationMethod<
     SubscriptionSeverityNotFoundFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSubscription",
 }));
+
 export type CreateHsmClientCertificateError =
   | HsmClientCertificateAlreadyExistsFault
   | HsmClientCertificateQuotaExceededFault
@@ -9206,8 +9629,11 @@ export const createHsmClientCertificate: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHsmClientCertificate",
 }));
+
 export type CreateHsmConfigurationError =
   | HsmConfigurationAlreadyExistsFault
   | HsmConfigurationQuotaExceededFault
@@ -9238,8 +9664,11 @@ export const createHsmConfiguration: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHsmConfiguration",
 }));
+
 export type CreateIntegrationError =
   | IntegrationAlreadyExistsFault
   | IntegrationConflictOperationFault
@@ -9273,8 +9702,11 @@ export const createIntegration: API.OperationMethod<
     TagLimitExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegration",
 }));
+
 export type CreateRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -9304,8 +9736,11 @@ export const createRedshiftIdcApplication: API.OperationMethod<
     TagLimitExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRedshiftIdcApplication",
 }));
+
 export type CreateScheduledActionError =
   | ClusterNotFoundFault
   | InvalidScheduledActionFault
@@ -9338,8 +9773,11 @@ export const createScheduledAction: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledAction",
 }));
+
 export type CreateSnapshotCopyGrantError =
   | DependentServiceRequestThrottlingFault
   | InvalidTagFault
@@ -9373,8 +9811,11 @@ export const createSnapshotCopyGrant: API.OperationMethod<
     SnapshotCopyGrantQuotaExceededFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshotCopyGrant",
 }));
+
 export type CreateSnapshotScheduleError =
   | InvalidScheduleFault
   | InvalidTagFault
@@ -9402,8 +9843,11 @@ export const createSnapshotSchedule: API.OperationMethod<
     SnapshotScheduleQuotaExceededFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshotSchedule",
 }));
+
 export type CreateTagsError =
   | InvalidClusterStateFault
   | InvalidTagFault
@@ -9433,8 +9877,11 @@ export const createTags: API.OperationMethod<
     ResourceNotFoundFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type CreateUsageLimitError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -9465,8 +9912,11 @@ export const createUsageLimit: API.OperationMethod<
     UnsupportedOperationFault,
     UsageLimitAlreadyExistsFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsageLimit",
 }));
+
 export type DeauthorizeDataShareError = InvalidDataShareFault | CommonErrors;
 /**
  * From a datashare producer account, removes authorization from the specified datashare.
@@ -9480,8 +9930,11 @@ export const deauthorizeDataShare: API.OperationMethod<
   input: DeauthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeauthorizeDataShare",
 }));
+
 export type DeleteAuthenticationProfileError =
   | AuthenticationProfileNotFoundFault
   | InvalidAuthenticationProfileRequestFault
@@ -9501,8 +9954,11 @@ export const deleteAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileNotFoundFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAuthenticationProfile",
 }));
+
 export type DeleteClusterError =
   | ClusterNotFoundFault
   | ClusterSnapshotAlreadyExistsFault
@@ -9544,8 +10000,11 @@ export const deleteCluster: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
   | InvalidClusterParameterGroupStateFault
@@ -9568,8 +10027,11 @@ export const deleteClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterParameterGroup",
 }));
+
 export type DeleteClusterSecurityGroupError =
   | ClusterSecurityGroupNotFoundFault
   | InvalidClusterSecurityGroupStateFault
@@ -9596,8 +10058,11 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSecurityGroup",
 }));
+
 export type DeleteClusterSnapshotError =
   | ClusterSnapshotNotFoundFault
   | InvalidClusterSnapshotStateFault
@@ -9621,8 +10086,11 @@ export const deleteClusterSnapshot: API.OperationMethod<
   input: DeleteClusterSnapshotMessage,
   output: DeleteClusterSnapshotResult,
   errors: [ClusterSnapshotNotFoundFault, InvalidClusterSnapshotStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSnapshot",
 }));
+
 export type DeleteClusterSubnetGroupError =
   | ClusterSubnetGroupNotFoundFault
   | InvalidClusterSubnetGroupStateFault
@@ -9644,8 +10112,11 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
     InvalidClusterSubnetGroupStateFault,
     InvalidClusterSubnetStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSubnetGroup",
 }));
+
 export type DeleteCustomDomainAssociationError =
   | ClusterNotFoundFault
   | CustomCnameAssociationFault
@@ -9669,8 +10140,11 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
     CustomDomainAssociationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomDomainAssociation",
 }));
+
 export type DeleteEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointNotFoundFault
@@ -9696,8 +10170,11 @@ export const deleteEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidEndpointStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpointAccess",
 }));
+
 export type DeleteEventSubscriptionError =
   | InvalidSubscriptionStateFault
   | SubscriptionNotFoundFault
@@ -9714,8 +10191,11 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [InvalidSubscriptionStateFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
+
 export type DeleteHsmClientCertificateError =
   | HsmClientCertificateNotFoundFault
   | InvalidHsmClientCertificateStateFault
@@ -9735,8 +10215,11 @@ export const deleteHsmClientCertificate: API.OperationMethod<
     HsmClientCertificateNotFoundFault,
     InvalidHsmClientCertificateStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHsmClientCertificate",
 }));
+
 export type DeleteHsmConfigurationError =
   | HsmConfigurationNotFoundFault
   | InvalidHsmConfigurationStateFault
@@ -9753,8 +10236,11 @@ export const deleteHsmConfiguration: API.OperationMethod<
   input: DeleteHsmConfigurationMessage,
   output: DeleteHsmConfigurationResponse,
   errors: [HsmConfigurationNotFoundFault, InvalidHsmConfigurationStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHsmConfiguration",
 }));
+
 export type DeleteIntegrationError =
   | IntegrationConflictOperationFault
   | IntegrationConflictStateFault
@@ -9778,8 +10264,11 @@ export const deleteIntegration: API.OperationMethod<
     IntegrationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
+
 export type DeletePartnerError =
   | ClusterNotFoundFault
   | PartnerNotFoundFault
@@ -9803,8 +10292,11 @@ export const deletePartner: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartner",
 }));
+
 export type DeleteRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -9828,8 +10320,11 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRedshiftIdcApplication",
 }));
+
 export type DeleteResourcePolicyError =
   | ResourceNotFoundFault
   | UnsupportedOperationFault
@@ -9846,8 +10341,11 @@ export const deleteResourcePolicy: API.OperationMethod<
   input: DeleteResourcePolicyMessage,
   output: DeleteResourcePolicyResponse,
   errors: [ResourceNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteScheduledActionError =
   | ScheduledActionNotFoundFault
   | UnauthorizedOperation
@@ -9864,8 +10362,11 @@ export const deleteScheduledAction: API.OperationMethod<
   input: DeleteScheduledActionMessage,
   output: DeleteScheduledActionResponse,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledAction",
 }));
+
 export type DeleteSnapshotCopyGrantError =
   | InvalidSnapshotCopyGrantStateFault
   | SnapshotCopyGrantNotFoundFault
@@ -9882,8 +10383,11 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   input: DeleteSnapshotCopyGrantMessage,
   output: DeleteSnapshotCopyGrantResponse,
   errors: [InvalidSnapshotCopyGrantStateFault, SnapshotCopyGrantNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshotCopyGrant",
 }));
+
 export type DeleteSnapshotScheduleError =
   | InvalidClusterSnapshotScheduleStateFault
   | SnapshotScheduleNotFoundFault
@@ -9903,8 +10407,11 @@ export const deleteSnapshotSchedule: API.OperationMethod<
     InvalidClusterSnapshotScheduleStateFault,
     SnapshotScheduleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshotSchedule",
 }));
+
 export type DeleteTagsError =
   | InvalidTagFault
   | ResourceNotFoundFault
@@ -9922,8 +10429,11 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsMessage,
   output: DeleteTagsResponse,
   errors: [InvalidTagFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteUsageLimitError =
   | UnsupportedOperationFault
   | UsageLimitNotFoundFault
@@ -9940,8 +10450,11 @@ export const deleteUsageLimit: API.OperationMethod<
   input: DeleteUsageLimitMessage,
   output: DeleteUsageLimitResponse,
   errors: [UnsupportedOperationFault, UsageLimitNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsageLimit",
 }));
+
 export type DeregisterNamespaceError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -9963,8 +10476,11 @@ export const deregisterNamespace: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidNamespaceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterNamespace",
 }));
+
 export type DescribeAccountAttributesError = CommonErrors;
 /**
  * Returns a list of attributes attached to an account
@@ -9978,8 +10494,11 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesMessage,
   output: AccountAttributeList,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
+
 export type DescribeAuthenticationProfilesError =
   | AuthenticationProfileNotFoundFault
   | InvalidAuthenticationProfileRequestFault
@@ -9999,8 +10518,11 @@ export const describeAuthenticationProfiles: API.OperationMethod<
     AuthenticationProfileNotFoundFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuthenticationProfiles",
 }));
+
 export type DescribeClusterDbRevisionsError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -10032,6 +10554,8 @@ export const describeClusterDbRevisions: API.OperationMethod<
   input: DescribeClusterDbRevisionsMessage,
   output: ClusterDbRevisionsMessage,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterDbRevisions",
   pagination: {
     inputToken: "Marker",
@@ -10040,6 +10564,7 @@ export const describeClusterDbRevisions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterParameterGroupsError =
   | ClusterParameterGroupNotFoundFault
   | InvalidTagFault
@@ -10089,6 +10614,8 @@ export const describeClusterParameterGroups: API.OperationMethod<
   input: DescribeClusterParameterGroupsMessage,
   output: ClusterParameterGroupsMessage,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterParameterGroups",
   pagination: {
     inputToken: "Marker",
@@ -10097,6 +10624,7 @@ export const describeClusterParameterGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterParametersError =
   | ClusterParameterGroupNotFoundFault
   | CommonErrors;
@@ -10139,6 +10667,8 @@ export const describeClusterParameters: API.OperationMethod<
   input: DescribeClusterParametersMessage,
   output: ClusterParameterGroupDetails,
   errors: [ClusterParameterGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterParameters",
   pagination: {
     inputToken: "Marker",
@@ -10147,6 +10677,7 @@ export const describeClusterParameters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClustersError =
   | ClusterNotFoundFault
   | InvalidTagFault
@@ -10192,6 +10723,8 @@ export const describeClusters: API.OperationMethod<
   input: DescribeClustersMessage,
   output: ClustersMessage,
   errors: [ClusterNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
   pagination: {
     inputToken: "Marker",
@@ -10200,6 +10733,7 @@ export const describeClusters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterSecurityGroupsError =
   | ClusterSecurityGroupNotFoundFault
   | InvalidTagFault
@@ -10247,6 +10781,8 @@ export const describeClusterSecurityGroups: API.OperationMethod<
   input: DescribeClusterSecurityGroupsMessage,
   output: ClusterSecurityGroupMessage,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSecurityGroups",
   pagination: {
     inputToken: "Marker",
@@ -10255,6 +10791,7 @@ export const describeClusterSecurityGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterSnapshotsError =
   | ClusterNotFoundFault
   | ClusterSnapshotNotFoundFault
@@ -10307,6 +10844,8 @@ export const describeClusterSnapshots: API.OperationMethod<
     InvalidTagFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSnapshots",
   pagination: {
     inputToken: "Marker",
@@ -10315,6 +10854,7 @@ export const describeClusterSnapshots: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterSubnetGroupsError =
   | ClusterSubnetGroupNotFoundFault
   | InvalidTagFault
@@ -10358,6 +10898,8 @@ export const describeClusterSubnetGroups: API.OperationMethod<
   input: DescribeClusterSubnetGroupsMessage,
   output: ClusterSubnetGroupMessage,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -10366,6 +10908,7 @@ export const describeClusterSubnetGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterTracksError =
   | InvalidClusterTrackFault
   | UnauthorizedOperation
@@ -10397,6 +10940,8 @@ export const describeClusterTracks: API.OperationMethod<
   input: DescribeClusterTracksMessage,
   output: TrackListMessage,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterTracks",
   pagination: {
     inputToken: "Marker",
@@ -10405,6 +10950,7 @@ export const describeClusterTracks: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterVersionsError = CommonErrors;
 /**
  * Returns descriptions of the available Amazon Redshift cluster versions. You can call this
@@ -10438,6 +10984,8 @@ export const describeClusterVersions: API.OperationMethod<
   input: DescribeClusterVersionsMessage,
   output: ClusterVersionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterVersions",
   pagination: {
     inputToken: "Marker",
@@ -10446,6 +10994,7 @@ export const describeClusterVersions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeCustomDomainAssociationsError =
   | CustomDomainAssociationNotFoundFault
   | UnsupportedOperationFault
@@ -10477,6 +11026,8 @@ export const describeCustomDomainAssociations: API.OperationMethod<
   input: DescribeCustomDomainAssociationsMessage,
   output: CustomDomainAssociationsMessage,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomDomainAssociations",
   pagination: {
     inputToken: "Marker",
@@ -10485,6 +11036,7 @@ export const describeCustomDomainAssociations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataSharesError = InvalidDataShareFault | CommonErrors;
 /**
  * Shows the status of any inbound or outbound datashares available in the specified
@@ -10514,6 +11066,8 @@ export const describeDataShares: API.OperationMethod<
   input: DescribeDataSharesMessage,
   output: DescribeDataSharesResult,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataShares",
   pagination: {
     inputToken: "Marker",
@@ -10522,6 +11076,7 @@ export const describeDataShares: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataSharesForConsumerError =
   | InvalidNamespaceFault
   | CommonErrors;
@@ -10552,6 +11107,8 @@ export const describeDataSharesForConsumer: API.OperationMethod<
   input: DescribeDataSharesForConsumerMessage,
   output: DescribeDataSharesForConsumerResult,
   errors: [InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSharesForConsumer",
   pagination: {
     inputToken: "Marker",
@@ -10560,6 +11117,7 @@ export const describeDataSharesForConsumer: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataSharesForProducerError =
   | InvalidNamespaceFault
   | CommonErrors;
@@ -10590,6 +11148,8 @@ export const describeDataSharesForProducer: API.OperationMethod<
   input: DescribeDataSharesForProducerMessage,
   output: DescribeDataSharesForProducerResult,
   errors: [InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSharesForProducer",
   pagination: {
     inputToken: "Marker",
@@ -10598,6 +11158,7 @@ export const describeDataSharesForProducer: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDefaultClusterParametersError = CommonErrors;
 /**
  * Returns a list of parameter settings for the specified parameter group
@@ -10631,6 +11192,8 @@ export const describeDefaultClusterParameters: API.OperationMethod<
   input: DescribeDefaultClusterParametersMessage,
   output: DescribeDefaultClusterParametersResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultClusterParameters",
   pagination: {
     inputToken: "Marker",
@@ -10639,6 +11202,7 @@ export const describeDefaultClusterParameters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointNotFoundFault
@@ -10675,6 +11239,8 @@ export const describeEndpointAccess: API.OperationMethod<
     EndpointNotFoundFault,
     InvalidClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointAccess",
   pagination: {
     inputToken: "Marker",
@@ -10683,6 +11249,7 @@ export const describeEndpointAccess: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointAuthorizationError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -10714,6 +11281,8 @@ export const describeEndpointAuthorization: API.OperationMethod<
   input: DescribeEndpointAuthorizationMessage,
   output: EndpointAuthorizationList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointAuthorization",
   pagination: {
     inputToken: "Marker",
@@ -10722,6 +11291,7 @@ export const describeEndpointAuthorization: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventCategoriesError = CommonErrors;
 /**
  * Displays a list of event categories for all event source types, or for a specified
@@ -10737,8 +11307,11 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventCategories",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Returns events related to clusters, security groups, snapshots, and parameter
@@ -10770,6 +11343,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -10778,6 +11353,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventSubscriptionsError =
   | InvalidTagFault
   | SubscriptionNotFoundFault
@@ -10821,6 +11397,8 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -10829,6 +11407,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeHsmClientCertificatesError =
   | HsmClientCertificateNotFoundFault
   | InvalidTagFault
@@ -10871,6 +11450,8 @@ export const describeHsmClientCertificates: API.OperationMethod<
   input: DescribeHsmClientCertificatesMessage,
   output: HsmClientCertificateMessage,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHsmClientCertificates",
   pagination: {
     inputToken: "Marker",
@@ -10879,6 +11460,7 @@ export const describeHsmClientCertificates: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeHsmConfigurationsError =
   | HsmConfigurationNotFoundFault
   | InvalidTagFault
@@ -10922,6 +11504,8 @@ export const describeHsmConfigurations: API.OperationMethod<
   input: DescribeHsmConfigurationsMessage,
   output: HsmConfigurationMessage,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHsmConfigurations",
   pagination: {
     inputToken: "Marker",
@@ -10930,6 +11514,7 @@ export const describeHsmConfigurations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeInboundIntegrationsError =
   | IntegrationNotFoundFault
   | InvalidNamespaceFault
@@ -10966,6 +11551,8 @@ export const describeInboundIntegrations: API.OperationMethod<
     InvalidNamespaceFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInboundIntegrations",
   pagination: {
     inputToken: "Marker",
@@ -10974,6 +11561,7 @@ export const describeInboundIntegrations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeIntegrationsError =
   | IntegrationNotFoundFault
   | UnsupportedOperationFault
@@ -11005,6 +11593,8 @@ export const describeIntegrations: API.OperationMethod<
   input: DescribeIntegrationsMessage,
   output: IntegrationsMessage,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIntegrations",
   pagination: {
     inputToken: "Marker",
@@ -11013,6 +11603,7 @@ export const describeIntegrations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeLoggingStatusError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -11030,8 +11621,11 @@ export const describeLoggingStatus: API.OperationMethod<
   input: DescribeLoggingStatusMessage,
   output: LoggingStatus,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingStatus",
 }));
+
 export type DescribeNodeConfigurationOptionsError =
   | AccessToSnapshotDeniedFault
   | ClusterNotFoundFault
@@ -11073,6 +11667,8 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNodeConfigurationOptions",
   pagination: {
     inputToken: "Marker",
@@ -11081,6 +11677,7 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeOrderableClusterOptionsError = CommonErrors;
 /**
  * Returns a list of orderable cluster options. Before you create a new cluster you
@@ -11117,6 +11714,8 @@ export const describeOrderableClusterOptions: API.OperationMethod<
   input: DescribeOrderableClusterOptionsMessage,
   output: OrderableClusterOptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrderableClusterOptions",
   pagination: {
     inputToken: "Marker",
@@ -11125,6 +11724,7 @@ export const describeOrderableClusterOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribePartnersError =
   | ClusterNotFoundFault
   | UnauthorizedPartnerIntegrationFault
@@ -11146,8 +11746,11 @@ export const describePartners: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePartners",
 }));
+
 export type DescribeRedshiftIdcApplicationsError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -11186,6 +11789,8 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRedshiftIdcApplications",
   pagination: {
     inputToken: "Marker",
@@ -11194,6 +11799,7 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReservedNodeExchangeStatusError =
   | ReservedNodeExchangeNotFoundFault
   | ReservedNodeNotFoundFault
@@ -11231,6 +11837,8 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     ReservedNodeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodeExchangeStatus",
   pagination: {
     inputToken: "Marker",
@@ -11239,6 +11847,7 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReservedNodeOfferingsError =
   | DependentServiceUnavailableFault
   | ReservedNodeOfferingNotFoundFault
@@ -11284,6 +11893,8 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodeOfferings",
   pagination: {
     inputToken: "Marker",
@@ -11292,6 +11903,7 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReservedNodesError =
   | DependentServiceUnavailableFault
   | ReservedNodeNotFoundFault
@@ -11323,6 +11935,8 @@ export const describeReservedNodes: API.OperationMethod<
   input: DescribeReservedNodesMessage,
   output: ReservedNodesMessage,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodes",
   pagination: {
     inputToken: "Marker",
@@ -11331,6 +11945,7 @@ export const describeReservedNodes: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeResizeError =
   | ClusterNotFoundFault
   | ResizeNotFoundFault
@@ -11358,8 +11973,11 @@ export const describeResize: API.OperationMethod<
     ResizeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResize",
 }));
+
 export type DescribeScheduledActionsError =
   | ScheduledActionNotFoundFault
   | UnauthorizedOperation
@@ -11391,6 +12009,8 @@ export const describeScheduledActions: API.OperationMethod<
   input: DescribeScheduledActionsMessage,
   output: ScheduledActionsMessage,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "Marker",
@@ -11399,6 +12019,7 @@ export const describeScheduledActions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeSnapshotCopyGrantsError =
   | InvalidTagFault
   | SnapshotCopyGrantNotFoundFault
@@ -11435,6 +12056,8 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
   input: DescribeSnapshotCopyGrantsMessage,
   output: SnapshotCopyGrantMessage,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotCopyGrants",
   pagination: {
     inputToken: "Marker",
@@ -11443,6 +12066,7 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeSnapshotSchedulesError = CommonErrors;
 /**
  * Returns a list of snapshot schedules.
@@ -11471,6 +12095,8 @@ export const describeSnapshotSchedules: API.OperationMethod<
   input: DescribeSnapshotSchedulesMessage,
   output: DescribeSnapshotSchedulesOutputMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotSchedules",
   pagination: {
     inputToken: "Marker",
@@ -11479,6 +12105,7 @@ export const describeSnapshotSchedules: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeStorageError = CommonErrors;
 /**
  * Returns account level backups storage size and provisional storage.
@@ -11492,8 +12119,11 @@ export const describeStorage: API.OperationMethod<
   input: DescribeStorageRequest,
   output: CustomerStorageMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStorage",
 }));
+
 export type DescribeTableRestoreStatusError =
   | ClusterNotFoundFault
   | TableRestoreNotFoundFault
@@ -11530,6 +12160,8 @@ export const describeTableRestoreStatus: API.OperationMethod<
   input: DescribeTableRestoreStatusMessage,
   output: TableRestoreStatusMessage,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTableRestoreStatus",
   pagination: {
     inputToken: "Marker",
@@ -11538,6 +12170,7 @@ export const describeTableRestoreStatus: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeTagsError =
   | InvalidTagFault
   | ResourceNotFoundFault
@@ -11591,6 +12224,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsMessage,
   output: TaggedResourceListMessage,
   errors: [InvalidTagFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
   pagination: {
     inputToken: "Marker",
@@ -11599,6 +12234,7 @@ export const describeTags: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeUsageLimitsError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -11643,6 +12279,8 @@ export const describeUsageLimits: API.OperationMethod<
   input: DescribeUsageLimitsMessage,
   output: UsageLimitList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsageLimits",
   pagination: {
     inputToken: "Marker",
@@ -11651,6 +12289,7 @@ export const describeUsageLimits: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DisableLoggingError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -11673,8 +12312,11 @@ export const disableLogging: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableLogging",
 }));
+
 export type DisableSnapshotCopyError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -11705,8 +12347,11 @@ export const disableSnapshotCopy: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSnapshotCopy",
 }));
+
 export type DisassociateDataShareConsumerError =
   | InvalidDataShareFault
   | InvalidNamespaceFault
@@ -11723,8 +12368,11 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   input: DisassociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDataShareConsumer",
 }));
+
 export type EnableLoggingError =
   | BucketNotFoundFault
   | ClusterNotFoundFault
@@ -11755,8 +12403,11 @@ export const enableLogging: API.OperationMethod<
     InvalidS3KeyPrefixFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableLogging",
 }));
+
 export type EnableSnapshotCopyError =
   | ClusterNotFoundFault
   | CopyToRegionDisabledFault
@@ -11795,8 +12446,11 @@ export const enableSnapshotCopy: API.OperationMethod<
     UnauthorizedOperation,
     UnknownSnapshotCopyRegionFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSnapshotCopy",
 }));
+
 export type FailoverPrimaryComputeError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -11820,8 +12474,11 @@ export const failoverPrimaryCompute: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverPrimaryCompute",
 }));
+
 export type GetClusterCredentialsError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -11862,8 +12519,11 @@ export const getClusterCredentials: API.OperationMethod<
   input: GetClusterCredentialsMessage,
   output: ClusterCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterCredentials",
 }));
+
 export type GetClusterCredentialsWithIAMError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -11890,8 +12550,11 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   input: GetClusterCredentialsWithIAMMessage,
   output: ClusterExtendedCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterCredentialsWithIAM",
 }));
+
 export type GetIdentityCenterAuthTokenError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -11926,8 +12589,11 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
     RedshiftInvalidParameterFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityCenterAuthToken",
 }));
+
 export type GetReservedNodeExchangeConfigurationOptionsError =
   | ClusterNotFoundFault
   | ClusterSnapshotNotFoundFault
@@ -11976,6 +12642,8 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservedNodeExchangeConfigurationOptions",
   pagination: {
     inputToken: "Marker",
@@ -11984,6 +12652,7 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type GetReservedNodeExchangeOfferingsError =
   | DependentServiceUnavailableFault
   | InvalidReservedNodeStateFault
@@ -12027,6 +12696,8 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservedNodeExchangeOfferings",
   pagination: {
     inputToken: "Marker",
@@ -12035,6 +12706,7 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type GetResourcePolicyError =
   | InvalidPolicyFault
   | ResourceNotFoundFault
@@ -12056,8 +12728,11 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListRecommendationsError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -12089,6 +12764,8 @@ export const listRecommendations: API.OperationMethod<
   input: ListRecommendationsMessage,
   output: ListRecommendationsResult,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "Marker",
@@ -12097,6 +12774,7 @@ export const listRecommendations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type ModifyAquaConfigurationError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12118,8 +12796,11 @@ export const modifyAquaConfiguration: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAquaConfiguration",
 }));
+
 export type ModifyAuthenticationProfileError =
   | AuthenticationProfileNotFoundFault
   | AuthenticationProfileQuotaExceededFault
@@ -12141,8 +12822,11 @@ export const modifyAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileQuotaExceededFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAuthenticationProfile",
 }));
+
 export type ModifyClusterError =
   | ClusterAlreadyExistsFault
   | ClusterNotFoundFault
@@ -12230,8 +12914,11 @@ export const modifyCluster: API.OperationMethod<
     UnsupportedOperationFault,
     UnsupportedOptionFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCluster",
 }));
+
 export type ModifyClusterDbRevisionError =
   | ClusterNotFoundFault
   | ClusterOnLatestRevisionFault
@@ -12256,8 +12943,11 @@ export const modifyClusterDbRevision: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterDbRevision",
 }));
+
 export type ModifyClusterIamRolesError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12279,8 +12969,11 @@ export const modifyClusterIamRoles: API.OperationMethod<
   input: ModifyClusterIamRolesMessage,
   output: ModifyClusterIamRolesResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterIamRoles",
 }));
+
 export type ModifyClusterMaintenanceError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12297,8 +12990,11 @@ export const modifyClusterMaintenance: API.OperationMethod<
   input: ModifyClusterMaintenanceMessage,
   output: ModifyClusterMaintenanceResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterMaintenance",
 }));
+
 export type ModifyClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
   | InvalidClusterParameterGroupStateFault
@@ -12322,8 +13018,11 @@ export const modifyClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterParameterGroup",
 }));
+
 export type ModifyClusterSnapshotError =
   | ClusterSnapshotNotFoundFault
   | InvalidClusterSnapshotStateFault
@@ -12347,8 +13046,11 @@ export const modifyClusterSnapshot: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterSnapshot",
 }));
+
 export type ModifyClusterSnapshotScheduleError =
   | ClusterNotFoundFault
   | InvalidClusterSnapshotScheduleStateFault
@@ -12370,8 +13072,11 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
     InvalidClusterSnapshotScheduleStateFault,
     SnapshotScheduleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterSnapshotSchedule",
 }));
+
 export type ModifyClusterSubnetGroupError =
   | ClusterSubnetGroupNotFoundFault
   | ClusterSubnetQuotaExceededFault
@@ -12418,8 +13123,11 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
     SubnetAlreadyInUse,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterSubnetGroup",
 }));
+
 export type ModifyCustomDomainAssociationError =
   | ClusterNotFoundFault
   | CustomCnameAssociationFault
@@ -12443,8 +13151,11 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
     CustomDomainAssociationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCustomDomainAssociation",
 }));
+
 export type ModifyEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointNotFoundFault
@@ -12472,8 +13183,11 @@ export const modifyEndpointAccess: API.OperationMethod<
     InvalidEndpointStateFault,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEndpointAccess",
 }));
+
 export type ModifyEventSubscriptionError =
   | InvalidSubscriptionStateFault
   | SNSInvalidTopicFault
@@ -12507,8 +13221,11 @@ export const modifyEventSubscription: API.OperationMethod<
     SubscriptionNotFoundFault,
     SubscriptionSeverityNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
+
 export type ModifyIntegrationError =
   | IntegrationAlreadyExistsFault
   | IntegrationConflictOperationFault
@@ -12534,8 +13251,11 @@ export const modifyIntegration: API.OperationMethod<
     IntegrationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIntegration",
 }));
+
 export type ModifyLakehouseConfigurationError =
   | ClusterNotFoundFault
   | DependentServiceAccessDeniedFault
@@ -12565,8 +13285,11 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLakehouseConfiguration",
 }));
+
 export type ModifyRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -12590,8 +13313,11 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyRedshiftIdcApplication",
 }));
+
 export type ModifyScheduledActionError =
   | ClusterNotFoundFault
   | InvalidScheduledActionFault
@@ -12621,8 +13347,11 @@ export const modifyScheduledAction: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyScheduledAction",
 }));
+
 export type ModifySnapshotCopyRetentionPeriodError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12654,8 +13383,11 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
     SnapshotCopyDisabledFault,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySnapshotCopyRetentionPeriod",
 }));
+
 export type ModifySnapshotScheduleError =
   | InvalidScheduleFault
   | SnapshotScheduleNotFoundFault
@@ -12678,8 +13410,11 @@ export const modifySnapshotSchedule: API.OperationMethod<
     SnapshotScheduleNotFoundFault,
     SnapshotScheduleUpdateInProgressFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySnapshotSchedule",
 }));
+
 export type ModifyUsageLimitError =
   | InvalidUsageLimitFault
   | UnsupportedOperationFault
@@ -12702,8 +13437,11 @@ export const modifyUsageLimit: API.OperationMethod<
     UnsupportedOperationFault,
     UsageLimitNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyUsageLimit",
 }));
+
 export type PauseClusterError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12725,8 +13463,11 @@ export const pauseCluster: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseCluster",
 }));
+
 export type PurchaseReservedNodeOfferingError =
   | ReservedNodeAlreadyExistsFault
   | ReservedNodeOfferingNotFoundFault
@@ -12758,8 +13499,11 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
     ReservedNodeQuotaExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedNodeOffering",
 }));
+
 export type PutResourcePolicyError =
   | ConflictPolicyUpdateFault
   | InvalidPolicyFault
@@ -12783,8 +13527,11 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RebootClusterError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12808,8 +13555,11 @@ export const rebootCluster: API.OperationMethod<
   input: RebootClusterMessage,
   output: RebootClusterResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootCluster",
 }));
+
 export type RegisterNamespaceError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12831,8 +13581,11 @@ export const registerNamespace: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidNamespaceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterNamespace",
 }));
+
 export type RejectDataShareError = InvalidDataShareFault | CommonErrors;
 /**
  * From a datashare consumer account, rejects the specified datashare.
@@ -12846,8 +13599,11 @@ export const rejectDataShare: API.OperationMethod<
   input: RejectDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectDataShare",
 }));
+
 export type ResetClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
   | InvalidClusterParameterGroupStateFault
@@ -12870,8 +13626,11 @@ export const resetClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetClusterParameterGroup",
 }));
+
 export type ResizeClusterError =
   | ClusterNotFoundFault
   | DependentServiceUnavailableFault
@@ -12943,8 +13702,11 @@ export const resizeCluster: API.OperationMethod<
     UnsupportedOperationFault,
     UnsupportedOptionFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResizeCluster",
 }));
+
 export type RestoreFromClusterSnapshotError =
   | AccessToSnapshotDeniedFault
   | ClusterAlreadyExistsFault
@@ -13060,8 +13822,11 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreFromClusterSnapshot",
 }));
+
 export type RestoreTableFromClusterSnapshotError =
   | ClusterNotFoundFault
   | ClusterSnapshotNotFoundFault
@@ -13106,8 +13871,11 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
     InvalidTableRestoreArgumentFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableFromClusterSnapshot",
 }));
+
 export type ResumeClusterError =
   | ClusterNotFoundFault
   | InsufficientClusterCapacityFault
@@ -13131,8 +13899,11 @@ export const resumeCluster: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeCluster",
 }));
+
 export type RevokeClusterSecurityGroupIngressError =
   | AuthorizationNotFoundFault
   | ClusterSecurityGroupNotFoundFault
@@ -13158,8 +13929,11 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeClusterSecurityGroupIngress",
 }));
+
 export type RevokeEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointAuthorizationNotFoundFault
@@ -13189,8 +13963,11 @@ export const revokeEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidEndpointStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeEndpointAccess",
 }));
+
 export type RevokeSnapshotAccessError =
   | AccessToSnapshotDeniedFault
   | AuthorizationNotFoundFault
@@ -13220,8 +13997,11 @@ export const revokeSnapshotAccess: API.OperationMethod<
     ClusterSnapshotNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSnapshotAccess",
 }));
+
 export type RotateEncryptionKeyError =
   | ClusterNotFoundFault
   | DependentServiceRequestThrottlingFault
@@ -13245,8 +14025,11 @@ export const rotateEncryptionKey: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateEncryptionKey",
 }));
+
 export type UpdatePartnerStatusError =
   | ClusterNotFoundFault
   | PartnerNotFoundFault
@@ -13270,5 +14053,7 @@ export const updatePartnerStatus: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePartnerStatus",
 }));

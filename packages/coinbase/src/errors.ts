@@ -32,7 +32,15 @@ export {
   DEFAULT_ERRORS,
   API_ERRORS,
 } from "@distilled.cloud/core/errors";
-export type { DefaultErrors } from "@distilled.cloud/core/errors";
+import type {
+  BadRequest as CoreBadRequest,
+  Conflict as CoreConflict,
+  DefaultErrors as CoreDefaultErrors,
+  Forbidden as CoreForbidden,
+  Locked as CoreLocked,
+  NotFound as CoreNotFound,
+  UnprocessableEntity as CoreUnprocessableEntity,
+} from "@distilled.cloud/core/errors";
 
 import {
   BadGateway,
@@ -579,7 +587,7 @@ export const STANDARD_ERROR_TYPE_MAP: Record<
 
 /**
  * Maps Coinbase-specific `errorType` values to their corresponding error classes.
- * Used by the client's matchError function for type-based error dispatching.
+ * Used by the protocol's matchError function for type-based error dispatching.
  */
 export const ERROR_TYPE_MAP: Record<string, new (props: any) => unknown> = {
   // Resource conflicts
@@ -692,3 +700,85 @@ export class CoinbaseParseError extends Schema.TaggedErrorClass<CoinbaseParseErr
     cause: Schema.Unknown,
   },
 ).pipe(Category.withParseError) {}
+
+// ============================================================================
+// Error unions (the error channel of every generated operation)
+// ============================================================================
+
+/**
+ * All Coinbase CDP typed errors that `errorType` dispatch can produce.
+ */
+export type CoinbaseTypedErrors =
+  | PaymentRequired
+  | IdempotencyError
+  | AlreadyExists
+  | FaucetLimitExceeded
+  | InvalidSqlQuery
+  | InvalidSignature
+  | MalformedTransaction
+  | SettlementFailed
+  | TimedOut
+  | ClientClosedRequest
+  | RequestCanceled
+  | PolicyViolation
+  | PolicyInUse
+  | AccountLimitExceeded
+  | InsufficientBalance
+  | AccountNotReady
+  | MfaRequired
+  | MfaAlreadyEnrolled
+  | MfaInvalidCode
+  | MfaFlowExpired
+  | MfaNotEnrolled
+  | NetworkNotTradable
+  | GuestPermissionDenied
+  | GuestRegionForbidden
+  | GuestTransactionLimit
+  | GuestTransactionCount
+  | PhoneNumberVerificationExpired
+  | DocumentVerificationFailed
+  | RecipientAllowlistViolation
+  | RecipientAllowlistPending
+  | TravelRulesRecipientViolation
+  | TravelRulesFieldMissing
+  | SourceAccountInvalid
+  | TargetAccountInvalid
+  | SourceAccountNotFound
+  | TargetAccountNotFound
+  | SourceAssetNotSupported
+  | TargetAssetNotSupported
+  | TransferAssetNotSupported
+  | AssetMismatch
+  | TargetEmailInvalid
+  | TargetOnchainAddressInvalid
+  | TransferAmountInvalid
+  | MetadataTooManyEntries
+  | MetadataKeyTooLong
+  | MetadataValueTooLong
+  | OrderQuoteExpired
+  | OrderAlreadyFilled
+  | OrderAlreadyCanceled;
+
+/**
+ * Errors any Coinbase operation may surface beyond the core HTTP defaults:
+ * the typed CDP errors plus the client-level fallback/decode errors.
+ */
+export type ClientErrors =
+  | CoinbaseTypedErrors
+  | UnknownCoinbaseError
+  | CoinbaseParseError;
+
+/**
+ * Default Coinbase operation errors: the shared HTTP status errors from core
+ * (both the always-possible defaults and the status-mapped 4xx classes the
+ * global matcher can produce) plus the Coinbase client errors.
+ */
+export type DefaultErrors =
+  | CoreDefaultErrors
+  | CoreBadRequest
+  | CoreForbidden
+  | CoreNotFound
+  | CoreConflict
+  | CoreUnprocessableEntity
+  | CoreLocked
+  | ClientErrors;

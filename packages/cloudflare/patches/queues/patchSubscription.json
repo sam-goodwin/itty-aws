@@ -1,7 +1,132 @@
 {
-  "errors": {
-    "UnrecognizedEventType": [{ "code": 0, "message": { "includes": "Unrecognized event types" } }],
-    "SubscriptionNotFound": [{ "status": 404, "message": { "includes": "No subscription with this ID" } }],
-    "QueueNotFound": [{ "status": 404, "message": { "includes": "Queue does not exist" } }]
-  }
+  "description": "Align queues#SubscriptionsUpdate with distilled cloudflare/queues patchSubscription",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#SubscriptionsUpdate",
+      "path": "/shapes/com.cloudflare.queues#PatchSubscription"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#SubscriptionsUpdateRequest",
+      "path": "/shapes/com.cloudflare.queues#PatchSubscriptionRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#PatchSubscription/input/target",
+      "value": "com.cloudflare.queues#PatchSubscriptionRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#SubscriptionsUpdateResponse",
+      "path": "/shapes/com.cloudflare.queues#PatchSubscriptionResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#PatchSubscription/output/target",
+      "value": "com.cloudflare.queues#PatchSubscriptionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#UnrecognizedEventType",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "Unrecognized event types"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#SubscriptionNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404,
+              "message": {
+                "includes": "No subscription with this ID"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#QueueNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 11000
+            },
+            {
+              "code": 0,
+              "message": {
+                "includes": "Queue does not exist"
+              }
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "Queue does not exist"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#PatchSubscription/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.queues#UnrecognizedEventType"
+        },
+        {
+          "target": "com.cloudflare.queues#SubscriptionNotFound"
+        },
+        {
+          "target": "com.cloudflare.queues#QueueNotFound"
+        }
+      ]
+    }
+  ]
 }

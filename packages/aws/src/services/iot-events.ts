@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,79 +84,60 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceArn: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { message: S.optional(S.String) },
+  T.HttpError(501),
+).pipe(C.withServerError) {}
 export type AlarmModelName = string;
 export type AlarmModelDescription = string;
 export type AmazonResourceName = string;
 export type TagKey = string;
 export type TagValue = string;
-export type AttributeJsonPath = string;
-export type Severity = number;
-export type InputProperty = string;
-export type Threshold = string;
-export type ContentExpression = string;
-export type SMSSenderId = string;
-export type NotificationAdditionalMessage = string;
-export type IdentityStoreId = string;
-export type SSOReferenceId = string;
-export type FromEmail = string;
-export type EmailSubject = string;
-export type MQTTTopic = string;
-export type InputName = string;
-export type QueueUrl = string;
-export type UseBase64 = boolean;
-export type DeliveryStreamName = string;
-export type FirehoseSeparator = string;
-export type DynamoKeyType = string;
-export type DynamoKeyField = string;
-export type DynamoKeyValue = string;
-export type DynamoOperation = string;
-export type DynamoTableName = string;
-export type AssetPropertyEntryId = string;
-export type AssetId = string;
-export type AssetPropertyId = string;
-export type AssetPropertyAlias = string;
-export type AssetPropertyStringValue = string;
-export type AssetPropertyIntegerValue = string;
-export type AssetPropertyDoubleValue = string;
-export type AssetPropertyBooleanValue = string;
-export type AssetPropertyTimeInSeconds = string;
-export type AssetPropertyOffsetInNanos = string;
-export type AssetPropertyQuality = string;
-export type DisabledOnInitialization = boolean;
-export type AcknowledgeFlowEnabled = boolean;
-export type AlarmModelArn = string;
-export type AlarmModelVersion = string;
-export type ErrorMessage = string;
-export type ResourceId = string;
-export type ResourceArn = string;
-export type DetectorModelName = string;
-export type StateName = string;
-export type EventName = string;
-export type Condition = string;
-export type VariableName = string;
-export type VariableValue = string;
-export type TimerName = string;
-export type Seconds = number;
-export type DetectorModelDescription = string;
-export type DetectorModelVersion = string;
-export type DetectorModelArn = string;
-export type InputDescription = string;
-export type InputArn = string;
-export type StatusMessage = string;
-export type AnalysisId = string;
-export type LoggingEnabled = boolean;
-export type KeyValue = string;
-export type NextToken = string;
-export type MaxAnalysisResults = number;
-export type AnalysisType = string;
-export type AnalysisMessage = string;
-export type AnalysisResultLocationPath = string;
-export type MaxResults = number;
-export type AssetModelId = string;
-export type ResourceName = string;
-
-//# Schemas
 export interface Tag {
   key: string;
   value: string;
@@ -164,6 +147,9 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
+export type AttributeJsonPath = string;
+export type Severity = number;
+export type InputProperty = string;
 export type ComparisonOperator =
   | "GREATER"
   | "GREATER_OR_EQUAL"
@@ -173,6 +159,8 @@ export type ComparisonOperator =
   | "NOT_EQUAL"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type Threshold = string;
 export interface SimpleRule {
   inputProperty: string;
   comparisonOperator: ComparisonOperator;
@@ -191,8 +179,10 @@ export interface AlarmRule {
 export const AlarmRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ simpleRule: S.optional(SimpleRule) }),
 ).annotate({ identifier: "AlarmRule" }) as any as S.Schema<AlarmRule>;
+export type ContentExpression = string;
 export type PayloadType = "STRING" | "JSON" | (string & {});
 export const PayloadType = /*@__PURE__*/ S.String;
+
 export interface Payload {
   contentExpression: string;
   type: PayloadType;
@@ -215,6 +205,10 @@ export const NotificationTargetActions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationTargetActions",
 }) as any as S.Schema<NotificationTargetActions>;
+export type SMSSenderId = string;
+export type NotificationAdditionalMessage = string;
+export type IdentityStoreId = string;
+export type SSOReferenceId = string;
 export interface SSOIdentity {
   identityStoreId: string;
   userId?: string;
@@ -248,6 +242,8 @@ export const SMSConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SMSConfiguration>;
 export type SMSConfigurations = SMSConfiguration[];
 export const SMSConfigurations = /*@__PURE__*/ S.Array(SMSConfiguration);
+export type FromEmail = string;
+export type EmailSubject = string;
 export interface EmailContent {
   subject?: string;
   additionalMessage?: string;
@@ -315,6 +311,7 @@ export const SNSTopicPublishAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SNSTopicPublishAction",
 }) as any as S.Schema<SNSTopicPublishAction>;
+export type MQTTTopic = string;
 export interface IotTopicPublishAction {
   mqttTopic: string;
   payload?: Payload;
@@ -324,6 +321,7 @@ export const IotTopicPublishAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IotTopicPublishAction",
 }) as any as S.Schema<IotTopicPublishAction>;
+export type InputName = string;
 export interface IotEventsAction {
   inputName: string;
   payload?: Payload;
@@ -333,6 +331,8 @@ export const IotEventsAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IotEventsAction",
 }) as any as S.Schema<IotEventsAction>;
+export type QueueUrl = string;
+export type UseBase64 = boolean;
 export interface SqsAction {
   queueUrl: string;
   useBase64?: boolean;
@@ -345,6 +345,8 @@ export const SqsAction = /*@__PURE__*/ S.suspend(() =>
     payload: S.optional(Payload),
   }),
 ).annotate({ identifier: "SqsAction" }) as any as S.Schema<SqsAction>;
+export type DeliveryStreamName = string;
+export type FirehoseSeparator = string;
 export interface FirehoseAction {
   deliveryStreamName: string;
   separator?: string;
@@ -357,6 +359,11 @@ export const FirehoseAction = /*@__PURE__*/ S.suspend(() =>
     payload: S.optional(Payload),
   }),
 ).annotate({ identifier: "FirehoseAction" }) as any as S.Schema<FirehoseAction>;
+export type DynamoKeyType = string;
+export type DynamoKeyField = string;
+export type DynamoKeyValue = string;
+export type DynamoOperation = string;
+export type DynamoTableName = string;
 export interface DynamoDBAction {
   hashKeyType?: string;
   hashKeyField: string;
@@ -392,6 +399,14 @@ export const DynamoDBv2Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DynamoDBv2Action",
 }) as any as S.Schema<DynamoDBv2Action>;
+export type AssetPropertyEntryId = string;
+export type AssetId = string;
+export type AssetPropertyId = string;
+export type AssetPropertyAlias = string;
+export type AssetPropertyStringValue = string;
+export type AssetPropertyIntegerValue = string;
+export type AssetPropertyDoubleValue = string;
+export type AssetPropertyBooleanValue = string;
 export interface AssetPropertyVariant {
   stringValue?: string;
   integerValue?: string;
@@ -408,6 +423,8 @@ export const AssetPropertyVariant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssetPropertyVariant",
 }) as any as S.Schema<AssetPropertyVariant>;
+export type AssetPropertyTimeInSeconds = string;
+export type AssetPropertyOffsetInNanos = string;
 export interface AssetPropertyTimestamp {
   timeInSeconds: string;
   offsetInNanos?: string;
@@ -417,6 +434,7 @@ export const AssetPropertyTimestamp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssetPropertyTimestamp",
 }) as any as S.Schema<AssetPropertyTimestamp>;
+export type AssetPropertyQuality = string;
 export interface AssetPropertyValue {
   value?: AssetPropertyVariant;
   timestamp?: AssetPropertyTimestamp;
@@ -483,15 +501,16 @@ export const AlarmEventActions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AlarmEventActions",
 }) as any as S.Schema<AlarmEventActions>;
+export type DisabledOnInitialization = boolean;
 export interface InitializationConfiguration {
   disabledOnInitialization: boolean;
 }
-export const InitializationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ disabledOnInitialization: S.Boolean }),
-  ).annotate({
-    identifier: "InitializationConfiguration",
-  }) as any as S.Schema<InitializationConfiguration>;
+export const InitializationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ disabledOnInitialization: S.Boolean }),
+).annotate({
+  identifier: "InitializationConfiguration",
+}) as any as S.Schema<InitializationConfiguration>;
+export type AcknowledgeFlowEnabled = boolean;
 export interface AcknowledgeFlow {
   enabled: boolean;
 }
@@ -549,6 +568,8 @@ export const CreateAlarmModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAlarmModelRequest",
 }) as any as S.Schema<CreateAlarmModelRequest>;
+export type AlarmModelArn = string;
+export type AlarmModelVersion = string;
 export type AlarmModelVersionStatus =
   | "ACTIVE"
   | "ACTIVATING"
@@ -556,6 +577,7 @@ export type AlarmModelVersionStatus =
   | "FAILED"
   | (string & {});
 export const AlarmModelVersionStatus = /*@__PURE__*/ S.String;
+
 export interface CreateAlarmModelResponse {
   creationTime?: Date;
   alarmModelArn?: string;
@@ -574,6 +596,12 @@ export const CreateAlarmModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAlarmModelResponse",
 }) as any as S.Schema<CreateAlarmModelResponse>;
+export type DetectorModelName = string;
+export type StateName = string;
+export type EventName = string;
+export type Condition = string;
+export type VariableName = string;
+export type VariableValue = string;
 export interface SetVariableAction {
   variableName: string;
   value: string;
@@ -583,6 +611,8 @@ export const SetVariableAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetVariableAction",
 }) as any as S.Schema<SetVariableAction>;
+export type TimerName = string;
+export type Seconds = number;
 export interface SetTimerAction {
   timerName: string;
   seconds?: number;
@@ -730,8 +760,10 @@ export const DetectorModelDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectorModelDefinition",
 }) as any as S.Schema<DetectorModelDefinition>;
+export type DetectorModelDescription = string;
 export type EvaluationMethod = "BATCH" | "SERIAL" | (string & {});
 export const EvaluationMethod = /*@__PURE__*/ S.String;
+
 export interface CreateDetectorModelRequest {
   detectorModelName: string;
   detectorModelDefinition: DetectorModelDefinition;
@@ -763,6 +795,8 @@ export const CreateDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDetectorModelRequest",
 }) as any as S.Schema<CreateDetectorModelRequest>;
+export type DetectorModelVersion = string;
+export type DetectorModelArn = string;
 export type DetectorModelVersionStatus =
   | "ACTIVE"
   | "ACTIVATING"
@@ -773,6 +807,7 @@ export type DetectorModelVersionStatus =
   | "FAILED"
   | (string & {});
 export const DetectorModelVersionStatus = /*@__PURE__*/ S.String;
+
 export interface DetectorModelConfiguration {
   detectorModelName?: string;
   detectorModelVersion?: string;
@@ -804,14 +839,14 @@ export const DetectorModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDetectorModelResponse {
   detectorModelConfiguration?: DetectorModelConfiguration;
 }
-export const CreateDetectorModelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorModelConfiguration: S.optional(DetectorModelConfiguration),
-    }),
-  ).annotate({
-    identifier: "CreateDetectorModelResponse",
-  }) as any as S.Schema<CreateDetectorModelResponse>;
+export const CreateDetectorModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorModelConfiguration: S.optional(DetectorModelConfiguration),
+  }),
+).annotate({
+  identifier: "CreateDetectorModelResponse",
+}) as any as S.Schema<CreateDetectorModelResponse>;
+export type InputDescription = string;
 export interface Attribute {
   jsonPath: string;
 }
@@ -853,6 +888,7 @@ export const CreateInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInputRequest",
 }) as any as S.Schema<CreateInputRequest>;
+export type InputArn = string;
 export type InputStatus =
   | "CREATING"
   | "UPDATING"
@@ -860,6 +896,7 @@ export type InputStatus =
   | "DELETING"
   | (string & {});
 export const InputStatus = /*@__PURE__*/ S.String;
+
 export interface InputConfiguration {
   inputName: string;
   inputDescription?: string;
@@ -921,10 +958,7 @@ export const DeleteDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
     detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/detector-models/{detectorModelName}",
-      }),
+      T.Http({ method: "DELETE", uri: "/detector-models/{detectorModelName}" }),
       svc,
       auth,
       proto,
@@ -936,10 +970,11 @@ export const DeleteDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDetectorModelRequest",
 }) as any as S.Schema<DeleteDetectorModelRequest>;
 export interface DeleteDetectorModelResponse {}
-export const DeleteDetectorModelResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDetectorModelResponse",
-  }) as any as S.Schema<DeleteDetectorModelResponse>;
+export const DeleteDetectorModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDetectorModelResponse",
+}) as any as S.Schema<DeleteDetectorModelResponse>;
 export interface DeleteInputRequest {
   inputName: string;
 }
@@ -984,6 +1019,7 @@ export const DescribeAlarmModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAlarmModelRequest",
 }) as any as S.Schema<DescribeAlarmModelRequest>;
+export type StatusMessage = string;
 export interface DescribeAlarmModelResponse {
   creationTime?: Date;
   alarmModelArn?: string;
@@ -1026,24 +1062,23 @@ export interface DescribeDetectorModelRequest {
   detectorModelName: string;
   detectorModelVersion?: string;
 }
-export const DescribeDetectorModelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
-      detectorModelVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/detector-models/{detectorModelName}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
+    detectorModelVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/detector-models/{detectorModelName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDetectorModelRequest",
-  }) as any as S.Schema<DescribeDetectorModelRequest>;
+  ),
+).annotate({
+  identifier: "DescribeDetectorModelRequest",
+}) as any as S.Schema<DescribeDetectorModelRequest>;
 export interface DetectorModel {
   detectorModelDefinition?: DetectorModelDefinition;
   detectorModelConfiguration?: DetectorModelConfiguration;
@@ -1057,17 +1092,17 @@ export const DetectorModel = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDetectorModelResponse {
   detectorModel?: DetectorModel;
 }
-export const DescribeDetectorModelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ detectorModel: S.optional(DetectorModel) }),
-  ).annotate({
-    identifier: "DescribeDetectorModelResponse",
-  }) as any as S.Schema<DescribeDetectorModelResponse>;
+export const DescribeDetectorModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ detectorModel: S.optional(DetectorModel) }),
+).annotate({
+  identifier: "DescribeDetectorModelResponse",
+}) as any as S.Schema<DescribeDetectorModelResponse>;
+export type AnalysisId = string;
 export interface DescribeDetectorModelAnalysisRequest {
   analysisId: string;
 }
-export const DescribeDetectorModelAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeDetectorModelAnalysisRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ analysisId: S.String.pipe(T.HttpLabel("analysisId")) }).pipe(
       T.all(
         T.Http({
@@ -1081,20 +1116,20 @@ export const DescribeDetectorModelAnalysisRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeDetectorModelAnalysisRequest",
-  }) as any as S.Schema<DescribeDetectorModelAnalysisRequest>;
+).annotate({
+  identifier: "DescribeDetectorModelAnalysisRequest",
+}) as any as S.Schema<DescribeDetectorModelAnalysisRequest>;
 export type AnalysisStatus = "RUNNING" | "COMPLETE" | "FAILED" | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeDetectorModelAnalysisResponse {
   status?: AnalysisStatus;
 }
-export const DescribeDetectorModelAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ status: S.optional(AnalysisStatus) }),
-  ).annotate({
-    identifier: "DescribeDetectorModelAnalysisResponse",
-  }) as any as S.Schema<DescribeDetectorModelAnalysisResponse>;
+export const DescribeDetectorModelAnalysisResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ status: S.optional(AnalysisStatus) }),
+).annotate({
+  identifier: "DescribeDetectorModelAnalysisResponse",
+}) as any as S.Schema<DescribeDetectorModelAnalysisResponse>;
 export interface DescribeInputRequest {
   inputName: string;
 }
@@ -1131,23 +1166,25 @@ export const DescribeInputResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeInputResponse",
 }) as any as S.Schema<DescribeInputResponse>;
 export interface DescribeLoggingOptionsRequest {}
-export const DescribeLoggingOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/logging" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/logging" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeLoggingOptionsRequest",
-  }) as any as S.Schema<DescribeLoggingOptionsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeLoggingOptionsRequest",
+}) as any as S.Schema<DescribeLoggingOptionsRequest>;
 export type LoggingLevel = "ERROR" | "INFO" | "DEBUG" | (string & {});
 export const LoggingLevel = /*@__PURE__*/ S.String;
+
+export type LoggingEnabled = boolean;
+export type KeyValue = string;
 export interface DetectorDebugOption {
   detectorModelName: string;
   keyValue?: string;
@@ -1176,19 +1213,20 @@ export const LoggingOptions = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeLoggingOptionsResponse {
   loggingOptions?: LoggingOptions;
 }
-export const DescribeLoggingOptionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ loggingOptions: S.optional(LoggingOptions) }),
-  ).annotate({
-    identifier: "DescribeLoggingOptionsResponse",
-  }) as any as S.Schema<DescribeLoggingOptionsResponse>;
+export const DescribeLoggingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ loggingOptions: S.optional(LoggingOptions) }),
+).annotate({
+  identifier: "DescribeLoggingOptionsResponse",
+}) as any as S.Schema<DescribeLoggingOptionsResponse>;
+export type NextToken = string;
+export type MaxAnalysisResults = number;
 export interface GetDetectorModelAnalysisResultsRequest {
   analysisId: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const GetDetectorModelAnalysisResultsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDetectorModelAnalysisResultsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       analysisId: S.String.pipe(T.HttpLabel("analysisId")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1206,11 +1244,15 @@ export const GetDetectorModelAnalysisResultsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetDetectorModelAnalysisResultsRequest",
-  }) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>;
+).annotate({
+  identifier: "GetDetectorModelAnalysisResultsRequest",
+}) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>;
+export type AnalysisType = string;
 export type AnalysisResultLevel = "INFO" | "WARNING" | "ERROR" | (string & {});
 export const AnalysisResultLevel = /*@__PURE__*/ S.String;
+
+export type AnalysisMessage = string;
+export type AnalysisResultLocationPath = string;
 export interface AnalysisResultLocation {
   path?: string;
 }
@@ -1243,15 +1285,16 @@ export interface GetDetectorModelAnalysisResultsResponse {
   analysisResults?: AnalysisResult[];
   nextToken?: string;
 }
-export const GetDetectorModelAnalysisResultsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDetectorModelAnalysisResultsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       analysisResults: S.optional(AnalysisResults),
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetDetectorModelAnalysisResultsResponse",
-  }) as any as S.Schema<GetDetectorModelAnalysisResultsResponse>;
+).annotate({
+  identifier: "GetDetectorModelAnalysisResultsResponse",
+}) as any as S.Schema<GetDetectorModelAnalysisResultsResponse>;
+export type MaxResults = number;
 export interface ListAlarmModelsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1306,28 +1349,24 @@ export interface ListAlarmModelVersionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAlarmModelVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/alarm-models/{alarmModelName}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAlarmModelVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/alarm-models/{alarmModelName}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAlarmModelVersionsRequest",
-  }) as any as S.Schema<ListAlarmModelVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListAlarmModelVersionsRequest",
+}) as any as S.Schema<ListAlarmModelVersionsRequest>;
 export interface AlarmModelVersionSummary {
   alarmModelName?: string;
   alarmModelArn?: string;
@@ -1360,15 +1399,14 @@ export interface ListAlarmModelVersionsResponse {
   alarmModelVersionSummaries?: AlarmModelVersionSummary[];
   nextToken?: string;
 }
-export const ListAlarmModelVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alarmModelVersionSummaries: S.optional(AlarmModelVersionSummaries),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAlarmModelVersionsResponse",
-  }) as any as S.Schema<ListAlarmModelVersionsResponse>;
+export const ListAlarmModelVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alarmModelVersionSummaries: S.optional(AlarmModelVersionSummaries),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAlarmModelVersionsResponse",
+}) as any as S.Schema<ListAlarmModelVersionsResponse>;
 export interface ListDetectorModelsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1424,28 +1462,27 @@ export interface ListDetectorModelVersionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDetectorModelVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/detector-models/{detectorModelName}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDetectorModelVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/detector-models/{detectorModelName}/versions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDetectorModelVersionsRequest",
-  }) as any as S.Schema<ListDetectorModelVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListDetectorModelVersionsRequest",
+}) as any as S.Schema<ListDetectorModelVersionsRequest>;
 export interface DetectorModelVersionSummary {
   detectorModelName?: string;
   detectorModelVersion?: string;
@@ -1456,39 +1493,36 @@ export interface DetectorModelVersionSummary {
   status?: DetectorModelVersionStatus;
   evaluationMethod?: EvaluationMethod;
 }
-export const DetectorModelVersionSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorModelName: S.optional(S.String),
-      detectorModelVersion: S.optional(S.String),
-      detectorModelArn: S.optional(S.String),
-      roleArn: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      status: S.optional(DetectorModelVersionStatus),
-      evaluationMethod: S.optional(EvaluationMethod),
-    }),
-  ).annotate({
-    identifier: "DetectorModelVersionSummary",
-  }) as any as S.Schema<DetectorModelVersionSummary>;
+export const DetectorModelVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorModelName: S.optional(S.String),
+    detectorModelVersion: S.optional(S.String),
+    detectorModelArn: S.optional(S.String),
+    roleArn: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    status: S.optional(DetectorModelVersionStatus),
+    evaluationMethod: S.optional(EvaluationMethod),
+  }),
+).annotate({
+  identifier: "DetectorModelVersionSummary",
+}) as any as S.Schema<DetectorModelVersionSummary>;
 export type DetectorModelVersionSummaries = DetectorModelVersionSummary[];
-export const DetectorModelVersionSummaries =
-  /*@__PURE__*/ S.Array(DetectorModelVersionSummary);
+export const DetectorModelVersionSummaries = /*@__PURE__*/ S.Array(
+  DetectorModelVersionSummary,
+);
 export interface ListDetectorModelVersionsResponse {
   detectorModelVersionSummaries?: DetectorModelVersionSummary[];
   nextToken?: string;
 }
-export const ListDetectorModelVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorModelVersionSummaries: S.optional(DetectorModelVersionSummaries),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDetectorModelVersionsResponse",
-  }) as any as S.Schema<ListDetectorModelVersionsResponse>;
+export const ListDetectorModelVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorModelVersionSummaries: S.optional(DetectorModelVersionSummaries),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDetectorModelVersionsResponse",
+}) as any as S.Schema<ListDetectorModelVersionsResponse>;
 export interface IotEventsInputIdentifier {
   inputName: string;
 }
@@ -1497,16 +1531,16 @@ export const IotEventsInputIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IotEventsInputIdentifier",
 }) as any as S.Schema<IotEventsInputIdentifier>;
+export type AssetModelId = string;
 export interface IotSiteWiseAssetModelPropertyIdentifier {
   assetModelId: string;
   propertyId: string;
 }
-export const IotSiteWiseAssetModelPropertyIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ assetModelId: S.String, propertyId: S.String }),
-  ).annotate({
-    identifier: "IotSiteWiseAssetModelPropertyIdentifier",
-  }) as any as S.Schema<IotSiteWiseAssetModelPropertyIdentifier>;
+export const IotSiteWiseAssetModelPropertyIdentifier = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ assetModelId: S.String, propertyId: S.String }),
+).annotate({
+  identifier: "IotSiteWiseAssetModelPropertyIdentifier",
+}) as any as S.Schema<IotSiteWiseAssetModelPropertyIdentifier>;
 export interface IotSiteWiseInputIdentifier {
   iotSiteWiseAssetModelPropertyIdentifier?: IotSiteWiseAssetModelPropertyIdentifier;
 }
@@ -1554,6 +1588,7 @@ export const ListInputRoutingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInputRoutingsRequest",
 }) as any as S.Schema<ListInputRoutingsRequest>;
+export type ResourceName = string;
 export interface RoutedResource {
   name?: string;
   arn?: string;
@@ -1648,10 +1683,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutLoggingOptionsRequest {
   loggingOptions: LoggingOptions;
 }
@@ -1678,30 +1714,28 @@ export const PutLoggingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StartDetectorModelAnalysisRequest {
   detectorModelDefinition: DetectorModelDefinition;
 }
-export const StartDetectorModelAnalysisRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ detectorModelDefinition: DetectorModelDefinition }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/analysis/detector-models" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartDetectorModelAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ detectorModelDefinition: DetectorModelDefinition }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/analysis/detector-models" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartDetectorModelAnalysisRequest",
-  }) as any as S.Schema<StartDetectorModelAnalysisRequest>;
+  ),
+).annotate({
+  identifier: "StartDetectorModelAnalysisRequest",
+}) as any as S.Schema<StartDetectorModelAnalysisRequest>;
 export interface StartDetectorModelAnalysisResponse {
   analysisId?: string;
 }
-export const StartDetectorModelAnalysisResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ analysisId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "StartDetectorModelAnalysisResponse",
-  }) as any as S.Schema<StartDetectorModelAnalysisResponse>;
+export const StartDetectorModelAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ analysisId: S.optional(S.String) }),
+).annotate({
+  identifier: "StartDetectorModelAnalysisResponse",
+}) as any as S.Schema<StartDetectorModelAnalysisResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -1839,14 +1873,13 @@ export const UpdateDetectorModelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDetectorModelResponse {
   detectorModelConfiguration?: DetectorModelConfiguration;
 }
-export const UpdateDetectorModelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorModelConfiguration: S.optional(DetectorModelConfiguration),
-    }),
-  ).annotate({
-    identifier: "UpdateDetectorModelResponse",
-  }) as any as S.Schema<UpdateDetectorModelResponse>;
+export const UpdateDetectorModelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorModelConfiguration: S.optional(DetectorModelConfiguration),
+  }),
+).annotate({
+  identifier: "UpdateDetectorModelResponse",
+}) as any as S.Schema<UpdateDetectorModelResponse>;
 export interface UpdateInputRequest {
   inputName: string;
   inputDescription?: string;
@@ -1878,50 +1911,9 @@ export const UpdateInputResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateInputResponse",
 }) as any as S.Schema<UpdateInputResponse>;
-
-//# Errors
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceArn: S.optional(S.String),
-  },
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type ResourceId = string;
+export type ResourceArn = string;
 export type CreateAlarmModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -1953,8 +1945,11 @@ export const createAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlarmModel",
 }));
+
 export type CreateDetectorModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -1984,8 +1979,11 @@ export const createDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDetectorModel",
 }));
+
 export type CreateInputError =
   | InternalFailureException
   | InvalidRequestException
@@ -2011,8 +2009,11 @@ export const createInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInput",
 }));
+
 export type DeleteAlarmModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -2041,8 +2042,11 @@ export const deleteAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlarmModel",
 }));
+
 export type DeleteDetectorModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -2071,8 +2075,11 @@ export const deleteDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDetectorModel",
 }));
+
 export type DeleteInputError =
   | InternalFailureException
   | InvalidRequestException
@@ -2100,8 +2107,11 @@ export const deleteInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInput",
 }));
+
 export type DescribeAlarmModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -2128,8 +2138,11 @@ export const describeAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarmModel",
 }));
+
 export type DescribeDetectorModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -2156,8 +2169,11 @@ export const describeDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetectorModel",
 }));
+
 export type DescribeDetectorModelAnalysisError =
   | InternalFailureException
   | InvalidRequestException
@@ -2185,8 +2201,11 @@ export const describeDetectorModelAnalysis: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetectorModelAnalysis",
 }));
+
 export type DescribeInputError =
   | InternalFailureException
   | InvalidRequestException
@@ -2212,8 +2231,11 @@ export const describeInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInput",
 }));
+
 export type DescribeLoggingOptionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2241,8 +2263,11 @@ export const describeLoggingOptions: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingOptions",
 }));
+
 export type GetDetectorModelAnalysisResultsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2270,8 +2295,11 @@ export const getDetectorModelAnalysisResults: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDetectorModelAnalysisResults",
 }));
+
 export type ListAlarmModelsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2296,8 +2324,11 @@ export const listAlarmModels: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarmModels",
 }));
+
 export type ListAlarmModelVersionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2324,8 +2355,11 @@ export const listAlarmModelVersions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarmModelVersions",
 }));
+
 export type ListDetectorModelsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2350,8 +2384,11 @@ export const listDetectorModels: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectorModels",
 }));
+
 export type ListDetectorModelVersionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2378,8 +2415,11 @@ export const listDetectorModelVersions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectorModelVersions",
 }));
+
 export type ListInputRoutingsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2405,8 +2445,11 @@ export const listInputRoutings: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputRoutings",
 }));
+
 export type ListInputsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2430,8 +2473,11 @@ export const listInputs: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputs",
 }));
+
 export type ListTagsForResourceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2457,8 +2503,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutLoggingOptionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2491,8 +2540,11 @@ export const putLoggingOptions: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLoggingOptions",
 }));
+
 export type StartDetectorModelAnalysisError =
   | InternalFailureException
   | InvalidRequestException
@@ -2520,8 +2572,11 @@ export const startDetectorModelAnalysis: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDetectorModelAnalysis",
 }));
+
 export type TagResourceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2550,8 +2605,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2577,8 +2635,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAlarmModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -2607,8 +2668,11 @@ export const updateAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlarmModel",
 }));
+
 export type UpdateDetectorModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -2637,8 +2701,11 @@ export const updateDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDetectorModel",
 }));
+
 export type UpdateInputError =
   | InternalFailureException
   | InvalidRequestException
@@ -2666,5 +2733,7 @@ export const updateInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInput",
 }));

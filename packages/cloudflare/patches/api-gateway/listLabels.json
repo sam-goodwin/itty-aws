@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "ZonePurged": [{ "code": 10410 }],
-    "Forbidden": [{ "status": 403 }],
-    "NotFound": [{ "status": 404 }]
-  }
-}

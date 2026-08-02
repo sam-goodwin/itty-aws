@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -642,48 +644,80 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ExpiredIteratorException extends S.TaggedErrorClass<ExpiredIteratorException>()(
+  "ExpiredIteratorException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
+  "ExpiredNextTokenException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
+  "KMSAccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
+  "KMSDisabledException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
+  "KMSInvalidStateException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
+  "KMSNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class KMSOptInRequired extends S.TaggedErrorClass<KMSOptInRequired>()(
+  "KMSOptInRequired",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class KMSThrottlingException extends S.TaggedErrorClass<KMSThrottlingException>()(
+  "KMSThrottlingException",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError, C.withRetryableError) {}
+export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
+  "ProvisionedThroughputExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export type StreamName = string;
 export type TagKey = string;
 export type TagValue = string;
-export type StreamARN = string;
-export type StreamId = string;
-export type ErrorMessage = string;
-export type PositiveIntegerObject = number;
-export type NaturalIntegerObject = number;
-export type MaxRecordSizeInKiB = number;
-export type RetentionPeriodHours = number;
-export type ResourceARN = string;
-export type ConsumerName = string;
-export type ConsumerARN = string;
-export type ShardCountObject = number;
-export type OnDemandStreamCountObject = number;
-export type OnDemandStreamCountLimitObject = number;
-export type DescribeStreamInputLimit = number;
-export type ShardId = string;
-export type HashKey = string;
-export type SequenceNumber = string;
-export type KeyId = string;
-export type ConsumerCountObject = number;
-export type ShardIterator = string;
-export type GetRecordsInputLimit = number;
-export type Data = Uint8Array;
-export type PartitionKey = string;
-export type MillisBehindLatest = number;
-export type Policy = string;
-export type NextToken = string;
-export type ListShardsInputLimit = number;
-export type ListStreamConsumersInputLimit = number;
-export type ListStreamsInputLimit = number;
-export type ListTagsForStreamInputLimit = number;
-export type ErrorCode = string;
-
-//# Schemas
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type StreamARN = string;
+export type StreamId = string;
 export interface AddTagsToStreamInput {
   StreamName?: string;
   Tags: { [key: string]: string | undefined };
@@ -717,8 +751,10 @@ export const AddTagsToStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTagsToStreamResponse",
 }) as any as S.Schema<AddTagsToStreamResponse>;
+export type PositiveIntegerObject = number;
 export type StreamMode = "PROVISIONED" | "ON_DEMAND" | (string & {});
 export const StreamMode = /*@__PURE__*/ S.String;
+
 export interface StreamModeDetails {
   StreamMode: StreamMode;
 }
@@ -727,6 +763,8 @@ export const StreamModeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamModeDetails",
 }) as any as S.Schema<StreamModeDetails>;
+export type NaturalIntegerObject = number;
+export type MaxRecordSizeInKiB = number;
 export interface CreateStreamInput {
   StreamName: string;
   ShardCount?: number;
@@ -763,39 +801,41 @@ export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStreamResponse",
 }) as any as S.Schema<CreateStreamResponse>;
+export type RetentionPeriodHours = number;
 export interface DecreaseStreamRetentionPeriodInput {
   StreamName?: string;
   RetentionPeriodHours: number;
   StreamARN?: string;
   StreamId?: string;
 }
-export const DecreaseStreamRetentionPeriodInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamName: S.optional(S.String),
-      RetentionPeriodHours: S.Number,
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const DecreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamName: S.optional(S.String),
+    RetentionPeriodHours: S.Number,
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "DecreaseStreamRetentionPeriodInput",
-  }) as any as S.Schema<DecreaseStreamRetentionPeriodInput>;
+  ),
+).annotate({
+  identifier: "DecreaseStreamRetentionPeriodInput",
+}) as any as S.Schema<DecreaseStreamRetentionPeriodInput>;
 export interface DecreaseStreamRetentionPeriodResponse {}
-export const DecreaseStreamRetentionPeriodResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DecreaseStreamRetentionPeriodResponse",
-  }) as any as S.Schema<DecreaseStreamRetentionPeriodResponse>;
+export const DecreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DecreaseStreamRetentionPeriodResponse",
+}) as any as S.Schema<DecreaseStreamRetentionPeriodResponse>;
+export type ResourceARN = string;
 export interface DeleteResourcePolicyInput {
   ResourceARN: string;
   StreamId?: string;
@@ -820,10 +860,11 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteStreamInput {
   StreamName?: string;
   EnforceConsumerDeletion?: boolean;
@@ -857,56 +898,57 @@ export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteStreamResponse",
 }) as any as S.Schema<DeleteStreamResponse>;
+export type ConsumerName = string;
+export type ConsumerARN = string;
 export interface DeregisterStreamConsumerInput {
   StreamARN?: string;
   ConsumerName?: string;
   ConsumerARN?: string;
   StreamId?: string;
 }
-export const DeregisterStreamConsumerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      ConsumerName: S.optional(S.String),
-      ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const DeregisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    ConsumerName: S.optional(S.String),
+    ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "DeregisterStreamConsumerInput",
-  }) as any as S.Schema<DeregisterStreamConsumerInput>;
+  ),
+).annotate({
+  identifier: "DeregisterStreamConsumerInput",
+}) as any as S.Schema<DeregisterStreamConsumerInput>;
 export interface DeregisterStreamConsumerResponse {}
-export const DeregisterStreamConsumerResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeregisterStreamConsumerResponse",
-  }) as any as S.Schema<DeregisterStreamConsumerResponse>;
+export const DeregisterStreamConsumerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeregisterStreamConsumerResponse",
+}) as any as S.Schema<DeregisterStreamConsumerResponse>;
 export interface DescribeAccountSettingsInput {}
-export const DescribeAccountSettingsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeAccountSettingsInput",
-  }) as any as S.Schema<DescribeAccountSettingsInput>;
+  ),
+).annotate({
+  identifier: "DescribeAccountSettingsInput",
+}) as any as S.Schema<DescribeAccountSettingsInput>;
 export type MinimumThroughputBillingCommitmentOutputStatus =
   | "ENABLED"
   | "DISABLED"
@@ -914,14 +956,15 @@ export type MinimumThroughputBillingCommitmentOutputStatus =
   | (string & {});
 export const MinimumThroughputBillingCommitmentOutputStatus =
   /*@__PURE__*/ S.String;
+
 export interface MinimumThroughputBillingCommitmentOutput {
   Status: MinimumThroughputBillingCommitmentOutputStatus;
   StartedAt?: Date;
   EndedAt?: Date;
   EarliestAllowedEndAt?: Date;
 }
-export const MinimumThroughputBillingCommitmentOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const MinimumThroughputBillingCommitmentOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Status: MinimumThroughputBillingCommitmentOutputStatus,
       StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -930,22 +973,21 @@ export const MinimumThroughputBillingCommitmentOutput =
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       ),
     }),
-  ).annotate({
-    identifier: "MinimumThroughputBillingCommitmentOutput",
-  }) as any as S.Schema<MinimumThroughputBillingCommitmentOutput>;
+).annotate({
+  identifier: "MinimumThroughputBillingCommitmentOutput",
+}) as any as S.Schema<MinimumThroughputBillingCommitmentOutput>;
 export interface DescribeAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
-export const DescribeAccountSettingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MinimumThroughputBillingCommitment: S.optional(
-        MinimumThroughputBillingCommitmentOutput,
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAccountSettingsOutput",
-  }) as any as S.Schema<DescribeAccountSettingsOutput>;
+export const DescribeAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MinimumThroughputBillingCommitment: S.optional(
+      MinimumThroughputBillingCommitmentOutput,
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeAccountSettingsOutput",
+}) as any as S.Schema<DescribeAccountSettingsOutput>;
 export interface DescribeLimitsInput {}
 export const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -962,6 +1004,9 @@ export const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLimitsInput",
 }) as any as S.Schema<DescribeLimitsInput>;
+export type ShardCountObject = number;
+export type OnDemandStreamCountObject = number;
+export type OnDemandStreamCountLimitObject = number;
 export interface DescribeLimitsOutput {
   ShardLimit: number;
   OpenShardCount: number;
@@ -978,6 +1023,8 @@ export const DescribeLimitsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLimitsOutput",
 }) as any as S.Schema<DescribeLimitsOutput>;
+export type DescribeStreamInputLimit = number;
+export type ShardId = string;
 export interface DescribeStreamInput {
   StreamName?: string;
   Limit?: number;
@@ -1014,6 +1061,8 @@ export type StreamStatus =
   | "UPDATING"
   | (string & {});
 export const StreamStatus = /*@__PURE__*/ S.String;
+
+export type HashKey = string;
 export interface HashKeyRange {
   StartingHashKey: string;
   EndingHashKey: string;
@@ -1021,6 +1070,7 @@ export interface HashKeyRange {
 export const HashKeyRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StartingHashKey: S.String, EndingHashKey: S.String }),
 ).annotate({ identifier: "HashKeyRange" }) as any as S.Schema<HashKeyRange>;
+export type SequenceNumber = string;
 export interface SequenceNumberRange {
   StartingSequenceNumber: string;
   EndingSequenceNumber?: string;
@@ -1062,6 +1112,7 @@ export type MetricsName =
   | "ALL"
   | (string & {});
 export const MetricsName = /*@__PURE__*/ S.String;
+
 export type MetricsNameList = MetricsName[];
 export const MetricsNameList = /*@__PURE__*/ S.Array(MetricsName);
 export interface EnhancedMetrics {
@@ -1076,6 +1127,8 @@ export type EnhancedMonitoringList = EnhancedMetrics[];
 export const EnhancedMonitoringList = /*@__PURE__*/ S.Array(EnhancedMetrics);
 export type EncryptionType = "NONE" | "KMS" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
+export type KeyId = string;
 export interface StreamDescription {
   StreamName: string;
   StreamARN: string;
@@ -1120,30 +1173,30 @@ export interface DescribeStreamConsumerInput {
   ConsumerARN?: string;
   StreamId?: string;
 }
-export const DescribeStreamConsumerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      ConsumerName: S.optional(S.String),
-      ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const DescribeStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    ConsumerName: S.optional(S.String),
+    ConsumerARN: S.optional(S.String).pipe(T.ContextParam("ConsumerARN")),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "DescribeStreamConsumerInput",
-  }) as any as S.Schema<DescribeStreamConsumerInput>;
+  ),
+).annotate({
+  identifier: "DescribeStreamConsumerInput",
+}) as any as S.Schema<DescribeStreamConsumerInput>;
 export type ConsumerStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 export const ConsumerStatus = /*@__PURE__*/ S.String;
+
 export interface ConsumerDescription {
   ConsumerName: string;
   ConsumerARN: string;
@@ -1165,12 +1218,11 @@ export const ConsumerDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStreamConsumerOutput {
   ConsumerDescription: ConsumerDescription;
 }
-export const DescribeStreamConsumerOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ConsumerDescription: ConsumerDescription }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStreamConsumerOutput",
-  }) as any as S.Schema<DescribeStreamConsumerOutput>;
+export const DescribeStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConsumerDescription: ConsumerDescription }).pipe(ns),
+).annotate({
+  identifier: "DescribeStreamConsumerOutput",
+}) as any as S.Schema<DescribeStreamConsumerOutput>;
 export interface DescribeStreamSummaryInput {
   StreamName?: string;
   StreamARN?: string;
@@ -1196,6 +1248,7 @@ export const DescribeStreamSummaryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStreamSummaryInput",
 }) as any as S.Schema<DescribeStreamSummaryInput>;
+export type ConsumerCountObject = number;
 export interface WarmThroughputObject {
   TargetMiBps?: number;
   CurrentMiBps?: number;
@@ -1247,40 +1300,38 @@ export const StreamDescriptionSummary = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStreamSummaryOutput {
   StreamDescriptionSummary: StreamDescriptionSummary;
 }
-export const DescribeStreamSummaryOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StreamDescriptionSummary: StreamDescriptionSummary }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStreamSummaryOutput",
-  }) as any as S.Schema<DescribeStreamSummaryOutput>;
+export const DescribeStreamSummaryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StreamDescriptionSummary: StreamDescriptionSummary }).pipe(ns),
+).annotate({
+  identifier: "DescribeStreamSummaryOutput",
+}) as any as S.Schema<DescribeStreamSummaryOutput>;
 export interface DisableEnhancedMonitoringInput {
   StreamName?: string;
   ShardLevelMetrics: MetricsName[];
   StreamARN?: string;
   StreamId?: string;
 }
-export const DisableEnhancedMonitoringInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamName: S.optional(S.String),
-      ShardLevelMetrics: MetricsNameList,
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const DisableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamName: S.optional(S.String),
+    ShardLevelMetrics: MetricsNameList,
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "DisableEnhancedMonitoringInput",
-  }) as any as S.Schema<DisableEnhancedMonitoringInput>;
+  ),
+).annotate({
+  identifier: "DisableEnhancedMonitoringInput",
+}) as any as S.Schema<DisableEnhancedMonitoringInput>;
 export interface EnhancedMonitoringOutput {
   StreamName?: string;
   CurrentShardLevelMetrics?: MetricsName[];
@@ -1303,28 +1354,29 @@ export interface EnableEnhancedMonitoringInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const EnableEnhancedMonitoringInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamName: S.optional(S.String),
-      ShardLevelMetrics: MetricsNameList,
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const EnableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamName: S.optional(S.String),
+    ShardLevelMetrics: MetricsNameList,
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "EnableEnhancedMonitoringInput",
-  }) as any as S.Schema<EnableEnhancedMonitoringInput>;
+  ),
+).annotate({
+  identifier: "EnableEnhancedMonitoringInput",
+}) as any as S.Schema<EnableEnhancedMonitoringInput>;
+export type ShardIterator = string;
+export type GetRecordsInputLimit = number;
 export interface GetRecordsInput {
   ShardIterator: string;
   Limit?: number;
@@ -1352,6 +1404,8 @@ export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecordsInput",
 }) as any as S.Schema<GetRecordsInput>;
+export type Data = Uint8Array;
+export type PartitionKey = string;
 export interface Record {
   SequenceNumber: string;
   ApproximateArrivalTimestamp?: Date;
@@ -1372,6 +1426,7 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
 export const RecordList = /*@__PURE__*/ S.Array(Record);
+export type MillisBehindLatest = number;
 export type ShardIdList = string[];
 export const ShardIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ChildShard {
@@ -1427,6 +1482,7 @@ export const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyInput",
 }) as any as S.Schema<GetResourcePolicyInput>;
+export type Policy = string;
 export interface GetResourcePolicyOutput {
   Policy: string;
 }
@@ -1443,6 +1499,7 @@ export type ShardIteratorType =
   | "AT_TIMESTAMP"
   | (string & {});
 export const ShardIteratorType = /*@__PURE__*/ S.String;
+
 export interface GetShardIteratorInput {
   StreamName?: string;
   ShardId: string;
@@ -1490,33 +1547,35 @@ export interface IncreaseStreamRetentionPeriodInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const IncreaseStreamRetentionPeriodInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamName: S.optional(S.String),
-      RetentionPeriodHours: S.Number,
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamName: S.optional(S.String),
+    RetentionPeriodHours: S.Number,
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "IncreaseStreamRetentionPeriodInput",
-  }) as any as S.Schema<IncreaseStreamRetentionPeriodInput>;
+  ),
+).annotate({
+  identifier: "IncreaseStreamRetentionPeriodInput",
+}) as any as S.Schema<IncreaseStreamRetentionPeriodInput>;
 export interface IncreaseStreamRetentionPeriodResponse {}
-export const IncreaseStreamRetentionPeriodResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "IncreaseStreamRetentionPeriodResponse",
-  }) as any as S.Schema<IncreaseStreamRetentionPeriodResponse>;
+export const IncreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "IncreaseStreamRetentionPeriodResponse",
+}) as any as S.Schema<IncreaseStreamRetentionPeriodResponse>;
+export type NextToken = string;
+export type ListShardsInputLimit = number;
 export type ShardFilterType =
   | "AFTER_SHARD_ID"
   | "AT_TRIM_HORIZON"
@@ -1526,6 +1585,7 @@ export type ShardFilterType =
   | "FROM_TIMESTAMP"
   | (string & {});
 export const ShardFilterType = /*@__PURE__*/ S.String;
+
 export interface ShardFilter {
   Type: ShardFilterType;
   ShardId?: string;
@@ -1587,6 +1647,7 @@ export const ListShardsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListShardsOutput",
 }) as any as S.Schema<ListShardsOutput>;
+export type ListStreamConsumersInputLimit = number;
 export interface ListStreamConsumersInput {
   StreamARN: string;
   NextToken?: string;
@@ -1646,6 +1707,7 @@ export const ListStreamConsumersOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStreamConsumersOutput",
 }) as any as S.Schema<ListStreamConsumersOutput>;
+export type ListStreamsInputLimit = number;
 export interface ListStreamsInput {
   Limit?: number;
   ExclusiveStartStreamName?: string;
@@ -1748,6 +1810,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export type ListTagsForStreamInputLimit = number;
 export interface ListTagsForStreamInput {
   StreamName?: string;
   ExclusiveStartTagKey?: string;
@@ -1911,6 +1974,8 @@ export const PutRecordsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutRecordsInput",
 }) as any as S.Schema<PutRecordsInput>;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface PutRecordsResultEntry {
   SequenceNumber?: string;
   ShardId?: string;
@@ -1982,37 +2047,35 @@ export interface RegisterStreamConsumerInput {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const RegisterStreamConsumerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
-      ConsumerName: S.String,
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-      Tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const RegisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
+    ConsumerName: S.String,
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+    Tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "RegisterStreamConsumerInput",
-  }) as any as S.Schema<RegisterStreamConsumerInput>;
+  ),
+).annotate({
+  identifier: "RegisterStreamConsumerInput",
+}) as any as S.Schema<RegisterStreamConsumerInput>;
 export interface RegisterStreamConsumerOutput {
   Consumer: Consumer;
 }
-export const RegisterStreamConsumerOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Consumer: Consumer }).pipe(ns),
-  ).annotate({
-    identifier: "RegisterStreamConsumerOutput",
-  }) as any as S.Schema<RegisterStreamConsumerOutput>;
+export const RegisterStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Consumer: Consumer }).pipe(ns),
+).annotate({
+  identifier: "RegisterStreamConsumerOutput",
+}) as any as S.Schema<RegisterStreamConsumerOutput>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface RemoveTagsFromStreamInput {
@@ -2043,10 +2106,11 @@ export const RemoveTagsFromStreamInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromStreamInput",
 }) as any as S.Schema<RemoveTagsFromStreamInput>;
 export interface RemoveTagsFromStreamResponse {}
-export const RemoveTagsFromStreamResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveTagsFromStreamResponse",
-  }) as any as S.Schema<RemoveTagsFromStreamResponse>;
+export const RemoveTagsFromStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveTagsFromStreamResponse",
+}) as any as S.Schema<RemoveTagsFromStreamResponse>;
 export interface SplitShardInput {
   StreamName?: string;
   ShardToSplit: string;
@@ -2112,10 +2176,11 @@ export const StartStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartStreamEncryptionInput",
 }) as any as S.Schema<StartStreamEncryptionInput>;
 export interface StartStreamEncryptionResponse {}
-export const StartStreamEncryptionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StartStreamEncryptionResponse",
-  }) as any as S.Schema<StartStreamEncryptionResponse>;
+export const StartStreamEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StartStreamEncryptionResponse",
+}) as any as S.Schema<StartStreamEncryptionResponse>;
 export interface StopStreamEncryptionInput {
   StreamName?: string;
   EncryptionType: EncryptionType;
@@ -2146,10 +2211,11 @@ export const StopStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopStreamEncryptionInput",
 }) as any as S.Schema<StopStreamEncryptionInput>;
 export interface StopStreamEncryptionResponse {}
-export const StopStreamEncryptionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StopStreamEncryptionResponse",
-  }) as any as S.Schema<StopStreamEncryptionResponse>;
+export const StopStreamEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StopStreamEncryptionResponse",
+}) as any as S.Schema<StopStreamEncryptionResponse>;
 export interface StartingPosition {
   Type: ShardIteratorType;
   SequenceNumber?: string;
@@ -2328,59 +2394,56 @@ export type SubscribeToShardEventStream =
       KMSThrottlingException?: never;
       InternalFailureException: InternalFailureException;
     };
-export const SubscribeToShardEventStream =
-  /*@__PURE__*/ T.EventStream(
-    S.Union([
-      S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
-      S.Struct({
-        ResourceNotFoundException: S.suspend(
-          () => ResourceNotFoundException,
-        ).annotate({ identifier: "ResourceNotFoundException" }),
+export const SubscribeToShardEventStream = /*@__PURE__*/ T.EventStream(
+  S.Union([
+    S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
+    S.Struct({
+      ResourceNotFoundException: S.suspend(
+        () => ResourceNotFoundException,
+      ).annotate({ identifier: "ResourceNotFoundException" }),
+    }),
+    S.Struct({
+      ResourceInUseException: S.suspend(() => ResourceInUseException).annotate({
+        identifier: "ResourceInUseException",
       }),
-      S.Struct({
-        ResourceInUseException: S.suspend(
-          () => ResourceInUseException,
-        ).annotate({ identifier: "ResourceInUseException" }),
+    }),
+    S.Struct({
+      KMSDisabledException: S.suspend(() => KMSDisabledException).annotate({
+        identifier: "KMSDisabledException",
       }),
-      S.Struct({
-        KMSDisabledException: S.suspend(() => KMSDisabledException).annotate({
-          identifier: "KMSDisabledException",
-        }),
+    }),
+    S.Struct({
+      KMSInvalidStateException: S.suspend(
+        () => KMSInvalidStateException,
+      ).annotate({ identifier: "KMSInvalidStateException" }),
+    }),
+    S.Struct({
+      KMSAccessDeniedException: S.suspend(
+        () => KMSAccessDeniedException,
+      ).annotate({ identifier: "KMSAccessDeniedException" }),
+    }),
+    S.Struct({
+      KMSNotFoundException: S.suspend(() => KMSNotFoundException).annotate({
+        identifier: "KMSNotFoundException",
       }),
-      S.Struct({
-        KMSInvalidStateException: S.suspend(
-          () => KMSInvalidStateException,
-        ).annotate({ identifier: "KMSInvalidStateException" }),
+    }),
+    S.Struct({
+      KMSOptInRequired: S.suspend(() => KMSOptInRequired).annotate({
+        identifier: "KMSOptInRequired",
       }),
-      S.Struct({
-        KMSAccessDeniedException: S.suspend(
-          () => KMSAccessDeniedException,
-        ).annotate({ identifier: "KMSAccessDeniedException" }),
+    }),
+    S.Struct({
+      KMSThrottlingException: S.suspend(() => KMSThrottlingException).annotate({
+        identifier: "KMSThrottlingException",
       }),
-      S.Struct({
-        KMSNotFoundException: S.suspend(() => KMSNotFoundException).annotate({
-          identifier: "KMSNotFoundException",
-        }),
-      }),
-      S.Struct({
-        KMSOptInRequired: S.suspend(() => KMSOptInRequired).annotate({
-          identifier: "KMSOptInRequired",
-        }),
-      }),
-      S.Struct({
-        KMSThrottlingException: S.suspend(
-          () => KMSThrottlingException,
-        ).annotate({ identifier: "KMSThrottlingException" }),
-      }),
-      S.Struct({
-        InternalFailureException: S.suspend(
-          () => InternalFailureException,
-        ).annotate({ identifier: "InternalFailureException" }),
-      }),
-    ]),
-  ) as any as S.Schema<
-    stream.Stream<SubscribeToShardEventStream, Error, never>
-  >;
+    }),
+    S.Struct({
+      InternalFailureException: S.suspend(
+        () => InternalFailureException,
+      ).annotate({ identifier: "InternalFailureException" }),
+    }),
+  ]),
+) as any as S.Schema<stream.Stream<SubscribeToShardEventStream, Error, never>>;
 export interface SubscribeToShardOutput {
   EventStream: stream.Stream<SubscribeToShardEventStream, Error, never>;
 }
@@ -2457,15 +2520,15 @@ export type MinimumThroughputBillingCommitmentInputStatus =
   | (string & {});
 export const MinimumThroughputBillingCommitmentInputStatus =
   /*@__PURE__*/ S.String;
+
 export interface MinimumThroughputBillingCommitmentInput {
   Status: MinimumThroughputBillingCommitmentInputStatus;
 }
-export const MinimumThroughputBillingCommitmentInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: MinimumThroughputBillingCommitmentInputStatus }),
-  ).annotate({
-    identifier: "MinimumThroughputBillingCommitmentInput",
-  }) as any as S.Schema<MinimumThroughputBillingCommitmentInput>;
+export const MinimumThroughputBillingCommitmentInput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Status: MinimumThroughputBillingCommitmentInputStatus }),
+).annotate({
+  identifier: "MinimumThroughputBillingCommitmentInput",
+}) as any as S.Schema<MinimumThroughputBillingCommitmentInput>;
 export interface UpdateAccountSettingsInput {
   MinimumThroughputBillingCommitment: MinimumThroughputBillingCommitmentInput;
 }
@@ -2489,16 +2552,15 @@ export const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
-export const UpdateAccountSettingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MinimumThroughputBillingCommitment: S.optional(
-        MinimumThroughputBillingCommitmentOutput,
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateAccountSettingsOutput",
-  }) as any as S.Schema<UpdateAccountSettingsOutput>;
+export const UpdateAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MinimumThroughputBillingCommitment: S.optional(
+      MinimumThroughputBillingCommitmentOutput,
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateAccountSettingsOutput",
+}) as any as S.Schema<UpdateAccountSettingsOutput>;
 export interface UpdateMaxRecordSizeInput {
   StreamARN?: string;
   StreamId?: string;
@@ -2525,12 +2587,14 @@ export const UpdateMaxRecordSizeInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMaxRecordSizeInput",
 }) as any as S.Schema<UpdateMaxRecordSizeInput>;
 export interface UpdateMaxRecordSizeResponse {}
-export const UpdateMaxRecordSizeResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateMaxRecordSizeResponse",
-  }) as any as S.Schema<UpdateMaxRecordSizeResponse>;
+export const UpdateMaxRecordSizeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateMaxRecordSizeResponse",
+}) as any as S.Schema<UpdateMaxRecordSizeResponse>;
 export type ScalingType = "UNIFORM_SCALING" | (string & {});
 export const ScalingType = /*@__PURE__*/ S.String;
+
 export interface UpdateShardCountInput {
   StreamName?: string;
   TargetShardCount: number;
@@ -2615,111 +2679,41 @@ export interface UpdateStreamWarmThroughputInput {
   StreamId?: string;
   WarmThroughputMiBps: number;
 }
-export const UpdateStreamWarmThroughputInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
-      StreamName: S.optional(S.String),
-      StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
-      WarmThroughputMiBps: S.Number,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ OperationType: { value: "control" } }),
-      ),
+export const UpdateStreamWarmThroughputInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
+    StreamName: S.optional(S.String),
+    StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
+    WarmThroughputMiBps: S.Number,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ OperationType: { value: "control" } }),
     ),
-  ).annotate({
-    identifier: "UpdateStreamWarmThroughputInput",
-  }) as any as S.Schema<UpdateStreamWarmThroughputInput>;
+  ),
+).annotate({
+  identifier: "UpdateStreamWarmThroughputInput",
+}) as any as S.Schema<UpdateStreamWarmThroughputInput>;
 export interface UpdateStreamWarmThroughputOutput {
   StreamARN?: string;
   StreamName?: string;
   WarmThroughput?: WarmThroughputObject;
 }
-export const UpdateStreamWarmThroughputOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StreamARN: S.optional(S.String),
-      StreamName: S.optional(S.String),
-      WarmThroughput: S.optional(WarmThroughputObject),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateStreamWarmThroughputOutput",
-  }) as any as S.Schema<UpdateStreamWarmThroughputOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError, C.withRetryableError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ExpiredIteratorException extends S.TaggedErrorClass<ExpiredIteratorException>()(
-  "ExpiredIteratorException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError, C.withRetryableError) {}
-export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
-  "KMSAccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
-  "KMSDisabledException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
-  "KMSInvalidStateException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
-  "KMSNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class KMSOptInRequired extends S.TaggedErrorClass<KMSOptInRequired>()(
-  "KMSOptInRequired",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class KMSThrottlingException extends S.TaggedErrorClass<KMSThrottlingException>()(
-  "KMSThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
-  "ProvisionedThroughputExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
-  "ExpiredNextTokenException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export const UpdateStreamWarmThroughputOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StreamARN: S.optional(S.String),
+    StreamName: S.optional(S.String),
+    WarmThroughput: S.optional(WarmThroughputObject),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateStreamWarmThroughputOutput",
+}) as any as S.Schema<UpdateStreamWarmThroughputOutput>;
 export type AddTagsToStreamError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -2756,8 +2750,11 @@ export const addTagsToStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToStream",
 }));
+
 export type CreateStreamError =
   | InvalidArgumentException
   | LimitExceededException
@@ -2819,8 +2816,11 @@ export const createStream: API.OperationMethod<
     ResourceInUseException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStream",
 }));
+
 export type DecreaseStreamRetentionPeriodError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -2856,8 +2856,11 @@ export const decreaseStreamRetentionPeriod: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecreaseStreamRetentionPeriod",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -2887,8 +2890,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteStreamError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -2939,8 +2945,11 @@ export const deleteStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStream",
 }));
+
 export type DeregisterStreamConsumerError =
   | InvalidArgumentException
   | LimitExceededException
@@ -2970,8 +2979,11 @@ export const deregisterStreamConsumer: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterStreamConsumer",
 }));
+
 export type DescribeAccountSettingsError =
   | LimitExceededException
   | CommonErrors;
@@ -2989,8 +3001,11 @@ export const describeAccountSettings: API.OperationMethod<
   input: DescribeAccountSettingsInput,
   output: DescribeAccountSettingsOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountSettings",
 }));
+
 export type DescribeLimitsError = LimitExceededException | CommonErrors;
 /**
  * Describes the shard limits and usage for the account.
@@ -3009,8 +3024,11 @@ export const describeLimits: API.OperationMethod<
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLimits",
 }));
+
 export type DescribeStreamError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3060,8 +3078,11 @@ export const describeStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStream",
 }));
+
 export type DescribeStreamConsumerError =
   | InvalidArgumentException
   | LimitExceededException
@@ -3093,8 +3114,11 @@ export const describeStreamConsumer: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStreamConsumer",
 }));
+
 export type DescribeStreamSummaryError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3130,8 +3154,11 @@ export const describeStreamSummary: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStreamSummary",
 }));
+
 export type DisableEnhancedMonitoringError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3161,8 +3188,11 @@ export const disableEnhancedMonitoring: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableEnhancedMonitoring",
 }));
+
 export type EnableEnhancedMonitoringError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3192,8 +3222,11 @@ export const enableEnhancedMonitoring: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableEnhancedMonitoring",
 }));
+
 export type GetRecordsError =
   | AccessDeniedException
   | ExpiredIteratorException
@@ -3291,8 +3324,11 @@ export const getRecords: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecords",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3322,8 +3358,11 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetShardIteratorError =
   | AccessDeniedException
   | InternalFailureException
@@ -3391,8 +3430,11 @@ export const getShardIterator: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetShardIterator",
 }));
+
 export type IncreaseStreamRetentionPeriodError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3431,8 +3473,11 @@ export const increaseStreamRetentionPeriod: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IncreaseStreamRetentionPeriod",
 }));
+
 export type ListShardsError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -3474,8 +3519,11 @@ export const listShards: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListShards",
 }));
+
 export type ListStreamConsumersError =
   | ExpiredNextTokenException
   | InvalidArgumentException
@@ -3519,6 +3567,8 @@ export const listStreamConsumers: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamConsumers",
   pagination: {
     inputToken: "NextToken",
@@ -3526,6 +3576,7 @@ export const listStreamConsumers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStreamsError =
   | ExpiredNextTokenException
   | InvalidArgumentException
@@ -3579,6 +3630,8 @@ export const listStreams: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreams",
   pagination: {
     inputToken: "NextToken",
@@ -3586,6 +3639,7 @@ export const listStreams: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3613,8 +3667,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTagsForStreamError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3643,8 +3700,11 @@ export const listTagsForStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForStream",
 }));
+
 export type MergeShardsError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3716,8 +3776,11 @@ export const mergeShards: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeShards",
 }));
+
 export type PutRecordError =
   | AccessDeniedException
   | InternalFailureException
@@ -3800,8 +3863,11 @@ export const putRecord: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecord",
 }));
+
 export type PutRecordsError =
   | AccessDeniedException
   | InternalFailureException
@@ -3907,8 +3973,11 @@ export const putRecords: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecords",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -3946,8 +4015,11 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RegisterStreamConsumerError =
   | InvalidArgumentException
   | LimitExceededException
@@ -3989,8 +4061,11 @@ export const registerStreamConsumer: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterStreamConsumer",
 }));
+
 export type RemoveTagsFromStreamError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4026,8 +4101,11 @@ export const removeTagsFromStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromStream",
 }));
+
 export type SplitShardError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4105,8 +4183,11 @@ export const splitShard: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SplitShard",
 }));
+
 export type StartStreamEncryptionError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4166,8 +4247,11 @@ export const startStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartStreamEncryption",
 }));
+
 export type StopStreamEncryptionError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4214,8 +4298,11 @@ export const stopStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopStreamEncryption",
 }));
+
 export type SubscribeToShardError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4267,8 +4354,11 @@ export const subscribeToShard: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubscribeToShard",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4294,8 +4384,11 @@ export const tagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4321,8 +4414,11 @@ export const untagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAccountSettingsError =
   | InvalidArgumentException
   | LimitExceededException
@@ -4352,8 +4448,11 @@ export const updateAccountSettings: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
+
 export type UpdateMaxRecordSizeError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4381,8 +4480,11 @@ export const updateMaxRecordSize: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaxRecordSize",
 }));
+
 export type UpdateShardCountError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4456,8 +4558,11 @@ export const updateShardCount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateShardCount",
 }));
+
 export type UpdateStreamModeError =
   | InvalidArgumentException
   | LimitExceededException
@@ -4487,8 +4592,11 @@ export const updateStreamMode: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamMode",
 }));
+
 export type UpdateStreamWarmThroughputError =
   | AccessDeniedException
   | InvalidArgumentException
@@ -4531,5 +4639,7 @@ export const updateStreamWarmThroughput: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamWarmThroughput",
 }));

@@ -13,7 +13,12 @@
 import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import * as SchemaIssue from "effect/SchemaIssue";
-import { COMMON_ERRORS, ParseError, UnknownAwsError } from "../errors.ts";
+import {
+  COMMON_ERRORS,
+  InternalError,
+  ParseError,
+  UnknownAwsError,
+} from "../errors.ts";
 import {
   getAwsQueryError,
   getHttpError,
@@ -38,6 +43,11 @@ export interface ResponseParserOptions {
   protocol?: Protocol;
   /** Skip schema validation - returns raw deserialized response */
   skipValidation?: boolean;
+  /**
+   * Hard-fail on output shape mismatches. Off by default: decode runs for
+   * its transformations but mismatches fall back to the raw response.
+   */
+  validate?: boolean;
   /** AWS service SDK ID for error context (e.g., "S3", "DynamoDB") */
   service?: string;
   /** Operation name for error context (e.g., "createBucket", "putObject") */
@@ -110,6 +120,7 @@ export const makeResponseParser = <A>(
   const decode = options?.skipValidation
     ? undefined
     : Schema.decodeUnknownEffect(outputSchema);
+  const lenient = !options?.validate;
 
   // Create stream parser if output has event stream member (done once)
   const streamParser = makeStreamParser(outputAst);
@@ -185,6 +196,15 @@ export const makeResponseParser = <A>(
         return deserialized as A;
       }
 
+      // Decode applies the schema's transformations (timestamp -> Date,
+      // sensitive -> Redacted). A shape mismatch is NOT a failure: fall back
+      // to the raw deserialized response (DISTILLED_AWS_VALIDATE=1 restores
+      // hard-failing validation).
+      if (lenient) {
+        return yield* decode(deserialized).pipe(
+          Effect.catch(() => Effect.succeed(deserialized as A)),
+        );
+      }
       return yield* decode(deserialized);
     }
 
@@ -234,6 +254,13 @@ export const makeResponseParser = <A>(
       );
       if (statusMatches.length === 1) {
         errorSchema = statusMatches[0];
+      } else if (response.status >= 500) {
+        // A code-less 5xx (e.g. a raw "502 Bad Gateway" HTML page from an
+        // AWS front-end proxy) is a transient server fault, not a client
+        // parse bug. Surface it as the ServerError-categorized
+        // InternalError so the default retry policy treats it as transient
+        // instead of failing fast with an unretryable ParseError.
+        return yield* new InternalError();
       } else {
         return yield* new ParseError({
           message: `No error code found in response and ${statusMatches.length} declared errors match status ${response.status}. Data: ${JSON.stringify(data)}`,

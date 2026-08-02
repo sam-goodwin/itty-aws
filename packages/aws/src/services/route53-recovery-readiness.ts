@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,17 +85,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __stringMax256 = string;
-export type __stringMax64PatternAAZAZ09Z = string;
-export type CrossAccountAuthorization = string;
-export type __stringPatternAWSAZaZ09AZaZ09 = string;
-export type MaxResults = number;
-export type LastAuditTimestamp = Date;
-export type ReadinessCheckTimestamp = Date;
-export type __stringMax64 = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export type Tags = { [key: string]: string | undefined };
@@ -123,6 +144,8 @@ export const CreateCellRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCellRequest",
 }) as any as S.Schema<CreateCellRequest>;
+export type __stringMax256 = string;
+export type __stringMax64PatternAAZAZ09Z = string;
 export interface CreateCellResponse {
   CellArn?: string;
   CellName?: string;
@@ -149,11 +172,12 @@ export const CreateCellResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCellResponse",
 }) as any as S.Schema<CreateCellResponse>;
+export type CrossAccountAuthorization = string;
 export interface CreateCrossAccountAuthorizationRequest {
   CrossAccountAuthorization?: string;
 }
-export const CreateCrossAccountAuthorizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCrossAccountAuthorizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ CrossAccountAuthorization: S.optional(S.String) })
       .pipe(
         S.encodeKeys({
@@ -170,76 +194,74 @@ export const CreateCrossAccountAuthorizationRequest =
           rules,
         ),
       ),
-  ).annotate({
-    identifier: "CreateCrossAccountAuthorizationRequest",
-  }) as any as S.Schema<CreateCrossAccountAuthorizationRequest>;
+).annotate({
+  identifier: "CreateCrossAccountAuthorizationRequest",
+}) as any as S.Schema<CreateCrossAccountAuthorizationRequest>;
 export interface CreateCrossAccountAuthorizationResponse {
   CrossAccountAuthorization?: string;
 }
-export const CreateCrossAccountAuthorizationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCrossAccountAuthorizationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ CrossAccountAuthorization: S.optional(S.String) }).pipe(
       S.encodeKeys({ CrossAccountAuthorization: "crossAccountAuthorization" }),
     ),
-  ).annotate({
-    identifier: "CreateCrossAccountAuthorizationResponse",
-  }) as any as S.Schema<CreateCrossAccountAuthorizationResponse>;
+).annotate({
+  identifier: "CreateCrossAccountAuthorizationResponse",
+}) as any as S.Schema<CreateCrossAccountAuthorizationResponse>;
 export interface CreateReadinessCheckRequest {
   ReadinessCheckName?: string;
   ResourceSetName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateReadinessCheckRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReadinessCheckName: S.optional(S.String),
-      ResourceSetName: S.optional(S.String),
-      Tags: S.optional(Tags),
-    })
-      .pipe(
-        S.encodeKeys({
-          ReadinessCheckName: "readinessCheckName",
-          ResourceSetName: "resourceSetName",
-          Tags: "tags",
-        }),
-      )
-      .pipe(
-        T.all(
-          T.Http({ method: "POST", uri: "/readinesschecks" }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+export const CreateReadinessCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReadinessCheckName: S.optional(S.String),
+    ResourceSetName: S.optional(S.String),
+    Tags: S.optional(Tags),
+  })
+    .pipe(
+      S.encodeKeys({
+        ReadinessCheckName: "readinessCheckName",
+        ResourceSetName: "resourceSetName",
+        Tags: "tags",
+      }),
+    )
+    .pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/readinesschecks" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "CreateReadinessCheckRequest",
-  }) as any as S.Schema<CreateReadinessCheckRequest>;
+    ),
+).annotate({
+  identifier: "CreateReadinessCheckRequest",
+}) as any as S.Schema<CreateReadinessCheckRequest>;
 export interface CreateReadinessCheckResponse {
   ReadinessCheckArn?: string;
   ReadinessCheckName?: string;
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateReadinessCheckResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReadinessCheckArn: S.optional(S.String),
-      ReadinessCheckName: S.optional(S.String),
-      ResourceSet: S.optional(S.String),
-      Tags: S.optional(Tags),
-    }).pipe(
-      S.encodeKeys({
-        ReadinessCheckArn: "readinessCheckArn",
-        ReadinessCheckName: "readinessCheckName",
-        ResourceSet: "resourceSet",
-        Tags: "tags",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateReadinessCheckResponse",
-  }) as any as S.Schema<CreateReadinessCheckResponse>;
+export const CreateReadinessCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReadinessCheckArn: S.optional(S.String),
+    ReadinessCheckName: S.optional(S.String),
+    ResourceSet: S.optional(S.String),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      ReadinessCheckArn: "readinessCheckArn",
+      ReadinessCheckName: "readinessCheckName",
+      ResourceSet: "resourceSet",
+      Tags: "tags",
+    }),
+  ),
+).annotate({
+  identifier: "CreateReadinessCheckResponse",
+}) as any as S.Schema<CreateReadinessCheckResponse>;
 export interface CreateRecoveryGroupRequest {
   Cells?: string[];
   RecoveryGroupName?: string;
@@ -277,24 +299,24 @@ export interface CreateRecoveryGroupResponse {
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateRecoveryGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Cells: S.optional(__listOf__string),
-      RecoveryGroupArn: S.optional(S.String),
-      RecoveryGroupName: S.optional(S.String),
-      Tags: S.optional(Tags),
-    }).pipe(
-      S.encodeKeys({
-        Cells: "cells",
-        RecoveryGroupArn: "recoveryGroupArn",
-        RecoveryGroupName: "recoveryGroupName",
-        Tags: "tags",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateRecoveryGroupResponse",
-  }) as any as S.Schema<CreateRecoveryGroupResponse>;
+export const CreateRecoveryGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Cells: S.optional(__listOf__string),
+    RecoveryGroupArn: S.optional(S.String),
+    RecoveryGroupName: S.optional(S.String),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      Cells: "cells",
+      RecoveryGroupArn: "recoveryGroupArn",
+      RecoveryGroupName: "recoveryGroupName",
+      Tags: "tags",
+    }),
+  ),
+).annotate({
+  identifier: "CreateRecoveryGroupResponse",
+}) as any as S.Schema<CreateRecoveryGroupResponse>;
+export type __stringPatternAWSAZaZ09AZaZ09 = string;
 export interface NLBResource {
   Arn?: string;
 }
@@ -462,8 +484,8 @@ export const DeleteCellResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCrossAccountAuthorizationRequest {
   CrossAccountAuthorization: string;
 }
-export const DeleteCrossAccountAuthorizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteCrossAccountAuthorizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CrossAccountAuthorization: S.String.pipe(
         T.HttpLabel("CrossAccountAuthorization"),
@@ -481,42 +503,43 @@ export const DeleteCrossAccountAuthorizationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteCrossAccountAuthorizationRequest",
-  }) as any as S.Schema<DeleteCrossAccountAuthorizationRequest>;
+).annotate({
+  identifier: "DeleteCrossAccountAuthorizationRequest",
+}) as any as S.Schema<DeleteCrossAccountAuthorizationRequest>;
 export interface DeleteCrossAccountAuthorizationResponse {}
-export const DeleteCrossAccountAuthorizationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteCrossAccountAuthorizationResponse",
-  }) as any as S.Schema<DeleteCrossAccountAuthorizationResponse>;
+export const DeleteCrossAccountAuthorizationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteCrossAccountAuthorizationResponse",
+}) as any as S.Schema<DeleteCrossAccountAuthorizationResponse>;
 export interface DeleteReadinessCheckRequest {
   ReadinessCheckName: string;
 }
-export const DeleteReadinessCheckRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReadinessCheckName: S.String.pipe(T.HttpLabel("ReadinessCheckName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/readinesschecks/{ReadinessCheckName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReadinessCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReadinessCheckName: S.String.pipe(T.HttpLabel("ReadinessCheckName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/readinesschecks/{ReadinessCheckName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReadinessCheckRequest",
-  }) as any as S.Schema<DeleteReadinessCheckRequest>;
+  ),
+).annotate({
+  identifier: "DeleteReadinessCheckRequest",
+}) as any as S.Schema<DeleteReadinessCheckRequest>;
 export interface DeleteReadinessCheckResponse {}
-export const DeleteReadinessCheckResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteReadinessCheckResponse",
-  }) as any as S.Schema<DeleteReadinessCheckResponse>;
+export const DeleteReadinessCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteReadinessCheckResponse",
+}) as any as S.Schema<DeleteReadinessCheckResponse>;
 export interface DeleteRecoveryGroupRequest {
   RecoveryGroupName: string;
 }
@@ -525,10 +548,7 @@ export const DeleteRecoveryGroupRequest = /*@__PURE__*/ S.suspend(() =>
     RecoveryGroupName: S.String.pipe(T.HttpLabel("RecoveryGroupName")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/recoverygroups/{RecoveryGroupName}",
-      }),
+      T.Http({ method: "DELETE", uri: "/recoverygroups/{RecoveryGroupName}" }),
       svc,
       auth,
       proto,
@@ -540,10 +560,11 @@ export const DeleteRecoveryGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRecoveryGroupRequest",
 }) as any as S.Schema<DeleteRecoveryGroupRequest>;
 export interface DeleteRecoveryGroupResponse {}
-export const DeleteRecoveryGroupResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteRecoveryGroupResponse",
-  }) as any as S.Schema<DeleteRecoveryGroupResponse>;
+export const DeleteRecoveryGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRecoveryGroupResponse",
+}) as any as S.Schema<DeleteRecoveryGroupResponse>;
 export interface DeleteResourceSetRequest {
   ResourceSetName: string;
 }
@@ -569,13 +590,14 @@ export const DeleteResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourceSetResponse",
 }) as any as S.Schema<DeleteResourceSetResponse>;
+export type MaxResults = number;
 export interface GetArchitectureRecommendationsRequest {
   MaxResults?: number;
   NextToken?: string;
   RecoveryGroupName: string;
 }
-export const GetArchitectureRecommendationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetArchitectureRecommendationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -593,9 +615,10 @@ export const GetArchitectureRecommendationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetArchitectureRecommendationsRequest",
-  }) as any as S.Schema<GetArchitectureRecommendationsRequest>;
+).annotate({
+  identifier: "GetArchitectureRecommendationsRequest",
+}) as any as S.Schema<GetArchitectureRecommendationsRequest>;
+export type LastAuditTimestamp = Date;
 export interface Recommendation {
   RecommendationText?: string;
 }
@@ -611,8 +634,8 @@ export interface GetArchitectureRecommendationsResponse {
   NextToken?: string;
   Recommendations?: (Recommendation & { RecommendationText: string })[];
 }
-export const GetArchitectureRecommendationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetArchitectureRecommendationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       LastAuditTimestamp: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -626,9 +649,9 @@ export const GetArchitectureRecommendationsResponse =
         Recommendations: "recommendations",
       }),
     ),
-  ).annotate({
-    identifier: "GetArchitectureRecommendationsResponse",
-  }) as any as S.Schema<GetArchitectureRecommendationsResponse>;
+).annotate({
+  identifier: "GetArchitectureRecommendationsResponse",
+}) as any as S.Schema<GetArchitectureRecommendationsResponse>;
 export interface GetCellRequest {
   CellName: string;
 }
@@ -675,25 +698,24 @@ export interface GetCellReadinessSummaryRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetCellReadinessSummaryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CellName: S.String.pipe(T.HttpLabel("CellName")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/cellreadiness/{CellName}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCellReadinessSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CellName: S.String.pipe(T.HttpLabel("CellName")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/cellreadiness/{CellName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCellReadinessSummaryRequest",
-  }) as any as S.Schema<GetCellReadinessSummaryRequest>;
+  ),
+).annotate({
+  identifier: "GetCellReadinessSummaryRequest",
+}) as any as S.Schema<GetCellReadinessSummaryRequest>;
 export type Readiness =
   | "READY"
   | "NOT_READY"
@@ -701,6 +723,7 @@ export type Readiness =
   | "NOT_AUTHORIZED"
   | (string & {});
 export const Readiness = /*@__PURE__*/ S.String;
+
 export interface ReadinessCheckSummary {
   Readiness?: Readiness;
   ReadinessCheckName?: string;
@@ -719,29 +742,29 @@ export const ReadinessCheckSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReadinessCheckSummary",
 }) as any as S.Schema<ReadinessCheckSummary>;
 export type __listOfReadinessCheckSummary = ReadinessCheckSummary[];
-export const __listOfReadinessCheckSummary =
-  /*@__PURE__*/ S.Array(ReadinessCheckSummary);
+export const __listOfReadinessCheckSummary = /*@__PURE__*/ S.Array(
+  ReadinessCheckSummary,
+);
 export interface GetCellReadinessSummaryResponse {
   NextToken?: string;
   Readiness?: Readiness;
   ReadinessChecks?: ReadinessCheckSummary[];
 }
-export const GetCellReadinessSummaryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Readiness: S.optional(Readiness),
-      ReadinessChecks: S.optional(__listOfReadinessCheckSummary),
-    }).pipe(
-      S.encodeKeys({
-        NextToken: "nextToken",
-        Readiness: "readiness",
-        ReadinessChecks: "readinessChecks",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetCellReadinessSummaryResponse",
-  }) as any as S.Schema<GetCellReadinessSummaryResponse>;
+export const GetCellReadinessSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Readiness: S.optional(Readiness),
+    ReadinessChecks: S.optional(__listOfReadinessCheckSummary),
+  }).pipe(
+    S.encodeKeys({
+      NextToken: "nextToken",
+      Readiness: "readiness",
+      ReadinessChecks: "readinessChecks",
+    }),
+  ),
+).annotate({
+  identifier: "GetCellReadinessSummaryResponse",
+}) as any as S.Schema<GetCellReadinessSummaryResponse>;
 export interface GetReadinessCheckRequest {
   ReadinessCheckName: string;
 }
@@ -790,8 +813,8 @@ export interface GetReadinessCheckResourceStatusRequest {
   ReadinessCheckName: string;
   ResourceIdentifier: string;
 }
-export const GetReadinessCheckResourceStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetReadinessCheckResourceStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -810,9 +833,10 @@ export const GetReadinessCheckResourceStatusRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetReadinessCheckResourceStatusRequest",
-  }) as any as S.Schema<GetReadinessCheckResourceStatusRequest>;
+).annotate({
+  identifier: "GetReadinessCheckResourceStatusRequest",
+}) as any as S.Schema<GetReadinessCheckResourceStatusRequest>;
+export type ReadinessCheckTimestamp = Date;
 export interface Message {
   MessageText?: string;
 }
@@ -858,8 +882,8 @@ export interface GetReadinessCheckResourceStatusResponse {
     RuleId: string;
   })[];
 }
-export const GetReadinessCheckResourceStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetReadinessCheckResourceStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String),
       Readiness: S.optional(Readiness),
@@ -871,36 +895,35 @@ export const GetReadinessCheckResourceStatusResponse =
         Rules: "rules",
       }),
     ),
-  ).annotate({
-    identifier: "GetReadinessCheckResourceStatusResponse",
-  }) as any as S.Schema<GetReadinessCheckResourceStatusResponse>;
+).annotate({
+  identifier: "GetReadinessCheckResourceStatusResponse",
+}) as any as S.Schema<GetReadinessCheckResourceStatusResponse>;
 export interface GetReadinessCheckStatusRequest {
   MaxResults?: number;
   NextToken?: string;
   ReadinessCheckName: string;
 }
-export const GetReadinessCheckStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      ReadinessCheckName: S.String.pipe(T.HttpLabel("ReadinessCheckName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/readinesschecks/{ReadinessCheckName}/status",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetReadinessCheckStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    ReadinessCheckName: S.String.pipe(T.HttpLabel("ReadinessCheckName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/readinesschecks/{ReadinessCheckName}/status",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetReadinessCheckStatusRequest",
-  }) as any as S.Schema<GetReadinessCheckStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetReadinessCheckStatusRequest",
+}) as any as S.Schema<GetReadinessCheckStatusRequest>;
 export interface ResourceResult {
   ComponentId?: string;
   LastCheckedTimestamp?: Date;
@@ -935,24 +958,23 @@ export interface GetReadinessCheckStatusResponse {
     Readiness: Readiness;
   })[];
 }
-export const GetReadinessCheckStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Messages: S.optional(__listOfMessage),
-      NextToken: S.optional(S.String),
-      Readiness: S.optional(Readiness),
-      Resources: S.optional(__listOfResourceResult),
-    }).pipe(
-      S.encodeKeys({
-        Messages: "messages",
-        NextToken: "nextToken",
-        Readiness: "readiness",
-        Resources: "resources",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetReadinessCheckStatusResponse",
-  }) as any as S.Schema<GetReadinessCheckStatusResponse>;
+export const GetReadinessCheckStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Messages: S.optional(__listOfMessage),
+    NextToken: S.optional(S.String),
+    Readiness: S.optional(Readiness),
+    Resources: S.optional(__listOfResourceResult),
+  }).pipe(
+    S.encodeKeys({
+      Messages: "messages",
+      NextToken: "nextToken",
+      Readiness: "readiness",
+      Resources: "resources",
+    }),
+  ),
+).annotate({
+  identifier: "GetReadinessCheckStatusResponse",
+}) as any as S.Schema<GetReadinessCheckStatusResponse>;
 export interface GetRecoveryGroupRequest {
   RecoveryGroupName: string;
 }
@@ -1000,8 +1022,8 @@ export interface GetRecoveryGroupReadinessSummaryRequest {
   NextToken?: string;
   RecoveryGroupName: string;
 }
-export const GetRecoveryGroupReadinessSummaryRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRecoveryGroupReadinessSummaryRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1019,16 +1041,16 @@ export const GetRecoveryGroupReadinessSummaryRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetRecoveryGroupReadinessSummaryRequest",
-  }) as any as S.Schema<GetRecoveryGroupReadinessSummaryRequest>;
+).annotate({
+  identifier: "GetRecoveryGroupReadinessSummaryRequest",
+}) as any as S.Schema<GetRecoveryGroupReadinessSummaryRequest>;
 export interface GetRecoveryGroupReadinessSummaryResponse {
   NextToken?: string;
   Readiness?: Readiness;
   ReadinessChecks?: ReadinessCheckSummary[];
 }
-export const GetRecoveryGroupReadinessSummaryResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRecoveryGroupReadinessSummaryResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String),
       Readiness: S.optional(Readiness),
@@ -1040,9 +1062,9 @@ export const GetRecoveryGroupReadinessSummaryResponse =
         ReadinessChecks: "readinessChecks",
       }),
     ),
-  ).annotate({
-    identifier: "GetRecoveryGroupReadinessSummaryResponse",
-  }) as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>;
+).annotate({
+  identifier: "GetRecoveryGroupReadinessSummaryResponse",
+}) as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>;
 export interface GetResourceSetRequest {
   ResourceSetName: string;
 }
@@ -1156,8 +1178,8 @@ export interface ListCrossAccountAuthorizationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListCrossAccountAuthorizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListCrossAccountAuthorizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1171,18 +1193,19 @@ export const ListCrossAccountAuthorizationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListCrossAccountAuthorizationsRequest",
-  }) as any as S.Schema<ListCrossAccountAuthorizationsRequest>;
+).annotate({
+  identifier: "ListCrossAccountAuthorizationsRequest",
+}) as any as S.Schema<ListCrossAccountAuthorizationsRequest>;
 export type __listOfCrossAccountAuthorization = string[];
-export const __listOfCrossAccountAuthorization =
-  /*@__PURE__*/ S.Array(S.String);
+export const __listOfCrossAccountAuthorization = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface ListCrossAccountAuthorizationsResponse {
   CrossAccountAuthorizations?: string[];
   NextToken?: string;
 }
-export const ListCrossAccountAuthorizationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListCrossAccountAuthorizationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       CrossAccountAuthorizations: S.optional(__listOfCrossAccountAuthorization),
       NextToken: S.optional(S.String),
@@ -1192,9 +1215,9 @@ export const ListCrossAccountAuthorizationsResponse =
         NextToken: "nextToken",
       }),
     ),
-  ).annotate({
-    identifier: "ListCrossAccountAuthorizationsResponse",
-  }) as any as S.Schema<ListCrossAccountAuthorizationsResponse>;
+).annotate({
+  identifier: "ListCrossAccountAuthorizationsResponse",
+}) as any as S.Schema<ListCrossAccountAuthorizationsResponse>;
 export interface ListReadinessChecksRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1249,20 +1272,19 @@ export interface ListReadinessChecksResponse {
     ResourceSet: __stringMax64PatternAAZAZ09Z;
   })[];
 }
-export const ListReadinessChecksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ReadinessChecks: S.optional(__listOfReadinessCheckOutput),
-    }).pipe(
-      S.encodeKeys({
-        NextToken: "nextToken",
-        ReadinessChecks: "readinessChecks",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListReadinessChecksResponse",
-  }) as any as S.Schema<ListReadinessChecksResponse>;
+export const ListReadinessChecksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ReadinessChecks: S.optional(__listOfReadinessCheckOutput),
+  }).pipe(
+    S.encodeKeys({
+      NextToken: "nextToken",
+      ReadinessChecks: "readinessChecks",
+    }),
+  ),
+).annotate({
+  identifier: "ListReadinessChecksResponse",
+}) as any as S.Schema<ListReadinessChecksResponse>;
 export interface ListRecoveryGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1323,10 +1345,7 @@ export const ListRecoveryGroupsResponse = /*@__PURE__*/ S.suspend(() =>
     NextToken: S.optional(S.String),
     RecoveryGroups: S.optional(__listOfRecoveryGroupOutput),
   }).pipe(
-    S.encodeKeys({
-      NextToken: "nextToken",
-      RecoveryGroups: "recoveryGroups",
-    }),
+    S.encodeKeys({ NextToken: "nextToken", RecoveryGroups: "recoveryGroups" }),
   ),
 ).annotate({
   identifier: "ListRecoveryGroupsResponse",
@@ -1423,6 +1442,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
+export type __stringMax64 = string;
 export interface ListRulesOutput {
   ResourceType?: string;
   RuleDescription?: string;
@@ -1464,30 +1484,28 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourcesRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTagsForResourcesRequest",
-  }) as any as S.Schema<ListTagsForResourcesRequest>;
+  ),
+).annotate({
+  identifier: "ListTagsForResourcesRequest",
+}) as any as S.Schema<ListTagsForResourcesRequest>;
 export interface ListTagsForResourcesResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
-  ).annotate({
-    identifier: "ListTagsForResourcesResponse",
-  }) as any as S.Schema<ListTagsForResourcesResponse>;
+export const ListTagsForResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
+).annotate({
+  identifier: "ListTagsForResourcesResponse",
+}) as any as S.Schema<ListTagsForResourcesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -1597,53 +1615,48 @@ export interface UpdateReadinessCheckRequest {
   ReadinessCheckName: string;
   ResourceSetName?: string;
 }
-export const UpdateReadinessCheckRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReadinessCheckName: S.String.pipe(T.HttpLabel("ReadinessCheckName")),
-      ResourceSetName: S.optional(S.String),
-    })
-      .pipe(S.encodeKeys({ ResourceSetName: "resourceSetName" }))
-      .pipe(
-        T.all(
-          T.Http({
-            method: "PUT",
-            uri: "/readinesschecks/{ReadinessCheckName}",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+export const UpdateReadinessCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReadinessCheckName: S.String.pipe(T.HttpLabel("ReadinessCheckName")),
+    ResourceSetName: S.optional(S.String),
+  })
+    .pipe(S.encodeKeys({ ResourceSetName: "resourceSetName" }))
+    .pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/readinesschecks/{ReadinessCheckName}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "UpdateReadinessCheckRequest",
-  }) as any as S.Schema<UpdateReadinessCheckRequest>;
+    ),
+).annotate({
+  identifier: "UpdateReadinessCheckRequest",
+}) as any as S.Schema<UpdateReadinessCheckRequest>;
 export interface UpdateReadinessCheckResponse {
   ReadinessCheckArn?: string;
   ReadinessCheckName?: string;
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateReadinessCheckResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ReadinessCheckArn: S.optional(S.String),
-      ReadinessCheckName: S.optional(S.String),
-      ResourceSet: S.optional(S.String),
-      Tags: S.optional(Tags),
-    }).pipe(
-      S.encodeKeys({
-        ReadinessCheckArn: "readinessCheckArn",
-        ReadinessCheckName: "readinessCheckName",
-        ResourceSet: "resourceSet",
-        Tags: "tags",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateReadinessCheckResponse",
-  }) as any as S.Schema<UpdateReadinessCheckResponse>;
+export const UpdateReadinessCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ReadinessCheckArn: S.optional(S.String),
+    ReadinessCheckName: S.optional(S.String),
+    ResourceSet: S.optional(S.String),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      ReadinessCheckArn: "readinessCheckArn",
+      ReadinessCheckName: "readinessCheckName",
+      ResourceSet: "resourceSet",
+      Tags: "tags",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateReadinessCheckResponse",
+}) as any as S.Schema<UpdateReadinessCheckResponse>;
 export interface UpdateRecoveryGroupRequest {
   Cells?: string[];
   RecoveryGroupName: string;
@@ -1673,24 +1686,23 @@ export interface UpdateRecoveryGroupResponse {
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateRecoveryGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Cells: S.optional(__listOf__string),
-      RecoveryGroupArn: S.optional(S.String),
-      RecoveryGroupName: S.optional(S.String),
-      Tags: S.optional(Tags),
-    }).pipe(
-      S.encodeKeys({
-        Cells: "cells",
-        RecoveryGroupArn: "recoveryGroupArn",
-        RecoveryGroupName: "recoveryGroupName",
-        Tags: "tags",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateRecoveryGroupResponse",
-  }) as any as S.Schema<UpdateRecoveryGroupResponse>;
+export const UpdateRecoveryGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Cells: S.optional(__listOf__string),
+    RecoveryGroupArn: S.optional(S.String),
+    RecoveryGroupName: S.optional(S.String),
+    Tags: S.optional(Tags),
+  }).pipe(
+    S.encodeKeys({
+      Cells: "cells",
+      RecoveryGroupArn: "recoveryGroupArn",
+      RecoveryGroupName: "recoveryGroupName",
+      Tags: "tags",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRecoveryGroupResponse",
+}) as any as S.Schema<UpdateRecoveryGroupResponse>;
 export interface UpdateResourceSetRequest {
   ResourceSetName: string;
   ResourceSetType?: string;
@@ -1747,34 +1759,6 @@ export const UpdateResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResourceSetResponse",
 }) as any as S.Schema<UpdateResourceSetResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateCellError =
   | AccessDeniedException
   | ConflictException
@@ -1800,8 +1784,11 @@ export const createCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCell",
 }));
+
 export type CreateCrossAccountAuthorizationError =
   | AccessDeniedException
   | ConflictException
@@ -1827,8 +1814,11 @@ export const createCrossAccountAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCrossAccountAuthorization",
 }));
+
 export type CreateReadinessCheckError =
   | AccessDeniedException
   | ConflictException
@@ -1854,8 +1844,11 @@ export const createReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReadinessCheck",
 }));
+
 export type CreateRecoveryGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1881,8 +1874,11 @@ export const createRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecoveryGroup",
 }));
+
 export type CreateResourceSetError =
   | AccessDeniedException
   | ConflictException
@@ -1908,8 +1904,11 @@ export const createResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceSet",
 }));
+
 export type DeleteCellError =
   | AccessDeniedException
   | InternalServerException
@@ -1935,8 +1934,11 @@ export const deleteCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCell",
 }));
+
 export type DeleteCrossAccountAuthorizationError =
   | AccessDeniedException
   | InternalServerException
@@ -1960,8 +1962,11 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCrossAccountAuthorization",
 }));
+
 export type DeleteReadinessCheckError =
   | AccessDeniedException
   | InternalServerException
@@ -1987,8 +1992,11 @@ export const deleteReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReadinessCheck",
 }));
+
 export type DeleteRecoveryGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2014,8 +2022,11 @@ export const deleteRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecoveryGroup",
 }));
+
 export type DeleteResourceSetError =
   | AccessDeniedException
   | InternalServerException
@@ -2041,8 +2052,11 @@ export const deleteResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceSet",
 }));
+
 export type GetArchitectureRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2068,8 +2082,11 @@ export const getArchitectureRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchitectureRecommendations",
 }));
+
 export type GetCellError =
   | AccessDeniedException
   | InternalServerException
@@ -2095,8 +2112,11 @@ export const getCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCell",
 }));
+
 export type GetCellReadinessSummaryError =
   | AccessDeniedException
   | InternalServerException
@@ -2137,6 +2157,8 @@ export const getCellReadinessSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCellReadinessSummary",
   pagination: {
     inputToken: "NextToken",
@@ -2145,6 +2167,7 @@ export const getCellReadinessSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetReadinessCheckError =
   | AccessDeniedException
   | InternalServerException
@@ -2170,8 +2193,11 @@ export const getReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReadinessCheck",
 }));
+
 export type GetReadinessCheckResourceStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -2212,6 +2238,8 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReadinessCheckResourceStatus",
   pagination: {
     inputToken: "NextToken",
@@ -2220,6 +2248,7 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetReadinessCheckStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -2260,6 +2289,8 @@ export const getReadinessCheckStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReadinessCheckStatus",
   pagination: {
     inputToken: "NextToken",
@@ -2268,6 +2299,7 @@ export const getReadinessCheckStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetRecoveryGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2293,8 +2325,11 @@ export const getRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryGroup",
 }));
+
 export type GetRecoveryGroupReadinessSummaryError =
   | AccessDeniedException
   | InternalServerException
@@ -2335,6 +2370,8 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryGroupReadinessSummary",
   pagination: {
     inputToken: "NextToken",
@@ -2343,6 +2380,7 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourceSetError =
   | AccessDeniedException
   | InternalServerException
@@ -2368,8 +2406,11 @@ export const getResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceSet",
 }));
+
 export type ListCellsError =
   | AccessDeniedException
   | InternalServerException
@@ -2408,6 +2449,8 @@ export const listCells: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCells",
   pagination: {
     inputToken: "NextToken",
@@ -2416,6 +2459,7 @@ export const listCells: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCrossAccountAuthorizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2454,6 +2498,8 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrossAccountAuthorizations",
   pagination: {
     inputToken: "NextToken",
@@ -2462,6 +2508,7 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReadinessChecksError =
   | AccessDeniedException
   | InternalServerException
@@ -2500,6 +2547,8 @@ export const listReadinessChecks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReadinessChecks",
   pagination: {
     inputToken: "NextToken",
@@ -2508,6 +2557,7 @@ export const listReadinessChecks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecoveryGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -2546,6 +2596,8 @@ export const listRecoveryGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecoveryGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2554,6 +2606,7 @@ export const listRecoveryGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceSetsError =
   | AccessDeniedException
   | InternalServerException
@@ -2592,6 +2645,8 @@ export const listResourceSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSets",
   pagination: {
     inputToken: "NextToken",
@@ -2600,6 +2655,7 @@ export const listResourceSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRulesError =
   | AccessDeniedException
   | InternalServerException
@@ -2638,6 +2694,8 @@ export const listRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRules",
   pagination: {
     inputToken: "NextToken",
@@ -2646,6 +2704,7 @@ export const listRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourcesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2667,8 +2726,11 @@ export const listTagsForResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResources",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2690,8 +2752,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2713,8 +2778,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCellError =
   | AccessDeniedException
   | InternalServerException
@@ -2740,8 +2808,11 @@ export const updateCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCell",
 }));
+
 export type UpdateReadinessCheckError =
   | AccessDeniedException
   | InternalServerException
@@ -2767,8 +2838,11 @@ export const updateReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReadinessCheck",
 }));
+
 export type UpdateRecoveryGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2794,8 +2868,11 @@ export const updateRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecoveryGroup",
 }));
+
 export type UpdateResourceSetError =
   | AccessDeniedException
   | InternalServerException
@@ -2821,5 +2898,7 @@ export const updateResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceSet",
 }));

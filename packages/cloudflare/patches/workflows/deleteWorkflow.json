@@ -1,11 +1,88 @@
 {
-  "errors": {
-    "WorkflowNotFound": [{ "code": 10200 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  },
-  "response": {
-    "properties": {
-      "success": { "optional": true }
+  "description": "Align workflows#Delete with distilled cloudflare/workflows deleteWorkflow",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workflows#Delete",
+      "path": "/shapes/com.cloudflare.workflows#DeleteWorkflow"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workflows#DeleteRequest",
+      "path": "/shapes/com.cloudflare.workflows#DeleteWorkflowRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workflows#DeleteWorkflow/input/target",
+      "value": "com.cloudflare.workflows#DeleteWorkflowRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workflows#DeleteResponse",
+      "path": "/shapes/com.cloudflare.workflows#DeleteWorkflowResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workflows#DeleteWorkflow/output/target",
+      "value": "com.cloudflare.workflows#DeleteWorkflowResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#WorkflowNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10200
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#DeleteWorkflow/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workflows#WorkflowNotFound"
+        },
+        {
+          "target": "com.cloudflare.workflows#InvalidRoute"
+        }
+      ]
     }
-  }
+  ]
 }

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,20 +85,616 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ResourceArn = string;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.all(T.HttpError(409), T.Retryable()),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestException extends S.TaggedErrorClass<TooManyRequestException>()(
+  "TooManyRequestException",
+  { message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export type FeedId = string;
+export type AssociatedResourceName = string;
+export type ResourceName = string;
+export interface CroppingConfig {}
+export const CroppingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "CroppingConfig" }) as any as S.Schema<CroppingConfig>;
+export type ResourceDescription = string;
+export interface ClippingConfig {
+  callbackMetadata?: string;
+}
+export const ClippingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ callbackMetadata: S.optional(S.String) }),
+).annotate({ identifier: "ClippingConfig" }) as any as S.Schema<ClippingConfig>;
+export type TranscriptionLanguage =
+  | "eng"
+  | "eng-au"
+  | "eng-gb"
+  | "eng-us"
+  | "fra"
+  | "ita"
+  | "deu"
+  | "spa"
+  | "por"
+  | (string & {});
+export const TranscriptionLanguage = /*@__PURE__*/ S.String;
+
+export interface AspectRatio {
+  width: number;
+  height: number;
+}
+export const AspectRatio = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ width: S.Number, height: S.Number }),
+).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
+export type DictionaryId = string;
+export type ProfanityFilterMode =
+  | "DISABLED"
+  | "CENSOR"
+  | "DROP"
+  | (string & {});
+export const ProfanityFilterMode = /*@__PURE__*/ S.String;
+
+export interface SubtitlingConfig {
+  language: TranscriptionLanguage;
+  aspectRatio?: AspectRatio;
+  dictionary?: string;
+  profanityFilter?: ProfanityFilterMode;
+}
+export const SubtitlingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    language: TranscriptionLanguage,
+    aspectRatio: S.optional(AspectRatio),
+    dictionary: S.optional(S.String),
+    profanityFilter: S.optional(ProfanityFilterMode),
+  }),
+).annotate({
+  identifier: "SubtitlingConfig",
+}) as any as S.Schema<SubtitlingConfig>;
+export type OutputConfig =
+  | { cropping: CroppingConfig; clipping?: never; subtitling?: never }
+  | { cropping?: never; clipping: ClippingConfig; subtitling?: never }
+  | { cropping?: never; clipping?: never; subtitling: SubtitlingConfig };
+export const OutputConfig = /*@__PURE__*/ S.Union([
+  S.Struct({ cropping: CroppingConfig }),
+  S.Struct({ clipping: ClippingConfig }),
+  S.Struct({ subtitling: SubtitlingConfig }),
+]);
+export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
+export const OutputStatus = /*@__PURE__*/ S.String;
+
+export interface CreateOutput {
+  name: string;
+  outputConfig: OutputConfig;
+  status: OutputStatus;
+  description?: string;
+}
+export const CreateOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    outputConfig: OutputConfig,
+    status: OutputStatus,
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "CreateOutput" }) as any as S.Schema<CreateOutput>;
+export type CreateOutputList = CreateOutput[];
+export const CreateOutputList = /*@__PURE__*/ S.Array(CreateOutput);
+export interface AssociateFeedRequest {
+  id: string;
+  associatedResourceName: string;
+  outputs: CreateOutput[];
+  dryRun?: boolean;
+}
+export const AssociateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    associatedResourceName: S.String.pipe(T.IdempotencyToken()),
+    outputs: CreateOutputList,
+    dryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/feed/{id}/associate" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AssociateFeedRequest",
+}) as any as S.Schema<AssociateFeedRequest>;
+export type FeedArn = string;
+export interface AssociateFeedResponse {
+  arn: string;
+  id: string;
+}
+export const AssociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, id: S.String }),
+).annotate({
+  identifier: "AssociateFeedResponse",
+}) as any as S.Schema<AssociateFeedResponse>;
+export type DictionaryLanguage =
+  | "eng"
+  | "fra"
+  | "ita"
+  | "deu"
+  | "spa"
+  | "por"
+  | (string & {});
+export const DictionaryLanguage = /*@__PURE__*/ S.String;
+
+export type DictionaryEntriesPayload = string;
 export type TagKey = string;
 export type TagValue = string;
-export type ResourceName = string;
-export type DictionaryEntriesPayload = string;
+export type TagMap = { [key: string]: string | undefined };
+export const TagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface CreateDictionaryRequest {
+  name: string;
+  language: DictionaryLanguage;
+  entries?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    language: DictionaryLanguage,
+    entries: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/dictionary" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateDictionaryRequest",
+}) as any as S.Schema<CreateDictionaryRequest>;
 export type DictionaryArn = string;
-export type DictionaryId = string;
-export type FeedId = string;
-export type ResourceDescription = string;
-export type FeedArn = string;
-export type AssociatedResourceName = string;
+export type DictionaryStatus =
+  | "CREATING"
+  | "AVAILABLE"
+  | "REFERENCED"
+  | "DELETING"
+  | "DELETED"
+  | (string & {});
+export const DictionaryStatus = /*@__PURE__*/ S.String;
 
-//# Schemas
+export type FeedReferences = string[];
+export const FeedReferences = /*@__PURE__*/ S.Array(S.String);
+export interface CreateDictionaryResponse {
+  name: string;
+  arn: string;
+  id: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+  references?: string[];
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    id: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+    references: S.optional(FeedReferences),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "CreateDictionaryResponse",
+}) as any as S.Schema<CreateDictionaryResponse>;
+export interface CreateFeedRequest {
+  name: string;
+  outputs: CreateOutput[];
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    outputs: CreateOutputList,
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/feed" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateFeedRequest",
+}) as any as S.Schema<CreateFeedRequest>;
+export type StringList = string[];
+export const StringList = /*@__PURE__*/ S.Array(S.String);
+export interface GetOutput {
+  name: string;
+  outputConfig: OutputConfig;
+  status: OutputStatus;
+  description?: string;
+  fromAssociation?: boolean;
+}
+export const GetOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    outputConfig: OutputConfig,
+    status: OutputStatus,
+    description: S.optional(S.String),
+    fromAssociation: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "GetOutput" }) as any as S.Schema<GetOutput>;
+export type GetOutputList = GetOutput[];
+export const GetOutputList = /*@__PURE__*/ S.Array(GetOutput);
+export type FeedStatus =
+  | "CREATING"
+  | "AVAILABLE"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "DELETED"
+  | "ARCHIVED"
+  | (string & {});
+export const FeedStatus = /*@__PURE__*/ S.String;
+
+export interface FeedAssociation {
+  associatedResourceName: string;
+}
+export const FeedAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ associatedResourceName: S.String }),
+).annotate({
+  identifier: "FeedAssociation",
+}) as any as S.Schema<FeedAssociation>;
+export interface CreateFeedResponse {
+  arn: string;
+  name: string;
+  id: string;
+  dataEndpoints: string[];
+  outputs: GetOutput[];
+  status: FeedStatus;
+  association?: FeedAssociation;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateFeedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.String,
+    id: S.String,
+    dataEndpoints: StringList,
+    outputs: GetOutputList,
+    status: FeedStatus,
+    association: S.optional(FeedAssociation),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "CreateFeedResponse",
+}) as any as S.Schema<CreateFeedResponse>;
+export interface DeleteDictionaryRequest {
+  id: string;
+}
+export const DeleteDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/v1/dictionary/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDictionaryRequest",
+}) as any as S.Schema<DeleteDictionaryRequest>;
+export interface DeleteDictionaryResponse {
+  arn: string;
+  id: string;
+  status: DictionaryStatus;
+}
+export const DeleteDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, id: S.String, status: DictionaryStatus }),
+).annotate({
+  identifier: "DeleteDictionaryResponse",
+}) as any as S.Schema<DeleteDictionaryResponse>;
+export interface DeleteFeedRequest {
+  id: string;
+}
+export const DeleteFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/v1/feed/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFeedRequest",
+}) as any as S.Schema<DeleteFeedRequest>;
+export interface DeleteFeedResponse {
+  arn: string;
+  id: string;
+  status: FeedStatus;
+}
+export const DeleteFeedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, id: S.String, status: FeedStatus }),
+).annotate({
+  identifier: "DeleteFeedResponse",
+}) as any as S.Schema<DeleteFeedResponse>;
+export interface DisassociateFeedRequest {
+  id: string;
+  associatedResourceName: string;
+  dryRun?: boolean;
+}
+export const DisassociateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    associatedResourceName: S.String.pipe(T.IdempotencyToken()),
+    dryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/feed/{id}/disassociate" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DisassociateFeedRequest",
+}) as any as S.Schema<DisassociateFeedRequest>;
+export interface DisassociateFeedResponse {
+  arn: string;
+  id: string;
+}
+export const DisassociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, id: S.String }),
+).annotate({
+  identifier: "DisassociateFeedResponse",
+}) as any as S.Schema<DisassociateFeedResponse>;
+export interface ExportDictionaryEntriesRequest {
+  id: string;
+}
+export const ExportDictionaryEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/dictionary/{id}/entries/export" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ExportDictionaryEntriesRequest",
+}) as any as S.Schema<ExportDictionaryEntriesRequest>;
+export interface ExportDictionaryEntriesResponse {
+  entries?: string;
+}
+export const ExportDictionaryEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entries: S.optional(S.String) }),
+).annotate({
+  identifier: "ExportDictionaryEntriesResponse",
+}) as any as S.Schema<ExportDictionaryEntriesResponse>;
+export interface GetDictionaryRequest {
+  id: string;
+}
+export const GetDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/dictionary/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDictionaryRequest",
+}) as any as S.Schema<GetDictionaryRequest>;
+export interface GetDictionaryResponse {
+  name: string;
+  arn: string;
+  id: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+  references?: string[];
+  tags?: { [key: string]: string | undefined };
+}
+export const GetDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    id: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+    references: S.optional(FeedReferences),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "GetDictionaryResponse",
+}) as any as S.Schema<GetDictionaryResponse>;
+export interface GetFeedRequest {
+  id: string;
+}
+export const GetFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/feed/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetFeedRequest" }) as any as S.Schema<GetFeedRequest>;
+export interface GetFeedResponse {
+  arn: string;
+  name: string;
+  id: string;
+  dataEndpoints: string[];
+  outputs: GetOutput[];
+  status: FeedStatus;
+  association?: FeedAssociation;
+  tags?: { [key: string]: string | undefined };
+}
+export const GetFeedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.String,
+    id: S.String,
+    dataEndpoints: StringList,
+    outputs: GetOutputList,
+    status: FeedStatus,
+    association: S.optional(FeedAssociation),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "GetFeedResponse",
+}) as any as S.Schema<GetFeedResponse>;
+export interface ListDictionariesRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/dictionaries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDictionariesRequest",
+}) as any as S.Schema<ListDictionariesRequest>;
+export interface DictionarySummary {
+  arn: string;
+  id: string;
+  name: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+}
+export const DictionarySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    id: S.String,
+    name: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+  }),
+).annotate({
+  identifier: "DictionarySummary",
+}) as any as S.Schema<DictionarySummary>;
+export type DictionarySummaryList = DictionarySummary[];
+export const DictionarySummaryList = /*@__PURE__*/ S.Array(DictionarySummary);
+export interface ListDictionariesResponse {
+  dictionaries: DictionarySummary[];
+  nextToken?: string;
+}
+export const ListDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dictionaries: DictionarySummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDictionariesResponse",
+}) as any as S.Schema<ListDictionariesResponse>;
+export interface ListFeedsRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/feeds" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListFeedsRequest",
+}) as any as S.Schema<ListFeedsRequest>;
+export interface FeedSummary {
+  arn: string;
+  id: string;
+  name: string;
+  association?: FeedAssociation;
+  status: FeedStatus;
+}
+export const FeedSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    id: S.String,
+    name: S.String,
+    association: S.optional(FeedAssociation),
+    status: FeedStatus,
+  }),
+).annotate({ identifier: "FeedSummary" }) as any as S.Schema<FeedSummary>;
+export type FeedSummaryList = FeedSummary[];
+export const FeedSummaryList = /*@__PURE__*/ S.Array(FeedSummary);
+export interface ListFeedsResponse {
+  feeds: FeedSummary[];
+  nextToken?: string;
+}
+export const ListFeedsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ feeds: FeedSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListFeedsResponse",
+}) as any as S.Schema<ListFeedsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -114,20 +712,14 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
-export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -184,111 +776,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type DictionaryLanguage =
-  | "eng"
-  | "fra"
-  | "ita"
-  | "deu"
-  | "spa"
-  | "por"
-  | (string & {});
-export const DictionaryLanguage = /*@__PURE__*/ S.String;
-export interface CreateDictionaryRequest {
-  name: string;
-  language: DictionaryLanguage;
-  entries?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    language: DictionaryLanguage,
-    entries: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/dictionary" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDictionaryRequest",
-}) as any as S.Schema<CreateDictionaryRequest>;
-export type DictionaryStatus =
-  | "CREATING"
-  | "AVAILABLE"
-  | "REFERENCED"
-  | "DELETING"
-  | "DELETED"
-  | (string & {});
-export const DictionaryStatus = /*@__PURE__*/ S.String;
-export type FeedReferences = string[];
-export const FeedReferences = /*@__PURE__*/ S.Array(S.String);
-export interface CreateDictionaryResponse {
-  name: string;
-  arn: string;
-  id: string;
-  language: DictionaryLanguage;
-  status: DictionaryStatus;
-  references?: string[];
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    id: S.String,
-    language: DictionaryLanguage,
-    status: DictionaryStatus,
-    references: S.optional(FeedReferences),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "CreateDictionaryResponse",
-}) as any as S.Schema<CreateDictionaryResponse>;
-export interface GetDictionaryRequest {
-  id: string;
-}
-export const GetDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/dictionary/{id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDictionaryRequest",
-}) as any as S.Schema<GetDictionaryRequest>;
-export interface GetDictionaryResponse {
-  name: string;
-  arn: string;
-  id: string;
-  language: DictionaryLanguage;
-  status: DictionaryStatus;
-  references?: string[];
-  tags?: { [key: string]: string | undefined };
-}
-export const GetDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    id: S.String,
-    language: DictionaryLanguage,
-    status: DictionaryStatus,
-    references: S.optional(FeedReferences),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "GetDictionaryResponse",
-}) as any as S.Schema<GetDictionaryResponse>;
 export interface UpdateDictionaryRequest {
   id: string;
   name?: string;
@@ -336,315 +823,6 @@ export const UpdateDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDictionaryResponse",
 }) as any as S.Schema<UpdateDictionaryResponse>;
-export interface DeleteDictionaryRequest {
-  id: string;
-}
-export const DeleteDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/dictionary/{id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDictionaryRequest",
-}) as any as S.Schema<DeleteDictionaryRequest>;
-export interface DeleteDictionaryResponse {
-  arn: string;
-  id: string;
-  status: DictionaryStatus;
-}
-export const DeleteDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, id: S.String, status: DictionaryStatus }),
-).annotate({
-  identifier: "DeleteDictionaryResponse",
-}) as any as S.Schema<DeleteDictionaryResponse>;
-export interface ListDictionariesRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/dictionaries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDictionariesRequest",
-}) as any as S.Schema<ListDictionariesRequest>;
-export interface DictionarySummary {
-  arn: string;
-  id: string;
-  name: string;
-  language: DictionaryLanguage;
-  status: DictionaryStatus;
-}
-export const DictionarySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    id: S.String,
-    name: S.String,
-    language: DictionaryLanguage,
-    status: DictionaryStatus,
-  }),
-).annotate({
-  identifier: "DictionarySummary",
-}) as any as S.Schema<DictionarySummary>;
-export type DictionarySummaryList = DictionarySummary[];
-export const DictionarySummaryList = /*@__PURE__*/ S.Array(DictionarySummary);
-export interface ListDictionariesResponse {
-  dictionaries: DictionarySummary[];
-  nextToken?: string;
-}
-export const ListDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dictionaries: DictionarySummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDictionariesResponse",
-}) as any as S.Schema<ListDictionariesResponse>;
-export interface ExportDictionaryEntriesRequest {
-  id: string;
-}
-export const ExportDictionaryEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/dictionary/{id}/entries/export" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ExportDictionaryEntriesRequest",
-  }) as any as S.Schema<ExportDictionaryEntriesRequest>;
-export interface ExportDictionaryEntriesResponse {
-  entries?: string;
-}
-export const ExportDictionaryEntriesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ entries: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ExportDictionaryEntriesResponse",
-  }) as any as S.Schema<ExportDictionaryEntriesResponse>;
-export interface CroppingConfig {}
-export const CroppingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "CroppingConfig" }) as any as S.Schema<CroppingConfig>;
-export interface ClippingConfig {
-  callbackMetadata?: string;
-}
-export const ClippingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ callbackMetadata: S.optional(S.String) }),
-).annotate({ identifier: "ClippingConfig" }) as any as S.Schema<ClippingConfig>;
-export type TranscriptionLanguage =
-  | "eng"
-  | "eng-au"
-  | "eng-gb"
-  | "eng-us"
-  | "fra"
-  | "ita"
-  | "deu"
-  | "spa"
-  | "por"
-  | (string & {});
-export const TranscriptionLanguage = /*@__PURE__*/ S.String;
-export interface AspectRatio {
-  width: number;
-  height: number;
-}
-export const AspectRatio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ width: S.Number, height: S.Number }),
-).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
-export type ProfanityFilterMode =
-  | "DISABLED"
-  | "CENSOR"
-  | "DROP"
-  | (string & {});
-export const ProfanityFilterMode = /*@__PURE__*/ S.String;
-export interface SubtitlingConfig {
-  language: TranscriptionLanguage;
-  aspectRatio?: AspectRatio;
-  dictionary?: string;
-  profanityFilter?: ProfanityFilterMode;
-}
-export const SubtitlingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    language: TranscriptionLanguage,
-    aspectRatio: S.optional(AspectRatio),
-    dictionary: S.optional(S.String),
-    profanityFilter: S.optional(ProfanityFilterMode),
-  }),
-).annotate({
-  identifier: "SubtitlingConfig",
-}) as any as S.Schema<SubtitlingConfig>;
-export type OutputConfig =
-  | { cropping: CroppingConfig; clipping?: never; subtitling?: never }
-  | { cropping?: never; clipping: ClippingConfig; subtitling?: never }
-  | { cropping?: never; clipping?: never; subtitling: SubtitlingConfig };
-export const OutputConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ cropping: CroppingConfig }),
-  S.Struct({ clipping: ClippingConfig }),
-  S.Struct({ subtitling: SubtitlingConfig }),
-]);
-export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
-export const OutputStatus = /*@__PURE__*/ S.String;
-export interface CreateOutput {
-  name: string;
-  outputConfig: OutputConfig;
-  status: OutputStatus;
-  description?: string;
-}
-export const CreateOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    outputConfig: OutputConfig,
-    status: OutputStatus,
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreateOutput" }) as any as S.Schema<CreateOutput>;
-export type CreateOutputList = CreateOutput[];
-export const CreateOutputList = /*@__PURE__*/ S.Array(CreateOutput);
-export interface CreateFeedRequest {
-  name: string;
-  outputs: CreateOutput[];
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    outputs: CreateOutputList,
-    tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/feed" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateFeedRequest",
-}) as any as S.Schema<CreateFeedRequest>;
-export type StringList = string[];
-export const StringList = /*@__PURE__*/ S.Array(S.String);
-export interface GetOutput {
-  name: string;
-  outputConfig: OutputConfig;
-  status: OutputStatus;
-  description?: string;
-  fromAssociation?: boolean;
-}
-export const GetOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    outputConfig: OutputConfig,
-    status: OutputStatus,
-    description: S.optional(S.String),
-    fromAssociation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GetOutput" }) as any as S.Schema<GetOutput>;
-export type GetOutputList = GetOutput[];
-export const GetOutputList = /*@__PURE__*/ S.Array(GetOutput);
-export type FeedStatus =
-  | "CREATING"
-  | "AVAILABLE"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "DELETED"
-  | "ARCHIVED"
-  | (string & {});
-export const FeedStatus = /*@__PURE__*/ S.String;
-export interface FeedAssociation {
-  associatedResourceName: string;
-}
-export const FeedAssociation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ associatedResourceName: S.String }),
-).annotate({
-  identifier: "FeedAssociation",
-}) as any as S.Schema<FeedAssociation>;
-export interface CreateFeedResponse {
-  arn: string;
-  name: string;
-  id: string;
-  dataEndpoints: string[];
-  outputs: GetOutput[];
-  status: FeedStatus;
-  association?: FeedAssociation;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    id: S.String,
-    dataEndpoints: StringList,
-    outputs: GetOutputList,
-    status: FeedStatus,
-    association: S.optional(FeedAssociation),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "CreateFeedResponse",
-}) as any as S.Schema<CreateFeedResponse>;
-export interface GetFeedRequest {
-  id: string;
-}
-export const GetFeedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/feed/{id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetFeedRequest" }) as any as S.Schema<GetFeedRequest>;
-export interface GetFeedResponse {
-  arn: string;
-  name: string;
-  id: string;
-  dataEndpoints: string[];
-  outputs: GetOutput[];
-  status: FeedStatus;
-  association?: FeedAssociation;
-  tags?: { [key: string]: string | undefined };
-}
-export const GetFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    name: S.String,
-    id: S.String,
-    dataEndpoints: StringList,
-    outputs: GetOutputList,
-    status: FeedStatus,
-    association: S.optional(FeedAssociation),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "GetFeedResponse",
-}) as any as S.Schema<GetFeedResponse>;
 export interface UpdateOutput {
   name: string;
   outputConfig: OutputConfig;
@@ -710,624 +888,6 @@ export const UpdateFeedResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFeedResponse",
 }) as any as S.Schema<UpdateFeedResponse>;
-export interface DeleteFeedRequest {
-  id: string;
-}
-export const DeleteFeedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/v1/feed/{id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteFeedRequest",
-}) as any as S.Schema<DeleteFeedRequest>;
-export interface DeleteFeedResponse {
-  arn: string;
-  id: string;
-  status: FeedStatus;
-}
-export const DeleteFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, id: S.String, status: FeedStatus }),
-).annotate({
-  identifier: "DeleteFeedResponse",
-}) as any as S.Schema<DeleteFeedResponse>;
-export interface ListFeedsRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/feeds" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListFeedsRequest",
-}) as any as S.Schema<ListFeedsRequest>;
-export interface FeedSummary {
-  arn: string;
-  id: string;
-  name: string;
-  association?: FeedAssociation;
-  status: FeedStatus;
-}
-export const FeedSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.String,
-    id: S.String,
-    name: S.String,
-    association: S.optional(FeedAssociation),
-    status: FeedStatus,
-  }),
-).annotate({ identifier: "FeedSummary" }) as any as S.Schema<FeedSummary>;
-export type FeedSummaryList = FeedSummary[];
-export const FeedSummaryList = /*@__PURE__*/ S.Array(FeedSummary);
-export interface ListFeedsResponse {
-  feeds: FeedSummary[];
-  nextToken?: string;
-}
-export const ListFeedsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ feeds: FeedSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListFeedsResponse",
-}) as any as S.Schema<ListFeedsResponse>;
-export interface AssociateFeedRequest {
-  id: string;
-  associatedResourceName: string;
-  outputs: CreateOutput[];
-  dryRun?: boolean;
-}
-export const AssociateFeedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.HttpLabel("id")),
-    associatedResourceName: S.String.pipe(T.IdempotencyToken()),
-    outputs: CreateOutputList,
-    dryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/feed/{id}/associate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateFeedRequest",
-}) as any as S.Schema<AssociateFeedRequest>;
-export interface AssociateFeedResponse {
-  arn: string;
-  id: string;
-}
-export const AssociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, id: S.String }),
-).annotate({
-  identifier: "AssociateFeedResponse",
-}) as any as S.Schema<AssociateFeedResponse>;
-export interface DisassociateFeedRequest {
-  id: string;
-  associatedResourceName: string;
-  dryRun?: boolean;
-}
-export const DisassociateFeedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.HttpLabel("id")),
-    associatedResourceName: S.String.pipe(T.IdempotencyToken()),
-    dryRun: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/v1/feed/{id}/disassociate" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DisassociateFeedRequest",
-}) as any as S.Schema<DisassociateFeedRequest>;
-export interface DisassociateFeedResponse {
-  arn: string;
-  id: string;
-}
-export const DisassociateFeedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, id: S.String }),
-).annotate({
-  identifier: "DisassociateFeedResponse",
-}) as any as S.Schema<DisassociateFeedResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { message: S.String },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestException extends S.TaggedErrorClass<TooManyRequestException>()(
-  "TooManyRequestException",
-  { message: S.String },
-  T.Retryable(),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.Retryable(),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-).pipe(C.withQuotaError) {}
-
-//# Operations
-export type ListTagsForResourceError =
-  | AccessDeniedException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * List all tags that are on an Elemental Inference resource in the current region.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Associates the specified tags to the resource identified by the specified resourceArn in the current region. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are also deleted.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes specified tags from the specified resource in the current region.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "UntagResource",
-}));
-export type CreateDictionaryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ServiceQuotaExceededException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a custom dictionary for improving transcription accuracy. A dictionary contains custom words and phrases that the ASR engine might not recognize, such as brand names, technical terms, or proper nouns. You can reference a dictionary when configuring a smart subtitles output.
- */
-export const createDictionary: API.OperationMethod<
-  CreateDictionaryRequest,
-  CreateDictionaryResponse,
-  CreateDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDictionaryRequest,
-  output: CreateDictionaryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ServiceQuotaExceededException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "CreateDictionary",
-}));
-export type GetDictionaryError =
-  | AccessDeniedException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about the specified dictionary.
- */
-export const getDictionary: API.OperationMethod<
-  GetDictionaryRequest,
-  GetDictionaryResponse,
-  GetDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDictionaryRequest,
-  output: GetDictionaryResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "GetDictionary",
-}));
-export type UpdateDictionaryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the specified dictionary.
- */
-export const updateDictionary: API.OperationMethod<
-  UpdateDictionaryRequest,
-  UpdateDictionaryResponse,
-  UpdateDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDictionaryRequest,
-  output: UpdateDictionaryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "UpdateDictionary",
-}));
-export type DeleteDictionaryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the specified dictionary. You cannot delete a dictionary that is referenced by a feed. You must first remove the dictionary reference from the feed's subtitling configuration.
- */
-export const deleteDictionary: API.OperationMethod<
-  DeleteDictionaryRequest,
-  DeleteDictionaryResponse,
-  DeleteDictionaryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDictionaryRequest,
-  output: DeleteDictionaryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "DeleteDictionary",
-}));
-export type ListDictionariesError =
-  | AccessDeniedException
-  | InternalServerErrorException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the dictionaries in your account.
- */
-export const listDictionaries: API.OperationMethod<
-  ListDictionariesRequest,
-  ListDictionariesResponse,
-  ListDictionariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDictionariesRequest,
-  ) => stream.Stream<
-    ListDictionariesResponse,
-    ListDictionariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDictionariesRequest,
-  ) => stream.Stream<
-    DictionarySummary,
-    ListDictionariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDictionariesRequest,
-  output: ListDictionariesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerErrorException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "ListDictionaries",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "dictionaries",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type ExportDictionaryEntriesError =
-  | AccessDeniedException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Exports the entries from the specified dictionary.
- */
-export const exportDictionaryEntries: API.OperationMethod<
-  ExportDictionaryEntriesRequest,
-  ExportDictionaryEntriesResponse,
-  ExportDictionaryEntriesError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExportDictionaryEntriesRequest,
-  output: ExportDictionaryEntriesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "ExportDictionaryEntries",
-}));
-export type CreateFeedError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ServiceQuotaExceededException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a feed. The feed is the target for the live media stream that is being sent by the calling application. An example of a calling application is AWS Elemental MediaLive.
- *
- * The key contents of the feed is an array of outputs. Each output represents an Elemental Inference feature. After you create the feed, you must associate a resource with the feed. At that point, you will have a useable feed: resource - feed - output or outputs.
- */
-export const createFeed: API.OperationMethod<
-  CreateFeedRequest,
-  CreateFeedResponse,
-  CreateFeedError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateFeedRequest,
-  output: CreateFeedResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ServiceQuotaExceededException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "CreateFeed",
-}));
-export type GetFeedError =
-  | AccessDeniedException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | CommonErrors;
-/**
- * Retrieves information about the specified feed.
- */
-export const getFeed: API.OperationMethod<
-  GetFeedRequest,
-  GetFeedResponse,
-  GetFeedError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetFeedRequest,
-  output: GetFeedResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-  ],
-  operationName: "GetFeed",
-}));
-export type UpdateFeedError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the name and/or outputs in a feed.
- *
- * UpdateFeed is a PUT operation, which means that the payload that you specify completely overwrites the existing payload.
- *
- * This means that if you want to touch the array of outputs, you must pass in the full new list. So you must omit outputs you want to delete, and include outputs you want to add or modify.
- *
- * If you want to patch the array of outputs to make selective additions, use AssociateFeed.
- */
-export const updateFeed: API.OperationMethod<
-  UpdateFeedRequest,
-  UpdateFeedResponse,
-  UpdateFeedError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFeedRequest,
-  output: UpdateFeedResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "UpdateFeed",
-}));
-export type DeleteFeedError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the specified feed. You can delete the feed at any time. Elemental Inference doesn't block you from deleting a feed when the calling application is calling PutMedia or GetMetadata on that feed, although both these calls will start to fail. For more information about managing inactive feeds, see the Elemental Inference User Guide.
- */
-export const deleteFeed: API.OperationMethod<
-  DeleteFeedRequest,
-  DeleteFeedResponse,
-  DeleteFeedError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFeedRequest,
-  output: DeleteFeedResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "DeleteFeed",
-}));
-export type ListFeedsError =
-  | AccessDeniedException
-  | InternalServerErrorException
-  | ResourceNotFoundException
-  | TooManyRequestException
-  | ValidationException
-  | CommonErrors;
-/**
- * Displays a list of feeds that belong to this AWS account.
- */
-export const listFeeds: API.OperationMethod<
-  ListFeedsRequest,
-  ListFeedsResponse,
-  ListFeedsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFeedsRequest,
-  ) => stream.Stream<
-    ListFeedsResponse,
-    ListFeedsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFeedsRequest,
-  ) => stream.Stream<
-    FeedSummary,
-    ListFeedsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFeedsRequest,
-  output: ListFeedsResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerErrorException,
-    ResourceNotFoundException,
-    TooManyRequestException,
-    ValidationException,
-  ],
-  operationName: "ListFeeds",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "feeds",
-    pageSize: "maxResults",
-  } as const,
-}));
 export type AssociateFeedError =
   | AccessDeniedException
   | ConflictException
@@ -1369,8 +929,141 @@ export const associateFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFeed",
 }));
+
+export type CreateDictionaryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ServiceQuotaExceededException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a custom dictionary for improving transcription accuracy. A dictionary contains custom words and phrases that the ASR engine might not recognize, such as brand names, technical terms, or proper nouns. You can reference a dictionary when configuring a smart subtitles output.
+ */
+export const createDictionary: API.OperationMethod<
+  CreateDictionaryRequest,
+  CreateDictionaryResponse,
+  CreateDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDictionaryRequest,
+  output: CreateDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ServiceQuotaExceededException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateDictionary",
+}));
+
+export type CreateFeedError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ServiceQuotaExceededException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a feed. The feed is the target for the live media stream that is being sent by the calling application. An example of a calling application is AWS Elemental MediaLive.
+ *
+ * The key contents of the feed is an array of outputs. Each output represents an Elemental Inference feature. After you create the feed, you must associate a resource with the feed. At that point, you will have a useable feed: resource - feed - output or outputs.
+ */
+export const createFeed: API.OperationMethod<
+  CreateFeedRequest,
+  CreateFeedResponse,
+  CreateFeedError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateFeedRequest,
+  output: CreateFeedResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ServiceQuotaExceededException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateFeed",
+}));
+
+export type DeleteDictionaryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified dictionary. You cannot delete a dictionary that is referenced by a feed. You must first remove the dictionary reference from the feed's subtitling configuration.
+ */
+export const deleteDictionary: API.OperationMethod<
+  DeleteDictionaryRequest,
+  DeleteDictionaryResponse,
+  DeleteDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDictionaryRequest,
+  output: DeleteDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDictionary",
+}));
+
+export type DeleteFeedError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified feed. You can delete the feed at any time. Elemental Inference doesn't block you from deleting a feed when the calling application is calling PutMedia or GetMetadata on that feed, although both these calls will start to fail. For more information about managing inactive feeds, see the Elemental Inference User Guide.
+ */
+export const deleteFeed: API.OperationMethod<
+  DeleteFeedRequest,
+  DeleteFeedResponse,
+  DeleteFeedError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteFeedRequest,
+  output: DeleteFeedResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFeed",
+}));
+
 export type DisassociateFeedError =
   | AccessDeniedException
   | ConflictException
@@ -1398,5 +1091,361 @@ export const disassociateFeed: API.OperationMethod<
     TooManyRequestException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFeed",
+}));
+
+export type ExportDictionaryEntriesError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Exports the entries from the specified dictionary.
+ */
+export const exportDictionaryEntries: API.OperationMethod<
+  ExportDictionaryEntriesRequest,
+  ExportDictionaryEntriesResponse,
+  ExportDictionaryEntriesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ExportDictionaryEntriesRequest,
+  output: ExportDictionaryEntriesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ExportDictionaryEntries",
+}));
+
+export type GetDictionaryError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about the specified dictionary.
+ */
+export const getDictionary: API.OperationMethod<
+  GetDictionaryRequest,
+  GetDictionaryResponse,
+  GetDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDictionaryRequest,
+  output: GetDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDictionary",
+}));
+
+export type GetFeedError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | CommonErrors;
+/**
+ * Retrieves information about the specified feed.
+ */
+export const getFeed: API.OperationMethod<
+  GetFeedRequest,
+  GetFeedResponse,
+  GetFeedError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFeedRequest,
+  output: GetFeedResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetFeed",
+}));
+
+export type ListDictionariesError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the dictionaries in your account.
+ */
+export const listDictionaries: API.OperationMethod<
+  ListDictionariesRequest,
+  ListDictionariesResponse,
+  ListDictionariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDictionariesRequest,
+  ) => stream.Stream<
+    ListDictionariesResponse,
+    ListDictionariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDictionariesRequest,
+  ) => stream.Stream<
+    DictionarySummary,
+    ListDictionariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListDictionariesRequest,
+  output: ListDictionariesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListDictionaries",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "dictionaries",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type ListFeedsError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Displays a list of feeds that belong to this AWS account.
+ */
+export const listFeeds: API.OperationMethod<
+  ListFeedsRequest,
+  ListFeedsResponse,
+  ListFeedsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFeedsRequest,
+  ) => stream.Stream<
+    ListFeedsResponse,
+    ListFeedsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFeedsRequest,
+  ) => stream.Stream<
+    FeedSummary,
+    ListFeedsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListFeedsRequest,
+  output: ListFeedsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFeeds",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "feeds",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type ListTagsForResourceError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List all tags that are on an Elemental Inference resource in the current region.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type TagResourceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Associates the specified tags to the resource identified by the specified resourceArn in the current region. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are also deleted.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes specified tags from the specified resource in the current region.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateDictionaryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the specified dictionary.
+ */
+export const updateDictionary: API.OperationMethod<
+  UpdateDictionaryRequest,
+  UpdateDictionaryResponse,
+  UpdateDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDictionaryRequest,
+  output: UpdateDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDictionary",
+}));
+
+export type UpdateFeedError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the name and/or outputs in a feed.
+ *
+ * UpdateFeed is a PUT operation, which means that the payload that you specify completely overwrites the existing payload.
+ *
+ * This means that if you want to touch the array of outputs, you must pass in the full new list. So you must omit outputs you want to delete, and include outputs you want to add or modify.
+ *
+ * If you want to patch the array of outputs to make selective additions, use AssociateFeed.
+ */
+export const updateFeed: API.OperationMethod<
+  UpdateFeedRequest,
+  UpdateFeedResponse,
+  UpdateFeedError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFeedRequest,
+  output: UpdateFeedResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateFeed",
 }));

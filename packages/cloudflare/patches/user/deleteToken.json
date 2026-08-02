@@ -1,7 +1,114 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "MethodNotAllowed": [{ "code": 7001 }],
-    "TokenNotFound": [{ "code": 1003 }]
-  }
+  "description": "Align user#TokensDelete with distilled cloudflare/user deleteToken",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.user#TokensDelete",
+      "path": "/shapes/com.cloudflare.user#DeleteToken"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.user#TokensDeleteRequest",
+      "path": "/shapes/com.cloudflare.user#DeleteTokenRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.user#DeleteToken/input/target",
+      "value": "com.cloudflare.user#DeleteTokenRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.user#TokensDeleteResponse",
+      "path": "/shapes/com.cloudflare.user#DeleteTokenResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.user#DeleteToken/output/target",
+      "value": "com.cloudflare.user#DeleteTokenResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#MethodNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#TokenNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.user#DeleteToken/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.user#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.user#MethodNotAllowed"
+        },
+        {
+          "target": "com.cloudflare.user#TokenNotFound"
+        }
+      ]
+    }
+  ]
 }

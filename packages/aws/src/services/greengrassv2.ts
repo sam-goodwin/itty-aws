@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -119,68 +121,77 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type RetryAfterSeconds = number;
-export type IoTThingName = string;
-export type NonEmptyString = string;
-export type RecipeBlob = Uint8Array;
-export type ComponentNameString = string;
-export type ComponentVersionString = string;
-export type TopicString = string;
-export type OptionalInteger = number;
-export type OptionalBoolean = boolean;
-export type LambdaExecArg = string;
-export type FileSystemPath = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientTokenString = string;
-export type ComponentVersionARN = string;
-export type TargetARN = string;
-export type DeploymentNameString = string;
-export type ComponentConfigurationString = string;
-export type ComponentConfigurationPath = string;
-export type Memory = number;
-export type CPU = number;
-export type IoTJobRolloutBaseRatePerMinute = number;
-export type IoTJobRolloutIncrementFactor = number;
-export type IoTJobNumberOfThings = number;
-export type IoTJobMaxExecutionsPerMin = number;
-export type IoTJobAbortThresholdPercentage = number;
-export type IoTJobMinimumNumberOfExecutedThings = number;
-export type IoTJobInProgressTimeoutInMinutes = number;
-export type ThingGroupARN = string;
-export type IoTJobARN = string;
-export type CoreDeviceThingName = string;
-export type PublisherString = string;
-export type DescriptionString = string;
-export type PortNumberInt = number;
-export type GGCVersion = string;
-export type CoreDevicePlatformString = string;
-export type CoreDeviceArchitectureString = string;
-export type CoreDeviceRuntimeString = string;
-export type NullableString = string;
-export type IsLatestForTarget = boolean;
-export type DefaultMaxResults = number;
-export type NextTokenString = string;
-export type ComponentARN = string;
-export type DeploymentID = string;
-export type DeploymentName = string;
-export type IoTJobId = string;
-export type Description = string;
-export type Reason = string;
-export type EffectiveDeploymentErrorCode = string;
-export type EffectiveDeploymentErrorType = string;
-export type LifecycleStateDetails = string;
-export type IsRoot = boolean;
-export type InstalledComponentLifecycleStatusCode = string;
-export type GenericV2ARN = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class RequestAlreadyInProgressException extends S.TaggedErrorClass<RequestAlreadyInProgressException>()(
+  "RequestAlreadyInProgressException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    quotaCode: S.String,
+    serviceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    quotaCode: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface AssociateServiceRoleToAccountRequest {
   roleArn: string;
 }
-export const AssociateServiceRoleToAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssociateServiceRoleToAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ roleArn: S.String })
       .pipe(S.encodeKeys({ roleArn: "RoleArn" }))
       .pipe(
@@ -193,47 +204,29 @@ export const AssociateServiceRoleToAccountRequest =
           rules,
         ),
       ),
-  ).annotate({
-    identifier: "AssociateServiceRoleToAccountRequest",
-  }) as any as S.Schema<AssociateServiceRoleToAccountRequest>;
+).annotate({
+  identifier: "AssociateServiceRoleToAccountRequest",
+}) as any as S.Schema<AssociateServiceRoleToAccountRequest>;
 export interface AssociateServiceRoleToAccountResponse {
   associatedAt?: string;
 }
-export const AssociateServiceRoleToAccountResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssociateServiceRoleToAccountResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ associatedAt: S.optional(S.String) }).pipe(
       S.encodeKeys({ associatedAt: "AssociatedAt" }),
     ),
-  ).annotate({
-    identifier: "AssociateServiceRoleToAccountResponse",
-  }) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
-export type ValidationExceptionReason =
-  | "UNKNOWN_OPERATION"
-  | "CANNOT_PARSE"
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "AssociateServiceRoleToAccountResponse",
+}) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
+export type IoTThingName = string;
 export interface AssociateClientDeviceWithCoreDeviceEntry {
   thingName: string;
 }
-export const AssociateClientDeviceWithCoreDeviceEntry =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ thingName: S.String })).annotate({
-    identifier: "AssociateClientDeviceWithCoreDeviceEntry",
-  }) as any as S.Schema<AssociateClientDeviceWithCoreDeviceEntry>;
+export const AssociateClientDeviceWithCoreDeviceEntry = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ thingName: S.String }),
+).annotate({
+  identifier: "AssociateClientDeviceWithCoreDeviceEntry",
+}) as any as S.Schema<AssociateClientDeviceWithCoreDeviceEntry>;
 export type AssociateClientDeviceWithCoreDeviceEntryList =
   AssociateClientDeviceWithCoreDeviceEntry[];
 export const AssociateClientDeviceWithCoreDeviceEntryList =
@@ -263,6 +256,7 @@ export const BatchAssociateClientDeviceWithCoreDeviceRequest =
   ).annotate({
     identifier: "BatchAssociateClientDeviceWithCoreDeviceRequest",
   }) as any as S.Schema<BatchAssociateClientDeviceWithCoreDeviceRequest>;
+export type NonEmptyString = string;
 export interface AssociateClientDeviceWithCoreDeviceErrorEntry {
   thingName?: string;
   code?: string;
@@ -387,6 +381,9 @@ export const CancelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelDeploymentResponse",
 }) as any as S.Schema<CancelDeploymentResponse>;
+export type RecipeBlob = Uint8Array;
+export type ComponentNameString = string;
+export type ComponentVersionString = string;
 export type PlatformAttributesMap = { [key: string]: string | undefined };
 export const PlatformAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -408,19 +405,19 @@ export type ComponentPlatformList = ComponentPlatform[];
 export const ComponentPlatformList = /*@__PURE__*/ S.Array(ComponentPlatform);
 export type ComponentDependencyType = "HARD" | "SOFT" | (string & {});
 export const ComponentDependencyType = /*@__PURE__*/ S.String;
+
 export interface ComponentDependencyRequirement {
   versionRequirement?: string;
   dependencyType?: ComponentDependencyType;
 }
-export const ComponentDependencyRequirement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      versionRequirement: S.optional(S.String),
-      dependencyType: S.optional(ComponentDependencyType),
-    }),
-  ).annotate({
-    identifier: "ComponentDependencyRequirement",
-  }) as any as S.Schema<ComponentDependencyRequirement>;
+export const ComponentDependencyRequirement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    versionRequirement: S.optional(S.String),
+    dependencyType: S.optional(ComponentDependencyType),
+  }),
+).annotate({
+  identifier: "ComponentDependencyRequirement",
+}) as any as S.Schema<ComponentDependencyRequirement>;
 export type ComponentDependencyMap = {
   [key: string]: ComponentDependencyRequirement | undefined;
 };
@@ -428,8 +425,10 @@ export const ComponentDependencyMap = /*@__PURE__*/ S.Record(
   S.String,
   ComponentDependencyRequirement.pipe(S.optional),
 );
+export type TopicString = string;
 export type LambdaEventSourceType = "PUB_SUB" | "IOT_CORE" | (string & {});
 export const LambdaEventSourceType = /*@__PURE__*/ S.String;
+
 export interface LambdaEventSource {
   topic: string;
   type: LambdaEventSourceType;
@@ -441,8 +440,12 @@ export const LambdaEventSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaEventSource>;
 export type LambdaEventSourceList = LambdaEventSource[];
 export const LambdaEventSourceList = /*@__PURE__*/ S.Array(LambdaEventSource);
+export type OptionalInteger = number;
+export type OptionalBoolean = boolean;
 export type LambdaInputPayloadEncodingType = "json" | "binary" | (string & {});
 export const LambdaInputPayloadEncodingType = /*@__PURE__*/ S.String;
+
+export type LambdaExecArg = string;
 export type LambdaExecArgsList = string[];
 export const LambdaExecArgsList = /*@__PURE__*/ S.Array(S.String);
 export type LambdaEnvironmentVariables = { [key: string]: string | undefined };
@@ -455,8 +458,11 @@ export type LambdaIsolationMode =
   | "NoContainer"
   | (string & {});
 export const LambdaIsolationMode = /*@__PURE__*/ S.String;
+
+export type FileSystemPath = string;
 export type LambdaFilesystemPermission = "ro" | "rw" | (string & {});
 export const LambdaFilesystemPermission = /*@__PURE__*/ S.String;
+
 export interface LambdaVolumeMount {
   sourcePath: string;
   destinationPath: string;
@@ -571,40 +577,40 @@ export const LambdaFunctionRecipeSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaFunctionRecipeSource",
 }) as any as S.Schema<LambdaFunctionRecipeSource>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClientTokenString = string;
 export interface CreateComponentVersionRequest {
   inlineRecipe?: Uint8Array;
   lambdaFunction?: LambdaFunctionRecipeSource;
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateComponentVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inlineRecipe: S.optional(T.Blob),
-      lambdaFunction: S.optional(LambdaFunctionRecipeSource),
-      tags: S.optional(TagMap),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/greengrass/v2/createComponentVersion",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateComponentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inlineRecipe: S.optional(T.Blob),
+    lambdaFunction: S.optional(LambdaFunctionRecipeSource),
+    tags: S.optional(TagMap),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/greengrass/v2/createComponentVersion" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateComponentVersionRequest",
-  }) as any as S.Schema<CreateComponentVersionRequest>;
+  ),
+).annotate({
+  identifier: "CreateComponentVersionRequest",
+}) as any as S.Schema<CreateComponentVersionRequest>;
+export type ComponentVersionARN = string;
 export type CloudComponentState =
   | "REQUESTED"
   | "INITIATED"
@@ -613,6 +619,7 @@ export type CloudComponentState =
   | "DEPRECATED"
   | (string & {});
 export const CloudComponentState = /*@__PURE__*/ S.String;
+
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -624,6 +631,7 @@ export type VendorGuidance =
   | "DELETED"
   | (string & {});
 export const VendorGuidance = /*@__PURE__*/ S.String;
+
 export interface CloudComponentStatus {
   componentState?: CloudComponentState;
   message?: string;
@@ -649,33 +657,37 @@ export interface CreateComponentVersionResponse {
   creationTimestamp: Date;
   status: CloudComponentStatus;
 }
-export const CreateComponentVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      componentName: S.String,
-      componentVersion: S.String,
-      creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      status: CloudComponentStatus,
-    }),
-  ).annotate({
-    identifier: "CreateComponentVersionResponse",
-  }) as any as S.Schema<CreateComponentVersionResponse>;
+export const CreateComponentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    componentName: S.String,
+    componentVersion: S.String,
+    creationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: CloudComponentStatus,
+  }),
+).annotate({
+  identifier: "CreateComponentVersionResponse",
+}) as any as S.Schema<CreateComponentVersionResponse>;
+export type TargetARN = string;
+export type DeploymentNameString = string;
+export type ComponentConfigurationString = string;
+export type ComponentConfigurationPath = string;
 export type ComponentConfigurationPathList = string[];
 export const ComponentConfigurationPathList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentConfigurationUpdate {
   merge?: string;
   reset?: string[];
 }
-export const ComponentConfigurationUpdate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      merge: S.optional(S.String),
-      reset: S.optional(ComponentConfigurationPathList),
-    }),
-  ).annotate({
-    identifier: "ComponentConfigurationUpdate",
-  }) as any as S.Schema<ComponentConfigurationUpdate>;
+export const ComponentConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    merge: S.optional(S.String),
+    reset: S.optional(ComponentConfigurationPathList),
+  }),
+).annotate({
+  identifier: "ComponentConfigurationUpdate",
+}) as any as S.Schema<ComponentConfigurationUpdate>;
+export type Memory = number;
+export type CPU = number;
 export interface SystemResourceLimits {
   memory?: number;
   cpus?: number;
@@ -704,24 +716,25 @@ export interface ComponentDeploymentSpecification {
   configurationUpdate?: ComponentConfigurationUpdate;
   runWith?: ComponentRunWith;
 }
-export const ComponentDeploymentSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      componentVersion: S.String,
-      configurationUpdate: S.optional(ComponentConfigurationUpdate),
-      runWith: S.optional(ComponentRunWith),
-    }),
-  ).annotate({
-    identifier: "ComponentDeploymentSpecification",
-  }) as any as S.Schema<ComponentDeploymentSpecification>;
+export const ComponentDeploymentSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    componentVersion: S.String,
+    configurationUpdate: S.optional(ComponentConfigurationUpdate),
+    runWith: S.optional(ComponentRunWith),
+  }),
+).annotate({
+  identifier: "ComponentDeploymentSpecification",
+}) as any as S.Schema<ComponentDeploymentSpecification>;
 export type ComponentDeploymentSpecifications = {
   [key: string]: ComponentDeploymentSpecification | undefined;
 };
-export const ComponentDeploymentSpecifications =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ComponentDeploymentSpecification.pipe(S.optional),
-  );
+export const ComponentDeploymentSpecifications = /*@__PURE__*/ S.Record(
+  S.String,
+  ComponentDeploymentSpecification.pipe(S.optional),
+);
+export type IoTJobRolloutBaseRatePerMinute = number;
+export type IoTJobRolloutIncrementFactor = number;
+export type IoTJobNumberOfThings = number;
 export interface IoTJobRateIncreaseCriteria {
   numberOfNotifiedThings?: number;
   numberOfSucceededThings?: number;
@@ -739,29 +752,28 @@ export interface IoTJobExponentialRolloutRate {
   incrementFactor: number;
   rateIncreaseCriteria: IoTJobRateIncreaseCriteria;
 }
-export const IoTJobExponentialRolloutRate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      baseRatePerMinute: S.Number,
-      incrementFactor: S.Number,
-      rateIncreaseCriteria: IoTJobRateIncreaseCriteria,
-    }),
-  ).annotate({
-    identifier: "IoTJobExponentialRolloutRate",
-  }) as any as S.Schema<IoTJobExponentialRolloutRate>;
+export const IoTJobExponentialRolloutRate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseRatePerMinute: S.Number,
+    incrementFactor: S.Number,
+    rateIncreaseCriteria: IoTJobRateIncreaseCriteria,
+  }),
+).annotate({
+  identifier: "IoTJobExponentialRolloutRate",
+}) as any as S.Schema<IoTJobExponentialRolloutRate>;
+export type IoTJobMaxExecutionsPerMin = number;
 export interface IoTJobExecutionsRolloutConfig {
   exponentialRate?: IoTJobExponentialRolloutRate;
   maximumPerMinute?: number;
 }
-export const IoTJobExecutionsRolloutConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exponentialRate: S.optional(IoTJobExponentialRolloutRate),
-      maximumPerMinute: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "IoTJobExecutionsRolloutConfig",
-  }) as any as S.Schema<IoTJobExecutionsRolloutConfig>;
+export const IoTJobExecutionsRolloutConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exponentialRate: S.optional(IoTJobExponentialRolloutRate),
+    maximumPerMinute: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "IoTJobExecutionsRolloutConfig",
+}) as any as S.Schema<IoTJobExecutionsRolloutConfig>;
 export type IoTJobExecutionFailureType =
   | "FAILED"
   | "REJECTED"
@@ -769,8 +781,12 @@ export type IoTJobExecutionFailureType =
   | "ALL"
   | (string & {});
 export const IoTJobExecutionFailureType = /*@__PURE__*/ S.String;
+
 export type IoTJobAbortAction = "CANCEL" | (string & {});
 export const IoTJobAbortAction = /*@__PURE__*/ S.String;
+
+export type IoTJobAbortThresholdPercentage = number;
+export type IoTJobMinimumNumberOfExecutedThings = number;
 export interface IoTJobAbortCriteria {
   failureType: IoTJobExecutionFailureType;
   action: IoTJobAbortAction;
@@ -798,6 +814,7 @@ export const IoTJobAbortConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IoTJobAbortConfig",
 }) as any as S.Schema<IoTJobAbortConfig>;
+export type IoTJobInProgressTimeoutInMinutes = number;
 export interface IoTJobTimeoutConfig {
   inProgressTimeoutInMinutes?: number;
 }
@@ -811,48 +828,47 @@ export interface DeploymentIoTJobConfiguration {
   abortConfig?: IoTJobAbortConfig;
   timeoutConfig?: IoTJobTimeoutConfig;
 }
-export const DeploymentIoTJobConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobExecutionsRolloutConfig: S.optional(IoTJobExecutionsRolloutConfig),
-      abortConfig: S.optional(IoTJobAbortConfig),
-      timeoutConfig: S.optional(IoTJobTimeoutConfig),
-    }),
-  ).annotate({
-    identifier: "DeploymentIoTJobConfiguration",
-  }) as any as S.Schema<DeploymentIoTJobConfiguration>;
+export const DeploymentIoTJobConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobExecutionsRolloutConfig: S.optional(IoTJobExecutionsRolloutConfig),
+    abortConfig: S.optional(IoTJobAbortConfig),
+    timeoutConfig: S.optional(IoTJobTimeoutConfig),
+  }),
+).annotate({
+  identifier: "DeploymentIoTJobConfiguration",
+}) as any as S.Schema<DeploymentIoTJobConfiguration>;
 export type DeploymentFailureHandlingPolicy =
   | "ROLLBACK"
   | "DO_NOTHING"
   | (string & {});
 export const DeploymentFailureHandlingPolicy = /*@__PURE__*/ S.String;
+
 export type DeploymentComponentUpdatePolicyAction =
   | "NOTIFY_COMPONENTS"
   | "SKIP_NOTIFY_COMPONENTS"
   | (string & {});
 export const DeploymentComponentUpdatePolicyAction = /*@__PURE__*/ S.String;
+
 export interface DeploymentComponentUpdatePolicy {
   timeoutInSeconds?: number;
   action?: DeploymentComponentUpdatePolicyAction;
 }
-export const DeploymentComponentUpdatePolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timeoutInSeconds: S.optional(S.Number),
-      action: S.optional(DeploymentComponentUpdatePolicyAction),
-    }),
-  ).annotate({
-    identifier: "DeploymentComponentUpdatePolicy",
-  }) as any as S.Schema<DeploymentComponentUpdatePolicy>;
+export const DeploymentComponentUpdatePolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeoutInSeconds: S.optional(S.Number),
+    action: S.optional(DeploymentComponentUpdatePolicyAction),
+  }),
+).annotate({
+  identifier: "DeploymentComponentUpdatePolicy",
+}) as any as S.Schema<DeploymentComponentUpdatePolicy>;
 export interface DeploymentConfigurationValidationPolicy {
   timeoutInSeconds?: number;
 }
-export const DeploymentConfigurationValidationPolicy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ timeoutInSeconds: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "DeploymentConfigurationValidationPolicy",
-  }) as any as S.Schema<DeploymentConfigurationValidationPolicy>;
+export const DeploymentConfigurationValidationPolicy = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ timeoutInSeconds: S.optional(S.Number) }),
+).annotate({
+  identifier: "DeploymentConfigurationValidationPolicy",
+}) as any as S.Schema<DeploymentConfigurationValidationPolicy>;
 export interface DeploymentPolicies {
   failureHandlingPolicy?: DeploymentFailureHandlingPolicy;
   componentUpdatePolicy?: DeploymentComponentUpdatePolicy;
@@ -869,6 +885,7 @@ export const DeploymentPolicies = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentPolicies",
 }) as any as S.Schema<DeploymentPolicies>;
+export type ThingGroupARN = string;
 export interface CreateDeploymentRequest {
   targetArn: string;
   deploymentName?: string;
@@ -902,6 +919,7 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeploymentRequest",
 }) as any as S.Schema<CreateDeploymentRequest>;
+export type IoTJobARN = string;
 export interface CreateDeploymentResponse {
   deploymentId?: string;
   iotJobId?: string;
@@ -939,6 +957,7 @@ export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteComponentResponse",
 }) as any as S.Schema<DeleteComponentResponse>;
+export type CoreDeviceThingName = string;
 export interface DeleteCoreDeviceRequest {
   coreDeviceThingName: string;
 }
@@ -1013,6 +1032,8 @@ export const DescribeComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeComponentRequest",
 }) as any as S.Schema<DescribeComponentRequest>;
+export type PublisherString = string;
+export type DescriptionString = string;
 export interface DescribeComponentResponse {
   arn?: string;
   componentName?: string;
@@ -1070,6 +1091,7 @@ export const DisassociateServiceRoleFromAccountResponse =
   }) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
 export type RecipeOutputFormat = "JSON" | "YAML" | (string & {});
 export const RecipeOutputFormat = /*@__PURE__*/ S.String;
+
 export interface GetComponentRequest {
   recipeOutputFormat?: RecipeOutputFormat;
   arn: string;
@@ -1109,48 +1131,50 @@ export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetComponentResponse>;
 export type S3EndpointType = "REGIONAL" | "GLOBAL" | (string & {});
 export const S3EndpointType = /*@__PURE__*/ S.String;
+
 export type IotEndpointType = "fips" | "standard" | (string & {});
 export const IotEndpointType = /*@__PURE__*/ S.String;
+
 export interface GetComponentVersionArtifactRequest {
   arn: string;
   artifactName: string;
   s3EndpointType?: S3EndpointType;
   iotEndpointType?: IotEndpointType;
 }
-export const GetComponentVersionArtifactRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.String.pipe(T.HttpLabel("arn")),
-      artifactName: S.String.pipe(T.HttpLabel("artifactName")),
-      s3EndpointType: S.optional(S3EndpointType).pipe(
-        T.HttpQuery("s3EndpointType"),
-      ),
-      iotEndpointType: S.optional(IotEndpointType).pipe(
-        T.HttpHeader("x-amz-iot-endpoint-type"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/greengrass/v2/components/{arn}/artifacts/{artifactName+}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetComponentVersionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String.pipe(T.HttpLabel("arn")),
+    artifactName: S.String.pipe(T.HttpLabel("artifactName")),
+    s3EndpointType: S.optional(S3EndpointType).pipe(
+      T.HttpQuery("s3EndpointType"),
     ),
-  ).annotate({
-    identifier: "GetComponentVersionArtifactRequest",
-  }) as any as S.Schema<GetComponentVersionArtifactRequest>;
+    iotEndpointType: S.optional(IotEndpointType).pipe(
+      T.HttpHeader("x-amz-iot-endpoint-type"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/greengrass/v2/components/{arn}/artifacts/{artifactName+}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetComponentVersionArtifactRequest",
+}) as any as S.Schema<GetComponentVersionArtifactRequest>;
 export interface GetComponentVersionArtifactResponse {
   preSignedUrl: string;
 }
-export const GetComponentVersionArtifactResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ preSignedUrl: S.String })).annotate({
-    identifier: "GetComponentVersionArtifactResponse",
-  }) as any as S.Schema<GetComponentVersionArtifactResponse>;
+export const GetComponentVersionArtifactResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ preSignedUrl: S.String }),
+).annotate({
+  identifier: "GetComponentVersionArtifactResponse",
+}) as any as S.Schema<GetComponentVersionArtifactResponse>;
 export interface GetConnectivityInfoRequest {
   thingName: string;
 }
@@ -1171,6 +1195,7 @@ export const GetConnectivityInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectivityInfoRequest",
 }) as any as S.Schema<GetConnectivityInfoRequest>;
+export type PortNumberInt = number;
 export interface ConnectivityInfo {
   id?: string;
   hostAddress?: string;
@@ -1200,20 +1225,16 @@ export interface GetConnectivityInfoResponse {
   connectivityInfo?: ConnectivityInfo[];
   message?: string;
 }
-export const GetConnectivityInfoResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectivityInfo: S.optional(ConnectivityInfoList),
-      message: S.optional(S.String),
-    }).pipe(
-      S.encodeKeys({
-        connectivityInfo: "ConnectivityInfo",
-        message: "Message",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetConnectivityInfoResponse",
-  }) as any as S.Schema<GetConnectivityInfoResponse>;
+export const GetConnectivityInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectivityInfo: S.optional(ConnectivityInfoList),
+    message: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({ connectivityInfo: "ConnectivityInfo", message: "Message" }),
+  ),
+).annotate({
+  identifier: "GetConnectivityInfoResponse",
+}) as any as S.Schema<GetConnectivityInfoResponse>;
 export interface GetCoreDeviceRequest {
   coreDeviceThingName: string;
 }
@@ -1236,8 +1257,13 @@ export const GetCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCoreDeviceRequest",
 }) as any as S.Schema<GetCoreDeviceRequest>;
+export type GGCVersion = string;
+export type CoreDevicePlatformString = string;
+export type CoreDeviceArchitectureString = string;
+export type CoreDeviceRuntimeString = string;
 export type CoreDeviceStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CoreDeviceStatus = /*@__PURE__*/ S.String;
+
 export interface GetCoreDeviceResponse {
   coreDeviceThingName?: string;
   coreVersion?: string;
@@ -1284,6 +1310,7 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeploymentRequest",
 }) as any as S.Schema<GetDeploymentRequest>;
+export type NullableString = string;
 export type DeploymentStatus =
   | "ACTIVE"
   | "COMPLETED"
@@ -1292,6 +1319,8 @@ export type DeploymentStatus =
   | "INACTIVE"
   | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
+
+export type IsLatestForTarget = boolean;
 export interface GetDeploymentResponse {
   targetArn?: string;
   revisionId?: string;
@@ -1331,34 +1360,34 @@ export const GetDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDeploymentResponse",
 }) as any as S.Schema<GetDeploymentResponse>;
 export interface GetServiceRoleForAccountRequest {}
-export const GetServiceRoleForAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/greengrass/servicerole" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetServiceRoleForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/greengrass/servicerole" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetServiceRoleForAccountRequest",
-  }) as any as S.Schema<GetServiceRoleForAccountRequest>;
+  ),
+).annotate({
+  identifier: "GetServiceRoleForAccountRequest",
+}) as any as S.Schema<GetServiceRoleForAccountRequest>;
 export interface GetServiceRoleForAccountResponse {
   associatedAt?: string;
   roleArn?: string;
 }
-export const GetServiceRoleForAccountResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      associatedAt: S.optional(S.String),
-      roleArn: S.optional(S.String),
-    }).pipe(S.encodeKeys({ associatedAt: "AssociatedAt", roleArn: "RoleArn" })),
-  ).annotate({
-    identifier: "GetServiceRoleForAccountResponse",
-  }) as any as S.Schema<GetServiceRoleForAccountResponse>;
+export const GetServiceRoleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    associatedAt: S.optional(S.String),
+    roleArn: S.optional(S.String),
+  }).pipe(S.encodeKeys({ associatedAt: "AssociatedAt", roleArn: "RoleArn" })),
+).annotate({
+  identifier: "GetServiceRoleForAccountResponse",
+}) as any as S.Schema<GetServiceRoleForAccountResponse>;
+export type DefaultMaxResults = number;
+export type NextTokenString = string;
 export interface ListClientDevicesAssociatedWithCoreDeviceRequest {
   coreDeviceThingName: string;
   maxResults?: number;
@@ -1419,6 +1448,7 @@ export const ListClientDevicesAssociatedWithCoreDeviceResponse =
   }) as any as S.Schema<ListClientDevicesAssociatedWithCoreDeviceResponse>;
 export type ComponentVisibilityScope = "PRIVATE" | "PUBLIC" | (string & {});
 export const ComponentVisibilityScope = /*@__PURE__*/ S.String;
+
 export interface ListComponentsRequest {
   scope?: ComponentVisibilityScope;
   maxResults?: number;
@@ -1442,6 +1472,7 @@ export const ListComponentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListComponentsRequest",
 }) as any as S.Schema<ListComponentsRequest>;
+export type ComponentARN = string;
 export interface ComponentLatestVersion {
   arn?: string;
   componentVersion?: string;
@@ -1495,28 +1526,27 @@ export interface ListComponentVersionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListComponentVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.String.pipe(T.HttpLabel("arn")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/greengrass/v2/components/{arn}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListComponentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String.pipe(T.HttpLabel("arn")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/greengrass/v2/components/{arn}/versions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListComponentVersionsRequest",
-  }) as any as S.Schema<ListComponentVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListComponentVersionsRequest",
+}) as any as S.Schema<ListComponentVersionsRequest>;
 export interface ComponentVersionListItem {
   componentName?: string;
   componentVersion?: string;
@@ -1539,15 +1569,14 @@ export interface ListComponentVersionsResponse {
   componentVersions?: ComponentVersionListItem[];
   nextToken?: string;
 }
-export const ListComponentVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      componentVersions: S.optional(ComponentVersionList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListComponentVersionsResponse",
-  }) as any as S.Schema<ListComponentVersionsResponse>;
+export const ListComponentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    componentVersions: S.optional(ComponentVersionList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListComponentVersionsResponse",
+}) as any as S.Schema<ListComponentVersionsResponse>;
 export interface ListCoreDevicesRequest {
   thingGroupArn?: string;
   status?: CoreDeviceStatus;
@@ -1611,6 +1640,7 @@ export const ListCoreDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoreDevicesResponse>;
 export type DeploymentHistoryFilter = "ALL" | "LATEST_ONLY" | (string & {});
 export const DeploymentHistoryFilter = /*@__PURE__*/ S.String;
+
 export interface ListDeploymentsRequest {
   targetArn?: string;
   historyFilter?: DeploymentHistoryFilter;
@@ -1683,28 +1713,31 @@ export interface ListEffectiveDeploymentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListEffectiveDeploymentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/effectiveDeployments",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEffectiveDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/effectiveDeployments",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListEffectiveDeploymentsRequest",
-  }) as any as S.Schema<ListEffectiveDeploymentsRequest>;
+  ),
+).annotate({
+  identifier: "ListEffectiveDeploymentsRequest",
+}) as any as S.Schema<ListEffectiveDeploymentsRequest>;
+export type DeploymentID = string;
+export type DeploymentName = string;
+export type IoTJobId = string;
+export type Description = string;
 export type EffectiveDeploymentExecutionStatus =
   | "IN_PROGRESS"
   | "QUEUED"
@@ -1716,23 +1749,26 @@ export type EffectiveDeploymentExecutionStatus =
   | "SUCCEEDED"
   | (string & {});
 export const EffectiveDeploymentExecutionStatus = /*@__PURE__*/ S.String;
+
+export type Reason = string;
+export type EffectiveDeploymentErrorCode = string;
 export type EffectiveDeploymentErrorStack = string[];
 export const EffectiveDeploymentErrorStack = /*@__PURE__*/ S.Array(S.String);
+export type EffectiveDeploymentErrorType = string;
 export type EffectiveDeploymentErrorTypeList = string[];
 export const EffectiveDeploymentErrorTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface EffectiveDeploymentStatusDetails {
   errorStack?: string[];
   errorTypes?: string[];
 }
-export const EffectiveDeploymentStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errorStack: S.optional(EffectiveDeploymentErrorStack),
-      errorTypes: S.optional(EffectiveDeploymentErrorTypeList),
-    }),
-  ).annotate({
-    identifier: "EffectiveDeploymentStatusDetails",
-  }) as any as S.Schema<EffectiveDeploymentStatusDetails>;
+export const EffectiveDeploymentStatusDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errorStack: S.optional(EffectiveDeploymentErrorStack),
+    errorTypes: S.optional(EffectiveDeploymentErrorTypeList),
+  }),
+).annotate({
+  identifier: "EffectiveDeploymentStatusDetails",
+}) as any as S.Schema<EffectiveDeploymentStatusDetails>;
 export interface EffectiveDeployment {
   deploymentId: string;
   deploymentName: string;
@@ -1770,48 +1806,47 @@ export interface ListEffectiveDeploymentsResponse {
   effectiveDeployments?: EffectiveDeployment[];
   nextToken?: string;
 }
-export const ListEffectiveDeploymentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      effectiveDeployments: S.optional(EffectiveDeploymentsList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEffectiveDeploymentsResponse",
-  }) as any as S.Schema<ListEffectiveDeploymentsResponse>;
+export const ListEffectiveDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    effectiveDeployments: S.optional(EffectiveDeploymentsList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEffectiveDeploymentsResponse",
+}) as any as S.Schema<ListEffectiveDeploymentsResponse>;
 export type InstalledComponentTopologyFilter = "ALL" | "ROOT" | (string & {});
 export const InstalledComponentTopologyFilter = /*@__PURE__*/ S.String;
+
 export interface ListInstalledComponentsRequest {
   coreDeviceThingName: string;
   maxResults?: number;
   nextToken?: string;
   topologyFilter?: InstalledComponentTopologyFilter;
 }
-export const ListInstalledComponentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      topologyFilter: S.optional(InstalledComponentTopologyFilter).pipe(
-        T.HttpQuery("topologyFilter"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/installedComponents",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListInstalledComponentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    coreDeviceThingName: S.String.pipe(T.HttpLabel("coreDeviceThingName")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    topologyFilter: S.optional(InstalledComponentTopologyFilter).pipe(
+      T.HttpQuery("topologyFilter"),
     ),
-  ).annotate({
-    identifier: "ListInstalledComponentsRequest",
-  }) as any as S.Schema<ListInstalledComponentsRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/greengrass/v2/coreDevices/{coreDeviceThingName}/installedComponents",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListInstalledComponentsRequest",
+}) as any as S.Schema<ListInstalledComponentsRequest>;
 export type InstalledComponentLifecycleState =
   | "NEW"
   | "INSTALLED"
@@ -1823,9 +1858,14 @@ export type InstalledComponentLifecycleState =
   | "FINISHED"
   | (string & {});
 export const InstalledComponentLifecycleState = /*@__PURE__*/ S.String;
+
+export type LifecycleStateDetails = string;
+export type IsRoot = boolean;
+export type InstalledComponentLifecycleStatusCode = string;
 export type InstalledComponentLifecycleStatusCodeList = string[];
-export const InstalledComponentLifecycleStatusCodeList =
-  /*@__PURE__*/ S.Array(S.String);
+export const InstalledComponentLifecycleStatusCodeList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface InstalledComponent {
   componentName?: string;
   componentVersion?: string;
@@ -1862,15 +1902,15 @@ export interface ListInstalledComponentsResponse {
   installedComponents?: InstalledComponent[];
   nextToken?: string;
 }
-export const ListInstalledComponentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      installedComponents: S.optional(InstalledComponentList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListInstalledComponentsResponse",
-  }) as any as S.Schema<ListInstalledComponentsResponse>;
+export const ListInstalledComponentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    installedComponents: S.optional(InstalledComponentList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListInstalledComponentsResponse",
+}) as any as S.Schema<ListInstalledComponentsResponse>;
+export type GenericV2ARN = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1891,17 +1931,18 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type ComponentVersionRequirementMap = {
   [key: string]: string | undefined;
 };
-export const ComponentVersionRequirementMap =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ComponentVersionRequirementMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface ComponentCandidate {
   componentName?: string;
   componentVersion?: string;
@@ -1922,27 +1963,26 @@ export interface ResolveComponentCandidatesRequest {
   platform?: ComponentPlatform;
   componentCandidates?: ComponentCandidate[];
 }
-export const ResolveComponentCandidatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      platform: S.optional(ComponentPlatform),
-      componentCandidates: S.optional(ComponentCandidateList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/greengrass/v2/resolveComponentCandidates",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResolveComponentCandidatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    platform: S.optional(ComponentPlatform),
+    componentCandidates: S.optional(ComponentCandidateList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/greengrass/v2/resolveComponentCandidates",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ResolveComponentCandidatesRequest",
-  }) as any as S.Schema<ResolveComponentCandidatesRequest>;
+  ),
+).annotate({
+  identifier: "ResolveComponentCandidatesRequest",
+}) as any as S.Schema<ResolveComponentCandidatesRequest>;
 export interface ResolvedComponentVersion {
   arn?: string;
   componentName?: string;
@@ -1964,19 +2004,19 @@ export const ResolvedComponentVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResolvedComponentVersion",
 }) as any as S.Schema<ResolvedComponentVersion>;
 export type ResolvedComponentVersionsList = ResolvedComponentVersion[];
-export const ResolvedComponentVersionsList =
-  /*@__PURE__*/ S.Array(ResolvedComponentVersion);
+export const ResolvedComponentVersionsList = /*@__PURE__*/ S.Array(
+  ResolvedComponentVersion,
+);
 export interface ResolveComponentCandidatesResponse {
   resolvedComponentVersions?: ResolvedComponentVersion[];
 }
-export const ResolveComponentCandidatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resolvedComponentVersions: S.optional(ResolvedComponentVersionsList),
-    }),
-  ).annotate({
-    identifier: "ResolveComponentCandidatesResponse",
-  }) as any as S.Schema<ResolveComponentCandidatesResponse>;
+export const ResolveComponentCandidatesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resolvedComponentVersions: S.optional(ResolvedComponentVersionsList),
+  }),
+).annotate({
+  identifier: "ResolveComponentCandidatesResponse",
+}) as any as S.Schema<ResolveComponentCandidatesResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -2037,101 +2077,67 @@ export interface UpdateConnectivityInfoRequest {
   thingName: string;
   connectivityInfo: ConnectivityInfo[];
 }
-export const UpdateConnectivityInfoRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      thingName: S.String.pipe(T.HttpLabel("thingName")),
-      connectivityInfo: ConnectivityInfoList,
-    })
-      .pipe(
-        S.encodeKeys({
-          thingName: "ThingName",
-          connectivityInfo: "ConnectivityInfo",
+export const UpdateConnectivityInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thingName: S.String.pipe(T.HttpLabel("thingName")),
+    connectivityInfo: ConnectivityInfoList,
+  })
+    .pipe(
+      S.encodeKeys({
+        thingName: "ThingName",
+        connectivityInfo: "ConnectivityInfo",
+      }),
+    )
+    .pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/greengrass/things/{thingName}/connectivityInfo",
         }),
-      )
-      .pipe(
-        T.all(
-          T.Http({
-            method: "PUT",
-            uri: "/greengrass/things/{thingName}/connectivityInfo",
-          }),
-          svc,
-          auth,
-          proto,
-          ver,
-          rules,
-        ),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
       ),
-  ).annotate({
-    identifier: "UpdateConnectivityInfoRequest",
-  }) as any as S.Schema<UpdateConnectivityInfoRequest>;
+    ),
+).annotate({
+  identifier: "UpdateConnectivityInfoRequest",
+}) as any as S.Schema<UpdateConnectivityInfoRequest>;
 export interface UpdateConnectivityInfoResponse {
   version?: string;
   message?: string;
 }
-export const UpdateConnectivityInfoResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      version: S.optional(S.String),
-      message: S.optional(S.String),
-    }).pipe(S.encodeKeys({ version: "Version", message: "Message" })),
-  ).annotate({
-    identifier: "UpdateConnectivityInfoResponse",
-  }) as any as S.Schema<UpdateConnectivityInfoResponse>;
+export const UpdateConnectivityInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(S.String),
+    message: S.optional(S.String),
+  }).pipe(S.encodeKeys({ version: "Version", message: "Message" })),
+).annotate({
+  identifier: "UpdateConnectivityInfoResponse",
+}) as any as S.Schema<UpdateConnectivityInfoResponse>;
+export type RetryAfterSeconds = number;
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    quotaCode: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withThrottlingError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withConflictError) {}
-export class RequestAlreadyInProgressException extends S.TaggedErrorClass<RequestAlreadyInProgressException>()(
-  "RequestAlreadyInProgressException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    quotaCode: S.String,
-    serviceCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateServiceRoleToAccountError =
   | InternalServerException
   | ValidationException
@@ -2152,8 +2158,11 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateServiceRoleToAccount",
 }));
+
 export type BatchAssociateClientDeviceWithCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2189,8 +2198,11 @@ export const batchAssociateClientDeviceWithCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateClientDeviceWithCoreDevice",
 }));
+
 export type BatchDisassociateClientDeviceFromCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2218,8 +2230,11 @@ export const batchDisassociateClientDeviceFromCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateClientDeviceFromCoreDevice",
 }));
+
 export type CancelDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -2249,8 +2264,11 @@ export const cancelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDeployment",
 }));
+
 export type CreateComponentVersionError =
   | AccessDeniedException
   | ConflictException
@@ -2309,8 +2327,11 @@ export const createComponentVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponentVersion",
 }));
+
 export type CreateDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -2353,8 +2374,11 @@ export const createDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
+
 export type DeleteComponentError =
   | AccessDeniedException
   | ConflictException
@@ -2387,8 +2411,11 @@ export const deleteComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
+
 export type DeleteCoreDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -2419,8 +2446,11 @@ export const deleteCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoreDevice",
 }));
+
 export type DeleteDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -2453,8 +2483,11 @@ export const deleteDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeployment",
 }));
+
 export type DescribeComponentError =
   | AccessDeniedException
   | InternalServerException
@@ -2480,8 +2513,11 @@ export const describeComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponent",
 }));
+
 export type DisassociateServiceRoleFromAccountError =
   | InternalServerException
   | CommonErrors;
@@ -2500,8 +2536,11 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateServiceRoleFromAccount",
 }));
+
 export type GetComponentError =
   | AccessDeniedException
   | InternalServerException
@@ -2527,8 +2566,11 @@ export const getComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
+
 export type GetComponentVersionArtifactError =
   | AccessDeniedException
   | InternalServerException
@@ -2556,8 +2598,11 @@ export const getComponentVersionArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponentVersionArtifact",
 }));
+
 export type GetConnectivityInfoError =
   | InternalServerException
   | ValidationException
@@ -2581,8 +2626,11 @@ export const getConnectivityInfo: API.OperationMethod<
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectivityInfo",
 }));
+
 export type GetCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2627,8 +2675,11 @@ export const getCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreDevice",
 }));
+
 export type GetDeploymentError =
   | AccessDeniedException
   | InternalServerException
@@ -2654,8 +2705,11 @@ export const getDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
+
 export type GetServiceRoleForAccountError =
   | InternalServerException
   | CommonErrors;
@@ -2674,8 +2728,11 @@ export const getServiceRoleForAccount: API.OperationMethod<
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceRoleForAccount",
 }));
+
 export type ListClientDevicesAssociatedWithCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2717,6 +2774,8 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClientDevicesAssociatedWithCoreDevice",
   pagination: {
     inputToken: "nextToken",
@@ -2725,6 +2784,7 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComponentsError =
   | AccessDeniedException
   | InternalServerException
@@ -2766,6 +2826,8 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
@@ -2774,6 +2836,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComponentVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -2815,6 +2878,8 @@ export const listComponentVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponentVersions",
   pagination: {
     inputToken: "nextToken",
@@ -2823,6 +2888,7 @@ export const listComponentVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCoreDevicesError =
   | AccessDeniedException
   | InternalServerException
@@ -2885,6 +2951,8 @@ export const listCoreDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreDevices",
   pagination: {
     inputToken: "nextToken",
@@ -2893,6 +2961,7 @@ export const listCoreDevices: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDeploymentsError =
   | AccessDeniedException
   | InternalServerException
@@ -2931,6 +3000,8 @@ export const listDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -2939,6 +3010,7 @@ export const listDeployments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEffectiveDeploymentsError =
   | AccessDeniedException
   | InternalServerException
@@ -2979,6 +3051,8 @@ export const listEffectiveDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEffectiveDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -2987,6 +3061,7 @@ export const listEffectiveDeployments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInstalledComponentsError =
   | AccessDeniedException
   | InternalServerException
@@ -3049,6 +3124,8 @@ export const listInstalledComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstalledComponents",
   pagination: {
     inputToken: "nextToken",
@@ -3057,6 +3134,7 @@ export const listInstalledComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3078,8 +3156,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ResolveComponentCandidatesError =
   | AccessDeniedException
   | ConflictException
@@ -3122,8 +3203,11 @@ export const resolveComponentCandidates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResolveComponentCandidates",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3146,8 +3230,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3169,8 +3256,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectivityInfoError =
   | InternalServerException
   | ValidationException
@@ -3194,5 +3284,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectivityInfo",
 }));

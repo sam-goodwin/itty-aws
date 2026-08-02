@@ -34,7 +34,10 @@ import {
 } from "../../src/services/sqs.ts";
 import { beforeAll, test, testRunId } from "../test.ts";
 
-const retrySchedule = Schedule.max([Schedule.recurs(10), Schedule.spaced("1 second")]);
+const retrySchedule = Schedule.both(
+  Schedule.recurs(10),
+  Schedule.spaced("1 second"),
+);
 
 const TEST_ROLE_NAME = `distilled-aws-test-lambda-role-${testRunId}`;
 
@@ -145,7 +148,10 @@ const withFunction = <A, E, R>(
       Effect.retry({
         while: (err) =>
           "_tag" in err && err._tag === "InvalidParameterValueException",
-        schedule: Schedule.max([Schedule.recurs(20), Schedule.spaced("3 seconds")]),
+        schedule: Schedule.both(
+          Schedule.recurs(20),
+          Schedule.spaced("3 seconds"),
+        ),
       }),
     );
 
@@ -182,7 +188,10 @@ const withQueue = <A, E, R>(
     const queueResult = yield* createQueue({ QueueName: queueName }).pipe(
       Effect.retry({
         while: (err) => "_tag" in err && err._tag === "QueueDeletedRecently",
-        schedule: Schedule.max([Schedule.recurs(30), Schedule.spaced("2 seconds")]),
+        schedule: Schedule.both(
+          Schedule.recurs(30),
+          Schedule.spaced("2 seconds"),
+        ),
       }),
     );
     const queueUrl = queueResult.QueueUrl!;
@@ -228,7 +237,10 @@ const withEventSourceMapping = <A, E, R>(
           (err._tag === "InvalidParameterValueException" ||
             err._tag === "ResourceConflictException" ||
             err._tag === "ResourceInUseException"),
-        schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("3 seconds")]),
+        schedule: Schedule.both(
+          Schedule.recurs(10),
+          Schedule.spaced("3 seconds"),
+        ),
       }),
     );
 
@@ -246,7 +258,10 @@ const withEventSourceMapping = <A, E, R>(
                     Effect.retry({
                       while: (err) =>
                         "_tag" in err && err._tag === "ResourceInUseException",
-                      schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("2 seconds")]),
+                      schedule: Schedule.both(
+                        Schedule.recurs(10),
+                        Schedule.spaced("2 seconds"),
+                      ),
                     }),
                     Effect.ignore,
                   )
@@ -594,7 +609,10 @@ test(
               Effect.retry({
                 while: (err) =>
                   "_tag" in err && err._tag === "ResourceInUseException",
-                schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("2 seconds")]),
+                schedule: Schedule.both(
+                  Schedule.recurs(10),
+                  Schedule.spaced("2 seconds"),
+                ),
               }),
             );
 
@@ -612,7 +630,10 @@ test(
             }).pipe(
               Effect.retry({
                 while: (err) => err === "still exists",
-                schedule: Schedule.max([Schedule.recurs(10), Schedule.spaced("2 seconds")]),
+                schedule: Schedule.both(
+                  Schedule.recurs(10),
+                  Schedule.spaced("2 seconds"),
+                ),
               }),
             );
           }),

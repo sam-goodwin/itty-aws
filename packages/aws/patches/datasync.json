@@ -5,12 +5,16 @@
         {
           "name": "LocationRoleNotAssumable",
           "from": "InvalidRequestException",
-          "message": { "includes": "Invalid IAM role" }
+          "message": {
+            "includes": "Invalid IAM role"
+          }
         },
         {
           "name": "LocationAccessTestFailed",
           "from": "InvalidRequestException",
-          "message": { "includes": "location access test failed" }
+          "message": {
+            "includes": "location access test failed"
+          }
         }
       ]
     },
@@ -19,12 +23,16 @@
         {
           "name": "LocationRoleNotAssumable",
           "from": "InvalidRequestException",
-          "message": { "includes": "Invalid IAM role" }
+          "message": {
+            "includes": "Invalid IAM role"
+          }
         },
         {
           "name": "LocationAccessTestFailed",
           "from": "InvalidRequestException",
-          "message": { "includes": "location access test failed" }
+          "message": {
+            "includes": "location access test failed"
+          }
         }
       ]
     },
@@ -33,7 +41,9 @@
         {
           "name": "LocationNotFound",
           "from": "InvalidRequestException",
-          "message": { "matches": "^Location .* is not found" }
+          "message": {
+            "matches": "^Location .* is not found"
+          }
         }
       ]
     },
@@ -42,7 +52,9 @@
         {
           "name": "LocationNotFound",
           "from": "InvalidRequestException",
-          "message": { "matches": "^Location .* is not found" }
+          "message": {
+            "matches": "^Location .* is not found"
+          }
         }
       ]
     },
@@ -51,7 +63,9 @@
         {
           "name": "LocationNotFound",
           "from": "InvalidRequestException",
-          "message": { "matches": "^Location .* is not found" }
+          "message": {
+            "matches": "^Location .* is not found"
+          }
         }
       ]
     },
@@ -60,7 +74,9 @@
         {
           "name": "TaskNotFound",
           "from": "InvalidRequestException",
-          "message": { "matches": "^Task .* is not found" }
+          "message": {
+            "matches": "^Task .* is not found"
+          }
         }
       ]
     },
@@ -69,7 +85,9 @@
         {
           "name": "TaskNotFound",
           "from": "InvalidRequestException",
-          "message": { "matches": "^Task .* is not found" }
+          "message": {
+            "matches": "^Task .* is not found"
+          }
         }
       ]
     },
@@ -78,7 +96,9 @@
         {
           "name": "TaskNotFound",
           "from": "InvalidRequestException",
-          "message": { "matches": "^Task .* is not found" }
+          "message": {
+            "matches": "^Task .* is not found"
+          }
         }
       ]
     },
@@ -87,7 +107,20 @@
         {
           "name": "LocationAccessTestFailed",
           "from": "InvalidRequestException",
-          "message": { "includes": "location access test failed" }
+          "message": {
+            "includes": "location access test failed"
+          }
+        }
+      ]
+    },
+    "createTask": {
+      "syntheticErrors": [
+        {
+          "name": "LocationAccessTestFailed",
+          "from": "InvalidRequestException",
+          "message": {
+            "includes": "location access test failed"
+          }
         }
       ]
     }

@@ -1,7 +1,10 @@
 {
   "errorCategories": {
     "ConcurrentModificationException": ["ConflictError", "RetryableError"],
-    "EntityTemporarilyUnmodifiableException": ["ConflictError", "RetryableError"],
+    "EntityTemporarilyUnmodifiableException": [
+      "ConflictError",
+      "RetryableError"
+    ],
     "LimitExceededException": ["QuotaError"],
     "NoSuchEntityException": ["NotFoundError"],
     "ServiceFailureException": ["ServerError", "RetryableError"],

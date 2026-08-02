@@ -2,7 +2,10 @@
   "errorCategories": {
     "LimitExceededException": ["QuotaError", "RetryableError"],
     "ResourceInUseException": ["ConflictError", "RetryableError"],
-    "ProvisionedThroughputExceededException": ["ThrottlingError", "RetryableError"],
+    "ProvisionedThroughputExceededException": [
+      "ThrottlingError",
+      "RetryableError"
+    ],
     "KMSThrottlingException": ["ThrottlingError", "RetryableError"],
     "InternalFailureException": ["ServerError", "RetryableError"],
     "ResourceNotFoundException": ["NotFoundError"],

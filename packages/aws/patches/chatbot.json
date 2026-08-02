@@ -1,24 +1,16 @@
 {
   "operations": {
     "getMicrosoftTeamsChannelConfiguration": {
-      "errors": [
-        "ResourceNotFoundException"
-      ]
+      "errors": ["ResourceNotFoundException"]
     },
     "listAssociations": {
-      "errors": [
-        "InvalidRequestException"
-      ]
+      "errors": ["InvalidRequestException"]
     },
     "associateToConfiguration": {
-      "errors": [
-        "ResourceNotFoundException"
-      ]
+      "errors": ["ResourceNotFoundException"]
     },
     "disassociateFromConfiguration": {
-      "errors": [
-        "ResourceNotFoundException"
-      ]
+      "errors": ["ResourceNotFoundException"]
     },
     "createSlackChannelConfiguration": {
       "syntheticErrors": [
@@ -43,9 +35,7 @@
       ]
     },
     "deleteMicrosoftTeamsConfiguredTeam": {
-      "errors": [
-        "ResourceNotFoundException"
-      ]
+      "errors": ["ResourceNotFoundException"]
     }
   },
   "structures": {
@@ -58,11 +48,7 @@
     }
   },
   "errorCategories": {
-    "SlackWorkspaceNotAuthorized": [
-      "BadRequestError"
-    ],
-    "MicrosoftTeamsTeamNotConfigured": [
-      "BadRequestError"
-    ]
+    "SlackWorkspaceNotAuthorized": ["BadRequestError"],
+    "MicrosoftTeamsTeamNotConfigured": ["BadRequestError"]
   }
 }

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -95,61 +97,59 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+    message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
+  "PreconditionFailedException",
+  { message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  {
+    referenceType: S.optional(
+      S.suspend(() => ReferenceType).annotate({ identifier: "ReferenceType" }),
+    ),
+    exampleReference: S.optional(
+      S.suspend(() => ResourceReference).annotate({
+        identifier: "ResourceReference",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type BotName = string;
-export type Description = string;
-export type IntentName = string;
-export type Version = string;
-export type ContentString = string;
-export type GroupNumber = number;
-export type PromptMaxAttempts = number;
-export type ResponseCard = string;
-export type SessionTTL = number;
-export type SlotName = string;
-export type CustomOrBuiltinSlotTypeName = string;
-export type Priority = number;
-export type Utterance = string;
-export type SlotDefaultValueString = string;
-export type LambdaARN = string;
-export type MessageVersion = string;
-export type BuiltinIntentSignature = string;
-export type KendraIndexArn = string;
-export type QueryFilterString = string;
-export type RoleArn = string;
-export type InputContextName = string;
-export type OutputContextName = string;
-export type ContextTimeToLiveInSeconds = number;
-export type ContextTurnsToLive = number;
-export type SlotTypeName = string;
-export type Value = string;
-export type RegexPattern = string;
-export type Name = string;
-export type AliasName = string;
-export type BotChannelName = string;
-export type NumericalVersion = string;
-export type UserId = string;
-export type ConfidenceThreshold = number;
-export type KmsKeyArn = string;
-export type ResourceArn = string;
-export type ResourcePrefix = string;
-export type IamRoleArn = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type AliasNameOrListAll = string;
-export type BuiltinSlotTypeSignature = string;
-export type MigrationId = string;
-export type V2BotId = string;
-export type MigrationAlertMessage = string;
-export type MigrationAlertDetail = string;
-export type MigrationAlertReferenceURL = string;
-export type UtteranceString = string;
-export type Count = number;
-export type AmazonResourceName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type V2BotName = string;
-
-//# Schemas
 export interface CreateBotVersionRequest {
   name: string;
   checksum?: string;
@@ -171,6 +171,9 @@ export const CreateBotVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotVersionRequest",
 }) as any as S.Schema<CreateBotVersionRequest>;
+export type Description = string;
+export type IntentName = string;
+export type Version = string;
 export interface Intent {
   intentName: string;
   intentVersion: string;
@@ -186,6 +189,9 @@ export type ContentType =
   | "CustomPayload"
   | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
+
+export type ContentString = string;
+export type GroupNumber = number;
 export interface Message {
   contentType: ContentType;
   content: string;
@@ -200,6 +206,8 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 export type MessageList = Message[];
 export const MessageList = /*@__PURE__*/ S.Array(Message);
+export type PromptMaxAttempts = number;
+export type ResponseCard = string;
 export interface Prompt {
   messages: Message[];
   maxAttempts: number;
@@ -227,6 +235,8 @@ export type Status =
   | "NOT_BUILT"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type SessionTTL = number;
 export type Locale =
   | "de-DE"
   | "en-AU"
@@ -243,6 +253,7 @@ export type Locale =
   | "ko-KR"
   | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
+
 export interface CreateBotVersionResponse {
   name?: string;
   description?: string;
@@ -308,12 +319,19 @@ export const CreateIntentVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIntentVersionRequest",
 }) as any as S.Schema<CreateIntentVersionRequest>;
+export type SlotName = string;
 export type SlotConstraint = "Required" | "Optional" | (string & {});
 export const SlotConstraint = /*@__PURE__*/ S.String;
+
+export type CustomOrBuiltinSlotTypeName = string;
+export type Priority = number;
+export type Utterance = string;
 export type SlotUtteranceList = string[];
 export const SlotUtteranceList = /*@__PURE__*/ S.Array(S.String);
 export type ObfuscationSetting = "NONE" | "DEFAULT_OBFUSCATION" | (string & {});
 export const ObfuscationSetting = /*@__PURE__*/ S.String;
+
+export type SlotDefaultValueString = string;
 export interface SlotDefaultValue {
   defaultValue: string;
 }
@@ -371,6 +389,8 @@ export interface FollowUpPrompt {
 export const FollowUpPrompt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ prompt: Prompt, rejectionStatement: Statement }),
 ).annotate({ identifier: "FollowUpPrompt" }) as any as S.Schema<FollowUpPrompt>;
+export type LambdaARN = string;
+export type MessageVersion = string;
 export interface CodeHook {
   uri: string;
   messageVersion: string;
@@ -383,6 +403,7 @@ export type FulfillmentActivityType =
   | "CodeHook"
   | (string & {});
 export const FulfillmentActivityType = /*@__PURE__*/ S.String;
+
 export interface FulfillmentActivity {
   type: FulfillmentActivityType;
   codeHook?: CodeHook;
@@ -392,6 +413,10 @@ export const FulfillmentActivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FulfillmentActivity",
 }) as any as S.Schema<FulfillmentActivity>;
+export type BuiltinIntentSignature = string;
+export type KendraIndexArn = string;
+export type QueryFilterString = string;
+export type RoleArn = string;
 export interface KendraConfiguration {
   kendraIndex: string;
   queryFilterString?: string;
@@ -406,6 +431,7 @@ export const KendraConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KendraConfiguration",
 }) as any as S.Schema<KendraConfiguration>;
+export type InputContextName = string;
 export interface InputContext {
   name: string;
 }
@@ -414,6 +440,9 @@ export const InputContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputContext" }) as any as S.Schema<InputContext>;
 export type InputContextList = InputContext[];
 export const InputContextList = /*@__PURE__*/ S.Array(InputContext);
+export type OutputContextName = string;
+export type ContextTimeToLiveInSeconds = number;
+export type ContextTurnsToLive = number;
 export interface OutputContext {
   name: string;
   timeToLiveInSeconds: number;
@@ -448,55 +477,55 @@ export interface CreateIntentVersionResponse {
   inputContexts?: InputContext[];
   outputContexts?: OutputContext[];
 }
-export const CreateIntentVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      slots: S.optional(SlotList),
-      sampleUtterances: S.optional(IntentUtteranceList),
-      confirmationPrompt: S.optional(Prompt),
-      rejectionStatement: S.optional(Statement),
-      followUpPrompt: S.optional(FollowUpPrompt),
-      conclusionStatement: S.optional(Statement),
-      dialogCodeHook: S.optional(CodeHook),
-      fulfillmentActivity: S.optional(FulfillmentActivity),
-      parentIntentSignature: S.optional(S.String),
-      lastUpdatedDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      version: S.optional(S.String),
-      checksum: S.optional(S.String),
-      kendraConfiguration: S.optional(KendraConfiguration),
-      inputContexts: S.optional(InputContextList),
-      outputContexts: S.optional(OutputContextList),
-    }),
-  ).annotate({
-    identifier: "CreateIntentVersionResponse",
-  }) as any as S.Schema<CreateIntentVersionResponse>;
+export const CreateIntentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    slots: S.optional(SlotList),
+    sampleUtterances: S.optional(IntentUtteranceList),
+    confirmationPrompt: S.optional(Prompt),
+    rejectionStatement: S.optional(Statement),
+    followUpPrompt: S.optional(FollowUpPrompt),
+    conclusionStatement: S.optional(Statement),
+    dialogCodeHook: S.optional(CodeHook),
+    fulfillmentActivity: S.optional(FulfillmentActivity),
+    parentIntentSignature: S.optional(S.String),
+    lastUpdatedDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    version: S.optional(S.String),
+    checksum: S.optional(S.String),
+    kendraConfiguration: S.optional(KendraConfiguration),
+    inputContexts: S.optional(InputContextList),
+    outputContexts: S.optional(OutputContextList),
+  }),
+).annotate({
+  identifier: "CreateIntentVersionResponse",
+}) as any as S.Schema<CreateIntentVersionResponse>;
+export type SlotTypeName = string;
 export interface CreateSlotTypeVersionRequest {
   name: string;
   checksum?: string;
 }
-export const CreateSlotTypeVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.HttpLabel("name")),
-      checksum: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/slottypes/{name}/versions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSlotTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.HttpLabel("name")),
+    checksum: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/slottypes/{name}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSlotTypeVersionRequest",
-  }) as any as S.Schema<CreateSlotTypeVersionRequest>;
+  ),
+).annotate({
+  identifier: "CreateSlotTypeVersionRequest",
+}) as any as S.Schema<CreateSlotTypeVersionRequest>;
+export type Value = string;
 export type SynonymList = string[];
 export const SynonymList = /*@__PURE__*/ S.Array(S.String);
 export interface EnumerationValue {
@@ -515,6 +544,8 @@ export type SlotValueSelectionStrategy =
   | "TOP_RESOLUTION"
   | (string & {});
 export const SlotValueSelectionStrategy = /*@__PURE__*/ S.String;
+
+export type RegexPattern = string;
 export interface SlotTypeRegexConfiguration {
   pattern: string;
 }
@@ -547,25 +578,24 @@ export interface CreateSlotTypeVersionResponse {
   parentSlotTypeSignature?: string;
   slotTypeConfigurations?: SlotTypeConfiguration[];
 }
-export const CreateSlotTypeVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      enumerationValues: S.optional(EnumerationValues),
-      lastUpdatedDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      version: S.optional(S.String),
-      checksum: S.optional(S.String),
-      valueSelectionStrategy: S.optional(SlotValueSelectionStrategy),
-      parentSlotTypeSignature: S.optional(S.String),
-      slotTypeConfigurations: S.optional(SlotTypeConfigurations),
-    }),
-  ).annotate({
-    identifier: "CreateSlotTypeVersionResponse",
-  }) as any as S.Schema<CreateSlotTypeVersionResponse>;
+export const CreateSlotTypeVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    enumerationValues: S.optional(EnumerationValues),
+    lastUpdatedDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    version: S.optional(S.String),
+    checksum: S.optional(S.String),
+    valueSelectionStrategy: S.optional(SlotValueSelectionStrategy),
+    parentSlotTypeSignature: S.optional(S.String),
+    slotTypeConfigurations: S.optional(SlotTypeConfigurations),
+  }),
+).annotate({
+  identifier: "CreateSlotTypeVersionResponse",
+}) as any as S.Schema<CreateSlotTypeVersionResponse>;
 export interface DeleteBotRequest {
   name: string;
 }
@@ -589,22 +619,7 @@ export const DeleteBotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBotResponse",
 }) as any as S.Schema<DeleteBotResponse>;
-export type ReferenceType =
-  | "Intent"
-  | "Bot"
-  | "BotAlias"
-  | "BotChannel"
-  | (string & {});
-export const ReferenceType = /*@__PURE__*/ S.String;
-export interface ResourceReference {
-  name?: string;
-  version?: string;
-}
-export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.optional(S.String), version: S.optional(S.String) }),
-).annotate({
-  identifier: "ResourceReference",
-}) as any as S.Schema<ResourceReference>;
+export type AliasName = string;
 export interface DeleteBotAliasRequest {
   name: string;
   botName: string;
@@ -632,38 +647,40 @@ export const DeleteBotAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBotAliasResponse",
 }) as any as S.Schema<DeleteBotAliasResponse>;
+export type BotChannelName = string;
 export interface DeleteBotChannelAssociationRequest {
   name: string;
   botName: string;
   botAlias: string;
 }
-export const DeleteBotChannelAssociationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.HttpLabel("name")),
-      botName: S.String.pipe(T.HttpLabel("botName")),
-      botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/bots/{botName}/aliases/{botAlias}/channels/{name}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteBotChannelAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.HttpLabel("name")),
+    botName: S.String.pipe(T.HttpLabel("botName")),
+    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/bots/{botName}/aliases/{botAlias}/channels/{name}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteBotChannelAssociationRequest",
-  }) as any as S.Schema<DeleteBotChannelAssociationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteBotChannelAssociationRequest",
+}) as any as S.Schema<DeleteBotChannelAssociationRequest>;
 export interface DeleteBotChannelAssociationResponse {}
-export const DeleteBotChannelAssociationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteBotChannelAssociationResponse",
-  }) as any as S.Schema<DeleteBotChannelAssociationResponse>;
+export const DeleteBotChannelAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBotChannelAssociationResponse",
+}) as any as S.Schema<DeleteBotChannelAssociationResponse>;
+export type NumericalVersion = string;
 export interface DeleteBotVersionRequest {
   name: string;
   version: string;
@@ -736,10 +753,11 @@ export const DeleteIntentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIntentVersionRequest",
 }) as any as S.Schema<DeleteIntentVersionRequest>;
 export interface DeleteIntentVersionResponse {}
-export const DeleteIntentVersionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteIntentVersionResponse",
-  }) as any as S.Schema<DeleteIntentVersionResponse>;
+export const DeleteIntentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteIntentVersionResponse",
+}) as any as S.Schema<DeleteIntentVersionResponse>;
 export interface DeleteSlotTypeRequest {
   name: string;
 }
@@ -767,32 +785,30 @@ export interface DeleteSlotTypeVersionRequest {
   name: string;
   version: string;
 }
-export const DeleteSlotTypeVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.HttpLabel("name")),
-      version: S.String.pipe(T.HttpLabel("version")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/slottypes/{name}/version/{version}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSlotTypeVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.HttpLabel("name")),
+    version: S.String.pipe(T.HttpLabel("version")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/slottypes/{name}/version/{version}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSlotTypeVersionRequest",
-  }) as any as S.Schema<DeleteSlotTypeVersionRequest>;
+  ),
+).annotate({
+  identifier: "DeleteSlotTypeVersionRequest",
+}) as any as S.Schema<DeleteSlotTypeVersionRequest>;
 export interface DeleteSlotTypeVersionResponse {}
-export const DeleteSlotTypeVersionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteSlotTypeVersionResponse",
-  }) as any as S.Schema<DeleteSlotTypeVersionResponse>;
+export const DeleteSlotTypeVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSlotTypeVersionResponse",
+}) as any as S.Schema<DeleteSlotTypeVersionResponse>;
+export type UserId = string;
 export interface DeleteUtterancesRequest {
   botName: string;
   userId: string;
@@ -803,10 +819,7 @@ export const DeleteUtterancesRequest = /*@__PURE__*/ S.suspend(() =>
     userId: S.String.pipe(T.HttpLabel("userId")),
   }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/bots/{botName}/utterances/{userId}",
-      }),
+      T.Http({ method: "DELETE", uri: "/bots/{botName}/utterances/{userId}" }),
       svc,
       auth,
       proto,
@@ -842,6 +855,7 @@ export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetBotRequest" }) as any as S.Schema<GetBotRequest>;
+export type ConfidenceThreshold = number;
 export interface GetBotResponse {
   name?: string;
   description?: string;
@@ -909,8 +923,13 @@ export const GetBotAliasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBotAliasRequest>;
 export type LogType = "AUDIO" | "TEXT" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export type Destination = "CLOUDWATCH_LOGS" | "S3" | (string & {});
 export const Destination = /*@__PURE__*/ S.String;
+
+export type KmsKeyArn = string;
+export type ResourceArn = string;
+export type ResourcePrefix = string;
 export interface LogSettingsResponse {
   logType?: LogType;
   destination?: Destination;
@@ -932,6 +951,7 @@ export const LogSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export type LogSettingsResponseList = LogSettingsResponse[];
 export const LogSettingsResponseList =
   /*@__PURE__*/ S.Array(LogSettingsResponse);
+export type IamRoleArn = string;
 export interface ConversationLogsResponse {
   logSettings?: LogSettingsResponse[];
   iamRoleArn?: string;
@@ -970,6 +990,8 @@ export const GetBotAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBotAliasResponse",
 }) as any as S.Schema<GetBotAliasResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface GetBotAliasesRequest {
   botName: string;
   nextToken?: string;
@@ -1040,28 +1062,27 @@ export interface GetBotChannelAssociationRequest {
   botName: string;
   botAlias: string;
 }
-export const GetBotChannelAssociationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.HttpLabel("name")),
-      botName: S.String.pipe(T.HttpLabel("botName")),
-      botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/bots/{botName}/aliases/{botAlias}/channels/{name}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBotChannelAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.HttpLabel("name")),
+    botName: S.String.pipe(T.HttpLabel("botName")),
+    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/bots/{botName}/aliases/{botAlias}/channels/{name}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetBotChannelAssociationRequest",
-  }) as any as S.Schema<GetBotChannelAssociationRequest>;
+  ),
+).annotate({
+  identifier: "GetBotChannelAssociationRequest",
+}) as any as S.Schema<GetBotChannelAssociationRequest>;
 export type ChannelType =
   | "Facebook"
   | "Slack"
@@ -1069,6 +1090,7 @@ export type ChannelType =
   | "Kik"
   | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
+
 export type ChannelConfigurationMap = { [key: string]: string | undefined };
 export const ChannelConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1080,6 +1102,7 @@ export type ChannelStatus =
   | "FAILED"
   | (string & {});
 export const ChannelStatus = /*@__PURE__*/ S.String;
+
 export interface GetBotChannelAssociationResponse {
   name?: string;
   description?: string;
@@ -1091,22 +1114,22 @@ export interface GetBotChannelAssociationResponse {
   status?: ChannelStatus;
   failureReason?: string;
 }
-export const GetBotChannelAssociationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      botAlias: S.optional(S.String),
-      botName: S.optional(S.String),
-      createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      type: S.optional(ChannelType),
-      botConfiguration: S.optional(ChannelConfigurationMap),
-      status: S.optional(ChannelStatus),
-      failureReason: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetBotChannelAssociationResponse",
-  }) as any as S.Schema<GetBotChannelAssociationResponse>;
+export const GetBotChannelAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    botAlias: S.optional(S.String),
+    botName: S.optional(S.String),
+    createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    type: S.optional(ChannelType),
+    botConfiguration: S.optional(ChannelConfigurationMap),
+    status: S.optional(ChannelStatus),
+    failureReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBotChannelAssociationResponse",
+}) as any as S.Schema<GetBotChannelAssociationResponse>;
+export type AliasNameOrListAll = string;
 export interface GetBotChannelAssociationsRequest {
   botName: string;
   botAlias: string;
@@ -1114,30 +1137,29 @@ export interface GetBotChannelAssociationsRequest {
   maxResults?: number;
   nameContains?: string;
 }
-export const GetBotChannelAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      botName: S.String.pipe(T.HttpLabel("botName")),
-      botAlias: S.String.pipe(T.HttpLabel("botAlias")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/bots/{botName}/aliases/{botAlias}/channels",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBotChannelAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    botName: S.String.pipe(T.HttpLabel("botName")),
+    botAlias: S.String.pipe(T.HttpLabel("botAlias")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nameContains: S.optional(S.String).pipe(T.HttpQuery("nameContains")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/bots/{botName}/aliases/{botAlias}/channels",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetBotChannelAssociationsRequest",
-  }) as any as S.Schema<GetBotChannelAssociationsRequest>;
+  ),
+).annotate({
+  identifier: "GetBotChannelAssociationsRequest",
+}) as any as S.Schema<GetBotChannelAssociationsRequest>;
 export interface BotChannelAssociation {
   name?: string;
   description?: string;
@@ -1172,15 +1194,14 @@ export interface GetBotChannelAssociationsResponse {
   botChannelAssociations?: BotChannelAssociation[];
   nextToken?: string;
 }
-export const GetBotChannelAssociationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      botChannelAssociations: S.optional(BotChannelAssociationList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetBotChannelAssociationsResponse",
-  }) as any as S.Schema<GetBotChannelAssociationsResponse>;
+export const GetBotChannelAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    botChannelAssociations: S.optional(BotChannelAssociationList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBotChannelAssociationsResponse",
+}) as any as S.Schema<GetBotChannelAssociationsResponse>;
 export interface GetBotsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1396,6 +1417,7 @@ export const GetBuiltinSlotTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBuiltinSlotTypesRequest",
 }) as any as S.Schema<GetBuiltinSlotTypesRequest>;
+export type BuiltinSlotTypeSignature = string;
 export interface BuiltinSlotTypeMetadata {
   signature?: string;
   supportedLocales?: Locale[];
@@ -1416,19 +1438,21 @@ export interface GetBuiltinSlotTypesResponse {
   slotTypes?: BuiltinSlotTypeMetadata[];
   nextToken?: string;
 }
-export const GetBuiltinSlotTypesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slotTypes: S.optional(BuiltinSlotTypeMetadataList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetBuiltinSlotTypesResponse",
-  }) as any as S.Schema<GetBuiltinSlotTypesResponse>;
+export const GetBuiltinSlotTypesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slotTypes: S.optional(BuiltinSlotTypeMetadataList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBuiltinSlotTypesResponse",
+}) as any as S.Schema<GetBuiltinSlotTypesResponse>;
+export type Name = string;
 export type ResourceType = "BOT" | "INTENT" | "SLOT_TYPE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type ExportType = "ALEXA_SKILLS_KIT" | "LEX" | (string & {});
 export const ExportType = /*@__PURE__*/ S.String;
+
 export interface GetExportRequest {
   name: string;
   version: string;
@@ -1456,6 +1480,7 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExportRequest>;
 export type ExportStatus = "IN_PROGRESS" | "READY" | "FAILED" | (string & {});
 export const ExportStatus = /*@__PURE__*/ S.String;
+
 export interface GetExportResponse {
   name?: string;
   version?: string;
@@ -1500,12 +1525,14 @@ export type MergeStrategy =
   | "FAIL_ON_CONFLICT"
   | (string & {});
 export const MergeStrategy = /*@__PURE__*/ S.String;
+
 export type ImportStatus =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
   | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GetImportResponse {
@@ -1687,6 +1714,7 @@ export const GetIntentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIntentVersionsResponse",
 }) as any as S.Schema<GetIntentVersionsResponse>;
+export type MigrationId = string;
 export interface GetMigrationRequest {
   migrationId: string;
 }
@@ -1704,21 +1732,28 @@ export const GetMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMigrationRequest",
 }) as any as S.Schema<GetMigrationRequest>;
+export type V2BotId = string;
 export type MigrationStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
   | (string & {});
 export const MigrationStatus = /*@__PURE__*/ S.String;
+
 export type MigrationStrategy =
   | "CREATE_NEW"
   | "UPDATE_EXISTING"
   | (string & {});
 export const MigrationStrategy = /*@__PURE__*/ S.String;
+
 export type MigrationAlertType = "ERROR" | "WARN" | (string & {});
 export const MigrationAlertType = /*@__PURE__*/ S.String;
+
+export type MigrationAlertMessage = string;
+export type MigrationAlertDetail = string;
 export type MigrationAlertDetails = string[];
 export const MigrationAlertDetails = /*@__PURE__*/ S.Array(S.String);
+export type MigrationAlertReferenceURL = string;
 export type MigrationAlertReferenceURLs = string[];
 export const MigrationAlertReferenceURLs = /*@__PURE__*/ S.Array(S.String);
 export interface MigrationAlert {
@@ -1772,8 +1807,10 @@ export type MigrationSortAttribute =
   | "MIGRATION_DATE_TIME"
   | (string & {});
 export const MigrationSortAttribute = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface GetMigrationsRequest {
   sortByAttribute?: MigrationSortAttribute;
   sortByOrder?: SortOrder;
@@ -1986,19 +2023,19 @@ export interface GetSlotTypeVersionsResponse {
   slotTypes?: SlotTypeMetadata[];
   nextToken?: string;
 }
-export const GetSlotTypeVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slotTypes: S.optional(SlotTypeMetadataList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetSlotTypeVersionsResponse",
-  }) as any as S.Schema<GetSlotTypeVersionsResponse>;
+export const GetSlotTypeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    slotTypes: S.optional(SlotTypeMetadataList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetSlotTypeVersionsResponse",
+}) as any as S.Schema<GetSlotTypeVersionsResponse>;
 export type BotVersions = string[];
 export const BotVersions = /*@__PURE__*/ S.Array(S.String);
 export type StatusType = "Detected" | "Missed" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export interface GetUtterancesViewRequest {
   botName: string;
   botVersions: string[];
@@ -2025,6 +2062,8 @@ export const GetUtterancesViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUtterancesViewRequest",
 }) as any as S.Schema<GetUtterancesViewRequest>;
+export type UtteranceString = string;
+export type Count = number;
 export interface UtteranceData {
   utteranceString?: string;
   count?: number;
@@ -2071,6 +2110,7 @@ export const GetUtterancesViewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUtterancesViewResponse",
 }) as any as S.Schema<GetUtterancesViewResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -2088,6 +2128,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -2100,14 +2142,14 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type ProcessBehavior = "SAVE" | "BUILD" | (string & {});
 export const ProcessBehavior = /*@__PURE__*/ S.String;
+
 export interface PutBotRequest {
   name: string;
   description?: string;
@@ -2498,6 +2540,7 @@ export const StartImportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartImportResponse",
 }) as any as S.Schema<StartImportResponse>;
+export type V2BotName = string;
 export interface StartMigrationRequest {
   v1BotName: string;
   v1BotVersion: string;
@@ -2607,48 +2650,23 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export type ReferenceType =
+  | "Intent"
+  | "Bot"
+  | "BotAlias"
+  | "BotChannel"
+  | (string & {});
+export const ReferenceType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-).pipe(C.withThrottlingError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
-  "PreconditionFailedException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  {
-    referenceType: S.optional(ReferenceType),
-    exampleReference: S.optional(ResourceReference),
-  },
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-
-//# Operations
+export interface ResourceReference {
+  name?: string;
+  version?: string;
+}
+export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.optional(S.String), version: S.optional(S.String) }),
+).annotate({
+  identifier: "ResourceReference",
+}) as any as S.Schema<ResourceReference>;
 export type CreateBotVersionError =
   | BadRequestException
   | ConflictException
@@ -2689,8 +2707,11 @@ export const createBotVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBotVersion",
 }));
+
 export type CreateIntentVersionError =
   | BadRequestException
   | ConflictException
@@ -2732,8 +2753,11 @@ export const createIntentVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntentVersion",
 }));
+
 export type CreateSlotTypeVersionError =
   | BadRequestException
   | ConflictException
@@ -2775,8 +2799,11 @@ export const createSlotTypeVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSlotTypeVersion",
 }));
+
 export type DeleteBotError =
   | BadRequestException
   | ConflictException
@@ -2822,8 +2849,11 @@ export const deleteBot: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBot",
 }));
+
 export type DeleteBotAliasError =
   | BadRequestException
   | ConflictException
@@ -2860,8 +2890,11 @@ export const deleteBotAlias: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotAlias",
 }));
+
 export type DeleteBotChannelAssociationError =
   | BadRequestException
   | ConflictException
@@ -2891,8 +2924,11 @@ export const deleteBotChannelAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotChannelAssociation",
 }));
+
 export type DeleteBotVersionError =
   | BadRequestException
   | ConflictException
@@ -2924,8 +2960,11 @@ export const deleteBotVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotVersion",
 }));
+
 export type DeleteIntentError =
   | BadRequestException
   | ConflictException
@@ -2970,8 +3009,11 @@ export const deleteIntent: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntent",
 }));
+
 export type DeleteIntentVersionError =
   | BadRequestException
   | ConflictException
@@ -3003,8 +3045,11 @@ export const deleteIntentVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntentVersion",
 }));
+
 export type DeleteSlotTypeError =
   | BadRequestException
   | ConflictException
@@ -3049,8 +3094,11 @@ export const deleteSlotType: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlotType",
 }));
+
 export type DeleteSlotTypeVersionError =
   | BadRequestException
   | ConflictException
@@ -3082,8 +3130,11 @@ export const deleteSlotTypeVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlotTypeVersion",
 }));
+
 export type DeleteUtterancesError =
   | BadRequestException
   | InternalFailureException
@@ -3121,8 +3172,11 @@ export const deleteUtterances: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUtterances",
 }));
+
 export type GetBotError =
   | BadRequestException
   | InternalFailureException
@@ -3150,8 +3204,11 @@ export const getBot: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBot",
 }));
+
 export type GetBotAliasError =
   | BadRequestException
   | InternalFailureException
@@ -3179,8 +3236,11 @@ export const getBotAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotAlias",
 }));
+
 export type GetBotAliasesError =
   | BadRequestException
   | InternalFailureException
@@ -3220,6 +3280,8 @@ export const getBotAliases: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotAliases",
   pagination: {
     inputToken: "nextToken",
@@ -3227,6 +3289,7 @@ export const getBotAliases: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBotChannelAssociationError =
   | BadRequestException
   | InternalFailureException
@@ -3254,8 +3317,11 @@ export const getBotChannelAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotChannelAssociation",
 }));
+
 export type GetBotChannelAssociationsError =
   | BadRequestException
   | InternalFailureException
@@ -3297,6 +3363,8 @@ export const getBotChannelAssociations: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotChannelAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -3304,6 +3372,7 @@ export const getBotChannelAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBotsError =
   | BadRequestException
   | InternalFailureException
@@ -3353,6 +3422,8 @@ export const getBots: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBots",
   pagination: {
     inputToken: "nextToken",
@@ -3360,6 +3431,7 @@ export const getBots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBotVersionsError =
   | BadRequestException
   | InternalFailureException
@@ -3411,6 +3483,8 @@ export const getBotVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3418,6 +3492,7 @@ export const getBotVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBuiltinIntentError =
   | BadRequestException
   | InternalFailureException
@@ -3444,8 +3519,11 @@ export const getBuiltinIntent: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuiltinIntent",
 }));
+
 export type GetBuiltinIntentsError =
   | BadRequestException
   | InternalFailureException
@@ -3486,6 +3564,8 @@ export const getBuiltinIntents: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuiltinIntents",
   pagination: {
     inputToken: "nextToken",
@@ -3493,6 +3573,7 @@ export const getBuiltinIntents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBuiltinSlotTypesError =
   | BadRequestException
   | InternalFailureException
@@ -3536,6 +3617,8 @@ export const getBuiltinSlotTypes: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuiltinSlotTypes",
   pagination: {
     inputToken: "nextToken",
@@ -3543,6 +3626,7 @@ export const getBuiltinSlotTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetExportError =
   | BadRequestException
   | InternalFailureException
@@ -3566,8 +3650,11 @@ export const getExport: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExport",
 }));
+
 export type GetImportError =
   | BadRequestException
   | InternalFailureException
@@ -3592,8 +3679,11 @@ export const getImport: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImport",
 }));
+
 export type GetIntentError =
   | BadRequestException
   | InternalFailureException
@@ -3621,8 +3711,11 @@ export const getIntent: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntent",
 }));
+
 export type GetIntentsError =
   | BadRequestException
   | InternalFailureException
@@ -3672,6 +3765,8 @@ export const getIntents: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntents",
   pagination: {
     inputToken: "nextToken",
@@ -3679,6 +3774,7 @@ export const getIntents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetIntentVersionsError =
   | BadRequestException
   | InternalFailureException
@@ -3730,6 +3826,8 @@ export const getIntentVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntentVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3737,6 +3835,7 @@ export const getIntentVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetMigrationError =
   | BadRequestException
   | InternalFailureException
@@ -3762,8 +3861,11 @@ export const getMigration: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMigration",
 }));
+
 export type GetMigrationsError =
   | BadRequestException
   | InternalFailureException
@@ -3800,6 +3902,8 @@ export const getMigrations: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMigrations",
   pagination: {
     inputToken: "nextToken",
@@ -3807,6 +3911,7 @@ export const getMigrations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetSlotTypeError =
   | BadRequestException
   | InternalFailureException
@@ -3835,8 +3940,11 @@ export const getSlotType: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSlotType",
 }));
+
 export type GetSlotTypesError =
   | BadRequestException
   | InternalFailureException
@@ -3886,6 +3994,8 @@ export const getSlotTypes: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSlotTypes",
   pagination: {
     inputToken: "nextToken",
@@ -3893,6 +4003,7 @@ export const getSlotTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetSlotTypeVersionsError =
   | BadRequestException
   | InternalFailureException
@@ -3944,6 +4055,8 @@ export const getSlotTypeVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSlotTypeVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3951,6 +4064,7 @@ export const getSlotTypeVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetUtterancesViewError =
   | BadRequestException
   | InternalFailureException
@@ -4000,8 +4114,11 @@ export const getUtterancesView: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUtterancesView",
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalFailureException
@@ -4026,8 +4143,11 @@ export const listTagsForResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutBotError =
   | BadRequestException
   | ConflictException
@@ -4071,8 +4191,11 @@ export const putBot: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBot",
 }));
+
 export type PutBotAliasError =
   | BadRequestException
   | ConflictException
@@ -4104,8 +4227,11 @@ export const putBotAlias: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBotAlias",
 }));
+
 export type PutIntentError =
   | BadRequestException
   | ConflictException
@@ -4182,8 +4308,11 @@ export const putIntent: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIntent",
 }));
+
 export type PutSlotTypeError =
   | BadRequestException
   | ConflictException
@@ -4226,8 +4355,11 @@ export const putSlotType: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSlotType",
 }));
+
 export type StartImportError =
   | BadRequestException
   | InternalFailureException
@@ -4249,8 +4381,11 @@ export const startImport: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImport",
 }));
+
 export type StartMigrationError =
   | AccessDeniedException
   | BadRequestException
@@ -4280,8 +4415,11 @@ export const startMigration: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMigration",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConflictException
@@ -4308,8 +4446,11 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConflictException
@@ -4335,5 +4476,7 @@ export const untagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "LeakedCredentialChecksDisabled": [{ "code": 11001 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

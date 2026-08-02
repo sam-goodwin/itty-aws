@@ -1,16 +1,81 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "PolicyNotFound": [
-      { "code": 0, "message": { "includes": "Policy not found" } }
-    ]
-  },
-  "response": {
-    "properties": {
-      "errors": { "optional": true },
-      "messages": { "optional": true },
-      "success": { "optional": true },
-      "resultInfo": { "optional": true }
+  "description": "Align alerting#PoliciesDelete with distilled cloudflare/alerting deletePolicy",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesDelete",
+      "path": "/shapes/com.cloudflare.alerting#DeletePolicy"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesDeleteRequest",
+      "path": "/shapes/com.cloudflare.alerting#DeletePolicyRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#DeletePolicy/input/target",
+      "value": "com.cloudflare.alerting#DeletePolicyRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#PolicyNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "Policy not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#DeletePolicy/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.alerting#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.alerting#PolicyNotFound"
+        }
+      ]
     }
-  }
+  ]
 }

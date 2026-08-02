@@ -1,47 +1,20 @@
 {
   "errorCategories": {
-    "ThrottlingException": [
-      "ThrottlingError",
-      "RetryableError"
-    ],
-    "InternalException": [
-      "ServerError",
-      "RetryableError"
-    ],
-    "ConcurrentModificationException": [
-      "ConflictError",
-      "RetryableError"
-    ],
-    "IllegalStatusException": [
-      "ConflictError"
-    ],
-    "InvalidStateException": [
-      "ConflictError"
-    ],
-    "InvalidEventPatternException": [
-      "BadRequestError"
-    ],
-    "ManagedRuleException": [
-      "BadRequestError"
-    ],
-    "OperationDisabledException": [
-      "BadRequestError"
-    ],
-    "LimitExceededException": [
-      "QuotaError"
-    ],
-    "PolicyLengthExceededException": [
-      "QuotaError"
-    ],
-    "EventBusHasRules": [
-      "ConflictError"
-    ]
+    "ThrottlingException": ["ThrottlingError", "RetryableError"],
+    "InternalException": ["ServerError", "RetryableError"],
+    "ConcurrentModificationException": ["ConflictError", "RetryableError"],
+    "IllegalStatusException": ["ConflictError"],
+    "InvalidStateException": ["ConflictError"],
+    "InvalidEventPatternException": ["BadRequestError"],
+    "ManagedRuleException": ["BadRequestError"],
+    "OperationDisabledException": ["BadRequestError"],
+    "LimitExceededException": ["QuotaError"],
+    "PolicyLengthExceededException": ["QuotaError"],
+    "EventBusHasRules": ["ConflictError"]
   },
   "operations": {
     "deleteEventBus": {
-      "errors": [
-        "ResourceNotFoundException"
-      ],
+      "errors": ["ResourceNotFoundException"],
       "syntheticErrors": [
         {
           "name": "EventBusHasRules",
@@ -53,19 +26,13 @@
       ]
     },
     "tagResource": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "untagResource": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     },
     "listTagsForResource": {
-      "errors": [
-        "ThrottlingException"
-      ]
+      "errors": ["ThrottlingException"]
     }
   }
 }

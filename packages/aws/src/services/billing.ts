@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -118,73 +120,114 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "BillingAccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
+  "BillingViewHealthStatusException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.all(
+    T.AwsQueryError({ code: "BillingConflict", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "BillingInternalServer", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.all(
+    T.AwsQueryError({ code: "BillingResourceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "BillingServiceQuotaExceeded",
+      httpResponseCode: 402,
+    }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "BillingThrottling", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.all(
+    T.AwsQueryError({ code: "BillingValidation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type BillingViewArn = string;
-export type ErrorMessage = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type ServiceCode = string;
-export type QuotaCode = string;
-export type FieldName = string;
-export type BillingViewName = string | redacted.Redacted<string>;
-export type BillingViewDescription = string | redacted.Redacted<string>;
-export type Value = string;
-export type TagKey = string;
-export type CostCategoryName = string;
-export type ClientToken = string;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type AccountId = string;
-export type ResourceArn = string;
-export type PolicyDocument = string;
-export type SearchValue = string;
-export type BillingViewsMaxResults = number;
-export type PageToken = string;
-
-//# Schemas
 export type BillingViewSourceViewsList = string[];
 export const BillingViewSourceViewsList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateSourceViewsRequest {
   arn: string;
   sourceViews: string[];
 }
-export const AssociateSourceViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String, sourceViews: BillingViewSourceViewsList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "AssociateSourceViewsRequest",
-  }) as any as S.Schema<AssociateSourceViewsRequest>;
+export const AssociateSourceViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, sourceViews: BillingViewSourceViewsList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "AssociateSourceViewsRequest",
+}) as any as S.Schema<AssociateSourceViewsRequest>;
 export interface AssociateSourceViewsResponse {
   arn: string;
 }
-export const AssociateSourceViewsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.String })).annotate({
-    identifier: "AssociateSourceViewsResponse",
-  }) as any as S.Schema<AssociateSourceViewsResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
+export const AssociateSourceViewsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "AssociateSourceViewsResponse",
+}) as any as S.Schema<AssociateSourceViewsResponse>;
+export type BillingViewName = string | redacted.Redacted<string>;
+export type BillingViewDescription = string | redacted.Redacted<string>;
 export type Dimension = "LINKED_ACCOUNT" | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
+export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface DimensionValues {
@@ -196,6 +239,7 @@ export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DimensionValues",
 }) as any as S.Schema<DimensionValues>;
+export type TagKey = string;
 export interface TagValues {
   key: string;
   values: string[];
@@ -203,6 +247,7 @@ export interface TagValues {
 export const TagValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, values: Values }),
 ).annotate({ identifier: "TagValues" }) as any as S.Schema<TagValues>;
+export type CostCategoryName = string;
 export interface CostCategoryValues {
   key: string;
   values: string[];
@@ -240,6 +285,9 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
     timeRange: S.optional(TimeRange),
   }),
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
+export type ClientToken = string;
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   key: string;
   value?: string;
@@ -309,21 +357,21 @@ export interface DisassociateSourceViewsRequest {
   arn: string;
   sourceViews: string[];
 }
-export const DisassociateSourceViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String, sourceViews: BillingViewSourceViewsList }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DisassociateSourceViewsRequest",
-  }) as any as S.Schema<DisassociateSourceViewsRequest>;
+export const DisassociateSourceViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, sourceViews: BillingViewSourceViewsList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DisassociateSourceViewsRequest",
+}) as any as S.Schema<DisassociateSourceViewsRequest>;
 export interface DisassociateSourceViewsResponse {
   arn: string;
 }
-export const DisassociateSourceViewsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.String })).annotate({
-    identifier: "DisassociateSourceViewsResponse",
-  }) as any as S.Schema<DisassociateSourceViewsResponse>;
+export const DisassociateSourceViewsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
+).annotate({
+  identifier: "DisassociateSourceViewsResponse",
+}) as any as S.Schema<DisassociateSourceViewsResponse>;
 export interface GetBillingViewRequest {
   arn: string;
 }
@@ -342,6 +390,8 @@ export type BillingViewType =
   | "BILLING_TRANSFER_SHOWBACK"
   | (string & {});
 export const BillingViewType = /*@__PURE__*/ S.String;
+
+export type AccountId = string;
 export type BillingViewStatus =
   | "HEALTHY"
   | "UNHEALTHY"
@@ -349,6 +399,7 @@ export type BillingViewStatus =
   | "UPDATING"
   | (string & {});
 export const BillingViewStatus = /*@__PURE__*/ S.String;
+
 export type BillingViewStatusReason =
   | "SOURCE_VIEW_UNHEALTHY"
   | "SOURCE_VIEW_UPDATING"
@@ -360,6 +411,7 @@ export type BillingViewStatusReason =
   | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT"
   | (string & {});
 export const BillingViewStatusReason = /*@__PURE__*/ S.String;
+
 export type BillingViewStatusReasons = BillingViewStatusReason[];
 export const BillingViewStatusReasons = /*@__PURE__*/ S.Array(
   BillingViewStatusReason,
@@ -420,6 +472,7 @@ export const GetBillingViewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBillingViewResponse",
 }) as any as S.Schema<GetBillingViewResponse>;
+export type ResourceArn = string;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
@@ -430,6 +483,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type PolicyDocument = string;
 export interface GetResourcePolicyResponse {
   resourceArn: string;
   policy?: string;
@@ -457,6 +511,8 @@ export type BillingViewTypeList = BillingViewType[];
 export const BillingViewTypeList = /*@__PURE__*/ S.Array(BillingViewType);
 export type SearchOption = "STARTS_WITH" | (string & {});
 export const SearchOption = /*@__PURE__*/ S.String;
+
+export type SearchValue = string;
 export interface StringSearch {
   searchOption: SearchOption;
   searchValue: string;
@@ -466,6 +522,8 @@ export const StringSearch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StringSearch" }) as any as S.Schema<StringSearch>;
 export type StringSearches = StringSearch[];
 export const StringSearches = /*@__PURE__*/ S.Array(StringSearch);
+export type BillingViewsMaxResults = number;
+export type PageToken = string;
 export interface ListBillingViewsRequest {
   activeTimeRange?: ActiveTimeRange;
   arns?: string[];
@@ -521,10 +579,7 @@ export interface ListBillingViewsResponse {
   nextToken?: string;
 }
 export const ListBillingViewsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingViews: BillingViewList,
-    nextToken: S.optional(S.String),
-  }),
+  S.Struct({ billingViews: BillingViewList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListBillingViewsResponse",
 }) as any as S.Schema<ListBillingViewsResponse>;
@@ -533,8 +588,8 @@ export interface ListSourceViewsForBillingViewRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSourceViewsForBillingViewRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListSourceViewsForBillingViewRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       arn: S.String,
       maxResults: S.optional(S.Number),
@@ -542,22 +597,22 @@ export const ListSourceViewsForBillingViewRequest =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "ListSourceViewsForBillingViewRequest",
-  }) as any as S.Schema<ListSourceViewsForBillingViewRequest>;
+).annotate({
+  identifier: "ListSourceViewsForBillingViewRequest",
+}) as any as S.Schema<ListSourceViewsForBillingViewRequest>;
 export interface ListSourceViewsForBillingViewResponse {
   sourceViews: string[];
   nextToken?: string;
 }
-export const ListSourceViewsForBillingViewResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListSourceViewsForBillingViewResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       sourceViews: BillingViewSourceViewsList,
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListSourceViewsForBillingViewResponse",
-  }) as any as S.Schema<ListSourceViewsForBillingViewResponse>;
+).annotate({
+  identifier: "ListSourceViewsForBillingViewResponse",
+}) as any as S.Schema<ListSourceViewsForBillingViewResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -571,12 +626,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   resourceTags?: ResourceTag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceTags: S.optional(ResourceTagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceTags: S.optional(ResourceTagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   resourceTags: ResourceTag[];
@@ -643,62 +697,33 @@ export const UpdateBillingViewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateBillingViewResponse",
 }) as any as S.Schema<UpdateBillingViewResponse>;
+export type ErrorMessage = string;
+export type ResourceId = string;
+export type ResourceType = string;
+export type ServiceCode = string;
+export type QuotaCode = string;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.AwsQueryError({ code: "BillingAccessDenied", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
-  "BillingViewHealthStatusException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.AwsQueryError({ code: "BillingConflict", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.AwsQueryError({ code: "BillingInternalServer", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.AwsQueryError({ code: "BillingResourceNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-  T.AwsQueryError({
-    code: "BillingServiceQuotaExceeded",
-    httpResponseCode: 402,
-  }),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.AwsQueryError({ code: "BillingThrottling", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.AwsQueryError({ code: "BillingValidation", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type FieldName = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateSourceViewsError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -730,8 +755,11 @@ export const associateSourceViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSourceViews",
 }));
+
 export type CreateBillingViewError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -763,8 +791,11 @@ export const createBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBillingView",
 }));
+
 export type DeleteBillingViewError =
   | AccessDeniedException
   | ConflictException
@@ -790,8 +821,11 @@ export const deleteBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBillingView",
 }));
+
 export type DisassociateSourceViewsError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -821,8 +855,11 @@ export const disassociateSourceViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSourceViews",
 }));
+
 export type GetBillingViewError =
   | AccessDeniedException
   | InternalServerException
@@ -848,8 +885,11 @@ export const getBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBillingView",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -875,8 +915,11 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListBillingViewsError =
   | AccessDeniedException
   | InternalServerException
@@ -917,6 +960,8 @@ export const listBillingViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillingViews",
   pagination: {
     inputToken: "nextToken",
@@ -925,6 +970,7 @@ export const listBillingViews: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSourceViewsForBillingViewError =
   | AccessDeniedException
   | InternalServerException
@@ -965,6 +1011,8 @@ export const listSourceViewsForBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceViewsForBillingView",
   pagination: {
     inputToken: "nextToken",
@@ -973,6 +1021,7 @@ export const listSourceViewsForBillingView: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -998,8 +1047,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1025,8 +1077,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1052,8 +1107,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBillingViewError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -1085,5 +1143,7 @@ export const updateBillingView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBillingView",
 }));

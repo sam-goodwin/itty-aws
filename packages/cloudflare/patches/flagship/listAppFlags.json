@@ -1,7 +1,75 @@
 {
-  "errors": {
-    "FlagshipAppNotFound": [
-      { "status": 404, "message": { "includes": "App not found" } }
-    ]
-  }
+  "description": "Align flagship#AppsFlagsList with distilled cloudflare/flagship listAppFlags",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsFlagsList",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlags"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsFlagsListRequest",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlagsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlags/input/target",
+      "value": "com.cloudflare.flagship#ListAppFlagsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsFlagsListResponse",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlagsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlags/output/target",
+      "value": "com.cloudflare.flagship#ListAppFlagsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlags/traits/smithy.api#paginated",
+      "value": {
+        "mode": "cursor",
+        "inputToken": "cursor",
+        "outputToken": "resultInfo.cursors.after",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#FlagshipAppNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404,
+              "message": {
+                "includes": "App not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#ListAppFlags/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.flagship#FlagshipAppNotFound"
+        }
+      ]
+    }
+  ]
 }

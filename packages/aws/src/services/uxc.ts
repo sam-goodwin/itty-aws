@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -50,29 +52,47 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Service = string;
-export type Region = string;
-export type NextToken = string;
-export type MaxResults = number;
-
-//# Schemas
-export interface GetAccountCustomizationsInput {}
-export const GetAccountCustomizationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/account-customizations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
     ),
-  ).annotate({
-    identifier: "GetAccountCustomizationsInput",
-  }) as any as S.Schema<GetAccountCustomizationsInput>;
+  },
+) {}
+export interface GetAccountCustomizationsInput {}
+export const GetAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/account-customizations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAccountCustomizationsInput",
+}) as any as S.Schema<GetAccountCustomizationsInput>;
 export type AccountColor =
   | "none"
   | "pink"
@@ -86,8 +106,11 @@ export type AccountColor =
   | "red"
   | (string & {});
 export const AccountColor = /*@__PURE__*/ S.String;
+
+export type Service = string;
 export type ServiceList = string[];
 export const ServiceList = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type RegionsList = string[];
 export const RegionsList = /*@__PURE__*/ S.Array(S.String);
 export interface GetAccountCustomizationsOutput {
@@ -95,29 +118,17 @@ export interface GetAccountCustomizationsOutput {
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const GetAccountCustomizationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountColor: S.optional(AccountColor),
-      visibleServices: S.optional(ServiceList),
-      visibleRegions: S.optional(RegionsList),
-    }),
-  ).annotate({
-    identifier: "GetAccountCustomizationsOutput",
-  }) as any as S.Schema<GetAccountCustomizationsOutput>;
-export interface ValidationExceptionField {
-  path: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: S.String, message: S.String }),
+export const GetAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountColor: S.optional(AccountColor),
+    visibleServices: S.optional(ServiceList),
+    visibleRegions: S.optional(RegionsList),
+  }),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "GetAccountCustomizationsOutput",
+}) as any as S.Schema<GetAccountCustomizationsOutput>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
@@ -156,60 +167,51 @@ export interface UpdateAccountCustomizationsInput {
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const UpdateAccountCustomizationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountColor: S.optional(AccountColor),
-      visibleServices: S.optional(ServiceList),
-      visibleRegions: S.optional(RegionsList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/v1/account-customizations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountColor: S.optional(AccountColor),
+    visibleServices: S.optional(ServiceList),
+    visibleRegions: S.optional(RegionsList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/v1/account-customizations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateAccountCustomizationsInput",
-  }) as any as S.Schema<UpdateAccountCustomizationsInput>;
+  ),
+).annotate({
+  identifier: "UpdateAccountCustomizationsInput",
+}) as any as S.Schema<UpdateAccountCustomizationsInput>;
 export interface UpdateAccountCustomizationsOutput {
   accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-export const UpdateAccountCustomizationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountColor: S.optional(AccountColor),
-      visibleServices: S.optional(ServiceList),
-      visibleRegions: S.optional(RegionsList),
-    }),
-  ).annotate({
-    identifier: "UpdateAccountCustomizationsOutput",
-  }) as any as S.Schema<UpdateAccountCustomizationsOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String, fieldList: S.optional(ValidationExceptionFieldList) },
-) {}
-
-//# Operations
+export const UpdateAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountColor: S.optional(AccountColor),
+    visibleServices: S.optional(ServiceList),
+    visibleRegions: S.optional(RegionsList),
+  }),
+).annotate({
+  identifier: "UpdateAccountCustomizationsOutput",
+}) as any as S.Schema<UpdateAccountCustomizationsOutput>;
+export interface ValidationExceptionField {
+  path: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ path: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type GetAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -235,8 +237,11 @@ export const getAccountCustomizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountCustomizations",
 }));
+
 export type ListServicesError =
   | AccessDeniedException
   | InternalServerException
@@ -277,6 +282,8 @@ export const listServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
@@ -284,6 +291,7 @@ export const listServices: API.OperationMethod<
     items: "services",
   } as const,
 }));
+
 export type UpdateAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -309,5 +317,7 @@ export const updateAccountCustomizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountCustomizations",
 }));

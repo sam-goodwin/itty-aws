@@ -1,18 +1,94 @@
 {
-  "errors": {
-    "LockdownNotFound": [
-      { "code": 10001, "message": { "includes": "zonelockdown.api.not_found" } },
-      { "status": 404 }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "description": { "optional": true },
-      "priority": {
-        "optional": true,
-        "definition": { "kind": "primitive", "value": "number" }
+  "description": "Align firewall#LockdownsGet with distilled cloudflare/firewall getLockdown",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#LockdownsGet",
+      "path": "/shapes/com.cloudflare.firewall#GetLockdown"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#LockdownsGetRequest",
+      "path": "/shapes/com.cloudflare.firewall#GetLockdownRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.firewall#GetLockdown/input/target",
+      "value": "com.cloudflare.firewall#GetLockdownRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#LockdownsGetResponse",
+      "path": "/shapes/com.cloudflare.firewall#GetLockdownResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.firewall#GetLockdown/output/target",
+      "value": "com.cloudflare.firewall#GetLockdownResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#LockdownNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10001,
+              "message": {
+                "includes": "zonelockdown.api.not_found"
+              }
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#GetLockdown/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.firewall#LockdownNotFound"
+        },
+        {
+          "target": "com.cloudflare.firewall#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

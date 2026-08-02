@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,22 +85,35 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type InstanceId = string;
 export type ContactId = string;
 export type MaxResults = number;
 export type NextToken = string;
-export type TranscriptId = string;
-export type ParticipantId = string;
-export type ParticipantRole = string;
-export type TranscriptContent = string;
-export type OffsetMillis = number;
-export type CharacterOffset = number;
-export type CategoryName = string;
-export type PostContactSummaryContent = string;
-export type Message = string;
-
-//# Schemas
 export interface ListRealtimeContactAnalysisSegmentsRequest {
   InstanceId?: string;
   ContactId?: string;
@@ -128,12 +143,19 @@ export const ListRealtimeContactAnalysisSegmentsRequest =
   ).annotate({
     identifier: "ListRealtimeContactAnalysisSegmentsRequest",
   }) as any as S.Schema<ListRealtimeContactAnalysisSegmentsRequest>;
+export type TranscriptId = string;
+export type ParticipantId = string;
+export type ParticipantRole = string;
+export type TranscriptContent = string;
+export type OffsetMillis = number;
 export type SentimentValue =
   | "POSITIVE"
   | "NEUTRAL"
   | "NEGATIVE"
   | (string & {});
 export const SentimentValue = /*@__PURE__*/ S.String;
+
+export type CharacterOffset = number;
 export interface CharacterOffsets {
   BeginOffsetChar?: number;
   EndOffsetChar?: number;
@@ -176,6 +198,7 @@ export const Transcript = /*@__PURE__*/ S.suspend(() =>
     IssuesDetected: S.optional(IssuesDetected),
   }),
 ).annotate({ identifier: "Transcript" }) as any as S.Schema<Transcript>;
+export type CategoryName = string;
 export type MatchedCategories = string[];
 export const MatchedCategories = /*@__PURE__*/ S.Array(S.String);
 export interface PointOfInterest {
@@ -215,8 +238,10 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
     MatchedDetails: S.optional(MatchedDetails),
   }),
 ).annotate({ identifier: "Categories" }) as any as S.Schema<Categories>;
+export type PostContactSummaryContent = string;
 export type PostContactSummaryStatus = "FAILED" | "COMPLETED" | (string & {});
 export const PostContactSummaryStatus = /*@__PURE__*/ S.String;
+
 export type PostContactSummaryFailureCode =
   | "QUOTA_EXCEEDED"
   | "INSUFFICIENT_CONVERSATION_CONTENT"
@@ -225,6 +250,7 @@ export type PostContactSummaryFailureCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const PostContactSummaryFailureCode = /*@__PURE__*/ S.String;
+
 export interface PostContactSummary {
   Content?: string;
   Status?: PostContactSummaryStatus;
@@ -244,19 +270,19 @@ export interface RealtimeContactAnalysisSegment {
   Categories?: Categories;
   PostContactSummary?: PostContactSummary;
 }
-export const RealtimeContactAnalysisSegment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Transcript: S.optional(Transcript),
-      Categories: S.optional(Categories),
-      PostContactSummary: S.optional(PostContactSummary),
-    }),
-  ).annotate({
-    identifier: "RealtimeContactAnalysisSegment",
-  }) as any as S.Schema<RealtimeContactAnalysisSegment>;
+export const RealtimeContactAnalysisSegment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Transcript: S.optional(Transcript),
+    Categories: S.optional(Categories),
+    PostContactSummary: S.optional(PostContactSummary),
+  }),
+).annotate({
+  identifier: "RealtimeContactAnalysisSegment",
+}) as any as S.Schema<RealtimeContactAnalysisSegment>;
 export type RealtimeContactAnalysisSegments = RealtimeContactAnalysisSegment[];
-export const RealtimeContactAnalysisSegments =
-  /*@__PURE__*/ S.Array(RealtimeContactAnalysisSegment);
+export const RealtimeContactAnalysisSegments = /*@__PURE__*/ S.Array(
+  RealtimeContactAnalysisSegment,
+);
 export interface ListRealtimeContactAnalysisSegmentsResponse {
   Segments: (RealtimeContactAnalysisSegment & {
     Transcript: Transcript & {
@@ -301,30 +327,7 @@ export const ListRealtimeContactAnalysisSegmentsResponse =
   ).annotate({
     identifier: "ListRealtimeContactAnalysisSegmentsResponse",
   }) as any as S.Schema<ListRealtimeContactAnalysisSegmentsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type Message = string;
 export type ListRealtimeContactAnalysisSegmentsError =
   | AccessDeniedException
   | InternalServiceException
@@ -365,6 +368,8 @@ export const listRealtimeContactAnalysisSegments: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRealtimeContactAnalysisSegments",
   pagination: {
     inputToken: "NextToken",

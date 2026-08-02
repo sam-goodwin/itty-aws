@@ -1,29 +1,181 @@
 {
-  "errors": {
-    "InvalidAccountName": [
-      { "code": 1001, "message": { "includes": "invalid character" } }
-    ],
-    "AccountNameTooLong": [
-      { "code": 1001, "message": { "includes": "too long" } }
-    ],
-    "UpdateAccountTypeNotSupported": [
-      {
-        "code": 1001,
-        "message": { "includes": "account type is not supported" }
+  "description": "Align accounts#Update with distilled cloudflare/accounts updateAccount",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#Update",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccount"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#UpdateRequest",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccountRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccount/input/target",
+      "value": "com.cloudflare.accounts#UpdateAccountRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#UpdateResponse",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccountResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccount/output/target",
+      "value": "com.cloudflare.accounts#UpdateAccountResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidAccountName",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001,
+              "message": {
+                "includes": "invalid character"
+              }
+            }
+          ]
+        }
       }
-    ],
-    "InvalidRoute": [{ "code": 7003 }],
-    "MethodNotAllowed": [{ "code": 7001 }]
-  },
-  "request": {
-    "properties": {
-      "type": { "optional": true }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#AccountNameTooLong",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001,
+              "message": {
+                "includes": "too long"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccountTypeNotSupported",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1001,
+              "message": {
+                "includes": "account type is not supported"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#MethodNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7001
+            },
+            {
+              "code": 10000
+            },
+            {
+              "code": 10405
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#UpdateAccount/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.accounts#InvalidAccountName"
+        },
+        {
+          "target": "com.cloudflare.accounts#AccountNameTooLong"
+        },
+        {
+          "target": "com.cloudflare.accounts#UpdateAccountTypeNotSupported"
+        },
+        {
+          "target": "com.cloudflare.accounts#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.accounts#MethodNotAllowed"
+        }
+      ]
     }
-  },
-  "response": {
-    "properties": {
-      "settings.abuse_contact_email": { "nullable": true },
-      "settings.enforce_twofactor": { "nullable": true }
-    }
-  }
+  ]
 }

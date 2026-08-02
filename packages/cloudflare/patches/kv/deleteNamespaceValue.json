@@ -1,6 +1,78 @@
 {
-  "errors": {
-    "NamespaceNotFound": [{ "code": 10013 }],
-    "InvalidObjectIdentifier": [{ "code": 7003 }]
-  }
+  "description": "Align kv#NamespacesValuesDelete with distilled cloudflare/kv deleteNamespaceValue",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.kv#NamespacesValuesDelete",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespaceValue"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.kv#NamespacesValuesDeleteRequest",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespaceValueRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespaceValue/input/target",
+      "value": "com.cloudflare.kv#DeleteNamespaceValueRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#NamespaceNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10013
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#InvalidObjectIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.kv#DeleteNamespaceValue/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.kv#NamespaceNotFound"
+        },
+        {
+          "target": "com.cloudflare.kv#InvalidObjectIdentifier"
+        }
+      ]
+    }
+  ]
 }

@@ -1,9 +1,16 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
+/**
+ * WorkOS credentials — hand-written.
+ *
+ * Port of the distilled v0 workos credentials module: the `Credentials`
+ * service resolves `{ apiKey, apiBaseUrl }` per request; the protocol layer
+ * formats the `Authorization: Bearer <apiKey>` header from it.
+ */
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
+import { ConfigError } from "@distilled.cloud/core/errors";
 
 /**
  * WorkOS production API base URL.
@@ -46,3 +53,16 @@ export const CredentialsFromEnv = Layer.succeed(
     Effect.orDie,
   ),
 );
+
+/** Convenience layer from a plain API key + optional base URL. */
+export const credentials = (config: {
+  readonly apiKey: string;
+  readonly apiBaseUrl?: string;
+}): Layer.Layer<Credentials> =>
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      apiKey: Redacted.make(config.apiKey),
+      apiBaseUrl: config.apiBaseUrl ?? DEFAULT_API_BASE_URL,
+    }),
+  );

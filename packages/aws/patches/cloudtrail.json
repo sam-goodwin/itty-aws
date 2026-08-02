@@ -13,8 +13,6 @@
     }
   },
   "errorCategories": {
-    "CloudTrailLakeOnboardingClosed": [
-      "BadRequestError"
-    ]
+    "CloudTrailLakeOnboardingClosed": ["BadRequestError"]
   }
 }

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -82,7 +84,14 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DocumentServiceException extends S.TaggedErrorClass<DocumentServiceException>()(
+  "DocumentServiceException",
+  { status: S.optional(S.String), message: S.optional(S.String) },
+) {}
+export class SearchException extends S.TaggedErrorClass<SearchException>()(
+  "SearchException",
+  { message: S.optional(S.String) },
+) {}
 export type Cursor = string;
 export type Expr = string;
 export type Facet = string;
@@ -91,17 +100,6 @@ export type Highlight = string;
 export type Partial = boolean;
 export type Query = string;
 export type QueryOptions = string;
-export type Return = string;
-export type Size = number;
-export type Sort = string;
-export type Start = number;
-export type Stat = string;
-export type Suggester = string;
-export type SuggestionsSize = number;
-export type Adds = number;
-export type Deletes = number;
-
-//# Schemas
 export type QueryParser =
   | "simple"
   | "structured"
@@ -109,6 +107,12 @@ export type QueryParser =
   | "dismax"
   | (string & {});
 export const QueryParser = /*@__PURE__*/ S.String;
+
+export type Return = string;
+export type Size = number;
+export type Sort = string;
+export type Start = number;
+export type Stat = string;
 export interface SearchRequest {
   cursor?: string;
   expr?: string;
@@ -271,6 +275,8 @@ export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
     stats: S.optional(Stats),
   }).pipe(ns),
 ).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
+export type Suggester = string;
+export type SuggestionsSize = number;
 export interface SuggestRequest {
   query: string;
   suggester: string;
@@ -348,6 +354,7 @@ export type ContentType =
   | "application/xml"
   | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
+
 export interface UploadDocumentsRequest {
   documents: T.StreamingInputBody;
   contentType: ContentType;
@@ -359,10 +366,7 @@ export const UploadDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.all(
       ns,
-      T.Http({
-        method: "POST",
-        uri: "/2013-01-01/documents/batch?format=sdk",
-      }),
+      T.Http({ method: "POST", uri: "/2013-01-01/documents/batch?format=sdk" }),
       svc,
       auth,
       proto,
@@ -373,6 +377,8 @@ export const UploadDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadDocumentsRequest",
 }) as any as S.Schema<UploadDocumentsRequest>;
+export type Adds = number;
+export type Deletes = number;
 export interface DocumentServiceWarning {
   message?: string;
 }
@@ -401,18 +407,6 @@ export const UploadDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadDocumentsResponse",
 }) as any as S.Schema<UploadDocumentsResponse>;
-
-//# Errors
-export class SearchException extends S.TaggedErrorClass<SearchException>()(
-  "SearchException",
-  { message: S.optional(S.String) },
-) {}
-export class DocumentServiceException extends S.TaggedErrorClass<DocumentServiceException>()(
-  "DocumentServiceException",
-  { status: S.optional(S.String), message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type SearchError = SearchException | CommonErrors;
 /**
  * Retrieves a list of documents that match the specified search criteria. How you specify the search criteria depends on which query parser you use. Amazon CloudSearch supports four query parsers:
@@ -438,8 +432,11 @@ export const search: API.OperationMethod<
   input: SearchRequest,
   output: SearchResponse,
   errors: [SearchException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Search",
 }));
+
 export type SuggestError = SearchException | CommonErrors;
 /**
  * Retrieves autocomplete suggestions for a partial query string. You can use suggestions enable you to display likely matches before users finish typing. In Amazon CloudSearch, suggestions are based on the contents of a particular text field. When you request suggestions, Amazon CloudSearch finds all of the documents whose values in the suggester field start with the specified query string. The beginning of the field must match the query string to be considered a match.
@@ -457,8 +454,11 @@ export const suggest: API.OperationMethod<
   input: SuggestRequest,
   output: SuggestResponse,
   errors: [SearchException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Suggest",
 }));
+
 export type UploadDocumentsError = DocumentServiceException | CommonErrors;
 /**
  * Posts a batch of documents to a search domain for indexing. A document batch is a collection of add and delete operations that represent the documents you want to add, update, or delete from your domain. Batches can be described in either JSON or XML. Each item that you want Amazon CloudSearch to return as a search result (such as a product) is represented as a document. Every document has a unique ID and one or more fields that contain the data that you want to search and return in results. Individual documents cannot contain more than 1 MB of data. The entire batch cannot exceed 5 MB. To get the best possible upload performance, group add and delete operations in batches that are close the 5 MB limit. Submitting a large volume of single-document batches can overload a domain's document service.
@@ -477,5 +477,7 @@ export const uploadDocuments: API.OperationMethod<
   input: UploadDocumentsRequest,
   output: UploadDocumentsResponse,
   errors: [DocumentServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadDocuments",
 }));

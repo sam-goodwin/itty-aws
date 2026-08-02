@@ -1,5 +1,62 @@
 {
-  "errors": {
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align fraud#Get with distilled cloudflare/fraud getFraud",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.fraud#Get",
+      "path": "/shapes/com.cloudflare.fraud#GetFraud"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.fraud#GetRequest",
+      "path": "/shapes/com.cloudflare.fraud#GetFraudRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.fraud#GetFraud/input/target",
+      "value": "com.cloudflare.fraud#GetFraudRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.fraud#GetResponse",
+      "path": "/shapes/com.cloudflare.fraud#GetFraudResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.fraud#GetFraud/output/target",
+      "value": "com.cloudflare.fraud#GetFraudResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.fraud#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.fraud#GetFraud/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.fraud#Forbidden"
+        }
+      ]
+    }
+  ]
 }

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,26 +87,150 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    resourceType: S.optional(S.String),
+    resourceId: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export type MicrovmIdentifier = string;
+export type PositiveInteger = number;
+export type PortNumber = number;
+export interface PortRange {
+  startPort: number;
+  endPort: number;
+}
+export const PortRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ startPort: S.Number, endPort: S.Number }),
+).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
+export type PortSpecification =
+  | { port: number; range?: never; allPorts?: never }
+  | { port?: never; range: PortRange; allPorts?: never }
+  | { port?: never; range?: never; allPorts: Record<string, never> };
+export const PortSpecification = /*@__PURE__*/ S.Union([
+  S.Struct({ port: S.Number }),
+  S.Struct({ range: PortRange }),
+  S.Struct({ allPorts: S.Struct({}) }),
+]);
+export type ListOfPortSpecification = PortSpecification[];
+export const ListOfPortSpecification = /*@__PURE__*/ S.Array(PortSpecification);
+export interface CreateMicrovmAuthTokenRequest {
+  microvmIdentifier: string;
+  expirationInMinutes: number;
+  allowedPorts: PortSpecification[];
+}
+export const CreateMicrovmAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
+    expirationInMinutes: S.Number,
+    allowedPorts: ListOfPortSpecification,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2025-09-09/microvms/{microvmIdentifier}/auth-token",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateMicrovmAuthTokenRequest",
+}) as any as S.Schema<CreateMicrovmAuthTokenRequest>;
+export type AuthTokenKey = string;
+export type AuthTokenValue = string | redacted.Redacted<string>;
+export type TokenParts = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const TokenParts = /*@__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export interface CreateMicrovmAuthTokenResponse {
+  authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
+}
+export const CreateMicrovmAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ authToken: TokenParts }),
+).annotate({
+  identifier: "CreateMicrovmAuthTokenResponse",
+}) as any as S.Schema<CreateMicrovmAuthTokenResponse>;
 export type NonBlankString = string;
 export type Version = string;
 export type RoleArn = string;
-export type NetworkConnector = string;
-export type EnvironmentVariableKey = string;
-export type EnvironmentVariableValue = string;
-export type ImageName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type MicrovmImageIdentifier = string;
-export type TaggableResource = string;
-export type MicrovmIdentifier = string;
-export type MicrovmImageArn = string;
-export type PositiveInteger = number;
-export type PortNumber = number;
-export type AuthTokenKey = string;
-export type AuthTokenValue = string | redacted.Redacted<string>;
-
-//# Schemas
 export type CodeArtifact = { uri: string };
 export const CodeArtifact = /*@__PURE__*/ S.Union([
   S.Struct({ uri: S.String }),
@@ -131,10 +257,12 @@ export const Logging = /*@__PURE__*/ S.Union([
   S.Struct({ disabled: LoggingDisabled }),
   S.Struct({ cloudWatch: CloudWatchLogging }),
 ]);
+export type NetworkConnector = string;
 export type NetworkConnectorList = string[];
 export const NetworkConnectorList = /*@__PURE__*/ S.Array(S.String);
 export type Architecture = "ARM_64" | (string & {});
 export const Architecture = /*@__PURE__*/ S.String;
+
 export interface CpuConfiguration {
   architecture: Architecture;
 }
@@ -155,10 +283,12 @@ export type ResourcesList = Resources[];
 export const ResourcesList = /*@__PURE__*/ S.Array(Resources);
 export type Capability = "ALL" | (string & {});
 export const Capability = /*@__PURE__*/ S.String;
+
 export type CapabilityList = Capability[];
 export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
 export type HookState = "DISABLED" | "ENABLED" | (string & {});
 export const HookState = /*@__PURE__*/ S.String;
+
 export interface MicrovmHooks {
   run?: HookState;
   runTimeoutInSeconds?: number;
@@ -209,11 +339,16 @@ export const Hooks = /*@__PURE__*/ S.suspend(() =>
     microvmImageHooks: S.optional(MicrovmImageHooks),
   }),
 ).annotate({ identifier: "Hooks" }) as any as S.Schema<Hooks>;
+export type EnvironmentVariableKey = string;
+export type EnvironmentVariableValue = string;
 export type EnvironmentVariableMap = { [key: string]: string | undefined };
 export const EnvironmentVariableMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ImageName = string;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateMicrovmImageRequest {
@@ -275,6 +410,7 @@ export type MicrovmImageState =
   | "DELETED"
   | (string & {});
 export const MicrovmImageState = /*@__PURE__*/ S.String;
+
 export interface CreateMicrovmImageResponse {
   imageArn: string;
   name: string;
@@ -325,6 +461,39 @@ export const CreateMicrovmImageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMicrovmImageResponse",
 }) as any as S.Schema<CreateMicrovmImageResponse>;
+export interface CreateMicrovmShellAuthTokenRequest {
+  microvmIdentifier: string;
+  expirationInMinutes: number;
+}
+export const CreateMicrovmShellAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
+    expirationInMinutes: S.Number,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2025-09-09/microvms/{microvmIdentifier}/shell-auth-token",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateMicrovmShellAuthTokenRequest",
+}) as any as S.Schema<CreateMicrovmShellAuthTokenRequest>;
+export interface CreateMicrovmShellAuthTokenResponse {
+  authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
+}
+export const CreateMicrovmShellAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ authToken: TokenParts }),
+).annotate({
+  identifier: "CreateMicrovmShellAuthTokenResponse",
+}) as any as S.Schema<CreateMicrovmShellAuthTokenResponse>;
+export type MicrovmImageIdentifier = string;
 export interface DeleteMicrovmImageInput {
   imageIdentifier: string;
 }
@@ -360,27 +529,26 @@ export interface DeleteMicrovmImageVersionInput {
   imageIdentifier: string;
   imageVersion: string;
 }
-export const DeleteMicrovmImageVersionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
-      imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
+    imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteMicrovmImageVersionInput",
-  }) as any as S.Schema<DeleteMicrovmImageVersionInput>;
+  ),
+).annotate({
+  identifier: "DeleteMicrovmImageVersionInput",
+}) as any as S.Schema<DeleteMicrovmImageVersionInput>;
 export type MicrovmImageVersionState =
   | "PENDING"
   | "IN_PROGRESS"
@@ -391,21 +559,100 @@ export type MicrovmImageVersionState =
   | "DELETE_FAILED"
   | (string & {});
 export const MicrovmImageVersionState = /*@__PURE__*/ S.String;
+
 export interface DeleteMicrovmImageVersionOutput {
   imageIdentifier: string;
   imageVersion: string;
   state: MicrovmImageVersionState;
 }
-export const DeleteMicrovmImageVersionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageIdentifier: S.String,
-      imageVersion: S.String,
-      state: MicrovmImageVersionState,
-    }),
-  ).annotate({
-    identifier: "DeleteMicrovmImageVersionOutput",
-  }) as any as S.Schema<DeleteMicrovmImageVersionOutput>;
+export const DeleteMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageIdentifier: S.String,
+    imageVersion: S.String,
+    state: MicrovmImageVersionState,
+  }),
+).annotate({
+  identifier: "DeleteMicrovmImageVersionOutput",
+}) as any as S.Schema<DeleteMicrovmImageVersionOutput>;
+export interface GetMicrovmRequest {
+  microvmIdentifier: string;
+}
+export const GetMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-09-09/microvms/{microvmIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetMicrovmRequest",
+}) as any as S.Schema<GetMicrovmRequest>;
+export type MicrovmState =
+  | "PENDING"
+  | "RUNNING"
+  | "SUSPENDING"
+  | "SUSPENDED"
+  | "TERMINATING"
+  | "TERMINATED"
+  | (string & {});
+export const MicrovmState = /*@__PURE__*/ S.String;
+
+export type MicrovmImageArn = string;
+export interface IdlePolicy {
+  maxIdleDurationSeconds: number;
+  suspendedDurationSeconds: number;
+  autoResumeEnabled: boolean;
+}
+export const IdlePolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxIdleDurationSeconds: S.Number,
+    suspendedDurationSeconds: S.Number,
+    autoResumeEnabled: S.Boolean,
+  }),
+).annotate({ identifier: "IdlePolicy" }) as any as S.Schema<IdlePolicy>;
+export interface GetMicrovmResponse {
+  microvmId: string;
+  state: MicrovmState;
+  endpoint: string;
+  imageArn: string;
+  imageVersion: string;
+  executionRoleArn?: string;
+  idlePolicy?: IdlePolicy;
+  maximumDurationInSeconds: number;
+  startedAt: Date;
+  terminatedAt?: Date;
+  stateReason?: string;
+  ingressNetworkConnectors?: string[];
+  egressNetworkConnectors?: string[];
+}
+export const GetMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmId: S.String,
+    state: MicrovmState,
+    endpoint: S.String,
+    imageArn: S.String,
+    imageVersion: S.String,
+    executionRoleArn: S.optional(S.String),
+    idlePolicy: S.optional(IdlePolicy),
+    maximumDurationInSeconds: S.Number,
+    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    terminatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    stateReason: S.optional(S.String),
+    ingressNetworkConnectors: S.optional(NetworkConnectorList),
+    egressNetworkConnectors: S.optional(NetworkConnectorList),
+  }),
+).annotate({
+  identifier: "GetMicrovmResponse",
+}) as any as S.Schema<GetMicrovmResponse>;
 export interface GetMicrovmImageInput {
   imageIdentifier: string;
 }
@@ -485,8 +732,10 @@ export type BuildState =
   | "FAILED"
   | (string & {});
 export const BuildState = /*@__PURE__*/ S.String;
+
 export type Chipset = "GRAVITON" | (string & {});
 export const Chipset = /*@__PURE__*/ S.String;
+
 export interface SnapshotBuild {
   memorySnapshotSizeInBytes?: number;
   codeInstallSizeInBytes?: number;
@@ -531,29 +780,29 @@ export interface GetMicrovmImageVersionInput {
   imageIdentifier: string;
   imageVersion: string;
 }
-export const GetMicrovmImageVersionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
-      imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
+    imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMicrovmImageVersionInput",
-  }) as any as S.Schema<GetMicrovmImageVersionInput>;
+  ),
+).annotate({
+  identifier: "GetMicrovmImageVersionInput",
+}) as any as S.Schema<GetMicrovmImageVersionInput>;
 export type MicrovmImageVersionStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const MicrovmImageVersionStatus = /*@__PURE__*/ S.String;
+
 export interface GetMicrovmImageVersionOutput {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -576,55 +825,53 @@ export interface GetMicrovmImageVersionOutput {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetMicrovmImageVersionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      baseImageArn: S.String,
-      baseImageVersion: S.optional(S.String),
-      buildRoleArn: S.String,
-      description: S.optional(S.String),
-      codeArtifact: CodeArtifact,
-      logging: S.optional(Logging),
-      egressNetworkConnectors: S.optional(NetworkConnectorList),
-      cpuConfigurations: S.optional(CpuConfigurationList),
-      resources: S.optional(ResourcesList),
-      additionalOsCapabilities: S.optional(CapabilityList),
-      hooks: S.optional(Hooks),
-      environmentVariables: S.optional(EnvironmentVariableMap),
-      imageArn: S.String,
-      imageVersion: S.String,
-      state: MicrovmImageVersionState,
-      status: MicrovmImageVersionStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      stateReason: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
-  ).annotate({
-    identifier: "GetMicrovmImageVersionOutput",
-  }) as any as S.Schema<GetMicrovmImageVersionOutput>;
+export const GetMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseImageArn: S.String,
+    baseImageVersion: S.optional(S.String),
+    buildRoleArn: S.String,
+    description: S.optional(S.String),
+    codeArtifact: CodeArtifact,
+    logging: S.optional(Logging),
+    egressNetworkConnectors: S.optional(NetworkConnectorList),
+    cpuConfigurations: S.optional(CpuConfigurationList),
+    resources: S.optional(ResourcesList),
+    additionalOsCapabilities: S.optional(CapabilityList),
+    hooks: S.optional(Hooks),
+    environmentVariables: S.optional(EnvironmentVariableMap),
+    imageArn: S.String,
+    imageVersion: S.String,
+    state: MicrovmImageVersionState,
+    status: MicrovmImageVersionStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    stateReason: S.optional(S.String),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "GetMicrovmImageVersionOutput",
+}) as any as S.Schema<GetMicrovmImageVersionOutput>;
 export interface ListManagedMicrovmImagesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListManagedMicrovmImagesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/2025-09-09/managed-microvm-images" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListManagedMicrovmImagesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2025-09-09/managed-microvm-images" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListManagedMicrovmImagesInput",
-  }) as any as S.Schema<ListManagedMicrovmImagesInput>;
+  ),
+).annotate({
+  identifier: "ListManagedMicrovmImagesInput",
+}) as any as S.Schema<ListManagedMicrovmImagesInput>;
 export interface ManagedMicrovmImageSummary {
   imageArn: string;
   createdAt: Date;
@@ -640,28 +887,28 @@ export const ManagedMicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedMicrovmImageSummary",
 }) as any as S.Schema<ManagedMicrovmImageSummary>;
 export type ManagedMicrovmImageSummaryList = ManagedMicrovmImageSummary[];
-export const ManagedMicrovmImageSummaryList =
-  /*@__PURE__*/ S.Array(ManagedMicrovmImageSummary);
+export const ManagedMicrovmImageSummaryList = /*@__PURE__*/ S.Array(
+  ManagedMicrovmImageSummary,
+);
 export interface ListManagedMicrovmImagesOutput {
   nextToken?: string;
   items: ManagedMicrovmImageSummary[];
 }
-export const ListManagedMicrovmImagesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      items: ManagedMicrovmImageSummaryList,
-    }),
-  ).annotate({
-    identifier: "ListManagedMicrovmImagesOutput",
-  }) as any as S.Schema<ListManagedMicrovmImagesOutput>;
+export const ListManagedMicrovmImagesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    items: ManagedMicrovmImageSummaryList,
+  }),
+).annotate({
+  identifier: "ListManagedMicrovmImagesOutput",
+}) as any as S.Schema<ListManagedMicrovmImagesOutput>;
 export interface ListManagedMicrovmImageVersionsInput {
   maxResults?: number;
   nextToken?: string;
   imageIdentifier: string;
 }
-export const ListManagedMicrovmImageVersionsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListManagedMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -679,9 +926,9 @@ export const ListManagedMicrovmImageVersionsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListManagedMicrovmImageVersionsInput",
-  }) as any as S.Schema<ListManagedMicrovmImageVersionsInput>;
+).annotate({
+  identifier: "ListManagedMicrovmImageVersionsInput",
+}) as any as S.Schema<ListManagedMicrovmImageVersionsInput>;
 export interface ManagedMicrovmImageVersion {
   imageArn: string;
   imageVersion: string;
@@ -699,21 +946,22 @@ export const ManagedMicrovmImageVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedMicrovmImageVersion",
 }) as any as S.Schema<ManagedMicrovmImageVersion>;
 export type ManagedMicrovmImageVersionList = ManagedMicrovmImageVersion[];
-export const ManagedMicrovmImageVersionList =
-  /*@__PURE__*/ S.Array(ManagedMicrovmImageVersion);
+export const ManagedMicrovmImageVersionList = /*@__PURE__*/ S.Array(
+  ManagedMicrovmImageVersion,
+);
 export interface ListManagedMicrovmImageVersionsOutput {
   nextToken?: string;
   items: ManagedMicrovmImageVersion[];
 }
-export const ListManagedMicrovmImageVersionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListManagedMicrovmImageVersionsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextToken: S.optional(S.String),
       items: ManagedMicrovmImageVersionList,
     }),
-  ).annotate({
-    identifier: "ListManagedMicrovmImageVersionsOutput",
-  }) as any as S.Schema<ListManagedMicrovmImageVersionsOutput>;
+).annotate({
+  identifier: "ListManagedMicrovmImageVersionsOutput",
+}) as any as S.Schema<ListManagedMicrovmImageVersionsOutput>;
 export interface ListMicrovmImageBuildsInput {
   maxResults?: number;
   nextToken?: string;
@@ -723,34 +971,33 @@ export interface ListMicrovmImageBuildsInput {
   chipset?: Chipset;
   chipsetGeneration?: string;
 }
-export const ListMicrovmImageBuildsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
-      imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
-      architecture: S.optional(Architecture).pipe(T.HttpQuery("architecture")),
-      chipset: S.optional(Chipset).pipe(T.HttpQuery("chipset")),
-      chipsetGeneration: S.optional(S.String).pipe(
-        T.HttpQuery("chipsetGeneration"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}/builds",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMicrovmImageBuildsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
+    imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
+    architecture: S.optional(Architecture).pipe(T.HttpQuery("architecture")),
+    chipset: S.optional(Chipset).pipe(T.HttpQuery("chipset")),
+    chipsetGeneration: S.optional(S.String).pipe(
+      T.HttpQuery("chipsetGeneration"),
     ),
-  ).annotate({
-    identifier: "ListMicrovmImageBuildsInput",
-  }) as any as S.Schema<ListMicrovmImageBuildsInput>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}/builds",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMicrovmImageBuildsInput",
+}) as any as S.Schema<ListMicrovmImageBuildsInput>;
 export interface MicrovmImageBuildSummary {
   imageArn: string;
   imageVersion: string;
@@ -785,15 +1032,14 @@ export interface ListMicrovmImageBuildsOutput {
   nextToken?: string;
   items: MicrovmImageBuildSummary[];
 }
-export const ListMicrovmImageBuildsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      items: MicrovmImageBuildSummaries,
-    }),
-  ).annotate({
-    identifier: "ListMicrovmImageBuildsOutput",
-  }) as any as S.Schema<ListMicrovmImageBuildsOutput>;
+export const ListMicrovmImageBuildsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    items: MicrovmImageBuildSummaries,
+  }),
+).annotate({
+  identifier: "ListMicrovmImageBuildsOutput",
+}) as any as S.Schema<ListMicrovmImageBuildsOutput>;
 export interface ListMicrovmImagesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -853,28 +1099,27 @@ export interface ListMicrovmImageVersionsInput {
   nextToken?: string;
   imageIdentifier: string;
 }
-export const ListMicrovmImageVersionsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListMicrovmImageVersionsInput",
-  }) as any as S.Schema<ListMicrovmImageVersionsInput>;
+  ),
+).annotate({
+  identifier: "ListMicrovmImageVersionsInput",
+}) as any as S.Schema<ListMicrovmImageVersionsInput>;
 export interface MicrovmImageVersionSummary {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -924,21 +1169,74 @@ export const MicrovmImageVersionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "MicrovmImageVersionSummary",
 }) as any as S.Schema<MicrovmImageVersionSummary>;
 export type MicrovmImageVersionSummaryList = MicrovmImageVersionSummary[];
-export const MicrovmImageVersionSummaryList =
-  /*@__PURE__*/ S.Array(MicrovmImageVersionSummary);
+export const MicrovmImageVersionSummaryList = /*@__PURE__*/ S.Array(
+  MicrovmImageVersionSummary,
+);
 export interface ListMicrovmImageVersionsOutput {
   nextToken?: string;
   items: MicrovmImageVersionSummary[];
 }
-export const ListMicrovmImageVersionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      items: MicrovmImageVersionSummaryList,
-    }),
-  ).annotate({
-    identifier: "ListMicrovmImageVersionsOutput",
-  }) as any as S.Schema<ListMicrovmImageVersionsOutput>;
+export const ListMicrovmImageVersionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    items: MicrovmImageVersionSummaryList,
+  }),
+).annotate({
+  identifier: "ListMicrovmImageVersionsOutput",
+}) as any as S.Schema<ListMicrovmImageVersionsOutput>;
+export interface ListMicrovmsRequest {
+  maxResults?: number;
+  nextToken?: string;
+  imageIdentifier?: string;
+  imageVersion?: string;
+}
+export const ListMicrovmsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    imageIdentifier: S.optional(S.String).pipe(T.HttpQuery("imageIdentifier")),
+    imageVersion: S.optional(S.String).pipe(T.HttpQuery("imageVersion")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2025-09-09/microvms" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMicrovmsRequest",
+}) as any as S.Schema<ListMicrovmsRequest>;
+export interface MicrovmItem {
+  microvmId: string;
+  state: MicrovmState;
+  imageArn: string;
+  imageVersion: string;
+  startedAt: Date;
+}
+export const MicrovmItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmId: S.String,
+    state: MicrovmState,
+    imageArn: S.String,
+    imageVersion: S.String,
+    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "MicrovmItem" }) as any as S.Schema<MicrovmItem>;
+export type MicrovmItemList = MicrovmItem[];
+export const MicrovmItemList = /*@__PURE__*/ S.Array(MicrovmItem);
+export interface ListMicrovmsResponse {
+  nextToken?: string;
+  items: MicrovmItem[];
+}
+export const ListMicrovmsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ nextToken: S.optional(S.String), items: MicrovmItemList }),
+).annotate({
+  identifier: "ListMicrovmsResponse",
+}) as any as S.Schema<ListMicrovmsResponse>;
+export type TaggableResource = string;
 export interface ListTagsRequest {
   Resource: string;
 }
@@ -964,6 +1262,133 @@ export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsResponse",
 }) as any as S.Schema<ListTagsResponse>;
+export interface ResumeMicrovmRequest {
+  microvmIdentifier: string;
+}
+export const ResumeMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2025-09-09/microvms/{microvmIdentifier}/resume",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ResumeMicrovmRequest",
+}) as any as S.Schema<ResumeMicrovmRequest>;
+export interface ResumeMicrovmResponse {}
+export const ResumeMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResumeMicrovmResponse",
+}) as any as S.Schema<ResumeMicrovmResponse>;
+export interface RunMicrovmRequest {
+  ingressNetworkConnectors?: string[];
+  egressNetworkConnectors?: string[];
+  imageIdentifier: string;
+  imageVersion?: string;
+  executionRoleArn?: string;
+  idlePolicy?: IdlePolicy;
+  logging?: Logging;
+  runHookPayload?: string;
+  maximumDurationInSeconds?: number;
+  clientToken?: string;
+}
+export const RunMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingressNetworkConnectors: S.optional(NetworkConnectorList),
+    egressNetworkConnectors: S.optional(NetworkConnectorList),
+    imageIdentifier: S.String,
+    imageVersion: S.optional(S.String),
+    executionRoleArn: S.optional(S.String),
+    idlePolicy: S.optional(IdlePolicy),
+    logging: S.optional(Logging),
+    runHookPayload: S.optional(S.String),
+    maximumDurationInSeconds: S.optional(S.Number),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2025-09-09/microvms" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RunMicrovmRequest",
+}) as any as S.Schema<RunMicrovmRequest>;
+export interface RunMicrovmResponse {
+  microvmId: string;
+  state: MicrovmState;
+  endpoint: string;
+  imageArn: string;
+  imageVersion: string;
+  executionRoleArn?: string;
+  idlePolicy?: IdlePolicy;
+  maximumDurationInSeconds: number;
+  startedAt: Date;
+  terminatedAt?: Date;
+  stateReason?: string;
+  ingressNetworkConnectors?: string[];
+  egressNetworkConnectors?: string[];
+}
+export const RunMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmId: S.String,
+    state: MicrovmState,
+    endpoint: S.String,
+    imageArn: S.String,
+    imageVersion: S.String,
+    executionRoleArn: S.optional(S.String),
+    idlePolicy: S.optional(IdlePolicy),
+    maximumDurationInSeconds: S.Number,
+    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    terminatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    stateReason: S.optional(S.String),
+    ingressNetworkConnectors: S.optional(NetworkConnectorList),
+    egressNetworkConnectors: S.optional(NetworkConnectorList),
+  }),
+).annotate({
+  identifier: "RunMicrovmResponse",
+}) as any as S.Schema<RunMicrovmResponse>;
+export interface SuspendMicrovmRequest {
+  microvmIdentifier: string;
+}
+export const SuspendMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/2025-09-09/microvms/{microvmIdentifier}/suspend",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SuspendMicrovmRequest",
+}) as any as S.Schema<SuspendMicrovmRequest>;
+export interface SuspendMicrovmResponse {}
+export const SuspendMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SuspendMicrovmResponse",
+}) as any as S.Schema<SuspendMicrovmResponse>;
 export interface TagResourceRequest {
   Resource: string;
   Tags: { [key: string]: string | undefined };
@@ -991,6 +1416,34 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
+export interface TerminateMicrovmRequest {
+  microvmIdentifier: string;
+}
+export const TerminateMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2025-09-09/microvms/{microvmIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TerminateMicrovmRequest",
+}) as any as S.Schema<TerminateMicrovmRequest>;
+export interface TerminateMicrovmResponse {}
+export const TerminateMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TerminateMicrovmResponse",
+}) as any as S.Schema<TerminateMicrovmResponse>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Key")),
@@ -1123,28 +1576,27 @@ export interface UpdateMicrovmImageVersionRequest {
   imageVersion: string;
   status: MicrovmImageVersionStatus;
 }
-export const UpdateMicrovmImageVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
-      imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
-      status: MicrovmImageVersionStatus,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateMicrovmImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
+    imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
+    status: MicrovmImageVersionStatus,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/2025-09-09/microvm-images/{imageIdentifier}/versions/{imageVersion}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateMicrovmImageVersionRequest",
-  }) as any as S.Schema<UpdateMicrovmImageVersionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateMicrovmImageVersionRequest",
+}) as any as S.Schema<UpdateMicrovmImageVersionRequest>;
 export interface UpdateMicrovmImageVersionResponse {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -1167,480 +1619,62 @@ export interface UpdateMicrovmImageVersionResponse {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMicrovmImageVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      baseImageArn: S.String,
-      baseImageVersion: S.optional(S.String),
-      buildRoleArn: S.String,
-      description: S.optional(S.String),
-      codeArtifact: CodeArtifact,
-      logging: S.optional(Logging),
-      egressNetworkConnectors: S.optional(NetworkConnectorList),
-      cpuConfigurations: S.optional(CpuConfigurationList),
-      resources: S.optional(ResourcesList),
-      additionalOsCapabilities: S.optional(CapabilityList),
-      hooks: S.optional(Hooks),
-      environmentVariables: S.optional(EnvironmentVariableMap),
-      imageArn: S.String,
-      imageVersion: S.String,
-      state: MicrovmImageVersionState,
-      status: MicrovmImageVersionStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      stateReason: S.optional(S.String),
-      tags: S.optional(Tags),
-    }),
-  ).annotate({
-    identifier: "UpdateMicrovmImageVersionResponse",
-  }) as any as S.Schema<UpdateMicrovmImageVersionResponse>;
-export interface IdlePolicy {
-  maxIdleDurationSeconds: number;
-  suspendedDurationSeconds: number;
-  autoResumeEnabled: boolean;
-}
-export const IdlePolicy = /*@__PURE__*/ S.suspend(() =>
+export const UpdateMicrovmImageVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maxIdleDurationSeconds: S.Number,
-    suspendedDurationSeconds: S.Number,
-    autoResumeEnabled: S.Boolean,
-  }),
-).annotate({ identifier: "IdlePolicy" }) as any as S.Schema<IdlePolicy>;
-export interface RunMicrovmRequest {
-  ingressNetworkConnectors?: string[];
-  egressNetworkConnectors?: string[];
-  imageIdentifier: string;
-  imageVersion?: string;
-  executionRoleArn?: string;
-  idlePolicy?: IdlePolicy;
-  logging?: Logging;
-  runHookPayload?: string;
-  maximumDurationInSeconds?: number;
-  clientToken?: string;
-}
-export const RunMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingressNetworkConnectors: S.optional(NetworkConnectorList),
-    egressNetworkConnectors: S.optional(NetworkConnectorList),
-    imageIdentifier: S.String,
-    imageVersion: S.optional(S.String),
-    executionRoleArn: S.optional(S.String),
-    idlePolicy: S.optional(IdlePolicy),
+    baseImageArn: S.String,
+    baseImageVersion: S.optional(S.String),
+    buildRoleArn: S.String,
+    description: S.optional(S.String),
+    codeArtifact: CodeArtifact,
     logging: S.optional(Logging),
-    runHookPayload: S.optional(S.String),
-    maximumDurationInSeconds: S.optional(S.Number),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/2025-09-09/microvms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RunMicrovmRequest",
-}) as any as S.Schema<RunMicrovmRequest>;
-export type MicrovmState =
-  | "PENDING"
-  | "RUNNING"
-  | "SUSPENDING"
-  | "SUSPENDED"
-  | "TERMINATING"
-  | "TERMINATED"
-  | (string & {});
-export const MicrovmState = /*@__PURE__*/ S.String;
-export interface RunMicrovmResponse {
-  microvmId: string;
-  state: MicrovmState;
-  endpoint: string;
-  imageArn: string;
-  imageVersion: string;
-  executionRoleArn?: string;
-  idlePolicy?: IdlePolicy;
-  maximumDurationInSeconds: number;
-  startedAt: Date;
-  terminatedAt?: Date;
-  stateReason?: string;
-  ingressNetworkConnectors?: string[];
-  egressNetworkConnectors?: string[];
-}
-export const RunMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmId: S.String,
-    state: MicrovmState,
-    endpoint: S.String,
-    imageArn: S.String,
-    imageVersion: S.String,
-    executionRoleArn: S.optional(S.String),
-    idlePolicy: S.optional(IdlePolicy),
-    maximumDurationInSeconds: S.Number,
-    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    terminatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    stateReason: S.optional(S.String),
-    ingressNetworkConnectors: S.optional(NetworkConnectorList),
     egressNetworkConnectors: S.optional(NetworkConnectorList),
-  }),
-).annotate({
-  identifier: "RunMicrovmResponse",
-}) as any as S.Schema<RunMicrovmResponse>;
-export interface GetMicrovmRequest {
-  microvmIdentifier: string;
-}
-export const GetMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/2025-09-09/microvms/{microvmIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetMicrovmRequest",
-}) as any as S.Schema<GetMicrovmRequest>;
-export interface GetMicrovmResponse {
-  microvmId: string;
-  state: MicrovmState;
-  endpoint: string;
-  imageArn: string;
-  imageVersion: string;
-  executionRoleArn?: string;
-  idlePolicy?: IdlePolicy;
-  maximumDurationInSeconds: number;
-  startedAt: Date;
-  terminatedAt?: Date;
-  stateReason?: string;
-  ingressNetworkConnectors?: string[];
-  egressNetworkConnectors?: string[];
-}
-export const GetMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmId: S.String,
-    state: MicrovmState,
-    endpoint: S.String,
+    cpuConfigurations: S.optional(CpuConfigurationList),
+    resources: S.optional(ResourcesList),
+    additionalOsCapabilities: S.optional(CapabilityList),
+    hooks: S.optional(Hooks),
+    environmentVariables: S.optional(EnvironmentVariableMap),
     imageArn: S.String,
     imageVersion: S.String,
-    executionRoleArn: S.optional(S.String),
-    idlePolicy: S.optional(IdlePolicy),
-    maximumDurationInSeconds: S.Number,
-    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    terminatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    state: MicrovmImageVersionState,
+    status: MicrovmImageVersionStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     stateReason: S.optional(S.String),
-    ingressNetworkConnectors: S.optional(NetworkConnectorList),
-    egressNetworkConnectors: S.optional(NetworkConnectorList),
+    tags: S.optional(Tags),
   }),
 ).annotate({
-  identifier: "GetMicrovmResponse",
-}) as any as S.Schema<GetMicrovmResponse>;
-export interface TerminateMicrovmRequest {
-  microvmIdentifier: string;
-}
-export const TerminateMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/2025-09-09/microvms/{microvmIdentifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TerminateMicrovmRequest",
-}) as any as S.Schema<TerminateMicrovmRequest>;
-export interface TerminateMicrovmResponse {}
-export const TerminateMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TerminateMicrovmResponse",
-}) as any as S.Schema<TerminateMicrovmResponse>;
-export interface ListMicrovmsRequest {
-  maxResults?: number;
-  nextToken?: string;
-  imageIdentifier?: string;
-  imageVersion?: string;
-}
-export const ListMicrovmsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    imageIdentifier: S.optional(S.String).pipe(T.HttpQuery("imageIdentifier")),
-    imageVersion: S.optional(S.String).pipe(T.HttpQuery("imageVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/2025-09-09/microvms" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListMicrovmsRequest",
-}) as any as S.Schema<ListMicrovmsRequest>;
-export interface MicrovmItem {
-  microvmId: string;
-  state: MicrovmState;
-  imageArn: string;
-  imageVersion: string;
-  startedAt: Date;
-}
-export const MicrovmItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmId: S.String,
-    state: MicrovmState,
-    imageArn: S.String,
-    imageVersion: S.String,
-    startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "MicrovmItem" }) as any as S.Schema<MicrovmItem>;
-export type MicrovmItemList = MicrovmItem[];
-export const MicrovmItemList = /*@__PURE__*/ S.Array(MicrovmItem);
-export interface ListMicrovmsResponse {
-  nextToken?: string;
-  items: MicrovmItem[];
-}
-export const ListMicrovmsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ nextToken: S.optional(S.String), items: MicrovmItemList }),
-).annotate({
-  identifier: "ListMicrovmsResponse",
-}) as any as S.Schema<ListMicrovmsResponse>;
-export interface PortRange {
-  startPort: number;
-  endPort: number;
-}
-export const PortRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ startPort: S.Number, endPort: S.Number }),
-).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
-export type PortSpecification =
-  | { port: number; range?: never; allPorts?: never }
-  | { port?: never; range: PortRange; allPorts?: never }
-  | { port?: never; range?: never; allPorts: Record<string, never> };
-export const PortSpecification = /*@__PURE__*/ S.Union([
-  S.Struct({ port: S.Number }),
-  S.Struct({ range: PortRange }),
-  S.Struct({ allPorts: S.Struct({}) }),
-]);
-export type ListOfPortSpecification = PortSpecification[];
-export const ListOfPortSpecification = /*@__PURE__*/ S.Array(PortSpecification);
-export interface CreateMicrovmAuthTokenRequest {
-  microvmIdentifier: string;
-  expirationInMinutes: number;
-  allowedPorts: PortSpecification[];
-}
-export const CreateMicrovmAuthTokenRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
-      expirationInMinutes: S.Number,
-      allowedPorts: ListOfPortSpecification,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-09-09/microvms/{microvmIdentifier}/auth-token",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateMicrovmAuthTokenRequest",
-  }) as any as S.Schema<CreateMicrovmAuthTokenRequest>;
-export type TokenParts = {
-  [key: string]: string | redacted.Redacted<string> | undefined;
-};
-export const TokenParts = /*@__PURE__*/ S.Record(
-  S.String,
-  SensitiveString.pipe(S.optional),
-);
-export interface CreateMicrovmAuthTokenResponse {
-  authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
-}
-export const CreateMicrovmAuthTokenResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ authToken: TokenParts })).annotate({
-    identifier: "CreateMicrovmAuthTokenResponse",
-  }) as any as S.Schema<CreateMicrovmAuthTokenResponse>;
-export interface CreateMicrovmShellAuthTokenRequest {
-  microvmIdentifier: string;
-  expirationInMinutes: number;
-}
-export const CreateMicrovmShellAuthTokenRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
-      expirationInMinutes: S.Number,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/2025-09-09/microvms/{microvmIdentifier}/shell-auth-token",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateMicrovmShellAuthTokenRequest",
-  }) as any as S.Schema<CreateMicrovmShellAuthTokenRequest>;
-export interface CreateMicrovmShellAuthTokenResponse {
-  authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
-}
-export const CreateMicrovmShellAuthTokenResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ authToken: TokenParts })).annotate({
-    identifier: "CreateMicrovmShellAuthTokenResponse",
-  }) as any as S.Schema<CreateMicrovmShellAuthTokenResponse>;
-export interface ResumeMicrovmRequest {
-  microvmIdentifier: string;
-}
-export const ResumeMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/2025-09-09/microvms/{microvmIdentifier}/resume",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ResumeMicrovmRequest",
-}) as any as S.Schema<ResumeMicrovmRequest>;
-export interface ResumeMicrovmResponse {}
-export const ResumeMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResumeMicrovmResponse",
-}) as any as S.Schema<ResumeMicrovmResponse>;
-export interface SuspendMicrovmRequest {
-  microvmIdentifier: string;
-}
-export const SuspendMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/2025-09-09/microvms/{microvmIdentifier}/suspend",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SuspendMicrovmRequest",
-}) as any as S.Schema<SuspendMicrovmRequest>;
-export interface SuspendMicrovmResponse {}
-export const SuspendMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SuspendMicrovmResponse",
-}) as any as S.Schema<SuspendMicrovmResponse>;
+  identifier: "UpdateMicrovmImageVersionResponse",
+}) as any as S.Schema<UpdateMicrovmImageVersionResponse>;
+export type CreateMicrovmAuthTokenError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an authentication token for accessing a running MicroVM. The token grants access to the specified ports on the MicroVM endpoint.
+ */
+export const createMicrovmAuthToken: API.OperationMethod<
+  CreateMicrovmAuthTokenRequest,
+  CreateMicrovmAuthTokenResponse,
+  CreateMicrovmAuthTokenError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMicrovmAuthTokenRequest,
+  output: CreateMicrovmAuthTokenResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateMicrovmAuthToken",
+}));
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    resourceType: S.optional(S.String),
-    resourceId: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type CreateMicrovmImageError =
   | AccessDeniedException
   | ConflictException
@@ -1670,8 +1704,41 @@ export const createMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMicrovmImage",
 }));
+
+export type CreateMicrovmShellAuthTokenError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a shell authentication token for interactive shell access to a running MicroVM. The MicroVM must have been run with the SHELL_INGRESS network connector attached.
+ */
+export const createMicrovmShellAuthToken: API.OperationMethod<
+  CreateMicrovmShellAuthTokenRequest,
+  CreateMicrovmShellAuthTokenResponse,
+  CreateMicrovmShellAuthTokenError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMicrovmShellAuthTokenRequest,
+  output: CreateMicrovmShellAuthTokenResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateMicrovmShellAuthToken",
+}));
+
 export type DeleteMicrovmImageError =
   | AccessDeniedException
   | ConflictException
@@ -1699,8 +1766,11 @@ export const deleteMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMicrovmImage",
 }));
+
 export type DeleteMicrovmImageVersionError =
   | AccessDeniedException
   | ConflictException
@@ -1728,8 +1798,41 @@ export const deleteMicrovmImageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMicrovmImageVersion",
 }));
+
+export type GetMicrovmError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the details of a specific MicroVM, including its state, endpoint, image information, and configuration. The state field is eventually consistent — determine readiness by connecting to the endpoint.
+ */
+export const getMicrovm: API.OperationMethod<
+  GetMicrovmRequest,
+  GetMicrovmResponse,
+  GetMicrovmError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMicrovmRequest,
+  output: GetMicrovmResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetMicrovm",
+}));
+
 export type GetMicrovmImageError =
   | AccessDeniedException
   | InternalServerException
@@ -1755,8 +1858,11 @@ export const getMicrovmImage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMicrovmImage",
 }));
+
 export type GetMicrovmImageBuildError =
   | AccessDeniedException
   | InternalServerException
@@ -1782,8 +1888,11 @@ export const getMicrovmImageBuild: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMicrovmImageBuild",
 }));
+
 export type GetMicrovmImageVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -1809,8 +1918,11 @@ export const getMicrovmImageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMicrovmImageVersion",
 }));
+
 export type ListManagedMicrovmImagesError =
   | AccessDeniedException
   | InternalServerException
@@ -1849,6 +1961,8 @@ export const listManagedMicrovmImages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedMicrovmImages",
   pagination: {
     inputToken: "nextToken",
@@ -1857,6 +1971,7 @@ export const listManagedMicrovmImages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListManagedMicrovmImageVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1897,6 +2012,8 @@ export const listManagedMicrovmImageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedMicrovmImageVersions",
   pagination: {
     inputToken: "nextToken",
@@ -1905,6 +2022,7 @@ export const listManagedMicrovmImageVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMicrovmImageBuildsError =
   | AccessDeniedException
   | InternalServerException
@@ -1945,6 +2063,8 @@ export const listMicrovmImageBuilds: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrovmImageBuilds",
   pagination: {
     inputToken: "nextToken",
@@ -1953,6 +2073,7 @@ export const listMicrovmImageBuilds: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMicrovmImagesError =
   | AccessDeniedException
   | InternalServerException
@@ -1991,6 +2112,8 @@ export const listMicrovmImages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrovmImages",
   pagination: {
     inputToken: "nextToken",
@@ -1999,6 +2122,7 @@ export const listMicrovmImages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMicrovmImageVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -2039,6 +2163,8 @@ export const listMicrovmImageVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrovmImageVersions",
   pagination: {
     inputToken: "nextToken",
@@ -2047,232 +2173,7 @@ export const listMicrovmImageVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type ListTagsError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Lists the tags associated with a Lambda MicroVM resource.
- */
-export const listTags: API.OperationMethod<
-  ListTagsRequest,
-  ListTagsResponse,
-  ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsRequest,
-  output: ListTagsResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "ListTags",
-}));
-export type TagResourceError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Adds tags to a Lambda MicroVM resource.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Removes tags from a Lambda MicroVM resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  operationName: "UntagResource",
-}));
-export type UpdateMicrovmImageError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the configuration of a MicroVM image and triggers a new version build. This operation uses PUT semantics — all required fields (codeArtifact, baseImageArn, buildRoleArn) must be provided with every request.
- */
-export const updateMicrovmImage: API.OperationMethod<
-  UpdateMicrovmImageRequest,
-  UpdateMicrovmImageResponse,
-  UpdateMicrovmImageError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMicrovmImageRequest,
-  output: UpdateMicrovmImageResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UpdateMicrovmImage",
-}));
-export type UpdateMicrovmImageVersionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the status of a specific MicroVM image version.
- */
-export const updateMicrovmImageVersion: API.OperationMethod<
-  UpdateMicrovmImageVersionRequest,
-  UpdateMicrovmImageVersionResponse,
-  UpdateMicrovmImageVersionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMicrovmImageVersionRequest,
-  output: UpdateMicrovmImageVersionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "UpdateMicrovmImageVersion",
-}));
-export type RunMicrovmError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Runs a new MicroVM from the specified image. The MicroVM starts in PENDING state and transitions to RUNNING once provisioning completes. To connect, generate an authentication token using CreateMicrovmAuthToken.
- */
-export const runMicrovm: API.OperationMethod<
-  RunMicrovmRequest,
-  RunMicrovmResponse,
-  RunMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RunMicrovmRequest,
-  output: RunMicrovmResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "RunMicrovm",
-}));
-export type GetMicrovmError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the details of a specific MicroVM, including its state, endpoint, image information, and configuration. The state field is eventually consistent — determine readiness by connecting to the endpoint.
- */
-export const getMicrovm: API.OperationMethod<
-  GetMicrovmRequest,
-  GetMicrovmResponse,
-  GetMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetMicrovmRequest,
-  output: GetMicrovmResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "GetMicrovm",
-}));
-export type TerminateMicrovmError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Terminates a MicroVM. This operation is idempotent; terminating a MicroVM that has already been terminated succeeds without error.
- */
-export const terminateMicrovm: API.OperationMethod<
-  TerminateMicrovmRequest,
-  TerminateMicrovmResponse,
-  TerminateMicrovmError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TerminateMicrovmRequest,
-  output: TerminateMicrovmResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "TerminateMicrovm",
-}));
+
 export type ListMicrovmsError =
   | AccessDeniedException
   | InternalServerException
@@ -2313,6 +2214,8 @@ export const listMicrovms: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrovms",
   pagination: {
     inputToken: "nextToken",
@@ -2321,60 +2224,35 @@ export const listMicrovms: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateMicrovmAuthTokenError =
-  | AccessDeniedException
-  | InternalServerException
+
+export type ListTagsError =
+  | InvalidParameterValueException
   | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
+  | ServiceException
+  | TooManyRequestsException
   | CommonErrors;
 /**
- * Creates an authentication token for accessing a running MicroVM. The token grants access to the specified ports on the MicroVM endpoint.
+ * Lists the tags associated with a Lambda MicroVM resource.
  */
-export const createMicrovmAuthToken: API.OperationMethod<
-  CreateMicrovmAuthTokenRequest,
-  CreateMicrovmAuthTokenResponse,
-  CreateMicrovmAuthTokenError,
+export const listTags: API.OperationMethod<
+  ListTagsRequest,
+  ListTagsResponse,
+  ListTagsError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMicrovmAuthTokenRequest,
-  output: CreateMicrovmAuthTokenResponse,
+  input: ListTagsRequest,
+  output: ListTagsResponse,
   errors: [
-    AccessDeniedException,
-    InternalServerException,
+    InvalidParameterValueException,
     ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
+    ServiceException,
+    TooManyRequestsException,
   ],
-  operationName: "CreateMicrovmAuthToken",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTags",
 }));
-export type CreateMicrovmShellAuthTokenError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a shell authentication token for interactive shell access to a running MicroVM. The MicroVM must have been run with the SHELL_INGRESS network connector attached.
- */
-export const createMicrovmShellAuthToken: API.OperationMethod<
-  CreateMicrovmShellAuthTokenRequest,
-  CreateMicrovmShellAuthTokenResponse,
-  CreateMicrovmShellAuthTokenError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateMicrovmShellAuthTokenRequest,
-  output: CreateMicrovmShellAuthTokenResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreateMicrovmShellAuthToken",
-}));
+
 export type ResumeMicrovmError =
   | AccessDeniedException
   | ConflictException
@@ -2402,8 +2280,45 @@ export const resumeMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeMicrovm",
 }));
+
+export type RunMicrovmError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Runs a new MicroVM from the specified image. The MicroVM starts in PENDING state and transitions to RUNNING once provisioning completes. To connect, generate an authentication token using CreateMicrovmAuthToken.
+ */
+export const runMicrovm: API.OperationMethod<
+  RunMicrovmRequest,
+  RunMicrovmResponse,
+  RunMicrovmError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RunMicrovmRequest,
+  output: RunMicrovmResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RunMicrovm",
+}));
+
 export type SuspendMicrovmError =
   | AccessDeniedException
   | ConflictException
@@ -2431,5 +2346,165 @@ export const suspendMicrovm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SuspendMicrovm",
+}));
+
+export type TagResourceError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Adds tags to a Lambda MicroVM resource.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type TerminateMicrovmError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Terminates a MicroVM. This operation is idempotent; terminating a MicroVM that has already been terminated succeeds without error.
+ */
+export const terminateMicrovm: API.OperationMethod<
+  TerminateMicrovmRequest,
+  TerminateMicrovmResponse,
+  TerminateMicrovmError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TerminateMicrovmRequest,
+  output: TerminateMicrovmResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TerminateMicrovm",
+}));
+
+export type UntagResourceError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Removes tags from a Lambda MicroVM resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateMicrovmImageError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the configuration of a MicroVM image and triggers a new version build. This operation uses PUT semantics — all required fields (codeArtifact, baseImageArn, buildRoleArn) must be provided with every request.
+ */
+export const updateMicrovmImage: API.OperationMethod<
+  UpdateMicrovmImageRequest,
+  UpdateMicrovmImageResponse,
+  UpdateMicrovmImageError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMicrovmImageRequest,
+  output: UpdateMicrovmImageResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateMicrovmImage",
+}));
+
+export type UpdateMicrovmImageVersionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the status of a specific MicroVM image version.
+ */
+export const updateMicrovmImageVersion: API.OperationMethod<
+  UpdateMicrovmImageVersionRequest,
+  UpdateMicrovmImageVersionResponse,
+  UpdateMicrovmImageVersionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMicrovmImageVersionRequest,
+  output: UpdateMicrovmImageVersionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateMicrovmImageVersion",
 }));

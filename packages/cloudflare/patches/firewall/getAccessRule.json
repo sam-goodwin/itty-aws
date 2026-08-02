@@ -1,9 +1,0 @@
-{
-  "errors": {
-    "AccessRuleNotFound": [
-      { "code": 10001, "message": { "includes": "not_found" } },
-      { "status": 404 }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

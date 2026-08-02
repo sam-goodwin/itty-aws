@@ -1,98 +1,146 @@
 {
-  "errors": {
-    "VpcServiceNotFound": [
-      {
-        "code": 5104
-      }
-    ],
-    "VpcServiceNameAlreadyExists": [
-      {
-        "code": 5101,
-        "message": {
-          "includes": "already exists"
-        }
-      }
-    ],
-    "VpcTunnelNotFound": [
-      {
-        "code": 5101,
-        "message": {
-          "includes": "Tunnel ID Not Found"
-        }
-      }
-    ],
-    "Forbidden": [
-      {
-        "status": 403
-      }
-    ]
-  },
-  "response": {
-    "properties": {
-      "tcp_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
+  "description": "Align connectivity#DirectoryServicesUpdate with distilled cloudflare/connectivity updateDirectoryService",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesUpdate",
+      "path": "/shapes/com.cloudflare.connectivity#UpdateDirectoryService"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesUpdateRequest",
+      "path": "/shapes/com.cloudflare.connectivity#UpdateDirectoryServiceRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.connectivity#UpdateDirectoryService/input/target",
+      "value": "com.cloudflare.connectivity#UpdateDirectoryServiceRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.connectivity#DirectoryServicesUpdateResponse",
+      "path": "/shapes/com.cloudflare.connectivity#UpdateDirectoryServiceResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.connectivity#UpdateDirectoryService/output/target",
+      "value": "com.cloudflare.connectivity#UpdateDirectoryServiceResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#VpcServiceNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
             {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "app_protocol": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "literal",
-              "value": "postgresql"
-            },
-            {
-              "kind": "literal",
-              "value": "mysql"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "http_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
-            }
-          ]
-        }
-      },
-      "https_port": {
-        "optional": true,
-        "definition": {
-          "kind": "union",
-          "values": [
-            {
-              "kind": "primitive",
-              "value": "number"
-            },
-            {
-              "kind": "null"
+              "code": 5104
             }
           ]
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#VpcServiceNameAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5101,
+              "message": {
+                "includes": "already exists"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#VpcTunnelNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5101,
+              "message": {
+                "includes": "Tunnel ID Not Found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.connectivity#UpdateDirectoryService/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.connectivity#VpcServiceNotFound"
+        },
+        {
+          "target": "com.cloudflare.connectivity#VpcServiceNameAlreadyExists"
+        },
+        {
+          "target": "com.cloudflare.connectivity#VpcTunnelNotFound"
+        },
+        {
+          "target": "com.cloudflare.connectivity#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

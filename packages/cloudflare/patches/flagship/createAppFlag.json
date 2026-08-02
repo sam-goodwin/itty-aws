@@ -1,10 +1,94 @@
 {
-  "errors": {
-    "FlagshipFlagAlreadyExists": [
-      { "status": 409, "message": { "includes": "Flag already exists" } }
-    ],
-    "FlagshipAppNotFound": [
-      { "status": 404, "message": { "includes": "App not found" } }
-    ]
-  }
+  "description": "Align flagship#AppsFlagsCreate with distilled cloudflare/flagship createAppFlag",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsFlagsCreate",
+      "path": "/shapes/com.cloudflare.flagship#CreateAppFlag"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsFlagsCreateRequest",
+      "path": "/shapes/com.cloudflare.flagship#CreateAppFlagRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.flagship#CreateAppFlag/input/target",
+      "value": "com.cloudflare.flagship#CreateAppFlagRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.flagship#AppsFlagsCreateResponse",
+      "path": "/shapes/com.cloudflare.flagship#CreateAppFlagResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.flagship#CreateAppFlag/output/target",
+      "value": "com.cloudflare.flagship#CreateAppFlagResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#FlagshipFlagAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 409,
+              "message": {
+                "includes": "Flag already exists"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#FlagshipAppNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404,
+              "message": {
+                "includes": "App not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.flagship#CreateAppFlag/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.flagship#FlagshipFlagAlreadyExists"
+        },
+        {
+          "target": "com.cloudflare.flagship#FlagshipAppNotFound"
+        }
+      ]
+    }
+  ]
 }

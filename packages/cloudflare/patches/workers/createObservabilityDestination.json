@@ -1,8 +1,89 @@
 {
-  "errors": {
-    "ObservabilityDestinationCreateFailed": [
-      { "status": 400, "message": "Bad Request" }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align workers#ObservabilityDestinationsCreate with distilled cloudflare/workers createObservabilityDestination",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityDestinationsCreate",
+      "path": "/shapes/com.cloudflare.workers#CreateObservabilityDestination"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityDestinationsCreateRequest",
+      "path": "/shapes/com.cloudflare.workers#CreateObservabilityDestinationRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateObservabilityDestination/input/target",
+      "value": "com.cloudflare.workers#CreateObservabilityDestinationRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityDestinationsCreateResponse",
+      "path": "/shapes/com.cloudflare.workers#CreateObservabilityDestinationResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#CreateObservabilityDestination/output/target",
+      "value": "com.cloudflare.workers#CreateObservabilityDestinationResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ObservabilityDestinationCreateFailed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 400,
+              "message": "Bad Request"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateObservabilityDestination/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#ObservabilityDestinationCreateFailed"
+        },
+        {
+          "target": "com.cloudflare.workers#Forbidden"
+        }
+      ]
+    }
+  ]
 }

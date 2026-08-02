@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,41 +84,52 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidContentLocation extends S.TaggedErrorClass<InvalidContentLocation>()(
+  "InvalidContentLocation",
+  { message: S.optional(S.String) },
+) {}
+export class MessageFrozen extends S.TaggedErrorClass<MessageFrozen>()(
+  "MessageFrozen",
+  { message: S.optional(S.String) },
+) {}
+export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
+  "MessageRejected",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type MessageIdType = string;
-export type ErrorMessage = string;
-export type S3BucketIdType = string;
-export type S3KeyIdType = string;
-export type S3VersionType = string;
-
-//# Schemas
 export interface GetRawMessageContentRequest {
   messageId: string;
 }
-export const GetRawMessageContentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/messages/{messageId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ messageId: S.String.pipe(T.HttpLabel("messageId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/messages/{messageId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRawMessageContentRequest",
-  }) as any as S.Schema<GetRawMessageContentRequest>;
+  ),
+).annotate({
+  identifier: "GetRawMessageContentRequest",
+}) as any as S.Schema<GetRawMessageContentRequest>;
 export interface GetRawMessageContentResponse {
   messageContent: T.StreamingOutputBody;
 }
-export const GetRawMessageContentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ messageContent: T.StreamingOutput.pipe(T.HttpPayload()) }),
-  ).annotate({
-    identifier: "GetRawMessageContentResponse",
-  }) as any as S.Schema<GetRawMessageContentResponse>;
+export const GetRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ messageContent: T.StreamingOutput.pipe(T.HttpPayload()) }),
+).annotate({
+  identifier: "GetRawMessageContentResponse",
+}) as any as S.Schema<GetRawMessageContentResponse>;
+export type S3BucketIdType = string;
+export type S3KeyIdType = string;
+export type S3VersionType = string;
 export interface S3Reference {
   bucket: string;
   key: string;
@@ -141,49 +154,30 @@ export interface PutRawMessageContentRequest {
   messageId: string;
   content: RawMessageContent;
 }
-export const PutRawMessageContentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      messageId: S.String.pipe(T.HttpLabel("messageId")),
-      content: RawMessageContent,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/messages/{messageId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutRawMessageContentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messageId: S.String.pipe(T.HttpLabel("messageId")),
+    content: RawMessageContent,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/messages/{messageId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutRawMessageContentRequest",
-  }) as any as S.Schema<PutRawMessageContentRequest>;
+  ),
+).annotate({
+  identifier: "PutRawMessageContentRequest",
+}) as any as S.Schema<PutRawMessageContentRequest>;
 export interface PutRawMessageContentResponse {}
-export const PutRawMessageContentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutRawMessageContentResponse",
-  }) as any as S.Schema<PutRawMessageContentResponse>;
-
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidContentLocation extends S.TaggedErrorClass<InvalidContentLocation>()(
-  "InvalidContentLocation",
-  { message: S.optional(S.String) },
-) {}
-export class MessageFrozen extends S.TaggedErrorClass<MessageFrozen>()(
-  "MessageFrozen",
-  { message: S.optional(S.String) },
-) {}
-export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
-  "MessageRejected",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export const PutRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutRawMessageContentResponse",
+}) as any as S.Schema<PutRawMessageContentResponse>;
+export type ErrorMessage = string;
 export type GetRawMessageContentError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -199,8 +193,11 @@ export const getRawMessageContent: API.OperationMethod<
   input: GetRawMessageContentRequest,
   output: GetRawMessageContentResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRawMessageContent",
 }));
+
 export type PutRawMessageContentError =
   | InvalidContentLocation
   | MessageFrozen
@@ -234,5 +231,7 @@ export const putRawMessageContent: API.OperationMethod<
     MessageRejected,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRawMessageContent",
 }));

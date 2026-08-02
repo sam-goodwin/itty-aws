@@ -1,7 +1,62 @@
 {
-  "errors": {
-    "PipelineNotExists": [
-      { "code": 1000 }
-    ]
-  }
+  "description": "Align pipelines#Update with distilled cloudflare/pipelines updatePipeline",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#Update",
+      "path": "/shapes/com.cloudflare.pipelines#UpdatePipeline"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#UpdateRequest",
+      "path": "/shapes/com.cloudflare.pipelines#UpdatePipelineRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#UpdatePipeline/input/target",
+      "value": "com.cloudflare.pipelines#UpdatePipelineRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#UpdateResponse",
+      "path": "/shapes/com.cloudflare.pipelines#UpdatePipelineResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#UpdatePipeline/output/target",
+      "value": "com.cloudflare.pipelines#UpdatePipelineResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#PipelineNotExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#UpdatePipeline/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pipelines#PipelineNotExists"
+        }
+      ]
+    }
+  ]
 }

@@ -2,16 +2,15 @@
  * `any`-collapsing re-export of `effect/Schema` for generated service files.
  *
  * This is the single, shared definition consumed by every code-generated
- * provider package (AWS, Azure, Cloudflare, GCP, Kubernetes, …) via
- * `@distilled.cloud/core/schema`. Do not copy it into individual packages.
+ * provider package via `@distilled.cloud/core/schema`. Do not copy it into
+ * individual packages.
  *
  * Every real TYPE (`Schema`, `Codec`, `Top`, …) is re-exported untouched, so
- * the `Schema.Schema<Foo>` / `Schema.Codec<Foo>` annotations on generated
- * consts (and the public `.d.ts`) stay precise. The schema *construction
- * surface* (`Struct`, `optional`, `suspend`, …) and the leaf scalar schemas are
- * retyped to `any`, so the compiler instantiates none of the heavy Schema
- * generics while building a service file — the explicit annotations carry the
- * real types.
+ * the `Schema.Schema<Foo>` annotations on generated consts (and the public
+ * `.d.ts`) stay precise. The schema *construction surface* (`Struct`,
+ * `optional`, `suspend`, …) and the leaf scalar schemas are retyped to `any`,
+ * so the compiler instantiates none of the heavy Schema generics while
+ * building a service file — the explicit annotations carry the real types.
  *
  * Overriding a *value* export never affects the same-named *type* export (they
  * live in separate namespaces and continue to flow through `export *`), so
