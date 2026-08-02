@@ -1,0 +1,275 @@
+{
+  "description": "Hand-authored declarative export reconciliation returned by dispatch Worker uploads",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationRenamedItem",
+      "value": {
+        "type": "structure",
+        "members": {
+          "from": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "to": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationRenamedList",
+      "value": {
+        "type": "list",
+        "member": {
+          "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationRenamedItem"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferredPhase",
+      "value": {
+        "type": "enum",
+        "members": {
+          "COMMITTED": {
+            "target": "smithy.api#Unit",
+            "traits": {
+              "smithy.api#enumValue": "committed"
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferredItem",
+      "value": {
+        "type": "structure",
+        "members": {
+          "class": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "to": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "phase": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferredPhase",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferredList",
+      "value": {
+        "type": "list",
+        "member": {
+          "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferredItem"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem",
+      "value": {
+        "type": "structure",
+        "members": {
+          "class": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "from": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferPendingList",
+      "value": {
+        "type": "list",
+        "member": {
+          "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationWarning",
+      "value": {
+        "type": "structure",
+        "members": {
+          "class": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "scenario": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "message": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "namespace_id": {
+            "target": "smithy.api#String"
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationWarningsList",
+      "value": {
+        "type": "list",
+        "member": {
+          "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationWarning"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationInfo",
+      "value": {
+        "type": "structure",
+        "members": {
+          "class": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "scenario": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "message": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "namespace_id": {
+            "target": "smithy.api#String"
+          },
+          "referencing_scripts": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptMetadataStringList"
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationInfoList",
+      "value": {
+        "type": "list",
+        "member": {
+          "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationInfo"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliation",
+      "value": {
+        "type": "structure",
+        "members": {
+          "created": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptMetadataStringList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "updated": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptMetadataStringList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "deleted": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptMetadataStringList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "renamed": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationRenamedList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "transferred": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferredList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "transfer_pending": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationTransferPendingList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "warnings": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationWarningsList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "info": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliationInfoList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "removable_entries": {
+            "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptMetadataStringList",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptResponse/members/exports_reconciliation",
+      "value": {
+        "target": "com.cloudflare.workers_for_platforms#PutDispatchNamespaceScriptExportsReconciliation",
+        "traits": {
+          "smithy.api#documentation": "Summary of the declarative exports reconciliation performed by this upload."
+        }
+      }
+    }
+  ]
+}

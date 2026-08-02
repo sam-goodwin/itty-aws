@@ -9195,6 +9195,168 @@ export type DispatchNamespacesScriptsUpdateResponseUsageModel =
 export const DispatchNamespacesScriptsUpdateResponseUsageModel =
   /*@__PURE__*/ S.String;
 
+export interface PutDispatchNamespaceScriptExportsReconciliationRenamedItem {
+  from: string;
+  to: string;
+}
+export const PutDispatchNamespaceScriptExportsReconciliationRenamedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.String,
+      to: S.String,
+    }),
+  ).annotate({
+    identifier: "PutDispatchNamespaceScriptExportsReconciliationRenamedItem",
+  }) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationRenamedItem>;
+
+export type PutDispatchNamespaceScriptExportsReconciliationRenamedList =
+  Array<PutDispatchNamespaceScriptExportsReconciliationRenamedItem>;
+export const PutDispatchNamespaceScriptExportsReconciliationRenamedList =
+  /*@__PURE__*/ S.Array(
+    PutDispatchNamespaceScriptExportsReconciliationRenamedItem,
+  ) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationRenamedList>;
+
+export type PutDispatchNamespaceScriptExportsReconciliationTransferredPhase =
+  "committed";
+export const PutDispatchNamespaceScriptExportsReconciliationTransferredPhase =
+  /*@__PURE__*/ S.String;
+
+export interface PutDispatchNamespaceScriptExportsReconciliationTransferredItem {
+  class: string;
+  to: string;
+  phase: PutDispatchNamespaceScriptExportsReconciliationTransferredPhase;
+}
+export const PutDispatchNamespaceScriptExportsReconciliationTransferredItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      class: S.String,
+      to: S.String,
+      phase: PutDispatchNamespaceScriptExportsReconciliationTransferredPhase,
+    }),
+  ).annotate({
+    identifier:
+      "PutDispatchNamespaceScriptExportsReconciliationTransferredItem",
+  }) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationTransferredItem>;
+
+export type PutDispatchNamespaceScriptExportsReconciliationTransferredList =
+  Array<PutDispatchNamespaceScriptExportsReconciliationTransferredItem>;
+export const PutDispatchNamespaceScriptExportsReconciliationTransferredList =
+  /*@__PURE__*/ S.Array(
+    PutDispatchNamespaceScriptExportsReconciliationTransferredItem,
+  ) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationTransferredList>;
+
+export interface PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem {
+  class: string;
+  from: string;
+}
+export const PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      class: S.String,
+      from: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem",
+  }) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem>;
+
+export type PutDispatchNamespaceScriptExportsReconciliationTransferPendingList =
+  Array<PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem>;
+export const PutDispatchNamespaceScriptExportsReconciliationTransferPendingList =
+  /*@__PURE__*/ S.Array(
+    PutDispatchNamespaceScriptExportsReconciliationTransferPendingItem,
+  ) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationTransferPendingList>;
+
+export interface PutDispatchNamespaceScriptExportsReconciliationWarning {
+  class: string;
+  scenario: string;
+  message: string;
+  namespaceId?: string | null;
+}
+export const PutDispatchNamespaceScriptExportsReconciliationWarning =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      class: S.String,
+      scenario: S.String,
+      message: S.String,
+      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+    }),
+  ).annotate({
+    identifier: "PutDispatchNamespaceScriptExportsReconciliationWarning",
+  }) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationWarning>;
+
+export type PutDispatchNamespaceScriptExportsReconciliationWarningsList =
+  Array<PutDispatchNamespaceScriptExportsReconciliationWarning>;
+export const PutDispatchNamespaceScriptExportsReconciliationWarningsList =
+  /*@__PURE__*/ S.Array(
+    PutDispatchNamespaceScriptExportsReconciliationWarning,
+  ) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationWarningsList>;
+
+export interface PutDispatchNamespaceScriptExportsReconciliationInfo {
+  class: string;
+  scenario: string;
+  message: string;
+  namespaceId?: string | null;
+  referencingScripts?: PutDispatchNamespaceScriptMetadataStringList | null;
+}
+export const PutDispatchNamespaceScriptExportsReconciliationInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      class: S.String,
+      scenario: S.String,
+      message: S.String,
+      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+      referencingScripts: S.optional(
+        S.NullOr(PutDispatchNamespaceScriptMetadataStringList).pipe(
+          T.Body("referencing_scripts"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "PutDispatchNamespaceScriptExportsReconciliationInfo",
+  }) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationInfo>;
+
+export type PutDispatchNamespaceScriptExportsReconciliationInfoList =
+  Array<PutDispatchNamespaceScriptExportsReconciliationInfo>;
+export const PutDispatchNamespaceScriptExportsReconciliationInfoList =
+  /*@__PURE__*/ S.Array(
+    PutDispatchNamespaceScriptExportsReconciliationInfo,
+  ) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliationInfoList>;
+
+export interface PutDispatchNamespaceScriptExportsReconciliation {
+  created: PutDispatchNamespaceScriptMetadataStringList;
+  updated: PutDispatchNamespaceScriptMetadataStringList;
+  deleted: PutDispatchNamespaceScriptMetadataStringList;
+  renamed: PutDispatchNamespaceScriptExportsReconciliationRenamedList;
+  transferred: PutDispatchNamespaceScriptExportsReconciliationTransferredList;
+  transferPending: PutDispatchNamespaceScriptExportsReconciliationTransferPendingList;
+  warnings: PutDispatchNamespaceScriptExportsReconciliationWarningsList;
+  info: PutDispatchNamespaceScriptExportsReconciliationInfoList;
+  removableEntries: PutDispatchNamespaceScriptMetadataStringList;
+}
+export const PutDispatchNamespaceScriptExportsReconciliation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      created: PutDispatchNamespaceScriptMetadataStringList,
+      updated: PutDispatchNamespaceScriptMetadataStringList,
+      deleted: PutDispatchNamespaceScriptMetadataStringList,
+      renamed: PutDispatchNamespaceScriptExportsReconciliationRenamedList,
+      transferred:
+        PutDispatchNamespaceScriptExportsReconciliationTransferredList,
+      transferPending:
+        PutDispatchNamespaceScriptExportsReconciliationTransferPendingList.pipe(
+          T.Body("transfer_pending"),
+        ),
+      warnings: PutDispatchNamespaceScriptExportsReconciliationWarningsList,
+      info: PutDispatchNamespaceScriptExportsReconciliationInfoList,
+      removableEntries: PutDispatchNamespaceScriptMetadataStringList.pipe(
+        T.Body("removable_entries"),
+      ),
+    }),
+  ).annotate({
+    identifier: "PutDispatchNamespaceScriptExportsReconciliation",
+  }) as any as S.Schema<PutDispatchNamespaceScriptExportsReconciliation>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptResponse {
   startupTimeMs: number;
@@ -9242,6 +9404,8 @@ export interface PutDispatchNamespaceScriptResponse {
   tailConsumers?: DispatchNamespacesScriptsUpdateResponseTailConsumersList | null;
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsUpdateResponseUsageModel | null;
+  /** Summary of the declarative exports reconciliation performed by this upload. */
+  exportsReconciliation?: PutDispatchNamespaceScriptExportsReconciliation | null;
 }
 export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9305,6 +9469,11 @@ export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
     usageModel: S.optional(
       S.NullOr(DispatchNamespacesScriptsUpdateResponseUsageModel).pipe(
         T.Body("usage_model"),
+      ),
+    ),
+    exportsReconciliation: S.optional(
+      S.NullOr(PutDispatchNamespaceScriptExportsReconciliation).pipe(
+        T.Body("exports_reconciliation"),
       ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),

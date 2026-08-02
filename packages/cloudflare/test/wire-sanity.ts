@@ -289,8 +289,24 @@ await Effect.runPromise(
       "nested reconciliation wire names decode",
     );
 
-    script = [() => envelope({ startup_time_ms: 0 })];
-    yield* provide(
+    script = [
+      () =>
+        envelope({
+          startup_time_ms: 0,
+          exports_reconciliation: {
+            created: ["Counter"],
+            updated: [],
+            deleted: [],
+            renamed: [],
+            transferred: [],
+            transfer_pending: [],
+            warnings: [],
+            info: [],
+            removable_entries: ["OldCounter"],
+          },
+        }),
+    ];
+    const dispatchWorker = yield* provide(
       putDispatchNamespaceScript({
         accountId: "account",
         dispatchNamespace: "namespace",
@@ -328,6 +344,12 @@ await Effect.runPromise(
           },
         }),
       `dispatch exports preserve map keys and wire names (${dispatchMetadata})`,
+    );
+    assert(
+      dispatchWorker.exportsReconciliation?.created[0] === "Counter" &&
+        dispatchWorker.exportsReconciliation.removableEntries[0] ===
+          "OldCounter",
+      "dispatch exports_reconciliation decodes",
     );
 
     // (e) — live export state decodes from both settings APIs --------------
