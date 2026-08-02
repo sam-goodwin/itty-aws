@@ -1,17 +1,29 @@
 {
   "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "InvalidWorkerScript": [{ "code": 10068 }],
+    "InvalidRoute": [
+      {
+        "code": 7003
+      }
+    ],
+    "InvalidWorkerScript": [
+      {
+        "code": 10068
+      }
+    ],
     "InternalServerError": [
       {
         "code": 10002,
-        "message": { "includes": "An unknown error has occurred" }
+        "message": {
+          "includes": "An unknown error has occurred"
+        }
       }
     ],
     "DurableObjectMustBeSqlite": [
       {
         "code": 10074,
-        "message": { "includes": "not a SQLite Durable Object" }
+        "message": {
+          "includes": "not a SQLite Durable Object"
+        }
       }
     ],
     "DuplicateMigrationTarget": [
@@ -22,28 +34,80 @@
         }
       }
     ],
-    "ScriptStartupError": [{ "code": 10021 }],
+    "ScriptStartupError": [
+      {
+        "code": 10021
+      }
+    ],
     "ScriptModuleNotFound": [
       {
         "code": 10021,
-        "message": { "includes": "No such module" }
+        "message": {
+          "includes": "No such module"
+        }
       }
     ],
-    "SecretsStoreBindingNotFound": [{ "code": 10182 }],
-    "KVNamespaceNotFound": [{ "code": 10041 }],
-    "R2BucketNotFound": [{ "code": 10085 }],
-    "D1DatabaseNotFound": [{ "code": 10181 }],
-    "QueueNotFound": [{ "code": 11000 }],
-    "ServiceBindingNotFound": [{ "code": 10144 }],
-    "DurableObjectClassNotFound": [{ "code": 10061 }],
-    "HyperdriveConfigNotFound": [{ "code": 10157 }],
-    "VectorizeIndexNotFound": [{ "code": 10159 }],
-    "DispatchNamespaceNotFound": [{ "code": 100119 }],
-    "MtlsCertificateNotFound": [{ "code": 100143 }]
+    "SecretsStoreBindingNotFound": [
+      {
+        "code": 10182
+      }
+    ],
+    "KVNamespaceNotFound": [
+      {
+        "code": 10041
+      }
+    ],
+    "R2BucketNotFound": [
+      {
+        "code": 10085
+      }
+    ],
+    "D1DatabaseNotFound": [
+      {
+        "code": 10181
+      }
+    ],
+    "QueueNotFound": [
+      {
+        "code": 11000
+      }
+    ],
+    "ServiceBindingNotFound": [
+      {
+        "code": 10144
+      }
+    ],
+    "DurableObjectClassNotFound": [
+      {
+        "code": 10061
+      }
+    ],
+    "HyperdriveConfigNotFound": [
+      {
+        "code": 10157
+      }
+    ],
+    "VectorizeIndexNotFound": [
+      {
+        "code": 10159
+      }
+    ],
+    "DispatchNamespaceNotFound": [
+      {
+        "code": 100119
+      }
+    ],
+    "MtlsCertificateNotFound": [
+      {
+        "code": 100143
+      }
+    ]
   },
   "request": {
     "properties": {
-      "metadata.bindings[].json": { "type": "unknown" },
+      "metadata.bindings[].json": {
+        "type": "unknown"
+      },
       "metadata.bindings[?type=durable_object_namespace].class_name": {
         "optional": false
       },
@@ -58,12 +122,18 @@
               {
                 "name": "name",
                 "required": true,
-                "type": { "kind": "primitive", "value": "string" }
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               },
               {
                 "name": "type",
                 "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
+                "type": {
+                  "kind": "literal",
+                  "value": "worker_loader"
+                }
               }
             ]
           },
@@ -73,17 +143,26 @@
               {
                 "name": "name",
                 "required": true,
-                "type": { "kind": "primitive", "value": "string" }
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               },
               {
                 "name": "type",
                 "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
+                "type": {
+                  "kind": "literal",
+                  "value": "artifacts"
+                }
               },
               {
                 "name": "namespace",
                 "required": true,
-                "type": { "kind": "primitive", "value": "string" }
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               }
             ]
           },
@@ -93,17 +172,26 @@
               {
                 "name": "name",
                 "required": true,
-                "type": { "kind": "primitive", "value": "string" }
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               },
               {
                 "name": "type",
                 "required": true,
-                "type": { "kind": "literal", "value": "ratelimit" }
+                "type": {
+                  "kind": "literal",
+                  "value": "ratelimit"
+                }
               },
               {
                 "name": "namespace_id",
                 "required": true,
-                "type": { "kind": "primitive", "value": "string" }
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               },
               {
                 "name": "simple",
@@ -114,14 +202,41 @@
                     {
                       "name": "limit",
                       "required": true,
-                      "type": { "kind": "primitive", "value": "number" }
+                      "type": {
+                        "kind": "primitive",
+                        "value": "number"
+                      }
                     },
                     {
                       "name": "period",
                       "required": true,
-                      "type": { "kind": "primitive", "value": "number" }
+                      "type": {
+                        "kind": "primitive",
+                        "value": "number"
+                      }
                     }
                   ]
+                }
+              }
+            ]
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "name",
+                "required": true,
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
+              },
+              {
+                "name": "type",
+                "required": true,
+                "type": {
+                  "kind": "literal",
+                  "value": "stream"
                 }
               }
             ]
@@ -137,7 +252,10 @@
             "properties": [
               {
                 "name": "class_name",
-                "type": { "kind": "primitive", "value": "string" },
+                "type": {
+                  "kind": "primitive",
+                  "value": "string"
+                },
                 "required": true
               }
             ]
@@ -152,25 +270,37 @@
             {
               "name": "enabled",
               "required": true,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              }
             },
             {
               "name": "head_sampling_rate",
               "required": false,
-              "type": { "kind": "primitive", "value": "number" }
+              "type": {
+                "kind": "primitive",
+                "value": "number"
+              }
             },
             {
               "name": "destinations",
               "required": false,
               "type": {
                 "kind": "array",
-                "elementType": { "kind": "primitive", "value": "string" }
+                "elementType": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               }
             },
             {
               "name": "persist",
               "required": false,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              }
             }
           ]
         }
@@ -184,12 +314,18 @@
             {
               "name": "enabled",
               "required": false,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              }
             },
             {
               "name": "cross_version_cache",
               "required": false,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              }
             }
           ]
         }
@@ -206,25 +342,37 @@
             {
               "name": "enabled",
               "required": true,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              }
             },
             {
               "name": "head_sampling_rate",
               "required": false,
-              "type": { "kind": "primitive", "value": "number" }
+              "type": {
+                "kind": "primitive",
+                "value": "number"
+              }
             },
             {
               "name": "destinations",
               "required": false,
               "type": {
                 "kind": "array",
-                "elementType": { "kind": "primitive", "value": "string" }
+                "elementType": {
+                  "kind": "primitive",
+                  "value": "string"
+                }
               }
             },
             {
               "name": "persist",
               "required": false,
-              "type": { "kind": "primitive", "value": "boolean" }
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              }
             }
           ]
         }

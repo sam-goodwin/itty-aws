@@ -6489,6 +6489,17 @@ const PutScriptRequestMetadataBinding37 = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37>;
 
+interface PutScriptRequestMetadataBinding38 {
+  name: string;
+  type: "stream";
+}
+const PutScriptRequestMetadataBinding38 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("stream"),
+  }),
+) as unknown as Schema.Codec<PutScriptRequestMetadataBinding38>;
+
 interface PutScriptRequestMetadataCache {
   enabled?: boolean | null;
   crossVersionCache?: boolean | null;
@@ -6677,6 +6688,7 @@ interface Metadata2 {
             namespaceId: string;
             simple: { limit: number; period: number };
           }
+        | { name: string; type: "stream" }
       )[]
     | null;
   /** Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker. */
@@ -6835,6 +6847,7 @@ const Metadata2 = /*@__PURE__*/ Schema.suspend(() =>
             WorkersBindingKindVersionMetadata,
             WorkersBindingKindVPCNetwork,
             GetBetaWorkerVersionResponseBinding35,
+            PutScriptRequestMetadataBinding38,
           ]),
         ),
         Schema.Null,
@@ -7378,18 +7391,6 @@ const CreateScriptEdgePreviewRequestMetadataBinding16 =
       ),
     }),
   ) as unknown as Schema.Codec<CreateScriptEdgePreviewRequestMetadataBinding16>;
-
-interface CreateScriptEdgePreviewRequestMetadataBinding24 {
-  type: "stream";
-  name: string;
-}
-const CreateScriptEdgePreviewRequestMetadataBinding24 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.Literal("stream"),
-      name: Schema.String,
-    }),
-  ) as unknown as Schema.Codec<CreateScriptEdgePreviewRequestMetadataBinding24>;
 
 interface CreateScriptEdgePreviewRequestMetadataBinding29 {
   type: "logfwdr";
@@ -8012,7 +8013,7 @@ const CreateScriptEdgePreviewRequestMetadata = /*@__PURE__*/ Schema.suspend(
               CreateScriptEdgePreviewRequestMetadataBinding11,
               CreateScriptEdgePreviewRequestMetadataBinding15,
               WorkersBindingKindSendEmail,
-              CreateScriptEdgePreviewRequestMetadataBinding24,
+              PutScriptRequestMetadataBinding38,
               WorkersBindingKindMedia,
               WorkersBindingKindVersionMetadata,
               WorkersBindingKindAssets,
@@ -14725,6 +14726,7 @@ export interface PutScriptRequest {
           namespaceId: string;
           simple: { limit: number; period: number };
         }
+      | { name: string; type: "stream" }
     )[];
     bodyPart?: string;
     compatibilityDate?: string;
