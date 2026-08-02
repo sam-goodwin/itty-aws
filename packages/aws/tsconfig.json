@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "src/**/*.json"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.json"
+  ],
   "compilerOptions": {
     // The base config is noEmit (typecheck-style); this package must emit
     // lib/ — consumers' bundlers (e.g. alchemy's Lambda bundling) resolve
@@ -9,10 +12,10 @@
     "noEmit": false,
     "outDir": "./lib",
     "rootDir": "./src",
-    "resolveJsonModule": true,
-    "noCheck": true,
     "paths": {
-      "@distilled.cloud/core/*": ["../core/src/*"]
+      "@distilled.cloud/core/*": [
+        "../core/src/*"
+      ]
     }
   },
   "references": [
