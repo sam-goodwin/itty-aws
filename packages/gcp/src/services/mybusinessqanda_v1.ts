@@ -440,7 +440,8 @@ export const listLocationsQuestions: API.PaginatedOperationMethod<
   ListLocationsQuestionsRequest,
   ListQuestionsResponse,
   ListLocationsQuestionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListQuestionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsQuestionsRequest,
   output: ListQuestionsResponse,
@@ -451,7 +452,7 @@ export const listLocationsQuestions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLocationsQuestionsAnswersError =
   | NotFound
@@ -462,7 +463,8 @@ export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
   ListLocationsQuestionsAnswersRequest,
   ListAnswersResponse,
   ListLocationsQuestionsAnswersError,
-  GcpOpContext
+  GcpOpContext,
+  ListAnswersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsQuestionsAnswersRequest,
   output: ListAnswersResponse,
@@ -473,7 +475,7 @@ export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchLocationsQuestionsError =
   | NotFound

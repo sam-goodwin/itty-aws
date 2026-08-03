@@ -689,27 +689,7 @@ export const listSlackChannelConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListSlackChannelConfigurations",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListSlackChannelConfigurationsRequest,
-  ListSlackChannelConfigurationsResult,
-  ListSlackChannelConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    ListSlackChannelConfigurationsResult,
-    ListSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSlackWorkspaceConfigurationsError =
   | AccessDeniedException
@@ -746,27 +726,7 @@ export const listSlackWorkspaceConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListSlackWorkspaceConfigurations",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-})) as any as API.OperationMethod<
-  ListSlackWorkspaceConfigurationsRequest,
-  ListSlackWorkspaceConfigurationsResult,
-  ListSlackWorkspaceConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSlackWorkspaceConfigurationsRequest,
-  ) => stream.Stream<
-    ListSlackWorkspaceConfigurationsResult,
-    ListSlackWorkspaceConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSlackWorkspaceConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSlackWorkspaceConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutAccountAliasError =
   | AccessDeniedException

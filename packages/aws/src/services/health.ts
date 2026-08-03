@@ -1149,27 +1149,7 @@ export const describeAffectedAccountsForOrganization: API.OperationMethod<
     items: "affectedAccounts",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAffectedAccountsForOrganizationRequest,
-  DescribeAffectedAccountsForOrganizationResponse,
-  DescribeAffectedAccountsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAffectedAccountsForOrganizationRequest,
-  ) => stream.Stream<
-    DescribeAffectedAccountsForOrganizationResponse,
-    DescribeAffectedAccountsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAffectedAccountsForOrganizationRequest,
-  ) => stream.Stream<
-    AccountId,
-    DescribeAffectedAccountsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeAffectedEntitiesError =
   | InvalidPaginationToken
@@ -1222,27 +1202,7 @@ export const describeAffectedEntities: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAffectedEntitiesRequest,
-  DescribeAffectedEntitiesResponse,
-  DescribeAffectedEntitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAffectedEntitiesRequest,
-  ) => stream.Stream<
-    DescribeAffectedEntitiesResponse,
-    DescribeAffectedEntitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAffectedEntitiesRequest,
-  ) => stream.Stream<
-    AffectedEntity,
-    DescribeAffectedEntitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeAffectedEntitiesForOrganizationError =
   | InvalidPaginationToken
@@ -1298,27 +1258,7 @@ export const describeAffectedEntitiesForOrganization: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAffectedEntitiesForOrganizationRequest,
-  DescribeAffectedEntitiesForOrganizationResponse,
-  DescribeAffectedEntitiesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAffectedEntitiesForOrganizationRequest,
-  ) => stream.Stream<
-    DescribeAffectedEntitiesForOrganizationResponse,
-    DescribeAffectedEntitiesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAffectedEntitiesForOrganizationRequest,
-  ) => stream.Stream<
-    AffectedEntity,
-    DescribeAffectedEntitiesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEntityAggregatesError = CommonErrors;
 /**
@@ -1399,27 +1339,7 @@ export const describeEventAggregates: API.OperationMethod<
     items: "eventAggregates",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventAggregatesRequest,
-  DescribeEventAggregatesResponse,
-  DescribeEventAggregatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventAggregatesRequest,
-  ) => stream.Stream<
-    DescribeEventAggregatesResponse,
-    DescribeEventAggregatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventAggregatesRequest,
-  ) => stream.Stream<
-    EventAggregate,
-    DescribeEventAggregatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventDetailsError = UnsupportedLocale | CommonErrors;
 /**
@@ -1552,27 +1472,7 @@ export const describeEvents: API.OperationMethod<
     items: "events",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventsRequest,
-  DescribeEventsResponse,
-  DescribeEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsRequest,
-  ) => stream.Stream<
-    DescribeEventsResponse,
-    DescribeEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsRequest,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventsForOrganizationError =
   | InvalidPaginationToken
@@ -1636,27 +1536,7 @@ export const describeEventsForOrganization: API.OperationMethod<
     items: "events",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventsForOrganizationRequest,
-  DescribeEventsForOrganizationResponse,
-  DescribeEventsForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsForOrganizationRequest,
-  ) => stream.Stream<
-    DescribeEventsForOrganizationResponse,
-    DescribeEventsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsForOrganizationRequest,
-  ) => stream.Stream<
-    OrganizationEvent,
-    DescribeEventsForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventTypesError =
   | InvalidPaginationToken
@@ -1704,27 +1584,7 @@ export const describeEventTypes: API.OperationMethod<
     items: "eventTypes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEventTypesRequest,
-  DescribeEventTypesResponse,
-  DescribeEventTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventTypesRequest,
-  ) => stream.Stream<
-    DescribeEventTypesResponse,
-    DescribeEventTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventTypesRequest,
-  ) => stream.Stream<
-    EventType,
-    DescribeEventTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeHealthServiceStatusForOrganizationError = CommonErrors;
 /**

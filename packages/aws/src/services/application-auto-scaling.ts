@@ -1452,27 +1452,7 @@ export const describeScalableTargets: API.OperationMethod<
     items: "ScalableTargets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeScalableTargetsRequest,
-  DescribeScalableTargetsResponse,
-  DescribeScalableTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalableTargetsRequest,
-  ) => stream.Stream<
-    DescribeScalableTargetsResponse,
-    DescribeScalableTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalableTargetsRequest,
-  ) => stream.Stream<
-    ScalableTarget,
-    DescribeScalableTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeScalingActivitiesError =
   | ConcurrentUpdateException
@@ -1527,27 +1507,7 @@ export const describeScalingActivities: API.OperationMethod<
     items: "ScalingActivities",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeScalingActivitiesRequest,
-  DescribeScalingActivitiesResponse,
-  DescribeScalingActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalingActivitiesRequest,
-  ) => stream.Stream<
-    DescribeScalingActivitiesResponse,
-    DescribeScalingActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalingActivitiesRequest,
-  ) => stream.Stream<
-    ScalingActivity,
-    DescribeScalingActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeScalingPoliciesError =
   | ConcurrentUpdateException
@@ -1603,27 +1563,7 @@ export const describeScalingPolicies: API.OperationMethod<
     items: "ScalingPolicies",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeScalingPoliciesRequest,
-  DescribeScalingPoliciesResponse,
-  DescribeScalingPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalingPoliciesRequest,
-  ) => stream.Stream<
-    DescribeScalingPoliciesResponse,
-    DescribeScalingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalingPoliciesRequest,
-  ) => stream.Stream<
-    ScalingPolicy,
-    DescribeScalingPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeScheduledActionsError =
   | ConcurrentUpdateException
@@ -1677,27 +1617,7 @@ export const describeScheduledActions: API.OperationMethod<
     items: "ScheduledActions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeScheduledActionsRequest,
-  DescribeScheduledActionsResponse,
-  DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledActionsRequest,
-  ) => stream.Stream<
-    DescribeScheduledActionsResponse,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledActionsRequest,
-  ) => stream.Stream<
-    ScheduledAction,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPredictiveScalingForecastError =
   | InternalServiceException

@@ -956,7 +956,8 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
   ListProjectsReleasesRequest,
   ListReleasesResponse,
   ListProjectsReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsReleasesRequest,
   output: ListReleasesResponse,
@@ -967,7 +968,7 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRulesetsError = NotFound | Forbidden | GcpOpError;
 /** List `Ruleset` metadata only and optionally filter the results by `Ruleset` name. The full `Source` contents of a `Ruleset` may be retrieved with GetRuleset. */
@@ -975,7 +976,8 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
   ListProjectsRulesetsRequest,
   ListRulesetsResponse,
   ListProjectsRulesetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListRulesetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRulesetsRequest,
   output: ListRulesetsResponse,
@@ -986,7 +988,7 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsReleasesError =
   | NotFound

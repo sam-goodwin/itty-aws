@@ -4973,7 +4973,8 @@ export const listDebugDatasourcesItemsUnmappedids: API.PaginatedOperationMethod<
   ListDebugDatasourcesItemsUnmappedidsRequest,
   ListUnmappedIdentitiesResponse,
   ListDebugDatasourcesItemsUnmappedidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUnmappedIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDebugDatasourcesItemsUnmappedidsRequest,
   output: ListUnmappedIdentitiesResponse,
@@ -4984,7 +4985,7 @@ export const listDebugDatasourcesItemsUnmappedids: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDebugIdentitysourcesUnmappedidsError =
   | NotFound
@@ -4995,7 +4996,8 @@ export const listDebugIdentitysourcesUnmappedids: API.PaginatedOperationMethod<
   ListDebugIdentitysourcesUnmappedidsRequest,
   ListUnmappedIdentitiesResponse,
   ListDebugIdentitysourcesUnmappedidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUnmappedIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDebugIdentitysourcesUnmappedidsRequest,
   output: ListUnmappedIdentitiesResponse,
@@ -5006,7 +5008,7 @@ export const listDebugIdentitysourcesUnmappedids: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListForunmappedidentityDebugIdentitysourcesItemsError =
   | NotFound
@@ -5017,7 +5019,8 @@ export const listForunmappedidentityDebugIdentitysourcesItems: API.PaginatedOper
   ListForunmappedidentityDebugIdentitysourcesItemsRequest,
   ListItemNamesForUnmappedIdentityResponse,
   ListForunmappedidentityDebugIdentitysourcesItemsError,
-  GcpOpContext
+  GcpOpContext,
+  ListItemNamesForUnmappedIdentityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForunmappedidentityDebugIdentitysourcesItemsRequest,
   output: ListItemNamesForUnmappedIdentityResponse,
@@ -5028,7 +5031,7 @@ export const listForunmappedidentityDebugIdentitysourcesItems: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListIndexingDatasourcesItemsError =
   | NotFound
@@ -5039,7 +5042,8 @@ export const listIndexingDatasourcesItems: API.PaginatedOperationMethod<
   ListIndexingDatasourcesItemsRequest,
   ListItemsResponse,
   ListIndexingDatasourcesItemsError,
-  GcpOpContext
+  GcpOpContext,
+  Item
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexingDatasourcesItemsRequest,
   output: ListItemsResponse,
@@ -5051,7 +5055,7 @@ export const listIndexingDatasourcesItems: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsLroError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -5059,7 +5063,8 @@ export const listOperationsLro: API.PaginatedOperationMethod<
   ListOperationsLroRequest,
   ListOperationsResponse,
   ListOperationsLroError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsLroRequest,
   output: ListOperationsResponse,
@@ -5070,7 +5075,7 @@ export const listOperationsLro: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListQuerySourcesError = NotFound | Forbidden | GcpOpError;
 /** Returns list of sources that user can use for Search and Suggest APIs. **Note:** This API requires a standard end user account to execute. A service account can't perform Query API requests directly; to use a service account to perform queries, set up [Google Workspace domain-wide delegation of authority](https://developers.google.com/workspace/cloud-search/docs/guides/delegation/). */
@@ -5078,7 +5083,8 @@ export const listQuerySources: API.PaginatedOperationMethod<
   ListQuerySourcesRequest,
   ListQuerySourcesResponse,
   ListQuerySourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListQuerySourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuerySourcesRequest,
   output: ListQuerySourcesResponse,
@@ -5089,7 +5095,7 @@ export const listQuerySources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSettingsDatasourcesError = NotFound | Forbidden | GcpOpError;
 /** Lists datasources. **Note:** This API requires an admin account to execute. */
@@ -5097,7 +5103,8 @@ export const listSettingsDatasources: API.PaginatedOperationMethod<
   ListSettingsDatasourcesRequest,
   ListDataSourceResponse,
   ListSettingsDatasourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDataSourceResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingsDatasourcesRequest,
   output: ListDataSourceResponse,
@@ -5108,7 +5115,7 @@ export const listSettingsDatasources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSettingsSearchapplicationsError =
   | NotFound
@@ -5119,7 +5126,8 @@ export const listSettingsSearchapplications: API.PaginatedOperationMethod<
   ListSettingsSearchapplicationsRequest,
   ListSearchApplicationsResponse,
   ListSettingsSearchapplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSearchApplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingsSearchapplicationsRequest,
   output: ListSearchApplicationsResponse,
@@ -5130,7 +5138,7 @@ export const listSettingsSearchapplications: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchSettingsDatasourcesError =
   | NotFound

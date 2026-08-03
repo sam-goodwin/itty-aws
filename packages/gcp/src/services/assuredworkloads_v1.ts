@@ -2105,7 +2105,8 @@ export const analyzeWorkloadMoveOrganizationsLocationsWorkloads: API.PaginatedOp
   AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest,
   GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse,
   AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest,
   output: GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse,
@@ -2116,7 +2117,7 @@ export const analyzeWorkloadMoveOrganizationsLocationsWorkloads: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ApplyOrganizationsLocationsWorkloadsUpdatesError =
   | NotFound
@@ -2318,7 +2319,8 @@ export const listFoldersLocationsDbFindingSummaries: API.PaginatedOperationMetho
   ListFoldersLocationsDbFindingSummariesRequest,
   GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse,
   ListFoldersLocationsDbFindingSummariesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsDbFindingSummariesRequest,
   output: GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse,
@@ -2329,7 +2331,7 @@ export const listFoldersLocationsDbFindingSummaries: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsDbFindingSummariesError =
   | NotFound
@@ -2340,7 +2342,8 @@ export const listOrganizationsLocationsDbFindingSummaries: API.PaginatedOperatio
   ListOrganizationsLocationsDbFindingSummariesRequest,
   GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse,
   ListOrganizationsLocationsDbFindingSummariesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDbFindingSummariesRequest,
   output: GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse,
@@ -2351,7 +2354,7 @@ export const listOrganizationsLocationsDbFindingSummaries: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsOperationsError =
   | NotFound
@@ -2362,7 +2365,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOrganizationsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2373,7 +2377,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsWorkloadsError =
   | NotFound
@@ -2384,7 +2388,8 @@ export const listOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
   ListOrganizationsLocationsWorkloadsRequest,
   GoogleCloudAssuredworkloadsV1ListWorkloadsResponse,
   ListOrganizationsLocationsWorkloadsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1ListWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsRequest,
   output: GoogleCloudAssuredworkloadsV1ListWorkloadsResponse,
@@ -2395,7 +2400,7 @@ export const listOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsWorkloadsUpdatesError =
   | NotFound
@@ -2406,7 +2411,8 @@ export const listOrganizationsLocationsWorkloadsUpdates: API.PaginatedOperationM
   ListOrganizationsLocationsWorkloadsUpdatesRequest,
   GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse,
   ListOrganizationsLocationsWorkloadsUpdatesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsUpdatesRequest,
   output: GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse,
@@ -2417,7 +2423,7 @@ export const listOrganizationsLocationsWorkloadsUpdates: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsWorkloadsViolationsError =
   | NotFound
@@ -2428,7 +2434,8 @@ export const listOrganizationsLocationsWorkloadsViolations: API.PaginatedOperati
   ListOrganizationsLocationsWorkloadsViolationsRequest,
   GoogleCloudAssuredworkloadsV1ListViolationsResponse,
   ListOrganizationsLocationsWorkloadsViolationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1ListViolationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsViolationsRequest,
   output: GoogleCloudAssuredworkloadsV1ListViolationsResponse,
@@ -2439,7 +2446,7 @@ export const listOrganizationsLocationsWorkloadsViolations: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDbFindingSummariesError =
   | NotFound
@@ -2450,7 +2457,8 @@ export const listProjectsLocationsDbFindingSummaries: API.PaginatedOperationMeth
   ListProjectsLocationsDbFindingSummariesRequest,
   GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse,
   ListProjectsLocationsDbFindingSummariesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDbFindingSummariesRequest,
   output: GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse,
@@ -2461,7 +2469,7 @@ export const listProjectsLocationsDbFindingSummaries: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MutatePartnerPermissionsOrganizationsLocationsWorkloadsError =
   | NotFound

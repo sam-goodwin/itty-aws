@@ -559,7 +559,8 @@ export const listBillingAccountsBudgets: API.PaginatedOperationMethod<
   ListBillingAccountsBudgetsRequest,
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse,
   ListBillingAccountsBudgetsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsBudgetsRequest,
   output: GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse,
@@ -570,7 +571,7 @@ export const listBillingAccountsBudgets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchBillingAccountsBudgetsError =
   | NotFound

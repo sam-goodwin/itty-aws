@@ -2250,27 +2250,7 @@ export const listApplications: API.OperationMethod<
     items: "ApplicationSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationsRequest,
-  ListApplicationsResponse,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentsError =
   | AccessDeniedException
@@ -2322,27 +2302,7 @@ export const listEnvironments: API.OperationMethod<
     items: "EnvironmentSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsRequest,
-  ListEnvironmentsResponse,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentVpcsError =
   | AccessDeniedException
@@ -2394,27 +2354,7 @@ export const listEnvironmentVpcs: API.OperationMethod<
     items: "EnvironmentVpcList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentVpcsRequest,
-  ListEnvironmentVpcsResponse,
-  ListEnvironmentVpcsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentVpcsRequest,
-  ) => stream.Stream<
-    ListEnvironmentVpcsResponse,
-    ListEnvironmentVpcsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentVpcsRequest,
-  ) => stream.Stream<
-    EnvironmentVpc,
-    ListEnvironmentVpcsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRoutesError =
   | AccessDeniedException
@@ -2469,27 +2409,7 @@ export const listRoutes: API.OperationMethod<
     items: "RouteSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRoutesRequest,
-  ListRoutesResponse,
-  ListRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutesRequest,
-  ) => stream.Stream<
-    ListRoutesResponse,
-    ListRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutesRequest,
-  ) => stream.Stream<
-    RouteSummary,
-    ListRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicesError =
   | AccessDeniedException
@@ -2544,27 +2464,7 @@ export const listServices: API.OperationMethod<
     items: "ServiceSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesRequest,
-  ListServicesResponse,
-  ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ServiceSummary,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

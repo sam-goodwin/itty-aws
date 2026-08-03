@@ -20141,27 +20141,7 @@ export const describeActionTargets: API.OperationMethod<
     items: "ActionTargets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeActionTargetsRequest,
-  DescribeActionTargetsResponse,
-  DescribeActionTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeActionTargetsRequest,
-  ) => stream.Stream<
-    DescribeActionTargetsResponse,
-    DescribeActionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeActionTargetsRequest,
-  ) => stream.Stream<
-    ActionTarget,
-    DescribeActionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeHubError =
   | InternalException
@@ -20276,27 +20256,7 @@ export const describeProducts: API.OperationMethod<
     items: "Products",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeProductsRequest,
-  DescribeProductsResponse,
-  DescribeProductsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProductsRequest,
-  ) => stream.Stream<
-    DescribeProductsResponse,
-    DescribeProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProductsRequest,
-  ) => stream.Stream<
-    Product,
-    DescribeProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeProductsV2Error =
   | AccessDeniedException
@@ -20347,27 +20307,7 @@ export const describeProductsV2: API.OperationMethod<
     items: "ProductsV2",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeProductsV2Request,
-  DescribeProductsV2Response,
-  DescribeProductsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProductsV2Request,
-  ) => stream.Stream<
-    DescribeProductsV2Response,
-    DescribeProductsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProductsV2Request,
-  ) => stream.Stream<
-    ProductV2,
-    DescribeProductsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSecurityHubV2Error =
   | InternalServerException
@@ -20440,27 +20380,7 @@ export const describeStandards: API.OperationMethod<
     items: "Standards",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeStandardsRequest,
-  DescribeStandardsResponse,
-  DescribeStandardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStandardsRequest,
-  ) => stream.Stream<
-    DescribeStandardsResponse,
-    DescribeStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStandardsRequest,
-  ) => stream.Stream<
-    Standard,
-    DescribeStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeStandardsControlsError =
   | InternalException
@@ -20514,27 +20434,7 @@ export const describeStandardsControls: API.OperationMethod<
     items: "Controls",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeStandardsControlsRequest,
-  DescribeStandardsControlsResponse,
-  DescribeStandardsControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStandardsControlsRequest,
-  ) => stream.Stream<
-    DescribeStandardsControlsResponse,
-    DescribeStandardsControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStandardsControlsRequest,
-  ) => stream.Stream<
-    StandardsControl,
-    DescribeStandardsControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisableImportFindingsForProductError =
   | InternalException
@@ -21195,27 +21095,7 @@ export const getEnabledStandards: API.OperationMethod<
     items: "StandardsSubscriptions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetEnabledStandardsRequest,
-  GetEnabledStandardsResponse,
-  GetEnabledStandardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEnabledStandardsRequest,
-  ) => stream.Stream<
-    GetEnabledStandardsResponse,
-    GetEnabledStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEnabledStandardsRequest,
-  ) => stream.Stream<
-    StandardsSubscription,
-    GetEnabledStandardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetFindingAggregatorError =
   | AccessDeniedException
@@ -21307,27 +21187,7 @@ export const getFindingHistory: API.OperationMethod<
     items: "Records",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetFindingHistoryRequest,
-  GetFindingHistoryResponse,
-  GetFindingHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingHistoryRequest,
-  ) => stream.Stream<
-    GetFindingHistoryResponse,
-    GetFindingHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingHistoryRequest,
-  ) => stream.Stream<
-    FindingHistoryRecord,
-    GetFindingHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetFindingsError =
   | InternalException
@@ -21378,27 +21238,7 @@ export const getFindings: API.OperationMethod<
     items: "Findings",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetFindingsRequest,
-  GetFindingsResponse,
-  GetFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsRequest,
-  ) => stream.Stream<
-    GetFindingsResponse,
-    GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsRequest,
-  ) => stream.Stream<
-    AwsSecurityFinding,
-    GetFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetFindingStatisticsV2Error =
   | AccessDeniedException
@@ -21486,27 +21326,7 @@ export const getFindingsTrendsV2: API.OperationMethod<
     items: "TrendsMetrics",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetFindingsTrendsV2Request,
-  GetFindingsTrendsV2Response,
-  GetFindingsTrendsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsTrendsV2Request,
-  ) => stream.Stream<
-    GetFindingsTrendsV2Response,
-    GetFindingsTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsTrendsV2Request,
-  ) => stream.Stream<
-    TrendsMetricsResult,
-    GetFindingsTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetFindingsV2Error =
   | AccessDeniedException
@@ -21568,27 +21388,7 @@ export const getFindingsV2: API.OperationMethod<
     items: "Findings",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetFindingsV2Request,
-  GetFindingsV2Response,
-  GetFindingsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsV2Request,
-  ) => stream.Stream<
-    GetFindingsV2Response,
-    GetFindingsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsV2Request,
-  ) => stream.Stream<
-    unknown,
-    GetFindingsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetInsightResultsError =
   | InternalException
@@ -21669,27 +21469,7 @@ export const getInsights: API.OperationMethod<
     items: "Insights",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetInsightsRequest,
-  GetInsightsResponse,
-  GetInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInsightsRequest,
-  ) => stream.Stream<
-    GetInsightsResponse,
-    GetInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInsightsRequest,
-  ) => stream.Stream<
-    Insight,
-    GetInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetInvitationsCountError =
   | InternalException
@@ -21849,27 +21629,7 @@ export const getRecommendedPolicyV2: API.OperationMethod<
     items: "RecommendationSteps",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetRecommendedPolicyV2Request,
-  GetRecommendedPolicyV2Response,
-  GetRecommendedPolicyV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRecommendedPolicyV2Request,
-  ) => stream.Stream<
-    GetRecommendedPolicyV2Response,
-    GetRecommendedPolicyV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRecommendedPolicyV2Request,
-  ) => stream.Stream<
-    RecommendationStep,
-    GetRecommendedPolicyV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcesStatisticsV2Error =
   | AccessDeniedException
@@ -21956,27 +21716,7 @@ export const getResourcesTrendsV2: API.OperationMethod<
     items: "TrendsMetrics",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourcesTrendsV2Request,
-  GetResourcesTrendsV2Response,
-  GetResourcesTrendsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesTrendsV2Request,
-  ) => stream.Stream<
-    GetResourcesTrendsV2Response,
-    GetResourcesTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesTrendsV2Request,
-  ) => stream.Stream<
-    ResourcesTrendsMetricsResult,
-    GetResourcesTrendsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcesV2Error =
   | AccessDeniedException
@@ -22037,27 +21777,7 @@ export const getResourcesV2: API.OperationMethod<
     items: "Resources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourcesV2Request,
-  GetResourcesV2Response,
-  GetResourcesV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesV2Request,
-  ) => stream.Stream<
-    GetResourcesV2Response,
-    GetResourcesV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesV2Request,
-  ) => stream.Stream<
-    ResourceResult,
-    GetResourcesV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetSecurityControlDefinitionError =
   | InternalException
@@ -22183,27 +21903,7 @@ export const listAggregatorsV2: API.OperationMethod<
     items: "AggregatorsV2",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAggregatorsV2Request,
-  ListAggregatorsV2Response,
-  ListAggregatorsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregatorsV2Request,
-  ) => stream.Stream<
-    ListAggregatorsV2Response,
-    ListAggregatorsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregatorsV2Request,
-  ) => stream.Stream<
-    AggregatorV2,
-    ListAggregatorsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutomationRulesError =
   | AccessDeniedException
@@ -22315,27 +22015,7 @@ export const listConfigurationPolicies: API.OperationMethod<
     items: "ConfigurationPolicySummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationPoliciesRequest,
-  ListConfigurationPoliciesResponse,
-  ListConfigurationPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationPoliciesRequest,
-  ) => stream.Stream<
-    ListConfigurationPoliciesResponse,
-    ListConfigurationPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationPoliciesRequest,
-  ) => stream.Stream<
-    ConfigurationPolicySummary,
-    ListConfigurationPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConfigurationPolicyAssociationsError =
   | AccessDeniedException
@@ -22387,27 +22067,7 @@ export const listConfigurationPolicyAssociations: API.OperationMethod<
     items: "ConfigurationPolicyAssociationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationPolicyAssociationsRequest,
-  ListConfigurationPolicyAssociationsResponse,
-  ListConfigurationPolicyAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationPolicyAssociationsRequest,
-  ) => stream.Stream<
-    ListConfigurationPolicyAssociationsResponse,
-    ListConfigurationPolicyAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationPolicyAssociationsRequest,
-  ) => stream.Stream<
-    ConfigurationPolicyAssociationSummary,
-    ListConfigurationPolicyAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectorsV2Error =
   | AccessDeniedException
@@ -22483,27 +22143,7 @@ export const listEnabledProductsForImport: API.OperationMethod<
     items: "ProductSubscriptions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnabledProductsForImportRequest,
-  ListEnabledProductsForImportResponse,
-  ListEnabledProductsForImportError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnabledProductsForImportRequest,
-  ) => stream.Stream<
-    ListEnabledProductsForImportResponse,
-    ListEnabledProductsForImportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnabledProductsForImportRequest,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListEnabledProductsForImportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFindingAggregatorsError =
   | AccessDeniedException
@@ -22555,27 +22195,7 @@ export const listFindingAggregators: API.OperationMethod<
     items: "FindingAggregators",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFindingAggregatorsRequest,
-  ListFindingAggregatorsResponse,
-  ListFindingAggregatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingAggregatorsRequest,
-  ) => stream.Stream<
-    ListFindingAggregatorsResponse,
-    ListFindingAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingAggregatorsRequest,
-  ) => stream.Stream<
-    FindingAggregator,
-    ListFindingAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvitationsError =
   | InternalException
@@ -22631,27 +22251,7 @@ export const listInvitations: API.OperationMethod<
     items: "Invitations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvitationsRequest,
-  ListInvitationsResponse,
-  ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    ListInvitationsResponse,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    Invitation,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMembersError =
   | InternalException
@@ -22704,27 +22304,7 @@ export const listMembers: API.OperationMethod<
     items: "Members",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMembersRequest,
-  ListMembersResponse,
-  ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationAdminAccountsError =
   | InternalException
@@ -22774,27 +22354,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     items: "AdminAccounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationAdminAccountsRequest,
-  ListOrganizationAdminAccountsResponse,
-  ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationAdminAccountsResponse,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    AdminAccount,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityControlDefinitionsError =
   | InternalException
@@ -22843,27 +22403,7 @@ export const listSecurityControlDefinitions: API.OperationMethod<
     items: "SecurityControlDefinitions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityControlDefinitionsRequest,
-  ListSecurityControlDefinitionsResponse,
-  ListSecurityControlDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityControlDefinitionsRequest,
-  ) => stream.Stream<
-    ListSecurityControlDefinitionsResponse,
-    ListSecurityControlDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityControlDefinitionsRequest,
-  ) => stream.Stream<
-    SecurityControlDefinition,
-    ListSecurityControlDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStandardsControlAssociationsError =
   | InternalException
@@ -22914,27 +22454,7 @@ export const listStandardsControlAssociations: API.OperationMethod<
     items: "StandardsControlAssociationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStandardsControlAssociationsRequest,
-  ListStandardsControlAssociationsResponse,
-  ListStandardsControlAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStandardsControlAssociationsRequest,
-  ) => stream.Stream<
-    ListStandardsControlAssociationsResponse,
-    ListStandardsControlAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStandardsControlAssociationsRequest,
-  ) => stream.Stream<
-    StandardsControlAssociationSummary,
-    ListStandardsControlAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalException

@@ -5365,27 +5365,7 @@ export const listComponentOutputs: API.OperationMethod<
     outputToken: "nextToken",
     items: "outputs",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentOutputsInput,
-  ListComponentOutputsOutput,
-  ListComponentOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentOutputsInput,
-  ) => stream.Stream<
-    ListComponentOutputsOutput,
-    ListComponentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListComponentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComponentProvisionedResourcesError =
   | AccessDeniedException
@@ -5439,27 +5419,7 @@ export const listComponentProvisionedResources: API.OperationMethod<
     outputToken: "nextToken",
     items: "provisionedResources",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentProvisionedResourcesInput,
-  ListComponentProvisionedResourcesOutput,
-  ListComponentProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListComponentProvisionedResourcesOutput,
-    ListComponentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListComponentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComponentsError =
   | AccessDeniedException
@@ -5512,27 +5472,7 @@ export const listComponents: API.OperationMethod<
     items: "components",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComponentsInput,
-  ListComponentsOutput,
-  ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsInput,
-  ) => stream.Stream<
-    ListComponentsOutput,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsInput,
-  ) => stream.Stream<
-    ComponentSummary,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDeploymentsError =
   | AccessDeniedException
@@ -5583,27 +5523,7 @@ export const listDeployments: API.OperationMethod<
     items: "deployments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeploymentsInput,
-  ListDeploymentsOutput,
-  ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    ListDeploymentsOutput,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsInput,
-  ) => stream.Stream<
-    DeploymentSummary,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentAccountConnectionsError =
   | AccessDeniedException
@@ -5655,27 +5575,7 @@ export const listEnvironmentAccountConnections: API.OperationMethod<
     items: "environmentAccountConnections",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentAccountConnectionsInput,
-  ListEnvironmentAccountConnectionsOutput,
-  ListEnvironmentAccountConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentAccountConnectionsInput,
-  ) => stream.Stream<
-    ListEnvironmentAccountConnectionsOutput,
-    ListEnvironmentAccountConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentAccountConnectionsInput,
-  ) => stream.Stream<
-    EnvironmentAccountConnectionSummary,
-    ListEnvironmentAccountConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentOutputsError =
   | AccessDeniedException
@@ -5725,27 +5625,7 @@ export const listEnvironmentOutputs: API.OperationMethod<
     outputToken: "nextToken",
     items: "outputs",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentOutputsInput,
-  ListEnvironmentOutputsOutput,
-  ListEnvironmentOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentOutputsInput,
-  ) => stream.Stream<
-    ListEnvironmentOutputsOutput,
-    ListEnvironmentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListEnvironmentOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentProvisionedResourcesError =
   | AccessDeniedException
@@ -5795,27 +5675,7 @@ export const listEnvironmentProvisionedResources: API.OperationMethod<
     outputToken: "nextToken",
     items: "provisionedResources",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentProvisionedResourcesInput,
-  ListEnvironmentProvisionedResourcesOutput,
-  ListEnvironmentProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListEnvironmentProvisionedResourcesOutput,
-    ListEnvironmentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListEnvironmentProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentsError =
   | AccessDeniedException
@@ -5866,27 +5726,7 @@ export const listEnvironments: API.OperationMethod<
     items: "environments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsInput,
-  ListEnvironmentsOutput,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    ListEnvironmentsOutput,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentTemplatesError =
   | AccessDeniedException
@@ -5935,27 +5775,7 @@ export const listEnvironmentTemplates: API.OperationMethod<
     items: "templates",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentTemplatesInput,
-  ListEnvironmentTemplatesOutput,
-  ListEnvironmentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentTemplatesInput,
-  ) => stream.Stream<
-    ListEnvironmentTemplatesOutput,
-    ListEnvironmentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentTemplatesInput,
-  ) => stream.Stream<
-    EnvironmentTemplateSummary,
-    ListEnvironmentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentTemplateVersionsError =
   | AccessDeniedException
@@ -6006,27 +5826,7 @@ export const listEnvironmentTemplateVersions: API.OperationMethod<
     items: "templateVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentTemplateVersionsInput,
-  ListEnvironmentTemplateVersionsOutput,
-  ListEnvironmentTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentTemplateVersionsInput,
-  ) => stream.Stream<
-    ListEnvironmentTemplateVersionsOutput,
-    ListEnvironmentTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentTemplateVersionsInput,
-  ) => stream.Stream<
-    EnvironmentTemplateVersionSummary,
-    ListEnvironmentTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositoriesError =
   | AccessDeniedException
@@ -6077,27 +5877,7 @@ export const listRepositories: API.OperationMethod<
     items: "repositories",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRepositoriesInput,
-  ListRepositoriesOutput,
-  ListRepositoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    ListRepositoriesOutput,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoriesInput,
-  ) => stream.Stream<
-    RepositorySummary,
-    ListRepositoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRepositorySyncDefinitionsError =
   | AccessDeniedException
@@ -6145,27 +5925,7 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
     outputToken: "nextToken",
     items: "syncDefinitions",
   } as const,
-})) as any as API.OperationMethod<
-  ListRepositorySyncDefinitionsInput,
-  ListRepositorySyncDefinitionsOutput,
-  ListRepositorySyncDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositorySyncDefinitionsInput,
-  ) => stream.Stream<
-    ListRepositorySyncDefinitionsOutput,
-    ListRepositorySyncDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositorySyncDefinitionsInput,
-  ) => stream.Stream<
-    RepositorySyncDefinition,
-    ListRepositorySyncDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceInstanceOutputsError =
   | AccessDeniedException
@@ -6215,27 +5975,7 @@ export const listServiceInstanceOutputs: API.OperationMethod<
     outputToken: "nextToken",
     items: "outputs",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceInstanceOutputsInput,
-  ListServiceInstanceOutputsOutput,
-  ListServiceInstanceOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceInstanceOutputsInput,
-  ) => stream.Stream<
-    ListServiceInstanceOutputsOutput,
-    ListServiceInstanceOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceInstanceOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListServiceInstanceOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceInstanceProvisionedResourcesError =
   | AccessDeniedException
@@ -6285,27 +6025,7 @@ export const listServiceInstanceProvisionedResources: API.OperationMethod<
     outputToken: "nextToken",
     items: "provisionedResources",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceInstanceProvisionedResourcesInput,
-  ListServiceInstanceProvisionedResourcesOutput,
-  ListServiceInstanceProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceInstanceProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListServiceInstanceProvisionedResourcesOutput,
-    ListServiceInstanceProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceInstanceProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListServiceInstanceProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceInstancesError =
   | AccessDeniedException
@@ -6357,27 +6077,7 @@ export const listServiceInstances: API.OperationMethod<
     items: "serviceInstances",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceInstancesInput,
-  ListServiceInstancesOutput,
-  ListServiceInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceInstancesInput,
-  ) => stream.Stream<
-    ListServiceInstancesOutput,
-    ListServiceInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceInstancesInput,
-  ) => stream.Stream<
-    ServiceInstanceSummary,
-    ListServiceInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicePipelineOutputsError =
   | AccessDeniedException
@@ -6427,27 +6127,7 @@ export const listServicePipelineOutputs: API.OperationMethod<
     outputToken: "nextToken",
     items: "outputs",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicePipelineOutputsInput,
-  ListServicePipelineOutputsOutput,
-  ListServicePipelineOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicePipelineOutputsInput,
-  ) => stream.Stream<
-    ListServicePipelineOutputsOutput,
-    ListServicePipelineOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicePipelineOutputsInput,
-  ) => stream.Stream<
-    Output,
-    ListServicePipelineOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicePipelineProvisionedResourcesError =
   | AccessDeniedException
@@ -6497,27 +6177,7 @@ export const listServicePipelineProvisionedResources: API.OperationMethod<
     outputToken: "nextToken",
     items: "provisionedResources",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicePipelineProvisionedResourcesInput,
-  ListServicePipelineProvisionedResourcesOutput,
-  ListServicePipelineProvisionedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicePipelineProvisionedResourcesInput,
-  ) => stream.Stream<
-    ListServicePipelineProvisionedResourcesOutput,
-    ListServicePipelineProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicePipelineProvisionedResourcesInput,
-  ) => stream.Stream<
-    ProvisionedResource,
-    ListServicePipelineProvisionedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicesError =
   | AccessDeniedException
@@ -6566,27 +6226,7 @@ export const listServices: API.OperationMethod<
     items: "services",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesInput,
-  ListServicesOutput,
-  ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ListServicesOutput,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ServiceSummary,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceTemplatesError =
   | AccessDeniedException
@@ -6635,27 +6275,7 @@ export const listServiceTemplates: API.OperationMethod<
     items: "templates",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceTemplatesInput,
-  ListServiceTemplatesOutput,
-  ListServiceTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceTemplatesInput,
-  ) => stream.Stream<
-    ListServiceTemplatesOutput,
-    ListServiceTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceTemplatesInput,
-  ) => stream.Stream<
-    ServiceTemplateSummary,
-    ListServiceTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceTemplateVersionsError =
   | AccessDeniedException
@@ -6706,27 +6326,7 @@ export const listServiceTemplateVersions: API.OperationMethod<
     items: "templateVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServiceTemplateVersionsInput,
-  ListServiceTemplateVersionsOutput,
-  ListServiceTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceTemplateVersionsInput,
-  ) => stream.Stream<
-    ListServiceTemplateVersionsOutput,
-    ListServiceTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceTemplateVersionsInput,
-  ) => stream.Stream<
-    ServiceTemplateVersionSummary,
-    ListServiceTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -6778,27 +6378,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "tags",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type NotifyResourceDeploymentStatusChangeError =
   | AccessDeniedException

@@ -1899,7 +1899,8 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   ListProjectsLocationsCatalogsRequest,
   GoogleCloudRecommendationengineV1beta1ListCatalogsResponse,
   ListProjectsLocationsCatalogsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsRequest,
   output: GoogleCloudRecommendationengineV1beta1ListCatalogsResponse,
@@ -1910,7 +1911,7 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsCatalogItemsError =
   | NotFound
@@ -1921,7 +1922,8 @@ export const listProjectsLocationsCatalogsCatalogItems: API.PaginatedOperationMe
   ListProjectsLocationsCatalogsCatalogItemsRequest,
   GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse,
   ListProjectsLocationsCatalogsCatalogItemsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsCatalogItemsRequest,
   output: GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse,
@@ -1932,7 +1934,7 @@ export const listProjectsLocationsCatalogsCatalogItems: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsEventStoresOperationsError =
   | NotFound
@@ -1943,7 +1945,8 @@ export const listProjectsLocationsCatalogsEventStoresOperations: API.PaginatedOp
   ListProjectsLocationsCatalogsEventStoresOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsCatalogsEventStoresOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsEventStoresOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -1954,7 +1957,7 @@ export const listProjectsLocationsCatalogsEventStoresOperations: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
   NotFound | Forbidden | GcpOpError;
@@ -1963,7 +1966,8 @@ export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest,
   GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse,
   ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest,
@@ -1976,7 +1980,7 @@ export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsEventStoresUserEventsError =
   | NotFound
@@ -1987,7 +1991,8 @@ export const listProjectsLocationsCatalogsEventStoresUserEvents: API.PaginatedOp
   ListProjectsLocationsCatalogsEventStoresUserEventsRequest,
   GoogleCloudRecommendationengineV1beta1ListUserEventsResponse,
   ListProjectsLocationsCatalogsEventStoresUserEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: GoogleCloudRecommendationengineV1beta1ListUserEventsResponse,
@@ -1998,7 +2003,7 @@ export const listProjectsLocationsCatalogsEventStoresUserEvents: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsCatalogsOperationsError =
   | NotFound
@@ -2009,7 +2014,8 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
   ListProjectsLocationsCatalogsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsCatalogsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2020,7 +2026,7 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsCatalogsError =
   | NotFound

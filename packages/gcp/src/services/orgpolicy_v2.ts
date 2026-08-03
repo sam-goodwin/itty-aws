@@ -1409,7 +1409,8 @@ export const listFoldersConstraints: API.PaginatedOperationMethod<
   ListFoldersConstraintsRequest,
   GoogleCloudOrgpolicyV2ListConstraintsResponse,
   ListFoldersConstraintsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersConstraintsRequest,
   output: GoogleCloudOrgpolicyV2ListConstraintsResponse,
@@ -1420,7 +1421,7 @@ export const listFoldersConstraints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves all of the policies that exist on a particular resource. */
@@ -1428,7 +1429,8 @@ export const listFoldersPolicies: API.PaginatedOperationMethod<
   ListFoldersPoliciesRequest,
   GoogleCloudOrgpolicyV2ListPoliciesResponse,
   ListFoldersPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersPoliciesRequest,
   output: GoogleCloudOrgpolicyV2ListPoliciesResponse,
@@ -1439,7 +1441,7 @@ export const listFoldersPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsConstraintsError =
   | NotFound
@@ -1450,7 +1452,8 @@ export const listOrganizationsConstraints: API.PaginatedOperationMethod<
   ListOrganizationsConstraintsRequest,
   GoogleCloudOrgpolicyV2ListConstraintsResponse,
   ListOrganizationsConstraintsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsConstraintsRequest,
   output: GoogleCloudOrgpolicyV2ListConstraintsResponse,
@@ -1461,7 +1464,7 @@ export const listOrganizationsConstraints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsCustomConstraintsError =
   | NotFound
@@ -1472,7 +1475,8 @@ export const listOrganizationsCustomConstraints: API.PaginatedOperationMethod<
   ListOrganizationsCustomConstraintsRequest,
   GoogleCloudOrgpolicyV2ListCustomConstraintsResponse,
   ListOrganizationsCustomConstraintsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsCustomConstraintsRequest,
   output: GoogleCloudOrgpolicyV2ListCustomConstraintsResponse,
@@ -1483,7 +1487,7 @@ export const listOrganizationsCustomConstraints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves all of the policies that exist on a particular resource. */
@@ -1491,7 +1495,8 @@ export const listOrganizationsPolicies: API.PaginatedOperationMethod<
   ListOrganizationsPoliciesRequest,
   GoogleCloudOrgpolicyV2ListPoliciesResponse,
   ListOrganizationsPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsPoliciesRequest,
   output: GoogleCloudOrgpolicyV2ListPoliciesResponse,
@@ -1502,7 +1507,7 @@ export const listOrganizationsPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsConstraintsError = NotFound | Forbidden | GcpOpError;
 /** Lists constraints that could be applied on the specified resource. */
@@ -1510,7 +1515,8 @@ export const listProjectsConstraints: API.PaginatedOperationMethod<
   ListProjectsConstraintsRequest,
   GoogleCloudOrgpolicyV2ListConstraintsResponse,
   ListProjectsConstraintsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConstraintsRequest,
   output: GoogleCloudOrgpolicyV2ListConstraintsResponse,
@@ -1521,7 +1527,7 @@ export const listProjectsConstraints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves all of the policies that exist on a particular resource. */
@@ -1529,7 +1535,8 @@ export const listProjectsPolicies: API.PaginatedOperationMethod<
   ListProjectsPoliciesRequest,
   GoogleCloudOrgpolicyV2ListPoliciesResponse,
   ListProjectsPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOrgpolicyV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPoliciesRequest,
   output: GoogleCloudOrgpolicyV2ListPoliciesResponse,
@@ -1540,7 +1547,7 @@ export const listProjectsPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchFoldersPoliciesError =
   | NotFound

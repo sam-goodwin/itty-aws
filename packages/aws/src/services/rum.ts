@@ -1306,27 +1306,7 @@ export const batchGetRumMetricDefinitions: API.OperationMethod<
     items: "MetricDefinitions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  BatchGetRumMetricDefinitionsRequest,
-  BatchGetRumMetricDefinitionsResponse,
-  BatchGetRumMetricDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetRumMetricDefinitionsRequest,
-  ) => stream.Stream<
-    BatchGetRumMetricDefinitionsResponse,
-    BatchGetRumMetricDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetRumMetricDefinitionsRequest,
-  ) => stream.Stream<
-    MetricDefinition,
-    BatchGetRumMetricDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type CreateAppMonitorError =
   | AccessDeniedException
@@ -1545,27 +1525,7 @@ export const getAppMonitorData: API.OperationMethod<
     items: "Events",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetAppMonitorDataRequest,
-  GetAppMonitorDataResponse,
-  GetAppMonitorDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAppMonitorDataRequest,
-  ) => stream.Stream<
-    GetAppMonitorDataResponse,
-    GetAppMonitorDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAppMonitorDataRequest,
-  ) => stream.Stream<
-    EventData,
-    GetAppMonitorDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -1648,27 +1608,7 @@ export const listAppMonitors: API.OperationMethod<
     items: "AppMonitorSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAppMonitorsRequest,
-  ListAppMonitorsResponse,
-  ListAppMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppMonitorsRequest,
-  ) => stream.Stream<
-    ListAppMonitorsResponse,
-    ListAppMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppMonitorsRequest,
-  ) => stream.Stream<
-    AppMonitorSummary,
-    ListAppMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRumMetricsDestinationsError =
   | AccessDeniedException
@@ -1719,27 +1659,7 @@ export const listRumMetricsDestinations: API.OperationMethod<
     items: "Destinations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRumMetricsDestinationsRequest,
-  ListRumMetricsDestinationsResponse,
-  ListRumMetricsDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRumMetricsDestinationsRequest,
-  ) => stream.Stream<
-    ListRumMetricsDestinationsResponse,
-    ListRumMetricsDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRumMetricsDestinationsRequest,
-  ) => stream.Stream<
-    MetricDestinationSummary,
-    ListRumMetricsDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

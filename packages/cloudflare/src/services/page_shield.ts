@@ -1482,7 +1482,8 @@ export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ConnectionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListConnectionsRequest,
@@ -1493,7 +1494,7 @@ export const listConnections: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCookiesError = CloudflareOpError;
 /** Lists all cookies collected by Page Shield. */
@@ -1501,7 +1502,8 @@ export const listCookies: API.PaginatedOperationMethod<
   ListCookiesRequest,
   ListCookiesResponse,
   ListCookiesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CookiesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCookiesRequest,
@@ -1512,7 +1514,7 @@ export const listCookies: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPoliciesError = Forbidden | CloudflareOpError;
 /** Lists all Page Shield policies. */
@@ -1520,7 +1522,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPoliciesRequest,
@@ -1531,7 +1534,7 @@ export const listPolicies: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListScriptsError = CloudflareOpError;
 /** Lists all scripts detected by Page Shield. */
@@ -1539,7 +1542,8 @@ export const listScripts: API.PaginatedOperationMethod<
   ListScriptsRequest,
   ListScriptsResponse,
   ListScriptsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ScriptsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListScriptsRequest,
@@ -1550,7 +1554,7 @@ export const listScripts: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutPageShieldError = NotEntitled | Forbidden | CloudflareOpError;
 /** Updates Page Shield settings. */

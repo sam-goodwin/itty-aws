@@ -303,7 +303,8 @@ export const deleteCustomNameserver: API.PaginatedOperationMethod<
   DeleteCustomNameserverRequest,
   DeleteCustomNameserverResponse,
   DeleteCustomNameserverError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: DeleteCustomNameserverRequest,
@@ -320,7 +321,7 @@ export const deleteCustomNameserver: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetCustomNameserverError =
   | CustomNameserversNotEnabled
@@ -331,7 +332,8 @@ export const getCustomNameserver: API.PaginatedOperationMethod<
   GetCustomNameserverRequest,
   GetCustomNameserverResponse,
   GetCustomNameserverError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetCustomNameserverRequest,
@@ -347,4 +349,4 @@ export const getCustomNameserver: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

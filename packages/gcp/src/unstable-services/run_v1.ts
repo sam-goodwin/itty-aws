@@ -5118,7 +5118,8 @@ export const listNamespacesAuthorizeddomains: API.PaginatedOperationMethod<
   ListNamespacesAuthorizeddomainsRequest,
   ListAuthorizedDomainsResponse,
   ListNamespacesAuthorizeddomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesAuthorizeddomainsRequest,
   output: ListAuthorizedDomainsResponse,
@@ -5129,7 +5130,7 @@ export const listNamespacesAuthorizeddomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNamespacesConfigurationsError =
   | NotFound
@@ -5296,7 +5297,8 @@ export const listProjectsAuthorizeddomains: API.PaginatedOperationMethod<
   ListProjectsAuthorizeddomainsRequest,
   ListAuthorizedDomainsResponse,
   ListProjectsAuthorizeddomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAuthorizeddomainsRequest,
   output: ListAuthorizedDomainsResponse,
@@ -5307,7 +5309,7 @@ export const listProjectsAuthorizeddomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -5315,7 +5317,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -5326,7 +5329,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsAuthorizeddomainsError =
   | NotFound
@@ -5337,7 +5340,8 @@ export const listProjectsLocationsAuthorizeddomains: API.PaginatedOperationMetho
   ListProjectsLocationsAuthorizeddomainsRequest,
   ListAuthorizedDomainsResponse,
   ListProjectsLocationsAuthorizeddomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAuthorizeddomainsRequest,
   output: ListAuthorizedDomainsResponse,
@@ -5348,7 +5352,7 @@ export const listProjectsLocationsAuthorizeddomains: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsConfigurationsError =
   | NotFound
@@ -5395,7 +5399,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -5406,7 +5411,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRevisionsError =
   | NotFound

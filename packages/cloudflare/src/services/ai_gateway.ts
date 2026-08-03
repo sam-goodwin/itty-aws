@@ -12148,7 +12148,8 @@ export const listAiGateways: API.PaginatedOperationMethod<
   ListAiGatewaysRequest,
   ListAiGatewaysResponse,
   ListAiGatewaysError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAiGatewaysRequest,
@@ -12165,7 +12166,7 @@ export const listAiGateways: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCustomProvidersError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
@@ -12173,7 +12174,8 @@ export const listCustomProviders: API.PaginatedOperationMethod<
   ListCustomProvidersRequest,
   ListCustomProvidersResponse,
   ListCustomProvidersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CustomProvidersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomProvidersRequest,
@@ -12190,7 +12192,7 @@ export const listCustomProviders: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDatasetsError = GatewayNotFound | CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
@@ -12198,7 +12200,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDatasetsRequest,
@@ -12215,7 +12218,7 @@ export const listDatasets: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListDeploymentsDynamicRoutingError = CloudflareOpError;
 /** List all AI Gateway Dynamic Route Deployments. */
@@ -12253,7 +12256,8 @@ export const listEvaluations: API.PaginatedOperationMethod<
   ListEvaluationsRequest,
   ListEvaluationsResponse,
   ListEvaluationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  EvaluationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListEvaluationsRequest,
@@ -12270,7 +12274,7 @@ export const listEvaluations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListEvaluationTypesError = CloudflareOpError;
 /** List Evaluators */
@@ -12278,7 +12282,8 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
   ListEvaluationTypesRequest,
   ListEvaluationTypesResponse,
   ListEvaluationTypesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  EvaluationTypesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListEvaluationTypesRequest,
@@ -12295,7 +12300,7 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListLogsError = CloudflareOpError;
 /** List Gateway Logs */
@@ -12303,7 +12308,8 @@ export const listLogs: API.PaginatedOperationMethod<
   ListLogsRequest,
   ListLogsResponse,
   ListLogsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLogsRequest,
@@ -12320,7 +12326,7 @@ export const listLogs: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListProviderConfigsError = CloudflareOpError;
 /** Lists all AI Gateway evaluator types configured for the account. */
@@ -12328,7 +12334,8 @@ export const listProviderConfigs: API.PaginatedOperationMethod<
   ListProviderConfigsRequest,
   ListProviderConfigsResponse,
   ListProviderConfigsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ProviderConfigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProviderConfigsRequest,
@@ -12345,7 +12352,7 @@ export const listProviderConfigs: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListVersionsDynamicRoutingError = CloudflareOpError;
 /** List all AI Gateway Dynamic Route Versions. */

@@ -5943,7 +5943,8 @@ export const listAppFlagChangelogs: API.PaginatedOperationMethod<
   ListAppFlagChangelogsRequest,
   ListAppFlagChangelogsResponse,
   ListAppFlagChangelogsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AppsFlagsChangelogListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAppFlagChangelogsRequest,
@@ -5959,7 +5960,7 @@ export const listAppFlagChangelogs: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAppFlagsError = FlagshipAppNotFound | CloudflareOpError;
 /** Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page. */
@@ -5967,7 +5968,8 @@ export const listAppFlags: API.PaginatedOperationMethod<
   ListAppFlagsRequest,
   ListAppFlagsResponse,
   ListAppFlagsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AppsFlagsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAppFlagsRequest,
@@ -5983,7 +5985,7 @@ export const listAppFlags: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAppsError = CloudflareOpError;
 /** Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included. */
@@ -5991,7 +5993,8 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResponse,
   ListAppsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AppsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAppsRequest,
@@ -6002,7 +6005,7 @@ export const listApps: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateAppError = FlagshipAppNotFound | CloudflareOpError;
 /** Updates an app. Only `name` is mutable. */

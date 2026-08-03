@@ -3245,7 +3245,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -3256,7 +3257,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists managed services. Returns all public services. For authenticated users, also returns all services the calling user has "servicemanagement.services.get" permission for. */
@@ -3264,7 +3265,8 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
@@ -3275,7 +3277,7 @@ export const listServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesConfigsError = NotFound | Forbidden | GcpOpError;
 /** Lists the history of the service configuration for a managed service, from the newest to the oldest. */
@@ -3283,7 +3285,8 @@ export const listServicesConfigs: API.PaginatedOperationMethod<
   ListServicesConfigsRequest,
   ListServiceConfigsResponse,
   ListServicesConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListServiceConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConfigsRequest,
   output: ListServiceConfigsResponse,
@@ -3294,7 +3297,7 @@ export const listServicesConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesRolloutsError = NotFound | Forbidden | GcpOpError;
 /** Lists the history of the service configuration rollouts for a managed service, from the newest to the oldest. */
@@ -3302,7 +3305,8 @@ export const listServicesRollouts: API.PaginatedOperationMethod<
   ListServicesRolloutsRequest,
   ListServiceRolloutsResponse,
   ListServicesRolloutsError,
-  GcpOpContext
+  GcpOpContext,
+  ListServiceRolloutsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRolloutsRequest,
   output: ListServiceRolloutsResponse,
@@ -3313,7 +3317,7 @@ export const listServicesRollouts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetIamPolicyServicesError =
   | NotFound

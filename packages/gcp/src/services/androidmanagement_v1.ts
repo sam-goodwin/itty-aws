@@ -6454,7 +6454,8 @@ export const listEnterprises: API.PaginatedOperationMethod<
   ListEnterprisesRequest,
   ListEnterprisesResponse,
   ListEnterprisesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEnterprisesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesRequest,
   output: ListEnterprisesResponse,
@@ -6465,7 +6466,7 @@ export const listEnterprises: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEnterprisesDevicesError = NotFound | Forbidden | GcpOpError;
 /** Lists devices for a given enterprise. Deleted devices are not returned in the response. */
@@ -6473,7 +6474,8 @@ export const listEnterprisesDevices: API.PaginatedOperationMethod<
   ListEnterprisesDevicesRequest,
   ListDevicesResponse,
   ListEnterprisesDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesDevicesRequest,
   output: ListDevicesResponse,
@@ -6484,7 +6486,7 @@ export const listEnterprisesDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEnterprisesDevicesOperationsError =
   | NotFound
@@ -6495,7 +6497,8 @@ export const listEnterprisesDevicesOperations: API.PaginatedOperationMethod<
   ListEnterprisesDevicesOperationsRequest,
   ListOperationsResponse,
   ListEnterprisesDevicesOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesDevicesOperationsRequest,
   output: ListOperationsResponse,
@@ -6506,7 +6509,7 @@ export const listEnterprisesDevicesOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEnterprisesEnrollmentTokensError =
   | NotFound
@@ -6517,7 +6520,8 @@ export const listEnterprisesEnrollmentTokens: API.PaginatedOperationMethod<
   ListEnterprisesEnrollmentTokensRequest,
   ListEnrollmentTokensResponse,
   ListEnterprisesEnrollmentTokensError,
-  GcpOpContext
+  GcpOpContext,
+  ListEnrollmentTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesEnrollmentTokensRequest,
   output: ListEnrollmentTokensResponse,
@@ -6528,7 +6532,7 @@ export const listEnterprisesEnrollmentTokens: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEnterprisesMigrationTokensError =
   | NotFound
@@ -6539,7 +6543,8 @@ export const listEnterprisesMigrationTokens: API.PaginatedOperationMethod<
   ListEnterprisesMigrationTokensRequest,
   ListMigrationTokensResponse,
   ListEnterprisesMigrationTokensError,
-  GcpOpContext
+  GcpOpContext,
+  ListMigrationTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesMigrationTokensRequest,
   output: ListMigrationTokensResponse,
@@ -6550,7 +6555,7 @@ export const listEnterprisesMigrationTokens: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEnterprisesPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists policies for a given enterprise. */
@@ -6558,7 +6563,8 @@ export const listEnterprisesPolicies: API.PaginatedOperationMethod<
   ListEnterprisesPoliciesRequest,
   ListPoliciesResponse,
   ListEnterprisesPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesPoliciesRequest,
   output: ListPoliciesResponse,
@@ -6569,7 +6575,7 @@ export const listEnterprisesPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListEnterprisesWebAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists web apps for a given enterprise. */
@@ -6577,7 +6583,8 @@ export const listEnterprisesWebApps: API.PaginatedOperationMethod<
   ListEnterprisesWebAppsRequest,
   ListWebAppsResponse,
   ListEnterprisesWebAppsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWebAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesWebAppsRequest,
   output: ListWebAppsResponse,
@@ -6588,7 +6595,7 @@ export const listEnterprisesWebApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyPolicyApplicationsEnterprisesPoliciesError =
   | NotFound

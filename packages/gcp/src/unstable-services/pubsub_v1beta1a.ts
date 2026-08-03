@@ -804,7 +804,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
@@ -815,7 +816,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTopicsError = NotFound | Forbidden | GcpOpError;
 /** Lists matching topics. */
@@ -823,7 +824,8 @@ export const listTopics: API.PaginatedOperationMethod<
   ListTopicsRequest,
   ListTopicsResponse,
   ListTopicsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsRequest,
   output: ListTopicsResponse,
@@ -834,7 +836,7 @@ export const listTopics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyAckDeadlineSubscriptionsError =
   | NotFound

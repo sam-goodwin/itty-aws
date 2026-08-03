@@ -1905,27 +1905,7 @@ export const listDeadLetterSourceQueues: API.OperationMethod<
     items: "queueUrls",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeadLetterSourceQueuesRequest,
-  ListDeadLetterSourceQueuesResult,
-  ListDeadLetterSourceQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeadLetterSourceQueuesRequest,
-  ) => stream.Stream<
-    ListDeadLetterSourceQueuesResult,
-    ListDeadLetterSourceQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeadLetterSourceQueuesRequest,
-  ) => stream.Stream<
-    string,
-    ListDeadLetterSourceQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMessageMoveTasksError =
   | InvalidAddress
@@ -2032,27 +2012,7 @@ export const listQueues: API.OperationMethod<
     items: "QueueUrls",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueuesRequest,
-  ListQueuesResult,
-  ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResult,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    string,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueueTagsError =
   | InvalidAddress

@@ -757,7 +757,8 @@ export const listFolders: API.PaginatedOperationMethod<
   ListFoldersRequest,
   ListFoldersResponse,
   ListFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  ListFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: ListFoldersResponse,
@@ -768,7 +769,7 @@ export const listFolders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MoveFoldersError =
   | NotFound

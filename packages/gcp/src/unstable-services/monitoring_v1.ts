@@ -2425,7 +2425,8 @@ export const listProjectsDashboards: API.PaginatedOperationMethod<
   ListProjectsDashboardsRequest,
   ListDashboardsResponse,
   ListProjectsDashboardsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDashboardsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDashboardsRequest,
   output: ListDashboardsResponse,
@@ -2436,7 +2437,7 @@ export const listProjectsDashboards: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationPrometheusApiV1MetadataError =
   | NotFound

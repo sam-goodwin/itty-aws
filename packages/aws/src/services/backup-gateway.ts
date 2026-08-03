@@ -1163,27 +1163,7 @@ export const listGateways: API.OperationMethod<
     items: "Gateways",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewaysInput,
-  ListGatewaysOutput,
-  ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    ListGatewaysOutput,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysInput,
-  ) => stream.Stream<
-    Gateway,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHypervisorsError = CommonErrors;
 /**
@@ -1222,27 +1202,7 @@ export const listHypervisors: API.OperationMethod<
     items: "Hypervisors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHypervisorsInput,
-  ListHypervisorsOutput,
-  ListHypervisorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHypervisorsInput,
-  ) => stream.Stream<
-    ListHypervisorsOutput,
-    ListHypervisorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHypervisorsInput,
-  ) => stream.Stream<
-    Hypervisor,
-    ListHypervisorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1300,27 +1260,7 @@ export const listVirtualMachines: API.OperationMethod<
     items: "VirtualMachines",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVirtualMachinesInput,
-  ListVirtualMachinesOutput,
-  ListVirtualMachinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualMachinesInput,
-  ) => stream.Stream<
-    ListVirtualMachinesOutput,
-    ListVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualMachinesInput,
-  ) => stream.Stream<
-    VirtualMachine,
-    ListVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutBandwidthRateLimitScheduleError =
   | ResourceNotFoundException

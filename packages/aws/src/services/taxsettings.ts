@@ -1991,27 +1991,7 @@ export const listSupplementalTaxRegistrations: API.OperationMethod<
     items: "taxRegistrations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSupplementalTaxRegistrationsRequest,
-  ListSupplementalTaxRegistrationsResponse,
-  ListSupplementalTaxRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSupplementalTaxRegistrationsRequest,
-  ) => stream.Stream<
-    ListSupplementalTaxRegistrationsResponse,
-    ListSupplementalTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSupplementalTaxRegistrationsRequest,
-  ) => stream.Stream<
-    SupplementalTaxRegistration,
-    ListSupplementalTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTaxExemptionsError =
   | InternalServerException
@@ -2058,27 +2038,7 @@ export const listTaxExemptions: API.OperationMethod<
     items: "taxExemptionDetailsMap",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTaxExemptionsRequest,
-  ListTaxExemptionsResponse,
-  ListTaxExemptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaxExemptionsRequest,
-  ) => stream.Stream<
-    ListTaxExemptionsResponse,
-    ListTaxExemptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaxExemptionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTaxExemptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTaxRegistrationsError =
   | InternalServerException
@@ -2125,27 +2085,7 @@ export const listTaxRegistrations: API.OperationMethod<
     items: "accountDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTaxRegistrationsRequest,
-  ListTaxRegistrationsResponse,
-  ListTaxRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaxRegistrationsRequest,
-  ) => stream.Stream<
-    ListTaxRegistrationsResponse,
-    ListTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaxRegistrationsRequest,
-  ) => stream.Stream<
-    AccountDetails,
-    ListTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutSupplementalTaxRegistrationError =
   | ConflictException

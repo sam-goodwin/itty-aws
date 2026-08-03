@@ -31217,27 +31217,7 @@ export const evaluateDataTableValues: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  EvaluateDataTableValuesRequest,
-  EvaluateDataTableValuesResponse,
-  EvaluateDataTableValuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: EvaluateDataTableValuesRequest,
-  ) => stream.Stream<
-    EvaluateDataTableValuesResponse,
-    EvaluateDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: EvaluateDataTableValuesRequest,
-  ) => stream.Stream<
-    unknown,
-    EvaluateDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAttachedFileError =
   | AccessDeniedException
@@ -31419,27 +31399,7 @@ export const getCurrentMetricData: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCurrentMetricDataRequest,
-  GetCurrentMetricDataResponse,
-  GetCurrentMetricDataError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCurrentMetricDataRequest,
-  ) => stream.Stream<
-    GetCurrentMetricDataResponse,
-    GetCurrentMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCurrentMetricDataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCurrentMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCurrentUserDataError =
   | InternalServiceException
@@ -31489,27 +31449,7 @@ export const getCurrentUserData: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCurrentUserDataRequest,
-  GetCurrentUserDataResponse,
-  GetCurrentUserDataError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCurrentUserDataRequest,
-  ) => stream.Stream<
-    GetCurrentUserDataResponse,
-    GetCurrentUserDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCurrentUserDataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCurrentUserDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetEffectiveHoursOfOperationsError =
   | InternalServiceException
@@ -31701,27 +31641,7 @@ export const getMetricData: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetMetricDataRequest,
-  GetMetricDataResponse,
-  GetMetricDataError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMetricDataRequest,
-  ) => stream.Stream<
-    GetMetricDataResponse,
-    GetMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMetricDataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMetricDataV2Error =
   | InternalServiceException
@@ -31802,27 +31722,7 @@ export const getMetricDataV2: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetMetricDataV2Request,
-  GetMetricDataV2Response,
-  GetMetricDataV2Error,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMetricDataV2Request,
-  ) => stream.Stream<
-    GetMetricDataV2Response,
-    GetMetricDataV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMetricDataV2Request,
-  ) => stream.Stream<
-    unknown,
-    GetMetricDataV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetPromptFileError =
   | InternalServiceException
@@ -32073,27 +31973,7 @@ export const listAgentStatuses: API.OperationMethod<
     items: "AgentStatusSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgentStatusRequest,
-  ListAgentStatusResponse,
-  ListAgentStatusesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentStatusRequest,
-  ) => stream.Stream<
-    ListAgentStatusResponse,
-    ListAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentStatusRequest,
-  ) => stream.Stream<
-    AgentStatusSummary,
-    ListAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAnalyticsDataAssociationsError =
   | InternalServiceException
@@ -32206,27 +32086,7 @@ export const listApprovedOrigins: API.OperationMethod<
     items: "Origins",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApprovedOriginsRequest,
-  ListApprovedOriginsResponse,
-  ListApprovedOriginsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApprovedOriginsRequest,
-  ) => stream.Stream<
-    ListApprovedOriginsResponse,
-    ListApprovedOriginsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApprovedOriginsRequest,
-  ) => stream.Stream<
-    Origin,
-    ListApprovedOriginsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssociatedContactsError =
   | InternalServiceException
@@ -32309,27 +32169,7 @@ export const listAttachedFilesConfigurations: API.OperationMethod<
     items: "AttachedFilesConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttachedFilesConfigurationsRequest,
-  ListAttachedFilesConfigurationsResponse,
-  ListAttachedFilesConfigurationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedFilesConfigurationsRequest,
-  ) => stream.Stream<
-    ListAttachedFilesConfigurationsResponse,
-    ListAttachedFilesConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedFilesConfigurationsRequest,
-  ) => stream.Stream<
-    AttachedFilesConfigurationSummary,
-    ListAttachedFilesConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAuthenticationProfilesError =
   | InternalServiceException
@@ -32384,27 +32224,7 @@ export const listAuthenticationProfiles: API.OperationMethod<
     items: "AuthenticationProfileSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAuthenticationProfilesRequest,
-  ListAuthenticationProfilesResponse,
-  ListAuthenticationProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuthenticationProfilesRequest,
-  ) => stream.Stream<
-    ListAuthenticationProfilesResponse,
-    ListAuthenticationProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuthenticationProfilesRequest,
-  ) => stream.Stream<
-    AuthenticationProfileSummary,
-    ListAuthenticationProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListBotsError =
   | InternalServiceException
@@ -32457,27 +32277,7 @@ export const listBots: API.OperationMethod<
     items: "LexBots",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBotsRequest,
-  ListBotsResponse,
-  ListBotsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    ListBotsResponse,
-    ListBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    LexBotConfig,
-    ListBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChildHoursOfOperationsError =
   | InternalServiceException
@@ -32531,27 +32331,7 @@ export const listChildHoursOfOperations: API.OperationMethod<
     items: "ChildHoursOfOperationsSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChildHoursOfOperationsRequest,
-  ListChildHoursOfOperationsResponse,
-  ListChildHoursOfOperationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChildHoursOfOperationsRequest,
-  ) => stream.Stream<
-    ListChildHoursOfOperationsResponse,
-    ListChildHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChildHoursOfOperationsRequest,
-  ) => stream.Stream<
-    HoursOfOperationsIdentifier,
-    ListChildHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactEvaluationsError =
   | InternalServiceException
@@ -32599,27 +32379,7 @@ export const listContactEvaluations: API.OperationMethod<
     outputToken: "NextToken",
     items: "EvaluationSummaryList",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactEvaluationsRequest,
-  ListContactEvaluationsResponse,
-  ListContactEvaluationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactEvaluationsRequest,
-  ) => stream.Stream<
-    ListContactEvaluationsResponse,
-    ListContactEvaluationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactEvaluationsRequest,
-  ) => stream.Stream<
-    EvaluationSummary,
-    ListContactEvaluationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactFlowModuleAliasesError =
   | AccessDeniedException
@@ -32673,27 +32433,7 @@ export const listContactFlowModuleAliases: API.OperationMethod<
     items: "ContactFlowModuleAliasSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactFlowModuleAliasesRequest,
-  ListContactFlowModuleAliasesResponse,
-  ListContactFlowModuleAliasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowModuleAliasesRequest,
-  ) => stream.Stream<
-    ListContactFlowModuleAliasesResponse,
-    ListContactFlowModuleAliasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowModuleAliasesRequest,
-  ) => stream.Stream<
-    ContactFlowModuleAliasSummary,
-    ListContactFlowModuleAliasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactFlowModulesError =
   | AccessDeniedException
@@ -32746,27 +32486,7 @@ export const listContactFlowModules: API.OperationMethod<
     items: "ContactFlowModulesSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactFlowModulesRequest,
-  ListContactFlowModulesResponse,
-  ListContactFlowModulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowModulesRequest,
-  ) => stream.Stream<
-    ListContactFlowModulesResponse,
-    ListContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowModulesRequest,
-  ) => stream.Stream<
-    ContactFlowModuleSummary,
-    ListContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactFlowModuleVersionsError =
   | AccessDeniedException
@@ -32819,27 +32539,7 @@ export const listContactFlowModuleVersions: API.OperationMethod<
     items: "ContactFlowModuleVersionSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactFlowModuleVersionsRequest,
-  ListContactFlowModuleVersionsResponse,
-  ListContactFlowModuleVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowModuleVersionsRequest,
-  ) => stream.Stream<
-    ListContactFlowModuleVersionsResponse,
-    ListContactFlowModuleVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowModuleVersionsRequest,
-  ) => stream.Stream<
-    ContactFlowModuleVersionSummary,
-    ListContactFlowModuleVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactFlowsError =
   | InternalServiceException
@@ -32896,27 +32596,7 @@ export const listContactFlows: API.OperationMethod<
     items: "ContactFlowSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactFlowsRequest,
-  ListContactFlowsResponse,
-  ListContactFlowsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowsRequest,
-  ) => stream.Stream<
-    ListContactFlowsResponse,
-    ListContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowsRequest,
-  ) => stream.Stream<
-    ContactFlowSummary,
-    ListContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactFlowVersionsError =
   | AccessDeniedException
@@ -32969,27 +32649,7 @@ export const listContactFlowVersions: API.OperationMethod<
     items: "ContactFlowVersionSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactFlowVersionsRequest,
-  ListContactFlowVersionsResponse,
-  ListContactFlowVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowVersionsRequest,
-  ) => stream.Stream<
-    ListContactFlowVersionsResponse,
-    ListContactFlowVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowVersionsRequest,
-  ) => stream.Stream<
-    ContactFlowVersionSummary,
-    ListContactFlowVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContactReferencesError =
   | InternalServiceException
@@ -33043,27 +32703,7 @@ export const listContactReferences: API.OperationMethod<
     outputToken: "NextToken",
     items: "ReferenceSummaryList",
   } as const,
-})) as any as API.OperationMethod<
-  ListContactReferencesRequest,
-  ListContactReferencesResponse,
-  ListContactReferencesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactReferencesRequest,
-  ) => stream.Stream<
-    ListContactReferencesResponse,
-    ListContactReferencesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactReferencesRequest,
-  ) => stream.Stream<
-    ReferenceSummary,
-    ListContactReferencesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataTableAttributesError =
   | AccessDeniedException
@@ -33118,27 +32758,7 @@ export const listDataTableAttributes: API.OperationMethod<
     items: "Attributes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataTableAttributesRequest,
-  ListDataTableAttributesResponse,
-  ListDataTableAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTableAttributesRequest,
-  ) => stream.Stream<
-    ListDataTableAttributesResponse,
-    ListDataTableAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTableAttributesRequest,
-  ) => stream.Stream<
-    DataTableAttribute,
-    ListDataTableAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataTablePrimaryValuesError =
   | AccessDeniedException
@@ -33192,27 +32812,7 @@ export const listDataTablePrimaryValues: API.OperationMethod<
     items: "PrimaryValuesList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataTablePrimaryValuesRequest,
-  ListDataTablePrimaryValuesResponse,
-  ListDataTablePrimaryValuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTablePrimaryValuesRequest,
-  ) => stream.Stream<
-    ListDataTablePrimaryValuesResponse,
-    ListDataTablePrimaryValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTablePrimaryValuesRequest,
-  ) => stream.Stream<
-    RecordPrimaryValue,
-    ListDataTablePrimaryValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataTablesError =
   | AccessDeniedException
@@ -33266,27 +32866,7 @@ export const listDataTables: API.OperationMethod<
     items: "DataTableSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataTablesRequest,
-  ListDataTablesResponse,
-  ListDataTablesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTablesRequest,
-  ) => stream.Stream<
-    ListDataTablesResponse,
-    ListDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTablesRequest,
-  ) => stream.Stream<
-    DataTableSummary,
-    ListDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataTableValuesError =
   | AccessDeniedException
@@ -33340,27 +32920,7 @@ export const listDataTableValues: API.OperationMethod<
     items: "Values",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataTableValuesRequest,
-  ListDataTableValuesResponse,
-  ListDataTableValuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTableValuesRequest,
-  ) => stream.Stream<
-    ListDataTableValuesResponse,
-    ListDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTableValuesRequest,
-  ) => stream.Stream<
-    DataTableValueSummary,
-    ListDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDefaultVocabulariesError =
   | AccessDeniedException
@@ -33409,27 +32969,7 @@ export const listDefaultVocabularies: API.OperationMethod<
     items: "DefaultVocabularyList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDefaultVocabulariesRequest,
-  ListDefaultVocabulariesResponse,
-  ListDefaultVocabulariesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDefaultVocabulariesRequest,
-  ) => stream.Stream<
-    ListDefaultVocabulariesResponse,
-    ListDefaultVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDefaultVocabulariesRequest,
-  ) => stream.Stream<
-    DefaultVocabulary,
-    ListDefaultVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntitySecurityProfilesError =
   | InternalServiceException
@@ -33480,27 +33020,7 @@ export const listEntitySecurityProfiles: API.OperationMethod<
     items: "SecurityProfiles",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntitySecurityProfilesRequest,
-  ListEntitySecurityProfilesResponse,
-  ListEntitySecurityProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitySecurityProfilesRequest,
-  ) => stream.Stream<
-    ListEntitySecurityProfilesResponse,
-    ListEntitySecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitySecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileItem,
-    ListEntitySecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEvaluationFormsError =
   | InternalServiceException
@@ -33549,27 +33069,7 @@ export const listEvaluationForms: API.OperationMethod<
     items: "EvaluationFormSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEvaluationFormsRequest,
-  ListEvaluationFormsResponse,
-  ListEvaluationFormsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationFormsRequest,
-  ) => stream.Stream<
-    ListEvaluationFormsResponse,
-    ListEvaluationFormsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluationFormsRequest,
-  ) => stream.Stream<
-    EvaluationFormSummary,
-    ListEvaluationFormsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEvaluationFormVersionsError =
   | InternalServiceException
@@ -33618,27 +33118,7 @@ export const listEvaluationFormVersions: API.OperationMethod<
     items: "EvaluationFormVersionSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEvaluationFormVersionsRequest,
-  ListEvaluationFormVersionsResponse,
-  ListEvaluationFormVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationFormVersionsRequest,
-  ) => stream.Stream<
-    ListEvaluationFormVersionsResponse,
-    ListEvaluationFormVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluationFormVersionsRequest,
-  ) => stream.Stream<
-    EvaluationFormVersionSummary,
-    ListEvaluationFormVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFlowAssociationsError =
   | AccessDeniedException
@@ -33691,27 +33171,7 @@ export const listFlowAssociations: API.OperationMethod<
     items: "FlowAssociationSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFlowAssociationsRequest,
-  ListFlowAssociationsResponse,
-  ListFlowAssociationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowAssociationsRequest,
-  ) => stream.Stream<
-    ListFlowAssociationsResponse,
-    ListFlowAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowAssociationsRequest,
-  ) => stream.Stream<
-    FlowAssociationSummary,
-    ListFlowAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHoursOfOperationOverridesError =
   | InternalServiceException
@@ -33762,27 +33222,7 @@ export const listHoursOfOperationOverrides: API.OperationMethod<
     items: "HoursOfOperationOverrideList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHoursOfOperationOverridesRequest,
-  ListHoursOfOperationOverridesResponse,
-  ListHoursOfOperationOverridesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    ListHoursOfOperationOverridesResponse,
-    ListHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    HoursOfOperationOverride,
-    ListHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHoursOfOperationsError =
   | InternalServiceException
@@ -33836,27 +33276,7 @@ export const listHoursOfOperations: API.OperationMethod<
     items: "HoursOfOperationSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHoursOfOperationsRequest,
-  ListHoursOfOperationsResponse,
-  ListHoursOfOperationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHoursOfOperationsRequest,
-  ) => stream.Stream<
-    ListHoursOfOperationsResponse,
-    ListHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHoursOfOperationsRequest,
-  ) => stream.Stream<
-    HoursOfOperationSummary,
-    ListHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInstanceAttributesError =
   | InternalServiceException
@@ -33909,27 +33329,7 @@ export const listInstanceAttributes: API.OperationMethod<
     items: "Attributes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstanceAttributesRequest,
-  ListInstanceAttributesResponse,
-  ListInstanceAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceAttributesRequest,
-  ) => stream.Stream<
-    ListInstanceAttributesResponse,
-    ListInstanceAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceAttributesRequest,
-  ) => stream.Stream<
-    Attribute,
-    ListInstanceAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInstancesError =
   | InternalServiceException
@@ -33975,27 +33375,7 @@ export const listInstances: API.OperationMethod<
     items: "InstanceSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstancesRequest,
-  ListInstancesResponse,
-  ListInstancesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    InstanceSummary,
-    ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInstanceStorageConfigsError =
   | InternalServiceException
@@ -34048,27 +33428,7 @@ export const listInstanceStorageConfigs: API.OperationMethod<
     items: "StorageConfigs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstanceStorageConfigsRequest,
-  ListInstanceStorageConfigsResponse,
-  ListInstanceStorageConfigsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceStorageConfigsRequest,
-  ) => stream.Stream<
-    ListInstanceStorageConfigsResponse,
-    ListInstanceStorageConfigsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceStorageConfigsRequest,
-  ) => stream.Stream<
-    InstanceStorageConfig,
-    ListInstanceStorageConfigsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIntegrationAssociationsError =
   | InternalServiceException
@@ -34117,27 +33477,7 @@ export const listIntegrationAssociations: API.OperationMethod<
     items: "IntegrationAssociationSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIntegrationAssociationsRequest,
-  ListIntegrationAssociationsResponse,
-  ListIntegrationAssociationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    ListIntegrationAssociationsResponse,
-    ListIntegrationAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    IntegrationAssociationSummary,
-    ListIntegrationAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLambdaFunctionsError =
   | InternalServiceException
@@ -34191,27 +33531,7 @@ export const listLambdaFunctions: API.OperationMethod<
     items: "LambdaFunctions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLambdaFunctionsRequest,
-  ListLambdaFunctionsResponse,
-  ListLambdaFunctionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLambdaFunctionsRequest,
-  ) => stream.Stream<
-    ListLambdaFunctionsResponse,
-    ListLambdaFunctionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLambdaFunctionsRequest,
-  ) => stream.Stream<
-    FunctionArn,
-    ListLambdaFunctionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLexBotsError =
   | InternalServiceException
@@ -34265,27 +33585,7 @@ export const listLexBots: API.OperationMethod<
     items: "LexBots",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLexBotsRequest,
-  ListLexBotsResponse,
-  ListLexBotsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLexBotsRequest,
-  ) => stream.Stream<
-    ListLexBotsResponse,
-    ListLexBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLexBotsRequest,
-  ) => stream.Stream<
-    LexBot,
-    ListLexBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotificationsError =
   | AccessDeniedException
@@ -34379,27 +33679,7 @@ export const listPhoneNumbers: API.OperationMethod<
     items: "PhoneNumberSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPhoneNumbersRequest,
-  ListPhoneNumbersResponse,
-  ListPhoneNumbersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    ListPhoneNumbersResponse,
-    ListPhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    PhoneNumberSummary,
-    ListPhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPhoneNumbersV2Error =
   | AccessDeniedException
@@ -34460,27 +33740,7 @@ export const listPhoneNumbersV2: API.OperationMethod<
     items: "ListPhoneNumbersSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPhoneNumbersV2Request,
-  ListPhoneNumbersV2Response,
-  ListPhoneNumbersV2Error,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersV2Request,
-  ) => stream.Stream<
-    ListPhoneNumbersV2Response,
-    ListPhoneNumbersV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersV2Request,
-  ) => stream.Stream<
-    ListPhoneNumbersSummary,
-    ListPhoneNumbersV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPredefinedAttributesError =
   | InternalServiceException
@@ -34544,27 +33804,7 @@ export const listPredefinedAttributes: API.OperationMethod<
     items: "PredefinedAttributeSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPredefinedAttributesRequest,
-  ListPredefinedAttributesResponse,
-  ListPredefinedAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPredefinedAttributesRequest,
-  ) => stream.Stream<
-    ListPredefinedAttributesResponse,
-    ListPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPredefinedAttributesRequest,
-  ) => stream.Stream<
-    PredefinedAttributeSummary,
-    ListPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPromptsError =
   | InternalServiceException
@@ -34615,27 +33855,7 @@ export const listPrompts: API.OperationMethod<
     items: "PromptSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPromptsRequest,
-  ListPromptsResponse,
-  ListPromptsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPromptsRequest,
-  ) => stream.Stream<
-    ListPromptsResponse,
-    ListPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPromptsRequest,
-  ) => stream.Stream<
-    PromptSummary,
-    ListPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueueEmailAddressesError =
   | AccessDeniedException
@@ -34728,27 +33948,7 @@ export const listQueueQuickConnects: API.OperationMethod<
     items: "QuickConnectSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueueQuickConnectsRequest,
-  ListQueueQuickConnectsResponse,
-  ListQueueQuickConnectsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueueQuickConnectsRequest,
-  ) => stream.Stream<
-    ListQueueQuickConnectsResponse,
-    ListQueueQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueueQuickConnectsRequest,
-  ) => stream.Stream<
-    QuickConnectSummary,
-    ListQueueQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueuesError =
   | InternalServiceException
@@ -34806,27 +34006,7 @@ export const listQueues: API.OperationMethod<
     items: "QueueSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueuesRequest,
-  ListQueuesResponse,
-  ListQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    QueueSummary,
-    ListQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQuickConnectsError =
   | InternalServiceException
@@ -34877,27 +34057,7 @@ export const listQuickConnects: API.OperationMethod<
     items: "QuickConnectSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQuickConnectsRequest,
-  ListQuickConnectsResponse,
-  ListQuickConnectsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuickConnectsRequest,
-  ) => stream.Stream<
-    ListQuickConnectsResponse,
-    ListQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuickConnectsRequest,
-  ) => stream.Stream<
-    QuickConnectSummary,
-    ListQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRealtimeContactAnalysisSegmentsV2Error =
   | AccessDeniedException
@@ -34953,27 +34113,7 @@ export const listRealtimeContactAnalysisSegmentsV2: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRealtimeContactAnalysisSegmentsV2Request,
-  ListRealtimeContactAnalysisSegmentsV2Response,
-  ListRealtimeContactAnalysisSegmentsV2Error,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRealtimeContactAnalysisSegmentsV2Request,
-  ) => stream.Stream<
-    ListRealtimeContactAnalysisSegmentsV2Response,
-    ListRealtimeContactAnalysisSegmentsV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRealtimeContactAnalysisSegmentsV2Request,
-  ) => stream.Stream<
-    unknown,
-    ListRealtimeContactAnalysisSegmentsV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRoutingProfileManualAssignmentQueuesError =
   | InternalServiceException
@@ -35041,27 +34181,7 @@ export const listRoutingProfileManualAssignmentQueues: API.OperationMethod<
     items: "RoutingProfileManualAssignmentQueueConfigSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRoutingProfileManualAssignmentQueuesRequest,
-  ListRoutingProfileManualAssignmentQueuesResponse,
-  ListRoutingProfileManualAssignmentQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingProfileManualAssignmentQueuesRequest,
-  ) => stream.Stream<
-    ListRoutingProfileManualAssignmentQueuesResponse,
-    ListRoutingProfileManualAssignmentQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingProfileManualAssignmentQueuesRequest,
-  ) => stream.Stream<
-    RoutingProfileManualAssignmentQueueConfigSummary,
-    ListRoutingProfileManualAssignmentQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRoutingProfileQueuesError =
   | InternalServiceException
@@ -35112,27 +34232,7 @@ export const listRoutingProfileQueues: API.OperationMethod<
     items: "RoutingProfileQueueConfigSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRoutingProfileQueuesRequest,
-  ListRoutingProfileQueuesResponse,
-  ListRoutingProfileQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingProfileQueuesRequest,
-  ) => stream.Stream<
-    ListRoutingProfileQueuesResponse,
-    ListRoutingProfileQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingProfileQueuesRequest,
-  ) => stream.Stream<
-    RoutingProfileQueueConfigSummary,
-    ListRoutingProfileQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRoutingProfilesError =
   | InternalServiceException
@@ -35185,27 +34285,7 @@ export const listRoutingProfiles: API.OperationMethod<
     items: "RoutingProfileSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRoutingProfilesRequest,
-  ListRoutingProfilesResponse,
-  ListRoutingProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingProfilesRequest,
-  ) => stream.Stream<
-    ListRoutingProfilesResponse,
-    ListRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingProfilesRequest,
-  ) => stream.Stream<
-    RoutingProfileSummary,
-    ListRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRulesError =
   | AccessDeniedException
@@ -35256,27 +34336,7 @@ export const listRules: API.OperationMethod<
     items: "RuleSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRulesRequest,
-  ListRulesResponse,
-  ListRulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    RuleSummary,
-    ListRulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityKeysError =
   | InternalServiceException
@@ -35329,27 +34389,7 @@ export const listSecurityKeys: API.OperationMethod<
     items: "SecurityKeys",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityKeysRequest,
-  ListSecurityKeysResponse,
-  ListSecurityKeysError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityKeysRequest,
-  ) => stream.Stream<
-    ListSecurityKeysResponse,
-    ListSecurityKeysError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityKeysRequest,
-  ) => stream.Stream<
-    SecurityKey,
-    ListSecurityKeysError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityProfileApplicationsError =
   | InternalServiceException
@@ -35400,27 +34440,7 @@ export const listSecurityProfileApplications: API.OperationMethod<
     items: "Applications",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityProfileApplicationsRequest,
-  ListSecurityProfileApplicationsResponse,
-  ListSecurityProfileApplicationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfileApplicationsRequest,
-  ) => stream.Stream<
-    ListSecurityProfileApplicationsResponse,
-    ListSecurityProfileApplicationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfileApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListSecurityProfileApplicationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityProfileFlowModulesError =
   | InternalServiceException
@@ -35471,27 +34491,7 @@ export const listSecurityProfileFlowModules: API.OperationMethod<
     items: "AllowedFlowModules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityProfileFlowModulesRequest,
-  ListSecurityProfileFlowModulesResponse,
-  ListSecurityProfileFlowModulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfileFlowModulesRequest,
-  ) => stream.Stream<
-    ListSecurityProfileFlowModulesResponse,
-    ListSecurityProfileFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfileFlowModulesRequest,
-  ) => stream.Stream<
-    FlowModule,
-    ListSecurityProfileFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityProfilePermissionsError =
   | InternalServiceException
@@ -35546,27 +34546,7 @@ export const listSecurityProfilePermissions: API.OperationMethod<
     items: "Permissions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityProfilePermissionsRequest,
-  ListSecurityProfilePermissionsResponse,
-  ListSecurityProfilePermissionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfilePermissionsRequest,
-  ) => stream.Stream<
-    ListSecurityProfilePermissionsResponse,
-    ListSecurityProfilePermissionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfilePermissionsRequest,
-  ) => stream.Stream<
-    SecurityProfilePermission,
-    ListSecurityProfilePermissionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSecurityProfilesError =
   | InternalServiceException
@@ -35621,27 +34601,7 @@ export const listSecurityProfiles: API.OperationMethod<
     items: "SecurityProfileSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSecurityProfilesRequest,
-  ListSecurityProfilesResponse,
-  ListSecurityProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfilesRequest,
-  ) => stream.Stream<
-    ListSecurityProfilesResponse,
-    ListSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileSummary,
-    ListSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceException
@@ -35725,27 +34685,7 @@ export const listTaskTemplates: API.OperationMethod<
     items: "TaskTemplates",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTaskTemplatesRequest,
-  ListTaskTemplatesResponse,
-  ListTaskTemplatesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskTemplatesRequest,
-  ) => stream.Stream<
-    ListTaskTemplatesResponse,
-    ListTaskTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskTemplatesRequest,
-  ) => stream.Stream<
-    TaskTemplateMetadata,
-    ListTaskTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTestCaseExecutionRecordsError =
   | AccessDeniedException
@@ -35862,27 +34802,7 @@ export const listTestCases: API.OperationMethod<
     items: "TestCaseSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTestCasesRequest,
-  ListTestCasesResponse,
-  ListTestCasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestCasesRequest,
-  ) => stream.Stream<
-    ListTestCasesResponse,
-    ListTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestCasesRequest,
-  ) => stream.Stream<
-    TestCaseSummary,
-    ListTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTrafficDistributionGroupsError =
   | AccessDeniedException
@@ -35931,27 +34851,7 @@ export const listTrafficDistributionGroups: API.OperationMethod<
     items: "TrafficDistributionGroupSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTrafficDistributionGroupsRequest,
-  ListTrafficDistributionGroupsResponse,
-  ListTrafficDistributionGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrafficDistributionGroupsRequest,
-  ) => stream.Stream<
-    ListTrafficDistributionGroupsResponse,
-    ListTrafficDistributionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrafficDistributionGroupsRequest,
-  ) => stream.Stream<
-    TrafficDistributionGroupSummary,
-    ListTrafficDistributionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTrafficDistributionGroupUsersError =
   | AccessDeniedException
@@ -36002,27 +34902,7 @@ export const listTrafficDistributionGroupUsers: API.OperationMethod<
     items: "TrafficDistributionGroupUserSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTrafficDistributionGroupUsersRequest,
-  ListTrafficDistributionGroupUsersResponse,
-  ListTrafficDistributionGroupUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrafficDistributionGroupUsersRequest,
-  ) => stream.Stream<
-    ListTrafficDistributionGroupUsersResponse,
-    ListTrafficDistributionGroupUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrafficDistributionGroupUsersRequest,
-  ) => stream.Stream<
-    TrafficDistributionGroupUserSummary,
-    ListTrafficDistributionGroupUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUseCasesError =
   | InternalServiceException
@@ -36071,27 +34951,7 @@ export const listUseCases: API.OperationMethod<
     items: "UseCaseSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUseCasesRequest,
-  ListUseCasesResponse,
-  ListUseCasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUseCasesRequest,
-  ) => stream.Stream<
-    ListUseCasesResponse,
-    ListUseCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUseCasesRequest,
-  ) => stream.Stream<
-    UseCase,
-    ListUseCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUserHierarchyGroupsError =
   | InternalServiceException
@@ -36144,27 +35004,7 @@ export const listUserHierarchyGroups: API.OperationMethod<
     items: "UserHierarchyGroupSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUserHierarchyGroupsRequest,
-  ListUserHierarchyGroupsResponse,
-  ListUserHierarchyGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    ListUserHierarchyGroupsResponse,
-    ListUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    HierarchyGroupSummary,
-    ListUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUserNotificationsError =
   | AccessDeniedException
@@ -36247,27 +35087,7 @@ export const listUserProficiencies: API.OperationMethod<
     items: "UserProficiencyList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUserProficienciesRequest,
-  ListUserProficienciesResponse,
-  ListUserProficienciesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserProficienciesRequest,
-  ) => stream.Stream<
-    ListUserProficienciesResponse,
-    ListUserProficienciesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserProficienciesRequest,
-  ) => stream.Stream<
-    UserProficiency,
-    ListUserProficienciesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUsersError =
   | InternalServiceException
@@ -36318,27 +35138,7 @@ export const listUsers: API.OperationMethod<
     items: "UserSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUsersRequest,
-  ListUsersResponse,
-  ListUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    UserSummary,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListViewsError =
   | AccessDeniedException
@@ -36393,27 +35193,7 @@ export const listViews: API.OperationMethod<
     items: "ViewsSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListViewsRequest,
-  ListViewsResponse,
-  ListViewsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViewsRequest,
-  ) => stream.Stream<
-    ListViewsResponse,
-    ListViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViewsRequest,
-  ) => stream.Stream<
-    ViewSummary,
-    ListViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListViewVersionsError =
   | AccessDeniedException
@@ -36468,27 +35248,7 @@ export const listViewVersions: API.OperationMethod<
     items: "ViewVersionSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListViewVersionsRequest,
-  ListViewVersionsResponse,
-  ListViewVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViewVersionsRequest,
-  ) => stream.Stream<
-    ListViewVersionsResponse,
-    ListViewVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViewVersionsRequest,
-  ) => stream.Stream<
-    ViewVersionSummary,
-    ListViewVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkspaceMediaError =
   | AccessDeniedException
@@ -36573,27 +35333,7 @@ export const listWorkspacePages: API.OperationMethod<
     items: "WorkspacePageList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspacePagesRequest,
-  ListWorkspacePagesResponse,
-  ListWorkspacePagesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacePagesRequest,
-  ) => stream.Stream<
-    ListWorkspacePagesResponse,
-    ListWorkspacePagesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacePagesRequest,
-  ) => stream.Stream<
-    WorkspacePage,
-    ListWorkspacePagesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkspacesError =
   | AccessDeniedException
@@ -36646,27 +35386,7 @@ export const listWorkspaces: API.OperationMethod<
     items: "WorkspaceSummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspacesRequest,
-  ListWorkspacesResponse,
-  ListWorkspacesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSummary,
-    ListWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type MonitorContactError =
   | AccessDeniedException
@@ -36987,27 +35707,7 @@ export const searchAgentStatuses: API.OperationMethod<
     items: "AgentStatuses",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchAgentStatusesRequest,
-  SearchAgentStatusesResponse,
-  SearchAgentStatusesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAgentStatusesRequest,
-  ) => stream.Stream<
-    SearchAgentStatusesResponse,
-    SearchAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAgentStatusesRequest,
-  ) => stream.Stream<
-    AgentStatus,
-    SearchAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchAvailablePhoneNumbersError =
   | AccessDeniedException
@@ -37058,27 +35758,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     items: "AvailableNumbersList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchAvailablePhoneNumbersRequest,
-  SearchAvailablePhoneNumbersResponse,
-  SearchAvailablePhoneNumbersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    SearchAvailablePhoneNumbersResponse,
-    SearchAvailablePhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    AvailableNumberSummary,
-    SearchAvailablePhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchContactEvaluationsError =
   | InternalServiceException
@@ -37175,27 +35855,7 @@ export const searchContactFlowModules: API.OperationMethod<
     items: "ContactFlowModules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchContactFlowModulesRequest,
-  SearchContactFlowModulesResponse,
-  SearchContactFlowModulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContactFlowModulesRequest,
-  ) => stream.Stream<
-    SearchContactFlowModulesResponse,
-    SearchContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContactFlowModulesRequest,
-  ) => stream.Stream<
-    ContactFlowModule,
-    SearchContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchContactFlowsError =
   | InternalServiceException
@@ -37246,27 +35906,7 @@ export const searchContactFlows: API.OperationMethod<
     items: "ContactFlows",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchContactFlowsRequest,
-  SearchContactFlowsResponse,
-  SearchContactFlowsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContactFlowsRequest,
-  ) => stream.Stream<
-    SearchContactFlowsResponse,
-    SearchContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContactFlowsRequest,
-  ) => stream.Stream<
-    ContactFlow,
-    SearchContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchContactsError =
   | InternalServiceException
@@ -37317,27 +35957,7 @@ export const searchContacts: API.OperationMethod<
     items: "Contacts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchContactsRequest,
-  SearchContactsResponse,
-  SearchContactsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContactsRequest,
-  ) => stream.Stream<
-    SearchContactsResponse,
-    SearchContactsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContactsRequest,
-  ) => stream.Stream<
-    ContactSearchSummary,
-    SearchContactsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchDataTablesError =
   | InternalServiceException
@@ -37390,27 +36010,7 @@ export const searchDataTables: API.OperationMethod<
     items: "DataTables",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchDataTablesRequest,
-  SearchDataTablesResponse,
-  SearchDataTablesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchDataTablesRequest,
-  ) => stream.Stream<
-    SearchDataTablesResponse,
-    SearchDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchDataTablesRequest,
-  ) => stream.Stream<
-    DataTable,
-    SearchDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchEmailAddressesError =
   | AccessDeniedException
@@ -37541,27 +36141,7 @@ export const searchHoursOfOperationOverrides: API.OperationMethod<
     items: "HoursOfOperationOverrides",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchHoursOfOperationOverridesRequest,
-  SearchHoursOfOperationOverridesResponse,
-  SearchHoursOfOperationOverridesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    SearchHoursOfOperationOverridesResponse,
-    SearchHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    HoursOfOperationOverride,
-    SearchHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchHoursOfOperationsError =
   | InternalServiceException
@@ -37612,27 +36192,7 @@ export const searchHoursOfOperations: API.OperationMethod<
     items: "HoursOfOperations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchHoursOfOperationsRequest,
-  SearchHoursOfOperationsResponse,
-  SearchHoursOfOperationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchHoursOfOperationsRequest,
-  ) => stream.Stream<
-    SearchHoursOfOperationsResponse,
-    SearchHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchHoursOfOperationsRequest,
-  ) => stream.Stream<
-    HoursOfOperation,
-    SearchHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchNotificationsError =
   | AccessDeniedException
@@ -37728,27 +36288,7 @@ export const searchPredefinedAttributes: API.OperationMethod<
     items: "PredefinedAttributes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchPredefinedAttributesRequest,
-  SearchPredefinedAttributesResponse,
-  SearchPredefinedAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchPredefinedAttributesRequest,
-  ) => stream.Stream<
-    SearchPredefinedAttributesResponse,
-    SearchPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchPredefinedAttributesRequest,
-  ) => stream.Stream<
-    PredefinedAttribute,
-    SearchPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchPromptsError =
   | InternalServiceException
@@ -37799,27 +36339,7 @@ export const searchPrompts: API.OperationMethod<
     items: "Prompts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchPromptsRequest,
-  SearchPromptsResponse,
-  SearchPromptsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchPromptsRequest,
-  ) => stream.Stream<
-    SearchPromptsResponse,
-    SearchPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchPromptsRequest,
-  ) => stream.Stream<
-    Prompt,
-    SearchPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchQueuesError =
   | InternalServiceException
@@ -37870,27 +36390,7 @@ export const searchQueues: API.OperationMethod<
     items: "Queues",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchQueuesRequest,
-  SearchQueuesResponse,
-  SearchQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQueuesRequest,
-  ) => stream.Stream<
-    SearchQueuesResponse,
-    SearchQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQueuesRequest,
-  ) => stream.Stream<
-    Queue,
-    SearchQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchQuickConnectsError =
   | InternalServiceException
@@ -37941,27 +36441,7 @@ export const searchQuickConnects: API.OperationMethod<
     items: "QuickConnects",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchQuickConnectsRequest,
-  SearchQuickConnectsResponse,
-  SearchQuickConnectsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuickConnectsRequest,
-  ) => stream.Stream<
-    SearchQuickConnectsResponse,
-    SearchQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuickConnectsRequest,
-  ) => stream.Stream<
-    QuickConnect,
-    SearchQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchResourceTagsError =
   | InternalServiceException
@@ -38014,27 +36494,7 @@ export const searchResourceTags: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchResourceTagsRequest,
-  SearchResourceTagsResponse,
-  SearchResourceTagsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchResourceTagsRequest,
-  ) => stream.Stream<
-    SearchResourceTagsResponse,
-    SearchResourceTagsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchResourceTagsRequest,
-  ) => stream.Stream<
-    TagSet,
-    SearchResourceTagsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchRoutingProfilesError =
   | InternalServiceException
@@ -38088,27 +36548,7 @@ export const searchRoutingProfiles: API.OperationMethod<
     items: "RoutingProfiles",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchRoutingProfilesRequest,
-  SearchRoutingProfilesResponse,
-  SearchRoutingProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchRoutingProfilesRequest,
-  ) => stream.Stream<
-    SearchRoutingProfilesResponse,
-    SearchRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchRoutingProfilesRequest,
-  ) => stream.Stream<
-    RoutingProfile,
-    SearchRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchSecurityProfilesError =
   | InternalServiceException
@@ -38163,27 +36603,7 @@ export const searchSecurityProfiles: API.OperationMethod<
     items: "SecurityProfiles",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchSecurityProfilesRequest,
-  SearchSecurityProfilesResponse,
-  SearchSecurityProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSecurityProfilesRequest,
-  ) => stream.Stream<
-    SearchSecurityProfilesResponse,
-    SearchSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileSearchSummary,
-    SearchSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchTestCasesError =
   | AccessDeniedException
@@ -38236,27 +36656,7 @@ export const searchTestCases: API.OperationMethod<
     items: "TestCases",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchTestCasesRequest,
-  SearchTestCasesResponse,
-  SearchTestCasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTestCasesRequest,
-  ) => stream.Stream<
-    SearchTestCasesResponse,
-    SearchTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTestCasesRequest,
-  ) => stream.Stream<
-    TestCase,
-    SearchTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchUserHierarchyGroupsError =
   | InternalServiceException
@@ -38310,27 +36710,7 @@ export const searchUserHierarchyGroups: API.OperationMethod<
     items: "UserHierarchyGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchUserHierarchyGroupsRequest,
-  SearchUserHierarchyGroupsResponse,
-  SearchUserHierarchyGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    SearchUserHierarchyGroupsResponse,
-    SearchUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    HierarchyGroup,
-    SearchUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchUsersError =
   | InternalServiceException
@@ -38383,27 +36763,7 @@ export const searchUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchUsersRequest,
-  SearchUsersResponse,
-  SearchUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchUsersRequest,
-  ) => stream.Stream<
-    SearchUsersResponse,
-    SearchUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchUsersRequest,
-  ) => stream.Stream<
-    UserSearchSummary,
-    SearchUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchViewsError =
   | AccessDeniedException
@@ -38456,27 +36816,7 @@ export const searchViews: API.OperationMethod<
     items: "Views",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchViewsRequest,
-  SearchViewsResponse,
-  SearchViewsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchViewsRequest,
-  ) => stream.Stream<
-    SearchViewsResponse,
-    SearchViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchViewsRequest,
-  ) => stream.Stream<
-    View,
-    SearchViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchVocabulariesError =
   | AccessDeniedException
@@ -38526,27 +36866,7 @@ export const searchVocabularies: API.OperationMethod<
     items: "VocabularySummaryList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchVocabulariesRequest,
-  SearchVocabulariesResponse,
-  SearchVocabulariesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchVocabulariesRequest,
-  ) => stream.Stream<
-    SearchVocabulariesResponse,
-    SearchVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchVocabulariesRequest,
-  ) => stream.Stream<
-    VocabularySummary,
-    SearchVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchWorkspaceAssociationsError =
   | AccessDeniedException
@@ -38599,27 +36919,7 @@ export const searchWorkspaceAssociations: API.OperationMethod<
     items: "WorkspaceAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchWorkspaceAssociationsRequest,
-  SearchWorkspaceAssociationsResponse,
-  SearchWorkspaceAssociationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchWorkspaceAssociationsRequest,
-  ) => stream.Stream<
-    SearchWorkspaceAssociationsResponse,
-    SearchWorkspaceAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchWorkspaceAssociationsRequest,
-  ) => stream.Stream<
-    WorkspaceAssociationSearchSummary,
-    SearchWorkspaceAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchWorkspacesError =
   | AccessDeniedException
@@ -38672,27 +36972,7 @@ export const searchWorkspaces: API.OperationMethod<
     items: "Workspaces",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchWorkspacesRequest,
-  SearchWorkspacesResponse,
-  SearchWorkspacesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchWorkspacesRequest,
-  ) => stream.Stream<
-    SearchWorkspacesResponse,
-    SearchWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSearchSummary,
-    SearchWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SendChatIntegrationEventError =
   | AccessDeniedException

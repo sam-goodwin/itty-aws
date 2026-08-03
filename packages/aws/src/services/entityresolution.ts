@@ -3166,27 +3166,7 @@ export const listIdMappingJobs: API.OperationMethod<
     items: "jobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdMappingJobsInput,
-  ListIdMappingJobsOutput,
-  ListIdMappingJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdMappingJobsInput,
-  ) => stream.Stream<
-    ListIdMappingJobsOutput,
-    ListIdMappingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdMappingJobsInput,
-  ) => stream.Stream<
-    JobSummary,
-    ListIdMappingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIdMappingWorkflowsError =
   | AccessDeniedException
@@ -3235,27 +3215,7 @@ export const listIdMappingWorkflows: API.OperationMethod<
     items: "workflowSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdMappingWorkflowsInput,
-  ListIdMappingWorkflowsOutput,
-  ListIdMappingWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdMappingWorkflowsInput,
-  ) => stream.Stream<
-    ListIdMappingWorkflowsOutput,
-    ListIdMappingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdMappingWorkflowsInput,
-  ) => stream.Stream<
-    IdMappingWorkflowSummary,
-    ListIdMappingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIdNamespacesError =
   | AccessDeniedException
@@ -3304,27 +3264,7 @@ export const listIdNamespaces: API.OperationMethod<
     items: "idNamespaceSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdNamespacesInput,
-  ListIdNamespacesOutput,
-  ListIdNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdNamespacesInput,
-  ) => stream.Stream<
-    ListIdNamespacesOutput,
-    ListIdNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdNamespacesInput,
-  ) => stream.Stream<
-    IdNamespaceSummary,
-    ListIdNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMatchingJobsError =
   | AccessDeniedException
@@ -3375,27 +3315,7 @@ export const listMatchingJobs: API.OperationMethod<
     items: "jobs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMatchingJobsInput,
-  ListMatchingJobsOutput,
-  ListMatchingJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMatchingJobsInput,
-  ) => stream.Stream<
-    ListMatchingJobsOutput,
-    ListMatchingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMatchingJobsInput,
-  ) => stream.Stream<
-    JobSummary,
-    ListMatchingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMatchingWorkflowsError =
   | AccessDeniedException
@@ -3444,27 +3364,7 @@ export const listMatchingWorkflows: API.OperationMethod<
     items: "workflowSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMatchingWorkflowsInput,
-  ListMatchingWorkflowsOutput,
-  ListMatchingWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMatchingWorkflowsInput,
-  ) => stream.Stream<
-    ListMatchingWorkflowsOutput,
-    ListMatchingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMatchingWorkflowsInput,
-  ) => stream.Stream<
-    MatchingWorkflowSummary,
-    ListMatchingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProviderServicesError =
   | AccessDeniedException
@@ -3513,27 +3413,7 @@ export const listProviderServices: API.OperationMethod<
     items: "providerServiceSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProviderServicesInput,
-  ListProviderServicesOutput,
-  ListProviderServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProviderServicesInput,
-  ) => stream.Stream<
-    ListProviderServicesOutput,
-    ListProviderServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProviderServicesInput,
-  ) => stream.Stream<
-    ProviderServiceSummary,
-    ListProviderServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchemaMappingsError =
   | AccessDeniedException
@@ -3582,27 +3462,7 @@ export const listSchemaMappings: API.OperationMethod<
     items: "schemaList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchemaMappingsInput,
-  ListSchemaMappingsOutput,
-  ListSchemaMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaMappingsInput,
-  ) => stream.Stream<
-    ListSchemaMappingsOutput,
-    ListSchemaMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaMappingsInput,
-  ) => stream.Stream<
-    SchemaMappingSummary,
-    ListSchemaMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

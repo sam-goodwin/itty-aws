@@ -140,13 +140,17 @@ export interface OperationConstOptions {
   readonly extraArg?: string;
   readonly pure?: string;
   /**
-   * Cast the factory result to the annotation (`as any as T`), for
-   * annotations the factory's generic signature can't prove. The one case
-   * today: a paginated operation's `items` stream element type comes from
-   * the pagination trait's `items` PATH, resolved at runtime, so the
-   * factory can only infer `unknown` while the annotation names the real
-   * element type. Same idiom the schema consts use (`as any as
-   * S.Schema<X>`).
+   * Widen the factory result to `any`, for annotations the factory's
+   * generic signature can't prove. The one case today: a paginated
+   * operation's `items` element type comes from the pagination trait's
+   * `items` PATH — a runtime string — so the factory can only infer the
+   * structural fallback while the annotation names the real element type.
+   *
+   * Unlike the schema consts' `as any as S.Schema<X>`, the target doesn't
+   * need restating here: the const carries its own annotation, which IS
+   * the assignment target, so a bare `as any` lands in the same place.
+   * Restating it would double every paginated operation's declaration —
+   * ~40k lines across the SDKs — for no added checking.
    */
   readonly castToAnnotation?: boolean;
 }
@@ -155,7 +159,7 @@ export interface OperationConstOptions {
 export const operationConst = (o: OperationConstOptions): string =>
   `export const ${o.exportName}: ${o.typeAnnotation} = ${o.pure ?? ""}${o.factory}(() => (${o.config})${
     o.extraArg ? `, ${o.extraArg}` : ""
-  })${o.castToAnnotation ? ` as any as ${o.typeAnnotation}` : ""};\n`;
+  })${o.castToAnnotation ? ` as any` : ""};\n`;
 
 import { tsKey } from "./naming.ts";
 

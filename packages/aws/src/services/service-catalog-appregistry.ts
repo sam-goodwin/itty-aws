@@ -1701,27 +1701,7 @@ export const listApplications: API.OperationMethod<
     items: "applications",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationsRequest,
-  ListApplicationsResponse,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssociatedAttributeGroupsError =
   | InternalServerException
@@ -1768,27 +1748,7 @@ export const listAssociatedAttributeGroups: API.OperationMethod<
     items: "attributeGroups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociatedAttributeGroupsRequest,
-  ListAssociatedAttributeGroupsResponse,
-  ListAssociatedAttributeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedAttributeGroupsRequest,
-  ) => stream.Stream<
-    ListAssociatedAttributeGroupsResponse,
-    ListAssociatedAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedAttributeGroupsRequest,
-  ) => stream.Stream<
-    AttributeGroupId,
-    ListAssociatedAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssociatedResourcesError =
   | InternalServerException
@@ -1850,27 +1810,7 @@ export const listAssociatedResources: API.OperationMethod<
     items: "resources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociatedResourcesRequest,
-  ListAssociatedResourcesResponse,
-  ListAssociatedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedResourcesRequest,
-  ) => stream.Stream<
-    ListAssociatedResourcesResponse,
-    ListAssociatedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedResourcesRequest,
-  ) => stream.Stream<
-    ResourceInfo,
-    ListAssociatedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAttributeGroupsError =
   | InternalServerException
@@ -1912,27 +1852,7 @@ export const listAttributeGroups: API.OperationMethod<
     items: "attributeGroups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttributeGroupsRequest,
-  ListAttributeGroupsResponse,
-  ListAttributeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttributeGroupsRequest,
-  ) => stream.Stream<
-    ListAttributeGroupsResponse,
-    ListAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttributeGroupsRequest,
-  ) => stream.Stream<
-    AttributeGroupSummary,
-    ListAttributeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAttributeGroupsForApplicationError =
   | InternalServerException
@@ -1979,27 +1899,7 @@ export const listAttributeGroupsForApplication: API.OperationMethod<
     items: "attributeGroupsDetails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttributeGroupsForApplicationRequest,
-  ListAttributeGroupsForApplicationResponse,
-  ListAttributeGroupsForApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttributeGroupsForApplicationRequest,
-  ) => stream.Stream<
-    ListAttributeGroupsForApplicationResponse,
-    ListAttributeGroupsForApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttributeGroupsForApplicationRequest,
-  ) => stream.Stream<
-    AttributeGroupDetails,
-    ListAttributeGroupsForApplicationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

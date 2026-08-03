@@ -6223,27 +6223,7 @@ export const describeJobLogItems: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeJobLogItemsRequest,
-  DescribeJobLogItemsResponse,
-  DescribeJobLogItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobLogItemsRequest,
-  ) => stream.Stream<
-    DescribeJobLogItemsResponse,
-    DescribeJobLogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobLogItemsRequest,
-  ) => stream.Stream<
-    JobLog,
-    DescribeJobLogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeJobsError =
   | UninitializedAccountException
@@ -6285,27 +6265,7 @@ export const describeJobs: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeJobsRequest,
-  DescribeJobsResponse,
-  DescribeJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobsRequest,
-  ) => stream.Stream<
-    DescribeJobsResponse,
-    DescribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobsRequest,
-  ) => stream.Stream<
-    Job,
-    DescribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeLaunchConfigurationTemplatesError =
   | ResourceNotFoundException
@@ -6352,27 +6312,7 @@ export const describeLaunchConfigurationTemplates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeLaunchConfigurationTemplatesRequest,
-  DescribeLaunchConfigurationTemplatesResponse,
-  DescribeLaunchConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeLaunchConfigurationTemplatesResponse,
-    DescribeLaunchConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    LaunchConfigurationTemplate,
-    DescribeLaunchConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReplicationConfigurationTemplatesError =
   | ResourceNotFoundException
@@ -6419,27 +6359,7 @@ export const describeReplicationConfigurationTemplates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReplicationConfigurationTemplatesRequest,
-  DescribeReplicationConfigurationTemplatesResponse,
-  DescribeReplicationConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeReplicationConfigurationTemplatesResponse,
-    DescribeReplicationConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    ReplicationConfigurationTemplate,
-    DescribeReplicationConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSourceServersError =
   | UninitializedAccountException
@@ -6481,27 +6401,7 @@ export const describeSourceServers: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSourceServersRequest,
-  DescribeSourceServersResponse,
-  DescribeSourceServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSourceServersRequest,
-  ) => stream.Stream<
-    DescribeSourceServersResponse,
-    DescribeSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSourceServersRequest,
-  ) => stream.Stream<
-    SourceServer,
-    DescribeSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeVcenterClientsError =
   | ResourceNotFoundException
@@ -6548,27 +6448,7 @@ export const describeVcenterClients: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeVcenterClientsRequest,
-  DescribeVcenterClientsResponse,
-  DescribeVcenterClientsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVcenterClientsRequest,
-  ) => stream.Stream<
-    DescribeVcenterClientsResponse,
-    DescribeVcenterClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVcenterClientsRequest,
-  ) => stream.Stream<
-    VcenterClient,
-    DescribeVcenterClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateApplicationsError =
   | ConflictException
@@ -6825,27 +6705,7 @@ export const listApplications: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationsRequest,
-  ListApplicationsResponse,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectorsError =
   | UninitializedAccountException
@@ -6887,27 +6747,7 @@ export const listConnectors: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectorsRequest,
-  ListConnectorsResponse,
-  ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    Connector,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExportErrorsError =
   | UninitializedAccountException
@@ -6949,27 +6789,7 @@ export const listExportErrors: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExportErrorsRequest,
-  ListExportErrorsResponse,
-  ListExportErrorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportErrorsRequest,
-  ) => stream.Stream<
-    ListExportErrorsResponse,
-    ListExportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportErrorsRequest,
-  ) => stream.Stream<
-    ExportTaskError,
-    ListExportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExportsError = UninitializedAccountException | CommonErrors;
 /**
@@ -7008,27 +6828,7 @@ export const listExports: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExportsRequest,
-  ListExportsResponse,
-  ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ListExportsResponse,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ExportTask,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportErrorsError =
   | UninitializedAccountException
@@ -7070,27 +6870,7 @@ export const listImportErrors: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportErrorsRequest,
-  ListImportErrorsResponse,
-  ListImportErrorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportErrorsRequest,
-  ) => stream.Stream<
-    ListImportErrorsResponse,
-    ListImportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportErrorsRequest,
-  ) => stream.Stream<
-    ImportTaskError,
-    ListImportErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportFileEnrichmentsError = ValidationException | CommonErrors;
 /**
@@ -7129,27 +6909,7 @@ export const listImportFileEnrichments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportFileEnrichmentsRequest,
-  ListImportFileEnrichmentsResponse,
-  ListImportFileEnrichmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportFileEnrichmentsRequest,
-  ) => stream.Stream<
-    ListImportFileEnrichmentsResponse,
-    ListImportFileEnrichmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportFileEnrichmentsRequest,
-  ) => stream.Stream<
-    ImportFileEnrichment,
-    ListImportFileEnrichmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportsError =
   | UninitializedAccountException
@@ -7191,27 +6951,7 @@ export const listImports: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportsRequest,
-  ListImportsResponse,
-  ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ListImportsResponse,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ImportTask,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedAccountsError =
   | UninitializedAccountException
@@ -7253,27 +6993,7 @@ export const listManagedAccounts: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedAccountsRequest,
-  ListManagedAccountsResponse,
-  ListManagedAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedAccountsRequest,
-  ) => stream.Stream<
-    ListManagedAccountsResponse,
-    ListManagedAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedAccountsRequest,
-  ) => stream.Stream<
-    ManagedAccount,
-    ListManagedAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationAnalysesError =
   | AccessDeniedException
@@ -7322,27 +7042,7 @@ export const listNetworkMigrationAnalyses: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationAnalysesRequest,
-  ListNetworkMigrationAnalysesResponse,
-  ListNetworkMigrationAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationAnalysesRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationAnalysesResponse,
-    ListNetworkMigrationAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationAnalysesRequest,
-  ) => stream.Stream<
-    NetworkMigrationAnalysisJobDetails,
-    ListNetworkMigrationAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationAnalysisResultsError =
   | AccessDeniedException
@@ -7391,27 +7091,7 @@ export const listNetworkMigrationAnalysisResults: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationAnalysisResultsRequest,
-  ListNetworkMigrationAnalysisResultsResponse,
-  ListNetworkMigrationAnalysisResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationAnalysisResultsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationAnalysisResultsResponse,
-    ListNetworkMigrationAnalysisResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationAnalysisResultsRequest,
-  ) => stream.Stream<
-    NetworkMigrationAnalysisResult,
-    ListNetworkMigrationAnalysisResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationCodeGenerationsError =
   | AccessDeniedException
@@ -7460,27 +7140,7 @@ export const listNetworkMigrationCodeGenerations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationCodeGenerationsRequest,
-  ListNetworkMigrationCodeGenerationsResponse,
-  ListNetworkMigrationCodeGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationCodeGenerationsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationCodeGenerationsResponse,
-    ListNetworkMigrationCodeGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationCodeGenerationsRequest,
-  ) => stream.Stream<
-    NetworkMigrationCodeGenerationJobDetails,
-    ListNetworkMigrationCodeGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationCodeGenerationSegmentsError =
   | AccessDeniedException
@@ -7529,27 +7189,7 @@ export const listNetworkMigrationCodeGenerationSegments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationCodeGenerationSegmentsRequest,
-  ListNetworkMigrationCodeGenerationSegmentsResponse,
-  ListNetworkMigrationCodeGenerationSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationCodeGenerationSegmentsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationCodeGenerationSegmentsResponse,
-    ListNetworkMigrationCodeGenerationSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationCodeGenerationSegmentsRequest,
-  ) => stream.Stream<
-    NetworkMigrationCodeGenerationSegment,
-    ListNetworkMigrationCodeGenerationSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationDefinitionsError =
   | AccessDeniedException
@@ -7590,27 +7230,7 @@ export const listNetworkMigrationDefinitions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationDefinitionsRequest,
-  ListNetworkMigrationDefinitionsResponse,
-  ListNetworkMigrationDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationDefinitionsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationDefinitionsResponse,
-    ListNetworkMigrationDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationDefinitionsRequest,
-  ) => stream.Stream<
-    NetworkMigrationDefinitionSummary,
-    ListNetworkMigrationDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationDeployedStacksError =
   | AccessDeniedException
@@ -7659,27 +7279,7 @@ export const listNetworkMigrationDeployedStacks: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationDeployedStacksRequest,
-  ListNetworkMigrationDeployedStacksResponse,
-  ListNetworkMigrationDeployedStacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationDeployedStacksRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationDeployedStacksResponse,
-    ListNetworkMigrationDeployedStacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationDeployedStacksRequest,
-  ) => stream.Stream<
-    NetworkMigrationDeployedStackDetails,
-    ListNetworkMigrationDeployedStacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationDeploymentsError =
   | AccessDeniedException
@@ -7728,27 +7328,7 @@ export const listNetworkMigrationDeployments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationDeploymentsRequest,
-  ListNetworkMigrationDeployerJobResponse,
-  ListNetworkMigrationDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationDeploymentsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationDeployerJobResponse,
-    ListNetworkMigrationDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationDeploymentsRequest,
-  ) => stream.Stream<
-    NetworkMigrationDeployerJobDetails,
-    ListNetworkMigrationDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationExecutionsError =
   | AccessDeniedException
@@ -7790,27 +7370,7 @@ export const listNetworkMigrationExecutions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationExecutionsRequest,
-  ListNetworkMigrationExecutionsResponse,
-  ListNetworkMigrationExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationExecutionsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationExecutionsResponse,
-    ListNetworkMigrationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationExecutionsRequest,
-  ) => stream.Stream<
-    NetworkMigrationExecution,
-    ListNetworkMigrationExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationMapperSegmentConstructsError =
   | AccessDeniedException
@@ -7859,27 +7419,7 @@ export const listNetworkMigrationMapperSegmentConstructs: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationMapperSegmentConstructsRequest,
-  ListNetworkMigrationMapperSegmentConstructsResponse,
-  ListNetworkMigrationMapperSegmentConstructsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMapperSegmentConstructsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMapperSegmentConstructsResponse,
-    ListNetworkMigrationMapperSegmentConstructsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMapperSegmentConstructsRequest,
-  ) => stream.Stream<
-    NetworkMigrationMapperSegmentConstruct,
-    ListNetworkMigrationMapperSegmentConstructsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationMapperSegmentsError =
   | AccessDeniedException
@@ -7928,27 +7468,7 @@ export const listNetworkMigrationMapperSegments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationMapperSegmentsRequest,
-  ListNetworkMigrationMapperSegmentsResponse,
-  ListNetworkMigrationMapperSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMapperSegmentsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMapperSegmentsResponse,
-    ListNetworkMigrationMapperSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMapperSegmentsRequest,
-  ) => stream.Stream<
-    NetworkMigrationMapperSegment,
-    ListNetworkMigrationMapperSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationMappingsError =
   | AccessDeniedException
@@ -7997,27 +7517,7 @@ export const listNetworkMigrationMappings: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationMappingsRequest,
-  ListNetworkMigrationMappingsResponse,
-  ListNetworkMigrationMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMappingsRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMappingsResponse,
-    ListNetworkMigrationMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMappingsRequest,
-  ) => stream.Stream<
-    NetworkMigrationMappingJobDetails,
-    ListNetworkMigrationMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNetworkMigrationMappingUpdatesError =
   | AccessDeniedException
@@ -8066,27 +7566,7 @@ export const listNetworkMigrationMappingUpdates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNetworkMigrationMappingUpdatesRequest,
-  ListNetworkMigrationMappingUpdatesResponse,
-  ListNetworkMigrationMappingUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkMigrationMappingUpdatesRequest,
-  ) => stream.Stream<
-    ListNetworkMigrationMappingUpdatesResponse,
-    ListNetworkMigrationMappingUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkMigrationMappingUpdatesRequest,
-  ) => stream.Stream<
-    NetworkMigrationMappingUpdateJobDetails,
-    ListNetworkMigrationMappingUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSourceServerActionsError =
   | ResourceNotFoundException
@@ -8128,27 +7608,7 @@ export const listSourceServerActions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSourceServerActionsRequest,
-  ListSourceServerActionsResponse,
-  ListSourceServerActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceServerActionsRequest,
-  ) => stream.Stream<
-    ListSourceServerActionsResponse,
-    ListSourceServerActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceServerActionsRequest,
-  ) => stream.Stream<
-    SourceServerActionDocument,
-    ListSourceServerActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -8220,27 +7680,7 @@ export const listTemplateActions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTemplateActionsRequest,
-  ListTemplateActionsResponse,
-  ListTemplateActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateActionsRequest,
-  ) => stream.Stream<
-    ListTemplateActionsResponse,
-    ListTemplateActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateActionsRequest,
-  ) => stream.Stream<
-    TemplateActionDocument,
-    ListTemplateActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWavesError = UninitializedAccountException | CommonErrors;
 /**
@@ -8279,27 +7719,7 @@ export const listWaves: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWavesRequest,
-  ListWavesResponse,
-  ListWavesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWavesRequest,
-  ) => stream.Stream<
-    ListWavesResponse,
-    ListWavesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWavesRequest,
-  ) => stream.Stream<
-    Wave,
-    ListWavesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type MarkAsArchivedError =
   | ConflictException

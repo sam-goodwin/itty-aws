@@ -5379,7 +5379,8 @@ export const listFoldersTimeSeries: API.PaginatedOperationMethod<
   ListFoldersTimeSeriesRequest,
   ListTimeSeriesResponse,
   ListFoldersTimeSeriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTimeSeriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersTimeSeriesRequest,
   output: ListTimeSeriesResponse,
@@ -5390,7 +5391,7 @@ export const listFoldersTimeSeries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsTimeSeriesError =
   | NotFound
@@ -5401,7 +5402,8 @@ export const listOrganizationsTimeSeries: API.PaginatedOperationMethod<
   ListOrganizationsTimeSeriesRequest,
   ListTimeSeriesResponse,
   ListOrganizationsTimeSeriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTimeSeriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsTimeSeriesRequest,
   output: ListTimeSeriesResponse,
@@ -5412,7 +5414,7 @@ export const listOrganizationsTimeSeries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAlertPoliciesError = NotFound | Forbidden | GcpOpError;
 /** Lists the existing alerting policies for the workspace. */
@@ -5420,7 +5422,8 @@ export const listProjectsAlertPolicies: API.PaginatedOperationMethod<
   ListProjectsAlertPoliciesRequest,
   ListAlertPoliciesResponse,
   ListProjectsAlertPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAlertPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertPoliciesRequest,
   output: ListAlertPoliciesResponse,
@@ -5431,7 +5434,7 @@ export const listProjectsAlertPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAlertsError = NotFound | Forbidden | GcpOpError;
 /** Lists the existing alerts for the metrics scope of the project. */
@@ -5439,7 +5442,8 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
   ListProjectsAlertsRequest,
   ListAlertsResponse,
   ListProjectsAlertsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAlertsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertsRequest,
   output: ListAlertsResponse,
@@ -5450,7 +5454,7 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the existing groups. */
@@ -5458,7 +5462,8 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
   ListProjectsGroupsRequest,
   ListGroupsResponse,
   ListProjectsGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupsRequest,
   output: ListGroupsResponse,
@@ -5469,7 +5474,7 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsGroupsMembersError = NotFound | Forbidden | GcpOpError;
 /** Lists the monitored resources that are members of a group. */
@@ -5477,7 +5482,8 @@ export const listProjectsGroupsMembers: API.PaginatedOperationMethod<
   ListProjectsGroupsMembersRequest,
   ListGroupMembersResponse,
   ListProjectsGroupsMembersError,
-  GcpOpContext
+  GcpOpContext,
+  ListGroupMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupsMembersRequest,
   output: ListGroupMembersResponse,
@@ -5488,7 +5494,7 @@ export const listProjectsGroupsMembers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsMetricDescriptorsError =
   | NotFound
@@ -5499,7 +5505,8 @@ export const listProjectsMetricDescriptors: API.PaginatedOperationMethod<
   ListProjectsMetricDescriptorsRequest,
   ListMetricDescriptorsResponse,
   ListProjectsMetricDescriptorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMetricDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMetricDescriptorsRequest,
   output: ListMetricDescriptorsResponse,
@@ -5510,7 +5517,7 @@ export const listProjectsMetricDescriptors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsMonitoredResourceDescriptorsError =
   | NotFound
@@ -5521,7 +5528,8 @@ export const listProjectsMonitoredResourceDescriptors: API.PaginatedOperationMet
   ListProjectsMonitoredResourceDescriptorsRequest,
   ListMonitoredResourceDescriptorsResponse,
   ListProjectsMonitoredResourceDescriptorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMonitoredResourceDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMonitoredResourceDescriptorsRequest,
   output: ListMonitoredResourceDescriptorsResponse,
@@ -5532,7 +5540,7 @@ export const listProjectsMonitoredResourceDescriptors: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsNotificationChannelDescriptorsError =
   | NotFound
@@ -5543,7 +5551,8 @@ export const listProjectsNotificationChannelDescriptors: API.PaginatedOperationM
   ListProjectsNotificationChannelDescriptorsRequest,
   ListNotificationChannelDescriptorsResponse,
   ListProjectsNotificationChannelDescriptorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotificationChannelDescriptorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotificationChannelDescriptorsRequest,
   output: ListNotificationChannelDescriptorsResponse,
@@ -5554,7 +5563,7 @@ export const listProjectsNotificationChannelDescriptors: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsNotificationChannelsError =
   | NotFound
@@ -5565,7 +5574,8 @@ export const listProjectsNotificationChannels: API.PaginatedOperationMethod<
   ListProjectsNotificationChannelsRequest,
   ListNotificationChannelsResponse,
   ListProjectsNotificationChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotificationChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotificationChannelsRequest,
   output: ListNotificationChannelsResponse,
@@ -5576,7 +5586,7 @@ export const listProjectsNotificationChannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSnoozesError = NotFound | Forbidden | GcpOpError;
 /** Lists the Snoozes associated with a project. Can optionally pass in filter, which specifies predicates to match Snoozes. */
@@ -5584,7 +5594,8 @@ export const listProjectsSnoozes: API.PaginatedOperationMethod<
   ListProjectsSnoozesRequest,
   ListSnoozesResponse,
   ListProjectsSnoozesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSnoozesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSnoozesRequest,
   output: ListSnoozesResponse,
@@ -5595,7 +5606,7 @@ export const listProjectsSnoozes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTimeSeriesError = NotFound | Forbidden | GcpOpError;
 /** Lists time series that match a filter. */
@@ -5603,7 +5614,8 @@ export const listProjectsTimeSeries: API.PaginatedOperationMethod<
   ListProjectsTimeSeriesRequest,
   ListTimeSeriesResponse,
   ListProjectsTimeSeriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTimeSeriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTimeSeriesRequest,
   output: ListTimeSeriesResponse,
@@ -5614,7 +5626,7 @@ export const listProjectsTimeSeries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsUptimeCheckConfigsError =
   | NotFound
@@ -5625,7 +5637,8 @@ export const listProjectsUptimeCheckConfigs: API.PaginatedOperationMethod<
   ListProjectsUptimeCheckConfigsRequest,
   ListUptimeCheckConfigsResponse,
   ListProjectsUptimeCheckConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUptimeCheckConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsUptimeCheckConfigsRequest,
   output: ListUptimeCheckConfigsResponse,
@@ -5636,7 +5649,7 @@ export const listProjectsUptimeCheckConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
 /** List Services for this Metrics Scope. */
@@ -5644,7 +5657,8 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
@@ -5655,7 +5669,7 @@ export const listServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesServiceLevelObjectivesError =
   | NotFound
@@ -5666,7 +5680,8 @@ export const listServicesServiceLevelObjectives: API.PaginatedOperationMethod<
   ListServicesServiceLevelObjectivesRequest,
   ListServiceLevelObjectivesResponse,
   ListServicesServiceLevelObjectivesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServiceLevelObjectivesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesServiceLevelObjectivesRequest,
   output: ListServiceLevelObjectivesResponse,
@@ -5677,7 +5692,7 @@ export const listServicesServiceLevelObjectives: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUptimeCheckIpsError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of IP addresses that checkers run from. */
@@ -5685,7 +5700,8 @@ export const listUptimeCheckIps: API.PaginatedOperationMethod<
   ListUptimeCheckIpsRequest,
   ListUptimeCheckIpsResponse,
   ListUptimeCheckIpsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUptimeCheckIpsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUptimeCheckIpsRequest,
   output: ListUptimeCheckIpsResponse,
@@ -5696,7 +5712,7 @@ export const listUptimeCheckIps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsAlertPoliciesError =
   | NotFound

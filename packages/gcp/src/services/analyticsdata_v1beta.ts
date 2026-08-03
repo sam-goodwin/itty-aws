@@ -2051,7 +2051,8 @@ export const listPropertiesAudienceExports: API.PaginatedOperationMethod<
   ListPropertiesAudienceExportsRequest,
   ListAudienceExportsResponse,
   ListPropertiesAudienceExportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAudienceExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesAudienceExportsRequest,
   output: ListAudienceExportsResponse,
@@ -2062,7 +2063,7 @@ export const listPropertiesAudienceExports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type QueryPropertiesAudienceExportsError =
   | NotFound

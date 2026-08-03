@@ -2414,27 +2414,7 @@ export const listConnectors: API.OperationMethod<
     items: "Connectors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectorsRequest,
-  ListConnectorsResponse,
-  ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ConnectorSummary,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDirectoryRegistrationsError =
   | AccessDeniedException
@@ -2484,27 +2464,7 @@ export const listDirectoryRegistrations: API.OperationMethod<
     items: "DirectoryRegistrations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDirectoryRegistrationsRequest,
-  ListDirectoryRegistrationsResponse,
-  ListDirectoryRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDirectoryRegistrationsRequest,
-  ) => stream.Stream<
-    ListDirectoryRegistrationsResponse,
-    ListDirectoryRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDirectoryRegistrationsRequest,
-  ) => stream.Stream<
-    DirectoryRegistrationSummary,
-    ListDirectoryRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServicePrincipalNamesError =
   | AccessDeniedException
@@ -2556,27 +2516,7 @@ export const listServicePrincipalNames: API.OperationMethod<
     items: "ServicePrincipalNames",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicePrincipalNamesRequest,
-  ListServicePrincipalNamesResponse,
-  ListServicePrincipalNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicePrincipalNamesRequest,
-  ) => stream.Stream<
-    ListServicePrincipalNamesResponse,
-    ListServicePrincipalNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicePrincipalNamesRequest,
-  ) => stream.Stream<
-    ServicePrincipalNameSummary,
-    ListServicePrincipalNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2657,27 +2597,7 @@ export const listTemplateGroupAccessControlEntries: API.OperationMethod<
     items: "AccessControlEntries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTemplateGroupAccessControlEntriesRequest,
-  ListTemplateGroupAccessControlEntriesResponse,
-  ListTemplateGroupAccessControlEntriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateGroupAccessControlEntriesRequest,
-  ) => stream.Stream<
-    ListTemplateGroupAccessControlEntriesResponse,
-    ListTemplateGroupAccessControlEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateGroupAccessControlEntriesRequest,
-  ) => stream.Stream<
-    AccessControlEntrySummary,
-    ListTemplateGroupAccessControlEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTemplatesError =
   | AccessDeniedException
@@ -2728,27 +2648,7 @@ export const listTemplates: API.OperationMethod<
     items: "Templates",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTemplatesRequest,
-  ListTemplatesResponse,
-  ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplatesRequest,
-  ) => stream.Stream<
-    ListTemplatesResponse,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplatesRequest,
-  ) => stream.Stream<
-    TemplateSummary,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | AccessDeniedException

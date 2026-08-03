@@ -2998,7 +2998,8 @@ export const listProjectsHistories: API.PaginatedOperationMethod<
   ListProjectsHistoriesRequest,
   ListHistoriesResponse,
   ListProjectsHistoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListHistoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesRequest,
   output: ListHistoriesResponse,
@@ -3009,7 +3010,7 @@ export const listProjectsHistories: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHistoriesExecutionsError =
   | NotFound
@@ -3020,7 +3021,8 @@ export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsRequest,
   ListExecutionsResponse,
   ListProjectsHistoriesExecutionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsRequest,
   output: ListExecutionsResponse,
@@ -3031,7 +3033,7 @@ export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHistoriesExecutionsClustersError =
   | NotFound
@@ -3060,7 +3062,8 @@ export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperation
   ListProjectsHistoriesExecutionsEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListProjectsHistoriesExecutionsEnvironmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsEnvironmentsRequest,
   output: ListEnvironmentsResponse,
@@ -3071,7 +3074,7 @@ export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHistoriesExecutionsStepsError =
   | NotFound
@@ -3082,7 +3085,8 @@ export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
   ListProjectsHistoriesExecutionsStepsRequest,
   ListStepsResponse,
   ListProjectsHistoriesExecutionsStepsError,
-  GcpOpContext
+  GcpOpContext,
+  ListStepsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsRequest,
   output: ListStepsResponse,
@@ -3093,7 +3097,7 @@ export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
   | NotFound
@@ -3122,7 +3126,8 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.Pa
   ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
   ListPerfSamplesResponse,
   ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPerfSamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
   output: ListPerfSamplesResponse,
@@ -3133,7 +3138,7 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHistoriesExecutionsStepsTestCasesError =
   | NotFound
@@ -3144,7 +3149,8 @@ export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperati
   ListProjectsHistoriesExecutionsStepsTestCasesRequest,
   ListTestCasesResponse,
   ListProjectsHistoriesExecutionsStepsTestCasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsTestCasesRequest,
   output: ListTestCasesResponse,
@@ -3155,7 +3161,7 @@ export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHistoriesExecutionsStepsThumbnailsError =
   | NotFound
@@ -3166,7 +3172,8 @@ export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperat
   ListProjectsHistoriesExecutionsStepsThumbnailsRequest,
   ListStepThumbnailsResponse,
   ListProjectsHistoriesExecutionsStepsThumbnailsError,
-  GcpOpContext
+  GcpOpContext,
+  ListStepThumbnailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsThumbnailsRequest,
   output: ListStepThumbnailsResponse,
@@ -3177,7 +3184,7 @@ export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsHistoriesExecutionsError =
   | NotFound

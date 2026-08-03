@@ -49997,7 +49997,8 @@ export const listAsyncErrorsCustomersCampaignDrafts: API.PaginatedOperationMetho
   ListAsyncErrorsCustomersCampaignDraftsRequest,
   GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse,
   ListAsyncErrorsCustomersCampaignDraftsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAdsSearchads360V23Services__ListCampaignDraftAsyncErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAsyncErrorsCustomersCampaignDraftsRequest,
   output:
@@ -50009,7 +50010,7 @@ export const listAsyncErrorsCustomersCampaignDrafts: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBenchmarksAvailableDatesV23Error =
   | NotFound
@@ -50149,7 +50150,8 @@ export const listExperimentAsyncErrorsCustomersExperiments: API.PaginatedOperati
   ListExperimentAsyncErrorsCustomersExperimentsRequest,
   GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse,
   ListExperimentAsyncErrorsCustomersExperimentsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentAsyncErrorsCustomersExperimentsRequest,
   output: GoogleAdsSearchads360V23Services__ListExperimentAsyncErrorsResponse,
@@ -50160,7 +50162,7 @@ export const listExperimentAsyncErrorsCustomersExperiments: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInsightsEligibleDatesAudienceInsightsError =
   | NotFound
@@ -50271,7 +50273,8 @@ export const listResultsCustomersBatchJobs: API.PaginatedOperationMethod<
   ListResultsCustomersBatchJobsRequest,
   GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse,
   ListResultsCustomersBatchJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResultsCustomersBatchJobsRequest,
   output: GoogleAdsSearchads360V23Services__ListBatchJobResultsResponse,
@@ -50282,7 +50285,7 @@ export const listResultsCustomersBatchJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MoveManagerLinkCustomersCustomerManagerLinksError =
   | NotFound

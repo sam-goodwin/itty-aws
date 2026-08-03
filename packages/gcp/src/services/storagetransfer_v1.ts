@@ -1528,7 +1528,8 @@ export const listProjectsAgentPools: API.PaginatedOperationMethod<
   ListProjectsAgentPoolsRequest,
   ListAgentPoolsResponse,
   ListProjectsAgentPoolsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAgentPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAgentPoolsRequest,
   output: ListAgentPoolsResponse,
@@ -1539,7 +1540,7 @@ export const listProjectsAgentPools: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTransferJobsError = NotFound | Forbidden | GcpOpError;
 /** Lists transfer jobs. */
@@ -1547,7 +1548,8 @@ export const listTransferJobs: API.PaginatedOperationMethod<
   ListTransferJobsRequest,
   ListTransferJobsResponse,
   ListTransferJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTransferJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransferJobsRequest,
   output: ListTransferJobsResponse,
@@ -1558,7 +1560,7 @@ export const listTransferJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTransferOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists transfer operations. Operations are ordered by their creation time in reverse chronological order. */
@@ -1566,7 +1568,8 @@ export const listTransferOperations: API.PaginatedOperationMethod<
   ListTransferOperationsRequest,
   ListOperationsResponse,
   ListTransferOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransferOperationsRequest,
   output: ListOperationsResponse,
@@ -1577,7 +1580,7 @@ export const listTransferOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsAgentPoolsError =
   | NotFound

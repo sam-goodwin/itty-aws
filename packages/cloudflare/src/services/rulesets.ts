@@ -89755,7 +89755,8 @@ export const listPhasVersionsForAccount: API.PaginatedOperationMethod<
   ListPhasVersionsForAccountRequest,
   ListPhasVersionsResponse,
   ListPhasVersionsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PhasesVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPhasVersionsForAccountRequest,
@@ -89766,7 +89767,7 @@ export const listPhasVersionsForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPhasVersionsForZoneError = CloudflareOpError;
 /** Fetches the versions of an account or zone entry point ruleset. */
@@ -89774,7 +89775,8 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
   ListPhasVersionsForZoneRequest,
   ListPhasVersionsResponse,
   ListPhasVersionsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PhasesVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPhasVersionsForZoneRequest,
@@ -89785,7 +89787,7 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRulesetsForAccountError = CloudflareOpError;
 /** Fetches all rulesets. */
@@ -89793,7 +89795,8 @@ export const listRulesetsForAccount: API.PaginatedOperationMethod<
   ListRulesetsForAccountRequest,
   ListRulesetsResponse,
   ListRulesetsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesetsForAccountRequest,
@@ -89810,7 +89813,7 @@ export const listRulesetsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRulesetsForZoneError = CloudflareOpError;
 /** Fetches all rulesets. */
@@ -89818,7 +89821,8 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
   ListRulesetsForZoneRequest,
   ListRulesetsResponse,
   ListRulesetsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesetsForZoneRequest,
@@ -89835,7 +89839,7 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListVersionsForAccountError = CloudflareOpError;
 /** Fetches the versions of an account or zone ruleset. */
@@ -89843,7 +89847,8 @@ export const listVersionsForAccount: API.PaginatedOperationMethod<
   ListVersionsForAccountRequest,
   ListVersionsResponse,
   ListVersionsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListVersionsForAccountRequest,
@@ -89854,7 +89859,7 @@ export const listVersionsForAccount: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListVersionsForZoneError = CloudflareOpError;
 /** Fetches the versions of an account or zone ruleset. */
@@ -89862,7 +89867,8 @@ export const listVersionsForZone: API.PaginatedOperationMethod<
   ListVersionsForZoneRequest,
   ListVersionsResponse,
   ListVersionsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListVersionsForZoneRequest,
@@ -89873,7 +89879,7 @@ export const listVersionsForZone: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchRuleForAccountError = CloudflareOpError;
 /** Updates an existing rule in an account or zone ruleset. */

@@ -1041,7 +1041,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SchemasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSchemasRequest,
@@ -1058,7 +1059,7 @@ export const listSchemas: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSettingOperationsError = CloudflareOpError;
 /** Lists all per-operation schema validation settings configured for the zone. */
@@ -1066,7 +1067,8 @@ export const listSettingOperations: API.PaginatedOperationMethod<
   ListSettingOperationsRequest,
   ListSettingOperationsResponse,
   ListSettingOperationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SettingsOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSettingOperationsRequest,
@@ -1083,7 +1085,7 @@ export const listSettingOperations: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchSchemaError = SchemaNotFound | CloudflareOpError;
 /** Modifies an existing OpenAPI schema in API Shield, updating the validation rules for associated API operations. */

@@ -650,7 +650,8 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
@@ -662,7 +663,7 @@ export const listGroups: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type QueryReportsError = NotFound | Forbidden | GcpOpError;
 /** Retrieve your YouTube Analytics reports. */

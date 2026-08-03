@@ -11469,27 +11469,7 @@ export const describeEndpoints: API.OperationMethod<
     items: "Endpoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeEndpointsRequest,
-  DescribeEndpointsResponse,
-  DescribeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEndpointsRequest,
-  ) => stream.Stream<
-    DescribeEndpointsResponse,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    DescribeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateCertificateError =
   | BadRequestException
@@ -11782,27 +11762,7 @@ export const listJobs: API.OperationMethod<
     items: "Jobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsRequest,
-  ListJobsResponse,
-  ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    Job,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobTemplatesError =
   | BadRequestException
@@ -11857,27 +11817,7 @@ export const listJobTemplates: API.OperationMethod<
     items: "JobTemplates",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobTemplatesRequest,
-  ListJobTemplatesResponse,
-  ListJobTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    ListJobTemplatesResponse,
-    ListJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    JobTemplate,
-    ListJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPresetsError =
   | BadRequestException
@@ -11932,27 +11872,7 @@ export const listPresets: API.OperationMethod<
     items: "Presets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPresetsRequest,
-  ListPresetsResponse,
-  ListPresetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPresetsRequest,
-  ) => stream.Stream<
-    ListPresetsResponse,
-    ListPresetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPresetsRequest,
-  ) => stream.Stream<
-    Preset,
-    ListPresetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueuesError =
   | BadRequestException
@@ -12007,27 +11927,7 @@ export const listQueues: API.OperationMethod<
     items: "Queues",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueuesRequest,
-  ListQueuesResponse,
-  ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    Queue,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -12116,27 +12016,7 @@ export const listVersions: API.OperationMethod<
     items: "Versions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVersionsRequest,
-  ListVersionsResponse,
-  ListVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    JobEngineVersion,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ProbeError =
   | BadRequestException
@@ -12259,27 +12139,7 @@ export const searchJobs: API.OperationMethod<
     items: "Jobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchJobsRequest,
-  SearchJobsResponse,
-  SearchJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    SearchJobsResponse,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    Job,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartJobsQueryError =
   | BadRequestException

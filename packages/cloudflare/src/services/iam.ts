@@ -3971,7 +3971,8 @@ export const createUserGroupMember: API.PaginatedOperationMethod<
   CreateUserGroupMemberRequest,
   CreateUserGroupMemberResponse,
   CreateUserGroupMemberError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserGroupsMembersCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateUserGroupMemberRequest,
@@ -3987,7 +3988,7 @@ export const createUserGroupMember: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type DeleteOauthClientError = CloudflareOpError;
 /** Delete an OAuth client. */
@@ -4213,7 +4214,8 @@ export const listOauthClients: API.PaginatedOperationMethod<
   ListOauthClientsRequest,
   ListOauthClientsResponse,
   ListOauthClientsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OauthClientsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOauthClientsRequest,
@@ -4224,7 +4226,7 @@ export const listOauthClients: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOauthScopesError = CloudflareOpError;
 /** List all available OAuth scopes. This endpoint requires authentication but has no authorization role requirements. */
@@ -4232,7 +4234,8 @@ export const listOauthScopes: API.PaginatedOperationMethod<
   ListOauthScopesRequest,
   ListOauthScopesResponse,
   ListOauthScopesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OauthScopesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOauthScopesRequest,
@@ -4243,7 +4246,7 @@ export const listOauthScopes: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPermissionGroupsError = CloudflareOpError;
 /** List all the permissions groups for an account. */
@@ -4251,7 +4254,8 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
   ListPermissionGroupsRequest,
   ListPermissionGroupsResponse,
   ListPermissionGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PermissionGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPermissionGroupsRequest,
@@ -4268,7 +4272,7 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListResourceGroupsError = CloudflareOpError;
 /** List all the resource groups for an account. */
@@ -4276,7 +4280,8 @@ export const listResourceGroups: API.PaginatedOperationMethod<
   ListResourceGroupsRequest,
   ListResourceGroupsResponse,
   ListResourceGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ResourceGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourceGroupsRequest,
@@ -4287,7 +4292,7 @@ export const listResourceGroups: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSsosError = CloudflareOpError;
 /** Lists all SSO connectors configured for the account. */
@@ -4295,7 +4300,8 @@ export const listSsos: API.PaginatedOperationMethod<
   ListSsosRequest,
   ListSsosResponse,
   ListSsosError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SsoListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSsosRequest,
@@ -4306,7 +4312,7 @@ export const listSsos: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListUserGroupMembersError =
   | UserGroupNotFound
@@ -4317,7 +4323,8 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
   ListUserGroupMembersRequest,
   ListUserGroupMembersResponse,
   ListUserGroupMembersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserGroupsMembersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListUserGroupMembersRequest,
@@ -4339,7 +4346,7 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListUserGroupsError = CloudflareOpError;
 /** List all the user groups for an account. */
@@ -4347,7 +4354,8 @@ export const listUserGroups: API.PaginatedOperationMethod<
   ListUserGroupsRequest,
   ListUserGroupsResponse,
   ListUserGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListUserGroupsRequest,
@@ -4364,7 +4372,7 @@ export const listUserGroups: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchOauthClientError = CloudflareOpError;
 /** Update an existing OAuth client. Only include fields you want to update. */
@@ -4460,7 +4468,8 @@ export const updateUserGroupMember: API.PaginatedOperationMethod<
   UpdateUserGroupMemberRequest,
   UpdateUserGroupMemberResponse,
   UpdateUserGroupMemberError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UserGroupsMembersUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: UpdateUserGroupMemberRequest,
@@ -4476,4 +4485,4 @@ export const updateUserGroupMember: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

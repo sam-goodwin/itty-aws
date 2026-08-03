@@ -1468,7 +1468,8 @@ export const listRateLimits: API.PaginatedOperationMethod<
   ListRateLimitsRequest,
   ListRateLimitsResponse,
   ListRateLimitsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRateLimitsRequest,
@@ -1485,4 +1486,4 @@ export const listRateLimits: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

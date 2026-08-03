@@ -296,7 +296,8 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
   ListAccountsNotificationsubscriptionsRequest,
   ListNotificationSubscriptionsResponse,
   ListAccountsNotificationsubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotificationSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsNotificationsubscriptionsRequest,
   output: ListNotificationSubscriptionsResponse,
@@ -307,7 +308,7 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsNotificationsubscriptionsError =
   | NotFound

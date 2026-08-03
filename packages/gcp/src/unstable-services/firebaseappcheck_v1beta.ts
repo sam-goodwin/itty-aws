@@ -3180,7 +3180,8 @@ export const listProjectsAppsDebugTokens: API.PaginatedOperationMethod<
   ListProjectsAppsDebugTokensRequest,
   GoogleFirebaseAppcheckV1betaListDebugTokensResponse,
   ListProjectsAppsDebugTokensError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppcheckV1betaListDebugTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsDebugTokensRequest,
   output: GoogleFirebaseAppcheckV1betaListDebugTokensResponse,
@@ -3191,7 +3192,7 @@ export const listProjectsAppsDebugTokens: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists all Service configurations for the specified project. Only Services which were explicitly configured using UpdateService or BatchUpdateServices will be returned. */
@@ -3199,7 +3200,8 @@ export const listProjectsServices: API.PaginatedOperationMethod<
   ListProjectsServicesRequest,
   GoogleFirebaseAppcheckV1betaListServicesResponse,
   ListProjectsServicesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppcheckV1betaListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsServicesRequest,
   output: GoogleFirebaseAppcheckV1betaListServicesResponse,
@@ -3210,7 +3212,7 @@ export const listProjectsServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsServicesResourcePoliciesError =
   | NotFound
@@ -3221,7 +3223,8 @@ export const listProjectsServicesResourcePolicies: API.PaginatedOperationMethod<
   ListProjectsServicesResourcePoliciesRequest,
   GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse,
   ListProjectsServicesResourcePoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsServicesResourcePoliciesRequest,
   output: GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse,
@@ -3232,7 +3235,7 @@ export const listProjectsServicesResourcePolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsAppsAppAttestConfigError =
   | NotFound

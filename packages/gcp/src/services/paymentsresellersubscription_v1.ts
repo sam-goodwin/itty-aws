@@ -1664,7 +1664,8 @@ export const listPartnersProducts: API.PaginatedOperationMethod<
   ListPartnersProductsRequest,
   ListProductsResponse,
   ListPartnersProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersProductsRequest,
   output: ListProductsResponse,
@@ -1675,7 +1676,7 @@ export const listPartnersProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPartnersPromotionsError = NotFound | Forbidden | GcpOpError;
 /** Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account. */
@@ -1683,7 +1684,8 @@ export const listPartnersPromotions: API.PaginatedOperationMethod<
   ListPartnersPromotionsRequest,
   ListPromotionsResponse,
   ListPartnersPromotionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPromotionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersPromotionsRequest,
   output: ListPromotionsResponse,
@@ -1694,7 +1696,7 @@ export const listPartnersPromotions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchPartnersSubscriptionsLineItemsError =
   | NotFound

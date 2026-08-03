@@ -7185,7 +7185,8 @@ export const listBackupRuns: API.PaginatedOperationMethod<
   ListBackupRunsRequest,
   BackupRunsListResponse,
   ListBackupRunsError,
-  GcpOpContext
+  GcpOpContext,
+  BackupRun
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBackupRunsRequest,
   output: BackupRunsListResponse,
@@ -7197,7 +7198,7 @@ export const listBackupRuns: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListBackupsBackupsError = NotFound | Forbidden | GcpOpError;
 /** Lists all backups associated with the project. */
@@ -7205,7 +7206,8 @@ export const listBackupsBackups: API.PaginatedOperationMethod<
   ListBackupsBackupsRequest,
   ListBackupsResponse,
   ListBackupsBackupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBackupsBackupsRequest,
   output: ListBackupsResponse,
@@ -7216,7 +7218,7 @@ export const listBackupsBackups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDatabasesError = NotFound | Forbidden | GcpOpError;
 /** Lists databases in the specified Cloud SQL instance. */
@@ -7272,7 +7274,8 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   InstancesListResponse,
   ListInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  DatabaseInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: InstancesListResponse,
@@ -7284,7 +7287,7 @@ export const listInstances: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time. */
@@ -7292,7 +7295,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsListResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: OperationsListResponse,
@@ -7304,7 +7308,7 @@ export const listOperations: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListServerCasInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously rotated out. */

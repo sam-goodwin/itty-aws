@@ -1303,7 +1303,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -1314,7 +1315,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNamespacesError =
   | NotFound
@@ -1325,7 +1326,8 @@ export const listProjectsLocationsNamespaces: API.PaginatedOperationMethod<
   ListProjectsLocationsNamespacesRequest,
   ListNamespacesResponse,
   ListProjectsLocationsNamespacesError,
-  GcpOpContext
+  GcpOpContext,
+  ListNamespacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNamespacesRequest,
   output: ListNamespacesResponse,
@@ -1336,7 +1338,7 @@ export const listProjectsLocationsNamespaces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNamespacesServicesError =
   | NotFound
@@ -1347,7 +1349,8 @@ export const listProjectsLocationsNamespacesServices: API.PaginatedOperationMeth
   ListProjectsLocationsNamespacesServicesRequest,
   ListServicesResponse,
   ListProjectsLocationsNamespacesServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNamespacesServicesRequest,
   output: ListServicesResponse,
@@ -1358,7 +1361,7 @@ export const listProjectsLocationsNamespacesServices: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNamespacesServicesEndpointsError =
   | NotFound
@@ -1369,7 +1372,8 @@ export const listProjectsLocationsNamespacesServicesEndpoints: API.PaginatedOper
   ListProjectsLocationsNamespacesServicesEndpointsRequest,
   ListEndpointsResponse,
   ListProjectsLocationsNamespacesServicesEndpointsError,
-  GcpOpContext
+  GcpOpContext,
+  ListEndpointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNamespacesServicesEndpointsRequest,
   output: ListEndpointsResponse,
@@ -1380,7 +1384,7 @@ export const listProjectsLocationsNamespacesServicesEndpoints: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsNamespacesError =
   | NotFound

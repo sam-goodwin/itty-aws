@@ -965,27 +965,7 @@ export const describeTable: API.OperationMethod<
     items: "ColumnList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTableRequest,
-  DescribeTableResponse,
-  DescribeTableError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTableRequest,
-  ) => stream.Stream<
-    DescribeTableResponse,
-    DescribeTableError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTableRequest,
-  ) => stream.Stream<
-    ColumnMetadata,
-    DescribeTableError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ExecuteStatementError =
   | ActiveSessionsExceededException
@@ -1077,27 +1057,7 @@ export const getStatementResult: API.OperationMethod<
     outputToken: "NextToken",
     items: "Records",
   } as const,
-})) as any as API.OperationMethod<
-  GetStatementResultRequest,
-  GetStatementResultResponse,
-  GetStatementResultError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetStatementResultRequest,
-  ) => stream.Stream<
-    GetStatementResultResponse,
-    GetStatementResultError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetStatementResultRequest,
-  ) => stream.Stream<
-    Field[],
-    GetStatementResultError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetStatementResultV2Error =
   | InternalServerException
@@ -1145,27 +1105,7 @@ export const getStatementResultV2: API.OperationMethod<
     outputToken: "NextToken",
     items: "Records",
   } as const,
-})) as any as API.OperationMethod<
-  GetStatementResultV2Request,
-  GetStatementResultV2Response,
-  GetStatementResultV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetStatementResultV2Request,
-  ) => stream.Stream<
-    GetStatementResultV2Response,
-    GetStatementResultV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetStatementResultV2Request,
-  ) => stream.Stream<
-    QueryRecords,
-    GetStatementResultV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatabasesError =
   | DatabaseConnectionException
@@ -1228,27 +1168,7 @@ export const listDatabases: API.OperationMethod<
     items: "Databases",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatabasesRequest,
-  ListDatabasesResponse,
-  ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    ListDatabasesResponse,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    string,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchemasError =
   | DatabaseConnectionException
@@ -1311,27 +1231,7 @@ export const listSchemas: API.OperationMethod<
     items: "Schemas",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchemasRequest,
-  ListSchemasResponse,
-  ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    string,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStatementsError =
   | InternalServerException
@@ -1382,27 +1282,7 @@ export const listStatements: API.OperationMethod<
     items: "Statements",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStatementsRequest,
-  ListStatementsResponse,
-  ListStatementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStatementsRequest,
-  ) => stream.Stream<
-    ListStatementsResponse,
-    ListStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStatementsRequest,
-  ) => stream.Stream<
-    StatementData,
-    ListStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTablesError =
   | DatabaseConnectionException
@@ -1465,24 +1345,4 @@ export const listTables: API.OperationMethod<
     items: "Tables",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTablesRequest,
-  ListTablesResponse,
-  ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    TableMember,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

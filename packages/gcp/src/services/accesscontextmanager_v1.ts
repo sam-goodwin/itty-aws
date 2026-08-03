@@ -2582,7 +2582,8 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccessPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
@@ -2593,7 +2594,7 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccessPoliciesAccessLevelsError =
   | NotFound
@@ -2604,7 +2605,8 @@ export const listAccessPoliciesAccessLevels: API.PaginatedOperationMethod<
   ListAccessPoliciesAccessLevelsRequest,
   ListAccessLevelsResponse,
   ListAccessPoliciesAccessLevelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccessLevelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesAccessLevelsRequest,
   output: ListAccessLevelsResponse,
@@ -2615,7 +2617,7 @@ export const listAccessPoliciesAccessLevels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccessPoliciesAuthorizedOrgsDescsError =
   | NotFound
@@ -2626,7 +2628,8 @@ export const listAccessPoliciesAuthorizedOrgsDescs: API.PaginatedOperationMethod
   ListAccessPoliciesAuthorizedOrgsDescsRequest,
   ListAuthorizedOrgsDescsResponse,
   ListAccessPoliciesAuthorizedOrgsDescsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedOrgsDescsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesAuthorizedOrgsDescsRequest,
   output: ListAuthorizedOrgsDescsResponse,
@@ -2637,7 +2640,7 @@ export const listAccessPoliciesAuthorizedOrgsDescs: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccessPoliciesServicePerimetersError =
   | NotFound
@@ -2648,7 +2651,8 @@ export const listAccessPoliciesServicePerimeters: API.PaginatedOperationMethod<
   ListAccessPoliciesServicePerimetersRequest,
   ListServicePerimetersResponse,
   ListAccessPoliciesServicePerimetersError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicePerimetersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesServicePerimetersRequest,
   output: ListServicePerimetersResponse,
@@ -2659,7 +2663,7 @@ export const listAccessPoliciesServicePerimeters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -2667,7 +2671,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -2678,7 +2683,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsGcpUserAccessBindingsError =
   | NotFound
@@ -2689,7 +2694,8 @@ export const listOrganizationsGcpUserAccessBindings: API.PaginatedOperationMetho
   ListOrganizationsGcpUserAccessBindingsRequest,
   ListGcpUserAccessBindingsResponse,
   ListOrganizationsGcpUserAccessBindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListGcpUserAccessBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsGcpUserAccessBindingsRequest,
   output: ListGcpUserAccessBindingsResponse,
@@ -2700,7 +2706,7 @@ export const listOrganizationsGcpUserAccessBindings: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPermissionsError = NotFound | Forbidden | GcpOpError;
 /** Lists all supported permissions in VPC Service Controls ingress and egress rules for Granular Controls. */
@@ -2708,7 +2714,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   ListSupportedPermissionsResponse,
   ListPermissionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSupportedPermissionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListSupportedPermissionsResponse,
@@ -2719,7 +2726,7 @@ export const listPermissions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists all VPC-SC supported services. **IAM Permissions**: Requires the following IAM permissions to use this method: - `serviceusage.services.use` on the project. */
@@ -2727,7 +2734,8 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListSupportedServicesResponse,
   ListServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSupportedServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListSupportedServicesResponse,
@@ -2738,7 +2746,7 @@ export const listServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccessPoliciesError =
   | NotFound

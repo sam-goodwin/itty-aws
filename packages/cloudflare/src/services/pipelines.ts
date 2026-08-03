@@ -5307,7 +5307,8 @@ export const listPipelines: API.PaginatedOperationMethod<
   ListPipelinesRequest,
   ListPipelinesResponse,
   ListPipelinesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPipelinesRequest,
@@ -5322,7 +5323,7 @@ export const listPipelines: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSinksError = CloudflareOpError;
 /** List/Filter Sinks in Account. */
@@ -5330,7 +5331,8 @@ export const listSinks: API.PaginatedOperationMethod<
   ListSinksRequest,
   ListSinksResponse,
   ListSinksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SinksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSinksRequest,
@@ -5347,7 +5349,7 @@ export const listSinks: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListStreamsError = CloudflareOpError;
 /** List/Filter Streams in Account. */
@@ -5355,7 +5357,8 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  StreamsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListStreamsRequest,
@@ -5372,7 +5375,7 @@ export const listStreams: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListV1PipelineError = CloudflareOpError;
 /** List/Filter Pipelines in Account. */
@@ -5380,7 +5383,8 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
   ListV1PipelineRequest,
   ListV1PipelineResponse,
   ListV1PipelineError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListV1ResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListV1PipelineRequest,
@@ -5397,7 +5401,7 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchStreamError = StreamNotFound | CloudflareOpError;
 /** Update a Stream. */

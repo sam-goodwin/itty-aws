@@ -1525,27 +1525,7 @@ export const listBatchLoadTasks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBatchLoadTasksRequest,
-  ListBatchLoadTasksResponse,
-  ListBatchLoadTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchLoadTasksRequest,
-  ) => stream.Stream<
-    ListBatchLoadTasksResponse,
-    ListBatchLoadTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchLoadTasksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBatchLoadTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatabasesError =
   | AccessDeniedException
@@ -1597,27 +1577,7 @@ export const listDatabases: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatabasesRequest,
-  ListDatabasesResponse,
-  ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    ListDatabasesResponse,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTablesError =
   | AccessDeniedException
@@ -1671,27 +1631,7 @@ export const listTables: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTablesRequest,
-  ListTablesResponse,
-  ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InvalidEndpointException

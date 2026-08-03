@@ -4787,27 +4787,7 @@ export const listDatasetGroups: API.OperationMethod<
     items: "DatasetGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetGroupsRequest,
-  ListDatasetGroupsResponse,
-  ListDatasetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetGroupsRequest,
-  ) => stream.Stream<
-    ListDatasetGroupsResponse,
-    ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetGroupsRequest,
-  ) => stream.Stream<
-    DatasetGroupSummary,
-    ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetImportJobsError =
   | InvalidInputException
@@ -4853,27 +4833,7 @@ export const listDatasetImportJobs: API.OperationMethod<
     items: "DatasetImportJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetImportJobsRequest,
-  ListDatasetImportJobsResponse,
-  ListDatasetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetImportJobsRequest,
-  ) => stream.Stream<
-    ListDatasetImportJobsResponse,
-    ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetImportJobsRequest,
-  ) => stream.Stream<
-    DatasetImportJobSummary,
-    ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetsError = InvalidNextTokenException | CommonErrors;
 /**
@@ -4914,27 +4874,7 @@ export const listDatasets: API.OperationMethod<
     items: "Datasets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExplainabilitiesError =
   | InvalidInputException
@@ -4981,27 +4921,7 @@ export const listExplainabilities: API.OperationMethod<
     items: "Explainabilities",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExplainabilitiesRequest,
-  ListExplainabilitiesResponse,
-  ListExplainabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExplainabilitiesRequest,
-  ) => stream.Stream<
-    ListExplainabilitiesResponse,
-    ListExplainabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExplainabilitiesRequest,
-  ) => stream.Stream<
-    ExplainabilitySummary,
-    ListExplainabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExplainabilityExportsError =
   | InvalidInputException
@@ -5047,27 +4967,7 @@ export const listExplainabilityExports: API.OperationMethod<
     items: "ExplainabilityExports",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExplainabilityExportsRequest,
-  ListExplainabilityExportsResponse,
-  ListExplainabilityExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExplainabilityExportsRequest,
-  ) => stream.Stream<
-    ListExplainabilityExportsResponse,
-    ListExplainabilityExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExplainabilityExportsRequest,
-  ) => stream.Stream<
-    ExplainabilityExportSummary,
-    ListExplainabilityExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListForecastExportJobsError =
   | InvalidInputException
@@ -5112,27 +5012,7 @@ export const listForecastExportJobs: API.OperationMethod<
     items: "ForecastExportJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListForecastExportJobsRequest,
-  ListForecastExportJobsResponse,
-  ListForecastExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListForecastExportJobsRequest,
-  ) => stream.Stream<
-    ListForecastExportJobsResponse,
-    ListForecastExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListForecastExportJobsRequest,
-  ) => stream.Stream<
-    ForecastExportJobSummary,
-    ListForecastExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListForecastsError =
   | InvalidInputException
@@ -5178,27 +5058,7 @@ export const listForecasts: API.OperationMethod<
     items: "Forecasts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListForecastsRequest,
-  ListForecastsResponse,
-  ListForecastsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListForecastsRequest,
-  ) => stream.Stream<
-    ListForecastsResponse,
-    ListForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListForecastsRequest,
-  ) => stream.Stream<
-    ForecastSummary,
-    ListForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMonitorEvaluationsError =
   | InvalidInputException
@@ -5249,27 +5109,7 @@ export const listMonitorEvaluations: API.OperationMethod<
     items: "PredictorMonitorEvaluations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMonitorEvaluationsRequest,
-  ListMonitorEvaluationsResponse,
-  ListMonitorEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorEvaluationsRequest,
-  ) => stream.Stream<
-    ListMonitorEvaluationsResponse,
-    ListMonitorEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorEvaluationsRequest,
-  ) => stream.Stream<
-    PredictorMonitorEvaluation,
-    ListMonitorEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMonitorsError =
   | InvalidInputException
@@ -5312,27 +5152,7 @@ export const listMonitors: API.OperationMethod<
     items: "Monitors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMonitorsRequest,
-  ListMonitorsResponse,
-  ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    ListMonitorsResponse,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    MonitorSummary,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPredictorBacktestExportJobsError =
   | InvalidInputException
@@ -5378,27 +5198,7 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
     items: "PredictorBacktestExportJobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPredictorBacktestExportJobsRequest,
-  ListPredictorBacktestExportJobsResponse,
-  ListPredictorBacktestExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPredictorBacktestExportJobsRequest,
-  ) => stream.Stream<
-    ListPredictorBacktestExportJobsResponse,
-    ListPredictorBacktestExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPredictorBacktestExportJobsRequest,
-  ) => stream.Stream<
-    PredictorBacktestExportJobSummary,
-    ListPredictorBacktestExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPredictorsError =
   | InvalidInputException
@@ -5445,27 +5245,7 @@ export const listPredictors: API.OperationMethod<
     items: "Predictors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPredictorsRequest,
-  ListPredictorsResponse,
-  ListPredictorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPredictorsRequest,
-  ) => stream.Stream<
-    ListPredictorsResponse,
-    ListPredictorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPredictorsRequest,
-  ) => stream.Stream<
-    PredictorSummary,
-    ListPredictorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InvalidInputException
@@ -5528,27 +5308,7 @@ export const listWhatIfAnalyses: API.OperationMethod<
     items: "WhatIfAnalyses",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWhatIfAnalysesRequest,
-  ListWhatIfAnalysesResponse,
-  ListWhatIfAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWhatIfAnalysesRequest,
-  ) => stream.Stream<
-    ListWhatIfAnalysesResponse,
-    ListWhatIfAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWhatIfAnalysesRequest,
-  ) => stream.Stream<
-    WhatIfAnalysisSummary,
-    ListWhatIfAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWhatIfForecastExportsError =
   | InvalidInputException
@@ -5590,27 +5350,7 @@ export const listWhatIfForecastExports: API.OperationMethod<
     items: "WhatIfForecastExports",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWhatIfForecastExportsRequest,
-  ListWhatIfForecastExportsResponse,
-  ListWhatIfForecastExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWhatIfForecastExportsRequest,
-  ) => stream.Stream<
-    ListWhatIfForecastExportsResponse,
-    ListWhatIfForecastExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWhatIfForecastExportsRequest,
-  ) => stream.Stream<
-    WhatIfForecastExportSummary,
-    ListWhatIfForecastExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWhatIfForecastsError =
   | InvalidInputException
@@ -5652,27 +5392,7 @@ export const listWhatIfForecasts: API.OperationMethod<
     items: "WhatIfForecasts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWhatIfForecastsRequest,
-  ListWhatIfForecastsResponse,
-  ListWhatIfForecastsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWhatIfForecastsRequest,
-  ) => stream.Stream<
-    ListWhatIfForecastsResponse,
-    ListWhatIfForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWhatIfForecastsRequest,
-  ) => stream.Stream<
-    WhatIfForecastSummary,
-    ListWhatIfForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ResumeResourceError =
   | InvalidInputException

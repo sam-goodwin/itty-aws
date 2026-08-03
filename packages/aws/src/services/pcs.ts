@@ -1643,27 +1643,7 @@ export const listClusters: API.OperationMethod<
     items: "clusters",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClustersRequest,
-  ListClustersResponse,
-  ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ClusterSummary,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListComputeNodeGroupsError =
   | AccessDeniedException
@@ -1716,27 +1696,7 @@ export const listComputeNodeGroups: API.OperationMethod<
     items: "computeNodeGroups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListComputeNodeGroupsRequest,
-  ListComputeNodeGroupsResponse,
-  ListComputeNodeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputeNodeGroupsRequest,
-  ) => stream.Stream<
-    ListComputeNodeGroupsResponse,
-    ListComputeNodeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputeNodeGroupsRequest,
-  ) => stream.Stream<
-    ComputeNodeGroupSummary,
-    ListComputeNodeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueuesError =
   | AccessDeniedException
@@ -1789,27 +1749,7 @@ export const listQueues: API.OperationMethod<
     items: "queues",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueuesRequest,
-  ListQueuesResponse,
-  ListQueuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    QueueSummary,
-    ListQueuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**

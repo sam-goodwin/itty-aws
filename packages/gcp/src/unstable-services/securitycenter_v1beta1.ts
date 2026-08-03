@@ -1317,7 +1317,8 @@ export const listOrganizationsAssets: API.PaginatedOperationMethod<
   ListOrganizationsAssetsRequest,
   ListAssetsResponse,
   ListOrganizationsAssetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAssetsRequest,
   output: ListAssetsResponse,
@@ -1328,7 +1329,7 @@ export const listOrganizationsAssets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsOperationsError =
   | NotFound
@@ -1338,7 +1339,8 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsOperationsRequest,
   ListOperationsResponse,
   ListOrganizationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: ListOperationsResponse,
@@ -1349,14 +1351,15 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSourcesError = NotFound | Forbidden | GcpOpError;
 export const listOrganizationsSources: API.PaginatedOperationMethod<
   ListOrganizationsSourcesRequest,
   ListSourcesResponse,
   ListOrganizationsSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesRequest,
   output: ListSourcesResponse,
@@ -1367,7 +1370,7 @@ export const listOrganizationsSources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSourcesFindingsError =
   | NotFound
@@ -1377,7 +1380,8 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
   ListOrganizationsSourcesFindingsRequest,
   ListFindingsResponse,
   ListOrganizationsSourcesFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesFindingsRequest,
   output: ListFindingsResponse,
@@ -1388,7 +1392,7 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsSourcesError =
   | NotFound

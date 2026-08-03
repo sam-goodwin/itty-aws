@@ -9570,27 +9570,7 @@ export const listBridges: API.OperationMethod<
     items: "Bridges",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBridgesRequest,
-  ListBridgesResponse,
-  ListBridgesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBridgesRequest,
-  ) => stream.Stream<
-    ListBridgesResponse,
-    ListBridgesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBridgesRequest,
-  ) => stream.Stream<
-    ListedBridge,
-    ListBridgesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEntitlementsError =
   | BadRequestException
@@ -9639,27 +9619,7 @@ export const listEntitlements: API.OperationMethod<
     items: "Entitlements",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEntitlementsRequest,
-  ListEntitlementsResponse,
-  ListEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitlementsRequest,
-  ) => stream.Stream<
-    ListEntitlementsResponse,
-    ListEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitlementsRequest,
-  ) => stream.Stream<
-    ListedEntitlement,
-    ListEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFlowsError =
   | BadRequestException
@@ -9708,27 +9668,7 @@ export const listFlows: API.OperationMethod<
     items: "Flows",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFlowsRequest,
-  ListFlowsResponse,
-  ListFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    ListFlowsResponse,
-    ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    ListedFlow,
-    ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewayInstancesError =
   | BadRequestException
@@ -9779,27 +9719,7 @@ export const listGatewayInstances: API.OperationMethod<
     items: "Instances",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewayInstancesRequest,
-  ListGatewayInstancesResponse,
-  ListGatewayInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayInstancesRequest,
-  ) => stream.Stream<
-    ListGatewayInstancesResponse,
-    ListGatewayInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayInstancesRequest,
-  ) => stream.Stream<
-    ListedGatewayInstance,
-    ListGatewayInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGatewaysError =
   | BadRequestException
@@ -9850,27 +9770,7 @@ export const listGateways: API.OperationMethod<
     items: "Gateways",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGatewaysRequest,
-  ListGatewaysResponse,
-  ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListedGateway,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOfferingsError =
   | BadRequestException
@@ -9919,27 +9819,7 @@ export const listOfferings: API.OperationMethod<
     items: "Offerings",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOfferingsRequest,
-  ListOfferingsResponse,
-  ListOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    ListOfferingsResponse,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    Offering,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReservationsError =
   | BadRequestException
@@ -9988,27 +9868,7 @@ export const listReservations: API.OperationMethod<
     items: "Reservations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReservationsRequest,
-  ListReservationsResponse,
-  ListReservationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReservationsRequest,
-  ) => stream.Stream<
-    ListReservationsResponse,
-    ListReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReservationsRequest,
-  ) => stream.Stream<
-    Reservation,
-    ListReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRouterInputsError =
   | BadRequestException
@@ -10059,27 +9919,7 @@ export const listRouterInputs: API.OperationMethod<
     items: "RouterInputs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRouterInputsRequest,
-  ListRouterInputsResponse,
-  ListRouterInputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouterInputsRequest,
-  ) => stream.Stream<
-    ListRouterInputsResponse,
-    ListRouterInputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouterInputsRequest,
-  ) => stream.Stream<
-    ListedRouterInput,
-    ListRouterInputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRouterNetworkInterfacesError =
   | BadRequestException
@@ -10130,27 +9970,7 @@ export const listRouterNetworkInterfaces: API.OperationMethod<
     items: "RouterNetworkInterfaces",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRouterNetworkInterfacesRequest,
-  ListRouterNetworkInterfacesResponse,
-  ListRouterNetworkInterfacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouterNetworkInterfacesRequest,
-  ) => stream.Stream<
-    ListRouterNetworkInterfacesResponse,
-    ListRouterNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouterNetworkInterfacesRequest,
-  ) => stream.Stream<
-    ListedRouterNetworkInterface,
-    ListRouterNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRouterOutputsError =
   | BadRequestException
@@ -10201,27 +10021,7 @@ export const listRouterOutputs: API.OperationMethod<
     items: "RouterOutputs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRouterOutputsRequest,
-  ListRouterOutputsResponse,
-  ListRouterOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouterOutputsRequest,
-  ) => stream.Stream<
-    ListRouterOutputsResponse,
-    ListRouterOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouterOutputsRequest,
-  ) => stream.Stream<
-    ListedRouterOutput,
-    ListRouterOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForGlobalResourceError =
   | BadRequestException

@@ -2013,27 +2013,7 @@ export const listPipes: API.OperationMethod<
     items: "Pipes",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListPipesRequest,
-  ListPipesResponse,
-  ListPipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipesRequest,
-  ) => stream.Stream<
-    ListPipesResponse,
-    ListPipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipesRequest,
-  ) => stream.Stream<
-    Pipe,
-    ListPipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalException

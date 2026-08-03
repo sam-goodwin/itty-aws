@@ -1557,7 +1557,8 @@ export const listFormsResponses: API.PaginatedOperationMethod<
   ListFormsResponsesRequest,
   ListFormResponsesResponse,
   ListFormsResponsesError,
-  GcpOpContext
+  GcpOpContext,
+  ListFormResponsesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormsResponsesRequest,
   output: ListFormResponsesResponse,
@@ -1568,7 +1569,7 @@ export const listFormsResponses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFormsWatchesError = NotFound | Forbidden | GcpOpError;
 /** Return a list of the watches owned by the invoking project. The maximum number of watches is two: For each invoker, the limit is one for each event type per form. */

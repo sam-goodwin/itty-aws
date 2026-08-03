@@ -2251,7 +2251,8 @@ export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsRequest,
   ListLogAuditsResponse,
   ListLogAuditsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogsAuditListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLogAuditsRequest,
@@ -2267,7 +2268,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOrganizationsError = Forbidden | CloudflareOpError;
 /** Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
@@ -2275,7 +2276,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   ListOrganizationsResponse,
   ListOrganizationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOrganizationsRequest,
@@ -2286,7 +2288,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type MembersCreateError = CloudflareOpError;
 /** Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */

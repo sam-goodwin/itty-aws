@@ -624,7 +624,8 @@ export const listOrganizationsPublications: API.PaginatedOperationMethod<
   ListOrganizationsPublicationsRequest,
   ListPublicationsResponse,
   ListOrganizationsPublicationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPublicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsPublicationsRequest,
   output: ListPublicationsResponse,
@@ -635,7 +636,7 @@ export const listOrganizationsPublications: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsPublicationsCtasError =
   | NotFound
@@ -646,7 +647,8 @@ export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
   ListOrganizationsPublicationsCtasRequest,
   ListCtasResponse,
   ListOrganizationsPublicationsCtasError,
-  GcpOpContext
+  GcpOpContext,
+  ListCtasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsPublicationsCtasRequest,
   output: ListCtasResponse,
@@ -657,7 +659,7 @@ export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsPublicationsError =
   | NotFound

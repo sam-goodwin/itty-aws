@@ -2020,7 +2020,8 @@ export const listAvailableProjects: API.PaginatedOperationMethod<
   ListAvailableProjectsRequest,
   ListAvailableProjectsResponse,
   ListAvailableProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAvailableProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableProjectsRequest,
   output: ListAvailableProjectsResponse,
@@ -2031,7 +2032,7 @@ export const listAvailableProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsError = NotFound | Forbidden | GcpOpError;
 /** Lists each FirebaseProject accessible to the caller. The elements are returned in no particular order, but they will be a consistent view of the Projects when additional requests are made with a `pageToken`. This method is eventually consistent with Project mutations, which means newly provisioned Projects and recent modifications to existing Projects might not be reflected in the set of Projects. The list will include only ACTIVE Projects. Use GetFirebaseProject for consistent reads as well as for additional Project details. */
@@ -2039,7 +2040,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListFirebaseProjectsResponse,
   ListProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFirebaseProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListFirebaseProjectsResponse,
@@ -2050,7 +2052,7 @@ export const listProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAndroidAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists each AndroidApp associated with the specified FirebaseProject. The elements are returned in no particular order, but will be a consistent view of the Apps when additional requests are made with a `pageToken`. */
@@ -2058,7 +2060,8 @@ export const listProjectsAndroidApps: API.PaginatedOperationMethod<
   ListProjectsAndroidAppsRequest,
   ListAndroidAppsResponse,
   ListProjectsAndroidAppsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAndroidAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAndroidAppsRequest,
   output: ListAndroidAppsResponse,
@@ -2069,7 +2072,7 @@ export const listProjectsAndroidApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAndroidAppsShaError = NotFound | Forbidden | GcpOpError;
 /** Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp. */
@@ -2095,7 +2098,8 @@ export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
   ListProjectsAvailableLocationsRequest,
   ListAvailableLocationsResponse,
   ListProjectsAvailableLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAvailableLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAvailableLocationsRequest,
   output: ListAvailableLocationsResponse,
@@ -2106,7 +2110,7 @@ export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsIosAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists each IosApp associated with the specified FirebaseProject. The elements are returned in no particular order, but will be a consistent view of the Apps when additional requests are made with a `pageToken`. */
@@ -2114,7 +2118,8 @@ export const listProjectsIosApps: API.PaginatedOperationMethod<
   ListProjectsIosAppsRequest,
   ListIosAppsResponse,
   ListProjectsIosAppsError,
-  GcpOpContext
+  GcpOpContext,
+  ListIosAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIosAppsRequest,
   output: ListIosAppsResponse,
@@ -2125,7 +2130,7 @@ export const listProjectsIosApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsWebAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists each WebApp associated with the specified FirebaseProject. The elements are returned in no particular order, but will be a consistent view of the Apps when additional requests are made with a `pageToken`. */
@@ -2133,7 +2138,8 @@ export const listProjectsWebApps: API.PaginatedOperationMethod<
   ListProjectsWebAppsRequest,
   ListWebAppsResponse,
   ListProjectsWebAppsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWebAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsWebAppsRequest,
   output: ListWebAppsResponse,
@@ -2144,7 +2150,7 @@ export const listProjectsWebApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsError =
   | NotFound
@@ -2312,7 +2318,8 @@ export const searchAppsProjects: API.PaginatedOperationMethod<
   SearchAppsProjectsRequest,
   SearchFirebaseAppsResponse,
   SearchAppsProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchFirebaseAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAppsProjectsRequest,
   output: SearchFirebaseAppsResponse,
@@ -2323,7 +2330,7 @@ export const searchAppsProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UndeleteProjectsAndroidAppsError =
   | NotFound

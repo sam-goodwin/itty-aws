@@ -2003,7 +2003,8 @@ export const listRecipients: API.PaginatedOperationMethod<
   ListRecipientsRequest,
   ListRecipientsResponse,
   ListRecipientsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RecipientsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRecipientsRequest,
@@ -2020,7 +2021,7 @@ export const listRecipients: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListResourcesError = ShareNotFound | Forbidden | CloudflareOpError;
 /** List share resources by share ID. */
@@ -2028,7 +2029,8 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ResourcesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourcesRequest,
@@ -2045,7 +2047,7 @@ export const listResources: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListResourceSharingsError = Forbidden | CloudflareOpError;
 /** Lists all account shares. */
@@ -2053,7 +2055,8 @@ export const listResourceSharings: API.PaginatedOperationMethod<
   ListResourceSharingsRequest,
   ListResourceSharingsResponse,
   ListResourceSharingsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourceSharingsRequest,
@@ -2070,7 +2073,7 @@ export const listResourceSharings: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateResourceError =
   | ShareResourceNotFound

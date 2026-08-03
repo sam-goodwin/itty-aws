@@ -3575,27 +3575,7 @@ export const listStreamConsumers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStreamConsumersInput,
-  ListStreamConsumersOutput,
-  ListStreamConsumersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamConsumersInput,
-  ) => stream.Stream<
-    ListStreamConsumersOutput,
-    ListStreamConsumersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamConsumersInput,
-  ) => stream.Stream<
-    unknown,
-    ListStreamConsumersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStreamsError =
   | ExpiredNextTokenException
@@ -3658,27 +3638,7 @@ export const listStreams: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListStreamsInput,
-  ListStreamsOutput,
-  ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    unknown,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

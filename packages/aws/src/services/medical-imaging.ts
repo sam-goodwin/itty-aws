@@ -1791,27 +1791,7 @@ export const listDatastores: API.OperationMethod<
     items: "datastoreSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatastoresRequest,
-  ListDatastoresResponse,
-  ListDatastoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatastoresRequest,
-  ) => stream.Stream<
-    ListDatastoresResponse,
-    ListDatastoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatastoresRequest,
-  ) => stream.Stream<
-    DatastoreSummary,
-    ListDatastoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDICOMImportJobsError =
   | AccessDeniedException
@@ -1864,27 +1844,7 @@ export const listDICOMImportJobs: API.OperationMethod<
     items: "jobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDICOMImportJobsRequest,
-  ListDICOMImportJobsResponse,
-  ListDICOMImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDICOMImportJobsRequest,
-  ) => stream.Stream<
-    ListDICOMImportJobsResponse,
-    ListDICOMImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDICOMImportJobsRequest,
-  ) => stream.Stream<
-    DICOMImportJobSummary,
-    ListDICOMImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImageSetVersionsError =
   | AccessDeniedException
@@ -1938,27 +1898,7 @@ export const listImageSetVersions: API.OperationMethod<
     items: "imageSetPropertiesList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImageSetVersionsRequest,
-  ListImageSetVersionsResponse,
-  ListImageSetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImageSetVersionsRequest,
-  ) => stream.Stream<
-    ListImageSetVersionsResponse,
-    ListImageSetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImageSetVersionsRequest,
-  ) => stream.Stream<
-    ImageSetProperties,
-    ListImageSetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2046,27 +1986,7 @@ export const searchImageSets: API.OperationMethod<
     items: "imageSetsMetadataSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchImageSetsRequest,
-  SearchImageSetsResponse,
-  SearchImageSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchImageSetsRequest,
-  ) => stream.Stream<
-    SearchImageSetsResponse,
-    SearchImageSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchImageSetsRequest,
-  ) => stream.Stream<
-    ImageSetsMetadataSummary,
-    SearchImageSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartDICOMImportJobError =
   | AccessDeniedException

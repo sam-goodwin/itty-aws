@@ -3512,27 +3512,7 @@ export const listAgents: API.OperationMethod<
     items: "Agents",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAgentsRequest,
-  ListAgentsResponse,
-  ListAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentsRequest,
-  ) => stream.Stream<
-    ListAgentsResponse,
-    ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentsRequest,
-  ) => stream.Stream<
-    AgentListEntry,
-    ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLocationsError =
   | InternalException
@@ -3578,27 +3558,7 @@ export const listLocations: API.OperationMethod<
     items: "Locations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLocationsRequest,
-  ListLocationsResponse,
-  ListLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLocationsRequest,
-  ) => stream.Stream<
-    ListLocationsResponse,
-    ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLocationsRequest,
-  ) => stream.Stream<
-    LocationListEntry,
-    ListLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalException
@@ -3640,27 +3600,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    TagListEntry,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTaskExecutionsError =
   | InternalException
@@ -3702,27 +3642,7 @@ export const listTaskExecutions: API.OperationMethod<
     items: "TaskExecutions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTaskExecutionsRequest,
-  ListTaskExecutionsResponse,
-  ListTaskExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskExecutionsRequest,
-  ) => stream.Stream<
-    ListTaskExecutionsResponse,
-    ListTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskExecutionsRequest,
-  ) => stream.Stream<
-    TaskExecutionListEntry,
-    ListTaskExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTasksError =
   | InternalException
@@ -3764,27 +3684,7 @@ export const listTasks: API.OperationMethod<
     items: "Tasks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTasksRequest,
-  ListTasksResponse,
-  ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    ListTasksResponse,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    TaskListEntry,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartTaskExecutionError =
   | InternalException

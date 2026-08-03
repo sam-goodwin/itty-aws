@@ -2424,7 +2424,8 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   ListAccountsAppsRequest,
   GoogleChecksAccountV1alphaListAppsResponse,
   ListAccountsAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChecksAccountV1alphaListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: GoogleChecksAccountV1alphaListAppsResponse,
@@ -2435,7 +2436,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAppsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -2443,7 +2444,8 @@ export const listAccountsAppsOperations: API.PaginatedOperationMethod<
   ListAccountsAppsOperationsRequest,
   ListOperationsResponse,
   ListAccountsAppsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsOperationsRequest,
   output: ListOperationsResponse,
@@ -2454,7 +2456,7 @@ export const listAccountsAppsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAppsReportsError = NotFound | Forbidden | GcpOpError;
 /** Lists reports for the specified app. By default, only the name and results_uri fields are returned. You can include other fields by listing them in the `fields` URL query parameter. For example, `?fields=reports(name,checks)` will return the name and checks fields. */
@@ -2462,7 +2464,8 @@ export const listAccountsAppsReports: API.PaginatedOperationMethod<
   ListAccountsAppsReportsRequest,
   GoogleChecksReportV1alphaListReportsResponse,
   ListAccountsAppsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChecksReportV1alphaListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsReportsRequest,
   output: GoogleChecksReportV1alphaListReportsResponse,
@@ -2473,7 +2476,7 @@ export const listAccountsAppsReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsReposScansError = NotFound | Forbidden | GcpOpError;
 /** Lists repo scans for the specified repo. */
@@ -2481,7 +2484,8 @@ export const listAccountsReposScans: API.PaginatedOperationMethod<
   ListAccountsReposScansRequest,
   GoogleChecksRepoScanV1alphaListRepoScansResponse,
   ListAccountsReposScansError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChecksRepoScanV1alphaListRepoScansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReposScansRequest,
   output: GoogleChecksRepoScanV1alphaListRepoScansResponse,
@@ -2492,7 +2496,7 @@ export const listAccountsReposScans: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UploadMediaError =
   | NotFound

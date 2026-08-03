@@ -2053,7 +2053,8 @@ export const analyzeWorkloadMoveOrganizationsLocationsWorkloads: API.PaginatedOp
   AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest,
   GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse,
   AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest,
   output: GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse,
@@ -2064,7 +2065,7 @@ export const analyzeWorkloadMoveOrganizationsLocationsWorkloads: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ApplyOrganizationsLocationsWorkloadsUpdatesError =
   | NotFound
@@ -2306,7 +2307,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOrganizationsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2317,7 +2319,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsWorkloadsError =
   | NotFound
@@ -2328,7 +2330,8 @@ export const listOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
   ListOrganizationsLocationsWorkloadsRequest,
   GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse,
   ListOrganizationsLocationsWorkloadsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsRequest,
   output: GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse,
@@ -2339,7 +2342,7 @@ export const listOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsWorkloadsUpdatesError =
   | NotFound
@@ -2350,7 +2353,8 @@ export const listOrganizationsLocationsWorkloadsUpdates: API.PaginatedOperationM
   ListOrganizationsLocationsWorkloadsUpdatesRequest,
   GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse,
   ListOrganizationsLocationsWorkloadsUpdatesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsUpdatesRequest,
   output: GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse,
@@ -2361,7 +2365,7 @@ export const listOrganizationsLocationsWorkloadsUpdates: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsWorkloadsViolationsError =
   | NotFound
@@ -2372,7 +2376,8 @@ export const listOrganizationsLocationsWorkloadsViolations: API.PaginatedOperati
   ListOrganizationsLocationsWorkloadsViolationsRequest,
   GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse,
   ListOrganizationsLocationsWorkloadsViolationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsViolationsRequest,
   output: GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse,
@@ -2383,7 +2388,7 @@ export const listOrganizationsLocationsWorkloadsViolations: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchOrganizationsLocationsWorkloadsError =
   | NotFound

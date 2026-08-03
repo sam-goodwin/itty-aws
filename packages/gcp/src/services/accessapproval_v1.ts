@@ -1460,7 +1460,8 @@ export const listFoldersApprovalRequests: API.PaginatedOperationMethod<
   ListFoldersApprovalRequestsRequest,
   ListApprovalRequestsResponse,
   ListFoldersApprovalRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersApprovalRequestsRequest,
   output: ListApprovalRequestsResponse,
@@ -1471,7 +1472,7 @@ export const listFoldersApprovalRequests: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsApprovalRequestsError =
   | NotFound
@@ -1482,7 +1483,8 @@ export const listOrganizationsApprovalRequests: API.PaginatedOperationMethod<
   ListOrganizationsApprovalRequestsRequest,
   ListApprovalRequestsResponse,
   ListOrganizationsApprovalRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApprovalRequestsRequest,
   output: ListApprovalRequestsResponse,
@@ -1493,7 +1495,7 @@ export const listOrganizationsApprovalRequests: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsApprovalRequestsError =
   | NotFound
@@ -1504,7 +1506,8 @@ export const listProjectsApprovalRequests: API.PaginatedOperationMethod<
   ListProjectsApprovalRequestsRequest,
   ListApprovalRequestsResponse,
   ListProjectsApprovalRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsApprovalRequestsRequest,
   output: ListApprovalRequestsResponse,
@@ -1515,7 +1518,7 @@ export const listProjectsApprovalRequests: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UpdateAccessApprovalSettingsFoldersError =
   | NotFound

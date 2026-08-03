@@ -3282,7 +3282,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
@@ -3293,7 +3294,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProductsError =
   | NotFound
@@ -3304,7 +3305,8 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
   ListProjectsLocationsProductsRequest,
   ListProductsResponse,
   ListProjectsLocationsProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsRequest,
   output: ListProductsResponse,
@@ -3315,7 +3317,7 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProductSetsError =
   | NotFound
@@ -3326,7 +3328,8 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
   ListProjectsLocationsProductSetsRequest,
   ListProductSetsResponse,
   ListProjectsLocationsProductSetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductSetsRequest,
   output: ListProductSetsResponse,
@@ -3337,7 +3340,7 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProductSetsProductsError =
   | NotFound
@@ -3348,7 +3351,8 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
   ListProjectsLocationsProductSetsProductsRequest,
   ListProductsInProductSetResponse,
   ListProjectsLocationsProductSetsProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductsInProductSetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductSetsProductsRequest,
   output: ListProductsInProductSetResponse,
@@ -3359,7 +3363,7 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProductsReferenceImagesError =
   | NotFound
@@ -3370,7 +3374,8 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
   ListProjectsLocationsProductsReferenceImagesRequest,
   ListReferenceImagesResponse,
   ListProjectsLocationsProductsReferenceImagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReferenceImagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsReferenceImagesRequest,
   output: ListReferenceImagesResponse,
@@ -3381,7 +3386,7 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsProductsError =
   | NotFound

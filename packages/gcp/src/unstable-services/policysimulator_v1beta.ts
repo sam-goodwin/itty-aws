@@ -2238,7 +2238,8 @@ export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysRequest,
   GoogleCloudPolicysimulatorV1betaListReplaysResponse,
   ListFoldersLocationsReplaysError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListReplaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysRequest,
   output: GoogleCloudPolicysimulatorV1betaListReplaysResponse,
@@ -2249,7 +2250,7 @@ export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersLocationsReplaysOperationsError =
   | NotFound
@@ -2260,7 +2261,8 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
   ListFoldersLocationsReplaysOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListFoldersLocationsReplaysOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2271,7 +2273,7 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersLocationsReplaysResultsError =
   | NotFound
@@ -2282,7 +2284,8 @@ export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
   ListFoldersLocationsReplaysResultsRequest,
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse,
   ListFoldersLocationsReplaysResultsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListReplayResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysResultsRequest,
   output: GoogleCloudPolicysimulatorV1betaListReplayResultsResponse,
@@ -2293,7 +2296,7 @@ export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -2301,7 +2304,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2312,7 +2316,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsError =
   | NotFound
@@ -2323,7 +2327,8 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.Paginate
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse,
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output:
@@ -2335,7 +2340,7 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError =
   NotFound | Forbidden | GcpOpError;
@@ -2344,7 +2349,8 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
   GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse,
   ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
@@ -2356,7 +2362,7 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsReplaysError =
   | NotFound
@@ -2367,7 +2373,8 @@ export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
   ListOrganizationsLocationsReplaysRequest,
   GoogleCloudPolicysimulatorV1betaListReplaysResponse,
   ListOrganizationsLocationsReplaysError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListReplaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysRequest,
   output: GoogleCloudPolicysimulatorV1betaListReplaysResponse,
@@ -2378,7 +2385,7 @@ export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsReplaysOperationsError =
   | NotFound
@@ -2389,7 +2396,8 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
   ListOrganizationsLocationsReplaysOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOrganizationsLocationsReplaysOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2400,7 +2408,7 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsReplaysResultsError =
   | NotFound
@@ -2411,7 +2419,8 @@ export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMet
   ListOrganizationsLocationsReplaysResultsRequest,
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse,
   ListOrganizationsLocationsReplaysResultsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListReplayResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysResultsRequest,
   output: GoogleCloudPolicysimulatorV1betaListReplayResultsResponse,
@@ -2422,7 +2431,7 @@ export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsReplaysError =
   | NotFound
@@ -2433,7 +2442,8 @@ export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysRequest,
   GoogleCloudPolicysimulatorV1betaListReplaysResponse,
   ListProjectsLocationsReplaysError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListReplaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysRequest,
   output: GoogleCloudPolicysimulatorV1betaListReplaysResponse,
@@ -2444,7 +2454,7 @@ export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsReplaysOperationsError =
   | NotFound
@@ -2455,7 +2465,8 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
   ListProjectsLocationsReplaysOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsReplaysOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2466,7 +2477,7 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsReplaysResultsError =
   | NotFound
@@ -2477,7 +2488,8 @@ export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
   ListProjectsLocationsReplaysResultsRequest,
   GoogleCloudPolicysimulatorV1betaListReplayResultsResponse,
   ListProjectsLocationsReplaysResultsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudPolicysimulatorV1betaListReplayResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysResultsRequest,
   output: GoogleCloudPolicysimulatorV1betaListReplayResultsResponse,
@@ -2488,4 +2500,4 @@ export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

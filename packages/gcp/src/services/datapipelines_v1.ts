@@ -895,7 +895,8 @@ export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
   ListProjectsLocationsPipelinesRequest,
   GoogleCloudDatapipelinesV1ListPipelinesResponse,
   ListProjectsLocationsPipelinesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatapipelinesV1ListPipelinesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPipelinesRequest,
   output: GoogleCloudDatapipelinesV1ListPipelinesResponse,
@@ -906,7 +907,7 @@ export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsPipelinesJobsError =
   | NotFound
@@ -917,7 +918,8 @@ export const listProjectsLocationsPipelinesJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsPipelinesJobsRequest,
   GoogleCloudDatapipelinesV1ListJobsResponse,
   ListProjectsLocationsPipelinesJobsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatapipelinesV1ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPipelinesJobsRequest,
   output: GoogleCloudDatapipelinesV1ListJobsResponse,
@@ -928,7 +930,7 @@ export const listProjectsLocationsPipelinesJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsPipelinesError =
   | NotFound

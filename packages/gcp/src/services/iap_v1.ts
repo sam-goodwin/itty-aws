@@ -1355,7 +1355,8 @@ export const listProjectsBrandsIdentityAwareProxyClients: API.PaginatedOperation
   ListProjectsBrandsIdentityAwareProxyClientsRequest,
   ListIdentityAwareProxyClientsResponse,
   ListProjectsBrandsIdentityAwareProxyClientsError,
-  GcpOpContext
+  GcpOpContext,
+  ListIdentityAwareProxyClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBrandsIdentityAwareProxyClientsRequest,
   output: ListIdentityAwareProxyClientsResponse,
@@ -1366,7 +1367,7 @@ export const listProjectsBrandsIdentityAwareProxyClients: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsIap_tunnelLocationsDestGroupsError =
   | NotFound
@@ -1377,7 +1378,8 @@ export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMe
   ListProjectsIap_tunnelLocationsDestGroupsRequest,
   ListTunnelDestGroupsResponse,
   ListProjectsIap_tunnelLocationsDestGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTunnelDestGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIap_tunnelLocationsDestGroupsRequest,
   output: ListTunnelDestGroupsResponse,
@@ -1388,7 +1390,7 @@ export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsIap_tunnelLocationsDestGroupsError =
   | NotFound

@@ -2942,7 +2942,8 @@ export const listBidders: API.PaginatedOperationMethod<
   ListBiddersRequest,
   ListBiddersResponse,
   ListBiddersError,
-  GcpOpContext
+  GcpOpContext,
+  ListBiddersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersRequest,
   output: ListBiddersResponse,
@@ -2953,7 +2954,7 @@ export const listBidders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersCreativesError = NotFound | Forbidden | GcpOpError;
 /** Lists creatives as they are at the time of the initial request. This call may take multiple hours to complete. For large, paginated requests, this method returns a snapshot of creatives at the time of request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for creatives on sequential pages. We recommend [Google Cloud Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status. */
@@ -2961,7 +2962,8 @@ export const listBiddersCreatives: API.PaginatedOperationMethod<
   ListBiddersCreativesRequest,
   ListCreativesResponse,
   ListBiddersCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersCreativesRequest,
   output: ListCreativesResponse,
@@ -2972,7 +2974,7 @@ export const listBiddersCreatives: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersEndpointsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the bidder's endpoints. */
@@ -2980,7 +2982,8 @@ export const listBiddersEndpoints: API.PaginatedOperationMethod<
   ListBiddersEndpointsRequest,
   ListEndpointsResponse,
   ListBiddersEndpointsError,
-  GcpOpContext
+  GcpOpContext,
+  ListEndpointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersEndpointsRequest,
   output: ListEndpointsResponse,
@@ -2991,7 +2994,7 @@ export const listBiddersEndpoints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersPretargetingConfigsError =
   | NotFound
@@ -3002,7 +3005,8 @@ export const listBiddersPretargetingConfigs: API.PaginatedOperationMethod<
   ListBiddersPretargetingConfigsRequest,
   ListPretargetingConfigsResponse,
   ListBiddersPretargetingConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPretargetingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersPretargetingConfigsRequest,
   output: ListPretargetingConfigsResponse,
@@ -3013,7 +3017,7 @@ export const listBiddersPretargetingConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersPublisherConnectionsError =
   | NotFound
@@ -3024,7 +3028,8 @@ export const listBiddersPublisherConnections: API.PaginatedOperationMethod<
   ListBiddersPublisherConnectionsRequest,
   ListPublisherConnectionsResponse,
   ListBiddersPublisherConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPublisherConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersPublisherConnectionsRequest,
   output: ListPublisherConnectionsResponse,
@@ -3035,7 +3040,7 @@ export const listBiddersPublisherConnections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersError = NotFound | Forbidden | GcpOpError;
 /** Lists all buyer account information the calling buyer user or service account is permissioned to manage. */
@@ -3043,7 +3048,8 @@ export const listBuyers: API.PaginatedOperationMethod<
   ListBuyersRequest,
   ListBuyersResponse,
   ListBuyersError,
-  GcpOpContext
+  GcpOpContext,
+  ListBuyersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersRequest,
   output: ListBuyersResponse,
@@ -3054,7 +3060,7 @@ export const listBuyers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersCreativesError = NotFound | Forbidden | GcpOpError;
 /** Lists creatives as they are at the time of the initial request. This call may take multiple hours to complete. For large, paginated requests, this method returns a snapshot of creatives at the time of request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for creatives on sequential pages. We recommend [Google Cloud Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status. */
@@ -3062,7 +3068,8 @@ export const listBuyersCreatives: API.PaginatedOperationMethod<
   ListBuyersCreativesRequest,
   ListCreativesResponse,
   ListBuyersCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersCreativesRequest,
   output: ListCreativesResponse,
@@ -3073,7 +3080,7 @@ export const listBuyersCreatives: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersUserListsError = NotFound | Forbidden | GcpOpError;
 /** Lists the user lists visible to the current user. */
@@ -3081,7 +3088,8 @@ export const listBuyersUserLists: API.PaginatedOperationMethod<
   ListBuyersUserListsRequest,
   ListUserListsResponse,
   ListBuyersUserListsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersUserListsRequest,
   output: ListUserListsResponse,
@@ -3092,7 +3100,7 @@ export const listBuyersUserLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type OpenBuyersUserListsError =
   | NotFound

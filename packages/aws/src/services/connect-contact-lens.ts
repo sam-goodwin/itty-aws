@@ -376,24 +376,4 @@ export const listRealtimeContactAnalysisSegments: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRealtimeContactAnalysisSegmentsRequest,
-  ListRealtimeContactAnalysisSegmentsResponse,
-  ListRealtimeContactAnalysisSegmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRealtimeContactAnalysisSegmentsRequest,
-  ) => stream.Stream<
-    ListRealtimeContactAnalysisSegmentsResponse,
-    ListRealtimeContactAnalysisSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRealtimeContactAnalysisSegmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRealtimeContactAnalysisSegmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

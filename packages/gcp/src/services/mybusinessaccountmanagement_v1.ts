@@ -886,7 +886,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
@@ -897,7 +898,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAdminsError = NotFound | Forbidden | GcpOpError;
 /** Lists the admins for the specified account. */

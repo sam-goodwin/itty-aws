@@ -1696,27 +1696,7 @@ export const listCaseEdits: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCaseEditsRequest,
-  ListCaseEditsResponse,
-  ListCaseEditsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCaseEditsRequest,
-  ) => stream.Stream<
-    ListCaseEditsResponse,
-    ListCaseEditsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCaseEditsRequest,
-  ) => stream.Stream<
-    CaseEditItem,
-    ListCaseEditsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCasesError = CommonErrors;
 /**
@@ -1755,27 +1735,7 @@ export const listCases: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCasesRequest,
-  ListCasesResponse,
-  ListCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCasesRequest,
-  ) => stream.Stream<
-    ListCasesResponse,
-    ListCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCasesRequest,
-  ) => stream.Stream<
-    ListCasesItem,
-    ListCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCommentsError = CommonErrors;
 /**
@@ -1814,27 +1774,7 @@ export const listComments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCommentsRequest,
-  ListCommentsResponse,
-  ListCommentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommentsRequest,
-  ) => stream.Stream<
-    ListCommentsResponse,
-    ListCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommentsRequest,
-  ) => stream.Stream<
-    ListCommentsItem,
-    ListCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvestigationsError = CommonErrors;
 /**
@@ -1873,27 +1813,7 @@ export const listInvestigations: API.OperationMethod<
     items: "investigationActions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvestigationsRequest,
-  ListInvestigationsResponse,
-  ListInvestigationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    ListInvestigationsResponse,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    InvestigationAction,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMembershipsError = CommonErrors;
 /**
@@ -1932,27 +1852,7 @@ export const listMemberships: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMembershipsRequest,
-  ListMembershipsResponse,
-  ListMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembershipsRequest,
-  ) => stream.Stream<
-    ListMembershipsResponse,
-    ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembershipsRequest,
-  ) => stream.Stream<
-    ListMembershipItem,
-    ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

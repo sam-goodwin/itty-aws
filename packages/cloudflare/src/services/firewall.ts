@@ -5814,7 +5814,8 @@ export const bulkDeleteRules: API.PaginatedOperationMethod<
   BulkDeleteRulesRequest,
   BulkDeleteRulesResponse,
   BulkDeleteRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesBulkDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkDeleteRulesRequest,
@@ -5825,7 +5826,7 @@ export const bulkDeleteRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkPatchRulesError = CloudflareOpError;
 /** Updates the priority of existing firewall rules. */
@@ -5833,7 +5834,8 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesRequest,
   BulkPatchRulesResponse,
   BulkPatchRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesBulkEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkPatchRulesRequest,
@@ -5844,7 +5846,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type BulkPutRulesError = CloudflareOpError;
 /** Updates one or more existing firewall rules. */
@@ -5852,7 +5854,8 @@ export const bulkPutRules: API.PaginatedOperationMethod<
   BulkPutRulesRequest,
   BulkPutRulesResponse,
   BulkPutRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesBulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkPutRulesRequest,
@@ -5863,7 +5866,7 @@ export const bulkPutRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateAccessRuleForAccountError =
   | DuplicateAccessRule
@@ -5940,7 +5943,8 @@ export const createRule: API.PaginatedOperationMethod<
   CreateRuleRequest,
   CreateRuleResponse,
   CreateRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: CreateRuleRequest,
@@ -5951,7 +5955,7 @@ export const createRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateUaRuleError = DuplicateUaRule | Forbidden | CloudflareOpError;
 /** Creates a new User Agent Blocking rule in a zone. */
@@ -6249,7 +6253,8 @@ export const listAccessRulesForAccount: API.PaginatedOperationMethod<
   ListAccessRulesForAccountRequest,
   ListAccessRulesResponse,
   ListAccessRulesForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessRulesForAccountRequest,
@@ -6266,7 +6271,7 @@ export const listAccessRulesForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListAccessRulesForZoneError = Forbidden | CloudflareOpError;
 /** Fetches IP Access rules of an account or zone. These rules apply to all the zones in the account or zone. You can filter the results using several optional parameters. */
@@ -6274,7 +6279,8 @@ export const listAccessRulesForZone: API.PaginatedOperationMethod<
   ListAccessRulesForZoneRequest,
   ListAccessRulesResponse,
   ListAccessRulesForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AccessRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccessRulesForZoneRequest,
@@ -6291,7 +6297,7 @@ export const listAccessRulesForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListLockdownsError = Forbidden | CloudflareOpError;
 /** Fetches Zone Lockdown rules. You can filter the results using several optional parameters. */
@@ -6299,7 +6305,8 @@ export const listLockdowns: API.PaginatedOperationMethod<
   ListLockdownsRequest,
   ListLockdownsResponse,
   ListLockdownsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LockdownsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLockdownsRequest,
@@ -6316,7 +6323,7 @@ export const listLockdowns: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRulesError = CloudflareOpError;
 /** Fetches firewall rules in a zone. You can filter the results using several optional parameters. */
@@ -6324,7 +6331,8 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesRequest,
@@ -6341,7 +6349,7 @@ export const listRules: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListUaRulesError = Forbidden | CloudflareOpError;
 /** Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters. */
@@ -6349,7 +6357,8 @@ export const listUaRules: API.PaginatedOperationMethod<
   ListUaRulesRequest,
   ListUaRulesResponse,
   ListUaRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  UaRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListUaRulesRequest,
@@ -6366,7 +6375,7 @@ export const listUaRules: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWafOverridesError = CloudflareOpError;
 /** Fetches the URI-based WAF overrides in a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
@@ -6374,7 +6383,8 @@ export const listWafOverrides: API.PaginatedOperationMethod<
   ListWafOverridesRequest,
   ListWafOverridesResponse,
   ListWafOverridesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  WafOverridesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWafOverridesRequest,
@@ -6391,7 +6401,7 @@ export const listWafOverrides: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWafPackageGroupsError = CloudflareOpError;
 /** Fetches the WAF rule groups in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
@@ -6399,7 +6409,8 @@ export const listWafPackageGroups: API.PaginatedOperationMethod<
   ListWafPackageGroupsRequest,
   ListWafPackageGroupsResponse,
   ListWafPackageGroupsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  WafPackagesGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWafPackageGroupsRequest,
@@ -6416,7 +6427,7 @@ export const listWafPackageGroups: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWafPackageRulesError = CloudflareOpError;
 /** Fetches WAF rules in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
@@ -6424,7 +6435,8 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
   ListWafPackageRulesRequest,
   ListWafPackageRulesResponse,
   ListWafPackageRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  WafPackagesRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWafPackageRulesRequest,
@@ -6441,7 +6453,7 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWafPackagesError = CloudflareOpError;
 /** Fetches WAF packages for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
@@ -6510,7 +6522,8 @@ export const patchRule: API.PaginatedOperationMethod<
   PatchRuleRequest,
   PatchRuleResponse,
   PatchRuleError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PatchRuleRequest,
@@ -6521,7 +6534,7 @@ export const patchRule: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchWafPackageGroupError = CloudflareOpError;
 /** Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */

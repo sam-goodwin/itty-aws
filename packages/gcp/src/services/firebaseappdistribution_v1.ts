@@ -1848,7 +1848,8 @@ export const listProjectsAppsReleases: API.PaginatedOperationMethod<
   ListProjectsAppsReleasesRequest,
   GoogleFirebaseAppdistroV1ListReleasesResponse,
   ListProjectsAppsReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppdistroV1ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesRequest,
   output: GoogleFirebaseAppdistroV1ListReleasesResponse,
@@ -1859,7 +1860,7 @@ export const listProjectsAppsReleases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAppsReleasesFeedbackReportsError =
   | NotFound
@@ -1870,7 +1871,8 @@ export const listProjectsAppsReleasesFeedbackReports: API.PaginatedOperationMeth
   ListProjectsAppsReleasesFeedbackReportsRequest,
   GoogleFirebaseAppdistroV1ListFeedbackReportsResponse,
   ListProjectsAppsReleasesFeedbackReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppdistroV1ListFeedbackReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesFeedbackReportsRequest,
   output: GoogleFirebaseAppdistroV1ListFeedbackReportsResponse,
@@ -1881,7 +1883,7 @@ export const listProjectsAppsReleasesFeedbackReports: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAppsReleasesOperationsError =
   | NotFound
@@ -1892,7 +1894,8 @@ export const listProjectsAppsReleasesOperations: API.PaginatedOperationMethod<
   ListProjectsAppsReleasesOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsAppsReleasesOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -1903,7 +1906,7 @@ export const listProjectsAppsReleasesOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsGroupsError = NotFound | Forbidden | GcpOpError;
 /** List groups. */
@@ -1911,7 +1914,8 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
   ListProjectsGroupsRequest,
   GoogleFirebaseAppdistroV1ListGroupsResponse,
   ListProjectsGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppdistroV1ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupsRequest,
   output: GoogleFirebaseAppdistroV1ListGroupsResponse,
@@ -1922,7 +1926,7 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTestersError = NotFound | Forbidden | GcpOpError;
 /** Lists testers and their resource ids. */
@@ -1930,7 +1934,8 @@ export const listProjectsTesters: API.PaginatedOperationMethod<
   ListProjectsTestersRequest,
   GoogleFirebaseAppdistroV1ListTestersResponse,
   ListProjectsTestersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirebaseAppdistroV1ListTestersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTestersRequest,
   output: GoogleFirebaseAppdistroV1ListTestersResponse,
@@ -1941,7 +1946,7 @@ export const listProjectsTesters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsAppsReleasesError =
   | NotFound

@@ -5339,7 +5339,8 @@ export const listAnywhereCaches: API.PaginatedOperationMethod<
   ListAnywhereCachesRequest,
   AnywhereCaches,
   ListAnywhereCachesError,
-  GcpOpContext
+  GcpOpContext,
+  AnywhereCache
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnywhereCachesRequest,
   output: AnywhereCaches,
@@ -5351,7 +5352,7 @@ export const listAnywhereCaches: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListBucketAccessControlsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves ACL entries on the specified bucket. */
@@ -5374,7 +5375,8 @@ export const listBuckets: API.PaginatedOperationMethod<
   ListBucketsRequest,
   Buckets,
   ListBucketsError,
-  GcpOpContext
+  GcpOpContext,
+  Bucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBucketsRequest,
   output: Buckets,
@@ -5386,7 +5388,7 @@ export const listBuckets: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListDefaultObjectAccessControlsError =
   | NotFound
@@ -5412,7 +5414,8 @@ export const listFolders: API.PaginatedOperationMethod<
   ListFoldersRequest,
   Folders,
   ListFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  Folder
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: Folders,
@@ -5424,7 +5427,7 @@ export const listFolders: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListManagedFoldersError = NotFound | Forbidden | GcpOpError;
 /** Lists managed folders in the given bucket. */
@@ -5432,7 +5435,8 @@ export const listManagedFolders: API.PaginatedOperationMethod<
   ListManagedFoldersRequest,
   ManagedFolders,
   ListManagedFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  ManagedFolder
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedFoldersRequest,
   output: ManagedFolders,
@@ -5444,7 +5448,7 @@ export const listManagedFolders: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListNotificationsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of notification subscriptions for a given bucket. */
@@ -5482,7 +5486,8 @@ export const listObjects: API.PaginatedOperationMethod<
   ListObjectsRequest,
   Objects,
   ListObjectsError,
-  GcpOpContext
+  GcpOpContext,
+  Storage_Object
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsRequest,
   output: Objects,
@@ -5494,7 +5499,7 @@ export const listObjects: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. */
@@ -5502,7 +5507,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -5513,7 +5519,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsHmacKeysError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of HMAC keys matching the criteria. */
@@ -5521,7 +5527,8 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
   ListProjectsHmacKeysRequest,
   HmacKeysMetadata,
   ListProjectsHmacKeysError,
-  GcpOpContext
+  GcpOpContext,
+  HmacKeyMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHmacKeysRequest,
   output: HmacKeysMetadata,
@@ -5533,7 +5540,7 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type LockRetentionPolicyBucketsError =
   | NotFound

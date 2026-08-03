@@ -1102,7 +1102,8 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
   ListBillingAccountsRequest,
   ListBillingAccountsResponse,
   ListBillingAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsRequest,
   output: ListBillingAccountsResponse,
@@ -1113,7 +1114,7 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsProjectsError =
   | NotFound
@@ -1124,7 +1125,8 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
   ListBillingAccountsProjectsRequest,
   ListProjectBillingInfoResponse,
   ListBillingAccountsProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProjectBillingInfoResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsProjectsRequest,
   output: ListProjectBillingInfoResponse,
@@ -1135,7 +1137,7 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsSubAccountsError =
   | NotFound
@@ -1146,7 +1148,8 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
   ListBillingAccountsSubAccountsRequest,
   ListBillingAccountsResponse,
   ListBillingAccountsSubAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSubAccountsRequest,
   output: ListBillingAccountsResponse,
@@ -1157,7 +1160,7 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsBillingAccountsError =
   | NotFound
@@ -1168,7 +1171,8 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
   ListOrganizationsBillingAccountsRequest,
   ListBillingAccountsResponse,
   ListOrganizationsBillingAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsBillingAccountsRequest,
   output: ListBillingAccountsResponse,
@@ -1179,7 +1183,7 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists all public cloud services. */
@@ -1187,7 +1191,8 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
@@ -1198,7 +1203,7 @@ export const listServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListServicesSkusError = NotFound | Forbidden | GcpOpError;
 /** Lists all publicly available SKUs for a given cloud service. */
@@ -1206,7 +1211,8 @@ export const listServicesSkus: API.PaginatedOperationMethod<
   ListServicesSkusRequest,
   ListSkusResponse,
   ListServicesSkusError,
-  GcpOpContext
+  GcpOpContext,
+  ListSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesSkusRequest,
   output: ListSkusResponse,
@@ -1217,7 +1223,7 @@ export const listServicesSkus: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MoveBillingAccountsError =
   | NotFound

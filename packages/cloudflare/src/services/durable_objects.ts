@@ -186,7 +186,8 @@ export const listNamespaceObjects: API.PaginatedOperationMethod<
   ListNamespaceObjectsRequest,
   ListNamespaceObjectsResponse,
   ListNamespaceObjectsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesObjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespaceObjectsRequest,
@@ -208,7 +209,7 @@ export const listNamespaceObjects: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListNamespacesError = InvalidIdentifier | CloudflareOpError;
 /** Returns the Durable Object namespaces owned by an account. */
@@ -216,7 +217,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  NamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListNamespacesRequest,
@@ -233,4 +235,4 @@ export const listNamespaces: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

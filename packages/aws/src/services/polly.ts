@@ -1295,27 +1295,7 @@ export const listSpeechSynthesisTasks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSpeechSynthesisTasksInput,
-  ListSpeechSynthesisTasksOutput,
-  ListSpeechSynthesisTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpeechSynthesisTasksInput,
-  ) => stream.Stream<
-    ListSpeechSynthesisTasksOutput,
-    ListSpeechSynthesisTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpeechSynthesisTasksInput,
-  ) => stream.Stream<
-    unknown,
-    ListSpeechSynthesisTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutLexiconError =
   | InvalidLexiconException

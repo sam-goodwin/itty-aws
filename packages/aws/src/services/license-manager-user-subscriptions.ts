@@ -1224,27 +1224,7 @@ export const listIdentityProviders: API.OperationMethod<
     items: "IdentityProviderSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdentityProvidersRequest,
-  ListIdentityProvidersResponse,
-  ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ListIdentityProvidersResponse,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    IdentityProviderSummary,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInstancesError =
   | AccessDeniedException
@@ -1299,27 +1279,7 @@ export const listInstances: API.OperationMethod<
     items: "InstanceSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstancesRequest,
-  ListInstancesResponse,
-  ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    InstanceSummary,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLicenseServerEndpointsError =
   | AccessDeniedException
@@ -1372,27 +1332,7 @@ export const listLicenseServerEndpoints: API.OperationMethod<
     items: "LicenseServerEndpoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLicenseServerEndpointsRequest,
-  ListLicenseServerEndpointsResponse,
-  ListLicenseServerEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLicenseServerEndpointsRequest,
-  ) => stream.Stream<
-    ListLicenseServerEndpointsResponse,
-    ListLicenseServerEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLicenseServerEndpointsRequest,
-  ) => stream.Stream<
-    LicenseServerEndpoint,
-    ListLicenseServerEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProductSubscriptionsError =
   | AccessDeniedException
@@ -1447,27 +1387,7 @@ export const listProductSubscriptions: API.OperationMethod<
     items: "ProductUserSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProductSubscriptionsRequest,
-  ListProductSubscriptionsResponse,
-  ListProductSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProductSubscriptionsRequest,
-  ) => stream.Stream<
-    ListProductSubscriptionsResponse,
-    ListProductSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProductSubscriptionsRequest,
-  ) => stream.Stream<
-    ProductUserSummary,
-    ListProductSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1548,27 +1468,7 @@ export const listUserAssociations: API.OperationMethod<
     items: "InstanceUserSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUserAssociationsRequest,
-  ListUserAssociationsResponse,
-  ListUserAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserAssociationsRequest,
-  ) => stream.Stream<
-    ListUserAssociationsResponse,
-    ListUserAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserAssociationsRequest,
-  ) => stream.Stream<
-    InstanceUserSummary,
-    ListUserAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RegisterIdentityProviderError =
   | AccessDeniedException

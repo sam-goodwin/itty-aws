@@ -2155,27 +2155,7 @@ export const describeChimeWebhookConfigurations: API.OperationMethod<
     items: "WebhookConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeChimeWebhookConfigurationsRequest,
-  DescribeChimeWebhookConfigurationsResult,
-  DescribeChimeWebhookConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeChimeWebhookConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeChimeWebhookConfigurationsResult,
-    DescribeChimeWebhookConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeChimeWebhookConfigurationsRequest,
-  ) => stream.Stream<
-    ChimeWebhookConfiguration,
-    DescribeChimeWebhookConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSlackChannelConfigurationsError =
   | DescribeSlackChannelConfigurationsException
@@ -2222,27 +2202,7 @@ export const describeSlackChannelConfigurations: API.OperationMethod<
     items: "SlackChannelConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSlackChannelConfigurationsRequest,
-  DescribeSlackChannelConfigurationsResult,
-  DescribeSlackChannelConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeSlackChannelConfigurationsResult,
-    DescribeSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    SlackChannelConfiguration,
-    DescribeSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSlackUserIdentitiesError =
   | DescribeSlackUserIdentitiesException
@@ -2289,27 +2249,7 @@ export const describeSlackUserIdentities: API.OperationMethod<
     items: "SlackUserIdentities",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSlackUserIdentitiesRequest,
-  DescribeSlackUserIdentitiesResult,
-  DescribeSlackUserIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSlackUserIdentitiesRequest,
-  ) => stream.Stream<
-    DescribeSlackUserIdentitiesResult,
-    DescribeSlackUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSlackUserIdentitiesRequest,
-  ) => stream.Stream<
-    SlackUserIdentity,
-    DescribeSlackUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSlackWorkspacesError =
   | DescribeSlackWorkspacesException
@@ -2356,27 +2296,7 @@ export const describeSlackWorkspaces: API.OperationMethod<
     items: "SlackWorkspaces",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSlackWorkspacesRequest,
-  DescribeSlackWorkspacesResult,
-  DescribeSlackWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSlackWorkspacesRequest,
-  ) => stream.Stream<
-    DescribeSlackWorkspacesResult,
-    DescribeSlackWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSlackWorkspacesRequest,
-  ) => stream.Stream<
-    SlackWorkspace,
-    DescribeSlackWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateFromConfigurationError =
   | InternalServiceError
@@ -2520,27 +2440,7 @@ export const listAssociations: API.OperationMethod<
     items: "Associations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociationsRequest,
-  ListAssociationsResult,
-  ListAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociationsRequest,
-  ) => stream.Stream<
-    ListAssociationsResult,
-    ListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociationsRequest,
-  ) => stream.Stream<
-    AssociationListing,
-    ListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomActionsError =
   | InternalServiceError
@@ -2587,27 +2487,7 @@ export const listCustomActions: API.OperationMethod<
     items: "CustomActions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomActionsRequest,
-  ListCustomActionsResult,
-  ListCustomActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomActionsRequest,
-  ) => stream.Stream<
-    ListCustomActionsResult,
-    ListCustomActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomActionsRequest,
-  ) => stream.Stream<
-    CustomActionArn,
-    ListCustomActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrosoftTeamsChannelConfigurationsError =
   | InvalidParameterException
@@ -2654,27 +2534,7 @@ export const listMicrosoftTeamsChannelConfigurations: API.OperationMethod<
     items: "TeamChannelConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTeamsChannelConfigurationsRequest,
-  ListTeamsChannelConfigurationsResult,
-  ListMicrosoftTeamsChannelConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTeamsChannelConfigurationsRequest,
-  ) => stream.Stream<
-    ListTeamsChannelConfigurationsResult,
-    ListMicrosoftTeamsChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTeamsChannelConfigurationsRequest,
-  ) => stream.Stream<
-    TeamsChannelConfiguration,
-    ListMicrosoftTeamsChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrosoftTeamsConfiguredTeamsError =
   | InvalidParameterException
@@ -2721,27 +2581,7 @@ export const listMicrosoftTeamsConfiguredTeams: API.OperationMethod<
     items: "ConfiguredTeams",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMicrosoftTeamsConfiguredTeamsRequest,
-  ListMicrosoftTeamsConfiguredTeamsResult,
-  ListMicrosoftTeamsConfiguredTeamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrosoftTeamsConfiguredTeamsRequest,
-  ) => stream.Stream<
-    ListMicrosoftTeamsConfiguredTeamsResult,
-    ListMicrosoftTeamsConfiguredTeamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrosoftTeamsConfiguredTeamsRequest,
-  ) => stream.Stream<
-    ConfiguredTeam,
-    ListMicrosoftTeamsConfiguredTeamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMicrosoftTeamsUserIdentitiesError =
   | InvalidParameterException
@@ -2788,27 +2628,7 @@ export const listMicrosoftTeamsUserIdentities: API.OperationMethod<
     items: "TeamsUserIdentities",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMicrosoftTeamsUserIdentitiesRequest,
-  ListMicrosoftTeamsUserIdentitiesResult,
-  ListMicrosoftTeamsUserIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrosoftTeamsUserIdentitiesRequest,
-  ) => stream.Stream<
-    ListMicrosoftTeamsUserIdentitiesResult,
-    ListMicrosoftTeamsUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrosoftTeamsUserIdentitiesRequest,
-  ) => stream.Stream<
-    TeamsUserIdentity,
-    ListMicrosoftTeamsUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceError

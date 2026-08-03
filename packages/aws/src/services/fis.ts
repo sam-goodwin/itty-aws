@@ -2644,27 +2644,7 @@ export const listActions: API.OperationMethod<
     items: "actions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListActionsRequest,
-  ListActionsResponse,
-  ListActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ListActionsResponse,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ActionSummary,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExperimentResolvedTargetsError =
   | ResourceNotFoundException
@@ -2706,27 +2686,7 @@ export const listExperimentResolvedTargets: API.OperationMethod<
     items: "resolvedTargets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExperimentResolvedTargetsRequest,
-  ListExperimentResolvedTargetsResponse,
-  ListExperimentResolvedTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentResolvedTargetsRequest,
-  ) => stream.Stream<
-    ListExperimentResolvedTargetsResponse,
-    ListExperimentResolvedTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentResolvedTargetsRequest,
-  ) => stream.Stream<
-    ResolvedTarget,
-    ListExperimentResolvedTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExperimentsError = ValidationException | CommonErrors;
 /**
@@ -2765,27 +2725,7 @@ export const listExperiments: API.OperationMethod<
     items: "experiments",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExperimentsRequest,
-  ListExperimentsResponse,
-  ListExperimentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentsRequest,
-  ) => stream.Stream<
-    ListExperimentsResponse,
-    ListExperimentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentsRequest,
-  ) => stream.Stream<
-    ExperimentSummary,
-    ListExperimentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExperimentTargetAccountConfigurationsError =
   | ResourceNotFoundException
@@ -2845,27 +2785,7 @@ export const listExperimentTemplates: API.OperationMethod<
     items: "experimentTemplates",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExperimentTemplatesRequest,
-  ListExperimentTemplatesResponse,
-  ListExperimentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentTemplatesRequest,
-  ) => stream.Stream<
-    ListExperimentTemplatesResponse,
-    ListExperimentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentTemplatesRequest,
-  ) => stream.Stream<
-    ExperimentTemplateSummary,
-    ListExperimentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = CommonErrors;
 /**
@@ -2925,27 +2845,7 @@ export const listTargetAccountConfigurations: API.OperationMethod<
     items: "targetAccountConfigurations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTargetAccountConfigurationsRequest,
-  ListTargetAccountConfigurationsResponse,
-  ListTargetAccountConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetAccountConfigurationsRequest,
-  ) => stream.Stream<
-    ListTargetAccountConfigurationsResponse,
-    ListTargetAccountConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetAccountConfigurationsRequest,
-  ) => stream.Stream<
-    TargetAccountConfigurationSummary,
-    ListTargetAccountConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTargetResourceTypesError = ValidationException | CommonErrors;
 /**
@@ -2984,27 +2884,7 @@ export const listTargetResourceTypes: API.OperationMethod<
     items: "targetResourceTypes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTargetResourceTypesRequest,
-  ListTargetResourceTypesResponse,
-  ListTargetResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetResourceTypesRequest,
-  ) => stream.Stream<
-    ListTargetResourceTypesResponse,
-    ListTargetResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetResourceTypesRequest,
-  ) => stream.Stream<
-    TargetResourceTypeSummary,
-    ListTargetResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartExperimentError =
   | ConflictException

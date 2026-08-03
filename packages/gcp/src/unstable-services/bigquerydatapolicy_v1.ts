@@ -633,7 +633,8 @@ export const listProjectsLocationsDataPolicies: API.PaginatedOperationMethod<
   ListProjectsLocationsDataPoliciesRequest,
   ListDataPoliciesResponse,
   ListProjectsLocationsDataPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDataPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataPoliciesRequest,
   output: ListDataPoliciesResponse,
@@ -644,7 +645,7 @@ export const listProjectsLocationsDataPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsDataPoliciesError =
   | NotFound

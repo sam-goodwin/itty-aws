@@ -722,7 +722,8 @@ export const listProjectsCryptoKeys: API.PaginatedOperationMethod<
   ListProjectsCryptoKeysRequest,
   GoogleCloudKmsInventoryV1ListCryptoKeysResponse,
   ListProjectsCryptoKeysError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudKmsInventoryV1ListCryptoKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsCryptoKeysRequest,
   output: GoogleCloudKmsInventoryV1ListCryptoKeysResponse,
@@ -733,7 +734,7 @@ export const listProjectsCryptoKeys: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchOrganizationsProtectedResourcesError =
   | NotFound
@@ -744,7 +745,8 @@ export const searchOrganizationsProtectedResources: API.PaginatedOperationMethod
   SearchOrganizationsProtectedResourcesRequest,
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse,
   SearchOrganizationsProtectedResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationsProtectedResourcesRequest,
   output: GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse,
@@ -755,7 +757,7 @@ export const searchOrganizationsProtectedResources: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchProjectsProtectedResourcesError =
   | NotFound
@@ -766,7 +768,8 @@ export const searchProjectsProtectedResources: API.PaginatedOperationMethod<
   SearchProjectsProtectedResourcesRequest,
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse,
   SearchProjectsProtectedResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsProtectedResourcesRequest,
   output: GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse,
@@ -777,4 +780,4 @@ export const searchProjectsProtectedResources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

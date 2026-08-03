@@ -2408,7 +2408,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -2419,7 +2420,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -2430,7 +2431,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -2441,7 +2443,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRegistrationsError =
   | NotFound
@@ -2452,7 +2454,8 @@ export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
   ListProjectsLocationsRegistrationsRequest,
   ListRegistrationsResponse,
   ListProjectsLocationsRegistrationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRegistrationsRequest,
   output: ListRegistrationsResponse,
@@ -2463,7 +2466,7 @@ export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsRegistrationsError =
   | NotFound
@@ -2570,7 +2573,8 @@ export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.
   RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
   RetrieveGoogleDomainsDnsRecordsResponse,
   RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError,
-  GcpOpContext
+  GcpOpContext,
+  RetrieveGoogleDomainsDnsRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
   output: RetrieveGoogleDomainsDnsRecordsResponse,
@@ -2581,7 +2585,7 @@ export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError =
   NotFound | Forbidden | GcpOpError;
@@ -2609,7 +2613,8 @@ export const retrieveImportableDomainsProjectsLocationsRegistrations: API.Pagina
   RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
   RetrieveImportableDomainsResponse,
   RetrieveImportableDomainsProjectsLocationsRegistrationsError,
-  GcpOpContext
+  GcpOpContext,
+  RetrieveImportableDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
   output: RetrieveImportableDomainsResponse,
@@ -2620,7 +2625,7 @@ export const retrieveImportableDomainsProjectsLocationsRegistrations: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RetrieveRegisterParametersProjectsLocationsRegistrationsError =
   | NotFound

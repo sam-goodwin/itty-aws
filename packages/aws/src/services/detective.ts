@@ -2127,27 +2127,7 @@ export const listDatasourcePackages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasourcePackagesRequest,
-  ListDatasourcePackagesResponse,
-  ListDatasourcePackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasourcePackagesRequest,
-  ) => stream.Stream<
-    ListDatasourcePackagesResponse,
-    ListDatasourcePackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasourcePackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasourcePackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGraphsError =
   | AccessDeniedException
@@ -2193,27 +2173,7 @@ export const listGraphs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGraphsRequest,
-  ListGraphsResponse,
-  ListGraphsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGraphsRequest,
-  ) => stream.Stream<
-    ListGraphsResponse,
-    ListGraphsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGraphsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGraphsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIndicatorsError =
   | AccessDeniedException
@@ -2327,27 +2287,7 @@ export const listInvitations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvitationsRequest,
-  ListInvitationsResponse,
-  ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    ListInvitationsResponse,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMembersError =
   | AccessDeniedException
@@ -2402,27 +2342,7 @@ export const listMembers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMembersRequest,
-  ListMembersResponse,
-  ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationAdminAccountsError =
   | AccessDeniedException
@@ -2471,27 +2391,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationAdminAccountsRequest,
-  ListOrganizationAdminAccountsResponse,
-  ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationAdminAccountsResponse,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

@@ -4272,7 +4272,8 @@ export const listCustomersUserinvitations: API.PaginatedOperationMethod<
   ListCustomersUserinvitationsRequest,
   ListUserInvitationsResponse,
   ListCustomersUserinvitationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersUserinvitationsRequest,
   output: ListUserInvitationsResponse,
@@ -4283,7 +4284,7 @@ export const listCustomersUserinvitations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDevicesError = NotFound | Forbidden | GcpOpError;
 /** Lists/Searches devices. */
@@ -4291,7 +4292,8 @@ export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse,
   ListDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsCloudidentityDevicesV1ListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: GoogleAppsCloudidentityDevicesV1ListDevicesResponse,
@@ -4302,7 +4304,7 @@ export const listDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDevicesDeviceUsersError = NotFound | Forbidden | GcpOpError;
 /** Lists/Searches DeviceUsers. */
@@ -4310,7 +4312,8 @@ export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
   ListDevicesDeviceUsersRequest,
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse,
   ListDevicesDeviceUsersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesDeviceUsersRequest,
   output: GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse,
@@ -4321,7 +4324,7 @@ export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDevicesDeviceUsersClientStatesError =
   | NotFound
@@ -4332,7 +4335,8 @@ export const listDevicesDeviceUsersClientStates: API.PaginatedOperationMethod<
   ListDevicesDeviceUsersClientStatesRequest,
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse,
   ListDevicesDeviceUsersClientStatesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsCloudidentityDevicesV1ListClientStatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesDeviceUsersClientStatesRequest,
   output: GoogleAppsCloudidentityDevicesV1ListClientStatesResponse,
@@ -4343,7 +4347,7 @@ export const listDevicesDeviceUsersClientStates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists the `Group` resources under a customer or namespace. */
@@ -4351,7 +4355,8 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
@@ -4362,7 +4367,7 @@ export const listGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGroupsMembershipsError = NotFound | Forbidden | GcpOpError;
 /** Lists the `Membership`s within a `Group`. */
@@ -4370,7 +4375,8 @@ export const listGroupsMemberships: API.PaginatedOperationMethod<
   ListGroupsMembershipsRequest,
   ListMembershipsResponse,
   ListGroupsMembershipsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsMembershipsRequest,
   output: ListMembershipsResponse,
@@ -4381,7 +4387,7 @@ export const listGroupsMemberships: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInboundOidcSsoProfilesError = NotFound | Forbidden | GcpOpError;
 /** Lists InboundOidcSsoProfile objects for a Google enterprise customer. */
@@ -4389,7 +4395,8 @@ export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
   ListInboundOidcSsoProfilesRequest,
   ListInboundOidcSsoProfilesResponse,
   ListInboundOidcSsoProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInboundOidcSsoProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInboundOidcSsoProfilesRequest,
   output: ListInboundOidcSsoProfilesResponse,
@@ -4400,7 +4407,7 @@ export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInboundSamlSsoProfilesError = NotFound | Forbidden | GcpOpError;
 /** Lists InboundSamlSsoProfiles for a customer. */
@@ -4408,7 +4415,8 @@ export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
   ListInboundSamlSsoProfilesRequest,
   ListInboundSamlSsoProfilesResponse,
   ListInboundSamlSsoProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInboundSamlSsoProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInboundSamlSsoProfilesRequest,
   output: ListInboundSamlSsoProfilesResponse,
@@ -4419,7 +4427,7 @@ export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInboundSamlSsoProfilesIdpCredentialsError =
   | NotFound
@@ -4430,7 +4438,8 @@ export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMet
   ListInboundSamlSsoProfilesIdpCredentialsRequest,
   ListIdpCredentialsResponse,
   ListInboundSamlSsoProfilesIdpCredentialsError,
-  GcpOpContext
+  GcpOpContext,
+  ListIdpCredentialsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInboundSamlSsoProfilesIdpCredentialsRequest,
   output: ListIdpCredentialsResponse,
@@ -4441,7 +4450,7 @@ export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListInboundSsoAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** Lists the InboundSsoAssignments for a `Customer`. */
@@ -4449,7 +4458,8 @@ export const listInboundSsoAssignments: API.PaginatedOperationMethod<
   ListInboundSsoAssignmentsRequest,
   ListInboundSsoAssignmentsResponse,
   ListInboundSsoAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListInboundSsoAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInboundSsoAssignmentsRequest,
   output: ListInboundSsoAssignmentsResponse,
@@ -4460,7 +4470,7 @@ export const listInboundSsoAssignments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPoliciesError = NotFound | Forbidden | GcpOpError;
 /** List policies. */
@@ -4468,7 +4478,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
@@ -4479,7 +4490,7 @@ export const listPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupDevicesDeviceUsersError = NotFound | Forbidden | GcpOpError;
 /** Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as the properties provided in the request. This method must be called with end-user credentials with the scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an AND. Different platforms require different amounts of information from the caller to ensure that the DeviceUser is uniquely identified. - iOS: If either the `partner` or `ios_device_id` field is provided, then both fields are required. - Android: Specifying the `android_id` field is required. - Desktop: Specifying the `raw_resource_id` field is required. */
@@ -4487,7 +4498,8 @@ export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
   LookupDevicesDeviceUsersRequest,
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse,
   LookupDevicesDeviceUsersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupDevicesDeviceUsersRequest,
   output: GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse,
@@ -4498,7 +4510,7 @@ export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupGroupsError = NotFound | Forbidden | GcpOpError;
 /** Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Group` by its `EntityKey`. */
@@ -4679,7 +4691,8 @@ export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
   SearchDirectGroupsGroupsMembershipsRequest,
   SearchDirectGroupsResponse,
   SearchDirectGroupsGroupsMembershipsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchDirectGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDirectGroupsGroupsMembershipsRequest,
   output: SearchDirectGroupsResponse,
@@ -4690,7 +4703,7 @@ export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchGroupsError = NotFound | Forbidden | GcpOpError;
 /** Searches for `Group` resources matching a specified query. */
@@ -4698,7 +4711,8 @@ export const searchGroups: API.PaginatedOperationMethod<
   SearchGroupsRequest,
   SearchGroupsResponse,
   SearchGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupsRequest,
   output: SearchGroupsResponse,
@@ -4709,7 +4723,7 @@ export const searchGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchTransitiveGroupsGroupsMembershipsError =
   | NotFound
@@ -4720,7 +4734,8 @@ export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMeth
   SearchTransitiveGroupsGroupsMembershipsRequest,
   SearchTransitiveGroupsResponse,
   SearchTransitiveGroupsGroupsMembershipsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchTransitiveGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitiveGroupsGroupsMembershipsRequest,
   output: SearchTransitiveGroupsResponse,
@@ -4731,7 +4746,7 @@ export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchTransitiveMembershipsGroupsMembershipsError =
   | NotFound
@@ -4742,7 +4757,8 @@ export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperatio
   SearchTransitiveMembershipsGroupsMembershipsRequest,
   SearchTransitiveMembershipsResponse,
   SearchTransitiveMembershipsGroupsMembershipsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchTransitiveMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitiveMembershipsGroupsMembershipsRequest,
   output: SearchTransitiveMembershipsResponse,
@@ -4753,7 +4769,7 @@ export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SendCustomersUserinvitationsError =
   | NotFound

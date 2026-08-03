@@ -1273,7 +1273,8 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesRequest,
   ListCustomCertificatesResponse,
   ListCustomCertificatesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCustomCertificatesRequest,
@@ -1296,7 +1297,7 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchCustomCertificateError =
   | CustomCertificateNotFound
@@ -1332,7 +1333,8 @@ export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeRequest,
   PutPrioritizeResponse,
   PutPrioritizeError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PrioritizeUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: PutPrioritizeRequest,
@@ -1348,4 +1350,4 @@ export const putPrioritize: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

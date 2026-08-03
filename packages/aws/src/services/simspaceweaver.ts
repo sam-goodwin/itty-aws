@@ -1031,27 +1031,7 @@ export const listApps: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAppsInput,
-  ListAppsOutput,
-  ListAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsInput,
-  ) => stream.Stream<
-    ListAppsOutput,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsInput,
-  ) => stream.Stream<
-    unknown,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSimulationsError =
   | AccessDeniedException
@@ -1093,27 +1073,7 @@ export const listSimulations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSimulationsInput,
-  ListSimulationsOutput,
-  ListSimulationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSimulationsInput,
-  ) => stream.Stream<
-    ListSimulationsOutput,
-    ListSimulationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSimulationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListSimulationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException

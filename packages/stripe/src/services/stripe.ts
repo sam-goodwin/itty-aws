@@ -196382,7 +196382,8 @@ export const GetChargesSearch: API.PaginatedOperationMethod<
   GetChargesSearchRequest,
   GetChargesSearchResponse,
   GetChargesSearchError,
-  StripeOpContext
+  StripeOpContext,
+  Charge
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetChargesSearchRequest,
@@ -196398,7 +196399,7 @@ export const GetChargesSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetCheckoutSessionsError = StripeOpError;
 /** List all Checkout Sessions <p>Returns a list of Checkout Sessions.</p> */
@@ -196889,7 +196890,8 @@ export const GetCustomersSearch: API.PaginatedOperationMethod<
   GetCustomersSearchRequest,
   GetCustomersSearchResponse,
   GetCustomersSearchError,
-  StripeOpContext
+  StripeOpContext,
+  Customer
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetCustomersSearchRequest,
@@ -196905,7 +196907,7 @@ export const GetCustomersSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetDisputesError = StripeOpError;
 /** List all disputes <p>Returns a list of your disputes.</p> */
@@ -197438,7 +197440,8 @@ export const GetInvoicesSearch: API.PaginatedOperationMethod<
   GetInvoicesSearchRequest,
   GetInvoicesSearchResponse,
   GetInvoicesSearchError,
-  StripeOpContext
+  StripeOpContext,
+  Invoice
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetInvoicesSearchRequest,
@@ -197454,7 +197457,7 @@ export const GetInvoicesSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetIssuingAuthorizationsError = StripeOpError;
 /** List all authorizations <p>Returns a list of Issuing <code>Authorization</code> objects. The objects are sorted in descending order by creation date, with the most recently created object appearing first.</p> */
@@ -197793,7 +197796,8 @@ export const GetPaymentIntentsSearch: API.PaginatedOperationMethod<
   GetPaymentIntentsSearchRequest,
   GetPaymentIntentsSearchResponse,
   GetPaymentIntentsSearchError,
-  StripeOpContext
+  StripeOpContext,
+  PaymentIntent
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetPaymentIntentsSearchRequest,
@@ -197809,7 +197813,7 @@ export const GetPaymentIntentsSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetPaymentLinksError = StripeOpError;
 /** List all payment links <p>Returns a list of your payment links.</p> */
@@ -198057,7 +198061,8 @@ export const GetPricesSearch: API.PaginatedOperationMethod<
   GetPricesSearchRequest,
   GetPricesSearchResponse,
   GetPricesSearchError,
-  StripeOpContext
+  StripeOpContext,
+  Price
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetPricesSearchRequest,
@@ -198073,7 +198078,7 @@ export const GetPricesSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetProductsError = StripeOpError;
 /** List all products <p>Returns a list of your products. The products are returned sorted by creation date, with the most recently created products appearing first.</p> */
@@ -198141,7 +198146,8 @@ export const GetProductsSearch: API.PaginatedOperationMethod<
   GetProductsSearchRequest,
   GetProductsSearchResponse,
   GetProductsSearchError,
-  StripeOpContext
+  StripeOpContext,
+  Product
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetProductsSearchRequest,
@@ -198157,7 +198163,7 @@ export const GetProductsSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetPromotionCodesError = StripeOpError;
 /** List all promotion codes <p>Returns a list of your promotion codes.</p> */
@@ -198690,7 +198696,8 @@ export const GetSubscriptionsSearch: API.PaginatedOperationMethod<
   GetSubscriptionsSearchRequest,
   GetSubscriptionsSearchResponse,
   GetSubscriptionsSearchError,
-  StripeOpContext
+  StripeOpContext,
+  Subscription
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetSubscriptionsSearchRequest,
@@ -198706,7 +198713,7 @@ export const GetSubscriptionsSearch: API.PaginatedOperationMethod<
     } as const,
   }),
   stripeSearchPaginate,
-);
+) as any;
 
 export type GetSubscriptionsSubscriptionExposedIdError = StripeOpError;
 /** Retrieve a subscription <p>Retrieves the subscription with the given ID.</p> */

@@ -3808,27 +3808,7 @@ export const listApplications: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationsRequest,
-  Applications,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Applications,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConfigurationProfilesError =
   | BadRequestException
@@ -3875,27 +3855,7 @@ export const listConfigurationProfiles: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationProfilesRequest,
-  ConfigurationProfiles,
-  ListConfigurationProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationProfilesRequest,
-  ) => stream.Stream<
-    ConfigurationProfiles,
-    ListConfigurationProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationProfilesRequest,
-  ) => stream.Stream<
-    ConfigurationProfileSummary,
-    ListConfigurationProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDeploymentsError =
   | BadRequestException
@@ -3942,27 +3902,7 @@ export const listDeployments: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeploymentsRequest,
-  Deployments,
-  ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    Deployments,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    DeploymentSummary,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDeploymentStrategiesError =
   | BadRequestException
@@ -4004,27 +3944,7 @@ export const listDeploymentStrategies: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeploymentStrategiesRequest,
-  DeploymentStrategies,
-  ListDeploymentStrategiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentStrategiesRequest,
-  ) => stream.Stream<
-    DeploymentStrategies,
-    ListDeploymentStrategiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentStrategiesRequest,
-  ) => stream.Stream<
-    DeploymentStrategy,
-    ListDeploymentStrategiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnvironmentsError =
   | BadRequestException
@@ -4071,27 +3991,7 @@ export const listEnvironments: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnvironmentsRequest,
-  Environments,
-  ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    Environments,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    Environment,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExperimentDefinitionsError =
   | BadRequestException
@@ -4138,27 +4038,7 @@ export const listExperimentDefinitions: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExperimentDefinitionsRequest,
-  ExperimentDefinitions,
-  ListExperimentDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentDefinitionsRequest,
-  ) => stream.Stream<
-    ExperimentDefinitions,
-    ListExperimentDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentDefinitionsRequest,
-  ) => stream.Stream<
-    ExperimentDefinitionSummary,
-    ListExperimentDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExperimentRunEventsError =
   | BadRequestException
@@ -4205,27 +4085,7 @@ export const listExperimentRunEvents: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExperimentRunEventsRequest,
-  ExperimentRunEvents,
-  ListExperimentRunEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentRunEventsRequest,
-  ) => stream.Stream<
-    ExperimentRunEvents,
-    ListExperimentRunEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentRunEventsRequest,
-  ) => stream.Stream<
-    ExperimentRunEvent,
-    ListExperimentRunEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExperimentRunsError =
   | BadRequestException
@@ -4272,27 +4132,7 @@ export const listExperimentRuns: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExperimentRunsRequest,
-  ExperimentRuns,
-  ListExperimentRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentRunsRequest,
-  ) => stream.Stream<
-    ExperimentRuns,
-    ListExperimentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentRunsRequest,
-  ) => stream.Stream<
-    ExperimentRunSummary,
-    ListExperimentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExtensionAssociationsError =
   | BadRequestException
@@ -4336,27 +4176,7 @@ export const listExtensionAssociations: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExtensionAssociationsRequest,
-  ExtensionAssociations,
-  ListExtensionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExtensionAssociationsRequest,
-  ) => stream.Stream<
-    ExtensionAssociations,
-    ListExtensionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExtensionAssociationsRequest,
-  ) => stream.Stream<
-    ExtensionAssociationSummary,
-    ListExtensionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListExtensionsError =
   | BadRequestException
@@ -4400,27 +4220,7 @@ export const listExtensions: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListExtensionsRequest,
-  Extensions,
-  ListExtensionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExtensionsRequest,
-  ) => stream.Stream<
-    Extensions,
-    ListExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExtensionsRequest,
-  ) => stream.Stream<
-    ExtensionSummary,
-    ListExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHostedConfigurationVersionsError =
   | BadRequestException
@@ -4468,27 +4268,7 @@ export const listHostedConfigurationVersions: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHostedConfigurationVersionsRequest,
-  HostedConfigurationVersions,
-  ListHostedConfigurationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostedConfigurationVersionsRequest,
-  ) => stream.Stream<
-    HostedConfigurationVersions,
-    ListHostedConfigurationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostedConfigurationVersionsRequest,
-  ) => stream.Stream<
-    HostedConfigurationVersionSummary,
-    ListHostedConfigurationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

@@ -6449,27 +6449,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPhoneNumberOrdersRequest,
-  ListPhoneNumberOrdersResponse,
-  ListPhoneNumberOrdersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumberOrdersRequest,
-  ) => stream.Stream<
-    ListPhoneNumberOrdersResponse,
-    ListPhoneNumberOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumberOrdersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPhoneNumberOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPhoneNumbersError =
   | BadRequestException
@@ -6525,27 +6505,7 @@ export const listPhoneNumbers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPhoneNumbersRequest,
-  ListPhoneNumbersResponse,
-  ListPhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    ListPhoneNumbersResponse,
-    ListPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProxySessionsError =
   | BadRequestException
@@ -6599,27 +6559,7 @@ export const listProxySessions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProxySessionsRequest,
-  ListProxySessionsResponse,
-  ListProxySessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProxySessionsRequest,
-  ) => stream.Stream<
-    ListProxySessionsResponse,
-    ListProxySessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProxySessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProxySessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSipMediaApplicationsError =
   | BadRequestException
@@ -6672,27 +6612,7 @@ export const listSipMediaApplications: API.OperationMethod<
     items: "SipMediaApplications",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSipMediaApplicationsRequest,
-  ListSipMediaApplicationsResponse,
-  ListSipMediaApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSipMediaApplicationsRequest,
-  ) => stream.Stream<
-    ListSipMediaApplicationsResponse,
-    ListSipMediaApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSipMediaApplicationsRequest,
-  ) => stream.Stream<
-    SipMediaApplication,
-    ListSipMediaApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSipRulesError =
   | BadRequestException
@@ -6745,27 +6665,7 @@ export const listSipRules: API.OperationMethod<
     items: "SipRules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSipRulesRequest,
-  ListSipRulesResponse,
-  ListSipRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSipRulesRequest,
-  ) => stream.Stream<
-    ListSipRulesResponse,
-    ListSipRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSipRulesRequest,
-  ) => stream.Stream<
-    SipRule,
-    ListSipRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSupportedPhoneNumberCountriesError =
   | AccessDeniedException
@@ -6884,27 +6784,7 @@ export const listVoiceConnectorGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVoiceConnectorGroupsRequest,
-  ListVoiceConnectorGroupsResponse,
-  ListVoiceConnectorGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceConnectorGroupsRequest,
-  ) => stream.Stream<
-    ListVoiceConnectorGroupsResponse,
-    ListVoiceConnectorGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceConnectorGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceConnectorGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVoiceConnectorsError =
   | BadRequestException
@@ -6957,27 +6837,7 @@ export const listVoiceConnectors: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVoiceConnectorsRequest,
-  ListVoiceConnectorsResponse,
-  ListVoiceConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceConnectorsRequest,
-  ) => stream.Stream<
-    ListVoiceConnectorsResponse,
-    ListVoiceConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceConnectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVoiceConnectorTerminationCredentialsError =
   | BadRequestException
@@ -7065,27 +6925,7 @@ export const listVoiceProfileDomains: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVoiceProfileDomainsRequest,
-  ListVoiceProfileDomainsResponse,
-  ListVoiceProfileDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceProfileDomainsRequest,
-  ) => stream.Stream<
-    ListVoiceProfileDomainsResponse,
-    ListVoiceProfileDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceProfileDomainsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceProfileDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVoiceProfilesError =
   | BadRequestException
@@ -7139,27 +6979,7 @@ export const listVoiceProfiles: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVoiceProfilesRequest,
-  ListVoiceProfilesResponse,
-  ListVoiceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVoiceProfilesRequest,
-  ) => stream.Stream<
-    ListVoiceProfilesResponse,
-    ListVoiceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVoiceProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVoiceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutSipMediaApplicationAlexaSkillConfigurationError =
   | BadRequestException
@@ -7598,27 +7418,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchAvailablePhoneNumbersRequest,
-  SearchAvailablePhoneNumbersResponse,
-  SearchAvailablePhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    SearchAvailablePhoneNumbersResponse,
-    SearchAvailablePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchAvailablePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartSpeakerSearchTaskError =
   | AccessDeniedException

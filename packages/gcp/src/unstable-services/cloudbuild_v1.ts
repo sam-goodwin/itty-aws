@@ -5012,7 +5012,8 @@ export const listProjectsBuilds: API.PaginatedOperationMethod<
   ListProjectsBuildsRequest,
   ListBuildsResponse,
   ListProjectsBuildsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBuildsRequest,
   output: ListBuildsResponse,
@@ -5023,7 +5024,7 @@ export const listProjectsBuilds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsGithubEnterpriseConfigsError =
   | NotFound
@@ -5052,7 +5053,8 @@ export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperation
   ListProjectsLocationsBitbucketServerConfigsRequest,
   ListBitbucketServerConfigsResponse,
   ListProjectsLocationsBitbucketServerConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBitbucketServerConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBitbucketServerConfigsRequest,
   output: ListBitbucketServerConfigsResponse,
@@ -5063,7 +5065,7 @@ export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBitbucketServerConfigsReposError =
   | NotFound
@@ -5074,7 +5076,8 @@ export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOper
   ListProjectsLocationsBitbucketServerConfigsReposRequest,
   ListBitbucketServerRepositoriesResponse,
   ListProjectsLocationsBitbucketServerConfigsReposError,
-  GcpOpContext
+  GcpOpContext,
+  ListBitbucketServerRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBitbucketServerConfigsReposRequest,
   output: ListBitbucketServerRepositoriesResponse,
@@ -5085,7 +5088,7 @@ export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBuildsError =
   | NotFound
@@ -5096,7 +5099,8 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
   ListProjectsLocationsBuildsRequest,
   ListBuildsResponse,
   ListProjectsLocationsBuildsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBuildsRequest,
   output: ListBuildsResponse,
@@ -5107,7 +5111,7 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGithubEnterpriseConfigsError =
   | NotFound
@@ -5136,7 +5140,8 @@ export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsGitLabConfigsRequest,
   ListGitLabConfigsResponse,
   ListProjectsLocationsGitLabConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListGitLabConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGitLabConfigsRequest,
   output: ListGitLabConfigsResponse,
@@ -5147,7 +5152,7 @@ export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGitLabConfigsReposError =
   | NotFound
@@ -5158,7 +5163,8 @@ export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMeth
   ListProjectsLocationsGitLabConfigsReposRequest,
   ListGitLabRepositoriesResponse,
   ListProjectsLocationsGitLabConfigsReposError,
-  GcpOpContext
+  GcpOpContext,
+  ListGitLabRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGitLabConfigsReposRequest,
   output: ListGitLabRepositoriesResponse,
@@ -5169,7 +5175,7 @@ export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsTriggersError =
   | NotFound
@@ -5180,7 +5186,8 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
   ListProjectsLocationsTriggersRequest,
   ListBuildTriggersResponse,
   ListProjectsLocationsTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  ListBuildTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTriggersRequest,
   output: ListBuildTriggersResponse,
@@ -5191,7 +5198,7 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkerPoolsError =
   | NotFound
@@ -5202,7 +5209,8 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   ListProjectsLocationsWorkerPoolsRequest,
   ListWorkerPoolsResponse,
   ListProjectsLocationsWorkerPoolsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkerPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkerPoolsRequest,
   output: ListWorkerPoolsResponse,
@@ -5213,7 +5221,7 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsTriggersError = NotFound | Forbidden | GcpOpError;
 /** Lists existing `BuildTrigger`s. */
@@ -5221,7 +5229,8 @@ export const listProjectsTriggers: API.PaginatedOperationMethod<
   ListProjectsTriggersRequest,
   ListBuildTriggersResponse,
   ListProjectsTriggersError,
-  GcpOpContext
+  GcpOpContext,
+  ListBuildTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTriggersRequest,
   output: ListBuildTriggersResponse,
@@ -5232,7 +5241,7 @@ export const listProjectsTriggers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsGithubEnterpriseConfigsError =
   | NotFound

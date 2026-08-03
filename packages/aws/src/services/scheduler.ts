@@ -1109,27 +1109,7 @@ export const listScheduleGroups: API.OperationMethod<
     items: "ScheduleGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScheduleGroupsInput,
-  ListScheduleGroupsOutput,
-  ListScheduleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduleGroupsInput,
-  ) => stream.Stream<
-    ListScheduleGroupsOutput,
-    ListScheduleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduleGroupsInput,
-  ) => stream.Stream<
-    ScheduleGroupSummary,
-    ListScheduleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchedulesError =
   | InternalServerException
@@ -1178,27 +1158,7 @@ export const listSchedules: API.OperationMethod<
     items: "Schedules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchedulesInput,
-  ListSchedulesOutput,
-  ListSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchedulesInput,
-  ) => stream.Stream<
-    ListSchedulesOutput,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchedulesInput,
-  ) => stream.Stream<
-    ScheduleSummary,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

@@ -798,27 +798,7 @@ export const listRules: API.OperationMethod<
     items: "Rules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRulesRequest,
-  ListRulesResponse,
-  ListRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    RuleSummary,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

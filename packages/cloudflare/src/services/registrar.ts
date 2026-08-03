@@ -1314,7 +1314,8 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDomainsRequest,
@@ -1325,7 +1326,7 @@ export const listDomains: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutDomainError =
   | RegistrarDomainNotOwned

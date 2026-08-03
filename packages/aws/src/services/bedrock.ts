@@ -11892,27 +11892,7 @@ export const listAdvancedPromptOptimizationJobs: API.OperationMethod<
     items: "jobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAdvancedPromptOptimizationJobsRequest,
-  ListAdvancedPromptOptimizationJobsResponse,
-  ListAdvancedPromptOptimizationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdvancedPromptOptimizationJobsRequest,
-  ) => stream.Stream<
-    ListAdvancedPromptOptimizationJobsResponse,
-    ListAdvancedPromptOptimizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdvancedPromptOptimizationJobsRequest,
-  ) => stream.Stream<
-    AdvancedPromptOptimizationJobSummary,
-    ListAdvancedPromptOptimizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutomatedReasoningPoliciesError =
   | AccessDeniedException
@@ -11963,27 +11943,7 @@ export const listAutomatedReasoningPolicies: API.OperationMethod<
     items: "automatedReasoningPolicySummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutomatedReasoningPoliciesRequest,
-  ListAutomatedReasoningPoliciesResponse,
-  ListAutomatedReasoningPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPoliciesRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPoliciesResponse,
-    ListAutomatedReasoningPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPoliciesRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicySummary,
-    ListAutomatedReasoningPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutomatedReasoningPolicyBuildWorkflowsError =
   | AccessDeniedException
@@ -12034,27 +11994,7 @@ export const listAutomatedReasoningPolicyBuildWorkflows: API.OperationMethod<
     items: "automatedReasoningPolicyBuildWorkflowSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutomatedReasoningPolicyBuildWorkflowsRequest,
-  ListAutomatedReasoningPolicyBuildWorkflowsResponse,
-  ListAutomatedReasoningPolicyBuildWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPolicyBuildWorkflowsResponse,
-    ListAutomatedReasoningPolicyBuildWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicyBuildWorkflowSummary,
-    ListAutomatedReasoningPolicyBuildWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutomatedReasoningPolicyTestCasesError =
   | AccessDeniedException
@@ -12105,27 +12045,7 @@ export const listAutomatedReasoningPolicyTestCases: API.OperationMethod<
     items: "testCases",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutomatedReasoningPolicyTestCasesRequest,
-  ListAutomatedReasoningPolicyTestCasesResponse,
-  ListAutomatedReasoningPolicyTestCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPolicyTestCasesRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPolicyTestCasesResponse,
-    ListAutomatedReasoningPolicyTestCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPolicyTestCasesRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicyTestCase,
-    ListAutomatedReasoningPolicyTestCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutomatedReasoningPolicyTestResultsError =
   | AccessDeniedException
@@ -12178,27 +12098,7 @@ export const listAutomatedReasoningPolicyTestResults: API.OperationMethod<
     items: "testResults",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutomatedReasoningPolicyTestResultsRequest,
-  ListAutomatedReasoningPolicyTestResultsResponse,
-  ListAutomatedReasoningPolicyTestResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPolicyTestResultsRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPolicyTestResultsResponse,
-    ListAutomatedReasoningPolicyTestResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPolicyTestResultsRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicyTestResult,
-    ListAutomatedReasoningPolicyTestResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomModelDeploymentsError =
   | AccessDeniedException
@@ -12257,27 +12157,7 @@ export const listCustomModelDeployments: API.OperationMethod<
     items: "modelDeploymentSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomModelDeploymentsRequest,
-  ListCustomModelDeploymentsResponse,
-  ListCustomModelDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomModelDeploymentsRequest,
-  ) => stream.Stream<
-    ListCustomModelDeploymentsResponse,
-    ListCustomModelDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomModelDeploymentsRequest,
-  ) => stream.Stream<
-    CustomModelDeploymentSummary,
-    ListCustomModelDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCustomModelsError =
   | AccessDeniedException
@@ -12328,27 +12208,7 @@ export const listCustomModels: API.OperationMethod<
     items: "modelSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCustomModelsRequest,
-  ListCustomModelsResponse,
-  ListCustomModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomModelsRequest,
-  ) => stream.Stream<
-    ListCustomModelsResponse,
-    ListCustomModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomModelsRequest,
-  ) => stream.Stream<
-    CustomModelSummary,
-    ListCustomModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnforcedGuardrailsConfigurationError =
   | AccessDeniedException
@@ -12398,27 +12258,7 @@ export const listEnforcedGuardrailsConfiguration: API.OperationMethod<
     outputToken: "nextToken",
     items: "guardrailsConfig",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnforcedGuardrailsConfigurationRequest,
-  ListEnforcedGuardrailsConfigurationResponse,
-  ListEnforcedGuardrailsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnforcedGuardrailsConfigurationRequest,
-  ) => stream.Stream<
-    ListEnforcedGuardrailsConfigurationResponse,
-    ListEnforcedGuardrailsConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnforcedGuardrailsConfigurationRequest,
-  ) => stream.Stream<
-    AccountEnforcedGuardrailOutputConfiguration,
-    ListEnforcedGuardrailsConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEvaluationJobsError =
   | AccessDeniedException
@@ -12467,27 +12307,7 @@ export const listEvaluationJobs: API.OperationMethod<
     items: "jobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEvaluationJobsRequest,
-  ListEvaluationJobsResponse,
-  ListEvaluationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationJobsRequest,
-  ) => stream.Stream<
-    ListEvaluationJobsResponse,
-    ListEvaluationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluationJobsRequest,
-  ) => stream.Stream<
-    EvaluationSummary,
-    ListEvaluationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFoundationModelAgreementOffersError =
   | AccessDeniedException
@@ -12598,27 +12418,7 @@ export const listGuardrails: API.OperationMethod<
     items: "guardrails",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGuardrailsRequest,
-  ListGuardrailsResponse,
-  ListGuardrailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGuardrailsRequest,
-  ) => stream.Stream<
-    ListGuardrailsResponse,
-    ListGuardrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGuardrailsRequest,
-  ) => stream.Stream<
-    GuardrailSummary,
-    ListGuardrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportedModelsError =
   | AccessDeniedException
@@ -12667,27 +12467,7 @@ export const listImportedModels: API.OperationMethod<
     items: "modelSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportedModelsRequest,
-  ListImportedModelsResponse,
-  ListImportedModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportedModelsRequest,
-  ) => stream.Stream<
-    ListImportedModelsResponse,
-    ListImportedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportedModelsRequest,
-  ) => stream.Stream<
-    ImportedModelSummary,
-    ListImportedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInferenceProfilesError =
   | AccessDeniedException
@@ -12736,27 +12516,7 @@ export const listInferenceProfiles: API.OperationMethod<
     items: "inferenceProfileSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInferenceProfilesRequest,
-  ListInferenceProfilesResponse,
-  ListInferenceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceProfilesRequest,
-  ) => stream.Stream<
-    ListInferenceProfilesResponse,
-    ListInferenceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceProfilesRequest,
-  ) => stream.Stream<
-    InferenceProfileSummary,
-    ListInferenceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMarketplaceModelEndpointsError =
   | AccessDeniedException
@@ -12807,27 +12567,7 @@ export const listMarketplaceModelEndpoints: API.OperationMethod<
     items: "marketplaceModelEndpoints",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMarketplaceModelEndpointsRequest,
-  ListMarketplaceModelEndpointsResponse,
-  ListMarketplaceModelEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMarketplaceModelEndpointsRequest,
-  ) => stream.Stream<
-    ListMarketplaceModelEndpointsResponse,
-    ListMarketplaceModelEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMarketplaceModelEndpointsRequest,
-  ) => stream.Stream<
-    MarketplaceModelEndpointSummary,
-    ListMarketplaceModelEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelCopyJobsError =
   | AccessDeniedException
@@ -12878,27 +12618,7 @@ export const listModelCopyJobs: API.OperationMethod<
     items: "modelCopyJobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelCopyJobsRequest,
-  ListModelCopyJobsResponse,
-  ListModelCopyJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelCopyJobsRequest,
-  ) => stream.Stream<
-    ListModelCopyJobsResponse,
-    ListModelCopyJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelCopyJobsRequest,
-  ) => stream.Stream<
-    ModelCopyJobSummary,
-    ListModelCopyJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelCustomizationJobsError =
   | AccessDeniedException
@@ -12949,27 +12669,7 @@ export const listModelCustomizationJobs: API.OperationMethod<
     items: "modelCustomizationJobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelCustomizationJobsRequest,
-  ListModelCustomizationJobsResponse,
-  ListModelCustomizationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelCustomizationJobsRequest,
-  ) => stream.Stream<
-    ListModelCustomizationJobsResponse,
-    ListModelCustomizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelCustomizationJobsRequest,
-  ) => stream.Stream<
-    ModelCustomizationJobSummary,
-    ListModelCustomizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelImportJobsError =
   | AccessDeniedException
@@ -13018,27 +12718,7 @@ export const listModelImportJobs: API.OperationMethod<
     items: "modelImportJobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelImportJobsRequest,
-  ListModelImportJobsResponse,
-  ListModelImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelImportJobsRequest,
-  ) => stream.Stream<
-    ListModelImportJobsResponse,
-    ListModelImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelImportJobsRequest,
-  ) => stream.Stream<
-    ModelImportJobSummary,
-    ListModelImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelInvocationJobsError =
   | AccessDeniedException
@@ -13087,27 +12767,7 @@ export const listModelInvocationJobs: API.OperationMethod<
     items: "invocationJobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelInvocationJobsRequest,
-  ListModelInvocationJobsResponse,
-  ListModelInvocationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelInvocationJobsRequest,
-  ) => stream.Stream<
-    ListModelInvocationJobsResponse,
-    ListModelInvocationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelInvocationJobsRequest,
-  ) => stream.Stream<
-    ModelInvocationJobSummary,
-    ListModelInvocationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPromptRoutersError =
   | AccessDeniedException
@@ -13156,27 +12816,7 @@ export const listPromptRouters: API.OperationMethod<
     items: "promptRouterSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPromptRoutersRequest,
-  ListPromptRoutersResponse,
-  ListPromptRoutersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPromptRoutersRequest,
-  ) => stream.Stream<
-    ListPromptRoutersResponse,
-    ListPromptRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPromptRoutersRequest,
-  ) => stream.Stream<
-    PromptRouterSummary,
-    ListPromptRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProvisionedModelThroughputsError =
   | AccessDeniedException
@@ -13225,27 +12865,7 @@ export const listProvisionedModelThroughputs: API.OperationMethod<
     items: "provisionedModelSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProvisionedModelThroughputsRequest,
-  ListProvisionedModelThroughputsResponse,
-  ListProvisionedModelThroughputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisionedModelThroughputsRequest,
-  ) => stream.Stream<
-    ListProvisionedModelThroughputsResponse,
-    ListProvisionedModelThroughputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisionedModelThroughputsRequest,
-  ) => stream.Stream<
-    ProvisionedModelSummary,
-    ListProvisionedModelThroughputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

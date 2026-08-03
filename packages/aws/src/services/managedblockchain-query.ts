@@ -1042,27 +1042,7 @@ export const listAssetContracts: API.OperationMethod<
     items: "contracts",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetContractsInput,
-  ListAssetContractsOutput,
-  ListAssetContractsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetContractsInput,
-  ) => stream.Stream<
-    ListAssetContractsOutput,
-    ListAssetContractsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetContractsInput,
-  ) => stream.Stream<
-    AssetContract,
-    ListAssetContractsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFilteredTransactionEventsError =
   | AccessDeniedException
@@ -1115,27 +1095,7 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     items: "events",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFilteredTransactionEventsInput,
-  ListFilteredTransactionEventsOutput,
-  ListFilteredTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFilteredTransactionEventsInput,
-  ) => stream.Stream<
-    ListFilteredTransactionEventsOutput,
-    ListFilteredTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFilteredTransactionEventsInput,
-  ) => stream.Stream<
-    TransactionEvent,
-    ListFilteredTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTokenBalancesError =
   | AccessDeniedException
@@ -1196,27 +1156,7 @@ export const listTokenBalances: API.OperationMethod<
     items: "tokenBalances",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTokenBalancesInput,
-  ListTokenBalancesOutput,
-  ListTokenBalancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTokenBalancesInput,
-  ) => stream.Stream<
-    ListTokenBalancesOutput,
-    ListTokenBalancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTokenBalancesInput,
-  ) => stream.Stream<
-    TokenBalance,
-    ListTokenBalancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTransactionEventsError =
   | AccessDeniedException
@@ -1271,27 +1211,7 @@ export const listTransactionEvents: API.OperationMethod<
     items: "events",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTransactionEventsInput,
-  ListTransactionEventsOutput,
-  ListTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTransactionEventsInput,
-  ) => stream.Stream<
-    ListTransactionEventsOutput,
-    ListTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTransactionEventsInput,
-  ) => stream.Stream<
-    TransactionEvent,
-    ListTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTransactionsError =
   | AccessDeniedException
@@ -1342,24 +1262,4 @@ export const listTransactions: API.OperationMethod<
     items: "transactions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTransactionsInput,
-  ListTransactionsOutput,
-  ListTransactionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTransactionsInput,
-  ) => stream.Stream<
-    ListTransactionsOutput,
-    ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTransactionsInput,
-  ) => stream.Stream<
-    TransactionOutputItem,
-    ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;

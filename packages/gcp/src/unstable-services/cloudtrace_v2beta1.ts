@@ -281,7 +281,8 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
   ListProjectsTraceSinksRequest,
   ListTraceSinksResponse,
   ListProjectsTraceSinksError,
-  GcpOpContext
+  GcpOpContext,
+  ListTraceSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTraceSinksRequest,
   output: ListTraceSinksResponse,
@@ -292,7 +293,7 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsTraceSinksError =
   | NotFound

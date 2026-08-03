@@ -2316,7 +2316,8 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
   ListProjectsAlertsRequest,
   ListAlertsResponse,
   ListProjectsAlertsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAlertsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertsRequest,
   output: ListAlertsResponse,
@@ -2327,7 +2328,7 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsConfigurationsError = NotFound | Forbidden | GcpOpError;
 /** Get a list of configurations that meet the filter criteria. */
@@ -2335,7 +2336,8 @@ export const listProjectsConfigurations: API.PaginatedOperationMethod<
   ListProjectsConfigurationsRequest,
   ListConfigurationsResponse,
   ListProjectsConfigurationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConfigurationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigurationsRequest,
   output: ListConfigurationsResponse,
@@ -2346,7 +2348,7 @@ export const listProjectsConfigurations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsConfigurationsRevisionsError =
   | NotFound
@@ -2357,7 +2359,8 @@ export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
   ListProjectsConfigurationsRevisionsRequest,
   ListConfigurationRevisionsResponse,
   ListProjectsConfigurationsRevisionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConfigurationRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigurationsRevisionsRequest,
   output: ListConfigurationRevisionsResponse,
@@ -2368,7 +2371,7 @@ export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsFindingsError = NotFound | Forbidden | GcpOpError;
 /** Get a list of findings that meet the filter criteria. The `parent` field in ListFindingsRequest should have the format: projects/{project} */
@@ -2376,7 +2379,8 @@ export const listProjectsFindings: API.PaginatedOperationMethod<
   ListProjectsFindingsRequest,
   ListFindingsResponse,
   ListProjectsFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsFindingsRequest,
   output: ListFindingsResponse,
@@ -2387,7 +2391,7 @@ export const listProjectsFindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type NotActionableProjectsAlertsError =
   | NotFound
@@ -2455,7 +2459,8 @@ export const searchProjectsFindings: API.PaginatedOperationMethod<
   SearchProjectsFindingsRequest,
   SearchFindingsResponse,
   SearchProjectsFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsFindingsRequest,
   output: SearchFindingsResponse,
@@ -2466,7 +2471,7 @@ export const searchProjectsFindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type TrackExternallyProjectsAlertsError =
   | NotFound

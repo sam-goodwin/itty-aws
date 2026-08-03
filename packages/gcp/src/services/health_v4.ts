@@ -4690,7 +4690,8 @@ export const listProjectsSubscribers: API.PaginatedOperationMethod<
   ListProjectsSubscribersRequest,
   ListSubscribersResponse,
   ListProjectsSubscribersError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscribersRequest,
   output: ListSubscribersResponse,
@@ -4701,7 +4702,7 @@ export const listProjectsSubscribers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSubscribersSubscriptionsError =
   | NotFound
@@ -4712,7 +4713,8 @@ export const listProjectsSubscribersSubscriptions: API.PaginatedOperationMethod<
   ListProjectsSubscribersSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListProjectsSubscribersSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscribersSubscriptionsRequest,
   output: ListSubscriptionsResponse,
@@ -4723,7 +4725,7 @@ export const listProjectsSubscribersSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersDataTypesDataPointsError =
   | NotFound
@@ -4734,7 +4736,8 @@ export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   ListUsersDataTypesDataPointsRequest,
   ListDataPointsResponse,
   ListUsersDataTypesDataPointsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDataPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDataTypesDataPointsRequest,
   output: ListDataPointsResponse,
@@ -4745,7 +4748,7 @@ export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersPairedDevicesError = NotFound | Forbidden | GcpOpError;
 /** Returns the user's list of paired 1P trackers and smartwatches. */
@@ -4753,7 +4756,8 @@ export const listUsersPairedDevices: API.PaginatedOperationMethod<
   ListUsersPairedDevicesRequest,
   ListPairedDevicesResponse,
   ListUsersPairedDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPairedDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersPairedDevicesRequest,
   output: ListPairedDevicesResponse,
@@ -4764,7 +4768,7 @@ export const listUsersPairedDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsSubscribersError =
   | NotFound
@@ -4835,7 +4839,8 @@ export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   ReconcileUsersDataTypesDataPointsRequest,
   ReconcileDataPointsResponse,
   ReconcileUsersDataTypesDataPointsError,
-  GcpOpContext
+  GcpOpContext,
+  ReconcileDataPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ReconcileUsersDataTypesDataPointsRequest,
   output: ReconcileDataPointsResponse,
@@ -4846,7 +4851,7 @@ export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type RollUpUsersDataTypesDataPointsError =
   | NotFound

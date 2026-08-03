@@ -2242,7 +2242,8 @@ export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOper
   ListBillingAccountsLocationsInsightTypesInsightsRequest,
   GoogleCloudRecommenderV1ListInsightsResponse,
   ListBillingAccountsLocationsInsightTypesInsightsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsInsightTypesInsightsRequest,
   output: GoogleCloudRecommenderV1ListInsightsResponse,
@@ -2253,7 +2254,7 @@ export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsLocationsRecommendersRecommendationsError =
   | NotFound
@@ -2264,7 +2265,8 @@ export const listBillingAccountsLocationsRecommendersRecommendations: API.Pagina
   ListBillingAccountsLocationsRecommendersRecommendationsRequest,
   GoogleCloudRecommenderV1ListRecommendationsResponse,
   ListBillingAccountsLocationsRecommendersRecommendationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: GoogleCloudRecommenderV1ListRecommendationsResponse,
@@ -2275,7 +2277,7 @@ export const listBillingAccountsLocationsRecommendersRecommendations: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersLocationsInsightTypesInsightsError =
   | NotFound
@@ -2286,7 +2288,8 @@ export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMet
   ListFoldersLocationsInsightTypesInsightsRequest,
   GoogleCloudRecommenderV1ListInsightsResponse,
   ListFoldersLocationsInsightTypesInsightsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsInsightTypesInsightsRequest,
   output: GoogleCloudRecommenderV1ListInsightsResponse,
@@ -2297,7 +2300,7 @@ export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersLocationsRecommendersRecommendationsError =
   | NotFound
@@ -2308,7 +2311,8 @@ export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOpera
   ListFoldersLocationsRecommendersRecommendationsRequest,
   GoogleCloudRecommenderV1ListRecommendationsResponse,
   ListFoldersLocationsRecommendersRecommendationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRecommendersRecommendationsRequest,
   output: GoogleCloudRecommenderV1ListRecommendationsResponse,
@@ -2319,7 +2323,7 @@ export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsInsightTypesInsightsError =
   | NotFound
@@ -2330,7 +2334,8 @@ export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperat
   ListOrganizationsLocationsInsightTypesInsightsRequest,
   GoogleCloudRecommenderV1ListInsightsResponse,
   ListOrganizationsLocationsInsightTypesInsightsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsInsightTypesInsightsRequest,
   output: GoogleCloudRecommenderV1ListInsightsResponse,
@@ -2341,7 +2346,7 @@ export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsRecommendersRecommendationsError =
   | NotFound
@@ -2352,7 +2357,8 @@ export const listOrganizationsLocationsRecommendersRecommendations: API.Paginate
   ListOrganizationsLocationsRecommendersRecommendationsRequest,
   GoogleCloudRecommenderV1ListRecommendationsResponse,
   ListOrganizationsLocationsRecommendersRecommendationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRecommendersRecommendationsRequest,
   output: GoogleCloudRecommenderV1ListRecommendationsResponse,
@@ -2363,7 +2369,7 @@ export const listOrganizationsLocationsRecommendersRecommendations: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsInsightTypesInsightsError =
   | NotFound
@@ -2374,7 +2380,8 @@ export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMe
   ListProjectsLocationsInsightTypesInsightsRequest,
   GoogleCloudRecommenderV1ListInsightsResponse,
   ListProjectsLocationsInsightTypesInsightsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInsightTypesInsightsRequest,
   output: GoogleCloudRecommenderV1ListInsightsResponse,
@@ -2385,7 +2392,7 @@ export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRecommendersRecommendationsError =
   | NotFound
@@ -2396,7 +2403,8 @@ export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOper
   ListProjectsLocationsRecommendersRecommendationsRequest,
   GoogleCloudRecommenderV1ListRecommendationsResponse,
   ListProjectsLocationsRecommendersRecommendationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRecommendersRecommendationsRequest,
   output: GoogleCloudRecommenderV1ListRecommendationsResponse,
@@ -2407,7 +2415,7 @@ export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsError =
   | NotFound

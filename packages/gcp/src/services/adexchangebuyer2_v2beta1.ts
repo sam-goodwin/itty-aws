@@ -5406,7 +5406,8 @@ export const listAccountsClients: API.PaginatedOperationMethod<
   ListAccountsClientsRequest,
   ListClientsResponse,
   ListAccountsClientsError,
-  GcpOpContext
+  GcpOpContext,
+  ListClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsClientsRequest,
   output: ListClientsResponse,
@@ -5417,7 +5418,7 @@ export const listAccountsClients: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsClientsInvitationsError =
   | NotFound
@@ -5428,7 +5429,8 @@ export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
   ListAccountsClientsInvitationsRequest,
   ListClientUserInvitationsResponse,
   ListAccountsClientsInvitationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListClientUserInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsClientsInvitationsRequest,
   output: ListClientUserInvitationsResponse,
@@ -5439,7 +5441,7 @@ export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsClientsUsersError = NotFound | Forbidden | GcpOpError;
 /** Lists all the known client users for a specified sponsor buyer account ID. */
@@ -5447,7 +5449,8 @@ export const listAccountsClientsUsers: API.PaginatedOperationMethod<
   ListAccountsClientsUsersRequest,
   ListClientUsersResponse,
   ListAccountsClientsUsersError,
-  GcpOpContext
+  GcpOpContext,
+  ListClientUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsClientsUsersRequest,
   output: ListClientUsersResponse,
@@ -5458,7 +5461,7 @@ export const listAccountsClientsUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsCreativesError = NotFound | Forbidden | GcpOpError;
 /** Lists creatives. */
@@ -5466,7 +5469,8 @@ export const listAccountsCreatives: API.PaginatedOperationMethod<
   ListAccountsCreativesRequest,
   ListCreativesResponse,
   ListAccountsCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCreativesRequest,
   output: ListCreativesResponse,
@@ -5477,7 +5481,7 @@ export const listAccountsCreatives: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsCreativesDealAssociationsError =
   | NotFound
@@ -5488,7 +5492,8 @@ export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod
   ListAccountsCreativesDealAssociationsRequest,
   ListDealAssociationsResponse,
   ListAccountsCreativesDealAssociationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDealAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCreativesDealAssociationsRequest,
   output: ListDealAssociationsResponse,
@@ -5499,7 +5504,7 @@ export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsFinalizedProposalsError =
   | NotFound
@@ -5510,7 +5515,8 @@ export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
   ListAccountsFinalizedProposalsRequest,
   ListProposalsResponse,
   ListAccountsFinalizedProposalsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsFinalizedProposalsRequest,
   output: ListProposalsResponse,
@@ -5521,7 +5527,7 @@ export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsProductsError = NotFound | Forbidden | GcpOpError;
 /** List all products visible to the buyer (optionally filtered by the specified PQL query). */
@@ -5529,7 +5535,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   ListAccountsProductsRequest,
   ListProductsResponse,
   ListAccountsProductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRequest,
   output: ListProductsResponse,
@@ -5540,7 +5547,7 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsProposalsError = NotFound | Forbidden | GcpOpError;
 /** List proposals. A filter expression (PQL query) may be specified to filter the results. To retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A Bidder account can only see its child seats' proposals by specifying the ChildSeat's accountId in the request path. */
@@ -5548,7 +5555,8 @@ export const listAccountsProposals: API.PaginatedOperationMethod<
   ListAccountsProposalsRequest,
   ListProposalsResponse,
   ListAccountsProposalsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProposalsRequest,
   output: ListProposalsResponse,
@@ -5559,7 +5567,7 @@ export const listAccountsProposals: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsPublisherProfilesError =
   | NotFound
@@ -5570,7 +5578,8 @@ export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
   ListAccountsPublisherProfilesRequest,
   ListPublisherProfilesResponse,
   ListAccountsPublisherProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPublisherProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPublisherProfilesRequest,
   output: ListPublisherProfilesResponse,
@@ -5581,7 +5590,7 @@ export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsError =
   | NotFound
@@ -5592,7 +5601,8 @@ export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
   ListBiddersAccountsFilterSetsRequest,
   ListFilterSetsResponse,
   ListBiddersAccountsFilterSetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsRequest,
   output: ListFilterSetsResponse,
@@ -5603,7 +5613,7 @@ export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsBidMetricsError =
   | NotFound
@@ -5614,7 +5624,8 @@ export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMeth
   ListBiddersAccountsFilterSetsBidMetricsRequest,
   ListBidMetricsResponse,
   ListBiddersAccountsFilterSetsBidMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsBidMetricsRequest,
   output: ListBidMetricsResponse,
@@ -5625,7 +5636,7 @@ export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsBidResponseErrorsError =
   | NotFound
@@ -5636,7 +5647,8 @@ export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperat
   ListBiddersAccountsFilterSetsBidResponseErrorsRequest,
   ListBidResponseErrorsResponse,
   ListBiddersAccountsFilterSetsBidResponseErrorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidResponseErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsBidResponseErrorsRequest,
   output: ListBidResponseErrorsResponse,
@@ -5647,7 +5659,7 @@ export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsBidResponsesWithoutBidsError =
   | NotFound
@@ -5658,7 +5670,8 @@ export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.Paginated
   ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest,
   ListBidResponsesWithoutBidsResponse,
   ListBiddersAccountsFilterSetsBidResponsesWithoutBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidResponsesWithoutBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest,
   output: ListBidResponsesWithoutBidsResponse,
@@ -5669,7 +5682,7 @@ export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsFilteredBidRequestsError =
   | NotFound
@@ -5680,7 +5693,8 @@ export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOper
   ListBiddersAccountsFilterSetsFilteredBidRequestsRequest,
   ListFilteredBidRequestsResponse,
   ListBiddersAccountsFilterSetsFilteredBidRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilteredBidRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidRequestsRequest,
   output: ListFilteredBidRequestsResponse,
@@ -5691,7 +5705,7 @@ export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsError =
   | NotFound
@@ -5702,7 +5716,8 @@ export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMe
   ListBiddersAccountsFilterSetsFilteredBidsRequest,
   ListFilteredBidsResponse,
   ListBiddersAccountsFilterSetsFilteredBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilteredBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidsRequest,
   output: ListFilteredBidsResponse,
@@ -5713,7 +5728,7 @@ export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsCreativesError =
   | NotFound
@@ -5724,7 +5739,8 @@ export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOp
   ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest,
   ListCreativeStatusBreakdownByCreativeResponse,
   ListBiddersAccountsFilterSetsFilteredBidsCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativeStatusBreakdownByCreativeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest,
   output: ListCreativeStatusBreakdownByCreativeResponse,
@@ -5735,7 +5751,7 @@ export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsDetailsError =
   | NotFound
@@ -5746,7 +5762,8 @@ export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOper
   ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest,
   ListCreativeStatusBreakdownByDetailResponse,
   ListBiddersAccountsFilterSetsFilteredBidsDetailsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativeStatusBreakdownByDetailResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest,
   output: ListCreativeStatusBreakdownByDetailResponse,
@@ -5757,7 +5774,7 @@ export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsImpressionMetricsError =
   | NotFound
@@ -5768,7 +5785,8 @@ export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperat
   ListBiddersAccountsFilterSetsImpressionMetricsRequest,
   ListImpressionMetricsResponse,
   ListBiddersAccountsFilterSetsImpressionMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListImpressionMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsImpressionMetricsRequest,
   output: ListImpressionMetricsResponse,
@@ -5779,7 +5797,7 @@ export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsLosingBidsError =
   | NotFound
@@ -5790,7 +5808,8 @@ export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMeth
   ListBiddersAccountsFilterSetsLosingBidsRequest,
   ListLosingBidsResponse,
   ListBiddersAccountsFilterSetsLosingBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLosingBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsLosingBidsRequest,
   output: ListLosingBidsResponse,
@@ -5801,7 +5820,7 @@ export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersAccountsFilterSetsNonBillableWinningBidsError =
   | NotFound
@@ -5812,7 +5831,8 @@ export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedO
   ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest,
   ListNonBillableWinningBidsResponse,
   ListBiddersAccountsFilterSetsNonBillableWinningBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNonBillableWinningBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest,
   output: ListNonBillableWinningBidsResponse,
@@ -5823,7 +5843,7 @@ export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsError = NotFound | Forbidden | GcpOpError;
 /** Lists all filter sets for the account with the given account ID. */
@@ -5831,7 +5851,8 @@ export const listBiddersFilterSets: API.PaginatedOperationMethod<
   ListBiddersFilterSetsRequest,
   ListFilterSetsResponse,
   ListBiddersFilterSetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsRequest,
   output: ListFilterSetsResponse,
@@ -5842,7 +5863,7 @@ export const listBiddersFilterSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsBidMetricsError =
   | NotFound
@@ -5853,7 +5874,8 @@ export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   ListBiddersFilterSetsBidMetricsRequest,
   ListBidMetricsResponse,
   ListBiddersFilterSetsBidMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsBidMetricsRequest,
   output: ListBidMetricsResponse,
@@ -5864,7 +5886,7 @@ export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsBidResponseErrorsError =
   | NotFound
@@ -5875,7 +5897,8 @@ export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMetho
   ListBiddersFilterSetsBidResponseErrorsRequest,
   ListBidResponseErrorsResponse,
   ListBiddersFilterSetsBidResponseErrorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidResponseErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsBidResponseErrorsRequest,
   output: ListBidResponseErrorsResponse,
@@ -5886,7 +5909,7 @@ export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsBidResponsesWithoutBidsError =
   | NotFound
@@ -5897,7 +5920,8 @@ export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperatio
   ListBiddersFilterSetsBidResponsesWithoutBidsRequest,
   ListBidResponsesWithoutBidsResponse,
   ListBiddersFilterSetsBidResponsesWithoutBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidResponsesWithoutBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsBidResponsesWithoutBidsRequest,
   output: ListBidResponsesWithoutBidsResponse,
@@ -5908,7 +5932,7 @@ export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsFilteredBidRequestsError =
   | NotFound
@@ -5919,7 +5943,8 @@ export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMet
   ListBiddersFilterSetsFilteredBidRequestsRequest,
   ListFilteredBidRequestsResponse,
   ListBiddersFilterSetsFilteredBidRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilteredBidRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidRequestsRequest,
   output: ListFilteredBidRequestsResponse,
@@ -5930,7 +5955,7 @@ export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsFilteredBidsError =
   | NotFound
@@ -5941,7 +5966,8 @@ export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   ListBiddersFilterSetsFilteredBidsRequest,
   ListFilteredBidsResponse,
   ListBiddersFilterSetsFilteredBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilteredBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidsRequest,
   output: ListFilteredBidsResponse,
@@ -5952,7 +5978,7 @@ export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsFilteredBidsCreativesError =
   | NotFound
@@ -5963,7 +5989,8 @@ export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationM
   ListBiddersFilterSetsFilteredBidsCreativesRequest,
   ListCreativeStatusBreakdownByCreativeResponse,
   ListBiddersFilterSetsFilteredBidsCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativeStatusBreakdownByCreativeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidsCreativesRequest,
   output: ListCreativeStatusBreakdownByCreativeResponse,
@@ -5974,7 +6001,7 @@ export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsFilteredBidsDetailsError =
   | NotFound
@@ -5985,7 +6012,8 @@ export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMet
   ListBiddersFilterSetsFilteredBidsDetailsRequest,
   ListCreativeStatusBreakdownByDetailResponse,
   ListBiddersFilterSetsFilteredBidsDetailsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativeStatusBreakdownByDetailResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidsDetailsRequest,
   output: ListCreativeStatusBreakdownByDetailResponse,
@@ -5996,7 +6024,7 @@ export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsImpressionMetricsError =
   | NotFound
@@ -6007,7 +6035,8 @@ export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMetho
   ListBiddersFilterSetsImpressionMetricsRequest,
   ListImpressionMetricsResponse,
   ListBiddersFilterSetsImpressionMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListImpressionMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsImpressionMetricsRequest,
   output: ListImpressionMetricsResponse,
@@ -6018,7 +6047,7 @@ export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsLosingBidsError =
   | NotFound
@@ -6029,7 +6058,8 @@ export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
   ListBiddersFilterSetsLosingBidsRequest,
   ListLosingBidsResponse,
   ListBiddersFilterSetsLosingBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLosingBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsLosingBidsRequest,
   output: ListLosingBidsResponse,
@@ -6040,7 +6070,7 @@ export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFilterSetsNonBillableWinningBidsError =
   | NotFound
@@ -6051,7 +6081,8 @@ export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperation
   ListBiddersFilterSetsNonBillableWinningBidsRequest,
   ListNonBillableWinningBidsResponse,
   ListBiddersFilterSetsNonBillableWinningBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNonBillableWinningBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsNonBillableWinningBidsRequest,
   output: ListNonBillableWinningBidsResponse,
@@ -6062,7 +6093,7 @@ export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsError = NotFound | Forbidden | GcpOpError;
 /** Lists all filter sets for the account with the given account ID. */
@@ -6070,7 +6101,8 @@ export const listBuyersFilterSets: API.PaginatedOperationMethod<
   ListBuyersFilterSetsRequest,
   ListFilterSetsResponse,
   ListBuyersFilterSetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsRequest,
   output: ListFilterSetsResponse,
@@ -6081,7 +6113,7 @@ export const listBuyersFilterSets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsBidMetricsError =
   | NotFound
@@ -6092,7 +6124,8 @@ export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
   ListBuyersFilterSetsBidMetricsRequest,
   ListBidMetricsResponse,
   ListBuyersFilterSetsBidMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsBidMetricsRequest,
   output: ListBidMetricsResponse,
@@ -6103,7 +6136,7 @@ export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsBidResponseErrorsError =
   | NotFound
@@ -6114,7 +6147,8 @@ export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod
   ListBuyersFilterSetsBidResponseErrorsRequest,
   ListBidResponseErrorsResponse,
   ListBuyersFilterSetsBidResponseErrorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidResponseErrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsBidResponseErrorsRequest,
   output: ListBidResponseErrorsResponse,
@@ -6125,7 +6159,7 @@ export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsBidResponsesWithoutBidsError =
   | NotFound
@@ -6136,7 +6170,8 @@ export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperation
   ListBuyersFilterSetsBidResponsesWithoutBidsRequest,
   ListBidResponsesWithoutBidsResponse,
   ListBuyersFilterSetsBidResponsesWithoutBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBidResponsesWithoutBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsBidResponsesWithoutBidsRequest,
   output: ListBidResponsesWithoutBidsResponse,
@@ -6147,7 +6182,7 @@ export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsFilteredBidRequestsError =
   | NotFound
@@ -6158,7 +6193,8 @@ export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMeth
   ListBuyersFilterSetsFilteredBidRequestsRequest,
   ListFilteredBidRequestsResponse,
   ListBuyersFilterSetsFilteredBidRequestsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilteredBidRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidRequestsRequest,
   output: ListFilteredBidRequestsResponse,
@@ -6169,7 +6205,7 @@ export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsFilteredBidsError =
   | NotFound
@@ -6180,7 +6216,8 @@ export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
   ListBuyersFilterSetsFilteredBidsRequest,
   ListFilteredBidsResponse,
   ListBuyersFilterSetsFilteredBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilteredBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidsRequest,
   output: ListFilteredBidsResponse,
@@ -6191,7 +6228,7 @@ export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsFilteredBidsCreativesError =
   | NotFound
@@ -6202,7 +6239,8 @@ export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMe
   ListBuyersFilterSetsFilteredBidsCreativesRequest,
   ListCreativeStatusBreakdownByCreativeResponse,
   ListBuyersFilterSetsFilteredBidsCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativeStatusBreakdownByCreativeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidsCreativesRequest,
   output: ListCreativeStatusBreakdownByCreativeResponse,
@@ -6213,7 +6251,7 @@ export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsFilteredBidsDetailsError =
   | NotFound
@@ -6224,7 +6262,8 @@ export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMeth
   ListBuyersFilterSetsFilteredBidsDetailsRequest,
   ListCreativeStatusBreakdownByDetailResponse,
   ListBuyersFilterSetsFilteredBidsDetailsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCreativeStatusBreakdownByDetailResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidsDetailsRequest,
   output: ListCreativeStatusBreakdownByDetailResponse,
@@ -6235,7 +6274,7 @@ export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsImpressionMetricsError =
   | NotFound
@@ -6246,7 +6285,8 @@ export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod
   ListBuyersFilterSetsImpressionMetricsRequest,
   ListImpressionMetricsResponse,
   ListBuyersFilterSetsImpressionMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  ListImpressionMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsImpressionMetricsRequest,
   output: ListImpressionMetricsResponse,
@@ -6257,7 +6297,7 @@ export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsLosingBidsError =
   | NotFound
@@ -6268,7 +6308,8 @@ export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
   ListBuyersFilterSetsLosingBidsRequest,
   ListLosingBidsResponse,
   ListBuyersFilterSetsLosingBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLosingBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsLosingBidsRequest,
   output: ListLosingBidsResponse,
@@ -6279,7 +6320,7 @@ export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFilterSetsNonBillableWinningBidsError =
   | NotFound
@@ -6290,7 +6331,8 @@ export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationM
   ListBuyersFilterSetsNonBillableWinningBidsRequest,
   ListNonBillableWinningBidsResponse,
   ListBuyersFilterSetsNonBillableWinningBidsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNonBillableWinningBidsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsNonBillableWinningBidsRequest,
   output: ListNonBillableWinningBidsResponse,
@@ -6301,7 +6343,7 @@ export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PauseAccountsFinalizedProposalsError =
   | NotFound

@@ -3287,7 +3287,8 @@ export const listProjectsSites: API.PaginatedOperationMethod<
   ListProjectsSitesRequest,
   ListSitesResponse,
   ListProjectsSitesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesRequest,
   output: ListSitesResponse,
@@ -3298,7 +3299,7 @@ export const listProjectsSites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesChannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists the channels for the specified site. All sites have a default `live` channel. */
@@ -3306,7 +3307,8 @@ export const listProjectsSitesChannels: API.PaginatedOperationMethod<
   ListProjectsSitesChannelsRequest,
   ListChannelsResponse,
   ListProjectsSitesChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesChannelsRequest,
   output: ListChannelsResponse,
@@ -3317,7 +3319,7 @@ export const listProjectsSitesChannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesChannelsReleasesError =
   | NotFound
@@ -3328,7 +3330,8 @@ export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
   ListProjectsSitesChannelsReleasesRequest,
   ListReleasesResponse,
   ListProjectsSitesChannelsReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesChannelsReleasesRequest,
   output: ListReleasesResponse,
@@ -3339,7 +3342,7 @@ export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesCustomDomainsError =
   | NotFound
@@ -3350,7 +3353,8 @@ export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
   ListProjectsSitesCustomDomainsRequest,
   ListCustomDomainsResponse,
   ListProjectsSitesCustomDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesCustomDomainsRequest,
   output: ListCustomDomainsResponse,
@@ -3361,7 +3365,7 @@ export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesCustomDomainsOperationsError =
   | NotFound
@@ -3372,7 +3376,8 @@ export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMet
   ListProjectsSitesCustomDomainsOperationsRequest,
   ListOperationsResponse,
   ListProjectsSitesCustomDomainsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesCustomDomainsOperationsRequest,
   output: ListOperationsResponse,
@@ -3383,7 +3388,7 @@ export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesDomainsError = NotFound | Forbidden | GcpOpError;
 /** Lists the domains for the specified site. */
@@ -3391,7 +3396,8 @@ export const listProjectsSitesDomains: API.PaginatedOperationMethod<
   ListProjectsSitesDomainsRequest,
   ListDomainsResponse,
   ListProjectsSitesDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesDomainsRequest,
   output: ListDomainsResponse,
@@ -3402,7 +3408,7 @@ export const listProjectsSitesDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesReleasesError = NotFound | Forbidden | GcpOpError;
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
@@ -3410,7 +3416,8 @@ export const listProjectsSitesReleases: API.PaginatedOperationMethod<
   ListProjectsSitesReleasesRequest,
   ListReleasesResponse,
   ListProjectsSitesReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesReleasesRequest,
   output: ListReleasesResponse,
@@ -3421,7 +3428,7 @@ export const listProjectsSitesReleases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesVersionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the versions that have been created for the specified site. This list includes versions for both the default `live` channel and any active preview channels for the specified site. */
@@ -3429,7 +3436,8 @@ export const listProjectsSitesVersions: API.PaginatedOperationMethod<
   ListProjectsSitesVersionsRequest,
   ListVersionsResponse,
   ListProjectsSitesVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesVersionsRequest,
   output: ListVersionsResponse,
@@ -3440,7 +3448,7 @@ export const listProjectsSitesVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSitesVersionsFilesError =
   | NotFound
@@ -3451,7 +3459,8 @@ export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
   ListProjectsSitesVersionsFilesRequest,
   ListVersionFilesResponse,
   ListProjectsSitesVersionsFilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesVersionsFilesRequest,
   output: ListVersionFilesResponse,
@@ -3462,7 +3471,7 @@ export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSitesChannelsError = NotFound | Forbidden | GcpOpError;
 /** Lists the channels for the specified site. All sites have a default `live` channel. */
@@ -3470,7 +3479,8 @@ export const listSitesChannels: API.PaginatedOperationMethod<
   ListSitesChannelsRequest,
   ListChannelsResponse,
   ListSitesChannelsError,
-  GcpOpContext
+  GcpOpContext,
+  ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesChannelsRequest,
   output: ListChannelsResponse,
@@ -3481,7 +3491,7 @@ export const listSitesChannels: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSitesChannelsReleasesError = NotFound | Forbidden | GcpOpError;
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
@@ -3489,7 +3499,8 @@ export const listSitesChannelsReleases: API.PaginatedOperationMethod<
   ListSitesChannelsReleasesRequest,
   ListReleasesResponse,
   ListSitesChannelsReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesChannelsReleasesRequest,
   output: ListReleasesResponse,
@@ -3500,7 +3511,7 @@ export const listSitesChannelsReleases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSitesDomainsError = NotFound | Forbidden | GcpOpError;
 /** Lists the domains for the specified site. */
@@ -3508,7 +3519,8 @@ export const listSitesDomains: API.PaginatedOperationMethod<
   ListSitesDomainsRequest,
   ListDomainsResponse,
   ListSitesDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesDomainsRequest,
   output: ListDomainsResponse,
@@ -3519,7 +3531,7 @@ export const listSitesDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSitesReleasesError = NotFound | Forbidden | GcpOpError;
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
@@ -3527,7 +3539,8 @@ export const listSitesReleases: API.PaginatedOperationMethod<
   ListSitesReleasesRequest,
   ListReleasesResponse,
   ListSitesReleasesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesReleasesRequest,
   output: ListReleasesResponse,
@@ -3538,7 +3551,7 @@ export const listSitesReleases: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSitesVersionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the versions that have been created for the specified site. This list includes versions for both the default `live` channel and any active preview channels for the specified site. */
@@ -3546,7 +3559,8 @@ export const listSitesVersions: API.PaginatedOperationMethod<
   ListSitesVersionsRequest,
   ListVersionsResponse,
   ListSitesVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesVersionsRequest,
   output: ListVersionsResponse,
@@ -3557,7 +3571,7 @@ export const listSitesVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSitesVersionsFilesError = NotFound | Forbidden | GcpOpError;
 /** Lists the remaining files to be uploaded for the specified version. */
@@ -3565,7 +3579,8 @@ export const listSitesVersionsFiles: API.PaginatedOperationMethod<
   ListSitesVersionsFilesRequest,
   ListVersionFilesResponse,
   ListSitesVersionsFilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesVersionsFilesRequest,
   output: ListVersionFilesResponse,
@@ -3576,7 +3591,7 @@ export const listSitesVersionsFiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsSitesError =
   | NotFound

@@ -2562,7 +2562,8 @@ export const bulkInstance: API.PaginatedOperationMethod<
   BulkInstanceRequest,
   BulkInstanceResponse,
   BulkInstanceError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InstancesBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: BulkInstanceRequest,
@@ -2580,7 +2581,7 @@ export const bulkInstance: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type CreateInstanceError =
   | WorkflowNotFound
@@ -2758,7 +2759,8 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InstancesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInstancesRequest,
@@ -2782,7 +2784,7 @@ export const listInstances: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListVersionsError =
   | WorkflowNotFound
@@ -2793,7 +2795,8 @@ export const listVersions: API.PaginatedOperationMethod<
   ListVersionsRequest,
   ListVersionsResponse,
   ListVersionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListVersionsRequest,
@@ -2815,7 +2818,7 @@ export const listVersions: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWorkflowsError = CloudflareOpError;
 /** Lists all workflows configured for the account. */
@@ -2823,7 +2826,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWorkflowsRequest,
@@ -2840,7 +2844,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchInstanceStatusError =
   | WorkflowNotFound

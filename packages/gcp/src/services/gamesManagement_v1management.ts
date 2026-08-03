@@ -774,7 +774,8 @@ export const listHiddenApplications: API.PaginatedOperationMethod<
   ListHiddenApplicationsRequest,
   HiddenPlayerList,
   ListHiddenApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  HiddenPlayer
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHiddenApplicationsRequest,
   output: HiddenPlayerList,
@@ -786,7 +787,7 @@ export const listHiddenApplications: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ResetAchievementsError =
   | NotFound

@@ -1983,27 +1983,7 @@ export const describeBudgetActionHistories: API.OperationMethod<
     items: "ActionHistories",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBudgetActionHistoriesRequest,
-  DescribeBudgetActionHistoriesResponse,
-  DescribeBudgetActionHistoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetActionHistoriesRequest,
-  ) => stream.Stream<
-    DescribeBudgetActionHistoriesResponse,
-    DescribeBudgetActionHistoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetActionHistoriesRequest,
-  ) => stream.Stream<
-    ActionHistory,
-    DescribeBudgetActionHistoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBudgetActionsForAccountError =
   | AccessDeniedException
@@ -2054,27 +2034,7 @@ export const describeBudgetActionsForAccount: API.OperationMethod<
     items: "Actions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBudgetActionsForAccountRequest,
-  DescribeBudgetActionsForAccountResponse,
-  DescribeBudgetActionsForAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetActionsForAccountRequest,
-  ) => stream.Stream<
-    DescribeBudgetActionsForAccountResponse,
-    DescribeBudgetActionsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetActionsForAccountRequest,
-  ) => stream.Stream<
-    Action,
-    DescribeBudgetActionsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBudgetActionsForBudgetError =
   | AccessDeniedException
@@ -2127,27 +2087,7 @@ export const describeBudgetActionsForBudget: API.OperationMethod<
     items: "Actions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBudgetActionsForBudgetRequest,
-  DescribeBudgetActionsForBudgetResponse,
-  DescribeBudgetActionsForBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetActionsForBudgetRequest,
-  ) => stream.Stream<
-    DescribeBudgetActionsForBudgetResponse,
-    DescribeBudgetActionsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetActionsForBudgetRequest,
-  ) => stream.Stream<
-    Action,
-    DescribeBudgetActionsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBudgetNotificationsForAccountError =
   | AccessDeniedException
@@ -2202,27 +2142,7 @@ export const describeBudgetNotificationsForAccount: API.OperationMethod<
     items: "BudgetNotificationsForAccount",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBudgetNotificationsForAccountRequest,
-  DescribeBudgetNotificationsForAccountResponse,
-  DescribeBudgetNotificationsForAccountError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetNotificationsForAccountRequest,
-  ) => stream.Stream<
-    DescribeBudgetNotificationsForAccountResponse,
-    DescribeBudgetNotificationsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetNotificationsForAccountRequest,
-  ) => stream.Stream<
-    BudgetNotificationsForAccount,
-    DescribeBudgetNotificationsForAccountError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBudgetPerformanceHistoryError =
   | AccessDeniedException
@@ -2278,27 +2198,7 @@ export const describeBudgetPerformanceHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBudgetPerformanceHistoryRequest,
-  DescribeBudgetPerformanceHistoryResponse,
-  DescribeBudgetPerformanceHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetPerformanceHistoryRequest,
-  ) => stream.Stream<
-    DescribeBudgetPerformanceHistoryResponse,
-    DescribeBudgetPerformanceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetPerformanceHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeBudgetPerformanceHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBudgetsError =
   | AccessDeniedException
@@ -2356,27 +2256,7 @@ export const describeBudgets: API.OperationMethod<
     items: "Budgets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBudgetsRequest,
-  DescribeBudgetsResponse,
-  DescribeBudgetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBudgetsRequest,
-  ) => stream.Stream<
-    DescribeBudgetsResponse,
-    DescribeBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBudgetsRequest,
-  ) => stream.Stream<
-    Budget,
-    DescribeBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeNotificationsForBudgetError =
   | AccessDeniedException
@@ -2431,27 +2311,7 @@ export const describeNotificationsForBudget: API.OperationMethod<
     items: "Notifications",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeNotificationsForBudgetRequest,
-  DescribeNotificationsForBudgetResponse,
-  DescribeNotificationsForBudgetError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotificationsForBudgetRequest,
-  ) => stream.Stream<
-    DescribeNotificationsForBudgetResponse,
-    DescribeNotificationsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotificationsForBudgetRequest,
-  ) => stream.Stream<
-    Notification,
-    DescribeNotificationsForBudgetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSubscribersForNotificationError =
   | AccessDeniedException
@@ -2506,27 +2366,7 @@ export const describeSubscribersForNotification: API.OperationMethod<
     items: "Subscribers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSubscribersForNotificationRequest,
-  DescribeSubscribersForNotificationResponse,
-  DescribeSubscribersForNotificationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSubscribersForNotificationRequest,
-  ) => stream.Stream<
-    DescribeSubscribersForNotificationResponse,
-    DescribeSubscribersForNotificationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSubscribersForNotificationRequest,
-  ) => stream.Stream<
-    Subscriber,
-    DescribeSubscribersForNotificationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ExecuteBudgetActionError =
   | AccessDeniedException

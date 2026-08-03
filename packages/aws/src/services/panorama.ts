@@ -2720,27 +2720,7 @@ export const listApplicationInstanceDependencies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationInstanceDependenciesRequest,
-  ListApplicationInstanceDependenciesResponse,
-  ListApplicationInstanceDependenciesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationInstanceDependenciesRequest,
-  ) => stream.Stream<
-    ListApplicationInstanceDependenciesResponse,
-    ListApplicationInstanceDependenciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationInstanceDependenciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationInstanceDependenciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApplicationInstanceNodeInstancesError =
   | AccessDeniedException
@@ -2781,27 +2761,7 @@ export const listApplicationInstanceNodeInstances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationInstanceNodeInstancesRequest,
-  ListApplicationInstanceNodeInstancesResponse,
-  ListApplicationInstanceNodeInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationInstanceNodeInstancesRequest,
-  ) => stream.Stream<
-    ListApplicationInstanceNodeInstancesResponse,
-    ListApplicationInstanceNodeInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationInstanceNodeInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationInstanceNodeInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApplicationInstancesError =
   | AccessDeniedException
@@ -2842,27 +2802,7 @@ export const listApplicationInstances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApplicationInstancesRequest,
-  ListApplicationInstancesResponse,
-  ListApplicationInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationInstancesRequest,
-  ) => stream.Stream<
-    ListApplicationInstancesResponse,
-    ListApplicationInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDevicesError =
   | AccessDeniedException
@@ -2910,27 +2850,7 @@ export const listDevices: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDevicesRequest,
-  ListDevicesResponse,
-  ListDevicesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    ListDevicesResponse,
-    ListDevicesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevicesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDevicesJobsError =
   | AccessDeniedException
@@ -2980,27 +2900,7 @@ export const listDevicesJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDevicesJobsRequest,
-  ListDevicesJobsResponse,
-  ListDevicesJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesJobsRequest,
-  ) => stream.Stream<
-    ListDevicesJobsResponse,
-    ListDevicesJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevicesJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNodeFromTemplateJobsError =
   | AccessDeniedException
@@ -3048,27 +2948,7 @@ export const listNodeFromTemplateJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNodeFromTemplateJobsRequest,
-  ListNodeFromTemplateJobsResponse,
-  ListNodeFromTemplateJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodeFromTemplateJobsRequest,
-  ) => stream.Stream<
-    ListNodeFromTemplateJobsResponse,
-    ListNodeFromTemplateJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodeFromTemplateJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNodeFromTemplateJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNodesError =
   | ConflictException
@@ -3110,27 +2990,7 @@ export const listNodes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNodesRequest,
-  ListNodesResponse,
-  ListNodesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    ListNodesResponse,
-    ListNodesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNodesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPackageImportJobsError =
   | AccessDeniedException
@@ -3178,27 +3038,7 @@ export const listPackageImportJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPackageImportJobsRequest,
-  ListPackageImportJobsResponse,
-  ListPackageImportJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackageImportJobsRequest,
-  ) => stream.Stream<
-    ListPackageImportJobsResponse,
-    ListPackageImportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackageImportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackageImportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPackagesError =
   | AccessDeniedException
@@ -3248,27 +3088,7 @@ export const listPackages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPackagesRequest,
-  ListPackagesResponse,
-  ListPackagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    ListPackagesResponse,
-    ListPackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

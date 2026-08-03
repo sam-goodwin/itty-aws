@@ -1989,7 +1989,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -2000,7 +2001,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessesError =
   | NotFound
@@ -2011,7 +2012,8 @@ export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessesRequest,
   GoogleCloudDatacatalogLineageV1ListProcessesResponse,
   ListProjectsLocationsProcessesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogLineageV1ListProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessesRequest,
   output: GoogleCloudDatacatalogLineageV1ListProcessesResponse,
@@ -2022,7 +2024,7 @@ export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessesRunsError =
   | NotFound
@@ -2033,7 +2035,8 @@ export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
   ListProjectsLocationsProcessesRunsRequest,
   GoogleCloudDatacatalogLineageV1ListRunsResponse,
   ListProjectsLocationsProcessesRunsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogLineageV1ListRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessesRunsRequest,
   output: GoogleCloudDatacatalogLineageV1ListRunsResponse,
@@ -2044,7 +2047,7 @@ export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsProcessesRunsLineageEventsError =
   | NotFound
@@ -2055,7 +2058,8 @@ export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOpera
   ListProjectsLocationsProcessesRunsLineageEventsRequest,
   GoogleCloudDatacatalogLineageV1ListLineageEventsResponse,
   ListProjectsLocationsProcessesRunsLineageEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogLineageV1ListLineageEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessesRunsLineageEventsRequest,
   output: GoogleCloudDatacatalogLineageV1ListLineageEventsResponse,
@@ -2066,7 +2070,7 @@ export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchFoldersLocationsConfigError =
   | NotFound

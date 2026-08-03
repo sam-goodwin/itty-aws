@@ -4504,27 +4504,7 @@ export const listFirewallConfigs: API.OperationMethod<
     items: "FirewallConfigs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallConfigsRequest,
-  ListFirewallConfigsResponse,
-  ListFirewallConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallConfigsRequest,
-  ) => stream.Stream<
-    ListFirewallConfigsResponse,
-    ListFirewallConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallConfigsRequest,
-  ) => stream.Stream<
-    FirewallConfig,
-    ListFirewallConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallDomainListsError =
   | AccessDeniedException
@@ -4575,27 +4555,7 @@ export const listFirewallDomainLists: API.OperationMethod<
     items: "FirewallDomainLists",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallDomainListsRequest,
-  ListFirewallDomainListsResponse,
-  ListFirewallDomainListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainListsRequest,
-  ) => stream.Stream<
-    ListFirewallDomainListsResponse,
-    ListFirewallDomainListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainListsRequest,
-  ) => stream.Stream<
-    FirewallDomainListMetadata,
-    ListFirewallDomainListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallDomainsError =
   | AccessDeniedException
@@ -4648,27 +4608,7 @@ export const listFirewallDomains: API.OperationMethod<
     items: "Domains",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallDomainsRequest,
-  ListFirewallDomainsResponse,
-  ListFirewallDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainsRequest,
-  ) => stream.Stream<
-    ListFirewallDomainsResponse,
-    ListFirewallDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainsRequest,
-  ) => stream.Stream<
-    FirewallDomainName,
-    ListFirewallDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallRuleGroupAssociationsError =
   | AccessDeniedException
@@ -4719,27 +4659,7 @@ export const listFirewallRuleGroupAssociations: API.OperationMethod<
     items: "FirewallRuleGroupAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallRuleGroupAssociationsRequest,
-  ListFirewallRuleGroupAssociationsResponse,
-  ListFirewallRuleGroupAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRuleGroupAssociationsRequest,
-  ) => stream.Stream<
-    ListFirewallRuleGroupAssociationsResponse,
-    ListFirewallRuleGroupAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRuleGroupAssociationsRequest,
-  ) => stream.Stream<
-    FirewallRuleGroupAssociation,
-    ListFirewallRuleGroupAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallRuleGroupsError =
   | AccessDeniedException
@@ -4790,27 +4710,7 @@ export const listFirewallRuleGroups: API.OperationMethod<
     items: "FirewallRuleGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallRuleGroupsRequest,
-  ListFirewallRuleGroupsResponse,
-  ListFirewallRuleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRuleGroupsRequest,
-  ) => stream.Stream<
-    ListFirewallRuleGroupsResponse,
-    ListFirewallRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRuleGroupsRequest,
-  ) => stream.Stream<
-    FirewallRuleGroupMetadata,
-    ListFirewallRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallRulesError =
   | AccessDeniedException
@@ -4865,27 +4765,7 @@ export const listFirewallRules: API.OperationMethod<
     items: "FirewallRules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallRulesRequest,
-  ListFirewallRulesResponse,
-  ListFirewallRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRulesRequest,
-  ) => stream.Stream<
-    ListFirewallRulesResponse,
-    ListFirewallRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRulesRequest,
-  ) => stream.Stream<
-    FirewallRule,
-    ListFirewallRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFirewallRuleTypesError =
   | AccessDeniedException
@@ -4936,27 +4816,7 @@ export const listFirewallRuleTypes: API.OperationMethod<
     items: "FirewallRuleTypes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFirewallRuleTypesRequest,
-  ListFirewallRuleTypesResponse,
-  ListFirewallRuleTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRuleTypesRequest,
-  ) => stream.Stream<
-    ListFirewallRuleTypesResponse,
-    ListFirewallRuleTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRuleTypesRequest,
-  ) => stream.Stream<
-    FirewallRuleTypeDefinition,
-    ListFirewallRuleTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOutpostResolversError =
   | AccessDeniedException
@@ -5007,27 +4867,7 @@ export const listOutpostResolvers: API.OperationMethod<
     items: "OutpostResolvers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOutpostResolversRequest,
-  ListOutpostResolversResponse,
-  ListOutpostResolversError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOutpostResolversRequest,
-  ) => stream.Stream<
-    ListOutpostResolversResponse,
-    ListOutpostResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOutpostResolversRequest,
-  ) => stream.Stream<
-    OutpostResolver,
-    ListOutpostResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverConfigsError =
   | AccessDeniedException
@@ -5083,27 +4923,7 @@ export const listResolverConfigs: API.OperationMethod<
     items: "ResolverConfigs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverConfigsRequest,
-  ListResolverConfigsResponse,
-  ListResolverConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverConfigsRequest,
-  ) => stream.Stream<
-    ListResolverConfigsResponse,
-    ListResolverConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverConfigsRequest,
-  ) => stream.Stream<
-    ResolverConfig,
-    ListResolverConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverDnssecConfigsError =
   | AccessDeniedException
@@ -5156,27 +4976,7 @@ export const listResolverDnssecConfigs: API.OperationMethod<
     items: "ResolverDnssecConfigs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverDnssecConfigsRequest,
-  ListResolverDnssecConfigsResponse,
-  ListResolverDnssecConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverDnssecConfigsRequest,
-  ) => stream.Stream<
-    ListResolverDnssecConfigsResponse,
-    ListResolverDnssecConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverDnssecConfigsRequest,
-  ) => stream.Stream<
-    ResolverDnssecConfig,
-    ListResolverDnssecConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverEndpointIpAddressesError =
   | InternalServiceErrorException
@@ -5227,27 +5027,7 @@ export const listResolverEndpointIpAddresses: API.OperationMethod<
     items: "IpAddresses",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverEndpointIpAddressesRequest,
-  ListResolverEndpointIpAddressesResponse,
-  ListResolverEndpointIpAddressesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverEndpointIpAddressesRequest,
-  ) => stream.Stream<
-    ListResolverEndpointIpAddressesResponse,
-    ListResolverEndpointIpAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverEndpointIpAddressesRequest,
-  ) => stream.Stream<
-    IpAddressResponse,
-    ListResolverEndpointIpAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverEndpointsError =
   | InternalServiceErrorException
@@ -5298,27 +5078,7 @@ export const listResolverEndpoints: API.OperationMethod<
     items: "ResolverEndpoints",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverEndpointsRequest,
-  ListResolverEndpointsResponse,
-  ListResolverEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverEndpointsRequest,
-  ) => stream.Stream<
-    ListResolverEndpointsResponse,
-    ListResolverEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverEndpointsRequest,
-  ) => stream.Stream<
-    ResolverEndpoint,
-    ListResolverEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverQueryLogConfigAssociationsError =
   | AccessDeniedException
@@ -5371,27 +5131,7 @@ export const listResolverQueryLogConfigAssociations: API.OperationMethod<
     items: "ResolverQueryLogConfigAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverQueryLogConfigAssociationsRequest,
-  ListResolverQueryLogConfigAssociationsResponse,
-  ListResolverQueryLogConfigAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverQueryLogConfigAssociationsRequest,
-  ) => stream.Stream<
-    ListResolverQueryLogConfigAssociationsResponse,
-    ListResolverQueryLogConfigAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverQueryLogConfigAssociationsRequest,
-  ) => stream.Stream<
-    ResolverQueryLogConfigAssociation,
-    ListResolverQueryLogConfigAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverQueryLogConfigsError =
   | AccessDeniedException
@@ -5445,27 +5185,7 @@ export const listResolverQueryLogConfigs: API.OperationMethod<
     items: "ResolverQueryLogConfigs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverQueryLogConfigsRequest,
-  ListResolverQueryLogConfigsResponse,
-  ListResolverQueryLogConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverQueryLogConfigsRequest,
-  ) => stream.Stream<
-    ListResolverQueryLogConfigsResponse,
-    ListResolverQueryLogConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverQueryLogConfigsRequest,
-  ) => stream.Stream<
-    ResolverQueryLogConfig,
-    ListResolverQueryLogConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverRuleAssociationsError =
   | InternalServiceErrorException
@@ -5516,27 +5236,7 @@ export const listResolverRuleAssociations: API.OperationMethod<
     items: "ResolverRuleAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverRuleAssociationsRequest,
-  ListResolverRuleAssociationsResponse,
-  ListResolverRuleAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverRuleAssociationsRequest,
-  ) => stream.Stream<
-    ListResolverRuleAssociationsResponse,
-    ListResolverRuleAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverRuleAssociationsRequest,
-  ) => stream.Stream<
-    ResolverRuleAssociation,
-    ListResolverRuleAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolverRulesError =
   | InternalServiceErrorException
@@ -5587,27 +5287,7 @@ export const listResolverRules: API.OperationMethod<
     items: "ResolverRules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolverRulesRequest,
-  ListResolverRulesResponse,
-  ListResolverRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverRulesRequest,
-  ) => stream.Stream<
-    ListResolverRulesResponse,
-    ListResolverRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverRulesRequest,
-  ) => stream.Stream<
-    ResolverRule,
-    ListResolverRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceErrorException
@@ -5660,27 +5340,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutFirewallRuleGroupPolicyError =
   | AccessDeniedException

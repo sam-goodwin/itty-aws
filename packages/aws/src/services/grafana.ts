@@ -1924,27 +1924,7 @@ export const listPermissions: API.OperationMethod<
     items: "permissions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPermissionsRequest,
-  ListPermissionsResponse,
-  ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    ListPermissionsResponse,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    PermissionEntry,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2025,27 +2005,7 @@ export const listVersions: API.OperationMethod<
     items: "grafanaVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVersionsRequest,
-  ListVersionsResponse,
-  ListVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    GrafanaVersion,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkspacesError =
   | AccessDeniedException
@@ -2088,27 +2048,7 @@ export const listWorkspaces: API.OperationMethod<
     items: "workspaces",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspacesRequest,
-  ListWorkspacesResponse,
-  ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSummary,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkspaceServiceAccountsError =
   | AccessDeniedException
@@ -2163,27 +2103,7 @@ export const listWorkspaceServiceAccounts: API.OperationMethod<
     items: "serviceAccounts",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspaceServiceAccountsRequest,
-  ListWorkspaceServiceAccountsResponse,
-  ListWorkspaceServiceAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspaceServiceAccountsRequest,
-  ) => stream.Stream<
-    ListWorkspaceServiceAccountsResponse,
-    ListWorkspaceServiceAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspaceServiceAccountsRequest,
-  ) => stream.Stream<
-    ServiceAccountSummary,
-    ListWorkspaceServiceAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkspaceServiceAccountTokensError =
   | AccessDeniedException
@@ -2240,27 +2160,7 @@ export const listWorkspaceServiceAccountTokens: API.OperationMethod<
     items: "serviceAccountTokens",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkspaceServiceAccountTokensRequest,
-  ListWorkspaceServiceAccountTokensResponse,
-  ListWorkspaceServiceAccountTokensError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspaceServiceAccountTokensRequest,
-  ) => stream.Stream<
-    ListWorkspaceServiceAccountTokensResponse,
-    ListWorkspaceServiceAccountTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspaceServiceAccountTokensRequest,
-  ) => stream.Stream<
-    ServiceAccountTokenSummary,
-    ListWorkspaceServiceAccountTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | AccessDeniedException

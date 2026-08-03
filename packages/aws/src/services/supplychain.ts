@@ -2374,27 +2374,7 @@ export const listDataIntegrationEvents: API.OperationMethod<
     items: "events",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataIntegrationEventsRequest,
-  ListDataIntegrationEventsResponse,
-  ListDataIntegrationEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationEventsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationEventsResponse,
-    ListDataIntegrationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationEventsRequest,
-  ) => stream.Stream<
-    DataIntegrationEvent,
-    ListDataIntegrationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataIntegrationFlowExecutionsError =
   | AccessDeniedException
@@ -2445,27 +2425,7 @@ export const listDataIntegrationFlowExecutions: API.OperationMethod<
     items: "flowExecutions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataIntegrationFlowExecutionsRequest,
-  ListDataIntegrationFlowExecutionsResponse,
-  ListDataIntegrationFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationFlowExecutionsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationFlowExecutionsResponse,
-    ListDataIntegrationFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationFlowExecutionsRequest,
-  ) => stream.Stream<
-    DataIntegrationFlowExecution,
-    ListDataIntegrationFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataIntegrationFlowsError =
   | AccessDeniedException
@@ -2514,27 +2474,7 @@ export const listDataIntegrationFlows: API.OperationMethod<
     items: "flows",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataIntegrationFlowsRequest,
-  ListDataIntegrationFlowsResponse,
-  ListDataIntegrationFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationFlowsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationFlowsResponse,
-    ListDataIntegrationFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationFlowsRequest,
-  ) => stream.Stream<
-    DataIntegrationFlow,
-    ListDataIntegrationFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataLakeDatasetsError =
   | AccessDeniedException
@@ -2585,27 +2525,7 @@ export const listDataLakeDatasets: API.OperationMethod<
     items: "datasets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataLakeDatasetsRequest,
-  ListDataLakeDatasetsResponse,
-  ListDataLakeDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataLakeDatasetsRequest,
-  ) => stream.Stream<
-    ListDataLakeDatasetsResponse,
-    ListDataLakeDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataLakeDatasetsRequest,
-  ) => stream.Stream<
-    DataLakeDataset,
-    ListDataLakeDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataLakeNamespacesError =
   | AccessDeniedException
@@ -2654,27 +2574,7 @@ export const listDataLakeNamespaces: API.OperationMethod<
     items: "namespaces",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataLakeNamespacesRequest,
-  ListDataLakeNamespacesResponse,
-  ListDataLakeNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataLakeNamespacesRequest,
-  ) => stream.Stream<
-    ListDataLakeNamespacesResponse,
-    ListDataLakeNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataLakeNamespacesRequest,
-  ) => stream.Stream<
-    DataLakeNamespace,
-    ListDataLakeNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInstancesError =
   | AccessDeniedException
@@ -2723,27 +2623,7 @@ export const listInstances: API.OperationMethod<
     items: "instances",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInstancesRequest,
-  ListInstancesResponse,
-  ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    Instance,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

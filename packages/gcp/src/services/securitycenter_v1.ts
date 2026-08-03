@@ -9801,7 +9801,8 @@ export const listDescendantFoldersEventThreatDetectionSettingsCustomModules: API
   ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRequest,
   ListDescendantEventThreatDetectionCustomModulesResponse,
   ListDescendantFoldersEventThreatDetectionSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDescendantEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: ListDescendantEventThreatDetectionCustomModulesResponse,
@@ -9812,7 +9813,7 @@ export const listDescendantFoldersEventThreatDetectionSettingsCustomModules: API
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -9820,7 +9821,8 @@ export const listDescendantFoldersSecurityHealthAnalyticsSettingsCustomModules: 
   ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   ListDescendantSecurityHealthAnalyticsCustomModulesResponse,
   ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDescendantSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -9832,7 +9834,7 @@ export const listDescendantFoldersSecurityHealthAnalyticsSettingsCustomModules: 
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -9840,7 +9842,8 @@ export const listDescendantOrganizationsEventThreatDetectionSettingsCustomModule
   ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   ListDescendantEventThreatDetectionCustomModulesResponse,
   ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDescendantEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
@@ -9852,7 +9855,7 @@ export const listDescendantOrganizationsEventThreatDetectionSettingsCustomModule
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -9860,7 +9863,8 @@ export const listDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
   ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   ListDescendantSecurityHealthAnalyticsCustomModulesResponse,
   ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDescendantSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -9872,7 +9876,7 @@ export const listDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDescendantProjectsEventThreatDetectionSettingsCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -9880,7 +9884,8 @@ export const listDescendantProjectsEventThreatDetectionSettingsCustomModules: AP
   ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequest,
   ListDescendantEventThreatDetectionCustomModulesResponse,
   ListDescendantProjectsEventThreatDetectionSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDescendantEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: ListDescendantEventThreatDetectionCustomModulesResponse,
@@ -9891,7 +9896,7 @@ export const listDescendantProjectsEventThreatDetectionSettingsCustomModules: AP
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -9899,7 +9904,8 @@ export const listDescendantProjectsSecurityHealthAnalyticsSettingsCustomModules:
   ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   ListDescendantSecurityHealthAnalyticsCustomModulesResponse,
   ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListDescendantSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -9911,14 +9917,15 @@ export const listDescendantProjectsSecurityHealthAnalyticsSettingsCustomModules:
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersAssetsError = NotFound | Forbidden | GcpOpError;
 export const listFoldersAssets: API.PaginatedOperationMethod<
   ListFoldersAssetsRequest,
   ListAssetsResponse,
   ListFoldersAssetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersAssetsRequest,
   output: ListAssetsResponse,
@@ -9929,14 +9936,15 @@ export const listFoldersAssets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersBigQueryExportsError = NotFound | Forbidden | GcpOpError;
 export const listFoldersBigQueryExports: API.PaginatedOperationMethod<
   ListFoldersBigQueryExportsRequest,
   ListBigQueryExportsResponse,
   ListFoldersBigQueryExportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBigQueryExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersBigQueryExportsRequest,
   output: ListBigQueryExportsResponse,
@@ -9947,7 +9955,7 @@ export const listFoldersBigQueryExports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersEventThreatDetectionSettingsCustomModulesError =
   | NotFound
@@ -9957,7 +9965,8 @@ export const listFoldersEventThreatDetectionSettingsCustomModules: API.Paginated
   ListFoldersEventThreatDetectionSettingsCustomModulesRequest,
   ListEventThreatDetectionCustomModulesResponse,
   ListFoldersEventThreatDetectionSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: ListEventThreatDetectionCustomModulesResponse,
@@ -9968,7 +9977,7 @@ export const listFoldersEventThreatDetectionSettingsCustomModules: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -9976,7 +9985,8 @@ export const listFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.
   ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   ListEffectiveEventThreatDetectionCustomModulesResponse,
   ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output: ListEffectiveEventThreatDetectionCustomModulesResponse,
@@ -9987,14 +9997,15 @@ export const listFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersMuteConfigsError = NotFound | Forbidden | GcpOpError;
 export const listFoldersMuteConfigs: API.PaginatedOperationMethod<
   ListFoldersMuteConfigsRequest,
   ListMuteConfigsResponse,
   ListFoldersMuteConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMuteConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersMuteConfigsRequest,
   output: ListMuteConfigsResponse,
@@ -10005,7 +10016,7 @@ export const listFoldersMuteConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersNotificationConfigsError =
   | NotFound
@@ -10015,7 +10026,8 @@ export const listFoldersNotificationConfigs: API.PaginatedOperationMethod<
   ListFoldersNotificationConfigsRequest,
   ListNotificationConfigsResponse,
   ListFoldersNotificationConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotificationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersNotificationConfigsRequest,
   output: ListNotificationConfigsResponse,
@@ -10026,7 +10038,7 @@ export const listFoldersNotificationConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
   | NotFound
@@ -10036,7 +10048,8 @@ export const listFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Pagina
   ListFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   ListSecurityHealthAnalyticsCustomModulesResponse,
   ListFoldersSecurityHealthAnalyticsSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: ListSecurityHealthAnalyticsCustomModulesResponse,
@@ -10047,7 +10060,7 @@ export const listFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -10055,7 +10068,8 @@ export const listFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: A
   ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   ListEffectiveSecurityHealthAnalyticsCustomModulesResponse,
   ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -10067,14 +10081,15 @@ export const listFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: A
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersSourcesError = NotFound | Forbidden | GcpOpError;
 export const listFoldersSources: API.PaginatedOperationMethod<
   ListFoldersSourcesRequest,
   ListSourcesResponse,
   ListFoldersSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSourcesRequest,
   output: ListSourcesResponse,
@@ -10085,14 +10100,15 @@ export const listFoldersSources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersSourcesFindingsError = NotFound | Forbidden | GcpOpError;
 export const listFoldersSourcesFindings: API.PaginatedOperationMethod<
   ListFoldersSourcesFindingsRequest,
   ListFindingsResponse,
   ListFoldersSourcesFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSourcesFindingsRequest,
   output: ListFindingsResponse,
@@ -10103,14 +10119,15 @@ export const listFoldersSourcesFindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsAssetsError = NotFound | Forbidden | GcpOpError;
 export const listOrganizationsAssets: API.PaginatedOperationMethod<
   ListOrganizationsAssetsRequest,
   ListAssetsResponse,
   ListOrganizationsAssetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAssetsRequest,
   output: ListAssetsResponse,
@@ -10121,7 +10138,7 @@ export const listOrganizationsAssets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsAttackPathsError =
   | NotFound
@@ -10131,7 +10148,8 @@ export const listOrganizationsAttackPaths: API.PaginatedOperationMethod<
   ListOrganizationsAttackPathsRequest,
   ListAttackPathsResponse,
   ListOrganizationsAttackPathsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttackPathsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAttackPathsRequest,
   output: ListAttackPathsResponse,
@@ -10142,7 +10160,7 @@ export const listOrganizationsAttackPaths: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsBigQueryExportsError =
   | NotFound
@@ -10152,7 +10170,8 @@ export const listOrganizationsBigQueryExports: API.PaginatedOperationMethod<
   ListOrganizationsBigQueryExportsRequest,
   ListBigQueryExportsResponse,
   ListOrganizationsBigQueryExportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBigQueryExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsBigQueryExportsRequest,
   output: ListBigQueryExportsResponse,
@@ -10163,7 +10182,7 @@ export const listOrganizationsBigQueryExports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEventThreatDetectionSettingsCustomModulesError =
   | NotFound
@@ -10173,7 +10192,8 @@ export const listOrganizationsEventThreatDetectionSettingsCustomModules: API.Pag
   ListOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   ListEventThreatDetectionCustomModulesResponse,
   ListOrganizationsEventThreatDetectionSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output: ListEventThreatDetectionCustomModulesResponse,
@@ -10184,7 +10204,7 @@ export const listOrganizationsEventThreatDetectionSettingsCustomModules: API.Pag
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -10192,7 +10212,8 @@ export const listOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
   ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   ListEffectiveEventThreatDetectionCustomModulesResponse,
   ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
@@ -10204,7 +10225,7 @@ export const listOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsMuteConfigsError =
   | NotFound
@@ -10214,7 +10235,8 @@ export const listOrganizationsMuteConfigs: API.PaginatedOperationMethod<
   ListOrganizationsMuteConfigsRequest,
   ListMuteConfigsResponse,
   ListOrganizationsMuteConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMuteConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsMuteConfigsRequest,
   output: ListMuteConfigsResponse,
@@ -10225,7 +10247,7 @@ export const listOrganizationsMuteConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsNotificationConfigsError =
   | NotFound
@@ -10235,7 +10257,8 @@ export const listOrganizationsNotificationConfigs: API.PaginatedOperationMethod<
   ListOrganizationsNotificationConfigsRequest,
   ListNotificationConfigsResponse,
   ListOrganizationsNotificationConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotificationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsNotificationConfigsRequest,
   output: ListNotificationConfigsResponse,
@@ -10246,7 +10269,7 @@ export const listOrganizationsNotificationConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsOperationsError =
   | NotFound
@@ -10256,7 +10279,8 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsOperationsRequest,
   ListOperationsResponse,
   ListOrganizationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: ListOperationsResponse,
@@ -10267,7 +10291,7 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsResourceValueConfigsError =
   | NotFound
@@ -10277,7 +10301,8 @@ export const listOrganizationsResourceValueConfigs: API.PaginatedOperationMethod
   ListOrganizationsResourceValueConfigsRequest,
   ListResourceValueConfigsResponse,
   ListOrganizationsResourceValueConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListResourceValueConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsResourceValueConfigsRequest,
   output: ListResourceValueConfigsResponse,
@@ -10288,7 +10313,7 @@ export const listOrganizationsResourceValueConfigs: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -10296,7 +10321,8 @@ export const listOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.
   ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   ListSecurityHealthAnalyticsCustomModulesResponse,
   ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: ListSecurityHealthAnalyticsCustomModulesResponse,
@@ -10307,7 +10333,7 @@ export const listOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -10315,7 +10341,8 @@ export const listOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
   ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   ListEffectiveSecurityHealthAnalyticsCustomModulesResponse,
   ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -10327,7 +10354,7 @@ export const listOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSimulationsAttackExposureResultsAttackPathsError =
   | NotFound
@@ -10337,7 +10364,8 @@ export const listOrganizationsSimulationsAttackExposureResultsAttackPaths: API.P
   ListOrganizationsSimulationsAttackExposureResultsAttackPathsRequest,
   ListAttackPathsResponse,
   ListOrganizationsSimulationsAttackExposureResultsAttackPathsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttackPathsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsAttackExposureResultsAttackPathsRequest,
   output: ListAttackPathsResponse,
@@ -10348,7 +10376,7 @@ export const listOrganizationsSimulationsAttackExposureResultsAttackPaths: API.P
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSimulationsAttackExposureResultsValuedResourcesError =
   NotFound | Forbidden | GcpOpError;
@@ -10356,7 +10384,8 @@ export const listOrganizationsSimulationsAttackExposureResultsValuedResources: A
   ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRequest,
   ListValuedResourcesResponse,
   ListOrganizationsSimulationsAttackExposureResultsValuedResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListValuedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRequest,
@@ -10368,7 +10397,7 @@ export const listOrganizationsSimulationsAttackExposureResultsValuedResources: A
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSimulationsAttackPathsError =
   | NotFound
@@ -10378,7 +10407,8 @@ export const listOrganizationsSimulationsAttackPaths: API.PaginatedOperationMeth
   ListOrganizationsSimulationsAttackPathsRequest,
   ListAttackPathsResponse,
   ListOrganizationsSimulationsAttackPathsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttackPathsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsAttackPathsRequest,
   output: ListAttackPathsResponse,
@@ -10389,7 +10419,7 @@ export const listOrganizationsSimulationsAttackPaths: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSimulationsValuedResourcesError =
   | NotFound
@@ -10399,7 +10429,8 @@ export const listOrganizationsSimulationsValuedResources: API.PaginatedOperation
   ListOrganizationsSimulationsValuedResourcesRequest,
   ListValuedResourcesResponse,
   ListOrganizationsSimulationsValuedResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListValuedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsValuedResourcesRequest,
   output: ListValuedResourcesResponse,
@@ -10410,7 +10441,7 @@ export const listOrganizationsSimulationsValuedResources: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSimulationsValuedResourcesAttackPathsError =
   | NotFound
@@ -10420,7 +10451,8 @@ export const listOrganizationsSimulationsValuedResourcesAttackPaths: API.Paginat
   ListOrganizationsSimulationsValuedResourcesAttackPathsRequest,
   ListAttackPathsResponse,
   ListOrganizationsSimulationsValuedResourcesAttackPathsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttackPathsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsValuedResourcesAttackPathsRequest,
   output: ListAttackPathsResponse,
@@ -10431,14 +10463,15 @@ export const listOrganizationsSimulationsValuedResourcesAttackPaths: API.Paginat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSourcesError = NotFound | Forbidden | GcpOpError;
 export const listOrganizationsSources: API.PaginatedOperationMethod<
   ListOrganizationsSourcesRequest,
   ListSourcesResponse,
   ListOrganizationsSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesRequest,
   output: ListSourcesResponse,
@@ -10449,7 +10482,7 @@ export const listOrganizationsSources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsSourcesFindingsError =
   | NotFound
@@ -10459,7 +10492,8 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
   ListOrganizationsSourcesFindingsRequest,
   ListFindingsResponse,
   ListOrganizationsSourcesFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesFindingsRequest,
   output: ListFindingsResponse,
@@ -10470,7 +10504,7 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsValuedResourcesError =
   | NotFound
@@ -10480,7 +10514,8 @@ export const listOrganizationsValuedResources: API.PaginatedOperationMethod<
   ListOrganizationsValuedResourcesRequest,
   ListValuedResourcesResponse,
   ListOrganizationsValuedResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListValuedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsValuedResourcesRequest,
   output: ListValuedResourcesResponse,
@@ -10491,14 +10526,15 @@ export const listOrganizationsValuedResources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsAssetsError = NotFound | Forbidden | GcpOpError;
 export const listProjectsAssets: API.PaginatedOperationMethod<
   ListProjectsAssetsRequest,
   ListAssetsResponse,
   ListProjectsAssetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAssetsRequest,
   output: ListAssetsResponse,
@@ -10509,7 +10545,7 @@ export const listProjectsAssets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsBigQueryExportsError =
   | NotFound
@@ -10519,7 +10555,8 @@ export const listProjectsBigQueryExports: API.PaginatedOperationMethod<
   ListProjectsBigQueryExportsRequest,
   ListBigQueryExportsResponse,
   ListProjectsBigQueryExportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBigQueryExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBigQueryExportsRequest,
   output: ListBigQueryExportsResponse,
@@ -10530,7 +10567,7 @@ export const listProjectsBigQueryExports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsEventThreatDetectionSettingsCustomModulesError =
   | NotFound
@@ -10540,7 +10577,8 @@ export const listProjectsEventThreatDetectionSettingsCustomModules: API.Paginate
   ListProjectsEventThreatDetectionSettingsCustomModulesRequest,
   ListEventThreatDetectionCustomModulesResponse,
   ListProjectsEventThreatDetectionSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: ListEventThreatDetectionCustomModulesResponse,
@@ -10551,7 +10589,7 @@ export const listProjectsEventThreatDetectionSettingsCustomModules: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -10559,7 +10597,8 @@ export const listProjectsEventThreatDetectionSettingsEffectiveCustomModules: API
   ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   ListEffectiveEventThreatDetectionCustomModulesResponse,
   ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveEventThreatDetectionCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output: ListEffectiveEventThreatDetectionCustomModulesResponse,
@@ -10570,14 +10609,15 @@ export const listProjectsEventThreatDetectionSettingsEffectiveCustomModules: API
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsMuteConfigsError = NotFound | Forbidden | GcpOpError;
 export const listProjectsMuteConfigs: API.PaginatedOperationMethod<
   ListProjectsMuteConfigsRequest,
   ListMuteConfigsResponse,
   ListProjectsMuteConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMuteConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMuteConfigsRequest,
   output: ListMuteConfigsResponse,
@@ -10588,7 +10628,7 @@ export const listProjectsMuteConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsNotificationConfigsError =
   | NotFound
@@ -10598,7 +10638,8 @@ export const listProjectsNotificationConfigs: API.PaginatedOperationMethod<
   ListProjectsNotificationConfigsRequest,
   ListNotificationConfigsResponse,
   ListProjectsNotificationConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotificationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotificationConfigsRequest,
   output: ListNotificationConfigsResponse,
@@ -10609,7 +10650,7 @@ export const listProjectsNotificationConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
   | NotFound
@@ -10619,7 +10660,8 @@ export const listProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Pagin
   ListProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   ListSecurityHealthAnalyticsCustomModulesResponse,
   ListProjectsSecurityHealthAnalyticsSettingsCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: ListSecurityHealthAnalyticsCustomModulesResponse,
@@ -10630,7 +10672,7 @@ export const listProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Pagin
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
   NotFound | Forbidden | GcpOpError;
@@ -10638,7 +10680,8 @@ export const listProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: 
   ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   ListEffectiveSecurityHealthAnalyticsCustomModulesResponse,
   ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveSecurityHealthAnalyticsCustomModulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -10650,14 +10693,15 @@ export const listProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: 
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSourcesError = NotFound | Forbidden | GcpOpError;
 export const listProjectsSources: API.PaginatedOperationMethod<
   ListProjectsSourcesRequest,
   ListSourcesResponse,
   ListProjectsSourcesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSourcesRequest,
   output: ListSourcesResponse,
@@ -10668,7 +10712,7 @@ export const listProjectsSources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsSourcesFindingsError =
   | NotFound
@@ -10678,7 +10722,8 @@ export const listProjectsSourcesFindings: API.PaginatedOperationMethod<
   ListProjectsSourcesFindingsRequest,
   ListFindingsResponse,
   ListProjectsSourcesFindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSourcesFindingsRequest,
   output: ListFindingsResponse,
@@ -10689,7 +10734,7 @@ export const listProjectsSourcesFindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchFoldersBigQueryExportsError =
   | NotFound

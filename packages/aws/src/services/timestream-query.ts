@@ -1542,27 +1542,7 @@ export const listScheduledQueries: API.OperationMethod<
     items: "ScheduledQueries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListScheduledQueriesRequest,
-  ListScheduledQueriesResponse,
-  ListScheduledQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ListScheduledQueriesResponse,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ScheduledQuery,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InvalidEndpointException
@@ -1611,27 +1591,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PrepareQueryError =
   | AccessDeniedException
@@ -1749,27 +1709,7 @@ export const query: API.OperationMethod<
     items: "Rows",
     pageSize: "MaxRows",
   } as const,
-})) as any as API.OperationMethod<
-  QueryRequest,
-  QueryResponse,
-  QueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryRequest,
-  ) => stream.Stream<
-    QueryResponse,
-    QueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryRequest,
-  ) => stream.Stream<
-    Row,
-    QueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | InvalidEndpointException

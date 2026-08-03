@@ -6942,27 +6942,7 @@ export const describeAccountAttributes: API.OperationMethod<
     items: "AccountAttributes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAccountAttributesRequest,
-  DescribeAccountAttributesResult,
-  DescribeAccountAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountAttributesRequest,
-  ) => stream.Stream<
-    DescribeAccountAttributesResult,
-    DescribeAccountAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountAttributesRequest,
-  ) => stream.Stream<
-    AccountAttribute,
-    DescribeAccountAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeAccountLimitsError =
   | AccessDeniedException
@@ -7013,27 +6993,7 @@ export const describeAccountLimits: API.OperationMethod<
     items: "AccountLimits",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAccountLimitsRequest,
-  DescribeAccountLimitsResult,
-  DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountLimitsRequest,
-  ) => stream.Stream<
-    DescribeAccountLimitsResult,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountLimitsRequest,
-  ) => stream.Stream<
-    AccountLimit,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeConfigurationSetsError =
   | AccessDeniedException
@@ -7088,27 +7048,7 @@ export const describeConfigurationSets: API.OperationMethod<
     items: "ConfigurationSets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeConfigurationSetsRequest,
-  DescribeConfigurationSetsResult,
-  DescribeConfigurationSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigurationSetsRequest,
-  ) => stream.Stream<
-    DescribeConfigurationSetsResult,
-    DescribeConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigurationSetsRequest,
-  ) => stream.Stream<
-    ConfigurationSetInformation,
-    DescribeConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeKeywordsError =
   | AccessDeniedException
@@ -7163,27 +7103,7 @@ export const describeKeywords: API.OperationMethod<
     items: "Keywords",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeKeywordsRequest,
-  DescribeKeywordsResult,
-  DescribeKeywordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeKeywordsRequest,
-  ) => stream.Stream<
-    DescribeKeywordsResult,
-    DescribeKeywordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeKeywordsRequest,
-  ) => stream.Stream<
-    KeywordInformation,
-    DescribeKeywordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeNotifyConfigurationsError =
   | AccessDeniedException
@@ -7238,27 +7158,7 @@ export const describeNotifyConfigurations: API.OperationMethod<
     items: "NotifyConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeNotifyConfigurationsRequest,
-  DescribeNotifyConfigurationsResult,
-  DescribeNotifyConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotifyConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeNotifyConfigurationsResult,
-    DescribeNotifyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotifyConfigurationsRequest,
-  ) => stream.Stream<
-    NotifyConfigurationInformation,
-    DescribeNotifyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeNotifyTemplatesError =
   | AccessDeniedException
@@ -7313,27 +7213,7 @@ export const describeNotifyTemplates: API.OperationMethod<
     items: "NotifyTemplates",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeNotifyTemplatesRequest,
-  DescribeNotifyTemplatesResult,
-  DescribeNotifyTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotifyTemplatesRequest,
-  ) => stream.Stream<
-    DescribeNotifyTemplatesResult,
-    DescribeNotifyTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotifyTemplatesRequest,
-  ) => stream.Stream<
-    NotifyTemplateInformation,
-    DescribeNotifyTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOptedOutNumbersError =
   | AccessDeniedException
@@ -7388,27 +7268,7 @@ export const describeOptedOutNumbers: API.OperationMethod<
     items: "OptedOutNumbers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOptedOutNumbersRequest,
-  DescribeOptedOutNumbersResult,
-  DescribeOptedOutNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptedOutNumbersRequest,
-  ) => stream.Stream<
-    DescribeOptedOutNumbersResult,
-    DescribeOptedOutNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptedOutNumbersRequest,
-  ) => stream.Stream<
-    OptedOutNumberInformation,
-    DescribeOptedOutNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOptOutListsError =
   | AccessDeniedException
@@ -7463,27 +7323,7 @@ export const describeOptOutLists: API.OperationMethod<
     items: "OptOutLists",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOptOutListsRequest,
-  DescribeOptOutListsResult,
-  DescribeOptOutListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptOutListsRequest,
-  ) => stream.Stream<
-    DescribeOptOutListsResult,
-    DescribeOptOutListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptOutListsRequest,
-  ) => stream.Stream<
-    OptOutListInformation,
-    DescribeOptOutListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePhoneNumbersError =
   | AccessDeniedException
@@ -7538,27 +7378,7 @@ export const describePhoneNumbers: API.OperationMethod<
     items: "PhoneNumbers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePhoneNumbersRequest,
-  DescribePhoneNumbersResult,
-  DescribePhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePhoneNumbersRequest,
-  ) => stream.Stream<
-    DescribePhoneNumbersResult,
-    DescribePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePhoneNumbersRequest,
-  ) => stream.Stream<
-    PhoneNumberInformation,
-    DescribePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePoolsError =
   | AccessDeniedException
@@ -7615,27 +7435,7 @@ export const describePools: API.OperationMethod<
     items: "Pools",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePoolsRequest,
-  DescribePoolsResult,
-  DescribePoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePoolsRequest,
-  ) => stream.Stream<
-    DescribePoolsResult,
-    DescribePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePoolsRequest,
-  ) => stream.Stream<
-    PoolInformation,
-    DescribePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeProtectConfigurationsError =
   | AccessDeniedException
@@ -7686,27 +7486,7 @@ export const describeProtectConfigurations: API.OperationMethod<
     items: "ProtectConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeProtectConfigurationsRequest,
-  DescribeProtectConfigurationsResult,
-  DescribeProtectConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProtectConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeProtectConfigurationsResult,
-    DescribeProtectConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProtectConfigurationsRequest,
-  ) => stream.Stream<
-    ProtectConfigurationInformation,
-    DescribeProtectConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRcsAgentCountryLaunchStatusError =
   | AccessDeniedException
@@ -7757,27 +7537,7 @@ export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
     items: "CountryLaunchStatus",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRcsAgentCountryLaunchStatusRequest,
-  DescribeRcsAgentCountryLaunchStatusResult,
-  DescribeRcsAgentCountryLaunchStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRcsAgentCountryLaunchStatusRequest,
-  ) => stream.Stream<
-    DescribeRcsAgentCountryLaunchStatusResult,
-    DescribeRcsAgentCountryLaunchStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRcsAgentCountryLaunchStatusRequest,
-  ) => stream.Stream<
-    CountryLaunchStatusInformation,
-    DescribeRcsAgentCountryLaunchStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRcsAgentsError =
   | AccessDeniedException
@@ -7830,27 +7590,7 @@ export const describeRcsAgents: API.OperationMethod<
     items: "RcsAgents",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRcsAgentsRequest,
-  DescribeRcsAgentsResult,
-  DescribeRcsAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRcsAgentsRequest,
-  ) => stream.Stream<
-    DescribeRcsAgentsResult,
-    DescribeRcsAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRcsAgentsRequest,
-  ) => stream.Stream<
-    RcsAgentInformation,
-    DescribeRcsAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationAttachmentsError =
   | AccessDeniedException
@@ -7901,27 +7641,7 @@ export const describeRegistrationAttachments: API.OperationMethod<
     items: "RegistrationAttachments",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationAttachmentsRequest,
-  DescribeRegistrationAttachmentsResult,
-  DescribeRegistrationAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationAttachmentsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationAttachmentsResult,
-    DescribeRegistrationAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationAttachmentsRequest,
-  ) => stream.Stream<
-    RegistrationAttachmentsInformation,
-    DescribeRegistrationAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationFieldDefinitionsError =
   | AccessDeniedException
@@ -7970,27 +7690,7 @@ export const describeRegistrationFieldDefinitions: API.OperationMethod<
     items: "RegistrationFieldDefinitions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationFieldDefinitionsRequest,
-  DescribeRegistrationFieldDefinitionsResult,
-  DescribeRegistrationFieldDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationFieldDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationFieldDefinitionsResult,
-    DescribeRegistrationFieldDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationFieldDefinitionsRequest,
-  ) => stream.Stream<
-    RegistrationFieldDefinition,
-    DescribeRegistrationFieldDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationFieldValuesError =
   | AccessDeniedException
@@ -8041,27 +7741,7 @@ export const describeRegistrationFieldValues: API.OperationMethod<
     items: "RegistrationFieldValues",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationFieldValuesRequest,
-  DescribeRegistrationFieldValuesResult,
-  DescribeRegistrationFieldValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationFieldValuesRequest,
-  ) => stream.Stream<
-    DescribeRegistrationFieldValuesResult,
-    DescribeRegistrationFieldValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationFieldValuesRequest,
-  ) => stream.Stream<
-    RegistrationFieldValueInformation,
-    DescribeRegistrationFieldValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationsError =
   | AccessDeniedException
@@ -8112,27 +7792,7 @@ export const describeRegistrations: API.OperationMethod<
     items: "Registrations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationsRequest,
-  DescribeRegistrationsResult,
-  DescribeRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationsResult,
-    DescribeRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationsRequest,
-  ) => stream.Stream<
-    RegistrationInformation,
-    DescribeRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationSectionDefinitionsError =
   | AccessDeniedException
@@ -8181,27 +7841,7 @@ export const describeRegistrationSectionDefinitions: API.OperationMethod<
     items: "RegistrationSectionDefinitions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationSectionDefinitionsRequest,
-  DescribeRegistrationSectionDefinitionsResult,
-  DescribeRegistrationSectionDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationSectionDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationSectionDefinitionsResult,
-    DescribeRegistrationSectionDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationSectionDefinitionsRequest,
-  ) => stream.Stream<
-    RegistrationSectionDefinition,
-    DescribeRegistrationSectionDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationTypeDefinitionsError =
   | AccessDeniedException
@@ -8250,27 +7890,7 @@ export const describeRegistrationTypeDefinitions: API.OperationMethod<
     items: "RegistrationTypeDefinitions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationTypeDefinitionsRequest,
-  DescribeRegistrationTypeDefinitionsResult,
-  DescribeRegistrationTypeDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationTypeDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationTypeDefinitionsResult,
-    DescribeRegistrationTypeDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationTypeDefinitionsRequest,
-  ) => stream.Stream<
-    RegistrationTypeDefinition,
-    DescribeRegistrationTypeDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegistrationVersionsError =
   | AccessDeniedException
@@ -8321,27 +7941,7 @@ export const describeRegistrationVersions: API.OperationMethod<
     items: "RegistrationVersions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegistrationVersionsRequest,
-  DescribeRegistrationVersionsResult,
-  DescribeRegistrationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationVersionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationVersionsResult,
-    DescribeRegistrationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationVersionsRequest,
-  ) => stream.Stream<
-    RegistrationVersionInformation,
-    DescribeRegistrationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSenderIdsError =
   | AccessDeniedException
@@ -8396,27 +7996,7 @@ export const describeSenderIds: API.OperationMethod<
     items: "SenderIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSenderIdsRequest,
-  DescribeSenderIdsResult,
-  DescribeSenderIdsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSenderIdsRequest,
-  ) => stream.Stream<
-    DescribeSenderIdsResult,
-    DescribeSenderIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSenderIdsRequest,
-  ) => stream.Stream<
-    SenderIdInformation,
-    DescribeSenderIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSpendLimitsError =
   | AccessDeniedException
@@ -8467,27 +8047,7 @@ export const describeSpendLimits: API.OperationMethod<
     items: "SpendLimits",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSpendLimitsRequest,
-  DescribeSpendLimitsResult,
-  DescribeSpendLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSpendLimitsRequest,
-  ) => stream.Stream<
-    DescribeSpendLimitsResult,
-    DescribeSpendLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSpendLimitsRequest,
-  ) => stream.Stream<
-    SpendLimit,
-    DescribeSpendLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeVerifiedDestinationNumbersError =
   | AccessDeniedException
@@ -8538,27 +8098,7 @@ export const describeVerifiedDestinationNumbers: API.OperationMethod<
     items: "VerifiedDestinationNumbers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeVerifiedDestinationNumbersRequest,
-  DescribeVerifiedDestinationNumbersResult,
-  DescribeVerifiedDestinationNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedDestinationNumbersRequest,
-  ) => stream.Stream<
-    DescribeVerifiedDestinationNumbersResult,
-    DescribeVerifiedDestinationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedDestinationNumbersRequest,
-  ) => stream.Stream<
-    VerifiedDestinationNumberInformation,
-    DescribeVerifiedDestinationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateOriginationIdentityError =
   | AccessDeniedException
@@ -8765,27 +8305,7 @@ export const listNotifyCountries: API.OperationMethod<
     items: "NotifyCountries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNotifyCountriesRequest,
-  ListNotifyCountriesResult,
-  ListNotifyCountriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotifyCountriesRequest,
-  ) => stream.Stream<
-    ListNotifyCountriesResult,
-    ListNotifyCountriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotifyCountriesRequest,
-  ) => stream.Stream<
-    NotifyCountryInformation,
-    ListNotifyCountriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPoolOriginationIdentitiesError =
   | AccessDeniedException
@@ -8838,27 +8358,7 @@ export const listPoolOriginationIdentities: API.OperationMethod<
     items: "OriginationIdentities",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPoolOriginationIdentitiesRequest,
-  ListPoolOriginationIdentitiesResult,
-  ListPoolOriginationIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoolOriginationIdentitiesRequest,
-  ) => stream.Stream<
-    ListPoolOriginationIdentitiesResult,
-    ListPoolOriginationIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoolOriginationIdentitiesRequest,
-  ) => stream.Stream<
-    OriginationIdentityMetadata,
-    ListPoolOriginationIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProtectConfigurationRuleSetNumberOverridesError =
   | AccessDeniedException
@@ -8909,27 +8409,7 @@ export const listProtectConfigurationRuleSetNumberOverrides: API.OperationMethod
     items: "RuleSetNumberOverrides",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProtectConfigurationRuleSetNumberOverridesRequest,
-  ListProtectConfigurationRuleSetNumberOverridesResult,
-  ListProtectConfigurationRuleSetNumberOverridesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectConfigurationRuleSetNumberOverridesRequest,
-  ) => stream.Stream<
-    ListProtectConfigurationRuleSetNumberOverridesResult,
-    ListProtectConfigurationRuleSetNumberOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectConfigurationRuleSetNumberOverridesRequest,
-  ) => stream.Stream<
-    ProtectConfigurationRuleSetNumberOverride,
-    ListProtectConfigurationRuleSetNumberOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRegistrationAssociationsError =
   | AccessDeniedException
@@ -8980,27 +8460,7 @@ export const listRegistrationAssociations: API.OperationMethod<
     items: "RegistrationAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRegistrationAssociationsRequest,
-  ListRegistrationAssociationsResult,
-  ListRegistrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistrationAssociationsRequest,
-  ) => stream.Stream<
-    ListRegistrationAssociationsResult,
-    ListRegistrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistrationAssociationsRequest,
-  ) => stream.Stream<
-    RegistrationAssociationMetadata,
-    ListRegistrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

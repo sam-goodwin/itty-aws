@@ -2382,27 +2382,7 @@ export const listEfficiencyMetrics: API.OperationMethod<
     items: "efficiencyMetricsByGroup",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEfficiencyMetricsRequest,
-  ListEfficiencyMetricsResponse,
-  ListEfficiencyMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEfficiencyMetricsRequest,
-  ) => stream.Stream<
-    ListEfficiencyMetricsResponse,
-    ListEfficiencyMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEfficiencyMetricsRequest,
-  ) => stream.Stream<
-    EfficiencyMetricsByGroup,
-    ListEfficiencyMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEnrollmentStatusesError =
   | AccessDeniedException
@@ -2451,27 +2431,7 @@ export const listEnrollmentStatuses: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEnrollmentStatusesRequest,
-  ListEnrollmentStatusesResponse,
-  ListEnrollmentStatusesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnrollmentStatusesRequest,
-  ) => stream.Stream<
-    ListEnrollmentStatusesResponse,
-    ListEnrollmentStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnrollmentStatusesRequest,
-  ) => stream.Stream<
-    AccountEnrollmentStatus,
-    ListEnrollmentStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendationsError =
   | AccessDeniedException
@@ -2520,27 +2480,7 @@ export const listRecommendations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationsRequest,
-  ListRecommendationsResponse,
-  ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    Recommendation,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecommendationSummariesError =
   | AccessDeniedException
@@ -2591,27 +2531,7 @@ export const listRecommendationSummaries: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecommendationSummariesRequest,
-  ListRecommendationSummariesResponse,
-  ListRecommendationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationSummariesRequest,
-  ) => stream.Stream<
-    ListRecommendationSummariesResponse,
-    ListRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationSummariesRequest,
-  ) => stream.Stream<
-    RecommendationSummary,
-    ListRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateEnrollmentStatusError =
   | AccessDeniedException

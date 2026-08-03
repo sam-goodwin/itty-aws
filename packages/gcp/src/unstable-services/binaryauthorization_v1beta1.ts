@@ -932,7 +932,8 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
   ListProjectsAttestorsRequest,
   ListAttestorsResponse,
   ListProjectsAttestorsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttestorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAttestorsRequest,
   output: ListAttestorsResponse,
@@ -943,7 +944,7 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetIamPolicyProjectsAttestorsError =
   | NotFound

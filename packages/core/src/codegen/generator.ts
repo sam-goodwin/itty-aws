@@ -627,6 +627,8 @@ export const generateService = (
   //    degrades to a plain operation.
   const paginatedOutputs = new Set<string>();
   const paginatedItemsRoot = new Map<string, string>();
+  /** Op id → its full (possibly dotted) items path, `""` when it has none. */
+  const paginatedItemsPath = new Map<string, string>();
   /** Output shape id → the pagination profile that decodes it. */
   const outputProfile = new Map<string, PaginationProfile>();
   /** Op id → its pagination profile (drives protocol/strategy emission). */
@@ -663,6 +665,10 @@ export const generateService = (
         op.def.__pagination = pg;
         paginatedOutputs.add(op.def.__output);
         paginatedItemsRoot.set(op.def.__output, itemsRoot);
+        paginatedItemsPath.set(
+          op.id,
+          String(pg.items ?? profile.itemsFallback ?? ""),
+        );
         outputProfile.set(op.def.__output, profile);
         opProfile.set(op.id, profile);
         usedProfiles.add(profile);
@@ -887,6 +893,37 @@ export const generateService = (
 
   // 6. Operations — declarative emission from the names in operationDecl,
   //    unless the provider overrides the whole shape.
+  /**
+   * The element type `.items()` yields, resolved from the pagination
+   * trait's items PATH against the response shape.
+   *
+   * `makePaginated` can't infer this — the path is a runtime string — and
+   * the structural `API.PaginatedItem` fallback only recognizes bare arrays
+   * and `{ result: […] }` envelopes, so every other envelope degrades to
+   * `unknown` (distilled #302). Resolving it here and passing it as an
+   * explicit type argument is what makes `.items()` typed.
+   *
+   * Returns undefined when the path doesn't lead to a list, which leaves
+   * the annotation on the structural fallback rather than asserting a type
+   * the shape doesn't support.
+   */
+  const paginatedItemTsType = (
+    outputId: string,
+    itemsPath: string,
+  ): string | undefined => {
+    // No items path: `.items()` is a page passthrough at runtime, so an
+    // item IS a whole response.
+    if (!itemsPath) return tsRef(outputId);
+    let def = shapes[outputId];
+    for (const segment of itemsPath.split(".")) {
+      if (def?.type !== "structure") return undefined;
+      const info = memberInfos(def).find((m) => m.tsName === segment);
+      if (!info) return undefined;
+      def = shapes[info.target];
+    }
+    return def?.type === "list" ? tsRef(def.member.target) : undefined;
+  };
+
   const emitOperation =
     spec.operation ??
     ((ctx: OperationEmit): string => {
@@ -896,12 +933,19 @@ export const generateService = (
       }
       const errList = [...ctx.errorNames, ...decl.commonErrorClasses];
       const paginated = ctx.pagination !== undefined;
+      const itemTsType = paginated
+        ? paginatedItemTsType(
+            ctx.op.def.__output,
+            paginatedItemsPath.get(ctx.op.id) ?? "",
+          )
+        : undefined;
       const typeAnnotation =
         `API.${paginated ? "PaginatedOperationMethod" : "OperationMethod"}<\n` +
         `  ${ctx.inputName},\n` +
         `  ${ctx.outputTsType},\n` +
         `  ${ctx.opName}Error,\n` +
-        `  ${decl.contextType}\n` +
+        `  ${decl.contextType}` +
+        (itemTsType ? `,\n  ${itemTsType}\n` : `\n`) +
         `>`;
       const config =
         `{\n` +
@@ -925,6 +969,10 @@ export const generateService = (
           pure,
           extraArg: paginated ? opProfile.get(ctx.op.id)?.strategy : undefined,
           config,
+          // `makePaginated` infers the items element from the structural
+          // fallback; an explicit item type needs the same `as any as`
+          // idiom the schema consts use.
+          castToAnnotation: itemTsType !== undefined,
         }),
       ].join("\n");
     });

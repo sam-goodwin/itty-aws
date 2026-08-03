@@ -2809,7 +2809,8 @@ export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
   ListIpOverridesProjectsKeysRequest,
   GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse,
   ListIpOverridesProjectsKeysError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIpOverridesProjectsKeysRequest,
   output: GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse,
@@ -2820,7 +2821,7 @@ export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsFirewallpoliciesError =
   | NotFound
@@ -2831,7 +2832,8 @@ export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
   ListProjectsFirewallpoliciesRequest,
   GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse,
   ListProjectsFirewallpoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsFirewallpoliciesRequest,
   output: GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse,
@@ -2842,7 +2844,7 @@ export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsKeysError = NotFound | Forbidden | GcpOpError;
 /** Returns the list of all keys that belong to a project. */
@@ -2850,7 +2852,8 @@ export const listProjectsKeys: API.PaginatedOperationMethod<
   ListProjectsKeysRequest,
   GoogleCloudRecaptchaenterpriseV1ListKeysResponse,
   ListProjectsKeysError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecaptchaenterpriseV1ListKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsKeysRequest,
   output: GoogleCloudRecaptchaenterpriseV1ListKeysResponse,
@@ -2861,7 +2864,7 @@ export const listProjectsKeys: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRelatedaccountgroupsError =
   | NotFound
@@ -2872,7 +2875,8 @@ export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
   ListProjectsRelatedaccountgroupsRequest,
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse,
   ListProjectsRelatedaccountgroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRelatedaccountgroupsRequest,
   output: GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse,
@@ -2883,7 +2887,7 @@ export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRelatedaccountgroupsMembershipsError =
   | NotFound
@@ -2894,7 +2898,8 @@ export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperation
   ListProjectsRelatedaccountgroupsMembershipsRequest,
   GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse,
   ListProjectsRelatedaccountgroupsMembershipsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRelatedaccountgroupsMembershipsRequest,
   output:
@@ -2906,7 +2911,7 @@ export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MigrateProjectsKeysError =
   | NotFound

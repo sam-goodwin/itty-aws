@@ -290,27 +290,7 @@ export const listServices: API.OperationMethod<
     outputToken: "nextToken",
     items: "services",
   } as const,
-})) as any as API.OperationMethod<
-  ListServicesInput,
-  ListServicesOutput,
-  ListServicesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ListServicesOutput,
-    ListServicesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    Service,
-    ListServicesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateAccountCustomizationsError =
   | AccessDeniedException

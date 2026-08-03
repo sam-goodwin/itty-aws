@@ -843,7 +843,8 @@ export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
@@ -854,7 +855,7 @@ export const listJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListJobsReportsError = NotFound | Forbidden | GcpOpError;
 /** Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist. */
@@ -862,7 +863,8 @@ export const listJobsReports: API.PaginatedOperationMethod<
   ListJobsReportsRequest,
   ListReportsResponse,
   ListJobsReportsError,
-  GcpOpContext
+  GcpOpContext,
+  ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsReportsRequest,
   output: ListReportsResponse,
@@ -873,7 +875,7 @@ export const listJobsReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListReportTypesError = NotFound | Forbidden | GcpOpError;
 /** Lists report types. */
@@ -881,7 +883,8 @@ export const listReportTypes: API.PaginatedOperationMethod<
   ListReportTypesRequest,
   ListReportTypesResponse,
   ListReportTypesError,
-  GcpOpContext
+  GcpOpContext,
+  ListReportTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportTypesRequest,
   output: ListReportTypesResponse,
@@ -892,4 +895,4 @@ export const listReportTypes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

@@ -2761,7 +2761,8 @@ export const listOriginCloudRegions: API.PaginatedOperationMethod<
   ListOriginCloudRegionsRequest,
   ListOriginCloudRegionsResponse,
   ListOriginCloudRegionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OriginCloudRegionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOriginCloudRegionsRequest,
@@ -2778,7 +2779,7 @@ export const listOriginCloudRegions: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type OriginCloudRegionsBulkDeleteV1Error = CloudflareOpError;
 /** Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently — successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array. */

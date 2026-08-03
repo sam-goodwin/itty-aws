@@ -757,7 +757,8 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
   ComputeFoldersContactsRequest,
   GoogleCloudEssentialcontactsV1ComputeContactsResponse,
   ComputeFoldersContactsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ComputeFoldersContactsRequest,
   output: GoogleCloudEssentialcontactsV1ComputeContactsResponse,
@@ -768,7 +769,7 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ComputeOrganizationsContactsError =
   | NotFound
@@ -779,7 +780,8 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
   ComputeOrganizationsContactsRequest,
   GoogleCloudEssentialcontactsV1ComputeContactsResponse,
   ComputeOrganizationsContactsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ComputeOrganizationsContactsRequest,
   output: GoogleCloudEssentialcontactsV1ComputeContactsResponse,
@@ -790,7 +792,7 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ComputeProjectsContactsError = NotFound | Forbidden | GcpOpError;
 /** Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
@@ -798,7 +800,8 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
   ComputeProjectsContactsRequest,
   GoogleCloudEssentialcontactsV1ComputeContactsResponse,
   ComputeProjectsContactsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudEssentialcontactsV1ComputeContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ComputeProjectsContactsRequest,
   output: GoogleCloudEssentialcontactsV1ComputeContactsResponse,
@@ -809,7 +812,7 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CreateFoldersContactsError =
   | NotFound
@@ -982,7 +985,8 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
   ListFoldersContactsRequest,
   GoogleCloudEssentialcontactsV1ListContactsResponse,
   ListFoldersContactsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudEssentialcontactsV1ListContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersContactsRequest,
   output: GoogleCloudEssentialcontactsV1ListContactsResponse,
@@ -993,7 +997,7 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsContactsError = NotFound | Forbidden | GcpOpError;
 /** Lists the contacts that have been set on a resource. */
@@ -1001,7 +1005,8 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
   ListOrganizationsContactsRequest,
   GoogleCloudEssentialcontactsV1ListContactsResponse,
   ListOrganizationsContactsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudEssentialcontactsV1ListContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsContactsRequest,
   output: GoogleCloudEssentialcontactsV1ListContactsResponse,
@@ -1012,7 +1017,7 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsContactsError = NotFound | Forbidden | GcpOpError;
 /** Lists the contacts that have been set on a resource. */
@@ -1020,7 +1025,8 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
   ListProjectsContactsRequest,
   GoogleCloudEssentialcontactsV1ListContactsResponse,
   ListProjectsContactsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudEssentialcontactsV1ListContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsContactsRequest,
   output: GoogleCloudEssentialcontactsV1ListContactsResponse,
@@ -1031,7 +1037,7 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchFoldersContactsError =
   | NotFound

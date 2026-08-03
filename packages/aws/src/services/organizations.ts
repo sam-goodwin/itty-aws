@@ -5107,27 +5107,7 @@ export const listAccounts: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccountsRequest,
-  ListAccountsResponse,
-  ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    ListAccountsResponse,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccountsForParentError =
   | AccessDeniedException
@@ -5189,27 +5169,7 @@ export const listAccountsForParent: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccountsForParentRequest,
-  ListAccountsForParentResponse,
-  ListAccountsForParentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsForParentRequest,
-  ) => stream.Stream<
-    ListAccountsForParentResponse,
-    ListAccountsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsForParentRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccountsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccountsWithInvalidEffectivePolicyError =
   | AccessDeniedException
@@ -5271,27 +5231,7 @@ export const listAccountsWithInvalidEffectivePolicy: API.OperationMethod<
     items: "Accounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccountsWithInvalidEffectivePolicyRequest,
-  ListAccountsWithInvalidEffectivePolicyResponse,
-  ListAccountsWithInvalidEffectivePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsWithInvalidEffectivePolicyRequest,
-  ) => stream.Stream<
-    ListAccountsWithInvalidEffectivePolicyResponse,
-    ListAccountsWithInvalidEffectivePolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsWithInvalidEffectivePolicyRequest,
-  ) => stream.Stream<
-    Account,
-    ListAccountsWithInvalidEffectivePolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAWSServiceAccessForOrganizationError =
   | AccessDeniedException
@@ -5353,27 +5293,7 @@ export const listAWSServiceAccessForOrganization: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAWSServiceAccessForOrganizationRequest,
-  ListAWSServiceAccessForOrganizationResponse,
-  ListAWSServiceAccessForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAWSServiceAccessForOrganizationRequest,
-  ) => stream.Stream<
-    ListAWSServiceAccessForOrganizationResponse,
-    ListAWSServiceAccessForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAWSServiceAccessForOrganizationRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAWSServiceAccessForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChildrenError =
   | AccessDeniedException
@@ -5433,27 +5353,7 @@ export const listChildren: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChildrenRequest,
-  ListChildrenResponse,
-  ListChildrenError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChildrenRequest,
-  ) => stream.Stream<
-    ListChildrenResponse,
-    ListChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChildrenRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCreateAccountStatusError =
   | AccessDeniedException
@@ -5512,27 +5412,7 @@ export const listCreateAccountStatus: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCreateAccountStatusRequest,
-  ListCreateAccountStatusResponse,
-  ListCreateAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCreateAccountStatusRequest,
-  ) => stream.Stream<
-    ListCreateAccountStatusResponse,
-    ListCreateAccountStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCreateAccountStatusRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCreateAccountStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDelegatedAdministratorsError =
   | AccessDeniedException
@@ -5590,27 +5470,7 @@ export const listDelegatedAdministrators: API.OperationMethod<
     items: "DelegatedAdministrators",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDelegatedAdministratorsRequest,
-  ListDelegatedAdministratorsResponse,
-  ListDelegatedAdministratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDelegatedAdministratorsRequest,
-  ) => stream.Stream<
-    ListDelegatedAdministratorsResponse,
-    ListDelegatedAdministratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDelegatedAdministratorsRequest,
-  ) => stream.Stream<
-    DelegatedAdministrator,
-    ListDelegatedAdministratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDelegatedServicesForAccountError =
   | AccessDeniedException
@@ -5672,27 +5532,7 @@ export const listDelegatedServicesForAccount: API.OperationMethod<
     items: "DelegatedServices",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDelegatedServicesForAccountRequest,
-  ListDelegatedServicesForAccountResponse,
-  ListDelegatedServicesForAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDelegatedServicesForAccountRequest,
-  ) => stream.Stream<
-    ListDelegatedServicesForAccountResponse,
-    ListDelegatedServicesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDelegatedServicesForAccountRequest,
-  ) => stream.Stream<
-    DelegatedService,
-    ListDelegatedServicesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEffectivePolicyValidationErrorsError =
   | AccessDeniedException
@@ -5754,27 +5594,7 @@ export const listEffectivePolicyValidationErrors: API.OperationMethod<
     items: "EffectivePolicyValidationErrors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEffectivePolicyValidationErrorsRequest,
-  ListEffectivePolicyValidationErrorsResponse,
-  ListEffectivePolicyValidationErrorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEffectivePolicyValidationErrorsRequest,
-  ) => stream.Stream<
-    ListEffectivePolicyValidationErrorsResponse,
-    ListEffectivePolicyValidationErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEffectivePolicyValidationErrorsRequest,
-  ) => stream.Stream<
-    EffectivePolicyValidationError,
-    ListEffectivePolicyValidationErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHandshakesForAccountError =
   | AccessDeniedException
@@ -5834,27 +5654,7 @@ export const listHandshakesForAccount: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHandshakesForAccountRequest,
-  ListHandshakesForAccountResponse,
-  ListHandshakesForAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHandshakesForAccountRequest,
-  ) => stream.Stream<
-    ListHandshakesForAccountResponse,
-    ListHandshakesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHandshakesForAccountRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHandshakesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListHandshakesForOrganizationError =
   | AccessDeniedException
@@ -5916,27 +5716,7 @@ export const listHandshakesForOrganization: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListHandshakesForOrganizationRequest,
-  ListHandshakesForOrganizationResponse,
-  ListHandshakesForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHandshakesForOrganizationRequest,
-  ) => stream.Stream<
-    ListHandshakesForOrganizationResponse,
-    ListHandshakesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHandshakesForOrganizationRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHandshakesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInboundResponsibilityTransfersError =
   | AccessDeniedException
@@ -6035,27 +5815,7 @@ export const listOrganizationalUnitsForParent: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationalUnitsForParentRequest,
-  ListOrganizationalUnitsForParentResponse,
-  ListOrganizationalUnitsForParentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationalUnitsForParentRequest,
-  ) => stream.Stream<
-    ListOrganizationalUnitsForParentResponse,
-    ListOrganizationalUnitsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationalUnitsForParentRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOrganizationalUnitsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOutboundResponsibilityTransfersError =
   | AccessDeniedException
@@ -6157,27 +5917,7 @@ export const listParents: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListParentsRequest,
-  ListParentsResponse,
-  ListParentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParentsRequest,
-  ) => stream.Stream<
-    ListParentsResponse,
-    ListParentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPoliciesError =
   | AccessDeniedException
@@ -6235,27 +5975,7 @@ export const listPolicies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPoliciesRequest,
-  ListPoliciesResponse,
-  ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPoliciesForTargetError =
   | AccessDeniedException
@@ -6317,27 +6037,7 @@ export const listPoliciesForTarget: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPoliciesForTargetRequest,
-  ListPoliciesForTargetResponse,
-  ListPoliciesForTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesForTargetRequest,
-  ) => stream.Stream<
-    ListPoliciesForTargetResponse,
-    ListPoliciesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesForTargetRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPoliciesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRootsError =
   | AccessDeniedException
@@ -6399,27 +6099,7 @@ export const listRoots: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRootsRequest,
-  ListRootsResponse,
-  ListRootsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRootsRequest,
-  ) => stream.Stream<
-    ListRootsResponse,
-    ListRootsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRootsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRootsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -6483,27 +6163,7 @@ export const listTagsForResource: API.OperationMethod<
     outputToken: "NextToken",
     items: "Tags",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTargetsForPolicyError =
   | AccessDeniedException
@@ -6564,27 +6224,7 @@ export const listTargetsForPolicy: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTargetsForPolicyRequest,
-  ListTargetsForPolicyResponse,
-  ListTargetsForPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsForPolicyRequest,
-  ) => stream.Stream<
-    ListTargetsForPolicyResponse,
-    ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsForPolicyRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type MoveAccountError =
   | AccessDeniedException

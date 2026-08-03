@@ -423,7 +423,8 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
   ListProjectsLocationsWorkflowsExecutionsRequest,
   ListExecutionsResponse,
   ListProjectsLocationsWorkflowsExecutionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsRequest,
   output: ListExecutionsResponse,
@@ -434,4 +435,4 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

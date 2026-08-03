@@ -20726,7 +20726,8 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
   ListCatalogSyncPrebuiltPoliciesRequest,
   ListCatalogSyncPrebuiltPoliciesResponse,
   ListCatalogSyncPrebuiltPoliciesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CatalogSyncsPrebuiltPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCatalogSyncPrebuiltPoliciesRequest,
@@ -20742,7 +20743,7 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCatalogSyncsError =
   | FeatureNotEnabled
@@ -20753,7 +20754,8 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
   ListCatalogSyncsRequest,
   ListCatalogSyncsResponse,
   ListCatalogSyncsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CatalogSyncsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCatalogSyncsRequest,
@@ -20769,7 +20771,7 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListCloudIntegrationsError =
   | FeatureNotEnabled
@@ -20780,7 +20782,8 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
   ListCloudIntegrationsRequest,
   ListCloudIntegrationsResponse,
   ListCloudIntegrationsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CloudIntegrationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListCloudIntegrationsRequest,
@@ -20796,7 +20799,7 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListOnRampAddressSpacesError = CloudflareOpError;
 /** Read the Magic WAN Address Space (Closed Beta). */
@@ -20822,7 +20825,8 @@ export const listOnRamps: API.PaginatedOperationMethod<
   ListOnRampsRequest,
   ListOnRampsResponse,
   ListOnRampsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  OnRampsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListOnRampsRequest,
@@ -20838,7 +20842,7 @@ export const listOnRamps: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListResourcesError = CloudflareOpError;
 /** List resources in the Resource Catalog (Closed Beta). */
@@ -20846,7 +20850,8 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ResourcesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListResourcesRequest,
@@ -20863,7 +20868,7 @@ export const listResources: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchCatalogSyncError =
   | FeatureNotEnabled

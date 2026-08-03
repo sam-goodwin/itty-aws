@@ -5235,27 +5235,7 @@ export const getQueryResults: API.OperationMethod<
   retry: Retry,
   operationName: "GetQueryResults",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
-})) as any as API.OperationMethod<
-  GetQueryResultsRequest,
-  GetQueryResultsResponse,
-  GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsRequest,
-  ) => stream.Stream<
-    GetQueryResultsResponse,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError =
   | OperationNotPermittedException
@@ -5397,27 +5377,7 @@ export const listChannels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelsRequest,
-  ListChannelsResponse,
-  ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDashboardsError = UnsupportedOperationException | CommonErrors;
 /**
@@ -5486,27 +5446,7 @@ export const listEventDataStores: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEventDataStoresRequest,
-  ListEventDataStoresResponse,
-  ListEventDataStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventDataStoresRequest,
-  ) => stream.Stream<
-    ListEventDataStoresResponse,
-    ListEventDataStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventDataStoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEventDataStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportFailuresError =
   | InvalidNextTokenException
@@ -5555,27 +5495,7 @@ export const listImportFailures: API.OperationMethod<
     items: "Failures",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportFailuresRequest,
-  ListImportFailuresResponse,
-  ListImportFailuresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportFailuresRequest,
-  ) => stream.Stream<
-    ListImportFailuresResponse,
-    ListImportFailuresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportFailuresRequest,
-  ) => stream.Stream<
-    ImportFailureListItem,
-    ListImportFailuresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportsError =
   | EventDataStoreARNInvalidException
@@ -5627,27 +5547,7 @@ export const listImports: API.OperationMethod<
     items: "Imports",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportsRequest,
-  ListImportsResponse,
-  ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ListImportsResponse,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsRequest,
-  ) => stream.Stream<
-    ImportsListItem,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInsightsDataError =
   | InvalidParameterException
@@ -5709,27 +5609,7 @@ export const listInsightsData: API.OperationMethod<
     items: "Events",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInsightsDataRequest,
-  ListInsightsDataResponse,
-  ListInsightsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsDataRequest,
-  ) => stream.Stream<
-    ListInsightsDataResponse,
-    ListInsightsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsDataRequest,
-  ) => stream.Stream<
-    Event,
-    ListInsightsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInsightsMetricDataError =
   | InvalidParameterException
@@ -5796,27 +5676,7 @@ export const listInsightsMetricData: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInsightsMetricDataRequest,
-  ListInsightsMetricDataResponse,
-  ListInsightsMetricDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsMetricDataRequest,
-  ) => stream.Stream<
-    ListInsightsMetricDataResponse,
-    ListInsightsMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsMetricDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInsightsMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPublicKeysError =
   | InvalidTimeRangeException
@@ -5871,27 +5731,7 @@ export const listPublicKeys: API.OperationMethod<
     outputToken: "NextToken",
     items: "PublicKeyList",
   } as const,
-})) as any as API.OperationMethod<
-  ListPublicKeysRequest,
-  ListPublicKeysResponse,
-  ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    ListPublicKeysResponse,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    PublicKey,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQueriesError =
   | EventDataStoreARNInvalidException
@@ -5959,27 +5799,7 @@ export const listQueries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQueriesRequest,
-  ListQueriesResponse,
-  ListQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueriesRequest,
-  ) => stream.Stream<
-    ListQueriesResponse,
-    ListQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueriesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsError =
   | ChannelARNInvalidException
@@ -6043,27 +5863,7 @@ export const listTags: API.OperationMethod<
     outputToken: "NextToken",
     items: "ResourceTagList",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsRequest,
-  ListTagsResponse,
-  ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    ListTagsResponse,
-    ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    ResourceTag,
-    ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTrailsError =
   | OperationNotPermittedException
@@ -6104,27 +5904,7 @@ export const listTrails: API.OperationMethod<
     outputToken: "NextToken",
     items: "Trails",
   } as const,
-})) as any as API.OperationMethod<
-  ListTrailsRequest,
-  ListTrailsResponse,
-  ListTrailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrailsRequest,
-  ) => stream.Stream<
-    ListTrailsResponse,
-    ListTrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrailsRequest,
-  ) => stream.Stream<
-    TrailInfo,
-    ListTrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type LookupEventsError =
   | InvalidEventCategoryException
@@ -6216,27 +5996,7 @@ export const lookupEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  LookupEventsRequest,
-  LookupEventsResponse,
-  LookupEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: LookupEventsRequest,
-  ) => stream.Stream<
-    LookupEventsResponse,
-    LookupEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: LookupEventsRequest,
-  ) => stream.Stream<
-    Event,
-    LookupEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutEventConfigurationError =
   | CloudTrailARNInvalidException

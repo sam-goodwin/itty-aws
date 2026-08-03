@@ -3497,27 +3497,7 @@ export const describeActivities: API.OperationMethod<
     items: "UserActivities",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeActivitiesRequest,
-  DescribeActivitiesResponse,
-  DescribeActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeActivitiesRequest,
-  ) => stream.Stream<
-    DescribeActivitiesResponse,
-    DescribeActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeActivitiesRequest,
-  ) => stream.Stream<
-    Activity,
-    DescribeActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeCommentsError =
   | EntityNotExistsException
@@ -3570,27 +3550,7 @@ export const describeComments: API.OperationMethod<
     items: "Comments",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeCommentsRequest,
-  DescribeCommentsResponse,
-  DescribeCommentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCommentsRequest,
-  ) => stream.Stream<
-    DescribeCommentsResponse,
-    DescribeCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCommentsRequest,
-  ) => stream.Stream<
-    Comment,
-    DescribeCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDocumentVersionsError =
   | EntityNotExistsException
@@ -3649,27 +3609,7 @@ export const describeDocumentVersions: API.OperationMethod<
     items: "DocumentVersions",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDocumentVersionsRequest,
-  DescribeDocumentVersionsResponse,
-  DescribeDocumentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDocumentVersionsRequest,
-  ) => stream.Stream<
-    DescribeDocumentVersionsResponse,
-    DescribeDocumentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDocumentVersionsRequest,
-  ) => stream.Stream<
-    DocumentVersionMetadata,
-    DescribeDocumentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeFolderContentsError =
   | EntityNotExistsException
@@ -3727,27 +3667,7 @@ export const describeFolderContents: API.OperationMethod<
     outputToken: "Marker",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeFolderContentsRequest,
-  DescribeFolderContentsResponse,
-  DescribeFolderContentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFolderContentsRequest,
-  ) => stream.Stream<
-    DescribeFolderContentsResponse,
-    DescribeFolderContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFolderContentsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFolderContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeGroupsError =
   | FailedDependencyException
@@ -3797,27 +3717,7 @@ export const describeGroups: API.OperationMethod<
     items: "Groups",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeGroupsRequest,
-  DescribeGroupsResponse,
-  DescribeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGroupsRequest,
-  ) => stream.Stream<
-    DescribeGroupsResponse,
-    DescribeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGroupsRequest,
-  ) => stream.Stream<
-    GroupMetadata,
-    DescribeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeNotificationSubscriptionsError =
   | EntityNotExistsException
@@ -3864,27 +3764,7 @@ export const describeNotificationSubscriptions: API.OperationMethod<
     items: "Subscriptions",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeNotificationSubscriptionsRequest,
-  DescribeNotificationSubscriptionsResponse,
-  DescribeNotificationSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotificationSubscriptionsRequest,
-  ) => stream.Stream<
-    DescribeNotificationSubscriptionsResponse,
-    DescribeNotificationSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotificationSubscriptionsRequest,
-  ) => stream.Stream<
-    Subscription,
-    DescribeNotificationSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeResourcePermissionsError =
   | FailedDependencyException
@@ -3935,27 +3815,7 @@ export const describeResourcePermissions: API.OperationMethod<
     items: "Principals",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeResourcePermissionsRequest,
-  DescribeResourcePermissionsResponse,
-  DescribeResourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeResourcePermissionsRequest,
-  ) => stream.Stream<
-    DescribeResourcePermissionsResponse,
-    DescribeResourcePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeResourcePermissionsRequest,
-  ) => stream.Stream<
-    Principal,
-    DescribeResourcePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRootFoldersError =
   | FailedDependencyException
@@ -4015,27 +3875,7 @@ export const describeRootFolders: API.OperationMethod<
     items: "Folders",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRootFoldersRequest,
-  DescribeRootFoldersResponse,
-  DescribeRootFoldersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRootFoldersRequest,
-  ) => stream.Stream<
-    DescribeRootFoldersResponse,
-    DescribeRootFoldersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRootFoldersRequest,
-  ) => stream.Stream<
-    FolderMetadata,
-    DescribeRootFoldersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeUsersError =
   | EntityNotExistsException
@@ -4095,27 +3935,7 @@ export const describeUsers: API.OperationMethod<
     items: "Users",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeUsersRequest,
-  DescribeUsersResponse,
-  DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUsersRequest,
-  ) => stream.Stream<
-    DescribeUsersResponse,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUsersRequest,
-  ) => stream.Stream<
-    User,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCurrentUserError =
   | EntityNotExistsException
@@ -4554,27 +4374,7 @@ export const searchResources: API.OperationMethod<
     items: "Items",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  SearchResourcesRequest,
-  SearchResourcesResponse,
-  SearchResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchResourcesRequest,
-  ) => stream.Stream<
-    SearchResourcesResponse,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchResourcesRequest,
-  ) => stream.Stream<
-    ResponseItem,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateDocumentError =
   | ConcurrentModificationException

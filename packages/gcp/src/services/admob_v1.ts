@@ -1038,7 +1038,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListPublisherAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPublisherAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListPublisherAccountsResponse,
@@ -1049,7 +1050,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAdUnitsError = NotFound | Forbidden | GcpOpError;
 /** List the ad units under the specified AdMob account. */
@@ -1057,7 +1058,8 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
   ListAccountsAdUnitsRequest,
   ListAdUnitsResponse,
   ListAccountsAdUnitsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAdUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdUnitsRequest,
   output: ListAdUnitsResponse,
@@ -1068,7 +1070,7 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountsAppsError = NotFound | Forbidden | GcpOpError;
 /** List the apps under the specified AdMob account. */
@@ -1076,7 +1078,8 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   ListAccountsAppsRequest,
   ListAppsResponse,
   ListAccountsAppsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: ListAppsResponse,
@@ -1087,4 +1090,4 @@ export const listAccountsApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

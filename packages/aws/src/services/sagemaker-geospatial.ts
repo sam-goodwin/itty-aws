@@ -2016,27 +2016,7 @@ export const listEarthObservationJobs: API.OperationMethod<
     outputToken: "NextToken",
     items: "EarthObservationJobSummaries",
   } as const,
-})) as any as API.OperationMethod<
-  ListEarthObservationJobInput,
-  ListEarthObservationJobOutput,
-  ListEarthObservationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEarthObservationJobInput,
-  ) => stream.Stream<
-    ListEarthObservationJobOutput,
-    ListEarthObservationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEarthObservationJobInput,
-  ) => stream.Stream<
-    ListEarthObservationJobOutputConfig,
-    ListEarthObservationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRasterDataCollectionsError =
   | AccessDeniedException
@@ -2086,27 +2066,7 @@ export const listRasterDataCollections: API.OperationMethod<
     outputToken: "NextToken",
     items: "RasterDataCollectionSummaries",
   } as const,
-})) as any as API.OperationMethod<
-  ListRasterDataCollectionsInput,
-  ListRasterDataCollectionsOutput,
-  ListRasterDataCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRasterDataCollectionsInput,
-  ) => stream.Stream<
-    ListRasterDataCollectionsOutput,
-    ListRasterDataCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRasterDataCollectionsInput,
-  ) => stream.Stream<
-    RasterDataCollectionMetadata,
-    ListRasterDataCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2186,27 +2146,7 @@ export const listVectorEnrichmentJobs: API.OperationMethod<
     outputToken: "NextToken",
     items: "VectorEnrichmentJobSummaries",
   } as const,
-})) as any as API.OperationMethod<
-  ListVectorEnrichmentJobInput,
-  ListVectorEnrichmentJobOutput,
-  ListVectorEnrichmentJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVectorEnrichmentJobInput,
-  ) => stream.Stream<
-    ListVectorEnrichmentJobOutput,
-    ListVectorEnrichmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVectorEnrichmentJobInput,
-  ) => stream.Stream<
-    ListVectorEnrichmentJobOutputConfig,
-    ListVectorEnrichmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchRasterDataCollectionError =
   | AccessDeniedException
@@ -2252,27 +2192,7 @@ export const searchRasterDataCollection: API.OperationMethod<
   retry: Retry,
   operationName: "SearchRasterDataCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
-})) as any as API.OperationMethod<
-  SearchRasterDataCollectionInput,
-  SearchRasterDataCollectionOutput,
-  SearchRasterDataCollectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchRasterDataCollectionInput,
-  ) => stream.Stream<
-    SearchRasterDataCollectionOutput,
-    SearchRasterDataCollectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchRasterDataCollectionInput,
-  ) => stream.Stream<
-    unknown,
-    SearchRasterDataCollectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartEarthObservationJobError =
   | AccessDeniedException

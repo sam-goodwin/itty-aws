@@ -1669,27 +1669,7 @@ export const listInvoiceSummaries: API.OperationMethod<
     items: "InvoiceSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvoiceSummariesRequest,
-  ListInvoiceSummariesResponse,
-  ListInvoiceSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvoiceSummariesRequest,
-  ) => stream.Stream<
-    ListInvoiceSummariesResponse,
-    ListInvoiceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvoiceSummariesRequest,
-  ) => stream.Stream<
-    InvoiceSummary,
-    ListInvoiceSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInvoiceUnitsError =
   | AccessDeniedException
@@ -1738,27 +1718,7 @@ export const listInvoiceUnits: API.OperationMethod<
     items: "InvoiceUnits",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInvoiceUnitsRequest,
-  ListInvoiceUnitsResponse,
-  ListInvoiceUnitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvoiceUnitsRequest,
-  ) => stream.Stream<
-    ListInvoiceUnitsResponse,
-    ListInvoiceUnitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvoiceUnitsRequest,
-  ) => stream.Stream<
-    InvoiceUnit,
-    ListInvoiceUnitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProcurementPortalPreferencesError =
   | AccessDeniedException
@@ -1813,27 +1773,7 @@ export const listProcurementPortalPreferences: API.OperationMethod<
     items: "ProcurementPortalPreferences",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProcurementPortalPreferencesRequest,
-  ListProcurementPortalPreferencesResponse,
-  ListProcurementPortalPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProcurementPortalPreferencesRequest,
-  ) => stream.Stream<
-    ListProcurementPortalPreferencesResponse,
-    ListProcurementPortalPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProcurementPortalPreferencesRequest,
-  ) => stream.Stream<
-    ProcurementPortalPreferenceSummary,
-    ListProcurementPortalPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

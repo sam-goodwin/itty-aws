@@ -808,7 +808,8 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
   ListProvidersAccountsRequest,
   ListAccountsResponse,
   ListProvidersAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvidersAccountsRequest,
   output: ListAccountsResponse,
@@ -819,7 +820,7 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProvidersEntitlementsError = NotFound | Forbidden | GcpOpError;
 /** Lists Entitlements for which the provider has read access. */
@@ -827,7 +828,8 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
   ListProvidersEntitlementsRequest,
   ListEntitlementsResponse,
   ListProvidersEntitlementsError,
-  GcpOpContext
+  GcpOpContext,
+  ListEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvidersEntitlementsRequest,
   output: ListEntitlementsResponse,
@@ -838,7 +840,7 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProvidersEntitlementsError =
   | NotFound

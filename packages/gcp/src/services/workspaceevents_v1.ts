@@ -1150,7 +1150,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
@@ -1161,7 +1162,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTasksPushNotificationConfigsError =
   | NotFound
@@ -1172,7 +1173,8 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
   ListTasksPushNotificationConfigsRequest,
   ListTaskPushNotificationConfigResponse,
   ListTasksPushNotificationConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTaskPushNotificationConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksPushNotificationConfigsRequest,
   output: ListTaskPushNotificationConfigResponse,
@@ -1183,7 +1185,7 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchSubscriptionsError =
   | NotFound

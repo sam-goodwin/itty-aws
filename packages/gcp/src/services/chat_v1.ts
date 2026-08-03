@@ -5416,7 +5416,8 @@ export const findGroupChatsSpaces: API.PaginatedOperationMethod<
   FindGroupChatsSpacesRequest,
   FindGroupChatsResponse,
   FindGroupChatsSpacesError,
-  GcpOpContext
+  GcpOpContext,
+  FindGroupChatsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FindGroupChatsSpacesRequest,
   output: FindGroupChatsResponse,
@@ -5427,7 +5428,7 @@ export const findGroupChatsSpaces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetAvailabilityUsersAvailabilityError =
   | NotFound
@@ -5600,7 +5601,8 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
   ListCustomEmojisRequest,
   ListCustomEmojisResponse,
   ListCustomEmojisError,
-  GcpOpContext
+  GcpOpContext,
+  ListCustomEmojisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomEmojisRequest,
   output: ListCustomEmojisResponse,
@@ -5611,7 +5613,7 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSpacesError = NotFound | Forbidden | GcpOpError;
 /** Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent. For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` To list all named spaces by Google Workspace organization, use the [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method using Workspace administrator privileges instead. */
@@ -5619,7 +5621,8 @@ export const listSpaces: API.PaginatedOperationMethod<
   ListSpacesRequest,
   ListSpacesResponse,
   ListSpacesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
   output: ListSpacesResponse,
@@ -5630,7 +5633,7 @@ export const listSpaces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSpacesMembersError = NotFound | Forbidden | GcpOpError;
 /** Lists memberships in a space. For an example, see [List users and Google Chat apps in a space](https://developers.google.com/workspace/chat/list-members). Listing memberships with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) lists memberships in spaces that the Chat app has access to, but excludes Chat app memberships, including its own. Listing memberships with [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) lists memberships in spaces that the authenticated user has access to. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.bot` - `https://www.googleapis.com/auth/chat.app.memberships` (requires [administrator approval](https://support.google.com/a?p=chat-app-auth)) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and one of the following authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.memberships.readonly` - `https://www.googleapis.com/auth/chat.admin.memberships` */
@@ -5638,7 +5641,8 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
   ListSpacesMembersRequest,
   ListMembershipsResponse,
   ListSpacesMembersError,
-  GcpOpContext
+  GcpOpContext,
+  ListMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMembersRequest,
   output: ListMembershipsResponse,
@@ -5649,7 +5653,7 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSpacesMessagesError = NotFound | Forbidden | GcpOpError;
 /** Lists messages in a space that the caller is a member of, including messages from blocked members and spaces. System messages, like those announcing new space members, aren't included. If you list messages from a space with no messages, the response is an empty object. When using a REST/HTTP interface, the response contains an empty JSON object, `{}`. For an example, see [List messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/list). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) with the authorization scope: - `https://www.googleapis.com/auth/chat.app.messages.readonly`. When using this authentication scope, this method only returns public messages in a space. It doesn't include private messages. - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) */
@@ -5657,7 +5661,8 @@ export const listSpacesMessages: API.PaginatedOperationMethod<
   ListSpacesMessagesRequest,
   ListMessagesResponse,
   ListSpacesMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMessagesRequest,
   output: ListMessagesResponse,
@@ -5668,7 +5673,7 @@ export const listSpacesMessages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSpacesMessagesReactionsError =
   | NotFound
@@ -5679,7 +5684,8 @@ export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
   ListSpacesMessagesReactionsRequest,
   ListReactionsResponse,
   ListSpacesMessagesReactionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListReactionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMessagesReactionsRequest,
   output: ListReactionsResponse,
@@ -5690,7 +5696,7 @@ export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSpacesSpaceEventsError = NotFound | Forbidden | GcpOpError;
 /** Lists events from a Google Chat space. For each event, the [payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the Chat resource. For example, if you list events about new space members, the server returns `Membership` resources that contain the latest membership details. If new members were removed during the requested period, the event payload contains an empty `Membership` resource. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) with an [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate for reading the requested data: - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - `https://www.googleapis.com/auth/chat.app.spaces.readonly` - `https://www.googleapis.com/auth/chat.app.messages.readonly` - `https://www.googleapis.com/auth/chat.app.memberships` - `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.messages.reactions.readonly` - `https://www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` To list events, the authenticated caller must be a member of the space. For an example, see [List events from a Google Chat space](https://developers.google.com/workspace/chat/list-space-events). */
@@ -5698,7 +5704,8 @@ export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
   ListSpacesSpaceEventsRequest,
   ListSpaceEventsResponse,
   ListSpacesSpaceEventsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSpaceEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesSpaceEventsRequest,
   output: ListSpaceEventsResponse,
@@ -5709,7 +5716,7 @@ export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersSectionsError = NotFound | Forbidden | GcpOpError;
 /** Lists sections available to the Chat user. Sections help users group their conversations and customize the list of spaces displayed in Chat navigation panel. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.readonly` */
@@ -5717,7 +5724,8 @@ export const listUsersSections: API.PaginatedOperationMethod<
   ListUsersSectionsRequest,
   ListSectionsResponse,
   ListUsersSectionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSectionsRequest,
   output: ListSectionsResponse,
@@ -5728,7 +5736,7 @@ export const listUsersSections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersSectionsItemsError = NotFound | Forbidden | GcpOpError;
 /** Lists items in a section. Only spaces can be section items. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.readonly` */
@@ -5736,7 +5744,8 @@ export const listUsersSectionsItems: API.PaginatedOperationMethod<
   ListUsersSectionsItemsRequest,
   ListSectionItemsResponse,
   ListUsersSectionsItemsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSectionItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSectionsItemsRequest,
   output: ListSectionItemsResponse,
@@ -5747,7 +5756,7 @@ export const listUsersSectionsItems: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MarkAsActiveUsersAvailabilityError =
   | NotFound
@@ -5955,7 +5964,8 @@ export const searchSpaces: API.PaginatedOperationMethod<
   SearchSpacesRequest,
   SearchSpacesResponse,
   SearchSpacesError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSpacesRequest,
   output: SearchSpacesResponse,
@@ -5966,7 +5976,7 @@ export const searchSpaces: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetupSpacesError =
   | NotFound

@@ -1079,27 +1079,7 @@ export const describeBackups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeBackupsRequest,
-  DescribeBackupsResponse,
-  DescribeBackupsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeBackupsRequest,
-  ) => stream.Stream<
-    DescribeBackupsResponse,
-    DescribeBackupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeBackupsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeBackupsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClustersError =
   | CloudHsmAccessDeniedException
@@ -1157,27 +1137,7 @@ export const describeClusters: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClustersRequest,
-  DescribeClustersResponse,
-  DescribeClustersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClustersRequest,
-  ) => stream.Stream<
-    DescribeClustersResponse,
-    DescribeClustersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClustersRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeClustersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError =
   | CloudHsmAccessDeniedException
@@ -1304,27 +1264,7 @@ export const listTags: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsRequest,
-  ListTagsResponse,
-  ListTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    ListTagsResponse,
-    ListTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ModifyBackupAttributesError =
   | CloudHsmAccessDeniedException

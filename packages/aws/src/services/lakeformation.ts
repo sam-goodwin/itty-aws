@@ -4014,27 +4014,7 @@ export const getEffectivePermissionsForPath: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetEffectivePermissionsForPathRequest,
-  GetEffectivePermissionsForPathResponse,
-  GetEffectivePermissionsForPathError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEffectivePermissionsForPathRequest,
-  ) => stream.Stream<
-    GetEffectivePermissionsForPathResponse,
-    GetEffectivePermissionsForPathError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEffectivePermissionsForPathRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEffectivePermissionsForPathError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetLFTagError =
   | AccessDeniedException
@@ -4240,27 +4220,7 @@ export const getTableObjects: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTableObjectsRequest,
-  GetTableObjectsResponse,
-  GetTableObjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTableObjectsRequest,
-  ) => stream.Stream<
-    GetTableObjectsResponse,
-    GetTableObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTableObjectsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTableObjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetTemporaryDataLocationCredentialsError =
   | AccessDeniedException
@@ -4462,27 +4422,7 @@ export const getWorkUnits: API.OperationMethod<
     items: "WorkUnitRanges",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  GetWorkUnitsRequest,
-  GetWorkUnitsResponse,
-  GetWorkUnitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetWorkUnitsRequest,
-  ) => stream.Stream<
-    GetWorkUnitsResponse,
-    GetWorkUnitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetWorkUnitsRequest,
-  ) => stream.Stream<
-    WorkUnitRange,
-    GetWorkUnitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GrantPermissionsError =
   | ConcurrentModificationException
@@ -4561,27 +4501,7 @@ export const listDataCellsFilter: API.OperationMethod<
     items: "DataCellsFilters",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataCellsFilterRequest,
-  ListDataCellsFilterResponse,
-  ListDataCellsFilterError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataCellsFilterRequest,
-  ) => stream.Stream<
-    ListDataCellsFilterResponse,
-    ListDataCellsFilterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataCellsFilterRequest,
-  ) => stream.Stream<
-    DataCellsFilter,
-    ListDataCellsFilterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLakeFormationOptInsError =
   | AccessDeniedException
@@ -4633,27 +4553,7 @@ export const listLakeFormationOptIns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLakeFormationOptInsRequest,
-  ListLakeFormationOptInsResponse,
-  ListLakeFormationOptInsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLakeFormationOptInsRequest,
-  ) => stream.Stream<
-    ListLakeFormationOptInsResponse,
-    ListLakeFormationOptInsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLakeFormationOptInsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLakeFormationOptInsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLFTagExpressionsError =
   | AccessDeniedException
@@ -4704,27 +4604,7 @@ export const listLFTagExpressions: API.OperationMethod<
     items: "LFTagExpressions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLFTagExpressionsRequest,
-  ListLFTagExpressionsResponse,
-  ListLFTagExpressionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLFTagExpressionsRequest,
-  ) => stream.Stream<
-    ListLFTagExpressionsResponse,
-    ListLFTagExpressionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLFTagExpressionsRequest,
-  ) => stream.Stream<
-    LFTagExpression,
-    ListLFTagExpressionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLFTagsError =
   | AccessDeniedException
@@ -4775,27 +4655,7 @@ export const listLFTags: API.OperationMethod<
     items: "LFTags",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLFTagsRequest,
-  ListLFTagsResponse,
-  ListLFTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLFTagsRequest,
-  ) => stream.Stream<
-    ListLFTagsResponse,
-    ListLFTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLFTagsRequest,
-  ) => stream.Stream<
-    LFTagPair,
-    ListLFTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPermissionsError =
   | InternalServiceException
@@ -4849,27 +4709,7 @@ export const listPermissions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPermissionsRequest,
-  ListPermissionsResponse,
-  ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    ListPermissionsResponse,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourcesError =
   | InternalServiceException
@@ -4915,27 +4755,7 @@ export const listResources: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourcesRequest,
-  ListResourcesResponse,
-  ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    ListResourcesResponse,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTableStorageOptimizersError =
   | AccessDeniedException
@@ -4983,27 +4803,7 @@ export const listTableStorageOptimizers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTableStorageOptimizersRequest,
-  ListTableStorageOptimizersResponse,
-  ListTableStorageOptimizersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTableStorageOptimizersRequest,
-  ) => stream.Stream<
-    ListTableStorageOptimizersResponse,
-    ListTableStorageOptimizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTableStorageOptimizersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTableStorageOptimizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTransactionsError =
   | InternalServiceException
@@ -5051,27 +4851,7 @@ export const listTransactions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTransactionsRequest,
-  ListTransactionsResponse,
-  ListTransactionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTransactionsRequest,
-  ) => stream.Stream<
-    ListTransactionsResponse,
-    ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTransactionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutDataLakeSettingsError =
   | InternalServiceException
@@ -5259,27 +5039,7 @@ export const searchDatabasesByLFTags: API.OperationMethod<
     items: "DatabaseList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchDatabasesByLFTagsRequest,
-  SearchDatabasesByLFTagsResponse,
-  SearchDatabasesByLFTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchDatabasesByLFTagsRequest,
-  ) => stream.Stream<
-    SearchDatabasesByLFTagsResponse,
-    SearchDatabasesByLFTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchDatabasesByLFTagsRequest,
-  ) => stream.Stream<
-    TaggedDatabase,
-    SearchDatabasesByLFTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchTablesByLFTagsError =
   | AccessDeniedException
@@ -5332,27 +5092,7 @@ export const searchTablesByLFTags: API.OperationMethod<
     items: "TableList",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchTablesByLFTagsRequest,
-  SearchTablesByLFTagsResponse,
-  SearchTablesByLFTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTablesByLFTagsRequest,
-  ) => stream.Stream<
-    SearchTablesByLFTagsResponse,
-    SearchTablesByLFTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTablesByLFTagsRequest,
-  ) => stream.Stream<
-    TaggedTable,
-    SearchTablesByLFTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartQueryPlanningError =
   | AccessDeniedException

@@ -4314,27 +4314,7 @@ export const describeCustomKeyStores: API.OperationMethod<
     items: "CustomKeyStores",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeCustomKeyStoresRequest,
-  DescribeCustomKeyStoresResponse,
-  DescribeCustomKeyStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCustomKeyStoresRequest,
-  ) => stream.Stream<
-    DescribeCustomKeyStoresResponse,
-    DescribeCustomKeyStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCustomKeyStoresRequest,
-  ) => stream.Stream<
-    CustomKeyStoresListEntry,
-    DescribeCustomKeyStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeKeyError =
   | DependencyTimeoutException
@@ -6011,27 +5991,7 @@ export const listAliases: API.OperationMethod<
     items: "Aliases",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListAliasesRequest,
-  ListAliasesResponse,
-  ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    ListAliasesResponse,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    AliasListEntry,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGrantsError =
   | DependencyTimeoutException
@@ -6122,27 +6082,7 @@ export const listGrants: API.OperationMethod<
     items: "Grants",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListGrantsRequest,
-  ListGrantsResponse,
-  ListGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGrantsRequest,
-  ) => stream.Stream<
-    ListGrantsResponse,
-    ListGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGrantsRequest,
-  ) => stream.Stream<
-    GrantListEntry,
-    ListGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKeyPoliciesError =
   | DependencyTimeoutException
@@ -6208,27 +6148,7 @@ export const listKeyPolicies: API.OperationMethod<
     items: "PolicyNames",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeyPoliciesRequest,
-  ListKeyPoliciesResponse,
-  ListKeyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyPoliciesRequest,
-  ) => stream.Stream<
-    ListKeyPoliciesResponse,
-    ListKeyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyPoliciesRequest,
-  ) => stream.Stream<
-    PolicyNameType,
-    ListKeyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKeyRotationsError =
   | InvalidArnException
@@ -6310,27 +6230,7 @@ export const listKeyRotations: API.OperationMethod<
     items: "Rotations",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeyRotationsRequest,
-  ListKeyRotationsResponse,
-  ListKeyRotationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyRotationsRequest,
-  ) => stream.Stream<
-    ListKeyRotationsResponse,
-    ListKeyRotationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyRotationsRequest,
-  ) => stream.Stream<
-    RotationsListEntry,
-    ListKeyRotationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKeysError =
   | DependencyTimeoutException
@@ -6394,27 +6294,7 @@ export const listKeys: API.OperationMethod<
     items: "Keys",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeysRequest,
-  ListKeysResponse,
-  ListKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    ListKeysResponse,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    KeyListEntry,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceTagsError =
   | InvalidArnException
@@ -6485,27 +6365,7 @@ export const listResourceTags: API.OperationMethod<
     items: "Tags",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceTagsRequest,
-  ListResourceTagsResponse,
-  ListResourceTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTagsRequest,
-  ) => stream.Stream<
-    ListResourceTagsResponse,
-    ListResourceTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListResourceTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRetirableGrantsError =
   | DependencyTimeoutException
@@ -6600,27 +6460,7 @@ export const listRetirableGrants: API.OperationMethod<
     items: "Grants",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListRetirableGrantsRequest,
-  ListGrantsResponse,
-  ListRetirableGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRetirableGrantsRequest,
-  ) => stream.Stream<
-    ListGrantsResponse,
-    ListRetirableGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRetirableGrantsRequest,
-  ) => stream.Stream<
-    GrantListEntry,
-    ListRetirableGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutKeyPolicyError =
   | DependencyTimeoutException

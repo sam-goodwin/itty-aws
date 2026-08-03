@@ -2470,27 +2470,7 @@ export const listAttacks: API.OperationMethod<
     items: "AttackSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttacksRequest,
-  ListAttacksResponse,
-  ListAttacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttacksRequest,
-  ) => stream.Stream<
-    ListAttacksResponse,
-    ListAttacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttacksRequest,
-  ) => stream.Stream<
-    AttackSummary,
-    ListAttacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProtectionGroupsError =
   | InternalErrorException
@@ -2539,27 +2519,7 @@ export const listProtectionGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProtectionGroupsRequest,
-  ListProtectionGroupsResponse,
-  ListProtectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectionGroupsRequest,
-  ) => stream.Stream<
-    ListProtectionGroupsResponse,
-    ListProtectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectionGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProtectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProtectionsError =
   | InternalErrorException
@@ -2609,27 +2569,7 @@ export const listProtections: API.OperationMethod<
     items: "Protections",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProtectionsRequest,
-  ListProtectionsResponse,
-  ListProtectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectionsRequest,
-  ) => stream.Stream<
-    ListProtectionsResponse,
-    ListProtectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectionsRequest,
-  ) => stream.Stream<
-    Protection,
-    ListProtectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourcesInProtectionGroupError =
   | InternalErrorException
@@ -2675,27 +2615,7 @@ export const listResourcesInProtectionGroup: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourcesInProtectionGroupRequest,
-  ListResourcesInProtectionGroupResponse,
-  ListResourcesInProtectionGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesInProtectionGroupRequest,
-  ) => stream.Stream<
-    ListResourcesInProtectionGroupResponse,
-    ListResourcesInProtectionGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesInProtectionGroupRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourcesInProtectionGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalErrorException

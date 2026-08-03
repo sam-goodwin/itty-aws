@@ -2731,7 +2731,8 @@ export const instancesEvents: API.PaginatedOperationMethod<
   InstancesEventsRequest,
   Events,
   InstancesEventsError,
-  GcpOpContext
+  GcpOpContext,
+  Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: InstancesEventsRequest,
   output: Events,
@@ -2743,7 +2744,7 @@ export const instancesEvents: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListAclError = NotFound | Forbidden | GcpOpError;
 /** Returns the rules in the access control list for the calendar. */
@@ -2751,7 +2752,8 @@ export const listAcl: API.PaginatedOperationMethod<
   ListAclRequest,
   Acl,
   ListAclError,
-  GcpOpContext
+  GcpOpContext,
+  AclRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAclRequest,
   output: Acl,
@@ -2763,7 +2765,7 @@ export const listAcl: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListCalendarListError = NotFound | Forbidden | GcpOpError;
 /** Returns the calendars on the user's calendar list. */
@@ -2771,7 +2773,8 @@ export const listCalendarList: API.PaginatedOperationMethod<
   ListCalendarListRequest,
   CalendarList,
   ListCalendarListError,
-  GcpOpContext
+  GcpOpContext,
+  CalendarListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCalendarListRequest,
   output: CalendarList,
@@ -2783,7 +2786,7 @@ export const listCalendarList: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListEventsError = NotFound | Forbidden | GcpOpError;
 /** Returns events on the specified calendar. */
@@ -2791,7 +2794,8 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsRequest,
   Events,
   ListEventsError,
-  GcpOpContext
+  GcpOpContext,
+  Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: Events,
@@ -2803,7 +2807,7 @@ export const listEvents: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSettingsError = NotFound | Forbidden | GcpOpError;
 /** Returns all user settings for the authenticated user. */
@@ -2811,7 +2815,8 @@ export const listSettings: API.PaginatedOperationMethod<
   ListSettingsRequest,
   Settings,
   ListSettingsError,
-  GcpOpContext
+  GcpOpContext,
+  Setting
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingsRequest,
   output: Settings,
@@ -2823,7 +2828,7 @@ export const listSettings: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type MoveEventsError =
   | NotFound

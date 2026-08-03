@@ -1003,7 +1003,8 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
   ListProjectsLocationsWorkflowsExecutionsRequest,
   ListExecutionsResponse,
   ListProjectsLocationsWorkflowsExecutionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsRequest,
   output: ListExecutionsResponse,
@@ -1014,7 +1015,7 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkflowsExecutionsCallbacksError =
   | NotFound
@@ -1025,7 +1026,8 @@ export const listProjectsLocationsWorkflowsExecutionsCallbacks: API.PaginatedOpe
   ListProjectsLocationsWorkflowsExecutionsCallbacksRequest,
   ListCallbacksResponse,
   ListProjectsLocationsWorkflowsExecutionsCallbacksError,
-  GcpOpContext
+  GcpOpContext,
+  ListCallbacksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsCallbacksRequest,
   output: ListCallbacksResponse,
@@ -1036,7 +1038,7 @@ export const listProjectsLocationsWorkflowsExecutionsCallbacks: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkflowsExecutionsStepEntriesError =
   | NotFound
@@ -1047,7 +1049,8 @@ export const listProjectsLocationsWorkflowsExecutionsStepEntries: API.PaginatedO
   ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest,
   ListStepEntriesResponse,
   ListProjectsLocationsWorkflowsExecutionsStepEntriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListStepEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest,
   output: ListStepEntriesResponse,
@@ -1058,7 +1061,7 @@ export const listProjectsLocationsWorkflowsExecutionsStepEntries: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type TriggerPubsubExecutionProjectsLocationsWorkflowsError =
   | NotFound

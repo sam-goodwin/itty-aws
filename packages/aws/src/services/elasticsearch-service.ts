@@ -4237,27 +4237,7 @@ export const describeDomainAutoTunes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDomainAutoTunesRequest,
-  DescribeDomainAutoTunesResponse,
-  DescribeDomainAutoTunesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDomainAutoTunesRequest,
-  ) => stream.Stream<
-    DescribeDomainAutoTunesResponse,
-    DescribeDomainAutoTunesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDomainAutoTunesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDomainAutoTunesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDomainChangeProgressError =
   | BaseException
@@ -4442,27 +4422,7 @@ export const describeInboundCrossClusterSearchConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeInboundCrossClusterSearchConnectionsRequest,
-  DescribeInboundCrossClusterSearchConnectionsResponse,
-  DescribeInboundCrossClusterSearchConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    DescribeInboundCrossClusterSearchConnectionsResponse,
-    DescribeInboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeInboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeOutboundCrossClusterSearchConnectionsError =
   | DisabledOperationException
@@ -4503,27 +4463,7 @@ export const describeOutboundCrossClusterSearchConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeOutboundCrossClusterSearchConnectionsRequest,
-  DescribeOutboundCrossClusterSearchConnectionsResponse,
-  DescribeOutboundCrossClusterSearchConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOutboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    DescribeOutboundCrossClusterSearchConnectionsResponse,
-    DescribeOutboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOutboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeOutboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribePackagesError =
   | AccessDeniedException
@@ -4573,27 +4513,7 @@ export const describePackages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribePackagesRequest,
-  DescribePackagesResponse,
-  DescribePackagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePackagesRequest,
-  ) => stream.Stream<
-    DescribePackagesResponse,
-    DescribePackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribePackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedElasticsearchInstanceOfferingsError =
   | DisabledOperationException
@@ -4641,27 +4561,7 @@ export const describeReservedElasticsearchInstanceOfferings: API.OperationMethod
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedElasticsearchInstanceOfferingsRequest,
-  DescribeReservedElasticsearchInstanceOfferingsResponse,
-  DescribeReservedElasticsearchInstanceOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedElasticsearchInstanceOfferingsRequest,
-  ) => stream.Stream<
-    DescribeReservedElasticsearchInstanceOfferingsResponse,
-    DescribeReservedElasticsearchInstanceOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedElasticsearchInstanceOfferingsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReservedElasticsearchInstanceOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeReservedElasticsearchInstancesError =
   | DisabledOperationException
@@ -4709,27 +4609,7 @@ export const describeReservedElasticsearchInstances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeReservedElasticsearchInstancesRequest,
-  DescribeReservedElasticsearchInstancesResponse,
-  DescribeReservedElasticsearchInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedElasticsearchInstancesRequest,
-  ) => stream.Stream<
-    DescribeReservedElasticsearchInstancesResponse,
-    DescribeReservedElasticsearchInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedElasticsearchInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReservedElasticsearchInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeVpcEndpointsError =
   | BaseException
@@ -4874,27 +4754,7 @@ export const getPackageVersionHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetPackageVersionHistoryRequest,
-  GetPackageVersionHistoryResponse,
-  GetPackageVersionHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPackageVersionHistoryRequest,
-  ) => stream.Stream<
-    GetPackageVersionHistoryResponse,
-    GetPackageVersionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPackageVersionHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPackageVersionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetUpgradeHistoryError =
   | BaseException
@@ -4944,27 +4804,7 @@ export const getUpgradeHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetUpgradeHistoryRequest,
-  GetUpgradeHistoryResponse,
-  GetUpgradeHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUpgradeHistoryRequest,
-  ) => stream.Stream<
-    GetUpgradeHistoryResponse,
-    GetUpgradeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUpgradeHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUpgradeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetUpgradeStatusError =
   | BaseException
@@ -5065,27 +4905,7 @@ export const listDomainsForPackage: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainsForPackageRequest,
-  ListDomainsForPackageResponse,
-  ListDomainsForPackageError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsForPackageRequest,
-  ) => stream.Stream<
-    ListDomainsForPackageResponse,
-    ListDomainsForPackageError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsForPackageRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainsForPackageError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListElasticsearchInstanceTypesError =
   | BaseException
@@ -5133,27 +4953,7 @@ export const listElasticsearchInstanceTypes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListElasticsearchInstanceTypesRequest,
-  ListElasticsearchInstanceTypesResponse,
-  ListElasticsearchInstanceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListElasticsearchInstanceTypesRequest,
-  ) => stream.Stream<
-    ListElasticsearchInstanceTypesResponse,
-    ListElasticsearchInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListElasticsearchInstanceTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListElasticsearchInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListElasticsearchVersionsError =
   | BaseException
@@ -5201,27 +5001,7 @@ export const listElasticsearchVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListElasticsearchVersionsRequest,
-  ListElasticsearchVersionsResponse,
-  ListElasticsearchVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListElasticsearchVersionsRequest,
-  ) => stream.Stream<
-    ListElasticsearchVersionsResponse,
-    ListElasticsearchVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListElasticsearchVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListElasticsearchVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPackagesForDomainError =
   | AccessDeniedException
@@ -5271,27 +5051,7 @@ export const listPackagesForDomain: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPackagesForDomainRequest,
-  ListPackagesForDomainResponse,
-  ListPackagesForDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesForDomainRequest,
-  ) => stream.Stream<
-    ListPackagesForDomainResponse,
-    ListPackagesForDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesForDomainRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackagesForDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsError =
   | BaseException

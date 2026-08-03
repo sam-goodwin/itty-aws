@@ -5150,7 +5150,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -5161,7 +5162,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsActiveDirectoriesError =
   | NotFound
@@ -5172,7 +5173,8 @@ export const listProjectsLocationsActiveDirectories: API.PaginatedOperationMetho
   ListProjectsLocationsActiveDirectoriesRequest,
   ListActiveDirectoriesResponse,
   ListProjectsLocationsActiveDirectoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListActiveDirectoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsActiveDirectoriesRequest,
   output: ListActiveDirectoriesResponse,
@@ -5183,7 +5185,7 @@ export const listProjectsLocationsActiveDirectories: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBackupPoliciesError =
   | NotFound
@@ -5194,7 +5196,8 @@ export const listProjectsLocationsBackupPolicies: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupPoliciesRequest,
   ListBackupPoliciesResponse,
   ListProjectsLocationsBackupPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupPoliciesRequest,
   output: ListBackupPoliciesResponse,
@@ -5205,7 +5208,7 @@ export const listProjectsLocationsBackupPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBackupVaultsError =
   | NotFound
@@ -5216,7 +5219,8 @@ export const listProjectsLocationsBackupVaults: API.PaginatedOperationMethod<
   ListProjectsLocationsBackupVaultsRequest,
   ListBackupVaultsResponse,
   ListProjectsLocationsBackupVaultsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupVaultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupVaultsRequest,
   output: ListBackupVaultsResponse,
@@ -5227,7 +5231,7 @@ export const listProjectsLocationsBackupVaults: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBackupVaultsBackupsError =
   | NotFound
@@ -5238,7 +5242,8 @@ export const listProjectsLocationsBackupVaultsBackups: API.PaginatedOperationMet
   ListProjectsLocationsBackupVaultsBackupsRequest,
   ListBackupsResponse,
   ListProjectsLocationsBackupVaultsBackupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupVaultsBackupsRequest,
   output: ListBackupsResponse,
@@ -5249,7 +5254,7 @@ export const listProjectsLocationsBackupVaultsBackups: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsHostGroupsError =
   | NotFound
@@ -5260,7 +5265,8 @@ export const listProjectsLocationsHostGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsHostGroupsRequest,
   ListHostGroupsResponse,
   ListProjectsLocationsHostGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListHostGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsHostGroupsRequest,
   output: ListHostGroupsResponse,
@@ -5271,7 +5277,7 @@ export const listProjectsLocationsHostGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsKmsConfigsError =
   | NotFound
@@ -5282,7 +5288,8 @@ export const listProjectsLocationsKmsConfigs: API.PaginatedOperationMethod<
   ListProjectsLocationsKmsConfigsRequest,
   ListKmsConfigsResponse,
   ListProjectsLocationsKmsConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListKmsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKmsConfigsRequest,
   output: ListKmsConfigsResponse,
@@ -5293,7 +5300,7 @@ export const listProjectsLocationsKmsConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -5304,7 +5311,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -5315,7 +5323,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsStoragePoolsError =
   | NotFound
@@ -5326,7 +5334,8 @@ export const listProjectsLocationsStoragePools: API.PaginatedOperationMethod<
   ListProjectsLocationsStoragePoolsRequest,
   ListStoragePoolsResponse,
   ListProjectsLocationsStoragePoolsError,
-  GcpOpContext
+  GcpOpContext,
+  ListStoragePoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStoragePoolsRequest,
   output: ListStoragePoolsResponse,
@@ -5337,7 +5346,7 @@ export const listProjectsLocationsStoragePools: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsStoragePoolsBackupConfigsError =
   | NotFound
@@ -5348,7 +5357,8 @@ export const listProjectsLocationsStoragePoolsBackupConfigs: API.PaginatedOperat
   ListProjectsLocationsStoragePoolsBackupConfigsRequest,
   ListBackupConfigsResponse,
   ListProjectsLocationsStoragePoolsBackupConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStoragePoolsBackupConfigsRequest,
   output: ListBackupConfigsResponse,
@@ -5359,7 +5369,7 @@ export const listProjectsLocationsStoragePoolsBackupConfigs: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsVolumesError =
   | NotFound
@@ -5370,7 +5380,8 @@ export const listProjectsLocationsVolumes: API.PaginatedOperationMethod<
   ListProjectsLocationsVolumesRequest,
   ListVolumesResponse,
   ListProjectsLocationsVolumesError,
-  GcpOpContext
+  GcpOpContext,
+  ListVolumesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVolumesRequest,
   output: ListVolumesResponse,
@@ -5381,7 +5392,7 @@ export const listProjectsLocationsVolumes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsVolumesQuotaRulesError =
   | NotFound
@@ -5392,7 +5403,8 @@ export const listProjectsLocationsVolumesQuotaRules: API.PaginatedOperationMetho
   ListProjectsLocationsVolumesQuotaRulesRequest,
   ListQuotaRulesResponse,
   ListProjectsLocationsVolumesQuotaRulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListQuotaRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVolumesQuotaRulesRequest,
   output: ListQuotaRulesResponse,
@@ -5403,7 +5415,7 @@ export const listProjectsLocationsVolumesQuotaRules: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsVolumesReplicationsError =
   | NotFound
@@ -5414,7 +5426,8 @@ export const listProjectsLocationsVolumesReplications: API.PaginatedOperationMet
   ListProjectsLocationsVolumesReplicationsRequest,
   ListReplicationsResponse,
   ListProjectsLocationsVolumesReplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListReplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVolumesReplicationsRequest,
   output: ListReplicationsResponse,
@@ -5425,7 +5438,7 @@ export const listProjectsLocationsVolumesReplications: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsVolumesSnapshotsError =
   | NotFound
@@ -5436,7 +5449,8 @@ export const listProjectsLocationsVolumesSnapshots: API.PaginatedOperationMethod
   ListProjectsLocationsVolumesSnapshotsRequest,
   ListSnapshotsResponse,
   ListProjectsLocationsVolumesSnapshotsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSnapshotsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVolumesSnapshotsRequest,
   output: ListSnapshotsResponse,
@@ -5447,7 +5461,7 @@ export const listProjectsLocationsVolumesSnapshots: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsActiveDirectoriesError =
   | NotFound

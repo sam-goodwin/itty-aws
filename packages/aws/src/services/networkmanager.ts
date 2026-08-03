@@ -6645,27 +6645,7 @@ export const describeGlobalNetworks: API.OperationMethod<
     items: "GlobalNetworks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeGlobalNetworksRequest,
-  DescribeGlobalNetworksResponse,
-  DescribeGlobalNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGlobalNetworksRequest,
-  ) => stream.Stream<
-    DescribeGlobalNetworksResponse,
-    DescribeGlobalNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGlobalNetworksRequest,
-  ) => stream.Stream<
-    GlobalNetwork,
-    DescribeGlobalNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisassociateConnectPeerError =
   | AccessDeniedException
@@ -6907,27 +6887,7 @@ export const getConnections: API.OperationMethod<
     items: "Connections",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetConnectionsRequest,
-  GetConnectionsResponse,
-  GetConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConnectionsRequest,
-  ) => stream.Stream<
-    GetConnectionsResponse,
-    GetConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConnectionsRequest,
-  ) => stream.Stream<
-    Connection,
-    GetConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetConnectPeerError =
   | AccessDeniedException
@@ -7010,27 +6970,7 @@ export const getConnectPeerAssociations: API.OperationMethod<
     items: "ConnectPeerAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetConnectPeerAssociationsRequest,
-  GetConnectPeerAssociationsResponse,
-  GetConnectPeerAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConnectPeerAssociationsRequest,
-  ) => stream.Stream<
-    GetConnectPeerAssociationsResponse,
-    GetConnectPeerAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConnectPeerAssociationsRequest,
-  ) => stream.Stream<
-    ConnectPeerAssociation,
-    GetConnectPeerAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCoreNetworkError =
   | AccessDeniedException
@@ -7111,27 +7051,7 @@ export const getCoreNetworkChangeEvents: API.OperationMethod<
     items: "CoreNetworkChangeEvents",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCoreNetworkChangeEventsRequest,
-  GetCoreNetworkChangeEventsResponse,
-  GetCoreNetworkChangeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCoreNetworkChangeEventsRequest,
-  ) => stream.Stream<
-    GetCoreNetworkChangeEventsResponse,
-    GetCoreNetworkChangeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCoreNetworkChangeEventsRequest,
-  ) => stream.Stream<
-    CoreNetworkChangeEvent,
-    GetCoreNetworkChangeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCoreNetworkChangeSetError =
   | AccessDeniedException
@@ -7182,27 +7102,7 @@ export const getCoreNetworkChangeSet: API.OperationMethod<
     items: "CoreNetworkChanges",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCoreNetworkChangeSetRequest,
-  GetCoreNetworkChangeSetResponse,
-  GetCoreNetworkChangeSetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCoreNetworkChangeSetRequest,
-  ) => stream.Stream<
-    GetCoreNetworkChangeSetResponse,
-    GetCoreNetworkChangeSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCoreNetworkChangeSetRequest,
-  ) => stream.Stream<
-    CoreNetworkChange,
-    GetCoreNetworkChangeSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetCoreNetworkPolicyError =
   | AccessDeniedException
@@ -7286,27 +7186,7 @@ export const getCustomerGatewayAssociations: API.OperationMethod<
     items: "CustomerGatewayAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetCustomerGatewayAssociationsRequest,
-  GetCustomerGatewayAssociationsResponse,
-  GetCustomerGatewayAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCustomerGatewayAssociationsRequest,
-  ) => stream.Stream<
-    GetCustomerGatewayAssociationsResponse,
-    GetCustomerGatewayAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCustomerGatewayAssociationsRequest,
-  ) => stream.Stream<
-    CustomerGatewayAssociation,
-    GetCustomerGatewayAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDevicesError =
   | AccessDeniedException
@@ -7357,27 +7237,7 @@ export const getDevices: API.OperationMethod<
     items: "Devices",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetDevicesRequest,
-  GetDevicesResponse,
-  GetDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDevicesRequest,
-  ) => stream.Stream<
-    GetDevicesResponse,
-    GetDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDevicesRequest,
-  ) => stream.Stream<
-    Device,
-    GetDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDirectConnectGatewayAttachmentError =
   | AccessDeniedException
@@ -7459,27 +7319,7 @@ export const getLinkAssociations: API.OperationMethod<
     items: "LinkAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetLinkAssociationsRequest,
-  GetLinkAssociationsResponse,
-  GetLinkAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLinkAssociationsRequest,
-  ) => stream.Stream<
-    GetLinkAssociationsResponse,
-    GetLinkAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLinkAssociationsRequest,
-  ) => stream.Stream<
-    LinkAssociation,
-    GetLinkAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetLinksError =
   | AccessDeniedException
@@ -7532,27 +7372,7 @@ export const getLinks: API.OperationMethod<
     items: "Links",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetLinksRequest,
-  GetLinksResponse,
-  GetLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLinksRequest,
-  ) => stream.Stream<
-    GetLinksResponse,
-    GetLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLinksRequest,
-  ) => stream.Stream<
-    Link,
-    GetLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetNetworkResourceCountsError =
   | AccessDeniedException
@@ -7601,27 +7421,7 @@ export const getNetworkResourceCounts: API.OperationMethod<
     items: "NetworkResourceCounts",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetNetworkResourceCountsRequest,
-  GetNetworkResourceCountsResponse,
-  GetNetworkResourceCountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetNetworkResourceCountsRequest,
-  ) => stream.Stream<
-    GetNetworkResourceCountsResponse,
-    GetNetworkResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetNetworkResourceCountsRequest,
-  ) => stream.Stream<
-    NetworkResourceCount,
-    GetNetworkResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetNetworkResourceRelationshipsError =
   | AccessDeniedException
@@ -7672,27 +7472,7 @@ export const getNetworkResourceRelationships: API.OperationMethod<
     items: "Relationships",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetNetworkResourceRelationshipsRequest,
-  GetNetworkResourceRelationshipsResponse,
-  GetNetworkResourceRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetNetworkResourceRelationshipsRequest,
-  ) => stream.Stream<
-    GetNetworkResourceRelationshipsResponse,
-    GetNetworkResourceRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetNetworkResourceRelationshipsRequest,
-  ) => stream.Stream<
-    Relationship,
-    GetNetworkResourceRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetNetworkResourcesError =
   | AccessDeniedException
@@ -7745,27 +7525,7 @@ export const getNetworkResources: API.OperationMethod<
     items: "NetworkResources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetNetworkResourcesRequest,
-  GetNetworkResourcesResponse,
-  GetNetworkResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetNetworkResourcesRequest,
-  ) => stream.Stream<
-    GetNetworkResourcesResponse,
-    GetNetworkResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetNetworkResourcesRequest,
-  ) => stream.Stream<
-    NetworkResource,
-    GetNetworkResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetNetworkRoutesError =
   | AccessDeniedException
@@ -7846,27 +7606,7 @@ export const getNetworkTelemetry: API.OperationMethod<
     items: "NetworkTelemetry",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetNetworkTelemetryRequest,
-  GetNetworkTelemetryResponse,
-  GetNetworkTelemetryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetNetworkTelemetryRequest,
-  ) => stream.Stream<
-    GetNetworkTelemetryResponse,
-    GetNetworkTelemetryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetNetworkTelemetryRequest,
-  ) => stream.Stream<
-    NetworkTelemetry,
-    GetNetworkTelemetryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResourcePolicyError =
   | AccessDeniedException
@@ -7975,27 +7715,7 @@ export const getSites: API.OperationMethod<
     items: "Sites",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetSitesRequest,
-  GetSitesResponse,
-  GetSitesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSitesRequest,
-  ) => stream.Stream<
-    GetSitesResponse,
-    GetSitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSitesRequest,
-  ) => stream.Stream<
-    Site,
-    GetSitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetSiteToSiteVpnAttachmentError =
   | AccessDeniedException
@@ -8078,27 +7798,7 @@ export const getTransitGatewayConnectPeerAssociations: API.OperationMethod<
     items: "TransitGatewayConnectPeerAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTransitGatewayConnectPeerAssociationsRequest,
-  GetTransitGatewayConnectPeerAssociationsResponse,
-  GetTransitGatewayConnectPeerAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayConnectPeerAssociationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayConnectPeerAssociationsResponse,
-    GetTransitGatewayConnectPeerAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayConnectPeerAssociationsRequest,
-  ) => stream.Stream<
-    TransitGatewayConnectPeerAssociation,
-    GetTransitGatewayConnectPeerAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetTransitGatewayPeeringError =
   | AccessDeniedException
@@ -8180,27 +7880,7 @@ export const getTransitGatewayRegistrations: API.OperationMethod<
     items: "TransitGatewayRegistrations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetTransitGatewayRegistrationsRequest,
-  GetTransitGatewayRegistrationsResponse,
-  GetTransitGatewayRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTransitGatewayRegistrationsRequest,
-  ) => stream.Stream<
-    GetTransitGatewayRegistrationsResponse,
-    GetTransitGatewayRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTransitGatewayRegistrationsRequest,
-  ) => stream.Stream<
-    TransitGatewayRegistration,
-    GetTransitGatewayRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetTransitGatewayRouteTableAttachmentError =
   | AccessDeniedException
@@ -8311,27 +7991,7 @@ export const listAttachmentRoutingPolicyAssociations: API.OperationMethod<
     items: "AttachmentRoutingPolicyAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttachmentRoutingPolicyAssociationsRequest,
-  ListAttachmentRoutingPolicyAssociationsResponse,
-  ListAttachmentRoutingPolicyAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachmentRoutingPolicyAssociationsRequest,
-  ) => stream.Stream<
-    ListAttachmentRoutingPolicyAssociationsResponse,
-    ListAttachmentRoutingPolicyAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachmentRoutingPolicyAssociationsRequest,
-  ) => stream.Stream<
-    AttachmentRoutingPolicyAssociationSummary,
-    ListAttachmentRoutingPolicyAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAttachmentsError =
   | AccessDeniedException
@@ -8380,27 +8040,7 @@ export const listAttachments: API.OperationMethod<
     items: "Attachments",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAttachmentsRequest,
-  ListAttachmentsResponse,
-  ListAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachmentsRequest,
-  ) => stream.Stream<
-    ListAttachmentsResponse,
-    ListAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachmentsRequest,
-  ) => stream.Stream<
-    Attachment,
-    ListAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectPeersError =
   | AccessDeniedException
@@ -8449,27 +8089,7 @@ export const listConnectPeers: API.OperationMethod<
     items: "ConnectPeers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectPeersRequest,
-  ListConnectPeersResponse,
-  ListConnectPeersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectPeersRequest,
-  ) => stream.Stream<
-    ListConnectPeersResponse,
-    ListConnectPeersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectPeersRequest,
-  ) => stream.Stream<
-    ConnectPeerSummary,
-    ListConnectPeersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCoreNetworkPolicyVersionsError =
   | AccessDeniedException
@@ -8520,27 +8140,7 @@ export const listCoreNetworkPolicyVersions: API.OperationMethod<
     items: "CoreNetworkPolicyVersions",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCoreNetworkPolicyVersionsRequest,
-  ListCoreNetworkPolicyVersionsResponse,
-  ListCoreNetworkPolicyVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoreNetworkPolicyVersionsRequest,
-  ) => stream.Stream<
-    ListCoreNetworkPolicyVersionsResponse,
-    ListCoreNetworkPolicyVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoreNetworkPolicyVersionsRequest,
-  ) => stream.Stream<
-    CoreNetworkPolicyVersion,
-    ListCoreNetworkPolicyVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCoreNetworkPrefixListAssociationsError =
   | AccessDeniedException
@@ -8591,27 +8191,7 @@ export const listCoreNetworkPrefixListAssociations: API.OperationMethod<
     items: "PrefixListAssociations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCoreNetworkPrefixListAssociationsRequest,
-  ListCoreNetworkPrefixListAssociationsResponse,
-  ListCoreNetworkPrefixListAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoreNetworkPrefixListAssociationsRequest,
-  ) => stream.Stream<
-    ListCoreNetworkPrefixListAssociationsResponse,
-    ListCoreNetworkPrefixListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoreNetworkPrefixListAssociationsRequest,
-  ) => stream.Stream<
-    PrefixListAssociation,
-    ListCoreNetworkPrefixListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCoreNetworkRoutingInformationError =
   | AccessDeniedException
@@ -8662,27 +8242,7 @@ export const listCoreNetworkRoutingInformation: API.OperationMethod<
     items: "CoreNetworkRoutingInformation",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCoreNetworkRoutingInformationRequest,
-  ListCoreNetworkRoutingInformationResponse,
-  ListCoreNetworkRoutingInformationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoreNetworkRoutingInformationRequest,
-  ) => stream.Stream<
-    ListCoreNetworkRoutingInformationResponse,
-    ListCoreNetworkRoutingInformationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoreNetworkRoutingInformationRequest,
-  ) => stream.Stream<
-    CoreNetworkRoutingInformation,
-    ListCoreNetworkRoutingInformationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCoreNetworksError =
   | AccessDeniedException
@@ -8731,27 +8291,7 @@ export const listCoreNetworks: API.OperationMethod<
     items: "CoreNetworks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCoreNetworksRequest,
-  ListCoreNetworksResponse,
-  ListCoreNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoreNetworksRequest,
-  ) => stream.Stream<
-    ListCoreNetworksResponse,
-    ListCoreNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoreNetworksRequest,
-  ) => stream.Stream<
-    CoreNetworkSummary,
-    ListCoreNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationServiceAccessStatusError = CommonErrors;
 /**
@@ -8818,27 +8358,7 @@ export const listPeerings: API.OperationMethod<
     items: "Peerings",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPeeringsRequest,
-  ListPeeringsResponse,
-  ListPeeringsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPeeringsRequest,
-  ) => stream.Stream<
-    ListPeeringsResponse,
-    ListPeeringsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPeeringsRequest,
-  ) => stream.Stream<
-    Peering,
-    ListPeeringsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

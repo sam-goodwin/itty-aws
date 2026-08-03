@@ -1339,27 +1339,7 @@ export const listLanguages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLanguagesRequest,
-  ListLanguagesResponse,
-  ListLanguagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLanguagesRequest,
-  ) => stream.Stream<
-    ListLanguagesResponse,
-    ListLanguagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLanguagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLanguagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListParallelDataError =
   | InternalServerException
@@ -1405,27 +1385,7 @@ export const listParallelData: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListParallelDataRequest,
-  ListParallelDataResponse,
-  ListParallelDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParallelDataRequest,
-  ) => stream.Stream<
-    ListParallelDataResponse,
-    ListParallelDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParallelDataRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParallelDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1499,27 +1459,7 @@ export const listTerminologies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTerminologiesRequest,
-  ListTerminologiesResponse,
-  ListTerminologiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTerminologiesRequest,
-  ) => stream.Stream<
-    ListTerminologiesResponse,
-    ListTerminologiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTerminologiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTerminologiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTextTranslationJobsError =
   | InternalServerException
@@ -1567,27 +1507,7 @@ export const listTextTranslationJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTextTranslationJobsRequest,
-  ListTextTranslationJobsResponse,
-  ListTextTranslationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTextTranslationJobsRequest,
-  ) => stream.Stream<
-    ListTextTranslationJobsResponse,
-    ListTextTranslationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTextTranslationJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTextTranslationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartTextTranslationJobError =
   | InternalServerException

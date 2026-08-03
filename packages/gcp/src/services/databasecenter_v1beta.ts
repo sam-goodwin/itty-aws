@@ -2545,7 +2545,8 @@ export const aggregateFleetV1beta: API.PaginatedOperationMethod<
   AggregateFleetV1betaRequest,
   AggregateFleetResponse,
   AggregateFleetV1betaError,
-  GcpOpContext
+  GcpOpContext,
+  AggregateFleetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: AggregateFleetV1betaRequest,
   output: AggregateFleetResponse,
@@ -2556,7 +2557,7 @@ export const aggregateFleetV1beta: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type AggregateIssueStatsV1betaError =
   | NotFound
@@ -2684,7 +2685,8 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
   QueryProductsV1betaRequest,
   QueryProductsResponse,
   QueryProductsV1betaError,
-  GcpOpContext
+  GcpOpContext,
+  QueryProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryProductsV1betaRequest,
   output: QueryProductsResponse,
@@ -2695,4 +2697,4 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

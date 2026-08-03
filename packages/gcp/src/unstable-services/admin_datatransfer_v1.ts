@@ -386,7 +386,8 @@ export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ApplicationsListResponse,
   ListApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  ApplicationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ApplicationsListResponse,
@@ -397,7 +398,7 @@ export const listApplications: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTransfersError = NotFound | Forbidden | GcpOpError;
 /** Lists the transfers for a customer by source user, destination user, or status. */
@@ -405,7 +406,8 @@ export const listTransfers: API.PaginatedOperationMethod<
   ListTransfersRequest,
   DataTransfersListResponse,
   ListTransfersError,
-  GcpOpContext
+  GcpOpContext,
+  DataTransfersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransfersRequest,
   output: DataTransfersListResponse,
@@ -416,4 +418,4 @@ export const listTransfers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

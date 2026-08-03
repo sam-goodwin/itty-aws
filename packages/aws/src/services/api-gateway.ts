@@ -6240,27 +6240,7 @@ export const getApiKeys: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetApiKeysRequest,
-  ApiKeys,
-  GetApiKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetApiKeysRequest,
-  ) => stream.Stream<
-    ApiKeys,
-    GetApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetApiKeysRequest,
-  ) => stream.Stream<
-    ApiKey,
-    GetApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetAuthorizerError =
   | BadRequestException
@@ -6393,27 +6373,7 @@ export const getBasePathMappings: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetBasePathMappingsRequest,
-  BasePathMappings,
-  GetBasePathMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBasePathMappingsRequest,
-  ) => stream.Stream<
-    BasePathMappings,
-    GetBasePathMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBasePathMappingsRequest,
-  ) => stream.Stream<
-    BasePathMapping,
-    GetBasePathMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetClientCertificateError =
   | BadRequestException
@@ -6490,27 +6450,7 @@ export const getClientCertificates: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetClientCertificatesRequest,
-  ClientCertificates,
-  GetClientCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetClientCertificatesRequest,
-  ) => stream.Stream<
-    ClientCertificates,
-    GetClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetClientCertificatesRequest,
-  ) => stream.Stream<
-    ClientCertificate,
-    GetClientCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDeploymentError =
   | BadRequestException
@@ -6591,27 +6531,7 @@ export const getDeployments: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetDeploymentsRequest,
-  Deployments,
-  GetDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDeploymentsRequest,
-  ) => stream.Stream<
-    Deployments,
-    GetDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDeploymentsRequest,
-  ) => stream.Stream<
-    Deployment,
-    GetDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDocumentationPartError =
   | BadRequestException
@@ -6822,27 +6742,7 @@ export const getDomainNames: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetDomainNamesRequest,
-  DomainNames,
-  GetDomainNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDomainNamesRequest,
-  ) => stream.Stream<
-    DomainNames,
-    GetDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDomainNamesRequest,
-  ) => stream.Stream<
-    DomainName,
-    GetDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetExportError =
   | BadRequestException
@@ -7107,27 +7007,7 @@ export const getModels: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetModelsRequest,
-  Models,
-  GetModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetModelsRequest,
-  ) => stream.Stream<
-    Models,
-    GetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetModelsRequest,
-  ) => stream.Stream<
-    Model,
-    GetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetModelTemplateError =
   | BadRequestException
@@ -7282,27 +7162,7 @@ export const getResources: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourcesRequest,
-  Resources,
-  GetResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesRequest,
-  ) => stream.Stream<
-    Resources,
-    GetResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesRequest,
-  ) => stream.Stream<
-    Resource,
-    GetResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetRestApiError =
   | BadRequestException
@@ -7379,27 +7239,7 @@ export const getRestApis: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetRestApisRequest,
-  RestApis,
-  GetRestApisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRestApisRequest,
-  ) => stream.Stream<
-    RestApis,
-    GetRestApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRestApisRequest,
-  ) => stream.Stream<
-    RestApi,
-    GetRestApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetSdkError =
   | BadRequestException
@@ -7628,27 +7468,7 @@ export const getUsage: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetUsageRequest,
-  Usage,
-  GetUsageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsageRequest,
-  ) => stream.Stream<
-    Usage,
-    GetUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsageRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetUsagePlanError =
   | BadRequestException
@@ -7753,27 +7573,7 @@ export const getUsagePlanKeys: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetUsagePlanKeysRequest,
-  UsagePlanKeys,
-  GetUsagePlanKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsagePlanKeysRequest,
-  ) => stream.Stream<
-    UsagePlanKeys,
-    GetUsagePlanKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsagePlanKeysRequest,
-  ) => stream.Stream<
-    UsagePlanKey,
-    GetUsagePlanKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetUsagePlansError =
   | BadRequestException
@@ -7822,27 +7622,7 @@ export const getUsagePlans: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetUsagePlansRequest,
-  UsagePlans,
-  GetUsagePlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsagePlansRequest,
-  ) => stream.Stream<
-    UsagePlans,
-    GetUsagePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsagePlansRequest,
-  ) => stream.Stream<
-    UsagePlan,
-    GetUsagePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetVpcLinkError =
   | BadRequestException
@@ -7919,27 +7699,7 @@ export const getVpcLinks: API.OperationMethod<
     items: "items",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  GetVpcLinksRequest,
-  VpcLinks,
-  GetVpcLinksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetVpcLinksRequest,
-  ) => stream.Stream<
-    VpcLinks,
-    GetVpcLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetVpcLinksRequest,
-  ) => stream.Stream<
-    VpcLink,
-    GetVpcLinksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ImportApiKeysError =
   | BadRequestException

@@ -1682,7 +1682,8 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesRequest,
@@ -1693,7 +1694,7 @@ export const listRules: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchConfigError = CloudflareOpError;
 /** Update fields in an existing network monitoring configuration. */

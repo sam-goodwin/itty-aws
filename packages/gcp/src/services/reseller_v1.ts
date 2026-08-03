@@ -985,7 +985,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   Subscriptions,
   ListSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  Subscriptions
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: Subscriptions,
@@ -996,7 +997,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchCustomersError =
   | NotFound

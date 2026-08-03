@@ -3108,27 +3108,7 @@ export const listAssistantAssociations: API.OperationMethod<
     items: "assistantAssociationSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssistantAssociationsRequest,
-  ListAssistantAssociationsResponse,
-  ListAssistantAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssistantAssociationsRequest,
-  ) => stream.Stream<
-    ListAssistantAssociationsResponse,
-    ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssistantAssociationsRequest,
-  ) => stream.Stream<
-    AssistantAssociationSummary,
-    ListAssistantAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssistantsError =
   | AccessDeniedException
@@ -3170,27 +3150,7 @@ export const listAssistants: API.OperationMethod<
     items: "assistantSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssistantsRequest,
-  ListAssistantsResponse,
-  ListAssistantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssistantsRequest,
-  ) => stream.Stream<
-    ListAssistantsResponse,
-    ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssistantsRequest,
-  ) => stream.Stream<
-    AssistantSummary,
-    ListAssistantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListContentsError =
   | AccessDeniedException
@@ -3237,27 +3197,7 @@ export const listContents: API.OperationMethod<
     items: "contentSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListContentsRequest,
-  ListContentsResponse,
-  ListContentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContentsRequest,
-  ) => stream.Stream<
-    ListContentsResponse,
-    ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContentsRequest,
-  ) => stream.Stream<
-    ContentSummary,
-    ListContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListImportJobsError =
   | AccessDeniedException
@@ -3299,27 +3239,7 @@ export const listImportJobs: API.OperationMethod<
     items: "importJobSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListImportJobsRequest,
-  ListImportJobsResponse,
-  ListImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ListImportJobsResponse,
-    ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ImportJobSummary,
-    ListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListKnowledgeBasesError =
   | AccessDeniedException
@@ -3361,27 +3281,7 @@ export const listKnowledgeBases: API.OperationMethod<
     items: "knowledgeBaseSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKnowledgeBasesRequest,
-  ListKnowledgeBasesResponse,
-  ListKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    ListKnowledgeBasesResponse,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    KnowledgeBaseSummary,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListQuickResponsesError =
   | AccessDeniedException
@@ -3428,27 +3328,7 @@ export const listQuickResponses: API.OperationMethod<
     items: "quickResponseSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListQuickResponsesRequest,
-  ListQuickResponsesResponse,
-  ListQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuickResponsesRequest,
-  ) => stream.Stream<
-    ListQuickResponsesResponse,
-    ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuickResponsesRequest,
-  ) => stream.Stream<
-    QuickResponseSummary,
-    ListQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3544,27 +3424,7 @@ export const queryAssistant: API.OperationMethod<
     items: "results",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  QueryAssistantRequest,
-  QueryAssistantResponse,
-  QueryAssistantError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryAssistantRequest,
-  ) => stream.Stream<
-    QueryAssistantResponse,
-    QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryAssistantRequest,
-  ) => stream.Stream<
-    ResultData,
-    QueryAssistantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RemoveKnowledgeBaseTemplateUriError =
   | AccessDeniedException
@@ -3638,27 +3498,7 @@ export const searchContent: API.OperationMethod<
     items: "contentSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchContentRequest,
-  SearchContentResponse,
-  SearchContentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContentRequest,
-  ) => stream.Stream<
-    SearchContentResponse,
-    SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContentRequest,
-  ) => stream.Stream<
-    ContentSummary,
-    SearchContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchQuickResponsesError =
   | AccessDeniedException
@@ -3707,27 +3547,7 @@ export const searchQuickResponses: API.OperationMethod<
     items: "results",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchQuickResponsesRequest,
-  SearchQuickResponsesResponse,
-  SearchQuickResponsesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuickResponsesRequest,
-  ) => stream.Stream<
-    SearchQuickResponsesResponse,
-    SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuickResponsesRequest,
-  ) => stream.Stream<
-    QuickResponseSearchResultData,
-    SearchQuickResponsesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SearchSessionsError =
   | AccessDeniedException
@@ -3774,27 +3594,7 @@ export const searchSessions: API.OperationMethod<
     items: "sessionSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchSessionsRequest,
-  SearchSessionsResponse,
-  SearchSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSessionsRequest,
-  ) => stream.Stream<
-    SearchSessionsResponse,
-    SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    SearchSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartContentUploadError =
   | AccessDeniedException

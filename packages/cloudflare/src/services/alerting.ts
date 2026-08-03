@@ -4117,7 +4117,8 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
   GetDestinationPagerdutyRequest,
   GetDestinationPagerdutyResponse,
   GetDestinationPagerdutyError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DestinationsPagerdutyGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetDestinationPagerdutyRequest,
@@ -4128,7 +4129,7 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetDestinationWebhookError =
   | InvalidRoute
@@ -4232,7 +4233,8 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
   ListDestinationWebhooksRequest,
   ListDestinationWebhooksResponse,
   ListDestinationWebhooksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DestinationsWebhooksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDestinationWebhooksRequest,
@@ -4243,7 +4245,7 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListHistoriesError = CloudflareOpError;
 /** Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90). */
@@ -4251,7 +4253,8 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesRequest,
   ListHistoriesResponse,
   ListHistoriesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  HistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListHistoriesRequest,
@@ -4268,7 +4271,7 @@ export const listHistories: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPoliciesError = CloudflareOpError;
 /** Get a list of all Notification policies. */
@@ -4276,7 +4279,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPoliciesRequest,
@@ -4287,7 +4291,7 @@ export const listPolicies: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListSilencesError = CloudflareOpError;
 /** Gets a list of silences for an account. */
@@ -4295,7 +4299,8 @@ export const listSilences: API.PaginatedOperationMethod<
   ListSilencesRequest,
   ListSilencesResponse,
   ListSilencesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SilencesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSilencesRequest,
@@ -4306,7 +4311,7 @@ export const listSilences: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateDestinationWebhookError =
   | InvalidRoute
@@ -4369,7 +4374,8 @@ export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceRequest,
   UpdateSilenceResponse,
   UpdateSilenceError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SilencesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: UpdateSilenceRequest,
@@ -4385,4 +4391,4 @@ export const updateSilence: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;

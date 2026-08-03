@@ -729,27 +729,7 @@ export const listRecords: API.OperationMethod<
     items: "RecordIdentifiers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecordsRequest,
-  ListRecordsResponse,
-  ListRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecordsRequest,
-  ) => stream.Stream<
-    ListRecordsResponse,
-    ListRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecordsRequest,
-  ) => stream.Stream<
-    ValueAsString,
-    ListRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutRecordError =
   | AccessForbidden

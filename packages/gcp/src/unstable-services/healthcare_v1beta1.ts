@@ -9633,7 +9633,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -9644,7 +9645,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsError =
   | NotFound
@@ -9655,7 +9656,8 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
   ListProjectsLocationsDatasetsRequest,
   ListDatasetsResponse,
   ListProjectsLocationsDatasetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsRequest,
   output: ListDatasetsResponse,
@@ -9666,7 +9668,7 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsConsentStoresError =
   | NotFound
@@ -9677,7 +9679,8 @@ export const listProjectsLocationsDatasetsConsentStores: API.PaginatedOperationM
   ListProjectsLocationsDatasetsConsentStoresRequest,
   ListConsentStoresResponse,
   ListProjectsLocationsDatasetsConsentStoresError,
-  GcpOpContext
+  GcpOpContext,
+  ListConsentStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresRequest,
   output: ListConsentStoresResponse,
@@ -9688,7 +9691,7 @@ export const listProjectsLocationsDatasetsConsentStores: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
   NotFound | Forbidden | GcpOpError;
@@ -9697,7 +9700,8 @@ export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API
   ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   ListAttributeDefinitionsResponse,
   ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttributeDefinitionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   output: ListAttributeDefinitionsResponse,
@@ -9708,7 +9712,7 @@ export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsConsentStoresConsentArtifactsError =
   | NotFound
@@ -9719,7 +9723,8 @@ export const listProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.Pag
   ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest,
   ListConsentArtifactsResponse,
   ListProjectsLocationsDatasetsConsentStoresConsentArtifactsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConsentArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest,
   output: ListConsentArtifactsResponse,
@@ -9730,7 +9735,7 @@ export const listProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.Pag
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsConsentStoresConsentsError =
   | NotFound
@@ -9741,7 +9746,8 @@ export const listProjectsLocationsDatasetsConsentStoresConsents: API.PaginatedOp
   ListProjectsLocationsDatasetsConsentStoresConsentsRequest,
   ListConsentsResponse,
   ListProjectsLocationsDatasetsConsentStoresConsentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConsentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: ListConsentsResponse,
@@ -9752,7 +9758,7 @@ export const listProjectsLocationsDatasetsConsentStoresConsents: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
   | NotFound
@@ -9763,7 +9769,8 @@ export const listProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Pag
   ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   ListUserDataMappingsResponse,
   ListProjectsLocationsDatasetsConsentStoresUserDataMappingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListUserDataMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: ListUserDataMappingsResponse,
@@ -9774,7 +9781,7 @@ export const listProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Pag
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsDicomStoresError =
   | NotFound
@@ -9785,7 +9792,8 @@ export const listProjectsLocationsDatasetsDicomStores: API.PaginatedOperationMet
   ListProjectsLocationsDatasetsDicomStoresRequest,
   ListDicomStoresResponse,
   ListProjectsLocationsDatasetsDicomStoresError,
-  GcpOpContext
+  GcpOpContext,
+  ListDicomStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsDicomStoresRequest,
   output: ListDicomStoresResponse,
@@ -9796,7 +9804,7 @@ export const listProjectsLocationsDatasetsDicomStores: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsFhirStoresError =
   | NotFound
@@ -9807,7 +9815,8 @@ export const listProjectsLocationsDatasetsFhirStores: API.PaginatedOperationMeth
   ListProjectsLocationsDatasetsFhirStoresRequest,
   ListFhirStoresResponse,
   ListProjectsLocationsDatasetsFhirStoresError,
-  GcpOpContext
+  GcpOpContext,
+  ListFhirStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsFhirStoresRequest,
   output: ListFhirStoresResponse,
@@ -9818,7 +9827,7 @@ export const listProjectsLocationsDatasetsFhirStores: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsHl7V2StoresError =
   | NotFound
@@ -9829,7 +9838,8 @@ export const listProjectsLocationsDatasetsHl7V2Stores: API.PaginatedOperationMet
   ListProjectsLocationsDatasetsHl7V2StoresRequest,
   ListHl7V2StoresResponse,
   ListProjectsLocationsDatasetsHl7V2StoresError,
-  GcpOpContext
+  GcpOpContext,
+  ListHl7V2StoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsHl7V2StoresRequest,
   output: ListHl7V2StoresResponse,
@@ -9840,7 +9850,7 @@ export const listProjectsLocationsDatasetsHl7V2Stores: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsHl7V2StoresMessagesError =
   | NotFound
@@ -9851,7 +9861,8 @@ export const listProjectsLocationsDatasetsHl7V2StoresMessages: API.PaginatedOper
   ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   ListMessagesResponse,
   ListProjectsLocationsDatasetsHl7V2StoresMessagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: ListMessagesResponse,
@@ -9862,7 +9873,7 @@ export const listProjectsLocationsDatasetsHl7V2StoresMessages: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsDatasetsOperationsError =
   | NotFound
@@ -9873,7 +9884,8 @@ export const listProjectsLocationsDatasetsOperations: API.PaginatedOperationMeth
   ListProjectsLocationsDatasetsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsDatasetsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsOperationsRequest,
   output: ListOperationsResponse,
@@ -9884,7 +9896,7 @@ export const listProjectsLocationsDatasetsOperations: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsError =
   | NotFound
@@ -9895,7 +9907,8 @@ export const listRevisionsProjectsLocationsDatasetsConsentStoresConsents: API.Pa
   ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest,
   ListConsentRevisionsResponse,
   ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConsentRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: ListConsentRevisionsResponse,
@@ -9906,7 +9919,7 @@ export const listRevisionsProjectsLocationsDatasetsConsentStoresConsents: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type Observation_lastnProjectsLocationsDatasetsFhirStoresFhirError =
   | NotFound

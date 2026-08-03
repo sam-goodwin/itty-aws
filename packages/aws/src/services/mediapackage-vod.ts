@@ -1947,27 +1947,7 @@ export const listAssets: API.OperationMethod<
     items: "Assets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssetsRequest,
-  ListAssetsResponse,
-  ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    ListAssetsResponse,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    AssetShallow,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPackagingConfigurationsError =
   | ForbiddenException
@@ -2020,27 +2000,7 @@ export const listPackagingConfigurations: API.OperationMethod<
     items: "PackagingConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPackagingConfigurationsRequest,
-  ListPackagingConfigurationsResponse,
-  ListPackagingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagingConfigurationsRequest,
-  ) => stream.Stream<
-    ListPackagingConfigurationsResponse,
-    ListPackagingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagingConfigurationsRequest,
-  ) => stream.Stream<
-    PackagingConfiguration,
-    ListPackagingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPackagingGroupsError =
   | ForbiddenException
@@ -2093,27 +2053,7 @@ export const listPackagingGroups: API.OperationMethod<
     items: "PackagingGroups",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPackagingGroupsRequest,
-  ListPackagingGroupsResponse,
-  ListPackagingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagingGroupsRequest,
-  ) => stream.Stream<
-    ListPackagingGroupsResponse,
-    ListPackagingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagingGroupsRequest,
-  ) => stream.Stream<
-    PackagingGroup,
-    ListPackagingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = CommonErrors;
 /**

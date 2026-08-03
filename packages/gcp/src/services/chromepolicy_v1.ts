@@ -1730,7 +1730,8 @@ export const listCustomersPolicySchemas: API.PaginatedOperationMethod<
   ListCustomersPolicySchemasRequest,
   GoogleChromePolicyVersionsV1ListPolicySchemasResponse,
   ListCustomersPolicySchemasError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromePolicyVersionsV1ListPolicySchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersPolicySchemasRequest,
   output: GoogleChromePolicyVersionsV1ListPolicySchemasResponse,
@@ -1741,7 +1742,7 @@ export const listCustomersPolicySchemas: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGroupPriorityOrderingCustomersPoliciesGroupsError =
   | NotFound

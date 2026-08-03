@@ -2899,7 +2899,8 @@ export const listBiddersAuctionPackages: API.PaginatedOperationMethod<
   ListBiddersAuctionPackagesRequest,
   ListAuctionPackagesResponse,
   ListBiddersAuctionPackagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuctionPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAuctionPackagesRequest,
   output: ListAuctionPackagesResponse,
@@ -2910,7 +2911,7 @@ export const listBiddersAuctionPackages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBiddersFinalizedDealsError = NotFound | Forbidden | GcpOpError;
 /** Lists finalized deals. Use the URL path "/v1/buyers/{accountId}/finalizedDeals" to list finalized deals for the current buyer and its clients. Bidders can use the URL path "/v1/bidders/{accountId}/finalizedDeals" to list finalized deals for the bidder, its buyers and all their clients. */
@@ -2918,7 +2919,8 @@ export const listBiddersFinalizedDeals: API.PaginatedOperationMethod<
   ListBiddersFinalizedDealsRequest,
   ListFinalizedDealsResponse,
   ListBiddersFinalizedDealsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFinalizedDealsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFinalizedDealsRequest,
   output: ListFinalizedDealsResponse,
@@ -2929,7 +2931,7 @@ export const listBiddersFinalizedDeals: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersAuctionPackagesError = NotFound | Forbidden | GcpOpError;
 /** List the auction packages. Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to list auction packages for the current buyer and its clients. Bidders can use the URL path "/v1/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners, its buyers, and all their clients. */
@@ -2937,7 +2939,8 @@ export const listBuyersAuctionPackages: API.PaginatedOperationMethod<
   ListBuyersAuctionPackagesRequest,
   ListAuctionPackagesResponse,
   ListBuyersAuctionPackagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuctionPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersAuctionPackagesRequest,
   output: ListAuctionPackagesResponse,
@@ -2948,7 +2951,7 @@ export const listBuyersAuctionPackages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersClientsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the clients for the current buyer. */
@@ -2956,7 +2959,8 @@ export const listBuyersClients: API.PaginatedOperationMethod<
   ListBuyersClientsRequest,
   ListClientsResponse,
   ListBuyersClientsError,
-  GcpOpContext
+  GcpOpContext,
+  ListClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersClientsRequest,
   output: ListClientsResponse,
@@ -2967,7 +2971,7 @@ export const listBuyersClients: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersClientsUsersError = NotFound | Forbidden | GcpOpError;
 /** Lists all client users for a specified client. */
@@ -2975,7 +2979,8 @@ export const listBuyersClientsUsers: API.PaginatedOperationMethod<
   ListBuyersClientsUsersRequest,
   ListClientUsersResponse,
   ListBuyersClientsUsersError,
-  GcpOpContext
+  GcpOpContext,
+  ListClientUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersClientsUsersRequest,
   output: ListClientUsersResponse,
@@ -2986,7 +2991,7 @@ export const listBuyersClientsUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersFinalizedDealsError = NotFound | Forbidden | GcpOpError;
 /** Lists finalized deals. Use the URL path "/v1/buyers/{accountId}/finalizedDeals" to list finalized deals for the current buyer and its clients. Bidders can use the URL path "/v1/bidders/{accountId}/finalizedDeals" to list finalized deals for the bidder, its buyers and all their clients. */
@@ -2994,7 +2999,8 @@ export const listBuyersFinalizedDeals: API.PaginatedOperationMethod<
   ListBuyersFinalizedDealsRequest,
   ListFinalizedDealsResponse,
   ListBuyersFinalizedDealsError,
-  GcpOpContext
+  GcpOpContext,
+  ListFinalizedDealsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFinalizedDealsRequest,
   output: ListFinalizedDealsResponse,
@@ -3005,7 +3011,7 @@ export const listBuyersFinalizedDeals: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersProposalsError = NotFound | Forbidden | GcpOpError;
 /** Lists proposals. A filter expression using [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) may be specified to filter the results. */
@@ -3013,7 +3019,8 @@ export const listBuyersProposals: API.PaginatedOperationMethod<
   ListBuyersProposalsRequest,
   ListProposalsResponse,
   ListBuyersProposalsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersProposalsRequest,
   output: ListProposalsResponse,
@@ -3024,7 +3031,7 @@ export const listBuyersProposals: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersProposalsDealsError = NotFound | Forbidden | GcpOpError;
 /** Lists all deals in a proposal. To retrieve only the finalized revision deals regardless if a deal is being renegotiated, see the FinalizedDeals resource. */
@@ -3032,7 +3039,8 @@ export const listBuyersProposalsDeals: API.PaginatedOperationMethod<
   ListBuyersProposalsDealsRequest,
   ListDealsResponse,
   ListBuyersProposalsDealsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDealsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersProposalsDealsRequest,
   output: ListDealsResponse,
@@ -3043,7 +3051,7 @@ export const listBuyersProposalsDeals: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBuyersPublisherProfilesError =
   | NotFound
@@ -3054,7 +3062,8 @@ export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
   ListBuyersPublisherProfilesRequest,
   ListPublisherProfilesResponse,
   ListBuyersPublisherProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPublisherProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersPublisherProfilesRequest,
   output: ListPublisherProfilesResponse,
@@ -3065,7 +3074,7 @@ export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchBuyersClientsError =
   | NotFound

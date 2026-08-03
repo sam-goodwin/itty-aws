@@ -441,7 +441,8 @@ export const listDetections: API.PaginatedOperationMethod<
   ListDetectionsRequest,
   ListDetectionsResponse,
   ListDetectionsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  DetectionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListDetectionsRequest,
@@ -457,7 +458,7 @@ export const listDetections: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateDetectionError =
   | DetectionNotFound

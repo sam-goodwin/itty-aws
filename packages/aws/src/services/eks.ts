@@ -5703,27 +5703,7 @@ export const describeAddonVersions: API.OperationMethod<
     items: "addons",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAddonVersionsRequest,
-  DescribeAddonVersionsResponse,
-  DescribeAddonVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAddonVersionsRequest,
-  ) => stream.Stream<
-    DescribeAddonVersionsResponse,
-    DescribeAddonVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAddonVersionsRequest,
-  ) => stream.Stream<
-    AddonInfo,
-    DescribeAddonVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeCapabilityError =
   | AccessDeniedException
@@ -5830,27 +5810,7 @@ export const describeClusterVersions: API.OperationMethod<
     items: "clusterVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClusterVersionsRequest,
-  DescribeClusterVersionsResponse,
-  DescribeClusterVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClusterVersionsRequest,
-  ) => stream.Stream<
-    DescribeClusterVersionsResponse,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClusterVersionsRequest,
-  ) => stream.Stream<
-    ClusterVersionInformation,
-    DescribeClusterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEksAnywhereSubscriptionError =
   | ClientException
@@ -6196,27 +6156,7 @@ export const listAccessEntries: API.OperationMethod<
     items: "accessEntries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessEntriesRequest,
-  ListAccessEntriesResponse,
-  ListAccessEntriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessEntriesRequest,
-  ) => stream.Stream<
-    ListAccessEntriesResponse,
-    ListAccessEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessEntriesRequest,
-  ) => stream.Stream<
-    string,
-    ListAccessEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAccessPoliciesError = ServerException | CommonErrors;
 /**
@@ -6255,27 +6195,7 @@ export const listAccessPolicies: API.OperationMethod<
     items: "accessPolicies",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccessPoliciesRequest,
-  ListAccessPoliciesResponse,
-  ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAccessPoliciesResponse,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    AccessPolicy,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAddonsError =
   | ClientException
@@ -6326,27 +6246,7 @@ export const listAddons: API.OperationMethod<
     items: "addons",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAddonsRequest,
-  ListAddonsResponse,
-  ListAddonsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddonsRequest,
-  ) => stream.Stream<
-    ListAddonsResponse,
-    ListAddonsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddonsRequest,
-  ) => stream.Stream<
-    string,
-    ListAddonsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAssociatedAccessPoliciesError =
   | InvalidRequestException
@@ -6389,27 +6289,7 @@ export const listAssociatedAccessPolicies: API.OperationMethod<
     items: "associatedAccessPolicies",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociatedAccessPoliciesRequest,
-  ListAssociatedAccessPoliciesResponse,
-  ListAssociatedAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAssociatedAccessPoliciesResponse,
-    ListAssociatedAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedAccessPoliciesRequest,
-  ) => stream.Stream<
-    AssociatedAccessPolicy,
-    ListAssociatedAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCapabilitiesError =
   | InvalidParameterException
@@ -6451,27 +6331,7 @@ export const listCapabilities: API.OperationMethod<
     items: "capabilities",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCapabilitiesRequest,
-  ListCapabilitiesResponse,
-  ListCapabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapabilitiesRequest,
-  ) => stream.Stream<
-    ListCapabilitiesResponse,
-    ListCapabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapabilitiesRequest,
-  ) => stream.Stream<
-    CapabilitySummary,
-    ListCapabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListClustersError =
   | ClientException
@@ -6520,27 +6380,7 @@ export const listClusters: API.OperationMethod<
     items: "clusters",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClustersRequest,
-  ListClustersResponse,
-  ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    string,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEksAnywhereSubscriptionsError =
   | ClientException
@@ -6589,27 +6429,7 @@ export const listEksAnywhereSubscriptions: API.OperationMethod<
     items: "subscriptions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEksAnywhereSubscriptionsRequest,
-  ListEksAnywhereSubscriptionsResponse,
-  ListEksAnywhereSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEksAnywhereSubscriptionsRequest,
-  ) => stream.Stream<
-    ListEksAnywhereSubscriptionsResponse,
-    ListEksAnywhereSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEksAnywhereSubscriptionsRequest,
-  ) => stream.Stream<
-    EksAnywhereSubscription,
-    ListEksAnywhereSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFargateProfilesError =
   | ClientException
@@ -6659,27 +6479,7 @@ export const listFargateProfiles: API.OperationMethod<
     items: "fargateProfileNames",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFargateProfilesRequest,
-  ListFargateProfilesResponse,
-  ListFargateProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFargateProfilesRequest,
-  ) => stream.Stream<
-    ListFargateProfilesResponse,
-    ListFargateProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFargateProfilesRequest,
-  ) => stream.Stream<
-    string,
-    ListFargateProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIdentityProviderConfigsError =
   | ClientException
@@ -6730,27 +6530,7 @@ export const listIdentityProviderConfigs: API.OperationMethod<
     items: "identityProviderConfigs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdentityProviderConfigsRequest,
-  ListIdentityProviderConfigsResponse,
-  ListIdentityProviderConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProviderConfigsRequest,
-  ) => stream.Stream<
-    ListIdentityProviderConfigsResponse,
-    ListIdentityProviderConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProviderConfigsRequest,
-  ) => stream.Stream<
-    IdentityProviderConfig,
-    ListIdentityProviderConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListInsightsError =
   | InvalidParameterException
@@ -6810,27 +6590,7 @@ export const listInsights: API.OperationMethod<
     items: "insights",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListInsightsRequest,
-  ListInsightsResponse,
-  ListInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    ListInsightsResponse,
-    ListInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    InsightSummary,
-    ListInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNodegroupsError =
   | ClientException
@@ -6882,27 +6642,7 @@ export const listNodegroups: API.OperationMethod<
     items: "nodegroups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNodegroupsRequest,
-  ListNodegroupsResponse,
-  ListNodegroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodegroupsRequest,
-  ) => stream.Stream<
-    ListNodegroupsResponse,
-    ListNodegroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodegroupsRequest,
-  ) => stream.Stream<
-    string,
-    ListNodegroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPodIdentityAssociationsError =
   | InvalidParameterException
@@ -6952,27 +6692,7 @@ export const listPodIdentityAssociations: API.OperationMethod<
     items: "associations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPodIdentityAssociationsRequest,
-  ListPodIdentityAssociationsResponse,
-  ListPodIdentityAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPodIdentityAssociationsRequest,
-  ) => stream.Stream<
-    ListPodIdentityAssociationsResponse,
-    ListPodIdentityAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPodIdentityAssociationsRequest,
-  ) => stream.Stream<
-    PodIdentityAssociationSummary,
-    ListPodIdentityAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -7043,27 +6763,7 @@ export const listUpdates: API.OperationMethod<
     items: "updateIds",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUpdatesRequest,
-  ListUpdatesResponse,
-  ListUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUpdatesRequest,
-  ) => stream.Stream<
-    ListUpdatesResponse,
-    ListUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUpdatesRequest,
-  ) => stream.Stream<
-    string,
-    ListUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RegisterClusterError =
   | AccessDeniedException

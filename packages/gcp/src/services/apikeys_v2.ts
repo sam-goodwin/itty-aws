@@ -621,7 +621,8 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
   ListProjectsLocationsKeysRequest,
   V2ListKeysResponse,
   ListProjectsLocationsKeysError,
-  GcpOpContext
+  GcpOpContext,
+  V2ListKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeysRequest,
   output: V2ListKeysResponse,
@@ -632,7 +633,7 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupKeyKeysError = NotFound | Forbidden | GcpOpError;
 /** Find the parent project and resource name of the API key that matches the key string in the request. If the API key has been purged, resource name will not be set. The service account must have the `apikeys.keys.lookup` permission on the parent project. */

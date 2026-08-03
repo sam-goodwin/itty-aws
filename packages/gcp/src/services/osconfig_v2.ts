@@ -2091,7 +2091,8 @@ export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperati
   ListFoldersLocationsGlobalPolicyOrchestratorsRequest,
   GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse,
   ListFoldersLocationsGlobalPolicyOrchestratorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse,
@@ -2102,7 +2103,7 @@ export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersLocationsOperationsError =
   | NotFound
@@ -2113,7 +2114,8 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   ListFoldersLocationsOperationsRequest,
   ListOperationsResponse,
   ListFoldersLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -2124,7 +2126,7 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsGlobalPolicyOrchestratorsError =
   | NotFound
@@ -2135,7 +2137,8 @@ export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedO
   ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse,
   ListOrganizationsLocationsGlobalPolicyOrchestratorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse,
@@ -2146,7 +2149,7 @@ export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsLocationsOperationsError =
   | NotFound
@@ -2157,7 +2160,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   ListOrganizationsLocationsOperationsRequest,
   ListOperationsResponse,
   ListOrganizationsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -2168,7 +2172,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsGlobalPolicyOrchestratorsError =
   | NotFound
@@ -2179,7 +2183,8 @@ export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperat
   ListProjectsLocationsGlobalPolicyOrchestratorsRequest,
   GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse,
   ListProjectsLocationsGlobalPolicyOrchestratorsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse,
@@ -2190,7 +2195,7 @@ export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -2201,7 +2206,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -2212,7 +2218,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchFoldersLocationsGlobalPolicyOrchestratorsError =
   | NotFound

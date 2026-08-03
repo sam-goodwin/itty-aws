@@ -2124,27 +2124,7 @@ export const getResourcePolicies: API.OperationMethod<
     items: "resourcePolicies",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetResourcePoliciesInput,
-  GetResourcePoliciesOutput,
-  GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcePoliciesInput,
-  ) => stream.Stream<
-    GetResourcePoliciesOutput,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcePoliciesInput,
-  ) => stream.Stream<
-    ResourcePolicy,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetResponsePlanError =
   | AccessDeniedException
@@ -2258,27 +2238,7 @@ export const listIncidentFindings: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIncidentFindingsInput,
-  ListIncidentFindingsOutput,
-  ListIncidentFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIncidentFindingsInput,
-  ) => stream.Stream<
-    ListIncidentFindingsOutput,
-    ListIncidentFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIncidentFindingsInput,
-  ) => stream.Stream<
-    FindingSummary,
-    ListIncidentFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIncidentRecordsError =
   | AccessDeniedException
@@ -2328,27 +2288,7 @@ export const listIncidentRecords: API.OperationMethod<
     items: "incidentRecordSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIncidentRecordsInput,
-  ListIncidentRecordsOutput,
-  ListIncidentRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIncidentRecordsInput,
-  ) => stream.Stream<
-    ListIncidentRecordsOutput,
-    ListIncidentRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIncidentRecordsInput,
-  ) => stream.Stream<
-    IncidentRecordSummary,
-    ListIncidentRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRelatedItemsError =
   | AccessDeniedException
@@ -2397,27 +2337,7 @@ export const listRelatedItems: API.OperationMethod<
     items: "relatedItems",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRelatedItemsInput,
-  ListRelatedItemsOutput,
-  ListRelatedItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelatedItemsInput,
-  ) => stream.Stream<
-    ListRelatedItemsOutput,
-    ListRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelatedItemsInput,
-  ) => stream.Stream<
-    RelatedItem,
-    ListRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReplicationSetsError =
   | AccessDeniedException
@@ -2466,27 +2386,7 @@ export const listReplicationSets: API.OperationMethod<
     items: "replicationSetArns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReplicationSetsInput,
-  ListReplicationSetsOutput,
-  ListReplicationSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReplicationSetsInput,
-  ) => stream.Stream<
-    ListReplicationSetsOutput,
-    ListReplicationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReplicationSetsInput,
-  ) => stream.Stream<
-    Arn,
-    ListReplicationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResponsePlansError =
   | AccessDeniedException
@@ -2535,27 +2435,7 @@ export const listResponsePlans: API.OperationMethod<
     items: "responsePlanSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResponsePlansInput,
-  ListResponsePlansOutput,
-  ListResponsePlansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResponsePlansInput,
-  ) => stream.Stream<
-    ListResponsePlansOutput,
-    ListResponsePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResponsePlansInput,
-  ) => stream.Stream<
-    ResponsePlanSummary,
-    ListResponsePlansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2634,27 +2514,7 @@ export const listTimelineEvents: API.OperationMethod<
     items: "eventSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTimelineEventsInput,
-  ListTimelineEventsOutput,
-  ListTimelineEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTimelineEventsInput,
-  ) => stream.Stream<
-    ListTimelineEventsOutput,
-    ListTimelineEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTimelineEventsInput,
-  ) => stream.Stream<
-    EventSummary,
-    ListTimelineEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutResourcePolicyError =
   | AccessDeniedException

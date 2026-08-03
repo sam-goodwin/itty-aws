@@ -3406,27 +3406,7 @@ export const listDatasets: API.OperationMethod<
     items: "Datasets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    Dataset,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobRunsError =
   | ResourceNotFoundException
@@ -3473,27 +3453,7 @@ export const listJobRuns: API.OperationMethod<
     items: "JobRuns",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobRunsRequest,
-  ListJobRunsResponse,
-  ListJobRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    ListJobRunsResponse,
-    ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunsRequest,
-  ) => stream.Stream<
-    JobRun,
-    ListJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobsError =
   | ValidationException
@@ -3535,27 +3495,7 @@ export const listJobs: API.OperationMethod<
     items: "Jobs",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsRequest,
-  ListJobsResponse,
-  ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    Job,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProjectsError =
   | ValidationException
@@ -3597,27 +3537,7 @@ export const listProjects: API.OperationMethod<
     items: "Projects",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProjectsRequest,
-  ListProjectsResponse,
-  ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ListProjectsResponse,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    Project,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecipesError =
   | ValidationException
@@ -3659,27 +3579,7 @@ export const listRecipes: API.OperationMethod<
     items: "Recipes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecipesRequest,
-  ListRecipesResponse,
-  ListRecipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecipesRequest,
-  ) => stream.Stream<
-    ListRecipesResponse,
-    ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecipesRequest,
-  ) => stream.Stream<
-    Recipe,
-    ListRecipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRecipeVersionsError =
   | ValidationException
@@ -3727,27 +3627,7 @@ export const listRecipeVersions: API.OperationMethod<
     items: "Recipes",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRecipeVersionsRequest,
-  ListRecipeVersionsResponse,
-  ListRecipeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecipeVersionsRequest,
-  ) => stream.Stream<
-    ListRecipeVersionsResponse,
-    ListRecipeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecipeVersionsRequest,
-  ) => stream.Stream<
-    Recipe,
-    ListRecipeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRulesetsError =
   | ResourceNotFoundException
@@ -3795,27 +3675,7 @@ export const listRulesets: API.OperationMethod<
     items: "Rulesets",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRulesetsRequest,
-  ListRulesetsResponse,
-  ListRulesetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesetsRequest,
-  ) => stream.Stream<
-    ListRulesetsResponse,
-    ListRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesetsRequest,
-  ) => stream.Stream<
-    RulesetItem,
-    ListRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchedulesError =
   | ValidationException
@@ -3857,27 +3717,7 @@ export const listSchedules: API.OperationMethod<
     items: "Schedules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchedulesRequest,
-  ListSchedulesResponse,
-  ListSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchedulesRequest,
-  ) => stream.Stream<
-    ListSchedulesResponse,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchedulesRequest,
-  ) => stream.Stream<
-    Schedule,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

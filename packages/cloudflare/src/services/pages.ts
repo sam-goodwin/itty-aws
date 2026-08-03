@@ -10885,7 +10885,8 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
   ListProjectDeploymentsRequest,
   ListProjectDeploymentsResponse,
   ListProjectDeploymentsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ProjectsDeploymentsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProjectDeploymentsRequest,
@@ -10902,7 +10903,7 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListProjectDomainsError =
   | ProjectNotFound
@@ -10913,7 +10914,8 @@ export const listProjectDomains: API.PaginatedOperationMethod<
   ListProjectDomainsRequest,
   ListProjectDomainsResponse,
   ListProjectDomainsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ProjectsDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProjectDomainsRequest,
@@ -10929,7 +10931,7 @@ export const listProjectDomains: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListProjectsError = Forbidden | CloudflareOpError;
 /** Fetch a list of all user projects. */
@@ -10937,7 +10939,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ProjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListProjectsRequest,
@@ -10954,7 +10957,7 @@ export const listProjects: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchProjectError = ProjectNotFound | Forbidden | CloudflareOpError;
 /** Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null. */

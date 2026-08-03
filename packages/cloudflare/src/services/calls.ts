@@ -627,7 +627,8 @@ export const listSfus: API.PaginatedOperationMethod<
   ListSfusRequest,
   ListSfusResponse,
   ListSfusError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SfuListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSfusRequest,
@@ -638,7 +639,7 @@ export const listSfus: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTurnsError = CloudflareOpError;
 /** Lists all TURN keys in the Cloudflare account */
@@ -646,7 +647,8 @@ export const listTurns: API.PaginatedOperationMethod<
   ListTurnsRequest,
   ListTurnsResponse,
   ListTurnsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TurnListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTurnsRequest,
@@ -657,7 +659,7 @@ export const listTurns: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
 /** Edit details for a single app. */

@@ -799,7 +799,8 @@ export const listWidgets: API.PaginatedOperationMethod<
   ListWidgetsRequest,
   ListWidgetsResponse,
   ListWidgetsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  WidgetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWidgetsRequest,
@@ -816,7 +817,7 @@ export const listWidgets: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type RotateSecretWidgetError = CloudflareOpError;
 /** Generate a new secret key for this widget. If `invalidate_immediately` is set to `false`, the previous secret remains valid for 2 hours. Note that secrets cannot be rotated again during the grace period. */

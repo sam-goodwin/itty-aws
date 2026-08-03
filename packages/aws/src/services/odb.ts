@@ -6237,27 +6237,7 @@ export const listAutonomousDatabaseBackups: API.OperationMethod<
     items: "autonomousDatabaseBackups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousDatabaseBackupsInput,
-  ListAutonomousDatabaseBackupsOutput,
-  ListAutonomousDatabaseBackupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousDatabaseBackupsInput,
-  ) => stream.Stream<
-    ListAutonomousDatabaseBackupsOutput,
-    ListAutonomousDatabaseBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousDatabaseBackupsInput,
-  ) => stream.Stream<
-    AutonomousDatabaseBackupSummary,
-    ListAutonomousDatabaseBackupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutonomousDatabaseCharacterSetsError =
   | AccessDeniedException
@@ -6306,27 +6286,7 @@ export const listAutonomousDatabaseCharacterSets: API.OperationMethod<
     items: "autonomousDatabaseCharacterSets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousDatabaseCharacterSetsInput,
-  ListAutonomousDatabaseCharacterSetsOutput,
-  ListAutonomousDatabaseCharacterSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousDatabaseCharacterSetsInput,
-  ) => stream.Stream<
-    ListAutonomousDatabaseCharacterSetsOutput,
-    ListAutonomousDatabaseCharacterSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousDatabaseCharacterSetsInput,
-  ) => stream.Stream<
-    AutonomousDatabaseCharacterSetSummary,
-    ListAutonomousDatabaseCharacterSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutonomousDatabaseClonesError =
   | AccessDeniedException
@@ -6377,27 +6337,7 @@ export const listAutonomousDatabaseClones: API.OperationMethod<
     items: "autonomousDatabaseClones",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousDatabaseClonesInput,
-  ListAutonomousDatabaseClonesOutput,
-  ListAutonomousDatabaseClonesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousDatabaseClonesInput,
-  ) => stream.Stream<
-    ListAutonomousDatabaseClonesOutput,
-    ListAutonomousDatabaseClonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousDatabaseClonesInput,
-  ) => stream.Stream<
-    AutonomousDatabaseSummary,
-    ListAutonomousDatabaseClonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutonomousDatabasePeersError =
   | AccessDeniedException
@@ -6448,27 +6388,7 @@ export const listAutonomousDatabasePeers: API.OperationMethod<
     items: "autonomousDatabasePeers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousDatabasePeersInput,
-  ListAutonomousDatabasePeersOutput,
-  ListAutonomousDatabasePeersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousDatabasePeersInput,
-  ) => stream.Stream<
-    ListAutonomousDatabasePeersOutput,
-    ListAutonomousDatabasePeersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousDatabasePeersInput,
-  ) => stream.Stream<
-    AutonomousDatabasePeerSummary,
-    ListAutonomousDatabasePeersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutonomousDatabasesError =
   | AccessDeniedException
@@ -6517,27 +6437,7 @@ export const listAutonomousDatabases: API.OperationMethod<
     items: "autonomousDatabases",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousDatabasesInput,
-  ListAutonomousDatabasesOutput,
-  ListAutonomousDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousDatabasesInput,
-  ) => stream.Stream<
-    ListAutonomousDatabasesOutput,
-    ListAutonomousDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousDatabasesInput,
-  ) => stream.Stream<
-    AutonomousDatabaseSummary,
-    ListAutonomousDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutonomousDatabaseVersionsError =
   | AccessDeniedException
@@ -6586,27 +6486,7 @@ export const listAutonomousDatabaseVersions: API.OperationMethod<
     items: "autonomousDatabaseVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousDatabaseVersionsInput,
-  ListAutonomousDatabaseVersionsOutput,
-  ListAutonomousDatabaseVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousDatabaseVersionsInput,
-  ) => stream.Stream<
-    ListAutonomousDatabaseVersionsOutput,
-    ListAutonomousDatabaseVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousDatabaseVersionsInput,
-  ) => stream.Stream<
-    AutonomousDatabaseVersionSummary,
-    ListAutonomousDatabaseVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAutonomousVirtualMachinesError =
   | AccessDeniedException
@@ -6657,27 +6537,7 @@ export const listAutonomousVirtualMachines: API.OperationMethod<
     items: "autonomousVirtualMachines",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAutonomousVirtualMachinesInput,
-  ListAutonomousVirtualMachinesOutput,
-  ListAutonomousVirtualMachinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutonomousVirtualMachinesInput,
-  ) => stream.Stream<
-    ListAutonomousVirtualMachinesOutput,
-    ListAutonomousVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutonomousVirtualMachinesInput,
-  ) => stream.Stream<
-    AutonomousVirtualMachineSummary,
-    ListAutonomousVirtualMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCloudAutonomousVmClustersError =
   | AccessDeniedException
@@ -6728,27 +6588,7 @@ export const listCloudAutonomousVmClusters: API.OperationMethod<
     items: "cloudAutonomousVmClusters",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCloudAutonomousVmClustersInput,
-  ListCloudAutonomousVmClustersOutput,
-  ListCloudAutonomousVmClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudAutonomousVmClustersInput,
-  ) => stream.Stream<
-    ListCloudAutonomousVmClustersOutput,
-    ListCloudAutonomousVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudAutonomousVmClustersInput,
-  ) => stream.Stream<
-    CloudAutonomousVmClusterSummary,
-    ListCloudAutonomousVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCloudExadataInfrastructuresError =
   | AccessDeniedException
@@ -6797,27 +6637,7 @@ export const listCloudExadataInfrastructures: API.OperationMethod<
     items: "cloudExadataInfrastructures",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCloudExadataInfrastructuresInput,
-  ListCloudExadataInfrastructuresOutput,
-  ListCloudExadataInfrastructuresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudExadataInfrastructuresInput,
-  ) => stream.Stream<
-    ListCloudExadataInfrastructuresOutput,
-    ListCloudExadataInfrastructuresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudExadataInfrastructuresInput,
-  ) => stream.Stream<
-    CloudExadataInfrastructureSummary,
-    ListCloudExadataInfrastructuresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCloudVmClustersError =
   | AccessDeniedException
@@ -6868,27 +6688,7 @@ export const listCloudVmClusters: API.OperationMethod<
     items: "cloudVmClusters",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCloudVmClustersInput,
-  ListCloudVmClustersOutput,
-  ListCloudVmClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudVmClustersInput,
-  ) => stream.Stream<
-    ListCloudVmClustersOutput,
-    ListCloudVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudVmClustersInput,
-  ) => stream.Stream<
-    CloudVmClusterSummary,
-    ListCloudVmClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDbNodesError =
   | AccessDeniedException
@@ -6939,27 +6739,7 @@ export const listDbNodes: API.OperationMethod<
     items: "dbNodes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbNodesInput,
-  ListDbNodesOutput,
-  ListDbNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbNodesInput,
-  ) => stream.Stream<
-    ListDbNodesOutput,
-    ListDbNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbNodesInput,
-  ) => stream.Stream<
-    DbNodeSummary,
-    ListDbNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDbServersError =
   | AccessDeniedException
@@ -7010,27 +6790,7 @@ export const listDbServers: API.OperationMethod<
     items: "dbServers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbServersInput,
-  ListDbServersOutput,
-  ListDbServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbServersInput,
-  ) => stream.Stream<
-    ListDbServersOutput,
-    ListDbServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbServersInput,
-  ) => stream.Stream<
-    DbServerSummary,
-    ListDbServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDbSystemShapesError =
   | AccessDeniedException
@@ -7079,27 +6839,7 @@ export const listDbSystemShapes: API.OperationMethod<
     items: "dbSystemShapes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDbSystemShapesInput,
-  ListDbSystemShapesOutput,
-  ListDbSystemShapesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbSystemShapesInput,
-  ) => stream.Stream<
-    ListDbSystemShapesOutput,
-    ListDbSystemShapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbSystemShapesInput,
-  ) => stream.Stream<
-    DbSystemShapeSummary,
-    ListDbSystemShapesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGiVersionsError =
   | AccessDeniedException
@@ -7148,27 +6888,7 @@ export const listGiVersions: API.OperationMethod<
     items: "giVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGiVersionsInput,
-  ListGiVersionsOutput,
-  ListGiVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGiVersionsInput,
-  ) => stream.Stream<
-    ListGiVersionsOutput,
-    ListGiVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGiVersionsInput,
-  ) => stream.Stream<
-    GiVersionSummary,
-    ListGiVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOdbNetworksError =
   | AccessDeniedException
@@ -7217,27 +6937,7 @@ export const listOdbNetworks: API.OperationMethod<
     items: "odbNetworks",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOdbNetworksInput,
-  ListOdbNetworksOutput,
-  ListOdbNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOdbNetworksInput,
-  ) => stream.Stream<
-    ListOdbNetworksOutput,
-    ListOdbNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOdbNetworksInput,
-  ) => stream.Stream<
-    OdbNetworkSummary,
-    ListOdbNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOdbPeeringConnectionsError =
   | AccessDeniedException
@@ -7288,27 +6988,7 @@ export const listOdbPeeringConnections: API.OperationMethod<
     items: "odbPeeringConnections",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOdbPeeringConnectionsInput,
-  ListOdbPeeringConnectionsOutput,
-  ListOdbPeeringConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOdbPeeringConnectionsInput,
-  ) => stream.Stream<
-    ListOdbPeeringConnectionsOutput,
-    ListOdbPeeringConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOdbPeeringConnectionsInput,
-  ) => stream.Stream<
-    OdbPeeringConnectionSummary,
-    ListOdbPeeringConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSystemVersionsError =
   | AccessDeniedException
@@ -7359,27 +7039,7 @@ export const listSystemVersions: API.OperationMethod<
     items: "systemVersions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSystemVersionsInput,
-  ListSystemVersionsOutput,
-  ListSystemVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSystemVersionsInput,
-  ) => stream.Stream<
-    ListSystemVersionsOutput,
-    ListSystemVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSystemVersionsInput,
-  ) => stream.Stream<
-    SystemVersionSummary,
-    ListSystemVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**

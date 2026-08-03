@@ -4164,7 +4164,8 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   ListAppsAuthorizedCertificatesRequest,
   ListAuthorizedCertificatesResponse,
   ListAppsAuthorizedCertificatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsAuthorizedCertificatesRequest,
   output: ListAuthorizedCertificatesResponse,
@@ -4175,7 +4176,7 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsAuthorizedDomainsError = NotFound | Forbidden | GcpOpError;
 /** Lists all domains the user is authorized to administer. */
@@ -4183,7 +4184,8 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
   ListAppsAuthorizedDomainsRequest,
   ListAuthorizedDomainsResponse,
   ListAppsAuthorizedDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsAuthorizedDomainsRequest,
   output: ListAuthorizedDomainsResponse,
@@ -4194,7 +4196,7 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsDomainMappingsError = NotFound | Forbidden | GcpOpError;
 /** Lists the domain mappings on an application. */
@@ -4202,7 +4204,8 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   ListAppsDomainMappingsRequest,
   ListDomainMappingsResponse,
   ListAppsDomainMappingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsDomainMappingsRequest,
   output: ListDomainMappingsResponse,
@@ -4213,7 +4216,7 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsFirewallIngressRulesError =
   | NotFound
@@ -4224,7 +4227,8 @@ export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
   ListAppsFirewallIngressRulesRequest,
   ListIngressRulesResponse,
   ListAppsFirewallIngressRulesError,
-  GcpOpContext
+  GcpOpContext,
+  ListIngressRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsFirewallIngressRulesRequest,
   output: ListIngressRulesResponse,
@@ -4235,7 +4239,7 @@ export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -4243,7 +4247,8 @@ export const listAppsLocations: API.PaginatedOperationMethod<
   ListAppsLocationsRequest,
   ListLocationsResponse,
   ListAppsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsLocationsRequest,
   output: ListLocationsResponse,
@@ -4254,7 +4259,7 @@ export const listAppsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
@@ -4262,7 +4267,8 @@ export const listAppsOperations: API.PaginatedOperationMethod<
   ListAppsOperationsRequest,
   ListOperationsResponse,
   ListAppsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsOperationsRequest,
   output: ListOperationsResponse,
@@ -4273,7 +4279,7 @@ export const listAppsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsServicesError = NotFound | Forbidden | GcpOpError;
 /** Lists all the services in the application. */
@@ -4281,7 +4287,8 @@ export const listAppsServices: API.PaginatedOperationMethod<
   ListAppsServicesRequest,
   ListServicesResponse,
   ListAppsServicesError,
-  GcpOpContext
+  GcpOpContext,
+  ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsServicesRequest,
   output: ListServicesResponse,
@@ -4292,7 +4299,7 @@ export const listAppsServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsServicesVersionsError = NotFound | Forbidden | GcpOpError;
 /** Lists the versions of a service. */
@@ -4300,7 +4307,8 @@ export const listAppsServicesVersions: API.PaginatedOperationMethod<
   ListAppsServicesVersionsRequest,
   ListVersionsResponse,
   ListAppsServicesVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsServicesVersionsRequest,
   output: ListVersionsResponse,
@@ -4311,7 +4319,7 @@ export const listAppsServicesVersions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAppsServicesVersionsInstancesError =
   | NotFound
@@ -4322,7 +4330,8 @@ export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
   ListAppsServicesVersionsInstancesRequest,
   ListInstancesResponse,
   ListAppsServicesVersionsInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsServicesVersionsInstancesRequest,
   output: ListInstancesResponse,
@@ -4333,7 +4342,7 @@ export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApplicationsAuthorizedCertificatesError =
   | NotFound
@@ -4344,7 +4353,8 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
   ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   ListAuthorizedCertificatesResponse,
   ListProjectsLocationsApplicationsAuthorizedCertificatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   output: ListAuthorizedCertificatesResponse,
@@ -4355,7 +4365,7 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApplicationsAuthorizedDomainsError =
   | NotFound
@@ -4366,7 +4376,8 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
   ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
   ListAuthorizedDomainsResponse,
   ListProjectsLocationsApplicationsAuthorizedDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
   output: ListAuthorizedDomainsResponse,
@@ -4377,7 +4388,7 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsApplicationsDomainMappingsError =
   | NotFound
@@ -4388,7 +4399,8 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
   ListProjectsLocationsApplicationsDomainMappingsRequest,
   ListDomainMappingsResponse,
   ListProjectsLocationsApplicationsDomainMappingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApplicationsDomainMappingsRequest,
   output: ListDomainMappingsResponse,
@@ -4399,7 +4411,7 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRuntimesAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists all the available runtimes for the application. */

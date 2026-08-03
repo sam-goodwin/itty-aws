@@ -507,7 +507,8 @@ export const listSnippets: API.PaginatedOperationMethod<
   ListSnippetsRequest,
   ListSnippetsResponse,
   ListSnippetsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListSnippetsRequest,
@@ -524,7 +525,7 @@ export const listSnippets: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutRuleError = CloudflareOpError;
 /** Updates all snippet rules belonging to the zone. */

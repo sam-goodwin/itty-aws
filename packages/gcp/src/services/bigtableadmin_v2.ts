@@ -5024,7 +5024,8 @@ export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
   ListOperationsProjectsOperationsRequest,
   ListOperationsResponse,
   ListOperationsProjectsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsProjectsOperationsRequest,
   output: ListOperationsResponse,
@@ -5035,7 +5036,7 @@ export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesError = NotFound | Forbidden | GcpOpError;
 /** Lists information about instances in a project. */
@@ -5043,7 +5044,8 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   ListProjectsInstancesRequest,
   ListInstancesResponse,
   ListProjectsInstancesError,
-  GcpOpContext
+  GcpOpContext,
+  ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesRequest,
   output: ListInstancesResponse,
@@ -5054,7 +5056,7 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesAppProfilesError =
   | NotFound
@@ -5065,7 +5067,8 @@ export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
   ListProjectsInstancesAppProfilesRequest,
   ListAppProfilesResponse,
   ListProjectsInstancesAppProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAppProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesAppProfilesRequest,
   output: ListAppProfilesResponse,
@@ -5076,7 +5079,7 @@ export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesClustersError =
   | NotFound
@@ -5087,7 +5090,8 @@ export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersRequest,
   ListClustersResponse,
   ListProjectsInstancesClustersError,
-  GcpOpContext
+  GcpOpContext,
+  ListClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersRequest,
   output: ListClustersResponse,
@@ -5098,7 +5102,7 @@ export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesClustersBackupsError =
   | NotFound
@@ -5109,7 +5113,8 @@ export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
   ListProjectsInstancesClustersBackupsRequest,
   ListBackupsResponse,
   ListProjectsInstancesClustersBackupsError,
-  GcpOpContext
+  GcpOpContext,
+  ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersBackupsRequest,
   output: ListBackupsResponse,
@@ -5120,7 +5125,7 @@ export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesClustersHotTabletsError =
   | NotFound
@@ -5131,7 +5136,8 @@ export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMeth
   ListProjectsInstancesClustersHotTabletsRequest,
   ListHotTabletsResponse,
   ListProjectsInstancesClustersHotTabletsError,
-  GcpOpContext
+  GcpOpContext,
+  ListHotTabletsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersHotTabletsRequest,
   output: ListHotTabletsResponse,
@@ -5142,7 +5148,7 @@ export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesClustersMemoryLayersError =
   | NotFound
@@ -5153,7 +5159,8 @@ export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMe
   ListProjectsInstancesClustersMemoryLayersRequest,
   ListMemoryLayersResponse,
   ListProjectsInstancesClustersMemoryLayersError,
-  GcpOpContext
+  GcpOpContext,
+  ListMemoryLayersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersMemoryLayersRequest,
   output: ListMemoryLayersResponse,
@@ -5164,7 +5171,7 @@ export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesLogicalViewsError =
   | NotFound
@@ -5175,7 +5182,8 @@ export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
   ListProjectsInstancesLogicalViewsRequest,
   ListLogicalViewsResponse,
   ListProjectsInstancesLogicalViewsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLogicalViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesLogicalViewsRequest,
   output: ListLogicalViewsResponse,
@@ -5186,7 +5194,7 @@ export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesMaterializedViewsError =
   | NotFound
@@ -5197,7 +5205,8 @@ export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMetho
   ListProjectsInstancesMaterializedViewsRequest,
   ListMaterializedViewsResponse,
   ListProjectsInstancesMaterializedViewsError,
-  GcpOpContext
+  GcpOpContext,
+  ListMaterializedViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesMaterializedViewsRequest,
   output: ListMaterializedViewsResponse,
@@ -5208,7 +5217,7 @@ export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesTablesError =
   | NotFound
@@ -5219,7 +5228,8 @@ export const listProjectsInstancesTables: API.PaginatedOperationMethod<
   ListProjectsInstancesTablesRequest,
   ListTablesResponse,
   ListProjectsInstancesTablesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesRequest,
   output: ListTablesResponse,
@@ -5230,7 +5240,7 @@ export const listProjectsInstancesTables: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesTablesAuthorizedViewsError =
   | NotFound
@@ -5241,7 +5251,8 @@ export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationM
   ListProjectsInstancesTablesAuthorizedViewsRequest,
   ListAuthorizedViewsResponse,
   ListProjectsInstancesTablesAuthorizedViewsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAuthorizedViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesAuthorizedViewsRequest,
   output: ListAuthorizedViewsResponse,
@@ -5252,7 +5263,7 @@ export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsInstancesTablesSchemaBundlesError =
   | NotFound
@@ -5263,7 +5274,8 @@ export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMet
   ListProjectsInstancesTablesSchemaBundlesRequest,
   ListSchemaBundlesResponse,
   ListProjectsInstancesTablesSchemaBundlesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSchemaBundlesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesSchemaBundlesRequest,
   output: ListSchemaBundlesResponse,
@@ -5274,7 +5286,7 @@ export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
@@ -5282,7 +5294,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -5293,7 +5306,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ModifyColumnFamiliesProjectsInstancesTablesError =
   | NotFound

@@ -4971,27 +4971,7 @@ export const describeClientAuthenticationSettings: API.OperationMethod<
     items: "ClientAuthenticationSettingsInfo",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeClientAuthenticationSettingsRequest,
-  DescribeClientAuthenticationSettingsResult,
-  DescribeClientAuthenticationSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeClientAuthenticationSettingsRequest,
-  ) => stream.Stream<
-    DescribeClientAuthenticationSettingsResult,
-    DescribeClientAuthenticationSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeClientAuthenticationSettingsRequest,
-  ) => stream.Stream<
-    ClientAuthenticationSettingInfo,
-    DescribeClientAuthenticationSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeConditionalForwardersError =
   | ClientException
@@ -5090,27 +5070,7 @@ export const describeDirectories: API.OperationMethod<
     items: "DirectoryDescriptions",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDirectoriesRequest,
-  DescribeDirectoriesResult,
-  DescribeDirectoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDirectoriesRequest,
-  ) => stream.Stream<
-    DescribeDirectoriesResult,
-    DescribeDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDirectoriesRequest,
-  ) => stream.Stream<
-    DirectoryDescription,
-    DescribeDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeDirectoryDataAccessError =
   | AccessDeniedException
@@ -5193,27 +5153,7 @@ export const describeDomainControllers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeDomainControllersRequest,
-  DescribeDomainControllersResult,
-  DescribeDomainControllersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDomainControllersRequest,
-  ) => stream.Stream<
-    DescribeDomainControllersResult,
-    DescribeDomainControllersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDomainControllersRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDomainControllersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeEventTopicsError =
   | ClientException
@@ -5332,27 +5272,7 @@ export const describeLDAPSSettings: API.OperationMethod<
     items: "LDAPSSettingsInfo",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeLDAPSSettingsRequest,
-  DescribeLDAPSSettingsResult,
-  DescribeLDAPSSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLDAPSSettingsRequest,
-  ) => stream.Stream<
-    DescribeLDAPSSettingsResult,
-    DescribeLDAPSSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLDAPSSettingsRequest,
-  ) => stream.Stream<
-    LDAPSSettingInfo,
-    DescribeLDAPSSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeRegionsError =
   | AccessDeniedException
@@ -5407,27 +5327,7 @@ export const describeRegions: API.OperationMethod<
     outputToken: "NextToken",
     items: "RegionsDescription",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeRegionsRequest,
-  DescribeRegionsResult,
-  DescribeRegionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegionsRequest,
-  ) => stream.Stream<
-    DescribeRegionsResult,
-    DescribeRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegionsRequest,
-  ) => stream.Stream<
-    RegionDescription,
-    DescribeRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSettingsError =
   | ClientException
@@ -5512,27 +5412,7 @@ export const describeSharedDirectories: API.OperationMethod<
     items: "SharedDirectories",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSharedDirectoriesRequest,
-  DescribeSharedDirectoriesResult,
-  DescribeSharedDirectoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSharedDirectoriesRequest,
-  ) => stream.Stream<
-    DescribeSharedDirectoriesResult,
-    DescribeSharedDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSharedDirectoriesRequest,
-  ) => stream.Stream<
-    SharedDirectory,
-    DescribeSharedDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeSnapshotsError =
   | ClientException
@@ -5591,27 +5471,7 @@ export const describeSnapshots: API.OperationMethod<
     items: "Snapshots",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSnapshotsRequest,
-  DescribeSnapshotsResult,
-  DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    DescribeSnapshotsResult,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotsRequest,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeTrustsError =
   | ClientException
@@ -5667,27 +5527,7 @@ export const describeTrusts: API.OperationMethod<
     items: "Trusts",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeTrustsRequest,
-  DescribeTrustsResult,
-  DescribeTrustsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrustsRequest,
-  ) => stream.Stream<
-    DescribeTrustsResult,
-    DescribeTrustsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrustsRequest,
-  ) => stream.Stream<
-    Trust,
-    DescribeTrustsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeUpdateDirectoryError =
   | AccessDeniedException
@@ -5739,27 +5579,7 @@ export const describeUpdateDirectory: API.OperationMethod<
     outputToken: "NextToken",
     items: "UpdateActivities",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeUpdateDirectoryRequest,
-  DescribeUpdateDirectoryResult,
-  DescribeUpdateDirectoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUpdateDirectoryRequest,
-  ) => stream.Stream<
-    DescribeUpdateDirectoryResult,
-    DescribeUpdateDirectoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUpdateDirectoryRequest,
-  ) => stream.Stream<
-    UpdateInfoEntry,
-    DescribeUpdateDirectoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisableCAEnrollmentPolicyError =
   | AccessDeniedException
@@ -6263,27 +6083,7 @@ export const listADAssessments: API.OperationMethod<
     items: "Assessments",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListADAssessmentsRequest,
-  ListADAssessmentsResult,
-  ListADAssessmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListADAssessmentsRequest,
-  ) => stream.Stream<
-    ListADAssessmentsResult,
-    ListADAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListADAssessmentsRequest,
-  ) => stream.Stream<
-    AssessmentSummary,
-    ListADAssessmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCertificatesError =
   | ClientException
@@ -6337,27 +6137,7 @@ export const listCertificates: API.OperationMethod<
     items: "CertificatesInfo",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListCertificatesRequest,
-  ListCertificatesResult,
-  ListCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    ListCertificatesResult,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    CertificateInfo,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIpRoutesError =
   | ClientException
@@ -6408,27 +6188,7 @@ export const listIpRoutes: API.OperationMethod<
     items: "IpRoutesInfo",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListIpRoutesRequest,
-  ListIpRoutesResult,
-  ListIpRoutesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIpRoutesRequest,
-  ) => stream.Stream<
-    ListIpRoutesResult,
-    ListIpRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIpRoutesRequest,
-  ) => stream.Stream<
-    IpRouteInfo,
-    ListIpRoutesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLogSubscriptionsError =
   | ClientException
@@ -6477,27 +6237,7 @@ export const listLogSubscriptions: API.OperationMethod<
     items: "LogSubscriptions",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListLogSubscriptionsRequest,
-  ListLogSubscriptionsResult,
-  ListLogSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogSubscriptionsRequest,
-  ) => stream.Stream<
-    ListLogSubscriptionsResult,
-    ListLogSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogSubscriptionsRequest,
-  ) => stream.Stream<
-    LogSubscription,
-    ListLogSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSchemaExtensionsError =
   | ClientException
@@ -6546,27 +6286,7 @@ export const listSchemaExtensions: API.OperationMethod<
     items: "SchemaExtensionsInfo",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListSchemaExtensionsRequest,
-  ListSchemaExtensionsResult,
-  ListSchemaExtensionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaExtensionsRequest,
-  ) => stream.Stream<
-    ListSchemaExtensionsResult,
-    ListSchemaExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaExtensionsRequest,
-  ) => stream.Stream<
-    SchemaExtensionInfo,
-    ListSchemaExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | ClientException
@@ -6617,27 +6337,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResult,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResult,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RegisterCertificateError =
   | CertificateAlreadyExistsException

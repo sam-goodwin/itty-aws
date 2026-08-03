@@ -6261,27 +6261,7 @@ export const describeApplicationAssociations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeApplicationAssociationsRequest,
-  DescribeApplicationAssociationsResult,
-  DescribeApplicationAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeApplicationAssociationsRequest,
-  ) => stream.Stream<
-    DescribeApplicationAssociationsResult,
-    DescribeApplicationAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeApplicationAssociationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeApplicationAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeApplicationsError =
   | AccessDeniedException
@@ -6329,27 +6309,7 @@ export const describeApplications: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeApplicationsRequest,
-  DescribeApplicationsResult,
-  DescribeApplicationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeApplicationsRequest,
-  ) => stream.Stream<
-    DescribeApplicationsResult,
-    DescribeApplicationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeApplicationsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeApplicationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeBundleAssociationsError =
   | AccessDeniedException
@@ -6678,27 +6638,7 @@ export const describeWorkspaceBundles: API.OperationMethod<
     outputToken: "NextToken",
     items: "Bundles",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeWorkspaceBundlesRequest,
-  DescribeWorkspaceBundlesResult,
-  DescribeWorkspaceBundlesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWorkspaceBundlesRequest,
-  ) => stream.Stream<
-    DescribeWorkspaceBundlesResult,
-    DescribeWorkspaceBundlesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWorkspaceBundlesRequest,
-  ) => stream.Stream<
-    WorkspaceBundle,
-    DescribeWorkspaceBundlesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeWorkspaceDirectoriesError =
   | InvalidParameterValuesException
@@ -6738,27 +6678,7 @@ export const describeWorkspaceDirectories: API.OperationMethod<
     outputToken: "NextToken",
     items: "Directories",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeWorkspaceDirectoriesRequest,
-  DescribeWorkspaceDirectoriesResult,
-  DescribeWorkspaceDirectoriesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWorkspaceDirectoriesRequest,
-  ) => stream.Stream<
-    DescribeWorkspaceDirectoriesResult,
-    DescribeWorkspaceDirectoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWorkspaceDirectoriesRequest,
-  ) => stream.Stream<
-    WorkspaceDirectory,
-    DescribeWorkspaceDirectoriesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeWorkspaceImagePermissionsError =
   | AccessDeniedException
@@ -6848,27 +6768,7 @@ export const describeWorkspaces: API.OperationMethod<
     items: "Workspaces",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeWorkspacesRequest,
-  DescribeWorkspacesResult,
-  DescribeWorkspacesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWorkspacesRequest,
-  ) => stream.Stream<
-    DescribeWorkspacesResult,
-    DescribeWorkspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWorkspacesRequest,
-  ) => stream.Stream<
-    Workspace,
-    DescribeWorkspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeWorkspacesConnectionStatusError =
   | InvalidParameterValuesException
@@ -7254,27 +7154,7 @@ export const listAccountLinks: API.OperationMethod<
     items: "AccountLinks",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAccountLinksRequest,
-  ListAccountLinksResult,
-  ListAccountLinksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountLinksRequest,
-  ) => stream.Stream<
-    ListAccountLinksResult,
-    ListAccountLinksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountLinksRequest,
-  ) => stream.Stream<
-    AccountLink,
-    ListAccountLinksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListAvailableManagementCidrRangesError =
   | AccessDeniedException

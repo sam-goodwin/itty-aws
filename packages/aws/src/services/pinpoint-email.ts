@@ -2573,27 +2573,7 @@ export const getDedicatedIps: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  GetDedicatedIpsRequest,
-  GetDedicatedIpsResponse,
-  GetDedicatedIpsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDedicatedIpsRequest,
-  ) => stream.Stream<
-    GetDedicatedIpsResponse,
-    GetDedicatedIpsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDedicatedIpsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDedicatedIpsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetDeliverabilityDashboardOptionsError =
   | BadRequestException
@@ -2768,27 +2748,7 @@ export const listConfigurationSets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListConfigurationSetsRequest,
-  ListConfigurationSetsResponse,
-  ListConfigurationSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationSetsRequest,
-  ) => stream.Stream<
-    ListConfigurationSetsResponse,
-    ListConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationSetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDedicatedIpPoolsError =
   | BadRequestException
@@ -2830,27 +2790,7 @@ export const listDedicatedIpPools: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListDedicatedIpPoolsRequest,
-  ListDedicatedIpPoolsResponse,
-  ListDedicatedIpPoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDedicatedIpPoolsRequest,
-  ) => stream.Stream<
-    ListDedicatedIpPoolsResponse,
-    ListDedicatedIpPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDedicatedIpPoolsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDedicatedIpPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDeliverabilityTestReportsError =
   | BadRequestException
@@ -2894,27 +2834,7 @@ export const listDeliverabilityTestReports: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListDeliverabilityTestReportsRequest,
-  ListDeliverabilityTestReportsResponse,
-  ListDeliverabilityTestReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeliverabilityTestReportsRequest,
-  ) => stream.Stream<
-    ListDeliverabilityTestReportsResponse,
-    ListDeliverabilityTestReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeliverabilityTestReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDeliverabilityTestReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDomainDeliverabilityCampaignsError =
   | BadRequestException
@@ -2959,27 +2879,7 @@ export const listDomainDeliverabilityCampaigns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainDeliverabilityCampaignsRequest,
-  ListDomainDeliverabilityCampaignsResponse,
-  ListDomainDeliverabilityCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainDeliverabilityCampaignsRequest,
-  ) => stream.Stream<
-    ListDomainDeliverabilityCampaignsResponse,
-    ListDomainDeliverabilityCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainDeliverabilityCampaignsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainDeliverabilityCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEmailIdentitiesError =
   | BadRequestException
@@ -3022,27 +2922,7 @@ export const listEmailIdentities: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-})) as any as API.OperationMethod<
-  ListEmailIdentitiesRequest,
-  ListEmailIdentitiesResponse,
-  ListEmailIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEmailIdentitiesRequest,
-  ) => stream.Stream<
-    ListEmailIdentitiesResponse,
-    ListEmailIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEmailIdentitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEmailIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException

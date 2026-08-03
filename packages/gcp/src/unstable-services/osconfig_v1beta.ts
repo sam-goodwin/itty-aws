@@ -2108,7 +2108,8 @@ export const listProjectsGuestPolicies: API.PaginatedOperationMethod<
   ListProjectsGuestPoliciesRequest,
   ListGuestPoliciesResponse,
   ListProjectsGuestPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListGuestPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGuestPoliciesRequest,
   output: ListGuestPoliciesResponse,
@@ -2119,7 +2120,7 @@ export const listProjectsGuestPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPatchDeploymentsError =
   | NotFound
@@ -2130,7 +2131,8 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
   ListProjectsPatchDeploymentsRequest,
   ListPatchDeploymentsResponse,
   ListProjectsPatchDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPatchDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchDeploymentsRequest,
   output: ListPatchDeploymentsResponse,
@@ -2141,7 +2143,7 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPatchJobsError = NotFound | Forbidden | GcpOpError;
 /** Get a list of patch jobs. */
@@ -2149,7 +2151,8 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
   ListProjectsPatchJobsRequest,
   ListPatchJobsResponse,
   ListProjectsPatchJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPatchJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsRequest,
   output: ListPatchJobsResponse,
@@ -2160,7 +2163,7 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsPatchJobsInstanceDetailsError =
   | NotFound
@@ -2171,7 +2174,8 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
   ListProjectsPatchJobsInstanceDetailsRequest,
   ListPatchJobInstanceDetailsResponse,
   ListProjectsPatchJobsInstanceDetailsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPatchJobInstanceDetailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsInstanceDetailsRequest,
   output: ListPatchJobInstanceDetailsResponse,
@@ -2182,7 +2186,7 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupEffectiveGuestPolicyProjectsZonesInstancesError =
   | NotFound

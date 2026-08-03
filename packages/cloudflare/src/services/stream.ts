@@ -4534,7 +4534,8 @@ export const getCaption: API.PaginatedOperationMethod<
   GetCaptionRequest,
   GetCaptionResponse,
   GetCaptionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  CaptionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetCaptionRequest,
@@ -4545,7 +4546,7 @@ export const getCaption: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetCaptionLanguageError = CloudflareOpError;
 /** Lists the captions or subtitles for provided language. */
@@ -4613,7 +4614,8 @@ export const getKey: API.PaginatedOperationMethod<
   GetKeyRequest,
   GetKeyResponse,
   GetKeyError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  KeysGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetKeyRequest,
@@ -4624,7 +4626,7 @@ export const getKey: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetLiveInputError =
   | LiveInputNotFound
@@ -4711,7 +4713,8 @@ export const listLiveInputOutputs: API.PaginatedOperationMethod<
   ListLiveInputOutputsRequest,
   ListLiveInputOutputsResponse,
   ListLiveInputOutputsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LiveInputsOutputsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLiveInputOutputsRequest,
@@ -4727,7 +4730,7 @@ export const listLiveInputOutputs: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListLiveInputsError = CloudflareOpError;
 /** Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input. */
@@ -4750,7 +4753,8 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListStreamsRequest,
@@ -4761,7 +4765,7 @@ export const listStreams: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListWatermarksError = CloudflareOpError;
 /** Lists all watermark profiles for an account. */
@@ -4769,7 +4773,8 @@ export const listWatermarks: API.PaginatedOperationMethod<
   ListWatermarksRequest,
   ListWatermarksResponse,
   ListWatermarksError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  WatermarksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListWatermarksRequest,
@@ -4780,7 +4785,7 @@ export const listWatermarks: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchAudioTrackError = CloudflareOpError;
 /** Edits additional audio tracks on a video. Editing the default status of an audio track to `true` will mark all other audio tracks on the video default status to `false`. */

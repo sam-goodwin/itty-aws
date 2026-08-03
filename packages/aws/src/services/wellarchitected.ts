@@ -5483,27 +5483,7 @@ export const getConsolidatedReport: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetConsolidatedReportInput,
-  GetConsolidatedReportOutput,
-  GetConsolidatedReportError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConsolidatedReportInput,
-  ) => stream.Stream<
-    GetConsolidatedReportOutput,
-    GetConsolidatedReportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConsolidatedReportInput,
-  ) => stream.Stream<
-    unknown,
-    GetConsolidatedReportError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetGlobalSettingsError =
   | AccessDeniedException
@@ -5966,27 +5946,7 @@ export const listAnswers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAnswersInput,
-  ListAnswersOutput,
-  ListAnswersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnswersInput,
-  ) => stream.Stream<
-    ListAnswersOutput,
-    ListAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnswersInput,
-  ) => stream.Stream<
-    unknown,
-    ListAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCheckDetailsError =
   | AccessDeniedException
@@ -6036,27 +5996,7 @@ export const listCheckDetails: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCheckDetailsInput,
-  ListCheckDetailsOutput,
-  ListCheckDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCheckDetailsInput,
-  ) => stream.Stream<
-    ListCheckDetailsOutput,
-    ListCheckDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCheckDetailsInput,
-  ) => stream.Stream<
-    unknown,
-    ListCheckDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCheckSummariesError =
   | AccessDeniedException
@@ -6106,27 +6046,7 @@ export const listCheckSummaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCheckSummariesInput,
-  ListCheckSummariesOutput,
-  ListCheckSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCheckSummariesInput,
-  ) => stream.Stream<
-    ListCheckSummariesOutput,
-    ListCheckSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCheckSummariesInput,
-  ) => stream.Stream<
-    unknown,
-    ListCheckSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLensesError =
   | AccessDeniedException
@@ -6174,27 +6094,7 @@ export const listLenses: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLensesInput,
-  ListLensesOutput,
-  ListLensesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensesInput,
-  ) => stream.Stream<
-    ListLensesOutput,
-    ListLensesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensesInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLensReviewImprovementsError =
   | AccessDeniedException
@@ -6244,27 +6144,7 @@ export const listLensReviewImprovements: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLensReviewImprovementsInput,
-  ListLensReviewImprovementsOutput,
-  ListLensReviewImprovementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensReviewImprovementsInput,
-  ) => stream.Stream<
-    ListLensReviewImprovementsOutput,
-    ListLensReviewImprovementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensReviewImprovementsInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensReviewImprovementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLensReviewsError =
   | AccessDeniedException
@@ -6314,27 +6194,7 @@ export const listLensReviews: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLensReviewsInput,
-  ListLensReviewsOutput,
-  ListLensReviewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensReviewsInput,
-  ) => stream.Stream<
-    ListLensReviewsOutput,
-    ListLensReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensReviewsInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLensSharesError =
   | AccessDeniedException
@@ -6384,27 +6244,7 @@ export const listLensShares: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLensSharesInput,
-  ListLensSharesOutput,
-  ListLensSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLensSharesInput,
-  ) => stream.Stream<
-    ListLensSharesOutput,
-    ListLensSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLensSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListLensSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMilestonesError =
   | AccessDeniedException
@@ -6454,27 +6294,7 @@ export const listMilestones: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMilestonesInput,
-  ListMilestonesOutput,
-  ListMilestonesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMilestonesInput,
-  ) => stream.Stream<
-    ListMilestonesOutput,
-    ListMilestonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMilestonesInput,
-  ) => stream.Stream<
-    unknown,
-    ListMilestonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotificationsError =
   | AccessDeniedException
@@ -6522,27 +6342,7 @@ export const listNotifications: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNotificationsInput,
-  ListNotificationsOutput,
-  ListNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationsInput,
-  ) => stream.Stream<
-    ListNotificationsOutput,
-    ListNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfileNotificationsError =
   | AccessDeniedException
@@ -6590,27 +6390,7 @@ export const listProfileNotifications: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfileNotificationsInput,
-  ListProfileNotificationsOutput,
-  ListProfileNotificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileNotificationsInput,
-  ) => stream.Stream<
-    ListProfileNotificationsOutput,
-    ListProfileNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileNotificationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListProfileNotificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfilesError =
   | AccessDeniedException
@@ -6658,27 +6438,7 @@ export const listProfiles: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfilesInput,
-  ListProfilesOutput,
-  ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesInput,
-  ) => stream.Stream<
-    ListProfilesOutput,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesInput,
-  ) => stream.Stream<
-    unknown,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfileSharesError =
   | AccessDeniedException
@@ -6728,27 +6488,7 @@ export const listProfileShares: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfileSharesInput,
-  ListProfileSharesOutput,
-  ListProfileSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileSharesInput,
-  ) => stream.Stream<
-    ListProfileSharesOutput,
-    ListProfileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListProfileSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReviewTemplateAnswersError =
   | AccessDeniedException
@@ -6798,27 +6538,7 @@ export const listReviewTemplateAnswers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReviewTemplateAnswersInput,
-  ListReviewTemplateAnswersOutput,
-  ListReviewTemplateAnswersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewTemplateAnswersInput,
-  ) => stream.Stream<
-    ListReviewTemplateAnswersOutput,
-    ListReviewTemplateAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewTemplateAnswersInput,
-  ) => stream.Stream<
-    unknown,
-    ListReviewTemplateAnswersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListReviewTemplatesError =
   | AccessDeniedException
@@ -6866,27 +6586,7 @@ export const listReviewTemplates: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListReviewTemplatesInput,
-  ListReviewTemplatesOutput,
-  ListReviewTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReviewTemplatesInput,
-  ) => stream.Stream<
-    ListReviewTemplatesOutput,
-    ListReviewTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReviewTemplatesInput,
-  ) => stream.Stream<
-    unknown,
-    ListReviewTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListShareInvitationsError =
   | AccessDeniedException
@@ -6938,27 +6638,7 @@ export const listShareInvitations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListShareInvitationsInput,
-  ListShareInvitationsOutput,
-  ListShareInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListShareInvitationsInput,
-  ) => stream.Stream<
-    ListShareInvitationsOutput,
-    ListShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListShareInvitationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListShareInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -7031,27 +6711,7 @@ export const listTemplateShares: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTemplateSharesInput,
-  ListTemplateSharesOutput,
-  ListTemplateSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateSharesInput,
-  ) => stream.Stream<
-    ListTemplateSharesOutput,
-    ListTemplateSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListTemplateSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkloadsError =
   | AccessDeniedException
@@ -7099,27 +6759,7 @@ export const listWorkloads: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkloadsInput,
-  ListWorkloadsOutput,
-  ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadsInput,
-  ) => stream.Stream<
-    ListWorkloadsOutput,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadsInput,
-  ) => stream.Stream<
-    unknown,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWorkloadSharesError =
   | AccessDeniedException
@@ -7169,27 +6809,7 @@ export const listWorkloadShares: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListWorkloadSharesInput,
-  ListWorkloadSharesOutput,
-  ListWorkloadSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadSharesInput,
-  ) => stream.Stream<
-    ListWorkloadSharesOutput,
-    ListWorkloadSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListWorkloadSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type TagResourceError =
   | InternalServerException

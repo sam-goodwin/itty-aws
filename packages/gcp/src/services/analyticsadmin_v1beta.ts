@@ -3703,7 +3703,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   GoogleAnalyticsAdminV1betaListAccountsResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: GoogleAnalyticsAdminV1betaListAccountsResponse,
@@ -3714,7 +3715,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountSummariesError = NotFound | Forbidden | GcpOpError;
 /** Returns summaries of all accounts accessible by the caller. */
@@ -3722,7 +3723,8 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
   ListAccountSummariesRequest,
   GoogleAnalyticsAdminV1betaListAccountSummariesResponse,
   ListAccountSummariesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListAccountSummariesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSummariesRequest,
   output: GoogleAnalyticsAdminV1betaListAccountSummariesResponse,
@@ -3733,7 +3735,7 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesError = NotFound | Forbidden | GcpOpError;
 /** Returns child Properties under the specified parent Account. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if no relevant properties are found. */
@@ -3741,7 +3743,8 @@ export const listProperties: API.PaginatedOperationMethod<
   ListPropertiesRequest,
   GoogleAnalyticsAdminV1betaListPropertiesResponse,
   ListPropertiesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListPropertiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRequest,
   output: GoogleAnalyticsAdminV1betaListPropertiesResponse,
@@ -3752,7 +3755,7 @@ export const listProperties: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesConversionEventsError =
   | NotFound
@@ -3763,7 +3766,8 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
   ListPropertiesConversionEventsRequest,
   GoogleAnalyticsAdminV1betaListConversionEventsResponse,
   ListPropertiesConversionEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListConversionEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesConversionEventsRequest,
   output: GoogleAnalyticsAdminV1betaListConversionEventsResponse,
@@ -3774,7 +3778,7 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesCustomDimensionsError =
   | NotFound
@@ -3785,7 +3789,8 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
   ListPropertiesCustomDimensionsRequest,
   GoogleAnalyticsAdminV1betaListCustomDimensionsResponse,
   ListPropertiesCustomDimensionsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListCustomDimensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomDimensionsRequest,
   output: GoogleAnalyticsAdminV1betaListCustomDimensionsResponse,
@@ -3796,7 +3801,7 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesCustomMetricsError =
   | NotFound
@@ -3807,7 +3812,8 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
   ListPropertiesCustomMetricsRequest,
   GoogleAnalyticsAdminV1betaListCustomMetricsResponse,
   ListPropertiesCustomMetricsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListCustomMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomMetricsRequest,
   output: GoogleAnalyticsAdminV1betaListCustomMetricsResponse,
@@ -3818,7 +3824,7 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsError = NotFound | Forbidden | GcpOpError;
 /** Lists DataStreams on a property. */
@@ -3826,7 +3832,8 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
   ListPropertiesDataStreamsRequest,
   GoogleAnalyticsAdminV1betaListDataStreamsResponse,
   ListPropertiesDataStreamsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListDataStreamsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsRequest,
   output: GoogleAnalyticsAdminV1betaListDataStreamsResponse,
@@ -3837,7 +3844,7 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesDataStreamsMeasurementProtocolSecretsError =
   | NotFound
@@ -3848,7 +3855,8 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
   ListPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse,
   ListPropertiesDataStreamsMeasurementProtocolSecretsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse,
@@ -3859,7 +3867,7 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesFirebaseLinksError =
   | NotFound
@@ -3870,7 +3878,8 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
   ListPropertiesFirebaseLinksRequest,
   GoogleAnalyticsAdminV1betaListFirebaseLinksResponse,
   ListPropertiesFirebaseLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListFirebaseLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesFirebaseLinksRequest,
   output: GoogleAnalyticsAdminV1betaListFirebaseLinksResponse,
@@ -3881,7 +3890,7 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesGoogleAdsLinksError =
   | NotFound
@@ -3892,7 +3901,8 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
   ListPropertiesGoogleAdsLinksRequest,
   GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse,
   ListPropertiesGoogleAdsLinksError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesGoogleAdsLinksRequest,
   output: GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse,
@@ -3903,7 +3913,7 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPropertiesKeyEventsError = NotFound | Forbidden | GcpOpError;
 /** Returns a list of Key Events in the specified parent property. Returns an empty list if no Key Events are found. */
@@ -3911,7 +3921,8 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
   ListPropertiesKeyEventsRequest,
   GoogleAnalyticsAdminV1betaListKeyEventsResponse,
   ListPropertiesKeyEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleAnalyticsAdminV1betaListKeyEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesKeyEventsRequest,
   output: GoogleAnalyticsAdminV1betaListKeyEventsResponse,
@@ -3922,7 +3933,7 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchAccountsError =
   | NotFound

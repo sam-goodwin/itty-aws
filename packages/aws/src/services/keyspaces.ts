@@ -1486,27 +1486,7 @@ export const listKeyspaces: API.OperationMethod<
     items: "keyspaces",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListKeyspacesRequest,
-  ListKeyspacesResponse,
-  ListKeyspacesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyspacesRequest,
-  ) => stream.Stream<
-    ListKeyspacesResponse,
-    ListKeyspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyspacesRequest,
-  ) => stream.Stream<
-    KeyspaceSummary,
-    ListKeyspacesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTablesError =
   | AccessDeniedException
@@ -1559,27 +1539,7 @@ export const listTables: API.OperationMethod<
     items: "tables",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTablesRequest,
-  ListTablesResponse,
-  ListTablesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    TableSummary,
-    ListTablesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -1632,27 +1592,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "tags",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTypesError =
   | AccessDeniedException
@@ -1705,27 +1645,7 @@ export const listTypes: API.OperationMethod<
     items: "types",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTypesRequest,
-  ListTypesResponse,
-  ListTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypesRequest,
-  ) => stream.Stream<
-    ListTypesResponse,
-    ListTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypesRequest,
-  ) => stream.Stream<
-    TypeName,
-    ListTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type RestoreTableError =
   | AccessDeniedException

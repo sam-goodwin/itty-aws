@@ -1456,7 +1456,8 @@ export const listListItems: API.PaginatedOperationMethod<
   ListListItemsRequest,
   ListListItemsResponse,
   ListListItemsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListsItemsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListListItemsRequest,
@@ -1472,7 +1473,7 @@ export const listListItems: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListListsError = Forbidden | CloudflareOpError;
 /** Fetches all lists in the account. */
@@ -1480,7 +1481,8 @@ export const listLists: API.PaginatedOperationMethod<
   ListListsRequest,
   ListListsResponse,
   ListListsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListListsRequest,
@@ -1491,7 +1493,7 @@ export const listLists: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type UpdateListError = ListNotFound | Forbidden | CloudflareOpError;
 /** Updates the description of a list. */

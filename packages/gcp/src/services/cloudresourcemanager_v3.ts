@@ -2826,7 +2826,8 @@ export const listEffectiveTags: API.PaginatedOperationMethod<
   ListEffectiveTagsRequest,
   ListEffectiveTagsResponse,
   ListEffectiveTagsError,
-  GcpOpContext
+  GcpOpContext,
+  ListEffectiveTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEffectiveTagsRequest,
   output: ListEffectiveTagsResponse,
@@ -2837,7 +2838,7 @@ export const listEffectiveTags: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFoldersError = NotFound | Forbidden | GcpOpError;
 /** Lists the folders that are direct descendants of supplied parent resource. `list()` provides a strongly consistent view of the folders underneath the specified parent resource. `list()` returns folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent. */
@@ -2845,7 +2846,8 @@ export const listFolders: API.PaginatedOperationMethod<
   ListFoldersRequest,
   ListFoldersResponse,
   ListFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  ListFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: ListFoldersResponse,
@@ -2856,7 +2858,7 @@ export const listFolders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLiensError = NotFound | Forbidden | GcpOpError;
 /** List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`. */
@@ -2864,7 +2866,8 @@ export const listLiens: API.PaginatedOperationMethod<
   ListLiensRequest,
   ListLiensResponse,
   ListLiensError,
-  GcpOpContext
+  GcpOpContext,
+  ListLiensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLiensRequest,
   output: ListLiensResponse,
@@ -2875,7 +2878,7 @@ export const listLiens: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsError = NotFound | Forbidden | GcpOpError;
 /** Lists projects that are direct children of the specified folder or organization resource. `list()` provides a strongly consistent view of the projects underneath the specified parent resource. `list()` returns projects sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have `resourcemanager.projects.list` permission on the identified parent. */
@@ -2883,7 +2886,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  ListProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
@@ -2894,7 +2898,7 @@ export const listProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTagBindingsError = NotFound | Forbidden | GcpOpError;
 /** Lists the TagBindings for the given Google Cloud resource, as specified with `parent`. NOTE: The `parent` field is expected to be a full resource name: https://cloud.google.com/apis/design/resource_names#full_resource_name */
@@ -2902,7 +2906,8 @@ export const listTagBindings: API.PaginatedOperationMethod<
   ListTagBindingsRequest,
   ListTagBindingsResponse,
   ListTagBindingsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTagBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagBindingsRequest,
   output: ListTagBindingsResponse,
@@ -2913,7 +2918,7 @@ export const listTagBindings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTagKeysError = NotFound | Forbidden | GcpOpError;
 /** Lists all TagKeys for a parent resource. */
@@ -2921,7 +2926,8 @@ export const listTagKeys: API.PaginatedOperationMethod<
   ListTagKeysRequest,
   ListTagKeysResponse,
   ListTagKeysError,
-  GcpOpContext
+  GcpOpContext,
+  ListTagKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagKeysRequest,
   output: ListTagKeysResponse,
@@ -2932,7 +2938,7 @@ export const listTagKeys: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTagValuesError = NotFound | Forbidden | GcpOpError;
 /** Lists all TagValues for a specific TagKey. */
@@ -2940,7 +2946,8 @@ export const listTagValues: API.PaginatedOperationMethod<
   ListTagValuesRequest,
   ListTagValuesResponse,
   ListTagValuesError,
-  GcpOpContext
+  GcpOpContext,
+  ListTagValuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagValuesRequest,
   output: ListTagValuesResponse,
@@ -2951,7 +2958,7 @@ export const listTagValues: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTagValuesTagHoldsError = NotFound | Forbidden | GcpOpError;
 /** Lists TagHolds under a TagValue. */
@@ -2959,7 +2966,8 @@ export const listTagValuesTagHolds: API.PaginatedOperationMethod<
   ListTagValuesTagHoldsRequest,
   ListTagHoldsResponse,
   ListTagValuesTagHoldsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTagHoldsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagValuesTagHoldsRequest,
   output: ListTagHoldsResponse,
@@ -2970,7 +2978,7 @@ export const listTagValuesTagHolds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MoveFoldersError =
   | NotFound
@@ -3138,7 +3146,8 @@ export const searchFolders: API.PaginatedOperationMethod<
   SearchFoldersRequest,
   SearchFoldersResponse,
   SearchFoldersError,
-  GcpOpContext
+  GcpOpContext,
+  SearchFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFoldersRequest,
   output: SearchFoldersResponse,
@@ -3149,7 +3158,7 @@ export const searchFolders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchOrganizationsError = NotFound | Forbidden | GcpOpError;
 /** Searches organization resources that are visible to the user and satisfy the specified filter. This method returns organizations in an unspecified order. New organizations do not necessarily appear at the end of the results, and may take a small amount of time to appear. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get` or has super admin privileges. */
@@ -3157,7 +3166,8 @@ export const searchOrganizations: API.PaginatedOperationMethod<
   SearchOrganizationsRequest,
   SearchOrganizationsResponse,
   SearchOrganizationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchOrganizationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationsRequest,
   output: SearchOrganizationsResponse,
@@ -3168,7 +3178,7 @@ export const searchOrganizations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchProjectsError = NotFound | Forbidden | GcpOpError;
 /** Search for projects that the caller has the `resourcemanager.projects.get` permission on, and also satisfy the specified query. This method returns projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. */
@@ -3176,7 +3186,8 @@ export const searchProjects: API.PaginatedOperationMethod<
   SearchProjectsRequest,
   SearchProjectsResponse,
   SearchProjectsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsRequest,
   output: SearchProjectsResponse,
@@ -3187,7 +3198,7 @@ export const searchProjects: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetIamPolicyFoldersError =
   | NotFound

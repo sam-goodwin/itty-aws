@@ -17530,7 +17530,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   AccountsListResponse,
   ListAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  AccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: AccountsListResponse,
@@ -17541,7 +17542,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAccountUserProfilesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of account user profiles, possibly filtered. This method supports paging. */
@@ -17549,7 +17550,8 @@ export const listAccountUserProfiles: API.PaginatedOperationMethod<
   ListAccountUserProfilesRequest,
   AccountUserProfilesListResponse,
   ListAccountUserProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  AccountUserProfilesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountUserProfilesRequest,
   output: AccountUserProfilesListResponse,
@@ -17560,7 +17562,7 @@ export const listAccountUserProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of ads, possibly filtered. This method supports paging. */
@@ -17568,7 +17570,8 @@ export const listAds: API.PaginatedOperationMethod<
   ListAdsRequest,
   AdsListResponse,
   ListAdsError,
-  GcpOpContext
+  GcpOpContext,
+  AdsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdsRequest,
   output: AdsListResponse,
@@ -17579,7 +17582,7 @@ export const listAds: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertiserGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of advertiser groups, possibly filtered. This method supports paging. */
@@ -17587,7 +17590,8 @@ export const listAdvertiserGroups: API.PaginatedOperationMethod<
   ListAdvertiserGroupsRequest,
   AdvertiserGroupsListResponse,
   ListAdvertiserGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  AdvertiserGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertiserGroupsRequest,
   output: AdvertiserGroupsListResponse,
@@ -17598,7 +17602,7 @@ export const listAdvertiserGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertiserInvoicesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of invoices for a particular issue month. The api only works if the billing profile invoice level is set to either advertiser or campaign non-consolidated invoice level. */
@@ -17606,7 +17610,8 @@ export const listAdvertiserInvoices: API.PaginatedOperationMethod<
   ListAdvertiserInvoicesRequest,
   AdvertiserInvoicesListResponse,
   ListAdvertiserInvoicesError,
-  GcpOpContext
+  GcpOpContext,
+  AdvertiserInvoicesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertiserInvoicesRequest,
   output: AdvertiserInvoicesListResponse,
@@ -17617,7 +17622,7 @@ export const listAdvertiserInvoices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertiserLandingPagesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of landing pages. */
@@ -17625,7 +17630,8 @@ export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
   ListAdvertiserLandingPagesRequest,
   AdvertiserLandingPagesListResponse,
   ListAdvertiserLandingPagesError,
-  GcpOpContext
+  GcpOpContext,
+  AdvertiserLandingPagesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertiserLandingPagesRequest,
   output: AdvertiserLandingPagesListResponse,
@@ -17636,7 +17642,7 @@ export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAdvertisersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of advertisers, possibly filtered. This method supports paging. */
@@ -17644,7 +17650,8 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   ListAdvertisersRequest,
   AdvertisersListResponse,
   ListAdvertisersError,
-  GcpOpContext
+  GcpOpContext,
+  AdvertisersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersRequest,
   output: AdvertisersListResponse,
@@ -17655,7 +17662,7 @@ export const listAdvertisers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of billing assignments. */
@@ -17678,7 +17685,8 @@ export const listBillingProfiles: API.PaginatedOperationMethod<
   ListBillingProfilesRequest,
   BillingProfilesListResponse,
   ListBillingProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  BillingProfilesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingProfilesRequest,
   output: BillingProfilesListResponse,
@@ -17689,7 +17697,7 @@ export const listBillingProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingRatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of billing rates. This method supports paging. */
@@ -17730,7 +17738,8 @@ export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
   ListCampaignCreativeAssociationsRequest,
   CampaignCreativeAssociationsListResponse,
   ListCampaignCreativeAssociationsError,
-  GcpOpContext
+  GcpOpContext,
+  CampaignCreativeAssociationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignCreativeAssociationsRequest,
   output: CampaignCreativeAssociationsListResponse,
@@ -17741,7 +17750,7 @@ export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCampaignsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of campaigns, possibly filtered. This method supports paging. */
@@ -17749,7 +17758,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   ListCampaignsRequest,
   CampaignsListResponse,
   ListCampaignsError,
-  GcpOpContext
+  GcpOpContext,
+  CampaignsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: CampaignsListResponse,
@@ -17760,7 +17770,7 @@ export const listCampaigns: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListChangeLogsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of change logs. This method supports paging. */
@@ -17768,7 +17778,8 @@ export const listChangeLogs: API.PaginatedOperationMethod<
   ListChangeLogsRequest,
   ChangeLogsListResponse,
   ListChangeLogsError,
-  GcpOpContext
+  GcpOpContext,
+  ChangeLogsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangeLogsRequest,
   output: ChangeLogsListResponse,
@@ -17779,7 +17790,7 @@ export const listChangeLogs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCitiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of cities, possibly filtered. */
@@ -17817,7 +17828,8 @@ export const listContentCategories: API.PaginatedOperationMethod<
   ListContentCategoriesRequest,
   ContentCategoriesListResponse,
   ListContentCategoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ContentCategoriesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContentCategoriesRequest,
   output: ContentCategoriesListResponse,
@@ -17828,7 +17840,7 @@ export const listContentCategories: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCountriesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of countries. */
@@ -17851,7 +17863,8 @@ export const listCreativeFields: API.PaginatedOperationMethod<
   ListCreativeFieldsRequest,
   CreativeFieldsListResponse,
   ListCreativeFieldsError,
-  GcpOpContext
+  GcpOpContext,
+  CreativeFieldsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreativeFieldsRequest,
   output: CreativeFieldsListResponse,
@@ -17862,7 +17875,7 @@ export const listCreativeFields: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCreativeFieldValuesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of creative field values, possibly filtered. This method supports paging. */
@@ -17870,7 +17883,8 @@ export const listCreativeFieldValues: API.PaginatedOperationMethod<
   ListCreativeFieldValuesRequest,
   CreativeFieldValuesListResponse,
   ListCreativeFieldValuesError,
-  GcpOpContext
+  GcpOpContext,
+  CreativeFieldValuesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreativeFieldValuesRequest,
   output: CreativeFieldValuesListResponse,
@@ -17881,7 +17895,7 @@ export const listCreativeFieldValues: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCreativeGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of creative groups, possibly filtered. This method supports paging. */
@@ -17889,7 +17903,8 @@ export const listCreativeGroups: API.PaginatedOperationMethod<
   ListCreativeGroupsRequest,
   CreativeGroupsListResponse,
   ListCreativeGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  CreativeGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreativeGroupsRequest,
   output: CreativeGroupsListResponse,
@@ -17900,7 +17915,7 @@ export const listCreativeGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCreativesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of creatives, possibly filtered. This method supports paging. */
@@ -17908,7 +17923,8 @@ export const listCreatives: API.PaginatedOperationMethod<
   ListCreativesRequest,
   CreativesListResponse,
   ListCreativesError,
-  GcpOpContext
+  GcpOpContext,
+  CreativesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreativesRequest,
   output: CreativesListResponse,
@@ -17919,7 +17935,7 @@ export const listCreatives: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDirectorySitesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of directory sites, possibly filtered. This method supports paging. */
@@ -17927,7 +17943,8 @@ export const listDirectorySites: API.PaginatedOperationMethod<
   ListDirectorySitesRequest,
   DirectorySitesListResponse,
   ListDirectorySitesError,
-  GcpOpContext
+  GcpOpContext,
+  DirectorySitesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectorySitesRequest,
   output: DirectorySitesListResponse,
@@ -17938,7 +17955,7 @@ export const listDirectorySites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDynamicTargetingKeysError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of dynamic targeting keys. */
@@ -17976,7 +17993,8 @@ export const listFiles: API.PaginatedOperationMethod<
   ListFilesRequest,
   FileList,
   ListFilesError,
-  GcpOpContext
+  GcpOpContext,
+  File
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFilesRequest,
   output: FileList,
@@ -17988,7 +18006,7 @@ export const listFiles: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListFloodlightActivitiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of floodlight activities, possibly filtered. This method supports paging. */
@@ -17996,7 +18014,8 @@ export const listFloodlightActivities: API.PaginatedOperationMethod<
   ListFloodlightActivitiesRequest,
   FloodlightActivitiesListResponse,
   ListFloodlightActivitiesError,
-  GcpOpContext
+  GcpOpContext,
+  FloodlightActivitiesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFloodlightActivitiesRequest,
   output: FloodlightActivitiesListResponse,
@@ -18007,7 +18026,7 @@ export const listFloodlightActivities: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFloodlightActivityGroupsError =
   | NotFound
@@ -18018,7 +18037,8 @@ export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
   ListFloodlightActivityGroupsRequest,
   FloodlightActivityGroupsListResponse,
   ListFloodlightActivityGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  FloodlightActivityGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFloodlightActivityGroupsRequest,
   output: FloodlightActivityGroupsListResponse,
@@ -18029,7 +18049,7 @@ export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListFloodlightConfigurationsError =
   | NotFound
@@ -18085,7 +18105,8 @@ export const listMobileApps: API.PaginatedOperationMethod<
   ListMobileAppsRequest,
   MobileAppsListResponse,
   ListMobileAppsError,
-  GcpOpContext
+  GcpOpContext,
+  MobileAppsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMobileAppsRequest,
   output: MobileAppsListResponse,
@@ -18096,7 +18117,7 @@ export const listMobileApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMobileCarriersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of mobile carriers. */
@@ -18152,7 +18173,8 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
   ListPlacementGroupsRequest,
   PlacementGroupsListResponse,
   ListPlacementGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  PlacementGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlacementGroupsRequest,
   output: PlacementGroupsListResponse,
@@ -18163,7 +18185,7 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlacementsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of placements, possibly filtered. This method supports paging. */
@@ -18171,7 +18193,8 @@ export const listPlacements: API.PaginatedOperationMethod<
   ListPlacementsRequest,
   PlacementsListResponse,
   ListPlacementsError,
-  GcpOpContext
+  GcpOpContext,
+  PlacementsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlacementsRequest,
   output: PlacementsListResponse,
@@ -18182,7 +18205,7 @@ export const listPlacements: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlacementStrategiesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of placement strategies, possibly filtered. This method supports paging. */
@@ -18190,7 +18213,8 @@ export const listPlacementStrategies: API.PaginatedOperationMethod<
   ListPlacementStrategiesRequest,
   PlacementStrategiesListResponse,
   ListPlacementStrategiesError,
-  GcpOpContext
+  GcpOpContext,
+  PlacementStrategiesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlacementStrategiesRequest,
   output: PlacementStrategiesListResponse,
@@ -18201,7 +18225,7 @@ export const listPlacementStrategies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlatformTypesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of platform types. */
@@ -18254,7 +18278,8 @@ export const listRemarketingLists: API.PaginatedOperationMethod<
   ListRemarketingListsRequest,
   RemarketingListsListResponse,
   ListRemarketingListsError,
-  GcpOpContext
+  GcpOpContext,
+  RemarketingListsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRemarketingListsRequest,
   output: RemarketingListsListResponse,
@@ -18265,7 +18290,7 @@ export const listRemarketingLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListReportsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves list of reports. */
@@ -18273,7 +18298,8 @@ export const listReports: API.PaginatedOperationMethod<
   ListReportsRequest,
   ReportList,
   ListReportsError,
-  GcpOpContext
+  GcpOpContext,
+  Report
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
   output: ReportList,
@@ -18285,7 +18311,7 @@ export const listReports: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListReportsFilesError = NotFound | Forbidden | GcpOpError;
 /** Lists files for a report. */
@@ -18293,7 +18319,8 @@ export const listReportsFiles: API.PaginatedOperationMethod<
   ListReportsFilesRequest,
   FileList,
   ListReportsFilesError,
-  GcpOpContext
+  GcpOpContext,
+  File
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsFilesRequest,
   output: FileList,
@@ -18305,7 +18332,7 @@ export const listReportsFiles: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSitesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of sites, possibly filtered. This method supports paging. */
@@ -18313,7 +18340,8 @@ export const listSites: API.PaginatedOperationMethod<
   ListSitesRequest,
   SitesListResponse,
   ListSitesError,
-  GcpOpContext
+  GcpOpContext,
+  SitesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSitesRequest,
   output: SitesListResponse,
@@ -18324,7 +18352,7 @@ export const listSites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSizesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include values not currently in use by your account. Due to this, the list of sizes returned by this method may differ from the list seen in the Trafficking UI. */
@@ -18347,7 +18375,8 @@ export const listSubaccounts: API.PaginatedOperationMethod<
   ListSubaccountsRequest,
   SubaccountsListResponse,
   ListSubaccountsError,
-  GcpOpContext
+  GcpOpContext,
+  SubaccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubaccountsRequest,
   output: SubaccountsListResponse,
@@ -18358,7 +18387,7 @@ export const listSubaccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTargetableRemarketingListsError =
   | NotFound
@@ -18369,7 +18398,8 @@ export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
   ListTargetableRemarketingListsRequest,
   TargetableRemarketingListsListResponse,
   ListTargetableRemarketingListsError,
-  GcpOpContext
+  GcpOpContext,
+  TargetableRemarketingListsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetableRemarketingListsRequest,
   output: TargetableRemarketingListsListResponse,
@@ -18380,7 +18410,7 @@ export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTargetingTemplatesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of targeting templates, optionally filtered. This method supports paging. */
@@ -18388,7 +18418,8 @@ export const listTargetingTemplates: API.PaginatedOperationMethod<
   ListTargetingTemplatesRequest,
   TargetingTemplatesListResponse,
   ListTargetingTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  TargetingTemplatesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetingTemplatesRequest,
   output: TargetingTemplatesListResponse,
@@ -18399,7 +18430,7 @@ export const listTargetingTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListTvCampaignSummariesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of TV campaign summaries. */
@@ -18470,7 +18501,8 @@ export const listUserRoles: API.PaginatedOperationMethod<
   ListUserRolesRequest,
   UserRolesListResponse,
   ListUserRolesError,
-  GcpOpContext
+  GcpOpContext,
+  UserRolesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserRolesRequest,
   output: UserRolesListResponse,
@@ -18481,7 +18513,7 @@ export const listUserRoles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListVideoFormatsError = NotFound | Forbidden | GcpOpError;
 /** Lists available video formats. */
@@ -19049,7 +19081,8 @@ export const queryDimensionValues: API.PaginatedOperationMethod<
   QueryDimensionValuesRequest,
   DimensionValueList,
   QueryDimensionValuesError,
-  GcpOpContext
+  GcpOpContext,
+  DimensionValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryDimensionValuesRequest,
   output: DimensionValueList,
@@ -19061,7 +19094,7 @@ export const queryDimensionValues: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type QueryReportsCompatibleFieldsError =
   | NotFound

@@ -2944,27 +2944,7 @@ export const listChannels: API.OperationMethod<
     items: "channels",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelsRequest,
-  ListChannelsResponse,
-  ListChannelsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ChannelArn,
-    ListChannelsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListEventRulesError =
   | AccessDeniedException
@@ -3015,27 +2995,7 @@ export const listEventRules: API.OperationMethod<
     items: "eventRules",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListEventRulesRequest,
-  ListEventRulesResponse,
-  ListEventRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventRulesRequest,
-  ) => stream.Stream<
-    ListEventRulesResponse,
-    ListEventRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventRulesRequest,
-  ) => stream.Stream<
-    EventRuleStructure,
-    ListEventRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedNotificationChannelAssociationsError =
   | AccessDeniedException
@@ -3086,27 +3046,7 @@ export const listManagedNotificationChannelAssociations: API.OperationMethod<
     items: "channelAssociations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedNotificationChannelAssociationsRequest,
-  ListManagedNotificationChannelAssociationsResponse,
-  ListManagedNotificationChannelAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationChannelAssociationsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationChannelAssociationsResponse,
-    ListManagedNotificationChannelAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationChannelAssociationsRequest,
-  ) => stream.Stream<
-    ManagedNotificationChannelAssociationSummary,
-    ListManagedNotificationChannelAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedNotificationChildEventsError =
   | AccessDeniedException
@@ -3157,27 +3097,7 @@ export const listManagedNotificationChildEvents: API.OperationMethod<
     items: "managedNotificationChildEvents",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedNotificationChildEventsRequest,
-  ListManagedNotificationChildEventsResponse,
-  ListManagedNotificationChildEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationChildEventsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationChildEventsResponse,
-    ListManagedNotificationChildEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationChildEventsRequest,
-  ) => stream.Stream<
-    ManagedNotificationChildEventOverview,
-    ListManagedNotificationChildEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedNotificationConfigurationsError =
   | AccessDeniedException
@@ -3226,27 +3146,7 @@ export const listManagedNotificationConfigurations: API.OperationMethod<
     items: "managedNotificationConfigurations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedNotificationConfigurationsRequest,
-  ListManagedNotificationConfigurationsResponse,
-  ListManagedNotificationConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationConfigurationsResponse,
-    ListManagedNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ManagedNotificationConfigurationStructure,
-    ListManagedNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedNotificationEventsError =
   | AccessDeniedException
@@ -3295,27 +3195,7 @@ export const listManagedNotificationEvents: API.OperationMethod<
     items: "managedNotificationEvents",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedNotificationEventsRequest,
-  ListManagedNotificationEventsResponse,
-  ListManagedNotificationEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedNotificationEventsRequest,
-  ) => stream.Stream<
-    ListManagedNotificationEventsResponse,
-    ListManagedNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedNotificationEventsRequest,
-  ) => stream.Stream<
-    ManagedNotificationEventOverview,
-    ListManagedNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMemberAccountsError =
   | AccessDeniedException
@@ -3366,27 +3246,7 @@ export const listMemberAccounts: API.OperationMethod<
     items: "memberAccounts",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMemberAccountsRequest,
-  ListMemberAccountsResponse,
-  ListMemberAccountsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    ListMemberAccountsResponse,
-    ListMemberAccountsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    MemberAccount,
-    ListMemberAccountsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotificationConfigurationsError =
   | AccessDeniedException
@@ -3435,27 +3295,7 @@ export const listNotificationConfigurations: API.OperationMethod<
     items: "notificationConfigurations",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNotificationConfigurationsRequest,
-  ListNotificationConfigurationsResponse,
-  ListNotificationConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    ListNotificationConfigurationsResponse,
-    ListNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationConfigurationsRequest,
-  ) => stream.Stream<
-    NotificationConfigurationStructure,
-    ListNotificationConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotificationEventsError =
   | AccessDeniedException
@@ -3506,27 +3346,7 @@ export const listNotificationEvents: API.OperationMethod<
     items: "notificationEvents",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNotificationEventsRequest,
-  ListNotificationEventsResponse,
-  ListNotificationEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationEventsRequest,
-  ) => stream.Stream<
-    ListNotificationEventsResponse,
-    ListNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationEventsRequest,
-  ) => stream.Stream<
-    NotificationEventOverview,
-    ListNotificationEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListNotificationHubsError =
   | AccessDeniedException
@@ -3575,27 +3395,7 @@ export const listNotificationHubs: API.OperationMethod<
     items: "notificationHubs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListNotificationHubsRequest,
-  ListNotificationHubsResponse,
-  ListNotificationHubsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationHubsRequest,
-  ) => stream.Stream<
-    ListNotificationHubsResponse,
-    ListNotificationHubsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationHubsRequest,
-  ) => stream.Stream<
-    NotificationHubOverview,
-    ListNotificationHubsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListOrganizationalUnitsError =
   | AccessDeniedException
@@ -3646,27 +3446,7 @@ export const listOrganizationalUnits: API.OperationMethod<
     items: "organizationalUnits",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListOrganizationalUnitsRequest,
-  ListOrganizationalUnitsResponse,
-  ListOrganizationalUnitsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationalUnitsRequest,
-  ) => stream.Stream<
-    ListOrganizationalUnitsResponse,
-    ListOrganizationalUnitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationalUnitsRequest,
-  ) => stream.Stream<
-    OrganizationalUnitId,
-    ListOrganizationalUnitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

@@ -2576,7 +2576,8 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
   ListDocumentsProjectsDatabasesDocumentsRequest,
   ListDocumentsResponse,
   ListDocumentsProjectsDatabasesDocumentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsProjectsDatabasesDocumentsRequest,
   output: ListDocumentsResponse,
@@ -2587,7 +2588,7 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListenProjectsDatabasesDocumentsError =
   | NotFound
@@ -2618,7 +2619,8 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
   ListProjectsDatabasesDocumentsRequest,
   ListDocumentsResponse,
   ListProjectsDatabasesDocumentsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesDocumentsRequest,
   output: ListDocumentsResponse,
@@ -2629,7 +2631,7 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsDatabasesIndexesError =
   | NotFound
@@ -2640,7 +2642,8 @@ export const listProjectsDatabasesIndexes: API.PaginatedOperationMethod<
   ListProjectsDatabasesIndexesRequest,
   GoogleFirestoreAdminV1beta1ListIndexesResponse,
   ListProjectsDatabasesIndexesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleFirestoreAdminV1beta1ListIndexesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesIndexesRequest,
   output: GoogleFirestoreAdminV1beta1ListIndexesResponse,
@@ -2651,7 +2654,7 @@ export const listProjectsDatabasesIndexes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PartitionQueryProjectsDatabasesDocumentsError =
   | NotFound

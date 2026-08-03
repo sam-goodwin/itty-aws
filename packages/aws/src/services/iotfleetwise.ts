@@ -4703,27 +4703,7 @@ export const getVehicleStatus: API.OperationMethod<
     items: "campaigns",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetVehicleStatusRequest,
-  GetVehicleStatusResponse,
-  GetVehicleStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetVehicleStatusRequest,
-  ) => stream.Stream<
-    GetVehicleStatusResponse,
-    GetVehicleStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetVehicleStatusRequest,
-  ) => stream.Stream<
-    VehicleStatus,
-    GetVehicleStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ImportDecoderManifestError =
   | AccessDeniedException
@@ -4841,27 +4821,7 @@ export const listCampaigns: API.OperationMethod<
     items: "campaignSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCampaignsRequest,
-  ListCampaignsResponse,
-  ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    ListCampaignsResponse,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    CampaignSummary,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDecoderManifestNetworkInterfacesError =
   | AccessDeniedException
@@ -4914,27 +4874,7 @@ export const listDecoderManifestNetworkInterfaces: API.OperationMethod<
     items: "networkInterfaces",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDecoderManifestNetworkInterfacesRequest,
-  ListDecoderManifestNetworkInterfacesResponse,
-  ListDecoderManifestNetworkInterfacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDecoderManifestNetworkInterfacesRequest,
-  ) => stream.Stream<
-    ListDecoderManifestNetworkInterfacesResponse,
-    ListDecoderManifestNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDecoderManifestNetworkInterfacesRequest,
-  ) => stream.Stream<
-    NetworkInterface,
-    ListDecoderManifestNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDecoderManifestsError =
   | AccessDeniedException
@@ -4985,27 +4925,7 @@ export const listDecoderManifests: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDecoderManifestsRequest,
-  ListDecoderManifestsResponse,
-  ListDecoderManifestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDecoderManifestsRequest,
-  ) => stream.Stream<
-    ListDecoderManifestsResponse,
-    ListDecoderManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDecoderManifestsRequest,
-  ) => stream.Stream<
-    DecoderManifestSummary,
-    ListDecoderManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDecoderManifestSignalsError =
   | AccessDeniedException
@@ -5058,27 +4978,7 @@ export const listDecoderManifestSignals: API.OperationMethod<
     items: "signalDecoders",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDecoderManifestSignalsRequest,
-  ListDecoderManifestSignalsResponse,
-  ListDecoderManifestSignalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDecoderManifestSignalsRequest,
-  ) => stream.Stream<
-    ListDecoderManifestSignalsResponse,
-    ListDecoderManifestSignalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDecoderManifestSignalsRequest,
-  ) => stream.Stream<
-    SignalDecoder,
-    ListDecoderManifestSignalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFleetsError =
   | AccessDeniedException
@@ -5131,27 +5031,7 @@ export const listFleets: API.OperationMethod<
     items: "fleetSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFleetsRequest,
-  ListFleetsResponse,
-  ListFleetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsRequest,
-  ) => stream.Stream<
-    ListFleetsResponse,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsRequest,
-  ) => stream.Stream<
-    FleetSummary,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFleetsForVehicleError =
   | AccessDeniedException
@@ -5204,27 +5084,7 @@ export const listFleetsForVehicle: API.OperationMethod<
     items: "fleets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFleetsForVehicleRequest,
-  ListFleetsForVehicleResponse,
-  ListFleetsForVehicleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsForVehicleRequest,
-  ) => stream.Stream<
-    ListFleetsForVehicleResponse,
-    ListFleetsForVehicleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsForVehicleRequest,
-  ) => stream.Stream<
-    FleetId,
-    ListFleetsForVehicleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelManifestNodesError =
   | AccessDeniedException
@@ -5279,27 +5139,7 @@ export const listModelManifestNodes: API.OperationMethod<
     items: "nodes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelManifestNodesRequest,
-  ListModelManifestNodesResponse,
-  ListModelManifestNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelManifestNodesRequest,
-  ) => stream.Stream<
-    ListModelManifestNodesResponse,
-    ListModelManifestNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelManifestNodesRequest,
-  ) => stream.Stream<
-    Node,
-    ListModelManifestNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListModelManifestsError =
   | AccessDeniedException
@@ -5350,27 +5190,7 @@ export const listModelManifests: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListModelManifestsRequest,
-  ListModelManifestsResponse,
-  ListModelManifestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelManifestsRequest,
-  ) => stream.Stream<
-    ListModelManifestsResponse,
-    ListModelManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelManifestsRequest,
-  ) => stream.Stream<
-    ModelManifestSummary,
-    ListModelManifestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSignalCatalogNodesError =
   | AccessDeniedException
@@ -5425,27 +5245,7 @@ export const listSignalCatalogNodes: API.OperationMethod<
     items: "nodes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSignalCatalogNodesRequest,
-  ListSignalCatalogNodesResponse,
-  ListSignalCatalogNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSignalCatalogNodesRequest,
-  ) => stream.Stream<
-    ListSignalCatalogNodesResponse,
-    ListSignalCatalogNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSignalCatalogNodesRequest,
-  ) => stream.Stream<
-    Node,
-    ListSignalCatalogNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSignalCatalogsError =
   | AccessDeniedException
@@ -5499,27 +5299,7 @@ export const listSignalCatalogs: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSignalCatalogsRequest,
-  ListSignalCatalogsResponse,
-  ListSignalCatalogsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSignalCatalogsRequest,
-  ) => stream.Stream<
-    ListSignalCatalogsResponse,
-    ListSignalCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSignalCatalogsRequest,
-  ) => stream.Stream<
-    SignalCatalogSummary,
-    ListSignalCatalogsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStateTemplatesError =
   | AccessDeniedException
@@ -5570,27 +5350,7 @@ export const listStateTemplates: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStateTemplatesRequest,
-  ListStateTemplatesResponse,
-  ListStateTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStateTemplatesRequest,
-  ) => stream.Stream<
-    ListStateTemplatesResponse,
-    ListStateTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStateTemplatesRequest,
-  ) => stream.Stream<
-    StateTemplateSummary,
-    ListStateTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -5671,27 +5431,7 @@ export const listVehicles: API.OperationMethod<
     items: "vehicleSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVehiclesRequest,
-  ListVehiclesResponse,
-  ListVehiclesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVehiclesRequest,
-  ) => stream.Stream<
-    ListVehiclesResponse,
-    ListVehiclesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVehiclesRequest,
-  ) => stream.Stream<
-    VehicleSummary,
-    ListVehiclesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListVehiclesInFleetError =
   | AccessDeniedException
@@ -5744,27 +5484,7 @@ export const listVehiclesInFleet: API.OperationMethod<
     items: "vehicles",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListVehiclesInFleetRequest,
-  ListVehiclesInFleetResponse,
-  ListVehiclesInFleetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVehiclesInFleetRequest,
-  ) => stream.Stream<
-    ListVehiclesInFleetResponse,
-    ListVehiclesInFleetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVehiclesInFleetRequest,
-  ) => stream.Stream<
-    VehicleName,
-    ListVehiclesInFleetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutEncryptionConfigurationError =
   | AccessDeniedException

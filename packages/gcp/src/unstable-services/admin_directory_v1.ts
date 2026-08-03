@@ -7683,7 +7683,8 @@ export const listChromeosdevices: API.PaginatedOperationMethod<
   ListChromeosdevicesRequest,
   ChromeOsDevices,
   ListChromeosdevicesError,
-  GcpOpContext
+  GcpOpContext,
+  ChromeOsDevices
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChromeosdevicesRequest,
   output: ChromeOsDevices,
@@ -7694,7 +7695,7 @@ export const listChromeosdevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersChromePrintersError =
   | NotFound
@@ -7705,7 +7706,8 @@ export const listCustomersChromePrinters: API.PaginatedOperationMethod<
   ListCustomersChromePrintersRequest,
   ListPrintersResponse,
   ListCustomersChromePrintersError,
-  GcpOpContext
+  GcpOpContext,
+  ListPrintersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersChromePrintersRequest,
   output: ListPrintersResponse,
@@ -7716,7 +7718,7 @@ export const listCustomersChromePrinters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersChromePrintServersError =
   | NotFound
@@ -7727,7 +7729,8 @@ export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
   ListCustomersChromePrintServersRequest,
   ListPrintServersResponse,
   ListCustomersChromePrintServersError,
-  GcpOpContext
+  GcpOpContext,
+  ListPrintServersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersChromePrintServersRequest,
   output: ListPrintServersResponse,
@@ -7738,7 +7741,7 @@ export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDomainAliasesError = NotFound | Forbidden | GcpOpError;
 /** Lists the domain aliases of the customer. */
@@ -7776,7 +7779,8 @@ export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   Groups,
   ListGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  Groups
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: Groups,
@@ -7787,7 +7791,7 @@ export const listGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGroupsAliasesError = NotFound | Forbidden | GcpOpError;
 /** Lists all aliases for a group. */
@@ -7810,7 +7814,8 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   Members,
   ListMembersError,
-  GcpOpContext
+  GcpOpContext,
+  Members
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: Members,
@@ -7821,7 +7826,7 @@ export const listMembers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMobiledevicesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a paginated list of all user-owned mobile devices for an account. To retrieve a list that includes company-owned devices, use the Cloud Identity [Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead. This method times out after 60 minutes. For more information, see [Troubleshoot error codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes). */
@@ -7829,7 +7834,8 @@ export const listMobiledevices: API.PaginatedOperationMethod<
   ListMobiledevicesRequest,
   MobileDevices,
   ListMobiledevicesError,
-  GcpOpContext
+  GcpOpContext,
+  MobileDevices
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMobiledevicesRequest,
   output: MobileDevices,
@@ -7840,7 +7846,7 @@ export const listMobiledevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrgunitsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of all organizational units for an account. */
@@ -7866,7 +7872,8 @@ export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMet
   ListPrinterModelsCustomersChromePrintersRequest,
   ListPrinterModelsResponse,
   ListPrinterModelsCustomersChromePrintersError,
-  GcpOpContext
+  GcpOpContext,
+  ListPrinterModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrinterModelsCustomersChromePrintersRequest,
   output: ListPrinterModelsResponse,
@@ -7877,7 +7884,7 @@ export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPrivilegesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a paginated list of all privileges for a customer. */
@@ -7900,7 +7907,8 @@ export const listResourcesBuildings: API.PaginatedOperationMethod<
   ListResourcesBuildingsRequest,
   Buildings,
   ListResourcesBuildingsError,
-  GcpOpContext
+  GcpOpContext,
+  Buildings
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesBuildingsRequest,
   output: Buildings,
@@ -7911,7 +7919,7 @@ export const listResourcesBuildings: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListResourcesCalendarsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of calendar resources for an account. */
@@ -7919,7 +7927,8 @@ export const listResourcesCalendars: API.PaginatedOperationMethod<
   ListResourcesCalendarsRequest,
   CalendarResources,
   ListResourcesCalendarsError,
-  GcpOpContext
+  GcpOpContext,
+  CalendarResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesCalendarsRequest,
   output: CalendarResources,
@@ -7931,7 +7940,7 @@ export const listResourcesCalendars: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListResourcesFeaturesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a list of features for an account. */
@@ -7939,7 +7948,8 @@ export const listResourcesFeatures: API.PaginatedOperationMethod<
   ListResourcesFeaturesRequest,
   Features,
   ListResourcesFeaturesError,
-  GcpOpContext
+  GcpOpContext,
+  Features
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesFeaturesRequest,
   output: Features,
@@ -7950,7 +7960,7 @@ export const listResourcesFeatures: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListRoleAssignmentsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a paginated list of all roleAssignments. */
@@ -7958,7 +7968,8 @@ export const listRoleAssignments: API.PaginatedOperationMethod<
   ListRoleAssignmentsRequest,
   RoleAssignments,
   ListRoleAssignmentsError,
-  GcpOpContext
+  GcpOpContext,
+  RoleAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoleAssignmentsRequest,
   output: RoleAssignments,
@@ -7970,7 +7981,7 @@ export const listRoleAssignments: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListRolesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a paginated list of all the roles in a domain. */
@@ -7978,7 +7989,8 @@ export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   Roles,
   ListRolesError,
-  GcpOpContext
+  GcpOpContext,
+  Role
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: Roles,
@@ -7990,7 +8002,7 @@ export const listRoles: API.PaginatedOperationMethod<
     outputToken: "nextPageToken",
     items: "items",
   } as const,
-}));
+})) as any;
 
 export type ListSchemasError = NotFound | Forbidden | GcpOpError;
 /** Retrieves all schemas for a customer. */
@@ -8028,7 +8040,8 @@ export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   Users,
   ListUsersError,
-  GcpOpContext
+  GcpOpContext,
+  Users
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: Users,
@@ -8039,7 +8052,7 @@ export const listUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListUsersAliasesError = NotFound | Forbidden | GcpOpError;
 /** Lists all aliases for a user. */

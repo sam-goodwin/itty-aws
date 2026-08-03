@@ -3086,7 +3086,8 @@ export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsEntryGroupsRequest,
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse,
   ListProjectsLocationsEntryGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsRequest,
   output: GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse,
@@ -3097,7 +3098,7 @@ export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsEntryGroupsEntriesError =
   | NotFound
@@ -3108,7 +3109,8 @@ export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMeth
   ListProjectsLocationsEntryGroupsEntriesRequest,
   GoogleCloudDatacatalogV1beta1ListEntriesResponse,
   ListProjectsLocationsEntryGroupsEntriesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogV1beta1ListEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsEntriesRequest,
   output: GoogleCloudDatacatalogV1beta1ListEntriesResponse,
@@ -3119,7 +3121,7 @@ export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsEntryGroupsEntriesTagsError =
   | NotFound
@@ -3130,7 +3132,8 @@ export const listProjectsLocationsEntryGroupsEntriesTags: API.PaginatedOperation
   ListProjectsLocationsEntryGroupsEntriesTagsRequest,
   GoogleCloudDatacatalogV1beta1ListTagsResponse,
   ListProjectsLocationsEntryGroupsEntriesTagsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogV1beta1ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsEntriesTagsRequest,
   output: GoogleCloudDatacatalogV1beta1ListTagsResponse,
@@ -3141,7 +3144,7 @@ export const listProjectsLocationsEntryGroupsEntriesTags: API.PaginatedOperation
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsEntryGroupsTagsError =
   | NotFound
@@ -3152,7 +3155,8 @@ export const listProjectsLocationsEntryGroupsTags: API.PaginatedOperationMethod<
   ListProjectsLocationsEntryGroupsTagsRequest,
   GoogleCloudDatacatalogV1beta1ListTagsResponse,
   ListProjectsLocationsEntryGroupsTagsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogV1beta1ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsTagsRequest,
   output: GoogleCloudDatacatalogV1beta1ListTagsResponse,
@@ -3163,7 +3167,7 @@ export const listProjectsLocationsEntryGroupsTags: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsTaxonomiesError =
   | NotFound
@@ -3174,7 +3178,8 @@ export const listProjectsLocationsTaxonomies: API.PaginatedOperationMethod<
   ListProjectsLocationsTaxonomiesRequest,
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse,
   ListProjectsLocationsTaxonomiesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTaxonomiesRequest,
   output: GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse,
@@ -3185,7 +3190,7 @@ export const listProjectsLocationsTaxonomies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsTaxonomiesPolicyTagsError =
   | NotFound
@@ -3196,7 +3201,8 @@ export const listProjectsLocationsTaxonomiesPolicyTags: API.PaginatedOperationMe
   ListProjectsLocationsTaxonomiesPolicyTagsRequest,
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse,
   ListProjectsLocationsTaxonomiesPolicyTagsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse,
@@ -3207,7 +3213,7 @@ export const listProjectsLocationsTaxonomiesPolicyTags: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupEntriesError = NotFound | Forbidden | GcpOpError;
 /** Get an entry by target resource name. This method allows clients to use the resource name from the source Google Cloud Platform service to get the Data Catalog Entry. */

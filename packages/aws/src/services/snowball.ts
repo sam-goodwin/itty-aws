@@ -1821,27 +1821,7 @@ export const describeAddresses: API.OperationMethod<
     items: "Addresses",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAddressesRequest,
-  DescribeAddressesResult,
-  DescribeAddressesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAddressesRequest,
-  ) => stream.Stream<
-    DescribeAddressesResult,
-    DescribeAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAddressesRequest,
-  ) => stream.Stream<
-    Address,
-    DescribeAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeClusterError = InvalidResourceException | CommonErrors;
 /**
@@ -2067,27 +2047,7 @@ export const listClusterJobs: API.OperationMethod<
     items: "JobListEntries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClusterJobsRequest,
-  ListClusterJobsResult,
-  ListClusterJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClusterJobsRequest,
-  ) => stream.Stream<
-    ListClusterJobsResult,
-    ListClusterJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClusterJobsRequest,
-  ) => stream.Stream<
-    JobListEntry,
-    ListClusterJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListClustersError = InvalidNextTokenException | CommonErrors;
 /**
@@ -2128,27 +2088,7 @@ export const listClusters: API.OperationMethod<
     items: "ClusterListEntries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClustersRequest,
-  ListClustersResult,
-  ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResult,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ClusterListEntry,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListCompatibleImagesError =
   | Ec2RequestFailedException
@@ -2193,27 +2133,7 @@ export const listCompatibleImages: API.OperationMethod<
     items: "CompatibleImages",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCompatibleImagesRequest,
-  ListCompatibleImagesResult,
-  ListCompatibleImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCompatibleImagesRequest,
-  ) => stream.Stream<
-    ListCompatibleImagesResult,
-    ListCompatibleImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCompatibleImagesRequest,
-  ) => stream.Stream<
-    CompatibleImage,
-    ListCompatibleImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListJobsError = InvalidNextTokenException | CommonErrors;
 /**
@@ -2256,27 +2176,7 @@ export const listJobs: API.OperationMethod<
     items: "JobListEntries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsRequest,
-  ListJobsResult,
-  ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobListEntry,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListLongTermPricingError =
   | InvalidNextTokenException
@@ -2318,27 +2218,7 @@ export const listLongTermPricing: API.OperationMethod<
     items: "LongTermPricingEntries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListLongTermPricingRequest,
-  ListLongTermPricingResult,
-  ListLongTermPricingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLongTermPricingRequest,
-  ) => stream.Stream<
-    ListLongTermPricingResult,
-    ListLongTermPricingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLongTermPricingRequest,
-  ) => stream.Stream<
-    LongTermPricingListEntry,
-    ListLongTermPricingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPickupLocationsError = InvalidResourceException | CommonErrors;
 /**
@@ -2376,27 +2256,7 @@ export const listPickupLocations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPickupLocationsRequest,
-  ListPickupLocationsResult,
-  ListPickupLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPickupLocationsRequest,
-  ) => stream.Stream<
-    ListPickupLocationsResult,
-    ListPickupLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPickupLocationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPickupLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListServiceVersionsError =
   | InvalidNextTokenException

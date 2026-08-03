@@ -349,27 +349,7 @@ export const describeHomeRegionControls: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeHomeRegionControlsRequest,
-  DescribeHomeRegionControlsResult,
-  DescribeHomeRegionControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeHomeRegionControlsRequest,
-  ) => stream.Stream<
-    DescribeHomeRegionControlsResult,
-    DescribeHomeRegionControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeHomeRegionControlsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeHomeRegionControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetHomeRegionError =
   | AccessDeniedException

@@ -1746,7 +1746,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsRequest,
   ListJobsResponse,
   ListProjectsLocationsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsRequest,
   output: ListJobsResponse,
@@ -1757,7 +1758,7 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsJobTemplatesError =
   | NotFound
@@ -1768,7 +1769,8 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsJobTemplatesRequest,
   ListJobTemplatesResponse,
   ListProjectsLocationsJobTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobTemplatesRequest,
   output: ListJobTemplatesResponse,
@@ -1779,4 +1781,4 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

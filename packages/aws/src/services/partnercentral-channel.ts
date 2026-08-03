@@ -1792,27 +1792,7 @@ export const listChannelHandshakes: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelHandshakesRequest,
-  ListChannelHandshakesResponse,
-  ListChannelHandshakesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelHandshakesRequest,
-  ) => stream.Stream<
-    ListChannelHandshakesResponse,
-    ListChannelHandshakesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelHandshakesRequest,
-  ) => stream.Stream<
-    ChannelHandshakeSummary,
-    ListChannelHandshakesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProgramManagementAccountsError =
   | AccessDeniedException
@@ -1863,27 +1843,7 @@ export const listProgramManagementAccounts: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProgramManagementAccountsRequest,
-  ListProgramManagementAccountsResponse,
-  ListProgramManagementAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProgramManagementAccountsRequest,
-  ) => stream.Stream<
-    ListProgramManagementAccountsResponse,
-    ListProgramManagementAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProgramManagementAccountsRequest,
-  ) => stream.Stream<
-    ProgramManagementAccountSummary,
-    ListProgramManagementAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRelationshipsError =
   | AccessDeniedException
@@ -1934,27 +1894,7 @@ export const listRelationships: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRelationshipsRequest,
-  ListRelationshipsResponse,
-  ListRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelationshipsRequest,
-  ) => stream.Stream<
-    ListRelationshipsResponse,
-    ListRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelationshipsRequest,
-  ) => stream.Stream<
-    RelationshipSummary,
-    ListRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

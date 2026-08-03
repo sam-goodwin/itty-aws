@@ -349,7 +349,8 @@ export const searchAllIamPolicies: API.PaginatedOperationMethod<
   SearchAllIamPoliciesRequest,
   SearchAllIamPoliciesResponse,
   SearchAllIamPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  SearchAllIamPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllIamPoliciesRequest,
   output: SearchAllIamPoliciesResponse,
@@ -360,7 +361,7 @@ export const searchAllIamPolicies: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchAllResourcesError = NotFound | Forbidden | GcpOpError;
 /** Searches all the resources within a given accessible Resource Manager scope (project/folder/organization). This RPC gives callers especially administrators the ability to search all the resources within a scope, even if they don't have `.get` permission of all the resources. Callers should have `cloudasset.assets.searchAllResources` permission on the requested scope, otherwise the request will be rejected. */
@@ -368,7 +369,8 @@ export const searchAllResources: API.PaginatedOperationMethod<
   SearchAllResourcesRequest,
   SearchAllResourcesResponse,
   SearchAllResourcesError,
-  GcpOpContext
+  GcpOpContext,
+  SearchAllResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllResourcesRequest,
   output: SearchAllResourcesResponse,
@@ -379,4 +381,4 @@ export const searchAllResources: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

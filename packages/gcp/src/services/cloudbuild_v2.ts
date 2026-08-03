@@ -1517,7 +1517,8 @@ export const fetchGitRefsProjectsLocationsConnectionsRepositories: API.Paginated
   FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest,
   FetchGitRefsResponse,
   FetchGitRefsProjectsLocationsConnectionsRepositoriesError,
-  GcpOpContext
+  GcpOpContext,
+  FetchGitRefsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest,
   output: FetchGitRefsResponse,
@@ -1528,7 +1529,7 @@ export const fetchGitRefsProjectsLocationsConnectionsRepositories: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type FetchLinkableRepositoriesProjectsLocationsConnectionsError =
   | NotFound
@@ -1539,7 +1540,8 @@ export const fetchLinkableRepositoriesProjectsLocationsConnections: API.Paginate
   FetchLinkableRepositoriesProjectsLocationsConnectionsRequest,
   FetchLinkableRepositoriesResponse,
   FetchLinkableRepositoriesProjectsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  FetchLinkableRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FetchLinkableRepositoriesProjectsLocationsConnectionsRequest,
   output: FetchLinkableRepositoriesResponse,
@@ -1550,7 +1552,7 @@ export const fetchLinkableRepositoriesProjectsLocationsConnections: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetIamPolicyProjectsLocationsConnectionsError =
   | NotFound
@@ -1645,7 +1647,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -1656,7 +1659,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsConnectionsError =
   | NotFound
@@ -1667,7 +1670,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   ListProjectsLocationsConnectionsRequest,
   ListConnectionsResponse,
   ListProjectsLocationsConnectionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: ListConnectionsResponse,
@@ -1678,7 +1682,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsConnectionsRepositoriesError =
   | NotFound
@@ -1689,7 +1693,8 @@ export const listProjectsLocationsConnectionsRepositories: API.PaginatedOperatio
   ListProjectsLocationsConnectionsRepositoriesRequest,
   ListRepositoriesResponse,
   ListProjectsLocationsConnectionsRepositoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRepositoriesRequest,
   output: ListRepositoriesResponse,
@@ -1700,7 +1705,7 @@ export const listProjectsLocationsConnectionsRepositories: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsConnectionsError =
   | NotFound

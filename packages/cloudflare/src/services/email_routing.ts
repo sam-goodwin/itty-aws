@@ -2030,7 +2030,8 @@ export const listAddresses: API.PaginatedOperationMethod<
   ListAddressesRequest,
   ListAddressesResponse,
   ListAddressesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  AddressesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAddressesRequest,
@@ -2047,7 +2048,7 @@ export const listAddresses: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRulesError = CloudflareOpError;
 /** List routing rules (docs-absent endpoint). */
@@ -2055,7 +2056,8 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  GetRuleResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRulesRequest,
@@ -2072,7 +2074,7 @@ export const listRules: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchDnsError = CloudflareOpError;
 /** Unlock MX Records previously locked by Email Routing. */

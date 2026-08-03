@@ -3931,27 +3931,7 @@ export const listChannelBans: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelBansRequest,
-  ListChannelBansResponse,
-  ListChannelBansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelBansRequest,
-  ) => stream.Stream<
-    ListChannelBansResponse,
-    ListChannelBansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelBansRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelBansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelFlowsError =
   | BadRequestException
@@ -4003,27 +3983,7 @@ export const listChannelFlows: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelFlowsRequest,
-  ListChannelFlowsResponse,
-  ListChannelFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelFlowsRequest,
-  ) => stream.Stream<
-    ListChannelFlowsResponse,
-    ListChannelFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelFlowsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelMembershipsError =
   | BadRequestException
@@ -4082,27 +4042,7 @@ export const listChannelMemberships: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelMembershipsRequest,
-  ListChannelMembershipsResponse,
-  ListChannelMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelMembershipsRequest,
-  ) => stream.Stream<
-    ListChannelMembershipsResponse,
-    ListChannelMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelMembershipsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelMembershipsForAppInstanceUserError =
   | BadRequestException
@@ -4159,27 +4099,7 @@ export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelMembershipsForAppInstanceUserRequest,
-  ListChannelMembershipsForAppInstanceUserResponse,
-  ListChannelMembershipsForAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelMembershipsForAppInstanceUserRequest,
-  ) => stream.Stream<
-    ListChannelMembershipsForAppInstanceUserResponse,
-    ListChannelMembershipsForAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelMembershipsForAppInstanceUserRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelMembershipsForAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelMessagesError =
   | BadRequestException
@@ -4241,27 +4161,7 @@ export const listChannelMessages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelMessagesRequest,
-  ListChannelMessagesResponse,
-  ListChannelMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelMessagesRequest,
-  ) => stream.Stream<
-    ListChannelMessagesResponse,
-    ListChannelMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelMessagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelModeratorsError =
   | BadRequestException
@@ -4317,27 +4217,7 @@ export const listChannelModerators: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelModeratorsRequest,
-  ListChannelModeratorsResponse,
-  ListChannelModeratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelModeratorsRequest,
-  ) => stream.Stream<
-    ListChannelModeratorsResponse,
-    ListChannelModeratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelModeratorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelModeratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelsError =
   | BadRequestException
@@ -4402,27 +4282,7 @@ export const listChannels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelsRequest,
-  ListChannelsResponse,
-  ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelsAssociatedWithChannelFlowError =
   | BadRequestException
@@ -4474,27 +4334,7 @@ export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelsAssociatedWithChannelFlowRequest,
-  ListChannelsAssociatedWithChannelFlowResponse,
-  ListChannelsAssociatedWithChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsAssociatedWithChannelFlowRequest,
-  ) => stream.Stream<
-    ListChannelsAssociatedWithChannelFlowResponse,
-    ListChannelsAssociatedWithChannelFlowError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsAssociatedWithChannelFlowRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsAssociatedWithChannelFlowError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelsModeratedByAppInstanceUserError =
   | BadRequestException
@@ -4550,27 +4390,7 @@ export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelsModeratedByAppInstanceUserRequest,
-  ListChannelsModeratedByAppInstanceUserResponse,
-  ListChannelsModeratedByAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsModeratedByAppInstanceUserRequest,
-  ) => stream.Stream<
-    ListChannelsModeratedByAppInstanceUserResponse,
-    ListChannelsModeratedByAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsModeratedByAppInstanceUserRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsModeratedByAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSubChannelsError =
   | BadRequestException
@@ -4622,27 +4442,7 @@ export const listSubChannels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSubChannelsRequest,
-  ListSubChannelsResponse,
-  ListSubChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubChannelsRequest,
-  ) => stream.Stream<
-    ListSubChannelsResponse,
-    ListSubChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSubChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -4896,27 +4696,7 @@ export const searchChannels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchChannelsRequest,
-  SearchChannelsResponse,
-  SearchChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchChannelsRequest,
-  ) => stream.Stream<
-    SearchChannelsResponse,
-    SearchChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type SendChannelMessageError =
   | BadRequestException

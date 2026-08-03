@@ -1599,7 +1599,8 @@ export const listByInsightInsightAuditLogForAccount: API.PaginatedOperationMetho
   ListByInsightInsightAuditLogForAccountRequest,
   ListByInsightInsightAuditLogResponse,
   ListByInsightInsightAuditLogForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InsightsAuditLogsListByInsightResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListByInsightInsightAuditLogForAccountRequest,
@@ -1616,7 +1617,7 @@ export const listByInsightInsightAuditLogForAccount: API.PaginatedOperationMetho
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListByInsightInsightAuditLogForZoneError = CloudflareOpError;
 /** Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time. */
@@ -1624,7 +1625,8 @@ export const listByInsightInsightAuditLogForZone: API.PaginatedOperationMethod<
   ListByInsightInsightAuditLogForZoneRequest,
   ListByInsightInsightAuditLogResponse,
   ListByInsightInsightAuditLogForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InsightsAuditLogsListByInsightResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListByInsightInsightAuditLogForZoneRequest,
@@ -1641,7 +1643,7 @@ export const listByInsightInsightAuditLogForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInsightAuditLogsForAccountError = CloudflareOpError;
 /** Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification. */
@@ -1649,7 +1651,8 @@ export const listInsightAuditLogsForAccount: API.PaginatedOperationMethod<
   ListInsightAuditLogsForAccountRequest,
   ListInsightAuditLogsResponse,
   ListInsightAuditLogsForAccountError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InsightsAuditLogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInsightAuditLogsForAccountRequest,
@@ -1666,7 +1669,7 @@ export const listInsightAuditLogsForAccount: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInsightAuditLogsForZoneError = CloudflareOpError;
 /** Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification. */
@@ -1674,7 +1677,8 @@ export const listInsightAuditLogsForZone: API.PaginatedOperationMethod<
   ListInsightAuditLogsForZoneRequest,
   ListInsightAuditLogsResponse,
   ListInsightAuditLogsForZoneError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  InsightsAuditLogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListInsightAuditLogsForZoneRequest,
@@ -1691,7 +1695,7 @@ export const listInsightAuditLogsForZone: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListInsightsForAccountError = CloudflareOpError;
 /** Lists all Security Center insights for the account or zone, showing security findings and recommendations. */

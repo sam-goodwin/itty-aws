@@ -12750,7 +12750,8 @@ export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
   ListApplicationsDeviceTierConfigsRequest,
   ListDeviceTierConfigsResponse,
   ListApplicationsDeviceTierConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDeviceTierConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsDeviceTierConfigsRequest,
   output: ListDeviceTierConfigsResponse,
@@ -12761,7 +12762,7 @@ export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListApplicationsTracksReleasesError =
   | NotFound
@@ -12910,7 +12911,8 @@ export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
   ListMonetizationOnetimeproductsRequest,
   ListOneTimeProductsResponse,
   ListMonetizationOnetimeproductsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOneTimeProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationOnetimeproductsRequest,
   output: ListOneTimeProductsResponse,
@@ -12921,7 +12923,7 @@ export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMonetizationOnetimeproductsPurchaseOptionsOffersError =
   | NotFound
@@ -12932,7 +12934,8 @@ export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.Paginated
   ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   ListOneTimeProductOffersResponse,
   ListMonetizationOnetimeproductsPurchaseOptionsOffersError,
-  GcpOpContext
+  GcpOpContext,
+  ListOneTimeProductOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: ListOneTimeProductOffersResponse,
@@ -12943,7 +12946,7 @@ export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMonetizationSubscriptionsError =
   | NotFound
@@ -12954,7 +12957,8 @@ export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
   ListMonetizationSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListMonetizationSubscriptionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationSubscriptionsRequest,
   output: ListSubscriptionsResponse,
@@ -12965,7 +12969,7 @@ export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListMonetizationSubscriptionsBasePlansOffersError =
   | NotFound
@@ -12976,7 +12980,8 @@ export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperatio
   ListMonetizationSubscriptionsBasePlansOffersRequest,
   ListSubscriptionOffersResponse,
   ListMonetizationSubscriptionsBasePlansOffersError,
-  GcpOpContext
+  GcpOpContext,
+  ListSubscriptionOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationSubscriptionsBasePlansOffersRequest,
   output: ListSubscriptionOffersResponse,
@@ -12987,7 +12992,7 @@ export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPurchasesVoidedpurchasesError =
   | NotFound
@@ -13043,7 +13048,8 @@ export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  GcpOpContext
+  GcpOpContext,
+  ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
@@ -13054,7 +13060,7 @@ export const listUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MigratePricesMonetizationSubscriptionsBasePlansError =
   | NotFound

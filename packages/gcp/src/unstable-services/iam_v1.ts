@@ -6700,7 +6700,8 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPools: API.Pag
   ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest,
   ListAttestationRulesResponse,
   ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttestationRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest,
   output: ListAttestationRulesResponse,
@@ -6711,7 +6712,7 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPools: API.Pag
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
   NotFound | Forbidden | GcpOpError;
@@ -6720,7 +6721,8 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespace
   ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   ListAttestationRulesResponse,
   ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAttestationRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
@@ -6732,7 +6734,7 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespace
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLocationsWorkforcePoolsError =
   | NotFound
@@ -6743,7 +6745,8 @@ export const listLocationsWorkforcePools: API.PaginatedOperationMethod<
   ListLocationsWorkforcePoolsRequest,
   ListWorkforcePoolsResponse,
   ListLocationsWorkforcePoolsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkforcePoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsRequest,
   output: ListWorkforcePoolsResponse,
@@ -6754,7 +6757,7 @@ export const listLocationsWorkforcePools: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLocationsWorkforcePoolsProvidersError =
   | NotFound
@@ -6765,7 +6768,8 @@ export const listLocationsWorkforcePoolsProviders: API.PaginatedOperationMethod<
   ListLocationsWorkforcePoolsProvidersRequest,
   ListWorkforcePoolProvidersResponse,
   ListLocationsWorkforcePoolsProvidersError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkforcePoolProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersRequest,
   output: ListWorkforcePoolProvidersResponse,
@@ -6776,7 +6780,7 @@ export const listLocationsWorkforcePoolsProviders: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLocationsWorkforcePoolsProvidersKeysError =
   | NotFound
@@ -6787,7 +6791,8 @@ export const listLocationsWorkforcePoolsProvidersKeys: API.PaginatedOperationMet
   ListLocationsWorkforcePoolsProvidersKeysRequest,
   ListWorkforcePoolProviderKeysResponse,
   ListLocationsWorkforcePoolsProvidersKeysError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkforcePoolProviderKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersKeysRequest,
   output: ListWorkforcePoolProviderKeysResponse,
@@ -6798,7 +6803,7 @@ export const listLocationsWorkforcePoolsProvidersKeys: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLocationsWorkforcePoolsProvidersScimTenantsError =
   | NotFound
@@ -6809,7 +6814,8 @@ export const listLocationsWorkforcePoolsProvidersScimTenants: API.PaginatedOpera
   ListLocationsWorkforcePoolsProvidersScimTenantsRequest,
   ListWorkforcePoolProviderScimTenantsResponse,
   ListLocationsWorkforcePoolsProvidersScimTenantsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkforcePoolProviderScimTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: ListWorkforcePoolProviderScimTenantsResponse,
@@ -6820,7 +6826,7 @@ export const listLocationsWorkforcePoolsProvidersScimTenants: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListLocationsWorkforcePoolsProvidersScimTenantsTokensError =
   | NotFound
@@ -6831,7 +6837,8 @@ export const listLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Paginate
   ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   ListWorkforcePoolProviderScimTokensResponse,
   ListLocationsWorkforcePoolsProvidersScimTenantsTokensError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkforcePoolProviderScimTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   output: ListWorkforcePoolProviderScimTokensResponse,
@@ -6842,7 +6849,7 @@ export const listLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOrganizationsRolesError = NotFound | Forbidden | GcpOpError;
 /** Lists every predefined Role that IAM supports, or every custom role that is defined for an organization or project. */
@@ -6850,7 +6857,8 @@ export const listOrganizationsRoles: API.PaginatedOperationMethod<
   ListOrganizationsRolesRequest,
   ListRolesResponse,
   ListOrganizationsRolesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRolesRequest,
   output: ListRolesResponse,
@@ -6861,7 +6869,7 @@ export const listOrganizationsRoles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOauthClientsError =
   | NotFound
@@ -6872,7 +6880,8 @@ export const listProjectsLocationsOauthClients: API.PaginatedOperationMethod<
   ListProjectsLocationsOauthClientsRequest,
   ListOauthClientsResponse,
   ListProjectsLocationsOauthClientsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOauthClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOauthClientsRequest,
   output: ListOauthClientsResponse,
@@ -6883,7 +6892,7 @@ export const listProjectsLocationsOauthClients: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOauthClientsCredentialsError =
   | NotFound
@@ -6912,7 +6921,8 @@ export const listProjectsLocationsWorkloadIdentityPools: API.PaginatedOperationM
   ListProjectsLocationsWorkloadIdentityPoolsRequest,
   ListWorkloadIdentityPoolsResponse,
   ListProjectsLocationsWorkloadIdentityPoolsError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkloadIdentityPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsRequest,
   output: ListWorkloadIdentityPoolsResponse,
@@ -6923,7 +6933,7 @@ export const listProjectsLocationsWorkloadIdentityPools: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsNamespacesError =
   | NotFound
@@ -6934,7 +6944,8 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Paginated
   ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   ListWorkloadIdentityPoolNamespacesResponse,
   ListProjectsLocationsWorkloadIdentityPoolsNamespacesError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkloadIdentityPoolNamespacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: ListWorkloadIdentityPoolNamespacesResponse,
@@ -6945,7 +6956,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
   NotFound | Forbidden | GcpOpError;
@@ -6954,7 +6965,8 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
   ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   ListWorkloadIdentityPoolManagedIdentitiesResponse,
   ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkloadIdentityPoolManagedIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
@@ -6966,7 +6978,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsProvidersError =
   | NotFound
@@ -6977,7 +6989,8 @@ export const listProjectsLocationsWorkloadIdentityPoolsProviders: API.PaginatedO
   ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   ListWorkloadIdentityPoolProvidersResponse,
   ListProjectsLocationsWorkloadIdentityPoolsProvidersError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkloadIdentityPoolProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: ListWorkloadIdentityPoolProvidersResponse,
@@ -6988,7 +7001,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsProviders: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysError =
   | NotFound
@@ -6999,7 +7012,8 @@ export const listProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Pagina
   ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   ListWorkloadIdentityPoolProviderKeysResponse,
   ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkloadIdentityPoolProviderKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   output: ListWorkloadIdentityPoolProviderKeysResponse,
@@ -7010,7 +7024,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Pagina
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRolesError = NotFound | Forbidden | GcpOpError;
 /** Lists every predefined Role that IAM supports, or every custom role that is defined for an organization or project. */
@@ -7018,7 +7032,8 @@ export const listProjectsRoles: API.PaginatedOperationMethod<
   ListProjectsRolesRequest,
   ListRolesResponse,
   ListProjectsRolesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRolesRequest,
   output: ListRolesResponse,
@@ -7029,7 +7044,7 @@ export const listProjectsRoles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsServiceAccountsError =
   | NotFound
@@ -7040,7 +7055,8 @@ export const listProjectsServiceAccounts: API.PaginatedOperationMethod<
   ListProjectsServiceAccountsRequest,
   ListServiceAccountsResponse,
   ListProjectsServiceAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListServiceAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsServiceAccountsRequest,
   output: ListServiceAccountsResponse,
@@ -7051,7 +7067,7 @@ export const listProjectsServiceAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsServiceAccountsKeysError =
   | NotFound
@@ -7077,7 +7093,8 @@ export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   ListRolesResponse,
   ListRolesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: ListRolesResponse,
@@ -7088,7 +7105,7 @@ export const listRoles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchLocationsWorkforcePoolsError =
   | NotFound

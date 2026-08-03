@@ -1139,7 +1139,8 @@ export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
@@ -1150,4 +1151,4 @@ export const listAssets: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

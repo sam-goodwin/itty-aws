@@ -2615,27 +2615,7 @@ export const describeSharedResources: API.OperationMethod<
     items: "SharedResources",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeSharedResourcesRequest,
-  DescribeSharedResourcesResponse,
-  DescribeSharedResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSharedResourcesRequest,
-  ) => stream.Stream<
-    DescribeSharedResourcesResponse,
-    DescribeSharedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSharedResourcesRequest,
-  ) => stream.Stream<
-    SharedResource,
-    DescribeSharedResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeUserError =
   | BadRequestException
@@ -2710,27 +2690,7 @@ export const listBrokers: API.OperationMethod<
     items: "BrokerSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListBrokersRequest,
-  ListBrokersResponse,
-  ListBrokersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrokersRequest,
-  ) => stream.Stream<
-    ListBrokersResponse,
-    ListBrokersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrokersRequest,
-  ) => stream.Stream<
-    BrokerSummary,
-    ListBrokersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConfigurationRevisionsError =
   | BadRequestException

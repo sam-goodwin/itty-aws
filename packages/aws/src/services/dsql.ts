@@ -1192,27 +1192,7 @@ export const listClusters: API.OperationMethod<
     items: "clusters",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClustersInput,
-  ListClustersOutput,
-  ListClustersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ListClustersOutput,
-    ListClustersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ClusterSummary,
-    ListClustersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListStreamsError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1251,27 +1231,7 @@ export const listStreams: API.OperationMethod<
     items: "streams",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListStreamsInput,
-  ListStreamsOutput,
-  ListStreamsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    StreamSummary,
-    ListStreamsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**

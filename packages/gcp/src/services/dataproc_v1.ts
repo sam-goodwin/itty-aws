@@ -10934,7 +10934,8 @@ export const listProjectsLocationsAutoscalingPolicies: API.PaginatedOperationMet
   ListProjectsLocationsAutoscalingPoliciesRequest,
   ListAutoscalingPoliciesResponse,
   ListProjectsLocationsAutoscalingPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAutoscalingPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAutoscalingPoliciesRequest,
   output: ListAutoscalingPoliciesResponse,
@@ -10945,7 +10946,7 @@ export const listProjectsLocationsAutoscalingPolicies: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsBatchesError =
   | NotFound
@@ -10956,7 +10957,8 @@ export const listProjectsLocationsBatches: API.PaginatedOperationMethod<
   ListProjectsLocationsBatchesRequest,
   ListBatchesResponse,
   ListProjectsLocationsBatchesError,
-  GcpOpContext
+  GcpOpContext,
+  ListBatchesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBatchesRequest,
   output: ListBatchesResponse,
@@ -10967,7 +10969,7 @@ export const listProjectsLocationsBatches: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsOperationsError =
   | NotFound
@@ -10978,7 +10980,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
   ListOperationsResponse,
   ListProjectsLocationsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListOperationsResponse,
@@ -10989,7 +10992,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSessionsError =
   | NotFound
@@ -11000,7 +11003,8 @@ export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
   ListProjectsLocationsSessionsRequest,
   ListSessionsResponse,
   ListProjectsLocationsSessionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSessionsRequest,
   output: ListSessionsResponse,
@@ -11011,7 +11015,7 @@ export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsSessionTemplatesError =
   | NotFound
@@ -11022,7 +11026,8 @@ export const listProjectsLocationsSessionTemplates: API.PaginatedOperationMethod
   ListProjectsLocationsSessionTemplatesRequest,
   ListSessionTemplatesResponse,
   ListProjectsLocationsSessionTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSessionTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSessionTemplatesRequest,
   output: ListSessionTemplatesResponse,
@@ -11033,7 +11038,7 @@ export const listProjectsLocationsSessionTemplates: API.PaginatedOperationMethod
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsWorkflowTemplatesError =
   | NotFound
@@ -11044,7 +11049,8 @@ export const listProjectsLocationsWorkflowTemplates: API.PaginatedOperationMetho
   ListProjectsLocationsWorkflowTemplatesRequest,
   ListWorkflowTemplatesResponse,
   ListProjectsLocationsWorkflowTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkflowTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowTemplatesRequest,
   output: ListWorkflowTemplatesResponse,
@@ -11055,7 +11061,7 @@ export const listProjectsLocationsWorkflowTemplates: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRegionsAutoscalingPoliciesError =
   | NotFound
@@ -11066,7 +11072,8 @@ export const listProjectsRegionsAutoscalingPolicies: API.PaginatedOperationMetho
   ListProjectsRegionsAutoscalingPoliciesRequest,
   ListAutoscalingPoliciesResponse,
   ListProjectsRegionsAutoscalingPoliciesError,
-  GcpOpContext
+  GcpOpContext,
+  ListAutoscalingPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsAutoscalingPoliciesRequest,
   output: ListAutoscalingPoliciesResponse,
@@ -11077,7 +11084,7 @@ export const listProjectsRegionsAutoscalingPolicies: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRegionsClustersError =
   | NotFound
@@ -11088,7 +11095,8 @@ export const listProjectsRegionsClusters: API.PaginatedOperationMethod<
   ListProjectsRegionsClustersRequest,
   ListClustersResponse,
   ListProjectsRegionsClustersError,
-  GcpOpContext
+  GcpOpContext,
+  ListClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsClustersRequest,
   output: ListClustersResponse,
@@ -11099,7 +11107,7 @@ export const listProjectsRegionsClusters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRegionsJobsError = NotFound | Forbidden | GcpOpError;
 /** Lists regions/{region}/jobs in a project. */
@@ -11107,7 +11115,8 @@ export const listProjectsRegionsJobs: API.PaginatedOperationMethod<
   ListProjectsRegionsJobsRequest,
   ListJobsResponse,
   ListProjectsRegionsJobsError,
-  GcpOpContext
+  GcpOpContext,
+  ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsJobsRequest,
   output: ListJobsResponse,
@@ -11118,7 +11127,7 @@ export const listProjectsRegionsJobs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRegionsOperationsError =
   | NotFound
@@ -11129,7 +11138,8 @@ export const listProjectsRegionsOperations: API.PaginatedOperationMethod<
   ListProjectsRegionsOperationsRequest,
   ListOperationsResponse,
   ListProjectsRegionsOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsOperationsRequest,
   output: ListOperationsResponse,
@@ -11140,7 +11150,7 @@ export const listProjectsRegionsOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsRegionsWorkflowTemplatesError =
   | NotFound
@@ -11151,7 +11161,8 @@ export const listProjectsRegionsWorkflowTemplates: API.PaginatedOperationMethod<
   ListProjectsRegionsWorkflowTemplatesRequest,
   ListWorkflowTemplatesResponse,
   ListProjectsRegionsWorkflowTemplatesError,
-  GcpOpContext
+  GcpOpContext,
+  ListWorkflowTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsWorkflowTemplatesRequest,
   output: ListWorkflowTemplatesResponse,
@@ -11162,7 +11173,7 @@ export const listProjectsRegionsWorkflowTemplates: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsSessionTemplatesError =
   | NotFound
@@ -11293,7 +11304,8 @@ export const searchExecutorsProjectsLocationsBatchesSparkApplications: API.Pagin
   SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationExecutorsResponse,
   SearchExecutorsProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationExecutorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationExecutorsResponse,
@@ -11304,7 +11316,7 @@ export const searchExecutorsProjectsLocationsBatchesSparkApplications: API.Pagin
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsError =
   | NotFound
@@ -11315,7 +11327,8 @@ export const searchExecutorsProjectsLocationsSessionsSparkApplications: API.Pagi
   SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationExecutorsResponse,
   SearchExecutorsProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationExecutorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationExecutorsResponse,
@@ -11326,7 +11339,7 @@ export const searchExecutorsProjectsLocationsSessionsSparkApplications: API.Pagi
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError =
   NotFound | Forbidden | GcpOpError;
@@ -11335,7 +11348,8 @@ export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
   SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationExecutorStageSummaryResponse,
   SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationExecutorStageSummaryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11347,7 +11361,7 @@ export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError =
   NotFound | Forbidden | GcpOpError;
@@ -11356,7 +11370,8 @@ export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
   SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationExecutorStageSummaryResponse,
   SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationExecutorStageSummaryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11368,7 +11383,7 @@ export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchJobsProjectsLocationsBatchesSparkApplicationsError =
   | NotFound
@@ -11379,7 +11394,8 @@ export const searchJobsProjectsLocationsBatchesSparkApplications: API.PaginatedO
   SearchJobsProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationJobsResponse,
   SearchJobsProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationJobsResponse,
@@ -11390,7 +11406,7 @@ export const searchJobsProjectsLocationsBatchesSparkApplications: API.PaginatedO
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchJobsProjectsLocationsSessionsSparkApplicationsError =
   | NotFound
@@ -11401,7 +11417,8 @@ export const searchJobsProjectsLocationsSessionsSparkApplications: API.Paginated
   SearchJobsProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationJobsResponse,
   SearchJobsProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationJobsResponse,
@@ -11412,7 +11429,7 @@ export const searchJobsProjectsLocationsSessionsSparkApplications: API.Paginated
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchProjectsLocationsBatchesSparkApplicationsError =
   | NotFound
@@ -11423,7 +11440,8 @@ export const searchProjectsLocationsBatchesSparkApplications: API.PaginatedOpera
   SearchProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationsResponse,
   SearchProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationsResponse,
@@ -11434,7 +11452,7 @@ export const searchProjectsLocationsBatchesSparkApplications: API.PaginatedOpera
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchProjectsLocationsSessionsSparkApplicationsError =
   | NotFound
@@ -11445,7 +11463,8 @@ export const searchProjectsLocationsSessionsSparkApplications: API.PaginatedOper
   SearchProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationsResponse,
   SearchProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationsResponse,
@@ -11456,7 +11475,7 @@ export const searchProjectsLocationsSessionsSparkApplications: API.PaginatedOper
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsError =
   | NotFound
@@ -11467,7 +11486,8 @@ export const searchSqlQueriesProjectsLocationsBatchesSparkApplications: API.Pagi
   SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationSqlQueriesResponse,
   SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationSqlQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationSqlQueriesResponse,
@@ -11478,7 +11498,7 @@ export const searchSqlQueriesProjectsLocationsBatchesSparkApplications: API.Pagi
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsError =
   | NotFound
@@ -11489,7 +11509,8 @@ export const searchSqlQueriesProjectsLocationsSessionsSparkApplications: API.Pag
   SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationSqlQueriesResponse,
   SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationSqlQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationSqlQueriesResponse,
@@ -11500,7 +11521,7 @@ export const searchSqlQueriesProjectsLocationsSessionsSparkApplications: API.Pag
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsError =
   | NotFound
@@ -11511,7 +11532,8 @@ export const searchStageAttemptsProjectsLocationsBatchesSparkApplications: API.P
   SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationStageAttemptsResponse,
   SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationStageAttemptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationStageAttemptsResponse,
@@ -11522,7 +11544,7 @@ export const searchStageAttemptsProjectsLocationsBatchesSparkApplications: API.P
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsError =
   NotFound | Forbidden | GcpOpError;
@@ -11531,7 +11553,8 @@ export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.
   SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationStageAttemptsResponse,
   SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationStageAttemptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationStageAttemptsResponse,
@@ -11542,7 +11565,7 @@ export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
   NotFound | Forbidden | GcpOpError;
@@ -11551,7 +11574,8 @@ export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: A
   SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationStageAttemptTasksResponse,
   SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationStageAttemptTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
@@ -11563,7 +11587,7 @@ export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: A
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
   NotFound | Forbidden | GcpOpError;
@@ -11572,7 +11596,8 @@ export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: 
   SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationStageAttemptTasksResponse,
   SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationStageAttemptTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
@@ -11584,7 +11609,7 @@ export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: 
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchStagesProjectsLocationsBatchesSparkApplicationsError =
   | NotFound
@@ -11595,7 +11620,8 @@ export const searchStagesProjectsLocationsBatchesSparkApplications: API.Paginate
   SearchStagesProjectsLocationsBatchesSparkApplicationsRequest,
   SearchSparkApplicationStagesResponse,
   SearchStagesProjectsLocationsBatchesSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSparkApplicationStagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchStagesProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSparkApplicationStagesResponse,
@@ -11606,7 +11632,7 @@ export const searchStagesProjectsLocationsBatchesSparkApplications: API.Paginate
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SearchStagesProjectsLocationsSessionsSparkApplicationsError =
   | NotFound
@@ -11617,7 +11643,8 @@ export const searchStagesProjectsLocationsSessionsSparkApplications: API.Paginat
   SearchStagesProjectsLocationsSessionsSparkApplicationsRequest,
   SearchSessionSparkApplicationStagesResponse,
   SearchStagesProjectsLocationsSessionsSparkApplicationsError,
-  GcpOpContext
+  GcpOpContext,
+  SearchSessionSparkApplicationStagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchStagesProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSessionSparkApplicationStagesResponse,
@@ -11628,7 +11655,7 @@ export const searchStagesProjectsLocationsSessionsSparkApplications: API.Paginat
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetIamPolicyProjectsLocationsAutoscalingPoliciesError =
   | NotFound

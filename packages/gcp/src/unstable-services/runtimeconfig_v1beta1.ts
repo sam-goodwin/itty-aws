@@ -1079,7 +1079,8 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
   ListProjectsConfigsRequest,
   ListConfigsResponse,
   ListProjectsConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  ListConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsRequest,
   output: ListConfigsResponse,
@@ -1090,7 +1091,7 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsConfigsVariablesError =
   | NotFound
@@ -1101,7 +1102,8 @@ export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
   ListProjectsConfigsVariablesRequest,
   ListVariablesResponse,
   ListProjectsConfigsVariablesError,
-  GcpOpContext
+  GcpOpContext,
+  ListVariablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsVariablesRequest,
   output: ListVariablesResponse,
@@ -1112,7 +1114,7 @@ export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsConfigsWaitersError = NotFound | Forbidden | GcpOpError;
 /** List waiters within the given configuration. */
@@ -1120,7 +1122,8 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
   ListProjectsConfigsWaitersRequest,
   ListWaitersResponse,
   ListProjectsConfigsWaitersError,
-  GcpOpContext
+  GcpOpContext,
+  ListWaitersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsWaitersRequest,
   output: ListWaitersResponse,
@@ -1131,7 +1134,7 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type SetIamPolicyProjectsConfigsError =
   | NotFound

@@ -7693,27 +7693,7 @@ export const adminListGroupsForUser: API.OperationMethod<
     items: "Groups",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  AdminListGroupsForUserRequest,
-  AdminListGroupsForUserResponse,
-  AdminListGroupsForUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: AdminListGroupsForUserRequest,
-  ) => stream.Stream<
-    AdminListGroupsForUserResponse,
-    AdminListGroupsForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: AdminListGroupsForUserRequest,
-  ) => stream.Stream<
-    GroupType,
-    AdminListGroupsForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type AdminListUserAuthEventsError =
   | InternalErrorException
@@ -7781,27 +7761,7 @@ export const adminListUserAuthEvents: API.OperationMethod<
     items: "AuthEvents",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  AdminListUserAuthEventsRequest,
-  AdminListUserAuthEventsResponse,
-  AdminListUserAuthEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: AdminListUserAuthEventsRequest,
-  ) => stream.Stream<
-    AdminListUserAuthEventsResponse,
-    AdminListUserAuthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: AdminListUserAuthEventsRequest,
-  ) => stream.Stream<
-    AuthEventType,
-    AdminListUserAuthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type AdminRemoveUserFromGroupError =
   | InternalErrorException
@@ -11247,27 +11207,7 @@ export const listGroups: API.OperationMethod<
     items: "Groups",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListGroupsRequest,
-  ListGroupsResponse,
-  ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    GroupType,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListIdentityProvidersError =
   | InternalErrorException
@@ -11329,27 +11269,7 @@ export const listIdentityProviders: API.OperationMethod<
     items: "Providers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListIdentityProvidersRequest,
-  ListIdentityProvidersResponse,
-  ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ListIdentityProvidersResponse,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ProviderDescription,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceServersError =
   | InternalErrorException
@@ -11413,27 +11333,7 @@ export const listResourceServers: API.OperationMethod<
     items: "ResourceServers",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceServersRequest,
-  ListResourceServersResponse,
-  ListResourceServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceServersRequest,
-  ) => stream.Stream<
-    ListResourceServersResponse,
-    ListResourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceServersRequest,
-  ) => stream.Stream<
-    ResourceServerType,
-    ListResourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalErrorException
@@ -11617,27 +11517,7 @@ export const listUserPoolClients: API.OperationMethod<
     items: "UserPoolClients",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUserPoolClientsRequest,
-  ListUserPoolClientsResponse,
-  ListUserPoolClientsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserPoolClientsRequest,
-  ) => stream.Stream<
-    ListUserPoolClientsResponse,
-    ListUserPoolClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserPoolClientsRequest,
-  ) => stream.Stream<
-    UserPoolClientDescription,
-    ListUserPoolClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUserPoolClientSecretsError =
   | InternalServerException
@@ -11770,27 +11650,7 @@ export const listUserPools: API.OperationMethod<
     items: "UserPools",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUserPoolsRequest,
-  ListUserPoolsResponse,
-  ListUserPoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserPoolsRequest,
-  ) => stream.Stream<
-    ListUserPoolsResponse,
-    ListUserPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserPoolsRequest,
-  ) => stream.Stream<
-    UserPoolDescriptionType,
-    ListUserPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUsersError =
   | InternalErrorException
@@ -11858,27 +11718,7 @@ export const listUsers: API.OperationMethod<
     items: "Users",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListUsersRequest,
-  ListUsersResponse,
-  ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    UserType,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUsersInGroupError =
   | InternalErrorException
@@ -11942,27 +11782,7 @@ export const listUsersInGroup: API.OperationMethod<
     items: "Users",
     pageSize: "Limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListUsersInGroupRequest,
-  ListUsersInGroupResponse,
-  ListUsersInGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersInGroupRequest,
-  ) => stream.Stream<
-    ListUsersInGroupResponse,
-    ListUsersInGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersInGroupRequest,
-  ) => stream.Stream<
-    UserType,
-    ListUsersInGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListWebAuthnCredentialsError =
   | ForbiddenException

@@ -2457,27 +2457,7 @@ export const listChangesets: API.OperationMethod<
     items: "changesets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChangesetsRequest,
-  ListChangesetsResponse,
-  ListChangesetsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangesetsRequest,
-  ) => stream.Stream<
-    ListChangesetsResponse,
-    ListChangesetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangesetsRequest,
-  ) => stream.Stream<
-    ChangesetSummary,
-    ListChangesetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDatasetsError =
   | ConflictException
@@ -2528,27 +2508,7 @@ export const listDatasets: API.OperationMethod<
     items: "datasets",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    Dataset,
-    ListDatasetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataViewsError =
   | ConflictException
@@ -2599,27 +2559,7 @@ export const listDataViews: API.OperationMethod<
     items: "dataViews",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataViewsRequest,
-  ListDataViewsResponse,
-  ListDataViewsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataViewsRequest,
-  ) => stream.Stream<
-    ListDataViewsResponse,
-    ListDataViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataViewsRequest,
-  ) => stream.Stream<
-    DataViewSummary,
-    ListDataViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPermissionGroupsError =
   | AccessDeniedException
@@ -2668,27 +2608,7 @@ export const listPermissionGroups: API.OperationMethod<
     items: "permissionGroups",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListPermissionGroupsRequest,
-  ListPermissionGroupsResponse,
-  ListPermissionGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionGroupsRequest,
-  ) => stream.Stream<
-    ListPermissionGroupsResponse,
-    ListPermissionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionGroupsRequest,
-  ) => stream.Stream<
-    PermissionGroup,
-    ListPermissionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPermissionGroupsByUserError =
   | AccessDeniedException
@@ -2767,27 +2687,7 @@ export const listUsers: API.OperationMethod<
     items: "users",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListUsersRequest,
-  ListUsersResponse,
-  ListUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListUsersByPermissionGroupError =
   | AccessDeniedException

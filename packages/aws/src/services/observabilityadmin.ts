@@ -2831,27 +2831,7 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
     items: "CentralizationRuleSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCentralizationRulesForOrganizationInput,
-  ListCentralizationRulesForOrganizationOutput,
-  ListCentralizationRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCentralizationRulesForOrganizationInput,
-  ) => stream.Stream<
-    ListCentralizationRulesForOrganizationOutput,
-    ListCentralizationRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCentralizationRulesForOrganizationInput,
-  ) => stream.Stream<
-    CentralizationRuleSummary,
-    ListCentralizationRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceTelemetryError =
   | AccessDeniedException
@@ -2900,27 +2880,7 @@ export const listResourceTelemetry: API.OperationMethod<
     items: "TelemetryConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceTelemetryInput,
-  ListResourceTelemetryOutput,
-  ListResourceTelemetryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTelemetryInput,
-  ) => stream.Stream<
-    ListResourceTelemetryOutput,
-    ListResourceTelemetryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTelemetryInput,
-  ) => stream.Stream<
-    TelemetryConfiguration,
-    ListResourceTelemetryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResourceTelemetryForOrganizationError =
   | AccessDeniedException
@@ -2969,27 +2929,7 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
     items: "TelemetryConfigurations",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResourceTelemetryForOrganizationInput,
-  ListResourceTelemetryForOrganizationOutput,
-  ListResourceTelemetryForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTelemetryForOrganizationInput,
-  ) => stream.Stream<
-    ListResourceTelemetryForOrganizationOutput,
-    ListResourceTelemetryForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTelemetryForOrganizationInput,
-  ) => stream.Stream<
-    TelemetryConfiguration,
-    ListResourceTelemetryForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListS3TableIntegrationsError =
   | AccessDeniedException
@@ -3038,27 +2978,7 @@ export const listS3TableIntegrations: API.OperationMethod<
     items: "IntegrationSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListS3TableIntegrationsInput,
-  ListS3TableIntegrationsOutput,
-  ListS3TableIntegrationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListS3TableIntegrationsInput,
-  ) => stream.Stream<
-    ListS3TableIntegrationsOutput,
-    ListS3TableIntegrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListS3TableIntegrationsInput,
-  ) => stream.Stream<
-    IntegrationSummary,
-    ListS3TableIntegrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -3137,27 +3057,7 @@ export const listTelemetryPipelines: API.OperationMethod<
     items: "PipelineSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTelemetryPipelinesInput,
-  ListTelemetryPipelinesOutput,
-  ListTelemetryPipelinesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryPipelinesInput,
-  ) => stream.Stream<
-    ListTelemetryPipelinesOutput,
-    ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryPipelinesInput,
-  ) => stream.Stream<
-    TelemetryPipelineSummary,
-    ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTelemetryRulesError =
   | AccessDeniedException
@@ -3206,27 +3106,7 @@ export const listTelemetryRules: API.OperationMethod<
     items: "TelemetryRuleSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTelemetryRulesInput,
-  ListTelemetryRulesOutput,
-  ListTelemetryRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryRulesInput,
-  ) => stream.Stream<
-    ListTelemetryRulesOutput,
-    ListTelemetryRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryRulesInput,
-  ) => stream.Stream<
-    TelemetryRuleSummary,
-    ListTelemetryRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTelemetryRulesForOrganizationError =
   | AccessDeniedException
@@ -3275,27 +3155,7 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
     items: "TelemetryRuleSummaries",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTelemetryRulesForOrganizationInput,
-  ListTelemetryRulesForOrganizationOutput,
-  ListTelemetryRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryRulesForOrganizationInput,
-  ) => stream.Stream<
-    ListTelemetryRulesForOrganizationOutput,
-    ListTelemetryRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryRulesForOrganizationInput,
-  ) => stream.Stream<
-    TelemetryRuleSummary,
-    ListTelemetryRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type StartTelemetryEnrichmentError =
   | AccessDeniedException

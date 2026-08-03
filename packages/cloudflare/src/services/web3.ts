@@ -1068,7 +1068,8 @@ export const listHostnames: API.PaginatedOperationMethod<
   ListHostnamesRequest,
   ListHostnamesResponse,
   ListHostnamesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  HostnamesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListHostnamesRequest,
@@ -1079,7 +1080,7 @@ export const listHostnames: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PatchHostnameError =
   | Web3HostnameNotFound

@@ -2712,27 +2712,7 @@ export const listCampaigns: API.OperationMethod<
     items: "campaignSummaryList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListCampaignsRequest,
-  ListCampaignsResponse,
-  ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    ListCampaignsResponse,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    CampaignSummary,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListConnectInstanceIntegrationsError =
   | AccessDeniedException
@@ -2783,27 +2763,7 @@ export const listConnectInstanceIntegrations: API.OperationMethod<
     items: "integrationSummaryList",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListConnectInstanceIntegrationsRequest,
-  ListConnectInstanceIntegrationsResponse,
-  ListConnectInstanceIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectInstanceIntegrationsRequest,
-  ) => stream.Stream<
-    ListConnectInstanceIntegrationsResponse,
-    ListConnectInstanceIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectInstanceIntegrationsRequest,
-  ) => stream.Stream<
-    IntegrationSummary,
-    ListConnectInstanceIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException

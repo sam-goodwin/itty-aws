@@ -5928,7 +5928,8 @@ export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionRequest,
   GetSubscriptionResponse,
   GetSubscriptionError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  SubscriptionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: GetSubscriptionRequest,
@@ -5939,7 +5940,7 @@ export const getSubscription: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type GetTokenError = InvalidRoute | TokenNotFound | CloudflareOpError;
 /** Get information about a specific Account Owned API token. */
@@ -5977,7 +5978,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListAccountsRequest,
@@ -5994,7 +5996,7 @@ export const listAccounts: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListLogAuditsError = CloudflareOpError;
 /** Gets a list of audit logs for an account. */
@@ -6002,7 +6004,8 @@ export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsRequest,
   ListLogAuditsResponse,
   ListLogAuditsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  LogsAuditListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListLogAuditsRequest,
@@ -6018,7 +6021,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListMembersError = CloudflareOpError;
 /** List all members of an account. */
@@ -6026,7 +6029,8 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  MembersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListMembersRequest,
@@ -6043,7 +6047,7 @@ export const listMembers: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListRolesError = CloudflareOpError;
 /** Get all available roles for an account. */
@@ -6051,7 +6055,8 @@ export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   ListRolesResponse,
   ListRolesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RolesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRolesRequest,
@@ -6068,7 +6073,7 @@ export const listRoles: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListTokensError = CloudflareOpError;
 /** List all Account Owned API tokens created for this account. */
@@ -6076,7 +6081,8 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   ListTokensResponse,
   ListTokensError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  TokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTokensRequest,
@@ -6093,7 +6099,7 @@ export const listTokens: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type PutTokenValueError =
   | InvalidRoute

@@ -3615,27 +3615,7 @@ export const describeAlarmHistory: API.OperationMethod<
     items: "AlarmHistoryItems",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAlarmHistoryInput,
-  DescribeAlarmHistoryOutput,
-  DescribeAlarmHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAlarmHistoryInput,
-  ) => stream.Stream<
-    DescribeAlarmHistoryOutput,
-    DescribeAlarmHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAlarmHistoryInput,
-  ) => stream.Stream<
-    AlarmHistoryItem,
-    DescribeAlarmHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeAlarmsError = InvalidNextToken | CommonErrors;
 /**
@@ -3679,27 +3659,7 @@ export const describeAlarms: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAlarmsInput,
-  DescribeAlarmsOutput,
-  DescribeAlarmsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAlarmsInput,
-  ) => stream.Stream<
-    DescribeAlarmsOutput,
-    DescribeAlarmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAlarmsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeAlarmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeAlarmsForMetricError = CommonErrors;
 /**
@@ -3776,27 +3736,7 @@ export const describeAnomalyDetectors: API.OperationMethod<
     items: "AnomalyDetectors",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeAnomalyDetectorsInput,
-  DescribeAnomalyDetectorsOutput,
-  DescribeAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAnomalyDetectorsInput,
-  ) => stream.Stream<
-    DescribeAnomalyDetectorsOutput,
-    DescribeAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAnomalyDetectorsInput,
-  ) => stream.Stream<
-    AnomalyDetector,
-    DescribeAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DescribeInsightRulesError = InvalidNextToken | CommonErrors;
 /**
@@ -3837,27 +3777,7 @@ export const describeInsightRules: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  DescribeInsightRulesInput,
-  DescribeInsightRulesOutput,
-  DescribeInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInsightRulesInput,
-  ) => stream.Stream<
-    DescribeInsightRulesOutput,
-    DescribeInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInsightRulesInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type DisableAlarmActionsError = CommonErrors;
 /**
@@ -4247,27 +4167,7 @@ export const getMetricData: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxDatapoints",
   } as const,
-})) as any as API.OperationMethod<
-  GetMetricDataInput,
-  GetMetricDataOutput,
-  GetMetricDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMetricDataInput,
-  ) => stream.Stream<
-    GetMetricDataOutput,
-    GetMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMetricDataInput,
-  ) => stream.Stream<
-    unknown,
-    GetMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetMetricStatisticsError =
   | InternalServiceFault
@@ -4485,27 +4385,7 @@ export const listAlarmMuteRules: API.OperationMethod<
     items: "AlarmMuteRuleSummaries",
     pageSize: "MaxRecords",
   } as const,
-})) as any as API.OperationMethod<
-  ListAlarmMuteRulesInput,
-  ListAlarmMuteRulesOutput,
-  ListAlarmMuteRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAlarmMuteRulesInput,
-  ) => stream.Stream<
-    ListAlarmMuteRulesOutput,
-    ListAlarmMuteRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAlarmMuteRulesInput,
-  ) => stream.Stream<
-    AlarmMuteRuleSummary,
-    ListAlarmMuteRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDashboardsError =
   | InternalServiceFault
@@ -4553,27 +4433,7 @@ export const listDashboards: API.OperationMethod<
     outputToken: "NextToken",
     items: "DashboardEntries",
   } as const,
-})) as any as API.OperationMethod<
-  ListDashboardsInput,
-  ListDashboardsOutput,
-  ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDashboardsInput,
-  ) => stream.Stream<
-    ListDashboardsOutput,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDashboardsInput,
-  ) => stream.Stream<
-    DashboardEntry,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListManagedInsightRulesError =
   | InvalidNextToken
@@ -4620,27 +4480,7 @@ export const listManagedInsightRules: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListManagedInsightRulesInput,
-  ListManagedInsightRulesOutput,
-  ListManagedInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedInsightRulesInput,
-  ) => stream.Stream<
-    ListManagedInsightRulesOutput,
-    ListManagedInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedInsightRulesInput,
-  ) => stream.Stream<
-    unknown,
-    ListManagedInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMetricsError =
   | InternalServiceFault
@@ -4690,27 +4530,7 @@ export const listMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "ListMetrics",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
-})) as any as API.OperationMethod<
-  ListMetricsInput,
-  ListMetricsOutput,
-  ListMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricsInput,
-  ) => stream.Stream<
-    ListMetricsOutput,
-    ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricsInput,
-  ) => stream.Stream<
-    unknown,
-    ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMetricStreamsError =
   | InternalServiceFault
@@ -4758,27 +4578,7 @@ export const listMetricStreams: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListMetricStreamsInput,
-  ListMetricStreamsOutput,
-  ListMetricStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricStreamsInput,
-  ) => stream.Stream<
-    ListMetricStreamsOutput,
-    ListMetricStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricStreamsInput,
-  ) => stream.Stream<
-    unknown,
-    ListMetricStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServiceFault

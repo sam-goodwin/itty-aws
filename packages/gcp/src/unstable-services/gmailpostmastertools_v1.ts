@@ -388,7 +388,8 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  GcpOpContext
+  GcpOpContext,
+  ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
@@ -399,7 +400,7 @@ export const listDomains: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListDomainsTrafficStatsError = NotFound | Forbidden | GcpOpError;
 /** List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain. */
@@ -407,7 +408,8 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
   ListDomainsTrafficStatsRequest,
   ListTrafficStatsResponse,
   ListDomainsTrafficStatsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTrafficStatsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsTrafficStatsRequest,
   output: ListTrafficStatsResponse,
@@ -418,4 +420,4 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

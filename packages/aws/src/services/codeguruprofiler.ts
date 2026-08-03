@@ -1534,27 +1534,7 @@ export const getFindingsReportAccountSummary: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  GetFindingsReportAccountSummaryRequest,
-  GetFindingsReportAccountSummaryResponse,
-  GetFindingsReportAccountSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFindingsReportAccountSummaryRequest,
-  ) => stream.Stream<
-    GetFindingsReportAccountSummaryResponse,
-    GetFindingsReportAccountSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFindingsReportAccountSummaryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetFindingsReportAccountSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type GetNotificationConfigurationError =
   | InternalServerException
@@ -1760,27 +1740,7 @@ export const listFindingsReports: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFindingsReportsRequest,
-  ListFindingsReportsResponse,
-  ListFindingsReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsReportsRequest,
-  ) => stream.Stream<
-    ListFindingsReportsResponse,
-    ListFindingsReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFindingsReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfileTimesError =
   | InternalServerException
@@ -1830,27 +1790,7 @@ export const listProfileTimes: API.OperationMethod<
     items: "profileTimes",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfileTimesRequest,
-  ListProfileTimesResponse,
-  ListProfileTimesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfileTimesRequest,
-  ) => stream.Stream<
-    ListProfileTimesResponse,
-    ListProfileTimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfileTimesRequest,
-  ) => stream.Stream<
-    ProfileTime,
-    ListProfileTimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProfilingGroupsError =
   | InternalServerException
@@ -1895,27 +1835,7 @@ export const listProfilingGroups: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListProfilingGroupsRequest,
-  ListProfilingGroupsResponse,
-  ListProfilingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilingGroupsRequest,
-  ) => stream.Stream<
-    ListProfilingGroupsResponse,
-    ListProfilingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilingGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProfilingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

@@ -7102,7 +7102,8 @@ export const countChromeAppRequestsCustomersApps: API.PaginatedOperationMethod<
   CountChromeAppRequestsCustomersAppsRequest,
   GoogleChromeManagementV1CountChromeAppRequestsResponse,
   CountChromeAppRequestsCustomersAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1CountChromeAppRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: CountChromeAppRequestsCustomersAppsRequest,
   output: GoogleChromeManagementV1CountChromeAppRequestsResponse,
@@ -7113,7 +7114,7 @@ export const countChromeAppRequestsCustomersApps: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CountChromeBrowsersNeedingAttentionCustomersReportsError =
   | NotFound
@@ -7215,7 +7216,8 @@ export const countChromeProfileVersionsCustomersReports: API.PaginatedOperationM
   CountChromeProfileVersionsCustomersReportsRequest,
   GoogleChromeManagementV1CountChromeProfileVersionsResponse,
   CountChromeProfileVersionsCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1CountChromeProfileVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: CountChromeProfileVersionsCustomersReportsRequest,
   output: GoogleChromeManagementV1CountChromeProfileVersionsResponse,
@@ -7226,7 +7228,7 @@ export const countChromeProfileVersionsCustomersReports: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CountChromeVersionsCustomersReportsError =
   | NotFound
@@ -7237,7 +7239,8 @@ export const countChromeVersionsCustomersReports: API.PaginatedOperationMethod<
   CountChromeVersionsCustomersReportsRequest,
   GoogleChromeManagementV1CountChromeVersionsResponse,
   CountChromeVersionsCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1CountChromeVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: CountChromeVersionsCustomersReportsRequest,
   output: GoogleChromeManagementV1CountChromeVersionsResponse,
@@ -7248,7 +7251,7 @@ export const countChromeVersionsCustomersReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CountDevicesPerBootTypeCustomersReportsError =
   | NotFound
@@ -7295,7 +7298,8 @@ export const countInstalledAppsCustomersReports: API.PaginatedOperationMethod<
   CountInstalledAppsCustomersReportsRequest,
   GoogleChromeManagementV1CountInstalledAppsResponse,
   CountInstalledAppsCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1CountInstalledAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: CountInstalledAppsCustomersReportsRequest,
   output: GoogleChromeManagementV1CountInstalledAppsResponse,
@@ -7306,7 +7310,7 @@ export const countInstalledAppsCustomersReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CountPrintJobsByPrinterCustomersReportsError =
   | NotFound
@@ -7317,7 +7321,8 @@ export const countPrintJobsByPrinterCustomersReports: API.PaginatedOperationMeth
   CountPrintJobsByPrinterCustomersReportsRequest,
   GoogleChromeManagementV1CountPrintJobsByPrinterResponse,
   CountPrintJobsByPrinterCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1CountPrintJobsByPrinterResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: CountPrintJobsByPrinterCustomersReportsRequest,
   output: GoogleChromeManagementV1CountPrintJobsByPrinterResponse,
@@ -7328,7 +7333,7 @@ export const countPrintJobsByPrinterCustomersReports: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CountPrintJobsByUserCustomersReportsError =
   | NotFound
@@ -7339,7 +7344,8 @@ export const countPrintJobsByUserCustomersReports: API.PaginatedOperationMethod<
   CountPrintJobsByUserCustomersReportsRequest,
   GoogleChromeManagementV1CountPrintJobsByUserResponse,
   CountPrintJobsByUserCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1CountPrintJobsByUserResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: CountPrintJobsByUserCustomersReportsRequest,
   output: GoogleChromeManagementV1CountPrintJobsByUserResponse,
@@ -7350,7 +7356,7 @@ export const countPrintJobsByUserCustomersReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type CreateCustomersConnectorConfigsError =
   | NotFound
@@ -7541,7 +7547,8 @@ export const enumeratePrintJobsCustomersReports: API.PaginatedOperationMethod<
   EnumeratePrintJobsCustomersReportsRequest,
   GoogleChromeManagementV1EnumeratePrintJobsResponse,
   EnumeratePrintJobsCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1EnumeratePrintJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: EnumeratePrintJobsCustomersReportsRequest,
   output: GoogleChromeManagementV1EnumeratePrintJobsResponse,
@@ -7552,7 +7559,7 @@ export const enumeratePrintJobsCustomersReports: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type FetchDevicesRequestingExtensionCustomersAppsError =
   | NotFound
@@ -7563,7 +7570,8 @@ export const fetchDevicesRequestingExtensionCustomersApps: API.PaginatedOperatio
   FetchDevicesRequestingExtensionCustomersAppsRequest,
   GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse,
   FetchDevicesRequestingExtensionCustomersAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FetchDevicesRequestingExtensionCustomersAppsRequest,
   output: GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse,
@@ -7574,7 +7582,7 @@ export const fetchDevicesRequestingExtensionCustomersApps: API.PaginatedOperatio
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type FetchUsersRequestingExtensionCustomersAppsError =
   | NotFound
@@ -7585,7 +7593,8 @@ export const fetchUsersRequestingExtensionCustomersApps: API.PaginatedOperationM
   FetchUsersRequestingExtensionCustomersAppsRequest,
   GoogleChromeManagementV1FetchUsersRequestingExtensionResponse,
   FetchUsersRequestingExtensionCustomersAppsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FetchUsersRequestingExtensionCustomersAppsRequest,
   output: GoogleChromeManagementV1FetchUsersRequestingExtensionResponse,
@@ -7596,7 +7605,7 @@ export const fetchUsersRequestingExtensionCustomersApps: API.PaginatedOperationM
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type FindInstalledAppDevicesCustomersReportsError =
   | NotFound
@@ -7607,7 +7616,8 @@ export const findInstalledAppDevicesCustomersReports: API.PaginatedOperationMeth
   FindInstalledAppDevicesCustomersReportsRequest,
   GoogleChromeManagementV1FindInstalledAppDevicesResponse,
   FindInstalledAppDevicesCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1FindInstalledAppDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FindInstalledAppDevicesCustomersReportsRequest,
   output: GoogleChromeManagementV1FindInstalledAppDevicesResponse,
@@ -7618,7 +7628,7 @@ export const findInstalledAppDevicesCustomersReports: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type FindInstalledAppProfilesCustomersReportsError =
   | NotFound
@@ -7629,7 +7639,8 @@ export const findInstalledAppProfilesCustomersReports: API.PaginatedOperationMet
   FindInstalledAppProfilesCustomersReportsRequest,
   GoogleChromeManagementV1FindInstalledAppProfilesResponse,
   FindInstalledAppProfilesCustomersReportsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1FindInstalledAppProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: FindInstalledAppProfilesCustomersReportsRequest,
   output: GoogleChromeManagementV1FindInstalledAppProfilesResponse,
@@ -7640,7 +7651,7 @@ export const findInstalledAppProfilesCustomersReports: API.PaginatedOperationMet
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type GetCustomersAppsAndroidError = NotFound | Forbidden | GcpOpError;
 /** Get a specific app for a customer by its resource name. */
@@ -7816,7 +7827,8 @@ export const listCustomersConnectorConfigs: API.PaginatedOperationMethod<
   ListCustomersConnectorConfigsRequest,
   GoogleChromeManagementVersionsV1ListConnectorConfigsResponse,
   ListCustomersConnectorConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersConnectorConfigsRequest,
   output: GoogleChromeManagementVersionsV1ListConnectorConfigsResponse,
@@ -7827,7 +7839,7 @@ export const listCustomersConnectorConfigs: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersProfilesError = NotFound | Forbidden | GcpOpError;
 /** Lists Chrome browser profiles of a customer based on the given search and sorting criteria. */
@@ -7835,7 +7847,8 @@ export const listCustomersProfiles: API.PaginatedOperationMethod<
   ListCustomersProfilesRequest,
   GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse,
   ListCustomersProfilesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersProfilesRequest,
   output: GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse,
@@ -7846,7 +7859,7 @@ export const listCustomersProfiles: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersProfilesCommandsError =
   | NotFound
@@ -7857,7 +7870,8 @@ export const listCustomersProfilesCommands: API.PaginatedOperationMethod<
   ListCustomersProfilesCommandsRequest,
   GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse,
   ListCustomersProfilesCommandsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersProfilesCommandsRequest,
   output:
@@ -7869,7 +7883,7 @@ export const listCustomersProfilesCommands: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersTelemetryDevicesError =
   | NotFound
@@ -7880,7 +7894,8 @@ export const listCustomersTelemetryDevices: API.PaginatedOperationMethod<
   ListCustomersTelemetryDevicesRequest,
   GoogleChromeManagementV1ListTelemetryDevicesResponse,
   ListCustomersTelemetryDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1ListTelemetryDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryDevicesRequest,
   output: GoogleChromeManagementV1ListTelemetryDevicesResponse,
@@ -7891,7 +7906,7 @@ export const listCustomersTelemetryDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersTelemetryEventsError =
   | NotFound
@@ -7902,7 +7917,8 @@ export const listCustomersTelemetryEvents: API.PaginatedOperationMethod<
   ListCustomersTelemetryEventsRequest,
   GoogleChromeManagementV1ListTelemetryEventsResponse,
   ListCustomersTelemetryEventsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1ListTelemetryEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryEventsRequest,
   output: GoogleChromeManagementV1ListTelemetryEventsResponse,
@@ -7913,7 +7929,7 @@ export const listCustomersTelemetryEvents: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersTelemetryNotificationConfigsError =
   | NotFound
@@ -7924,7 +7940,8 @@ export const listCustomersTelemetryNotificationConfigs: API.PaginatedOperationMe
   ListCustomersTelemetryNotificationConfigsRequest,
   GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse,
   ListCustomersTelemetryNotificationConfigsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryNotificationConfigsRequest,
   output: GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse,
@@ -7935,7 +7952,7 @@ export const listCustomersTelemetryNotificationConfigs: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersTelemetryUsersError =
   | NotFound
@@ -7946,7 +7963,8 @@ export const listCustomersTelemetryUsers: API.PaginatedOperationMethod<
   ListCustomersTelemetryUsersRequest,
   GoogleChromeManagementV1ListTelemetryUsersResponse,
   ListCustomersTelemetryUsersError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementV1ListTelemetryUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryUsersRequest,
   output: GoogleChromeManagementV1ListTelemetryUsersResponse,
@@ -7957,7 +7975,7 @@ export const listCustomersTelemetryUsers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListOperationsError = NotFound | Forbidden | GcpOpError;
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
@@ -7965,7 +7983,8 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   GoogleLongrunningListOperationsResponse,
   ListOperationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: GoogleLongrunningListOperationsResponse,
@@ -7976,7 +7995,7 @@ export const listOperations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MoveCustomersThirdPartyProfileUsersError =
   | NotFound
@@ -8025,7 +8044,8 @@ export const queryContentTransfersBreakdownsCustomersEnterpriseSecurityInsights:
   QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest,
   GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse,
   QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest,
@@ -8038,7 +8058,7 @@ export const queryContentTransfersBreakdownsCustomersEnterpriseSecurityInsights:
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type QueryContentTransfersCustomersEnterpriseSecurityInsightsError =
   | NotFound
@@ -8067,7 +8087,8 @@ export const queryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsights: API.Pa
   QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest,
   GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse,
   QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest,
   output: GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse,
@@ -8078,7 +8099,7 @@ export const queryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsights: API.Pa
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type QueryUrlVisitsCustomersEnterpriseSecurityInsightsError =
   | NotFound

@@ -658,7 +658,8 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   ListPlatformsAccountsRequest,
   ListAccountsResponse,
   ListPlatformsAccountsError,
-  GcpOpContext
+  GcpOpContext,
+  ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsAccountsRequest,
   output: ListAccountsResponse,
@@ -669,7 +670,7 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListPlatformsAccountsSitesError = NotFound | Forbidden | GcpOpError;
 /** Lists sites for a specific account. */
@@ -677,7 +678,8 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
   ListPlatformsAccountsSitesRequest,
   ListSitesResponse,
   ListPlatformsAccountsSitesError,
-  GcpOpContext
+  GcpOpContext,
+  ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsAccountsSitesRequest,
   output: ListSitesResponse,
@@ -688,7 +690,7 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type LookupPlatformsAccountsError = NotFound | Forbidden | GcpOpError;
 /** Looks up information about a sub-account for a specified creation_request_id. If no account exists for the given creation_request_id, returns 404. */

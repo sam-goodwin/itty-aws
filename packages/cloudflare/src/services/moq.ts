@@ -652,7 +652,8 @@ export const listRelays: API.PaginatedOperationMethod<
   ListRelaysRequest,
   ListRelaysResponse,
   ListRelaysError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  RelaysListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListRelaysRequest,
@@ -663,7 +664,7 @@ export const listRelays: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type RotateRelayTokenError = CloudflareOpError;
 /** Generates a new token for the specified type. The old token is immediately invalidated. Token value is shown once in the response. */

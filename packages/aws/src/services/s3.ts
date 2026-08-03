@@ -17473,27 +17473,7 @@ export const listBuckets: API.OperationMethod<
     items: "Buckets",
     pageSize: "MaxBuckets",
   } as const,
-})) as any as API.OperationMethod<
-  ListBucketsRequest,
-  ListBucketsOutput,
-  ListBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBucketsRequest,
-  ) => stream.Stream<
-    ListBucketsOutput,
-    ListBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBucketsRequest,
-  ) => stream.Stream<
-    Bucket,
-    ListBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDirectoryBucketsError = CommonErrors;
 /**
@@ -17556,27 +17536,7 @@ export const listDirectoryBuckets: API.OperationMethod<
     items: "Buckets",
     pageSize: "MaxDirectoryBuckets",
   } as const,
-})) as any as API.OperationMethod<
-  ListDirectoryBucketsRequest,
-  ListDirectoryBucketsOutput,
-  ListDirectoryBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDirectoryBucketsRequest,
-  ) => stream.Stream<
-    ListDirectoryBucketsOutput,
-    ListDirectoryBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDirectoryBucketsRequest,
-  ) => stream.Stream<
-    Bucket,
-    ListDirectoryBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMultipartUploadsError =
   | RequestLimitExceeded
@@ -17742,27 +17702,7 @@ export const listObjectAnnotations: API.OperationMethod<
     items: "Annotations",
     pageSize: "MaxAnnotationResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListObjectAnnotationsRequest,
-  ListObjectAnnotationsOutput,
-  ListObjectAnnotationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectAnnotationsRequest,
-  ) => stream.Stream<
-    ListObjectAnnotationsOutput,
-    ListObjectAnnotationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectAnnotationsRequest,
-  ) => stream.Stream<
-    AnnotationEntry,
-    ListObjectAnnotationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListObjectsError =
   | NoSuchBucket
@@ -17914,27 +17854,7 @@ export const listObjectsV2: API.OperationMethod<
     outputToken: "NextContinuationToken",
     pageSize: "MaxKeys",
   } as const,
-})) as any as API.OperationMethod<
-  ListObjectsV2Request,
-  ListObjectsV2Output,
-  ListObjectsV2Error,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectsV2Request,
-  ) => stream.Stream<
-    ListObjectsV2Output,
-    ListObjectsV2Error,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectsV2Request,
-  ) => stream.Stream<
-    unknown,
-    ListObjectsV2Error,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListObjectVersionsError =
   | RequestLimitExceeded
@@ -18082,27 +18002,7 @@ export const listParts: API.OperationMethod<
     items: "Parts",
     pageSize: "MaxParts",
   } as const,
-})) as any as API.OperationMethod<
-  ListPartsRequest,
-  ListPartsOutput,
-  ListPartsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartsRequest,
-  ) => stream.Stream<
-    ListPartsOutput,
-    ListPartsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartsRequest,
-  ) => stream.Stream<
-    Part,
-    ListPartsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutBucketAbacError = CommonErrors;
 /**

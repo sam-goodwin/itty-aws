@@ -2000,7 +2000,8 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesRequest,
   ListPagesResponse,
   ListPagesError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PagesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPagesRequest,
@@ -2011,7 +2012,7 @@ export const listPages: API.PaginatedOperationMethod<
     pagination: { mode: "single", items: "result" } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type ListPageTestsError = CloudflareOpError;
 /** Test history (list of tests) for a specific webpage. */
@@ -2019,7 +2020,8 @@ export const listPageTests: API.PaginatedOperationMethod<
   ListPageTestsRequest,
   ListPageTestsResponse,
   ListPageTestsError,
-  CloudflareOpContext
+  CloudflareOpContext,
+  PagesTestsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListPageTestsRequest,
@@ -2036,7 +2038,7 @@ export const listPageTests: API.PaginatedOperationMethod<
     } as const,
   }),
   cloudflarePaginate,
-);
+) as any;
 
 export type TrendPageError = CloudflareOpError;
 /** Lists the core web vital metrics trend over time for a specific page. */

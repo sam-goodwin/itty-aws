@@ -2816,27 +2816,7 @@ export const listJobs: API.OperationMethod<
     items: "JobList",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListJobsInput,
-  ListJobsOutput,
-  ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsInput,
-  ) => stream.Stream<
-    ListJobsOutput,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsInput,
-  ) => stream.Stream<
-    GlacierJobDescription,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListMultipartUploadsError =
   | InvalidParameterValueException
@@ -2912,27 +2892,7 @@ export const listMultipartUploads: API.OperationMethod<
     items: "UploadsList",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListMultipartUploadsInput,
-  ListMultipartUploadsOutput,
-  ListMultipartUploadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultipartUploadsInput,
-  ) => stream.Stream<
-    ListMultipartUploadsOutput,
-    ListMultipartUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultipartUploadsInput,
-  ) => stream.Stream<
-    UploadListElement,
-    ListMultipartUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListPartsError =
   | InvalidParameterValueException
@@ -3005,27 +2965,7 @@ export const listParts: API.OperationMethod<
     items: "Parts",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListPartsInput,
-  ListPartsOutput,
-  ListPartsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartsInput,
-  ) => stream.Stream<
-    ListPartsOutput,
-    ListPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartsInput,
-  ) => stream.Stream<
-    PartListElement,
-    ListPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListProvisionedCapacityError =
   | InvalidParameterValueException
@@ -3156,27 +3096,7 @@ export const listVaults: API.OperationMethod<
     items: "VaultList",
     pageSize: "limit",
   } as const,
-})) as any as API.OperationMethod<
-  ListVaultsInput,
-  ListVaultsOutput,
-  ListVaultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVaultsInput,
-  ) => stream.Stream<
-    ListVaultsOutput,
-    ListVaultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVaultsInput,
-  ) => stream.Stream<
-    DescribeVaultOutput,
-    ListVaultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PurchaseProvisionedCapacityError =
   | InvalidParameterValueException

@@ -2301,7 +2301,8 @@ export const listBillingAccountsServices: API.PaginatedOperationMethod<
   ListBillingAccountsServicesRequest,
   GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse,
   ListBillingAccountsServicesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsServicesRequest,
   output:
@@ -2313,7 +2314,7 @@ export const listBillingAccountsServices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsSkuGroupsError =
   | NotFound
@@ -2324,7 +2325,8 @@ export const listBillingAccountsSkuGroups: API.PaginatedOperationMethod<
   ListBillingAccountsSkuGroupsRequest,
   GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse,
   ListBillingAccountsSkuGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkuGroupsRequest,
   output:
@@ -2336,7 +2338,7 @@ export const listBillingAccountsSkuGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsSkuGroupsSkusError =
   | NotFound
@@ -2347,7 +2349,8 @@ export const listBillingAccountsSkuGroupsSkus: API.PaginatedOperationMethod<
   ListBillingAccountsSkuGroupsSkusRequest,
   GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse,
   ListBillingAccountsSkuGroupsSkusError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkuGroupsSkusRequest,
   output:
@@ -2359,7 +2362,7 @@ export const listBillingAccountsSkuGroupsSkus: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsSkusError = NotFound | Forbidden | GcpOpError;
 /** Lists SKUs visible to a billing account. */
@@ -2367,7 +2370,8 @@ export const listBillingAccountsSkus: API.PaginatedOperationMethod<
   ListBillingAccountsSkusRequest,
   GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse,
   ListBillingAccountsSkusError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkusRequest,
   output:
@@ -2379,7 +2383,7 @@ export const listBillingAccountsSkus: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListBillingAccountsSkusPricesError =
   | NotFound
@@ -2390,7 +2394,8 @@ export const listBillingAccountsSkusPrices: API.PaginatedOperationMethod<
   ListBillingAccountsSkusPricesRequest,
   GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse,
   ListBillingAccountsSkusPricesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkusPricesRequest,
   output:
@@ -2402,7 +2407,7 @@ export const listBillingAccountsSkusPrices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSkuGroupsError = NotFound | Forbidden | GcpOpError;
 /** Lists all publicly listed SKU groups. */
@@ -2410,7 +2415,8 @@ export const listSkuGroups: API.PaginatedOperationMethod<
   ListSkuGroupsRequest,
   GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse,
   ListSkuGroupsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSkuGroupsRequest,
   output: GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse,
@@ -2421,7 +2427,7 @@ export const listSkuGroups: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSkuGroupsSkusError = NotFound | Forbidden | GcpOpError;
 /** Lists all publicly listed SKUs contained by a publicly listed SKU group. */
@@ -2429,7 +2435,8 @@ export const listSkuGroupsSkus: API.PaginatedOperationMethod<
   ListSkuGroupsSkusRequest,
   GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse,
   ListSkuGroupsSkusError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSkuGroupsSkusRequest,
   output: GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse,
@@ -2440,7 +2447,7 @@ export const listSkuGroupsSkus: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListSkusPricesError = NotFound | Forbidden | GcpOpError;
 /** Lists the latest prices for all SKUs. */
@@ -2448,7 +2455,8 @@ export const listSkusPrices: API.PaginatedOperationMethod<
   ListSkusPricesRequest,
   GoogleCloudBillingPricesV1betaListPricesResponse,
   ListSkusPricesError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudBillingPricesV1betaListPricesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSkusPricesRequest,
   output: GoogleCloudBillingPricesV1betaListPricesResponse,
@@ -2459,4 +2467,4 @@ export const listSkusPrices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

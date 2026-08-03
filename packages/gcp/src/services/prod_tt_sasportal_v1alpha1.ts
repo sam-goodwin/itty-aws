@@ -3504,7 +3504,8 @@ export const listCustomers: API.PaginatedOperationMethod<
   ListCustomersRequest,
   SasPortalListCustomersResponse,
   ListCustomersError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersRequest,
   output: SasPortalListCustomersResponse,
@@ -3515,7 +3516,7 @@ export const listCustomers: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersDeploymentsError = NotFound | Forbidden | GcpOpError;
 /** Lists deployments. */
@@ -3523,7 +3524,8 @@ export const listCustomersDeployments: API.PaginatedOperationMethod<
   ListCustomersDeploymentsRequest,
   SasPortalListDeploymentsResponse,
   ListCustomersDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDeploymentsRequest,
   output: SasPortalListDeploymentsResponse,
@@ -3534,7 +3536,7 @@ export const listCustomersDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersDeploymentsDevicesError =
   | NotFound
@@ -3545,7 +3547,8 @@ export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
   ListCustomersDeploymentsDevicesRequest,
   SasPortalListDevicesResponse,
   ListCustomersDeploymentsDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDeploymentsDevicesRequest,
   output: SasPortalListDevicesResponse,
@@ -3556,7 +3559,7 @@ export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersDevicesError = NotFound | Forbidden | GcpOpError;
 /** Lists devices under a node or customer. */
@@ -3564,7 +3567,8 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   ListCustomersDevicesRequest,
   SasPortalListDevicesResponse,
   ListCustomersDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDevicesRequest,
   output: SasPortalListDevicesResponse,
@@ -3575,7 +3579,7 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersNodesError = NotFound | Forbidden | GcpOpError;
 /** Lists nodes. */
@@ -3583,7 +3587,8 @@ export const listCustomersNodes: API.PaginatedOperationMethod<
   ListCustomersNodesRequest,
   SasPortalListNodesResponse,
   ListCustomersNodesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesRequest,
   output: SasPortalListNodesResponse,
@@ -3594,7 +3599,7 @@ export const listCustomersNodes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersNodesDeploymentsError =
   | NotFound
@@ -3605,7 +3610,8 @@ export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
   ListCustomersNodesDeploymentsRequest,
   SasPortalListDeploymentsResponse,
   ListCustomersNodesDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesDeploymentsRequest,
   output: SasPortalListDeploymentsResponse,
@@ -3616,7 +3622,7 @@ export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersNodesDevicesError = NotFound | Forbidden | GcpOpError;
 /** Lists devices under a node or customer. */
@@ -3624,7 +3630,8 @@ export const listCustomersNodesDevices: API.PaginatedOperationMethod<
   ListCustomersNodesDevicesRequest,
   SasPortalListDevicesResponse,
   ListCustomersNodesDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesDevicesRequest,
   output: SasPortalListDevicesResponse,
@@ -3635,7 +3642,7 @@ export const listCustomersNodesDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListCustomersNodesNodesError = NotFound | Forbidden | GcpOpError;
 /** Lists nodes. */
@@ -3643,7 +3650,8 @@ export const listCustomersNodesNodes: API.PaginatedOperationMethod<
   ListCustomersNodesNodesRequest,
   SasPortalListNodesResponse,
   ListCustomersNodesNodesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesNodesRequest,
   output: SasPortalListNodesResponse,
@@ -3654,7 +3662,7 @@ export const listCustomersNodesNodes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListGcpProjectDeploymentsCustomersError =
   | NotFound
@@ -3698,7 +3706,8 @@ export const listNodesDeployments: API.PaginatedOperationMethod<
   ListNodesDeploymentsRequest,
   SasPortalListDeploymentsResponse,
   ListNodesDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesDeploymentsRequest,
   output: SasPortalListDeploymentsResponse,
@@ -3709,7 +3718,7 @@ export const listNodesDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNodesDeploymentsDevicesError =
   | NotFound
@@ -3720,7 +3729,8 @@ export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
   ListNodesDeploymentsDevicesRequest,
   SasPortalListDevicesResponse,
   ListNodesDeploymentsDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesDeploymentsDevicesRequest,
   output: SasPortalListDevicesResponse,
@@ -3731,7 +3741,7 @@ export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNodesDevicesError = NotFound | Forbidden | GcpOpError;
 /** Lists devices under a node or customer. */
@@ -3739,7 +3749,8 @@ export const listNodesDevices: API.PaginatedOperationMethod<
   ListNodesDevicesRequest,
   SasPortalListDevicesResponse,
   ListNodesDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesDevicesRequest,
   output: SasPortalListDevicesResponse,
@@ -3750,7 +3761,7 @@ export const listNodesDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNodesNodesError = NotFound | Forbidden | GcpOpError;
 /** Lists nodes. */
@@ -3758,7 +3769,8 @@ export const listNodesNodes: API.PaginatedOperationMethod<
   ListNodesNodesRequest,
   SasPortalListNodesResponse,
   ListNodesNodesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesRequest,
   output: SasPortalListNodesResponse,
@@ -3769,7 +3781,7 @@ export const listNodesNodes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNodesNodesDeploymentsError = NotFound | Forbidden | GcpOpError;
 /** Lists deployments. */
@@ -3777,7 +3789,8 @@ export const listNodesNodesDeployments: API.PaginatedOperationMethod<
   ListNodesNodesDeploymentsRequest,
   SasPortalListDeploymentsResponse,
   ListNodesNodesDeploymentsError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesDeploymentsRequest,
   output: SasPortalListDeploymentsResponse,
@@ -3788,7 +3801,7 @@ export const listNodesNodesDeployments: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNodesNodesDevicesError = NotFound | Forbidden | GcpOpError;
 /** Lists devices under a node or customer. */
@@ -3796,7 +3809,8 @@ export const listNodesNodesDevices: API.PaginatedOperationMethod<
   ListNodesNodesDevicesRequest,
   SasPortalListDevicesResponse,
   ListNodesNodesDevicesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesDevicesRequest,
   output: SasPortalListDevicesResponse,
@@ -3807,7 +3821,7 @@ export const listNodesNodesDevices: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListNodesNodesNodesError = NotFound | Forbidden | GcpOpError;
 /** Lists nodes. */
@@ -3815,7 +3829,8 @@ export const listNodesNodesNodes: API.PaginatedOperationMethod<
   ListNodesNodesNodesRequest,
   SasPortalListNodesResponse,
   ListNodesNodesNodesError,
-  GcpOpContext
+  GcpOpContext,
+  SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesNodesRequest,
   output: SasPortalListNodesResponse,
@@ -3826,7 +3841,7 @@ export const listNodesNodesNodes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type MigrateOrganizationCustomersError =
   | NotFound

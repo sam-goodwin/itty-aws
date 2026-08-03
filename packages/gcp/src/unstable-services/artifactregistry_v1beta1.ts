@@ -1377,7 +1377,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListLocationsResponse,
   ListProjectsLocationsError,
-  GcpOpContext
+  GcpOpContext,
+  ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListLocationsResponse,
@@ -1388,7 +1389,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRepositoriesError =
   | NotFound
@@ -1399,7 +1400,8 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   ListProjectsLocationsRepositoriesRequest,
   ListRepositoriesResponse,
   ListProjectsLocationsRepositoriesError,
-  GcpOpContext
+  GcpOpContext,
+  ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesRequest,
   output: ListRepositoriesResponse,
@@ -1410,7 +1412,7 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRepositoriesFilesError =
   | NotFound
@@ -1421,7 +1423,8 @@ export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMetho
   ListProjectsLocationsRepositoriesFilesRequest,
   ListFilesResponse,
   ListProjectsLocationsRepositoriesFilesError,
-  GcpOpContext
+  GcpOpContext,
+  ListFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesFilesRequest,
   output: ListFilesResponse,
@@ -1432,7 +1435,7 @@ export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMetho
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRepositoriesPackagesError =
   | NotFound
@@ -1443,7 +1446,8 @@ export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMe
   ListProjectsLocationsRepositoriesPackagesRequest,
   ListPackagesResponse,
   ListProjectsLocationsRepositoriesPackagesError,
-  GcpOpContext
+  GcpOpContext,
+  ListPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesPackagesRequest,
   output: ListPackagesResponse,
@@ -1454,7 +1458,7 @@ export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRepositoriesPackagesTagsError =
   | NotFound
@@ -1465,7 +1469,8 @@ export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperati
   ListProjectsLocationsRepositoriesPackagesTagsRequest,
   ListTagsResponse,
   ListProjectsLocationsRepositoriesPackagesTagsError,
-  GcpOpContext
+  GcpOpContext,
+  ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesPackagesTagsRequest,
   output: ListTagsResponse,
@@ -1476,7 +1481,7 @@ export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperati
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsRepositoriesPackagesVersionsError =
   | NotFound
@@ -1487,7 +1492,8 @@ export const listProjectsLocationsRepositoriesPackagesVersions: API.PaginatedOpe
   ListProjectsLocationsRepositoriesPackagesVersionsRequest,
   ListVersionsResponse,
   ListProjectsLocationsRepositoriesPackagesVersionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesPackagesVersionsRequest,
   output: ListVersionsResponse,
@@ -1498,7 +1504,7 @@ export const listProjectsLocationsRepositoriesPackagesVersions: API.PaginatedOpe
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type PatchProjectsLocationsRepositoriesError =
   | NotFound

@@ -5320,27 +5320,7 @@ export const listApiKeys: API.OperationMethod<
     items: "apiKeys",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApiKeysRequest,
-  ListApiKeysResponse,
-  ListApiKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApiKeysRequest,
-  ) => stream.Stream<
-    ListApiKeysResponse,
-    ListApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApiKeysRequest,
-  ) => stream.Stream<
-    ApiKey,
-    ListApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListApisError =
   | BadRequestException
@@ -5390,27 +5370,7 @@ export const listApis: API.OperationMethod<
     items: "apis",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListApisRequest,
-  ListApisResponse,
-  ListApisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApisRequest,
-  ) => stream.Stream<
-    ListApisResponse,
-    ListApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApisRequest,
-  ) => stream.Stream<
-    Api,
-    ListApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListChannelNamespacesError =
   | BadRequestException
@@ -5462,27 +5422,7 @@ export const listChannelNamespaces: API.OperationMethod<
     items: "channelNamespaces",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListChannelNamespacesRequest,
-  ListChannelNamespacesResponse,
-  ListChannelNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelNamespacesRequest,
-  ) => stream.Stream<
-    ListChannelNamespacesResponse,
-    ListChannelNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelNamespacesRequest,
-  ) => stream.Stream<
-    ChannelNamespace,
-    ListChannelNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDataSourcesError =
   | BadRequestException
@@ -5531,27 +5471,7 @@ export const listDataSources: API.OperationMethod<
     items: "dataSources",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDataSourcesRequest,
-  ListDataSourcesResponse,
-  ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    ListDataSourcesResponse,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    DataSource,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListDomainNamesError =
   | AccessDeniedException
@@ -5598,27 +5518,7 @@ export const listDomainNames: API.OperationMethod<
     items: "domainNameConfigs",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListDomainNamesRequest,
-  ListDomainNamesResponse,
-  ListDomainNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainNamesRequest,
-  ) => stream.Stream<
-    ListDomainNamesResponse,
-    ListDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainNamesRequest,
-  ) => stream.Stream<
-    DomainNameConfig,
-    ListDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListFunctionsError =
   | BadRequestException
@@ -5667,27 +5567,7 @@ export const listFunctions: API.OperationMethod<
     items: "functions",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListFunctionsRequest,
-  ListFunctionsResponse,
-  ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    ListFunctionsResponse,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    FunctionConfiguration,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListGraphqlApisError =
   | BadRequestException
@@ -5734,27 +5614,7 @@ export const listGraphqlApis: API.OperationMethod<
     items: "graphqlApis",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListGraphqlApisRequest,
-  ListGraphqlApisResponse,
-  ListGraphqlApisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGraphqlApisRequest,
-  ) => stream.Stream<
-    ListGraphqlApisResponse,
-    ListGraphqlApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGraphqlApisRequest,
-  ) => stream.Stream<
-    GraphqlApi,
-    ListGraphqlApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolversError =
   | BadRequestException
@@ -5803,27 +5663,7 @@ export const listResolvers: API.OperationMethod<
     items: "resolvers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolversRequest,
-  ListResolversResponse,
-  ListResolversError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolversRequest,
-  ) => stream.Stream<
-    ListResolversResponse,
-    ListResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolversRequest,
-  ) => stream.Stream<
-    Resolver,
-    ListResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListResolversByFunctionError =
   | BadRequestException
@@ -5872,27 +5712,7 @@ export const listResolversByFunction: API.OperationMethod<
     items: "resolvers",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListResolversByFunctionRequest,
-  ListResolversByFunctionResponse,
-  ListResolversByFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolversByFunctionRequest,
-  ) => stream.Stream<
-    ListResolversByFunctionResponse,
-    ListResolversByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolversByFunctionRequest,
-  ) => stream.Stream<
-    Resolver,
-    ListResolversByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSourceApiAssociationsError =
   | BadRequestException
@@ -5941,27 +5761,7 @@ export const listSourceApiAssociations: API.OperationMethod<
     items: "sourceApiAssociationSummaries",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSourceApiAssociationsRequest,
-  ListSourceApiAssociationsResponse,
-  ListSourceApiAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceApiAssociationsRequest,
-  ) => stream.Stream<
-    ListSourceApiAssociationsResponse,
-    ListSourceApiAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceApiAssociationsRequest,
-  ) => stream.Stream<
-    SourceApiAssociationSummary,
-    ListSourceApiAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -6044,27 +5844,7 @@ export const listTypes: API.OperationMethod<
     items: "types",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTypesRequest,
-  ListTypesResponse,
-  ListTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypesRequest,
-  ) => stream.Stream<
-    ListTypesResponse,
-    ListTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypesRequest,
-  ) => stream.Stream<
-    Type,
-    ListTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTypesByAssociationError =
   | BadRequestException
@@ -6115,27 +5895,7 @@ export const listTypesByAssociation: API.OperationMethod<
     items: "types",
     pageSize: "maxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListTypesByAssociationRequest,
-  ListTypesByAssociationResponse,
-  ListTypesByAssociationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypesByAssociationRequest,
-  ) => stream.Stream<
-    ListTypesByAssociationResponse,
-    ListTypesByAssociationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypesByAssociationRequest,
-  ) => stream.Stream<
-    Type,
-    ListTypesByAssociationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type PutGraphqlApiEnvironmentVariablesError =
   | AccessDeniedException

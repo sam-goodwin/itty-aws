@@ -1698,27 +1698,7 @@ export const listAssociatedRoute53HealthChecks: API.OperationMethod<
     items: "HealthCheckIds",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListAssociatedRoute53HealthChecksRequest,
-  ListAssociatedRoute53HealthChecksResponse,
-  ListAssociatedRoute53HealthChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedRoute53HealthChecksRequest,
-  ) => stream.Stream<
-    ListAssociatedRoute53HealthChecksResponse,
-    ListAssociatedRoute53HealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedRoute53HealthChecksRequest,
-  ) => stream.Stream<
-    __stringMax36PatternS,
-    ListAssociatedRoute53HealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListClustersError =
   | AccessDeniedException
@@ -1769,27 +1749,7 @@ export const listClusters: API.OperationMethod<
     items: "Clusters",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListClustersRequest,
-  ListClustersResponse,
-  ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    Cluster,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListControlPanelsError =
   | AccessDeniedException
@@ -1840,27 +1800,7 @@ export const listControlPanels: API.OperationMethod<
     items: "ControlPanels",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListControlPanelsRequest,
-  ListControlPanelsResponse,
-  ListControlPanelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlPanelsRequest,
-  ) => stream.Stream<
-    ListControlPanelsResponse,
-    ListControlPanelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlPanelsRequest,
-  ) => stream.Stream<
-    ControlPanel,
-    ListControlPanelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListRoutingControlsError =
   | AccessDeniedException
@@ -1911,27 +1851,7 @@ export const listRoutingControls: API.OperationMethod<
     items: "RoutingControls",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListRoutingControlsRequest,
-  ListRoutingControlsResponse,
-  ListRoutingControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingControlsRequest,
-  ) => stream.Stream<
-    ListRoutingControlsResponse,
-    ListRoutingControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingControlsRequest,
-  ) => stream.Stream<
-    RoutingControl,
-    ListRoutingControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListSafetyRulesError =
   | AccessDeniedException
@@ -1982,27 +1902,7 @@ export const listSafetyRules: API.OperationMethod<
     items: "SafetyRules",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  ListSafetyRulesRequest,
-  ListSafetyRulesResponse,
-  ListSafetyRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSafetyRulesRequest,
-  ) => stream.Stream<
-    ListSafetyRulesResponse,
-    ListSafetyRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSafetyRulesRequest,
-  ) => stream.Stream<
-    Rule,
-    ListSafetyRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForResourceError =
   | InternalServerException

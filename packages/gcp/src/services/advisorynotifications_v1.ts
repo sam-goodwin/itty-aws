@@ -618,7 +618,8 @@ export const listOrganizationsLocationsNotifications: API.PaginatedOperationMeth
   ListOrganizationsLocationsNotificationsRequest,
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse,
   ListOrganizationsLocationsNotificationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAdvisorynotificationsV1ListNotificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsNotificationsRequest,
   output: GoogleCloudAdvisorynotificationsV1ListNotificationsResponse,
@@ -629,7 +630,7 @@ export const listOrganizationsLocationsNotifications: API.PaginatedOperationMeth
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type ListProjectsLocationsNotificationsError =
   | NotFound
@@ -640,7 +641,8 @@ export const listProjectsLocationsNotifications: API.PaginatedOperationMethod<
   ListProjectsLocationsNotificationsRequest,
   GoogleCloudAdvisorynotificationsV1ListNotificationsResponse,
   ListProjectsLocationsNotificationsError,
-  GcpOpContext
+  GcpOpContext,
+  GoogleCloudAdvisorynotificationsV1ListNotificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNotificationsRequest,
   output: GoogleCloudAdvisorynotificationsV1ListNotificationsResponse,
@@ -651,7 +653,7 @@ export const listProjectsLocationsNotifications: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;
 
 export type UpdateSettingsOrganizationsLocationsError =
   | NotFound

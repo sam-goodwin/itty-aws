@@ -586,7 +586,8 @@ export const listNotes: API.PaginatedOperationMethod<
   ListNotesRequest,
   ListNotesResponse,
   ListNotesError,
-  GcpOpContext
+  GcpOpContext,
+  ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotesRequest,
   output: ListNotesResponse,
@@ -597,4 +598,4 @@ export const listNotes: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

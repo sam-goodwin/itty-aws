@@ -668,7 +668,8 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
   ListAccountsPromotionsRequest,
   ListPromotionsResponse,
   ListAccountsPromotionsError,
-  GcpOpContext
+  GcpOpContext,
+  ListPromotionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPromotionsRequest,
   output: ListPromotionsResponse,
@@ -679,4 +680,4 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   } as const,
-}));
+})) as any;

@@ -1806,27 +1806,7 @@ export const listCertificates: API.OperationMethod<
     items: "CertificateSummaryList",
     pageSize: "MaxItems",
   } as const,
-})) as any as API.OperationMethod<
-  ListCertificatesRequest,
-  ListCertificatesResponse,
-  ListCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    ListCertificatesResponse,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    CertificateSummary,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type ListTagsForCertificateError =
   | InvalidArnException
@@ -2082,27 +2062,7 @@ export const searchCertificates: API.OperationMethod<
     items: "Results",
     pageSize: "MaxResults",
   } as const,
-})) as any as API.OperationMethod<
-  SearchCertificatesRequest,
-  SearchCertificatesResponse,
-  SearchCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchCertificatesRequest,
-  ) => stream.Stream<
-    SearchCertificatesResponse,
-    SearchCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchCertificatesRequest,
-  ) => stream.Stream<
-    CertificateSearchResult,
-    SearchCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-};
+})) as any;
 
 export type UpdateCertificateOptionsError =
   | InvalidArnException
