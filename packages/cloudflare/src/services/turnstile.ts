@@ -40,7 +40,7 @@ export class WidgetNotFound extends T.applyErrorMatchers(
     code: S.Number,
     message: S.String,
   }),
-  [{ code: 10404 }, { code: 10407 }],
+  [{ code: 10404 }, { code: 10407 }, { status: 404 }],
 ) {}
 
 export type WidgetsCreateRequestDirection = "asc" | "desc";
