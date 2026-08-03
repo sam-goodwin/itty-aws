@@ -4,11 +4,12 @@
  * Re-exports the generic protocol traits from core (so generated operations
  * import everything from one place). Atlas has no envelope of its own; the
  * REST-protocol traits (SensitiveValue / RawResponse) come from
- * `core/protocol-rest`. The one Atlas-specific wire quirk — date-versioned
- * `Accept` media types — rides as an `accept` extension on the `Http` trait
- * (stamped by scripts/convert.ts, read by src/protocol.ts).
+ * `core/protocol-rest`. Atlas's date-versioned `Accept` media types ride on
+ * the core `Http` trait's `accept` field (stamped by scripts/convert.ts,
+ * read by src/protocol.ts).
  */
 export {
+  Http,
   Body,
   Header,
   Query,
@@ -34,24 +35,6 @@ export {
   unionCasesSymbol,
   errorMatchersSymbol,
 } from "@distilled.cloud/core/trait";
-
-import {
-  Http as CoreHttp,
-  type HttpTrait as CoreHttpTrait,
-} from "@distilled.cloud/core/trait";
-
-/**
- * Atlas pins an API version per operation through a date-versioned
- * `Accept` media type (e.g. `application/vnd.atlas.2024-05-30+json`), so
- * its operation trait carries one more field than the generic one. The
- * value is stamped by scripts/convert.ts and read by src/protocol.ts.
- */
-export interface AtlasHttpTrait extends CoreHttpTrait {
-  readonly accept?: string;
-}
-
-/** `Http` widened to accept Atlas's per-operation `accept` media type. */
-export const Http = (trait: AtlasHttpTrait) => CoreHttp(trait);
 
 export {
   SensitiveValue,
