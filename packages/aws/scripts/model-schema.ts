@@ -26,6 +26,9 @@ export const ServiceShape = S.Struct({
         sdkId: S.String,
       }),
       "aws.auth#sigv4": S.optional(S.Struct({ name: S.String })),
+      // Provider-defined: AWS never gave SigV2 a Smithy trait. Only
+      // SimpleDB needs it (its endpoint rejects SigV4).
+      "aws.auth#sigv2": S.optional(S.Struct({ name: S.String })),
     }),
     [S.Record(S.String, S.Unknown)],
   ),

@@ -3,6 +3,8 @@
  * generate — turn the AWS Smithy models into an Effect SDK.
  *
  * Input:  specs/api-models-aws/models/<service>/service/<version>/<service>-<version>.json
+ *         manual-specs/<service>.json  (hand-authored models for APIs AWS
+ *         never published a Smithy model for — see manual-specs/README.md)
  * Output: src/services/<sdkId>.ts  +  services/index.ts
  *
  * The smithy→SDK compiler lives in `@distilled.cloud/core/codegen`; the
@@ -27,6 +29,7 @@ import { awsSpec } from "./spec.ts";
 import path from "pathe";
 
 const AWS_MODELS_PATH = "specs/api-models-aws";
+const MANUAL_SPECS_PATH = "manual-specs";
 const RESULT_ROOT_PATH = path.resolve("src", "services");
 
 function getSdkFlag(): Option.Option<string> {
@@ -145,6 +148,38 @@ BunRuntime.runMain(
             Console.error(
               `❌ ${service}\n\tUnable to generate client: ${error}`,
             ),
+          ),
+        ),
+    );
+
+    // Hand-authored models for APIs `specs/api-models-aws` doesn't cover.
+    // They compile through the identical path — same SdkSpec, same patch
+    // chain — so a manual spec is a MODEL, never a hand-written module.
+    const manualExists = yield* fs.exists(MANUAL_SPECS_PATH);
+    const manualFiles = manualExists
+      ? (yield* fs.readDirectory(MANUAL_SPECS_PATH)).filter((f) =>
+          f.endsWith(".json"),
+        )
+      : [];
+    for (const file of manualFiles) {
+      const service = file.replace(/\.json$/, "");
+      if (folders.includes(service)) {
+        return yield* Effect.die(
+          new Error(
+            `${MANUAL_SPECS_PATH}/${file} shadows a published model — rename or delete it`,
+          ),
+        );
+      }
+    }
+    yield* Effect.forEach(
+      manualFiles.filter(
+        (file) => sdkFlag == null || sdkFlag === file.replace(/\.json$/, ""),
+      ),
+      (file) =>
+        generateClient(p.join(MANUAL_SPECS_PATH, file), RESULT_ROOT_PATH).pipe(
+          Effect.andThen(() => Console.log(`✅ ${file} (manual)`)),
+          Effect.catch((error) =>
+            Console.error(`❌ ${file}\n\tUnable to generate client: ${error}`),
           ),
         ),
     );
