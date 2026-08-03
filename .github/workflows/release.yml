@@ -1,0 +1,83 @@
+name: release
+
+# Publishes every package to npm. While v1 stabilises the default is a
+# release candidate: an empty `version` cuts the next `1.0.0-rc.N`. Once
+# 1.0.0 ships, drop the default below and follow semver
+# (`patch`/`minor`/`major`).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: >-
+          Release spec. Empty = next release candidate (1.0.0-rc.N).
+          `rc.N` forces a specific candidate. `patch|minor|major` or
+          `x.y.z` for a stable release. `beta`/`alpha` for those
+          channels. Anything else = tag release on `0.0.0-<name>`.
+        required: false
+        type: string
+        default: "rc"
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+# Reusable workflows can't widen permissions — the caller must grant
+# `contents: write` (commit + tag) and `id-token: write` (npm OIDC).
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  # A release must not ship code that doesn't typecheck: day-to-day
+  # builds run with `noCheck: true` (see ci.yml), so re-check everything
+  # here before anything is published.
+  typecheck:
+    runs-on: ubuntu-22-large
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck:ci
+
+  release:
+    needs: typecheck
+    uses: alchemy-run/actions/.github/workflows/release.yml@a18b368e044cb380a8c4904d5cfbccbc2798e768 # main
+    with:
+      version: ${{ inputs.version }}
+      repo: alchemy-run/distilled
+      # Anchor for prerelease bumps: rc.N hangs off this.
+      current-version: "1.0.0"
+      # Each package builds inside its own publish job; aws, azure and
+      # gcp run on a larger runner because their builds are too heavy
+      # for the default ubuntu-latest box.
+      build-mode: per-package
+      build-command: "bun run build"
+      packages: |
+        [
+          { "dir": "packages/core",            "name": "@distilled.cloud/core" },
+          { "dir": "packages/aws",             "name": "@distilled.cloud/aws",             "runner": "ubuntu-22-large" },
+          { "dir": "packages/axiom",           "name": "@distilled.cloud/axiom" },
+          { "dir": "packages/azure",           "name": "@distilled.cloud/azure",           "runner": "ubuntu-22-large" },
+          { "dir": "packages/cloudflare",      "name": "@distilled.cloud/cloudflare" },
+          { "dir": "packages/coinbase",        "name": "@distilled.cloud/coinbase" },
+          { "dir": "packages/expo-eas",        "name": "@distilled.cloud/expo-eas" },
+          { "dir": "packages/fly-io",          "name": "@distilled.cloud/fly-io" },
+          { "dir": "packages/gcp",             "name": "@distilled.cloud/gcp",             "runner": "ubuntu-22-large" },
+          { "dir": "packages/kubernetes",      "name": "@distilled.cloud/kubernetes" },
+          { "dir": "packages/mongodb-atlas",   "name": "@distilled.cloud/mongodb-atlas" },
+          { "dir": "packages/neon",            "name": "@distilled.cloud/neon" },
+          { "dir": "packages/planetscale",     "name": "@distilled.cloud/planetscale" },
+          { "dir": "packages/posthog",         "name": "@distilled.cloud/posthog" },
+          { "dir": "packages/prisma-postgres", "name": "@distilled.cloud/prisma-postgres" },
+          { "dir": "packages/stripe",          "name": "@distilled.cloud/stripe" },
+          { "dir": "packages/supabase",        "name": "@distilled.cloud/supabase" },
+          { "dir": "packages/turso",           "name": "@distilled.cloud/turso" },
+          { "dir": "packages/typesense",       "name": "@distilled.cloud/typesense" },
+          { "dir": "packages/workos",          "name": "@distilled.cloud/workos" }
+        ]
+    secrets: inherit
