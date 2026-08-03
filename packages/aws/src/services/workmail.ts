@@ -4957,7 +4957,27 @@ export const listAliases: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAliasesRequest,
+  ListAliasesResponse,
+  ListAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAliasesRequest,
+  ) => stream.Stream<
+    ListAliasesResponse,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAliasesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAvailabilityConfigurationsError =
   | InvalidParameterException
@@ -5004,7 +5024,27 @@ export const listAvailabilityConfigurations: API.OperationMethod<
     items: "AvailabilityConfigurations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAvailabilityConfigurationsRequest,
+  ListAvailabilityConfigurationsResponse,
+  ListAvailabilityConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAvailabilityConfigurationsRequest,
+  ) => stream.Stream<
+    ListAvailabilityConfigurationsResponse,
+    ListAvailabilityConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAvailabilityConfigurationsRequest,
+  ) => stream.Stream<
+    AvailabilityConfiguration,
+    ListAvailabilityConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupMembersError =
   | EntityNotFoundException
@@ -5055,7 +5095,27 @@ export const listGroupMembers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupMembersRequest,
+  ListGroupMembersResponse,
+  ListGroupMembersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupMembersRequest,
+  ) => stream.Stream<
+    ListGroupMembersResponse,
+    ListGroupMembersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupMembersRequest,
+  ) => stream.Stream<
+    unknown,
+    ListGroupMembersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupsError =
   | EntityNotFoundException
@@ -5103,7 +5163,27 @@ export const listGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsRequest,
+  ListGroupsResponse,
+  ListGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsRequest,
+  ) => stream.Stream<
+    ListGroupsResponse,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupsForEntityError =
   | EntityNotFoundException
@@ -5153,7 +5233,27 @@ export const listGroupsForEntity: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsForEntityRequest,
+  ListGroupsForEntityResponse,
+  ListGroupsForEntityError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsForEntityRequest,
+  ) => stream.Stream<
+    ListGroupsForEntityResponse,
+    ListGroupsForEntityError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsForEntityRequest,
+  ) => stream.Stream<
+    unknown,
+    ListGroupsForEntityError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImpersonationRolesError =
   | InvalidParameterException
@@ -5199,7 +5299,27 @@ export const listImpersonationRoles: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImpersonationRolesRequest,
+  ListImpersonationRolesResponse,
+  ListImpersonationRolesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImpersonationRolesRequest,
+  ) => stream.Stream<
+    ListImpersonationRolesResponse,
+    ListImpersonationRolesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImpersonationRolesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListImpersonationRolesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMailboxExportJobsError =
   | InvalidParameterException
@@ -5246,7 +5366,27 @@ export const listMailboxExportJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMailboxExportJobsRequest,
+  ListMailboxExportJobsResponse,
+  ListMailboxExportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMailboxExportJobsRequest,
+  ) => stream.Stream<
+    ListMailboxExportJobsResponse,
+    ListMailboxExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMailboxExportJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMailboxExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMailboxPermissionsError =
   | EntityNotFoundException
@@ -5295,7 +5435,27 @@ export const listMailboxPermissions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMailboxPermissionsRequest,
+  ListMailboxPermissionsResponse,
+  ListMailboxPermissionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMailboxPermissionsRequest,
+  ) => stream.Stream<
+    ListMailboxPermissionsResponse,
+    ListMailboxPermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMailboxPermissionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMailboxPermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMailDomainsError =
   | InvalidParameterException
@@ -5341,7 +5501,27 @@ export const listMailDomains: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMailDomainsRequest,
+  ListMailDomainsResponse,
+  ListMailDomainsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMailDomainsRequest,
+  ) => stream.Stream<
+    ListMailDomainsResponse,
+    ListMailDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMailDomainsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMailDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMobileDeviceAccessOverridesError =
   | EntityNotFoundException
@@ -5389,7 +5569,27 @@ export const listMobileDeviceAccessOverrides: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMobileDeviceAccessOverridesRequest,
+  ListMobileDeviceAccessOverridesResponse,
+  ListMobileDeviceAccessOverridesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMobileDeviceAccessOverridesRequest,
+  ) => stream.Stream<
+    ListMobileDeviceAccessOverridesResponse,
+    ListMobileDeviceAccessOverridesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMobileDeviceAccessOverridesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMobileDeviceAccessOverridesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMobileDeviceAccessRulesError =
   | InvalidParameterException
@@ -5453,7 +5653,27 @@ export const listOrganizations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOrganizationsRequest,
+  ListOrganizationsResponse,
+  ListOrganizationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOrganizationsRequest,
+  ) => stream.Stream<
+    ListOrganizationsResponse,
+    ListOrganizationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOrganizationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListOrganizationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPersonalAccessTokensError =
   | EntityNotFoundException
@@ -5504,7 +5724,27 @@ export const listPersonalAccessTokens: API.OperationMethod<
     items: "PersonalAccessTokenSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPersonalAccessTokensRequest,
+  ListPersonalAccessTokensResponse,
+  ListPersonalAccessTokensError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPersonalAccessTokensRequest,
+  ) => stream.Stream<
+    ListPersonalAccessTokensResponse,
+    ListPersonalAccessTokensError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPersonalAccessTokensRequest,
+  ) => stream.Stream<
+    PersonalAccessTokenSummary,
+    ListPersonalAccessTokensError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceDelegatesError =
   | EntityNotFoundException
@@ -5557,7 +5797,27 @@ export const listResourceDelegates: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceDelegatesRequest,
+  ListResourceDelegatesResponse,
+  ListResourceDelegatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceDelegatesRequest,
+  ) => stream.Stream<
+    ListResourceDelegatesResponse,
+    ListResourceDelegatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceDelegatesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListResourceDelegatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourcesError =
   | InvalidParameterException
@@ -5605,7 +5865,27 @@ export const listResources: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourcesRequest,
+  ListResourcesResponse,
+  ListResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourcesRequest,
+  ) => stream.Stream<
+    ListResourcesResponse,
+    ListResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -5669,7 +5949,27 @@ export const listUsers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUsersRequest,
+  ListUsersResponse,
+  ListUsersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUsersRequest,
+  ) => stream.Stream<
+    ListUsersResponse,
+    ListUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUsersRequest,
+  ) => stream.Stream<
+    unknown,
+    ListUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutAccessControlRuleError =
   | EntityNotFoundException

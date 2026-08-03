@@ -2774,7 +2774,27 @@ export const getResourcePolicies: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetResourcePoliciesRequest,
+  GetResourcePoliciesResponse,
+  GetResourcePoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetResourcePoliciesRequest,
+  ) => stream.Stream<
+    GetResourcePoliciesResponse,
+    GetResourcePoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetResourcePoliciesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetResourcePoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetResourceShareAssociationsError =
   | InvalidNextTokenException
@@ -2835,7 +2855,27 @@ export const getResourceShareAssociations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetResourceShareAssociationsRequest,
+  GetResourceShareAssociationsResponse,
+  GetResourceShareAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetResourceShareAssociationsRequest,
+  ) => stream.Stream<
+    GetResourceShareAssociationsResponse,
+    GetResourceShareAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetResourceShareAssociationsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetResourceShareAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetResourceShareInvitationsError =
   | InvalidMaxResultsException
@@ -2897,7 +2937,27 @@ export const getResourceShareInvitations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetResourceShareInvitationsRequest,
+  GetResourceShareInvitationsResponse,
+  GetResourceShareInvitationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetResourceShareInvitationsRequest,
+  ) => stream.Stream<
+    GetResourceShareInvitationsResponse,
+    GetResourceShareInvitationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetResourceShareInvitationsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetResourceShareInvitationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetResourceSharesError =
   | InvalidNextTokenException
@@ -2955,7 +3015,27 @@ export const getResourceShares: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetResourceSharesRequest,
+  GetResourceSharesResponse,
+  GetResourceSharesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetResourceSharesRequest,
+  ) => stream.Stream<
+    GetResourceSharesResponse,
+    GetResourceSharesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetResourceSharesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetResourceSharesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPendingInvitationResourcesError =
   | InvalidNextTokenException
@@ -3021,7 +3101,27 @@ export const listPendingInvitationResources: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPendingInvitationResourcesRequest,
+  ListPendingInvitationResourcesResponse,
+  ListPendingInvitationResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPendingInvitationResourcesRequest,
+  ) => stream.Stream<
+    ListPendingInvitationResourcesResponse,
+    ListPendingInvitationResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPendingInvitationResourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPendingInvitationResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPermissionAssociationsError =
   | InvalidNextTokenException
@@ -3079,7 +3179,27 @@ export const listPermissionAssociations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPermissionAssociationsRequest,
+  ListPermissionAssociationsResponse,
+  ListPermissionAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPermissionAssociationsRequest,
+  ) => stream.Stream<
+    ListPermissionAssociationsResponse,
+    ListPermissionAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPermissionAssociationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPermissionAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPermissionsError =
   | InvalidNextTokenException
@@ -3136,7 +3256,27 @@ export const listPermissions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPermissionsRequest,
+  ListPermissionsResponse,
+  ListPermissionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPermissionsRequest,
+  ) => stream.Stream<
+    ListPermissionsResponse,
+    ListPermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPermissionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPermissionVersionsError =
   | InvalidNextTokenException
@@ -3196,7 +3336,27 @@ export const listPermissionVersions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPermissionVersionsRequest,
+  ListPermissionVersionsResponse,
+  ListPermissionVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPermissionVersionsRequest,
+  ) => stream.Stream<
+    ListPermissionVersionsResponse,
+    ListPermissionVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPermissionVersionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPermissionVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPrincipalsError =
   | InvalidNextTokenException
@@ -3255,7 +3415,27 @@ export const listPrincipals: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPrincipalsRequest,
+  ListPrincipalsResponse,
+  ListPrincipalsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPrincipalsRequest,
+  ) => stream.Stream<
+    ListPrincipalsResponse,
+    ListPrincipalsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPrincipalsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPrincipalsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReplacePermissionAssociationsWorkError =
   | InvalidNextTokenException
@@ -3310,7 +3490,27 @@ export const listReplacePermissionAssociationsWork: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReplacePermissionAssociationsWorkRequest,
+  ListReplacePermissionAssociationsWorkResponse,
+  ListReplacePermissionAssociationsWorkError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReplacePermissionAssociationsWorkRequest,
+  ) => stream.Stream<
+    ListReplacePermissionAssociationsWorkResponse,
+    ListReplacePermissionAssociationsWorkError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReplacePermissionAssociationsWorkRequest,
+  ) => stream.Stream<
+    unknown,
+    ListReplacePermissionAssociationsWorkError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourcesError =
   | InvalidNextTokenException
@@ -3371,7 +3571,27 @@ export const listResources: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourcesRequest,
+  ListResourcesResponse,
+  ListResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourcesRequest,
+  ) => stream.Stream<
+    ListResourcesResponse,
+    ListResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceSharePermissionsError =
   | InvalidNextTokenException
@@ -3431,7 +3651,27 @@ export const listResourceSharePermissions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceSharePermissionsRequest,
+  ListResourceSharePermissionsResponse,
+  ListResourceSharePermissionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceSharePermissionsRequest,
+  ) => stream.Stream<
+    ListResourceSharePermissionsResponse,
+    ListResourceSharePermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceSharePermissionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListResourceSharePermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceTypesError =
   | InvalidNextTokenException
@@ -3479,7 +3719,27 @@ export const listResourceTypes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceTypesRequest,
+  ListResourceTypesResponse,
+  ListResourceTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceTypesRequest,
+  ) => stream.Stream<
+    ListResourceTypesResponse,
+    ListResourceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceTypesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListResourceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSourceAssociationsError =
   | InvalidNextTokenException
@@ -3534,7 +3794,27 @@ export const listSourceAssociations: API.OperationMethod<
     items: "sourceAssociations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSourceAssociationsRequest,
+  ListSourceAssociationsResponse,
+  ListSourceAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSourceAssociationsRequest,
+  ) => stream.Stream<
+    ListSourceAssociationsResponse,
+    ListSourceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSourceAssociationsRequest,
+  ) => stream.Stream<
+    AssociatedSource,
+    ListSourceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PromotePermissionCreatedFromPolicyError =
   | InvalidParameterException

@@ -1376,7 +1376,27 @@ export const listChannels: API.OperationMethod<
     items: "channels",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelsInput,
+  ListChannelsOutput,
+  ListChannelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelsInput,
+  ) => stream.Stream<
+    ListChannelsOutput,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelsInput,
+  ) => stream.Stream<
+    ChannelData,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSpacesError =
   | AccessDeniedException
@@ -1425,7 +1445,27 @@ export const listSpaces: API.OperationMethod<
     items: "spaces",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSpacesInput,
+  ListSpacesOutput,
+  ListSpacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSpacesInput,
+  ) => stream.Stream<
+    ListSpacesOutput,
+    ListSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSpacesInput,
+  ) => stream.Stream<
+    SpaceData,
+    ListSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

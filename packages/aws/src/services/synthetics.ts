@@ -1794,7 +1794,27 @@ export const describeCanaries: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCanariesRequest,
+  DescribeCanariesResponse,
+  DescribeCanariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCanariesRequest,
+  ) => stream.Stream<
+    DescribeCanariesResponse,
+    DescribeCanariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCanariesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeCanariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCanariesLastRunError =
   | InternalServerException
@@ -1845,7 +1865,27 @@ export const describeCanariesLastRun: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCanariesLastRunRequest,
+  DescribeCanariesLastRunResponse,
+  DescribeCanariesLastRunError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCanariesLastRunRequest,
+  ) => stream.Stream<
+    DescribeCanariesLastRunResponse,
+    DescribeCanariesLastRunError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCanariesLastRunRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeCanariesLastRunError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRuntimeVersionsError =
   | InternalServerException
@@ -1888,7 +1928,27 @@ export const describeRuntimeVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRuntimeVersionsRequest,
+  DescribeRuntimeVersionsResponse,
+  DescribeRuntimeVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRuntimeVersionsRequest,
+  ) => stream.Stream<
+    DescribeRuntimeVersionsResponse,
+    DescribeRuntimeVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRuntimeVersionsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeRuntimeVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DisassociateResourceError =
   | ConflictException
@@ -1990,7 +2050,27 @@ export const getCanaryRuns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetCanaryRunsRequest,
+  GetCanaryRunsResponse,
+  GetCanaryRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCanaryRunsRequest,
+  ) => stream.Stream<
+    GetCanaryRunsResponse,
+    GetCanaryRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCanaryRunsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetCanaryRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetGroupError =
   | ConflictException
@@ -2066,7 +2146,27 @@ export const listAssociatedGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssociatedGroupsRequest,
+  ListAssociatedGroupsResponse,
+  ListAssociatedGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssociatedGroupsRequest,
+  ) => stream.Stream<
+    ListAssociatedGroupsResponse,
+    ListAssociatedGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssociatedGroupsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAssociatedGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupResourcesError =
   | ConflictException
@@ -2114,7 +2214,27 @@ export const listGroupResources: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupResourcesRequest,
+  ListGroupResourcesResponse,
+  ListGroupResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupResourcesRequest,
+  ) => stream.Stream<
+    ListGroupResourcesResponse,
+    ListGroupResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupResourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListGroupResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupsError =
   | InternalServerException
@@ -2156,7 +2276,27 @@ export const listGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsRequest,
+  ListGroupsResponse,
+  ListGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsRequest,
+  ) => stream.Stream<
+    ListGroupsResponse,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException

@@ -2268,7 +2268,27 @@ export const listLinkedWhatsAppBusinessAccounts: API.OperationMethod<
     items: "linkedAccounts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLinkedWhatsAppBusinessAccountsInput,
+  ListLinkedWhatsAppBusinessAccountsOutput,
+  ListLinkedWhatsAppBusinessAccountsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLinkedWhatsAppBusinessAccountsInput,
+  ) => stream.Stream<
+    ListLinkedWhatsAppBusinessAccountsOutput,
+    ListLinkedWhatsAppBusinessAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLinkedWhatsAppBusinessAccountsInput,
+  ) => stream.Stream<
+    LinkedWhatsAppBusinessAccountSummary,
+    ListLinkedWhatsAppBusinessAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServiceException
@@ -2347,7 +2367,27 @@ export const listWhatsAppFlowAssets: API.OperationMethod<
     items: "flowAssets",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWhatsAppFlowAssetsInput,
+  ListWhatsAppFlowAssetsOutput,
+  ListWhatsAppFlowAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWhatsAppFlowAssetsInput,
+  ) => stream.Stream<
+    ListWhatsAppFlowAssetsOutput,
+    ListWhatsAppFlowAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWhatsAppFlowAssetsInput,
+  ) => stream.Stream<
+    MetaFlowAsset,
+    ListWhatsAppFlowAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWhatsAppFlowsError =
   | AccessDeniedByMetaException
@@ -2400,7 +2440,27 @@ export const listWhatsAppFlows: API.OperationMethod<
     items: "flows",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWhatsAppFlowsInput,
+  ListWhatsAppFlowsOutput,
+  ListWhatsAppFlowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWhatsAppFlowsInput,
+  ) => stream.Stream<
+    ListWhatsAppFlowsOutput,
+    ListWhatsAppFlowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWhatsAppFlowsInput,
+  ) => stream.Stream<
+    MetaFlowSummary,
+    ListWhatsAppFlowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWhatsAppMessageTemplatesError =
   | AccessDeniedByMetaException
@@ -2453,7 +2513,27 @@ export const listWhatsAppMessageTemplates: API.OperationMethod<
     items: "templates",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWhatsAppMessageTemplatesInput,
+  ListWhatsAppMessageTemplatesOutput,
+  ListWhatsAppMessageTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWhatsAppMessageTemplatesInput,
+  ) => stream.Stream<
+    ListWhatsAppMessageTemplatesOutput,
+    ListWhatsAppMessageTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWhatsAppMessageTemplatesInput,
+  ) => stream.Stream<
+    TemplateSummary,
+    ListWhatsAppMessageTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWhatsAppTemplateLibraryError =
   | AccessDeniedByMetaException
@@ -2506,7 +2586,27 @@ export const listWhatsAppTemplateLibrary: API.OperationMethod<
     items: "metaLibraryTemplates",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWhatsAppTemplateLibraryInput,
+  ListWhatsAppTemplateLibraryOutput,
+  ListWhatsAppTemplateLibraryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWhatsAppTemplateLibraryInput,
+  ) => stream.Stream<
+    ListWhatsAppTemplateLibraryOutput,
+    ListWhatsAppTemplateLibraryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWhatsAppTemplateLibraryInput,
+  ) => stream.Stream<
+    MetaLibraryTemplateDefinition,
+    ListWhatsAppTemplateLibraryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PostWhatsAppMessageMediaError =
   | AccessDeniedByMetaException

@@ -596,7 +596,27 @@ export const listEmailContacts: API.OperationMethod<
     items: "emailContacts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEmailContactsRequest,
+  ListEmailContactsResponse,
+  ListEmailContactsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEmailContactsRequest,
+  ) => stream.Stream<
+    ListEmailContactsResponse,
+    ListEmailContactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEmailContactsRequest,
+  ) => stream.Stream<
+    EmailContact,
+    ListEmailContactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

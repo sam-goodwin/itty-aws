@@ -2421,7 +2421,27 @@ export const getExclusionsPreview: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetExclusionsPreviewRequest,
+  GetExclusionsPreviewResponse,
+  GetExclusionsPreviewError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetExclusionsPreviewRequest,
+  ) => stream.Stream<
+    GetExclusionsPreviewResponse,
+    GetExclusionsPreviewError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetExclusionsPreviewRequest,
+  ) => stream.Stream<
+    unknown,
+    GetExclusionsPreviewError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetTelemetryMetadataError =
   | AccessDeniedException
@@ -2499,7 +2519,27 @@ export const listAssessmentRunAgents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssessmentRunAgentsRequest,
+  ListAssessmentRunAgentsResponse,
+  ListAssessmentRunAgentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssessmentRunAgentsRequest,
+  ) => stream.Stream<
+    ListAssessmentRunAgentsResponse,
+    ListAssessmentRunAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssessmentRunAgentsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAssessmentRunAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssessmentRunsError =
   | AccessDeniedException
@@ -2548,7 +2588,27 @@ export const listAssessmentRuns: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssessmentRunsRequest,
+  ListAssessmentRunsResponse,
+  ListAssessmentRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssessmentRunsRequest,
+  ) => stream.Stream<
+    ListAssessmentRunsResponse,
+    ListAssessmentRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssessmentRunsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAssessmentRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssessmentTargetsError =
   | AccessDeniedException
@@ -2592,7 +2652,27 @@ export const listAssessmentTargets: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssessmentTargetsRequest,
+  ListAssessmentTargetsResponse,
+  ListAssessmentTargetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssessmentTargetsRequest,
+  ) => stream.Stream<
+    ListAssessmentTargetsResponse,
+    ListAssessmentTargetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssessmentTargetsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAssessmentTargetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssessmentTemplatesError =
   | AccessDeniedException
@@ -2641,7 +2721,27 @@ export const listAssessmentTemplates: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssessmentTemplatesRequest,
+  ListAssessmentTemplatesResponse,
+  ListAssessmentTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssessmentTemplatesRequest,
+  ) => stream.Stream<
+    ListAssessmentTemplatesResponse,
+    ListAssessmentTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssessmentTemplatesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAssessmentTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventSubscriptionsError =
   | AccessDeniedException
@@ -2690,7 +2790,27 @@ export const listEventSubscriptions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventSubscriptionsRequest,
+  ListEventSubscriptionsResponse,
+  ListEventSubscriptionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventSubscriptionsRequest,
+  ) => stream.Stream<
+    ListEventSubscriptionsResponse,
+    ListEventSubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventSubscriptionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListEventSubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListExclusionsError =
   | AccessDeniedException
@@ -2738,7 +2858,27 @@ export const listExclusions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExclusionsRequest,
+  ListExclusionsResponse,
+  ListExclusionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExclusionsRequest,
+  ) => stream.Stream<
+    ListExclusionsResponse,
+    ListExclusionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExclusionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListExclusionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFindingsError =
   | AccessDeniedException
@@ -2787,7 +2927,27 @@ export const listFindings: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFindingsRequest,
+  ListFindingsResponse,
+  ListFindingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFindingsRequest,
+  ) => stream.Stream<
+    ListFindingsResponse,
+    ListFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFindingsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRulesPackagesError =
   | AccessDeniedException
@@ -2829,7 +2989,27 @@ export const listRulesPackages: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRulesPackagesRequest,
+  ListRulesPackagesResponse,
+  ListRulesPackagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRulesPackagesRequest,
+  ) => stream.Stream<
+    ListRulesPackagesResponse,
+    ListRulesPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRulesPackagesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRulesPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2908,7 +3088,27 @@ export const previewAgents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  PreviewAgentsRequest,
+  PreviewAgentsResponse,
+  PreviewAgentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: PreviewAgentsRequest,
+  ) => stream.Stream<
+    PreviewAgentsResponse,
+    PreviewAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: PreviewAgentsRequest,
+  ) => stream.Stream<
+    unknown,
+    PreviewAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type RegisterCrossAccountAccessRoleError =
   | AccessDeniedException

@@ -3558,7 +3558,27 @@ export const listAntennas: API.OperationMethod<
     items: "antennaList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAntennasRequest,
+  ListAntennasResponse,
+  ListAntennasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAntennasRequest,
+  ) => stream.Stream<
+    ListAntennasResponse,
+    ListAntennasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAntennasRequest,
+  ) => stream.Stream<
+    AntennaListItem,
+    ListAntennasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConfigsError =
   | DependencyException
@@ -3605,7 +3625,27 @@ export const listConfigs: API.OperationMethod<
     items: "configList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConfigsRequest,
+  ListConfigsResponse,
+  ListConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigsRequest,
+  ) => stream.Stream<
+    ListConfigsResponse,
+    ListConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigsRequest,
+  ) => stream.Stream<
+    ConfigListItem,
+    ListConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContactsError =
   | DependencyException
@@ -3654,7 +3694,27 @@ export const listContacts: API.OperationMethod<
     items: "contactList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContactsRequest,
+  ListContactsResponse,
+  ListContactsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContactsRequest,
+  ) => stream.Stream<
+    ListContactsResponse,
+    ListContactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContactsRequest,
+  ) => stream.Stream<
+    ContactData,
+    ListContactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContactVersionsError =
   | DependencyException
@@ -3701,7 +3761,27 @@ export const listContactVersions: API.OperationMethod<
     items: "contactVersionsList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContactVersionsRequest,
+  ListContactVersionsResponse,
+  ListContactVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContactVersionsRequest,
+  ) => stream.Stream<
+    ListContactVersionsResponse,
+    ListContactVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContactVersionsRequest,
+  ) => stream.Stream<
+    ContactVersion,
+    ListContactVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataflowEndpointGroupsError =
   | DependencyException
@@ -3748,7 +3828,27 @@ export const listDataflowEndpointGroups: API.OperationMethod<
     items: "dataflowEndpointGroupList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataflowEndpointGroupsRequest,
+  ListDataflowEndpointGroupsResponse,
+  ListDataflowEndpointGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataflowEndpointGroupsRequest,
+  ) => stream.Stream<
+    ListDataflowEndpointGroupsResponse,
+    ListDataflowEndpointGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataflowEndpointGroupsRequest,
+  ) => stream.Stream<
+    DataflowEndpointListItem,
+    ListDataflowEndpointGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEphemeridesError =
   | DependencyException
@@ -3795,7 +3895,27 @@ export const listEphemerides: API.OperationMethod<
     items: "ephemerides",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEphemeridesRequest,
+  ListEphemeridesResponse,
+  ListEphemeridesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEphemeridesRequest,
+  ) => stream.Stream<
+    ListEphemeridesResponse,
+    ListEphemeridesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEphemeridesRequest,
+  ) => stream.Stream<
+    EphemerisItem,
+    ListEphemeridesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroundStationReservationsError =
   | DependencyException
@@ -3837,7 +3957,27 @@ export const listGroundStationReservations: API.OperationMethod<
     items: "reservationList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroundStationReservationsRequest,
+  ListGroundStationReservationsResponse,
+  ListGroundStationReservationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroundStationReservationsRequest,
+  ) => stream.Stream<
+    ListGroundStationReservationsResponse,
+    ListGroundStationReservationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroundStationReservationsRequest,
+  ) => stream.Stream<
+    GroundStationReservationListItem,
+    ListGroundStationReservationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroundStationsError =
   | DependencyException
@@ -3884,7 +4024,27 @@ export const listGroundStations: API.OperationMethod<
     items: "groundStationList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroundStationsRequest,
+  ListGroundStationsResponse,
+  ListGroundStationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroundStationsRequest,
+  ) => stream.Stream<
+    ListGroundStationsResponse,
+    ListGroundStationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroundStationsRequest,
+  ) => stream.Stream<
+    GroundStationData,
+    ListGroundStationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMissionProfilesError =
   | DependencyException
@@ -3931,7 +4091,27 @@ export const listMissionProfiles: API.OperationMethod<
     items: "missionProfileList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMissionProfilesRequest,
+  ListMissionProfilesResponse,
+  ListMissionProfilesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMissionProfilesRequest,
+  ) => stream.Stream<
+    ListMissionProfilesResponse,
+    ListMissionProfilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMissionProfilesRequest,
+  ) => stream.Stream<
+    MissionProfileListItem,
+    ListMissionProfilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSatellitesError =
   | DependencyException
@@ -3978,7 +4158,27 @@ export const listSatellites: API.OperationMethod<
     items: "satellites",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSatellitesRequest,
+  ListSatellitesResponse,
+  ListSatellitesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSatellitesRequest,
+  ) => stream.Stream<
+    ListSatellitesResponse,
+    ListSatellitesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSatellitesRequest,
+  ) => stream.Stream<
+    SatelliteListItem,
+    ListSatellitesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | DependencyException

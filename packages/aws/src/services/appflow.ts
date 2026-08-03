@@ -4176,7 +4176,27 @@ export const describeConnectorProfiles: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeConnectorProfilesRequest,
+  DescribeConnectorProfilesResponse,
+  DescribeConnectorProfilesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeConnectorProfilesRequest,
+  ) => stream.Stream<
+    DescribeConnectorProfilesResponse,
+    DescribeConnectorProfilesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeConnectorProfilesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeConnectorProfilesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeConnectorsError =
   | InternalServerException
@@ -4220,7 +4240,27 @@ export const describeConnectors: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeConnectorsRequest,
+  DescribeConnectorsResponse,
+  DescribeConnectorsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeConnectorsRequest,
+  ) => stream.Stream<
+    DescribeConnectorsResponse,
+    DescribeConnectorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeConnectorsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeConnectorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFlowError =
   | InternalServerException
@@ -4287,7 +4327,27 @@ export const describeFlowExecutionRecords: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFlowExecutionRecordsRequest,
+  DescribeFlowExecutionRecordsResponse,
+  DescribeFlowExecutionRecordsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFlowExecutionRecordsRequest,
+  ) => stream.Stream<
+    DescribeFlowExecutionRecordsResponse,
+    DescribeFlowExecutionRecordsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFlowExecutionRecordsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeFlowExecutionRecordsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListConnectorEntitiesError =
   | ConnectorAuthenticationException
@@ -4363,7 +4423,27 @@ export const listConnectors: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConnectorsRequest,
+  ListConnectorsResponse,
+  ListConnectorsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
+    ListConnectorsResponse,
+    ListConnectorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListConnectorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListFlowsError =
   | InternalServerException
@@ -4404,7 +4484,27 @@ export const listFlows: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFlowsRequest,
+  ListFlowsResponse,
+  ListFlowsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFlowsRequest,
+  ) => stream.Stream<
+    ListFlowsResponse,
+    ListFlowsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFlowsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFlowsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

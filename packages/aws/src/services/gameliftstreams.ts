@@ -1993,7 +1993,27 @@ export const listApplications: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationsInput,
+  ListApplicationsOutput,
+  ListApplicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsInput,
+  ) => stream.Stream<
+    ListApplicationsOutput,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsInput,
+  ) => stream.Stream<
+    ApplicationSummary,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamGroupsError =
   | AccessDeniedException
@@ -2042,7 +2062,27 @@ export const listStreamGroups: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamGroupsInput,
+  ListStreamGroupsOutput,
+  ListStreamGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamGroupsInput,
+  ) => stream.Stream<
+    ListStreamGroupsOutput,
+    ListStreamGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamGroupsInput,
+  ) => stream.Stream<
+    StreamGroupSummary,
+    ListStreamGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamSessionsError =
   | AccessDeniedException
@@ -2097,7 +2137,27 @@ export const listStreamSessions: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamSessionsInput,
+  ListStreamSessionsOutput,
+  ListStreamSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamSessionsInput,
+  ) => stream.Stream<
+    ListStreamSessionsOutput,
+    ListStreamSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamSessionsInput,
+  ) => stream.Stream<
+    StreamSessionSummary,
+    ListStreamSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamSessionsByAccountError =
   | AccessDeniedException
@@ -2150,7 +2210,27 @@ export const listStreamSessionsByAccount: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamSessionsByAccountInput,
+  ListStreamSessionsByAccountOutput,
+  ListStreamSessionsByAccountError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamSessionsByAccountInput,
+  ) => stream.Stream<
+    ListStreamSessionsByAccountOutput,
+    ListStreamSessionsByAccountError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamSessionsByAccountInput,
+  ) => stream.Stream<
+    StreamSessionSummary,
+    ListStreamSessionsByAccountError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

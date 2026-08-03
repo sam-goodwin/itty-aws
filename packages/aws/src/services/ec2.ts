@@ -83039,7 +83039,27 @@ export const describeAddressesAttribute: API.OperationMethod<
     items: "Addresses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAddressesAttributeRequest,
+  DescribeAddressesAttributeResult,
+  DescribeAddressesAttributeError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAddressesAttributeRequest,
+  ) => stream.Stream<
+    DescribeAddressesAttributeResult,
+    DescribeAddressesAttributeError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAddressesAttributeRequest,
+  ) => stream.Stream<
+    AddressAttribute,
+    DescribeAddressesAttributeError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAddressTransfersError = CommonErrors;
 /**
@@ -83088,7 +83108,27 @@ export const describeAddressTransfers: API.OperationMethod<
     items: "AddressTransfers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAddressTransfersRequest,
+  DescribeAddressTransfersResult,
+  DescribeAddressTransfersError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAddressTransfersRequest,
+  ) => stream.Stream<
+    DescribeAddressTransfersResult,
+    DescribeAddressTransfersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAddressTransfersRequest,
+  ) => stream.Stream<
+    AddressTransfer,
+    DescribeAddressTransfersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAggregateIdFormatError = CommonErrors;
 /**
@@ -83201,7 +83241,27 @@ export const describeAwsNetworkPerformanceMetricSubscriptions: API.OperationMeth
     items: "Subscriptions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
+  DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
+  DescribeAwsNetworkPerformanceMetricSubscriptionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
+  ) => stream.Stream<
+    DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
+    DescribeAwsNetworkPerformanceMetricSubscriptionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
+  ) => stream.Stream<
+    Subscription,
+    DescribeAwsNetworkPerformanceMetricSubscriptionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeBundleTasksError =
   | RequestLimitExceeded
@@ -83281,7 +83341,27 @@ export const describeByoipCidrs: API.OperationMethod<
     items: "ByoipCidrs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeByoipCidrsRequest,
+  DescribeByoipCidrsResult,
+  DescribeByoipCidrsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeByoipCidrsRequest,
+  ) => stream.Stream<
+    DescribeByoipCidrsResult,
+    DescribeByoipCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeByoipCidrsRequest,
+  ) => stream.Stream<
+    ByoipCidr,
+    DescribeByoipCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityBlockExtensionHistoryError =
   | RequestLimitExceeded
@@ -83329,7 +83409,27 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
     items: "CapacityBlockExtensions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityBlockExtensionHistoryRequest,
+  DescribeCapacityBlockExtensionHistoryResult,
+  DescribeCapacityBlockExtensionHistoryError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityBlockExtensionHistoryRequest,
+  ) => stream.Stream<
+    DescribeCapacityBlockExtensionHistoryResult,
+    DescribeCapacityBlockExtensionHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityBlockExtensionHistoryRequest,
+  ) => stream.Stream<
+    CapacityBlockExtension,
+    DescribeCapacityBlockExtensionHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityBlockExtensionOfferingsError =
   | RequestLimitExceeded
@@ -83377,7 +83477,27 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
     items: "CapacityBlockExtensionOfferings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityBlockExtensionOfferingsRequest,
+  DescribeCapacityBlockExtensionOfferingsResult,
+  DescribeCapacityBlockExtensionOfferingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityBlockExtensionOfferingsRequest,
+  ) => stream.Stream<
+    DescribeCapacityBlockExtensionOfferingsResult,
+    DescribeCapacityBlockExtensionOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityBlockExtensionOfferingsRequest,
+  ) => stream.Stream<
+    CapacityBlockExtensionOffering,
+    DescribeCapacityBlockExtensionOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityBlockOfferingsError =
   | RequestLimitExceeded
@@ -83424,7 +83544,27 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
     items: "CapacityBlockOfferings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityBlockOfferingsRequest,
+  DescribeCapacityBlockOfferingsResult,
+  DescribeCapacityBlockOfferingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityBlockOfferingsRequest,
+  ) => stream.Stream<
+    DescribeCapacityBlockOfferingsResult,
+    DescribeCapacityBlockOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityBlockOfferingsRequest,
+  ) => stream.Stream<
+    CapacityBlockOffering,
+    DescribeCapacityBlockOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityBlocksError =
   | RequestLimitExceeded
@@ -83471,7 +83611,27 @@ export const describeCapacityBlocks: API.OperationMethod<
     items: "CapacityBlocks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityBlocksRequest,
+  DescribeCapacityBlocksResult,
+  DescribeCapacityBlocksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityBlocksRequest,
+  ) => stream.Stream<
+    DescribeCapacityBlocksResult,
+    DescribeCapacityBlocksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityBlocksRequest,
+  ) => stream.Stream<
+    CapacityBlock,
+    DescribeCapacityBlocksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityBlockStatusError =
   | RequestLimitExceeded
@@ -83518,7 +83678,27 @@ export const describeCapacityBlockStatus: API.OperationMethod<
     items: "CapacityBlockStatuses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityBlockStatusRequest,
+  DescribeCapacityBlockStatusResult,
+  DescribeCapacityBlockStatusError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityBlockStatusRequest,
+  ) => stream.Stream<
+    DescribeCapacityBlockStatusResult,
+    DescribeCapacityBlockStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityBlockStatusRequest,
+  ) => stream.Stream<
+    CapacityBlockStatus,
+    DescribeCapacityBlockStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityManagerDataExportsError =
   | RequestLimitExceeded
@@ -83565,7 +83745,27 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
     items: "CapacityManagerDataExports",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityManagerDataExportsRequest,
+  DescribeCapacityManagerDataExportsResult,
+  DescribeCapacityManagerDataExportsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityManagerDataExportsRequest,
+  ) => stream.Stream<
+    DescribeCapacityManagerDataExportsResult,
+    DescribeCapacityManagerDataExportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityManagerDataExportsRequest,
+  ) => stream.Stream<
+    CapacityManagerDataExportResponse,
+    DescribeCapacityManagerDataExportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityReservationBillingRequestsError =
   | RequestLimitExceeded
@@ -83610,7 +83810,27 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
     items: "CapacityReservationBillingRequests",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityReservationBillingRequestsRequest,
+  DescribeCapacityReservationBillingRequestsResult,
+  DescribeCapacityReservationBillingRequestsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityReservationBillingRequestsRequest,
+  ) => stream.Stream<
+    DescribeCapacityReservationBillingRequestsResult,
+    DescribeCapacityReservationBillingRequestsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityReservationBillingRequestsRequest,
+  ) => stream.Stream<
+    CapacityReservationBillingRequest,
+    DescribeCapacityReservationBillingRequestsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityReservationCancellationQuotesError = CommonErrors;
 /**
@@ -83677,7 +83897,27 @@ export const describeCapacityReservationFleets: API.OperationMethod<
     items: "CapacityReservationFleets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityReservationFleetsRequest,
+  DescribeCapacityReservationFleetsResult,
+  DescribeCapacityReservationFleetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityReservationFleetsRequest,
+  ) => stream.Stream<
+    DescribeCapacityReservationFleetsResult,
+    DescribeCapacityReservationFleetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityReservationFleetsRequest,
+  ) => stream.Stream<
+    CapacityReservationFleet,
+    DescribeCapacityReservationFleetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityReservationsError =
   | RequestLimitExceeded
@@ -83726,7 +83966,27 @@ export const describeCapacityReservations: API.OperationMethod<
     items: "CapacityReservations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCapacityReservationsRequest,
+  DescribeCapacityReservationsResult,
+  DescribeCapacityReservationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCapacityReservationsRequest,
+  ) => stream.Stream<
+    DescribeCapacityReservationsResult,
+    DescribeCapacityReservationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCapacityReservationsRequest,
+  ) => stream.Stream<
+    CapacityReservation,
+    DescribeCapacityReservationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCapacityReservationTopologyError = CommonErrors;
 /**
@@ -83816,7 +84076,27 @@ export const describeCarrierGateways: API.OperationMethod<
     items: "CarrierGateways",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCarrierGatewaysRequest,
+  DescribeCarrierGatewaysResult,
+  DescribeCarrierGatewaysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCarrierGatewaysRequest,
+  ) => stream.Stream<
+    DescribeCarrierGatewaysResult,
+    DescribeCarrierGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCarrierGatewaysRequest,
+  ) => stream.Stream<
+    CarrierGateway,
+    DescribeCarrierGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClassicLinkInstancesError =
   | RequestLimitExceeded
@@ -83867,7 +84147,27 @@ export const describeClassicLinkInstances: API.OperationMethod<
     items: "Instances",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClassicLinkInstancesRequest,
+  DescribeClassicLinkInstancesResult,
+  DescribeClassicLinkInstancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClassicLinkInstancesRequest,
+  ) => stream.Stream<
+    DescribeClassicLinkInstancesResult,
+    DescribeClassicLinkInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClassicLinkInstancesRequest,
+  ) => stream.Stream<
+    ClassicLinkInstance,
+    DescribeClassicLinkInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClientVpnAuthorizationRulesError =
   | RequestLimitExceeded
@@ -83914,7 +84214,27 @@ export const describeClientVpnAuthorizationRules: API.OperationMethod<
     items: "AuthorizationRules",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClientVpnAuthorizationRulesRequest,
+  DescribeClientVpnAuthorizationRulesResult,
+  DescribeClientVpnAuthorizationRulesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClientVpnAuthorizationRulesRequest,
+  ) => stream.Stream<
+    DescribeClientVpnAuthorizationRulesResult,
+    DescribeClientVpnAuthorizationRulesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClientVpnAuthorizationRulesRequest,
+  ) => stream.Stream<
+    AuthorizationRule,
+    DescribeClientVpnAuthorizationRulesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClientVpnConnectionsError =
   | RequestLimitExceeded
@@ -83964,7 +84284,27 @@ export const describeClientVpnConnections: API.OperationMethod<
     items: "Connections",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClientVpnConnectionsRequest,
+  DescribeClientVpnConnectionsResult,
+  DescribeClientVpnConnectionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClientVpnConnectionsRequest,
+  ) => stream.Stream<
+    DescribeClientVpnConnectionsResult,
+    DescribeClientVpnConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClientVpnConnectionsRequest,
+  ) => stream.Stream<
+    ClientVpnConnection,
+    DescribeClientVpnConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClientVpnEndpointsError =
   | RequestLimitExceeded
@@ -84011,7 +84351,27 @@ export const describeClientVpnEndpoints: API.OperationMethod<
     items: "ClientVpnEndpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClientVpnEndpointsRequest,
+  DescribeClientVpnEndpointsResult,
+  DescribeClientVpnEndpointsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClientVpnEndpointsRequest,
+  ) => stream.Stream<
+    DescribeClientVpnEndpointsResult,
+    DescribeClientVpnEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClientVpnEndpointsRequest,
+  ) => stream.Stream<
+    ClientVpnEndpoint,
+    DescribeClientVpnEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClientVpnRoutesError =
   | RequestLimitExceeded
@@ -84060,7 +84420,27 @@ export const describeClientVpnRoutes: API.OperationMethod<
     items: "Routes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClientVpnRoutesRequest,
+  DescribeClientVpnRoutesResult,
+  DescribeClientVpnRoutesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClientVpnRoutesRequest,
+  ) => stream.Stream<
+    DescribeClientVpnRoutesResult,
+    DescribeClientVpnRoutesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClientVpnRoutesRequest,
+  ) => stream.Stream<
+    ClientVpnRoute,
+    DescribeClientVpnRoutesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClientVpnTargetNetworksError =
   | RequestLimitExceeded
@@ -84109,7 +84489,27 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
     items: "ClientVpnTargetNetworks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClientVpnTargetNetworksRequest,
+  DescribeClientVpnTargetNetworksResult,
+  DescribeClientVpnTargetNetworksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClientVpnTargetNetworksRequest,
+  ) => stream.Stream<
+    DescribeClientVpnTargetNetworksResult,
+    DescribeClientVpnTargetNetworksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClientVpnTargetNetworksRequest,
+  ) => stream.Stream<
+    TargetNetwork,
+    DescribeClientVpnTargetNetworksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCoipPoolsError =
   | RequestLimitExceeded
@@ -84152,7 +84552,27 @@ export const describeCoipPools: API.OperationMethod<
     items: "CoipPools",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCoipPoolsRequest,
+  DescribeCoipPoolsResult,
+  DescribeCoipPoolsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCoipPoolsRequest,
+  ) => stream.Stream<
+    DescribeCoipPoolsResult,
+    DescribeCoipPoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCoipPoolsRequest,
+  ) => stream.Stream<
+    CoipPool,
+    DescribeCoipPoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeConversionTasksError = CommonErrors;
 /**
@@ -84295,7 +84715,27 @@ export const describeDhcpOptions: API.OperationMethod<
     items: "DhcpOptions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeDhcpOptionsRequest,
+  DescribeDhcpOptionsResult,
+  DescribeDhcpOptionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeDhcpOptionsRequest,
+  ) => stream.Stream<
+    DescribeDhcpOptionsResult,
+    DescribeDhcpOptionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeDhcpOptionsRequest,
+  ) => stream.Stream<
+    DhcpOptions,
+    DescribeDhcpOptionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEgressOnlyInternetGatewaysError =
   | RequestLimitExceeded
@@ -84348,7 +84788,27 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
     items: "EgressOnlyInternetGateways",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEgressOnlyInternetGatewaysRequest,
+  DescribeEgressOnlyInternetGatewaysResult,
+  DescribeEgressOnlyInternetGatewaysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEgressOnlyInternetGatewaysRequest,
+  ) => stream.Stream<
+    DescribeEgressOnlyInternetGatewaysResult,
+    DescribeEgressOnlyInternetGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEgressOnlyInternetGatewaysRequest,
+  ) => stream.Stream<
+    EgressOnlyInternetGateway,
+    DescribeEgressOnlyInternetGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeElasticGpusError =
   | RequestLimitExceeded
@@ -84419,7 +84879,27 @@ export const describeExportImageTasks: API.OperationMethod<
     items: "ExportImageTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeExportImageTasksRequest,
+  DescribeExportImageTasksResult,
+  DescribeExportImageTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeExportImageTasksRequest,
+  ) => stream.Stream<
+    DescribeExportImageTasksResult,
+    DescribeExportImageTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeExportImageTasksRequest,
+  ) => stream.Stream<
+    ExportImageTask,
+    DescribeExportImageTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeExportTasksError =
   | RequestLimitExceeded
@@ -84488,7 +84968,27 @@ export const describeFastLaunchImages: API.OperationMethod<
     items: "FastLaunchImages",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFastLaunchImagesRequest,
+  DescribeFastLaunchImagesResult,
+  DescribeFastLaunchImagesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFastLaunchImagesRequest,
+  ) => stream.Stream<
+    DescribeFastLaunchImagesResult,
+    DescribeFastLaunchImagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFastLaunchImagesRequest,
+  ) => stream.Stream<
+    DescribeFastLaunchImagesSuccessItem,
+    DescribeFastLaunchImagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFastSnapshotRestoresError = CommonErrors;
 /**
@@ -84527,7 +85027,27 @@ export const describeFastSnapshotRestores: API.OperationMethod<
     items: "FastSnapshotRestores",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFastSnapshotRestoresRequest,
+  DescribeFastSnapshotRestoresResult,
+  DescribeFastSnapshotRestoresError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFastSnapshotRestoresRequest,
+  ) => stream.Stream<
+    DescribeFastSnapshotRestoresResult,
+    DescribeFastSnapshotRestoresError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFastSnapshotRestoresRequest,
+  ) => stream.Stream<
+    DescribeFastSnapshotRestoreSuccessItem,
+    DescribeFastSnapshotRestoresError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFleetHistoryError =
   | RequestLimitExceeded
@@ -84646,7 +85166,27 @@ export const describeFleets: API.OperationMethod<
     items: "Fleets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFleetsRequest,
+  DescribeFleetsResult,
+  DescribeFleetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFleetsRequest,
+  ) => stream.Stream<
+    DescribeFleetsResult,
+    DescribeFleetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFleetsRequest,
+  ) => stream.Stream<
+    FleetData,
+    DescribeFleetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFlowLogsError =
   | RequestLimitExceeded
@@ -84698,7 +85238,27 @@ export const describeFlowLogs: API.OperationMethod<
     items: "FlowLogs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFlowLogsRequest,
+  DescribeFlowLogsResult,
+  DescribeFlowLogsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFlowLogsRequest,
+  ) => stream.Stream<
+    DescribeFlowLogsResult,
+    DescribeFlowLogsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFlowLogsRequest,
+  ) => stream.Stream<
+    FlowLog,
+    DescribeFlowLogsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFpgaImageAttributeError =
   | RequestLimitExceeded
@@ -84775,7 +85335,27 @@ export const describeFpgaImages: API.OperationMethod<
     items: "FpgaImages",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFpgaImagesRequest,
+  DescribeFpgaImagesResult,
+  DescribeFpgaImagesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFpgaImagesRequest,
+  ) => stream.Stream<
+    DescribeFpgaImagesResult,
+    DescribeFpgaImagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFpgaImagesRequest,
+  ) => stream.Stream<
+    FpgaImage,
+    DescribeFpgaImagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeHostReservationOfferingsError =
   | RequestLimitExceeded
@@ -84829,7 +85409,27 @@ export const describeHostReservationOfferings: API.OperationMethod<
     items: "OfferingSet",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeHostReservationOfferingsRequest,
+  DescribeHostReservationOfferingsResult,
+  DescribeHostReservationOfferingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeHostReservationOfferingsRequest,
+  ) => stream.Stream<
+    DescribeHostReservationOfferingsResult,
+    DescribeHostReservationOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeHostReservationOfferingsRequest,
+  ) => stream.Stream<
+    HostOffering,
+    DescribeHostReservationOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeHostReservationsError = CommonErrors;
 /**
@@ -84869,7 +85469,27 @@ export const describeHostReservations: API.OperationMethod<
     items: "HostReservationSet",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeHostReservationsRequest,
+  DescribeHostReservationsResult,
+  DescribeHostReservationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeHostReservationsRequest,
+  ) => stream.Stream<
+    DescribeHostReservationsResult,
+    DescribeHostReservationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeHostReservationsRequest,
+  ) => stream.Stream<
+    HostReservation,
+    DescribeHostReservationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeHostsError =
   | RequestLimitExceeded
@@ -84916,7 +85536,27 @@ export const describeHosts: API.OperationMethod<
     items: "Hosts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeHostsRequest,
+  DescribeHostsResult,
+  DescribeHostsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeHostsRequest,
+  ) => stream.Stream<
+    DescribeHostsResult,
+    DescribeHostsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeHostsRequest,
+  ) => stream.Stream<
+    Host,
+    DescribeHostsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIamInstanceProfileAssociationsError =
   | RequestLimitExceeded
@@ -84959,7 +85599,27 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
     items: "IamInstanceProfileAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIamInstanceProfileAssociationsRequest,
+  DescribeIamInstanceProfileAssociationsResult,
+  DescribeIamInstanceProfileAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIamInstanceProfileAssociationsRequest,
+  ) => stream.Stream<
+    DescribeIamInstanceProfileAssociationsResult,
+    DescribeIamInstanceProfileAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIamInstanceProfileAssociationsRequest,
+  ) => stream.Stream<
+    IamInstanceProfileAssociation,
+    DescribeIamInstanceProfileAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIdentityIdFormatError =
   | RequestLimitExceeded
@@ -85122,7 +85782,27 @@ export const describeImageReferences: API.OperationMethod<
     items: "ImageReferences",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImageReferencesRequest,
+  DescribeImageReferencesResult,
+  DescribeImageReferencesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImageReferencesRequest,
+  ) => stream.Stream<
+    DescribeImageReferencesResult,
+    DescribeImageReferencesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImageReferencesRequest,
+  ) => stream.Stream<
+    ImageReference,
+    DescribeImageReferencesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeImagesError =
   | RequestLimitExceeded
@@ -85199,7 +85879,27 @@ export const describeImages: API.OperationMethod<
     items: "Images",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImagesRequest,
+  DescribeImagesResult,
+  DescribeImagesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImagesRequest,
+  ) => stream.Stream<
+    DescribeImagesResult,
+    DescribeImagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImagesRequest,
+  ) => stream.Stream<
+    Image,
+    DescribeImagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeImageUsageReportEntriesError =
   | RequestLimitExceeded
@@ -85246,7 +85946,27 @@ export const describeImageUsageReportEntries: API.OperationMethod<
     items: "ImageUsageReportEntries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImageUsageReportEntriesRequest,
+  DescribeImageUsageReportEntriesResult,
+  DescribeImageUsageReportEntriesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImageUsageReportEntriesRequest,
+  ) => stream.Stream<
+    DescribeImageUsageReportEntriesResult,
+    DescribeImageUsageReportEntriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImageUsageReportEntriesRequest,
+  ) => stream.Stream<
+    ImageUsageReportEntry,
+    DescribeImageUsageReportEntriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeImageUsageReportsError =
   | RequestLimitExceeded
@@ -85293,7 +86013,27 @@ export const describeImageUsageReports: API.OperationMethod<
     items: "ImageUsageReports",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImageUsageReportsRequest,
+  DescribeImageUsageReportsResult,
+  DescribeImageUsageReportsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImageUsageReportsRequest,
+  ) => stream.Stream<
+    DescribeImageUsageReportsResult,
+    DescribeImageUsageReportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImageUsageReportsRequest,
+  ) => stream.Stream<
+    ImageUsageReport,
+    DescribeImageUsageReportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeImportImageTasksError =
   | RequestLimitExceeded
@@ -85336,7 +86076,27 @@ export const describeImportImageTasks: API.OperationMethod<
     items: "ImportImageTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImportImageTasksRequest,
+  DescribeImportImageTasksResult,
+  DescribeImportImageTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImportImageTasksRequest,
+  ) => stream.Stream<
+    DescribeImportImageTasksResult,
+    DescribeImportImageTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImportImageTasksRequest,
+  ) => stream.Stream<
+    ImportImageTask,
+    DescribeImportImageTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeImportSnapshotTasksError =
   | RequestLimitExceeded
@@ -85379,7 +86139,27 @@ export const describeImportSnapshotTasks: API.OperationMethod<
     items: "ImportSnapshotTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImportSnapshotTasksRequest,
+  DescribeImportSnapshotTasksResult,
+  DescribeImportSnapshotTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImportSnapshotTasksRequest,
+  ) => stream.Stream<
+    DescribeImportSnapshotTasksResult,
+    DescribeImportSnapshotTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImportSnapshotTasksRequest,
+  ) => stream.Stream<
+    ImportSnapshotTask,
+    DescribeImportSnapshotTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceAttributeError =
   | RequestLimitExceeded
@@ -85456,7 +86236,27 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
     items: "InstanceConnectEndpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceConnectEndpointsRequest,
+  DescribeInstanceConnectEndpointsResult,
+  DescribeInstanceConnectEndpointsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceConnectEndpointsRequest,
+  ) => stream.Stream<
+    DescribeInstanceConnectEndpointsResult,
+    DescribeInstanceConnectEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceConnectEndpointsRequest,
+  ) => stream.Stream<
+    Ec2InstanceConnectEndpoint,
+    DescribeInstanceConnectEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceCreditSpecificationsError =
   | RequestLimitExceeded
@@ -85527,7 +86327,27 @@ export const describeInstanceCreditSpecifications: API.OperationMethod<
     items: "InstanceCreditSpecifications",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceCreditSpecificationsRequest,
+  DescribeInstanceCreditSpecificationsResult,
+  DescribeInstanceCreditSpecificationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceCreditSpecificationsRequest,
+  ) => stream.Stream<
+    DescribeInstanceCreditSpecificationsResult,
+    DescribeInstanceCreditSpecificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceCreditSpecificationsRequest,
+  ) => stream.Stream<
+    InstanceCreditSpecification,
+    DescribeInstanceCreditSpecificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceEventNotificationAttributesError = CommonErrors;
 /**
@@ -85603,7 +86423,27 @@ export const describeInstanceEventWindows: API.OperationMethod<
     items: "InstanceEventWindows",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceEventWindowsRequest,
+  DescribeInstanceEventWindowsResult,
+  DescribeInstanceEventWindowsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceEventWindowsRequest,
+  ) => stream.Stream<
+    DescribeInstanceEventWindowsResult,
+    DescribeInstanceEventWindowsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceEventWindowsRequest,
+  ) => stream.Stream<
+    InstanceEventWindow,
+    DescribeInstanceEventWindowsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceImageMetadataError =
   | RequestLimitExceeded
@@ -85672,7 +86512,27 @@ export const describeInstanceImageMetadata: API.OperationMethod<
     items: "InstanceImageMetadata",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceImageMetadataRequest,
+  DescribeInstanceImageMetadataResult,
+  DescribeInstanceImageMetadataError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceImageMetadataRequest,
+  ) => stream.Stream<
+    DescribeInstanceImageMetadataResult,
+    DescribeInstanceImageMetadataError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceImageMetadataRequest,
+  ) => stream.Stream<
+    InstanceImageMetadata,
+    DescribeInstanceImageMetadataError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancesError =
   | RequestLimitExceeded
@@ -85759,7 +86619,27 @@ export const describeInstances: API.OperationMethod<
     items: "Reservations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstancesRequest,
+  DescribeInstancesResult,
+  DescribeInstancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstancesRequest,
+  ) => stream.Stream<
+    DescribeInstancesResult,
+    DescribeInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstancesRequest,
+  ) => stream.Stream<
+    Reservation,
+    DescribeInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceSqlHaHistoryStatesError =
   | RequestLimitExceeded
@@ -85894,7 +86774,27 @@ export const describeInstanceStatus: API.OperationMethod<
     items: "InstanceStatuses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceStatusRequest,
+  DescribeInstanceStatusResult,
+  DescribeInstanceStatusError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceStatusRequest,
+  ) => stream.Stream<
+    DescribeInstanceStatusResult,
+    DescribeInstanceStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceStatusRequest,
+  ) => stream.Stream<
+    InstanceStatus,
+    DescribeInstanceStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceTopologyError = CommonErrors;
 /**
@@ -85953,7 +86853,27 @@ export const describeInstanceTopology: API.OperationMethod<
     items: "Instances",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceTopologyRequest,
+  DescribeInstanceTopologyResult,
+  DescribeInstanceTopologyError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceTopologyRequest,
+  ) => stream.Stream<
+    DescribeInstanceTopologyResult,
+    DescribeInstanceTopologyError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceTopologyRequest,
+  ) => stream.Stream<
+    InstanceTopology,
+    DescribeInstanceTopologyError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceTypeOfferingsError = CommonErrors;
 /**
@@ -85994,7 +86914,27 @@ export const describeInstanceTypeOfferings: API.OperationMethod<
     items: "InstanceTypeOfferings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceTypeOfferingsRequest,
+  DescribeInstanceTypeOfferingsResult,
+  DescribeInstanceTypeOfferingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceTypeOfferingsRequest,
+  ) => stream.Stream<
+    DescribeInstanceTypeOfferingsResult,
+    DescribeInstanceTypeOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceTypeOfferingsRequest,
+  ) => stream.Stream<
+    InstanceTypeOffering,
+    DescribeInstanceTypeOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceTypesError = CommonErrors;
 /**
@@ -86036,7 +86976,27 @@ export const describeInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceTypesRequest,
+  DescribeInstanceTypesResult,
+  DescribeInstanceTypesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceTypesRequest,
+  ) => stream.Stream<
+    DescribeInstanceTypesResult,
+    DescribeInstanceTypesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceTypesRequest,
+  ) => stream.Stream<
+    InstanceTypeInfo,
+    DescribeInstanceTypesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInternetGatewaysError =
   | RequestLimitExceeded
@@ -86087,7 +87047,27 @@ export const describeInternetGateways: API.OperationMethod<
     items: "InternetGateways",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInternetGatewaysRequest,
+  DescribeInternetGatewaysResult,
+  DescribeInternetGatewaysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInternetGatewaysRequest,
+  ) => stream.Stream<
+    DescribeInternetGatewaysResult,
+    DescribeInternetGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInternetGatewaysRequest,
+  ) => stream.Stream<
+    InternetGateway,
+    DescribeInternetGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamByoasnError = CommonErrors;
 /**
@@ -86204,7 +87184,27 @@ export const describeIpamPoolAllocations: API.OperationMethod<
     items: "IpamPoolAllocations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamPoolAllocationsRequest,
+  DescribeIpamPoolAllocationsResult,
+  DescribeIpamPoolAllocationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamPoolAllocationsRequest,
+  ) => stream.Stream<
+    DescribeIpamPoolAllocationsResult,
+    DescribeIpamPoolAllocationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamPoolAllocationsRequest,
+  ) => stream.Stream<
+    IpamPoolAllocation,
+    DescribeIpamPoolAllocationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamPoolsError =
   | RequestLimitExceeded
@@ -86251,7 +87251,27 @@ export const describeIpamPools: API.OperationMethod<
     items: "IpamPools",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamPoolsRequest,
+  DescribeIpamPoolsResult,
+  DescribeIpamPoolsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamPoolsRequest,
+  ) => stream.Stream<
+    DescribeIpamPoolsResult,
+    DescribeIpamPoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamPoolsRequest,
+  ) => stream.Stream<
+    IpamPool,
+    DescribeIpamPoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamPrefixListResolversError =
   | RequestLimitExceeded
@@ -86298,7 +87318,27 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
     items: "IpamPrefixListResolvers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamPrefixListResolversRequest,
+  DescribeIpamPrefixListResolversResult,
+  DescribeIpamPrefixListResolversError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamPrefixListResolversRequest,
+  ) => stream.Stream<
+    DescribeIpamPrefixListResolversResult,
+    DescribeIpamPrefixListResolversError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamPrefixListResolversRequest,
+  ) => stream.Stream<
+    IpamPrefixListResolver,
+    DescribeIpamPrefixListResolversError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamPrefixListResolverTargetsError =
   | RequestLimitExceeded
@@ -86345,7 +87385,27 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
     items: "IpamPrefixListResolverTargets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamPrefixListResolverTargetsRequest,
+  DescribeIpamPrefixListResolverTargetsResult,
+  DescribeIpamPrefixListResolverTargetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamPrefixListResolverTargetsRequest,
+  ) => stream.Stream<
+    DescribeIpamPrefixListResolverTargetsResult,
+    DescribeIpamPrefixListResolverTargetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamPrefixListResolverTargetsRequest,
+  ) => stream.Stream<
+    IpamPrefixListResolverTarget,
+    DescribeIpamPrefixListResolverTargetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamResourceDiscoveriesError =
   | RequestLimitExceeded
@@ -86392,7 +87452,27 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
     items: "IpamResourceDiscoveries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamResourceDiscoveriesRequest,
+  DescribeIpamResourceDiscoveriesResult,
+  DescribeIpamResourceDiscoveriesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamResourceDiscoveriesRequest,
+  ) => stream.Stream<
+    DescribeIpamResourceDiscoveriesResult,
+    DescribeIpamResourceDiscoveriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamResourceDiscoveriesRequest,
+  ) => stream.Stream<
+    IpamResourceDiscovery,
+    DescribeIpamResourceDiscoveriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamResourceDiscoveryAssociationsError =
   | RequestLimitExceeded
@@ -86439,7 +87519,27 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
     items: "IpamResourceDiscoveryAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamResourceDiscoveryAssociationsRequest,
+  DescribeIpamResourceDiscoveryAssociationsResult,
+  DescribeIpamResourceDiscoveryAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamResourceDiscoveryAssociationsRequest,
+  ) => stream.Stream<
+    DescribeIpamResourceDiscoveryAssociationsResult,
+    DescribeIpamResourceDiscoveryAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamResourceDiscoveryAssociationsRequest,
+  ) => stream.Stream<
+    IpamResourceDiscoveryAssociation,
+    DescribeIpamResourceDiscoveryAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamsError =
   | RequestLimitExceeded
@@ -86484,7 +87584,27 @@ export const describeIpams: API.OperationMethod<
     items: "Ipams",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamsRequest,
+  DescribeIpamsResult,
+  DescribeIpamsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamsRequest,
+  ) => stream.Stream<
+    DescribeIpamsResult,
+    DescribeIpamsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamsRequest,
+  ) => stream.Stream<
+    Ipam,
+    DescribeIpamsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpamScopesError =
   | RequestLimitExceeded
@@ -86531,7 +87651,27 @@ export const describeIpamScopes: API.OperationMethod<
     items: "IpamScopes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpamScopesRequest,
+  DescribeIpamScopesResult,
+  DescribeIpamScopesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamScopesRequest,
+  ) => stream.Stream<
+    DescribeIpamScopesResult,
+    DescribeIpamScopesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamScopesRequest,
+  ) => stream.Stream<
+    IpamScope,
+    DescribeIpamScopesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeIpv6PoolsError =
   | RequestLimitExceeded
@@ -86578,7 +87718,27 @@ export const describeIpv6Pools: API.OperationMethod<
     items: "Ipv6Pools",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeIpv6PoolsRequest,
+  DescribeIpv6PoolsResult,
+  DescribeIpv6PoolsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpv6PoolsRequest,
+  ) => stream.Stream<
+    DescribeIpv6PoolsResult,
+    DescribeIpv6PoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpv6PoolsRequest,
+  ) => stream.Stream<
+    Ipv6Pool,
+    DescribeIpv6PoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeKeyPairsError =
   | RequestLimitExceeded
@@ -86662,7 +87822,27 @@ export const describeLaunchTemplates: API.OperationMethod<
     items: "LaunchTemplates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLaunchTemplatesRequest,
+  DescribeLaunchTemplatesResult,
+  DescribeLaunchTemplatesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLaunchTemplatesRequest,
+  ) => stream.Stream<
+    DescribeLaunchTemplatesResult,
+    DescribeLaunchTemplatesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLaunchTemplatesRequest,
+  ) => stream.Stream<
+    LaunchTemplate,
+    DescribeLaunchTemplatesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLaunchTemplateVersionsError =
   | RequestLimitExceeded
@@ -86714,7 +87894,27 @@ export const describeLaunchTemplateVersions: API.OperationMethod<
     items: "LaunchTemplateVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLaunchTemplateVersionsRequest,
+  DescribeLaunchTemplateVersionsResult,
+  DescribeLaunchTemplateVersionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLaunchTemplateVersionsRequest,
+  ) => stream.Stream<
+    DescribeLaunchTemplateVersionsResult,
+    DescribeLaunchTemplateVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLaunchTemplateVersionsRequest,
+  ) => stream.Stream<
+    LaunchTemplateVersion,
+    DescribeLaunchTemplateVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLocalGatewayRouteTablesError = CommonErrors;
 /**
@@ -86754,7 +87954,27 @@ export const describeLocalGatewayRouteTables: API.OperationMethod<
     items: "LocalGatewayRouteTables",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLocalGatewayRouteTablesRequest,
+  DescribeLocalGatewayRouteTablesResult,
+  DescribeLocalGatewayRouteTablesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLocalGatewayRouteTablesRequest,
+  ) => stream.Stream<
+    DescribeLocalGatewayRouteTablesResult,
+    DescribeLocalGatewayRouteTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLocalGatewayRouteTablesRequest,
+  ) => stream.Stream<
+    LocalGatewayRouteTable,
+    DescribeLocalGatewayRouteTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError =
   CommonErrors;
@@ -86795,7 +88015,27 @@ export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: AP
     items: "LocalGatewayRouteTableVirtualInterfaceGroupAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
+  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
+  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
+  ) => stream.Stream<
+    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
+    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
+  ) => stream.Stream<
+    LocalGatewayRouteTableVirtualInterfaceGroupAssociation,
+    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLocalGatewayRouteTableVpcAssociationsError = CommonErrors;
 /**
@@ -86834,7 +88074,27 @@ export const describeLocalGatewayRouteTableVpcAssociations: API.OperationMethod<
     items: "LocalGatewayRouteTableVpcAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLocalGatewayRouteTableVpcAssociationsRequest,
+  DescribeLocalGatewayRouteTableVpcAssociationsResult,
+  DescribeLocalGatewayRouteTableVpcAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
+  ) => stream.Stream<
+    DescribeLocalGatewayRouteTableVpcAssociationsResult,
+    DescribeLocalGatewayRouteTableVpcAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
+  ) => stream.Stream<
+    LocalGatewayRouteTableVpcAssociation,
+    DescribeLocalGatewayRouteTableVpcAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLocalGatewaysError = CommonErrors;
 /**
@@ -86874,7 +88134,27 @@ export const describeLocalGateways: API.OperationMethod<
     items: "LocalGateways",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLocalGatewaysRequest,
+  DescribeLocalGatewaysResult,
+  DescribeLocalGatewaysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLocalGatewaysRequest,
+  ) => stream.Stream<
+    DescribeLocalGatewaysResult,
+    DescribeLocalGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLocalGatewaysRequest,
+  ) => stream.Stream<
+    LocalGateway,
+    DescribeLocalGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLocalGatewayVirtualInterfaceGroupsError = CommonErrors;
 /**
@@ -86913,7 +88193,27 @@ export const describeLocalGatewayVirtualInterfaceGroups: API.OperationMethod<
     items: "LocalGatewayVirtualInterfaceGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLocalGatewayVirtualInterfaceGroupsRequest,
+  DescribeLocalGatewayVirtualInterfaceGroupsResult,
+  DescribeLocalGatewayVirtualInterfaceGroupsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
+  ) => stream.Stream<
+    DescribeLocalGatewayVirtualInterfaceGroupsResult,
+    DescribeLocalGatewayVirtualInterfaceGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
+  ) => stream.Stream<
+    LocalGatewayVirtualInterfaceGroup,
+    DescribeLocalGatewayVirtualInterfaceGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLocalGatewayVirtualInterfacesError = CommonErrors;
 /**
@@ -86952,7 +88252,27 @@ export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
     items: "LocalGatewayVirtualInterfaces",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLocalGatewayVirtualInterfacesRequest,
+  DescribeLocalGatewayVirtualInterfacesResult,
+  DescribeLocalGatewayVirtualInterfacesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLocalGatewayVirtualInterfacesRequest,
+  ) => stream.Stream<
+    DescribeLocalGatewayVirtualInterfacesResult,
+    DescribeLocalGatewayVirtualInterfacesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLocalGatewayVirtualInterfacesRequest,
+  ) => stream.Stream<
+    LocalGatewayVirtualInterface,
+    DescribeLocalGatewayVirtualInterfacesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLockedSnapshotsError =
   | RequestLimitExceeded
@@ -87017,7 +88337,27 @@ export const describeMacHosts: API.OperationMethod<
     items: "MacHosts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMacHostsRequest,
+  DescribeMacHostsResult,
+  DescribeMacHostsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMacHostsRequest,
+  ) => stream.Stream<
+    DescribeMacHostsResult,
+    DescribeMacHostsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMacHostsRequest,
+  ) => stream.Stream<
+    MacHost,
+    DescribeMacHostsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMacModificationTasksError =
   | RequestLimitExceeded
@@ -87062,7 +88402,27 @@ export const describeMacModificationTasks: API.OperationMethod<
     items: "MacModificationTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMacModificationTasksRequest,
+  DescribeMacModificationTasksResult,
+  DescribeMacModificationTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMacModificationTasksRequest,
+  ) => stream.Stream<
+    DescribeMacModificationTasksResult,
+    DescribeMacModificationTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMacModificationTasksRequest,
+  ) => stream.Stream<
+    MacModificationTask,
+    DescribeMacModificationTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeManagedPrefixListsError =
   | RequestLimitExceeded
@@ -87111,7 +88471,27 @@ export const describeManagedPrefixLists: API.OperationMethod<
     items: "PrefixLists",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeManagedPrefixListsRequest,
+  DescribeManagedPrefixListsResult,
+  DescribeManagedPrefixListsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeManagedPrefixListsRequest,
+  ) => stream.Stream<
+    DescribeManagedPrefixListsResult,
+    DescribeManagedPrefixListsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeManagedPrefixListsRequest,
+  ) => stream.Stream<
+    ManagedPrefixList,
+    DescribeManagedPrefixListsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMovingAddressesError =
   | RequestLimitExceeded
@@ -87157,7 +88537,27 @@ export const describeMovingAddresses: API.OperationMethod<
     items: "MovingAddressStatuses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMovingAddressesRequest,
+  DescribeMovingAddressesResult,
+  DescribeMovingAddressesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMovingAddressesRequest,
+  ) => stream.Stream<
+    DescribeMovingAddressesResult,
+    DescribeMovingAddressesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMovingAddressesRequest,
+  ) => stream.Stream<
+    MovingAddressStatus,
+    DescribeMovingAddressesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNatGatewaysError =
   | RequestLimitExceeded
@@ -87216,7 +88616,27 @@ export const describeNatGateways: API.OperationMethod<
     items: "NatGateways",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNatGatewaysRequest,
+  DescribeNatGatewaysResult,
+  DescribeNatGatewaysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNatGatewaysRequest,
+  ) => stream.Stream<
+    DescribeNatGatewaysResult,
+    DescribeNatGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNatGatewaysRequest,
+  ) => stream.Stream<
+    NatGateway,
+    DescribeNatGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkAclsError =
   | RequestLimitExceeded
@@ -87272,7 +88692,27 @@ export const describeNetworkAcls: API.OperationMethod<
     items: "NetworkAcls",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkAclsRequest,
+  DescribeNetworkAclsResult,
+  DescribeNetworkAclsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkAclsRequest,
+  ) => stream.Stream<
+    DescribeNetworkAclsResult,
+    DescribeNetworkAclsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkAclsRequest,
+  ) => stream.Stream<
+    NetworkAcl,
+    DescribeNetworkAclsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkInsightsAccessScopeAnalysesError =
   | RequestLimitExceeded
@@ -87315,7 +88755,27 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
     items: "NetworkInsightsAccessScopeAnalyses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkInsightsAccessScopeAnalysesRequest,
+  DescribeNetworkInsightsAccessScopeAnalysesResult,
+  DescribeNetworkInsightsAccessScopeAnalysesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
+  ) => stream.Stream<
+    DescribeNetworkInsightsAccessScopeAnalysesResult,
+    DescribeNetworkInsightsAccessScopeAnalysesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
+  ) => stream.Stream<
+    NetworkInsightsAccessScopeAnalysis,
+    DescribeNetworkInsightsAccessScopeAnalysesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkInsightsAccessScopesError =
   | RequestLimitExceeded
@@ -87358,7 +88818,27 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
     items: "NetworkInsightsAccessScopes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkInsightsAccessScopesRequest,
+  DescribeNetworkInsightsAccessScopesResult,
+  DescribeNetworkInsightsAccessScopesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkInsightsAccessScopesRequest,
+  ) => stream.Stream<
+    DescribeNetworkInsightsAccessScopesResult,
+    DescribeNetworkInsightsAccessScopesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkInsightsAccessScopesRequest,
+  ) => stream.Stream<
+    NetworkInsightsAccessScope,
+    DescribeNetworkInsightsAccessScopesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkInsightsAnalysesError =
   | RequestLimitExceeded
@@ -87401,7 +88881,27 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
     items: "NetworkInsightsAnalyses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkInsightsAnalysesRequest,
+  DescribeNetworkInsightsAnalysesResult,
+  DescribeNetworkInsightsAnalysesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkInsightsAnalysesRequest,
+  ) => stream.Stream<
+    DescribeNetworkInsightsAnalysesResult,
+    DescribeNetworkInsightsAnalysesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkInsightsAnalysesRequest,
+  ) => stream.Stream<
+    NetworkInsightsAnalysis,
+    DescribeNetworkInsightsAnalysesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkInsightsPathsError =
   | RequestLimitExceeded
@@ -87444,7 +88944,27 @@ export const describeNetworkInsightsPaths: API.OperationMethod<
     items: "NetworkInsightsPaths",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkInsightsPathsRequest,
+  DescribeNetworkInsightsPathsResult,
+  DescribeNetworkInsightsPathsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkInsightsPathsRequest,
+  ) => stream.Stream<
+    DescribeNetworkInsightsPathsResult,
+    DescribeNetworkInsightsPathsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkInsightsPathsRequest,
+  ) => stream.Stream<
+    NetworkInsightsPath,
+    DescribeNetworkInsightsPathsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkInterfaceAttributeError =
   | RequestLimitExceeded
@@ -87522,7 +89042,27 @@ export const describeNetworkInterfacePermissions: API.OperationMethod<
     items: "NetworkInterfacePermissions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkInterfacePermissionsRequest,
+  DescribeNetworkInterfacePermissionsResult,
+  DescribeNetworkInterfacePermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkInterfacePermissionsRequest,
+  ) => stream.Stream<
+    DescribeNetworkInterfacePermissionsResult,
+    DescribeNetworkInterfacePermissionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkInterfacePermissionsRequest,
+  ) => stream.Stream<
+    NetworkInterfacePermission,
+    DescribeNetworkInterfacePermissionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeNetworkInterfacesError =
   | RequestLimitExceeded
@@ -87582,7 +89122,27 @@ export const describeNetworkInterfaces: API.OperationMethod<
     items: "NetworkInterfaces",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNetworkInterfacesRequest,
+  DescribeNetworkInterfacesResult,
+  DescribeNetworkInterfacesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNetworkInterfacesRequest,
+  ) => stream.Stream<
+    DescribeNetworkInterfacesResult,
+    DescribeNetworkInterfacesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNetworkInterfacesRequest,
+  ) => stream.Stream<
+    NetworkInterface,
+    DescribeNetworkInterfacesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeOutpostLagsError =
   | RequestLimitExceeded
@@ -87695,7 +89255,27 @@ export const describePrefixLists: API.OperationMethod<
     items: "PrefixLists",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePrefixListsRequest,
+  DescribePrefixListsResult,
+  DescribePrefixListsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePrefixListsRequest,
+  ) => stream.Stream<
+    DescribePrefixListsResult,
+    DescribePrefixListsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePrefixListsRequest,
+  ) => stream.Stream<
+    PrefixList,
+    DescribePrefixListsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePrincipalIdFormatError = CommonErrors;
 /**
@@ -87753,7 +89333,27 @@ export const describePrincipalIdFormat: API.OperationMethod<
     items: "Principals",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePrincipalIdFormatRequest,
+  DescribePrincipalIdFormatResult,
+  DescribePrincipalIdFormatError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePrincipalIdFormatRequest,
+  ) => stream.Stream<
+    DescribePrincipalIdFormatResult,
+    DescribePrincipalIdFormatError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePrincipalIdFormatRequest,
+  ) => stream.Stream<
+    PrincipalIdFormat,
+    DescribePrincipalIdFormatError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePublicIpv4PoolsError =
   | RequestLimitExceeded
@@ -87800,7 +89400,27 @@ export const describePublicIpv4Pools: API.OperationMethod<
     items: "PublicIpv4Pools",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePublicIpv4PoolsRequest,
+  DescribePublicIpv4PoolsResult,
+  DescribePublicIpv4PoolsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePublicIpv4PoolsRequest,
+  ) => stream.Stream<
+    DescribePublicIpv4PoolsResult,
+    DescribePublicIpv4PoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePublicIpv4PoolsRequest,
+  ) => stream.Stream<
+    PublicIpv4Pool,
+    DescribePublicIpv4PoolsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRegionsError =
   | RequestLimitExceeded
@@ -87874,7 +89494,27 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
     items: "ReplaceRootVolumeTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReplaceRootVolumeTasksRequest,
+  DescribeReplaceRootVolumeTasksResult,
+  DescribeReplaceRootVolumeTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReplaceRootVolumeTasksRequest,
+  ) => stream.Stream<
+    DescribeReplaceRootVolumeTasksResult,
+    DescribeReplaceRootVolumeTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReplaceRootVolumeTasksRequest,
+  ) => stream.Stream<
+    ReplaceRootVolumeTask,
+    DescribeReplaceRootVolumeTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedInstancesError =
   | RequestLimitExceeded
@@ -87993,7 +89633,27 @@ export const describeReservedInstancesModifications: API.OperationMethod<
     outputToken: "NextToken",
     items: "ReservedInstancesModifications",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedInstancesModificationsRequest,
+  DescribeReservedInstancesModificationsResult,
+  DescribeReservedInstancesModificationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedInstancesModificationsRequest,
+  ) => stream.Stream<
+    DescribeReservedInstancesModificationsResult,
+    DescribeReservedInstancesModificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedInstancesModificationsRequest,
+  ) => stream.Stream<
+    ReservedInstancesModification,
+    DescribeReservedInstancesModificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedInstancesOfferingsError =
   | RequestLimitExceeded
@@ -88049,7 +89709,27 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
     items: "ReservedInstancesOfferings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedInstancesOfferingsRequest,
+  DescribeReservedInstancesOfferingsResult,
+  DescribeReservedInstancesOfferingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedInstancesOfferingsRequest,
+  ) => stream.Stream<
+    DescribeReservedInstancesOfferingsResult,
+    DescribeReservedInstancesOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedInstancesOfferingsRequest,
+  ) => stream.Stream<
+    ReservedInstancesOffering,
+    DescribeReservedInstancesOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRouteServerEndpointsError =
   | RequestLimitExceeded
@@ -88100,7 +89780,27 @@ export const describeRouteServerEndpoints: API.OperationMethod<
     items: "RouteServerEndpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRouteServerEndpointsRequest,
+  DescribeRouteServerEndpointsResult,
+  DescribeRouteServerEndpointsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRouteServerEndpointsRequest,
+  ) => stream.Stream<
+    DescribeRouteServerEndpointsResult,
+    DescribeRouteServerEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRouteServerEndpointsRequest,
+  ) => stream.Stream<
+    RouteServerEndpoint,
+    DescribeRouteServerEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRouteServerPeersError =
   | RequestLimitExceeded
@@ -88157,7 +89857,27 @@ export const describeRouteServerPeers: API.OperationMethod<
     items: "RouteServerPeers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRouteServerPeersRequest,
+  DescribeRouteServerPeersResult,
+  DescribeRouteServerPeersError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRouteServerPeersRequest,
+  ) => stream.Stream<
+    DescribeRouteServerPeersResult,
+    DescribeRouteServerPeersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRouteServerPeersRequest,
+  ) => stream.Stream<
+    RouteServerPeer,
+    DescribeRouteServerPeersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRouteServersError =
   | RequestLimitExceeded
@@ -88219,7 +89939,27 @@ export const describeRouteServers: API.OperationMethod<
     items: "RouteServers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRouteServersRequest,
+  DescribeRouteServersResult,
+  DescribeRouteServersError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRouteServersRequest,
+  ) => stream.Stream<
+    DescribeRouteServersResult,
+    DescribeRouteServersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRouteServersRequest,
+  ) => stream.Stream<
+    RouteServer,
+    DescribeRouteServersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRouteTablesError =
   | RequestLimitExceeded
@@ -88275,7 +90015,27 @@ export const describeRouteTables: API.OperationMethod<
     items: "RouteTables",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRouteTablesRequest,
+  DescribeRouteTablesResult,
+  DescribeRouteTablesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRouteTablesRequest,
+  ) => stream.Stream<
+    DescribeRouteTablesResult,
+    DescribeRouteTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRouteTablesRequest,
+  ) => stream.Stream<
+    RouteTable,
+    DescribeRouteTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeScheduledInstanceAvailabilityError = CommonErrors;
 /**
@@ -88319,7 +90079,27 @@ export const describeScheduledInstanceAvailability: API.OperationMethod<
     items: "ScheduledInstanceAvailabilitySet",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeScheduledInstanceAvailabilityRequest,
+  DescribeScheduledInstanceAvailabilityResult,
+  DescribeScheduledInstanceAvailabilityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeScheduledInstanceAvailabilityRequest,
+  ) => stream.Stream<
+    DescribeScheduledInstanceAvailabilityResult,
+    DescribeScheduledInstanceAvailabilityError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeScheduledInstanceAvailabilityRequest,
+  ) => stream.Stream<
+    ScheduledInstanceAvailability,
+    DescribeScheduledInstanceAvailabilityError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeScheduledInstancesError = CommonErrors;
 /**
@@ -88358,7 +90138,27 @@ export const describeScheduledInstances: API.OperationMethod<
     items: "ScheduledInstanceSet",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeScheduledInstancesRequest,
+  DescribeScheduledInstancesResult,
+  DescribeScheduledInstancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeScheduledInstancesRequest,
+  ) => stream.Stream<
+    DescribeScheduledInstancesResult,
+    DescribeScheduledInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeScheduledInstancesRequest,
+  ) => stream.Stream<
+    ScheduledInstance,
+    DescribeScheduledInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSecondaryInterfacesError = CommonErrors;
 /**
@@ -88397,7 +90197,27 @@ export const describeSecondaryInterfaces: API.OperationMethod<
     items: "SecondaryInterfaces",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSecondaryInterfacesRequest,
+  DescribeSecondaryInterfacesResult,
+  DescribeSecondaryInterfacesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSecondaryInterfacesRequest,
+  ) => stream.Stream<
+    DescribeSecondaryInterfacesResult,
+    DescribeSecondaryInterfacesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSecondaryInterfacesRequest,
+  ) => stream.Stream<
+    SecondaryInterface,
+    DescribeSecondaryInterfacesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSecondaryNetworksError = CommonErrors;
 /**
@@ -88436,7 +90256,27 @@ export const describeSecondaryNetworks: API.OperationMethod<
     items: "SecondaryNetworks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSecondaryNetworksRequest,
+  DescribeSecondaryNetworksResult,
+  DescribeSecondaryNetworksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSecondaryNetworksRequest,
+  ) => stream.Stream<
+    DescribeSecondaryNetworksResult,
+    DescribeSecondaryNetworksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSecondaryNetworksRequest,
+  ) => stream.Stream<
+    SecondaryNetwork,
+    DescribeSecondaryNetworksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSecondarySubnetsError = CommonErrors;
 /**
@@ -88475,7 +90315,27 @@ export const describeSecondarySubnets: API.OperationMethod<
     items: "SecondarySubnets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSecondarySubnetsRequest,
+  DescribeSecondarySubnetsResult,
+  DescribeSecondarySubnetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSecondarySubnetsRequest,
+  ) => stream.Stream<
+    DescribeSecondarySubnetsResult,
+    DescribeSecondarySubnetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSecondarySubnetsRequest,
+  ) => stream.Stream<
+    SecondarySubnet,
+    DescribeSecondarySubnetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSecurityGroupReferencesError = CommonErrors;
 /**
@@ -88540,7 +90400,27 @@ export const describeSecurityGroupRules: API.OperationMethod<
     items: "SecurityGroupRules",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSecurityGroupRulesRequest,
+  DescribeSecurityGroupRulesResult,
+  DescribeSecurityGroupRulesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSecurityGroupRulesRequest,
+  ) => stream.Stream<
+    DescribeSecurityGroupRulesResult,
+    DescribeSecurityGroupRulesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSecurityGroupRulesRequest,
+  ) => stream.Stream<
+    SecurityGroupRule,
+    DescribeSecurityGroupRulesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSecurityGroupsError =
   | RequestLimitExceeded
@@ -88593,7 +90473,27 @@ export const describeSecurityGroups: API.OperationMethod<
     items: "SecurityGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSecurityGroupsRequest,
+  DescribeSecurityGroupsResult,
+  DescribeSecurityGroupsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSecurityGroupsRequest,
+  ) => stream.Stream<
+    DescribeSecurityGroupsResult,
+    DescribeSecurityGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSecurityGroupsRequest,
+  ) => stream.Stream<
+    SecurityGroup,
+    DescribeSecurityGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSecurityGroupVpcAssociationsError = CommonErrors;
 /**
@@ -88632,7 +90532,27 @@ export const describeSecurityGroupVpcAssociations: API.OperationMethod<
     items: "SecurityGroupVpcAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSecurityGroupVpcAssociationsRequest,
+  DescribeSecurityGroupVpcAssociationsResult,
+  DescribeSecurityGroupVpcAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSecurityGroupVpcAssociationsRequest,
+  ) => stream.Stream<
+    DescribeSecurityGroupVpcAssociationsResult,
+    DescribeSecurityGroupVpcAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSecurityGroupVpcAssociationsRequest,
+  ) => stream.Stream<
+    SecurityGroupVpcAssociation,
+    DescribeSecurityGroupVpcAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeServiceLinkVirtualInterfacesError =
   | RequestLimitExceeded
@@ -88784,7 +90704,27 @@ export const describeSnapshots: API.OperationMethod<
     items: "Snapshots",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSnapshotsRequest,
+  DescribeSnapshotsResult,
+  DescribeSnapshotsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSnapshotsRequest,
+  ) => stream.Stream<
+    DescribeSnapshotsResult,
+    DescribeSnapshotsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSnapshotsRequest,
+  ) => stream.Stream<
+    Snapshot,
+    DescribeSnapshotsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSnapshotTierStatusError = CommonErrors;
 /**
@@ -88823,7 +90763,27 @@ export const describeSnapshotTierStatus: API.OperationMethod<
     items: "SnapshotTierStatuses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSnapshotTierStatusRequest,
+  DescribeSnapshotTierStatusResult,
+  DescribeSnapshotTierStatusError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSnapshotTierStatusRequest,
+  ) => stream.Stream<
+    DescribeSnapshotTierStatusResult,
+    DescribeSnapshotTierStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSnapshotTierStatusRequest,
+  ) => stream.Stream<
+    SnapshotTierStatus,
+    DescribeSnapshotTierStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSpotDatafeedSubscriptionError =
   | RequestLimitExceeded
@@ -88954,7 +90914,27 @@ export const describeSpotFleetRequests: API.OperationMethod<
     items: "SpotFleetRequestConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSpotFleetRequestsRequest,
+  DescribeSpotFleetRequestsResponse,
+  DescribeSpotFleetRequestsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSpotFleetRequestsRequest,
+  ) => stream.Stream<
+    DescribeSpotFleetRequestsResponse,
+    DescribeSpotFleetRequestsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSpotFleetRequestsRequest,
+  ) => stream.Stream<
+    SpotFleetRequestConfig,
+    DescribeSpotFleetRequestsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSpotInstanceRequestsError =
   | RequestLimitExceeded
@@ -89021,7 +91001,27 @@ export const describeSpotInstanceRequests: API.OperationMethod<
     items: "SpotInstanceRequests",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSpotInstanceRequestsRequest,
+  DescribeSpotInstanceRequestsResult,
+  DescribeSpotInstanceRequestsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSpotInstanceRequestsRequest,
+  ) => stream.Stream<
+    DescribeSpotInstanceRequestsResult,
+    DescribeSpotInstanceRequestsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSpotInstanceRequestsRequest,
+  ) => stream.Stream<
+    SpotInstanceRequest,
+    DescribeSpotInstanceRequestsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSpotPriceHistoryError = CommonErrors;
 /**
@@ -89065,7 +91065,27 @@ export const describeSpotPriceHistory: API.OperationMethod<
     items: "SpotPriceHistory",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSpotPriceHistoryRequest,
+  DescribeSpotPriceHistoryResult,
+  DescribeSpotPriceHistoryError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSpotPriceHistoryRequest,
+  ) => stream.Stream<
+    DescribeSpotPriceHistoryResult,
+    DescribeSpotPriceHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSpotPriceHistoryRequest,
+  ) => stream.Stream<
+    SpotPrice,
+    DescribeSpotPriceHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeStaleSecurityGroupsError =
   | RequestLimitExceeded
@@ -89115,7 +91135,27 @@ export const describeStaleSecurityGroups: API.OperationMethod<
     items: "StaleSecurityGroupSet",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeStaleSecurityGroupsRequest,
+  DescribeStaleSecurityGroupsResult,
+  DescribeStaleSecurityGroupsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeStaleSecurityGroupsRequest,
+  ) => stream.Stream<
+    DescribeStaleSecurityGroupsResult,
+    DescribeStaleSecurityGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeStaleSecurityGroupsRequest,
+  ) => stream.Stream<
+    StaleSecurityGroup,
+    DescribeStaleSecurityGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeStoreImageTasksError = CommonErrors;
 /**
@@ -89169,7 +91209,27 @@ export const describeStoreImageTasks: API.OperationMethod<
     items: "StoreImageTaskResults",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeStoreImageTasksRequest,
+  DescribeStoreImageTasksResult,
+  DescribeStoreImageTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeStoreImageTasksRequest,
+  ) => stream.Stream<
+    DescribeStoreImageTasksResult,
+    DescribeStoreImageTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeStoreImageTasksRequest,
+  ) => stream.Stream<
+    StoreImageTaskResult,
+    DescribeStoreImageTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSubnetsError =
   | RequestLimitExceeded
@@ -89223,7 +91283,27 @@ export const describeSubnets: API.OperationMethod<
     items: "Subnets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSubnetsRequest,
+  DescribeSubnetsResult,
+  DescribeSubnetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSubnetsRequest,
+  ) => stream.Stream<
+    DescribeSubnetsResult,
+    DescribeSubnetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSubnetsRequest,
+  ) => stream.Stream<
+    Subnet,
+    DescribeSubnetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTagsError =
   | RequestLimitExceeded
@@ -89276,7 +91356,27 @@ export const describeTags: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTagsRequest,
+  DescribeTagsResult,
+  DescribeTagsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTagsRequest,
+  ) => stream.Stream<
+    DescribeTagsResult,
+    DescribeTagsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTagsRequest,
+  ) => stream.Stream<
+    TagDescription,
+    DescribeTagsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTrafficMirrorFilterRulesError = CommonErrors;
 /**
@@ -89341,7 +91441,27 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
     items: "TrafficMirrorFilters",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTrafficMirrorFiltersRequest,
+  DescribeTrafficMirrorFiltersResult,
+  DescribeTrafficMirrorFiltersError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrafficMirrorFiltersRequest,
+  ) => stream.Stream<
+    DescribeTrafficMirrorFiltersResult,
+    DescribeTrafficMirrorFiltersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrafficMirrorFiltersRequest,
+  ) => stream.Stream<
+    TrafficMirrorFilter,
+    DescribeTrafficMirrorFiltersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTrafficMirrorSessionsError =
   | RequestLimitExceeded
@@ -89388,7 +91508,27 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
     items: "TrafficMirrorSessions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTrafficMirrorSessionsRequest,
+  DescribeTrafficMirrorSessionsResult,
+  DescribeTrafficMirrorSessionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrafficMirrorSessionsRequest,
+  ) => stream.Stream<
+    DescribeTrafficMirrorSessionsResult,
+    DescribeTrafficMirrorSessionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrafficMirrorSessionsRequest,
+  ) => stream.Stream<
+    TrafficMirrorSession,
+    DescribeTrafficMirrorSessionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTrafficMirrorTargetsError =
   | RequestLimitExceeded
@@ -89435,7 +91575,27 @@ export const describeTrafficMirrorTargets: API.OperationMethod<
     items: "TrafficMirrorTargets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTrafficMirrorTargetsRequest,
+  DescribeTrafficMirrorTargetsResult,
+  DescribeTrafficMirrorTargetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrafficMirrorTargetsRequest,
+  ) => stream.Stream<
+    DescribeTrafficMirrorTargetsResult,
+    DescribeTrafficMirrorTargetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrafficMirrorTargetsRequest,
+  ) => stream.Stream<
+    TrafficMirrorTarget,
+    DescribeTrafficMirrorTargetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayAttachmentsError =
   | RequestLimitExceeded
@@ -89485,7 +91645,27 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
     items: "TransitGatewayAttachments",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayAttachmentsRequest,
+  DescribeTransitGatewayAttachmentsResult,
+  DescribeTransitGatewayAttachmentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayAttachmentsRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayAttachmentsResult,
+    DescribeTransitGatewayAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayAttachmentsRequest,
+  ) => stream.Stream<
+    TransitGatewayAttachment,
+    DescribeTransitGatewayAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayConnectPeersError =
   | RequestLimitExceeded
@@ -89532,7 +91712,27 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
     items: "TransitGatewayConnectPeers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayConnectPeersRequest,
+  DescribeTransitGatewayConnectPeersResult,
+  DescribeTransitGatewayConnectPeersError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayConnectPeersRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayConnectPeersResult,
+    DescribeTransitGatewayConnectPeersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayConnectPeersRequest,
+  ) => stream.Stream<
+    TransitGatewayConnectPeer,
+    DescribeTransitGatewayConnectPeersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayConnectsError =
   | RequestLimitExceeded
@@ -89579,7 +91779,27 @@ export const describeTransitGatewayConnects: API.OperationMethod<
     items: "TransitGatewayConnects",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayConnectsRequest,
+  DescribeTransitGatewayConnectsResult,
+  DescribeTransitGatewayConnectsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayConnectsRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayConnectsResult,
+    DescribeTransitGatewayConnectsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayConnectsRequest,
+  ) => stream.Stream<
+    TransitGatewayConnect,
+    DescribeTransitGatewayConnectsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayMeteringPoliciesError =
   | RequestLimitExceeded
@@ -89652,7 +91872,27 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
     items: "TransitGatewayMulticastDomains",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayMulticastDomainsRequest,
+  DescribeTransitGatewayMulticastDomainsResult,
+  DescribeTransitGatewayMulticastDomainsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayMulticastDomainsRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayMulticastDomainsResult,
+    DescribeTransitGatewayMulticastDomainsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayMulticastDomainsRequest,
+  ) => stream.Stream<
+    TransitGatewayMulticastDomain,
+    DescribeTransitGatewayMulticastDomainsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayPeeringAttachmentsError =
   | RequestLimitExceeded
@@ -89699,7 +91939,27 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
     items: "TransitGatewayPeeringAttachments",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayPeeringAttachmentsRequest,
+  DescribeTransitGatewayPeeringAttachmentsResult,
+  DescribeTransitGatewayPeeringAttachmentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayPeeringAttachmentsRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayPeeringAttachmentsResult,
+    DescribeTransitGatewayPeeringAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayPeeringAttachmentsRequest,
+  ) => stream.Stream<
+    TransitGatewayPeeringAttachment,
+    DescribeTransitGatewayPeeringAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayPolicyTablesError =
   | RequestLimitExceeded
@@ -89746,7 +92006,27 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
     items: "TransitGatewayPolicyTables",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayPolicyTablesRequest,
+  DescribeTransitGatewayPolicyTablesResult,
+  DescribeTransitGatewayPolicyTablesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayPolicyTablesRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayPolicyTablesResult,
+    DescribeTransitGatewayPolicyTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayPolicyTablesRequest,
+  ) => stream.Stream<
+    TransitGatewayPolicyTable,
+    DescribeTransitGatewayPolicyTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayRouteTableAnnouncementsError =
   | RequestLimitExceeded
@@ -89793,7 +92073,27 @@ export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
     items: "TransitGatewayRouteTableAnnouncements",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayRouteTableAnnouncementsRequest,
+  DescribeTransitGatewayRouteTableAnnouncementsResult,
+  DescribeTransitGatewayRouteTableAnnouncementsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayRouteTableAnnouncementsResult,
+    DescribeTransitGatewayRouteTableAnnouncementsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayRouteTableAnnouncementsRequest,
+  ) => stream.Stream<
+    TransitGatewayRouteTableAnnouncement,
+    DescribeTransitGatewayRouteTableAnnouncementsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayRouteTablesError =
   | RequestLimitExceeded
@@ -89843,7 +92143,27 @@ export const describeTransitGatewayRouteTables: API.OperationMethod<
     items: "TransitGatewayRouteTables",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayRouteTablesRequest,
+  DescribeTransitGatewayRouteTablesResult,
+  DescribeTransitGatewayRouteTablesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayRouteTablesRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayRouteTablesResult,
+    DescribeTransitGatewayRouteTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayRouteTablesRequest,
+  ) => stream.Stream<
+    TransitGatewayRouteTable,
+    DescribeTransitGatewayRouteTablesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewaysError =
   | RequestLimitExceeded
@@ -89893,7 +92213,27 @@ export const describeTransitGateways: API.OperationMethod<
     items: "TransitGateways",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewaysRequest,
+  DescribeTransitGatewaysResult,
+  DescribeTransitGatewaysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewaysRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewaysResult,
+    DescribeTransitGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewaysRequest,
+  ) => stream.Stream<
+    TransitGateway,
+    DescribeTransitGatewaysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransitGatewayVpcAttachmentsError =
   | RequestLimitExceeded
@@ -89941,7 +92281,27 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
     items: "TransitGatewayVpcAttachments",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTransitGatewayVpcAttachmentsRequest,
+  DescribeTransitGatewayVpcAttachmentsResult,
+  DescribeTransitGatewayVpcAttachmentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTransitGatewayVpcAttachmentsRequest,
+  ) => stream.Stream<
+    DescribeTransitGatewayVpcAttachmentsResult,
+    DescribeTransitGatewayVpcAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTransitGatewayVpcAttachmentsRequest,
+  ) => stream.Stream<
+    TransitGatewayVpcAttachment,
+    DescribeTransitGatewayVpcAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTrunkInterfaceAssociationsError =
   | RequestLimitExceeded
@@ -89984,7 +92344,27 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
     items: "InterfaceAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTrunkInterfaceAssociationsRequest,
+  DescribeTrunkInterfaceAssociationsResult,
+  DescribeTrunkInterfaceAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrunkInterfaceAssociationsRequest,
+  ) => stream.Stream<
+    DescribeTrunkInterfaceAssociationsResult,
+    DescribeTrunkInterfaceAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrunkInterfaceAssociationsRequest,
+  ) => stream.Stream<
+    TrunkInterfaceAssociation,
+    DescribeTrunkInterfaceAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVerifiedAccessEndpointsError =
   | RequestLimitExceeded
@@ -90031,7 +92411,27 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
     items: "VerifiedAccessEndpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVerifiedAccessEndpointsRequest,
+  DescribeVerifiedAccessEndpointsResult,
+  DescribeVerifiedAccessEndpointsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVerifiedAccessEndpointsRequest,
+  ) => stream.Stream<
+    DescribeVerifiedAccessEndpointsResult,
+    DescribeVerifiedAccessEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVerifiedAccessEndpointsRequest,
+  ) => stream.Stream<
+    VerifiedAccessEndpoint,
+    DescribeVerifiedAccessEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVerifiedAccessGroupsError =
   | RequestLimitExceeded
@@ -90078,7 +92478,27 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
     items: "VerifiedAccessGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVerifiedAccessGroupsRequest,
+  DescribeVerifiedAccessGroupsResult,
+  DescribeVerifiedAccessGroupsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVerifiedAccessGroupsRequest,
+  ) => stream.Stream<
+    DescribeVerifiedAccessGroupsResult,
+    DescribeVerifiedAccessGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVerifiedAccessGroupsRequest,
+  ) => stream.Stream<
+    VerifiedAccessGroup,
+    DescribeVerifiedAccessGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVerifiedAccessInstanceLoggingConfigurationsError =
   | RequestLimitExceeded
@@ -90125,7 +92545,27 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
     items: "LoggingConfigurations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
+  DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
+  DescribeVerifiedAccessInstanceLoggingConfigurationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
+  ) => stream.Stream<
+    DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
+    DescribeVerifiedAccessInstanceLoggingConfigurationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
+  ) => stream.Stream<
+    VerifiedAccessInstanceLoggingConfiguration,
+    DescribeVerifiedAccessInstanceLoggingConfigurationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVerifiedAccessInstancesError =
   | RequestLimitExceeded
@@ -90172,7 +92612,27 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
     items: "VerifiedAccessInstances",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVerifiedAccessInstancesRequest,
+  DescribeVerifiedAccessInstancesResult,
+  DescribeVerifiedAccessInstancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVerifiedAccessInstancesRequest,
+  ) => stream.Stream<
+    DescribeVerifiedAccessInstancesResult,
+    DescribeVerifiedAccessInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVerifiedAccessInstancesRequest,
+  ) => stream.Stream<
+    VerifiedAccessInstance,
+    DescribeVerifiedAccessInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVerifiedAccessTrustProvidersError =
   | RequestLimitExceeded
@@ -90219,7 +92679,27 @@ export const describeVerifiedAccessTrustProviders: API.OperationMethod<
     items: "VerifiedAccessTrustProviders",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVerifiedAccessTrustProvidersRequest,
+  DescribeVerifiedAccessTrustProvidersResult,
+  DescribeVerifiedAccessTrustProvidersError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVerifiedAccessTrustProvidersRequest,
+  ) => stream.Stream<
+    DescribeVerifiedAccessTrustProvidersResult,
+    DescribeVerifiedAccessTrustProvidersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVerifiedAccessTrustProvidersRequest,
+  ) => stream.Stream<
+    VerifiedAccessTrustProvider,
+    DescribeVerifiedAccessTrustProvidersError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVolumeAttributeError =
   | RequestLimitExceeded
@@ -90315,7 +92795,27 @@ export const describeVolumes: API.OperationMethod<
     items: "Volumes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVolumesRequest,
+  DescribeVolumesResult,
+  DescribeVolumesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVolumesRequest,
+  ) => stream.Stream<
+    DescribeVolumesResult,
+    DescribeVolumesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVolumesRequest,
+  ) => stream.Stream<
+    Volume,
+    DescribeVolumesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVolumesModificationsError =
   | RequestLimitExceeded
@@ -90365,7 +92865,27 @@ export const describeVolumesModifications: API.OperationMethod<
     items: "VolumesModifications",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVolumesModificationsRequest,
+  DescribeVolumesModificationsResult,
+  DescribeVolumesModificationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVolumesModificationsRequest,
+  ) => stream.Stream<
+    DescribeVolumesModificationsResult,
+    DescribeVolumesModificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVolumesModificationsRequest,
+  ) => stream.Stream<
+    VolumeModification,
+    DescribeVolumesModificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVolumeStatusError =
   | RequestLimitExceeded
@@ -90451,7 +92971,27 @@ export const describeVolumeStatus: API.OperationMethod<
     items: "VolumeStatuses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVolumeStatusRequest,
+  DescribeVolumeStatusResult,
+  DescribeVolumeStatusError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVolumeStatusRequest,
+  ) => stream.Stream<
+    DescribeVolumeStatusResult,
+    DescribeVolumeStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVolumeStatusRequest,
+  ) => stream.Stream<
+    VolumeStatusItem,
+    DescribeVolumeStatusError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcAttributeError =
   | RequestLimitExceeded
@@ -90604,7 +93144,27 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
     items: "Vpcs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcClassicLinkDnsSupportRequest,
+  DescribeVpcClassicLinkDnsSupportResult,
+  DescribeVpcClassicLinkDnsSupportError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcClassicLinkDnsSupportRequest,
+  ) => stream.Stream<
+    DescribeVpcClassicLinkDnsSupportResult,
+    DescribeVpcClassicLinkDnsSupportError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcClassicLinkDnsSupportRequest,
+  ) => stream.Stream<
+    ClassicLinkDnsSupport,
+    DescribeVpcClassicLinkDnsSupportError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEncryptionControlsError =
   | RequestLimitExceeded
@@ -90699,7 +93259,27 @@ export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
     items: "ConnectionNotificationSet",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcEndpointConnectionNotificationsRequest,
+  DescribeVpcEndpointConnectionNotificationsResult,
+  DescribeVpcEndpointConnectionNotificationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcEndpointConnectionNotificationsRequest,
+  ) => stream.Stream<
+    DescribeVpcEndpointConnectionNotificationsResult,
+    DescribeVpcEndpointConnectionNotificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcEndpointConnectionNotificationsRequest,
+  ) => stream.Stream<
+    ConnectionNotification,
+    DescribeVpcEndpointConnectionNotificationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEndpointConnectionsError = CommonErrors;
 /**
@@ -90739,7 +93319,27 @@ export const describeVpcEndpointConnections: API.OperationMethod<
     items: "VpcEndpointConnections",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcEndpointConnectionsRequest,
+  DescribeVpcEndpointConnectionsResult,
+  DescribeVpcEndpointConnectionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcEndpointConnectionsRequest,
+  ) => stream.Stream<
+    DescribeVpcEndpointConnectionsResult,
+    DescribeVpcEndpointConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcEndpointConnectionsRequest,
+  ) => stream.Stream<
+    VpcEndpointConnection,
+    DescribeVpcEndpointConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEndpointsError =
   | RequestLimitExceeded
@@ -90790,7 +93390,27 @@ export const describeVpcEndpoints: API.OperationMethod<
     items: "VpcEndpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcEndpointsRequest,
+  DescribeVpcEndpointsResult,
+  DescribeVpcEndpointsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcEndpointsRequest,
+  ) => stream.Stream<
+    DescribeVpcEndpointsResult,
+    DescribeVpcEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcEndpointsRequest,
+  ) => stream.Stream<
+    VpcEndpoint,
+    DescribeVpcEndpointsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEndpointServiceConfigurationsError =
   | RequestLimitExceeded
@@ -90837,7 +93457,27 @@ export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
     items: "ServiceConfigurations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcEndpointServiceConfigurationsRequest,
+  DescribeVpcEndpointServiceConfigurationsResult,
+  DescribeVpcEndpointServiceConfigurationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcEndpointServiceConfigurationsRequest,
+  ) => stream.Stream<
+    DescribeVpcEndpointServiceConfigurationsResult,
+    DescribeVpcEndpointServiceConfigurationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcEndpointServiceConfigurationsRequest,
+  ) => stream.Stream<
+    ServiceConfiguration,
+    DescribeVpcEndpointServiceConfigurationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEndpointServicePermissionsError =
   | RequestLimitExceeded
@@ -90887,7 +93527,27 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
     items: "AllowedPrincipals",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcEndpointServicePermissionsRequest,
+  DescribeVpcEndpointServicePermissionsResult,
+  DescribeVpcEndpointServicePermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcEndpointServicePermissionsRequest,
+  ) => stream.Stream<
+    DescribeVpcEndpointServicePermissionsResult,
+    DescribeVpcEndpointServicePermissionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcEndpointServicePermissionsRequest,
+  ) => stream.Stream<
+    AllowedPrincipal,
+    DescribeVpcEndpointServicePermissionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEndpointServicesError =
   | RequestLimitExceeded
@@ -90970,7 +93630,27 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     items: "VpcPeeringConnections",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcPeeringConnectionsRequest,
+  DescribeVpcPeeringConnectionsResult,
+  DescribeVpcPeeringConnectionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcPeeringConnectionsRequest,
+  ) => stream.Stream<
+    DescribeVpcPeeringConnectionsResult,
+    DescribeVpcPeeringConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcPeeringConnectionsRequest,
+  ) => stream.Stream<
+    VpcPeeringConnection,
+    DescribeVpcPeeringConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcsError =
   | RequestLimitExceeded
@@ -91023,7 +93703,27 @@ export const describeVpcs: API.OperationMethod<
     items: "Vpcs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpcsRequest,
+  DescribeVpcsResult,
+  DescribeVpcsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpcsRequest,
+  ) => stream.Stream<
+    DescribeVpcsResult,
+    DescribeVpcsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpcsRequest,
+  ) => stream.Stream<
+    Vpc,
+    DescribeVpcsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpnConcentratorsError =
   | RequestLimitExceeded
@@ -91070,7 +93770,27 @@ export const describeVpnConcentrators: API.OperationMethod<
     items: "VpnConcentrators",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVpnConcentratorsRequest,
+  DescribeVpnConcentratorsResult,
+  DescribeVpnConcentratorsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVpnConcentratorsRequest,
+  ) => stream.Stream<
+    DescribeVpnConcentratorsResult,
+    DescribeVpnConcentratorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVpnConcentratorsRequest,
+  ) => stream.Stream<
+    VpnConcentrator,
+    DescribeVpnConcentratorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpnConnectionsError =
   | RequestLimitExceeded
@@ -93429,7 +96149,27 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
     items: "Ipv6CidrAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetAssociatedIpv6PoolCidrsRequest,
+  GetAssociatedIpv6PoolCidrsResult,
+  GetAssociatedIpv6PoolCidrsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetAssociatedIpv6PoolCidrsRequest,
+  ) => stream.Stream<
+    GetAssociatedIpv6PoolCidrsResult,
+    GetAssociatedIpv6PoolCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetAssociatedIpv6PoolCidrsRequest,
+  ) => stream.Stream<
+    Ipv6CidrAssociation,
+    GetAssociatedIpv6PoolCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetAwsNetworkPerformanceDataError =
   | RequestLimitExceeded
@@ -93472,7 +96212,27 @@ export const getAwsNetworkPerformanceData: API.OperationMethod<
     items: "DataResponses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetAwsNetworkPerformanceDataRequest,
+  GetAwsNetworkPerformanceDataResult,
+  GetAwsNetworkPerformanceDataError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetAwsNetworkPerformanceDataRequest,
+  ) => stream.Stream<
+    GetAwsNetworkPerformanceDataResult,
+    GetAwsNetworkPerformanceDataError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetAwsNetworkPerformanceDataRequest,
+  ) => stream.Stream<
+    DataResponse,
+    GetAwsNetworkPerformanceDataError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetCapacityManagerAttributesError = CommonErrors;
 /**
@@ -93534,7 +96294,27 @@ export const getCapacityManagerMetricData: API.OperationMethod<
     items: "MetricDataResults",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetCapacityManagerMetricDataRequest,
+  GetCapacityManagerMetricDataResult,
+  GetCapacityManagerMetricDataError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCapacityManagerMetricDataRequest,
+  ) => stream.Stream<
+    GetCapacityManagerMetricDataResult,
+    GetCapacityManagerMetricDataError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCapacityManagerMetricDataRequest,
+  ) => stream.Stream<
+    MetricDataResult,
+    GetCapacityManagerMetricDataError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetCapacityManagerMetricDimensionsError =
   | RequestLimitExceeded
@@ -93578,7 +96358,27 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
     items: "MetricDimensionResults",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetCapacityManagerMetricDimensionsRequest,
+  GetCapacityManagerMetricDimensionsResult,
+  GetCapacityManagerMetricDimensionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCapacityManagerMetricDimensionsRequest,
+  ) => stream.Stream<
+    GetCapacityManagerMetricDimensionsResult,
+    GetCapacityManagerMetricDimensionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCapacityManagerMetricDimensionsRequest,
+  ) => stream.Stream<
+    CapacityManagerDimension,
+    GetCapacityManagerMetricDimensionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetCapacityManagerMonitoredTagKeysError = CommonErrors;
 /**
@@ -93617,7 +96417,27 @@ export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
     items: "CapacityManagerTagKeys",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetCapacityManagerMonitoredTagKeysRequest,
+  GetCapacityManagerMonitoredTagKeysResult,
+  GetCapacityManagerMonitoredTagKeysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCapacityManagerMonitoredTagKeysRequest,
+  ) => stream.Stream<
+    GetCapacityManagerMonitoredTagKeysResult,
+    GetCapacityManagerMonitoredTagKeysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCapacityManagerMonitoredTagKeysRequest,
+  ) => stream.Stream<
+    CapacityManagerMonitoredTagKey,
+    GetCapacityManagerMonitoredTagKeysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetCapacityReservationUsageError =
   | RequestLimitExceeded
@@ -93938,7 +96758,27 @@ export const getGroupsForCapacityReservation: API.OperationMethod<
     items: "CapacityReservationGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetGroupsForCapacityReservationRequest,
+  GetGroupsForCapacityReservationResult,
+  GetGroupsForCapacityReservationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetGroupsForCapacityReservationRequest,
+  ) => stream.Stream<
+    GetGroupsForCapacityReservationResult,
+    GetGroupsForCapacityReservationError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetGroupsForCapacityReservationRequest,
+  ) => stream.Stream<
+    CapacityReservationGroup,
+    GetGroupsForCapacityReservationError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetHostReservationPurchasePreviewError = CommonErrors;
 /**
@@ -94107,7 +96947,27 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetInstanceTypesFromInstanceRequirementsRequest,
+  GetInstanceTypesFromInstanceRequirementsResult,
+  GetInstanceTypesFromInstanceRequirementsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetInstanceTypesFromInstanceRequirementsRequest,
+  ) => stream.Stream<
+    GetInstanceTypesFromInstanceRequirementsResult,
+    GetInstanceTypesFromInstanceRequirementsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetInstanceTypesFromInstanceRequirementsRequest,
+  ) => stream.Stream<
+    InstanceTypeInfoFromInstanceRequirements,
+    GetInstanceTypesFromInstanceRequirementsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetInstanceUefiDataError =
   | RequestLimitExceeded
@@ -94192,7 +97052,27 @@ export const getIpamAddressHistory: API.OperationMethod<
     items: "HistoryRecords",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamAddressHistoryRequest,
+  GetIpamAddressHistoryResult,
+  GetIpamAddressHistoryError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamAddressHistoryRequest,
+  ) => stream.Stream<
+    GetIpamAddressHistoryResult,
+    GetIpamAddressHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamAddressHistoryRequest,
+  ) => stream.Stream<
+    IpamAddressHistoryRecord,
+    GetIpamAddressHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamDiscoveredAccountsError =
   | RequestLimitExceeded
@@ -94241,7 +97121,27 @@ export const getIpamDiscoveredAccounts: API.OperationMethod<
     items: "IpamDiscoveredAccounts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamDiscoveredAccountsRequest,
+  GetIpamDiscoveredAccountsResult,
+  GetIpamDiscoveredAccountsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamDiscoveredAccountsRequest,
+  ) => stream.Stream<
+    GetIpamDiscoveredAccountsResult,
+    GetIpamDiscoveredAccountsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamDiscoveredAccountsRequest,
+  ) => stream.Stream<
+    IpamDiscoveredAccount,
+    GetIpamDiscoveredAccountsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamDiscoveredPublicAddressesError =
   | RequestLimitExceeded
@@ -94318,7 +97218,27 @@ export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
     items: "IpamDiscoveredResourceCidrs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamDiscoveredResourceCidrsRequest,
+  GetIpamDiscoveredResourceCidrsResult,
+  GetIpamDiscoveredResourceCidrsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamDiscoveredResourceCidrsRequest,
+  ) => stream.Stream<
+    GetIpamDiscoveredResourceCidrsResult,
+    GetIpamDiscoveredResourceCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamDiscoveredResourceCidrsRequest,
+  ) => stream.Stream<
+    IpamDiscoveredResourceCidr,
+    GetIpamDiscoveredResourceCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
@@ -94433,7 +97353,27 @@ export const getIpamPoolAllocations: API.OperationMethod<
     items: "IpamPoolAllocations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamPoolAllocationsRequest,
+  GetIpamPoolAllocationsResult,
+  GetIpamPoolAllocationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamPoolAllocationsRequest,
+  ) => stream.Stream<
+    GetIpamPoolAllocationsResult,
+    GetIpamPoolAllocationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamPoolAllocationsRequest,
+  ) => stream.Stream<
+    IpamPoolAllocation,
+    GetIpamPoolAllocationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamPoolCidrsError =
   | RequestLimitExceeded
@@ -94482,7 +97422,27 @@ export const getIpamPoolCidrs: API.OperationMethod<
     items: "IpamPoolCidrs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamPoolCidrsRequest,
+  GetIpamPoolCidrsResult,
+  GetIpamPoolCidrsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamPoolCidrsRequest,
+  ) => stream.Stream<
+    GetIpamPoolCidrsResult,
+    GetIpamPoolCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamPoolCidrsRequest,
+  ) => stream.Stream<
+    IpamPoolCidr,
+    GetIpamPoolCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamPrefixListResolverRulesError =
   | RequestLimitExceeded
@@ -94531,7 +97491,27 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
     items: "Rules",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamPrefixListResolverRulesRequest,
+  GetIpamPrefixListResolverRulesResult,
+  GetIpamPrefixListResolverRulesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamPrefixListResolverRulesRequest,
+  ) => stream.Stream<
+    GetIpamPrefixListResolverRulesResult,
+    GetIpamPrefixListResolverRulesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamPrefixListResolverRulesRequest,
+  ) => stream.Stream<
+    IpamPrefixListResolverRule,
+    GetIpamPrefixListResolverRulesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamPrefixListResolverVersionEntriesError =
   | RequestLimitExceeded
@@ -94574,7 +97554,27 @@ export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamPrefixListResolverVersionEntriesRequest,
+  GetIpamPrefixListResolverVersionEntriesResult,
+  GetIpamPrefixListResolverVersionEntriesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamPrefixListResolverVersionEntriesRequest,
+  ) => stream.Stream<
+    GetIpamPrefixListResolverVersionEntriesResult,
+    GetIpamPrefixListResolverVersionEntriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamPrefixListResolverVersionEntriesRequest,
+  ) => stream.Stream<
+    IpamPrefixListResolverVersionEntry,
+    GetIpamPrefixListResolverVersionEntriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamPrefixListResolverVersionsError =
   | RequestLimitExceeded
@@ -94650,7 +97650,27 @@ export const getIpamPrefixListResolverVersions: API.OperationMethod<
     items: "IpamPrefixListResolverVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamPrefixListResolverVersionsRequest,
+  GetIpamPrefixListResolverVersionsResult,
+  GetIpamPrefixListResolverVersionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamPrefixListResolverVersionsRequest,
+  ) => stream.Stream<
+    GetIpamPrefixListResolverVersionsResult,
+    GetIpamPrefixListResolverVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamPrefixListResolverVersionsRequest,
+  ) => stream.Stream<
+    IpamPrefixListResolverVersion,
+    GetIpamPrefixListResolverVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetIpamResourceCidrsError =
   | RequestLimitExceeded
@@ -94699,7 +97719,27 @@ export const getIpamResourceCidrs: API.OperationMethod<
     items: "IpamResourceCidrs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetIpamResourceCidrsRequest,
+  GetIpamResourceCidrsResult,
+  GetIpamResourceCidrsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetIpamResourceCidrsRequest,
+  ) => stream.Stream<
+    GetIpamResourceCidrsResult,
+    GetIpamResourceCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetIpamResourceCidrsRequest,
+  ) => stream.Stream<
+    IpamResourceCidr,
+    GetIpamResourceCidrsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetLaunchTemplateDataError =
   | RequestLimitExceeded
@@ -94782,7 +97822,27 @@ export const getManagedPrefixListAssociations: API.OperationMethod<
     items: "PrefixListAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetManagedPrefixListAssociationsRequest,
+  GetManagedPrefixListAssociationsResult,
+  GetManagedPrefixListAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetManagedPrefixListAssociationsRequest,
+  ) => stream.Stream<
+    GetManagedPrefixListAssociationsResult,
+    GetManagedPrefixListAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetManagedPrefixListAssociationsRequest,
+  ) => stream.Stream<
+    PrefixListAssociation,
+    GetManagedPrefixListAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetManagedPrefixListEntriesError =
   | RequestLimitExceeded
@@ -94833,7 +97893,27 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetManagedPrefixListEntriesRequest,
+  GetManagedPrefixListEntriesResult,
+  GetManagedPrefixListEntriesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetManagedPrefixListEntriesRequest,
+  ) => stream.Stream<
+    GetManagedPrefixListEntriesResult,
+    GetManagedPrefixListEntriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetManagedPrefixListEntriesRequest,
+  ) => stream.Stream<
+    PrefixListEntry,
+    GetManagedPrefixListEntriesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetManagedResourceVisibilityError = CommonErrors;
 /**
@@ -94895,7 +97975,27 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
     items: "AnalysisFindings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
+  GetNetworkInsightsAccessScopeAnalysisFindingsResult,
+  GetNetworkInsightsAccessScopeAnalysisFindingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
+  ) => stream.Stream<
+    GetNetworkInsightsAccessScopeAnalysisFindingsResult,
+    GetNetworkInsightsAccessScopeAnalysisFindingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
+  ) => stream.Stream<
+    AccessScopeAnalysisFinding,
+    GetNetworkInsightsAccessScopeAnalysisFindingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetNetworkInsightsAccessScopeContentError =
   | RequestLimitExceeded
@@ -95148,7 +98248,27 @@ export const getSecurityGroupsForVpc: API.OperationMethod<
     items: "SecurityGroupForVpcs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetSecurityGroupsForVpcRequest,
+  GetSecurityGroupsForVpcResult,
+  GetSecurityGroupsForVpcError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetSecurityGroupsForVpcRequest,
+  ) => stream.Stream<
+    GetSecurityGroupsForVpcResult,
+    GetSecurityGroupsForVpcError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetSecurityGroupsForVpcRequest,
+  ) => stream.Stream<
+    SecurityGroupForVpc,
+    GetSecurityGroupsForVpcError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetSerialConsoleAccessStatusError = CommonErrors;
 /**
@@ -95239,7 +98359,27 @@ export const getSpotPlacementScores: API.OperationMethod<
     items: "SpotPlacementScores",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetSpotPlacementScoresRequest,
+  GetSpotPlacementScoresResult,
+  GetSpotPlacementScoresError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetSpotPlacementScoresRequest,
+  ) => stream.Stream<
+    GetSpotPlacementScoresResult,
+    GetSpotPlacementScoresError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetSpotPlacementScoresRequest,
+  ) => stream.Stream<
+    SpotPlacementScore,
+    GetSpotPlacementScoresError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetSubnetCidrReservationsError =
   | RequestLimitExceeded
@@ -95314,7 +98454,27 @@ export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
     items: "TransitGatewayAttachmentPropagations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTransitGatewayAttachmentPropagationsRequest,
+  GetTransitGatewayAttachmentPropagationsResult,
+  GetTransitGatewayAttachmentPropagationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTransitGatewayAttachmentPropagationsRequest,
+  ) => stream.Stream<
+    GetTransitGatewayAttachmentPropagationsResult,
+    GetTransitGatewayAttachmentPropagationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTransitGatewayAttachmentPropagationsRequest,
+  ) => stream.Stream<
+    TransitGatewayAttachmentPropagation,
+    GetTransitGatewayAttachmentPropagationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTransitGatewayMeteringPolicyEntriesError =
   | RequestLimitExceeded
@@ -95393,7 +98553,27 @@ export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
     items: "MulticastDomainAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTransitGatewayMulticastDomainAssociationsRequest,
+  GetTransitGatewayMulticastDomainAssociationsResult,
+  GetTransitGatewayMulticastDomainAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTransitGatewayMulticastDomainAssociationsRequest,
+  ) => stream.Stream<
+    GetTransitGatewayMulticastDomainAssociationsResult,
+    GetTransitGatewayMulticastDomainAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTransitGatewayMulticastDomainAssociationsRequest,
+  ) => stream.Stream<
+    TransitGatewayMulticastDomainAssociation,
+    GetTransitGatewayMulticastDomainAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTransitGatewayPolicyTableAssociationsError =
   | RequestLimitExceeded
@@ -95442,7 +98622,27 @@ export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
     items: "Associations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTransitGatewayPolicyTableAssociationsRequest,
+  GetTransitGatewayPolicyTableAssociationsResult,
+  GetTransitGatewayPolicyTableAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTransitGatewayPolicyTableAssociationsRequest,
+  ) => stream.Stream<
+    GetTransitGatewayPolicyTableAssociationsResult,
+    GetTransitGatewayPolicyTableAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTransitGatewayPolicyTableAssociationsRequest,
+  ) => stream.Stream<
+    TransitGatewayPolicyTableAssociation,
+    GetTransitGatewayPolicyTableAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTransitGatewayPolicyTableEntriesError =
   | RequestLimitExceeded
@@ -95519,7 +98719,27 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
     items: "TransitGatewayPrefixListReferences",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTransitGatewayPrefixListReferencesRequest,
+  GetTransitGatewayPrefixListReferencesResult,
+  GetTransitGatewayPrefixListReferencesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTransitGatewayPrefixListReferencesRequest,
+  ) => stream.Stream<
+    GetTransitGatewayPrefixListReferencesResult,
+    GetTransitGatewayPrefixListReferencesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTransitGatewayPrefixListReferencesRequest,
+  ) => stream.Stream<
+    TransitGatewayPrefixListReference,
+    GetTransitGatewayPrefixListReferencesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTransitGatewayRouteTableAssociationsError =
   | RequestLimitExceeded
@@ -95566,7 +98786,27 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
     items: "Associations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTransitGatewayRouteTableAssociationsRequest,
+  GetTransitGatewayRouteTableAssociationsResult,
+  GetTransitGatewayRouteTableAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTransitGatewayRouteTableAssociationsRequest,
+  ) => stream.Stream<
+    GetTransitGatewayRouteTableAssociationsResult,
+    GetTransitGatewayRouteTableAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTransitGatewayRouteTableAssociationsRequest,
+  ) => stream.Stream<
+    TransitGatewayRouteTableAssociation,
+    GetTransitGatewayRouteTableAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTransitGatewayRouteTablePropagationsError =
   | RequestLimitExceeded
@@ -95613,7 +98853,27 @@ export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
     items: "TransitGatewayRouteTablePropagations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTransitGatewayRouteTablePropagationsRequest,
+  GetTransitGatewayRouteTablePropagationsResult,
+  GetTransitGatewayRouteTablePropagationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTransitGatewayRouteTablePropagationsRequest,
+  ) => stream.Stream<
+    GetTransitGatewayRouteTablePropagationsResult,
+    GetTransitGatewayRouteTablePropagationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTransitGatewayRouteTablePropagationsRequest,
+  ) => stream.Stream<
+    TransitGatewayRouteTablePropagation,
+    GetTransitGatewayRouteTablePropagationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetVerifiedAccessEndpointPolicyError =
   | RequestLimitExceeded
@@ -95786,7 +99046,27 @@ export const getVpnConnectionDeviceTypes: API.OperationMethod<
     items: "VpnConnectionDeviceTypes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetVpnConnectionDeviceTypesRequest,
+  GetVpnConnectionDeviceTypesResult,
+  GetVpnConnectionDeviceTypesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetVpnConnectionDeviceTypesRequest,
+  ) => stream.Stream<
+    GetVpnConnectionDeviceTypesResult,
+    GetVpnConnectionDeviceTypesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetVpnConnectionDeviceTypesRequest,
+  ) => stream.Stream<
+    VpnConnectionDeviceType,
+    GetVpnConnectionDeviceTypesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetVpnTunnelReplacementStatusError =
   | RequestLimitExceeded
@@ -96036,7 +99316,27 @@ export const listImagesInRecycleBin: API.OperationMethod<
     items: "Images",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImagesInRecycleBinRequest,
+  ListImagesInRecycleBinResult,
+  ListImagesInRecycleBinError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImagesInRecycleBinRequest,
+  ) => stream.Stream<
+    ListImagesInRecycleBinResult,
+    ListImagesInRecycleBinError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImagesInRecycleBinRequest,
+  ) => stream.Stream<
+    ImageRecycleBinInfo,
+    ListImagesInRecycleBinError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListSnapshotsInRecycleBinError =
   | RequestLimitExceeded
@@ -96083,7 +99383,27 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
     items: "Snapshots",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSnapshotsInRecycleBinRequest,
+  ListSnapshotsInRecycleBinResult,
+  ListSnapshotsInRecycleBinError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSnapshotsInRecycleBinRequest,
+  ) => stream.Stream<
+    ListSnapshotsInRecycleBinResult,
+    ListSnapshotsInRecycleBinError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSnapshotsInRecycleBinRequest,
+  ) => stream.Stream<
+    SnapshotRecycleBinInfo,
+    ListSnapshotsInRecycleBinError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListVolumesInRecycleBinError =
   | RequestLimitExceeded
@@ -100425,7 +103745,27 @@ export const searchLocalGatewayRoutes: API.OperationMethod<
     items: "Routes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchLocalGatewayRoutesRequest,
+  SearchLocalGatewayRoutesResult,
+  SearchLocalGatewayRoutesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchLocalGatewayRoutesRequest,
+  ) => stream.Stream<
+    SearchLocalGatewayRoutesResult,
+    SearchLocalGatewayRoutesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchLocalGatewayRoutesRequest,
+  ) => stream.Stream<
+    LocalGatewayRoute,
+    SearchLocalGatewayRoutesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type SearchTransitGatewayMulticastGroupsError =
   | RequestLimitExceeded
@@ -100474,7 +103814,27 @@ export const searchTransitGatewayMulticastGroups: API.OperationMethod<
     items: "MulticastGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchTransitGatewayMulticastGroupsRequest,
+  SearchTransitGatewayMulticastGroupsResult,
+  SearchTransitGatewayMulticastGroupsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchTransitGatewayMulticastGroupsRequest,
+  ) => stream.Stream<
+    SearchTransitGatewayMulticastGroupsResult,
+    SearchTransitGatewayMulticastGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchTransitGatewayMulticastGroupsRequest,
+  ) => stream.Stream<
+    TransitGatewayMulticastGroup,
+    SearchTransitGatewayMulticastGroupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type SearchTransitGatewayRoutesError =
   | RequestLimitExceeded
@@ -100523,7 +103883,27 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
     items: "Routes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchTransitGatewayRoutesRequest,
+  SearchTransitGatewayRoutesResult,
+  SearchTransitGatewayRoutesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchTransitGatewayRoutesRequest,
+  ) => stream.Stream<
+    SearchTransitGatewayRoutesResult,
+    SearchTransitGatewayRoutesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchTransitGatewayRoutesRequest,
+  ) => stream.Stream<
+    TransitGatewayRoute,
+    SearchTransitGatewayRoutesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type SendDiagnosticInterruptError =
   | RequestLimitExceeded

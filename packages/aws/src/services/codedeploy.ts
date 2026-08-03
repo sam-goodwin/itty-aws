@@ -4275,7 +4275,27 @@ export const listApplicationRevisions: API.OperationMethod<
     outputToken: "nextToken",
     items: "revisions",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationRevisionsInput,
+  ListApplicationRevisionsOutput,
+  ListApplicationRevisionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationRevisionsInput,
+  ) => stream.Stream<
+    ListApplicationRevisionsOutput,
+    ListApplicationRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationRevisionsInput,
+  ) => stream.Stream<
+    RevisionLocation,
+    ListApplicationRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListApplicationsError = InvalidNextTokenException | CommonErrors;
 /**
@@ -4313,7 +4333,27 @@ export const listApplications: API.OperationMethod<
     outputToken: "nextToken",
     items: "applications",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationsInput,
+  ListApplicationsOutput,
+  ListApplicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsInput,
+  ) => stream.Stream<
+    ListApplicationsOutput,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsInput,
+  ) => stream.Stream<
+    ApplicationName,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentConfigsError =
   | InvalidNextTokenException
@@ -4353,7 +4393,27 @@ export const listDeploymentConfigs: API.OperationMethod<
     outputToken: "nextToken",
     items: "deploymentConfigsList",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentConfigsInput,
+  ListDeploymentConfigsOutput,
+  ListDeploymentConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentConfigsInput,
+  ) => stream.Stream<
+    ListDeploymentConfigsOutput,
+    ListDeploymentConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentConfigsInput,
+  ) => stream.Stream<
+    DeploymentConfigName,
+    ListDeploymentConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentGroupsError =
   | ApplicationDoesNotExistException
@@ -4402,7 +4462,27 @@ export const listDeploymentGroups: API.OperationMethod<
     outputToken: "nextToken",
     items: "deploymentGroups",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentGroupsInput,
+  ListDeploymentGroupsOutput,
+  ListDeploymentGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentGroupsInput,
+  ) => stream.Stream<
+    ListDeploymentGroupsOutput,
+    ListDeploymentGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentGroupsInput,
+  ) => stream.Stream<
+    DeploymentGroupName,
+    ListDeploymentGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentInstancesError =
   | DeploymentDoesNotExistException
@@ -4467,7 +4547,27 @@ export const listDeploymentInstances: API.OperationMethod<
     outputToken: "nextToken",
     items: "instancesList",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentInstancesInput,
+  ListDeploymentInstancesOutput,
+  ListDeploymentInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentInstancesInput,
+  ) => stream.Stream<
+    ListDeploymentInstancesOutput,
+    ListDeploymentInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentInstancesInput,
+  ) => stream.Stream<
+    InstanceId,
+    ListDeploymentInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentsError =
   | ApplicationDoesNotExistException
@@ -4530,7 +4630,27 @@ export const listDeployments: API.OperationMethod<
     outputToken: "nextToken",
     items: "deployments",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentsInput,
+  ListDeploymentsOutput,
+  ListDeploymentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentsInput,
+  ) => stream.Stream<
+    ListDeploymentsOutput,
+    ListDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentsInput,
+  ) => stream.Stream<
+    DeploymentId,
+    ListDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentTargetsError =
   | DeploymentDoesNotExistException

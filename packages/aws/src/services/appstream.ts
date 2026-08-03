@@ -5474,7 +5474,27 @@ export const describeAppBlockBuilderAppBlockAssociations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAppBlockBuilderAppBlockAssociationsRequest,
+  DescribeAppBlockBuilderAppBlockAssociationsResult,
+  DescribeAppBlockBuilderAppBlockAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
+  ) => stream.Stream<
+    DescribeAppBlockBuilderAppBlockAssociationsResult,
+    DescribeAppBlockBuilderAppBlockAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeAppBlockBuilderAppBlockAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAppBlockBuildersError =
   | OperationNotPermittedException
@@ -5515,7 +5535,27 @@ export const describeAppBlockBuilders: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAppBlockBuildersRequest,
+  DescribeAppBlockBuildersResult,
+  DescribeAppBlockBuildersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAppBlockBuildersRequest,
+  ) => stream.Stream<
+    DescribeAppBlockBuildersResult,
+    DescribeAppBlockBuildersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAppBlockBuildersRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeAppBlockBuildersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAppBlocksError =
   | OperationNotPermittedException
@@ -5733,7 +5773,27 @@ export const describeImagePermissions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImagePermissionsRequest,
+  DescribeImagePermissionsResult,
+  DescribeImagePermissionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImagePermissionsRequest,
+  ) => stream.Stream<
+    DescribeImagePermissionsResult,
+    DescribeImagePermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImagePermissionsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeImagePermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeImagesError =
   | InvalidParameterCombinationException
@@ -5774,7 +5834,27 @@ export const describeImages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeImagesRequest,
+  DescribeImagesResult,
+  DescribeImagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeImagesRequest,
+  ) => stream.Stream<
+    DescribeImagesResult,
+    DescribeImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeImagesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSessionsError =
   | InvalidParameterCombinationException

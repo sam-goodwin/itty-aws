@@ -7105,7 +7105,27 @@ export const listComponentBuildVersions: API.OperationMethod<
     items: "componentSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComponentBuildVersionsRequest,
+  ListComponentBuildVersionsResponse,
+  ListComponentBuildVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComponentBuildVersionsRequest,
+  ) => stream.Stream<
+    ListComponentBuildVersionsResponse,
+    ListComponentBuildVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComponentBuildVersionsRequest,
+  ) => stream.Stream<
+    ComponentSummary,
+    ListComponentBuildVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListComponentsError =
   | CallRateLimitExceededException
@@ -7170,7 +7190,27 @@ export const listComponents: API.OperationMethod<
     items: "componentVersionList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComponentsRequest,
+  ListComponentsResponse,
+  ListComponentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComponentsRequest,
+  ) => stream.Stream<
+    ListComponentsResponse,
+    ListComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComponentsRequest,
+  ) => stream.Stream<
+    ComponentVersion,
+    ListComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContainerRecipesError =
   | CallRateLimitExceededException
@@ -7225,7 +7265,27 @@ export const listContainerRecipes: API.OperationMethod<
     items: "containerRecipeSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContainerRecipesRequest,
+  ListContainerRecipesResponse,
+  ListContainerRecipesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContainerRecipesRequest,
+  ) => stream.Stream<
+    ListContainerRecipesResponse,
+    ListContainerRecipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContainerRecipesRequest,
+  ) => stream.Stream<
+    ContainerRecipeSummary,
+    ListContainerRecipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDistributionConfigurationsError =
   | CallRateLimitExceededException
@@ -7280,7 +7340,27 @@ export const listDistributionConfigurations: API.OperationMethod<
     items: "distributionConfigurationSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDistributionConfigurationsRequest,
+  ListDistributionConfigurationsResponse,
+  ListDistributionConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDistributionConfigurationsRequest,
+  ) => stream.Stream<
+    ListDistributionConfigurationsResponse,
+    ListDistributionConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDistributionConfigurationsRequest,
+  ) => stream.Stream<
+    DistributionConfigurationSummary,
+    ListDistributionConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImageBuildVersionsError =
   | CallRateLimitExceededException
@@ -7335,7 +7415,27 @@ export const listImageBuildVersions: API.OperationMethod<
     items: "imageSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImageBuildVersionsRequest,
+  ListImageBuildVersionsResponse,
+  ListImageBuildVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImageBuildVersionsRequest,
+  ) => stream.Stream<
+    ListImageBuildVersionsResponse,
+    ListImageBuildVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImageBuildVersionsRequest,
+  ) => stream.Stream<
+    ImageSummary,
+    ListImageBuildVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImagePackagesError =
   | CallRateLimitExceededException
@@ -7393,7 +7493,27 @@ export const listImagePackages: API.OperationMethod<
     items: "imagePackageList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImagePackagesRequest,
+  ListImagePackagesResponse,
+  ListImagePackagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImagePackagesRequest,
+  ) => stream.Stream<
+    ListImagePackagesResponse,
+    ListImagePackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImagePackagesRequest,
+  ) => stream.Stream<
+    ImagePackage,
+    ListImagePackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImagePipelineImagesError =
   | CallRateLimitExceededException
@@ -7450,7 +7570,27 @@ export const listImagePipelineImages: API.OperationMethod<
     items: "imageSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImagePipelineImagesRequest,
+  ListImagePipelineImagesResponse,
+  ListImagePipelineImagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImagePipelineImagesRequest,
+  ) => stream.Stream<
+    ListImagePipelineImagesResponse,
+    ListImagePipelineImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImagePipelineImagesRequest,
+  ) => stream.Stream<
+    ImageSummary,
+    ListImagePipelineImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImagePipelinesError =
   | CallRateLimitExceededException
@@ -7505,7 +7645,27 @@ export const listImagePipelines: API.OperationMethod<
     items: "imagePipelineList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImagePipelinesRequest,
+  ListImagePipelinesResponse,
+  ListImagePipelinesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImagePipelinesRequest,
+  ) => stream.Stream<
+    ListImagePipelinesResponse,
+    ListImagePipelinesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImagePipelinesRequest,
+  ) => stream.Stream<
+    ImagePipeline,
+    ListImagePipelinesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImageRecipesError =
   | CallRateLimitExceededException
@@ -7560,7 +7720,27 @@ export const listImageRecipes: API.OperationMethod<
     items: "imageRecipeSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImageRecipesRequest,
+  ListImageRecipesResponse,
+  ListImageRecipesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImageRecipesRequest,
+  ) => stream.Stream<
+    ListImageRecipesResponse,
+    ListImageRecipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImageRecipesRequest,
+  ) => stream.Stream<
+    ImageRecipeSummary,
+    ListImageRecipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImagesError =
   | CallRateLimitExceededException
@@ -7616,7 +7796,27 @@ export const listImages: API.OperationMethod<
     items: "imageVersionList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImagesRequest,
+  ListImagesResponse,
+  ListImagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImagesRequest,
+  ) => stream.Stream<
+    ListImagesResponse,
+    ListImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImagesRequest,
+  ) => stream.Stream<
+    ImageVersion,
+    ListImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImageScanFindingAggregationsError =
   | CallRateLimitExceededException
@@ -7684,7 +7884,27 @@ export const listImageScanFindingAggregations: API.OperationMethod<
     outputToken: "nextToken",
     items: "responses",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImageScanFindingAggregationsRequest,
+  ListImageScanFindingAggregationsResponse,
+  ListImageScanFindingAggregationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImageScanFindingAggregationsRequest,
+  ) => stream.Stream<
+    ListImageScanFindingAggregationsResponse,
+    ListImageScanFindingAggregationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImageScanFindingAggregationsRequest,
+  ) => stream.Stream<
+    ImageScanFindingAggregation,
+    ListImageScanFindingAggregationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImageScanFindingsError =
   | CallRateLimitExceededException
@@ -7739,7 +7959,27 @@ export const listImageScanFindings: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImageScanFindingsRequest,
+  ListImageScanFindingsResponse,
+  ListImageScanFindingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImageScanFindingsRequest,
+  ) => stream.Stream<
+    ListImageScanFindingsResponse,
+    ListImageScanFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImageScanFindingsRequest,
+  ) => stream.Stream<
+    ImageScanFinding,
+    ListImageScanFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInfrastructureConfigurationsError =
   | CallRateLimitExceededException
@@ -7794,7 +8034,27 @@ export const listInfrastructureConfigurations: API.OperationMethod<
     items: "infrastructureConfigurationSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInfrastructureConfigurationsRequest,
+  ListInfrastructureConfigurationsResponse,
+  ListInfrastructureConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInfrastructureConfigurationsRequest,
+  ) => stream.Stream<
+    ListInfrastructureConfigurationsResponse,
+    ListInfrastructureConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInfrastructureConfigurationsRequest,
+  ) => stream.Stream<
+    InfrastructureConfigurationSummary,
+    ListInfrastructureConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLifecycleExecutionResourcesError =
   | CallRateLimitExceededException
@@ -7849,7 +8109,27 @@ export const listLifecycleExecutionResources: API.OperationMethod<
     items: "resources",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLifecycleExecutionResourcesRequest,
+  ListLifecycleExecutionResourcesResponse,
+  ListLifecycleExecutionResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLifecycleExecutionResourcesRequest,
+  ) => stream.Stream<
+    ListLifecycleExecutionResourcesResponse,
+    ListLifecycleExecutionResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLifecycleExecutionResourcesRequest,
+  ) => stream.Stream<
+    LifecycleExecutionResource,
+    ListLifecycleExecutionResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLifecycleExecutionsError =
   | CallRateLimitExceededException
@@ -7904,7 +8184,27 @@ export const listLifecycleExecutions: API.OperationMethod<
     items: "lifecycleExecutions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLifecycleExecutionsRequest,
+  ListLifecycleExecutionsResponse,
+  ListLifecycleExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLifecycleExecutionsRequest,
+  ) => stream.Stream<
+    ListLifecycleExecutionsResponse,
+    ListLifecycleExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLifecycleExecutionsRequest,
+  ) => stream.Stream<
+    LifecycleExecution,
+    ListLifecycleExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLifecyclePoliciesError =
   | CallRateLimitExceededException
@@ -7959,7 +8259,27 @@ export const listLifecyclePolicies: API.OperationMethod<
     items: "lifecyclePolicySummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLifecyclePoliciesRequest,
+  ListLifecyclePoliciesResponse,
+  ListLifecyclePoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLifecyclePoliciesRequest,
+  ) => stream.Stream<
+    ListLifecyclePoliciesResponse,
+    ListLifecyclePoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLifecyclePoliciesRequest,
+  ) => stream.Stream<
+    LifecyclePolicySummary,
+    ListLifecyclePoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InvalidParameterException
@@ -8041,7 +8361,27 @@ export const listWaitingWorkflowSteps: API.OperationMethod<
     items: "steps",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWaitingWorkflowStepsRequest,
+  ListWaitingWorkflowStepsResponse,
+  ListWaitingWorkflowStepsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWaitingWorkflowStepsRequest,
+  ) => stream.Stream<
+    ListWaitingWorkflowStepsResponse,
+    ListWaitingWorkflowStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWaitingWorkflowStepsRequest,
+  ) => stream.Stream<
+    WorkflowStepExecution,
+    ListWaitingWorkflowStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowBuildVersionsError =
   | CallRateLimitExceededException
@@ -8096,7 +8436,27 @@ export const listWorkflowBuildVersions: API.OperationMethod<
     items: "workflowSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowBuildVersionsRequest,
+  ListWorkflowBuildVersionsResponse,
+  ListWorkflowBuildVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowBuildVersionsRequest,
+  ) => stream.Stream<
+    ListWorkflowBuildVersionsResponse,
+    ListWorkflowBuildVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowBuildVersionsRequest,
+  ) => stream.Stream<
+    WorkflowSummary,
+    ListWorkflowBuildVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowExecutionsError =
   | CallRateLimitExceededException
@@ -8152,7 +8512,27 @@ export const listWorkflowExecutions: API.OperationMethod<
     items: "workflowExecutions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowExecutionsRequest,
+  ListWorkflowExecutionsResponse,
+  ListWorkflowExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowExecutionsRequest,
+  ) => stream.Stream<
+    ListWorkflowExecutionsResponse,
+    ListWorkflowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowExecutionsRequest,
+  ) => stream.Stream<
+    WorkflowExecutionMetadata,
+    ListWorkflowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowsError =
   | CallRateLimitExceededException
@@ -8207,7 +8587,27 @@ export const listWorkflows: API.OperationMethod<
     items: "workflowVersionList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowsRequest,
+  ListWorkflowsResponse,
+  ListWorkflowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowsRequest,
+  ) => stream.Stream<
+    ListWorkflowsResponse,
+    ListWorkflowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowsRequest,
+  ) => stream.Stream<
+    WorkflowVersion,
+    ListWorkflowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowStepExecutionsError =
   | CallRateLimitExceededException
@@ -8263,7 +8663,27 @@ export const listWorkflowStepExecutions: API.OperationMethod<
     items: "steps",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowStepExecutionsRequest,
+  ListWorkflowStepExecutionsResponse,
+  ListWorkflowStepExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowStepExecutionsRequest,
+  ) => stream.Stream<
+    ListWorkflowStepExecutionsResponse,
+    ListWorkflowStepExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowStepExecutionsRequest,
+  ) => stream.Stream<
+    WorkflowStepMetadata,
+    ListWorkflowStepExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutComponentPolicyError =
   | CallRateLimitExceededException

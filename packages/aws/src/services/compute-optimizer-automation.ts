@@ -1911,7 +1911,27 @@ export const listAccounts: API.OperationMethod<
     items: "accounts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccountsRequest,
+  ListAccountsResponse,
+  ListAccountsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
+    ListAccountsResponse,
+    ListAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
+    AccountInfo,
+    ListAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutomationEventsError =
   | AccessDeniedException
@@ -1966,7 +1986,27 @@ export const listAutomationEvents: API.OperationMethod<
     items: "automationEvents",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutomationEventsRequest,
+  ListAutomationEventsResponse,
+  ListAutomationEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutomationEventsRequest,
+  ) => stream.Stream<
+    ListAutomationEventsResponse,
+    ListAutomationEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutomationEventsRequest,
+  ) => stream.Stream<
+    AutomationEvent,
+    ListAutomationEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutomationEventStepsError =
   | AccessDeniedException
@@ -2023,7 +2063,27 @@ export const listAutomationEventSteps: API.OperationMethod<
     items: "automationEventSteps",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutomationEventStepsRequest,
+  ListAutomationEventStepsResponse,
+  ListAutomationEventStepsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutomationEventStepsRequest,
+  ) => stream.Stream<
+    ListAutomationEventStepsResponse,
+    ListAutomationEventStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutomationEventStepsRequest,
+  ) => stream.Stream<
+    AutomationEventStep,
+    ListAutomationEventStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutomationEventSummariesError =
   | AccessDeniedException
@@ -2078,7 +2138,27 @@ export const listAutomationEventSummaries: API.OperationMethod<
     items: "automationEventSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutomationEventSummariesRequest,
+  ListAutomationEventSummariesResponse,
+  ListAutomationEventSummariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutomationEventSummariesRequest,
+  ) => stream.Stream<
+    ListAutomationEventSummariesResponse,
+    ListAutomationEventSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutomationEventSummariesRequest,
+  ) => stream.Stream<
+    AutomationEventSummary,
+    ListAutomationEventSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutomationRulePreviewError =
   | AccessDeniedException
@@ -2133,7 +2213,27 @@ export const listAutomationRulePreview: API.OperationMethod<
     items: "previewResults",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutomationRulePreviewRequest,
+  ListAutomationRulePreviewResponse,
+  ListAutomationRulePreviewError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutomationRulePreviewRequest,
+  ) => stream.Stream<
+    ListAutomationRulePreviewResponse,
+    ListAutomationRulePreviewError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutomationRulePreviewRequest,
+  ) => stream.Stream<
+    PreviewResult,
+    ListAutomationRulePreviewError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutomationRulePreviewSummariesError =
   | AccessDeniedException
@@ -2188,7 +2288,27 @@ export const listAutomationRulePreviewSummaries: API.OperationMethod<
     items: "previewResultSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutomationRulePreviewSummariesRequest,
+  ListAutomationRulePreviewSummariesResponse,
+  ListAutomationRulePreviewSummariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutomationRulePreviewSummariesRequest,
+  ) => stream.Stream<
+    ListAutomationRulePreviewSummariesResponse,
+    ListAutomationRulePreviewSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutomationRulePreviewSummariesRequest,
+  ) => stream.Stream<
+    PreviewResultSummary,
+    ListAutomationRulePreviewSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutomationRulesError =
   | AccessDeniedException
@@ -2243,7 +2363,27 @@ export const listAutomationRules: API.OperationMethod<
     items: "automationRules",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutomationRulesRequest,
+  ListAutomationRulesResponse,
+  ListAutomationRulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutomationRulesRequest,
+  ) => stream.Stream<
+    ListAutomationRulesResponse,
+    ListAutomationRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutomationRulesRequest,
+  ) => stream.Stream<
+    AutomationRule,
+    ListAutomationRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecommendedActionsError =
   | AccessDeniedException
@@ -2300,7 +2440,27 @@ export const listRecommendedActions: API.OperationMethod<
     items: "recommendedActions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecommendedActionsRequest,
+  ListRecommendedActionsResponse,
+  ListRecommendedActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommendedActionsRequest,
+  ) => stream.Stream<
+    ListRecommendedActionsResponse,
+    ListRecommendedActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommendedActionsRequest,
+  ) => stream.Stream<
+    RecommendedAction,
+    ListRecommendedActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecommendedActionSummariesError =
   | AccessDeniedException
@@ -2357,7 +2517,27 @@ export const listRecommendedActionSummaries: API.OperationMethod<
     items: "recommendedActionSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecommendedActionSummariesRequest,
+  ListRecommendedActionSummariesResponse,
+  ListRecommendedActionSummariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommendedActionSummariesRequest,
+  ) => stream.Stream<
+    ListRecommendedActionSummariesResponse,
+    ListRecommendedActionSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommendedActionSummariesRequest,
+  ) => stream.Stream<
+    RecommendedActionSummary,
+    ListRecommendedActionSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

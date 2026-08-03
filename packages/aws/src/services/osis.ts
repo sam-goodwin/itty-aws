@@ -1633,7 +1633,27 @@ export const listPipelineEndpointConnections: API.OperationMethod<
     items: "PipelineEndpointConnections",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelineEndpointConnectionsRequest,
+  ListPipelineEndpointConnectionsResponse,
+  ListPipelineEndpointConnectionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelineEndpointConnectionsRequest,
+  ) => stream.Stream<
+    ListPipelineEndpointConnectionsResponse,
+    ListPipelineEndpointConnectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelineEndpointConnectionsRequest,
+  ) => stream.Stream<
+    PipelineEndpointConnection,
+    ListPipelineEndpointConnectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelineEndpointsError =
   | AccessDeniedException
@@ -1684,7 +1704,27 @@ export const listPipelineEndpoints: API.OperationMethod<
     items: "PipelineEndpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelineEndpointsRequest,
+  ListPipelineEndpointsResponse,
+  ListPipelineEndpointsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelineEndpointsRequest,
+  ) => stream.Stream<
+    ListPipelineEndpointsResponse,
+    ListPipelineEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelineEndpointsRequest,
+  ) => stream.Stream<
+    PipelineEndpoint,
+    ListPipelineEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelinesError =
   | AccessDeniedException
@@ -1736,7 +1776,27 @@ export const listPipelines: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelinesRequest,
+  ListPipelinesResponse,
+  ListPipelinesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelinesRequest,
+  ) => stream.Stream<
+    ListPipelinesResponse,
+    ListPipelinesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelinesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPipelinesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

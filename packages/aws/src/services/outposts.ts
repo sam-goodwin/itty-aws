@@ -3401,7 +3401,27 @@ export const getOutpostBillingInformation: API.OperationMethod<
     items: "Subscriptions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetOutpostBillingInformationInput,
+  GetOutpostBillingInformationOutput,
+  GetOutpostBillingInformationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetOutpostBillingInformationInput,
+  ) => stream.Stream<
+    GetOutpostBillingInformationOutput,
+    GetOutpostBillingInformationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetOutpostBillingInformationInput,
+  ) => stream.Stream<
+    Subscription,
+    GetOutpostBillingInformationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetOutpostInstanceTypesError =
   | AccessDeniedException
@@ -3450,7 +3470,27 @@ export const getOutpostInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetOutpostInstanceTypesInput,
+  GetOutpostInstanceTypesOutput,
+  GetOutpostInstanceTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetOutpostInstanceTypesInput,
+  ) => stream.Stream<
+    GetOutpostInstanceTypesOutput,
+    GetOutpostInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetOutpostInstanceTypesInput,
+  ) => stream.Stream<
+    InstanceTypeItem,
+    GetOutpostInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetOutpostSupportedInstanceTypesError =
   | AccessDeniedException
@@ -3501,7 +3541,27 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetOutpostSupportedInstanceTypesInput,
+  GetOutpostSupportedInstanceTypesOutput,
+  GetOutpostSupportedInstanceTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetOutpostSupportedInstanceTypesInput,
+  ) => stream.Stream<
+    GetOutpostSupportedInstanceTypesOutput,
+    GetOutpostSupportedInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetOutpostSupportedInstanceTypesInput,
+  ) => stream.Stream<
+    InstanceTypeItem,
+    GetOutpostSupportedInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetQuoteError =
   | AccessDeniedException
@@ -3663,7 +3723,27 @@ export const listAssetInstances: API.OperationMethod<
     items: "AssetInstances",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssetInstancesInput,
+  ListAssetInstancesOutput,
+  ListAssetInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetInstancesInput,
+  ) => stream.Stream<
+    ListAssetInstancesOutput,
+    ListAssetInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetInstancesInput,
+  ) => stream.Stream<
+    AssetInstance,
+    ListAssetInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssetsError =
   | AccessDeniedException
@@ -3716,7 +3796,27 @@ export const listAssets: API.OperationMethod<
     items: "Assets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssetsInput,
+  ListAssetsOutput,
+  ListAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetsInput,
+  ) => stream.Stream<
+    ListAssetsOutput,
+    ListAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetsInput,
+  ) => stream.Stream<
+    AssetInfo,
+    ListAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBlockingInstancesForCapacityTaskError =
   | AccessDeniedException
@@ -3767,7 +3867,27 @@ export const listBlockingInstancesForCapacityTask: API.OperationMethod<
     items: "BlockingInstances",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBlockingInstancesForCapacityTaskInput,
+  ListBlockingInstancesForCapacityTaskOutput,
+  ListBlockingInstancesForCapacityTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBlockingInstancesForCapacityTaskInput,
+  ) => stream.Stream<
+    ListBlockingInstancesForCapacityTaskOutput,
+    ListBlockingInstancesForCapacityTaskError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBlockingInstancesForCapacityTaskInput,
+  ) => stream.Stream<
+    BlockingInstance,
+    ListBlockingInstancesForCapacityTaskError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCapacityTasksError =
   | AccessDeniedException
@@ -3820,7 +3940,27 @@ export const listCapacityTasks: API.OperationMethod<
     items: "CapacityTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCapacityTasksInput,
+  ListCapacityTasksOutput,
+  ListCapacityTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCapacityTasksInput,
+  ) => stream.Stream<
+    ListCapacityTasksOutput,
+    ListCapacityTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCapacityTasksInput,
+  ) => stream.Stream<
+    CapacityTaskSummary,
+    ListCapacityTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCatalogItemsError =
   | AccessDeniedException
@@ -3873,7 +4013,27 @@ export const listCatalogItems: API.OperationMethod<
     items: "CatalogItems",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCatalogItemsInput,
+  ListCatalogItemsOutput,
+  ListCatalogItemsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCatalogItemsInput,
+  ) => stream.Stream<
+    ListCatalogItemsOutput,
+    ListCatalogItemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCatalogItemsInput,
+  ) => stream.Stream<
+    CatalogItem,
+    ListCatalogItemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOrderableInstanceTypesError =
   | AccessDeniedException
@@ -3923,7 +4083,27 @@ export const listOrderableInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOrderableInstanceTypesInput,
+  ListOrderableInstanceTypesOutput,
+  ListOrderableInstanceTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOrderableInstanceTypesInput,
+  ) => stream.Stream<
+    ListOrderableInstanceTypesOutput,
+    ListOrderableInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOrderableInstanceTypesInput,
+  ) => stream.Stream<
+    DetailedInstanceTypeItem,
+    ListOrderableInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOrdersError =
   | AccessDeniedException
@@ -3972,7 +4152,27 @@ export const listOrders: API.OperationMethod<
     items: "Orders",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOrdersInput,
+  ListOrdersOutput,
+  ListOrdersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOrdersInput,
+  ) => stream.Stream<
+    ListOrdersOutput,
+    ListOrdersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOrdersInput,
+  ) => stream.Stream<
+    OrderSummary,
+    ListOrdersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOutpostsError =
   | AccessDeniedException
@@ -4019,7 +4219,27 @@ export const listOutposts: API.OperationMethod<
     items: "Outposts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOutpostsInput,
+  ListOutpostsOutput,
+  ListOutpostsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOutpostsInput,
+  ) => stream.Stream<
+    ListOutpostsOutput,
+    ListOutpostsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOutpostsInput,
+  ) => stream.Stream<
+    Outpost,
+    ListOutpostsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQuotesError =
   | AccessDeniedException
@@ -4061,7 +4281,27 @@ export const listQuotes: API.OperationMethod<
     items: "Quotes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListQuotesInput,
+  ListQuotesOutput,
+  ListQuotesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListQuotesInput,
+  ) => stream.Stream<
+    ListQuotesOutput,
+    ListQuotesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListQuotesInput,
+  ) => stream.Stream<
+    QuoteSummary,
+    ListQuotesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSitesError =
   | AccessDeniedException
@@ -4109,7 +4349,27 @@ export const listSites: API.OperationMethod<
     items: "Sites",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSitesInput,
+  ListSitesOutput,
+  ListSitesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSitesInput,
+  ) => stream.Stream<
+    ListSitesOutput,
+    ListSitesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSitesInput,
+  ) => stream.Stream<
+    Site,
+    ListSitesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

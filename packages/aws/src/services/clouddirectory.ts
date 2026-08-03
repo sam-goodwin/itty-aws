@@ -5385,7 +5385,27 @@ export const listAppliedSchemaArns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppliedSchemaArnsRequest,
+  ListAppliedSchemaArnsResponse,
+  ListAppliedSchemaArnsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppliedSchemaArnsRequest,
+  ) => stream.Stream<
+    ListAppliedSchemaArnsResponse,
+    ListAppliedSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppliedSchemaArnsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppliedSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAttachedIndicesError =
   | AccessDeniedException
@@ -5441,7 +5461,27 @@ export const listAttachedIndices: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAttachedIndicesRequest,
+  ListAttachedIndicesResponse,
+  ListAttachedIndicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAttachedIndicesRequest,
+  ) => stream.Stream<
+    ListAttachedIndicesResponse,
+    ListAttachedIndicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAttachedIndicesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAttachedIndicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDevelopmentSchemaArnsError =
   | AccessDeniedException
@@ -5498,7 +5538,27 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevelopmentSchemaArnsRequest,
+  ListDevelopmentSchemaArnsResponse,
+  ListDevelopmentSchemaArnsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevelopmentSchemaArnsRequest,
+  ) => stream.Stream<
+    ListDevelopmentSchemaArnsResponse,
+    ListDevelopmentSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevelopmentSchemaArnsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListDevelopmentSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDirectoriesError =
   | AccessDeniedException
@@ -5552,7 +5612,27 @@ export const listDirectories: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDirectoriesRequest,
+  ListDirectoriesResponse,
+  ListDirectoriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDirectoriesRequest,
+  ) => stream.Stream<
+    ListDirectoriesResponse,
+    ListDirectoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDirectoriesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListDirectoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFacetAttributesError =
   | AccessDeniedException
@@ -5610,7 +5690,27 @@ export const listFacetAttributes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFacetAttributesRequest,
+  ListFacetAttributesResponse,
+  ListFacetAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFacetAttributesRequest,
+  ) => stream.Stream<
+    ListFacetAttributesResponse,
+    ListFacetAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFacetAttributesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFacetAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFacetNamesError =
   | AccessDeniedException
@@ -5666,7 +5766,27 @@ export const listFacetNames: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFacetNamesRequest,
+  ListFacetNamesResponse,
+  ListFacetNamesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFacetNamesRequest,
+  ) => stream.Stream<
+    ListFacetNamesResponse,
+    ListFacetNamesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFacetNamesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFacetNamesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListIncomingTypedLinksError =
   | AccessDeniedException
@@ -5770,7 +5890,27 @@ export const listIndex: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIndexRequest,
+  ListIndexResponse,
+  ListIndexError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIndexRequest,
+  ) => stream.Stream<
+    ListIndexResponse,
+    ListIndexError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIndexRequest,
+  ) => stream.Stream<
+    unknown,
+    ListIndexError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListManagedSchemaArnsError =
   | AccessDeniedException
@@ -5822,7 +5962,27 @@ export const listManagedSchemaArns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListManagedSchemaArnsRequest,
+  ListManagedSchemaArnsResponse,
+  ListManagedSchemaArnsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListManagedSchemaArnsRequest,
+  ) => stream.Stream<
+    ListManagedSchemaArnsResponse,
+    ListManagedSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListManagedSchemaArnsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListManagedSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListObjectAttributesError =
   | AccessDeniedException
@@ -5882,7 +6042,27 @@ export const listObjectAttributes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListObjectAttributesRequest,
+  ListObjectAttributesResponse,
+  ListObjectAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListObjectAttributesRequest,
+  ) => stream.Stream<
+    ListObjectAttributesResponse,
+    ListObjectAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListObjectAttributesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListObjectAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListObjectChildrenError =
   | AccessDeniedException
@@ -5943,7 +6123,27 @@ export const listObjectChildren: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListObjectChildrenRequest,
+  ListObjectChildrenResponse,
+  ListObjectChildrenError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListObjectChildrenRequest,
+  ) => stream.Stream<
+    ListObjectChildrenResponse,
+    ListObjectChildrenError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListObjectChildrenRequest,
+  ) => stream.Stream<
+    unknown,
+    ListObjectChildrenError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListObjectParentPathsError =
   | AccessDeniedException
@@ -6009,7 +6209,27 @@ export const listObjectParentPaths: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListObjectParentPathsRequest,
+  ListObjectParentPathsResponse,
+  ListObjectParentPathsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListObjectParentPathsRequest,
+  ) => stream.Stream<
+    ListObjectParentPathsResponse,
+    ListObjectParentPathsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListObjectParentPathsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListObjectParentPathsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListObjectParentsError =
   | AccessDeniedException
@@ -6070,7 +6290,27 @@ export const listObjectParents: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListObjectParentsRequest,
+  ListObjectParentsResponse,
+  ListObjectParentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListObjectParentsRequest,
+  ) => stream.Stream<
+    ListObjectParentsResponse,
+    ListObjectParentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListObjectParentsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListObjectParentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListObjectPoliciesError =
   | AccessDeniedException
@@ -6128,7 +6368,27 @@ export const listObjectPolicies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListObjectPoliciesRequest,
+  ListObjectPoliciesResponse,
+  ListObjectPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListObjectPoliciesRequest,
+  ) => stream.Stream<
+    ListObjectPoliciesResponse,
+    ListObjectPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListObjectPoliciesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListObjectPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOutgoingTypedLinksError =
   | AccessDeniedException
@@ -6230,7 +6490,27 @@ export const listPolicyAttachments: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPolicyAttachmentsRequest,
+  ListPolicyAttachmentsResponse,
+  ListPolicyAttachmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyAttachmentsRequest,
+  ) => stream.Stream<
+    ListPolicyAttachmentsResponse,
+    ListPolicyAttachmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyAttachmentsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPolicyAttachmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPublishedSchemaArnsError =
   | AccessDeniedException
@@ -6286,7 +6566,27 @@ export const listPublishedSchemaArns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPublishedSchemaArnsRequest,
+  ListPublishedSchemaArnsResponse,
+  ListPublishedSchemaArnsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPublishedSchemaArnsRequest,
+  ) => stream.Stream<
+    ListPublishedSchemaArnsResponse,
+    ListPublishedSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPublishedSchemaArnsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPublishedSchemaArnsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -6344,7 +6644,27 @@ export const listTagsForResource: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    ListTagsForResourceResponse,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTypedLinkFacetAttributesError =
   | AccessDeniedException
@@ -6402,7 +6722,27 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTypedLinkFacetAttributesRequest,
+  ListTypedLinkFacetAttributesResponse,
+  ListTypedLinkFacetAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTypedLinkFacetAttributesRequest,
+  ) => stream.Stream<
+    ListTypedLinkFacetAttributesResponse,
+    ListTypedLinkFacetAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTypedLinkFacetAttributesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTypedLinkFacetAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTypedLinkFacetNamesError =
   | AccessDeniedException
@@ -6459,7 +6799,27 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTypedLinkFacetNamesRequest,
+  ListTypedLinkFacetNamesResponse,
+  ListTypedLinkFacetNamesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTypedLinkFacetNamesRequest,
+  ) => stream.Stream<
+    ListTypedLinkFacetNamesResponse,
+    ListTypedLinkFacetNamesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTypedLinkFacetNamesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTypedLinkFacetNamesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type LookupPolicyError =
   | AccessDeniedException
@@ -6522,7 +6882,27 @@ export const lookupPolicy: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  LookupPolicyRequest,
+  LookupPolicyResponse,
+  LookupPolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: LookupPolicyRequest,
+  ) => stream.Stream<
+    LookupPolicyResponse,
+    LookupPolicyError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: LookupPolicyRequest,
+  ) => stream.Stream<
+    unknown,
+    LookupPolicyError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PublishSchemaError =
   | AccessDeniedException

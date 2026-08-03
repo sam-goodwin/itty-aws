@@ -1516,7 +1516,27 @@ export const listApplicationDependencies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationDependenciesRequest,
+  ListApplicationDependenciesResponse,
+  ListApplicationDependenciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationDependenciesRequest,
+  ) => stream.Stream<
+    ListApplicationDependenciesResponse,
+    ListApplicationDependenciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationDependenciesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListApplicationDependenciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListApplicationsError =
   | BadRequestException
@@ -1564,7 +1584,27 @@ export const listApplications: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationsRequest,
+  ListApplicationsResponse,
+  ListApplicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    ListApplicationsResponse,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListApplicationVersionsError =
   | BadRequestException
@@ -1614,7 +1654,27 @@ export const listApplicationVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationVersionsRequest,
+  ListApplicationVersionsResponse,
+  ListApplicationVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationVersionsRequest,
+  ) => stream.Stream<
+    ListApplicationVersionsResponse,
+    ListApplicationVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationVersionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListApplicationVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutApplicationPolicyError =
   | BadRequestException

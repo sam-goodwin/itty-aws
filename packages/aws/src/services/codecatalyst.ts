@@ -2503,7 +2503,27 @@ export const listAccessTokens: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccessTokensRequest,
+  ListAccessTokensResponse,
+  ListAccessTokensError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccessTokensRequest,
+  ) => stream.Stream<
+    ListAccessTokensResponse,
+    ListAccessTokensError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccessTokensRequest,
+  ) => stream.Stream<
+    AccessTokenSummary,
+    ListAccessTokensError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDevEnvironmentsError = CommonErrors;
 /**
@@ -2542,7 +2562,27 @@ export const listDevEnvironments: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevEnvironmentsRequest,
+  ListDevEnvironmentsResponse,
+  ListDevEnvironmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevEnvironmentsRequest,
+  ) => stream.Stream<
+    ListDevEnvironmentsResponse,
+    ListDevEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevEnvironmentsRequest,
+  ) => stream.Stream<
+    DevEnvironmentSummary,
+    ListDevEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDevEnvironmentSessionsError = CommonErrors;
 /**
@@ -2581,7 +2621,27 @@ export const listDevEnvironmentSessions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevEnvironmentSessionsRequest,
+  ListDevEnvironmentSessionsResponse,
+  ListDevEnvironmentSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevEnvironmentSessionsRequest,
+  ) => stream.Stream<
+    ListDevEnvironmentSessionsResponse,
+    ListDevEnvironmentSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevEnvironmentSessionsRequest,
+  ) => stream.Stream<
+    DevEnvironmentSessionSummary,
+    ListDevEnvironmentSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventLogsError = CommonErrors;
 /**
@@ -2628,7 +2688,27 @@ export const listEventLogs: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventLogsRequest,
+  ListEventLogsResponse,
+  ListEventLogsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventLogsRequest,
+  ) => stream.Stream<
+    ListEventLogsResponse,
+    ListEventLogsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventLogsRequest,
+  ) => stream.Stream<
+    EventLogEntry,
+    ListEventLogsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProjectsError = CommonErrors;
 /**
@@ -2667,7 +2747,27 @@ export const listProjects: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProjectsRequest,
+  ListProjectsResponse,
+  ListProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProjectsRequest,
+  ) => stream.Stream<
+    ListProjectsResponse,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProjectsRequest,
+  ) => stream.Stream<
+    ProjectSummary,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSourceRepositoriesError = CommonErrors;
 /**
@@ -2706,7 +2806,27 @@ export const listSourceRepositories: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSourceRepositoriesRequest,
+  ListSourceRepositoriesResponse,
+  ListSourceRepositoriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSourceRepositoriesRequest,
+  ) => stream.Stream<
+    ListSourceRepositoriesResponse,
+    ListSourceRepositoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSourceRepositoriesRequest,
+  ) => stream.Stream<
+    ListSourceRepositoriesItem,
+    ListSourceRepositoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSourceRepositoryBranchesError = CommonErrors;
 /**
@@ -2745,7 +2865,27 @@ export const listSourceRepositoryBranches: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSourceRepositoryBranchesRequest,
+  ListSourceRepositoryBranchesResponse,
+  ListSourceRepositoryBranchesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSourceRepositoryBranchesRequest,
+  ) => stream.Stream<
+    ListSourceRepositoryBranchesResponse,
+    ListSourceRepositoryBranchesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSourceRepositoryBranchesRequest,
+  ) => stream.Stream<
+    ListSourceRepositoryBranchesItem,
+    ListSourceRepositoryBranchesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSpacesError = CommonErrors;
 /**
@@ -2783,7 +2923,27 @@ export const listSpaces: API.OperationMethod<
     outputToken: "nextToken",
     items: "items",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSpacesRequest,
+  ListSpacesResponse,
+  ListSpacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSpacesRequest,
+  ) => stream.Stream<
+    ListSpacesResponse,
+    ListSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSpacesRequest,
+  ) => stream.Stream<
+    SpaceSummary,
+    ListSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowRunsError = CommonErrors;
 /**
@@ -2822,7 +2982,27 @@ export const listWorkflowRuns: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowRunsRequest,
+  ListWorkflowRunsResponse,
+  ListWorkflowRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowRunsRequest,
+  ) => stream.Stream<
+    ListWorkflowRunsResponse,
+    ListWorkflowRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowRunsRequest,
+  ) => stream.Stream<
+    WorkflowRunSummary,
+    ListWorkflowRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowsError = CommonErrors;
 /**
@@ -2861,7 +3041,27 @@ export const listWorkflows: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowsRequest,
+  ListWorkflowsResponse,
+  ListWorkflowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowsRequest,
+  ) => stream.Stream<
+    ListWorkflowsResponse,
+    ListWorkflowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowsRequest,
+  ) => stream.Stream<
+    WorkflowSummary,
+    ListWorkflowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartDevEnvironmentError = CommonErrors;
 /**

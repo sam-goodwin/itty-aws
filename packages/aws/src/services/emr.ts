@@ -5783,7 +5783,27 @@ export const listBootstrapActions: API.OperationMethod<
     outputToken: "Marker",
     items: "BootstrapActions",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBootstrapActionsInput,
+  ListBootstrapActionsOutput,
+  ListBootstrapActionsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBootstrapActionsInput,
+  ) => stream.Stream<
+    ListBootstrapActionsOutput,
+    ListBootstrapActionsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBootstrapActionsInput,
+  ) => stream.Stream<
+    Command,
+    ListBootstrapActionsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClustersError =
   | InternalServerException
@@ -5828,7 +5848,27 @@ export const listClusters: API.OperationMethod<
     outputToken: "Marker",
     items: "Clusters",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClustersInput,
+  ListClustersOutput,
+  ListClustersError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClustersInput,
+  ) => stream.Stream<
+    ListClustersOutput,
+    ListClustersError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClustersInput,
+  ) => stream.Stream<
+    ClusterSummary,
+    ListClustersError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInstanceFleetsError =
   | InternalServerException
@@ -5872,7 +5912,27 @@ export const listInstanceFleets: API.OperationMethod<
     outputToken: "Marker",
     items: "InstanceFleets",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInstanceFleetsInput,
+  ListInstanceFleetsOutput,
+  ListInstanceFleetsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInstanceFleetsInput,
+  ) => stream.Stream<
+    ListInstanceFleetsOutput,
+    ListInstanceFleetsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInstanceFleetsInput,
+  ) => stream.Stream<
+    InstanceFleet,
+    ListInstanceFleetsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInstanceGroupsError =
   | InternalServerException
@@ -5913,7 +5973,27 @@ export const listInstanceGroups: API.OperationMethod<
     outputToken: "Marker",
     items: "InstanceGroups",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInstanceGroupsInput,
+  ListInstanceGroupsOutput,
+  ListInstanceGroupsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInstanceGroupsInput,
+  ) => stream.Stream<
+    ListInstanceGroupsOutput,
+    ListInstanceGroupsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInstanceGroupsInput,
+  ) => stream.Stream<
+    InstanceGroup,
+    ListInstanceGroupsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInstancesError =
   | InternalServerException
@@ -5957,7 +6037,27 @@ export const listInstances: API.OperationMethod<
     outputToken: "Marker",
     items: "Instances",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInstancesInput,
+  ListInstancesOutput,
+  ListInstancesError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInstancesInput,
+  ) => stream.Stream<
+    ListInstancesOutput,
+    ListInstancesError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInstancesInput,
+  ) => stream.Stream<
+    Instance,
+    ListInstancesError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNotebookExecutionsError =
   | InternalServerError
@@ -6001,7 +6101,27 @@ export const listNotebookExecutions: API.OperationMethod<
     outputToken: "Marker",
     items: "NotebookExecutions",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNotebookExecutionsInput,
+  ListNotebookExecutionsOutput,
+  ListNotebookExecutionsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNotebookExecutionsInput,
+  ) => stream.Stream<
+    ListNotebookExecutionsOutput,
+    ListNotebookExecutionsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNotebookExecutionsInput,
+  ) => stream.Stream<
+    NotebookExecutionSummary,
+    ListNotebookExecutionsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReleaseLabelsError =
   | InternalServerException
@@ -6043,7 +6163,27 @@ export const listReleaseLabels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReleaseLabelsInput,
+  ListReleaseLabelsOutput,
+  ListReleaseLabelsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReleaseLabelsInput,
+  ) => stream.Stream<
+    ListReleaseLabelsOutput,
+    ListReleaseLabelsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReleaseLabelsInput,
+  ) => stream.Stream<
+    unknown,
+    ListReleaseLabelsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSecurityConfigurationsError =
   | InternalServerException
@@ -6087,7 +6227,27 @@ export const listSecurityConfigurations: API.OperationMethod<
     outputToken: "Marker",
     items: "SecurityConfigurations",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSecurityConfigurationsInput,
+  ListSecurityConfigurationsOutput,
+  ListSecurityConfigurationsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSecurityConfigurationsInput,
+  ) => stream.Stream<
+    ListSecurityConfigurationsOutput,
+    ListSecurityConfigurationsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSecurityConfigurationsInput,
+  ) => stream.Stream<
+    SecurityConfigurationSummary,
+    ListSecurityConfigurationsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSessionsError =
   | InternalServerException
@@ -6128,7 +6288,27 @@ export const listSessions: API.OperationMethod<
     outputToken: "NextToken",
     items: "Sessions",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSessionsInput,
+  ListSessionsOutput,
+  ListSessionsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSessionsInput,
+  ) => stream.Stream<
+    ListSessionsOutput,
+    ListSessionsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSessionsInput,
+  ) => stream.Stream<
+    Session,
+    ListSessionsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStepsError =
   | InternalServerException
@@ -6174,7 +6354,27 @@ export const listSteps: API.OperationMethod<
     outputToken: "Marker",
     items: "Steps",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStepsInput,
+  ListStepsOutput,
+  ListStepsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStepsInput,
+  ) => stream.Stream<
+    ListStepsOutput,
+    ListStepsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStepsInput,
+  ) => stream.Stream<
+    StepSummary,
+    ListStepsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStudiosError =
   | InternalServerException
@@ -6216,7 +6416,27 @@ export const listStudios: API.OperationMethod<
     outputToken: "Marker",
     items: "Studios",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStudiosInput,
+  ListStudiosOutput,
+  ListStudiosError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStudiosInput,
+  ) => stream.Stream<
+    ListStudiosOutput,
+    ListStudiosError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStudiosInput,
+  ) => stream.Stream<
+    StudioSummary,
+    ListStudiosError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStudioSessionMappingsError =
   | InternalServerError
@@ -6258,7 +6478,27 @@ export const listStudioSessionMappings: API.OperationMethod<
     outputToken: "Marker",
     items: "SessionMappings",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStudioSessionMappingsInput,
+  ListStudioSessionMappingsOutput,
+  ListStudioSessionMappingsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStudioSessionMappingsInput,
+  ) => stream.Stream<
+    ListStudioSessionMappingsOutput,
+    ListStudioSessionMappingsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStudioSessionMappingsInput,
+  ) => stream.Stream<
+    SessionMappingSummary,
+    ListStudioSessionMappingsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSupportedInstanceTypesError =
   | InternalServerException
@@ -6296,7 +6536,27 @@ export const listSupportedInstanceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "ListSupportedInstanceTypes",
   pagination: { inputToken: "Marker", outputToken: "Marker" } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSupportedInstanceTypesInput,
+  ListSupportedInstanceTypesOutput,
+  ListSupportedInstanceTypesError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSupportedInstanceTypesInput,
+  ) => stream.Stream<
+    ListSupportedInstanceTypesOutput,
+    ListSupportedInstanceTypesError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSupportedInstanceTypesInput,
+  ) => stream.Stream<
+    unknown,
+    ListSupportedInstanceTypesError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ModifyClusterError =
   | InternalServerError

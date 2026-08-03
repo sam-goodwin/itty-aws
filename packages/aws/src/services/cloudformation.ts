@@ -7275,7 +7275,27 @@ export const describeAccountLimits: API.OperationMethod<
     outputToken: "NextToken",
     items: "AccountLimits",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAccountLimitsInput,
+  DescribeAccountLimitsOutput,
+  DescribeAccountLimitsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAccountLimitsInput,
+  ) => stream.Stream<
+    DescribeAccountLimitsOutput,
+    DescribeAccountLimitsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAccountLimitsInput,
+  ) => stream.Stream<
+    AccountLimit,
+    DescribeAccountLimitsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeChangeSetError = ChangeSetNotFoundException | CommonErrors;
 /**
@@ -7316,7 +7336,27 @@ export const describeChangeSet: API.OperationMethod<
     outputToken: "NextToken",
     items: "Changes",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeChangeSetInput,
+  DescribeChangeSetOutput,
+  DescribeChangeSetError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeChangeSetInput,
+  ) => stream.Stream<
+    DescribeChangeSetOutput,
+    DescribeChangeSetError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeChangeSetInput,
+  ) => stream.Stream<
+    Change,
+    DescribeChangeSetError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeChangeSetHooksError =
   | ChangeSetNotFoundException
@@ -7398,7 +7438,27 @@ export const describeEvents: API.OperationMethod<
     outputToken: "NextToken",
     items: "OperationEvents",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEventsInput,
+  DescribeEventsOutput,
+  DescribeEventsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEventsInput,
+  ) => stream.Stream<
+    DescribeEventsOutput,
+    DescribeEventsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEventsInput,
+  ) => stream.Stream<
+    OperationEvent,
+    DescribeEventsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeGeneratedTemplateError =
   | GeneratedTemplateNotFoundException
@@ -7568,7 +7628,27 @@ export const describeStackEvents: API.OperationMethod<
     outputToken: "NextToken",
     items: "StackEvents",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeStackEventsInput,
+  DescribeStackEventsOutput,
+  DescribeStackEventsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeStackEventsInput,
+  ) => stream.Stream<
+    DescribeStackEventsOutput,
+    DescribeStackEventsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeStackEventsInput,
+  ) => stream.Stream<
+    StackEvent,
+    DescribeStackEventsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeStackInstanceError =
   | StackInstanceNotFoundException
@@ -7683,7 +7763,27 @@ export const describeStackResourceDrifts: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeStackResourceDriftsInput,
+  DescribeStackResourceDriftsOutput,
+  DescribeStackResourceDriftsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeStackResourceDriftsInput,
+  ) => stream.Stream<
+    DescribeStackResourceDriftsOutput,
+    DescribeStackResourceDriftsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeStackResourceDriftsInput,
+  ) => stream.Stream<
+    unknown,
+    DescribeStackResourceDriftsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeStackResourcesError = CommonErrors;
 /**
@@ -7761,7 +7861,27 @@ export const describeStacks: API.OperationMethod<
     outputToken: "NextToken",
     items: "Stacks",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeStacksInput,
+  DescribeStacksOutput,
+  DescribeStacksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeStacksInput,
+  ) => stream.Stream<
+    DescribeStacksOutput,
+    DescribeStacksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeStacksInput,
+  ) => stream.Stream<
+    Stack,
+    DescribeStacksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeStackSetError = StackSetNotFoundException | CommonErrors;
 /**
@@ -8263,7 +8383,27 @@ export const listChangeSets: API.OperationMethod<
     outputToken: "NextToken",
     items: "Summaries",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChangeSetsInput,
+  ListChangeSetsOutput,
+  ListChangeSetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChangeSetsInput,
+  ) => stream.Stream<
+    ListChangeSetsOutput,
+    ListChangeSetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChangeSetsInput,
+  ) => stream.Stream<
+    ChangeSetSummary,
+    ListChangeSetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListExportsError = CommonErrors;
 /**
@@ -8306,7 +8446,27 @@ export const listExports: API.OperationMethod<
     outputToken: "NextToken",
     items: "Exports",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExportsInput,
+  ListExportsOutput,
+  ListExportsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExportsInput,
+  ) => stream.Stream<
+    ListExportsOutput,
+    ListExportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExportsInput,
+  ) => stream.Stream<
+    Export,
+    ListExportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListGeneratedTemplatesError = CommonErrors;
 /**
@@ -8345,7 +8505,27 @@ export const listGeneratedTemplates: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGeneratedTemplatesInput,
+  ListGeneratedTemplatesOutput,
+  ListGeneratedTemplatesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGeneratedTemplatesInput,
+  ) => stream.Stream<
+    ListGeneratedTemplatesOutput,
+    ListGeneratedTemplatesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGeneratedTemplatesInput,
+  ) => stream.Stream<
+    TemplateSummary,
+    ListGeneratedTemplatesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListHookResultsError = HookResultNotFoundException | CommonErrors;
 /**
@@ -8418,7 +8598,27 @@ export const listImports: API.OperationMethod<
     outputToken: "NextToken",
     items: "Imports",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImportsInput,
+  ListImportsOutput,
+  ListImportsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImportsInput,
+  ) => stream.Stream<
+    ListImportsOutput,
+    ListImportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImportsInput,
+  ) => stream.Stream<
+    StackName,
+    ListImportsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceScanRelatedResourcesError =
   | ResourceScanInProgressException
@@ -8461,7 +8661,27 @@ export const listResourceScanRelatedResources: API.OperationMethod<
     items: "RelatedResources",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceScanRelatedResourcesInput,
+  ListResourceScanRelatedResourcesOutput,
+  ListResourceScanRelatedResourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceScanRelatedResourcesInput,
+  ) => stream.Stream<
+    ListResourceScanRelatedResourcesOutput,
+    ListResourceScanRelatedResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceScanRelatedResourcesInput,
+  ) => stream.Stream<
+    ScannedResource,
+    ListResourceScanRelatedResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceScanResourcesError =
   | ResourceScanInProgressException
@@ -8506,7 +8726,27 @@ export const listResourceScanResources: API.OperationMethod<
     items: "Resources",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceScanResourcesInput,
+  ListResourceScanResourcesOutput,
+  ListResourceScanResourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceScanResourcesInput,
+  ) => stream.Stream<
+    ListResourceScanResourcesOutput,
+    ListResourceScanResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceScanResourcesInput,
+  ) => stream.Stream<
+    ScannedResource,
+    ListResourceScanResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceScansError = CommonErrors;
 /**
@@ -8546,7 +8786,27 @@ export const listResourceScans: API.OperationMethod<
     items: "ResourceScanSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceScansInput,
+  ListResourceScansOutput,
+  ListResourceScansError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceScansInput,
+  ) => stream.Stream<
+    ListResourceScansOutput,
+    ListResourceScansError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceScansInput,
+  ) => stream.Stream<
+    ResourceScanSummary,
+    ListResourceScansError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackInstanceResourceDriftsError =
   | OperationNotFoundException
@@ -8617,7 +8877,27 @@ export const listStackInstances: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackInstancesInput,
+  ListStackInstancesOutput,
+  ListStackInstancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackInstancesInput,
+  ) => stream.Stream<
+    ListStackInstancesOutput,
+    ListStackInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackInstancesInput,
+  ) => stream.Stream<
+    StackInstanceSummary,
+    ListStackInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackRefactorActionsError = CommonErrors;
 /**
@@ -8656,7 +8936,27 @@ export const listStackRefactorActions: API.OperationMethod<
     items: "StackRefactorActions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackRefactorActionsInput,
+  ListStackRefactorActionsOutput,
+  ListStackRefactorActionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackRefactorActionsInput,
+  ) => stream.Stream<
+    ListStackRefactorActionsOutput,
+    ListStackRefactorActionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackRefactorActionsInput,
+  ) => stream.Stream<
+    StackRefactorAction,
+    ListStackRefactorActionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackRefactorsError = CommonErrors;
 /**
@@ -8695,7 +8995,27 @@ export const listStackRefactors: API.OperationMethod<
     items: "StackRefactorSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackRefactorsInput,
+  ListStackRefactorsOutput,
+  ListStackRefactorsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackRefactorsInput,
+  ) => stream.Stream<
+    ListStackRefactorsOutput,
+    ListStackRefactorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackRefactorsInput,
+  ) => stream.Stream<
+    StackRefactorSummary,
+    ListStackRefactorsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackResourcesError = CommonErrors;
 /**
@@ -8736,7 +9056,27 @@ export const listStackResources: API.OperationMethod<
     outputToken: "NextToken",
     items: "StackResourceSummaries",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackResourcesInput,
+  ListStackResourcesOutput,
+  ListStackResourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackResourcesInput,
+  ) => stream.Stream<
+    ListStackResourcesOutput,
+    ListStackResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackResourcesInput,
+  ) => stream.Stream<
+    StackResourceSummary,
+    ListStackResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStacksError = CommonErrors;
 /**
@@ -8778,7 +9118,27 @@ export const listStacks: API.OperationMethod<
     outputToken: "NextToken",
     items: "StackSummaries",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStacksInput,
+  ListStacksOutput,
+  ListStacksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStacksInput,
+  ) => stream.Stream<
+    ListStacksOutput,
+    ListStacksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStacksInput,
+  ) => stream.Stream<
+    StackSummary,
+    ListStacksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackSetAutoDeploymentTargetsError =
   | StackSetNotFoundException
@@ -8843,7 +9203,27 @@ export const listStackSetOperationResults: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackSetOperationResultsInput,
+  ListStackSetOperationResultsOutput,
+  ListStackSetOperationResultsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackSetOperationResultsInput,
+  ) => stream.Stream<
+    ListStackSetOperationResultsOutput,
+    ListStackSetOperationResultsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackSetOperationResultsInput,
+  ) => stream.Stream<
+    StackSetOperationResultSummary,
+    ListStackSetOperationResultsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackSetOperationsError =
   | StackSetNotFoundException
@@ -8887,7 +9267,27 @@ export const listStackSetOperations: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackSetOperationsInput,
+  ListStackSetOperationsOutput,
+  ListStackSetOperationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackSetOperationsInput,
+  ) => stream.Stream<
+    ListStackSetOperationsOutput,
+    ListStackSetOperationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackSetOperationsInput,
+  ) => stream.Stream<
+    StackSetOperationSummary,
+    ListStackSetOperationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackSetsError = CommonErrors;
 /**
@@ -8942,7 +9342,27 @@ export const listStackSets: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStackSetsInput,
+  ListStackSetsOutput,
+  ListStackSetsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStackSetsInput,
+  ) => stream.Stream<
+    ListStackSetsOutput,
+    ListStackSetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStackSetsInput,
+  ) => stream.Stream<
+    StackSetSummary,
+    ListStackSetsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTypeRegistrationsError = CFNRegistryException | CommonErrors;
 /**
@@ -8980,7 +9400,27 @@ export const listTypeRegistrations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTypeRegistrationsInput,
+  ListTypeRegistrationsOutput,
+  ListTypeRegistrationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTypeRegistrationsInput,
+  ) => stream.Stream<
+    ListTypeRegistrationsOutput,
+    ListTypeRegistrationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTypeRegistrationsInput,
+  ) => stream.Stream<
+    unknown,
+    ListTypeRegistrationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTypesError = CFNRegistryException | CommonErrors;
 /**
@@ -9021,7 +9461,27 @@ export const listTypes: API.OperationMethod<
     items: "TypeSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTypesInput,
+  ListTypesOutput,
+  ListTypesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTypesInput,
+  ) => stream.Stream<
+    ListTypesOutput,
+    ListTypesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTypesInput,
+  ) => stream.Stream<
+    TypeSummary,
+    ListTypesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTypeVersionsError = CFNRegistryException | CommonErrors;
 /**
@@ -9059,7 +9519,27 @@ export const listTypeVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTypeVersionsInput,
+  ListTypeVersionsOutput,
+  ListTypeVersionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTypeVersionsInput,
+  ) => stream.Stream<
+    ListTypeVersionsOutput,
+    ListTypeVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTypeVersionsInput,
+  ) => stream.Stream<
+    unknown,
+    ListTypeVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type PublishTypeError =
   | CFNRegistryException

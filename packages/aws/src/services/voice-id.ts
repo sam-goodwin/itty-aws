@@ -1889,7 +1889,27 @@ export const listDomains: API.OperationMethod<
     items: "DomainSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDomainsRequest,
+  ListDomainsResponse,
+  ListDomainsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
+    ListDomainsResponse,
+    ListDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
+    DomainSummary,
+    ListDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFraudsterRegistrationJobsError =
   | AccessDeniedException
@@ -1942,7 +1962,27 @@ export const listFraudsterRegistrationJobs: API.OperationMethod<
     items: "JobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFraudsterRegistrationJobsRequest,
+  ListFraudsterRegistrationJobsResponse,
+  ListFraudsterRegistrationJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFraudsterRegistrationJobsRequest,
+  ) => stream.Stream<
+    ListFraudsterRegistrationJobsResponse,
+    ListFraudsterRegistrationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFraudsterRegistrationJobsRequest,
+  ) => stream.Stream<
+    FraudsterRegistrationJobSummary,
+    ListFraudsterRegistrationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFraudstersError =
   | AccessDeniedException
@@ -1993,7 +2033,27 @@ export const listFraudsters: API.OperationMethod<
     items: "FraudsterSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFraudstersRequest,
+  ListFraudstersResponse,
+  ListFraudstersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFraudstersRequest,
+  ) => stream.Stream<
+    ListFraudstersResponse,
+    ListFraudstersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFraudstersRequest,
+  ) => stream.Stream<
+    FraudsterSummary,
+    ListFraudstersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSpeakerEnrollmentJobsError =
   | AccessDeniedException
@@ -2046,7 +2106,27 @@ export const listSpeakerEnrollmentJobs: API.OperationMethod<
     items: "JobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSpeakerEnrollmentJobsRequest,
+  ListSpeakerEnrollmentJobsResponse,
+  ListSpeakerEnrollmentJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSpeakerEnrollmentJobsRequest,
+  ) => stream.Stream<
+    ListSpeakerEnrollmentJobsResponse,
+    ListSpeakerEnrollmentJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSpeakerEnrollmentJobsRequest,
+  ) => stream.Stream<
+    SpeakerEnrollmentJobSummary,
+    ListSpeakerEnrollmentJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSpeakersError =
   | AccessDeniedException
@@ -2097,7 +2177,27 @@ export const listSpeakers: API.OperationMethod<
     items: "SpeakerSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSpeakersRequest,
+  ListSpeakersResponse,
+  ListSpeakersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSpeakersRequest,
+  ) => stream.Stream<
+    ListSpeakersResponse,
+    ListSpeakersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSpeakersRequest,
+  ) => stream.Stream<
+    SpeakerSummary,
+    ListSpeakersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -2178,7 +2278,27 @@ export const listWatchlists: API.OperationMethod<
     items: "WatchlistSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWatchlistsRequest,
+  ListWatchlistsResponse,
+  ListWatchlistsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWatchlistsRequest,
+  ) => stream.Stream<
+    ListWatchlistsResponse,
+    ListWatchlistsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWatchlistsRequest,
+  ) => stream.Stream<
+    WatchlistSummary,
+    ListWatchlistsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type OptOutSpeakerError =
   | AccessDeniedException

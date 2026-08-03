@@ -372,7 +372,27 @@ export const listExports: API.OperationMethod<
     items: "exportSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExportsRequest,
+  ListExportsResponse,
+  ListExportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExportsRequest,
+  ) => stream.Stream<
+    ListExportsResponse,
+    ListExportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExportsRequest,
+  ) => stream.Stream<
+    ExportSummary,
+    ListExportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartDomainExportError =
   | ConflictException

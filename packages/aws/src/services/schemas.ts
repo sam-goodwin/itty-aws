@@ -1999,7 +1999,27 @@ export const listDiscoverers: API.OperationMethod<
     items: "Discoverers",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDiscoverersRequest,
+  ListDiscoverersResponse,
+  ListDiscoverersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDiscoverersRequest,
+  ) => stream.Stream<
+    ListDiscoverersResponse,
+    ListDiscoverersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDiscoverersRequest,
+  ) => stream.Stream<
+    DiscovererSummary,
+    ListDiscoverersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRegistriesError =
   | BadRequestException
@@ -2050,7 +2070,27 @@ export const listRegistries: API.OperationMethod<
     items: "Registries",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRegistriesRequest,
+  ListRegistriesResponse,
+  ListRegistriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRegistriesRequest,
+  ) => stream.Stream<
+    ListRegistriesResponse,
+    ListRegistriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRegistriesRequest,
+  ) => stream.Stream<
+    RegistrySummary,
+    ListRegistriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSchemasError =
   | BadRequestException
@@ -2101,7 +2141,27 @@ export const listSchemas: API.OperationMethod<
     items: "Schemas",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSchemasRequest,
+  ListSchemasResponse,
+  ListSchemasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSchemasRequest,
+  ) => stream.Stream<
+    ListSchemasResponse,
+    ListSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSchemasRequest,
+  ) => stream.Stream<
+    SchemaSummary,
+    ListSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSchemaVersionsError =
   | BadRequestException
@@ -2154,7 +2214,27 @@ export const listSchemaVersions: API.OperationMethod<
     items: "SchemaVersions",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSchemaVersionsRequest,
+  ListSchemaVersionsResponse,
+  ListSchemaVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSchemaVersionsRequest,
+  ) => stream.Stream<
+    ListSchemaVersionsResponse,
+    ListSchemaVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSchemaVersionsRequest,
+  ) => stream.Stream<
+    SchemaVersionSummary,
+    ListSchemaVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -2303,7 +2383,27 @@ export const searchSchemas: API.OperationMethod<
     items: "Schemas",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchSchemasRequest,
+  SearchSchemasResponse,
+  SearchSchemasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchSchemasRequest,
+  ) => stream.Stream<
+    SearchSchemasResponse,
+    SearchSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchSchemasRequest,
+  ) => stream.Stream<
+    SearchSchemaSummary,
+    SearchSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartDiscovererError =
   | BadRequestException

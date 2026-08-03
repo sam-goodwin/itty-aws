@@ -969,7 +969,27 @@ export const listBillingViews: API.OperationMethod<
     items: "billingViews",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBillingViewsRequest,
+  ListBillingViewsResponse,
+  ListBillingViewsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBillingViewsRequest,
+  ) => stream.Stream<
+    ListBillingViewsResponse,
+    ListBillingViewsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBillingViewsRequest,
+  ) => stream.Stream<
+    BillingViewListElement,
+    ListBillingViewsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSourceViewsForBillingViewError =
   | AccessDeniedException
@@ -1020,7 +1040,27 @@ export const listSourceViewsForBillingView: API.OperationMethod<
     items: "sourceViews",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSourceViewsForBillingViewRequest,
+  ListSourceViewsForBillingViewResponse,
+  ListSourceViewsForBillingViewError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSourceViewsForBillingViewRequest,
+  ) => stream.Stream<
+    ListSourceViewsForBillingViewResponse,
+    ListSourceViewsForBillingViewError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSourceViewsForBillingViewRequest,
+  ) => stream.Stream<
+    BillingViewArn,
+    ListSourceViewsForBillingViewError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

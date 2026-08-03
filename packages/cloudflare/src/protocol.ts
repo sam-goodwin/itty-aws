@@ -65,7 +65,9 @@ import {
   type ResolvedCredentials,
 } from "./credentials.ts";
 import {
+  type CloudflareError,
   CloudflareHttpError,
+  type CloudflareRateLimited,
   type DefaultErrors,
   InvalidRoute,
   UnknownCloudflareError,
@@ -87,6 +89,12 @@ export type CloudflareOpError =
   | DefaultErrors
   | ConfigError
   | OAuthRefreshError
+  // Injected into every generated operation's `errors: [...]` list by the
+  // codegen (`operationDecl.commonErrorClasses`), so they belong in the
+  // declared union too — otherwise each operation's type claims it can't
+  // fail the two ways every operation can.
+  | CloudflareError
+  | CloudflareRateLimited
   | HttpClientError.HttpClientError;
 
 /** Context (requirements) shared by every generated Cloudflare operation. */

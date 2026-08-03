@@ -3001,7 +3001,27 @@ export const getInstrumentationConfigurationStatus: API.OperationMethod<
     items: "Events",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetInstrumentationConfigurationStatusRequest,
+  GetInstrumentationConfigurationStatusResponse,
+  GetInstrumentationConfigurationStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetInstrumentationConfigurationStatusRequest,
+  ) => stream.Stream<
+    GetInstrumentationConfigurationStatusResponse,
+    GetInstrumentationConfigurationStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetInstrumentationConfigurationStatusRequest,
+  ) => stream.Stream<
+    InstrumentationStatusEvent,
+    GetInstrumentationConfigurationStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetServiceError =
   | ThrottlingException
@@ -3107,7 +3127,27 @@ export const listEntityEvents: API.OperationMethod<
     items: "ChangeEvents",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEntityEventsInput,
+  ListEntityEventsOutput,
+  ListEntityEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEntityEventsInput,
+  ) => stream.Stream<
+    ListEntityEventsOutput,
+    ListEntityEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEntityEventsInput,
+  ) => stream.Stream<
+    ChangeEvent,
+    ListEntityEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupingAttributeDefinitionsError =
   | AccessDeniedException
@@ -3174,7 +3214,27 @@ export const listInstrumentationConfigurations: API.OperationMethod<
     items: "LatestConfigurations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInstrumentationConfigurationsRequest,
+  InstrumentationConfigurationsPage,
+  ListInstrumentationConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInstrumentationConfigurationsRequest,
+  ) => stream.Stream<
+    InstrumentationConfigurationsPage,
+    ListInstrumentationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInstrumentationConfigurationsRequest,
+  ) => stream.Stream<
+    InstrumentationConfigurationWithoutServiceEnv,
+    ListInstrumentationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceDependenciesError =
   | ThrottlingException
@@ -3216,7 +3276,27 @@ export const listServiceDependencies: API.OperationMethod<
     items: "ServiceDependencies",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceDependenciesInput,
+  ListServiceDependenciesOutput,
+  ListServiceDependenciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceDependenciesInput,
+  ) => stream.Stream<
+    ListServiceDependenciesOutput,
+    ListServiceDependenciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceDependenciesInput,
+  ) => stream.Stream<
+    ServiceDependency,
+    ListServiceDependenciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceDependentsError =
   | ThrottlingException
@@ -3258,7 +3338,27 @@ export const listServiceDependents: API.OperationMethod<
     items: "ServiceDependents",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceDependentsInput,
+  ListServiceDependentsOutput,
+  ListServiceDependentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceDependentsInput,
+  ) => stream.Stream<
+    ListServiceDependentsOutput,
+    ListServiceDependentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceDependentsInput,
+  ) => stream.Stream<
+    ServiceDependent,
+    ListServiceDependentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceLevelObjectiveExclusionWindowsError =
   | ResourceNotFoundException
@@ -3301,7 +3401,27 @@ export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
     items: "ExclusionWindows",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceLevelObjectiveExclusionWindowsInput,
+  ListServiceLevelObjectiveExclusionWindowsOutput,
+  ListServiceLevelObjectiveExclusionWindowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceLevelObjectiveExclusionWindowsInput,
+  ) => stream.Stream<
+    ListServiceLevelObjectiveExclusionWindowsOutput,
+    ListServiceLevelObjectiveExclusionWindowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceLevelObjectiveExclusionWindowsInput,
+  ) => stream.Stream<
+    ExclusionWindow,
+    ListServiceLevelObjectiveExclusionWindowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceLevelObjectivesError =
   | ThrottlingException
@@ -3343,7 +3463,27 @@ export const listServiceLevelObjectives: API.OperationMethod<
     items: "SloSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceLevelObjectivesInput,
+  ListServiceLevelObjectivesOutput,
+  ListServiceLevelObjectivesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceLevelObjectivesInput,
+  ) => stream.Stream<
+    ListServiceLevelObjectivesOutput,
+    ListServiceLevelObjectivesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceLevelObjectivesInput,
+  ) => stream.Stream<
+    ServiceLevelObjectiveSummary,
+    ListServiceLevelObjectivesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceOperationsError =
   | ThrottlingException
@@ -3385,7 +3525,27 @@ export const listServiceOperations: API.OperationMethod<
     items: "ServiceOperations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceOperationsInput,
+  ListServiceOperationsOutput,
+  ListServiceOperationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceOperationsInput,
+  ) => stream.Stream<
+    ListServiceOperationsOutput,
+    ListServiceOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceOperationsInput,
+  ) => stream.Stream<
+    ServiceOperation,
+    ListServiceOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServicesError =
   | ThrottlingException
@@ -3427,7 +3587,27 @@ export const listServices: API.OperationMethod<
     items: "ServiceSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServicesInput,
+  ListServicesOutput,
+  ListServicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServicesInput,
+  ) => stream.Stream<
+    ListServicesOutput,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServicesInput,
+  ) => stream.Stream<
+    ServiceSummary,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceStatesError =
   | ThrottlingException
@@ -3469,7 +3649,27 @@ export const listServiceStates: API.OperationMethod<
     items: "ServiceStates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceStatesInput,
+  ListServiceStatesOutput,
+  ListServiceStatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceStatesInput,
+  ) => stream.Stream<
+    ListServiceStatesOutput,
+    ListServiceStatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceStatesInput,
+  ) => stream.Stream<
+    ServiceState,
+    ListServiceStatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException

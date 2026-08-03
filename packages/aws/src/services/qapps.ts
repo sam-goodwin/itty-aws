@@ -2946,7 +2946,27 @@ export const listLibraryItems: API.OperationMethod<
     items: "libraryItems",
     pageSize: "limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLibraryItemsInput,
+  ListLibraryItemsOutput,
+  ListLibraryItemsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLibraryItemsInput,
+  ) => stream.Stream<
+    ListLibraryItemsOutput,
+    ListLibraryItemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLibraryItemsInput,
+  ) => stream.Stream<
+    LibraryItemMember,
+    ListLibraryItemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQAppsError =
   | AccessDeniedException
@@ -2997,7 +3017,27 @@ export const listQApps: API.OperationMethod<
     items: "apps",
     pageSize: "limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListQAppsInput,
+  ListQAppsOutput,
+  ListQAppsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListQAppsInput,
+  ) => stream.Stream<
+    ListQAppsOutput,
+    ListQAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListQAppsInput,
+  ) => stream.Stream<
+    UserAppItem,
+    ListQAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQAppSessionDataError =
   | AccessDeniedException

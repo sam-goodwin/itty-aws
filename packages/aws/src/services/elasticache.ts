@@ -6905,7 +6905,27 @@ export const describeCacheClusters: API.OperationMethod<
     items: "CacheClusters",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCacheClustersMessage,
+  CacheClusterMessage,
+  DescribeCacheClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCacheClustersMessage,
+  ) => stream.Stream<
+    CacheClusterMessage,
+    DescribeCacheClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCacheClustersMessage,
+  ) => stream.Stream<
+    CacheCluster,
+    DescribeCacheClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCacheEngineVersionsError = CommonErrors;
 /**
@@ -6944,7 +6964,27 @@ export const describeCacheEngineVersions: API.OperationMethod<
     items: "CacheEngineVersions",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCacheEngineVersionsMessage,
+  CacheEngineVersionMessage,
+  DescribeCacheEngineVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCacheEngineVersionsMessage,
+  ) => stream.Stream<
+    CacheEngineVersionMessage,
+    DescribeCacheEngineVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCacheEngineVersionsMessage,
+  ) => stream.Stream<
+    CacheEngineVersion,
+    DescribeCacheEngineVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCacheParameterGroupsError =
   | CacheParameterGroupNotFoundFault
@@ -6992,7 +7032,27 @@ export const describeCacheParameterGroups: API.OperationMethod<
     items: "CacheParameterGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCacheParameterGroupsMessage,
+  CacheParameterGroupsMessage,
+  DescribeCacheParameterGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCacheParameterGroupsMessage,
+  ) => stream.Stream<
+    CacheParameterGroupsMessage,
+    DescribeCacheParameterGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCacheParameterGroupsMessage,
+  ) => stream.Stream<
+    CacheParameterGroup,
+    DescribeCacheParameterGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCacheParametersError =
   | CacheParameterGroupNotFoundFault
@@ -7039,7 +7099,27 @@ export const describeCacheParameters: API.OperationMethod<
     items: "Parameters",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCacheParametersMessage,
+  CacheParameterGroupDetails,
+  DescribeCacheParametersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCacheParametersMessage,
+  ) => stream.Stream<
+    CacheParameterGroupDetails,
+    DescribeCacheParametersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCacheParametersMessage,
+  ) => stream.Stream<
+    Parameter,
+    DescribeCacheParametersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCacheSecurityGroupsError =
   | CacheSecurityGroupNotFoundFault
@@ -7088,7 +7168,27 @@ export const describeCacheSecurityGroups: API.OperationMethod<
     items: "CacheSecurityGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCacheSecurityGroupsMessage,
+  CacheSecurityGroupMessage,
+  DescribeCacheSecurityGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCacheSecurityGroupsMessage,
+  ) => stream.Stream<
+    CacheSecurityGroupMessage,
+    DescribeCacheSecurityGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCacheSecurityGroupsMessage,
+  ) => stream.Stream<
+    CacheSecurityGroup,
+    DescribeCacheSecurityGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCacheSubnetGroupsError =
   | CacheSubnetGroupNotFoundFault
@@ -7132,7 +7232,27 @@ export const describeCacheSubnetGroups: API.OperationMethod<
     items: "CacheSubnetGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCacheSubnetGroupsMessage,
+  CacheSubnetGroupMessage,
+  DescribeCacheSubnetGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCacheSubnetGroupsMessage,
+  ) => stream.Stream<
+    CacheSubnetGroupMessage,
+    DescribeCacheSubnetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCacheSubnetGroupsMessage,
+  ) => stream.Stream<
+    CacheSubnetGroup,
+    DescribeCacheSubnetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEngineDefaultParametersError =
   | InvalidParameterCombinationException
@@ -7178,7 +7298,27 @@ export const describeEngineDefaultParameters: API.OperationMethod<
     items: "EngineDefaults.Parameters",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEngineDefaultParametersMessage,
+  DescribeEngineDefaultParametersResult,
+  DescribeEngineDefaultParametersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEngineDefaultParametersMessage,
+  ) => stream.Stream<
+    DescribeEngineDefaultParametersResult,
+    DescribeEngineDefaultParametersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEngineDefaultParametersMessage,
+  ) => stream.Stream<
+    unknown,
+    DescribeEngineDefaultParametersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEventsError =
   | InvalidParameterCombinationException
@@ -7228,7 +7368,27 @@ export const describeEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEventsMessage,
+  EventsMessage,
+  DescribeEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEventsMessage,
+  ) => stream.Stream<
+    EventsMessage,
+    DescribeEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEventsMessage,
+  ) => stream.Stream<
+    Event,
+    DescribeEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeGlobalReplicationGroupsError =
   | GlobalReplicationGroupNotFoundFault
@@ -7276,7 +7436,27 @@ export const describeGlobalReplicationGroups: API.OperationMethod<
     items: "GlobalReplicationGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeGlobalReplicationGroupsMessage,
+  DescribeGlobalReplicationGroupsResult,
+  DescribeGlobalReplicationGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeGlobalReplicationGroupsMessage,
+  ) => stream.Stream<
+    DescribeGlobalReplicationGroupsResult,
+    DescribeGlobalReplicationGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeGlobalReplicationGroupsMessage,
+  ) => stream.Stream<
+    GlobalReplicationGroup,
+    DescribeGlobalReplicationGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReplicationGroupsError =
   | InvalidParameterCombinationException
@@ -7327,7 +7507,27 @@ export const describeReplicationGroups: API.OperationMethod<
     items: "ReplicationGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReplicationGroupsMessage,
+  ReplicationGroupMessage,
+  DescribeReplicationGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReplicationGroupsMessage,
+  ) => stream.Stream<
+    ReplicationGroupMessage,
+    DescribeReplicationGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReplicationGroupsMessage,
+  ) => stream.Stream<
+    ReplicationGroup,
+    DescribeReplicationGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedCacheNodesError =
   | InvalidParameterCombinationException
@@ -7375,7 +7575,27 @@ export const describeReservedCacheNodes: API.OperationMethod<
     items: "ReservedCacheNodes",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedCacheNodesMessage,
+  ReservedCacheNodeMessage,
+  DescribeReservedCacheNodesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedCacheNodesMessage,
+  ) => stream.Stream<
+    ReservedCacheNodeMessage,
+    DescribeReservedCacheNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedCacheNodesMessage,
+  ) => stream.Stream<
+    ReservedCacheNode,
+    DescribeReservedCacheNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedCacheNodesOfferingsError =
   | InvalidParameterCombinationException
@@ -7422,7 +7642,27 @@ export const describeReservedCacheNodesOfferings: API.OperationMethod<
     items: "ReservedCacheNodesOfferings",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedCacheNodesOfferingsMessage,
+  ReservedCacheNodesOfferingMessage,
+  DescribeReservedCacheNodesOfferingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedCacheNodesOfferingsMessage,
+  ) => stream.Stream<
+    ReservedCacheNodesOfferingMessage,
+    DescribeReservedCacheNodesOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedCacheNodesOfferingsMessage,
+  ) => stream.Stream<
+    ReservedCacheNodesOffering,
+    DescribeReservedCacheNodesOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeServerlessCachesError =
   | InvalidParameterCombinationException
@@ -7471,7 +7711,27 @@ export const describeServerlessCaches: API.OperationMethod<
     items: "ServerlessCaches",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeServerlessCachesRequest,
+  DescribeServerlessCachesResponse,
+  DescribeServerlessCachesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeServerlessCachesRequest,
+  ) => stream.Stream<
+    DescribeServerlessCachesResponse,
+    DescribeServerlessCachesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeServerlessCachesRequest,
+  ) => stream.Stream<
+    ServerlessCache,
+    DescribeServerlessCachesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeServerlessCacheSnapshotsError =
   | InvalidParameterCombinationException
@@ -7523,7 +7783,27 @@ export const describeServerlessCacheSnapshots: API.OperationMethod<
     items: "ServerlessCacheSnapshots",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeServerlessCacheSnapshotsRequest,
+  DescribeServerlessCacheSnapshotsResponse,
+  DescribeServerlessCacheSnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeServerlessCacheSnapshotsRequest,
+  ) => stream.Stream<
+    DescribeServerlessCacheSnapshotsResponse,
+    DescribeServerlessCacheSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeServerlessCacheSnapshotsRequest,
+  ) => stream.Stream<
+    ServerlessCacheSnapshot,
+    DescribeServerlessCacheSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeServiceUpdatesError =
   | InvalidParameterCombinationException
@@ -7570,7 +7850,27 @@ export const describeServiceUpdates: API.OperationMethod<
     items: "ServiceUpdates",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeServiceUpdatesMessage,
+  ServiceUpdatesMessage,
+  DescribeServiceUpdatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeServiceUpdatesMessage,
+  ) => stream.Stream<
+    ServiceUpdatesMessage,
+    DescribeServiceUpdatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeServiceUpdatesMessage,
+  ) => stream.Stream<
+    ServiceUpdate,
+    DescribeServiceUpdatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSnapshotsError =
   | CacheClusterNotFoundFault
@@ -7624,7 +7924,27 @@ export const describeSnapshots: API.OperationMethod<
     items: "Snapshots",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSnapshotsMessage,
+  DescribeSnapshotsListMessage,
+  DescribeSnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSnapshotsMessage,
+  ) => stream.Stream<
+    DescribeSnapshotsListMessage,
+    DescribeSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSnapshotsMessage,
+  ) => stream.Stream<
+    Snapshot,
+    DescribeSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeUpdateActionsError =
   | InvalidParameterCombinationException
@@ -7669,7 +7989,27 @@ export const describeUpdateActions: API.OperationMethod<
     items: "UpdateActions",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeUpdateActionsMessage,
+  UpdateActionsMessage,
+  DescribeUpdateActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeUpdateActionsMessage,
+  ) => stream.Stream<
+    UpdateActionsMessage,
+    DescribeUpdateActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeUpdateActionsMessage,
+  ) => stream.Stream<
+    UpdateAction,
+    DescribeUpdateActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeUserGroupsError =
   | InvalidParameterCombinationException
@@ -7716,7 +8056,27 @@ export const describeUserGroups: API.OperationMethod<
     items: "UserGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeUserGroupsMessage,
+  DescribeUserGroupsResult,
+  DescribeUserGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeUserGroupsMessage,
+  ) => stream.Stream<
+    DescribeUserGroupsResult,
+    DescribeUserGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeUserGroupsMessage,
+  ) => stream.Stream<
+    UserGroup,
+    DescribeUserGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeUsersError =
   | InvalidParameterCombinationException
@@ -7763,7 +8123,27 @@ export const describeUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeUsersMessage,
+  DescribeUsersResult,
+  DescribeUsersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeUsersMessage,
+  ) => stream.Stream<
+    DescribeUsersResult,
+    DescribeUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeUsersMessage,
+  ) => stream.Stream<
+    User,
+    DescribeUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DisassociateGlobalReplicationGroupError =
   | GlobalReplicationGroupNotFoundFault

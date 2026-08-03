@@ -4678,7 +4678,27 @@ export const getOfferingStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetOfferingStatus",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
-}));
+})) as any as API.OperationMethod<
+  GetOfferingStatusRequest,
+  GetOfferingStatusResult,
+  GetOfferingStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetOfferingStatusRequest,
+  ) => stream.Stream<
+    GetOfferingStatusResult,
+    GetOfferingStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetOfferingStatusRequest,
+  ) => stream.Stream<
+    unknown,
+    GetOfferingStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetProjectError =
   | ArgumentException
@@ -4995,7 +5015,27 @@ export const listArtifacts: API.OperationMethod<
     outputToken: "nextToken",
     items: "artifacts",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListArtifactsRequest,
+  ListArtifactsResult,
+  ListArtifactsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListArtifactsRequest,
+  ) => stream.Stream<
+    ListArtifactsResult,
+    ListArtifactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListArtifactsRequest,
+  ) => stream.Stream<
+    Artifact,
+    ListArtifactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeviceInstancesError =
   | ArgumentException
@@ -5072,7 +5112,27 @@ export const listDevicePools: API.OperationMethod<
     outputToken: "nextToken",
     items: "devicePools",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevicePoolsRequest,
+  ListDevicePoolsResult,
+  ListDevicePoolsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevicePoolsRequest,
+  ) => stream.Stream<
+    ListDevicePoolsResult,
+    ListDevicePoolsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevicePoolsRequest,
+  ) => stream.Stream<
+    DevicePool,
+    ListDevicePoolsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDevicesError =
   | ArgumentException
@@ -5120,7 +5180,27 @@ export const listDevices: API.OperationMethod<
     outputToken: "nextToken",
     items: "devices",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevicesRequest,
+  ListDevicesResult,
+  ListDevicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevicesRequest,
+  ) => stream.Stream<
+    ListDevicesResult,
+    ListDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevicesRequest,
+  ) => stream.Stream<
+    Device,
+    ListDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInstanceProfilesError =
   | ArgumentException
@@ -5196,7 +5276,27 @@ export const listJobs: API.OperationMethod<
     outputToken: "nextToken",
     items: "jobs",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobsRequest,
+  ListJobsResult,
+  ListJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResult,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    Job,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNetworkProfilesError =
   | ArgumentException
@@ -5309,7 +5409,27 @@ export const listOfferings: API.OperationMethod<
     outputToken: "nextToken",
     items: "offerings",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOfferingsRequest,
+  ListOfferingsResult,
+  ListOfferingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOfferingsRequest,
+  ) => stream.Stream<
+    ListOfferingsResult,
+    ListOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOfferingsRequest,
+  ) => stream.Stream<
+    Offering,
+    ListOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOfferingTransactionsError =
   | ArgumentException
@@ -5362,7 +5482,27 @@ export const listOfferingTransactions: API.OperationMethod<
     outputToken: "nextToken",
     items: "offeringTransactions",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOfferingTransactionsRequest,
+  ListOfferingTransactionsResult,
+  ListOfferingTransactionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOfferingTransactionsRequest,
+  ) => stream.Stream<
+    ListOfferingTransactionsResult,
+    ListOfferingTransactionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOfferingTransactionsRequest,
+  ) => stream.Stream<
+    OfferingTransaction,
+    ListOfferingTransactionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProjectsError =
   | ArgumentException
@@ -5410,7 +5550,27 @@ export const listProjects: API.OperationMethod<
     outputToken: "nextToken",
     items: "projects",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProjectsRequest,
+  ListProjectsResult,
+  ListProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProjectsRequest,
+  ) => stream.Stream<
+    ListProjectsResult,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProjectsRequest,
+  ) => stream.Stream<
+    Project,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRemoteAccessSessionsError =
   | ArgumentException
@@ -5486,7 +5646,27 @@ export const listRuns: API.OperationMethod<
     outputToken: "nextToken",
     items: "runs",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRunsRequest,
+  ListRunsResult,
+  ListRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRunsRequest,
+  ) => stream.Stream<
+    ListRunsResult,
+    ListRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRunsRequest,
+  ) => stream.Stream<
+    Run,
+    ListRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSamplesError =
   | ArgumentException
@@ -5534,7 +5714,27 @@ export const listSamples: API.OperationMethod<
     outputToken: "nextToken",
     items: "samples",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSamplesRequest,
+  ListSamplesResult,
+  ListSamplesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSamplesRequest,
+  ) => stream.Stream<
+    ListSamplesResult,
+    ListSamplesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSamplesRequest,
+  ) => stream.Stream<
+    Sample,
+    ListSamplesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSuitesError =
   | ArgumentException
@@ -5582,7 +5782,27 @@ export const listSuites: API.OperationMethod<
     outputToken: "nextToken",
     items: "suites",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSuitesRequest,
+  ListSuitesResult,
+  ListSuitesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSuitesRequest,
+  ) => stream.Stream<
+    ListSuitesResult,
+    ListSuitesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSuitesRequest,
+  ) => stream.Stream<
+    Suite,
+    ListSuitesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | ArgumentException
@@ -5645,7 +5865,27 @@ export const listTestGridProjects: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResult",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTestGridProjectsRequest,
+  ListTestGridProjectsResult,
+  ListTestGridProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTestGridProjectsRequest,
+  ) => stream.Stream<
+    ListTestGridProjectsResult,
+    ListTestGridProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTestGridProjectsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTestGridProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTestGridSessionActionsError =
   | ArgumentException
@@ -5687,7 +5927,27 @@ export const listTestGridSessionActions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResult",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTestGridSessionActionsRequest,
+  ListTestGridSessionActionsResult,
+  ListTestGridSessionActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTestGridSessionActionsRequest,
+  ) => stream.Stream<
+    ListTestGridSessionActionsResult,
+    ListTestGridSessionActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTestGridSessionActionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTestGridSessionActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTestGridSessionArtifactsError =
   | ArgumentException
@@ -5729,7 +5989,27 @@ export const listTestGridSessionArtifacts: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResult",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTestGridSessionArtifactsRequest,
+  ListTestGridSessionArtifactsResult,
+  ListTestGridSessionArtifactsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTestGridSessionArtifactsRequest,
+  ) => stream.Stream<
+    ListTestGridSessionArtifactsResult,
+    ListTestGridSessionArtifactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTestGridSessionArtifactsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTestGridSessionArtifactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTestGridSessionsError =
   | ArgumentException
@@ -5771,7 +6051,27 @@ export const listTestGridSessions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResult",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTestGridSessionsRequest,
+  ListTestGridSessionsResult,
+  ListTestGridSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTestGridSessionsRequest,
+  ) => stream.Stream<
+    ListTestGridSessionsResult,
+    ListTestGridSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTestGridSessionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTestGridSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTestsError =
   | ArgumentException
@@ -5819,7 +6119,27 @@ export const listTests: API.OperationMethod<
     outputToken: "nextToken",
     items: "tests",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTestsRequest,
+  ListTestsResult,
+  ListTestsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTestsRequest,
+  ) => stream.Stream<
+    ListTestsResult,
+    ListTestsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTestsRequest,
+  ) => stream.Stream<
+    Test,
+    ListTestsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListUniqueProblemsError =
   | ArgumentException
@@ -5872,7 +6192,27 @@ export const listUniqueProblems: API.OperationMethod<
     outputToken: "nextToken",
     items: "uniqueProblems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUniqueProblemsRequest,
+  ListUniqueProblemsResult,
+  ListUniqueProblemsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUniqueProblemsRequest,
+  ) => stream.Stream<
+    ListUniqueProblemsResult,
+    ListUniqueProblemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUniqueProblemsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListUniqueProblemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListUploadsError =
   | ArgumentException
@@ -5920,7 +6260,27 @@ export const listUploads: API.OperationMethod<
     outputToken: "nextToken",
     items: "uploads",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUploadsRequest,
+  ListUploadsResult,
+  ListUploadsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUploadsRequest,
+  ) => stream.Stream<
+    ListUploadsResult,
+    ListUploadsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUploadsRequest,
+  ) => stream.Stream<
+    Upload,
+    ListUploadsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListVPCEConfigurationsError =
   | ArgumentException

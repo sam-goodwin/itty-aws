@@ -10351,7 +10351,27 @@ export const describeFleetAttributes: API.OperationMethod<
     items: "FleetAttributes",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFleetAttributesInput,
+  DescribeFleetAttributesOutput,
+  DescribeFleetAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFleetAttributesInput,
+  ) => stream.Stream<
+    DescribeFleetAttributesOutput,
+    DescribeFleetAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFleetAttributesInput,
+  ) => stream.Stream<
+    FleetAttributes,
+    DescribeFleetAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFleetCapacityError =
   | InternalServiceException
@@ -10435,7 +10455,27 @@ export const describeFleetCapacity: API.OperationMethod<
     items: "FleetCapacity",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFleetCapacityInput,
+  DescribeFleetCapacityOutput,
+  DescribeFleetCapacityError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFleetCapacityInput,
+  ) => stream.Stream<
+    DescribeFleetCapacityOutput,
+    DescribeFleetCapacityError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFleetCapacityInput,
+  ) => stream.Stream<
+    FleetCapacity,
+    DescribeFleetCapacityError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFleetDeploymentError =
   | InternalServiceException
@@ -10545,7 +10585,27 @@ export const describeFleetEvents: API.OperationMethod<
     items: "Events",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFleetEventsInput,
+  DescribeFleetEventsOutput,
+  DescribeFleetEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFleetEventsInput,
+  ) => stream.Stream<
+    DescribeFleetEventsOutput,
+    DescribeFleetEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFleetEventsInput,
+  ) => stream.Stream<
+    Event,
+    DescribeFleetEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFleetLocationAttributesError =
   | InternalServiceException
@@ -10619,7 +10679,27 @@ export const describeFleetLocationAttributes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFleetLocationAttributesInput,
+  DescribeFleetLocationAttributesOutput,
+  DescribeFleetLocationAttributesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFleetLocationAttributesInput,
+  ) => stream.Stream<
+    DescribeFleetLocationAttributesOutput,
+    DescribeFleetLocationAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFleetLocationAttributesInput,
+  ) => stream.Stream<
+    unknown,
+    DescribeFleetLocationAttributesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFleetLocationCapacityError =
   | InternalServiceException
@@ -10855,7 +10935,27 @@ export const describeFleetUtilization: API.OperationMethod<
     items: "FleetUtilization",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFleetUtilizationInput,
+  DescribeFleetUtilizationOutput,
+  DescribeFleetUtilizationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFleetUtilizationInput,
+  ) => stream.Stream<
+    DescribeFleetUtilizationOutput,
+    DescribeFleetUtilizationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFleetUtilizationInput,
+  ) => stream.Stream<
+    FleetUtilization,
+    DescribeFleetUtilizationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeGameServerError =
   | InternalServiceException
@@ -11007,7 +11107,27 @@ export const describeGameServerInstances: API.OperationMethod<
     items: "GameServerInstances",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeGameServerInstancesInput,
+  DescribeGameServerInstancesOutput,
+  DescribeGameServerInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeGameServerInstancesInput,
+  ) => stream.Stream<
+    DescribeGameServerInstancesOutput,
+    DescribeGameServerInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeGameServerInstancesInput,
+  ) => stream.Stream<
+    GameServerInstance,
+    DescribeGameServerInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeGameSessionDetailsError =
   | InternalServiceException
@@ -11091,7 +11211,27 @@ export const describeGameSessionDetails: API.OperationMethod<
     items: "GameSessionDetails",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeGameSessionDetailsInput,
+  DescribeGameSessionDetailsOutput,
+  DescribeGameSessionDetailsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeGameSessionDetailsInput,
+  ) => stream.Stream<
+    DescribeGameSessionDetailsOutput,
+    DescribeGameSessionDetailsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeGameSessionDetailsInput,
+  ) => stream.Stream<
+    GameSessionDetail,
+    DescribeGameSessionDetailsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeGameSessionPlacementError =
   | InternalServiceException
@@ -11190,7 +11330,27 @@ export const describeGameSessionQueues: API.OperationMethod<
     items: "GameSessionQueues",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeGameSessionQueuesInput,
+  DescribeGameSessionQueuesOutput,
+  DescribeGameSessionQueuesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeGameSessionQueuesInput,
+  ) => stream.Stream<
+    DescribeGameSessionQueuesOutput,
+    DescribeGameSessionQueuesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeGameSessionQueuesInput,
+  ) => stream.Stream<
+    GameSessionQueue,
+    DescribeGameSessionQueuesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeGameSessionsError =
   | InternalServiceException
@@ -11281,7 +11441,27 @@ export const describeGameSessions: API.OperationMethod<
     items: "GameSessions",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeGameSessionsInput,
+  DescribeGameSessionsOutput,
+  DescribeGameSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeGameSessionsInput,
+  ) => stream.Stream<
+    DescribeGameSessionsOutput,
+    DescribeGameSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeGameSessionsInput,
+  ) => stream.Stream<
+    GameSession,
+    DescribeGameSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancesError =
   | InternalServiceException
@@ -11367,7 +11547,27 @@ export const describeInstances: API.OperationMethod<
     items: "Instances",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstancesInput,
+  DescribeInstancesOutput,
+  DescribeInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstancesInput,
+  ) => stream.Stream<
+    DescribeInstancesOutput,
+    DescribeInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstancesInput,
+  ) => stream.Stream<
+    Instance,
+    DescribeInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMatchmakingError =
   | InternalServiceException
@@ -11474,7 +11674,27 @@ export const describeMatchmakingConfigurations: API.OperationMethod<
     items: "Configurations",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMatchmakingConfigurationsInput,
+  DescribeMatchmakingConfigurationsOutput,
+  DescribeMatchmakingConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMatchmakingConfigurationsInput,
+  ) => stream.Stream<
+    DescribeMatchmakingConfigurationsOutput,
+    DescribeMatchmakingConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMatchmakingConfigurationsInput,
+  ) => stream.Stream<
+    MatchmakingConfiguration,
+    DescribeMatchmakingConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMatchmakingRuleSetsError =
   | InternalServiceException
@@ -11533,7 +11753,27 @@ export const describeMatchmakingRuleSets: API.OperationMethod<
     items: "RuleSets",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMatchmakingRuleSetsInput,
+  DescribeMatchmakingRuleSetsOutput,
+  DescribeMatchmakingRuleSetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMatchmakingRuleSetsInput,
+  ) => stream.Stream<
+    DescribeMatchmakingRuleSetsOutput,
+    DescribeMatchmakingRuleSetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMatchmakingRuleSetsInput,
+  ) => stream.Stream<
+    MatchmakingRuleSet,
+    DescribeMatchmakingRuleSetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePlayerSessionsError =
   | InternalServiceException
@@ -11607,7 +11847,27 @@ export const describePlayerSessions: API.OperationMethod<
     items: "PlayerSessions",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePlayerSessionsInput,
+  DescribePlayerSessionsOutput,
+  DescribePlayerSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePlayerSessionsInput,
+  ) => stream.Stream<
+    DescribePlayerSessionsOutput,
+    DescribePlayerSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePlayerSessionsInput,
+  ) => stream.Stream<
+    PlayerSession,
+    DescribePlayerSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRuntimeConfigurationError =
   | InternalServiceException
@@ -11716,7 +11976,27 @@ export const describeScalingPolicies: API.OperationMethod<
     items: "ScalingPolicies",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeScalingPoliciesInput,
+  DescribeScalingPoliciesOutput,
+  DescribeScalingPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeScalingPoliciesInput,
+  ) => stream.Stream<
+    DescribeScalingPoliciesOutput,
+    DescribeScalingPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeScalingPoliciesInput,
+  ) => stream.Stream<
+    ScalingPolicy,
+    DescribeScalingPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeScriptError =
   | InternalServiceException
@@ -12146,7 +12426,27 @@ export const listAliases: API.OperationMethod<
     items: "Aliases",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAliasesInput,
+  ListAliasesOutput,
+  ListAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAliasesInput,
+  ) => stream.Stream<
+    ListAliasesOutput,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAliasesInput,
+  ) => stream.Stream<
+    Alias,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBuildsError =
   | InternalServiceException
@@ -12206,7 +12506,27 @@ export const listBuilds: API.OperationMethod<
     items: "Builds",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBuildsInput,
+  ListBuildsOutput,
+  ListBuildsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBuildsInput,
+  ) => stream.Stream<
+    ListBuildsOutput,
+    ListBuildsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBuildsInput,
+  ) => stream.Stream<
+    Build,
+    ListBuildsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListComputeError =
   | InternalServiceException
@@ -12280,7 +12600,27 @@ export const listCompute: API.OperationMethod<
     items: "ComputeList",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComputeInput,
+  ListComputeOutput,
+  ListComputeError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComputeInput,
+  ) => stream.Stream<
+    ListComputeOutput,
+    ListComputeError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComputeInput,
+  ) => stream.Stream<
+    Compute,
+    ListComputeError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContainerFleetsError =
   | InternalServiceException
@@ -12352,7 +12692,27 @@ export const listContainerFleets: API.OperationMethod<
     items: "ContainerFleets",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContainerFleetsInput,
+  ListContainerFleetsOutput,
+  ListContainerFleetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContainerFleetsInput,
+  ) => stream.Stream<
+    ListContainerFleetsOutput,
+    ListContainerFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContainerFleetsInput,
+  ) => stream.Stream<
+    ContainerFleet,
+    ListContainerFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContainerGroupDefinitionsError =
   | InternalServiceException
@@ -12421,7 +12781,27 @@ export const listContainerGroupDefinitions: API.OperationMethod<
     items: "ContainerGroupDefinitions",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContainerGroupDefinitionsInput,
+  ListContainerGroupDefinitionsOutput,
+  ListContainerGroupDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContainerGroupDefinitionsInput,
+  ) => stream.Stream<
+    ListContainerGroupDefinitionsOutput,
+    ListContainerGroupDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContainerGroupDefinitionsInput,
+  ) => stream.Stream<
+    ContainerGroupDefinition,
+    ListContainerGroupDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContainerGroupDefinitionVersionsError =
   | InternalServiceException
@@ -12493,7 +12873,27 @@ export const listContainerGroupDefinitionVersions: API.OperationMethod<
     items: "ContainerGroupDefinitions",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContainerGroupDefinitionVersionsInput,
+  ListContainerGroupDefinitionVersionsOutput,
+  ListContainerGroupDefinitionVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContainerGroupDefinitionVersionsInput,
+  ) => stream.Stream<
+    ListContainerGroupDefinitionVersionsOutput,
+    ListContainerGroupDefinitionVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContainerGroupDefinitionVersionsInput,
+  ) => stream.Stream<
+    ContainerGroupDefinition,
+    ListContainerGroupDefinitionVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFleetDeploymentsError =
   | InternalServiceException
@@ -12561,7 +12961,27 @@ export const listFleetDeployments: API.OperationMethod<
     items: "FleetDeployments",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFleetDeploymentsInput,
+  ListFleetDeploymentsOutput,
+  ListFleetDeploymentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFleetDeploymentsInput,
+  ) => stream.Stream<
+    ListFleetDeploymentsOutput,
+    ListFleetDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFleetDeploymentsInput,
+  ) => stream.Stream<
+    FleetDeployment,
+    ListFleetDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFleetsError =
   | InternalServiceException
@@ -12634,7 +13054,27 @@ export const listFleets: API.OperationMethod<
     items: "FleetIds",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFleetsInput,
+  ListFleetsOutput,
+  ListFleetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFleetsInput,
+  ) => stream.Stream<
+    ListFleetsOutput,
+    ListFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFleetsInput,
+  ) => stream.Stream<
+    FleetId,
+    ListFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGameServerGroupsError =
   | InternalServiceException
@@ -12683,7 +13123,27 @@ export const listGameServerGroups: API.OperationMethod<
     items: "GameServerGroups",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGameServerGroupsInput,
+  ListGameServerGroupsOutput,
+  ListGameServerGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGameServerGroupsInput,
+  ) => stream.Stream<
+    ListGameServerGroupsOutput,
+    ListGameServerGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGameServerGroupsInput,
+  ) => stream.Stream<
+    GameServerGroup,
+    ListGameServerGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGameServersError =
   | InternalServiceException
@@ -12740,7 +13200,27 @@ export const listGameServers: API.OperationMethod<
     items: "GameServers",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGameServersInput,
+  ListGameServersOutput,
+  ListGameServersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGameServersInput,
+  ) => stream.Stream<
+    ListGameServersOutput,
+    ListGameServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGameServersInput,
+  ) => stream.Stream<
+    GameServer,
+    ListGameServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLocationsError =
   | InternalServiceException
@@ -12796,7 +13276,27 @@ export const listLocations: API.OperationMethod<
     items: "Locations",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLocationsInput,
+  ListLocationsOutput,
+  ListLocationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLocationsInput,
+  ) => stream.Stream<
+    ListLocationsOutput,
+    ListLocationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLocationsInput,
+  ) => stream.Stream<
+    LocationModel,
+    ListLocationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListScriptsError =
   | InternalServiceException
@@ -12854,7 +13354,27 @@ export const listScripts: API.OperationMethod<
     items: "Scripts",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListScriptsInput,
+  ListScriptsOutput,
+  ListScriptsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScriptsInput,
+  ) => stream.Stream<
+    ListScriptsOutput,
+    ListScriptsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScriptsInput,
+  ) => stream.Stream<
+    Script,
+    ListScriptsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServiceException
@@ -13363,7 +13883,27 @@ export const searchGameSessions: API.OperationMethod<
     items: "GameSessions",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchGameSessionsInput,
+  SearchGameSessionsOutput,
+  SearchGameSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchGameSessionsInput,
+  ) => stream.Stream<
+    SearchGameSessionsOutput,
+    SearchGameSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchGameSessionsInput,
+  ) => stream.Stream<
+    GameSession,
+    SearchGameSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartFleetActionsError =
   | InternalServiceException

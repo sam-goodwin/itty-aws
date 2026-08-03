@@ -3675,7 +3675,27 @@ export const describeACLs: API.OperationMethod<
     items: "ACLs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeACLsRequest,
+  DescribeACLsResponse,
+  DescribeACLsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeACLsRequest,
+  ) => stream.Stream<
+    DescribeACLsResponse,
+    DescribeACLsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeACLsRequest,
+  ) => stream.Stream<
+    ACL,
+    DescribeACLsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeClustersError =
   | ClusterNotFoundFault
@@ -3724,7 +3744,27 @@ export const describeClusters: API.OperationMethod<
     items: "Clusters",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeClustersRequest,
+  DescribeClustersResponse,
+  DescribeClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeClustersRequest,
+  ) => stream.Stream<
+    DescribeClustersResponse,
+    DescribeClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeClustersRequest,
+  ) => stream.Stream<
+    Cluster,
+    DescribeClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEngineVersionsError =
   | InvalidParameterCombinationException
@@ -3771,7 +3811,27 @@ export const describeEngineVersions: API.OperationMethod<
     items: "EngineVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEngineVersionsRequest,
+  DescribeEngineVersionsResponse,
+  DescribeEngineVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEngineVersionsRequest,
+  ) => stream.Stream<
+    DescribeEngineVersionsResponse,
+    DescribeEngineVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEngineVersionsRequest,
+  ) => stream.Stream<
+    EngineVersionInfo,
+    DescribeEngineVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEventsError =
   | InvalidParameterCombinationException
@@ -3820,7 +3880,27 @@ export const describeEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEventsRequest,
+  DescribeEventsResponse,
+  DescribeEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEventsRequest,
+  ) => stream.Stream<
+    DescribeEventsResponse,
+    DescribeEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEventsRequest,
+  ) => stream.Stream<
+    Event,
+    DescribeEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMultiRegionClustersError =
   | ClusterNotFoundFault
@@ -3869,7 +3949,27 @@ export const describeMultiRegionClusters: API.OperationMethod<
     items: "MultiRegionClusters",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMultiRegionClustersRequest,
+  DescribeMultiRegionClustersResponse,
+  DescribeMultiRegionClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMultiRegionClustersRequest,
+  ) => stream.Stream<
+    DescribeMultiRegionClustersResponse,
+    DescribeMultiRegionClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMultiRegionClustersRequest,
+  ) => stream.Stream<
+    MultiRegionCluster,
+    DescribeMultiRegionClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMultiRegionParameterGroupsError =
   | InvalidParameterCombinationException
@@ -3974,7 +4074,27 @@ export const describeParameterGroups: API.OperationMethod<
     items: "ParameterGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeParameterGroupsRequest,
+  DescribeParameterGroupsResponse,
+  DescribeParameterGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeParameterGroupsRequest,
+  ) => stream.Stream<
+    DescribeParameterGroupsResponse,
+    DescribeParameterGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeParameterGroupsRequest,
+  ) => stream.Stream<
+    ParameterGroup,
+    DescribeParameterGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeParametersError =
   | InvalidParameterCombinationException
@@ -4023,7 +4143,27 @@ export const describeParameters: API.OperationMethod<
     items: "Parameters",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeParametersRequest,
+  DescribeParametersResponse,
+  DescribeParametersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeParametersRequest,
+  ) => stream.Stream<
+    DescribeParametersResponse,
+    DescribeParametersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeParametersRequest,
+  ) => stream.Stream<
+    Parameter,
+    DescribeParametersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedNodesError =
   | InvalidParameterCombinationException
@@ -4072,7 +4212,27 @@ export const describeReservedNodes: API.OperationMethod<
     items: "ReservedNodes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedNodesRequest,
+  DescribeReservedNodesResponse,
+  DescribeReservedNodesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedNodesRequest,
+  ) => stream.Stream<
+    DescribeReservedNodesResponse,
+    DescribeReservedNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedNodesRequest,
+  ) => stream.Stream<
+    ReservedNode,
+    DescribeReservedNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedNodesOfferingsError =
   | InvalidParameterCombinationException
@@ -4121,7 +4281,27 @@ export const describeReservedNodesOfferings: API.OperationMethod<
     items: "ReservedNodesOfferings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedNodesOfferingsRequest,
+  DescribeReservedNodesOfferingsResponse,
+  DescribeReservedNodesOfferingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedNodesOfferingsRequest,
+  ) => stream.Stream<
+    DescribeReservedNodesOfferingsResponse,
+    DescribeReservedNodesOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedNodesOfferingsRequest,
+  ) => stream.Stream<
+    ReservedNodesOffering,
+    DescribeReservedNodesOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeServiceUpdatesError =
   | InvalidParameterCombinationException
@@ -4166,7 +4346,27 @@ export const describeServiceUpdates: API.OperationMethod<
     items: "ServiceUpdates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeServiceUpdatesRequest,
+  DescribeServiceUpdatesResponse,
+  DescribeServiceUpdatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeServiceUpdatesRequest,
+  ) => stream.Stream<
+    DescribeServiceUpdatesResponse,
+    DescribeServiceUpdatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeServiceUpdatesRequest,
+  ) => stream.Stream<
+    ServiceUpdate,
+    DescribeServiceUpdatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSnapshotsError =
   | InvalidParameterCombinationException
@@ -4216,7 +4416,27 @@ export const describeSnapshots: API.OperationMethod<
     items: "Snapshots",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSnapshotsRequest,
+  DescribeSnapshotsResponse,
+  DescribeSnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSnapshotsRequest,
+  ) => stream.Stream<
+    DescribeSnapshotsResponse,
+    DescribeSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSnapshotsRequest,
+  ) => stream.Stream<
+    Snapshot,
+    DescribeSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSubnetGroupsError =
   | ServiceLinkedRoleNotFoundFault
@@ -4258,7 +4478,27 @@ export const describeSubnetGroups: API.OperationMethod<
     items: "SubnetGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSubnetGroupsRequest,
+  DescribeSubnetGroupsResponse,
+  DescribeSubnetGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSubnetGroupsRequest,
+  ) => stream.Stream<
+    DescribeSubnetGroupsResponse,
+    DescribeSubnetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSubnetGroupsRequest,
+  ) => stream.Stream<
+    SubnetGroup,
+    DescribeSubnetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeUsersError =
   | InvalidParameterCombinationException
@@ -4300,7 +4540,27 @@ export const describeUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeUsersRequest,
+  DescribeUsersResponse,
+  DescribeUsersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeUsersRequest,
+  ) => stream.Stream<
+    DescribeUsersResponse,
+    DescribeUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeUsersRequest,
+  ) => stream.Stream<
+    User,
+    DescribeUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type FailoverShardError =
   | APICallRateForCustomerExceededFault

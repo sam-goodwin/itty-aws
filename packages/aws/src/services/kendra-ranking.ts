@@ -629,7 +629,27 @@ export const listRescoreExecutionPlans: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRescoreExecutionPlansRequest,
+  ListRescoreExecutionPlansResponse,
+  ListRescoreExecutionPlansError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRescoreExecutionPlansRequest,
+  ) => stream.Stream<
+    ListRescoreExecutionPlansResponse,
+    ListRescoreExecutionPlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRescoreExecutionPlansRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRescoreExecutionPlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

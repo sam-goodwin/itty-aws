@@ -3243,7 +3243,27 @@ export const listChannelGroups: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelGroupsRequest,
+  ListChannelGroupsResponse,
+  ListChannelGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelGroupsRequest,
+  ) => stream.Stream<
+    ListChannelGroupsResponse,
+    ListChannelGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelGroupsRequest,
+  ) => stream.Stream<
+    ChannelGroupListConfiguration,
+    ListChannelGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListChannelsError =
   | AccessDeniedException
@@ -3294,7 +3314,27 @@ export const listChannels: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelsRequest,
+  ListChannelsResponse,
+  ListChannelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    ListChannelsResponse,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    ChannelListConfiguration,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListHarvestJobsError =
   | AccessDeniedException
@@ -3345,7 +3385,27 @@ export const listHarvestJobs: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListHarvestJobsRequest,
+  ListHarvestJobsResponse,
+  ListHarvestJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListHarvestJobsRequest,
+  ) => stream.Stream<
+    ListHarvestJobsResponse,
+    ListHarvestJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListHarvestJobsRequest,
+  ) => stream.Stream<
+    HarvestJob,
+    ListHarvestJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOriginEndpointsError =
   | AccessDeniedException
@@ -3396,7 +3456,27 @@ export const listOriginEndpoints: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOriginEndpointsRequest,
+  ListOriginEndpointsResponse,
+  ListOriginEndpointsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOriginEndpointsRequest,
+  ) => stream.Stream<
+    ListOriginEndpointsResponse,
+    ListOriginEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOriginEndpointsRequest,
+  ) => stream.Stream<
+    OriginEndpointListConfiguration,
+    ListOriginEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError = ValidationException | CommonErrors;
 /**

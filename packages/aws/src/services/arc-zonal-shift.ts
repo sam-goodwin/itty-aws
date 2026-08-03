@@ -1156,7 +1156,27 @@ export const listAutoshifts: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutoshiftsRequest,
+  ListAutoshiftsResponse,
+  ListAutoshiftsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutoshiftsRequest,
+  ) => stream.Stream<
+    ListAutoshiftsResponse,
+    ListAutoshiftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutoshiftsRequest,
+  ) => stream.Stream<
+    AutoshiftSummary,
+    ListAutoshiftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListManagedResourcesError =
   | AccessDeniedException
@@ -1205,7 +1225,27 @@ export const listManagedResources: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListManagedResourcesRequest,
+  ListManagedResourcesResponse,
+  ListManagedResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListManagedResourcesRequest,
+  ) => stream.Stream<
+    ListManagedResourcesResponse,
+    ListManagedResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListManagedResourcesRequest,
+  ) => stream.Stream<
+    ManagedResourceSummary,
+    ListManagedResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListZonalShiftsError =
   | AccessDeniedException
@@ -1256,7 +1296,27 @@ export const listZonalShifts: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListZonalShiftsRequest,
+  ListZonalShiftsResponse,
+  ListZonalShiftsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListZonalShiftsRequest,
+  ) => stream.Stream<
+    ListZonalShiftsResponse,
+    ListZonalShiftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListZonalShiftsRequest,
+  ) => stream.Stream<
+    ZonalShiftSummary,
+    ListZonalShiftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartPracticeRunError =
   | AccessDeniedException

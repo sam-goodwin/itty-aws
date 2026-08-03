@@ -444,7 +444,27 @@ export const listRoutingControls: API.OperationMethod<
     items: "RoutingControls",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRoutingControlsRequest,
+  ListRoutingControlsResponse,
+  ListRoutingControlsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRoutingControlsRequest,
+  ) => stream.Stream<
+    ListRoutingControlsResponse,
+    ListRoutingControlsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRoutingControlsRequest,
+  ) => stream.Stream<
+    RoutingControl,
+    ListRoutingControlsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type UpdateRoutingControlStateError =
   | AccessDeniedException

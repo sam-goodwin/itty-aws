@@ -1231,7 +1231,27 @@ export const listDictionaries: API.OperationMethod<
     items: "dictionaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDictionariesRequest,
+  ListDictionariesResponse,
+  ListDictionariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDictionariesRequest,
+  ) => stream.Stream<
+    ListDictionariesResponse,
+    ListDictionariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDictionariesRequest,
+  ) => stream.Stream<
+    DictionarySummary,
+    ListDictionariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFeedsError =
   | AccessDeniedException
@@ -1282,7 +1302,27 @@ export const listFeeds: API.OperationMethod<
     items: "feeds",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFeedsRequest,
+  ListFeedsResponse,
+  ListFeedsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFeedsRequest,
+  ) => stream.Stream<
+    ListFeedsResponse,
+    ListFeedsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFeedsRequest,
+  ) => stream.Stream<
+    FeedSummary,
+    ListFeedsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

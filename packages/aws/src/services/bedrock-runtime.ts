@@ -4099,7 +4099,27 @@ export const listAsyncInvokes: API.OperationMethod<
     items: "asyncInvokeSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAsyncInvokesRequest,
+  ListAsyncInvokesResponse,
+  ListAsyncInvokesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAsyncInvokesRequest,
+  ) => stream.Stream<
+    ListAsyncInvokesResponse,
+    ListAsyncInvokesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAsyncInvokesRequest,
+  ) => stream.Stream<
+    AsyncInvokeSummary,
+    ListAsyncInvokesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartAsyncInvokeError =
   | AccessDeniedException

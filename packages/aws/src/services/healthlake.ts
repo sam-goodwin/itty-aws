@@ -1028,7 +1028,27 @@ export const listFHIRDatastores: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFHIRDatastoresRequest,
+  ListFHIRDatastoresResponse,
+  ListFHIRDatastoresError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFHIRDatastoresRequest,
+  ) => stream.Stream<
+    ListFHIRDatastoresResponse,
+    ListFHIRDatastoresError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFHIRDatastoresRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFHIRDatastoresError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFHIRExportJobsError =
   | AccessDeniedException
@@ -1078,7 +1098,27 @@ export const listFHIRExportJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFHIRExportJobsRequest,
+  ListFHIRExportJobsResponse,
+  ListFHIRExportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFHIRExportJobsRequest,
+  ) => stream.Stream<
+    ListFHIRExportJobsResponse,
+    ListFHIRExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFHIRExportJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFHIRExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFHIRImportJobsError =
   | AccessDeniedException
@@ -1128,7 +1168,27 @@ export const listFHIRImportJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFHIRImportJobsRequest,
+  ListFHIRImportJobsResponse,
+  ListFHIRImportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFHIRImportJobsRequest,
+  ) => stream.Stream<
+    ListFHIRImportJobsResponse,
+    ListFHIRImportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFHIRImportJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFHIRImportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException

@@ -3544,7 +3544,27 @@ export const listNamespaces: API.OperationMethod<
     items: "namespaces",
     pageSize: "maxNamespaces",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNamespacesRequest,
+  ListNamespacesResponse,
+  ListNamespacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNamespacesRequest,
+  ) => stream.Stream<
+    ListNamespacesResponse,
+    ListNamespacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNamespacesRequest,
+  ) => stream.Stream<
+    NamespaceSummary,
+    ListNamespacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTableBucketsError =
   | AccessDeniedException
@@ -3603,7 +3623,27 @@ export const listTableBuckets: API.OperationMethod<
     items: "tableBuckets",
     pageSize: "maxBuckets",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTableBucketsRequest,
+  ListTableBucketsResponse,
+  ListTableBucketsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTableBucketsRequest,
+  ) => stream.Stream<
+    ListTableBucketsResponse,
+    ListTableBucketsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTableBucketsRequest,
+  ) => stream.Stream<
+    TableBucketSummary,
+    ListTableBucketsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTablesError =
   | BadRequestException
@@ -3660,7 +3700,27 @@ export const listTables: API.OperationMethod<
     items: "tables",
     pageSize: "maxTables",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTablesRequest,
+  ListTablesResponse,
+  ListTablesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTablesRequest,
+  ) => stream.Stream<
+    ListTablesResponse,
+    ListTablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTablesRequest,
+  ) => stream.Stream<
+    TableSummary,
+    ListTablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException

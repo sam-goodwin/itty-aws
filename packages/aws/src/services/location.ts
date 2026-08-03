@@ -4983,7 +4983,27 @@ export const forecastGeofenceEvents: API.OperationMethod<
     items: "ForecastedEvents",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ForecastGeofenceEventsRequest,
+  ForecastGeofenceEventsResponse,
+  ForecastGeofenceEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ForecastGeofenceEventsRequest,
+  ) => stream.Stream<
+    ForecastGeofenceEventsResponse,
+    ForecastGeofenceEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ForecastGeofenceEventsRequest,
+  ) => stream.Stream<
+    ForecastedEvent,
+    ForecastGeofenceEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetDevicePositionError =
   | AccessDeniedException
@@ -5070,7 +5090,27 @@ export const getDevicePositionHistory: API.OperationMethod<
     items: "DevicePositions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetDevicePositionHistoryRequest,
+  GetDevicePositionHistoryResponse,
+  GetDevicePositionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetDevicePositionHistoryRequest,
+  ) => stream.Stream<
+    GetDevicePositionHistoryResponse,
+    GetDevicePositionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetDevicePositionHistoryRequest,
+  ) => stream.Stream<
+    DevicePosition,
+    GetDevicePositionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetGeofenceError =
   | AccessDeniedException
@@ -5415,7 +5455,27 @@ export const listDevicePositions: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevicePositionsRequest,
+  ListDevicePositionsResponse,
+  ListDevicePositionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevicePositionsRequest,
+  ) => stream.Stream<
+    ListDevicePositionsResponse,
+    ListDevicePositionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevicePositionsRequest,
+  ) => stream.Stream<
+    ListDevicePositionsResponseEntry,
+    ListDevicePositionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGeofenceCollectionsError =
   | AccessDeniedException
@@ -5465,7 +5525,27 @@ export const listGeofenceCollections: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGeofenceCollectionsRequest,
+  ListGeofenceCollectionsResponse,
+  ListGeofenceCollectionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGeofenceCollectionsRequest,
+  ) => stream.Stream<
+    ListGeofenceCollectionsResponse,
+    ListGeofenceCollectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGeofenceCollectionsRequest,
+  ) => stream.Stream<
+    ListGeofenceCollectionsResponseEntry,
+    ListGeofenceCollectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGeofencesError =
   | AccessDeniedException
@@ -5517,7 +5597,27 @@ export const listGeofences: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGeofencesRequest,
+  ListGeofencesResponse,
+  ListGeofencesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGeofencesRequest,
+  ) => stream.Stream<
+    ListGeofencesResponse,
+    ListGeofencesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGeofencesRequest,
+  ) => stream.Stream<
+    ListGeofenceResponseEntry,
+    ListGeofencesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobsError =
   | AccessDeniedException
@@ -5569,7 +5669,27 @@ export const listJobs: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobsRequest,
+  ListJobsResponse,
+  ListJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResponse,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResponseEntry,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListKeysError =
   | AccessDeniedException
@@ -5621,7 +5741,27 @@ export const listKeys: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListKeysRequest,
+  ListKeysResponse,
+  ListKeysError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListKeysRequest,
+  ) => stream.Stream<
+    ListKeysResponse,
+    ListKeysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListKeysRequest,
+  ) => stream.Stream<
+    ListKeysResponseEntry,
+    ListKeysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMapsError =
   | AccessDeniedException
@@ -5683,7 +5823,27 @@ export const listMaps: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMapsRequest,
+  ListMapsResponse,
+  ListMapsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMapsRequest,
+  ) => stream.Stream<
+    ListMapsResponse,
+    ListMapsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMapsRequest,
+  ) => stream.Stream<
+    ListMapsResponseEntry,
+    ListMapsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPlaceIndexesError =
   | AccessDeniedException
@@ -5745,7 +5905,27 @@ export const listPlaceIndexes: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPlaceIndexesRequest,
+  ListPlaceIndexesResponse,
+  ListPlaceIndexesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPlaceIndexesRequest,
+  ) => stream.Stream<
+    ListPlaceIndexesResponse,
+    ListPlaceIndexesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPlaceIndexesRequest,
+  ) => stream.Stream<
+    ListPlaceIndexesResponseEntry,
+    ListPlaceIndexesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRouteCalculatorsError =
   | AccessDeniedException
@@ -5807,7 +5987,27 @@ export const listRouteCalculators: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRouteCalculatorsRequest,
+  ListRouteCalculatorsResponse,
+  ListRouteCalculatorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRouteCalculatorsRequest,
+  ) => stream.Stream<
+    ListRouteCalculatorsResponse,
+    ListRouteCalculatorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRouteCalculatorsRequest,
+  ) => stream.Stream<
+    ListRouteCalculatorsResponseEntry,
+    ListRouteCalculatorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -5890,7 +6090,27 @@ export const listTrackerConsumers: API.OperationMethod<
     items: "ConsumerArns",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrackerConsumersRequest,
+  ListTrackerConsumersResponse,
+  ListTrackerConsumersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrackerConsumersRequest,
+  ) => stream.Stream<
+    ListTrackerConsumersResponse,
+    ListTrackerConsumersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrackerConsumersRequest,
+  ) => stream.Stream<
+    Arn,
+    ListTrackerConsumersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTrackersError =
   | AccessDeniedException
@@ -5940,7 +6160,27 @@ export const listTrackers: API.OperationMethod<
     items: "Entries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrackersRequest,
+  ListTrackersResponse,
+  ListTrackersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrackersRequest,
+  ) => stream.Stream<
+    ListTrackersResponse,
+    ListTrackersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrackersRequest,
+  ) => stream.Stream<
+    ListTrackersResponseEntry,
+    ListTrackersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutGeofenceError =
   | AccessDeniedException

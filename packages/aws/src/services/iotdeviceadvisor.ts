@@ -1077,7 +1077,27 @@ export const listSuiteDefinitions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSuiteDefinitionsRequest,
+  ListSuiteDefinitionsResponse,
+  ListSuiteDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSuiteDefinitionsRequest,
+  ) => stream.Stream<
+    ListSuiteDefinitionsResponse,
+    ListSuiteDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSuiteDefinitionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListSuiteDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSuiteRunsError =
   | InternalServerException
@@ -1121,7 +1141,27 @@ export const listSuiteRuns: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSuiteRunsRequest,
+  ListSuiteRunsResponse,
+  ListSuiteRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSuiteRunsRequest,
+  ) => stream.Stream<
+    ListSuiteRunsResponse,
+    ListSuiteRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSuiteRunsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListSuiteRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

@@ -9852,7 +9852,27 @@ export const listAgentActionGroups: API.OperationMethod<
     items: "actionGroupSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentActionGroupsRequest,
+  ListAgentActionGroupsResponse,
+  ListAgentActionGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentActionGroupsRequest,
+  ) => stream.Stream<
+    ListAgentActionGroupsResponse,
+    ListAgentActionGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentActionGroupsRequest,
+  ) => stream.Stream<
+    ActionGroupSummary,
+    ListAgentActionGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAgentAliasesError =
   | AccessDeniedException
@@ -9903,7 +9923,27 @@ export const listAgentAliases: API.OperationMethod<
     items: "agentAliasSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentAliasesRequest,
+  ListAgentAliasesResponse,
+  ListAgentAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentAliasesRequest,
+  ) => stream.Stream<
+    ListAgentAliasesResponse,
+    ListAgentAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentAliasesRequest,
+  ) => stream.Stream<
+    AgentAliasSummary,
+    ListAgentAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAgentCollaboratorsError =
   | AccessDeniedException
@@ -9954,7 +9994,27 @@ export const listAgentCollaborators: API.OperationMethod<
     items: "agentCollaboratorSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentCollaboratorsRequest,
+  ListAgentCollaboratorsResponse,
+  ListAgentCollaboratorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentCollaboratorsRequest,
+  ) => stream.Stream<
+    ListAgentCollaboratorsResponse,
+    ListAgentCollaboratorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentCollaboratorsRequest,
+  ) => stream.Stream<
+    AgentCollaboratorSummary,
+    ListAgentCollaboratorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAgentKnowledgeBasesError =
   | AccessDeniedException
@@ -10005,7 +10065,27 @@ export const listAgentKnowledgeBases: API.OperationMethod<
     items: "agentKnowledgeBaseSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentKnowledgeBasesRequest,
+  ListAgentKnowledgeBasesResponse,
+  ListAgentKnowledgeBasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentKnowledgeBasesRequest,
+  ) => stream.Stream<
+    ListAgentKnowledgeBasesResponse,
+    ListAgentKnowledgeBasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentKnowledgeBasesRequest,
+  ) => stream.Stream<
+    AgentKnowledgeBaseSummary,
+    ListAgentKnowledgeBasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAgentsError =
   | AccessDeniedException
@@ -10054,7 +10134,27 @@ export const listAgents: API.OperationMethod<
     items: "agentSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentsRequest,
+  ListAgentsResponse,
+  ListAgentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentsRequest,
+  ) => stream.Stream<
+    ListAgentsResponse,
+    ListAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentsRequest,
+  ) => stream.Stream<
+    AgentSummary,
+    ListAgentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAgentVersionsError =
   | AccessDeniedException
@@ -10105,7 +10205,27 @@ export const listAgentVersions: API.OperationMethod<
     items: "agentVersionSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentVersionsRequest,
+  ListAgentVersionsResponse,
+  ListAgentVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentVersionsRequest,
+  ) => stream.Stream<
+    ListAgentVersionsResponse,
+    ListAgentVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentVersionsRequest,
+  ) => stream.Stream<
+    AgentVersionSummary,
+    ListAgentVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataSourcesError =
   | AccessDeniedException
@@ -10156,7 +10276,27 @@ export const listDataSources: API.OperationMethod<
     items: "dataSourceSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataSourcesRequest,
+  ListDataSourcesResponse,
+  ListDataSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataSourcesRequest,
+  ) => stream.Stream<
+    ListDataSourcesResponse,
+    ListDataSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataSourcesRequest,
+  ) => stream.Stream<
+    DataSourceSummary,
+    ListDataSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFlowAliasesError =
   | AccessDeniedException
@@ -10207,7 +10347,27 @@ export const listFlowAliases: API.OperationMethod<
     items: "flowAliasSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFlowAliasesRequest,
+  ListFlowAliasesResponse,
+  ListFlowAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFlowAliasesRequest,
+  ) => stream.Stream<
+    ListFlowAliasesResponse,
+    ListFlowAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFlowAliasesRequest,
+  ) => stream.Stream<
+    FlowAliasSummary,
+    ListFlowAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFlowsError =
   | AccessDeniedException
@@ -10256,7 +10416,27 @@ export const listFlows: API.OperationMethod<
     items: "flowSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFlowsRequest,
+  ListFlowsResponse,
+  ListFlowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFlowsRequest,
+  ) => stream.Stream<
+    ListFlowsResponse,
+    ListFlowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFlowsRequest,
+  ) => stream.Stream<
+    FlowSummary,
+    ListFlowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFlowVersionsError =
   | AccessDeniedException
@@ -10307,7 +10487,27 @@ export const listFlowVersions: API.OperationMethod<
     items: "flowVersionSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFlowVersionsRequest,
+  ListFlowVersionsResponse,
+  ListFlowVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFlowVersionsRequest,
+  ) => stream.Stream<
+    ListFlowVersionsResponse,
+    ListFlowVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFlowVersionsRequest,
+  ) => stream.Stream<
+    FlowVersionSummary,
+    ListFlowVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListIngestionJobsError =
   | AccessDeniedException
@@ -10358,7 +10558,27 @@ export const listIngestionJobs: API.OperationMethod<
     items: "ingestionJobSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIngestionJobsRequest,
+  ListIngestionJobsResponse,
+  ListIngestionJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIngestionJobsRequest,
+  ) => stream.Stream<
+    ListIngestionJobsResponse,
+    ListIngestionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIngestionJobsRequest,
+  ) => stream.Stream<
+    IngestionJobSummary,
+    ListIngestionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListKnowledgeBaseDocumentsError =
   | AccessDeniedException
@@ -10411,7 +10631,27 @@ export const listKnowledgeBaseDocuments: API.OperationMethod<
     items: "documentDetails",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListKnowledgeBaseDocumentsRequest,
+  ListKnowledgeBaseDocumentsResponse,
+  ListKnowledgeBaseDocumentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListKnowledgeBaseDocumentsRequest,
+  ) => stream.Stream<
+    ListKnowledgeBaseDocumentsResponse,
+    ListKnowledgeBaseDocumentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListKnowledgeBaseDocumentsRequest,
+  ) => stream.Stream<
+    KnowledgeBaseDocumentDetail,
+    ListKnowledgeBaseDocumentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListKnowledgeBasesError =
   | AccessDeniedException
@@ -10460,7 +10700,27 @@ export const listKnowledgeBases: API.OperationMethod<
     items: "knowledgeBaseSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListKnowledgeBasesRequest,
+  ListKnowledgeBasesResponse,
+  ListKnowledgeBasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListKnowledgeBasesRequest,
+  ) => stream.Stream<
+    ListKnowledgeBasesResponse,
+    ListKnowledgeBasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListKnowledgeBasesRequest,
+  ) => stream.Stream<
+    KnowledgeBaseSummary,
+    ListKnowledgeBasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPromptsError =
   | AccessDeniedException
@@ -10511,7 +10771,27 @@ export const listPrompts: API.OperationMethod<
     items: "promptSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPromptsRequest,
+  ListPromptsResponse,
+  ListPromptsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPromptsRequest,
+  ) => stream.Stream<
+    ListPromptsResponse,
+    ListPromptsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPromptsRequest,
+  ) => stream.Stream<
+    PromptSummary,
+    ListPromptsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

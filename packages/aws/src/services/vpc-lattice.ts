@@ -5684,7 +5684,27 @@ export const listAccessLogSubscriptions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccessLogSubscriptionsRequest,
+  ListAccessLogSubscriptionsResponse,
+  ListAccessLogSubscriptionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccessLogSubscriptionsRequest,
+  ) => stream.Stream<
+    ListAccessLogSubscriptionsResponse,
+    ListAccessLogSubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccessLogSubscriptionsRequest,
+  ) => stream.Stream<
+    AccessLogSubscriptionSummary,
+    ListAccessLogSubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDomainVerificationsError =
   | AccessDeniedException
@@ -5735,7 +5755,27 @@ export const listDomainVerifications: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDomainVerificationsRequest,
+  ListDomainVerificationsResponse,
+  ListDomainVerificationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDomainVerificationsRequest,
+  ) => stream.Stream<
+    ListDomainVerificationsResponse,
+    ListDomainVerificationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDomainVerificationsRequest,
+  ) => stream.Stream<
+    DomainVerificationSummary,
+    ListDomainVerificationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListListenersError =
   | AccessDeniedException
@@ -5786,7 +5826,27 @@ export const listListeners: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListListenersRequest,
+  ListListenersResponse,
+  ListListenersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListListenersRequest,
+  ) => stream.Stream<
+    ListListenersResponse,
+    ListListenersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListListenersRequest,
+  ) => stream.Stream<
+    ListenerSummary,
+    ListListenersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceConfigurationsError =
   | AccessDeniedException
@@ -5835,7 +5895,27 @@ export const listResourceConfigurations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceConfigurationsRequest,
+  ListResourceConfigurationsResponse,
+  ListResourceConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceConfigurationsRequest,
+  ) => stream.Stream<
+    ListResourceConfigurationsResponse,
+    ListResourceConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceConfigurationsRequest,
+  ) => stream.Stream<
+    ResourceConfigurationSummary,
+    ListResourceConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceEndpointAssociationsError =
   | AccessDeniedException
@@ -5884,7 +5964,27 @@ export const listResourceEndpointAssociations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceEndpointAssociationsRequest,
+  ListResourceEndpointAssociationsResponse,
+  ListResourceEndpointAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceEndpointAssociationsRequest,
+  ) => stream.Stream<
+    ListResourceEndpointAssociationsResponse,
+    ListResourceEndpointAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceEndpointAssociationsRequest,
+  ) => stream.Stream<
+    ResourceEndpointAssociationSummary,
+    ListResourceEndpointAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceGatewaysError =
   | AccessDeniedException
@@ -5933,7 +6033,27 @@ export const listResourceGateways: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceGatewaysRequest,
+  ListResourceGatewaysResponse,
+  ListResourceGatewaysError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceGatewaysRequest,
+  ) => stream.Stream<
+    ListResourceGatewaysResponse,
+    ListResourceGatewaysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceGatewaysRequest,
+  ) => stream.Stream<
+    ResourceGatewaySummary,
+    ListResourceGatewaysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRulesError =
   | AccessDeniedException
@@ -5984,7 +6104,27 @@ export const listRules: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRulesRequest,
+  ListRulesResponse,
+  ListRulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRulesRequest,
+  ) => stream.Stream<
+    ListRulesResponse,
+    ListRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRulesRequest,
+  ) => stream.Stream<
+    RuleSummary,
+    ListRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceNetworkResourceAssociationsError =
   | AccessDeniedException
@@ -6033,7 +6173,27 @@ export const listServiceNetworkResourceAssociations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceNetworkResourceAssociationsRequest,
+  ListServiceNetworkResourceAssociationsResponse,
+  ListServiceNetworkResourceAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceNetworkResourceAssociationsRequest,
+  ) => stream.Stream<
+    ListServiceNetworkResourceAssociationsResponse,
+    ListServiceNetworkResourceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceNetworkResourceAssociationsRequest,
+  ) => stream.Stream<
+    ServiceNetworkResourceAssociationSummary,
+    ListServiceNetworkResourceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceNetworksError =
   | AccessDeniedException
@@ -6082,7 +6242,27 @@ export const listServiceNetworks: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceNetworksRequest,
+  ListServiceNetworksResponse,
+  ListServiceNetworksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceNetworksRequest,
+  ) => stream.Stream<
+    ListServiceNetworksResponse,
+    ListServiceNetworksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceNetworksRequest,
+  ) => stream.Stream<
+    ServiceNetworkSummary,
+    ListServiceNetworksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceNetworkServiceAssociationsError =
   | AccessDeniedException
@@ -6133,7 +6313,27 @@ export const listServiceNetworkServiceAssociations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceNetworkServiceAssociationsRequest,
+  ListServiceNetworkServiceAssociationsResponse,
+  ListServiceNetworkServiceAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceNetworkServiceAssociationsRequest,
+  ) => stream.Stream<
+    ListServiceNetworkServiceAssociationsResponse,
+    ListServiceNetworkServiceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceNetworkServiceAssociationsRequest,
+  ) => stream.Stream<
+    ServiceNetworkServiceAssociationSummary,
+    ListServiceNetworkServiceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceNetworkVpcAssociationsError =
   | AccessDeniedException
@@ -6182,7 +6382,27 @@ export const listServiceNetworkVpcAssociations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceNetworkVpcAssociationsRequest,
+  ListServiceNetworkVpcAssociationsResponse,
+  ListServiceNetworkVpcAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceNetworkVpcAssociationsRequest,
+  ) => stream.Stream<
+    ListServiceNetworkVpcAssociationsResponse,
+    ListServiceNetworkVpcAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceNetworkVpcAssociationsRequest,
+  ) => stream.Stream<
+    ServiceNetworkVpcAssociationSummary,
+    ListServiceNetworkVpcAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceNetworkVpcEndpointAssociationsError =
   | AccessDeniedException
@@ -6231,7 +6451,27 @@ export const listServiceNetworkVpcEndpointAssociations: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceNetworkVpcEndpointAssociationsRequest,
+  ListServiceNetworkVpcEndpointAssociationsResponse,
+  ListServiceNetworkVpcEndpointAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceNetworkVpcEndpointAssociationsRequest,
+  ) => stream.Stream<
+    ListServiceNetworkVpcEndpointAssociationsResponse,
+    ListServiceNetworkVpcEndpointAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceNetworkVpcEndpointAssociationsRequest,
+  ) => stream.Stream<
+    ServiceNetworkEndpointAssociation,
+    ListServiceNetworkVpcEndpointAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServicesError =
   | AccessDeniedException
@@ -6280,7 +6520,27 @@ export const listServices: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServicesRequest,
+  ListServicesResponse,
+  ListServicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServicesRequest,
+  ) => stream.Stream<
+    ListServicesResponse,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServicesRequest,
+  ) => stream.Stream<
+    ServiceSummary,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -6357,7 +6617,27 @@ export const listTargetGroups: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTargetGroupsRequest,
+  ListTargetGroupsResponse,
+  ListTargetGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTargetGroupsRequest,
+  ) => stream.Stream<
+    ListTargetGroupsResponse,
+    ListTargetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTargetGroupsRequest,
+  ) => stream.Stream<
+    TargetGroupSummary,
+    ListTargetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTargetsError =
   | AccessDeniedException
@@ -6408,7 +6688,27 @@ export const listTargets: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTargetsRequest,
+  ListTargetsResponse,
+  ListTargetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTargetsRequest,
+  ) => stream.Stream<
+    ListTargetsResponse,
+    ListTargetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTargetsRequest,
+  ) => stream.Stream<
+    TargetSummary,
+    ListTargetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutAuthPolicyError =
   | AccessDeniedException

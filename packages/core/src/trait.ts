@@ -75,8 +75,11 @@ export interface HttpTrait {
    * Request body encoding. Default is JSON; `"multipart"` sends
    * multipart/form-data — body members become form parts (objects
    * JSON-encoded) and members marked `FormDataFile()` append their files.
+   * `"form-urlencoded"` sends application/x-www-form-urlencoded with
+   * Stripe-style bracket notation for nested objects and arrays (see
+   * `buildRequest`).
    */
-  readonly contentType?: "multipart";
+  readonly contentType?: "multipart" | "form-urlencoded";
   /**
    * Explicit `Content-Type` for a whole-body (`HttpBody()`) member carrying a
    * preserialized payload, when the API requires a specific media type rather

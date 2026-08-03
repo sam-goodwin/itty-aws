@@ -199132,12 +199132,12 @@ export type GetTransfersTransferError = StripeOpError;
 /** Retrieve a transfer <p>Retrieves the details of an existing transfer. Supply the unique transfer ID from either a transfer creation request or the transfer list, and Stripe will return the corresponding transfer information.</p> */
 export const GetTransfersTransfer: API.OperationMethod<
   GetTransfersTransferRequest,
-  Document,
+  unknown,
   GetTransfersTransferError,
   StripeOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTransfersTransferRequest,
-  output: Document,
+  output: S.Unknown,
   errors: [UnknownStripeError],
   protocol: StripeProtocol,
   retry: Retry.Retry,
@@ -203429,12 +203429,12 @@ export type PostTransfersError = StripeOpError;
 /** Create a transfer <p>To send funds from your Stripe account to a connected account, you create a new transfer object. Your <a href="#balance">Stripe balance</a> must be able to cover the transfer amount, or you’ll receive an “Insufficient Funds” error.</p> */
 export const PostTransfers: API.OperationMethod<
   PostTransfersRequest,
-  Document,
+  unknown,
   PostTransfersError,
   StripeOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PostTransfersRequest,
-  output: Document,
+  output: S.Unknown,
   errors: [UnknownStripeError],
   protocol: StripeProtocol,
   retry: Retry.Retry,
@@ -203459,12 +203459,12 @@ export type PostTransfersTransferError = StripeOpError;
 /** Update a transfer <p>Updates the specified transfer by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p> <p>This request accepts only metadata as an argument.</p> */
 export const PostTransfersTransfer: API.OperationMethod<
   PostTransfersTransferRequest,
-  Document,
+  unknown,
   PostTransfersTransferError,
   StripeOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PostTransfersTransferRequest,
-  output: Document,
+  output: S.Unknown,
   errors: [UnknownStripeError],
   protocol: StripeProtocol,
   retry: Retry.Retry,

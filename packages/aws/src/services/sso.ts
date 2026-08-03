@@ -361,7 +361,27 @@ export const listAccountRoles: API.OperationMethod<
     items: "roleList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccountRolesRequest,
+  ListAccountRolesResponse,
+  ListAccountRolesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccountRolesRequest,
+  ) => stream.Stream<
+    ListAccountRolesResponse,
+    ListAccountRolesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccountRolesRequest,
+  ) => stream.Stream<
+    RoleInfo,
+    ListAccountRolesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAccountsError =
   | InvalidRequestException
@@ -412,7 +432,27 @@ export const listAccounts: API.OperationMethod<
     items: "accountList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccountsRequest,
+  ListAccountsResponse,
+  ListAccountsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
+    ListAccountsResponse,
+    ListAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
+    AccountInfo,
+    ListAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type LogoutError =
   | InvalidRequestException

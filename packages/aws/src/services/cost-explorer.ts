@@ -4239,7 +4239,27 @@ export const getAnomalies: API.OperationMethod<
     items: "Anomalies",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetAnomaliesRequest,
+  GetAnomaliesResponse,
+  GetAnomaliesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetAnomaliesRequest,
+  ) => stream.Stream<
+    GetAnomaliesResponse,
+    GetAnomaliesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetAnomaliesRequest,
+  ) => stream.Stream<
+    Anomaly,
+    GetAnomaliesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetAnomalyMonitorsError =
   | InvalidNextTokenException
@@ -4287,7 +4307,27 @@ export const getAnomalyMonitors: API.OperationMethod<
     items: "AnomalyMonitors",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetAnomalyMonitorsRequest,
+  GetAnomalyMonitorsResponse,
+  GetAnomalyMonitorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetAnomalyMonitorsRequest,
+  ) => stream.Stream<
+    GetAnomalyMonitorsResponse,
+    GetAnomalyMonitorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetAnomalyMonitorsRequest,
+  ) => stream.Stream<
+    AnomalyMonitor,
+    GetAnomalyMonitorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetAnomalySubscriptionsError =
   | InvalidNextTokenException
@@ -4335,7 +4375,27 @@ export const getAnomalySubscriptions: API.OperationMethod<
     items: "AnomalySubscriptions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetAnomalySubscriptionsRequest,
+  GetAnomalySubscriptionsResponse,
+  GetAnomalySubscriptionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetAnomalySubscriptionsRequest,
+  ) => stream.Stream<
+    GetAnomalySubscriptionsResponse,
+    GetAnomalySubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetAnomalySubscriptionsRequest,
+  ) => stream.Stream<
+    AnomalySubscription,
+    GetAnomalySubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetApproximateUsageRecordsError =
   | DataUnavailableException
@@ -4478,7 +4538,27 @@ export const getCostAndUsageComparisons: API.OperationMethod<
     items: "CostAndUsageComparisons",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetCostAndUsageComparisonsRequest,
+  GetCostAndUsageComparisonsResponse,
+  GetCostAndUsageComparisonsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCostAndUsageComparisonsRequest,
+  ) => stream.Stream<
+    GetCostAndUsageComparisonsResponse,
+    GetCostAndUsageComparisonsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCostAndUsageComparisonsRequest,
+  ) => stream.Stream<
+    CostAndUsageComparison,
+    GetCostAndUsageComparisonsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetCostAndUsageWithResourcesError =
   | BillExpirationException
@@ -4615,7 +4695,27 @@ export const getCostComparisonDrivers: API.OperationMethod<
     items: "CostComparisonDrivers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetCostComparisonDriversRequest,
+  GetCostComparisonDriversResponse,
+  GetCostComparisonDriversError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetCostComparisonDriversRequest,
+  ) => stream.Stream<
+    GetCostComparisonDriversResponse,
+    GetCostComparisonDriversError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetCostComparisonDriversRequest,
+  ) => stream.Stream<
+    CostComparisonDriver,
+    GetCostComparisonDriversError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetCostForecastError =
   | BillingViewHealthStatusException
@@ -4801,7 +4901,27 @@ export const getReservationPurchaseRecommendation: API.OperationMethod<
     items: "Recommendations",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetReservationPurchaseRecommendationRequest,
+  GetReservationPurchaseRecommendationResponse,
+  GetReservationPurchaseRecommendationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetReservationPurchaseRecommendationRequest,
+  ) => stream.Stream<
+    GetReservationPurchaseRecommendationResponse,
+    GetReservationPurchaseRecommendationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetReservationPurchaseRecommendationRequest,
+  ) => stream.Stream<
+    ReservationPurchaseRecommendation,
+    GetReservationPurchaseRecommendationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetReservationUtilizationError =
   | DataUnavailableException
@@ -4882,7 +5002,27 @@ export const getRightsizingRecommendation: API.OperationMethod<
     items: "RightsizingRecommendations",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetRightsizingRecommendationRequest,
+  GetRightsizingRecommendationResponse,
+  GetRightsizingRecommendationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetRightsizingRecommendationRequest,
+  ) => stream.Stream<
+    GetRightsizingRecommendationResponse,
+    GetRightsizingRecommendationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetRightsizingRecommendationRequest,
+  ) => stream.Stream<
+    RightsizingRecommendation,
+    GetRightsizingRecommendationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetSavingsPlanPurchaseRecommendationDetailsError =
   | DataUnavailableException
@@ -4965,7 +5105,27 @@ export const getSavingsPlansCoverage: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetSavingsPlansCoverageRequest,
+  GetSavingsPlansCoverageResponse,
+  GetSavingsPlansCoverageError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetSavingsPlansCoverageRequest,
+  ) => stream.Stream<
+    GetSavingsPlansCoverageResponse,
+    GetSavingsPlansCoverageError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetSavingsPlansCoverageRequest,
+  ) => stream.Stream<
+    unknown,
+    GetSavingsPlansCoverageError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetSavingsPlansPurchaseRecommendationError =
   | InvalidNextTokenException
@@ -5071,7 +5231,27 @@ export const getSavingsPlansUtilizationDetails: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetSavingsPlansUtilizationDetailsRequest,
+  GetSavingsPlansUtilizationDetailsResponse,
+  GetSavingsPlansUtilizationDetailsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetSavingsPlansUtilizationDetailsRequest,
+  ) => stream.Stream<
+    GetSavingsPlansUtilizationDetailsResponse,
+    GetSavingsPlansUtilizationDetailsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetSavingsPlansUtilizationDetailsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetSavingsPlansUtilizationDetailsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetTagsError =
   | BillExpirationException
@@ -5184,7 +5364,27 @@ export const listCommitmentPurchaseAnalyses: API.OperationMethod<
     items: "AnalysisSummaryList",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCommitmentPurchaseAnalysesRequest,
+  ListCommitmentPurchaseAnalysesResponse,
+  ListCommitmentPurchaseAnalysesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCommitmentPurchaseAnalysesRequest,
+  ) => stream.Stream<
+    ListCommitmentPurchaseAnalysesResponse,
+    ListCommitmentPurchaseAnalysesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCommitmentPurchaseAnalysesRequest,
+  ) => stream.Stream<
+    AnalysisSummary,
+    ListCommitmentPurchaseAnalysesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCostAllocationTagBackfillHistoryError =
   | InvalidNextTokenException
@@ -5226,7 +5426,27 @@ export const listCostAllocationTagBackfillHistory: API.OperationMethod<
     items: "BackfillRequests",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCostAllocationTagBackfillHistoryRequest,
+  ListCostAllocationTagBackfillHistoryResponse,
+  ListCostAllocationTagBackfillHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCostAllocationTagBackfillHistoryRequest,
+  ) => stream.Stream<
+    ListCostAllocationTagBackfillHistoryResponse,
+    ListCostAllocationTagBackfillHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCostAllocationTagBackfillHistoryRequest,
+  ) => stream.Stream<
+    CostAllocationTagBackfillRequest,
+    ListCostAllocationTagBackfillHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCostAllocationTagsError =
   | InvalidNextTokenException
@@ -5269,7 +5489,27 @@ export const listCostAllocationTags: API.OperationMethod<
     items: "CostAllocationTags",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCostAllocationTagsRequest,
+  ListCostAllocationTagsResponse,
+  ListCostAllocationTagsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCostAllocationTagsRequest,
+  ) => stream.Stream<
+    ListCostAllocationTagsResponse,
+    ListCostAllocationTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCostAllocationTagsRequest,
+  ) => stream.Stream<
+    CostAllocationTag,
+    ListCostAllocationTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCostCategoryDefinitionsError =
   | LimitExceededException
@@ -5316,7 +5556,27 @@ export const listCostCategoryDefinitions: API.OperationMethod<
     items: "CostCategoryReferences",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCostCategoryDefinitionsRequest,
+  ListCostCategoryDefinitionsResponse,
+  ListCostCategoryDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCostCategoryDefinitionsRequest,
+  ) => stream.Stream<
+    ListCostCategoryDefinitionsResponse,
+    ListCostCategoryDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCostCategoryDefinitionsRequest,
+  ) => stream.Stream<
+    CostCategoryReference,
+    ListCostCategoryDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCostCategoryResourceAssociationsError =
   | LimitExceededException
@@ -5358,7 +5618,27 @@ export const listCostCategoryResourceAssociations: API.OperationMethod<
     items: "CostCategoryResourceAssociations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCostCategoryResourceAssociationsRequest,
+  ListCostCategoryResourceAssociationsResponse,
+  ListCostCategoryResourceAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCostCategoryResourceAssociationsRequest,
+  ) => stream.Stream<
+    ListCostCategoryResourceAssociationsResponse,
+    ListCostCategoryResourceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCostCategoryResourceAssociationsRequest,
+  ) => stream.Stream<
+    CostCategoryResourceAssociation,
+    ListCostCategoryResourceAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSavingsPlansPurchaseRecommendationGenerationError =
   | DataUnavailableException
@@ -5406,7 +5686,27 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.OperationMeth
     items: "GenerationSummaryList",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSavingsPlansPurchaseRecommendationGenerationRequest,
+  ListSavingsPlansPurchaseRecommendationGenerationResponse,
+  ListSavingsPlansPurchaseRecommendationGenerationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
+  ) => stream.Stream<
+    ListSavingsPlansPurchaseRecommendationGenerationResponse,
+    ListSavingsPlansPurchaseRecommendationGenerationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
+  ) => stream.Stream<
+    GenerationSummary,
+    ListSavingsPlansPurchaseRecommendationGenerationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | LimitExceededException

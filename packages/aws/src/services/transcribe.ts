@@ -3726,7 +3726,27 @@ export const listCallAnalyticsCategories: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCallAnalyticsCategoriesRequest,
+  ListCallAnalyticsCategoriesResponse,
+  ListCallAnalyticsCategoriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCallAnalyticsCategoriesRequest,
+  ) => stream.Stream<
+    ListCallAnalyticsCategoriesResponse,
+    ListCallAnalyticsCategoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCallAnalyticsCategoriesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListCallAnalyticsCategoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCallAnalyticsJobsError =
   | BadRequestException
@@ -3775,7 +3795,27 @@ export const listCallAnalyticsJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCallAnalyticsJobsRequest,
+  ListCallAnalyticsJobsResponse,
+  ListCallAnalyticsJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCallAnalyticsJobsRequest,
+  ) => stream.Stream<
+    ListCallAnalyticsJobsResponse,
+    ListCallAnalyticsJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCallAnalyticsJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListCallAnalyticsJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLanguageModelsError =
   | BadRequestException
@@ -3824,7 +3864,27 @@ export const listLanguageModels: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLanguageModelsRequest,
+  ListLanguageModelsResponse,
+  ListLanguageModelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLanguageModelsRequest,
+  ) => stream.Stream<
+    ListLanguageModelsResponse,
+    ListLanguageModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLanguageModelsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListLanguageModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMedicalScribeJobsError =
   | BadRequestException
@@ -3873,7 +3933,27 @@ export const listMedicalScribeJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMedicalScribeJobsRequest,
+  ListMedicalScribeJobsResponse,
+  ListMedicalScribeJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMedicalScribeJobsRequest,
+  ) => stream.Stream<
+    ListMedicalScribeJobsResponse,
+    ListMedicalScribeJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMedicalScribeJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMedicalScribeJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMedicalTranscriptionJobsError =
   | BadRequestException
@@ -3922,7 +4002,27 @@ export const listMedicalTranscriptionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMedicalTranscriptionJobsRequest,
+  ListMedicalTranscriptionJobsResponse,
+  ListMedicalTranscriptionJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMedicalTranscriptionJobsRequest,
+  ) => stream.Stream<
+    ListMedicalTranscriptionJobsResponse,
+    ListMedicalTranscriptionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMedicalTranscriptionJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMedicalTranscriptionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMedicalVocabulariesError =
   | BadRequestException
@@ -3971,7 +4071,27 @@ export const listMedicalVocabularies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMedicalVocabulariesRequest,
+  ListMedicalVocabulariesResponse,
+  ListMedicalVocabulariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMedicalVocabulariesRequest,
+  ) => stream.Stream<
+    ListMedicalVocabulariesResponse,
+    ListMedicalVocabulariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMedicalVocabulariesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListMedicalVocabulariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -4052,7 +4172,27 @@ export const listTranscriptionJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTranscriptionJobsRequest,
+  ListTranscriptionJobsResponse,
+  ListTranscriptionJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTranscriptionJobsRequest,
+  ) => stream.Stream<
+    ListTranscriptionJobsResponse,
+    ListTranscriptionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTranscriptionJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTranscriptionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListVocabulariesError =
   | BadRequestException
@@ -4101,7 +4241,27 @@ export const listVocabularies: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVocabulariesRequest,
+  ListVocabulariesResponse,
+  ListVocabulariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVocabulariesRequest,
+  ) => stream.Stream<
+    ListVocabulariesResponse,
+    ListVocabulariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVocabulariesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListVocabulariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListVocabularyFiltersError =
   | BadRequestException
@@ -4150,7 +4310,27 @@ export const listVocabularyFilters: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVocabularyFiltersRequest,
+  ListVocabularyFiltersResponse,
+  ListVocabularyFiltersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVocabularyFiltersRequest,
+  ) => stream.Stream<
+    ListVocabularyFiltersResponse,
+    ListVocabularyFiltersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVocabularyFiltersRequest,
+  ) => stream.Stream<
+    unknown,
+    ListVocabularyFiltersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartCallAnalyticsJobError =
   | BadRequestException

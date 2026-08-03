@@ -887,7 +887,27 @@ export const listResourceRequests: API.OperationMethod<
     items: "ResourceRequestStatusSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceRequestsInput,
+  ListResourceRequestsOutput,
+  ListResourceRequestsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceRequestsInput,
+  ) => stream.Stream<
+    ListResourceRequestsOutput,
+    ListResourceRequestsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceRequestsInput,
+  ) => stream.Stream<
+    ProgressEvent,
+    ListResourceRequestsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourcesError =
   | AlreadyExistsException
@@ -965,7 +985,27 @@ export const listResources: API.OperationMethod<
     items: "ResourceDescriptions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourcesInput,
+  ListResourcesOutput,
+  ListResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourcesInput,
+  ) => stream.Stream<
+    ListResourcesOutput,
+    ListResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourcesInput,
+  ) => stream.Stream<
+    ResourceDescription,
+    ListResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type UpdateResourceError =
   | AlreadyExistsException

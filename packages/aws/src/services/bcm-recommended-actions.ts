@@ -317,4 +317,24 @@ export const listRecommendedActions: API.OperationMethod<
     items: "recommendedActions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecommendedActionsRequest,
+  ListRecommendedActionsResponse,
+  ListRecommendedActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommendedActionsRequest,
+  ) => stream.Stream<
+    ListRecommendedActionsResponse,
+    ListRecommendedActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommendedActionsRequest,
+  ) => stream.Stream<
+    RecommendedAction,
+    ListRecommendedActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};

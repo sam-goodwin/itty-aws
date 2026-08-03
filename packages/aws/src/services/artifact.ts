@@ -786,7 +786,27 @@ export const listCustomerAgreements: API.OperationMethod<
     items: "customerAgreements",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCustomerAgreementsRequest,
+  ListCustomerAgreementsResponse,
+  ListCustomerAgreementsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCustomerAgreementsRequest,
+  ) => stream.Stream<
+    ListCustomerAgreementsResponse,
+    ListCustomerAgreementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCustomerAgreementsRequest,
+  ) => stream.Stream<
+    CustomerAgreementSummary,
+    ListCustomerAgreementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReportsError =
   | AccessDeniedException
@@ -839,7 +859,27 @@ export const listReports: API.OperationMethod<
     items: "reports",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReportsRequest,
+  ListReportsResponse,
+  ListReportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReportsRequest,
+  ) => stream.Stream<
+    ListReportsResponse,
+    ListReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReportsRequest,
+  ) => stream.Stream<
+    ReportSummary,
+    ListReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReportVersionsError =
   | AccessDeniedException
@@ -892,7 +932,27 @@ export const listReportVersions: API.OperationMethod<
     items: "reports",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReportVersionsRequest,
+  ListReportVersionsResponse,
+  ListReportVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReportVersionsRequest,
+  ) => stream.Stream<
+    ListReportVersionsResponse,
+    ListReportVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReportVersionsRequest,
+  ) => stream.Stream<
+    ReportSummary,
+    ListReportVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutAccountSettingsError =
   | AccessDeniedException

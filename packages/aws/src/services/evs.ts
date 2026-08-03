@@ -1631,7 +1631,27 @@ export const listEnvironmentConnectors: API.OperationMethod<
     items: "connectors",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEnvironmentConnectorsRequest,
+  ListEnvironmentConnectorsResponse,
+  ListEnvironmentConnectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEnvironmentConnectorsRequest,
+  ) => stream.Stream<
+    ListEnvironmentConnectorsResponse,
+    ListEnvironmentConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEnvironmentConnectorsRequest,
+  ) => stream.Stream<
+    Connector,
+    ListEnvironmentConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEnvironmentHostsError =
   | ResourceNotFoundException
@@ -1673,7 +1693,27 @@ export const listEnvironmentHosts: API.OperationMethod<
     items: "environmentHosts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEnvironmentHostsRequest,
+  ListEnvironmentHostsResponse,
+  ListEnvironmentHostsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEnvironmentHostsRequest,
+  ) => stream.Stream<
+    ListEnvironmentHostsResponse,
+    ListEnvironmentHostsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEnvironmentHostsRequest,
+  ) => stream.Stream<
+    Host,
+    ListEnvironmentHostsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEnvironmentsError = ValidationException | CommonErrors;
 /**
@@ -1712,7 +1752,27 @@ export const listEnvironments: API.OperationMethod<
     items: "environmentSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEnvironmentsRequest,
+  ListEnvironmentsResponse,
+  ListEnvironmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEnvironmentsRequest,
+  ) => stream.Stream<
+    ListEnvironmentsResponse,
+    ListEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEnvironmentsRequest,
+  ) => stream.Stream<
+    EnvironmentSummary,
+    ListEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEnvironmentVlansError =
   | ResourceNotFoundException
@@ -1754,7 +1814,27 @@ export const listEnvironmentVlans: API.OperationMethod<
     items: "environmentVlans",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEnvironmentVlansRequest,
+  ListEnvironmentVlansResponse,
+  ListEnvironmentVlansError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEnvironmentVlansRequest,
+  ) => stream.Stream<
+    ListEnvironmentVlansResponse,
+    ListEnvironmentVlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEnvironmentVlansRequest,
+  ) => stream.Stream<
+    Vlan,
+    ListEnvironmentVlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
@@ -1814,7 +1894,27 @@ export const listVmEntitlements: API.OperationMethod<
     items: "entitlements",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVmEntitlementsRequest,
+  ListVmEntitlementsResponse,
+  ListVmEntitlementsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVmEntitlementsRequest,
+  ) => stream.Stream<
+    ListVmEntitlementsResponse,
+    ListVmEntitlementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVmEntitlementsRequest,
+  ) => stream.Stream<
+    VmEntitlement,
+    ListVmEntitlementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type TagResourceError =
   | ResourceNotFoundException

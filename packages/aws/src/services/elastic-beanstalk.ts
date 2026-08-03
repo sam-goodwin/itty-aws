@@ -3726,7 +3726,27 @@ export const describeEnvironmentManagedActionHistory: API.OperationMethod<
     items: "ManagedActionHistoryItems",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEnvironmentManagedActionHistoryRequest,
+  DescribeEnvironmentManagedActionHistoryResult,
+  DescribeEnvironmentManagedActionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEnvironmentManagedActionHistoryRequest,
+  ) => stream.Stream<
+    DescribeEnvironmentManagedActionHistoryResult,
+    DescribeEnvironmentManagedActionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEnvironmentManagedActionHistoryRequest,
+  ) => stream.Stream<
+    ManagedActionHistoryItem,
+    DescribeEnvironmentManagedActionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEnvironmentManagedActionsError =
   | ElasticBeanstalkServiceException
@@ -3826,7 +3846,27 @@ export const describeEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEventsMessage,
+  EventDescriptionsMessage,
+  DescribeEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEventsMessage,
+  ) => stream.Stream<
+    EventDescriptionsMessage,
+    DescribeEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEventsMessage,
+  ) => stream.Stream<
+    EventDescription,
+    DescribeEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancesHealthError =
   | ElasticBeanstalkServiceException
@@ -3958,7 +3998,27 @@ export const listPlatformBranches: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPlatformBranchesRequest,
+  ListPlatformBranchesResult,
+  ListPlatformBranchesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPlatformBranchesRequest,
+  ) => stream.Stream<
+    ListPlatformBranchesResult,
+    ListPlatformBranchesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPlatformBranchesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPlatformBranchesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPlatformVersionsError =
   | ElasticBeanstalkServiceException
@@ -4005,7 +4065,27 @@ export const listPlatformVersions: API.OperationMethod<
     items: "PlatformSummaryList",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPlatformVersionsRequest,
+  ListPlatformVersionsResult,
+  ListPlatformVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPlatformVersionsRequest,
+  ) => stream.Stream<
+    ListPlatformVersionsResult,
+    ListPlatformVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPlatformVersionsRequest,
+  ) => stream.Stream<
+    PlatformSummary,
+    ListPlatformVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InsufficientPrivilegesException

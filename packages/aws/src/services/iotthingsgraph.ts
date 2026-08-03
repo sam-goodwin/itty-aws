@@ -1885,7 +1885,27 @@ export const getFlowTemplateRevisions: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetFlowTemplateRevisionsRequest,
+  GetFlowTemplateRevisionsResponse,
+  GetFlowTemplateRevisionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetFlowTemplateRevisionsRequest,
+  ) => stream.Stream<
+    GetFlowTemplateRevisionsResponse,
+    GetFlowTemplateRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetFlowTemplateRevisionsRequest,
+  ) => stream.Stream<
+    FlowTemplateSummary,
+    GetFlowTemplateRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetNamespaceDeletionStatusError =
   | InternalFailureException
@@ -2017,7 +2037,27 @@ export const getSystemTemplateRevisions: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetSystemTemplateRevisionsRequest,
+  GetSystemTemplateRevisionsResponse,
+  GetSystemTemplateRevisionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetSystemTemplateRevisionsRequest,
+  ) => stream.Stream<
+    GetSystemTemplateRevisionsResponse,
+    GetSystemTemplateRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetSystemTemplateRevisionsRequest,
+  ) => stream.Stream<
+    SystemTemplateSummary,
+    GetSystemTemplateRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetUploadStatusError =
   | InternalFailureException
@@ -2094,7 +2134,27 @@ export const listFlowExecutionMessages: API.OperationMethod<
     items: "messages",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFlowExecutionMessagesRequest,
+  ListFlowExecutionMessagesResponse,
+  ListFlowExecutionMessagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFlowExecutionMessagesRequest,
+  ) => stream.Stream<
+    ListFlowExecutionMessagesResponse,
+    ListFlowExecutionMessagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFlowExecutionMessagesRequest,
+  ) => stream.Stream<
+    FlowExecutionMessage,
+    ListFlowExecutionMessagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalFailureException
@@ -2143,7 +2203,27 @@ export const listTagsForResource: API.OperationMethod<
     items: "tags",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    ListTagsForResourceResponse,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    Tag,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchEntitiesError =
   | InternalFailureException
@@ -2190,7 +2270,27 @@ export const searchEntities: API.OperationMethod<
     items: "descriptions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchEntitiesRequest,
+  SearchEntitiesResponse,
+  SearchEntitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchEntitiesRequest,
+  ) => stream.Stream<
+    SearchEntitiesResponse,
+    SearchEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchEntitiesRequest,
+  ) => stream.Stream<
+    EntityDescription,
+    SearchEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchFlowExecutionsError =
   | InternalFailureException
@@ -2239,7 +2339,27 @@ export const searchFlowExecutions: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchFlowExecutionsRequest,
+  SearchFlowExecutionsResponse,
+  SearchFlowExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchFlowExecutionsRequest,
+  ) => stream.Stream<
+    SearchFlowExecutionsResponse,
+    SearchFlowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchFlowExecutionsRequest,
+  ) => stream.Stream<
+    FlowExecutionSummary,
+    SearchFlowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchFlowTemplatesError =
   | InternalFailureException
@@ -2286,7 +2406,27 @@ export const searchFlowTemplates: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchFlowTemplatesRequest,
+  SearchFlowTemplatesResponse,
+  SearchFlowTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchFlowTemplatesRequest,
+  ) => stream.Stream<
+    SearchFlowTemplatesResponse,
+    SearchFlowTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchFlowTemplatesRequest,
+  ) => stream.Stream<
+    FlowTemplateSummary,
+    SearchFlowTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchSystemInstancesError =
   | InternalFailureException
@@ -2333,7 +2473,27 @@ export const searchSystemInstances: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchSystemInstancesRequest,
+  SearchSystemInstancesResponse,
+  SearchSystemInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchSystemInstancesRequest,
+  ) => stream.Stream<
+    SearchSystemInstancesResponse,
+    SearchSystemInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchSystemInstancesRequest,
+  ) => stream.Stream<
+    SystemInstanceSummary,
+    SearchSystemInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchSystemTemplatesError =
   | InternalFailureException
@@ -2380,7 +2540,27 @@ export const searchSystemTemplates: API.OperationMethod<
     items: "summaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchSystemTemplatesRequest,
+  SearchSystemTemplatesResponse,
+  SearchSystemTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchSystemTemplatesRequest,
+  ) => stream.Stream<
+    SearchSystemTemplatesResponse,
+    SearchSystemTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchSystemTemplatesRequest,
+  ) => stream.Stream<
+    SystemTemplateSummary,
+    SearchSystemTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchThingsError =
   | InternalFailureException
@@ -2434,7 +2614,27 @@ export const searchThings: API.OperationMethod<
     items: "things",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchThingsRequest,
+  SearchThingsResponse,
+  SearchThingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchThingsRequest,
+  ) => stream.Stream<
+    SearchThingsResponse,
+    SearchThingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchThingsRequest,
+  ) => stream.Stream<
+    Thing,
+    SearchThingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type TagResourceError =
   | InternalFailureException

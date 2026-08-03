@@ -1597,7 +1597,27 @@ export const listIdentityPools: API.OperationMethod<
     items: "IdentityPools",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIdentityPoolsInput,
+  ListIdentityPoolsResponse,
+  ListIdentityPoolsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIdentityPoolsInput,
+  ) => stream.Stream<
+    ListIdentityPoolsResponse,
+    ListIdentityPoolsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIdentityPoolsInput,
+  ) => stream.Stream<
+    IdentityPoolShortDescription,
+    ListIdentityPoolsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalErrorException

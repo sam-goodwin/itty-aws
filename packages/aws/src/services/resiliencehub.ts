@@ -4970,7 +4970,27 @@ export const listAlarmRecommendations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAlarmRecommendationsRequest,
+  ListAlarmRecommendationsResponse,
+  ListAlarmRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAlarmRecommendationsRequest,
+  ) => stream.Stream<
+    ListAlarmRecommendationsResponse,
+    ListAlarmRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAlarmRecommendationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAlarmRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppAssessmentComplianceDriftsError =
   | AccessDeniedException
@@ -5019,7 +5039,27 @@ export const listAppAssessmentComplianceDrifts: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppAssessmentComplianceDriftsRequest,
+  ListAppAssessmentComplianceDriftsResponse,
+  ListAppAssessmentComplianceDriftsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppAssessmentComplianceDriftsRequest,
+  ) => stream.Stream<
+    ListAppAssessmentComplianceDriftsResponse,
+    ListAppAssessmentComplianceDriftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppAssessmentComplianceDriftsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppAssessmentComplianceDriftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppAssessmentResourceDriftsError =
   | AccessDeniedException
@@ -5069,7 +5109,27 @@ export const listAppAssessmentResourceDrifts: API.OperationMethod<
     items: "resourceDrifts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppAssessmentResourceDriftsRequest,
+  ListAppAssessmentResourceDriftsResponse,
+  ListAppAssessmentResourceDriftsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppAssessmentResourceDriftsRequest,
+  ) => stream.Stream<
+    ListAppAssessmentResourceDriftsResponse,
+    ListAppAssessmentResourceDriftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppAssessmentResourceDriftsRequest,
+  ) => stream.Stream<
+    ResourceDrift,
+    ListAppAssessmentResourceDriftsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppAssessmentsError =
   | AccessDeniedException
@@ -5120,7 +5180,27 @@ export const listAppAssessments: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppAssessmentsRequest,
+  ListAppAssessmentsResponse,
+  ListAppAssessmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppAssessmentsRequest,
+  ) => stream.Stream<
+    ListAppAssessmentsResponse,
+    ListAppAssessmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppAssessmentsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppAssessmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppComponentCompliancesError =
   | AccessDeniedException
@@ -5170,7 +5250,27 @@ export const listAppComponentCompliances: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppComponentCompliancesRequest,
+  ListAppComponentCompliancesResponse,
+  ListAppComponentCompliancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppComponentCompliancesRequest,
+  ) => stream.Stream<
+    ListAppComponentCompliancesResponse,
+    ListAppComponentCompliancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppComponentCompliancesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppComponentCompliancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppComponentRecommendationsError =
   | AccessDeniedException
@@ -5220,7 +5320,27 @@ export const listAppComponentRecommendations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppComponentRecommendationsRequest,
+  ListAppComponentRecommendationsResponse,
+  ListAppComponentRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppComponentRecommendationsRequest,
+  ) => stream.Stream<
+    ListAppComponentRecommendationsResponse,
+    ListAppComponentRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppComponentRecommendationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppComponentRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppInputSourcesError =
   | AccessDeniedException
@@ -5272,7 +5392,27 @@ export const listAppInputSources: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppInputSourcesRequest,
+  ListAppInputSourcesResponse,
+  ListAppInputSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppInputSourcesRequest,
+  ) => stream.Stream<
+    ListAppInputSourcesResponse,
+    ListAppInputSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppInputSourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppInputSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppsError =
   | AccessDeniedException
@@ -5327,7 +5467,27 @@ export const listApps: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppsRequest,
+  ListAppsResponse,
+  ListAppsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
+    ListAppsResponse,
+    ListAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppVersionAppComponentsError =
   | AccessDeniedException
@@ -5379,7 +5539,27 @@ export const listAppVersionAppComponents: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppVersionAppComponentsRequest,
+  ListAppVersionAppComponentsResponse,
+  ListAppVersionAppComponentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppVersionAppComponentsRequest,
+  ) => stream.Stream<
+    ListAppVersionAppComponentsResponse,
+    ListAppVersionAppComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppVersionAppComponentsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppVersionAppComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppVersionResourceMappingsError =
   | AccessDeniedException
@@ -5431,7 +5611,27 @@ export const listAppVersionResourceMappings: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppVersionResourceMappingsRequest,
+  ListAppVersionResourceMappingsResponse,
+  ListAppVersionResourceMappingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppVersionResourceMappingsRequest,
+  ) => stream.Stream<
+    ListAppVersionResourceMappingsResponse,
+    ListAppVersionResourceMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppVersionResourceMappingsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppVersionResourceMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppVersionResourcesError =
   | AccessDeniedException
@@ -5483,7 +5683,27 @@ export const listAppVersionResources: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppVersionResourcesRequest,
+  ListAppVersionResourcesResponse,
+  ListAppVersionResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppVersionResourcesRequest,
+  ) => stream.Stream<
+    ListAppVersionResourcesResponse,
+    ListAppVersionResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppVersionResourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppVersionResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppVersionsError =
   | AccessDeniedException
@@ -5531,7 +5751,27 @@ export const listAppVersions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppVersionsRequest,
+  ListAppVersionsResponse,
+  ListAppVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppVersionsRequest,
+  ) => stream.Stream<
+    ListAppVersionsResponse,
+    ListAppVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppVersionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAppVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMetricsError =
   | AccessDeniedException
@@ -5580,7 +5820,27 @@ export const listMetrics: API.OperationMethod<
     items: "rows",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMetricsRequest,
+  ListMetricsResponse,
+  ListMetricsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMetricsRequest,
+  ) => stream.Stream<
+    ListMetricsResponse,
+    ListMetricsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMetricsRequest,
+  ) => stream.Stream<
+    String255[],
+    ListMetricsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecommendationTemplatesError =
   | AccessDeniedException
@@ -5628,7 +5888,27 @@ export const listRecommendationTemplates: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecommendationTemplatesRequest,
+  ListRecommendationTemplatesResponse,
+  ListRecommendationTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommendationTemplatesRequest,
+  ) => stream.Stream<
+    ListRecommendationTemplatesResponse,
+    ListRecommendationTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommendationTemplatesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRecommendationTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResiliencyPoliciesError =
   | AccessDeniedException
@@ -5678,7 +5958,27 @@ export const listResiliencyPolicies: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResiliencyPoliciesRequest,
+  ListResiliencyPoliciesResponse,
+  ListResiliencyPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResiliencyPoliciesRequest,
+  ) => stream.Stream<
+    ListResiliencyPoliciesResponse,
+    ListResiliencyPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResiliencyPoliciesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListResiliencyPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceGroupingRecommendationsError =
   | AccessDeniedException
@@ -5729,7 +6029,27 @@ export const listResourceGroupingRecommendations: API.OperationMethod<
     items: "groupingRecommendations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceGroupingRecommendationsRequest,
+  ListResourceGroupingRecommendationsResponse,
+  ListResourceGroupingRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceGroupingRecommendationsRequest,
+  ) => stream.Stream<
+    ListResourceGroupingRecommendationsResponse,
+    ListResourceGroupingRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceGroupingRecommendationsRequest,
+  ) => stream.Stream<
+    GroupingRecommendation,
+    ListResourceGroupingRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSopRecommendationsError =
   | AccessDeniedException
@@ -5781,7 +6101,27 @@ export const listSopRecommendations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSopRecommendationsRequest,
+  ListSopRecommendationsResponse,
+  ListSopRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSopRecommendationsRequest,
+  ) => stream.Stream<
+    ListSopRecommendationsResponse,
+    ListSopRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSopRecommendationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListSopRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSuggestedResiliencyPoliciesError =
   | AccessDeniedException
@@ -5832,7 +6172,27 @@ export const listSuggestedResiliencyPolicies: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSuggestedResiliencyPoliciesRequest,
+  ListSuggestedResiliencyPoliciesResponse,
+  ListSuggestedResiliencyPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSuggestedResiliencyPoliciesRequest,
+  ) => stream.Stream<
+    ListSuggestedResiliencyPoliciesResponse,
+    ListSuggestedResiliencyPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSuggestedResiliencyPoliciesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListSuggestedResiliencyPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -5914,7 +6274,27 @@ export const listTestRecommendations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTestRecommendationsRequest,
+  ListTestRecommendationsResponse,
+  ListTestRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTestRecommendationsRequest,
+  ) => stream.Stream<
+    ListTestRecommendationsResponse,
+    ListTestRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTestRecommendationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTestRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListUnsupportedAppVersionResourcesError =
   | AccessDeniedException
@@ -5968,7 +6348,27 @@ export const listUnsupportedAppVersionResources: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUnsupportedAppVersionResourcesRequest,
+  ListUnsupportedAppVersionResourcesResponse,
+  ListUnsupportedAppVersionResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUnsupportedAppVersionResourcesRequest,
+  ) => stream.Stream<
+    ListUnsupportedAppVersionResourcesResponse,
+    ListUnsupportedAppVersionResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUnsupportedAppVersionResourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListUnsupportedAppVersionResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PublishAppVersionError =
   | AccessDeniedException

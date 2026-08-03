@@ -22206,7 +22206,27 @@ export const describeSchedule: API.OperationMethod<
     items: "ScheduleActions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeScheduleRequest,
+  DescribeScheduleResponse,
+  DescribeScheduleError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeScheduleRequest,
+  ) => stream.Stream<
+    DescribeScheduleResponse,
+    DescribeScheduleError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeScheduleRequest,
+  ) => stream.Stream<
+    ScheduleAction,
+    DescribeScheduleError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSdiSourceError =
   | BadGatewayException
@@ -22481,7 +22501,27 @@ export const listAlerts: API.OperationMethod<
     items: "Alerts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAlertsRequest,
+  ListAlertsResponse,
+  ListAlertsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAlertsRequest,
+  ) => stream.Stream<
+    ListAlertsResponse,
+    ListAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAlertsRequest,
+  ) => stream.Stream<
+    ChannelAlert,
+    ListAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListChannelPlacementGroupsError =
   | BadGatewayException
@@ -22534,7 +22574,27 @@ export const listChannelPlacementGroups: API.OperationMethod<
     items: "ChannelPlacementGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelPlacementGroupsRequest,
+  ListChannelPlacementGroupsResponse,
+  ListChannelPlacementGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelPlacementGroupsRequest,
+  ) => stream.Stream<
+    ListChannelPlacementGroupsResponse,
+    ListChannelPlacementGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelPlacementGroupsRequest,
+  ) => stream.Stream<
+    DescribeChannelPlacementGroupSummary,
+    ListChannelPlacementGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListChannelsError =
   | BadGatewayException
@@ -22587,7 +22647,27 @@ export const listChannels: API.OperationMethod<
     items: "Channels",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelsRequest,
+  ListChannelsResponse,
+  ListChannelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    ListChannelsResponse,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    ChannelSummary,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCloudWatchAlarmTemplateGroupsError =
   | BadRequestException
@@ -22638,7 +22718,27 @@ export const listCloudWatchAlarmTemplateGroups: API.OperationMethod<
     items: "CloudWatchAlarmTemplateGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCloudWatchAlarmTemplateGroupsRequest,
+  ListCloudWatchAlarmTemplateGroupsResponse,
+  ListCloudWatchAlarmTemplateGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCloudWatchAlarmTemplateGroupsRequest,
+  ) => stream.Stream<
+    ListCloudWatchAlarmTemplateGroupsResponse,
+    ListCloudWatchAlarmTemplateGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCloudWatchAlarmTemplateGroupsRequest,
+  ) => stream.Stream<
+    CloudWatchAlarmTemplateGroupSummary,
+    ListCloudWatchAlarmTemplateGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCloudWatchAlarmTemplatesError =
   | BadRequestException
@@ -22689,7 +22789,27 @@ export const listCloudWatchAlarmTemplates: API.OperationMethod<
     items: "CloudWatchAlarmTemplates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCloudWatchAlarmTemplatesRequest,
+  ListCloudWatchAlarmTemplatesResponse,
+  ListCloudWatchAlarmTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCloudWatchAlarmTemplatesRequest,
+  ) => stream.Stream<
+    ListCloudWatchAlarmTemplatesResponse,
+    ListCloudWatchAlarmTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCloudWatchAlarmTemplatesRequest,
+  ) => stream.Stream<
+    CloudWatchAlarmTemplateSummary,
+    ListCloudWatchAlarmTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterAlertsError =
   | BadGatewayException
@@ -22744,7 +22864,27 @@ export const listClusterAlerts: API.OperationMethod<
     items: "Alerts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterAlertsRequest,
+  ListClusterAlertsResponse,
+  ListClusterAlertsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterAlertsRequest,
+  ) => stream.Stream<
+    ListClusterAlertsResponse,
+    ListClusterAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterAlertsRequest,
+  ) => stream.Stream<
+    ClusterAlert,
+    ListClusterAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClustersError =
   | BadGatewayException
@@ -22797,7 +22937,27 @@ export const listClusters: API.OperationMethod<
     items: "Clusters",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClustersRequest,
+  ListClustersResponse,
+  ListClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClustersRequest,
+  ) => stream.Stream<
+    ListClustersResponse,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClustersRequest,
+  ) => stream.Stream<
+    DescribeClusterSummary,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventBridgeRuleTemplateGroupsError =
   | BadRequestException
@@ -22848,7 +23008,27 @@ export const listEventBridgeRuleTemplateGroups: API.OperationMethod<
     items: "EventBridgeRuleTemplateGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventBridgeRuleTemplateGroupsRequest,
+  ListEventBridgeRuleTemplateGroupsResponse,
+  ListEventBridgeRuleTemplateGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventBridgeRuleTemplateGroupsRequest,
+  ) => stream.Stream<
+    ListEventBridgeRuleTemplateGroupsResponse,
+    ListEventBridgeRuleTemplateGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventBridgeRuleTemplateGroupsRequest,
+  ) => stream.Stream<
+    EventBridgeRuleTemplateGroupSummary,
+    ListEventBridgeRuleTemplateGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventBridgeRuleTemplatesError =
   | BadRequestException
@@ -22899,7 +23079,27 @@ export const listEventBridgeRuleTemplates: API.OperationMethod<
     items: "EventBridgeRuleTemplates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventBridgeRuleTemplatesRequest,
+  ListEventBridgeRuleTemplatesResponse,
+  ListEventBridgeRuleTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventBridgeRuleTemplatesRequest,
+  ) => stream.Stream<
+    ListEventBridgeRuleTemplatesResponse,
+    ListEventBridgeRuleTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventBridgeRuleTemplatesRequest,
+  ) => stream.Stream<
+    EventBridgeRuleTemplateSummary,
+    ListEventBridgeRuleTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInputDevicesError =
   | BadGatewayException
@@ -22952,7 +23152,27 @@ export const listInputDevices: API.OperationMethod<
     items: "InputDevices",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInputDevicesRequest,
+  ListInputDevicesResponse,
+  ListInputDevicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInputDevicesRequest,
+  ) => stream.Stream<
+    ListInputDevicesResponse,
+    ListInputDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInputDevicesRequest,
+  ) => stream.Stream<
+    InputDeviceSummary,
+    ListInputDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInputDeviceTransfersError =
   | BadGatewayException
@@ -23007,7 +23227,27 @@ export const listInputDeviceTransfers: API.OperationMethod<
     items: "InputDeviceTransfers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInputDeviceTransfersRequest,
+  ListInputDeviceTransfersResponse,
+  ListInputDeviceTransfersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInputDeviceTransfersRequest,
+  ) => stream.Stream<
+    ListInputDeviceTransfersResponse,
+    ListInputDeviceTransfersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInputDeviceTransfersRequest,
+  ) => stream.Stream<
+    TransferringInputDeviceSummary,
+    ListInputDeviceTransfersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInputsError =
   | BadGatewayException
@@ -23060,7 +23300,27 @@ export const listInputs: API.OperationMethod<
     items: "Inputs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInputsRequest,
+  ListInputsResponse,
+  ListInputsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInputsRequest,
+  ) => stream.Stream<
+    ListInputsResponse,
+    ListInputsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInputsRequest,
+  ) => stream.Stream<
+    Input,
+    ListInputsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInputSecurityGroupsError =
   | BadGatewayException
@@ -23113,7 +23373,27 @@ export const listInputSecurityGroups: API.OperationMethod<
     items: "InputSecurityGroups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInputSecurityGroupsRequest,
+  ListInputSecurityGroupsResponse,
+  ListInputSecurityGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInputSecurityGroupsRequest,
+  ) => stream.Stream<
+    ListInputSecurityGroupsResponse,
+    ListInputSecurityGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInputSecurityGroupsRequest,
+  ) => stream.Stream<
+    InputSecurityGroup,
+    ListInputSecurityGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMultiplexAlertsError =
   | BadGatewayException
@@ -23168,7 +23448,27 @@ export const listMultiplexAlerts: API.OperationMethod<
     items: "Alerts",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMultiplexAlertsRequest,
+  ListMultiplexAlertsResponse,
+  ListMultiplexAlertsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMultiplexAlertsRequest,
+  ) => stream.Stream<
+    ListMultiplexAlertsResponse,
+    ListMultiplexAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMultiplexAlertsRequest,
+  ) => stream.Stream<
+    MultiplexAlert,
+    ListMultiplexAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMultiplexesError =
   | BadGatewayException
@@ -23221,7 +23521,27 @@ export const listMultiplexes: API.OperationMethod<
     items: "Multiplexes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMultiplexesRequest,
+  ListMultiplexesResponse,
+  ListMultiplexesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMultiplexesRequest,
+  ) => stream.Stream<
+    ListMultiplexesResponse,
+    ListMultiplexesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMultiplexesRequest,
+  ) => stream.Stream<
+    MultiplexSummary,
+    ListMultiplexesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMultiplexProgramsError =
   | BadGatewayException
@@ -23276,7 +23596,27 @@ export const listMultiplexPrograms: API.OperationMethod<
     items: "MultiplexPrograms",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMultiplexProgramsRequest,
+  ListMultiplexProgramsResponse,
+  ListMultiplexProgramsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMultiplexProgramsRequest,
+  ) => stream.Stream<
+    ListMultiplexProgramsResponse,
+    ListMultiplexProgramsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMultiplexProgramsRequest,
+  ) => stream.Stream<
+    MultiplexProgramSummary,
+    ListMultiplexProgramsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNetworksError =
   | BadGatewayException
@@ -23329,7 +23669,27 @@ export const listNetworks: API.OperationMethod<
     items: "Networks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNetworksRequest,
+  ListNetworksResponse,
+  ListNetworksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNetworksRequest,
+  ) => stream.Stream<
+    ListNetworksResponse,
+    ListNetworksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNetworksRequest,
+  ) => stream.Stream<
+    DescribeNetworkSummary,
+    ListNetworksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNodesError =
   | BadGatewayException
@@ -23382,7 +23742,27 @@ export const listNodes: API.OperationMethod<
     items: "Nodes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNodesRequest,
+  ListNodesResponse,
+  ListNodesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNodesRequest,
+  ) => stream.Stream<
+    ListNodesResponse,
+    ListNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNodesRequest,
+  ) => stream.Stream<
+    DescribeNodeSummary,
+    ListNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOfferingsError =
   | BadGatewayException
@@ -23435,7 +23815,27 @@ export const listOfferings: API.OperationMethod<
     items: "Offerings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOfferingsRequest,
+  ListOfferingsResponse,
+  ListOfferingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOfferingsRequest,
+  ) => stream.Stream<
+    ListOfferingsResponse,
+    ListOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOfferingsRequest,
+  ) => stream.Stream<
+    Offering,
+    ListOfferingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReservationsError =
   | BadGatewayException
@@ -23488,7 +23888,27 @@ export const listReservations: API.OperationMethod<
     items: "Reservations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReservationsRequest,
+  ListReservationsResponse,
+  ListReservationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReservationsRequest,
+  ) => stream.Stream<
+    ListReservationsResponse,
+    ListReservationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReservationsRequest,
+  ) => stream.Stream<
+    Reservation,
+    ListReservationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSdiSourcesError =
   | BadGatewayException
@@ -23541,7 +23961,27 @@ export const listSdiSources: API.OperationMethod<
     items: "SdiSources",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSdiSourcesRequest,
+  ListSdiSourcesResponse,
+  ListSdiSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSdiSourcesRequest,
+  ) => stream.Stream<
+    ListSdiSourcesResponse,
+    ListSdiSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSdiSourcesRequest,
+  ) => stream.Stream<
+    SdiSourceSummary,
+    ListSdiSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSignalMapsError =
   | BadRequestException
@@ -23592,7 +24032,27 @@ export const listSignalMaps: API.OperationMethod<
     items: "SignalMaps",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSignalMapsRequest,
+  ListSignalMapsResponse,
+  ListSignalMapsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSignalMapsRequest,
+  ) => stream.Stream<
+    ListSignalMapsResponse,
+    ListSignalMapsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSignalMapsRequest,
+  ) => stream.Stream<
+    SignalMapSummary,
+    ListSignalMapsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException

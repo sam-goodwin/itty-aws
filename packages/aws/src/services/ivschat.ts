@@ -1319,7 +1319,27 @@ export const listLoggingConfigurations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLoggingConfigurationsRequest,
+  ListLoggingConfigurationsResponse,
+  ListLoggingConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLoggingConfigurationsRequest,
+  ) => stream.Stream<
+    ListLoggingConfigurationsResponse,
+    ListLoggingConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLoggingConfigurationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListLoggingConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRoomsError =
   | AccessDeniedException
@@ -1368,7 +1388,27 @@ export const listRooms: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRoomsRequest,
+  ListRoomsResponse,
+  ListRoomsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRoomsRequest,
+  ) => stream.Stream<
+    ListRoomsResponse,
+    ListRoomsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRoomsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRoomsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

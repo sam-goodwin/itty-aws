@@ -1401,7 +1401,27 @@ export const listActs: API.OperationMethod<
     items: "actSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListActsRequest,
+  ListActsResponse,
+  ListActsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListActsRequest,
+  ) => stream.Stream<
+    ListActsResponse,
+    ListActsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListActsRequest,
+  ) => stream.Stream<
+    ActSummary,
+    ListActsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelsError =
   | AccessDeniedException
@@ -1476,7 +1496,27 @@ export const listSessions: API.OperationMethod<
     items: "sessionSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSessionsRequest,
+  ListSessionsResponse,
+  ListSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    ListSessionsResponse,
+    ListSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    SessionSummary,
+    ListSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowDefinitionsError =
   | AccessDeniedException
@@ -1525,7 +1565,27 @@ export const listWorkflowDefinitions: API.OperationMethod<
     items: "workflowDefinitionSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowDefinitionsRequest,
+  ListWorkflowDefinitionsResponse,
+  ListWorkflowDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowDefinitionsRequest,
+  ) => stream.Stream<
+    ListWorkflowDefinitionsResponse,
+    ListWorkflowDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowDefinitionsRequest,
+  ) => stream.Stream<
+    WorkflowDefinitionSummary,
+    ListWorkflowDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkflowRunsError =
   | AccessDeniedException
@@ -1578,7 +1638,27 @@ export const listWorkflowRuns: API.OperationMethod<
     items: "workflowRunSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowRunsRequest,
+  ListWorkflowRunsResponse,
+  ListWorkflowRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowRunsRequest,
+  ) => stream.Stream<
+    ListWorkflowRunsResponse,
+    ListWorkflowRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowRunsRequest,
+  ) => stream.Stream<
+    WorkflowRunSummary,
+    ListWorkflowRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type UpdateActError =
   | AccessDeniedException

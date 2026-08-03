@@ -558,7 +558,27 @@ export const getFreeTierUsage: API.OperationMethod<
     items: "freeTierUsages",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetFreeTierUsageRequest,
+  GetFreeTierUsageResponse,
+  GetFreeTierUsageError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetFreeTierUsageRequest,
+  ) => stream.Stream<
+    GetFreeTierUsageResponse,
+    GetFreeTierUsageError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetFreeTierUsageRequest,
+  ) => stream.Stream<
+    FreeTierUsage,
+    GetFreeTierUsageError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAccountActivitiesError =
   | InternalServerException
@@ -601,7 +621,27 @@ export const listAccountActivities: API.OperationMethod<
     items: "activities",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccountActivitiesRequest,
+  ListAccountActivitiesResponse,
+  ListAccountActivitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccountActivitiesRequest,
+  ) => stream.Stream<
+    ListAccountActivitiesResponse,
+    ListAccountActivitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccountActivitiesRequest,
+  ) => stream.Stream<
+    ActivitySummary,
+    ListAccountActivitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type UpgradeAccountPlanError =
   | AccessDeniedException

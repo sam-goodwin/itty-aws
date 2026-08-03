@@ -1,4 +1,5 @@
 import * as S from "effect/Schema";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import * as Category from "./category.ts";
 
 //==== Common AWS Errors ====
@@ -215,9 +216,17 @@ export type CommonAwsError =
   | ValidationException
   | OperationAborted;
 
-/** All error types that can be returned by AWS operations */
+/**
+ * All error types that can be returned by AWS operations.
+ *
+ * `HttpClientError` belongs here because `API.make` puts it in every
+ * operation's error channel (the request can fail before any AWS response
+ * exists — DNS, TLS, connection reset). Leaving it out made each generated
+ * operation's declared type narrower than what it can actually fail with.
+ */
 export type CommonErrors =
   | UnknownAwsError
   | CommonAwsError
   | EndpointError
-  | NoMatchingRuleError;
+  | NoMatchingRuleError
+  | HttpClientError.HttpClientError;

@@ -6667,7 +6667,27 @@ export const listContributorInsights: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContributorInsightsInput,
+  ListContributorInsightsOutput,
+  ListContributorInsightsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContributorInsightsInput,
+  ) => stream.Stream<
+    ListContributorInsightsOutput,
+    ListContributorInsightsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContributorInsightsInput,
+  ) => stream.Stream<
+    unknown,
+    ListContributorInsightsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListExportsError =
   | InternalServerError
@@ -6708,7 +6728,27 @@ export const listExports: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExportsInput,
+  ListExportsOutput,
+  ListExportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExportsInput,
+  ) => stream.Stream<
+    ListExportsOutput,
+    ListExportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExportsInput,
+  ) => stream.Stream<
+    unknown,
+    ListExportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGlobalTablesError =
   | InternalServerError
@@ -6771,7 +6811,27 @@ export const listImports: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImportsInput,
+  ListImportsOutput,
+  ListImportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImportsInput,
+  ) => stream.Stream<
+    ListImportsOutput,
+    ListImportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImportsInput,
+  ) => stream.Stream<
+    unknown,
+    ListImportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTablesError =
   | InternalServerError
@@ -6815,7 +6875,27 @@ export const listTables: API.OperationMethod<
     items: "TableNames",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTablesInput,
+  ListTablesOutput,
+  ListTablesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTablesInput,
+  ) => stream.Stream<
+    ListTablesOutput,
+    ListTablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTablesInput,
+  ) => stream.Stream<
+    TableName,
+    ListTablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsOfResourceError =
   | InternalServerError
@@ -7067,7 +7147,27 @@ export const query: API.OperationMethod<
     items: "Items",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  QueryInput,
+  QueryOutput,
+  QueryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: QueryInput,
+  ) => stream.Stream<
+    QueryOutput,
+    QueryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: QueryInput,
+  ) => stream.Stream<
+    { [key: string]: AttributeValue | undefined },
+    QueryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type RestoreTableFromBackupError =
   | BackupInUseException
@@ -7287,7 +7387,27 @@ export const scan: API.OperationMethod<
     items: "Items",
     pageSize: "Limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ScanInput,
+  ScanOutput,
+  ScanError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ScanInput,
+  ) => stream.Stream<
+    ScanOutput,
+    ScanError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ScanInput,
+  ) => stream.Stream<
+    { [key: string]: AttributeValue | undefined },
+    ScanError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type TagResourceError =
   | InternalServerError
