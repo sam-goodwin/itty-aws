@@ -20,35 +20,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   updatedAt: "updated_at",
 };
 
-export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
-    "AdvancedCertificateManagerRequired",
-    {
+export class AdvancedCertificateManagerRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+      "AdvancedCertificateManagerRequired",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1450 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1450 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameTlsSettingNotFound>()(
-    "HostnameTlsSettingNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+export class HostnameTlsSettingNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameTlsSettingNotFound>()(
+      "HostnameTlsSettingNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export type SettingsTlsDeleteRequestSettingId =
   | "ciphers"

@@ -38,35 +38,44 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   updatedAt: "updated_at",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class RegistrarDomainNotOwned extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RegistrarDomainNotOwned>()("RegistrarDomainNotOwned", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      code: 10000,
-      status: 403,
-      message: { includes: "Domain doesn't belong to the user" },
-    },
-  ],
-) {}
+export class RegistrarDomainNotOwned
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RegistrarDomainNotOwned>()(
+      "RegistrarDomainNotOwned",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 10000,
+        status: 403,
+        message: { includes: "Domain doesn't belong to the user" },
+      },
+    ],
+  ) {}
 
-export class RegistrarUpdateNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RegistrarUpdateNotAllowed>()("RegistrarUpdateNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422 }],
-) {}
+export class RegistrarUpdateNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RegistrarUpdateNotAllowed>()(
+      "RegistrarUpdateNotAllowed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 422 }],
+  ) {}
 
 export type CheckRequestDomainsList = Array<string>;
 export const CheckRequestDomainsList = /*@__PURE__*/ S.Array(

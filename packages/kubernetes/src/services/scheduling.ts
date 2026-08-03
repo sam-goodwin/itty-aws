@@ -12,29 +12,35 @@ import * as Retry from "../retry.ts";
 
 export type { KubernetesOpError, KubernetesOpContext };
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class UnprocessableEntity extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnprocessableEntity>()("UnprocessableEntity", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422 }],
-) {}
+export class UnprocessableEntity
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntity>()(
+      "UnprocessableEntity",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 422 }],
+  ) {}
 
 /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {

@@ -22,43 +22,50 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneTag: "zone_tag",
 };
 
-export class CustomNameserverAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomNameserverAlreadyExists>()(
-    "CustomNameserverAlreadyExists",
-    {
+export class CustomNameserverAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserverAlreadyExists>()(
+      "CustomNameserverAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ message: { includes: "already exist" } }],
+  ) {}
+
+export class CustomNameserverNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserverNotFound>()(
+      "CustomNameserverNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class CustomNameserversNotEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserversNotEnabled>()(
+      "CustomNameserversNotEnabled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002, message: { includes: "not enabled" } }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ message: { includes: "already exist" } }],
-) {}
-
-export class CustomNameserverNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomNameserverNotFound>()("CustomNameserverNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class CustomNameserversNotEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomNameserversNotEnabled>()(
-    "CustomNameserversNotEnabled",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1002, message: { includes: "not enabled" } }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export interface CreateCustomNameserverRequest {
   /** Account identifier tag. */

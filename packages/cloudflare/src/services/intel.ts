@@ -152,34 +152,43 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneTag: "zone_tag",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class IndicatorFeedNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IndicatorFeedNotFound>()("IndicatorFeedNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403, message: { includes: "does not exist" } }],
-) {}
+export class IndicatorFeedNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IndicatorFeedNotFound>()(
+      "IndicatorFeedNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 403, message: { includes: "does not exist" } }],
+  ) {}
 
-export class IndicatorFeedsNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IndicatorFeedsNotEntitled>()("IndicatorFeedsNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      status: 403,
-      message: { includes: "does not have permission to create a feed" },
-    },
-  ],
-) {}
+export class IndicatorFeedsNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IndicatorFeedsNotEntitled>()(
+      "IndicatorFeedsNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 403,
+        message: { includes: "does not have permission to create a feed" },
+      },
+    ],
+  ) {}
 
 export type AttackSurfaceReportIssuesClassRequestIssueClassList = Array<string>;
 export const AttackSurfaceReportIssuesClassRequestIssueClassList =

@@ -20,69 +20,92 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class ImageAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ImageAlreadyExists>()("ImageAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5409 }],
-) {}
+export class ImageAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ImageAlreadyExists>()(
+      "ImageAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5409 }],
+  ) {}
 
-export class ImageNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ImageNotFound>()("ImageNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5404 }],
-) {}
+export class ImageNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ImageNotFound>()("ImageNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 5404 }],
+  ) {}
 
-export class ImagesAccessNotEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ImagesAccessNotEnabled>()("ImagesAccessNotEnabled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5403 }],
-) {}
+export class ImagesAccessNotEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ImagesAccessNotEnabled>()(
+      "ImagesAccessNotEnabled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5403 }],
+  ) {}
 
-export class InvalidUploadFormat extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidUploadFormat>()("InvalidUploadFormat", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5415 }],
-) {}
+export class InvalidUploadFormat
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidUploadFormat>()(
+      "InvalidUploadFormat",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5415 }],
+  ) {}
 
-export class KeyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5404 }],
-) {}
+export class KeyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 5404 }],
+  ) {}
 
-export class VariantAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VariantAlreadyExists>()("VariantAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5409 }],
-) {}
+export class VariantAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VariantAlreadyExists>()(
+      "VariantAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5409 }],
+  ) {}
 
-export class VariantNameNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VariantNameNotAllowed>()("VariantNameNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5400 }],
-) {}
+export class VariantNameNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VariantNameNotAllowed>()(
+      "VariantNameNotAllowed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5400 }],
+  ) {}
 
-export class VariantNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VariantNotFound>()("VariantNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5401 }, { status: 404, message: { includes: "not found" } }],
-) {}
+export class VariantNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VariantNotFound>()("VariantNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 5401 }, { status: 404, message: { includes: "not found" } }],
+  ) {}
 
 export interface CreateV1Request {
   /** Account identifier tag. */

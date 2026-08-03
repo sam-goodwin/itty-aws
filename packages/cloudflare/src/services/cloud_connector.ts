@@ -14,24 +14,31 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export class CloudConnectorRulesNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CloudConnectorRulesNotFound>()(
-    "CloudConnectorRulesNotFound",
-    {
+export class CloudConnectorRulesNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CloudConnectorRulesNotFound>()(
+      "CloudConnectorRulesNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 10003,
+        message: { includes: "could not find entrypoint ruleset" },
+      },
+    ],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10003, message: { includes: "could not find entrypoint ruleset" } }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export interface ListRulesRequest {
   /** Identifier. */

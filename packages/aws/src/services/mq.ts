@@ -84,84 +84,90 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(
-      S.suspend(() => __listOfResourceShareError).annotate({
-        identifier: "__listOfResourceShareError",
-      }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(
-      S.suspend(() => __listOfResourceShareError).annotate({
-        identifier: "__listOfResourceShareError",
-      }),
-    ),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(
-      S.suspend(() => __listOfResourceShareError).annotate({
-        identifier: "__listOfResourceShareError",
-      }),
-    ),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(
-      S.suspend(() => __listOfResourceShareError).annotate({
-        identifier: "__listOfResourceShareError",
-      }),
-    ),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(
-      S.suspend(() => __listOfResourceShareError).annotate({
-        identifier: "__listOfResourceShareError",
-      }),
-    ),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(
-      S.suspend(() => __listOfResourceShareError).annotate({
-        identifier: "__listOfResourceShareError",
-      }),
-    ),
-  },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
+export class BadRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+    "BadRequestException",
+    {
+      ErrorAttribute: S.optional(S.String),
+      Message: S.optional(S.String),
+      ResourceShareErrors: S.optional(
+        S.suspend(() => __listOfResourceShareError).annotate({
+          identifier: "__listOfResourceShareError",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    {
+      ErrorAttribute: S.optional(S.String),
+      Message: S.optional(S.String),
+      ResourceShareErrors: S.optional(
+        S.suspend(() => __listOfResourceShareError).annotate({
+          identifier: "__listOfResourceShareError",
+        }),
+      ),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ForbiddenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+    "ForbiddenException",
+    {
+      ErrorAttribute: S.optional(S.String),
+      Message: S.optional(S.String),
+      ResourceShareErrors: S.optional(
+        S.suspend(() => __listOfResourceShareError).annotate({
+          identifier: "__listOfResourceShareError",
+        }),
+      ),
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class InternalServerErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+    "InternalServerErrorException",
+    {
+      ErrorAttribute: S.optional(S.String),
+      Message: S.optional(S.String),
+      ResourceShareErrors: S.optional(
+        S.suspend(() => __listOfResourceShareError).annotate({
+          identifier: "__listOfResourceShareError",
+        }),
+      ),
+    },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class NotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+    "NotFoundException",
+    {
+      ErrorAttribute: S.optional(S.String),
+      Message: S.optional(S.String),
+      ResourceShareErrors: S.optional(
+        S.suspend(() => __listOfResourceShareError).annotate({
+          identifier: "__listOfResourceShareError",
+        }),
+      ),
+    },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class UnauthorizedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+    "UnauthorizedException",
+    {
+      ErrorAttribute: S.optional(S.String),
+      Message: S.optional(S.String),
+      ResourceShareErrors: S.optional(
+        S.suspend(() => __listOfResourceShareError).annotate({
+          identifier: "__listOfResourceShareError",
+        }),
+      ),
+    },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
 export type AuthenticationStrategy =
   | "SIMPLE"
   | "LDAP"

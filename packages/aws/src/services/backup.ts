@@ -87,102 +87,112 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    CreatorRequestId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-).pipe(C.withAlreadyExistsError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class DependencyFailureException extends S.TaggedErrorClass<DependencyFailureException>()(
-  "DependencyFailureException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
-  "MissingParameterValueException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-).pipe(C.withServerError) {}
+export class AlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+    "AlreadyExistsException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      CreatorRequestId: S.optional(S.String),
+      Arn: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ).pipe(C.withAlreadyExistsError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class DependencyFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyFailureException>()(
+    "DependencyFailureException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class InvalidParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+    "InvalidParameterValueException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class InvalidResourceStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+    "InvalidResourceStateException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class MissingParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameterValueException>()(
+    "MissingParameterValueException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ) {}
+export class ServiceUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+    "ServiceUnavailableException",
+    {
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Context: S.optional(S.String),
+    },
+  ).pipe(C.withServerError) {}
 export type BackupVaultName = string;
 export type ARN = string;
 export type RequesterComment = string | redacted.Redacted<string>;

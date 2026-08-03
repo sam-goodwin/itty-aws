@@ -117,45 +117,56 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   yamlDiff: "yaml_diff",
 };
 
-export class CatalogSyncNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CatalogSyncNotFound>()("CatalogSyncNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class CatalogSyncNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CatalogSyncNotFound>()(
+      "CatalogSyncNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class CloudIntegrationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CloudIntegrationNotFound>()("CloudIntegrationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class CloudIntegrationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CloudIntegrationNotFound>()(
+      "CloudIntegrationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class FeatureNotEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1012, status: 403 }],
-) {}
+export class FeatureNotEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1012, status: 403 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class OnRampNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OnRampNotFound>()("OnRampNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class OnRampNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OnRampNotFound>()("OnRampNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
 export interface ApplyOnRampRequest {
   accountId: string;

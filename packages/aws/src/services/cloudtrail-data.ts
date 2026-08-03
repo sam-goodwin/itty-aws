@@ -83,30 +83,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ChannelInsufficientPermission extends S.TaggedErrorClass<ChannelInsufficientPermission>()(
-  "ChannelInsufficientPermission",
-  { message: S.optional(S.String) },
-) {}
-export class ChannelNotFound extends S.TaggedErrorClass<ChannelNotFound>()(
-  "ChannelNotFound",
-  { message: S.optional(S.String) },
-) {}
-export class ChannelUnsupportedSchema extends S.TaggedErrorClass<ChannelUnsupportedSchema>()(
-  "ChannelUnsupportedSchema",
-  { message: S.optional(S.String) },
-) {}
-export class DuplicatedAuditEventId extends S.TaggedErrorClass<DuplicatedAuditEventId>()(
-  "DuplicatedAuditEventId",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidChannelARN extends S.TaggedErrorClass<InvalidChannelARN>()(
-  "InvalidChannelARN",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-) {}
+export class ChannelInsufficientPermission
+  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelInsufficientPermission>()(
+    "ChannelInsufficientPermission",
+    { message: S.optional(S.String) },
+  ) {}
+export class ChannelNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelNotFound>()(
+    "ChannelNotFound",
+    { message: S.optional(S.String) },
+  ) {}
+export class ChannelUnsupportedSchema
+  extends /*@__PURE__*/ S.TaggedErrorClass<ChannelUnsupportedSchema>()(
+    "ChannelUnsupportedSchema",
+    { message: S.optional(S.String) },
+  ) {}
+export class DuplicatedAuditEventId
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatedAuditEventId>()(
+    "DuplicatedAuditEventId",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidChannelARN
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidChannelARN>()(
+    "InvalidChannelARN",
+    { message: S.optional(S.String) },
+  ) {}
+export class UnsupportedOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+    "UnsupportedOperationException",
+    { message: S.optional(S.String) },
+  ) {}
 export type Uuid = string;
 export interface AuditEvent {
   id: string;

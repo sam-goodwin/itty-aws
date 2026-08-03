@@ -90,53 +90,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   validationCode: "validation_code",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class InvalidTokenName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 400, message: { includes: "name must have a length" } }],
-) {}
+export class InvalidTokenName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 400, message: { includes: "name must have a length" } }],
+  ) {}
 
-export class MethodNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7001 }],
-) {}
+export class MethodNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7001 }],
+  ) {}
 
-export class PermissionGroupNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PermissionGroupNotFound>()("PermissionGroupNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "Permission group" } }],
-) {}
+export class PermissionGroupNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PermissionGroupNotFound>()(
+      "PermissionGroupNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "Permission group" } }],
+  ) {}
 
-export class TokenNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
+export class TokenNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003 }],
+  ) {}
 
 export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;

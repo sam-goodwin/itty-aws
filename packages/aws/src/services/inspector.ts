@@ -85,96 +85,107 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    message: S.String,
-    errorCode: S.suspend(() => AccessDeniedErrorCode).annotate({
-      identifier: "AccessDeniedErrorCode",
-    }),
-    canRetry: S.Boolean,
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class AgentsAlreadyRunningAssessmentException extends S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
-  "AgentsAlreadyRunningAssessmentException",
-  {
-    message: S.String,
-    agents: S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
-      identifier: "AgentAlreadyRunningAssessmentList",
-    }),
-    agentsTruncated: S.Boolean,
-    canRetry: S.Boolean,
-  },
-) {}
-export class AssessmentRunInProgressException extends S.TaggedErrorClass<AssessmentRunInProgressException>()(
-  "AssessmentRunInProgressException",
-  {
-    message: S.String,
-    assessmentRunArns: S.suspend(() => AssessmentRunInProgressArnList).annotate(
-      { identifier: "AssessmentRunInProgressArnList" },
-    ),
-    assessmentRunArnsTruncated: S.Boolean,
-    canRetry: S.Boolean,
-  },
-) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.String, canRetry: S.Boolean },
-) {}
-export class InvalidCrossAccountRoleException extends S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
-  "InvalidCrossAccountRoleException",
-  {
-    message: S.String,
-    errorCode: S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
-      identifier: "InvalidCrossAccountRoleErrorCode",
-    }),
-    canRetry: S.Boolean,
-  },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  {
-    message: S.String,
-    errorCode: S.suspend(() => InvalidInputErrorCode).annotate({
-      identifier: "InvalidInputErrorCode",
-    }),
-    canRetry: S.Boolean,
-  },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    message: S.String,
-    errorCode: S.suspend(() => LimitExceededErrorCode).annotate({
-      identifier: "LimitExceededErrorCode",
-    }),
-    canRetry: S.Boolean,
-  },
-) {}
-export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
-  "NoSuchEntityException",
-  {
-    message: S.String,
-    errorCode: S.suspend(() => NoSuchEntityErrorCode).annotate({
-      identifier: "NoSuchEntityErrorCode",
-    }),
-    canRetry: S.Boolean,
-  },
-) {}
-export class PreviewGenerationInProgressException extends S.TaggedErrorClass<PreviewGenerationInProgressException>()(
-  "PreviewGenerationInProgressException",
-  { message: S.String },
-) {}
-export class ServiceTemporarilyUnavailableException extends S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
-  "ServiceTemporarilyUnavailableException",
-  { message: S.String, canRetry: S.Boolean },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
-  "UnsupportedFeatureException",
-  { message: S.String, canRetry: S.Boolean },
-) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    {
+      message: S.String,
+      errorCode: S.suspend(() => AccessDeniedErrorCode).annotate({
+        identifier: "AccessDeniedErrorCode",
+      }),
+      canRetry: S.Boolean,
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class AgentsAlreadyRunningAssessmentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
+    "AgentsAlreadyRunningAssessmentException",
+    {
+      message: S.String,
+      agents: S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
+        identifier: "AgentAlreadyRunningAssessmentList",
+      }),
+      agentsTruncated: S.Boolean,
+      canRetry: S.Boolean,
+    },
+  ) {}
+export class AssessmentRunInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AssessmentRunInProgressException>()(
+    "AssessmentRunInProgressException",
+    {
+      message: S.String,
+      assessmentRunArns: S.suspend(
+        () => AssessmentRunInProgressArnList,
+      ).annotate({ identifier: "AssessmentRunInProgressArnList" }),
+      assessmentRunArnsTruncated: S.Boolean,
+      canRetry: S.Boolean,
+    },
+  ) {}
+export class InternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+    "InternalException",
+    { message: S.String, canRetry: S.Boolean },
+  ) {}
+export class InvalidCrossAccountRoleException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
+    "InvalidCrossAccountRoleException",
+    {
+      message: S.String,
+      errorCode: S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
+        identifier: "InvalidCrossAccountRoleErrorCode",
+      }),
+      canRetry: S.Boolean,
+    },
+  ) {}
+export class InvalidInputException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+    "InvalidInputException",
+    {
+      message: S.String,
+      errorCode: S.suspend(() => InvalidInputErrorCode).annotate({
+        identifier: "InvalidInputErrorCode",
+      }),
+      canRetry: S.Boolean,
+    },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {
+      message: S.String,
+      errorCode: S.suspend(() => LimitExceededErrorCode).annotate({
+        identifier: "LimitExceededErrorCode",
+      }),
+      canRetry: S.Boolean,
+    },
+  ) {}
+export class NoSuchEntityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchEntityException>()(
+    "NoSuchEntityException",
+    {
+      message: S.String,
+      errorCode: S.suspend(() => NoSuchEntityErrorCode).annotate({
+        identifier: "NoSuchEntityErrorCode",
+      }),
+      canRetry: S.Boolean,
+    },
+  ) {}
+export class PreviewGenerationInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PreviewGenerationInProgressException>()(
+    "PreviewGenerationInProgressException",
+    { message: S.String },
+  ) {}
+export class ServiceTemporarilyUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
+    "ServiceTemporarilyUnavailableException",
+    { message: S.String, canRetry: S.Boolean },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
+export class UnsupportedFeatureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedFeatureException>()(
+    "UnsupportedFeatureException",
+    { message: S.String, canRetry: S.Boolean },
+  ) {}
 export type Arn = string;
 export type AddRemoveAttributesFindingArnList = string[];
 export const AddRemoveAttributesFindingArnList = /*@__PURE__*/ S.Array(

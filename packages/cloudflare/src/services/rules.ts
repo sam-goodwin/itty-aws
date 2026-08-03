@@ -33,29 +33,32 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   urlHostname: "url_hostname",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class ListAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ListAlreadyExists>()("ListAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10021 }],
-) {}
+export class ListAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ListAlreadyExists>()("ListAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10021 }],
+  ) {}
 
-export class ListNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ListNotFound>()("ListNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10001 }],
-) {}
+export class ListNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ListNotFound>()("ListNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10001 }],
+  ) {}
 
 export type ListsCreateRequestKind = "ip" | "redirect" | "hostname" | "asn";
 export const ListsCreateRequestKind = /*@__PURE__*/ S.String;

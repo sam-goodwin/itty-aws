@@ -87,48 +87,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class BadRequestError extends S.TaggedErrorClass<BadRequestError>()(
-  "BadRequestError",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenError extends S.TaggedErrorClass<ForbiddenError>()(
-  "ForbiddenError",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class RateLimitError extends S.TaggedErrorClass<RateLimitError>()(
-  "RateLimitError",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundError extends S.TaggedErrorClass<ResourceNotFoundError>()(
-  "ResourceNotFoundError",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedError extends S.TaggedErrorClass<UnauthorizedError>()(
-  "UnauthorizedError",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  {
-    reasons: S.optional(
-      S.suspend(() => ErrorDetailList).annotate({
-        identifier: "ErrorDetailList",
-      }),
-    ),
-    message: S.optional(S.String),
-  },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
+export class BadRequestError
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestError>()(
+    "BadRequestError",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ForbiddenError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenError>()(
+    "ForbiddenError",
+    { message: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class InternalServerError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+    "InternalServerError",
+    { message: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class RateLimitError
+  extends /*@__PURE__*/ S.TaggedErrorClass<RateLimitError>()(
+    "RateLimitError",
+    { message: S.optional(S.String) },
+    T.HttpError(429),
+  ).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundError>()(
+    "ResourceNotFoundError",
+    { message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class UnauthorizedError
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedError>()(
+    "UnauthorizedError",
+    { message: S.optional(S.String) },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
+export class ValidationError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
+    "ValidationError",
+    {
+      reasons: S.optional(
+        S.suspend(() => ErrorDetailList).annotate({
+          identifier: "ErrorDetailList",
+        }),
+      ),
+      message: S.optional(S.String),
+    },
+    T.HttpError(422),
+  ).pipe(C.withBadRequestError) {}
 export type NetworkId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type SecurityGroupId = string;

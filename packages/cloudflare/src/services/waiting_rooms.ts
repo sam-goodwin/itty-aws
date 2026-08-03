@@ -53,29 +53,35 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   turnstileMode: "turnstile_mode",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class WaitingRoomNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WaitingRoomNotFound>()("WaitingRoomNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
+export class WaitingRoomNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WaitingRoomNotFound>()(
+      "WaitingRoomNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001 }],
+  ) {}
 
-export class ZoneNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneNotEntitled>()("ZoneNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1034 }],
-) {}
+export class ZoneNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotEntitled>()("ZoneNotEntitled", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1034 }],
+  ) {}
 
 export type EventsCreateRequestTurnstileAction = "log" | "infinite_queue";
 export const EventsCreateRequestTurnstileAction = /*@__PURE__*/ S.String;

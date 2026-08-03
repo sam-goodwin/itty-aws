@@ -86,87 +86,96 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
-  "InsufficientCapacityException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
-  "MissingParameterValueException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
-  "NoLongerSupportedException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PolicyEnforcedException extends S.TaggedErrorClass<PolicyEnforcedException>()(
-  "PolicyEnforcedException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
-  "RequestTimeoutException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(408),
-).pipe(C.withTimeoutError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
+export class InsufficientCapacityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientCapacityException>()(
+    "InsufficientCapacityException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+    "InvalidParameterValueException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class MissingParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameterValueException>()(
+    "MissingParameterValueException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class NoLongerSupportedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoLongerSupportedException>()(
+    "NoLongerSupportedException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class PolicyEnforcedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyEnforcedException>()(
+    "PolicyEnforcedException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class RequestTimeoutException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTimeoutException>()(
+    "RequestTimeoutException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(408),
+  ).pipe(C.withTimeoutError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+    "ServiceUnavailableException",
+    {
+      type: S.optional(S.String),
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
 export interface AbortMultipartUploadInput {
   accountId: string;
   vaultName: string;

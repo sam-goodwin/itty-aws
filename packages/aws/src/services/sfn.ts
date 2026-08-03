@@ -106,154 +106,183 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ActivityAlreadyExists extends S.TaggedErrorClass<ActivityAlreadyExists>()(
-  "ActivityAlreadyExists",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ActivityDoesNotExist extends S.TaggedErrorClass<ActivityDoesNotExist>()(
-  "ActivityDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class ActivityLimitExceeded extends S.TaggedErrorClass<ActivityLimitExceeded>()(
-  "ActivityLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ActivityWorkerLimitExceeded extends S.TaggedErrorClass<ActivityWorkerLimitExceeded>()(
-  "ActivityWorkerLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ExecutionAlreadyExists extends S.TaggedErrorClass<ExecutionAlreadyExists>()(
-  "ExecutionAlreadyExists",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ExecutionDoesNotExist extends S.TaggedErrorClass<ExecutionDoesNotExist>()(
-  "ExecutionDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class ExecutionLimitExceeded extends S.TaggedErrorClass<ExecutionLimitExceeded>()(
-  "ExecutionLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ExecutionNotRedrivable extends S.TaggedErrorClass<ExecutionNotRedrivable>()(
-  "ExecutionNotRedrivable",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidArn extends S.TaggedErrorClass<InvalidArn>()("InvalidArn", {
-  message: S.optional(S.String),
-}) {}
-export class InvalidDefinition extends S.TaggedErrorClass<InvalidDefinition>()(
-  "InvalidDefinition",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidEncryptionConfiguration extends S.TaggedErrorClass<InvalidEncryptionConfiguration>()(
-  "InvalidEncryptionConfiguration",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidExecutionInput extends S.TaggedErrorClass<InvalidExecutionInput>()(
-  "InvalidExecutionInput",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLoggingConfiguration extends S.TaggedErrorClass<InvalidLoggingConfiguration>()(
-  "InvalidLoggingConfiguration",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidName extends S.TaggedErrorClass<InvalidName>()(
-  "InvalidName",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidOutput extends S.TaggedErrorClass<InvalidOutput>()(
-  "InvalidOutput",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidToken extends S.TaggedErrorClass<InvalidToken>()(
-  "InvalidToken",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTracingConfiguration extends S.TaggedErrorClass<InvalidTracingConfiguration>()(
-  "InvalidTracingConfiguration",
-  { message: S.optional(S.String) },
-) {}
-export class KmsAccessDeniedException extends S.TaggedErrorClass<KmsAccessDeniedException>()(
-  "KmsAccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KmsInvalidStateException extends S.TaggedErrorClass<KmsInvalidStateException>()(
-  "KmsInvalidStateException",
-  {
-    kmsKeyState: S.optional(
-      S.suspend(() => KmsKeyState).annotate({ identifier: "KmsKeyState" }),
-    ),
+export class ActivityAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityAlreadyExists>()(
+    "ActivityAlreadyExists",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class ActivityDoesNotExist
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityDoesNotExist>()(
+    "ActivityDoesNotExist",
+    { message: S.optional(S.String) },
+  ) {}
+export class ActivityLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityLimitExceeded>()(
+    "ActivityLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class ActivityWorkerLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActivityWorkerLimitExceeded>()(
+    "ActivityWorkerLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ExecutionAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionAlreadyExists>()(
+    "ExecutionAlreadyExists",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class ExecutionDoesNotExist
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionDoesNotExist>()(
+    "ExecutionDoesNotExist",
+    { message: S.optional(S.String) },
+  ) {}
+export class ExecutionLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionLimitExceeded>()(
+    "ExecutionLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class ExecutionNotRedrivable
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExecutionNotRedrivable>()(
+    "ExecutionNotRedrivable",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidArn
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArn>()("InvalidArn", {
     message: S.optional(S.String),
-  },
-) {}
-export class KmsThrottlingException extends S.TaggedErrorClass<KmsThrottlingException>()(
-  "KmsThrottlingException",
-  { message: S.optional(S.String) },
-) {}
-export class MissingRequiredParameter extends S.TaggedErrorClass<MissingRequiredParameter>()(
-  "MissingRequiredParameter",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class StateMachineAlreadyExists extends S.TaggedErrorClass<StateMachineAlreadyExists>()(
-  "StateMachineAlreadyExists",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class StateMachineDeleting extends S.TaggedErrorClass<StateMachineDeleting>()(
-  "StateMachineDeleting",
-  { message: S.optional(S.String) },
-) {}
-export class StateMachineDoesNotExist extends S.TaggedErrorClass<StateMachineDoesNotExist>()(
-  "StateMachineDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class StateMachineLimitExceeded extends S.TaggedErrorClass<StateMachineLimitExceeded>()(
-  "StateMachineLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class StateMachineTypeNotSupported extends S.TaggedErrorClass<StateMachineTypeNotSupported>()(
-  "StateMachineTypeNotSupported",
-  { message: S.optional(S.String) },
-) {}
-export class TaskDoesNotExist extends S.TaggedErrorClass<TaskDoesNotExist>()(
-  "TaskDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class TaskTimedOut extends S.TaggedErrorClass<TaskTimedOut>()(
-  "TaskTimedOut",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTags extends S.TaggedErrorClass<TooManyTags>()(
-  "TooManyTags",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
+  }) {}
+export class InvalidDefinition
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDefinition>()(
+    "InvalidDefinition",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidEncryptionConfiguration
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEncryptionConfiguration>()(
+    "InvalidEncryptionConfiguration",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidExecutionInput
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExecutionInput>()(
+    "InvalidExecutionInput",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidLoggingConfiguration
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLoggingConfiguration>()(
+    "InvalidLoggingConfiguration",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidName
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidName>()("InvalidName", {
     message: S.optional(S.String),
-    reason: S.optional(
-      S.suspend(() => ValidationExceptionReason).annotate({
-        identifier: "ValidationExceptionReason",
-      }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+  }) {}
+export class InvalidOutput
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOutput>()("InvalidOutput", {
+    message: S.optional(S.String),
+  }) {}
+export class InvalidToken
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidToken>()("InvalidToken", {
+    message: S.optional(S.String),
+  }) {}
+export class InvalidTracingConfiguration
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTracingConfiguration>()(
+    "InvalidTracingConfiguration",
+    { message: S.optional(S.String) },
+  ) {}
+export class KmsAccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<KmsAccessDeniedException>()(
+    "KmsAccessDeniedException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAuthError) {}
+export class KmsInvalidStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<KmsInvalidStateException>()(
+    "KmsInvalidStateException",
+    {
+      kmsKeyState: S.optional(
+        S.suspend(() => KmsKeyState).annotate({ identifier: "KmsKeyState" }),
+      ),
+      message: S.optional(S.String),
+    },
+  ) {}
+export class KmsThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<KmsThrottlingException>()(
+    "KmsThrottlingException",
+    { message: S.optional(S.String) },
+  ) {}
+export class MissingRequiredParameter
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameter>()(
+    "MissingRequiredParameter",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
+    "ResourceNotFound",
+    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    { message: S.optional(S.String) },
+    T.HttpError(402),
+  ).pipe(C.withQuotaError) {}
+export class StateMachineAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineAlreadyExists>()(
+    "StateMachineAlreadyExists",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class StateMachineDeleting
+  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineDeleting>()(
+    "StateMachineDeleting",
+    { message: S.optional(S.String) },
+  ) {}
+export class StateMachineDoesNotExist
+  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineDoesNotExist>()(
+    "StateMachineDoesNotExist",
+    { message: S.optional(S.String) },
+  ) {}
+export class StateMachineLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineLimitExceeded>()(
+    "StateMachineLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class StateMachineTypeNotSupported
+  extends /*@__PURE__*/ S.TaggedErrorClass<StateMachineTypeNotSupported>()(
+    "StateMachineTypeNotSupported",
+    { message: S.optional(S.String) },
+  ) {}
+export class TaskDoesNotExist
+  extends /*@__PURE__*/ S.TaggedErrorClass<TaskDoesNotExist>()(
+    "TaskDoesNotExist",
+    { message: S.optional(S.String) },
+  ) {}
+export class TaskTimedOut
+  extends /*@__PURE__*/ S.TaggedErrorClass<TaskTimedOut>()("TaskTimedOut", {
+    message: S.optional(S.String),
+  }) {}
+export class TooManyTags
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTags>()(
+    "TooManyTags",
+    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    {
+      message: S.optional(S.String),
+      reason: S.optional(
+        S.suspend(() => ValidationExceptionReason).annotate({
+          identifier: "ValidationExceptionReason",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type TagKey = string;
 export type TagValue = string;

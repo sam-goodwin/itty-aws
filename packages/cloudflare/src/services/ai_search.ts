@@ -118,131 +118,164 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workerDomain: "worker_domain",
 };
 
-export class AiSearchInstanceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AiSearchInstanceNotFound>()("AiSearchInstanceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 7002 },
-    { status: 404, message: { includes: "ai_search_not_found" } },
-  ],
-) {}
+export class AiSearchInstanceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AiSearchInstanceNotFound>()(
+      "AiSearchInstanceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 7002 },
+      { status: 404, message: { includes: "ai_search_not_found" } },
+    ],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InstanceAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InstanceAlreadyExists>()("InstanceAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "already_exist" } }],
-) {}
+export class InstanceAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InstanceAlreadyExists>()(
+      "InstanceAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "already_exist" } }],
+  ) {}
 
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class InvalidTokenCredentials extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidTokenCredentials>()("InvalidTokenCredentials", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7012 }, { status: 400, message: { includes: "invalid_token" } }],
-) {}
+export class InvalidTokenCredentials
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenCredentials>()(
+      "InvalidTokenCredentials",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7012 }, { status: 400, message: { includes: "invalid_token" } }],
+  ) {}
 
-export class MissingSitemap extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MissingSitemap>()("MissingSitemap", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "missing_sitemap" } }],
-) {}
+export class MissingSitemap
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MissingSitemap>()("MissingSitemap", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 400, message: { includes: "missing_sitemap" } }],
+  ) {}
 
-export class NamespaceAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NamespaceAlreadyExists>()("NamespaceAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7064 }],
-) {}
+export class NamespaceAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NamespaceAlreadyExists>()(
+      "NamespaceAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7064 }],
+  ) {}
 
-export class NamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 7063 },
-    { status: 404, message: { includes: "namespace_not_found" } },
-  ],
-) {}
+export class NamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 7063 },
+      { status: 404, message: { includes: "namespace_not_found" } },
+    ],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7002 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7002 }],
+  ) {}
 
-export class SyncInCooldown extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SyncInCooldown>()("SyncInCooldown", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7020 }],
-) {}
+export class SyncInCooldown
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SyncInCooldown>()("SyncInCooldown", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7020 }],
+  ) {}
 
-export class TokenInUseByInstances extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenInUseByInstances>()("TokenInUseByInstances", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409, message: { includes: "token_in_use_by_instances" } }],
-) {}
+export class TokenInUseByInstances
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenInUseByInstances>()(
+      "TokenInUseByInstances",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 409, message: { includes: "token_in_use_by_instances" } }],
+  ) {}
 
-export class TokenNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7075 }],
-) {}
+export class TokenNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7075 }],
+  ) {}
 
-export class UnableToConnect extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnableToConnect>()("UnableToConnect", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7017 }],
-) {}
+export class UnableToConnect
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnableToConnect>()("UnableToConnect", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7017 }],
+  ) {}
 
-export class ValidationError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ValidationError>()("ValidationError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7001 }],
-) {}
+export class ValidationError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()("ValidationError", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7001 }],
+  ) {}
 
-export class WebCrawlerDomainNotOwned extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WebCrawlerDomainNotOwned>()("WebCrawlerDomainNotOwned", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "domain_not_owned_by_user" } }],
-) {}
+export class WebCrawlerDomainNotOwned
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WebCrawlerDomainNotOwned>()(
+      "WebCrawlerDomainNotOwned",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "domain_not_owned_by_user" } }],
+  ) {}
 
 export type InstancesChatCompletionsRequestMessagesItemContentCase1ItemCase0Type =
   "text";

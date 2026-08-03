@@ -87,30 +87,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccountLimitExceededException extends S.TaggedErrorClass<AccountLimitExceededException>()(
-  "AccountLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
-  "AccountSuspendedException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-) {}
-export class OAuthProviderException extends S.TaggedErrorClass<OAuthProviderException>()(
-  "OAuthProviderException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
+export class AccountLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccountLimitExceededException>()(
+    "AccountLimitExceededException",
+    { message: S.optional(S.String) },
+  ) {}
+export class AccountSuspendedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccountSuspendedException>()(
+    "AccountSuspendedException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidInputException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+    "InvalidInputException",
+    { message: S.optional(S.String) },
+  ) {}
+export class OAuthProviderException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OAuthProviderException>()(
+    "OAuthProviderException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+    "ResourceAlreadyExistsException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
 export type NonEmptyString = string;
 export type BuildIds = string[];
 export const BuildIds = /*@__PURE__*/ S.Array(S.String);

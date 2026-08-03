@@ -12,29 +12,35 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export class AiSecurityNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AiSecurityNotEntitled>()("AiSecurityNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 13101, message: { includes: "not entitled" } }],
-) {}
+export class AiSecurityNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AiSecurityNotEntitled>()(
+      "AiSecurityNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 13101, message: { includes: "not entitled" } }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class ZoneNotAuthorized extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneNotAuthorized>()("ZoneNotAuthorized", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10000, message: { includes: "Authentication error" } }],
-) {}
+export class ZoneNotAuthorized
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotAuthorized>()("ZoneNotAuthorized", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10000, message: { includes: "Authentication error" } }],
+  ) {}
 
 export interface GetAiSecurityRequest {
   /** Defines the zone. */

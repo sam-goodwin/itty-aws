@@ -84,14 +84,16 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DocumentServiceException extends S.TaggedErrorClass<DocumentServiceException>()(
-  "DocumentServiceException",
-  { status: S.optional(S.String), message: S.optional(S.String) },
-) {}
-export class SearchException extends S.TaggedErrorClass<SearchException>()(
-  "SearchException",
-  { message: S.optional(S.String) },
-) {}
+export class DocumentServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DocumentServiceException>()(
+    "DocumentServiceException",
+    { status: S.optional(S.String), message: S.optional(S.String) },
+  ) {}
+export class SearchException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SearchException>()(
+    "SearchException",
+    { message: S.optional(S.String) },
+  ) {}
 export type Cursor = string;
 export type Expr = string;
 export type Facet = string;

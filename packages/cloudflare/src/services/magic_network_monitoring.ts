@@ -28,66 +28,79 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zscoreTarget: "zscore_target",
 };
 
-export class DuplicateMnmRuleName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DuplicateMnmRuleName>()("DuplicateMnmRuleName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1008, message: { includes: "rule name must be unique" } }],
-) {}
+export class DuplicateMnmRuleName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DuplicateMnmRuleName>()(
+      "DuplicateMnmRuleName",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1008, message: { includes: "rule name must be unique" } }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidMnmConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidMnmConfig>()("InvalidMnmConfig", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
+export class InvalidMnmConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidMnmConfig>()("InvalidMnmConfig", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003 }],
+  ) {}
 
-export class MnmConfigAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MnmConfigAlreadyExists>()("MnmConfigAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1005, message: { includes: "already exists" } }],
-) {}
+export class MnmConfigAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MnmConfigAlreadyExists>()(
+      "MnmConfigAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1005, message: { includes: "already exists" } }],
+  ) {}
 
-export class MnmConfigMissing extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MnmConfigMissing>()("MnmConfigMissing", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      code: 1008,
-      message: { includes: "without initial account configuration" },
-    },
-  ],
-) {}
+export class MnmConfigMissing
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MnmConfigMissing>()("MnmConfigMissing", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      {
+        code: 1008,
+        message: { includes: "without initial account configuration" },
+      },
+    ],
+  ) {}
 
-export class MnmConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MnmConfigNotFound>()("MnmConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1004, message: { includes: "not found" } }],
-) {}
+export class MnmConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MnmConfigNotFound>()("MnmConfigNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1004, message: { includes: "not found" } }],
+  ) {}
 
-export class MnmRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MnmRuleNotFound>()("MnmRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1009 }],
-) {}
+export class MnmRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MnmRuleNotFound>()("MnmRuleNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1009 }],
+  ) {}
 
 export type ConfigsCreateRequestRouterIpsList = Array<string>;
 export const ConfigsCreateRequestRouterIpsList = /*@__PURE__*/ S.Array(

@@ -49,45 +49,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   verificationErrors: "verification_errors",
 };
 
-export class CustomHostnameNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomHostnameNotFound>()("CustomHostnameNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1436 }, { status: 404 }],
-) {}
+export class CustomHostnameNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomHostnameNotFound>()(
+      "CustomHostnameNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1436 }, { status: 404 }],
+  ) {}
 
-export class FallbackOriginNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FallbackOriginNotFound>()("FallbackOriginNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class FallbackOriginNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FallbackOriginNotFound>()(
+      "FallbackOriginNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class SaasAccessNotGranted extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SaasAccessNotGranted>()("SaasAccessNotGranted", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1456 }],
-) {}
+export class SaasAccessNotGranted
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SaasAccessNotGranted>()(
+      "SaasAccessNotGranted",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1456 }],
+  ) {}
 
-export class SaasQuotaNotAllocated extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SaasQuotaNotAllocated>()("SaasQuotaNotAllocated", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1404, status: 403 }],
-) {}
+export class SaasQuotaNotAllocated
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SaasQuotaNotAllocated>()(
+      "SaasQuotaNotAllocated",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1404, status: 403 }],
+  ) {}
 
 export type CreateRequestCustomMetadataMap = {
   [key: string]: unknown | undefined;

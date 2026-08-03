@@ -27,48 +27,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class OriginCloudRegionNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OriginCloudRegionNotFound>()("OriginCloudRegionNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class OriginCloudRegionNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OriginCloudRegionNotFound>()(
+      "OriginCloudRegionNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class SettingUnavailableForPlan extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SettingUnavailableForPlan>()("SettingUnavailableForPlan", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { status: 403, message: { includes: "not available for your plan" } },
-    { code: 1135, message: { includes: "not available for your plan" } },
-  ],
-) {}
+export class SettingUnavailableForPlan
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SettingUnavailableForPlan>()(
+      "SettingUnavailableForPlan",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { status: 403, message: { includes: "not available for your plan" } },
+      { code: 1135, message: { includes: "not available for your plan" } },
+    ],
+  ) {}
 
-export class Unauthorized extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Unauthorized>()("Unauthorized", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 401 }],
-) {}
+export class Unauthorized
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Unauthorized>()("Unauthorized", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 401 }],
+  ) {}
 
-export class VariantsNotConfigured extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VariantsNotConfigured>()("VariantsNotConfigured", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "zone setting does not exist" } }],
-) {}
+export class VariantsNotConfigured
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VariantsNotConfigured>()(
+      "VariantsNotConfigured",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "zone setting does not exist" } }],
+  ) {}
 
 export interface BulkDeleteOriginCloudRegionsRequest {
   /** Identifier. */

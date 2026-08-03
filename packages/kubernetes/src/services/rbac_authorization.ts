@@ -12,29 +12,35 @@ import * as Retry from "../retry.ts";
 
 export type { KubernetesOpError, KubernetesOpContext };
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class UnprocessableEntity extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnprocessableEntity>()("UnprocessableEntity", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422 }],
-) {}
+export class UnprocessableEntity
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntity>()(
+      "UnprocessableEntity",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 422 }],
+  ) {}
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =

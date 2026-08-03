@@ -90,212 +90,243 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ConditionalOperationFailedException extends S.TaggedErrorClass<ConditionalOperationFailedException>()(
-  "ConditionalOperationFailedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ContactFlowNotPublishedException extends S.TaggedErrorClass<ContactFlowNotPublishedException>()(
-  "ContactFlowNotPublishedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ContactNotFoundException extends S.TaggedErrorClass<ContactNotFoundException>()(
-  "ContactNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ContactNotFoundException",
-      httpResponseCode: 410,
-    }),
-    T.HttpError(410),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DestinationNotAllowedException extends S.TaggedErrorClass<DestinationNotAllowedException>()(
-  "DestinationNotAllowedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DestinationNotAllowedException",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
-  "DuplicateResourceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IdempotencyException extends S.TaggedErrorClass<IdempotencyException>()(
-  "IdempotencyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidActiveRegionException extends S.TaggedErrorClass<InvalidActiveRegionException>()(
-  "InvalidActiveRegionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidContactFlowException extends S.TaggedErrorClass<InvalidContactFlowException>()(
-  "InvalidContactFlowException",
-  {
-    problems: S.optional(
-      S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
+      T.HttpError(403),
     ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidContactFlowModuleException extends S.TaggedErrorClass<InvalidContactFlowModuleException>()(
-  "InvalidContactFlowModuleException",
-  {
-    Problems: S.optional(
-      S.suspend(() => Problems).annotate({ identifier: "Problems" }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(
-      S.suspend(() => InvalidRequestExceptionReason).annotate({
-        identifier: "InvalidRequestExceptionReason",
+  ).pipe(C.withAuthError) {}
+export class ConditionalOperationFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConditionalOperationFailedException>()(
+    "ConditionalOperationFailedException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ContactFlowNotPublishedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ContactFlowNotPublishedException>()(
+    "ContactFlowNotPublishedException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ContactNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ContactNotFoundException>()(
+    "ContactNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ContactNotFoundException",
+        httpResponseCode: 410,
       }),
+      T.HttpError(410),
     ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidTestCaseException extends S.TaggedErrorClass<InvalidTestCaseException>()(
-  "InvalidTestCaseException",
-  {
-    Problems: S.optional(
-      S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+  ).pipe(C.withBadRequestError) {}
+export class DestinationNotAllowedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DestinationNotAllowedException>()(
+    "DestinationNotAllowedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "DestinationNotAllowedException",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
     ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 429 }),
+  ).pipe(C.withAuthError) {}
+export class DuplicateResourceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateResourceException>()(
+    "DuplicateResourceException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class IdempotencyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyException>()(
+    "IdempotencyException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class InternalServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+    "InternalServiceException",
+    { Message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidActiveRegionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidActiveRegionException>()(
+    "InvalidActiveRegionException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidContactFlowException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidContactFlowException>()(
+    "InvalidContactFlowException",
+    {
+      problems: S.optional(
+        S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidContactFlowModuleException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidContactFlowModuleException>()(
+    "InvalidContactFlowModuleException",
+    {
+      Problems: S.optional(
+        S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    {
+      Message: S.optional(S.String),
+      Reason: S.optional(
+        S.suspend(() => InvalidRequestExceptionReason).annotate({
+          identifier: "InvalidRequestExceptionReason",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidTestCaseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTestCaseException>()(
+    "InvalidTestCaseException",
+    {
+      Problems: S.optional(
+        S.suspend(() => Problems).annotate({ identifier: "Problems" }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "LimitExceededException",
+        httpResponseCode: 429,
+      }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class MaximumResultReturnedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MaximumResultReturnedException>()(
+    "MaximumResultReturnedException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class OutboundContactNotPermittedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OutboundContactNotPermittedException>()(
+    "OutboundContactNotPermittedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "OutboundContactNotPermittedException",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class OutputTypeNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OutputTypeNotFoundException>()(
+    "OutputTypeNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class PropertyValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PropertyValidationException>()(
+    "PropertyValidationException",
+    {
+      Message: S.String,
+      PropertyList: S.optional(
+        S.suspend(() => PropertyValidationExceptionPropertyList).annotate({
+          identifier: "PropertyValidationExceptionPropertyList",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+    "ResourceConflictException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ResourceInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+    "ResourceInUseException",
+    {
+      Message: S.optional(S.String),
+      ResourceType: S.optional(
+        S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+      ),
+      ResourceId: S.optional(S.String),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotReadyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotReadyException>()(
+    "ResourceNotReadyException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    {
+      Message: S.optional(S.String),
+      Reason: S.optional(
+        S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
+          identifier: "ServiceQuotaExceededExceptionReason",
+        }),
+      ),
+    },
+    T.HttpError(402),
+  ).pipe(C.withQuotaError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class TooManyRequestsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+    "TooManyRequestsException",
+    { Message: S.optional(S.String) },
     T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class MaximumResultReturnedException extends S.TaggedErrorClass<MaximumResultReturnedException>()(
-  "MaximumResultReturnedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OutboundContactNotPermittedException extends S.TaggedErrorClass<OutboundContactNotPermittedException>()(
-  "OutboundContactNotPermittedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "OutboundContactNotPermittedException",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class OutputTypeNotFoundException extends S.TaggedErrorClass<OutputTypeNotFoundException>()(
-  "OutputTypeNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class PropertyValidationException extends S.TaggedErrorClass<PropertyValidationException>()(
-  "PropertyValidationException",
-  {
-    Message: S.String,
-    PropertyList: S.optional(
-      S.suspend(() => PropertyValidationExceptionPropertyList).annotate({
-        identifier: "PropertyValidationExceptionPropertyList",
-      }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(
-      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
-    ),
-    ResourceId: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
-  "ResourceNotReadyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(
-      S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
-        identifier: "ServiceQuotaExceededExceptionReason",
-      }),
-    ),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UserNotFoundException extends S.TaggedErrorClass<UserNotFoundException>()(
-  "UserNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
+  ).pipe(C.withThrottlingError) {}
+export class UserNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UserNotFoundException>()(
+    "UserNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
 export type InstanceId = string;
 export type ResourceId = string;
 export type VersionNumber = number;

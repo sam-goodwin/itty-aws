@@ -85,26 +85,31 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineDeletedException extends S.TaggedErrorClass<PipelineDeletedException>()(
-  "PipelineDeletedException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
-  "PipelineNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class TaskNotFoundException extends S.TaggedErrorClass<TaskNotFoundException>()(
-  "TaskNotFoundException",
-  { message: S.optional(S.String) },
-) {}
+export class InternalServiceError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceError>()(
+    "InternalServiceError",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { message: S.optional(S.String) },
+  ) {}
+export class PipelineDeletedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PipelineDeletedException>()(
+    "PipelineDeletedException",
+    { message: S.optional(S.String) },
+  ) {}
+export class PipelineNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PipelineNotFoundException>()(
+    "PipelineNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class TaskNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TaskNotFoundException>()(
+    "TaskNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
 export type Id = string;
 export type FieldNameString = string;
 export type FieldStringValue = string;

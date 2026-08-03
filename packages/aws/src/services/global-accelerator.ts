@@ -85,106 +85,126 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AcceleratorNotDisabledException extends S.TaggedErrorClass<AcceleratorNotDisabledException>()(
-  "AcceleratorNotDisabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AcceleratorNotFoundException extends S.TaggedErrorClass<AcceleratorNotFoundException>()(
-  "AcceleratorNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class AssociatedEndpointGroupFoundException extends S.TaggedErrorClass<AssociatedEndpointGroupFoundException>()(
-  "AssociatedEndpointGroupFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AssociatedListenerFoundException extends S.TaggedErrorClass<AssociatedListenerFoundException>()(
-  "AssociatedListenerFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AttachmentNotFoundException extends S.TaggedErrorClass<AttachmentNotFoundException>()(
-  "AttachmentNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ByoipCidrNotFoundException extends S.TaggedErrorClass<ByoipCidrNotFoundException>()(
-  "ByoipCidrNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class EndpointAlreadyExistsException extends S.TaggedErrorClass<EndpointAlreadyExistsException>()(
-  "EndpointAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointGroupAlreadyExistsException extends S.TaggedErrorClass<EndpointGroupAlreadyExistsException>()(
-  "EndpointGroupAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointGroupNotFoundException extends S.TaggedErrorClass<EndpointGroupNotFoundException>()(
-  "EndpointGroupNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class EndpointNotFoundException extends S.TaggedErrorClass<EndpointNotFoundException>()(
-  "EndpointNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class IncorrectCidrStateException extends S.TaggedErrorClass<IncorrectCidrStateException>()(
-  "IncorrectCidrStateException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidPortRangeException extends S.TaggedErrorClass<InvalidPortRangeException>()(
-  "InvalidPortRangeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ListenerNotFoundException extends S.TaggedErrorClass<ListenerNotFoundException>()(
-  "ListenerNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TransactionInProgressException extends S.TaggedErrorClass<TransactionInProgressException>()(
-  "TransactionInProgressException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
+export class AcceleratorNotDisabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AcceleratorNotDisabledException>()(
+    "AcceleratorNotDisabledException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class AcceleratorNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AcceleratorNotFoundException>()(
+    "AcceleratorNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { Message: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class AssociatedEndpointGroupFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AssociatedEndpointGroupFoundException>()(
+    "AssociatedEndpointGroupFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class AssociatedListenerFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AssociatedListenerFoundException>()(
+    "AssociatedListenerFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class AttachmentNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentNotFoundException>()(
+    "AttachmentNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ByoipCidrNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ByoipCidrNotFoundException>()(
+    "ByoipCidrNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class EndpointAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointAlreadyExistsException>()(
+    "EndpointAlreadyExistsException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointGroupAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointGroupAlreadyExistsException>()(
+    "EndpointGroupAlreadyExistsException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointGroupNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointGroupNotFoundException>()(
+    "EndpointGroupNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class EndpointNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointNotFoundException>()(
+    "EndpointNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class IncorrectCidrStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectCidrStateException>()(
+    "IncorrectCidrStateException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class InternalServiceErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceErrorException>()(
+    "InternalServiceErrorException",
+    { Message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidArgumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+    "InvalidArgumentException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+    "InvalidNextTokenException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidPortRangeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPortRangeException>()(
+    "InvalidPortRangeException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class ListenerNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
+    "ListenerNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class TransactionInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TransactionInProgressException>()(
+    "TransactionInProgressException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
 export interface CustomRoutingEndpointConfiguration {
   EndpointId?: string;
   AttachmentArn?: string;

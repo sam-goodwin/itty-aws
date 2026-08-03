@@ -17,29 +17,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   modifiedOn: "modified_on",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidSettingValue extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidSettingValue>()("InvalidSettingValue", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1146, message: { includes: "origin_post_quantum_encryption" } }],
-) {}
+export class InvalidSettingValue
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidSettingValue>()(
+      "InvalidSettingValue",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1146, message: { includes: "origin_post_quantum_encryption" } }],
+  ) {}
 
-export class InvalidZoneIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidZoneIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneIdentifier>()(
+      "InvalidZoneIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
 export interface GetOriginPostQuantumEncryptionRequest {
   /** Identifier. */

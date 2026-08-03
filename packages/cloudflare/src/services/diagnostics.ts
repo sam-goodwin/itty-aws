@@ -34,35 +34,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   waitTime: "wait_time",
 };
 
-export class EndpointHealthcheckNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EndpointHealthcheckNotFound>()(
-    "EndpointHealthcheckNotFound",
-    {
+export class EndpointHealthcheckNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EndpointHealthcheckNotFound>()(
+      "EndpointHealthcheckNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1022 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1022 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class InvalidHealthcheckEndpoint extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
-    "InvalidHealthcheckEndpoint",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1002 }],
-) {}
+export class InvalidHealthcheckEndpoint
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
+      "InvalidHealthcheckEndpoint",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002 }],
+  ) {}
 
 export type EndpointHealthchecksCreateRequestCheckType = "icmp";
 export const EndpointHealthchecksCreateRequestCheckType =

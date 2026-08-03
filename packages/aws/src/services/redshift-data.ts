@@ -85,51 +85,60 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ActiveSessionsExceededException extends S.TaggedErrorClass<ActiveSessionsExceededException>()(
-  "ActiveSessionsExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ActiveStatementsExceededException extends S.TaggedErrorClass<ActiveStatementsExceededException>()(
-  "ActiveStatementsExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BatchExecuteStatementException extends S.TaggedErrorClass<BatchExecuteStatementException>()(
-  "BatchExecuteStatementException",
-  { Message: S.String, StatementId: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class DatabaseConnectionException extends S.TaggedErrorClass<DatabaseConnectionException>()(
-  "DatabaseConnectionException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ExecuteStatementException extends S.TaggedErrorClass<ExecuteStatementException>()(
-  "ExecuteStatementException",
-  { Message: S.String, StatementId: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
-  "QueryTimeoutException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class ActiveSessionsExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActiveSessionsExceededException>()(
+    "ActiveSessionsExceededException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ActiveStatementsExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActiveStatementsExceededException>()(
+    "ActiveStatementsExceededException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class BatchExecuteStatementException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BatchExecuteStatementException>()(
+    "BatchExecuteStatementException",
+    { Message: S.String, StatementId: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class DatabaseConnectionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DatabaseConnectionException>()(
+    "DatabaseConnectionException",
+    { Message: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class ExecuteStatementException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExecuteStatementException>()(
+    "ExecuteStatementException",
+    { Message: S.String, StatementId: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { Message: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class QueryTimeoutException
+  extends /*@__PURE__*/ S.TaggedErrorClass<QueryTimeoutException>()(
+    "QueryTimeoutException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.String, ResourceId: S.String },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type StatementString = string;
 export type SqlList = string[];
 export const SqlList = /*@__PURE__*/ S.Array(S.String);

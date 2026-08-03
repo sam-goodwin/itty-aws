@@ -91,191 +91,213 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessPointNotFoundException extends S.TaggedErrorClass<AccessPointNotFoundException>()(
-  "AccessPointNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LoadBalancerNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CertificateNotFoundException extends S.TaggedErrorClass<CertificateNotFoundException>()(
-  "CertificateNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DependencyThrottleException extends S.TaggedErrorClass<DependencyThrottleException>()(
-  "DependencyThrottleException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DependencyThrottle", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateAccessPointNameException extends S.TaggedErrorClass<DuplicateAccessPointNameException>()(
-  "DuplicateAccessPointNameException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DuplicateLoadBalancerName",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateListenerException extends S.TaggedErrorClass<DuplicateListenerException>()(
-  "DuplicateListenerException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateListener", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicatePolicyNameException extends S.TaggedErrorClass<DuplicatePolicyNameException>()(
-  "DuplicatePolicyNameException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicatePolicyName", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateTagKeysException extends S.TaggedErrorClass<DuplicateTagKeysException>()(
-  "DuplicateTagKeysException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateTagKeys", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidConfigurationRequestException extends S.TaggedErrorClass<InvalidConfigurationRequestException>()(
-  "InvalidConfigurationRequestException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidConfigurationRequest",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class InvalidEndPointException extends S.TaggedErrorClass<InvalidEndPointException>()(
-  "InvalidEndPointException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidInstance", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSchemeException extends S.TaggedErrorClass<InvalidSchemeException>()(
-  "InvalidSchemeException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidScheme", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSecurityGroupException extends S.TaggedErrorClass<InvalidSecurityGroupException>()(
-  "InvalidSecurityGroupException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSecurityGroup", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubnetException extends S.TaggedErrorClass<InvalidSubnetException>()(
-  "InvalidSubnetException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ListenerNotFoundException extends S.TaggedErrorClass<ListenerNotFoundException>()(
-  "ListenerNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ListenerNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LoadBalancerAttributeNotFoundException extends S.TaggedErrorClass<LoadBalancerAttributeNotFoundException>()(
-  "LoadBalancerAttributeNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "LoadBalancerAttributeNotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
-  "PolicyNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PolicyNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PolicyTypeNotFoundException extends S.TaggedErrorClass<PolicyTypeNotFoundException>()(
-  "PolicyTypeNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PolicyTypeNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubnetNotFoundException extends S.TaggedErrorClass<SubnetNotFoundException>()(
-  "SubnetNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SubnetNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyAccessPointsException extends S.TaggedErrorClass<TooManyAccessPointsException>()(
-  "TooManyAccessPointsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyLoadBalancers", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyPoliciesException extends S.TaggedErrorClass<TooManyPoliciesException>()(
-  "TooManyPoliciesException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyPolicies", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTags", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedProtocolException extends S.TaggedErrorClass<UnsupportedProtocolException>()(
-  "UnsupportedProtocolException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnsupportedProtocol", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+export class AccessPointNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessPointNotFoundException>()(
+    "AccessPointNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "LoadBalancerNotFound", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class CertificateNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFoundException>()(
+    "CertificateNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DependencyThrottleException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyThrottleException>()(
+    "DependencyThrottleException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DependencyThrottle", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DuplicateAccessPointNameException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateAccessPointNameException>()(
+    "DuplicateAccessPointNameException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "DuplicateLoadBalancerName",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DuplicateListenerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateListenerException>()(
+    "DuplicateListenerException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DuplicateListener", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DuplicatePolicyNameException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicatePolicyNameException>()(
+    "DuplicatePolicyNameException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DuplicatePolicyName", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DuplicateTagKeysException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
+    "DuplicateTagKeysException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DuplicateTagKeys", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidConfigurationRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationRequestException>()(
+    "InvalidConfigurationRequestException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidConfigurationRequest",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class InvalidEndPointException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEndPointException>()(
+    "InvalidEndPointException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidInstance", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidSchemeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSchemeException>()(
+    "InvalidSchemeException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidScheme", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidSecurityGroupException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupException>()(
+    "InvalidSecurityGroupException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidSecurityGroup", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidSubnetException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetException>()(
+    "InvalidSubnetException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ListenerNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ListenerNotFoundException>()(
+    "ListenerNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ListenerNotFound", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class LoadBalancerAttributeNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerAttributeNotFoundException>()(
+    "LoadBalancerAttributeNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "LoadBalancerAttributeNotFound",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+    "OperationNotPermittedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PolicyNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
+    "PolicyNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "PolicyNotFound", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PolicyTypeNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyTypeNotFoundException>()(
+    "PolicyTypeNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "PolicyTypeNotFound", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class SubnetNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SubnetNotFoundException>()(
+    "SubnetNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "SubnetNotFound", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyAccessPointsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyAccessPointsException>()(
+    "TooManyAccessPointsException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "TooManyLoadBalancers", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyPoliciesException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPoliciesException>()(
+    "TooManyPoliciesException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "TooManyPolicies", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "TooManyTags", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class UnsupportedProtocolException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedProtocolException>()(
+    "UnsupportedProtocolException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "UnsupportedProtocol", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type AccessPointName = string;
 export type LoadBalancerNames = string[];
 export const LoadBalancerNames = /*@__PURE__*/ S.Array(S.String);

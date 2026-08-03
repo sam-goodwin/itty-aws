@@ -105,82 +105,96 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class AccessDeniedForDependencyException extends S.TaggedErrorClass<AccessDeniedForDependencyException>()(
-  "AccessDeniedForDependencyException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  {
-    message: S.optional(S.String),
-    reason: S.optional(
-      S.suspend(() => ValidationExceptionReason).annotate({
-        identifier: "ValidationExceptionReason",
-      }),
-    ),
-    fields: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
-        identifier: "ValidationExceptionFieldList",
-      }),
-    ),
-  },
-) {}
-export class InvalidResourceException extends S.TaggedErrorClass<InvalidResourceException>()(
-  "InvalidResourceException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitsExceededException extends S.TaggedErrorClass<LimitsExceededException>()(
-  "LimitsExceededException",
-  {
-    message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  },
-) {}
-export class LockedSubscriptionException extends S.TaggedErrorClass<LockedSubscriptionException>()(
-  "LockedSubscriptionException",
-  { message: S.optional(S.String) },
-) {}
-export class NoAssociatedRoleException extends S.TaggedErrorClass<NoAssociatedRoleException>()(
-  "NoAssociatedRoleException",
-  { message: S.optional(S.String) },
-) {}
-export class OptimisticLockException extends S.TaggedErrorClass<OptimisticLockException>()(
-  "OptimisticLockException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String), resourceType: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), resourceType: S.optional(S.String) },
-) {}
-export class SubscriptionNotFound extends S.TaggedErrorClass<SubscriptionNotFound>()(
-  "SubscriptionNotFound",
-  { message: S.optional(S.String), resourceType: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ResourceNotFoundException",
-    message: "The subscription does not exist.",
-  }),
-).pipe(C.withNotFoundError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAuthError) {}
+export class AccessDeniedForDependencyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedForDependencyException>()(
+    "AccessDeniedForDependencyException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAuthError) {}
+export class InternalErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+    "InternalErrorException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withServerError) {}
+export class InvalidOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+    "InvalidOperationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidPaginationTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationTokenException>()(
+    "InvalidPaginationTokenException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    {
+      message: S.optional(S.String),
+      reason: S.optional(
+        S.suspend(() => ValidationExceptionReason).annotate({
+          identifier: "ValidationExceptionReason",
+        }),
+      ),
+      fields: S.optional(
+        S.suspend(() => ValidationExceptionFieldList).annotate({
+          identifier: "ValidationExceptionFieldList",
+        }),
+      ),
+    },
+  ) {}
+export class InvalidResourceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceException>()(
+    "InvalidResourceException",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitsExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitsExceededException>()(
+    "LimitsExceededException",
+    {
+      message: S.optional(S.String),
+      Type: S.optional(S.String),
+      Limit: S.optional(S.Number),
+    },
+  ) {}
+export class LockedSubscriptionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LockedSubscriptionException>()(
+    "LockedSubscriptionException",
+    { message: S.optional(S.String) },
+  ) {}
+export class NoAssociatedRoleException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoAssociatedRoleException>()(
+    "NoAssociatedRoleException",
+    { message: S.optional(S.String) },
+  ) {}
+export class OptimisticLockException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OptimisticLockException>()(
+    "OptimisticLockException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+    "ResourceAlreadyExistsException",
+    { message: S.optional(S.String), resourceType: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String), resourceType: S.optional(S.String) },
+  ) {}
+export class SubscriptionNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<SubscriptionNotFound>()(
+    "SubscriptionNotFound",
+    { message: S.optional(S.String), resourceType: S.optional(S.String) },
+    T.SyntheticError({
+      from: "ResourceNotFoundException",
+      message: "The subscription does not exist.",
+    }),
+  ).pipe(C.withNotFoundError) {}
 export type LogBucket = string;
 export interface AssociateDRTLogBucketRequest {
   LogBucket: string;

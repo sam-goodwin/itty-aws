@@ -90,64 +90,83 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneTag: "zone_tag",
 };
 
-export class ActiveProductionDeployment extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ActiveProductionDeployment>()(
-    "ActiveProductionDeployment",
-    {
+export class ActiveProductionDeployment
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ActiveProductionDeployment>()(
+      "ActiveProductionDeployment",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 8000034 }],
+  ) {}
+
+export class DeploymentNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DeploymentNotFound>()(
+      "DeploymentNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 8000009 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 8000034 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class DeploymentNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DeploymentNotFound>()("DeploymentNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 8000009 }],
-) {}
+export class PagesDomainAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PagesDomainAlreadyExists>()(
+      "PagesDomainAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 8000018 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class PagesDomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PagesDomainNotFound>()(
+      "PagesDomainNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 8000021 }],
+  ) {}
 
-export class PagesDomainAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PagesDomainAlreadyExists>()("PagesDomainAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 8000018 }],
-) {}
+export class ProjectAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ProjectAlreadyExists>()(
+      "ProjectAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 8000002 }],
+  ) {}
 
-export class PagesDomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PagesDomainNotFound>()("PagesDomainNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 8000021 }],
-) {}
-
-export class ProjectAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ProjectAlreadyExists>()("ProjectAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 8000002 }],
-) {}
-
-export class ProjectNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ProjectNotFound>()("ProjectNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 8000007 }],
-) {}
+export class ProjectNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ProjectNotFound>()("ProjectNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 8000007 }],
+  ) {}
 
 export interface ProjectsCreateRequestBuildConfig {
   /** Enable build caching for the project. */

@@ -158,66 +158,80 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class EventBusHasRules extends S.TaggedErrorClass<EventBusHasRules>()(
-  "EventBusHasRules",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "has rules" },
-  }),
-).pipe(C.withConflictError) {}
-export class IllegalStatusException extends S.TaggedErrorClass<IllegalStatusException>()(
-  "IllegalStatusException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError, C.withRetryableError) {}
-export class InvalidEventPatternException extends S.TaggedErrorClass<InvalidEventPatternException>()(
-  "InvalidEventPatternException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ManagedRuleException extends S.TaggedErrorClass<ManagedRuleException>()(
-  "ManagedRuleException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class OperationDisabledException extends S.TaggedErrorClass<OperationDisabledException>()(
-  "OperationDisabledException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PolicyLengthExceededException extends S.TaggedErrorClass<PolicyLengthExceededException>()(
-  "PolicyLengthExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAuthError) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withConflictError, C.withRetryableError) {}
+export class EventBusHasRules
+  extends /*@__PURE__*/ S.TaggedErrorClass<EventBusHasRules>()(
+    "EventBusHasRules",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "has rules" },
+    }),
+  ).pipe(C.withConflictError) {}
+export class IllegalStatusException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalStatusException>()(
+    "IllegalStatusException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withConflictError) {}
+export class InternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+    "InternalException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidEventPatternException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEventPatternException>()(
+    "InvalidEventPatternException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withBadRequestError) {}
+export class InvalidStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+    "InvalidStateException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withConflictError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withQuotaError) {}
+export class ManagedRuleException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ManagedRuleException>()(
+    "ManagedRuleException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withBadRequestError) {}
+export class OperationDisabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationDisabledException>()(
+    "OperationDisabledException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withBadRequestError) {}
+export class PolicyLengthExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyLengthExceededException>()(
+    "PolicyLengthExceededException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withQuotaError) {}
+export class ResourceAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+    "ResourceAlreadyExistsException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export type EventSourceName = string;
 export interface ActivateEventSourceRequest {
   Name: string;

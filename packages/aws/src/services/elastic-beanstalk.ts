@@ -91,192 +91,217 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class CodeBuildNotInServiceRegionException extends S.TaggedErrorClass<CodeBuildNotInServiceRegionException>()(
-  "CodeBuildNotInServiceRegionException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CodeBuildNotInServiceRegionException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ElasticBeanstalkServiceException extends S.TaggedErrorClass<ElasticBeanstalkServiceException>()(
-  "ElasticBeanstalkServiceException",
-  { message: S.optional(S.String) },
-) {}
-export class InsufficientPrivilegesException extends S.TaggedErrorClass<InsufficientPrivilegesException>()(
-  "InsufficientPrivilegesException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientPrivilegesException",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidRequestException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ManagedActionInvalidStateException extends S.TaggedErrorClass<ManagedActionInvalidStateException>()(
-  "ManagedActionInvalidStateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ManagedActionInvalidStateException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
-  "OperationInProgressException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "OperationInProgressFailure",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PlatformVersionStillReferencedException extends S.TaggedErrorClass<PlatformVersionStillReferencedException>()(
-  "PlatformVersionStillReferencedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "PlatformVersionStillReferencedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceNotFoundException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceTypeNotSupportedException extends S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
-  "ResourceTypeNotSupportedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceTypeNotSupportedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class S3LocationNotInServiceRegionException extends S.TaggedErrorClass<S3LocationNotInServiceRegionException>()(
-  "S3LocationNotInServiceRegionException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "S3LocationNotInServiceRegionException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class S3SubscriptionRequiredException extends S.TaggedErrorClass<S3SubscriptionRequiredException>()(
-  "S3SubscriptionRequiredException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "S3SubscriptionRequiredException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SourceBundleDeletionException extends S.TaggedErrorClass<SourceBundleDeletionException>()(
-  "SourceBundleDeletionException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SourceBundleDeletionFailure",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyApplicationsException extends S.TaggedErrorClass<TooManyApplicationsException>()(
-  "TooManyApplicationsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyApplicationsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyApplicationVersionsException extends S.TaggedErrorClass<TooManyApplicationVersionsException>()(
-  "TooManyApplicationVersionsException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyBucketsException extends S.TaggedErrorClass<TooManyBucketsException>()(
-  "TooManyBucketsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyBucketsException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyConfigurationTemplatesException extends S.TaggedErrorClass<TooManyConfigurationTemplatesException>()(
-  "TooManyConfigurationTemplatesException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyConfigurationTemplatesException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyEnvironmentsException extends S.TaggedErrorClass<TooManyEnvironmentsException>()(
-  "TooManyEnvironmentsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyEnvironmentsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyPlatformsException extends S.TaggedErrorClass<TooManyPlatformsException>()(
-  "TooManyPlatformsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyPlatformsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTagsException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+export class CodeBuildNotInServiceRegionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CodeBuildNotInServiceRegionException>()(
+    "CodeBuildNotInServiceRegionException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "CodeBuildNotInServiceRegionException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ElasticBeanstalkServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ElasticBeanstalkServiceException>()(
+    "ElasticBeanstalkServiceException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InsufficientPrivilegesException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InsufficientPrivilegesException>()(
+    "InsufficientPrivilegesException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InsufficientPrivilegesException",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidRequestException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ManagedActionInvalidStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ManagedActionInvalidStateException>()(
+    "ManagedActionInvalidStateException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ManagedActionInvalidStateException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class OperationInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationInProgressException>()(
+    "OperationInProgressException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "OperationInProgressFailure",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PlatformVersionStillReferencedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PlatformVersionStillReferencedException>()(
+    "PlatformVersionStillReferencedException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "PlatformVersionStillReferencedException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ResourceNotFoundException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceTypeNotSupportedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
+    "ResourceTypeNotSupportedException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ResourceTypeNotSupportedException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class S3LocationNotInServiceRegionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<S3LocationNotInServiceRegionException>()(
+    "S3LocationNotInServiceRegionException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "S3LocationNotInServiceRegionException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class S3SubscriptionRequiredException
+  extends /*@__PURE__*/ S.TaggedErrorClass<S3SubscriptionRequiredException>()(
+    "S3SubscriptionRequiredException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "S3SubscriptionRequiredException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class SourceBundleDeletionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SourceBundleDeletionException>()(
+    "SourceBundleDeletionException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "SourceBundleDeletionFailure",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyApplicationsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyApplicationsException>()(
+    "TooManyApplicationsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "TooManyApplicationsException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyApplicationVersionsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyApplicationVersionsException>()(
+    "TooManyApplicationVersionsException",
+    { message: S.optional(S.String) },
+  ) {}
+export class TooManyBucketsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyBucketsException>()(
+    "TooManyBucketsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "TooManyBucketsException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyConfigurationTemplatesException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyConfigurationTemplatesException>()(
+    "TooManyConfigurationTemplatesException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "TooManyConfigurationTemplatesException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyEnvironmentsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyEnvironmentsException>()(
+    "TooManyEnvironmentsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "TooManyEnvironmentsException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyPlatformsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyPlatformsException>()(
+    "TooManyPlatformsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "TooManyPlatformsException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "TooManyTagsException", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type EnvironmentId = string;
 export type EnvironmentName = string;
 export interface AbortEnvironmentUpdateMessage {

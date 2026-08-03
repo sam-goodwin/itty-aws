@@ -85,30 +85,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ContainerInUseException extends S.TaggedErrorClass<ContainerInUseException>()(
-  "ContainerInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class ContainerNotFoundException extends S.TaggedErrorClass<ContainerNotFoundException>()(
-  "ContainerNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class CorsPolicyNotFoundException extends S.TaggedErrorClass<CorsPolicyNotFoundException>()(
-  "CorsPolicyNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
-  "PolicyNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
+export class ContainerInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ContainerInUseException>()(
+    "ContainerInUseException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ContainerNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ContainerNotFoundException>()(
+    "ContainerNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class CorsPolicyNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CorsPolicyNotFoundException>()(
+    "CorsPolicyNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InternalServerError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+    "InternalServerError",
+    { Message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class PolicyNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFoundException>()(
+    "PolicyNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type ContainerName = string;
 export type TagKey = string;
 export type TagValue = string;

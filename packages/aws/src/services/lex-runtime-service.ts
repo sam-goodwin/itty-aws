@@ -98,64 +98,75 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class BadGatewayException extends S.TaggedErrorClass<BadGatewayException>()(
-  "BadGatewayException",
-  { Message: S.optional(S.String) },
-  T.HttpError(502),
-).pipe(C.withServerError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class DependencyFailedException extends S.TaggedErrorClass<DependencyFailedException>()(
-  "DependencyFailedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(424),
-) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class LoopDetectedException extends S.TaggedErrorClass<LoopDetectedException>()(
-  "LoopDetectedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(508),
-).pipe(C.withServerError) {}
-export class NotAcceptableException extends S.TaggedErrorClass<NotAcceptableException>()(
-  "NotAcceptableException",
-  { message: S.optional(S.String) },
-  T.HttpError(406),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
-  "RequestTimeoutException",
-  { message: S.optional(S.String) },
-  T.HttpError(408),
-).pipe(C.withTimeoutError) {}
-export class UnsupportedMediaTypeException extends S.TaggedErrorClass<UnsupportedMediaTypeException>()(
-  "UnsupportedMediaTypeException",
-  { message: S.optional(S.String) },
-  T.HttpError(415),
-).pipe(C.withBadRequestError) {}
+export class BadGatewayException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadGatewayException>()(
+    "BadGatewayException",
+    { Message: S.optional(S.String) },
+    T.HttpError(502),
+  ).pipe(C.withServerError) {}
+export class BadRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+    "BadRequestException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class DependencyFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyFailedException>()(
+    "DependencyFailedException",
+    { Message: S.optional(S.String) },
+    T.HttpError(424),
+  ) {}
+export class InternalFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+    "InternalFailureException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {
+      retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+      message: S.optional(S.String),
+    },
+    T.HttpError(429),
+  ).pipe(C.withThrottlingError) {}
+export class LoopDetectedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LoopDetectedException>()(
+    "LoopDetectedException",
+    { Message: S.optional(S.String) },
+    T.HttpError(508),
+  ).pipe(C.withServerError) {}
+export class NotAcceptableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotAcceptableException>()(
+    "NotAcceptableException",
+    { message: S.optional(S.String) },
+    T.HttpError(406),
+  ).pipe(C.withBadRequestError) {}
+export class NotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+    "NotFoundException",
+    { message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class RequestTimeoutException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTimeoutException>()(
+    "RequestTimeoutException",
+    { message: S.optional(S.String) },
+    T.HttpError(408),
+  ).pipe(C.withTimeoutError) {}
+export class UnsupportedMediaTypeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedMediaTypeException>()(
+    "UnsupportedMediaTypeException",
+    { message: S.optional(S.String) },
+    T.HttpError(415),
+  ).pipe(C.withBadRequestError) {}
 export type BotName = string;
 export type BotAlias = string;
 export type UserId = string;

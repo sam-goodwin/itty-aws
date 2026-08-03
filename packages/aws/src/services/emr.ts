@@ -93,80 +93,94 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ClusterNotFound extends S.TaggedErrorClass<ClusterNotFound>()(
-  "ClusterNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Cluster id .* is not valid" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  {},
-  T.all(
-    T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class JobFlowNotFound extends S.TaggedErrorClass<JobFlowNotFound>()(
-  "JobFlowNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Specified job flow ID not valid" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class SecurityConfigurationAlreadyExists extends S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
-  "SecurityConfigurationAlreadyExists",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^SecurityConfiguration with name .* already exists" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class SecurityConfigurationNotFound extends S.TaggedErrorClass<SecurityConfigurationNotFound>()(
-  "SecurityConfigurationNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Security configuration with name .* does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class StudioNotFound extends S.TaggedErrorClass<StudioNotFound>()(
-  "StudioNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "Studio does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class StudioServiceRoleMissingS3Access extends S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
-  "StudioServiceRoleMissingS3Access",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: {
-      includes: "does not have permission to access the 'S3 Location'",
-    },
-  }),
-).pipe(C.withRetryableError) {}
-export class StudioServiceRoleNotAssumable extends S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
-  "StudioServiceRoleNotAssumable",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "does not have permissions to assume role" },
-  }),
-).pipe(C.withRetryableError) {}
+export class ClusterNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterNotFound>()(
+    "ClusterNotFound",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: "^Cluster id .* is not valid" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class InternalServerError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+    "InternalServerError",
+    {},
+    T.all(
+      T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  ) {}
+export class JobFlowNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<JobFlowNotFound>()(
+    "JobFlowNotFound",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "Specified job flow ID not valid" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class SecurityConfigurationAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
+    "SecurityConfigurationAlreadyExists",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: {
+        matches: "^SecurityConfiguration with name .* already exists",
+      },
+    }),
+  ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class SecurityConfigurationNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<SecurityConfigurationNotFound>()(
+    "SecurityConfigurationNotFound",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: {
+        matches: "^Security configuration with name .* does not exist",
+      },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class StudioNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<StudioNotFound>()(
+    "StudioNotFound",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { includes: "Studio does not exist" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class StudioServiceRoleMissingS3Access
+  extends /*@__PURE__*/ S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
+    "StudioServiceRoleMissingS3Access",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: {
+        includes: "does not have permission to access the 'S3 Location'",
+      },
+    }),
+  ).pipe(C.withRetryableError) {}
+export class StudioServiceRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
+    "StudioServiceRoleNotAssumable",
+    { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { includes: "does not have permissions to assume role" },
+    }),
+  ).pipe(C.withRetryableError) {}
 export type XmlStringMaxLen256 = string;
 export type InstanceFleetType = "MASTER" | "CORE" | "TASK" | (string & {});
 export const InstanceFleetType = /*@__PURE__*/ S.String;

@@ -50,61 +50,80 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   useFedrampLanguage: "use_fedramp_language",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidMember extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidMember>()("InvalidMember", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 400 }],
-) {}
+export class InvalidMember
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidMember>()("InvalidMember", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 400 }],
+  ) {}
 
-export class PolicyValidationFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PolicyValidationFailed>()("PolicyValidationFailed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "Policy validation failed" } }],
-) {}
+export class PolicyValidationFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PolicyValidationFailed>()(
+      "PolicyValidationFailed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "Policy validation failed" } }],
+  ) {}
 
-export class ResourceGroupNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ResourceGroupNotFound>()("ResourceGroupNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 404, message: { includes: "Resource group" } }],
-) {}
+export class ResourceGroupNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ResourceGroupNotFound>()(
+      "ResourceGroupNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 404, message: { includes: "Resource group" } }],
+  ) {}
 
-export class UserGroupMemberNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UserGroupMemberNotFound>()("UserGroupMemberNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 404, message: { includes: "not found in user group" } }],
-) {}
+export class UserGroupMemberNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UserGroupMemberNotFound>()(
+      "UserGroupMemberNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 404, message: { includes: "not found in user group" } }],
+  ) {}
 
-export class UserGroupNameInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UserGroupNameInUse>()("UserGroupNameInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 400, message: { includes: "already in use" } }],
-) {}
+export class UserGroupNameInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UserGroupNameInUse>()(
+      "UserGroupNameInUse",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 400, message: { includes: "already in use" } }],
+  ) {}
 
-export class UserGroupNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UserGroupNotFound>()("UserGroupNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 404, message: { includes: "User group" } }],
-) {}
+export class UserGroupNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UserGroupNotFound>()("UserGroupNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 404, message: { includes: "User group" } }],
+  ) {}
 
 export interface BeginVerificationSsoRequest {
   /** Account identifier tag. */

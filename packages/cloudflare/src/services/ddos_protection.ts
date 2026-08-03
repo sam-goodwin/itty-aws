@@ -27,73 +27,86 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class AdvancedTcpProtectionNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
-    "AdvancedTcpProtectionNotEntitled",
-    {
+export class AdvancedTcpProtectionNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
+      "AdvancedTcpProtectionNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 8888 }],
+  ) {}
+
+export class AllowlistEntryNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AllowlistEntryNotFound>()(
+      "AllowlistEntryNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 8888 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class AllowlistEntryNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AllowlistEntryNotFound>()("AllowlistEntryNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class SynProtectionFilterNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SynProtectionFilterNotFound>()(
+      "SynProtectionFilterNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class SynProtectionRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SynProtectionRuleNotFound>()(
+      "SynProtectionRuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class SynProtectionFilterNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SynProtectionFilterNotFound>()(
-    "SynProtectionFilterNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+export class TcpFlowProtectionFilterNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TcpFlowProtectionFilterNotFound>()(
+      "TcpFlowProtectionFilterNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class SynProtectionRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SynProtectionRuleNotFound>()("SynProtectionRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class TcpFlowProtectionFilterNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TcpFlowProtectionFilterNotFound>()(
-    "TcpFlowProtectionFilterNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
-
-export class TcpFlowProtectionRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TcpFlowProtectionRuleNotFound>()(
-    "TcpFlowProtectionRuleNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+export class TcpFlowProtectionRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TcpFlowProtectionRuleNotFound>()(
+      "TcpFlowProtectionRuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export interface AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem {
   /** A comment describing the prefix. */

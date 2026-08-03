@@ -83,18 +83,21 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class CloudHsmInternalException extends S.TaggedErrorClass<CloudHsmInternalException>()(
-  "CloudHsmInternalException",
-  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
-) {}
-export class CloudHsmServiceException extends S.TaggedErrorClass<CloudHsmServiceException>()(
-  "CloudHsmServiceException",
-  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
-) {}
+export class CloudHsmInternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInternalException>()(
+    "CloudHsmInternalException",
+    { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
+  ) {}
+export class CloudHsmServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmServiceException>()(
+    "CloudHsmServiceException",
+    { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
+  ) {}
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {

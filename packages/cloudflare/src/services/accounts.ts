@@ -55,158 +55,191 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneSettings: "zone_settings",
 };
 
-export class AccountCreationForbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccountCreationForbidden>()("AccountCreationForbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002 }],
-) {}
+export class AccountCreationForbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccountCreationForbidden>()(
+      "AccountCreationForbidden",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002 }],
+  ) {}
 
-export class AccountMemberAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccountMemberAlreadyExists>()(
-    "AccountMemberAlreadyExists",
-    {
+export class AccountMemberAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccountMemberAlreadyExists>()(
+      "AccountMemberAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "already exists" } }],
+  ) {}
+
+export class AccountNameTooLong
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccountNameTooLong>()(
+      "AccountNameTooLong",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "too long" } }],
+  ) {}
+
+export class BadRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 400, message: { includes: "already exists" } }],
-) {}
+    }),
+    [{ code: 400 }],
+  ) {}
 
-export class AccountNameTooLong extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccountNameTooLong>()("AccountNameTooLong", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "too long" } }],
-) {}
-
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 400 }],
-) {}
-
-export class EndpointNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EndpointNotFound>()("EndpointNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1199 }],
-) {}
-
-export class InvalidAccountName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidAccountName>()("InvalidAccountName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "invalid character" } }],
-) {}
-
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
-
-export class InvalidTokenName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 400, message: { includes: "name must have a length" } }],
-) {}
-
-export class JsonDecodeFailure extends T.applyErrorMatchers(
-  S.TaggedErrorClass<JsonDecodeFailure>()("JsonDecodeFailure", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1198 }],
-) {}
-
-export class MemberNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MemberNotFound>()("MemberNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
-
-export class MethodNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7001 }, { code: 10000 }, { code: 10405 }],
-) {}
-
-export class MissingAuthenticationToken extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MissingAuthenticationToken>()(
-    "MissingAuthenticationToken",
-    {
+export class EndpointNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EndpointNotFound>()("EndpointNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1001 }],
-) {}
+    }),
+    [{ code: 1199 }],
+  ) {}
 
-export class MissingName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MissingName>()("MissingName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
+export class InvalidAccountName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountName>()(
+      "InvalidAccountName",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "invalid character" } }],
+  ) {}
 
-export class PermissionGroupNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PermissionGroupNotFound>()("PermissionGroupNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "Permission group" } }],
-) {}
-
-export class TokenManagedByCloudflare extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenManagedByCloudflare>()("TokenManagedByCloudflare", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
-
-export class TokenNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
-
-export class UpdateAccountTypeNotSupported extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UpdateAccountTypeNotSupported>()(
-    "UpdateAccountTypeNotSupported",
-    {
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1001, message: { includes: "account type is not supported" } }],
-) {}
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class ValidationError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ValidationError>()("ValidationError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
+export class InvalidTokenName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 400, message: { includes: "name must have a length" } }],
+  ) {}
+
+export class JsonDecodeFailure
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<JsonDecodeFailure>()("JsonDecodeFailure", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1198 }],
+  ) {}
+
+export class MemberNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MemberNotFound>()("MemberNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003 }],
+  ) {}
+
+export class MethodNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7001 }, { code: 10000 }, { code: 10405 }],
+  ) {}
+
+export class MissingAuthenticationToken
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MissingAuthenticationToken>()(
+      "MissingAuthenticationToken",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001 }],
+  ) {}
+
+export class MissingName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MissingName>()("MissingName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001 }],
+  ) {}
+
+export class PermissionGroupNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PermissionGroupNotFound>()(
+      "PermissionGroupNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "Permission group" } }],
+  ) {}
+
+export class TokenManagedByCloudflare
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenManagedByCloudflare>()(
+      "TokenManagedByCloudflare",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001 }],
+  ) {}
+
+export class TokenNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003 }],
+  ) {}
+
+export class UpdateAccountTypeNotSupported
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UpdateAccountTypeNotSupported>()(
+      "UpdateAccountTypeNotSupported",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "account type is not supported" } }],
+  ) {}
+
+export class ValidationError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()("ValidationError", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001 }],
+  ) {}
 
 export interface AccountOrganizationsCreateRequest {
   accountId: string;

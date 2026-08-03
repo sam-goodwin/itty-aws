@@ -89,97 +89,111 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    error: S.optional(S.String),
-    reason: S.optional(
-      S.suspend(() => AccessDeniedExceptionReason).annotate({
-        identifier: "AccessDeniedExceptionReason",
-      }),
-    ),
-    error_description: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class AuthorizationPendingException extends S.TaggedErrorClass<AuthorizationPendingException>()(
-  "AuthorizationPendingException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
-  "ExpiredTokenException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidClientException extends S.TaggedErrorClass<InvalidClientException>()(
-  "InvalidClientException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class InvalidClientMetadataException extends S.TaggedErrorClass<InvalidClientMetadataException>()(
-  "InvalidClientMetadataException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidGrantException extends S.TaggedErrorClass<InvalidGrantException>()(
-  "InvalidGrantException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRedirectUriException extends S.TaggedErrorClass<InvalidRedirectUriException>()(
-  "InvalidRedirectUriException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    error: S.optional(S.String),
-    reason: S.optional(
-      S.suspend(() => InvalidRequestExceptionReason).annotate({
-        identifier: "InvalidRequestExceptionReason",
-      }),
-    ),
-    error_description: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestRegionException extends S.TaggedErrorClass<InvalidRequestRegionException>()(
-  "InvalidRequestRegionException",
-  {
-    error: S.optional(S.String),
-    error_description: S.optional(S.String),
-    endpoint: S.optional(S.String),
-    region: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidScopeException extends S.TaggedErrorClass<InvalidScopeException>()(
-  "InvalidScopeException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SlowDownException extends S.TaggedErrorClass<SlowDownException>()(
-  "SlowDownException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
-  "UnauthorizedClientException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class UnsupportedGrantTypeException extends S.TaggedErrorClass<UnsupportedGrantTypeException>()(
-  "UnsupportedGrantTypeException",
-  { error: S.optional(S.String), error_description: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    {
+      error: S.optional(S.String),
+      reason: S.optional(
+        S.suspend(() => AccessDeniedExceptionReason).annotate({
+          identifier: "AccessDeniedExceptionReason",
+        }),
+      ),
+      error_description: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError, C.withAuthError) {}
+export class AuthorizationPendingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationPendingException>()(
+    "AuthorizationPendingException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ExpiredTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTokenException>()(
+    "ExpiredTokenException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidClientException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientException>()(
+    "InvalidClientException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
+export class InvalidClientMetadataException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientMetadataException>()(
+    "InvalidClientMetadataException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidGrantException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGrantException>()(
+    "InvalidGrantException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRedirectUriException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRedirectUriException>()(
+    "InvalidRedirectUriException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    {
+      error: S.optional(S.String),
+      reason: S.optional(
+        S.suspend(() => InvalidRequestExceptionReason).annotate({
+          identifier: "InvalidRequestExceptionReason",
+        }),
+      ),
+      error_description: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRequestRegionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestRegionException>()(
+    "InvalidRequestRegionException",
+    {
+      error: S.optional(S.String),
+      error_description: S.optional(S.String),
+      endpoint: S.optional(S.String),
+      region: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidScopeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidScopeException>()(
+    "InvalidScopeException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class SlowDownException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SlowDownException>()(
+    "SlowDownException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class UnauthorizedClientException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedClientException>()(
+    "UnauthorizedClientException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError, C.withAuthError) {}
+export class UnsupportedGrantTypeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedGrantTypeException>()(
+    "UnsupportedGrantTypeException",
+    { error: S.optional(S.String), error_description: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type ClientId = string;
 export type ClientSecret = string | redacted.Redacted<string>;
 export type GrantType = string;

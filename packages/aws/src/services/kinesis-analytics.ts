@@ -87,68 +87,80 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class CodeValidationException extends S.TaggedErrorClass<CodeValidationException>()(
-  "CodeValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidApplicationConfigurationException extends S.TaggedErrorClass<InvalidApplicationConfigurationException>()(
-  "InvalidApplicationConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceProvisionedThroughputExceededException extends S.TaggedErrorClass<ResourceProvisionedThroughputExceededException>()(
-  "ResourceProvisionedThroughputExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class UnableToDetectSchemaException extends S.TaggedErrorClass<UnableToDetectSchemaException>()(
-  "UnableToDetectSchemaException",
-  {
-    message: S.optional(S.String),
-    RawInputRecords: S.optional(
-      S.suspend(() => RawInputRecords).annotate({
-        identifier: "RawInputRecords",
-      }),
-    ),
-    ProcessedInputRecords: S.optional(
-      S.suspend(() => ProcessedInputRecords).annotate({
-        identifier: "ProcessedInputRecords",
-      }),
-    ),
-  },
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-) {}
+export class CodeValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CodeValidationException>()(
+    "CodeValidationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class InvalidApplicationConfigurationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidApplicationConfigurationException>()(
+    "InvalidApplicationConfigurationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidArgumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+    "InvalidArgumentException",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+    "ResourceInUseException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceProvisionedThroughputExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceProvisionedThroughputExceededException>()(
+    "ResourceProvisionedThroughputExceededException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ServiceUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+    "ServiceUnavailableException",
+    { message: S.optional(S.String) },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { message: S.optional(S.String) },
+  ) {}
+export class UnableToDetectSchemaException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnableToDetectSchemaException>()(
+    "UnableToDetectSchemaException",
+    {
+      message: S.optional(S.String),
+      RawInputRecords: S.optional(
+        S.suspend(() => RawInputRecords).annotate({
+          identifier: "RawInputRecords",
+        }),
+      ),
+      ProcessedInputRecords: S.optional(
+        S.suspend(() => ProcessedInputRecords).annotate({
+          identifier: "ProcessedInputRecords",
+        }),
+      ),
+    },
+  ) {}
+export class UnsupportedOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+    "UnsupportedOperationException",
+    { message: S.optional(S.String) },
+  ) {}
 export type ApplicationName = string;
 export type ApplicationVersionId = number;
 export type LogStreamARN = string;

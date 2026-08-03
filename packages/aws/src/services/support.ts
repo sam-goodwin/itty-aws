@@ -181,50 +181,59 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AttachmentIdNotFound extends S.TaggedErrorClass<AttachmentIdNotFound>()(
-  "AttachmentIdNotFound",
-  { message: S.optional(S.String) },
-) {}
-export class AttachmentLimitExceeded extends S.TaggedErrorClass<AttachmentLimitExceeded>()(
-  "AttachmentLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class AttachmentSetExpired extends S.TaggedErrorClass<AttachmentSetExpired>()(
-  "AttachmentSetExpired",
-  { message: S.optional(S.String) },
-) {}
-export class AttachmentSetIdNotFound extends S.TaggedErrorClass<AttachmentSetIdNotFound>()(
-  "AttachmentSetIdNotFound",
-  { message: S.optional(S.String) },
-) {}
-export class AttachmentSetSizeLimitExceeded extends S.TaggedErrorClass<AttachmentSetSizeLimitExceeded>()(
-  "AttachmentSetSizeLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class CaseCreationLimitExceeded extends S.TaggedErrorClass<CaseCreationLimitExceeded>()(
-  "CaseCreationLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class CaseIdNotFound extends S.TaggedErrorClass<CaseIdNotFound>()(
-  "CaseIdNotFound",
-  { message: S.optional(S.String) },
-) {}
-export class DescribeAttachmentLimitExceeded extends S.TaggedErrorClass<DescribeAttachmentLimitExceeded>()(
-  "DescribeAttachmentLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+export class AttachmentIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentIdNotFound>()(
+    "AttachmentIdNotFound",
+    { message: S.optional(S.String) },
+  ) {}
+export class AttachmentLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentLimitExceeded>()(
+    "AttachmentLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class AttachmentSetExpired
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentSetExpired>()(
+    "AttachmentSetExpired",
+    { message: S.optional(S.String) },
+  ) {}
+export class AttachmentSetIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentSetIdNotFound>()(
+    "AttachmentSetIdNotFound",
+    { message: S.optional(S.String) },
+  ) {}
+export class AttachmentSetSizeLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentSetSizeLimitExceeded>()(
+    "AttachmentSetSizeLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class CaseCreationLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<CaseCreationLimitExceeded>()(
+    "CaseCreationLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class CaseIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<CaseIdNotFound>()("CaseIdNotFound", {
+    message: S.optional(S.String),
+  }) {}
+export class DescribeAttachmentLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<DescribeAttachmentLimitExceeded>()(
+    "DescribeAttachmentLimitExceeded",
+    { message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class InternalServerError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+    "InternalServerError",
+    { message: S.optional(S.String) },
+  ) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type AttachmentSetId = string;
 export type FileName = string;
 export type Data = Uint8Array;

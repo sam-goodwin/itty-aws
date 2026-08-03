@@ -85,113 +85,129 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AlreadyStreamedException extends S.TaggedErrorClass<AlreadyStreamedException>()(
-  "AlreadyStreamedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateRequestException extends S.TaggedErrorClass<DuplicateRequestException>()(
-  "DuplicateRequestException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InvalidConfigurationException extends S.TaggedErrorClass<InvalidConfigurationException>()(
-  "InvalidConfigurationException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidLambdaFunctionOutputException extends S.TaggedErrorClass<InvalidLambdaFunctionOutputException>()(
-  "InvalidLambdaFunctionOutputException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidLambdaFunctionOutput",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LambdaThrottledException extends S.TaggedErrorClass<LambdaThrottledException>()(
-  "LambdaThrottledException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
+export class AlreadyStreamedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyStreamedException>()(
+    "AlreadyStreamedException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "ConcurrentModification",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DuplicateRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateRequestException>()(
+    "DuplicateRequestException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InternalErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+    "InternalErrorException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class InvalidConfigurationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationException>()(
+    "InvalidConfigurationException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidLambdaFunctionOutputException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionOutputException>()(
+    "InvalidLambdaFunctionOutputException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidLambdaFunctionOutput",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class LambdaThrottledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LambdaThrottledException>()(
+    "LambdaThrottledException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotAuthorizedException>()(
+    "NotAuthorizedException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class ResourceConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+    "ResourceConflictException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+    "TooManyRequestsException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
 export type IdentityPoolId = string;
 export interface BulkPublishRequest {
   IdentityPoolId: string;

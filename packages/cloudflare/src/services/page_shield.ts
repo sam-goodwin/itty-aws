@@ -45,45 +45,52 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   useConnectionUrlPath: "use_connection_url_path",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class NotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403, message: { includes: "not entitled" } }],
-) {}
+export class NotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403, message: { includes: "not entitled" } }],
+  ) {}
 
-export class PolicyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "Could not find Policy" } }],
-) {}
+export class PolicyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404, message: { includes: "Could not find Policy" } }],
+  ) {}
 
-export class PolicyQuotaExceeded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PolicyQuotaExceeded>()("PolicyQuotaExceeded", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      status: 400,
-      message: {
-        includes:
-          "exceeded the maximum number of rules in the phase http_response_page_shield",
+export class PolicyQuotaExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PolicyQuotaExceeded>()(
+      "PolicyQuotaExceeded",
+      {
+        code: S.Number,
+        message: S.String,
       },
-    },
-  ],
-) {}
+    ),
+    [
+      {
+        status: 400,
+        message: {
+          includes:
+            "exceeded the maximum number of rules in the phase http_response_page_shield",
+        },
+      },
+    ],
+  ) {}
 
 export type PoliciesCreateRequestAction =
   | "allow"

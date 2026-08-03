@@ -34,40 +34,50 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneId: "zone_id",
 };
 
-export class CustomCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomCertificateNotFound>()("CustomCertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { status: 404 },
-    { code: 1002, message: { includes: "Invalid certificate" } },
-  ],
-) {}
+export class CustomCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomCertificateNotFound>()(
+      "CustomCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { status: 404 },
+      { code: 1002, message: { includes: "Invalid certificate" } },
+    ],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class PlanLevelNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PlanLevelNotAllowed>()("PlanLevelNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1011 }],
-) {}
+export class PlanLevelNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PlanLevelNotAllowed>()(
+      "PlanLevelNotAllowed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1011 }],
+  ) {}
 
-export class ZoneNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "Cannot find a valid zone" } }],
-) {}
+export class ZoneNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 400, message: { includes: "Cannot find a valid zone" } }],
+  ) {}
 
 export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
 export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;

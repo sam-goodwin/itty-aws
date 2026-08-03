@@ -14,32 +14,38 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export class ContentScanningNotEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ContentScanningNotEnabled>()("ContentScanningNotEnabled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "File Upload Scan not enabled" } }],
-) {}
+export class ContentScanningNotEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ContentScanningNotEnabled>()(
+      "ContentScanningNotEnabled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "File Upload Scan not enabled" } }],
+  ) {}
 
-export class ContentScanningNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ContentScanningNotEntitled>()(
-    "ContentScanningNotEntitled",
-    {
+export class ContentScanningNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ContentScanningNotEntitled>()(
+      "ContentScanningNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "not entitled" } }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 400, message: { includes: "not entitled" } }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export type CreateRequestValue = "enabled" | "disabled";
 export const CreateRequestValue = /*@__PURE__*/ S.String;

@@ -47,37 +47,44 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   wordCount: "word_count",
 };
 
-export class AccountNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class AccountNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class ModelNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ModelNotFound>()("ModelNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }, { code: 7000 }],
-) {}
+export class ModelNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ModelNotFound>()("ModelNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }, { code: 7000 }],
+  ) {}
 
-export class ModelNotSupported extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ModelNotSupported>()("ModelNotSupported", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000 }],
-) {}
+export class ModelNotSupported
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ModelNotSupported>()("ModelNotSupported", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1000 }],
+  ) {}
 
-export class ModelSchemaNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ModelSchemaNotFound>()("ModelSchemaNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 6002 }],
-) {}
+export class ModelSchemaNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ModelSchemaNotFound>()(
+      "ModelSchemaNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 6002 }],
+  ) {}
 
 export interface CreateFinetuneRequest {
   accountId: string;

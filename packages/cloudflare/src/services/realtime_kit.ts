@@ -159,48 +159,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   wordLimit: "word_limit",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class RealtimeKitPresetExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RealtimeKitPresetExists>()("RealtimeKitPresetExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
-
-export class RealtimeKitPresetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RealtimeKitPresetNotFound>()("RealtimeKitPresetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class RealtimeKitWebhookExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RealtimeKitWebhookExists>()("RealtimeKitWebhookExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
-
-export class RealtimeKitWebhookNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
-    "RealtimeKitWebhookNotFound",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
+
+export class RealtimeKitPresetExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitPresetExists>()(
+      "RealtimeKitPresetExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 409 }],
+  ) {}
+
+export class RealtimeKitPresetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitPresetNotFound>()(
+      "RealtimeKitPresetNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class RealtimeKitWebhookExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitWebhookExists>()(
+      "RealtimeKitWebhookExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 409 }],
+  ) {}
+
+export class RealtimeKitWebhookNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
+      "RealtimeKitWebhookNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export interface AddParticipantMeetingRequest {
   /** The account identifier tag. */

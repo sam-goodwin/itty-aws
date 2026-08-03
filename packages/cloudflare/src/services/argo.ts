@@ -17,37 +17,44 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   modifiedOn: "modified_on",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidObjectIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidObjectIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+      "InvalidObjectIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
-export class NotAuthorized extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotAuthorized>()("NotAuthorized", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1015 }],
-) {}
+export class NotAuthorized
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotAuthorized>()("NotAuthorized", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1015 }],
+  ) {}
 
-export class ZoneNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "Invalid or missing zone" } }],
-) {}
+export class ZoneNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404, message: { includes: "Invalid or missing zone" } }],
+  ) {}
 
 export interface GetSmartRoutingRequest {
   /** Specifies the zone associated with the API call. */

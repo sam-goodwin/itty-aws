@@ -92,41 +92,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchDomainException extends S.TaggedErrorClass<NoSuchDomainException>()(
-  "NoSuchDomainException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchExportException extends S.TaggedErrorClass<NoSuchExportException>()(
-  "NoSuchExportException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NumberExportsLimitExceeded extends S.TaggedErrorClass<NumberExportsLimitExceeded>()(
-  "NumberExportsLimitExceeded",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withThrottlingError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { message: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+    "InvalidNextTokenException",
+    { message: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombinationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombinationException>()(
+    "InvalidParameterCombinationException",
+    { message: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+    "InvalidParameterValueException",
+    { message: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class NoSuchDomainException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchDomainException>()(
+    "NoSuchDomainException",
+    { message: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class NoSuchExportException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchExportException>()(
+    "NoSuchExportException",
+    { message: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class NumberExportsLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<NumberExportsLimitExceeded>()(
+    "NumberExportsLimitExceeded",
+    { message: S.String },
+    T.HttpError(409),
+  ).pipe(C.withConflictError, C.withThrottlingError) {}
 export type ExportArn = string;
 export interface GetExportRequest {
   exportArn: string;

@@ -28,56 +28,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   validationOverrideMitigationAction: "validation_override_mitigation_action",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class InvalidSchema extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidSchema>()("InvalidSchema", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 50010 }],
-) {}
-
-export class OperationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10404 }],
-) {}
-
-export class SchemaNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 19400 }],
-) {}
-
-export class UnentitledMitigationAction extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnentitledMitigationAction>()(
-    "UnentitledMitigationAction",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 11400 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class ZonePurged extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZonePurged>()("ZonePurged", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ message: { includes: "has been purged" } }],
-) {}
+export class InvalidSchema
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidSchema>()("InvalidSchema", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 50010 }],
+  ) {}
+
+export class OperationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10404 }],
+  ) {}
+
+export class SchemaNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 19400 }],
+  ) {}
+
+export class UnentitledMitigationAction
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnentitledMitigationAction>()(
+      "UnentitledMitigationAction",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11400 }],
+  ) {}
+
+export class ZonePurged
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZonePurged>()("ZonePurged", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ message: { includes: "has been purged" } }],
+  ) {}
 
 export type SettingsOperationsBulkEditRequestBodyValueMitigationAction =
   | "none"

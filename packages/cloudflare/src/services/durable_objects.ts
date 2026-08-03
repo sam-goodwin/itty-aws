@@ -22,29 +22,35 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   useSqlite: "use_sqlite",
 };
 
-export class InvalidIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidIdentifier>()("InvalidIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidIdentifier>()("InvalidIdentifier", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class MalformedParameter extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MalformedParameter>()("MalformedParameter", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10077 }],
-) {}
+export class MalformedParameter
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MalformedParameter>()(
+      "MalformedParameter",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10077 }],
+  ) {}
 
-export class NamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10066 }],
-) {}
+export class NamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10066 }],
+  ) {}
 
 export interface ListNamespaceObjectsRequest {
   /** Identifier. */

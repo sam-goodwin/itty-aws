@@ -89,120 +89,132 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ActiveInstanceRefreshNotFoundFault extends S.TaggedErrorClass<ActiveInstanceRefreshNotFoundFault>()(
-  "ActiveInstanceRefreshNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ActiveInstanceRefreshNotFound",
-      httpResponseCode: 400,
+export class ActiveInstanceRefreshNotFoundFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<ActiveInstanceRefreshNotFoundFault>()(
+    "ActiveInstanceRefreshNotFoundFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ActiveInstanceRefreshNotFound",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class AlreadyExistsFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsFault>()(
+    "AlreadyExistsFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class AutoScalingGroupNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<AutoScalingGroupNotFound>()(
+    "AutoScalingGroupNotFound",
+    {},
+    T.SyntheticError({
+      from: "ValidationError",
+      message: { includes: "not found" },
     }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AlreadyExistsFault extends S.TaggedErrorClass<AlreadyExistsFault>()(
-  "AlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AutoScalingGroupNotFound extends S.TaggedErrorClass<AutoScalingGroupNotFound>()(
-  "AutoScalingGroupNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationError",
-    message: { includes: "not found" },
-  }),
-) {}
-export class IdempotentParameterMismatchError extends S.TaggedErrorClass<IdempotentParameterMismatchError>()(
-  "IdempotentParameterMismatchError",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IdempotentParameterMismatch",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InstanceRefreshInProgressFault extends S.TaggedErrorClass<InstanceRefreshInProgressFault>()(
-  "InstanceRefreshInProgressFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InstanceRefreshInProgress",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
-  "InvalidNextToken",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IrreversibleInstanceRefreshFault extends S.TaggedErrorClass<IrreversibleInstanceRefreshFault>()(
-  "IrreversibleInstanceRefreshFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IrreversibleInstanceRefresh",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
-  "LimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceContentionFault extends S.TaggedErrorClass<ResourceContentionFault>()(
-  "ResourceContentionFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ResourceInUseFault extends S.TaggedErrorClass<ResourceInUseFault>()(
-  "ResourceInUseFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ScalingActivityInProgressFault extends S.TaggedErrorClass<ScalingActivityInProgressFault>()(
-  "ScalingActivityInProgressFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ScalingActivityInProgress",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceLinkedRoleFailure extends S.TaggedErrorClass<ServiceLinkedRoleFailure>()(
-  "ServiceLinkedRoleFailure",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ServiceLinkedRoleFailure",
-      httpResponseCode: 500,
-    }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
+  ) {}
+export class IdempotentParameterMismatchError
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchError>()(
+    "IdempotentParameterMismatchError",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "IdempotentParameterMismatch",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InstanceRefreshInProgressFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<InstanceRefreshInProgressFault>()(
+    "InstanceRefreshInProgressFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InstanceRefreshInProgress",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNextToken
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextToken>()(
+    "InvalidNextToken",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class IrreversibleInstanceRefreshFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<IrreversibleInstanceRefreshFault>()(
+    "IrreversibleInstanceRefreshFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "IrreversibleInstanceRefresh",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededFault>()(
+    "LimitExceededFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceContentionFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceContentionFault>()(
+    "ResourceContentionFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class ResourceInUseFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseFault>()(
+    "ResourceInUseFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ScalingActivityInProgressFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<ScalingActivityInProgressFault>()(
+    "ScalingActivityInProgressFault",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ScalingActivityInProgress",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceLinkedRoleFailure
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceLinkedRoleFailure>()(
+    "ServiceLinkedRoleFailure",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ServiceLinkedRoleFailure",
+        httpResponseCode: 500,
+      }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
 export type XmlStringMaxLen19 = string;
 export type InstanceIds = string[];
 export const InstanceIds = /*@__PURE__*/ S.Array(S.String);

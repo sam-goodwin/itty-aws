@@ -79,106 +79,126 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneMode: "zone_mode",
 };
 
-export class AclNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AclNotFound>()("AclNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class DnsRecordAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DnsRecordAlreadyExists>()("DnsRecordAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 81057 },
-    { code: 81058 },
-    { status: 400, message: { includes: "identical record already exists" } },
-  ],
-) {}
-
-export class DnsSettingNotAvailable extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DnsSettingNotAvailable>()("DnsSettingNotAvailable", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class IncomingZoneTransferNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IncomingZoneTransferNotFound>()(
-    "IncomingZoneTransferNotFound",
-    {
+export class AclNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AclNotFound>()("AclNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class InternalDnsNotAvailable extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InternalDnsNotAvailable>()("InternalDnsNotAvailable", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1029 }],
-) {}
+export class DnsRecordAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DnsRecordAlreadyExists>()(
+      "DnsRecordAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 81057 },
+      { code: 81058 },
+      { status: 400, message: { includes: "identical record already exists" } },
+    ],
+  ) {}
 
-export class OutgoingZoneTransferNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
-    "OutgoingZoneTransferNotFound",
-    {
+export class DnsSettingNotAvailable
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DnsSettingNotAvailable>()(
+      "DnsSettingNotAvailable",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class OutgoingZoneTransfersNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
-    "OutgoingZoneTransfersNotAllowed",
-    {
+export class IncomingZoneTransferNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IncomingZoneTransferNotFound>()(
+      "IncomingZoneTransferNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class InternalDnsNotAvailable
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InternalDnsNotAvailable>()(
+      "InternalDnsNotAvailable",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1029 }],
+  ) {}
+
+export class OutgoingZoneTransferNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
+      "OutgoingZoneTransferNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class OutgoingZoneTransfersNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
+      "OutgoingZoneTransfersNotAllowed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 401 }],
+  ) {}
+
+export class PeerNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PeerNotFound>()("PeerNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 401 }],
-) {}
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class PeerNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PeerNotFound>()("PeerNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class TsigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TsigNotFound>()("TsigNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class TsigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TsigNotFound>()("TsigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class ViewNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ViewNotFound>()("ViewNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1015 }, { status: 404 }],
-) {}
+export class ViewNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ViewNotFound>()("ViewNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1015 }, { status: 404 }],
+  ) {}
 
 export interface RecordsBatchRequestDeletesItem {
   /** Identifier. */

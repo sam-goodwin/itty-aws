@@ -85,63 +85,71 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class BaseException extends S.TaggedErrorClass<BaseException>()(
-  "BaseException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
-  "DisabledOperationException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
-  "InvalidTypeException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class BaseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BaseException>()("BaseException", {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+  }) {}
+export class DisabledOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DisabledOperationException>()(
+    "DisabledOperationException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class InternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+    "InternalException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class InvalidTypeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTypeException>()(
+    "InvalidTypeException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+    "ResourceAlreadyExistsException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { Code: S.optional(S.String), Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type DomainName = string;
 export interface BuildSuggestersRequest {
   DomainName: string;

@@ -86,370 +86,433 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccountSendingPausedException extends S.TaggedErrorClass<AccountSendingPausedException>()(
-  "AccountSendingPausedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AccountSendingPausedException",
-      httpResponseCode: 400,
+export class AccountSendingPausedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccountSendingPausedException>()(
+    "AccountSendingPausedException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "AccountSendingPausedException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class AlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+    "AlreadyExistsException",
+    { Name: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class CannotDeleteException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteException>()(
+    "CannotDeleteException",
+    { Name: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ConfigurationSetAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationSetAlreadyExistsException>()(
+    "ConfigurationSetAlreadyExistsException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "ConfigurationSetAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ConfigurationSetDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationSetDoesNotExistException>()(
+    "ConfigurationSetDoesNotExistException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "ConfigurationSetDoesNotExist",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ConfigurationSetSendingPausedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConfigurationSetSendingPausedException>()(
+    "ConfigurationSetSendingPausedException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "ConfigurationSetSendingPausedException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class CustomVerificationEmailInvalidContentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
+    "CustomVerificationEmailInvalidContentException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "CustomVerificationEmailInvalidContent",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class CustomVerificationEmailTemplateAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailTemplateAlreadyExistsException>()(
+    "CustomVerificationEmailTemplateAlreadyExistsException",
+    {
+      CustomVerificationEmailTemplateName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "CustomVerificationEmailTemplateAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class CustomVerificationEmailTemplateDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CustomVerificationEmailTemplateDoesNotExistException>()(
+    "CustomVerificationEmailTemplateDoesNotExistException",
+    {
+      CustomVerificationEmailTemplateName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "CustomVerificationEmailTemplateDoesNotExist",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class EventDestinationAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EventDestinationAlreadyExistsException>()(
+    "EventDestinationAlreadyExistsException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      EventDestinationName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "EventDestinationAlreadyExists",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EventDestinationDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EventDestinationDoesNotExistException>()(
+    "EventDestinationDoesNotExistException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      EventDestinationName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "EventDestinationDoesNotExist",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class FromEmailAddressNotVerifiedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
+    "FromEmailAddressNotVerifiedException",
+    { FromEmailAddress: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "FromEmailAddressNotVerified",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class IdentityNotVerified
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdentityNotVerified>()(
+    "IdentityNotVerified",
+    {},
+    T.SyntheticError({
+      from: "InvalidParameterValue",
+      message: { includes: "Identity is not verified" },
     }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
-  "CannotDeleteException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConfigurationSetAlreadyExistsException extends S.TaggedErrorClass<ConfigurationSetAlreadyExistsException>()(
-  "ConfigurationSetAlreadyExistsException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConfigurationSetAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ConfigurationSetDoesNotExistException extends S.TaggedErrorClass<ConfigurationSetDoesNotExistException>()(
-  "ConfigurationSetDoesNotExistException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConfigurationSetDoesNotExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConfigurationSetSendingPausedException extends S.TaggedErrorClass<ConfigurationSetSendingPausedException>()(
-  "ConfigurationSetSendingPausedException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConfigurationSetSendingPausedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CustomVerificationEmailInvalidContentException extends S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
-  "CustomVerificationEmailInvalidContentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomVerificationEmailInvalidContent",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CustomVerificationEmailTemplateAlreadyExistsException extends S.TaggedErrorClass<CustomVerificationEmailTemplateAlreadyExistsException>()(
-  "CustomVerificationEmailTemplateAlreadyExistsException",
-  {
-    CustomVerificationEmailTemplateName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomVerificationEmailTemplateAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class CustomVerificationEmailTemplateDoesNotExistException extends S.TaggedErrorClass<CustomVerificationEmailTemplateDoesNotExistException>()(
-  "CustomVerificationEmailTemplateDoesNotExistException",
-  {
-    CustomVerificationEmailTemplateName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomVerificationEmailTemplateDoesNotExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EventDestinationAlreadyExistsException extends S.TaggedErrorClass<EventDestinationAlreadyExistsException>()(
-  "EventDestinationAlreadyExistsException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "EventDestinationAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EventDestinationDoesNotExistException extends S.TaggedErrorClass<EventDestinationDoesNotExistException>()(
-  "EventDestinationDoesNotExistException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "EventDestinationDoesNotExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class FromEmailAddressNotVerifiedException extends S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
-  "FromEmailAddressNotVerifiedException",
-  { FromEmailAddress: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "FromEmailAddressNotVerified",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IdentityNotVerified extends S.TaggedErrorClass<IdentityNotVerified>()(
-  "IdentityNotVerified",
-  {},
-  T.SyntheticError({
-    from: "InvalidParameterValue",
-    message: { includes: "Identity is not verified" },
-  }),
-) {}
-export class InvalidCloudWatchDestinationException extends S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
-  "InvalidCloudWatchDestinationException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidCloudWatchDestination",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidConfigurationSetException extends S.TaggedErrorClass<InvalidConfigurationSetException>()(
-  "InvalidConfigurationSetException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDeliveryOptionsException extends S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
-  "InvalidDeliveryOptionsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidFirehoseDestinationException extends S.TaggedErrorClass<InvalidFirehoseDestinationException>()(
-  "InvalidFirehoseDestinationException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidFirehoseDestination",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidLambdaFunctionException extends S.TaggedErrorClass<InvalidLambdaFunctionException>()(
-  "InvalidLambdaFunctionException",
-  { FunctionArn: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
-  "InvalidParameterValue",
-  {},
-) {}
-export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
-  "InvalidPolicyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidRenderingParameterException extends S.TaggedErrorClass<InvalidRenderingParameterException>()(
-  "InvalidRenderingParameterException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidRenderingParameter",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3ConfigurationException extends S.TaggedErrorClass<InvalidS3ConfigurationException>()(
-  "InvalidS3ConfigurationException",
-  { Bucket: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSNSDestinationException extends S.TaggedErrorClass<InvalidSNSDestinationException>()(
-  "InvalidSNSDestinationException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSnsTopicException extends S.TaggedErrorClass<InvalidSnsTopicException>()(
-  "InvalidSnsTopicException",
-  { Topic: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTemplateException extends S.TaggedErrorClass<InvalidTemplateException>()(
-  "InvalidTemplateException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTrackingOptionsException extends S.TaggedErrorClass<InvalidTrackingOptionsException>()(
-  "InvalidTrackingOptionsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
-  "MailFromDomainNotVerifiedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "MailFromDomainNotVerifiedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
-  "MessageRejected",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MissingRenderingAttributeException extends S.TaggedErrorClass<MissingRenderingAttributeException>()(
-  "MissingRenderingAttributeException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "MissingRenderingAttribute",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ProductionAccessNotGrantedException extends S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
-  "ProductionAccessNotGrantedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ProductionAccessNotGranted",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RuleDoesNotExistException extends S.TaggedErrorClass<RuleDoesNotExistException>()(
-  "RuleDoesNotExistException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RuleSetDoesNotExistException extends S.TaggedErrorClass<RuleSetDoesNotExistException>()(
-  "RuleSetDoesNotExistException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TemplateDoesNotExistException extends S.TaggedErrorClass<TemplateDoesNotExistException>()(
-  "TemplateDoesNotExistException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrackingOptionsAlreadyExistsException extends S.TaggedErrorClass<TrackingOptionsAlreadyExistsException>()(
-  "TrackingOptionsAlreadyExistsException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TrackingOptionsAlreadyExistsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class TrackingOptionsDoesNotExistException extends S.TaggedErrorClass<TrackingOptionsDoesNotExistException>()(
-  "TrackingOptionsDoesNotExistException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TrackingOptionsDoesNotExistException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+  ) {}
+export class InvalidCloudWatchDestinationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
+    "InvalidCloudWatchDestinationException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      EventDestinationName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidCloudWatchDestination",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidConfigurationSetException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationSetException>()(
+    "InvalidConfigurationSetException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidConfigurationSet",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidDeliveryOptionsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
+    "InvalidDeliveryOptionsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidDeliveryOptions",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidFirehoseDestinationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFirehoseDestinationException>()(
+    "InvalidFirehoseDestinationException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      EventDestinationName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidFirehoseDestination",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidLambdaFunctionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLambdaFunctionException>()(
+    "InvalidLambdaFunctionException",
+    { FunctionArn: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValue
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
+    "InvalidParameterValue",
+    {},
+  ) {}
+export class InvalidPolicyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
+    "InvalidPolicyException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRenderingParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRenderingParameterException>()(
+    "InvalidRenderingParameterException",
+    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidRenderingParameter",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidS3ConfigurationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidS3ConfigurationException>()(
+    "InvalidS3ConfigurationException",
+    { Bucket: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidS3Configuration",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidSNSDestinationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSNSDestinationException>()(
+    "InvalidSNSDestinationException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      EventDestinationName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidSnsTopicException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnsTopicException>()(
+    "InvalidSnsTopicException",
+    { Topic: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidTemplateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTemplateException>()(
+    "InvalidTemplateException",
+    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidTrackingOptionsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrackingOptionsException>()(
+    "InvalidTrackingOptionsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidTrackingOptions",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MailFromDomainNotVerifiedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
+    "MailFromDomainNotVerifiedException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "MailFromDomainNotVerifiedException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MessageRejected
+  extends /*@__PURE__*/ S.TaggedErrorClass<MessageRejected>()(
+    "MessageRejected",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MissingRenderingAttributeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRenderingAttributeException>()(
+    "MissingRenderingAttributeException",
+    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "MissingRenderingAttribute",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ProductionAccessNotGrantedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
+    "ProductionAccessNotGrantedException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ProductionAccessNotGranted",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class RuleDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RuleDoesNotExistException>()(
+    "RuleDoesNotExistException",
+    { Name: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class RuleSetDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RuleSetDoesNotExistException>()(
+    "RuleSetDoesNotExistException",
+    { Name: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TemplateDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TemplateDoesNotExistException>()(
+    "TemplateDoesNotExistException",
+    { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TrackingOptionsAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TrackingOptionsAlreadyExistsException>()(
+    "TrackingOptionsAlreadyExistsException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "TrackingOptionsAlreadyExistsException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class TrackingOptionsDoesNotExistException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TrackingOptionsDoesNotExistException>()(
+    "TrackingOptionsDoesNotExistException",
+    {
+      ConfigurationSetName: S.optional(S.String),
+      message: S.optional(S.String),
+    },
+    T.all(
+      T.AwsQueryError({
+        code: "TrackingOptionsDoesNotExistException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type ReceiptRuleSetName = string;
 export interface CloneReceiptRuleSetRequest {
   RuleSetName: string;

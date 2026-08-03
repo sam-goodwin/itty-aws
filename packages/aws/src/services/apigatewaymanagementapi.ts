@@ -84,26 +84,30 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  {},
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class GoneException extends S.TaggedErrorClass<GoneException>()(
-  "GoneException",
-  {},
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {},
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
-  "PayloadTooLargeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
+export class ForbiddenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ForbiddenException>()(
+    "ForbiddenException",
+    {},
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class GoneException
+  extends /*@__PURE__*/ S.TaggedErrorClass<GoneException>()(
+    "GoneException",
+    {},
+    T.HttpError(410),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {},
+    T.HttpError(429),
+  ).pipe(C.withThrottlingError) {}
+export class PayloadTooLargeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PayloadTooLargeException>()(
+    "PayloadTooLargeException",
+    { Message: S.optional(S.String) },
+    T.HttpError(413),
+  ).pipe(C.withBadRequestError) {}
 export interface DeleteConnectionRequest {
   ConnectionId: string;
 }

@@ -22,21 +22,26 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   usernameExpressions: "username_expressions",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class FraudDetectionNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FraudDetectionNotEntitled>()("FraudDetectionNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10400 }],
-) {}
+export class FraudDetectionNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FraudDetectionNotEntitled>()(
+      "FraudDetectionNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10400 }],
+  ) {}
 
 export interface GetFraudRequest {
   /** Identifier. */

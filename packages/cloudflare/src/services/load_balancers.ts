@@ -83,104 +83,128 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneName: "zone_name",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class LoadBalancerNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LoadBalancerNotFound>()("LoadBalancerNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
-
-export class LoadBalancingNotEnabledForZone extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
-    "LoadBalancingNotEnabledForZone",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1002, message: { includes: "load balancing not enabled" } }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class MonitorGroupInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MonitorGroupInUse>()("MonitorGroupInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "still referenced" } }],
-) {}
+export class LoadBalancerNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LoadBalancerNotFound>()(
+      "LoadBalancerNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001 }],
+  ) {}
 
-export class MonitorGroupNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MonitorGroupNotFound>()("MonitorGroupNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
+export class LoadBalancingNotEnabledForZone
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
+      "LoadBalancingNotEnabledForZone",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002, message: { includes: "load balancing not enabled" } }],
+  ) {}
 
-export class MonitorGroupsNotEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MonitorGroupsNotEnabled>()("MonitorGroupsNotEnabled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "monitor groups not enabled" } }],
-) {}
+export class MonitorGroupInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MonitorGroupInUse>()("MonitorGroupInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002, message: { includes: "still referenced" } }],
+  ) {}
 
-export class MonitorIntervalOutOfRange extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MonitorIntervalOutOfRange>()("MonitorIntervalOutOfRange", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "interval is not in range" } }],
-) {}
+export class MonitorGroupNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MonitorGroupNotFound>()(
+      "MonitorGroupNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001 }],
+  ) {}
 
-export class MonitorInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MonitorInUse>()("MonitorInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "still referenced" } }],
-) {}
+export class MonitorGroupsNotEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MonitorGroupsNotEnabled>()(
+      "MonitorGroupsNotEnabled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002, message: { includes: "monitor groups not enabled" } }],
+  ) {}
 
-export class MonitorNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MonitorNotFound>()("MonitorNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
+export class MonitorIntervalOutOfRange
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MonitorIntervalOutOfRange>()(
+      "MonitorIntervalOutOfRange",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002, message: { includes: "interval is not in range" } }],
+  ) {}
 
-export class PoolAccessFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PoolAccessFailed>()("PoolAccessFailed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "Access Failed" } }],
-) {}
+export class MonitorInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MonitorInUse>()("MonitorInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002, message: { includes: "still referenced" } }],
+  ) {}
 
-export class PoolInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PoolInUse>()("PoolInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "still referenced" } }],
-) {}
+export class MonitorNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MonitorNotFound>()("MonitorNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001 }],
+  ) {}
 
-export class PoolNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PoolNotFound>()("PoolNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
+export class PoolAccessFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PoolAccessFailed>()("PoolAccessFailed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002, message: { includes: "Access Failed" } }],
+  ) {}
+
+export class PoolInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PoolInUse>()("PoolInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002, message: { includes: "still referenced" } }],
+  ) {}
+
+export class PoolNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PoolNotFound>()("PoolNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001 }],
+  ) {}
 
 export type PoolsBulkEditRequestNotificationEmail = "";
 export const PoolsBulkEditRequestNotificationEmail = /*@__PURE__*/ S.String;

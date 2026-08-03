@@ -12,72 +12,80 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export class ContainerApplicationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ContainerApplicationNotFound>()(
-    "ContainerApplicationNotFound",
-    {
+export class ContainerApplicationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ContainerApplicationNotFound>()(
+      "ContainerApplicationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 1609, message: { includes: "Container application not found" } },
+      { code: 1609, message: { includes: "APPLICATION_NOT_FOUND" } },
+    ],
+  ) {}
+
+export class DurableObjectAlreadyHasApplication
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectAlreadyHasApplication>()(
+      "DurableObjectAlreadyHasApplication",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 1608,
+        message: { includes: "DURABLE_OBJECT_ALREADY_HAS_APPLICATION" },
+      },
+    ],
+  ) {}
+
+export class DurableObjectCheckError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectCheckError>()(
+      "DurableObjectCheckError",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 1000,
+        message: { includes: "checking the application durable object" },
+      },
+    ],
+  ) {}
+
+export class DurableObjectNotContainerEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
+      "DurableObjectNotContainerEnabled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 1607,
+        message: { includes: "DURABLE_OBJECT_NOT_CONTAINER_ENABLED" },
+      },
+    ],
+  ) {}
+
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [
-    { code: 1609, message: { includes: "Container application not found" } },
-    { code: 1609, message: { includes: "APPLICATION_NOT_FOUND" } },
-  ],
-) {}
-
-export class DurableObjectAlreadyHasApplication extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DurableObjectAlreadyHasApplication>()(
-    "DurableObjectAlreadyHasApplication",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      code: 1608,
-      message: { includes: "DURABLE_OBJECT_ALREADY_HAS_APPLICATION" },
-    },
-  ],
-) {}
-
-export class DurableObjectCheckError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DurableObjectCheckError>()("DurableObjectCheckError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      code: 1000,
-      message: { includes: "checking the application durable object" },
-    },
-  ],
-) {}
-
-export class DurableObjectNotContainerEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
-    "DurableObjectNotContainerEnabled",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      code: 1607,
-      message: { includes: "DURABLE_OBJECT_NOT_CONTAINER_ENABLED" },
-    },
-  ],
-) {}
-
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003, message: { includes: "Could not route" } }],
-) {}
+    }),
+    [{ code: 7003, message: { includes: "Could not route" } }],
+  ) {}
 
 export interface EnvironmentVariable {
   name: string;

@@ -27,21 +27,23 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class WidgetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WidgetNotFound>()("WidgetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10404 }, { code: 10407 }, { status: 404 }],
-) {}
+export class WidgetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WidgetNotFound>()("WidgetNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10404 }, { code: 10407 }, { status: 404 }],
+  ) {}
 
 export type WidgetsCreateRequestDirection = "asc" | "desc";
 export const WidgetsCreateRequestDirection = /*@__PURE__*/ S.String;

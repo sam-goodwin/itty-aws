@@ -85,34 +85,40 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DuplicateReportNameException extends S.TaggedErrorClass<DuplicateReportNameException>()(
-  "DuplicateReportNameException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ReportBucketNotVerified extends S.TaggedErrorClass<ReportBucketNotVerified>()(
-  "ReportBucketNotVerified",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { matches: "[Bb]ucket" },
-  }),
-).pipe(C.withRetryableError) {}
-export class ReportLimitReachedException extends S.TaggedErrorClass<ReportLimitReachedException>()(
-  "ReportLimitReachedException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-) {}
+export class DuplicateReportNameException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateReportNameException>()(
+    "DuplicateReportNameException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InternalErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalErrorException>()(
+    "InternalErrorException",
+    { Message: S.optional(S.String) },
+  ).pipe(C.withServerError) {}
+export class ReportBucketNotVerified
+  extends /*@__PURE__*/ S.TaggedErrorClass<ReportBucketNotVerified>()(
+    "ReportBucketNotVerified",
+    { Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { matches: "[Bb]ucket" },
+    }),
+  ).pipe(C.withRetryableError) {}
+export class ReportLimitReachedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ReportLimitReachedException>()(
+    "ReportLimitReachedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type ReportName = string;
 export interface DeleteReportDefinitionRequest {
   ReportName: string;

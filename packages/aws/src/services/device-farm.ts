@@ -88,59 +88,71 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ArgumentException extends S.TaggedErrorClass<ArgumentException>()(
-  "ArgumentException",
-  { message: S.optional(S.String) },
-) {}
-export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
-  "CannotDeleteException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IdempotencyException extends S.TaggedErrorClass<IdempotencyException>()(
-  "IdempotencyException",
-  { message: S.optional(S.String) },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class NotEligibleException extends S.TaggedErrorClass<NotEligibleException>()(
-  "NotEligibleException",
-  { message: S.optional(S.String) },
-) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ServiceAccountException extends S.TaggedErrorClass<ServiceAccountException>()(
-  "ServiceAccountException",
-  { message: S.optional(S.String) },
-) {}
-export class TagOperationException extends S.TaggedErrorClass<TagOperationException>()(
-  "TagOperationException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
-  "TagPolicyException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class ArgumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ArgumentException>()(
+    "ArgumentException",
+    { message: S.optional(S.String) },
+  ) {}
+export class CannotDeleteException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteException>()(
+    "CannotDeleteException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class IdempotencyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotencyException>()(
+    "IdempotencyException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InternalServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+    "InternalServiceException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOperationException>()(
+    "InvalidOperationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+  ) {}
+export class NotEligibleException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotEligibleException>()(
+    "NotEligibleException",
+    { message: S.optional(S.String) },
+  ) {}
+export class NotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+    "NotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ServiceAccountException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAccountException>()(
+    "ServiceAccountException",
+    { message: S.optional(S.String) },
+  ) {}
+export class TagOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagOperationException>()(
+    "TagOperationException",
+    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TagPolicyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyException>()(
+    "TagPolicyException",
+    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { message: S.optional(S.String), resourceName: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type AmazonResourceName = string;
 export type Name = string;
 export type Message = string;

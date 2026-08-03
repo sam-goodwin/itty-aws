@@ -343,93 +343,113 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   writesMerged: "writes_merged",
 };
 
-export class AppNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AppNotFound>()("AppNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class AppNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AppNotFound>()("AppNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class GreTunnelNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GreTunnelNotFound>()("GreTunnelNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1029 }],
-) {}
+export class GreTunnelNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GreTunnelNotFound>()("GreTunnelNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1029 }],
+  ) {}
 
-export class IpsecTunnelNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IpsecTunnelNotFound>()("IpsecTunnelNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1032 }],
-) {}
+export class IpsecTunnelNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IpsecTunnelNotFound>()(
+      "IpsecTunnelNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1032 }],
+  ) {}
 
-export class MagicTransitNotOnboarded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MagicTransitNotOnboarded>()("MagicTransitNotOnboarded", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1012 }],
-) {}
+export class MagicTransitNotOnboarded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MagicTransitNotOnboarded>()(
+      "MagicTransitNotOnboarded",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1012 }],
+  ) {}
 
-export class MagicWanUnauthorized extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MagicWanUnauthorized>()("MagicWanUnauthorized", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1025 }],
-) {}
+export class MagicWanUnauthorized
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MagicWanUnauthorized>()(
+      "MagicWanUnauthorized",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1025 }],
+  ) {}
 
-export class RouteNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1020 }],
-) {}
+export class RouteNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1020 }],
+  ) {}
 
-export class SiteAclNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SiteAclNotFound>()("SiteAclNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class SiteAclNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SiteAclNotFound>()("SiteAclNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class SiteLanNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SiteLanNotFound>()("SiteLanNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class SiteLanNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SiteLanNotFound>()("SiteLanNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class SiteNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class SiteNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class SiteWanNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SiteWanNotFound>()("SiteWanNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class SiteWanNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SiteWanNotFound>()("SiteWanNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
 export interface BulkPutCfInterconnectsRequest {
   /** Identifier */

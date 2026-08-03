@@ -25,48 +25,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class CertificateAlreadyRevoked extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateAlreadyRevoked>()("CertificateAlreadyRevoked", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1014 }],
-) {}
+export class CertificateAlreadyRevoked
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyRevoked>()(
+      "CertificateAlreadyRevoked",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1014 }],
+  ) {}
 
-export class CertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1101 }],
-) {}
+export class CertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFound>()(
+      "CertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1101 }],
+  ) {}
 
-export class CertificateRevocationFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateRevocationFailed>()(
-    "CertificateRevocationFailed",
-    {
+export class CertificateRevocationFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateRevocationFailed>()(
+      "CertificateRevocationFailed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1000 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1000 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class HostnameNotAuthorized extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameNotAuthorized>()("HostnameNotAuthorized", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1010 }],
-) {}
+export class HostnameNotAuthorized
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameNotAuthorized>()(
+      "HostnameNotAuthorized",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1010 }],
+  ) {}
 
 export type CreateRequestHostnamesList = Array<string>;
 export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(

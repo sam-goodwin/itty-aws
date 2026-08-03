@@ -87,50 +87,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ClusterLimitExceededException extends S.TaggedErrorClass<ClusterLimitExceededException>()(
-  "ClusterLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { ConflictResource: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class Ec2RequestFailedException extends S.TaggedErrorClass<Ec2RequestFailedException>()(
-  "Ec2RequestFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidAddressException extends S.TaggedErrorClass<InvalidAddressException>()(
-  "InvalidAddressException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidInputCombinationException extends S.TaggedErrorClass<InvalidInputCombinationException>()(
-  "InvalidInputCombinationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidJobStateException extends S.TaggedErrorClass<InvalidJobStateException>()(
-  "InvalidJobStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidResourceException extends S.TaggedErrorClass<InvalidResourceException>()(
-  "InvalidResourceException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class KMSRequestFailedException extends S.TaggedErrorClass<KMSRequestFailedException>()(
-  "KMSRequestFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class ReturnShippingLabelAlreadyExistsException extends S.TaggedErrorClass<ReturnShippingLabelAlreadyExistsException>()(
-  "ReturnShippingLabelAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class UnsupportedAddressException extends S.TaggedErrorClass<UnsupportedAddressException>()(
-  "UnsupportedAddressException",
-  { Message: S.optional(S.String) },
-) {}
+export class ClusterLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ClusterLimitExceededException>()(
+    "ClusterLimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { ConflictResource: S.optional(S.String), Message: S.optional(S.String) },
+  ) {}
+export class Ec2RequestFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<Ec2RequestFailedException>()(
+    "Ec2RequestFailedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidAddressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAddressException>()(
+    "InvalidAddressException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidInputCombinationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputCombinationException>()(
+    "InvalidInputCombinationException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidJobStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidJobStateException>()(
+    "InvalidJobStateException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidNextTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+    "InvalidNextTokenException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidResourceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceException>()(
+    "InvalidResourceException",
+    { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+  ) {}
+export class KMSRequestFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<KMSRequestFailedException>()(
+    "KMSRequestFailedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ReturnShippingLabelAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ReturnShippingLabelAlreadyExistsException>()(
+    "ReturnShippingLabelAlreadyExistsException",
+    { Message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class UnsupportedAddressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedAddressException>()(
+    "UnsupportedAddressException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type ClusterId = string;
 export interface CancelClusterRequest {
   ClusterId: string;

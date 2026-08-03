@@ -93,55 +93,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(
-      S.suspend(() => BadRequestReason).annotate({
-        identifier: "BadRequestReason",
-      }),
-    ),
-    Details: S.optional(
-      S.suspend(() => BadRequestDetails).annotate({
-        identifier: "BadRequestDetails",
-      }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
-  "PayloadTooLargeException",
-  {
-    Message: S.optional(S.String),
-    Measure: S.optional(
-      S.suspend(() => BytesMeasure).annotate({ identifier: "BytesMeasure" }),
-    ),
-    Limit: S.optional(S.Number),
-    Size: S.optional(S.Number),
-  },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
+export class BadRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+    "BadRequestException",
+    {
+      Message: S.optional(S.String),
+      Reason: S.optional(
+        S.suspend(() => BadRequestReason).annotate({
+          identifier: "BadRequestReason",
+        }),
+      ),
+      Details: S.optional(
+        S.suspend(() => BadRequestDetails).annotate({
+          identifier: "BadRequestDetails",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { Message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class PayloadTooLargeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PayloadTooLargeException>()(
+    "PayloadTooLargeException",
+    {
+      Message: S.optional(S.String),
+      Measure: S.optional(
+        S.suspend(() => BytesMeasure).annotate({ identifier: "BytesMeasure" }),
+      ),
+      Limit: S.optional(S.Number),
+      Size: S.optional(S.Number),
+    },
+    T.HttpError(413),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    { Message: S.optional(S.String) },
+    T.HttpError(402),
+  ).pipe(C.withQuotaError) {}
 export type Name = string;
 export type Description = string;
 export type TagKey = string;

@@ -123,321 +123,426 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneName: "zone_name",
 };
 
-export class ContentTypeRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ContentTypeRequired>()("ContentTypeRequired", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10001 }],
-) {}
+export class ContentTypeRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ContentTypeRequired>()(
+      "ContentTypeRequired",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10001 }],
+  ) {}
 
-export class D1DatabaseNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<D1DatabaseNotFound>()("D1DatabaseNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10181 }],
-) {}
+export class D1DatabaseNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<D1DatabaseNotFound>()(
+      "D1DatabaseNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10181 }],
+  ) {}
 
-export class DeploymentNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DeploymentNotFound>()("DeploymentNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10336 }],
-) {}
+export class DeploymentNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DeploymentNotFound>()(
+      "DeploymentNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10336 }],
+  ) {}
 
-export class DispatchNamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DispatchNamespaceNotFound>()("DispatchNamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100119 }],
-) {}
+export class DispatchNamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceNotFound>()(
+      "DispatchNamespaceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 100119 }],
+  ) {}
 
-export class DomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100114 }],
-) {}
-
-export class DuplicateMigrationTarget extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DuplicateMigrationTarget>()("DuplicateMigrationTarget", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      code: 10074,
-      message: { includes: "cannot be the target of more than one migration" },
-    },
-  ],
-) {}
-
-export class DurableObjectClassNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DurableObjectClassNotFound>()(
-    "DurableObjectClassNotFound",
-    {
+export class DomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10061 }],
-) {}
+    }),
+    [{ code: 100114 }],
+  ) {}
 
-export class DurableObjectMustBeSqlite extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DurableObjectMustBeSqlite>()("DurableObjectMustBeSqlite", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10074, message: { includes: "not a SQLite Durable Object" } }],
-) {}
+export class DuplicateMigrationTarget
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DuplicateMigrationTarget>()(
+      "DuplicateMigrationTarget",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 10074,
+        message: {
+          includes: "cannot be the target of more than one migration",
+        },
+      },
+    ],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class DurableObjectClassNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectClassNotFound>()(
+      "DurableObjectClassNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10061 }],
+  ) {}
 
-export class HostnameAlreadyInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameAlreadyInUse>()("HostnameAlreadyInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100116 }],
-) {}
+export class DurableObjectMustBeSqlite
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectMustBeSqlite>()(
+      "DurableObjectMustBeSqlite",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10074, message: { includes: "not a SQLite Durable Object" } }],
+  ) {}
 
-export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HyperdriveConfigNotFound>()("HyperdriveConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10157 }],
-) {}
-
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }, { code: 7003, message: { includes: "Could not route" } }],
-) {}
-
-export class InvalidRoutePattern extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoutePattern>()("InvalidRoutePattern", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10022 }],
-) {}
-
-export class InvalidWorkerScript extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidWorkerScript>()("InvalidWorkerScript", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10068 }],
-) {}
-
-export class KVNamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<KVNamespaceNotFound>()("KVNamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10041 }],
-) {}
-
-export class MtlsCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MtlsCertificateNotFound>()("MtlsCertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100143 }],
-) {}
-
-export class ObservabilityDestinationCreateFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ObservabilityDestinationCreateFailed>()(
-    "ObservabilityDestinationCreateFailed",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 400, message: "Bad Request" }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class ObservabilityDestinationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ObservabilityDestinationNotFound>()(
-    "ObservabilityDestinationNotFound",
-    {
+export class HostnameAlreadyInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameAlreadyInUse>()(
+      "HostnameAlreadyInUse",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 100116 }],
+  ) {}
+
+export class HyperdriveConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HyperdriveConfigNotFound>()(
+      "HyperdriveConfigNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10157 }],
+  ) {}
+
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ code: 7003 }, { code: 7003, message: { includes: "Could not route" } }],
+  ) {}
 
-export class ObservabilityDestinationPreflightFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ObservabilityDestinationPreflightFailed>()(
-    "ObservabilityDestinationPreflightFailed",
-    {
+export class InvalidRoutePattern
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoutePattern>()(
+      "InvalidRoutePattern",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10022 }],
+  ) {}
+
+export class InvalidWorkerScript
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidWorkerScript>()(
+      "InvalidWorkerScript",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10068 }],
+  ) {}
+
+export class KVNamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<KVNamespaceNotFound>()(
+      "KVNamespaceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10041 }],
+  ) {}
+
+export class MtlsCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MtlsCertificateNotFound>()(
+      "MtlsCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 100143 }],
+  ) {}
+
+export class ObservabilityDestinationCreateFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ObservabilityDestinationCreateFailed>()(
+      "ObservabilityDestinationCreateFailed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: "Bad Request" }],
+  ) {}
+
+export class ObservabilityDestinationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ObservabilityDestinationNotFound>()(
+      "ObservabilityDestinationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class ObservabilityDestinationPreflightFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ObservabilityDestinationPreflightFailed>()(
+      "ObservabilityDestinationPreflightFailed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: "Bad Request" }],
+  ) {}
+
+export class QueueConsumerConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueConsumerConflict>()(
+      "QueueConsumerConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10064 }],
+  ) {}
+
+export class QueueNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 400, message: "Bad Request" }],
-) {}
+    }),
+    [{ code: 11000 }],
+  ) {}
 
-export class QueueConsumerConflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueConsumerConflict>()("QueueConsumerConflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10064 }],
-) {}
-
-export class QueueNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11000 }],
-) {}
-
-export class R2BucketNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10085 }],
-) {}
-
-export class RouteNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10009 }, { status: 404 }],
-) {}
-
-export class RouteScriptNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RouteScriptNotFound>()("RouteScriptNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10019 }],
-) {}
-
-export class ScriptModuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ScriptModuleNotFound>()("ScriptModuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10021, message: { includes: "No such module" } }],
-) {}
-
-export class ScriptStartupError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ScriptStartupError>()("ScriptStartupError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10021 }],
-) {}
-
-export class SecretNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10056 }],
-) {}
-
-export class SecretsStoreBindingNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretsStoreBindingNotFound>()(
-    "SecretsStoreBindingNotFound",
-    {
+export class R2BucketNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10182 }],
-) {}
+    }),
+    [{ code: 10085 }],
+  ) {}
 
-export class ServiceBindingConflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ServiceBindingConflict>()("ServiceBindingConflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10142 }],
-) {}
+export class RouteNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10009 }, { status: 404 }],
+  ) {}
 
-export class ServiceBindingNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ServiceBindingNotFound>()("ServiceBindingNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10144 }],
-) {}
+export class RouteScriptNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RouteScriptNotFound>()(
+      "RouteScriptNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10019 }],
+  ) {}
 
-export class SubdomainAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SubdomainAlreadyExists>()("SubdomainAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10036 }],
-) {}
+export class ScriptModuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ScriptModuleNotFound>()(
+      "ScriptModuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10021, message: { includes: "No such module" } }],
+  ) {}
 
-export class SubdomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SubdomainNotFound>()("SubdomainNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class ScriptStartupError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ScriptStartupError>()(
+      "ScriptStartupError",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10021 }],
+  ) {}
 
-export class VectorizeIndexNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VectorizeIndexNotFound>()("VectorizeIndexNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10159 }],
-) {}
+export class SecretNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10056 }],
+  ) {}
 
-export class VersionNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100146 }],
-) {}
+export class SecretsStoreBindingNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretsStoreBindingNotFound>()(
+      "SecretsStoreBindingNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10182 }],
+  ) {}
 
-export class WorkerHasNoVersions extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WorkerHasNoVersions>()("WorkerHasNoVersions", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "has no versions" } }],
-) {}
+export class ServiceBindingConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ServiceBindingConflict>()(
+      "ServiceBindingConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10142 }],
+  ) {}
 
-export class WorkerNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10007 }],
-) {}
+export class ServiceBindingNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ServiceBindingNotFound>()(
+      "ServiceBindingNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10144 }],
+  ) {}
 
-export class WorkerVersionNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WorkerVersionNotFound>()("WorkerVersionNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10071 }],
-) {}
+export class SubdomainAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SubdomainAlreadyExists>()(
+      "SubdomainAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10036 }],
+  ) {}
+
+export class SubdomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SubdomainNotFound>()("SubdomainNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
+
+export class VectorizeIndexNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VectorizeIndexNotFound>()(
+      "VectorizeIndexNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10159 }],
+  ) {}
+
+export class VersionNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 100146 }],
+  ) {}
+
+export class WorkerHasNoVersions
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WorkerHasNoVersions>()(
+      "WorkerHasNoVersions",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "has no versions" } }],
+  ) {}
+
+export class WorkerNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10007 }],
+  ) {}
+
+export class WorkerVersionNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WorkerVersionNotFound>()(
+      "WorkerVersionNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10071 }],
+  ) {}
 
 export type ScriptsSecretsBulkUpdateRequestSecretsSecretTextType =
   "secret_text";

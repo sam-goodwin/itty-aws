@@ -2248,8 +2248,12 @@ export const awsSpec = (
         const categoryPipe =
           categories.length > 0 ? `.pipe(${categories.join(", ")})` : "";
 
+        // PURE marker: without it the heritage call is an unanalyzable side
+        // effect and the class can never be tree-shaken, so importing one
+        // operation retains every error class in the service (distilled
+        // #191). Same reason the schema consts carry one.
         return [
-          `export class ${name} extends S.TaggedErrorClass<${name}>()("${tag}", ${fields}${annotationsArg})${categoryPipe} {}`,
+          `export class ${name} extends ${PURE}S.TaggedErrorClass<${name}>()("${tag}", ${fields}${annotationsArg})${categoryPipe} {}`,
         ];
       },
     },

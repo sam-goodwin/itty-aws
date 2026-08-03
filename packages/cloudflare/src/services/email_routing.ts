@@ -25,48 +25,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalPages: "total_pages",
 };
 
-export class DestinationNotVerified extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DestinationNotVerified>()("DestinationNotVerified", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2054 }],
-) {}
+export class DestinationNotVerified
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DestinationNotVerified>()(
+      "DestinationNotVerified",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2054 }],
+  ) {}
 
-export class EmailAddressCreatedTooRecently extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EmailAddressCreatedTooRecently>()(
-    "EmailAddressCreatedTooRecently",
-    {
+export class EmailAddressCreatedTooRecently
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EmailAddressCreatedTooRecently>()(
+      "EmailAddressCreatedTooRecently",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2032 }],
+  ) {}
+
+export class EmailAddressNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EmailAddressNotFound>()(
+      "EmailAddressNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2015 }],
+  ) {}
+
+export class EmailRoutingRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EmailRoutingRuleNotFound>()(
+      "EmailRoutingRuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 2032 }],
-) {}
-
-export class EmailAddressNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EmailAddressNotFound>()("EmailAddressNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2015 }],
-) {}
-
-export class EmailRoutingRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EmailRoutingRuleNotFound>()("EmailRoutingRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export type AddressesEditRequestStatus = "unverified" | "verified";
 export const AddressesEditRequestStatus = /*@__PURE__*/ S.String;

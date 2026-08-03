@@ -204,98 +204,118 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AnalysisNotFoundException extends S.TaggedErrorClass<AnalysisNotFoundException>()(
-  "AnalysisNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AnomalyMonitorAlreadyExists extends S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
-  "AnomalyMonitorAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "same monitor name as an existing monitor" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
-  "AnomalySubscriptionAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "same subscription name as an existing subscription" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class BackfillLimitExceededException extends S.TaggedErrorClass<BackfillLimitExceededException>()(
-  "BackfillLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BillExpirationException extends S.TaggedErrorClass<BillExpirationException>()(
-  "BillExpirationException",
-  { Message: S.optional(S.String) },
-) {}
-export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
-  "BillingViewHealthStatusException",
-  { Message: S.optional(S.String) },
-) {}
-export class DataUnavailableException extends S.TaggedErrorClass<DataUnavailableException>()(
-  "DataUnavailableException",
-  { Message: S.optional(S.String) },
-) {}
-export class GenerationExistsException extends S.TaggedErrorClass<GenerationExistsException>()(
-  "GenerationExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class RequestChangedException extends S.TaggedErrorClass<RequestChangedException>()(
-  "RequestChangedException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class RightsizingRecommendationNotEnabled extends S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
-  "RightsizingRecommendationNotEnabled",
-  {},
-  T.SyntheticError({
-    from: "AccessDeniedException",
-    message: { includes: "opt-in only feature" },
-  }),
-) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnknownMonitorException extends S.TaggedErrorClass<UnknownMonitorException>()(
-  "UnknownMonitorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class UnknownSubscriptionException extends S.TaggedErrorClass<UnknownSubscriptionException>()(
-  "UnknownSubscriptionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class UnresolvableUsageUnitException extends S.TaggedErrorClass<UnresolvableUsageUnitException>()(
-  "UnresolvableUsageUnitException",
-  { Message: S.optional(S.String) },
-) {}
+export class AnalysisNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AnalysisNotFoundException>()(
+    "AnalysisNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class AnomalyMonitorAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
+    "AnomalyMonitorAlreadyExists",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "same monitor name as an existing monitor" },
+    }),
+  ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class AnomalySubscriptionAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
+    "AnomalySubscriptionAlreadyExists",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: {
+        includes: "same subscription name as an existing subscription",
+      },
+    }),
+  ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class BackfillLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BackfillLimitExceededException>()(
+    "BackfillLimitExceededException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class BillExpirationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BillExpirationException>()(
+    "BillExpirationException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class BillingViewHealthStatusException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BillingViewHealthStatusException>()(
+    "BillingViewHealthStatusException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class DataUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DataUnavailableException>()(
+    "DataUnavailableException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class GenerationExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<GenerationExistsException>()(
+    "GenerationExistsException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+    "InvalidNextTokenException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class RequestChangedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestChangedException>()(
+    "RequestChangedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class RightsizingRecommendationNotEnabled
+  extends /*@__PURE__*/ S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
+    "RightsizingRecommendationNotEnabled",
+    {},
+    T.SyntheticError({
+      from: "AccessDeniedException",
+      message: { includes: "opt-in only feature" },
+    }),
+  ) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    { Message: S.optional(S.String) },
+    T.HttpError(402),
+  ).pipe(C.withQuotaError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class UnknownMonitorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownMonitorException>()(
+    "UnknownMonitorException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class UnknownSubscriptionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownSubscriptionException>()(
+    "UnknownSubscriptionException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class UnresolvableUsageUnitException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnresolvableUsageUnitException>()(
+    "UnresolvableUsageUnitException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type YearMonthDay = string;
 export type MonitorType = "DIMENSIONAL" | "CUSTOM" | (string & {});
 export const MonitorType = /*@__PURE__*/ S.String;
