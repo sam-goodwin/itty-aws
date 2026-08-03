@@ -4859,7 +4859,27 @@ export const describeModelVersions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeModelVersionsRequest,
+  DescribeModelVersionsResult,
+  DescribeModelVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeModelVersionsRequest,
+  ) => stream.Stream<
+    DescribeModelVersionsResult,
+    DescribeModelVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeModelVersionsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeModelVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetBatchImportJobsError =
   | AccessDeniedException
@@ -4912,7 +4932,27 @@ export const getBatchImportJobs: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetBatchImportJobsRequest,
+  GetBatchImportJobsResult,
+  GetBatchImportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetBatchImportJobsRequest,
+  ) => stream.Stream<
+    GetBatchImportJobsResult,
+    GetBatchImportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetBatchImportJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetBatchImportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetBatchPredictionJobsError =
   | AccessDeniedException
@@ -4962,7 +5002,27 @@ export const getBatchPredictionJobs: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetBatchPredictionJobsRequest,
+  GetBatchPredictionJobsResult,
+  GetBatchPredictionJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetBatchPredictionJobsRequest,
+  ) => stream.Stream<
+    GetBatchPredictionJobsResult,
+    GetBatchPredictionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetBatchPredictionJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetBatchPredictionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetDeleteEventsByEventTypeStatusError =
   | AccessDeniedException
@@ -5047,7 +5107,27 @@ export const getDetectors: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetDetectorsRequest,
+  GetDetectorsResult,
+  GetDetectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetDetectorsRequest,
+  ) => stream.Stream<
+    GetDetectorsResult,
+    GetDetectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetDetectorsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetDetectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetDetectorVersionError =
   | AccessDeniedException
@@ -5132,7 +5212,27 @@ export const getEntityTypes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetEntityTypesRequest,
+  GetEntityTypesResult,
+  GetEntityTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetEntityTypesRequest,
+  ) => stream.Stream<
+    GetEntityTypesResult,
+    GetEntityTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetEntityTypesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetEntityTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetEventError =
   | AccessDeniedException
@@ -5281,7 +5381,27 @@ export const getEventTypes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetEventTypesRequest,
+  GetEventTypesResult,
+  GetEventTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetEventTypesRequest,
+  ) => stream.Stream<
+    GetEventTypesResult,
+    GetEventTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetEventTypesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetEventTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetExternalModelsError =
   | AccessDeniedException
@@ -5336,7 +5456,27 @@ export const getExternalModels: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetExternalModelsRequest,
+  GetExternalModelsResult,
+  GetExternalModelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetExternalModelsRequest,
+  ) => stream.Stream<
+    GetExternalModelsResult,
+    GetExternalModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetExternalModelsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetExternalModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetKMSEncryptionKeyError =
   | AccessDeniedException
@@ -5419,7 +5559,27 @@ export const getLabels: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetLabelsRequest,
+  GetLabelsResult,
+  GetLabelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetLabelsRequest,
+  ) => stream.Stream<
+    GetLabelsResult,
+    GetLabelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetLabelsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetLabelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetListElementsError =
   | AccessDeniedException
@@ -5469,7 +5629,27 @@ export const getListElements: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetListElementsRequest,
+  GetListElementsResult,
+  GetListElementsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetListElementsRequest,
+  ) => stream.Stream<
+    GetListElementsResult,
+    GetListElementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetListElementsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetListElementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetListsMetadataError =
   | AccessDeniedException
@@ -5519,7 +5699,27 @@ export const getListsMetadata: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetListsMetadataRequest,
+  GetListsMetadataResult,
+  GetListsMetadataError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetListsMetadataRequest,
+  ) => stream.Stream<
+    GetListsMetadataResult,
+    GetListsMetadataError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetListsMetadataRequest,
+  ) => stream.Stream<
+    unknown,
+    GetListsMetadataError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetModelsError =
   | AccessDeniedException
@@ -5576,7 +5776,27 @@ export const getModels: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetModelsRequest,
+  GetModelsResult,
+  GetModelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetModelsRequest,
+  ) => stream.Stream<
+    GetModelsResult,
+    GetModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetModelsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetModelVersionError =
   | AccessDeniedException
@@ -5661,7 +5881,27 @@ export const getOutcomes: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetOutcomesRequest,
+  GetOutcomesResult,
+  GetOutcomesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetOutcomesRequest,
+  ) => stream.Stream<
+    GetOutcomesResult,
+    GetOutcomesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetOutcomesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetOutcomesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetRulesError =
   | AccessDeniedException
@@ -5713,7 +5953,27 @@ export const getRules: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetRulesRequest,
+  GetRulesResult,
+  GetRulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetRulesRequest,
+  ) => stream.Stream<
+    GetRulesResult,
+    GetRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetRulesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetVariablesError =
   | AccessDeniedException
@@ -5768,7 +6028,27 @@ export const getVariables: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetVariablesRequest,
+  GetVariablesResult,
+  GetVariablesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetVariablesRequest,
+  ) => stream.Stream<
+    GetVariablesResult,
+    GetVariablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetVariablesRequest,
+  ) => stream.Stream<
+    unknown,
+    GetVariablesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventPredictionsError =
   | AccessDeniedException
@@ -5827,7 +6107,27 @@ export const listEventPredictions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventPredictionsRequest,
+  ListEventPredictionsResult,
+  ListEventPredictionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventPredictionsRequest,
+  ) => stream.Stream<
+    ListEventPredictionsResult,
+    ListEventPredictionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventPredictionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListEventPredictionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -5877,7 +6177,27 @@ export const listTagsForResource: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResult,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    ListTagsForResourceResult,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutDetectorError =
   | AccessDeniedException

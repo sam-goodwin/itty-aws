@@ -9391,7 +9391,27 @@ export const listRoutingRules: API.OperationMethod<
     items: "RoutingRules",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRoutingRulesRequest,
+  ListRoutingRulesResponse,
+  ListRoutingRulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRoutingRulesRequest,
+  ) => stream.Stream<
+    ListRoutingRulesResponse,
+    ListRoutingRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRoutingRulesRequest,
+  ) => stream.Stream<
+    RoutingRule,
+    ListRoutingRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PreviewPortalError =
   | AccessDeniedException

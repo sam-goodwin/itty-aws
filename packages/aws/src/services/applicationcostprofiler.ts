@@ -507,7 +507,27 @@ export const listReportDefinitions: API.OperationMethod<
     items: "reportDefinitions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReportDefinitionsRequest,
+  ListReportDefinitionsResult,
+  ListReportDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReportDefinitionsRequest,
+  ) => stream.Stream<
+    ListReportDefinitionsResult,
+    ListReportDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReportDefinitionsRequest,
+  ) => stream.Stream<
+    ReportDefinition,
+    ListReportDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutReportDefinitionError =
   | AccessDeniedException

@@ -1736,7 +1736,27 @@ export const listGroupingStatuses: API.OperationMethod<
     items: "GroupingStatuses",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupingStatusesInput,
+  ListGroupingStatusesOutput,
+  ListGroupingStatusesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupingStatusesInput,
+  ) => stream.Stream<
+    ListGroupingStatusesOutput,
+    ListGroupingStatusesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupingStatusesInput,
+  ) => stream.Stream<
+    GroupingStatusesItem,
+    ListGroupingStatusesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupResourcesError =
   | BadRequestException
@@ -1804,7 +1824,27 @@ export const listGroupResources: API.OperationMethod<
     items: "ResourceIdentifiers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupResourcesInput,
+  ListGroupResourcesOutput,
+  ListGroupResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupResourcesInput,
+  ) => stream.Stream<
+    ListGroupResourcesOutput,
+    ListGroupResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupResourcesInput,
+  ) => stream.Stream<
+    ResourceIdentifier,
+    ListGroupResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupsError =
   | BadRequestException
@@ -1861,7 +1901,27 @@ export const listGroups: API.OperationMethod<
     items: "GroupIdentifiers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsInput,
+  ListGroupsOutput,
+  ListGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsInput,
+  ) => stream.Stream<
+    ListGroupsOutput,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsInput,
+  ) => stream.Stream<
+    GroupIdentifier,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagSyncTasksError =
   | BadRequestException
@@ -1921,7 +1981,27 @@ export const listTagSyncTasks: API.OperationMethod<
     items: "TagSyncTasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagSyncTasksInput,
+  ListTagSyncTasksOutput,
+  ListTagSyncTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagSyncTasksInput,
+  ) => stream.Stream<
+    ListTagSyncTasksOutput,
+    ListTagSyncTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagSyncTasksInput,
+  ) => stream.Stream<
+    TagSyncTaskItem,
+    ListTagSyncTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutGroupConfigurationError =
   | BadRequestException
@@ -2028,7 +2108,27 @@ export const searchResources: API.OperationMethod<
     items: "ResourceIdentifiers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchResourcesInput,
+  SearchResourcesOutput,
+  SearchResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchResourcesInput,
+  ) => stream.Stream<
+    SearchResourcesOutput,
+    SearchResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchResourcesInput,
+  ) => stream.Stream<
+    ResourceIdentifier,
+    SearchResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartTagSyncTaskError =
   | BadRequestException

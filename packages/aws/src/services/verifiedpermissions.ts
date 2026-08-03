@@ -3116,7 +3116,27 @@ export const listIdentitySources: API.OperationMethod<
     items: "identitySources",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIdentitySourcesInput,
+  ListIdentitySourcesOutput,
+  ListIdentitySourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIdentitySourcesInput,
+  ) => stream.Stream<
+    ListIdentitySourcesOutput,
+    ListIdentitySourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIdentitySourcesInput,
+  ) => stream.Stream<
+    IdentitySourceItem,
+    ListIdentitySourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPoliciesError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3155,7 +3175,27 @@ export const listPolicies: API.OperationMethod<
     items: "policies",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPoliciesInput,
+  ListPoliciesOutput,
+  ListPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPoliciesInput,
+  ) => stream.Stream<
+    ListPoliciesOutput,
+    ListPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPoliciesInput,
+  ) => stream.Stream<
+    PolicyItem,
+    ListPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPolicyStoreAliasesError = CommonErrors;
 /**
@@ -3194,7 +3234,27 @@ export const listPolicyStoreAliases: API.OperationMethod<
     items: "policyStoreAliases",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPolicyStoreAliasesInput,
+  ListPolicyStoreAliasesOutput,
+  ListPolicyStoreAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyStoreAliasesInput,
+  ) => stream.Stream<
+    ListPolicyStoreAliasesOutput,
+    ListPolicyStoreAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyStoreAliasesInput,
+  ) => stream.Stream<
+    PolicyStoreAliasItem,
+    ListPolicyStoreAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPolicyStoresError = CommonErrors;
 /**
@@ -3233,7 +3293,27 @@ export const listPolicyStores: API.OperationMethod<
     items: "policyStores",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPolicyStoresInput,
+  ListPolicyStoresOutput,
+  ListPolicyStoresError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyStoresInput,
+  ) => stream.Stream<
+    ListPolicyStoresOutput,
+    ListPolicyStoresError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyStoresInput,
+  ) => stream.Stream<
+    PolicyStoreItem,
+    ListPolicyStoresError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPolicyTemplatesError = ResourceNotFoundException | CommonErrors;
 /**
@@ -3272,7 +3352,27 @@ export const listPolicyTemplates: API.OperationMethod<
     items: "policyTemplates",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPolicyTemplatesInput,
+  ListPolicyTemplatesOutput,
+  ListPolicyTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyTemplatesInput,
+  ) => stream.Stream<
+    ListPolicyTemplatesOutput,
+    ListPolicyTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyTemplatesInput,
+  ) => stream.Stream<
+    PolicyTemplateItem,
+    ListPolicyTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

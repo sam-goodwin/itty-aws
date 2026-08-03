@@ -3179,7 +3179,27 @@ export const listAnomalyDetectors: API.OperationMethod<
     items: "anomalyDetectors",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAnomalyDetectorsRequest,
+  ListAnomalyDetectorsResponse,
+  ListAnomalyDetectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAnomalyDetectorsRequest,
+  ) => stream.Stream<
+    ListAnomalyDetectorsResponse,
+    ListAnomalyDetectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAnomalyDetectorsRequest,
+  ) => stream.Stream<
+    AnomalyDetectorSummary,
+    ListAnomalyDetectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRuleGroupsNamespacesError =
   | AccessDeniedException
@@ -3230,7 +3250,27 @@ export const listRuleGroupsNamespaces: API.OperationMethod<
     items: "ruleGroupsNamespaces",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRuleGroupsNamespacesRequest,
+  ListRuleGroupsNamespacesResponse,
+  ListRuleGroupsNamespacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRuleGroupsNamespacesRequest,
+  ) => stream.Stream<
+    ListRuleGroupsNamespacesResponse,
+    ListRuleGroupsNamespacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRuleGroupsNamespacesRequest,
+  ) => stream.Stream<
+    RuleGroupsNamespaceSummary,
+    ListRuleGroupsNamespacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListScrapersError =
   | AccessDeniedException
@@ -3279,7 +3319,27 @@ export const listScrapers: API.OperationMethod<
     items: "scrapers",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListScrapersRequest,
+  ListScrapersResponse,
+  ListScrapersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScrapersRequest,
+  ) => stream.Stream<
+    ListScrapersResponse,
+    ListScrapersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScrapersRequest,
+  ) => stream.Stream<
+    ScraperSummary,
+    ListScrapersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -3358,7 +3418,27 @@ export const listWorkspaces: API.OperationMethod<
     items: "workspaces",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkspacesRequest,
+  ListWorkspacesResponse,
+  ListWorkspacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkspacesRequest,
+  ) => stream.Stream<
+    ListWorkspacesResponse,
+    ListWorkspacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkspacesRequest,
+  ) => stream.Stream<
+    WorkspaceSummary,
+    ListWorkspacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutAlertManagerDefinitionError =
   | AccessDeniedException

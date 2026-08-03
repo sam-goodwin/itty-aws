@@ -576,7 +576,27 @@ export const listTunnels: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTunnelsRequest,
+  ListTunnelsResponse,
+  ListTunnelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTunnelsRequest,
+  ) => stream.Stream<
+    ListTunnelsResponse,
+    ListTunnelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTunnelsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTunnelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type OpenTunnelError = LimitExceededException | CommonErrors;
 /**

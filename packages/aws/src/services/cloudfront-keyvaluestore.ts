@@ -574,7 +574,27 @@ export const listKeys: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListKeysRequest,
+  ListKeysResponse,
+  ListKeysError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListKeysRequest,
+  ) => stream.Stream<
+    ListKeysResponse,
+    ListKeysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListKeysRequest,
+  ) => stream.Stream<
+    ListKeysResponseListItem,
+    ListKeysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutKeyError =
   | AccessDeniedException

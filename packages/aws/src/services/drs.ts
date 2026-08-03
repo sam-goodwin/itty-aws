@@ -3446,7 +3446,27 @@ export const describeJobLogItems: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeJobLogItemsRequest,
+  DescribeJobLogItemsResponse,
+  DescribeJobLogItemsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeJobLogItemsRequest,
+  ) => stream.Stream<
+    DescribeJobLogItemsResponse,
+    DescribeJobLogItemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeJobLogItemsRequest,
+  ) => stream.Stream<
+    JobLog,
+    DescribeJobLogItemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeJobsError =
   | InternalServerException
@@ -3495,7 +3515,27 @@ export const describeJobs: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeJobsRequest,
+  DescribeJobsResponse,
+  DescribeJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeJobsRequest,
+  ) => stream.Stream<
+    DescribeJobsResponse,
+    DescribeJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeJobsRequest,
+  ) => stream.Stream<
+    Job,
+    DescribeJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLaunchConfigurationTemplatesError =
   | InternalServerException
@@ -3546,7 +3586,27 @@ export const describeLaunchConfigurationTemplates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLaunchConfigurationTemplatesRequest,
+  DescribeLaunchConfigurationTemplatesResponse,
+  DescribeLaunchConfigurationTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLaunchConfigurationTemplatesRequest,
+  ) => stream.Stream<
+    DescribeLaunchConfigurationTemplatesResponse,
+    DescribeLaunchConfigurationTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLaunchConfigurationTemplatesRequest,
+  ) => stream.Stream<
+    LaunchConfigurationTemplate,
+    DescribeLaunchConfigurationTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRecoveryInstancesError =
   | AccessDeniedException
@@ -3595,7 +3655,27 @@ export const describeRecoveryInstances: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRecoveryInstancesRequest,
+  DescribeRecoveryInstancesResponse,
+  DescribeRecoveryInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRecoveryInstancesRequest,
+  ) => stream.Stream<
+    DescribeRecoveryInstancesResponse,
+    DescribeRecoveryInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRecoveryInstancesRequest,
+  ) => stream.Stream<
+    RecoveryInstance,
+    DescribeRecoveryInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeRecoverySnapshotsError =
   | AccessDeniedException
@@ -3646,7 +3726,27 @@ export const describeRecoverySnapshots: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeRecoverySnapshotsRequest,
+  DescribeRecoverySnapshotsResponse,
+  DescribeRecoverySnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeRecoverySnapshotsRequest,
+  ) => stream.Stream<
+    DescribeRecoverySnapshotsResponse,
+    DescribeRecoverySnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeRecoverySnapshotsRequest,
+  ) => stream.Stream<
+    RecoverySnapshot,
+    DescribeRecoverySnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReplicationConfigurationTemplatesError =
   | InternalServerException
@@ -3697,7 +3797,27 @@ export const describeReplicationConfigurationTemplates: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReplicationConfigurationTemplatesRequest,
+  DescribeReplicationConfigurationTemplatesResponse,
+  DescribeReplicationConfigurationTemplatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReplicationConfigurationTemplatesRequest,
+  ) => stream.Stream<
+    DescribeReplicationConfigurationTemplatesResponse,
+    DescribeReplicationConfigurationTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReplicationConfigurationTemplatesRequest,
+  ) => stream.Stream<
+    ReplicationConfigurationTemplate,
+    DescribeReplicationConfigurationTemplatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSourceNetworksError =
   | InternalServerException
@@ -3746,7 +3866,27 @@ export const describeSourceNetworks: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSourceNetworksRequest,
+  DescribeSourceNetworksResponse,
+  DescribeSourceNetworksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSourceNetworksRequest,
+  ) => stream.Stream<
+    DescribeSourceNetworksResponse,
+    DescribeSourceNetworksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSourceNetworksRequest,
+  ) => stream.Stream<
+    SourceNetwork,
+    DescribeSourceNetworksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSourceServersError =
   | InternalServerException
@@ -3795,7 +3935,27 @@ export const describeSourceServers: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSourceServersRequest,
+  DescribeSourceServersResponse,
+  DescribeSourceServersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSourceServersRequest,
+  ) => stream.Stream<
+    DescribeSourceServersResponse,
+    DescribeSourceServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSourceServersRequest,
+  ) => stream.Stream<
+    SourceServer,
+    DescribeSourceServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DisconnectRecoveryInstanceError =
   | AccessDeniedException
@@ -4054,7 +4214,27 @@ export const listExtensibleSourceServers: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExtensibleSourceServersRequest,
+  ListExtensibleSourceServersResponse,
+  ListExtensibleSourceServersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExtensibleSourceServersRequest,
+  ) => stream.Stream<
+    ListExtensibleSourceServersResponse,
+    ListExtensibleSourceServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExtensibleSourceServersRequest,
+  ) => stream.Stream<
+    StagingSourceServer,
+    ListExtensibleSourceServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLaunchActionsError =
   | InternalServerException
@@ -4105,7 +4285,27 @@ export const listLaunchActions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLaunchActionsRequest,
+  ListLaunchActionsResponse,
+  ListLaunchActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLaunchActionsRequest,
+  ) => stream.Stream<
+    ListLaunchActionsResponse,
+    ListLaunchActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLaunchActionsRequest,
+  ) => stream.Stream<
+    LaunchAction,
+    ListLaunchActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStagingAccountsError =
   | AccessDeniedException
@@ -4156,7 +4356,27 @@ export const listStagingAccounts: API.OperationMethod<
     items: "accounts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStagingAccountsRequest,
+  ListStagingAccountsResponse,
+  ListStagingAccountsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStagingAccountsRequest,
+  ) => stream.Stream<
+    ListStagingAccountsResponse,
+    ListStagingAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStagingAccountsRequest,
+  ) => stream.Stream<
+    Account,
+    ListStagingAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

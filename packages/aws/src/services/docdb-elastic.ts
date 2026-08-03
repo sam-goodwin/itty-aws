@@ -1263,7 +1263,27 @@ export const listClusters: API.OperationMethod<
     items: "clusters",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClustersInput,
+  ListClustersOutput,
+  ListClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClustersInput,
+  ) => stream.Stream<
+    ListClustersOutput,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClustersInput,
+  ) => stream.Stream<
+    ClusterInList,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterSnapshotsError =
   | AccessDeniedException
@@ -1312,7 +1332,27 @@ export const listClusterSnapshots: API.OperationMethod<
     items: "snapshots",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterSnapshotsInput,
+  ListClusterSnapshotsOutput,
+  ListClusterSnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterSnapshotsInput,
+  ) => stream.Stream<
+    ListClusterSnapshotsOutput,
+    ListClusterSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterSnapshotsInput,
+  ) => stream.Stream<
+    ClusterSnapshotInList,
+    ListClusterSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPendingMaintenanceActionsError =
   | AccessDeniedException
@@ -1361,7 +1401,27 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     items: "resourcePendingMaintenanceActions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPendingMaintenanceActionsInput,
+  ListPendingMaintenanceActionsOutput,
+  ListPendingMaintenanceActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPendingMaintenanceActionsInput,
+  ) => stream.Stream<
+    ListPendingMaintenanceActionsOutput,
+    ListPendingMaintenanceActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPendingMaintenanceActionsInput,
+  ) => stream.Stream<
+    ResourcePendingMaintenanceAction,
+    ListPendingMaintenanceActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

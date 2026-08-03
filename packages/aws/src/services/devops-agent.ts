@@ -6470,7 +6470,27 @@ export const listAgentSpaces: API.OperationMethod<
     items: "agentSpaces",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAgentSpacesInput,
+  ListAgentSpacesOutput,
+  ListAgentSpacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAgentSpacesInput,
+  ) => stream.Stream<
+    ListAgentSpacesOutput,
+    ListAgentSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAgentSpacesInput,
+  ) => stream.Stream<
+    AgentSpace,
+    ListAgentSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssetFilesError =
   | AccessDeniedException
@@ -6522,7 +6542,27 @@ export const listAssetFiles: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssetFilesRequest,
+  ListAssetFilesResponse,
+  ListAssetFilesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetFilesRequest,
+  ) => stream.Stream<
+    ListAssetFilesResponse,
+    ListAssetFilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetFilesRequest,
+  ) => stream.Stream<
+    AssetFileSummary,
+    ListAssetFilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssetsError =
   | AccessDeniedException
@@ -6572,7 +6612,27 @@ export const listAssets: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssetsRequest,
+  ListAssetsResponse,
+  ListAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetsRequest,
+  ) => stream.Stream<
+    ListAssetsResponse,
+    ListAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetsRequest,
+  ) => stream.Stream<
+    Asset,
+    ListAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssetTypesError =
   | AccessDeniedException
@@ -6622,7 +6682,27 @@ export const listAssetTypes: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssetTypesRequest,
+  ListAssetTypesResponse,
+  ListAssetTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetTypesRequest,
+  ) => stream.Stream<
+    ListAssetTypesResponse,
+    ListAssetTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetTypesRequest,
+  ) => stream.Stream<
+    AssetTypeSummary,
+    ListAssetTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssetVersionsError =
   | AccessDeniedException
@@ -6674,7 +6754,27 @@ export const listAssetVersions: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssetVersionsRequest,
+  ListAssetVersionsResponse,
+  ListAssetVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetVersionsRequest,
+  ) => stream.Stream<
+    ListAssetVersionsResponse,
+    ListAssetVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetVersionsRequest,
+  ) => stream.Stream<
+    AssetVersionMetadata,
+    ListAssetVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssociationsError =
   | InternalServerException
@@ -6724,7 +6824,27 @@ export const listAssociations: API.OperationMethod<
     items: "associations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssociationsInput,
+  ListAssociationsOutput,
+  ListAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssociationsInput,
+  ) => stream.Stream<
+    ListAssociationsOutput,
+    ListAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssociationsInput,
+  ) => stream.Stream<
+    Association,
+    ListAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBacklogTasksError =
   | AccessDeniedException
@@ -6774,7 +6894,27 @@ export const listBacklogTasks: API.OperationMethod<
     items: "tasks",
     pageSize: "limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBacklogTasksRequest,
+  ListBacklogTasksResponse,
+  ListBacklogTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBacklogTasksRequest,
+  ) => stream.Stream<
+    ListBacklogTasksResponse,
+    ListBacklogTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBacklogTasksRequest,
+  ) => stream.Stream<
+    Task,
+    ListBacklogTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListChatsError =
   | InternalServerException
@@ -6855,7 +6995,27 @@ export const listExecutions: API.OperationMethod<
     items: "executions",
     pageSize: "limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExecutionsRequest,
+  ListExecutionsResponse,
+  ListExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExecutionsRequest,
+  ) => stream.Stream<
+    ListExecutionsResponse,
+    ListExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExecutionsRequest,
+  ) => stream.Stream<
+    Execution,
+    ListExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGoalsError =
   | AccessDeniedException
@@ -6905,7 +7065,27 @@ export const listGoals: API.OperationMethod<
     items: "goals",
     pageSize: "limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGoalsRequest,
+  ListGoalsResponse,
+  ListGoalsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGoalsRequest,
+  ) => stream.Stream<
+    ListGoalsResponse,
+    ListGoalsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGoalsRequest,
+  ) => stream.Stream<
+    Goal,
+    ListGoalsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJournalRecordsError =
   | AccessDeniedException
@@ -6957,7 +7137,27 @@ export const listJournalRecords: API.OperationMethod<
     items: "records",
     pageSize: "limit",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJournalRecordsRequest,
+  ListJournalRecordsResponse,
+  ListJournalRecordsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJournalRecordsRequest,
+  ) => stream.Stream<
+    ListJournalRecordsResponse,
+    ListJournalRecordsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJournalRecordsRequest,
+  ) => stream.Stream<
+    JournalRecord,
+    ListJournalRecordsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPendingMessagesError =
   | AccessDeniedException
@@ -7090,7 +7290,27 @@ export const listServices: API.OperationMethod<
     items: "services",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServicesInput,
+  ListServicesOutput,
+  ListServicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServicesInput,
+  ) => stream.Stream<
+    ListServicesOutput,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServicesInput,
+  ) => stream.Stream<
+    RegisteredService,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -7171,7 +7391,27 @@ export const listTriggers: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTriggersRequest,
+  ListTriggersResponse,
+  ListTriggersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTriggersRequest,
+  ) => stream.Stream<
+    ListTriggersResponse,
+    ListTriggersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTriggersRequest,
+  ) => stream.Stream<
+    Trigger,
+    ListTriggersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWebhooksError =
   | InternalServerException

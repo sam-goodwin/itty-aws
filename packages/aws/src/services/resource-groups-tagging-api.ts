@@ -663,7 +663,27 @@ export const getComplianceSummary: API.OperationMethod<
     items: "SummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetComplianceSummaryInput,
+  GetComplianceSummaryOutput,
+  GetComplianceSummaryError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetComplianceSummaryInput,
+  ) => stream.Stream<
+    GetComplianceSummaryOutput,
+    GetComplianceSummaryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetComplianceSummaryInput,
+  ) => stream.Stream<
+    Summary,
+    GetComplianceSummaryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetResourcesError =
   | InternalServiceException
@@ -736,7 +756,27 @@ export const getResources: API.OperationMethod<
     items: "ResourceTagMappingList",
     pageSize: "ResourcesPerPage",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetResourcesInput,
+  GetResourcesOutput,
+  GetResourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetResourcesInput,
+  ) => stream.Stream<
+    GetResourcesOutput,
+    GetResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetResourcesInput,
+  ) => stream.Stream<
+    ResourceTagMapping,
+    GetResourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTagKeysError =
   | InternalServiceException
@@ -792,7 +832,27 @@ export const getTagKeys: API.OperationMethod<
     outputToken: "PaginationToken",
     items: "TagKeys",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTagKeysInput,
+  GetTagKeysOutput,
+  GetTagKeysError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTagKeysInput,
+  ) => stream.Stream<
+    GetTagKeysOutput,
+    GetTagKeysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTagKeysInput,
+  ) => stream.Stream<
+    TagKey,
+    GetTagKeysError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetTagValuesError =
   | InternalServiceException
@@ -848,7 +908,27 @@ export const getTagValues: API.OperationMethod<
     outputToken: "PaginationToken",
     items: "TagValues",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetTagValuesInput,
+  GetTagValuesOutput,
+  GetTagValuesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetTagValuesInput,
+  ) => stream.Stream<
+    GetTagValuesOutput,
+    GetTagValuesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetTagValuesInput,
+  ) => stream.Stream<
+    TagValue,
+    GetTagValuesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListRequiredTagsError =
   | InternalServiceException
@@ -897,7 +977,27 @@ export const listRequiredTags: API.OperationMethod<
     items: "RequiredTags",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRequiredTagsInput,
+  ListRequiredTagsOutput,
+  ListRequiredTagsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRequiredTagsInput,
+  ) => stream.Stream<
+    ListRequiredTagsOutput,
+    ListRequiredTagsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRequiredTagsInput,
+  ) => stream.Stream<
+    RequiredTag,
+    ListRequiredTagsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type StartReportCreationError =
   | ConcurrentModificationException

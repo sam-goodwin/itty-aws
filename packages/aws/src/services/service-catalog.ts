@@ -5049,7 +5049,27 @@ export const describePortfolioShares: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePortfolioSharesInput,
+  DescribePortfolioSharesOutput,
+  DescribePortfolioSharesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePortfolioSharesInput,
+  ) => stream.Stream<
+    DescribePortfolioSharesOutput,
+    DescribePortfolioSharesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePortfolioSharesInput,
+  ) => stream.Stream<
+    unknown,
+    DescribePortfolioSharesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePortfolioShareStatusError =
   | InvalidParametersException
@@ -5649,7 +5669,27 @@ export const getProvisionedProductOutputs: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetProvisionedProductOutputsInput,
+  GetProvisionedProductOutputsOutput,
+  GetProvisionedProductOutputsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetProvisionedProductOutputsInput,
+  ) => stream.Stream<
+    GetProvisionedProductOutputsOutput,
+    GetProvisionedProductOutputsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetProvisionedProductOutputsInput,
+  ) => stream.Stream<
+    unknown,
+    GetProvisionedProductOutputsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ImportAsProvisionedProductError =
   | DuplicateResourceException
@@ -5745,7 +5785,27 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAcceptedPortfolioSharesInput,
+  ListAcceptedPortfolioSharesOutput,
+  ListAcceptedPortfolioSharesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAcceptedPortfolioSharesInput,
+  ) => stream.Stream<
+    ListAcceptedPortfolioSharesOutput,
+    ListAcceptedPortfolioSharesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAcceptedPortfolioSharesInput,
+  ) => stream.Stream<
+    unknown,
+    ListAcceptedPortfolioSharesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListBudgetsForResourceError =
   | InvalidParametersException
@@ -5786,7 +5846,27 @@ export const listBudgetsForResource: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBudgetsForResourceInput,
+  ListBudgetsForResourceOutput,
+  ListBudgetsForResourceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBudgetsForResourceInput,
+  ) => stream.Stream<
+    ListBudgetsForResourceOutput,
+    ListBudgetsForResourceError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBudgetsForResourceInput,
+  ) => stream.Stream<
+    unknown,
+    ListBudgetsForResourceError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListConstraintsForPortfolioError =
   | InvalidParametersException
@@ -5827,7 +5907,27 @@ export const listConstraintsForPortfolio: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConstraintsForPortfolioInput,
+  ListConstraintsForPortfolioOutput,
+  ListConstraintsForPortfolioError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConstraintsForPortfolioInput,
+  ) => stream.Stream<
+    ListConstraintsForPortfolioOutput,
+    ListConstraintsForPortfolioError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConstraintsForPortfolioInput,
+  ) => stream.Stream<
+    unknown,
+    ListConstraintsForPortfolioError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListLaunchPathsError =
   | InvalidParametersException
@@ -5888,7 +5988,27 @@ export const listLaunchPaths: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLaunchPathsInput,
+  ListLaunchPathsOutput,
+  ListLaunchPathsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLaunchPathsInput,
+  ) => stream.Stream<
+    ListLaunchPathsOutput,
+    ListLaunchPathsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLaunchPathsInput,
+  ) => stream.Stream<
+    unknown,
+    ListLaunchPathsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListOrganizationPortfolioAccessError =
   | InvalidParametersException
@@ -5938,7 +6058,27 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOrganizationPortfolioAccessInput,
+  ListOrganizationPortfolioAccessOutput,
+  ListOrganizationPortfolioAccessError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOrganizationPortfolioAccessInput,
+  ) => stream.Stream<
+    ListOrganizationPortfolioAccessOutput,
+    ListOrganizationPortfolioAccessError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOrganizationPortfolioAccessInput,
+  ) => stream.Stream<
+    unknown,
+    ListOrganizationPortfolioAccessError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPortfolioAccessError =
   | InvalidParametersException
@@ -5981,7 +6121,27 @@ export const listPortfolioAccess: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPortfolioAccessInput,
+  ListPortfolioAccessOutput,
+  ListPortfolioAccessError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPortfolioAccessInput,
+  ) => stream.Stream<
+    ListPortfolioAccessOutput,
+    ListPortfolioAccessError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPortfolioAccessInput,
+  ) => stream.Stream<
+    unknown,
+    ListPortfolioAccessError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPortfoliosError = InvalidParametersException | CommonErrors;
 /**
@@ -6019,7 +6179,27 @@ export const listPortfolios: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPortfoliosInput,
+  ListPortfoliosOutput,
+  ListPortfoliosError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPortfoliosInput,
+  ) => stream.Stream<
+    ListPortfoliosOutput,
+    ListPortfoliosError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPortfoliosInput,
+  ) => stream.Stream<
+    unknown,
+    ListPortfoliosError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPortfoliosForProductError =
   | InvalidParametersException
@@ -6060,7 +6240,27 @@ export const listPortfoliosForProduct: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPortfoliosForProductInput,
+  ListPortfoliosForProductOutput,
+  ListPortfoliosForProductError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPortfoliosForProductInput,
+  ) => stream.Stream<
+    ListPortfoliosForProductOutput,
+    ListPortfoliosForProductError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPortfoliosForProductInput,
+  ) => stream.Stream<
+    unknown,
+    ListPortfoliosForProductError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPrincipalsForPortfolioError =
   | InvalidParametersException
@@ -6101,7 +6301,27 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPrincipalsForPortfolioInput,
+  ListPrincipalsForPortfolioOutput,
+  ListPrincipalsForPortfolioError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPrincipalsForPortfolioInput,
+  ) => stream.Stream<
+    ListPrincipalsForPortfolioOutput,
+    ListPrincipalsForPortfolioError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPrincipalsForPortfolioInput,
+  ) => stream.Stream<
+    unknown,
+    ListPrincipalsForPortfolioError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListProvisionedProductPlansError =
   | InvalidParametersException
@@ -6184,7 +6404,27 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProvisioningArtifactsForServiceActionInput,
+  ListProvisioningArtifactsForServiceActionOutput,
+  ListProvisioningArtifactsForServiceActionError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProvisioningArtifactsForServiceActionInput,
+  ) => stream.Stream<
+    ListProvisioningArtifactsForServiceActionOutput,
+    ListProvisioningArtifactsForServiceActionError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProvisioningArtifactsForServiceActionInput,
+  ) => stream.Stream<
+    unknown,
+    ListProvisioningArtifactsForServiceActionError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecordHistoryError = InvalidParametersException | CommonErrors;
 /**
@@ -6248,7 +6488,27 @@ export const listResourcesForTagOption: API.OperationMethod<
     outputToken: "PageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourcesForTagOptionInput,
+  ListResourcesForTagOptionOutput,
+  ListResourcesForTagOptionError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourcesForTagOptionInput,
+  ) => stream.Stream<
+    ListResourcesForTagOptionOutput,
+    ListResourcesForTagOptionError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourcesForTagOptionInput,
+  ) => stream.Stream<
+    unknown,
+    ListResourcesForTagOptionError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceActionsError = InvalidParametersException | CommonErrors;
 /**
@@ -6286,7 +6546,27 @@ export const listServiceActions: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceActionsInput,
+  ListServiceActionsOutput,
+  ListServiceActionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceActionsInput,
+  ) => stream.Stream<
+    ListServiceActionsOutput,
+    ListServiceActionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceActionsInput,
+  ) => stream.Stream<
+    unknown,
+    ListServiceActionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceActionsForProvisioningArtifactError =
   | InvalidParametersException
@@ -6327,7 +6607,27 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceActionsForProvisioningArtifactInput,
+  ListServiceActionsForProvisioningArtifactOutput,
+  ListServiceActionsForProvisioningArtifactError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceActionsForProvisioningArtifactInput,
+  ) => stream.Stream<
+    ListServiceActionsForProvisioningArtifactOutput,
+    ListServiceActionsForProvisioningArtifactError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceActionsForProvisioningArtifactInput,
+  ) => stream.Stream<
+    unknown,
+    ListServiceActionsForProvisioningArtifactError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListStackInstancesForProvisionedProductError =
   | InvalidParametersException
@@ -6389,7 +6689,27 @@ export const listTagOptions: API.OperationMethod<
     outputToken: "PageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagOptionsInput,
+  ListTagOptionsOutput,
+  ListTagOptionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagOptionsInput,
+  ) => stream.Stream<
+    ListTagOptionsOutput,
+    ListTagOptionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagOptionsInput,
+  ) => stream.Stream<
+    unknown,
+    ListTagOptionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type NotifyProvisionProductEngineWorkflowResultError =
   | InvalidParametersException
@@ -6590,7 +6910,27 @@ export const searchProducts: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchProductsInput,
+  SearchProductsOutput,
+  SearchProductsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchProductsInput,
+  ) => stream.Stream<
+    SearchProductsOutput,
+    SearchProductsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchProductsInput,
+  ) => stream.Stream<
+    unknown,
+    SearchProductsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type SearchProductsAsAdminError =
   | InvalidParametersException
@@ -6631,7 +6971,27 @@ export const searchProductsAsAdmin: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchProductsAsAdminInput,
+  SearchProductsAsAdminOutput,
+  SearchProductsAsAdminError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchProductsAsAdminInput,
+  ) => stream.Stream<
+    SearchProductsAsAdminOutput,
+    SearchProductsAsAdminError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchProductsAsAdminInput,
+  ) => stream.Stream<
+    unknown,
+    SearchProductsAsAdminError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type SearchProvisionedProductsError =
   | InvalidParametersException
@@ -6671,7 +7031,27 @@ export const searchProvisionedProducts: API.OperationMethod<
     outputToken: "NextPageToken",
     pageSize: "PageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchProvisionedProductsInput,
+  SearchProvisionedProductsOutput,
+  SearchProvisionedProductsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchProvisionedProductsInput,
+  ) => stream.Stream<
+    SearchProvisionedProductsOutput,
+    SearchProvisionedProductsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchProvisionedProductsInput,
+  ) => stream.Stream<
+    unknown,
+    SearchProvisionedProductsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type TerminateProvisionedProductError =
   | ResourceNotFoundException

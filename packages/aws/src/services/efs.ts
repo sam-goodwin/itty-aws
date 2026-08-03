@@ -2334,7 +2334,27 @@ export const describeAccessPoints: API.OperationMethod<
     items: "AccessPoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAccessPointsRequest,
+  DescribeAccessPointsResponse,
+  DescribeAccessPointsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAccessPointsRequest,
+  ) => stream.Stream<
+    DescribeAccessPointsResponse,
+    DescribeAccessPointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAccessPointsRequest,
+  ) => stream.Stream<
+    AccessPointDescription,
+    DescribeAccessPointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAccountPreferencesError =
   | InternalServerError
@@ -2476,7 +2496,27 @@ export const describeFileSystems: API.OperationMethod<
     items: "FileSystems",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFileSystemsRequest,
+  DescribeFileSystemsResponse,
+  DescribeFileSystemsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFileSystemsRequest,
+  ) => stream.Stream<
+    DescribeFileSystemsResponse,
+    DescribeFileSystemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFileSystemsRequest,
+  ) => stream.Stream<
+    FileSystemDescription,
+    DescribeFileSystemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLifecycleConfigurationError =
   | BadRequest
@@ -2563,7 +2603,27 @@ export const describeMountTargets: API.OperationMethod<
     items: "MountTargets",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMountTargetsRequest,
+  DescribeMountTargetsResponse,
+  DescribeMountTargetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMountTargetsRequest,
+  ) => stream.Stream<
+    DescribeMountTargetsResponse,
+    DescribeMountTargetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMountTargetsRequest,
+  ) => stream.Stream<
+    MountTargetDescription,
+    DescribeMountTargetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMountTargetSecurityGroupsError =
   | BadRequest
@@ -2654,7 +2714,27 @@ export const describeReplicationConfigurations: API.OperationMethod<
     items: "Replications",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReplicationConfigurationsRequest,
+  DescribeReplicationConfigurationsResponse,
+  DescribeReplicationConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReplicationConfigurationsRequest,
+  ) => stream.Stream<
+    DescribeReplicationConfigurationsResponse,
+    DescribeReplicationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReplicationConfigurationsRequest,
+  ) => stream.Stream<
+    ReplicationConfigurationDescription,
+    DescribeReplicationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTagsError =
   | BadRequest
@@ -2706,7 +2786,27 @@ export const describeTags: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTagsRequest,
+  DescribeTagsResponse,
+  DescribeTagsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTagsRequest,
+  ) => stream.Stream<
+    DescribeTagsResponse,
+    DescribeTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTagsRequest,
+  ) => stream.Stream<
+    Tag,
+    DescribeTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessPointNotFound
@@ -2757,7 +2857,27 @@ export const listTagsForResource: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    ListTagsForResourceResponse,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTagsForResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ModifyMountTargetSecurityGroupsError =
   | BadRequest

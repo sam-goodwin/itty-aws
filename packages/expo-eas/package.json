@@ -57,6 +57,7 @@
     }
   },
   "scripts": {
+    "build": "tsc -b",
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts && oxfmt src/services",
     "typecheck": "tsc -p tsconfig.json",

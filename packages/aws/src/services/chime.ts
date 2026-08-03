@@ -4125,7 +4125,27 @@ export const listAccounts: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccountsRequest,
+  ListAccountsResponse,
+  ListAccountsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
+    ListAccountsResponse,
+    ListAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAccountsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBotsError =
   | BadRequestException
@@ -4179,7 +4199,27 @@ export const listBots: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBotsRequest,
+  ListBotsResponse,
+  ListBotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBotsRequest,
+  ) => stream.Stream<
+    ListBotsResponse,
+    ListBotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBotsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListBotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPhoneNumberOrdersError =
   | BadRequestException
@@ -4231,7 +4271,27 @@ export const listPhoneNumberOrders: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPhoneNumberOrdersRequest,
+  ListPhoneNumberOrdersResponse,
+  ListPhoneNumberOrdersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPhoneNumberOrdersRequest,
+  ) => stream.Stream<
+    ListPhoneNumberOrdersResponse,
+    ListPhoneNumberOrdersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPhoneNumberOrdersRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPhoneNumberOrdersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPhoneNumbersError =
   | BadRequestException
@@ -4285,7 +4345,27 @@ export const listPhoneNumbers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPhoneNumbersRequest,
+  ListPhoneNumbersResponse,
+  ListPhoneNumbersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPhoneNumbersRequest,
+  ) => stream.Stream<
+    ListPhoneNumbersResponse,
+    ListPhoneNumbersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPhoneNumbersRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPhoneNumbersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRoomMembershipsError =
   | BadRequestException
@@ -4340,7 +4420,27 @@ export const listRoomMemberships: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRoomMembershipsRequest,
+  ListRoomMembershipsResponse,
+  ListRoomMembershipsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRoomMembershipsRequest,
+  ) => stream.Stream<
+    ListRoomMembershipsResponse,
+    ListRoomMembershipsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRoomMembershipsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRoomMembershipsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRoomsError =
   | BadRequestException
@@ -4394,7 +4494,27 @@ export const listRooms: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRoomsRequest,
+  ListRoomsResponse,
+  ListRoomsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRoomsRequest,
+  ) => stream.Stream<
+    ListRoomsResponse,
+    ListRoomsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRoomsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRoomsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSupportedPhoneNumberCountriesError =
   | AccessDeniedException
@@ -4483,7 +4603,27 @@ export const listUsers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUsersRequest,
+  ListUsersResponse,
+  ListUsersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUsersRequest,
+  ) => stream.Stream<
+    ListUsersResponse,
+    ListUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUsersRequest,
+  ) => stream.Stream<
+    unknown,
+    ListUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type LogoutUserError =
   | BadRequestException
@@ -4831,7 +4971,27 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchAvailablePhoneNumbersRequest,
+  SearchAvailablePhoneNumbersResponse,
+  SearchAvailablePhoneNumbersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchAvailablePhoneNumbersRequest,
+  ) => stream.Stream<
+    SearchAvailablePhoneNumbersResponse,
+    SearchAvailablePhoneNumbersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchAvailablePhoneNumbersRequest,
+  ) => stream.Stream<
+    unknown,
+    SearchAvailablePhoneNumbersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type UpdateAccountError =
   | BadRequestException

@@ -6052,7 +6052,27 @@ export const describeTopicPartitions: API.OperationMethod<
     items: "Partitions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTopicPartitionsRequest,
+  DescribeTopicPartitionsResponse,
+  DescribeTopicPartitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTopicPartitionsRequest,
+  ) => stream.Stream<
+    DescribeTopicPartitionsResponse,
+    DescribeTopicPartitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTopicPartitionsRequest,
+  ) => stream.Stream<
+    TopicPartitionInfo,
+    DescribeTopicPartitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcConnectionError =
   | BadRequestException
@@ -6229,7 +6249,27 @@ export const listClientVpcConnections: API.OperationMethod<
     items: "ClientVpcConnections",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClientVpcConnectionsRequest,
+  ListClientVpcConnectionsResponse,
+  ListClientVpcConnectionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClientVpcConnectionsRequest,
+  ) => stream.Stream<
+    ListClientVpcConnectionsResponse,
+    ListClientVpcConnectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClientVpcConnectionsRequest,
+  ) => stream.Stream<
+    ClientVpcConnection,
+    ListClientVpcConnectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterOperationsError =
   | BadRequestException
@@ -6278,7 +6318,27 @@ export const listClusterOperations: API.OperationMethod<
     items: "ClusterOperationInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterOperationsRequest,
+  ListClusterOperationsResponse,
+  ListClusterOperationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterOperationsRequest,
+  ) => stream.Stream<
+    ListClusterOperationsResponse,
+    ListClusterOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterOperationsRequest,
+  ) => stream.Stream<
+    ClusterOperationInfo,
+    ListClusterOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterOperationsV2Error =
   | BadRequestException
@@ -6333,7 +6393,27 @@ export const listClusterOperationsV2: API.OperationMethod<
     items: "ClusterOperationInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterOperationsV2Request,
+  ListClusterOperationsV2Response,
+  ListClusterOperationsV2Error,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterOperationsV2Request,
+  ) => stream.Stream<
+    ListClusterOperationsV2Response,
+    ListClusterOperationsV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterOperationsV2Request,
+  ) => stream.Stream<
+    ClusterOperationV2Summary,
+    ListClusterOperationsV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClustersError =
   | BadRequestException
@@ -6382,7 +6462,27 @@ export const listClusters: API.OperationMethod<
     items: "ClusterInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClustersRequest,
+  ListClustersResponse,
+  ListClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClustersRequest,
+  ) => stream.Stream<
+    ListClustersResponse,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClustersRequest,
+  ) => stream.Stream<
+    ClusterInfo,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClustersV2Error =
   | BadRequestException
@@ -6431,7 +6531,27 @@ export const listClustersV2: API.OperationMethod<
     items: "ClusterInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClustersV2Request,
+  ListClustersV2Response,
+  ListClustersV2Error,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClustersV2Request,
+  ) => stream.Stream<
+    ListClustersV2Response,
+    ListClustersV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClustersV2Request,
+  ) => stream.Stream<
+    Cluster,
+    ListClustersV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConfigurationRevisionsError =
   | BadRequestException
@@ -6484,7 +6604,27 @@ export const listConfigurationRevisions: API.OperationMethod<
     items: "Revisions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConfigurationRevisionsRequest,
+  ListConfigurationRevisionsResponse,
+  ListConfigurationRevisionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigurationRevisionsRequest,
+  ) => stream.Stream<
+    ListConfigurationRevisionsResponse,
+    ListConfigurationRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigurationRevisionsRequest,
+  ) => stream.Stream<
+    ConfigurationRevision,
+    ListConfigurationRevisionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConfigurationsError =
   | BadRequestException
@@ -6535,7 +6675,27 @@ export const listConfigurations: API.OperationMethod<
     items: "Configurations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConfigurationsRequest,
+  ListConfigurationsResponse,
+  ListConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigurationsRequest,
+  ) => stream.Stream<
+    ListConfigurationsResponse,
+    ListConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigurationsRequest,
+  ) => stream.Stream<
+    Configuration,
+    ListConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListKafkaVersionsError =
   | BadRequestException
@@ -6584,7 +6744,27 @@ export const listKafkaVersions: API.OperationMethod<
     items: "KafkaVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListKafkaVersionsRequest,
+  ListKafkaVersionsResponse,
+  ListKafkaVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListKafkaVersionsRequest,
+  ) => stream.Stream<
+    ListKafkaVersionsResponse,
+    ListKafkaVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListKafkaVersionsRequest,
+  ) => stream.Stream<
+    KafkaVersion,
+    ListKafkaVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNodesError =
   | BadRequestException
@@ -6633,7 +6813,27 @@ export const listNodes: API.OperationMethod<
     items: "NodeInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNodesRequest,
+  ListNodesResponse,
+  ListNodesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNodesRequest,
+  ) => stream.Stream<
+    ListNodesResponse,
+    ListNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNodesRequest,
+  ) => stream.Stream<
+    NodeInfo,
+    ListNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReplicatorsError =
   | BadRequestException
@@ -6688,7 +6888,27 @@ export const listReplicators: API.OperationMethod<
     items: "Replicators",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReplicatorsRequest,
+  ListReplicatorsResponse,
+  ListReplicatorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReplicatorsRequest,
+  ) => stream.Stream<
+    ListReplicatorsResponse,
+    ListReplicatorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReplicatorsRequest,
+  ) => stream.Stream<
+    ReplicatorSummary,
+    ListReplicatorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListScramSecretsError =
   | BadRequestException
@@ -6743,7 +6963,27 @@ export const listScramSecrets: API.OperationMethod<
     items: "SecretArnList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListScramSecretsRequest,
+  ListScramSecretsResponse,
+  ListScramSecretsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScramSecretsRequest,
+  ) => stream.Stream<
+    ListScramSecretsResponse,
+    ListScramSecretsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScramSecretsRequest,
+  ) => stream.Stream<
+    string,
+    ListScramSecretsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -6822,7 +7062,27 @@ export const listTopics: API.OperationMethod<
     items: "Topics",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTopicsRequest,
+  ListTopicsResponse,
+  ListTopicsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTopicsRequest,
+  ) => stream.Stream<
+    ListTopicsResponse,
+    ListTopicsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTopicsRequest,
+  ) => stream.Stream<
+    TopicInfo,
+    ListTopicsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListVpcConnectionsError =
   | BadRequestException
@@ -6873,7 +7133,27 @@ export const listVpcConnections: API.OperationMethod<
     items: "VpcConnections",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVpcConnectionsRequest,
+  ListVpcConnectionsResponse,
+  ListVpcConnectionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVpcConnectionsRequest,
+  ) => stream.Stream<
+    ListVpcConnectionsResponse,
+    ListVpcConnectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVpcConnectionsRequest,
+  ) => stream.Stream<
+    VpcConnection,
+    ListVpcConnectionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutClusterPolicyError =
   | BadRequestException

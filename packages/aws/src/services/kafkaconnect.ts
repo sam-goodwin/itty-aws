@@ -1987,7 +1987,27 @@ export const listConnectorOperations: API.OperationMethod<
     items: "connectorOperations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConnectorOperationsRequest,
+  ListConnectorOperationsResponse,
+  ListConnectorOperationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConnectorOperationsRequest,
+  ) => stream.Stream<
+    ListConnectorOperationsResponse,
+    ListConnectorOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConnectorOperationsRequest,
+  ) => stream.Stream<
+    ConnectorOperationSummary,
+    ListConnectorOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConnectorsError =
   | BadRequestException
@@ -2042,7 +2062,27 @@ export const listConnectors: API.OperationMethod<
     items: "connectors",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConnectorsRequest,
+  ListConnectorsResponse,
+  ListConnectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
+    ListConnectorsResponse,
+    ListConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
+    ConnectorSummary,
+    ListConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCustomPluginsError =
   | BadRequestException
@@ -2097,7 +2137,27 @@ export const listCustomPlugins: API.OperationMethod<
     items: "customPlugins",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCustomPluginsRequest,
+  ListCustomPluginsResponse,
+  ListCustomPluginsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCustomPluginsRequest,
+  ) => stream.Stream<
+    ListCustomPluginsResponse,
+    ListCustomPluginsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCustomPluginsRequest,
+  ) => stream.Stream<
+    CustomPluginSummary,
+    ListCustomPluginsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | BadRequestException
@@ -2186,7 +2246,27 @@ export const listWorkerConfigurations: API.OperationMethod<
     items: "workerConfigurations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkerConfigurationsRequest,
+  ListWorkerConfigurationsResponse,
+  ListWorkerConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkerConfigurationsRequest,
+  ) => stream.Stream<
+    ListWorkerConfigurationsResponse,
+    ListWorkerConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkerConfigurationsRequest,
+  ) => stream.Stream<
+    WorkerConfigurationSummary,
+    ListWorkerConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type TagResourceError =
   | BadRequestException

@@ -12859,7 +12859,27 @@ export const describeActivations: API.OperationMethod<
     items: "ActivationList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeActivationsRequest,
+  DescribeActivationsResult,
+  DescribeActivationsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeActivationsRequest,
+  ) => stream.Stream<
+    DescribeActivationsResult,
+    DescribeActivationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeActivationsRequest,
+  ) => stream.Stream<
+    Activation,
+    DescribeActivationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAssociationError =
   | AssociationDoesNotExist
@@ -12934,7 +12954,27 @@ export const describeAssociationExecutions: API.OperationMethod<
     items: "AssociationExecutions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAssociationExecutionsRequest,
+  DescribeAssociationExecutionsResult,
+  DescribeAssociationExecutionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAssociationExecutionsRequest,
+  ) => stream.Stream<
+    DescribeAssociationExecutionsResult,
+    DescribeAssociationExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAssociationExecutionsRequest,
+  ) => stream.Stream<
+    AssociationExecution,
+    DescribeAssociationExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAssociationExecutionTargetsError =
   | AssociationDoesNotExist
@@ -12983,7 +13023,27 @@ export const describeAssociationExecutionTargets: API.OperationMethod<
     items: "AssociationExecutionTargets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAssociationExecutionTargetsRequest,
+  DescribeAssociationExecutionTargetsResult,
+  DescribeAssociationExecutionTargetsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAssociationExecutionTargetsRequest,
+  ) => stream.Stream<
+    DescribeAssociationExecutionTargetsResult,
+    DescribeAssociationExecutionTargetsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAssociationExecutionTargetsRequest,
+  ) => stream.Stream<
+    AssociationExecutionTarget,
+    DescribeAssociationExecutionTargetsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAutomationExecutionsError =
   | InternalServerError
@@ -13032,7 +13092,27 @@ export const describeAutomationExecutions: API.OperationMethod<
     items: "AutomationExecutionMetadataList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAutomationExecutionsRequest,
+  DescribeAutomationExecutionsResult,
+  DescribeAutomationExecutionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAutomationExecutionsRequest,
+  ) => stream.Stream<
+    DescribeAutomationExecutionsResult,
+    DescribeAutomationExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAutomationExecutionsRequest,
+  ) => stream.Stream<
+    AutomationExecutionMetadata,
+    DescribeAutomationExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAutomationStepExecutionsError =
   | AutomationExecutionNotFoundException
@@ -13084,7 +13164,27 @@ export const describeAutomationStepExecutions: API.OperationMethod<
     items: "StepExecutions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAutomationStepExecutionsRequest,
+  DescribeAutomationStepExecutionsResult,
+  DescribeAutomationStepExecutionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAutomationStepExecutionsRequest,
+  ) => stream.Stream<
+    DescribeAutomationStepExecutionsResult,
+    DescribeAutomationStepExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAutomationStepExecutionsRequest,
+  ) => stream.Stream<
+    StepExecution,
+    DescribeAutomationStepExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAvailablePatchesError = InternalServerError | CommonErrors;
 /**
@@ -13126,7 +13226,27 @@ export const describeAvailablePatches: API.OperationMethod<
     items: "Patches",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAvailablePatchesRequest,
+  DescribeAvailablePatchesResult,
+  DescribeAvailablePatchesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAvailablePatchesRequest,
+  ) => stream.Stream<
+    DescribeAvailablePatchesResult,
+    DescribeAvailablePatchesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAvailablePatchesRequest,
+  ) => stream.Stream<
+    Patch,
+    DescribeAvailablePatchesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeDocumentError =
   | InternalServerError
@@ -13223,7 +13343,27 @@ export const describeEffectiveInstanceAssociations: API.OperationMethod<
     items: "Associations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEffectiveInstanceAssociationsRequest,
+  DescribeEffectiveInstanceAssociationsResult,
+  DescribeEffectiveInstanceAssociationsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEffectiveInstanceAssociationsRequest,
+  ) => stream.Stream<
+    DescribeEffectiveInstanceAssociationsResult,
+    DescribeEffectiveInstanceAssociationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEffectiveInstanceAssociationsRequest,
+  ) => stream.Stream<
+    InstanceAssociation,
+    DescribeEffectiveInstanceAssociationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeEffectivePatchesForPatchBaselineError =
   | DoesNotExistException
@@ -13273,7 +13413,27 @@ export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
     items: "EffectivePatches",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeEffectivePatchesForPatchBaselineRequest,
+  DescribeEffectivePatchesForPatchBaselineResult,
+  DescribeEffectivePatchesForPatchBaselineError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeEffectivePatchesForPatchBaselineRequest,
+  ) => stream.Stream<
+    DescribeEffectivePatchesForPatchBaselineResult,
+    DescribeEffectivePatchesForPatchBaselineError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeEffectivePatchesForPatchBaselineRequest,
+  ) => stream.Stream<
+    EffectivePatch,
+    DescribeEffectivePatchesForPatchBaselineError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceAssociationsStatusError =
   | InternalServerError
@@ -13316,7 +13476,27 @@ export const describeInstanceAssociationsStatus: API.OperationMethod<
     items: "InstanceAssociationStatusInfos",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceAssociationsStatusRequest,
+  DescribeInstanceAssociationsStatusResult,
+  DescribeInstanceAssociationsStatusError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceAssociationsStatusRequest,
+  ) => stream.Stream<
+    DescribeInstanceAssociationsStatusResult,
+    DescribeInstanceAssociationsStatusError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceAssociationsStatusRequest,
+  ) => stream.Stream<
+    InstanceAssociationStatusInfo,
+    DescribeInstanceAssociationsStatusError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstanceInformationError =
   | InternalServerError
@@ -13377,7 +13557,27 @@ export const describeInstanceInformation: API.OperationMethod<
     items: "InstanceInformationList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceInformationRequest,
+  DescribeInstanceInformationResult,
+  DescribeInstanceInformationError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceInformationRequest,
+  ) => stream.Stream<
+    DescribeInstanceInformationResult,
+    DescribeInstanceInformationError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceInformationRequest,
+  ) => stream.Stream<
+    InstanceInformation,
+    DescribeInstanceInformationError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancePatchesError =
   | InternalServerError
@@ -13427,7 +13627,27 @@ export const describeInstancePatches: API.OperationMethod<
     items: "Patches",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstancePatchesRequest,
+  DescribeInstancePatchesResult,
+  DescribeInstancePatchesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstancePatchesRequest,
+  ) => stream.Stream<
+    DescribeInstancePatchesResult,
+    DescribeInstancePatchesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstancePatchesRequest,
+  ) => stream.Stream<
+    PatchComplianceData,
+    DescribeInstancePatchesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancePatchStatesError =
   | InternalServerError
@@ -13469,7 +13689,27 @@ export const describeInstancePatchStates: API.OperationMethod<
     items: "InstancePatchStates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstancePatchStatesRequest,
+  DescribeInstancePatchStatesResult,
+  DescribeInstancePatchStatesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstancePatchStatesRequest,
+  ) => stream.Stream<
+    DescribeInstancePatchStatesResult,
+    DescribeInstancePatchStatesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstancePatchStatesRequest,
+  ) => stream.Stream<
+    InstancePatchState,
+    DescribeInstancePatchStatesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancePatchStatesForPatchGroupError =
   | InternalServerError
@@ -13513,7 +13753,27 @@ export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
     items: "InstancePatchStates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstancePatchStatesForPatchGroupRequest,
+  DescribeInstancePatchStatesForPatchGroupResult,
+  DescribeInstancePatchStatesForPatchGroupError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstancePatchStatesForPatchGroupRequest,
+  ) => stream.Stream<
+    DescribeInstancePatchStatesForPatchGroupResult,
+    DescribeInstancePatchStatesForPatchGroupError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstancePatchStatesForPatchGroupRequest,
+  ) => stream.Stream<
+    InstancePatchState,
+    DescribeInstancePatchStatesForPatchGroupError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInstancePropertiesError =
   | InternalServerError
@@ -13569,7 +13829,27 @@ export const describeInstanceProperties: API.OperationMethod<
     items: "InstanceProperties",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstancePropertiesRequest,
+  DescribeInstancePropertiesResult,
+  DescribeInstancePropertiesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstancePropertiesRequest,
+  ) => stream.Stream<
+    DescribeInstancePropertiesResult,
+    DescribeInstancePropertiesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstancePropertiesRequest,
+  ) => stream.Stream<
+    InstanceProperty,
+    DescribeInstancePropertiesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInventoryDeletionsError =
   | InternalServerError
@@ -13612,7 +13892,27 @@ export const describeInventoryDeletions: API.OperationMethod<
     items: "InventoryDeletions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInventoryDeletionsRequest,
+  DescribeInventoryDeletionsResult,
+  DescribeInventoryDeletionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInventoryDeletionsRequest,
+  ) => stream.Stream<
+    DescribeInventoryDeletionsResult,
+    DescribeInventoryDeletionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInventoryDeletionsRequest,
+  ) => stream.Stream<
+    InventoryDeletionStatusItem,
+    DescribeInventoryDeletionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowExecutionsError =
   | InternalServerError
@@ -13655,7 +13955,27 @@ export const describeMaintenanceWindowExecutions: API.OperationMethod<
     items: "WindowExecutions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowExecutionsRequest,
+  DescribeMaintenanceWindowExecutionsResult,
+  DescribeMaintenanceWindowExecutionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowExecutionsRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowExecutionsResult,
+    DescribeMaintenanceWindowExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowExecutionsRequest,
+  ) => stream.Stream<
+    MaintenanceWindowExecution,
+    DescribeMaintenanceWindowExecutionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowExecutionTaskInvocationsError =
   | DoesNotExistException
@@ -13698,7 +14018,27 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMet
     items: "WindowExecutionTaskInvocationIdentities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
+  DescribeMaintenanceWindowExecutionTaskInvocationsResult,
+  DescribeMaintenanceWindowExecutionTaskInvocationsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowExecutionTaskInvocationsResult,
+    DescribeMaintenanceWindowExecutionTaskInvocationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
+  ) => stream.Stream<
+    MaintenanceWindowExecutionTaskInvocationIdentity,
+    DescribeMaintenanceWindowExecutionTaskInvocationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowExecutionTasksError =
   | DoesNotExistException
@@ -13740,7 +14080,27 @@ export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
     items: "WindowExecutionTaskIdentities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowExecutionTasksRequest,
+  DescribeMaintenanceWindowExecutionTasksResult,
+  DescribeMaintenanceWindowExecutionTasksError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowExecutionTasksRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowExecutionTasksResult,
+    DescribeMaintenanceWindowExecutionTasksError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowExecutionTasksRequest,
+  ) => stream.Stream<
+    MaintenanceWindowExecutionTaskIdentity,
+    DescribeMaintenanceWindowExecutionTasksError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowsError =
   | InternalServerError
@@ -13781,7 +14141,27 @@ export const describeMaintenanceWindows: API.OperationMethod<
     items: "WindowIdentities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowsRequest,
+  DescribeMaintenanceWindowsResult,
+  DescribeMaintenanceWindowsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowsRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowsResult,
+    DescribeMaintenanceWindowsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowsRequest,
+  ) => stream.Stream<
+    MaintenanceWindowIdentity,
+    DescribeMaintenanceWindowsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowScheduleError =
   | DoesNotExistException
@@ -13823,7 +14203,27 @@ export const describeMaintenanceWindowSchedule: API.OperationMethod<
     items: "ScheduledWindowExecutions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowScheduleRequest,
+  DescribeMaintenanceWindowScheduleResult,
+  DescribeMaintenanceWindowScheduleError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowScheduleRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowScheduleResult,
+    DescribeMaintenanceWindowScheduleError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowScheduleRequest,
+  ) => stream.Stream<
+    ScheduledWindowExecution,
+    DescribeMaintenanceWindowScheduleError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowsForTargetError =
   | InternalServerError
@@ -13865,7 +14265,27 @@ export const describeMaintenanceWindowsForTarget: API.OperationMethod<
     items: "WindowIdentities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowsForTargetRequest,
+  DescribeMaintenanceWindowsForTargetResult,
+  DescribeMaintenanceWindowsForTargetError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowsForTargetRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowsForTargetResult,
+    DescribeMaintenanceWindowsForTargetError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowsForTargetRequest,
+  ) => stream.Stream<
+    MaintenanceWindowIdentityForTarget,
+    DescribeMaintenanceWindowsForTargetError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowTargetsError =
   | DoesNotExistException
@@ -13907,7 +14327,27 @@ export const describeMaintenanceWindowTargets: API.OperationMethod<
     items: "Targets",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowTargetsRequest,
+  DescribeMaintenanceWindowTargetsResult,
+  DescribeMaintenanceWindowTargetsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowTargetsRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowTargetsResult,
+    DescribeMaintenanceWindowTargetsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowTargetsRequest,
+  ) => stream.Stream<
+    MaintenanceWindowTarget,
+    DescribeMaintenanceWindowTargetsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMaintenanceWindowTasksError =
   | DoesNotExistException
@@ -13954,7 +14394,27 @@ export const describeMaintenanceWindowTasks: API.OperationMethod<
     items: "Tasks",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMaintenanceWindowTasksRequest,
+  DescribeMaintenanceWindowTasksResult,
+  DescribeMaintenanceWindowTasksError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMaintenanceWindowTasksRequest,
+  ) => stream.Stream<
+    DescribeMaintenanceWindowTasksResult,
+    DescribeMaintenanceWindowTasksError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMaintenanceWindowTasksRequest,
+  ) => stream.Stream<
+    MaintenanceWindowTask,
+    DescribeMaintenanceWindowTasksError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeOpsItemsError = InternalServerError | CommonErrors;
 /**
@@ -13999,7 +14459,27 @@ export const describeOpsItems: API.OperationMethod<
     items: "OpsItemSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeOpsItemsRequest,
+  DescribeOpsItemsResponse,
+  DescribeOpsItemsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeOpsItemsRequest,
+  ) => stream.Stream<
+    DescribeOpsItemsResponse,
+    DescribeOpsItemsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeOpsItemsRequest,
+  ) => stream.Stream<
+    OpsItemSummary,
+    DescribeOpsItemsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeParametersError =
   | InternalServerError
@@ -14066,7 +14546,27 @@ export const describeParameters: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeParametersRequest,
+  DescribeParametersResult,
+  DescribeParametersError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeParametersRequest,
+  ) => stream.Stream<
+    DescribeParametersResult,
+    DescribeParametersError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeParametersRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeParametersError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePatchBaselinesError = InternalServerError | CommonErrors;
 /**
@@ -14105,7 +14605,27 @@ export const describePatchBaselines: API.OperationMethod<
     items: "BaselineIdentities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePatchBaselinesRequest,
+  DescribePatchBaselinesResult,
+  DescribePatchBaselinesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePatchBaselinesRequest,
+  ) => stream.Stream<
+    DescribePatchBaselinesResult,
+    DescribePatchBaselinesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePatchBaselinesRequest,
+  ) => stream.Stream<
+    PatchBaselineIdentity,
+    DescribePatchBaselinesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePatchGroupsError = InternalServerError | CommonErrors;
 /**
@@ -14144,7 +14664,27 @@ export const describePatchGroups: API.OperationMethod<
     items: "Mappings",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePatchGroupsRequest,
+  DescribePatchGroupsResult,
+  DescribePatchGroupsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePatchGroupsRequest,
+  ) => stream.Stream<
+    DescribePatchGroupsResult,
+    DescribePatchGroupsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePatchGroupsRequest,
+  ) => stream.Stream<
+    PatchGroupPatchBaselineMapping,
+    DescribePatchGroupsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePatchGroupStateError =
   | InternalServerError
@@ -14261,7 +14801,27 @@ export const describePatchProperties: API.OperationMethod<
     items: "Properties",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePatchPropertiesRequest,
+  DescribePatchPropertiesResult,
+  DescribePatchPropertiesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePatchPropertiesRequest,
+  ) => stream.Stream<
+    DescribePatchPropertiesResult,
+    DescribePatchPropertiesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePatchPropertiesRequest,
+  ) => stream.Stream<
+    { [key: string]: string | undefined },
+    DescribePatchPropertiesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSessionsError =
   | InternalServerError
@@ -14305,7 +14865,27 @@ export const describeSessions: API.OperationMethod<
     items: "Sessions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSessionsRequest,
+  DescribeSessionsResponse,
+  DescribeSessionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSessionsRequest,
+  ) => stream.Stream<
+    DescribeSessionsResponse,
+    DescribeSessionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSessionsRequest,
+  ) => stream.Stream<
+    Session,
+    DescribeSessionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DisassociateOpsItemRelatedItemError =
   | InternalServerError
@@ -14639,7 +15219,27 @@ export const getInventory: API.OperationMethod<
     items: "Entities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetInventoryRequest,
+  GetInventoryResult,
+  GetInventoryError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetInventoryRequest,
+  ) => stream.Stream<
+    GetInventoryResult,
+    GetInventoryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetInventoryRequest,
+  ) => stream.Stream<
+    InventoryResultEntity,
+    GetInventoryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetInventorySchemaError =
   | InternalServerError
@@ -14683,7 +15283,27 @@ export const getInventorySchema: API.OperationMethod<
     items: "Schemas",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetInventorySchemaRequest,
+  GetInventorySchemaResult,
+  GetInventorySchemaError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetInventorySchemaRequest,
+  ) => stream.Stream<
+    GetInventorySchemaResult,
+    GetInventorySchemaError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetInventorySchemaRequest,
+  ) => stream.Stream<
+    InventoryItemSchema,
+    GetInventorySchemaError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetMaintenanceWindowError =
   | DoesNotExistException
@@ -14911,7 +15531,27 @@ export const getOpsSummary: API.OperationMethod<
     items: "Entities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetOpsSummaryRequest,
+  GetOpsSummaryResult,
+  GetOpsSummaryError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetOpsSummaryRequest,
+  ) => stream.Stream<
+    GetOpsSummaryResult,
+    GetOpsSummaryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetOpsSummaryRequest,
+  ) => stream.Stream<
+    OpsEntity,
+    GetOpsSummaryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetParameterError =
   | InternalServerError
@@ -15002,7 +15642,27 @@ export const getParameterHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetParameterHistoryRequest,
+  GetParameterHistoryResult,
+  GetParameterHistoryError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetParameterHistoryRequest,
+  ) => stream.Stream<
+    GetParameterHistoryResult,
+    GetParameterHistoryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetParameterHistoryRequest,
+  ) => stream.Stream<
+    unknown,
+    GetParameterHistoryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetParametersError =
   | InternalServerError
@@ -15093,7 +15753,27 @@ export const getParametersByPath: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetParametersByPathRequest,
+  GetParametersByPathResult,
+  GetParametersByPathError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetParametersByPathRequest,
+  ) => stream.Stream<
+    GetParametersByPathResult,
+    GetParametersByPathError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetParametersByPathRequest,
+  ) => stream.Stream<
+    unknown,
+    GetParametersByPathError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetPatchBaselineError =
   | DoesNotExistException
@@ -15182,7 +15862,27 @@ export const getResourcePolicies: API.OperationMethod<
     items: "Policies",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetResourcePoliciesRequest,
+  GetResourcePoliciesResponse,
+  GetResourcePoliciesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetResourcePoliciesRequest,
+  ) => stream.Stream<
+    GetResourcePoliciesResponse,
+    GetResourcePoliciesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetResourcePoliciesRequest,
+  ) => stream.Stream<
+    GetResourcePoliciesResponseEntry,
+    GetResourcePoliciesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetServiceSettingError =
   | InternalServerError
@@ -15322,7 +16022,27 @@ export const listAssociations: API.OperationMethod<
     items: "Associations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssociationsRequest,
+  ListAssociationsResult,
+  ListAssociationsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssociationsRequest,
+  ) => stream.Stream<
+    ListAssociationsResult,
+    ListAssociationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssociationsRequest,
+  ) => stream.Stream<
+    Association,
+    ListAssociationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssociationVersionsError =
   | AssociationDoesNotExist
@@ -15365,7 +16085,27 @@ export const listAssociationVersions: API.OperationMethod<
     items: "AssociationVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssociationVersionsRequest,
+  ListAssociationVersionsResult,
+  ListAssociationVersionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssociationVersionsRequest,
+  ) => stream.Stream<
+    ListAssociationVersionsResult,
+    ListAssociationVersionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssociationVersionsRequest,
+  ) => stream.Stream<
+    AssociationVersionInfo,
+    ListAssociationVersionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListCommandInvocationsError =
   | InternalServerError
@@ -15420,7 +16160,27 @@ export const listCommandInvocations: API.OperationMethod<
     items: "CommandInvocations",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCommandInvocationsRequest,
+  ListCommandInvocationsResult,
+  ListCommandInvocationsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCommandInvocationsRequest,
+  ) => stream.Stream<
+    ListCommandInvocationsResult,
+    ListCommandInvocationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCommandInvocationsRequest,
+  ) => stream.Stream<
+    CommandInvocation,
+    ListCommandInvocationsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListCommandsError =
   | InternalServerError
@@ -15471,7 +16231,27 @@ export const listCommands: API.OperationMethod<
     items: "Commands",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCommandsRequest,
+  ListCommandsResult,
+  ListCommandsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCommandsRequest,
+  ) => stream.Stream<
+    ListCommandsResult,
+    ListCommandsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCommandsRequest,
+  ) => stream.Stream<
+    Command,
+    ListCommandsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListComplianceItemsError =
   | InternalServerError
@@ -15524,7 +16304,27 @@ export const listComplianceItems: API.OperationMethod<
     items: "ComplianceItems",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComplianceItemsRequest,
+  ListComplianceItemsResult,
+  ListComplianceItemsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComplianceItemsRequest,
+  ) => stream.Stream<
+    ListComplianceItemsResult,
+    ListComplianceItemsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComplianceItemsRequest,
+  ) => stream.Stream<
+    ComplianceItem,
+    ListComplianceItemsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListComplianceSummariesError =
   | InternalServerError
@@ -15569,7 +16369,27 @@ export const listComplianceSummaries: API.OperationMethod<
     items: "ComplianceSummaryItems",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComplianceSummariesRequest,
+  ListComplianceSummariesResult,
+  ListComplianceSummariesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComplianceSummariesRequest,
+  ) => stream.Stream<
+    ListComplianceSummariesResult,
+    ListComplianceSummariesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComplianceSummariesRequest,
+  ) => stream.Stream<
+    ComplianceSummaryItem,
+    ListComplianceSummariesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListDocumentMetadataHistoryError =
   | InternalServerError
@@ -15645,7 +16465,27 @@ export const listDocuments: API.OperationMethod<
     items: "DocumentIdentifiers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDocumentsRequest,
+  ListDocumentsResult,
+  ListDocumentsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDocumentsRequest,
+  ) => stream.Stream<
+    ListDocumentsResult,
+    ListDocumentsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDocumentsRequest,
+  ) => stream.Stream<
+    DocumentIdentifier,
+    ListDocumentsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListDocumentVersionsError =
   | InternalServerError
@@ -15688,7 +16528,27 @@ export const listDocumentVersions: API.OperationMethod<
     items: "DocumentVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDocumentVersionsRequest,
+  ListDocumentVersionsResult,
+  ListDocumentVersionsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDocumentVersionsRequest,
+  ) => stream.Stream<
+    ListDocumentVersionsResult,
+    ListDocumentVersionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDocumentVersionsRequest,
+  ) => stream.Stream<
+    DocumentVersionInfo,
+    ListDocumentVersionsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListInventoryEntriesError =
   | InternalServerError
@@ -15765,7 +16625,23 @@ export const listNodes: API.OperationMethod<
     items: "Nodes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNodesRequest,
+  ListNodesResult,
+  ListNodesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNodesRequest,
+  ) => stream.Stream<
+    ListNodesResult,
+    ListNodesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNodesRequest,
+  ) => stream.Stream<Node, ListNodesError, Creds | Rgn | HttpClient.HttpClient>;
+};
 
 export type ListNodesSummaryError =
   | InternalServerError
@@ -15819,7 +16695,27 @@ export const listNodesSummary: API.OperationMethod<
     items: "Summary",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNodesSummaryRequest,
+  ListNodesSummaryResult,
+  ListNodesSummaryError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNodesSummaryRequest,
+  ) => stream.Stream<
+    ListNodesSummaryResult,
+    ListNodesSummaryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNodesSummaryRequest,
+  ) => stream.Stream<
+    { [key: string]: string | undefined },
+    ListNodesSummaryError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListOpsItemEventsError =
   | InternalServerError
@@ -15869,7 +16765,27 @@ export const listOpsItemEvents: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOpsItemEventsRequest,
+  ListOpsItemEventsResponse,
+  ListOpsItemEventsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOpsItemEventsRequest,
+  ) => stream.Stream<
+    ListOpsItemEventsResponse,
+    ListOpsItemEventsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOpsItemEventsRequest,
+  ) => stream.Stream<
+    OpsItemEventSummary,
+    ListOpsItemEventsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListOpsItemRelatedItemsError =
   | InternalServerError
@@ -15912,7 +16828,27 @@ export const listOpsItemRelatedItems: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOpsItemRelatedItemsRequest,
+  ListOpsItemRelatedItemsResponse,
+  ListOpsItemRelatedItemsError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOpsItemRelatedItemsRequest,
+  ) => stream.Stream<
+    ListOpsItemRelatedItemsResponse,
+    ListOpsItemRelatedItemsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOpsItemRelatedItemsRequest,
+  ) => stream.Stream<
+    OpsItemRelatedItemSummary,
+    ListOpsItemRelatedItemsError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListOpsMetadataError =
   | InternalServerError
@@ -15955,7 +16891,27 @@ export const listOpsMetadata: API.OperationMethod<
     items: "OpsMetadataList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOpsMetadataRequest,
+  ListOpsMetadataResult,
+  ListOpsMetadataError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOpsMetadataRequest,
+  ) => stream.Stream<
+    ListOpsMetadataResult,
+    ListOpsMetadataError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOpsMetadataRequest,
+  ) => stream.Stream<
+    OpsMetadata,
+    ListOpsMetadataError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceComplianceSummariesError =
   | InternalServerError
@@ -16000,7 +16956,27 @@ export const listResourceComplianceSummaries: API.OperationMethod<
     items: "ResourceComplianceSummaryItems",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceComplianceSummariesRequest,
+  ListResourceComplianceSummariesResult,
+  ListResourceComplianceSummariesError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceComplianceSummariesRequest,
+  ) => stream.Stream<
+    ListResourceComplianceSummariesResult,
+    ListResourceComplianceSummariesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceComplianceSummariesRequest,
+  ) => stream.Stream<
+    ResourceComplianceSummaryItem,
+    ListResourceComplianceSummariesError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceDataSyncError =
   | InternalServerError
@@ -16056,7 +17032,27 @@ export const listResourceDataSync: API.OperationMethod<
     items: "ResourceDataSyncItems",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceDataSyncRequest,
+  ListResourceDataSyncResult,
+  ListResourceDataSyncError,
+  Creds | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceDataSyncRequest,
+  ) => stream.Stream<
+    ListResourceDataSyncResult,
+    ListResourceDataSyncError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceDataSyncRequest,
+  ) => stream.Stream<
+    ResourceDataSyncItem,
+    ListResourceDataSyncError,
+    Creds | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerError

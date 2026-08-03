@@ -1,7 +1,6 @@
 {
   "name": "@distilled.cloud/cloudflare",
   "version": "0.0.0",
-  "private": true,
   "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
@@ -356,6 +355,7 @@
     }
   },
   "scripts": {
+    "build": "tsc -b",
     "download-api-docs": "bun scripts/download-api-docs.ts",
     "convert": "bun scripts/spec-to-smithy.ts",
     "spec-to-smithy": "bun scripts/spec-to-smithy.ts",

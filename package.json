@@ -12,7 +12,8 @@
     "format:check": "bun run format -- --check",
     "lint": "oxlint",
     "test": "bun test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "typecheck:ci": "tsc -b --noCheck false"
   },
   "workspaces": {
     "packages": [

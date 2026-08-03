@@ -75,8 +75,11 @@ export interface HttpTrait {
    * Request body encoding. Default is JSON; `"multipart"` sends
    * multipart/form-data — body members become form parts (objects
    * JSON-encoded) and members marked `FormDataFile()` append their files.
+   * `"form-urlencoded"` sends application/x-www-form-urlencoded with
+   * Stripe-style bracket notation for nested objects and arrays (see
+   * `buildRequest`).
    */
-  readonly contentType?: "multipart";
+  readonly contentType?: "multipart" | "form-urlencoded";
   /**
    * Explicit `Content-Type` for a whole-body (`HttpBody()`) member carrying a
    * preserialized payload, when the API requires a specific media type rather
@@ -84,6 +87,13 @@ export interface HttpTrait {
    * member value is sent verbatim (string/bytes) under this media type.
    */
   readonly bodyMediaType?: string;
+  /**
+   * Explicit `Accept` for the operation, when the API serves more than one
+   * response media type. Atlas pins an API version this way (e.g.
+   * `application/vnd.atlas.2024-05-30+json` — `application/json` alone is a
+   * 406). Protocols that don't read it fall back to their own default.
+   */
+  readonly accept?: string;
 }
 
 export const httpSymbol = Symbol.for("@distilled.cloud/core/http");

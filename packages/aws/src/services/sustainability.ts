@@ -383,7 +383,27 @@ export const getEstimatedCarbonEmissions: API.OperationMethod<
     items: "Results",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetEstimatedCarbonEmissionsRequest,
+  GetEstimatedCarbonEmissionsResponse,
+  GetEstimatedCarbonEmissionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetEstimatedCarbonEmissionsRequest,
+  ) => stream.Stream<
+    GetEstimatedCarbonEmissionsResponse,
+    GetEstimatedCarbonEmissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetEstimatedCarbonEmissionsRequest,
+  ) => stream.Stream<
+    EstimatedCarbonEmissions,
+    GetEstimatedCarbonEmissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetEstimatedCarbonEmissionsDimensionValuesError =
   | AccessDeniedException
@@ -432,4 +452,24 @@ export const getEstimatedCarbonEmissionsDimensionValues: API.OperationMethod<
     items: "Results",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetEstimatedCarbonEmissionsDimensionValuesRequest,
+  GetEstimatedCarbonEmissionsDimensionValuesResponse,
+  GetEstimatedCarbonEmissionsDimensionValuesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetEstimatedCarbonEmissionsDimensionValuesRequest,
+  ) => stream.Stream<
+    GetEstimatedCarbonEmissionsDimensionValuesResponse,
+    GetEstimatedCarbonEmissionsDimensionValuesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetEstimatedCarbonEmissionsDimensionValuesRequest,
+  ) => stream.Stream<
+    DimensionEntry,
+    GetEstimatedCarbonEmissionsDimensionValuesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};

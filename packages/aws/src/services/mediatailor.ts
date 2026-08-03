@@ -3973,7 +3973,27 @@ export const getChannelSchedule: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetChannelScheduleRequest,
+  GetChannelScheduleResponse,
+  GetChannelScheduleError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetChannelScheduleRequest,
+  ) => stream.Stream<
+    GetChannelScheduleResponse,
+    GetChannelScheduleError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetChannelScheduleRequest,
+  ) => stream.Stream<
+    ScheduleEntry,
+    GetChannelScheduleError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetFunctionError = CommonErrors;
 /**
@@ -4071,7 +4091,27 @@ export const listAlerts: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAlertsRequest,
+  ListAlertsResponse,
+  ListAlertsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAlertsRequest,
+  ) => stream.Stream<
+    ListAlertsResponse,
+    ListAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAlertsRequest,
+  ) => stream.Stream<
+    Alert,
+    ListAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListChannelsError = CommonErrors;
 /**
@@ -4110,7 +4150,27 @@ export const listChannels: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelsRequest,
+  ListChannelsResponse,
+  ListChannelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    ListChannelsResponse,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    Channel,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFunctionsError = CommonErrors;
 /**
@@ -4149,7 +4209,27 @@ export const listFunctions: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFunctionsRequest,
+  ListFunctionsResponse,
+  ListFunctionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    ListFunctionsResponse,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    Function,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLiveSourcesError = CommonErrors;
 /**
@@ -4188,7 +4268,27 @@ export const listLiveSources: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLiveSourcesRequest,
+  ListLiveSourcesResponse,
+  ListLiveSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLiveSourcesRequest,
+  ) => stream.Stream<
+    ListLiveSourcesResponse,
+    ListLiveSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLiveSourcesRequest,
+  ) => stream.Stream<
+    LiveSource,
+    ListLiveSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPlaybackConfigurationsError = CommonErrors;
 /**
@@ -4227,7 +4327,27 @@ export const listPlaybackConfigurations: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPlaybackConfigurationsRequest,
+  ListPlaybackConfigurationsResponse,
+  ListPlaybackConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPlaybackConfigurationsRequest,
+  ) => stream.Stream<
+    ListPlaybackConfigurationsResponse,
+    ListPlaybackConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPlaybackConfigurationsRequest,
+  ) => stream.Stream<
+    PlaybackConfiguration,
+    ListPlaybackConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPrefetchSchedulesError =
   | BadRequestException
@@ -4269,7 +4389,27 @@ export const listPrefetchSchedules: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPrefetchSchedulesRequest,
+  ListPrefetchSchedulesResponse,
+  ListPrefetchSchedulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPrefetchSchedulesRequest,
+  ) => stream.Stream<
+    ListPrefetchSchedulesResponse,
+    ListPrefetchSchedulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPrefetchSchedulesRequest,
+  ) => stream.Stream<
+    PrefetchSchedule,
+    ListPrefetchSchedulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSourceLocationsError = CommonErrors;
 /**
@@ -4308,7 +4448,27 @@ export const listSourceLocations: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSourceLocationsRequest,
+  ListSourceLocationsResponse,
+  ListSourceLocationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSourceLocationsRequest,
+  ) => stream.Stream<
+    ListSourceLocationsResponse,
+    ListSourceLocationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSourceLocationsRequest,
+  ) => stream.Stream<
+    SourceLocation,
+    ListSourceLocationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError = BadRequestException | CommonErrors;
 /**
@@ -4365,7 +4525,27 @@ export const listVodSources: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVodSourcesRequest,
+  ListVodSourcesResponse,
+  ListVodSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVodSourcesRequest,
+  ) => stream.Stream<
+    ListVodSourcesResponse,
+    ListVodSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVodSourcesRequest,
+  ) => stream.Stream<
+    VodSource,
+    ListVodSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutChannelPolicyError = CommonErrors;
 /**

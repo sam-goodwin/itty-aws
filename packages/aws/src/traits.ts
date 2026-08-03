@@ -882,7 +882,9 @@ export const getAnnotation = <T>(
   ast: AST.AST,
   symbol: string | symbol,
 ): T | undefined => {
-  return ast.annotations?.[symbol] as T | undefined;
+  return (ast.annotations as Record<string | symbol, unknown> | undefined)?.[
+    symbol
+  ] as T | undefined;
 };
 
 export const getPropAnnotation = <T>(
@@ -918,11 +920,15 @@ export const getPropAnnotations = (prop: AST.PropertySignature) => {
 };
 
 export const getAnnotations = (schema: AST.AST) => {
-  const header = schema.annotations?.[httpHeaderSymbol] as string | undefined;
-  const body = schema.annotations?.[httpPayloadSymbol] as string | undefined;
-  const streamBody = schema.annotations?.[httpPayloadSymbol] as
-    | boolean
-    | undefined;
+  const header = (
+    schema.annotations as Record<string | symbol, unknown> | undefined
+  )?.[httpHeaderSymbol] as string | undefined;
+  const body = (
+    schema.annotations as Record<string | symbol, unknown> | undefined
+  )?.[httpPayloadSymbol] as string | undefined;
+  const streamBody = (
+    schema.annotations as Record<string | symbol, unknown> | undefined
+  )?.[httpPayloadSymbol] as boolean | undefined;
   const path = schema.annotations?.[contextParamSymbol] as string | undefined;
   const xmlName = schema.annotations?.[xmlNameSymbol] as string | undefined;
   return { header, body, streamBody, path, xmlName };
@@ -942,7 +948,12 @@ export const hasAnnotation = (
   ast: AST.AST,
   symbol: string | symbol,
 ): boolean => {
-  if (ast.annotations?.[symbol] !== undefined) return true;
+  if (
+    (ast.annotations as Record<string | symbol, unknown> | undefined)?.[
+      symbol
+    ] !== undefined
+  )
+    return true;
   if (ast._tag === "Suspend") {
     return hasAnnotation(ast.thunk(), symbol);
   }
@@ -954,7 +965,14 @@ export const hasAnnotation = (
     return nonNullishTypes.some((t: AST.AST) => hasAnnotation(t, symbol));
   }
   if (ast._tag === "Declaration" && ast.encoding?.length) {
-    if (ast.encoding[0].to?.annotations?.[symbol] !== undefined) return true;
+    if (
+      (
+        ast.encoding[0].to?.annotations as
+          | Record<string | symbol, unknown>
+          | undefined
+      )?.[symbol] !== undefined
+    )
+      return true;
   }
   if (ast.encoding && ast.encoding.length > 0) {
     return hasAnnotation(ast.encoding[0].to, symbol);
@@ -966,13 +984,19 @@ export const getAnnotationUnwrap = <T>(
   ast: AST.AST,
   symbol: string | symbol,
 ): T | undefined => {
-  const direct = ast.annotations?.[symbol] as T | undefined;
+  const direct = (
+    ast.annotations as Record<string | symbol, unknown> | undefined
+  )?.[symbol] as T | undefined;
   if (direct !== undefined) return direct;
   if (ast._tag === "Suspend") {
     return getAnnotationUnwrap(ast.thunk(), symbol);
   }
   if (ast._tag === "Declaration" && ast.encoding?.length) {
-    const toValue = ast.encoding[0].to?.annotations?.[symbol] as T | undefined;
+    const toValue = (
+      ast.encoding[0].to?.annotations as
+        | Record<string | symbol, unknown>
+        | undefined
+    )?.[symbol] as T | undefined;
     if (toValue !== undefined) return toValue;
   }
   if (ast.encoding && ast.encoding.length > 0) {

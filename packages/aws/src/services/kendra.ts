@@ -6839,7 +6839,27 @@ export const getSnapshots: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetSnapshotsRequest,
+  GetSnapshotsResponse,
+  GetSnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetSnapshotsRequest,
+  ) => stream.Stream<
+    GetSnapshotsResponse,
+    GetSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetSnapshotsRequest,
+  ) => stream.Stream<
+    unknown,
+    GetSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAccessControlConfigurationsError =
   | AccessDeniedException
@@ -6892,7 +6912,27 @@ export const listAccessControlConfigurations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccessControlConfigurationsRequest,
+  ListAccessControlConfigurationsResponse,
+  ListAccessControlConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccessControlConfigurationsRequest,
+  ) => stream.Stream<
+    ListAccessControlConfigurationsResponse,
+    ListAccessControlConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccessControlConfigurationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListAccessControlConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataSourcesError =
   | AccessDeniedException
@@ -6942,7 +6982,27 @@ export const listDataSources: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataSourcesRequest,
+  ListDataSourcesResponse,
+  ListDataSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataSourcesRequest,
+  ) => stream.Stream<
+    ListDataSourcesResponse,
+    ListDataSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataSourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListDataSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataSourceSyncJobsError =
   | AccessDeniedException
@@ -6994,7 +7054,27 @@ export const listDataSourceSyncJobs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataSourceSyncJobsRequest,
+  ListDataSourceSyncJobsResponse,
+  ListDataSourceSyncJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataSourceSyncJobsRequest,
+  ) => stream.Stream<
+    ListDataSourceSyncJobsResponse,
+    ListDataSourceSyncJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataSourceSyncJobsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListDataSourceSyncJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEntityPersonasError =
   | AccessDeniedException
@@ -7045,7 +7125,27 @@ export const listEntityPersonas: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEntityPersonasRequest,
+  ListEntityPersonasResponse,
+  ListEntityPersonasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEntityPersonasRequest,
+  ) => stream.Stream<
+    ListEntityPersonasResponse,
+    ListEntityPersonasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEntityPersonasRequest,
+  ) => stream.Stream<
+    unknown,
+    ListEntityPersonasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListExperienceEntitiesError =
   | AccessDeniedException
@@ -7095,7 +7195,27 @@ export const listExperienceEntities: API.OperationMethod<
   retry: Retry,
   operationName: "ListExperienceEntities",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExperienceEntitiesRequest,
+  ListExperienceEntitiesResponse,
+  ListExperienceEntitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExperienceEntitiesRequest,
+  ) => stream.Stream<
+    ListExperienceEntitiesResponse,
+    ListExperienceEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExperienceEntitiesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListExperienceEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListExperiencesError =
   | AccessDeniedException
@@ -7148,7 +7268,27 @@ export const listExperiences: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExperiencesRequest,
+  ListExperiencesResponse,
+  ListExperiencesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExperiencesRequest,
+  ) => stream.Stream<
+    ListExperiencesResponse,
+    ListExperiencesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExperiencesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListExperiencesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFaqsError =
   | AccessDeniedException
@@ -7198,7 +7338,27 @@ export const listFaqs: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFaqsRequest,
+  ListFaqsResponse,
+  ListFaqsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFaqsRequest,
+  ) => stream.Stream<
+    ListFaqsResponse,
+    ListFaqsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFaqsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListFaqsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFeaturedResultsSetsError =
   | AccessDeniedException
@@ -7285,7 +7445,27 @@ export const listGroupsOlderThanOrderingId: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsOlderThanOrderingIdRequest,
+  ListGroupsOlderThanOrderingIdResponse,
+  ListGroupsOlderThanOrderingIdError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsOlderThanOrderingIdRequest,
+  ) => stream.Stream<
+    ListGroupsOlderThanOrderingIdResponse,
+    ListGroupsOlderThanOrderingIdError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsOlderThanOrderingIdRequest,
+  ) => stream.Stream<
+    unknown,
+    ListGroupsOlderThanOrderingIdError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListIndicesError =
   | AccessDeniedException
@@ -7333,7 +7513,27 @@ export const listIndices: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIndicesRequest,
+  ListIndicesResponse,
+  ListIndicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIndicesRequest,
+  ) => stream.Stream<
+    ListIndicesResponse,
+    ListIndicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIndicesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListIndicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQuerySuggestionsBlockListsError =
   | AccessDeniedException
@@ -7390,7 +7590,27 @@ export const listQuerySuggestionsBlockLists: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListQuerySuggestionsBlockListsRequest,
+  ListQuerySuggestionsBlockListsResponse,
+  ListQuerySuggestionsBlockListsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListQuerySuggestionsBlockListsRequest,
+  ) => stream.Stream<
+    ListQuerySuggestionsBlockListsResponse,
+    ListQuerySuggestionsBlockListsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListQuerySuggestionsBlockListsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListQuerySuggestionsBlockListsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -7473,7 +7693,27 @@ export const listThesauri: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListThesauriRequest,
+  ListThesauriResponse,
+  ListThesauriError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListThesauriRequest,
+  ) => stream.Stream<
+    ListThesauriResponse,
+    ListThesauriError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListThesauriRequest,
+  ) => stream.Stream<
+    unknown,
+    ListThesauriError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutPrincipalMappingError =
   | AccessDeniedException

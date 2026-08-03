@@ -2579,7 +2579,27 @@ export const listSolFunctionInstances: API.OperationMethod<
     items: "functionInstances",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolFunctionInstancesInput,
+  ListSolFunctionInstancesOutput,
+  ListSolFunctionInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolFunctionInstancesInput,
+  ) => stream.Stream<
+    ListSolFunctionInstancesOutput,
+    ListSolFunctionInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolFunctionInstancesInput,
+  ) => stream.Stream<
+    ListSolFunctionInstanceInfo,
+    ListSolFunctionInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSolFunctionPackagesError =
   | AccessDeniedException
@@ -2630,7 +2650,27 @@ export const listSolFunctionPackages: API.OperationMethod<
     items: "functionPackages",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolFunctionPackagesInput,
+  ListSolFunctionPackagesOutput,
+  ListSolFunctionPackagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolFunctionPackagesInput,
+  ) => stream.Stream<
+    ListSolFunctionPackagesOutput,
+    ListSolFunctionPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolFunctionPackagesInput,
+  ) => stream.Stream<
+    ListSolFunctionPackageInfo,
+    ListSolFunctionPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSolNetworkInstancesError =
   | AccessDeniedException
@@ -2681,7 +2721,27 @@ export const listSolNetworkInstances: API.OperationMethod<
     items: "networkInstances",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolNetworkInstancesInput,
+  ListSolNetworkInstancesOutput,
+  ListSolNetworkInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolNetworkInstancesInput,
+  ) => stream.Stream<
+    ListSolNetworkInstancesOutput,
+    ListSolNetworkInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolNetworkInstancesInput,
+  ) => stream.Stream<
+    ListSolNetworkInstanceInfo,
+    ListSolNetworkInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSolNetworkOperationsError =
   | AccessDeniedException
@@ -2733,7 +2793,27 @@ export const listSolNetworkOperations: API.OperationMethod<
     items: "networkOperations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolNetworkOperationsInput,
+  ListSolNetworkOperationsOutput,
+  ListSolNetworkOperationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolNetworkOperationsInput,
+  ) => stream.Stream<
+    ListSolNetworkOperationsOutput,
+    ListSolNetworkOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolNetworkOperationsInput,
+  ) => stream.Stream<
+    ListSolNetworkOperationsInfo,
+    ListSolNetworkOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSolNetworkPackagesError =
   | AccessDeniedException
@@ -2784,7 +2864,27 @@ export const listSolNetworkPackages: API.OperationMethod<
     items: "networkPackages",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolNetworkPackagesInput,
+  ListSolNetworkPackagesOutput,
+  ListSolNetworkPackagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolNetworkPackagesInput,
+  ) => stream.Stream<
+    ListSolNetworkPackagesOutput,
+    ListSolNetworkPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolNetworkPackagesInput,
+  ) => stream.Stream<
+    ListSolNetworkPackageInfo,
+    ListSolNetworkPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

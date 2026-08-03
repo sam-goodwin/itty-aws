@@ -7548,7 +7548,27 @@ export const describeDomainAutoTunes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeDomainAutoTunesRequest,
+  DescribeDomainAutoTunesResponse,
+  DescribeDomainAutoTunesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeDomainAutoTunesRequest,
+  ) => stream.Stream<
+    DescribeDomainAutoTunesResponse,
+    DescribeDomainAutoTunesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeDomainAutoTunesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeDomainAutoTunesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeDomainChangeProgressError =
   | BaseException
@@ -7766,7 +7786,27 @@ export const describeInboundConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInboundConnectionsRequest,
+  DescribeInboundConnectionsResponse,
+  DescribeInboundConnectionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInboundConnectionsRequest,
+  ) => stream.Stream<
+    DescribeInboundConnectionsResponse,
+    DescribeInboundConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInboundConnectionsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeInboundConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeInsightDetailsError =
   | BaseException
@@ -7875,7 +7915,27 @@ export const describeOutboundConnections: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeOutboundConnectionsRequest,
+  DescribeOutboundConnectionsResponse,
+  DescribeOutboundConnectionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeOutboundConnectionsRequest,
+  ) => stream.Stream<
+    DescribeOutboundConnectionsResponse,
+    DescribeOutboundConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeOutboundConnectionsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeOutboundConnectionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePackagesError =
   | AccessDeniedException
@@ -7927,7 +7987,27 @@ export const describePackages: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePackagesRequest,
+  DescribePackagesResponse,
+  DescribePackagesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePackagesRequest,
+  ) => stream.Stream<
+    DescribePackagesResponse,
+    DescribePackagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePackagesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribePackagesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedInstanceOfferingsError =
   | DisabledOperationException
@@ -7977,7 +8057,27 @@ export const describeReservedInstanceOfferings: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedInstanceOfferingsRequest,
+  DescribeReservedInstanceOfferingsResponse,
+  DescribeReservedInstanceOfferingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedInstanceOfferingsRequest,
+  ) => stream.Stream<
+    DescribeReservedInstanceOfferingsResponse,
+    DescribeReservedInstanceOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedInstanceOfferingsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeReservedInstanceOfferingsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeReservedInstancesError =
   | DisabledOperationException
@@ -8027,7 +8127,27 @@ export const describeReservedInstances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeReservedInstancesRequest,
+  DescribeReservedInstancesResponse,
+  DescribeReservedInstancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeReservedInstancesRequest,
+  ) => stream.Stream<
+    DescribeReservedInstancesResponse,
+    DescribeReservedInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeReservedInstancesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeReservedInstancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVpcEndpointsError =
   | BaseException
@@ -8459,7 +8579,27 @@ export const getPackageVersionHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetPackageVersionHistoryRequest,
+  GetPackageVersionHistoryResponse,
+  GetPackageVersionHistoryError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetPackageVersionHistoryRequest,
+  ) => stream.Stream<
+    GetPackageVersionHistoryResponse,
+    GetPackageVersionHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetPackageVersionHistoryRequest,
+  ) => stream.Stream<
+    unknown,
+    GetPackageVersionHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetUpgradeHistoryError =
   | BaseException
@@ -8510,7 +8650,27 @@ export const getUpgradeHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetUpgradeHistoryRequest,
+  GetUpgradeHistoryResponse,
+  GetUpgradeHistoryError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetUpgradeHistoryRequest,
+  ) => stream.Stream<
+    GetUpgradeHistoryResponse,
+    GetUpgradeHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetUpgradeHistoryRequest,
+  ) => stream.Stream<
+    unknown,
+    GetUpgradeHistoryError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type GetUpgradeStatusError =
   | BaseException
@@ -8594,7 +8754,27 @@ export const listApplications: API.OperationMethod<
     items: "ApplicationSummaries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationsRequest,
+  ListApplicationsResponse,
+  ListApplicationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    ListApplicationsResponse,
+    ListApplicationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    ApplicationSummary,
+    ListApplicationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataSourceAttachmentsError =
   | AccessDeniedException
@@ -8739,7 +8919,27 @@ export const listDomainMaintenances: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDomainMaintenancesRequest,
+  ListDomainMaintenancesResponse,
+  ListDomainMaintenancesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDomainMaintenancesRequest,
+  ) => stream.Stream<
+    ListDomainMaintenancesResponse,
+    ListDomainMaintenancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDomainMaintenancesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListDomainMaintenancesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListDomainNamesError =
   | BaseException
@@ -8813,7 +9013,27 @@ export const listDomainsForPackage: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDomainsForPackageRequest,
+  ListDomainsForPackageResponse,
+  ListDomainsForPackageError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDomainsForPackageRequest,
+  ) => stream.Stream<
+    ListDomainsForPackageResponse,
+    ListDomainsForPackageError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDomainsForPackageRequest,
+  ) => stream.Stream<
+    unknown,
+    ListDomainsForPackageError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListInsightsError =
   | BaseException
@@ -8896,7 +9116,27 @@ export const listInstanceTypeDetails: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInstanceTypeDetailsRequest,
+  ListInstanceTypeDetailsResponse,
+  ListInstanceTypeDetailsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInstanceTypeDetailsRequest,
+  ) => stream.Stream<
+    ListInstanceTypeDetailsResponse,
+    ListInstanceTypeDetailsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInstanceTypeDetailsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListInstanceTypeDetailsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPackagesForDomainError =
   | AccessDeniedException
@@ -8948,7 +9188,27 @@ export const listPackagesForDomain: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPackagesForDomainRequest,
+  ListPackagesForDomainResponse,
+  ListPackagesForDomainError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPackagesForDomainRequest,
+  ) => stream.Stream<
+    ListPackagesForDomainResponse,
+    ListPackagesForDomainError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPackagesForDomainRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPackagesForDomainError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListScheduledActionsError =
   | BaseException
@@ -9000,7 +9260,27 @@ export const listScheduledActions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListScheduledActionsRequest,
+  ListScheduledActionsResponse,
+  ListScheduledActionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScheduledActionsRequest,
+  ) => stream.Stream<
+    ListScheduledActionsResponse,
+    ListScheduledActionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScheduledActionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListScheduledActionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsError =
   | BaseException
@@ -9078,7 +9358,27 @@ export const listVersions: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVersionsRequest,
+  ListVersionsResponse,
+  ListVersionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVersionsRequest,
+  ) => stream.Stream<
+    ListVersionsResponse,
+    ListVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVersionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListVpcEndpointAccessError =
   | BaseException

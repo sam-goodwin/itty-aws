@@ -1349,7 +1349,27 @@ export const describeCases: API.OperationMethod<
     items: "cases",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCasesRequest,
+  DescribeCasesResponse,
+  DescribeCasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCasesRequest,
+  ) => stream.Stream<
+    DescribeCasesResponse,
+    DescribeCasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCasesRequest,
+  ) => stream.Stream<
+    CaseDetails,
+    DescribeCasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCommunicationsError =
   | CaseIdNotFound
@@ -1410,7 +1430,27 @@ export const describeCommunications: API.OperationMethod<
     items: "communications",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCommunicationsRequest,
+  DescribeCommunicationsResponse,
+  DescribeCommunicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCommunicationsRequest,
+  ) => stream.Stream<
+    DescribeCommunicationsResponse,
+    DescribeCommunicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCommunicationsRequest,
+  ) => stream.Stream<
+    Communication,
+    DescribeCommunicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeCreateCaseOptionsError =
   | InternalServerError

@@ -3144,7 +3144,27 @@ export const listAdConfigurations: API.OperationMethod<
     items: "adConfigurations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAdConfigurationsRequest,
+  ListAdConfigurationsResponse,
+  ListAdConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAdConfigurationsRequest,
+  ) => stream.Stream<
+    ListAdConfigurationsResponse,
+    ListAdConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAdConfigurationsRequest,
+  ) => stream.Stream<
+    AdConfigurationSummary,
+    ListAdConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListChannelsError =
   | AccessDeniedException
@@ -3192,7 +3212,27 @@ export const listChannels: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChannelsRequest,
+  ListChannelsResponse,
+  ListChannelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    ListChannelsResponse,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChannelsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPlaybackKeyPairsError =
   | AccessDeniedException
@@ -3234,7 +3274,27 @@ export const listPlaybackKeyPairs: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPlaybackKeyPairsRequest,
+  ListPlaybackKeyPairsResponse,
+  ListPlaybackKeyPairsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPlaybackKeyPairsRequest,
+  ) => stream.Stream<
+    ListPlaybackKeyPairsResponse,
+    ListPlaybackKeyPairsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPlaybackKeyPairsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPlaybackKeyPairsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPlaybackRestrictionPoliciesError =
   | AccessDeniedException
@@ -3284,7 +3344,27 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPlaybackRestrictionPoliciesRequest,
+  ListPlaybackRestrictionPoliciesResponse,
+  ListPlaybackRestrictionPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPlaybackRestrictionPoliciesRequest,
+  ) => stream.Stream<
+    ListPlaybackRestrictionPoliciesResponse,
+    ListPlaybackRestrictionPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPlaybackRestrictionPoliciesRequest,
+  ) => stream.Stream<
+    unknown,
+    ListPlaybackRestrictionPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecordingConfigurationsError =
   | AccessDeniedException
@@ -3332,7 +3412,27 @@ export const listRecordingConfigurations: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecordingConfigurationsRequest,
+  ListRecordingConfigurationsResponse,
+  ListRecordingConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecordingConfigurationsRequest,
+  ) => stream.Stream<
+    ListRecordingConfigurationsResponse,
+    ListRecordingConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecordingConfigurationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListRecordingConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamKeysError =
   | AccessDeniedException
@@ -3380,7 +3480,27 @@ export const listStreamKeys: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamKeysRequest,
+  ListStreamKeysResponse,
+  ListStreamKeysError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamKeysRequest,
+  ) => stream.Stream<
+    ListStreamKeysResponse,
+    ListStreamKeysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamKeysRequest,
+  ) => stream.Stream<
+    unknown,
+    ListStreamKeysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamsError =
   | AccessDeniedException
@@ -3422,7 +3542,27 @@ export const listStreams: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamsRequest,
+  ListStreamsResponse,
+  ListStreamsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamsRequest,
+  ) => stream.Stream<
+    ListStreamsResponse,
+    ListStreamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListStreamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamSessionsError =
   | AccessDeniedException
@@ -3470,7 +3610,27 @@ export const listStreamSessions: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamSessionsRequest,
+  ListStreamSessionsResponse,
+  ListStreamSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamSessionsRequest,
+  ) => stream.Stream<
+    ListStreamSessionsResponse,
+    ListStreamSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamSessionsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListStreamSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

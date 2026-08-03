@@ -1876,7 +1876,27 @@ export const listAppAuthorizations: API.OperationMethod<
     items: "appAuthorizationSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppAuthorizationsRequest,
+  ListAppAuthorizationsResponse,
+  ListAppAuthorizationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppAuthorizationsRequest,
+  ) => stream.Stream<
+    ListAppAuthorizationsResponse,
+    ListAppAuthorizationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppAuthorizationsRequest,
+  ) => stream.Stream<
+    AppAuthorizationSummary,
+    ListAppAuthorizationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppBundlesError =
   | AccessDeniedException
@@ -1925,7 +1945,27 @@ export const listAppBundles: API.OperationMethod<
     items: "appBundleSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppBundlesRequest,
+  ListAppBundlesResponse,
+  ListAppBundlesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppBundlesRequest,
+  ) => stream.Stream<
+    ListAppBundlesResponse,
+    ListAppBundlesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppBundlesRequest,
+  ) => stream.Stream<
+    AppBundleSummary,
+    ListAppBundlesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListIngestionDestinationsError =
   | AccessDeniedException
@@ -1976,7 +2016,27 @@ export const listIngestionDestinations: API.OperationMethod<
     items: "ingestionDestinations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIngestionDestinationsRequest,
+  ListIngestionDestinationsResponse,
+  ListIngestionDestinationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIngestionDestinationsRequest,
+  ) => stream.Stream<
+    ListIngestionDestinationsResponse,
+    ListIngestionDestinationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIngestionDestinationsRequest,
+  ) => stream.Stream<
+    IngestionDestinationSummary,
+    ListIngestionDestinationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListIngestionsError =
   | AccessDeniedException
@@ -2027,7 +2087,27 @@ export const listIngestions: API.OperationMethod<
     items: "ingestions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIngestionsRequest,
+  ListIngestionsResponse,
+  ListIngestionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIngestionsRequest,
+  ) => stream.Stream<
+    ListIngestionsResponse,
+    ListIngestionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIngestionsRequest,
+  ) => stream.Stream<
+    IngestionSummary,
+    ListIngestionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

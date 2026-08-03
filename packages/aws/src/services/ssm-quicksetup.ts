@@ -978,7 +978,27 @@ export const listConfigurationManagers: API.OperationMethod<
     items: "ConfigurationManagersList",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConfigurationManagersInput,
+  ListConfigurationManagersOutput,
+  ListConfigurationManagersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigurationManagersInput,
+  ) => stream.Stream<
+    ListConfigurationManagersOutput,
+    ListConfigurationManagersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigurationManagersInput,
+  ) => stream.Stream<
+    ConfigurationManagerSummary,
+    ListConfigurationManagersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConfigurationsError =
   | AccessDeniedException
@@ -1029,7 +1049,27 @@ export const listConfigurations: API.OperationMethod<
     items: "ConfigurationsList",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConfigurationsInput,
+  ListConfigurationsOutput,
+  ListConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigurationsInput,
+  ) => stream.Stream<
+    ListConfigurationsOutput,
+    ListConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigurationsInput,
+  ) => stream.Stream<
+    ConfigurationSummary,
+    ListConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQuickSetupTypesError =
   | AccessDeniedException

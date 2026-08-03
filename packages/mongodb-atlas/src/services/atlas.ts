@@ -18450,7 +18450,6 @@ export const MonthlyScheduleView = /*@__PURE__*/ S.suspend(() =>
 
 /** Regular frequency and duration when archiving process occurs. */
 export type OnlineArchiveSchedule =
-  | OnlineArchiveSchedule
   | DailyScheduleView
   | WeeklyScheduleView
   | MonthlyScheduleView;
@@ -25752,8 +25751,7 @@ export const ConfluentUserInfoAuthenticationOutput = /*@__PURE__*/ S.suspend(
 
 /** Authentication configuration for Schema Registry. */
 export type SchemaRegistryAuthenticationOutput =
-  | ConfluentUserInfoAuthenticationOutput
-  | SchemaRegistryAuthenticationOutput;
+  ConfluentUserInfoAuthenticationOutput;
 export const SchemaRegistryAuthenticationOutput =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SchemaRegistryAuthenticationOutput>;
 
@@ -27039,7 +27037,6 @@ export const StreamsGCPPubSubConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings that define a connection to an external data store. */
 export type StreamsConnectionOutput =
-  | StreamsConnectionOutput
   | StreamsClusterConnectionOutput
   | StreamsKafkaConnectionOutput
   | StreamsHttpsConnectionOutput
@@ -29300,9 +29297,7 @@ export const DiskBackupTimeBasedCopyPolicyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskBackupTimeBasedCopyPolicyItem>;
 
 /** Specifications for one copy policy item. */
-export type DiskBackupCopyPolicyItem =
-  | DiskBackupCopyPolicyItem
-  | DiskBackupTimeBasedCopyPolicyItem;
+export type DiskBackupCopyPolicyItem = DiskBackupTimeBasedCopyPolicyItem;
 export const DiskBackupCopyPolicyItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DiskBackupCopyPolicyItem>;
 
@@ -53110,8 +53105,7 @@ export const DiskBackupTimeBasedCopyPolicyItemInput = /*@__PURE__*/ S.suspend(
 
 /** Specifications for one copy policy item. */
 export type DiskBackupCopyPolicyItemInput =
-  | DiskBackupCopyPolicyItemInput
-  | DiskBackupTimeBasedCopyPolicyItemInput;
+  DiskBackupTimeBasedCopyPolicyItemInput;
 export const DiskBackupCopyPolicyItemInput =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DiskBackupCopyPolicyItemInput>;
 

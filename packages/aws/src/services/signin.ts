@@ -1024,7 +1024,27 @@ export const listResourcePermissionStatements: API.OperationMethod<
     items: "permissionStatements",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourcePermissionStatementsInput,
+  ListResourcePermissionStatementsOutput,
+  ListResourcePermissionStatementsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourcePermissionStatementsInput,
+  ) => stream.Stream<
+    ListResourcePermissionStatementsOutput,
+    ListResourcePermissionStatementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourcePermissionStatementsInput,
+  ) => stream.Stream<
+    PermissionStatementSummary,
+    ListResourcePermissionStatementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutConsoleAuthorizationConfigurationError =
   | AccessDeniedException

@@ -683,7 +683,7 @@ export type ListDomainsError =
 /**
  * Lists all SimpleDB domains in the account/region. Paginated.
  */
-export const listDomains: API.OperationMethod<
+type ListDomainsOperation = API.OperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
@@ -703,20 +703,22 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainsRequest,
-  output: ListDomainsResponse,
-  errors: [InvalidNextToken, InvalidParameterValue],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListDomains",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "DomainNames",
-    pageSize: "MaxNumberOfDomains",
-  } as const,
-}));
+};
+export const listDomains: ListDomainsOperation =
+  /*@__PURE__*/ API.makePaginated(() => ({
+    input: ListDomainsRequest,
+    output: ListDomainsResponse,
+    errors: [InvalidNextToken, InvalidParameterValue],
+    protocol: AwsProtocol,
+    retry: Retry,
+    operationName: "ListDomains",
+    pagination: {
+      inputToken: "NextToken",
+      outputToken: "NextToken",
+      items: "DomainNames",
+      pageSize: "MaxNumberOfDomains",
+    } as const,
+  })) as any as ListDomainsOperation;
 export type GetAttributesError =
   | InvalidParameterValue
   | MissingParameter
@@ -872,7 +874,7 @@ export type SelectError =
  * Runs a SimpleDB select expression (`select output_list from domain
  * [where ...]`). Paginated via `NextToken`.
  */
-export const select: API.OperationMethod<
+type SelectOperation = API.OperationMethod<
   SelectRequest,
   SelectResponse,
   SelectError,
@@ -892,7 +894,8 @@ export const select: API.OperationMethod<
     SelectError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+};
+export const select: SelectOperation = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectRequest,
   output: SelectResponse,
   errors: [
@@ -914,4 +917,4 @@ export const select: API.OperationMethod<
     outputToken: "NextToken",
     items: "Items",
   } as const,
-}));
+})) as any as SelectOperation;

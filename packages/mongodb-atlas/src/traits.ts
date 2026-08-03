@@ -4,16 +4,16 @@
  * Re-exports the generic protocol traits from core (so generated operations
  * import everything from one place). Atlas has no envelope of its own; the
  * REST-protocol traits (SensitiveValue / RawResponse) come from
- * `core/protocol-rest`. The one Atlas-specific wire quirk — date-versioned
- * `Accept` media types — rides as an `accept` extension on the `Http` trait
- * (stamped by scripts/convert.ts, read by src/protocol.ts).
+ * `core/protocol-rest`. Atlas's date-versioned `Accept` media types ride on
+ * the core `Http` trait's `accept` field (stamped by scripts/convert.ts,
+ * read by src/protocol.ts).
  */
 export {
+  Http,
   Body,
   Header,
   Query,
   Label,
-  Http,
   ResponseCode,
   HttpBody,
   FormDataFile,

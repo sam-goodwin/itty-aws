@@ -119,9 +119,7 @@ const encode = ({
     // The versioned Accept media type stamped on the operation's Http trait
     // by scripts/convert.ts. `application/json` alone is a 406; the API
     // serves the newest resource version ≤ the requested date.
-    const http = getAnn(inputAst, httpSymbol) as
-      | (HttpTrait & { readonly accept?: string })
-      | undefined;
+    const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
     return buildRequest({
       input: unwrapRedactedDeep(input),
       inputAst,

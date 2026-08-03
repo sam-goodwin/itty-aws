@@ -2054,7 +2054,27 @@ export const getServerDetails: API.OperationMethod<
     items: "associatedApplications",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetServerDetailsRequest,
+  GetServerDetailsResponse,
+  GetServerDetailsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetServerDetailsRequest,
+  ) => stream.Stream<
+    GetServerDetailsResponse,
+    GetServerDetailsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetServerDetailsRequest,
+  ) => stream.Stream<
+    AssociatedApplication,
+    GetServerDetailsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetServerStrategiesError =
   | AccessDeniedException
@@ -2133,7 +2153,27 @@ export const listAnalyzableServers: API.OperationMethod<
     items: "analyzableServers",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAnalyzableServersRequest,
+  ListAnalyzableServersResponse,
+  ListAnalyzableServersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAnalyzableServersRequest,
+  ) => stream.Stream<
+    ListAnalyzableServersResponse,
+    ListAnalyzableServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAnalyzableServersRequest,
+  ) => stream.Stream<
+    AnalyzableServerSummary,
+    ListAnalyzableServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListApplicationComponentsError =
   | AccessDeniedException
@@ -2182,7 +2222,27 @@ export const listApplicationComponents: API.OperationMethod<
     items: "applicationComponentInfos",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationComponentsRequest,
+  ListApplicationComponentsResponse,
+  ListApplicationComponentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationComponentsRequest,
+  ) => stream.Stream<
+    ListApplicationComponentsResponse,
+    ListApplicationComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationComponentsRequest,
+  ) => stream.Stream<
+    ApplicationComponentDetail,
+    ListApplicationComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCollectorsError =
   | AccessDeniedException
@@ -2231,7 +2291,27 @@ export const listCollectors: API.OperationMethod<
     items: "Collectors",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCollectorsRequest,
+  ListCollectorsResponse,
+  ListCollectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCollectorsRequest,
+  ) => stream.Stream<
+    ListCollectorsResponse,
+    ListCollectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCollectorsRequest,
+  ) => stream.Stream<
+    Collector,
+    ListCollectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImportFileTaskError =
   | AccessDeniedException
@@ -2280,7 +2360,27 @@ export const listImportFileTask: API.OperationMethod<
     items: "taskInfos",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImportFileTaskRequest,
+  ListImportFileTaskResponse,
+  ListImportFileTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImportFileTaskRequest,
+  ) => stream.Stream<
+    ListImportFileTaskResponse,
+    ListImportFileTaskError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImportFileTaskRequest,
+  ) => stream.Stream<
+    ImportFileTaskInformation,
+    ListImportFileTaskError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServersError =
   | AccessDeniedException
@@ -2329,7 +2429,27 @@ export const listServers: API.OperationMethod<
     items: "serverInfos",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServersRequest,
+  ListServersResponse,
+  ListServersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServersRequest,
+  ) => stream.Stream<
+    ListServersResponse,
+    ListServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServersRequest,
+  ) => stream.Stream<
+    ServerDetail,
+    ListServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutPortfolioPreferencesError =
   | AccessDeniedException

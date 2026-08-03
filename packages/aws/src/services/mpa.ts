@@ -1853,7 +1853,27 @@ export const listApprovalTeams: API.OperationMethod<
     items: "ApprovalTeams",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApprovalTeamsRequest,
+  ListApprovalTeamsResponse,
+  ListApprovalTeamsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApprovalTeamsRequest,
+  ) => stream.Stream<
+    ListApprovalTeamsResponse,
+    ListApprovalTeamsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApprovalTeamsRequest,
+  ) => stream.Stream<
+    ListApprovalTeamsResponseApprovalTeam,
+    ListApprovalTeamsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListIdentitySourcesError =
   | AccessDeniedException
@@ -1902,7 +1922,27 @@ export const listIdentitySources: API.OperationMethod<
     items: "IdentitySources",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListIdentitySourcesRequest,
+  ListIdentitySourcesResponse,
+  ListIdentitySourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIdentitySourcesRequest,
+  ) => stream.Stream<
+    ListIdentitySourcesResponse,
+    ListIdentitySourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIdentitySourcesRequest,
+  ) => stream.Stream<
+    IdentitySourceForList,
+    ListIdentitySourcesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPoliciesError =
   | AccessDeniedException
@@ -1951,7 +1991,27 @@ export const listPolicies: API.OperationMethod<
     items: "Policies",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPoliciesRequest,
+  ListPoliciesResponse,
+  ListPoliciesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPoliciesRequest,
+  ) => stream.Stream<
+    ListPoliciesResponse,
+    ListPoliciesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPoliciesRequest,
+  ) => stream.Stream<
+    Policy,
+    ListPoliciesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListPolicyVersionsError =
   | AccessDeniedException
@@ -2002,7 +2062,27 @@ export const listPolicyVersions: API.OperationMethod<
     items: "PolicyVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPolicyVersionsRequest,
+  ListPolicyVersionsResponse,
+  ListPolicyVersionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyVersionsRequest,
+  ) => stream.Stream<
+    ListPolicyVersionsResponse,
+    ListPolicyVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyVersionsRequest,
+  ) => stream.Stream<
+    PolicyVersionSummary,
+    ListPolicyVersionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourcePoliciesError =
   | AccessDeniedException
@@ -2053,7 +2133,27 @@ export const listResourcePolicies: API.OperationMethod<
     items: "ResourcePolicies",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourcePoliciesRequest,
+  ListResourcePoliciesResponse,
+  ListResourcePoliciesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourcePoliciesRequest,
+  ) => stream.Stream<
+    ListResourcePoliciesResponse,
+    ListResourcePoliciesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourcePoliciesRequest,
+  ) => stream.Stream<
+    ListResourcePoliciesResponseResourcePolicy,
+    ListResourcePoliciesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListSessionsError =
   | AccessDeniedException
@@ -2104,7 +2204,27 @@ export const listSessions: API.OperationMethod<
     items: "Sessions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSessionsRequest,
+  ListSessionsResponse,
+  ListSessionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    ListSessionsResponse,
+    ListSessionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    ListSessionsResponseSession,
+    ListSessionsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

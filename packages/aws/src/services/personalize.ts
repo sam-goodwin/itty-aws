@@ -5101,7 +5101,27 @@ export const listBatchInferenceJobs: API.OperationMethod<
     items: "batchInferenceJobs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBatchInferenceJobsRequest,
+  ListBatchInferenceJobsResponse,
+  ListBatchInferenceJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBatchInferenceJobsRequest,
+  ) => stream.Stream<
+    ListBatchInferenceJobsResponse,
+    ListBatchInferenceJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBatchInferenceJobsRequest,
+  ) => stream.Stream<
+    BatchInferenceJobSummary,
+    ListBatchInferenceJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBatchSegmentJobsError =
   | InvalidInputException
@@ -5144,7 +5164,27 @@ export const listBatchSegmentJobs: API.OperationMethod<
     items: "batchSegmentJobs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBatchSegmentJobsRequest,
+  ListBatchSegmentJobsResponse,
+  ListBatchSegmentJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBatchSegmentJobsRequest,
+  ) => stream.Stream<
+    ListBatchSegmentJobsResponse,
+    ListBatchSegmentJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBatchSegmentJobsRequest,
+  ) => stream.Stream<
+    BatchSegmentJobSummary,
+    ListBatchSegmentJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCampaignsError =
   | InvalidInputException
@@ -5189,7 +5229,27 @@ export const listCampaigns: API.OperationMethod<
     items: "campaigns",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCampaignsRequest,
+  ListCampaignsResponse,
+  ListCampaignsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCampaignsRequest,
+  ) => stream.Stream<
+    ListCampaignsResponse,
+    ListCampaignsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCampaignsRequest,
+  ) => stream.Stream<
+    CampaignSummary,
+    ListCampaignsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataDeletionJobsError =
   | InvalidInputException
@@ -5263,7 +5323,27 @@ export const listDatasetExportJobs: API.OperationMethod<
     items: "datasetExportJobs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDatasetExportJobsRequest,
+  ListDatasetExportJobsResponse,
+  ListDatasetExportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDatasetExportJobsRequest,
+  ) => stream.Stream<
+    ListDatasetExportJobsResponse,
+    ListDatasetExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDatasetExportJobsRequest,
+  ) => stream.Stream<
+    DatasetExportJobSummary,
+    ListDatasetExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
 /**
@@ -5304,7 +5384,27 @@ export const listDatasetGroups: API.OperationMethod<
     items: "datasetGroups",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDatasetGroupsRequest,
+  ListDatasetGroupsResponse,
+  ListDatasetGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDatasetGroupsRequest,
+  ) => stream.Stream<
+    ListDatasetGroupsResponse,
+    ListDatasetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDatasetGroupsRequest,
+  ) => stream.Stream<
+    DatasetGroupSummary,
+    ListDatasetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDatasetImportJobsError =
   | InvalidInputException
@@ -5351,7 +5451,27 @@ export const listDatasetImportJobs: API.OperationMethod<
     items: "datasetImportJobs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDatasetImportJobsRequest,
+  ListDatasetImportJobsResponse,
+  ListDatasetImportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDatasetImportJobsRequest,
+  ) => stream.Stream<
+    ListDatasetImportJobsResponse,
+    ListDatasetImportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDatasetImportJobsRequest,
+  ) => stream.Stream<
+    DatasetImportJobSummary,
+    ListDatasetImportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDatasetsError =
   | InvalidInputException
@@ -5395,7 +5515,27 @@ export const listDatasets: API.OperationMethod<
     items: "datasets",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDatasetsRequest,
+  ListDatasetsResponse,
+  ListDatasetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDatasetsRequest,
+  ) => stream.Stream<
+    ListDatasetsResponse,
+    ListDatasetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDatasetsRequest,
+  ) => stream.Stream<
+    DatasetSummary,
+    ListDatasetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventTrackersError =
   | InvalidInputException
@@ -5440,7 +5580,27 @@ export const listEventTrackers: API.OperationMethod<
     items: "eventTrackers",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventTrackersRequest,
+  ListEventTrackersResponse,
+  ListEventTrackersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventTrackersRequest,
+  ) => stream.Stream<
+    ListEventTrackersResponse,
+    ListEventTrackersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventTrackersRequest,
+  ) => stream.Stream<
+    EventTrackerSummary,
+    ListEventTrackersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFiltersError =
   | InvalidInputException
@@ -5482,7 +5642,27 @@ export const listFilters: API.OperationMethod<
     items: "Filters",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFiltersRequest,
+  ListFiltersResponse,
+  ListFiltersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFiltersRequest,
+  ) => stream.Stream<
+    ListFiltersResponse,
+    ListFiltersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFiltersRequest,
+  ) => stream.Stream<
+    FilterSummary,
+    ListFiltersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMetricAttributionMetricsError =
   | InvalidInputException
@@ -5524,7 +5704,27 @@ export const listMetricAttributionMetrics: API.OperationMethod<
     items: "metrics",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMetricAttributionMetricsRequest,
+  ListMetricAttributionMetricsResponse,
+  ListMetricAttributionMetricsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMetricAttributionMetricsRequest,
+  ) => stream.Stream<
+    ListMetricAttributionMetricsResponse,
+    ListMetricAttributionMetricsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMetricAttributionMetricsRequest,
+  ) => stream.Stream<
+    MetricAttribute,
+    ListMetricAttributionMetricsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMetricAttributionsError =
   | InvalidInputException
@@ -5566,7 +5766,27 @@ export const listMetricAttributions: API.OperationMethod<
     items: "metricAttributions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMetricAttributionsRequest,
+  ListMetricAttributionsResponse,
+  ListMetricAttributionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMetricAttributionsRequest,
+  ) => stream.Stream<
+    ListMetricAttributionsResponse,
+    ListMetricAttributionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMetricAttributionsRequest,
+  ) => stream.Stream<
+    MetricAttributionSummary,
+    ListMetricAttributionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecipesError =
   | InvalidInputException
@@ -5609,7 +5829,27 @@ export const listRecipes: API.OperationMethod<
     items: "recipes",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecipesRequest,
+  ListRecipesResponse,
+  ListRecipesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecipesRequest,
+  ) => stream.Stream<
+    ListRecipesResponse,
+    ListRecipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecipesRequest,
+  ) => stream.Stream<
+    RecipeSummary,
+    ListRecipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListRecommendersError =
   | InvalidInputException
@@ -5654,7 +5894,27 @@ export const listRecommenders: API.OperationMethod<
     items: "recommenders",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListRecommendersRequest,
+  ListRecommendersResponse,
+  ListRecommendersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommendersRequest,
+  ) => stream.Stream<
+    ListRecommendersResponse,
+    ListRecommendersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommendersRequest,
+  ) => stream.Stream<
+    RecommenderSummary,
+    ListRecommendersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSchemasError = InvalidNextTokenException | CommonErrors;
 /**
@@ -5695,7 +5955,27 @@ export const listSchemas: API.OperationMethod<
     items: "schemas",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSchemasRequest,
+  ListSchemasResponse,
+  ListSchemasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSchemasRequest,
+  ) => stream.Stream<
+    ListSchemasResponse,
+    ListSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSchemasRequest,
+  ) => stream.Stream<
+    DatasetSchemaSummary,
+    ListSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSolutionsError =
   | InvalidInputException
@@ -5740,7 +6020,27 @@ export const listSolutions: API.OperationMethod<
     items: "solutions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolutionsRequest,
+  ListSolutionsResponse,
+  ListSolutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolutionsRequest,
+  ) => stream.Stream<
+    ListSolutionsResponse,
+    ListSolutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolutionsRequest,
+  ) => stream.Stream<
+    SolutionSummary,
+    ListSolutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSolutionVersionsError =
   | InvalidInputException
@@ -5789,7 +6089,27 @@ export const listSolutionVersions: API.OperationMethod<
     items: "solutionVersions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSolutionVersionsRequest,
+  ListSolutionVersionsResponse,
+  ListSolutionVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSolutionVersionsRequest,
+  ) => stream.Stream<
+    ListSolutionVersionsResponse,
+    ListSolutionVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSolutionVersionsRequest,
+  ) => stream.Stream<
+    SolutionVersionSummary,
+    ListSolutionVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InvalidInputException

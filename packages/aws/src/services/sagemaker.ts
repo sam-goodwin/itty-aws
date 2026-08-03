@@ -39204,7 +39204,27 @@ export const createHubContentPresignedUrls: API.OperationMethod<
     items: "AuthorizedUrlConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  CreateHubContentPresignedUrlsRequest,
+  CreateHubContentPresignedUrlsResponse,
+  CreateHubContentPresignedUrlsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: CreateHubContentPresignedUrlsRequest,
+  ) => stream.Stream<
+    CreateHubContentPresignedUrlsResponse,
+    CreateHubContentPresignedUrlsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: CreateHubContentPresignedUrlsRequest,
+  ) => stream.Stream<
+    AuthorizedUrl,
+    CreateHubContentPresignedUrlsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type CreateHubContentReferenceError =
   | ResourceInUse
@@ -42831,7 +42851,27 @@ export const describeTrainingPlanExtensionHistory: API.OperationMethod<
     items: "TrainingPlanExtensions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTrainingPlanExtensionHistoryRequest,
+  DescribeTrainingPlanExtensionHistoryResponse,
+  DescribeTrainingPlanExtensionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrainingPlanExtensionHistoryRequest,
+  ) => stream.Stream<
+    DescribeTrainingPlanExtensionHistoryResponse,
+    DescribeTrainingPlanExtensionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrainingPlanExtensionHistoryRequest,
+  ) => stream.Stream<
+    TrainingPlanExtension,
+    DescribeTrainingPlanExtensionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTransformJobError = ResourceNotFound | CommonErrors;
 /**
@@ -43213,7 +43253,27 @@ export const listActions: API.OperationMethod<
     items: "ActionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListActionsRequest,
+  ListActionsResponse,
+  ListActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListActionsRequest,
+  ) => stream.Stream<
+    ListActionsResponse,
+    ListActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListActionsRequest,
+  ) => stream.Stream<
+    ActionSummary,
+    ListActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAIBenchmarkJobsError = CommonErrors;
 /**
@@ -43252,7 +43312,27 @@ export const listAIBenchmarkJobs: API.OperationMethod<
     items: "AIBenchmarkJobs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAIBenchmarkJobsRequest,
+  ListAIBenchmarkJobsResponse,
+  ListAIBenchmarkJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAIBenchmarkJobsRequest,
+  ) => stream.Stream<
+    ListAIBenchmarkJobsResponse,
+    ListAIBenchmarkJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAIBenchmarkJobsRequest,
+  ) => stream.Stream<
+    AIBenchmarkJobSummary,
+    ListAIBenchmarkJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAIRecommendationJobsError = CommonErrors;
 /**
@@ -43291,7 +43371,27 @@ export const listAIRecommendationJobs: API.OperationMethod<
     items: "AIRecommendationJobs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAIRecommendationJobsRequest,
+  ListAIRecommendationJobsResponse,
+  ListAIRecommendationJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAIRecommendationJobsRequest,
+  ) => stream.Stream<
+    ListAIRecommendationJobsResponse,
+    ListAIRecommendationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAIRecommendationJobsRequest,
+  ) => stream.Stream<
+    AIRecommendationJobSummary,
+    ListAIRecommendationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAIWorkloadConfigsError = CommonErrors;
 /**
@@ -43330,7 +43430,27 @@ export const listAIWorkloadConfigs: API.OperationMethod<
     items: "AIWorkloadConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAIWorkloadConfigsRequest,
+  ListAIWorkloadConfigsResponse,
+  ListAIWorkloadConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAIWorkloadConfigsRequest,
+  ) => stream.Stream<
+    ListAIWorkloadConfigsResponse,
+    ListAIWorkloadConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAIWorkloadConfigsRequest,
+  ) => stream.Stream<
+    AIWorkloadConfigSummary,
+    ListAIWorkloadConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAlgorithmsError = CommonErrors;
 /**
@@ -43369,7 +43489,27 @@ export const listAlgorithms: API.OperationMethod<
     items: "AlgorithmSummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAlgorithmsInput,
+  ListAlgorithmsOutput,
+  ListAlgorithmsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAlgorithmsInput,
+  ) => stream.Stream<
+    ListAlgorithmsOutput,
+    ListAlgorithmsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAlgorithmsInput,
+  ) => stream.Stream<
+    AlgorithmSummary,
+    ListAlgorithmsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAliasesError = ResourceNotFound | CommonErrors;
 /**
@@ -43408,7 +43548,27 @@ export const listAliases: API.OperationMethod<
     items: "SageMakerImageVersionAliases",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAliasesRequest,
+  ListAliasesResponse,
+  ListAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAliasesRequest,
+  ) => stream.Stream<
+    ListAliasesResponse,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAliasesRequest,
+  ) => stream.Stream<
+    SageMakerImageVersionAlias,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppImageConfigsError = CommonErrors;
 /**
@@ -43447,7 +43607,27 @@ export const listAppImageConfigs: API.OperationMethod<
     items: "AppImageConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppImageConfigsRequest,
+  ListAppImageConfigsResponse,
+  ListAppImageConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppImageConfigsRequest,
+  ) => stream.Stream<
+    ListAppImageConfigsResponse,
+    ListAppImageConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppImageConfigsRequest,
+  ) => stream.Stream<
+    AppImageConfigDetails,
+    ListAppImageConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAppsError = CommonErrors;
 /**
@@ -43486,7 +43666,27 @@ export const listApps: API.OperationMethod<
     items: "Apps",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAppsRequest,
+  ListAppsResponse,
+  ListAppsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
+    ListAppsResponse,
+    ListAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
+    AppDetails,
+    ListAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListArtifactsError = ResourceNotFound | CommonErrors;
 /**
@@ -43525,7 +43725,27 @@ export const listArtifacts: API.OperationMethod<
     items: "ArtifactSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListArtifactsRequest,
+  ListArtifactsResponse,
+  ListArtifactsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListArtifactsRequest,
+  ) => stream.Stream<
+    ListArtifactsResponse,
+    ListArtifactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListArtifactsRequest,
+  ) => stream.Stream<
+    ArtifactSummary,
+    ListArtifactsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAssociationsError = ResourceNotFound | CommonErrors;
 /**
@@ -43564,7 +43784,27 @@ export const listAssociations: API.OperationMethod<
     items: "AssociationSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAssociationsRequest,
+  ListAssociationsResponse,
+  ListAssociationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssociationsRequest,
+  ) => stream.Stream<
+    ListAssociationsResponse,
+    ListAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssociationsRequest,
+  ) => stream.Stream<
+    AssociationSummary,
+    ListAssociationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAutoMLJobsError = CommonErrors;
 /**
@@ -43603,7 +43843,27 @@ export const listAutoMLJobs: API.OperationMethod<
     items: "AutoMLJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAutoMLJobsRequest,
+  ListAutoMLJobsResponse,
+  ListAutoMLJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutoMLJobsRequest,
+  ) => stream.Stream<
+    ListAutoMLJobsResponse,
+    ListAutoMLJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutoMLJobsRequest,
+  ) => stream.Stream<
+    AutoMLJobSummary,
+    ListAutoMLJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCandidatesForAutoMLJobError = ResourceNotFound | CommonErrors;
 /**
@@ -43642,7 +43902,27 @@ export const listCandidatesForAutoMLJob: API.OperationMethod<
     items: "Candidates",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCandidatesForAutoMLJobRequest,
+  ListCandidatesForAutoMLJobResponse,
+  ListCandidatesForAutoMLJobError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCandidatesForAutoMLJobRequest,
+  ) => stream.Stream<
+    ListCandidatesForAutoMLJobResponse,
+    ListCandidatesForAutoMLJobError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCandidatesForAutoMLJobRequest,
+  ) => stream.Stream<
+    AutoMLCandidate,
+    ListCandidatesForAutoMLJobError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterEventsError = ResourceNotFound | CommonErrors;
 /**
@@ -43681,7 +43961,27 @@ export const listClusterEvents: API.OperationMethod<
     items: "Events",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterEventsRequest,
+  ListClusterEventsResponse,
+  ListClusterEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterEventsRequest,
+  ) => stream.Stream<
+    ListClusterEventsResponse,
+    ListClusterEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterEventsRequest,
+  ) => stream.Stream<
+    ClusterEventSummary,
+    ListClusterEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterNodesError = ResourceNotFound | CommonErrors;
 /**
@@ -43720,7 +44020,27 @@ export const listClusterNodes: API.OperationMethod<
     items: "ClusterNodeSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterNodesRequest,
+  ListClusterNodesResponse,
+  ListClusterNodesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterNodesRequest,
+  ) => stream.Stream<
+    ListClusterNodesResponse,
+    ListClusterNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterNodesRequest,
+  ) => stream.Stream<
+    ClusterNodeSummary,
+    ListClusterNodesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClustersError = CommonErrors;
 /**
@@ -43759,7 +44079,27 @@ export const listClusters: API.OperationMethod<
     items: "ClusterSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClustersRequest,
+  ListClustersResponse,
+  ListClustersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClustersRequest,
+  ) => stream.Stream<
+    ListClustersResponse,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClustersRequest,
+  ) => stream.Stream<
+    ClusterSummary,
+    ListClustersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClusterSchedulerConfigsError = CommonErrors;
 /**
@@ -43798,7 +44138,27 @@ export const listClusterSchedulerConfigs: API.OperationMethod<
     items: "ClusterSchedulerConfigSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClusterSchedulerConfigsRequest,
+  ListClusterSchedulerConfigsResponse,
+  ListClusterSchedulerConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClusterSchedulerConfigsRequest,
+  ) => stream.Stream<
+    ListClusterSchedulerConfigsResponse,
+    ListClusterSchedulerConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClusterSchedulerConfigsRequest,
+  ) => stream.Stream<
+    ClusterSchedulerConfigSummary,
+    ListClusterSchedulerConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCodeRepositoriesError = CommonErrors;
 /**
@@ -43837,7 +44197,27 @@ export const listCodeRepositories: API.OperationMethod<
     items: "CodeRepositorySummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCodeRepositoriesInput,
+  ListCodeRepositoriesOutput,
+  ListCodeRepositoriesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCodeRepositoriesInput,
+  ) => stream.Stream<
+    ListCodeRepositoriesOutput,
+    ListCodeRepositoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCodeRepositoriesInput,
+  ) => stream.Stream<
+    CodeRepositorySummary,
+    ListCodeRepositoriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCompilationJobsError = CommonErrors;
 /**
@@ -43878,7 +44258,27 @@ export const listCompilationJobs: API.OperationMethod<
     items: "CompilationJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCompilationJobsRequest,
+  ListCompilationJobsResponse,
+  ListCompilationJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCompilationJobsRequest,
+  ) => stream.Stream<
+    ListCompilationJobsResponse,
+    ListCompilationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCompilationJobsRequest,
+  ) => stream.Stream<
+    CompilationJobSummary,
+    ListCompilationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListComputeQuotasError = CommonErrors;
 /**
@@ -43917,7 +44317,27 @@ export const listComputeQuotas: API.OperationMethod<
     items: "ComputeQuotaSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComputeQuotasRequest,
+  ListComputeQuotasResponse,
+  ListComputeQuotasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComputeQuotasRequest,
+  ) => stream.Stream<
+    ListComputeQuotasResponse,
+    ListComputeQuotasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComputeQuotasRequest,
+  ) => stream.Stream<
+    ComputeQuotaSummary,
+    ListComputeQuotasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListContextsError = ResourceNotFound | CommonErrors;
 /**
@@ -43956,7 +44376,27 @@ export const listContexts: API.OperationMethod<
     items: "ContextSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListContextsRequest,
+  ListContextsResponse,
+  ListContextsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContextsRequest,
+  ) => stream.Stream<
+    ListContextsResponse,
+    ListContextsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContextsRequest,
+  ) => stream.Stream<
+    ContextSummary,
+    ListContextsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataQualityJobDefinitionsError = CommonErrors;
 /**
@@ -43995,7 +44435,27 @@ export const listDataQualityJobDefinitions: API.OperationMethod<
     items: "JobDefinitionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataQualityJobDefinitionsRequest,
+  ListDataQualityJobDefinitionsResponse,
+  ListDataQualityJobDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataQualityJobDefinitionsRequest,
+  ) => stream.Stream<
+    ListDataQualityJobDefinitionsResponse,
+    ListDataQualityJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataQualityJobDefinitionsRequest,
+  ) => stream.Stream<
+    MonitoringJobDefinitionSummary,
+    ListDataQualityJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeviceFleetsError = CommonErrors;
 /**
@@ -44034,7 +44494,27 @@ export const listDeviceFleets: API.OperationMethod<
     items: "DeviceFleetSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeviceFleetsRequest,
+  ListDeviceFleetsResponse,
+  ListDeviceFleetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeviceFleetsRequest,
+  ) => stream.Stream<
+    ListDeviceFleetsResponse,
+    ListDeviceFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeviceFleetsRequest,
+  ) => stream.Stream<
+    DeviceFleetSummary,
+    ListDeviceFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDevicesError = CommonErrors;
 /**
@@ -44073,7 +44553,27 @@ export const listDevices: API.OperationMethod<
     items: "DeviceSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDevicesRequest,
+  ListDevicesResponse,
+  ListDevicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDevicesRequest,
+  ) => stream.Stream<
+    ListDevicesResponse,
+    ListDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDevicesRequest,
+  ) => stream.Stream<
+    DeviceSummary,
+    ListDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDomainsError = CommonErrors;
 /**
@@ -44112,7 +44612,27 @@ export const listDomains: API.OperationMethod<
     items: "Domains",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDomainsRequest,
+  ListDomainsResponse,
+  ListDomainsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
+    ListDomainsResponse,
+    ListDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
+    DomainDetails,
+    ListDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEdgeDeploymentPlansError = CommonErrors;
 /**
@@ -44151,7 +44671,27 @@ export const listEdgeDeploymentPlans: API.OperationMethod<
     items: "EdgeDeploymentPlanSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEdgeDeploymentPlansRequest,
+  ListEdgeDeploymentPlansResponse,
+  ListEdgeDeploymentPlansError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEdgeDeploymentPlansRequest,
+  ) => stream.Stream<
+    ListEdgeDeploymentPlansResponse,
+    ListEdgeDeploymentPlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEdgeDeploymentPlansRequest,
+  ) => stream.Stream<
+    EdgeDeploymentPlanSummary,
+    ListEdgeDeploymentPlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEdgePackagingJobsError = CommonErrors;
 /**
@@ -44190,7 +44730,27 @@ export const listEdgePackagingJobs: API.OperationMethod<
     items: "EdgePackagingJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEdgePackagingJobsRequest,
+  ListEdgePackagingJobsResponse,
+  ListEdgePackagingJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEdgePackagingJobsRequest,
+  ) => stream.Stream<
+    ListEdgePackagingJobsResponse,
+    ListEdgePackagingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEdgePackagingJobsRequest,
+  ) => stream.Stream<
+    EdgePackagingJobSummary,
+    ListEdgePackagingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEndpointConfigsError = CommonErrors;
 /**
@@ -44229,7 +44789,27 @@ export const listEndpointConfigs: API.OperationMethod<
     items: "EndpointConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEndpointConfigsInput,
+  ListEndpointConfigsOutput,
+  ListEndpointConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEndpointConfigsInput,
+  ) => stream.Stream<
+    ListEndpointConfigsOutput,
+    ListEndpointConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEndpointConfigsInput,
+  ) => stream.Stream<
+    EndpointConfigSummary,
+    ListEndpointConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEndpointsError = CommonErrors;
 /**
@@ -44268,7 +44848,27 @@ export const listEndpoints: API.OperationMethod<
     items: "Endpoints",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEndpointsInput,
+  ListEndpointsOutput,
+  ListEndpointsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEndpointsInput,
+  ) => stream.Stream<
+    ListEndpointsOutput,
+    ListEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEndpointsInput,
+  ) => stream.Stream<
+    EndpointSummary,
+    ListEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListExperimentsError = CommonErrors;
 /**
@@ -44307,7 +44907,27 @@ export const listExperiments: API.OperationMethod<
     items: "ExperimentSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExperimentsRequest,
+  ListExperimentsResponse,
+  ListExperimentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExperimentsRequest,
+  ) => stream.Stream<
+    ListExperimentsResponse,
+    ListExperimentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExperimentsRequest,
+  ) => stream.Stream<
+    ExperimentSummary,
+    ListExperimentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFeatureGroupsError = CommonErrors;
 /**
@@ -44346,7 +44966,27 @@ export const listFeatureGroups: API.OperationMethod<
     items: "FeatureGroupSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFeatureGroupsRequest,
+  ListFeatureGroupsResponse,
+  ListFeatureGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFeatureGroupsRequest,
+  ) => stream.Stream<
+    ListFeatureGroupsResponse,
+    ListFeatureGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFeatureGroupsRequest,
+  ) => stream.Stream<
+    FeatureGroupSummary,
+    ListFeatureGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFlowDefinitionsError = CommonErrors;
 /**
@@ -44385,7 +45025,27 @@ export const listFlowDefinitions: API.OperationMethod<
     items: "FlowDefinitionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFlowDefinitionsRequest,
+  ListFlowDefinitionsResponse,
+  ListFlowDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFlowDefinitionsRequest,
+  ) => stream.Stream<
+    ListFlowDefinitionsResponse,
+    ListFlowDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFlowDefinitionsRequest,
+  ) => stream.Stream<
+    FlowDefinitionSummary,
+    ListFlowDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListHubContentsError = ResourceNotFound | CommonErrors;
 /**
@@ -44478,7 +45138,27 @@ export const listHumanTaskUis: API.OperationMethod<
     items: "HumanTaskUiSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListHumanTaskUisRequest,
+  ListHumanTaskUisResponse,
+  ListHumanTaskUisError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListHumanTaskUisRequest,
+  ) => stream.Stream<
+    ListHumanTaskUisResponse,
+    ListHumanTaskUisError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListHumanTaskUisRequest,
+  ) => stream.Stream<
+    HumanTaskUiSummary,
+    ListHumanTaskUisError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListHyperParameterTuningJobsError = CommonErrors;
 /**
@@ -44517,7 +45197,27 @@ export const listHyperParameterTuningJobs: API.OperationMethod<
     items: "HyperParameterTuningJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListHyperParameterTuningJobsRequest,
+  ListHyperParameterTuningJobsResponse,
+  ListHyperParameterTuningJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListHyperParameterTuningJobsRequest,
+  ) => stream.Stream<
+    ListHyperParameterTuningJobsResponse,
+    ListHyperParameterTuningJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListHyperParameterTuningJobsRequest,
+  ) => stream.Stream<
+    HyperParameterTuningJobSummary,
+    ListHyperParameterTuningJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImagesError = CommonErrors;
 /**
@@ -44556,7 +45256,27 @@ export const listImages: API.OperationMethod<
     items: "Images",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImagesRequest,
+  ListImagesResponse,
+  ListImagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImagesRequest,
+  ) => stream.Stream<
+    ListImagesResponse,
+    ListImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImagesRequest,
+  ) => stream.Stream<
+    Image,
+    ListImagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImageVersionsError = ResourceNotFound | CommonErrors;
 /**
@@ -44595,7 +45315,27 @@ export const listImageVersions: API.OperationMethod<
     items: "ImageVersions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImageVersionsRequest,
+  ListImageVersionsResponse,
+  ListImageVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImageVersionsRequest,
+  ) => stream.Stream<
+    ListImageVersionsResponse,
+    ListImageVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImageVersionsRequest,
+  ) => stream.Stream<
+    ImageVersion,
+    ListImageVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInferenceComponentsError = CommonErrors;
 /**
@@ -44634,7 +45374,27 @@ export const listInferenceComponents: API.OperationMethod<
     items: "InferenceComponents",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInferenceComponentsInput,
+  ListInferenceComponentsOutput,
+  ListInferenceComponentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInferenceComponentsInput,
+  ) => stream.Stream<
+    ListInferenceComponentsOutput,
+    ListInferenceComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInferenceComponentsInput,
+  ) => stream.Stream<
+    InferenceComponentSummary,
+    ListInferenceComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInferenceExperimentsError = CommonErrors;
 /**
@@ -44673,7 +45433,27 @@ export const listInferenceExperiments: API.OperationMethod<
     items: "InferenceExperiments",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInferenceExperimentsRequest,
+  ListInferenceExperimentsResponse,
+  ListInferenceExperimentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInferenceExperimentsRequest,
+  ) => stream.Stream<
+    ListInferenceExperimentsResponse,
+    ListInferenceExperimentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInferenceExperimentsRequest,
+  ) => stream.Stream<
+    InferenceExperimentSummary,
+    ListInferenceExperimentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInferenceRecommendationsJobsError = CommonErrors;
 /**
@@ -44712,7 +45492,27 @@ export const listInferenceRecommendationsJobs: API.OperationMethod<
     items: "InferenceRecommendationsJobs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInferenceRecommendationsJobsRequest,
+  ListInferenceRecommendationsJobsResponse,
+  ListInferenceRecommendationsJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInferenceRecommendationsJobsRequest,
+  ) => stream.Stream<
+    ListInferenceRecommendationsJobsResponse,
+    ListInferenceRecommendationsJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInferenceRecommendationsJobsRequest,
+  ) => stream.Stream<
+    InferenceRecommendationsJob,
+    ListInferenceRecommendationsJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListInferenceRecommendationsJobStepsError =
   | ResourceNotFound
@@ -44755,7 +45555,27 @@ export const listInferenceRecommendationsJobSteps: API.OperationMethod<
     items: "Steps",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListInferenceRecommendationsJobStepsRequest,
+  ListInferenceRecommendationsJobStepsResponse,
+  ListInferenceRecommendationsJobStepsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInferenceRecommendationsJobStepsRequest,
+  ) => stream.Stream<
+    ListInferenceRecommendationsJobStepsResponse,
+    ListInferenceRecommendationsJobStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInferenceRecommendationsJobStepsRequest,
+  ) => stream.Stream<
+    InferenceRecommendationsJobStep,
+    ListInferenceRecommendationsJobStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobsError = CommonErrors;
 /**
@@ -44800,7 +45620,27 @@ export const listJobs: API.OperationMethod<
     items: "JobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobsRequest,
+  ListJobsResponse,
+  ListJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResponse,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    JobSummary,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobSchemaVersionsError = ResourceNotFound | CommonErrors;
 /**
@@ -44845,7 +45685,27 @@ export const listJobSchemaVersions: API.OperationMethod<
     items: "JobConfigSchemas",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobSchemaVersionsRequest,
+  ListJobSchemaVersionsResponse,
+  ListJobSchemaVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobSchemaVersionsRequest,
+  ) => stream.Stream<
+    ListJobSchemaVersionsResponse,
+    ListJobSchemaVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobSchemaVersionsRequest,
+  ) => stream.Stream<
+    JobConfigSchemaVersionSummary,
+    ListJobSchemaVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLabelingJobsError = CommonErrors;
 /**
@@ -44884,7 +45744,27 @@ export const listLabelingJobs: API.OperationMethod<
     items: "LabelingJobSummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLabelingJobsRequest,
+  ListLabelingJobsResponse,
+  ListLabelingJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLabelingJobsRequest,
+  ) => stream.Stream<
+    ListLabelingJobsResponse,
+    ListLabelingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLabelingJobsRequest,
+  ) => stream.Stream<
+    LabelingJobSummary,
+    ListLabelingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLabelingJobsForWorkteamError = ResourceNotFound | CommonErrors;
 /**
@@ -44923,7 +45803,27 @@ export const listLabelingJobsForWorkteam: API.OperationMethod<
     items: "LabelingJobSummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLabelingJobsForWorkteamRequest,
+  ListLabelingJobsForWorkteamResponse,
+  ListLabelingJobsForWorkteamError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLabelingJobsForWorkteamRequest,
+  ) => stream.Stream<
+    ListLabelingJobsForWorkteamResponse,
+    ListLabelingJobsForWorkteamError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLabelingJobsForWorkteamRequest,
+  ) => stream.Stream<
+    LabelingJobForWorkteamSummary,
+    ListLabelingJobsForWorkteamError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLineageGroupsError = CommonErrors;
 /**
@@ -44962,7 +45862,27 @@ export const listLineageGroups: API.OperationMethod<
     items: "LineageGroupSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLineageGroupsRequest,
+  ListLineageGroupsResponse,
+  ListLineageGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLineageGroupsRequest,
+  ) => stream.Stream<
+    ListLineageGroupsResponse,
+    ListLineageGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLineageGroupsRequest,
+  ) => stream.Stream<
+    LineageGroupSummary,
+    ListLineageGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMlflowAppsError = CommonErrors;
 /**
@@ -45001,7 +45921,27 @@ export const listMlflowApps: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMlflowAppsRequest,
+  ListMlflowAppsResponse,
+  ListMlflowAppsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMlflowAppsRequest,
+  ) => stream.Stream<
+    ListMlflowAppsResponse,
+    ListMlflowAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMlflowAppsRequest,
+  ) => stream.Stream<
+    MlflowAppSummary,
+    ListMlflowAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMlflowTrackingServersError = CommonErrors;
 /**
@@ -45040,7 +45980,27 @@ export const listMlflowTrackingServers: API.OperationMethod<
     items: "TrackingServerSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMlflowTrackingServersRequest,
+  ListMlflowTrackingServersResponse,
+  ListMlflowTrackingServersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMlflowTrackingServersRequest,
+  ) => stream.Stream<
+    ListMlflowTrackingServersResponse,
+    ListMlflowTrackingServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMlflowTrackingServersRequest,
+  ) => stream.Stream<
+    TrackingServerSummary,
+    ListMlflowTrackingServersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelBiasJobDefinitionsError = CommonErrors;
 /**
@@ -45079,7 +46039,27 @@ export const listModelBiasJobDefinitions: API.OperationMethod<
     items: "JobDefinitionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelBiasJobDefinitionsRequest,
+  ListModelBiasJobDefinitionsResponse,
+  ListModelBiasJobDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelBiasJobDefinitionsRequest,
+  ) => stream.Stream<
+    ListModelBiasJobDefinitionsResponse,
+    ListModelBiasJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelBiasJobDefinitionsRequest,
+  ) => stream.Stream<
+    MonitoringJobDefinitionSummary,
+    ListModelBiasJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelCardExportJobsError = CommonErrors;
 /**
@@ -45118,7 +46098,27 @@ export const listModelCardExportJobs: API.OperationMethod<
     items: "ModelCardExportJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelCardExportJobsRequest,
+  ListModelCardExportJobsResponse,
+  ListModelCardExportJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelCardExportJobsRequest,
+  ) => stream.Stream<
+    ListModelCardExportJobsResponse,
+    ListModelCardExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelCardExportJobsRequest,
+  ) => stream.Stream<
+    ModelCardExportJobSummary,
+    ListModelCardExportJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelCardsError = CommonErrors;
 /**
@@ -45157,7 +46157,27 @@ export const listModelCards: API.OperationMethod<
     items: "ModelCardSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelCardsRequest,
+  ListModelCardsResponse,
+  ListModelCardsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelCardsRequest,
+  ) => stream.Stream<
+    ListModelCardsResponse,
+    ListModelCardsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelCardsRequest,
+  ) => stream.Stream<
+    ModelCardSummary,
+    ListModelCardsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelCardVersionsError = ResourceNotFound | CommonErrors;
 /**
@@ -45196,7 +46216,27 @@ export const listModelCardVersions: API.OperationMethod<
     items: "ModelCardVersionSummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelCardVersionsRequest,
+  ListModelCardVersionsResponse,
+  ListModelCardVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelCardVersionsRequest,
+  ) => stream.Stream<
+    ListModelCardVersionsResponse,
+    ListModelCardVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelCardVersionsRequest,
+  ) => stream.Stream<
+    ModelCardVersionSummary,
+    ListModelCardVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelExplainabilityJobDefinitionsError = CommonErrors;
 /**
@@ -45235,7 +46275,27 @@ export const listModelExplainabilityJobDefinitions: API.OperationMethod<
     items: "JobDefinitionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelExplainabilityJobDefinitionsRequest,
+  ListModelExplainabilityJobDefinitionsResponse,
+  ListModelExplainabilityJobDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelExplainabilityJobDefinitionsRequest,
+  ) => stream.Stream<
+    ListModelExplainabilityJobDefinitionsResponse,
+    ListModelExplainabilityJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelExplainabilityJobDefinitionsRequest,
+  ) => stream.Stream<
+    MonitoringJobDefinitionSummary,
+    ListModelExplainabilityJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelMetadataError = CommonErrors;
 /**
@@ -45274,7 +46334,27 @@ export const listModelMetadata: API.OperationMethod<
     items: "ModelMetadataSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelMetadataRequest,
+  ListModelMetadataResponse,
+  ListModelMetadataError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelMetadataRequest,
+  ) => stream.Stream<
+    ListModelMetadataResponse,
+    ListModelMetadataError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelMetadataRequest,
+  ) => stream.Stream<
+    ModelMetadataSummary,
+    ListModelMetadataError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelPackageGroupsError = CommonErrors;
 /**
@@ -45313,7 +46393,27 @@ export const listModelPackageGroups: API.OperationMethod<
     items: "ModelPackageGroupSummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelPackageGroupsInput,
+  ListModelPackageGroupsOutput,
+  ListModelPackageGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelPackageGroupsInput,
+  ) => stream.Stream<
+    ListModelPackageGroupsOutput,
+    ListModelPackageGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelPackageGroupsInput,
+  ) => stream.Stream<
+    ModelPackageGroupSummary,
+    ListModelPackageGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelPackagesError = CommonErrors;
 /**
@@ -45352,7 +46452,27 @@ export const listModelPackages: API.OperationMethod<
     items: "ModelPackageSummaryList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelPackagesInput,
+  ListModelPackagesOutput,
+  ListModelPackagesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelPackagesInput,
+  ) => stream.Stream<
+    ListModelPackagesOutput,
+    ListModelPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelPackagesInput,
+  ) => stream.Stream<
+    ModelPackageSummary,
+    ListModelPackagesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelQualityJobDefinitionsError = CommonErrors;
 /**
@@ -45391,7 +46511,27 @@ export const listModelQualityJobDefinitions: API.OperationMethod<
     items: "JobDefinitionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelQualityJobDefinitionsRequest,
+  ListModelQualityJobDefinitionsResponse,
+  ListModelQualityJobDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelQualityJobDefinitionsRequest,
+  ) => stream.Stream<
+    ListModelQualityJobDefinitionsResponse,
+    ListModelQualityJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelQualityJobDefinitionsRequest,
+  ) => stream.Stream<
+    MonitoringJobDefinitionSummary,
+    ListModelQualityJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListModelsError = CommonErrors;
 /**
@@ -45430,7 +46570,27 @@ export const listModels: API.OperationMethod<
     items: "Models",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListModelsInput,
+  ListModelsOutput,
+  ListModelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelsInput,
+  ) => stream.Stream<
+    ListModelsOutput,
+    ListModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelsInput,
+  ) => stream.Stream<
+    ModelSummary,
+    ListModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMonitoringAlertHistoryError = ResourceNotFound | CommonErrors;
 /**
@@ -45469,7 +46629,27 @@ export const listMonitoringAlertHistory: API.OperationMethod<
     items: "MonitoringAlertHistory",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMonitoringAlertHistoryRequest,
+  ListMonitoringAlertHistoryResponse,
+  ListMonitoringAlertHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMonitoringAlertHistoryRequest,
+  ) => stream.Stream<
+    ListMonitoringAlertHistoryResponse,
+    ListMonitoringAlertHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMonitoringAlertHistoryRequest,
+  ) => stream.Stream<
+    MonitoringAlertHistorySummary,
+    ListMonitoringAlertHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMonitoringAlertsError = ResourceNotFound | CommonErrors;
 /**
@@ -45508,7 +46688,27 @@ export const listMonitoringAlerts: API.OperationMethod<
     items: "MonitoringAlertSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMonitoringAlertsRequest,
+  ListMonitoringAlertsResponse,
+  ListMonitoringAlertsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMonitoringAlertsRequest,
+  ) => stream.Stream<
+    ListMonitoringAlertsResponse,
+    ListMonitoringAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMonitoringAlertsRequest,
+  ) => stream.Stream<
+    MonitoringAlertSummary,
+    ListMonitoringAlertsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMonitoringExecutionsError = CommonErrors;
 /**
@@ -45547,7 +46747,27 @@ export const listMonitoringExecutions: API.OperationMethod<
     items: "MonitoringExecutionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMonitoringExecutionsRequest,
+  ListMonitoringExecutionsResponse,
+  ListMonitoringExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMonitoringExecutionsRequest,
+  ) => stream.Stream<
+    ListMonitoringExecutionsResponse,
+    ListMonitoringExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMonitoringExecutionsRequest,
+  ) => stream.Stream<
+    MonitoringExecutionSummary,
+    ListMonitoringExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListMonitoringSchedulesError = CommonErrors;
 /**
@@ -45586,7 +46806,27 @@ export const listMonitoringSchedules: API.OperationMethod<
     items: "MonitoringScheduleSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListMonitoringSchedulesRequest,
+  ListMonitoringSchedulesResponse,
+  ListMonitoringSchedulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListMonitoringSchedulesRequest,
+  ) => stream.Stream<
+    ListMonitoringSchedulesResponse,
+    ListMonitoringSchedulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListMonitoringSchedulesRequest,
+  ) => stream.Stream<
+    MonitoringScheduleSummary,
+    ListMonitoringSchedulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNotebookInstanceLifecycleConfigsError = CommonErrors;
 /**
@@ -45625,7 +46865,27 @@ export const listNotebookInstanceLifecycleConfigs: API.OperationMethod<
     items: "NotebookInstanceLifecycleConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNotebookInstanceLifecycleConfigsInput,
+  ListNotebookInstanceLifecycleConfigsOutput,
+  ListNotebookInstanceLifecycleConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNotebookInstanceLifecycleConfigsInput,
+  ) => stream.Stream<
+    ListNotebookInstanceLifecycleConfigsOutput,
+    ListNotebookInstanceLifecycleConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNotebookInstanceLifecycleConfigsInput,
+  ) => stream.Stream<
+    NotebookInstanceLifecycleConfigSummary,
+    ListNotebookInstanceLifecycleConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListNotebookInstancesError = CommonErrors;
 /**
@@ -45664,7 +46924,27 @@ export const listNotebookInstances: API.OperationMethod<
     items: "NotebookInstances",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListNotebookInstancesInput,
+  ListNotebookInstancesOutput,
+  ListNotebookInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListNotebookInstancesInput,
+  ) => stream.Stream<
+    ListNotebookInstancesOutput,
+    ListNotebookInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListNotebookInstancesInput,
+  ) => stream.Stream<
+    NotebookInstanceSummary,
+    ListNotebookInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOptimizationJobsError = CommonErrors;
 /**
@@ -45703,7 +46983,27 @@ export const listOptimizationJobs: API.OperationMethod<
     items: "OptimizationJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOptimizationJobsRequest,
+  ListOptimizationJobsResponse,
+  ListOptimizationJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOptimizationJobsRequest,
+  ) => stream.Stream<
+    ListOptimizationJobsResponse,
+    ListOptimizationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOptimizationJobsRequest,
+  ) => stream.Stream<
+    OptimizationJobSummary,
+    ListOptimizationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPartnerAppsError = CommonErrors;
 /**
@@ -45742,7 +47042,27 @@ export const listPartnerApps: API.OperationMethod<
     items: "Summaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPartnerAppsRequest,
+  ListPartnerAppsResponse,
+  ListPartnerAppsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPartnerAppsRequest,
+  ) => stream.Stream<
+    ListPartnerAppsResponse,
+    ListPartnerAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPartnerAppsRequest,
+  ) => stream.Stream<
+    PartnerAppSummary,
+    ListPartnerAppsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelineExecutionsError = ResourceNotFound | CommonErrors;
 /**
@@ -45781,7 +47101,27 @@ export const listPipelineExecutions: API.OperationMethod<
     items: "PipelineExecutionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelineExecutionsRequest,
+  ListPipelineExecutionsResponse,
+  ListPipelineExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelineExecutionsRequest,
+  ) => stream.Stream<
+    ListPipelineExecutionsResponse,
+    ListPipelineExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelineExecutionsRequest,
+  ) => stream.Stream<
+    PipelineExecutionSummary,
+    ListPipelineExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelineExecutionStepsError = ResourceNotFound | CommonErrors;
 /**
@@ -45820,7 +47160,27 @@ export const listPipelineExecutionSteps: API.OperationMethod<
     items: "PipelineExecutionSteps",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelineExecutionStepsRequest,
+  ListPipelineExecutionStepsResponse,
+  ListPipelineExecutionStepsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelineExecutionStepsRequest,
+  ) => stream.Stream<
+    ListPipelineExecutionStepsResponse,
+    ListPipelineExecutionStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelineExecutionStepsRequest,
+  ) => stream.Stream<
+    PipelineExecutionStep,
+    ListPipelineExecutionStepsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelineParametersForExecutionError =
   | ResourceNotFound
@@ -45861,7 +47221,27 @@ export const listPipelineParametersForExecution: API.OperationMethod<
     items: "PipelineParameters",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelineParametersForExecutionRequest,
+  ListPipelineParametersForExecutionResponse,
+  ListPipelineParametersForExecutionError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelineParametersForExecutionRequest,
+  ) => stream.Stream<
+    ListPipelineParametersForExecutionResponse,
+    ListPipelineParametersForExecutionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelineParametersForExecutionRequest,
+  ) => stream.Stream<
+    Parameter,
+    ListPipelineParametersForExecutionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelinesError = CommonErrors;
 /**
@@ -45900,7 +47280,27 @@ export const listPipelines: API.OperationMethod<
     items: "PipelineSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelinesRequest,
+  ListPipelinesResponse,
+  ListPipelinesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelinesRequest,
+  ) => stream.Stream<
+    ListPipelinesResponse,
+    ListPipelinesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelinesRequest,
+  ) => stream.Stream<
+    PipelineSummary,
+    ListPipelinesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPipelineVersionsError = ResourceNotFound | CommonErrors;
 /**
@@ -45939,7 +47339,27 @@ export const listPipelineVersions: API.OperationMethod<
     items: "PipelineVersionSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPipelineVersionsRequest,
+  ListPipelineVersionsResponse,
+  ListPipelineVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipelineVersionsRequest,
+  ) => stream.Stream<
+    ListPipelineVersionsResponse,
+    ListPipelineVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipelineVersionsRequest,
+  ) => stream.Stream<
+    PipelineVersionSummary,
+    ListPipelineVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProcessingJobsError = CommonErrors;
 /**
@@ -45978,7 +47398,27 @@ export const listProcessingJobs: API.OperationMethod<
     items: "ProcessingJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProcessingJobsRequest,
+  ListProcessingJobsResponse,
+  ListProcessingJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProcessingJobsRequest,
+  ) => stream.Stream<
+    ListProcessingJobsResponse,
+    ListProcessingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProcessingJobsRequest,
+  ) => stream.Stream<
+    ProcessingJobSummary,
+    ListProcessingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProjectsError = CommonErrors;
 /**
@@ -46016,7 +47456,27 @@ export const listProjects: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProjectsInput,
+  ListProjectsOutput,
+  ListProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProjectsInput,
+  ) => stream.Stream<
+    ListProjectsOutput,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProjectsInput,
+  ) => stream.Stream<
+    unknown,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListResourceCatalogsError = CommonErrors;
 /**
@@ -46055,7 +47515,27 @@ export const listResourceCatalogs: API.OperationMethod<
     items: "ResourceCatalogs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListResourceCatalogsRequest,
+  ListResourceCatalogsResponse,
+  ListResourceCatalogsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListResourceCatalogsRequest,
+  ) => stream.Stream<
+    ListResourceCatalogsResponse,
+    ListResourceCatalogsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListResourceCatalogsRequest,
+  ) => stream.Stream<
+    ResourceCatalog,
+    ListResourceCatalogsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSpacesError = CommonErrors;
 /**
@@ -46094,7 +47574,27 @@ export const listSpaces: API.OperationMethod<
     items: "Spaces",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSpacesRequest,
+  ListSpacesResponse,
+  ListSpacesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSpacesRequest,
+  ) => stream.Stream<
+    ListSpacesResponse,
+    ListSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSpacesRequest,
+  ) => stream.Stream<
+    SpaceDetails,
+    ListSpacesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStageDevicesError = CommonErrors;
 /**
@@ -46133,7 +47633,27 @@ export const listStageDevices: API.OperationMethod<
     items: "DeviceDeploymentSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStageDevicesRequest,
+  ListStageDevicesResponse,
+  ListStageDevicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStageDevicesRequest,
+  ) => stream.Stream<
+    ListStageDevicesResponse,
+    ListStageDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStageDevicesRequest,
+  ) => stream.Stream<
+    DeviceDeploymentSummary,
+    ListStageDevicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStudioLifecycleConfigsError = ResourceInUse | CommonErrors;
 /**
@@ -46172,7 +47692,27 @@ export const listStudioLifecycleConfigs: API.OperationMethod<
     items: "StudioLifecycleConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStudioLifecycleConfigsRequest,
+  ListStudioLifecycleConfigsResponse,
+  ListStudioLifecycleConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStudioLifecycleConfigsRequest,
+  ) => stream.Stream<
+    ListStudioLifecycleConfigsResponse,
+    ListStudioLifecycleConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStudioLifecycleConfigsRequest,
+  ) => stream.Stream<
+    StudioLifecycleConfigDetails,
+    ListStudioLifecycleConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSubscribedWorkteamsError = CommonErrors;
 /**
@@ -46211,7 +47751,27 @@ export const listSubscribedWorkteams: API.OperationMethod<
     items: "SubscribedWorkteams",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSubscribedWorkteamsRequest,
+  ListSubscribedWorkteamsResponse,
+  ListSubscribedWorkteamsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSubscribedWorkteamsRequest,
+  ) => stream.Stream<
+    ListSubscribedWorkteamsResponse,
+    ListSubscribedWorkteamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSubscribedWorkteamsRequest,
+  ) => stream.Stream<
+    SubscribedWorkteam,
+    ListSubscribedWorkteamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsError = CommonErrors;
 /**
@@ -46250,7 +47810,27 @@ export const listTags: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsInput,
+  ListTagsOutput,
+  ListTagsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsInput,
+  ) => stream.Stream<
+    ListTagsOutput,
+    ListTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsInput,
+  ) => stream.Stream<
+    Tag,
+    ListTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTrainingJobsError = CommonErrors;
 /**
@@ -46301,7 +47881,27 @@ export const listTrainingJobs: API.OperationMethod<
     items: "TrainingJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrainingJobsRequest,
+  ListTrainingJobsResponse,
+  ListTrainingJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrainingJobsRequest,
+  ) => stream.Stream<
+    ListTrainingJobsResponse,
+    ListTrainingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrainingJobsRequest,
+  ) => stream.Stream<
+    TrainingJobSummary,
+    ListTrainingJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTrainingJobsForHyperParameterTuningJobError =
   | ResourceNotFound
@@ -46342,7 +47942,27 @@ export const listTrainingJobsForHyperParameterTuningJob: API.OperationMethod<
     items: "TrainingJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrainingJobsForHyperParameterTuningJobRequest,
+  ListTrainingJobsForHyperParameterTuningJobResponse,
+  ListTrainingJobsForHyperParameterTuningJobError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrainingJobsForHyperParameterTuningJobRequest,
+  ) => stream.Stream<
+    ListTrainingJobsForHyperParameterTuningJobResponse,
+    ListTrainingJobsForHyperParameterTuningJobError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrainingJobsForHyperParameterTuningJobRequest,
+  ) => stream.Stream<
+    HyperParameterTrainingJobSummary,
+    ListTrainingJobsForHyperParameterTuningJobError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTrainingPlansError = CommonErrors;
 /**
@@ -46381,7 +48001,27 @@ export const listTrainingPlans: API.OperationMethod<
     items: "TrainingPlanSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrainingPlansRequest,
+  ListTrainingPlansResponse,
+  ListTrainingPlansError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrainingPlansRequest,
+  ) => stream.Stream<
+    ListTrainingPlansResponse,
+    ListTrainingPlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrainingPlansRequest,
+  ) => stream.Stream<
+    TrainingPlanSummary,
+    ListTrainingPlansError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTransformJobsError = CommonErrors;
 /**
@@ -46420,7 +48060,27 @@ export const listTransformJobs: API.OperationMethod<
     items: "TransformJobSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTransformJobsRequest,
+  ListTransformJobsResponse,
+  ListTransformJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTransformJobsRequest,
+  ) => stream.Stream<
+    ListTransformJobsResponse,
+    ListTransformJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTransformJobsRequest,
+  ) => stream.Stream<
+    TransformJobSummary,
+    ListTransformJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTrialComponentsError = ResourceNotFound | CommonErrors;
 /**
@@ -46465,7 +48125,27 @@ export const listTrialComponents: API.OperationMethod<
     items: "TrialComponentSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrialComponentsRequest,
+  ListTrialComponentsResponse,
+  ListTrialComponentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrialComponentsRequest,
+  ) => stream.Stream<
+    ListTrialComponentsResponse,
+    ListTrialComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrialComponentsRequest,
+  ) => stream.Stream<
+    TrialComponentSummary,
+    ListTrialComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTrialsError = ResourceNotFound | CommonErrors;
 /**
@@ -46504,7 +48184,27 @@ export const listTrials: API.OperationMethod<
     items: "TrialSummaries",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTrialsRequest,
+  ListTrialsResponse,
+  ListTrialsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTrialsRequest,
+  ) => stream.Stream<
+    ListTrialsResponse,
+    ListTrialsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTrialsRequest,
+  ) => stream.Stream<
+    TrialSummary,
+    ListTrialsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListUltraServersByReservedCapacityError =
   | ResourceNotFound
@@ -46545,7 +48245,27 @@ export const listUltraServersByReservedCapacity: API.OperationMethod<
     items: "UltraServers",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUltraServersByReservedCapacityRequest,
+  ListUltraServersByReservedCapacityResponse,
+  ListUltraServersByReservedCapacityError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUltraServersByReservedCapacityRequest,
+  ) => stream.Stream<
+    ListUltraServersByReservedCapacityResponse,
+    ListUltraServersByReservedCapacityError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUltraServersByReservedCapacityRequest,
+  ) => stream.Stream<
+    UltraServer,
+    ListUltraServersByReservedCapacityError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListUserProfilesError = CommonErrors;
 /**
@@ -46584,7 +48304,27 @@ export const listUserProfiles: API.OperationMethod<
     items: "UserProfiles",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUserProfilesRequest,
+  ListUserProfilesResponse,
+  ListUserProfilesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUserProfilesRequest,
+  ) => stream.Stream<
+    ListUserProfilesResponse,
+    ListUserProfilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUserProfilesRequest,
+  ) => stream.Stream<
+    UserProfileDetails,
+    ListUserProfilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkforcesError = CommonErrors;
 /**
@@ -46623,7 +48363,27 @@ export const listWorkforces: API.OperationMethod<
     items: "Workforces",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkforcesRequest,
+  ListWorkforcesResponse,
+  ListWorkforcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkforcesRequest,
+  ) => stream.Stream<
+    ListWorkforcesResponse,
+    ListWorkforcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkforcesRequest,
+  ) => stream.Stream<
+    Workforce,
+    ListWorkforcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkteamsError = CommonErrors;
 /**
@@ -46662,7 +48422,27 @@ export const listWorkteams: API.OperationMethod<
     items: "Workteams",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkteamsRequest,
+  ListWorkteamsResponse,
+  ListWorkteamsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkteamsRequest,
+  ) => stream.Stream<
+    ListWorkteamsResponse,
+    ListWorkteamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkteamsRequest,
+  ) => stream.Stream<
+    Workteam,
+    ListWorkteamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutModelPackageGroupPolicyError = ConflictException | CommonErrors;
 /**
@@ -46718,7 +48498,27 @@ export const queryLineage: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  QueryLineageRequest,
+  QueryLineageResponse,
+  QueryLineageError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: QueryLineageRequest,
+  ) => stream.Stream<
+    QueryLineageResponse,
+    QueryLineageError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: QueryLineageRequest,
+  ) => stream.Stream<
+    unknown,
+    QueryLineageError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type RegisterDevicesError = ResourceLimitExceeded | CommonErrors;
 /**
@@ -46819,7 +48619,27 @@ export const search: API.OperationMethod<
     items: "Results",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchRequest,
+  SearchResponse,
+  SearchError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchRequest,
+  ) => stream.Stream<
+    SearchResponse,
+    SearchError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchRequest,
+  ) => stream.Stream<
+    SearchRecord,
+    SearchError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchTrainingPlanOfferingsError =
   | ResourceLimitExceeded

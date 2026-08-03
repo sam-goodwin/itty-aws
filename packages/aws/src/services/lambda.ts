@@ -6777,7 +6777,27 @@ export const getDurableExecutionHistory: API.OperationMethod<
     items: "Events",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetDurableExecutionHistoryRequest,
+  GetDurableExecutionHistoryResponse,
+  GetDurableExecutionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetDurableExecutionHistoryRequest,
+  ) => stream.Stream<
+    GetDurableExecutionHistoryResponse,
+    GetDurableExecutionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetDurableExecutionHistoryRequest,
+  ) => stream.Stream<
+    Event,
+    GetDurableExecutionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetDurableExecutionStateError =
   | InvalidParameterValueException
@@ -6826,7 +6846,27 @@ export const getDurableExecutionState: API.OperationMethod<
     items: "Operations",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetDurableExecutionStateRequest,
+  GetDurableExecutionStateResponse,
+  GetDurableExecutionStateError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetDurableExecutionStateRequest,
+  ) => stream.Stream<
+    GetDurableExecutionStateResponse,
+    GetDurableExecutionStateError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetDurableExecutionStateRequest,
+  ) => stream.Stream<
+    Operation,
+    GetDurableExecutionStateError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetEventSourceMappingError =
   | InvalidParameterValueException
@@ -7631,7 +7671,27 @@ export const listAliases: API.OperationMethod<
     items: "Aliases",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAliasesRequest,
+  ListAliasesResponse,
+  ListAliasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAliasesRequest,
+  ) => stream.Stream<
+    ListAliasesResponse,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAliasesRequest,
+  ) => stream.Stream<
+    AliasConfiguration,
+    ListAliasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCapacityProvidersError =
   | InvalidParameterValueException
@@ -7678,7 +7738,27 @@ export const listCapacityProviders: API.OperationMethod<
     items: "CapacityProviders",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCapacityProvidersRequest,
+  ListCapacityProvidersResponse,
+  ListCapacityProvidersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCapacityProvidersRequest,
+  ) => stream.Stream<
+    ListCapacityProvidersResponse,
+    ListCapacityProvidersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCapacityProvidersRequest,
+  ) => stream.Stream<
+    CapacityProvider,
+    ListCapacityProvidersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCodeSigningConfigsError =
   | InvalidParameterValueException
@@ -7720,7 +7800,27 @@ export const listCodeSigningConfigs: API.OperationMethod<
     items: "CodeSigningConfigs",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCodeSigningConfigsRequest,
+  ListCodeSigningConfigsResponse,
+  ListCodeSigningConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCodeSigningConfigsRequest,
+  ) => stream.Stream<
+    ListCodeSigningConfigsResponse,
+    ListCodeSigningConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCodeSigningConfigsRequest,
+  ) => stream.Stream<
+    CodeSigningConfig,
+    ListCodeSigningConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDurableExecutionsByFunctionError =
   | InvalidParameterValueException
@@ -7769,7 +7869,27 @@ export const listDurableExecutionsByFunction: API.OperationMethod<
     items: "DurableExecutions",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDurableExecutionsByFunctionRequest,
+  ListDurableExecutionsByFunctionResponse,
+  ListDurableExecutionsByFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDurableExecutionsByFunctionRequest,
+  ) => stream.Stream<
+    ListDurableExecutionsByFunctionResponse,
+    ListDurableExecutionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDurableExecutionsByFunctionRequest,
+  ) => stream.Stream<
+    Execution,
+    ListDurableExecutionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListEventSourceMappingsError =
   | InvalidParameterValueException
@@ -7818,7 +7938,27 @@ export const listEventSourceMappings: API.OperationMethod<
     items: "EventSourceMappings",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEventSourceMappingsRequest,
+  ListEventSourceMappingsResponse,
+  ListEventSourceMappingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEventSourceMappingsRequest,
+  ) => stream.Stream<
+    ListEventSourceMappingsResponse,
+    ListEventSourceMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEventSourceMappingsRequest,
+  ) => stream.Stream<
+    EventSourceMappingConfiguration,
+    ListEventSourceMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFunctionEventInvokeConfigsError =
   | InvalidParameterValueException
@@ -7873,7 +8013,27 @@ export const listFunctionEventInvokeConfigs: API.OperationMethod<
     items: "FunctionEventInvokeConfigs",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFunctionEventInvokeConfigsRequest,
+  ListFunctionEventInvokeConfigsResponse,
+  ListFunctionEventInvokeConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionEventInvokeConfigsRequest,
+  ) => stream.Stream<
+    ListFunctionEventInvokeConfigsResponse,
+    ListFunctionEventInvokeConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionEventInvokeConfigsRequest,
+  ) => stream.Stream<
+    FunctionEventInvokeConfig,
+    ListFunctionEventInvokeConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFunctionsError =
   | InvalidParameterValueException
@@ -7924,7 +8084,27 @@ export const listFunctions: API.OperationMethod<
     items: "Functions",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFunctionsRequest,
+  ListFunctionsResponse,
+  ListFunctionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    ListFunctionsResponse,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    FunctionConfiguration,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFunctionsByCodeSigningConfigError =
   | InvalidParameterValueException
@@ -7971,7 +8151,27 @@ export const listFunctionsByCodeSigningConfig: API.OperationMethod<
     items: "FunctionArns",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFunctionsByCodeSigningConfigRequest,
+  ListFunctionsByCodeSigningConfigResponse,
+  ListFunctionsByCodeSigningConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionsByCodeSigningConfigRequest,
+  ) => stream.Stream<
+    ListFunctionsByCodeSigningConfigResponse,
+    ListFunctionsByCodeSigningConfigError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionsByCodeSigningConfigRequest,
+  ) => stream.Stream<
+    FunctionArn,
+    ListFunctionsByCodeSigningConfigError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFunctionUrlConfigsError =
   | InvalidParameterValueException
@@ -8020,7 +8220,27 @@ export const listFunctionUrlConfigs: API.OperationMethod<
     items: "FunctionUrlConfigs",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFunctionUrlConfigsRequest,
+  ListFunctionUrlConfigsResponse,
+  ListFunctionUrlConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionUrlConfigsRequest,
+  ) => stream.Stream<
+    ListFunctionUrlConfigsResponse,
+    ListFunctionUrlConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionUrlConfigsRequest,
+  ) => stream.Stream<
+    FunctionUrlConfig,
+    ListFunctionUrlConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFunctionVersionsByCapacityProviderError =
   | InvalidParameterValueException
@@ -8069,7 +8289,27 @@ export const listFunctionVersionsByCapacityProvider: API.OperationMethod<
     items: "FunctionVersions",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFunctionVersionsByCapacityProviderRequest,
+  ListFunctionVersionsByCapacityProviderResponse,
+  ListFunctionVersionsByCapacityProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionVersionsByCapacityProviderRequest,
+  ) => stream.Stream<
+    ListFunctionVersionsByCapacityProviderResponse,
+    ListFunctionVersionsByCapacityProviderError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionVersionsByCapacityProviderRequest,
+  ) => stream.Stream<
+    FunctionVersionsByCapacityProviderListItem,
+    ListFunctionVersionsByCapacityProviderError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLayersError =
   | InvalidParameterValueException
@@ -8116,7 +8356,27 @@ export const listLayers: API.OperationMethod<
     items: "Layers",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLayersRequest,
+  ListLayersResponse,
+  ListLayersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLayersRequest,
+  ) => stream.Stream<
+    ListLayersResponse,
+    ListLayersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLayersRequest,
+  ) => stream.Stream<
+    LayersListItem,
+    ListLayersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLayerVersionsError =
   | InvalidParameterValueException
@@ -8169,7 +8429,27 @@ export const listLayerVersions: API.OperationMethod<
     items: "LayerVersions",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLayerVersionsRequest,
+  ListLayerVersionsResponse,
+  ListLayerVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLayerVersionsRequest,
+  ) => stream.Stream<
+    ListLayerVersionsResponse,
+    ListLayerVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLayerVersionsRequest,
+  ) => stream.Stream<
+    LayerVersionsListItem,
+    ListLayerVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProvisionedConcurrencyConfigsError =
   | InvalidParameterValueException
@@ -8222,7 +8502,27 @@ export const listProvisionedConcurrencyConfigs: API.OperationMethod<
     items: "ProvisionedConcurrencyConfigs",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProvisionedConcurrencyConfigsRequest,
+  ListProvisionedConcurrencyConfigsResponse,
+  ListProvisionedConcurrencyConfigsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProvisionedConcurrencyConfigsRequest,
+  ) => stream.Stream<
+    ListProvisionedConcurrencyConfigsResponse,
+    ListProvisionedConcurrencyConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProvisionedConcurrencyConfigsRequest,
+  ) => stream.Stream<
+    ProvisionedConcurrencyConfigListItem,
+    ListProvisionedConcurrencyConfigsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsError =
   | InvalidParameterValueException
@@ -8303,7 +8603,27 @@ export const listVersionsByFunction: API.OperationMethod<
     items: "Versions",
     pageSize: "MaxItems",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListVersionsByFunctionRequest,
+  ListVersionsByFunctionResponse,
+  ListVersionsByFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVersionsByFunctionRequest,
+  ) => stream.Stream<
+    ListVersionsByFunctionResponse,
+    ListVersionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVersionsByFunctionRequest,
+  ) => stream.Stream<
+    FunctionConfiguration,
+    ListVersionsByFunctionError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PublishLayerVersionError =
   | CodeStorageExceededException

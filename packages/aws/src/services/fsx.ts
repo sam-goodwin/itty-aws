@@ -6930,7 +6930,27 @@ export const describeBackups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeBackupsRequest,
+  DescribeBackupsResponse,
+  DescribeBackupsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeBackupsRequest,
+  ) => stream.Stream<
+    DescribeBackupsResponse,
+    DescribeBackupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeBackupsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeBackupsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeDataRepositoryAssociationsError =
   | BadRequest
@@ -7000,7 +7020,27 @@ export const describeDataRepositoryAssociations: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeDataRepositoryAssociationsRequest,
+  DescribeDataRepositoryAssociationsResponse,
+  DescribeDataRepositoryAssociationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeDataRepositoryAssociationsRequest,
+  ) => stream.Stream<
+    DescribeDataRepositoryAssociationsResponse,
+    DescribeDataRepositoryAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeDataRepositoryAssociationsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeDataRepositoryAssociationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeDataRepositoryTasksError =
   | BadRequest
@@ -7058,7 +7098,27 @@ export const describeDataRepositoryTasks: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeDataRepositoryTasksRequest,
+  DescribeDataRepositoryTasksResponse,
+  DescribeDataRepositoryTasksError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeDataRepositoryTasksRequest,
+  ) => stream.Stream<
+    DescribeDataRepositoryTasksResponse,
+    DescribeDataRepositoryTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeDataRepositoryTasksRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeDataRepositoryTasksError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFileCachesError =
   | BadRequest
@@ -7126,7 +7186,27 @@ export const describeFileCaches: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFileCachesRequest,
+  DescribeFileCachesResponse,
+  DescribeFileCachesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFileCachesRequest,
+  ) => stream.Stream<
+    DescribeFileCachesResponse,
+    DescribeFileCachesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFileCachesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeFileCachesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFileSystemAliasesError =
   | BadRequest
@@ -7170,7 +7250,27 @@ export const describeFileSystemAliases: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFileSystemAliasesRequest,
+  DescribeFileSystemAliasesResponse,
+  DescribeFileSystemAliasesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFileSystemAliasesRequest,
+  ) => stream.Stream<
+    DescribeFileSystemAliasesResponse,
+    DescribeFileSystemAliasesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFileSystemAliasesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeFileSystemAliasesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeFileSystemsError =
   | BadRequest
@@ -7238,7 +7338,27 @@ export const describeFileSystems: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeFileSystemsRequest,
+  DescribeFileSystemsResponse,
+  DescribeFileSystemsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeFileSystemsRequest,
+  ) => stream.Stream<
+    DescribeFileSystemsResponse,
+    DescribeFileSystemsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeFileSystemsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeFileSystemsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeS3AccessPointAttachmentsError =
   | BadRequest
@@ -7291,7 +7411,27 @@ export const describeS3AccessPointAttachments: API.OperationMethod<
     items: "S3AccessPointAttachments",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeS3AccessPointAttachmentsRequest,
+  DescribeS3AccessPointAttachmentsResponse,
+  DescribeS3AccessPointAttachmentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeS3AccessPointAttachmentsRequest,
+  ) => stream.Stream<
+    DescribeS3AccessPointAttachmentsResponse,
+    DescribeS3AccessPointAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeS3AccessPointAttachmentsRequest,
+  ) => stream.Stream<
+    S3AccessPointAttachment,
+    DescribeS3AccessPointAttachmentsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeSharedVpcConfigurationError =
   | BadRequest
@@ -7381,7 +7521,27 @@ export const describeSnapshots: API.OperationMethod<
     items: "Snapshots",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeSnapshotsRequest,
+  DescribeSnapshotsResponse,
+  DescribeSnapshotsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSnapshotsRequest,
+  ) => stream.Stream<
+    DescribeSnapshotsResponse,
+    DescribeSnapshotsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSnapshotsRequest,
+  ) => stream.Stream<
+    Snapshot,
+    DescribeSnapshotsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeStorageVirtualMachinesError =
   | BadRequest
@@ -7424,7 +7584,27 @@ export const describeStorageVirtualMachines: API.OperationMethod<
     items: "StorageVirtualMachines",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeStorageVirtualMachinesRequest,
+  DescribeStorageVirtualMachinesResponse,
+  DescribeStorageVirtualMachinesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeStorageVirtualMachinesRequest,
+  ) => stream.Stream<
+    DescribeStorageVirtualMachinesResponse,
+    DescribeStorageVirtualMachinesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeStorageVirtualMachinesRequest,
+  ) => stream.Stream<
+    StorageVirtualMachine,
+    DescribeStorageVirtualMachinesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeVolumesError =
   | BadRequest
@@ -7468,7 +7648,27 @@ export const describeVolumes: API.OperationMethod<
     items: "Volumes",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeVolumesRequest,
+  DescribeVolumesResponse,
+  DescribeVolumesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeVolumesRequest,
+  ) => stream.Stream<
+    DescribeVolumesResponse,
+    DescribeVolumesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeVolumesRequest,
+  ) => stream.Stream<
+    Volume,
+    DescribeVolumesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type DetachAndDeleteS3AccessPointError =
   | BadRequest
@@ -7607,7 +7807,27 @@ export const listTagsForResource: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    ListTagsForResourceResponse,
+    ListTagsForResourceError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsForResourceRequest,
+  ) => stream.Stream<
+    unknown,
+    ListTagsForResourceError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+};
 
 export type ReleaseFileSystemNfsV3LocksError =
   | BadRequest

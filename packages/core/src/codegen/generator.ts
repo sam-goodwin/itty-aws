@@ -108,6 +108,15 @@ export interface OperationEmit {
   readonly exportName: string;
   readonly inputName: string;
   readonly outputName: string;
+  /**
+   * The output as a TS type and as a schema expression. These differ from
+   * {@link outputName} when the operation's output IS a prelude shape
+   * (e.g. stripe's freeform `smithy.api#Document` responses): the bare
+   * local name isn't declared in the module, so it must resolve through
+   * the prelude maps (`unknown` / `S.Unknown`) instead.
+   */
+  readonly outputTsType: string;
+  readonly outputSchema: string;
   /** Declared error class names present in the model. */
   readonly errorNames: readonly string[];
   readonly doc: string | undefined;
@@ -830,9 +839,14 @@ export const generateService = (
         `export const ${name} = ${pure}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "union") {
-      const caseTargets = Object.values(d.members ?? {}).map(
-        (m: any) => m.target,
-      );
+      // A union arm targeting the union itself carries no information
+      // (`type X = X | A | B` ≡ `A | B`) and is an illegal circular type
+      // alias. Specs produce them: atlas's OnlineArchiveSchedule is a
+      // discriminated oneOf whose DEFAULT arm is `allOf: [$ref <the union
+      // itself>]`, so the arm resolves back to its own parent.
+      const caseTargets = Object.values(d.members ?? {})
+        .map((m: any) => m.target)
+        .filter((t: string) => t !== id);
       const caseKeys = caseTargets.map((t: string) => {
         const cd = shapes[t];
         return cd?.type === "structure"
@@ -885,14 +899,14 @@ export const generateService = (
       const typeAnnotation =
         `API.${paginated ? "PaginatedOperationMethod" : "OperationMethod"}<\n` +
         `  ${ctx.inputName},\n` +
-        `  ${ctx.outputName},\n` +
+        `  ${ctx.outputTsType},\n` +
         `  ${ctx.opName}Error,\n` +
         `  ${decl.contextType}\n` +
         `>`;
       const config =
         `{\n` +
         `  input: ${ctx.inputName},\n` +
-        `  output: ${ctx.outputName},\n` +
+        `  output: ${ctx.outputSchema},\n` +
         `  errors: [${errList.join(", ")}],\n` +
         `  protocol: ${(paginated && opProfile.get(ctx.op.id)?.protocol) || decl.protocol},\n` +
         `  retry: ${decl.retry},\n` +
@@ -927,6 +941,8 @@ export const generateService = (
         exportName: opExportName(opName),
         inputName: local(op.def.__input),
         outputName: local(op.def.__output),
+        outputTsType: tsRef(op.def.__output),
+        outputSchema: ref(op.def.__output, indexOf.size),
         errorNames: errNames,
         doc: oneLine(op.def.traits?.["smithy.api#documentation"]),
         pagination: op.def.__pagination,

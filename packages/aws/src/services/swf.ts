@@ -4052,7 +4052,27 @@ export const getWorkflowExecutionHistory: API.OperationMethod<
     items: "events",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetWorkflowExecutionHistoryInput,
+  History,
+  GetWorkflowExecutionHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetWorkflowExecutionHistoryInput,
+  ) => stream.Stream<
+    History,
+    GetWorkflowExecutionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetWorkflowExecutionHistoryInput,
+  ) => stream.Stream<
+    HistoryEvent,
+    GetWorkflowExecutionHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListActivityTypesError =
   | OperationNotPermittedFault
@@ -4117,7 +4137,27 @@ export const listActivityTypes: API.OperationMethod<
     items: "typeInfos",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListActivityTypesInput,
+  ActivityTypeInfos,
+  ListActivityTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListActivityTypesInput,
+  ) => stream.Stream<
+    ActivityTypeInfos,
+    ListActivityTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListActivityTypesInput,
+  ) => stream.Stream<
+    ActivityTypeInfo,
+    ListActivityTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListClosedWorkflowExecutionsError =
   | OperationNotPermittedFault
@@ -4193,7 +4233,27 @@ export const listClosedWorkflowExecutions: API.OperationMethod<
     items: "executionInfos",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListClosedWorkflowExecutionsInput,
+  WorkflowExecutionInfos,
+  ListClosedWorkflowExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListClosedWorkflowExecutionsInput,
+  ) => stream.Stream<
+    WorkflowExecutionInfos,
+    ListClosedWorkflowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListClosedWorkflowExecutionsInput,
+  ) => stream.Stream<
+    WorkflowExecutionInfo,
+    ListClosedWorkflowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDomainsError = OperationNotPermittedFault | CommonErrors;
 /**
@@ -4258,7 +4318,27 @@ export const listDomains: API.OperationMethod<
     items: "domainInfos",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDomainsInput,
+  DomainInfos,
+  ListDomainsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDomainsInput,
+  ) => stream.Stream<
+    DomainInfos,
+    ListDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDomainsInput,
+  ) => stream.Stream<
+    DomainInfo,
+    ListDomainsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListOpenWorkflowExecutionsError =
   | OperationNotPermittedFault
@@ -4334,7 +4414,27 @@ export const listOpenWorkflowExecutions: API.OperationMethod<
     items: "executionInfos",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListOpenWorkflowExecutionsInput,
+  WorkflowExecutionInfos,
+  ListOpenWorkflowExecutionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOpenWorkflowExecutionsInput,
+  ) => stream.Stream<
+    WorkflowExecutionInfos,
+    ListOpenWorkflowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOpenWorkflowExecutionsInput,
+  ) => stream.Stream<
+    WorkflowExecutionInfo,
+    ListOpenWorkflowExecutionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | LimitExceededFault
@@ -4422,7 +4522,27 @@ export const listWorkflowTypes: API.OperationMethod<
     items: "typeInfos",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkflowTypesInput,
+  WorkflowTypeInfos,
+  ListWorkflowTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkflowTypesInput,
+  ) => stream.Stream<
+    WorkflowTypeInfos,
+    ListWorkflowTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkflowTypesInput,
+  ) => stream.Stream<
+    WorkflowTypeInfo,
+    ListWorkflowTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PollForActivityTaskError =
   | LimitExceededFault
@@ -4567,7 +4687,27 @@ export const pollForDecisionTask: API.OperationMethod<
     items: "events",
     pageSize: "maximumPageSize",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  PollForDecisionTaskInput,
+  DecisionTask,
+  PollForDecisionTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: PollForDecisionTaskInput,
+  ) => stream.Stream<
+    DecisionTask,
+    PollForDecisionTaskError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: PollForDecisionTaskInput,
+  ) => stream.Stream<
+    HistoryEvent,
+    PollForDecisionTaskError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type RecordActivityTaskHeartbeatError =
   | OperationNotPermittedFault

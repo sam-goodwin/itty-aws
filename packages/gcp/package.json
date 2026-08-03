@@ -56,6 +56,7 @@
     }
   },
   "scripts": {
+    "build": "tsc -b",
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts && bun scripts/generate.ts --smithy .generated-specs/unstable --out src/unstable-services",
     "typecheck": "tsc -p tsconfig.json",

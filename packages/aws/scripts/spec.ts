@@ -2376,6 +2376,9 @@ export const awsSpec = (
         factory: paginatedTrait ? "API.makePaginated" : "API.make",
         config: metaObject,
         pure: PURE,
+        // The items-stream element type comes from the pagination trait
+        // path and can only be inferred as `unknown` by makePaginated.
+        castToAnnotation: paginatedTrait !== undefined,
       });
 
       return [...pre, errorTypeAlias + operationComment + opConst].join("\n");

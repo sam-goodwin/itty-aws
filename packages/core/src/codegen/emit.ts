@@ -139,13 +139,23 @@ export interface OperationConstOptions {
   /** Optional extra factory argument (e.g. a pagination strategy). */
   readonly extraArg?: string;
   readonly pure?: string;
+  /**
+   * Cast the factory result to the annotation (`as any as T`), for
+   * annotations the factory's generic signature can't prove. The one case
+   * today: a paginated operation's `items` stream element type comes from
+   * the pagination trait's `items` PATH, resolved at runtime, so the
+   * factory can only infer `unknown` while the annotation names the real
+   * element type. Same idiom the schema consts use (`as any as
+   * S.Schema<X>`).
+   */
+  readonly castToAnnotation?: boolean;
 }
 
 /** `export const op: T = API.make(() => ({ … }));` */
 export const operationConst = (o: OperationConstOptions): string =>
   `export const ${o.exportName}: ${o.typeAnnotation} = ${o.pure ?? ""}${o.factory}(() => (${o.config})${
     o.extraArg ? `, ${o.extraArg}` : ""
-  });\n`;
+  })${o.castToAnnotation ? ` as any as ${o.typeAnnotation}` : ""};\n`;
 
 import { tsKey } from "./naming.ts";
 

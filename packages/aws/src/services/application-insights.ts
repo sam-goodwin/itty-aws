@@ -2030,7 +2030,27 @@ export const listApplications: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationsRequest,
+  ListApplicationsResponse,
+  ListApplicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    ListApplicationsResponse,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListComponentsError =
   | InternalServerException
@@ -2076,7 +2096,27 @@ export const listComponents: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListComponentsRequest,
+  ListComponentsResponse,
+  ListComponentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListComponentsRequest,
+  ) => stream.Stream<
+    ListComponentsResponse,
+    ListComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListComponentsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConfigurationHistoryError =
   | InternalServerException
@@ -2130,7 +2170,27 @@ export const listConfigurationHistory: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConfigurationHistoryRequest,
+  ListConfigurationHistoryResponse,
+  ListConfigurationHistoryError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConfigurationHistoryRequest,
+  ) => stream.Stream<
+    ListConfigurationHistoryResponse,
+    ListConfigurationHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigurationHistoryRequest,
+  ) => stream.Stream<
+    unknown,
+    ListConfigurationHistoryError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLogPatternsError =
   | InternalServerException
@@ -2176,7 +2236,27 @@ export const listLogPatterns: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLogPatternsRequest,
+  ListLogPatternsResponse,
+  ListLogPatternsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLogPatternsRequest,
+  ) => stream.Stream<
+    ListLogPatternsResponse,
+    ListLogPatternsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLogPatternsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListLogPatternsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListLogPatternSetsError =
   | InternalServerException
@@ -2222,7 +2302,27 @@ export const listLogPatternSets: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListLogPatternSetsRequest,
+  ListLogPatternSetsResponse,
+  ListLogPatternSetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListLogPatternSetsRequest,
+  ) => stream.Stream<
+    ListLogPatternSetsResponse,
+    ListLogPatternSetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListLogPatternSetsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListLogPatternSetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProblemsError =
   | InternalServerException
@@ -2268,7 +2368,27 @@ export const listProblems: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProblemsRequest,
+  ListProblemsResponse,
+  ListProblemsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProblemsRequest,
+  ) => stream.Stream<
+    ListProblemsResponse,
+    ListProblemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProblemsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListProblemsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | ResourceNotFoundException
@@ -2340,7 +2460,27 @@ export const listWorkloads: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkloadsRequest,
+  ListWorkloadsResponse,
+  ListWorkloadsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkloadsRequest,
+  ) => stream.Stream<
+    ListWorkloadsResponse,
+    ListWorkloadsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkloadsRequest,
+  ) => stream.Stream<
+    unknown,
+    ListWorkloadsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type RemoveWorkloadError =
   | InternalServerException

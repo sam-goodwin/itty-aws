@@ -2024,7 +2024,27 @@ export const listApplications: API.OperationMethod<
     items: "applications",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListApplicationsRequest,
+  ListApplicationsResponse,
+  ListApplicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    ListApplicationsResponse,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsRequest,
+  ) => stream.Stream<
+    ApplicationSummary,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobRunAttemptsError =
   | InternalServerException
@@ -2071,7 +2091,27 @@ export const listJobRunAttempts: API.OperationMethod<
     items: "jobRunAttempts",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobRunAttemptsRequest,
+  ListJobRunAttemptsResponse,
+  ListJobRunAttemptsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobRunAttemptsRequest,
+  ) => stream.Stream<
+    ListJobRunAttemptsResponse,
+    ListJobRunAttemptsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobRunAttemptsRequest,
+  ) => stream.Stream<
+    JobRunAttemptSummary,
+    ListJobRunAttemptsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobRunsError =
   | InternalServerException
@@ -2113,7 +2153,27 @@ export const listJobRuns: API.OperationMethod<
     items: "jobRuns",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobRunsRequest,
+  ListJobRunsResponse,
+  ListJobRunsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobRunsRequest,
+  ) => stream.Stream<
+    ListJobRunsResponse,
+    ListJobRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobRunsRequest,
+  ) => stream.Stream<
+    JobRunSummary,
+    ListJobRunsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSessionsError =
   | InternalServerException
@@ -2160,7 +2220,27 @@ export const listSessions: API.OperationMethod<
     items: "sessions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSessionsRequest,
+  ListSessionsResponse,
+  ListSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    ListSessionsResponse,
+    ListSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    SessionSummary,
+    ListSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

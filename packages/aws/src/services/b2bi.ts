@@ -2877,7 +2877,27 @@ export const listCapabilities: API.OperationMethod<
     items: "capabilities",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCapabilitiesRequest,
+  ListCapabilitiesResponse,
+  ListCapabilitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCapabilitiesRequest,
+  ) => stream.Stream<
+    ListCapabilitiesResponse,
+    ListCapabilitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCapabilitiesRequest,
+  ) => stream.Stream<
+    CapabilitySummary,
+    ListCapabilitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPartnershipsError =
   | AccessDeniedException
@@ -2928,7 +2948,27 @@ export const listPartnerships: API.OperationMethod<
     items: "partnerships",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPartnershipsRequest,
+  ListPartnershipsResponse,
+  ListPartnershipsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPartnershipsRequest,
+  ) => stream.Stream<
+    ListPartnershipsResponse,
+    ListPartnershipsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPartnershipsRequest,
+  ) => stream.Stream<
+    PartnershipSummary,
+    ListPartnershipsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProfilesError =
   | AccessDeniedException
@@ -2977,7 +3017,27 @@ export const listProfiles: API.OperationMethod<
     items: "profiles",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProfilesRequest,
+  ListProfilesResponse,
+  ListProfilesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProfilesRequest,
+  ) => stream.Stream<
+    ListProfilesResponse,
+    ListProfilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProfilesRequest,
+  ) => stream.Stream<
+    ProfileSummary,
+    ListProfilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -3052,7 +3112,27 @@ export const listTransformers: API.OperationMethod<
     items: "transformers",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTransformersRequest,
+  ListTransformersResponse,
+  ListTransformersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTransformersRequest,
+  ) => stream.Stream<
+    ListTransformersResponse,
+    ListTransformersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTransformersRequest,
+  ) => stream.Stream<
+    TransformerSummary,
+    ListTransformersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type StartTransformerJobError =
   | AccessDeniedException

@@ -1376,7 +1376,27 @@ export const listCampaigns: API.OperationMethod<
     items: "campaignSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCampaignsRequest,
+  ListCampaignsResponse,
+  ListCampaignsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCampaignsRequest,
+  ) => stream.Stream<
+    ListCampaignsResponse,
+    ListCampaignsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCampaignsRequest,
+  ) => stream.Stream<
+    CampaignSummary,
+    ListCampaignsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

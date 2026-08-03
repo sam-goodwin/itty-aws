@@ -2871,7 +2871,27 @@ export const listExportTasks: API.OperationMethod<
     items: "tasks",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListExportTasksInput,
+  ListExportTasksOutput,
+  ListExportTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListExportTasksInput,
+  ) => stream.Stream<
+    ListExportTasksOutput,
+    ListExportTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListExportTasksInput,
+  ) => stream.Stream<
+    ExportTaskSummary,
+    ListExportTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGraphsError =
   | InternalServerException
@@ -2918,7 +2938,27 @@ export const listGraphs: API.OperationMethod<
     items: "graphs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGraphsInput,
+  ListGraphsOutput,
+  ListGraphsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGraphsInput,
+  ) => stream.Stream<
+    ListGraphsOutput,
+    ListGraphsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGraphsInput,
+  ) => stream.Stream<
+    GraphSummary,
+    ListGraphsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGraphSnapshotsError =
   | InternalServerException
@@ -2967,7 +3007,27 @@ export const listGraphSnapshots: API.OperationMethod<
     items: "graphSnapshots",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGraphSnapshotsInput,
+  ListGraphSnapshotsOutput,
+  ListGraphSnapshotsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGraphSnapshotsInput,
+  ) => stream.Stream<
+    ListGraphSnapshotsOutput,
+    ListGraphSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGraphSnapshotsInput,
+  ) => stream.Stream<
+    GraphSnapshotSummary,
+    ListGraphSnapshotsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListImportTasksError =
   | InternalServerException
@@ -3016,7 +3076,27 @@ export const listImportTasks: API.OperationMethod<
     items: "tasks",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListImportTasksInput,
+  ListImportTasksOutput,
+  ListImportTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListImportTasksInput,
+  ) => stream.Stream<
+    ListImportTasksOutput,
+    ListImportTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListImportTasksInput,
+  ) => stream.Stream<
+    ImportTaskSummary,
+    ListImportTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPrivateGraphEndpointsError =
   | InternalServerException
@@ -3065,7 +3145,27 @@ export const listPrivateGraphEndpoints: API.OperationMethod<
     items: "privateGraphEndpoints",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPrivateGraphEndpointsInput,
+  ListPrivateGraphEndpointsOutput,
+  ListPrivateGraphEndpointsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPrivateGraphEndpointsInput,
+  ) => stream.Stream<
+    ListPrivateGraphEndpointsOutput,
+    ListPrivateGraphEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPrivateGraphEndpointsInput,
+  ) => stream.Stream<
+    PrivateGraphEndpointSummary,
+    ListPrivateGraphEndpointsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQueriesError =
   | AccessDeniedException

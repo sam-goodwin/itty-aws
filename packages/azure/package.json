@@ -1,7 +1,6 @@
 {
   "name": "@distilled.cloud/azure",
   "version": "0.31.0",
-  "private": true,
   "license": "Apache-2.0",
   "type": "module",
   "sideEffects": false,
@@ -46,6 +45,7 @@
     }
   },
   "scripts": {
+    "build": "tsc -b",
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/convert.ts && bun scripts/generate.ts",
     "typecheck": "tsc -p tsconfig.json",

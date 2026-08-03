@@ -1370,7 +1370,27 @@ export const listGroupMembers: API.OperationMethod<
     items: "Members",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupMembersRequest,
+  ListGroupMembersResult,
+  ListGroupMembersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupMembersRequest,
+  ) => stream.Stream<
+    ListGroupMembersResult,
+    ListGroupMembersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupMembersRequest,
+  ) => stream.Stream<
+    Member,
+    ListGroupMembersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupsError =
   | AccessDeniedException
@@ -1429,7 +1449,27 @@ export const listGroups: API.OperationMethod<
     items: "Groups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsRequest,
+  ListGroupsResult,
+  ListGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsRequest,
+  ) => stream.Stream<
+    ListGroupsResult,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsRequest,
+  ) => stream.Stream<
+    GroupSummary,
+    ListGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListGroupsForMemberError =
   | AccessDeniedException
@@ -1490,7 +1530,27 @@ export const listGroupsForMember: API.OperationMethod<
     items: "Groups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListGroupsForMemberRequest,
+  ListGroupsForMemberResult,
+  ListGroupsForMemberError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroupsForMemberRequest,
+  ) => stream.Stream<
+    ListGroupsForMemberResult,
+    ListGroupsForMemberError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupsForMemberRequest,
+  ) => stream.Stream<
+    GroupSummary,
+    ListGroupsForMemberError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListUsersError =
   | AccessDeniedException
@@ -1549,7 +1609,27 @@ export const listUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListUsersRequest,
+  ListUsersResult,
+  ListUsersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListUsersRequest,
+  ) => stream.Stream<
+    ListUsersResult,
+    ListUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListUsersRequest,
+  ) => stream.Stream<
+    UserSummary,
+    ListUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type RemoveGroupMemberError =
   | AccessDeniedException
@@ -1644,7 +1724,27 @@ export const searchGroups: API.OperationMethod<
     items: "Groups",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchGroupsRequest,
+  SearchGroupsResult,
+  SearchGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchGroupsRequest,
+  ) => stream.Stream<
+    SearchGroupsResult,
+    SearchGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchGroupsRequest,
+  ) => stream.Stream<
+    Group,
+    SearchGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type SearchUsersError =
   | AccessDeniedException
@@ -1705,7 +1805,27 @@ export const searchUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  SearchUsersRequest,
+  SearchUsersResult,
+  SearchUsersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchUsersRequest,
+  ) => stream.Stream<
+    SearchUsersResult,
+    SearchUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchUsersRequest,
+  ) => stream.Stream<
+    User,
+    SearchUsersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type UpdateGroupError =
   | AccessDeniedException

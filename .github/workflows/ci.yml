@@ -1,0 +1,66 @@
+name: ci
+
+# Typecheck gate for PRs and pushes to main.
+#
+# `tsconfig.base.json` sets `noCheck: true` so day-to-day `tsc -b` (and
+# every editor/intellisense engine) only EMITS the generated SDKs instead
+# of checking them — checking 20 generated SDKs costs minutes and GBs.
+# CI is where that cost is worth paying: `typecheck:ci` re-enables
+# checking (`tsc -b --noCheck false`) across every package, so a
+# generator or patch bug can't reach npm.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    # `labeled` so adding the `force-ci` label re-triggers the run.
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  typecheck:
+    # Checking aws/azure/gcp together needs more memory than the default
+    # runner has.
+    runs-on: ubuntu-22-large
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+
+      - run: bun install --frozen-lockfile
+
+      - name: Typecheck (all packages, generated code included)
+        run: bun run typecheck:ci
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+
+      - run: bun install --frozen-lockfile
+      - run: bun run format:check

@@ -1856,7 +1856,27 @@ export const listCertificateAuthorities: API.OperationMethod<
     items: "CertificateAuthorities",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCertificateAuthoritiesRequest,
+  ListCertificateAuthoritiesResponse,
+  ListCertificateAuthoritiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCertificateAuthoritiesRequest,
+  ) => stream.Stream<
+    ListCertificateAuthoritiesResponse,
+    ListCertificateAuthoritiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCertificateAuthoritiesRequest,
+  ) => stream.Stream<
+    CertificateAuthority,
+    ListCertificateAuthoritiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPermissionsError =
   | InvalidArnException
@@ -1918,7 +1938,27 @@ export const listPermissions: API.OperationMethod<
     items: "Permissions",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPermissionsRequest,
+  ListPermissionsResponse,
+  ListPermissionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPermissionsRequest,
+  ) => stream.Stream<
+    ListPermissionsResponse,
+    ListPermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPermissionsRequest,
+  ) => stream.Stream<
+    Permission,
+    ListPermissionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsError =
   | InvalidArnException
@@ -1967,7 +2007,27 @@ export const listTags: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListTagsRequest,
+  ListTagsResponse,
+  ListTagsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTagsRequest,
+  ) => stream.Stream<
+    ListTagsResponse,
+    ListTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTagsRequest,
+  ) => stream.Stream<
+    Tag,
+    ListTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type PutPolicyError =
   | ConcurrentModificationException

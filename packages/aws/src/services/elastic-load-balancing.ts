@@ -2134,7 +2134,27 @@ export const describeLoadBalancers: API.OperationMethod<
     outputToken: "NextMarker",
     items: "LoadBalancerDescriptions",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAccessPointsInput,
+  DescribeAccessPointsOutput,
+  DescribeLoadBalancersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAccessPointsInput,
+  ) => stream.Stream<
+    DescribeAccessPointsOutput,
+    DescribeLoadBalancersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAccessPointsInput,
+  ) => stream.Stream<
+    LoadBalancerDescription,
+    DescribeLoadBalancersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTagsError = AccessPointNotFoundException | CommonErrors;
 /**

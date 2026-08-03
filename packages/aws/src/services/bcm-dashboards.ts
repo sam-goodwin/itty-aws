@@ -1304,7 +1304,27 @@ export const listDashboards: API.OperationMethod<
     items: "dashboards",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDashboardsRequest,
+  ListDashboardsResponse,
+  ListDashboardsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDashboardsRequest,
+  ) => stream.Stream<
+    ListDashboardsResponse,
+    ListDashboardsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDashboardsRequest,
+  ) => stream.Stream<
+    DashboardReference,
+    ListDashboardsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListScheduledReportsError =
   | AccessDeniedException
@@ -1353,7 +1373,27 @@ export const listScheduledReports: API.OperationMethod<
     items: "scheduledReports",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListScheduledReportsRequest,
+  ListScheduledReportsResponse,
+  ListScheduledReportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScheduledReportsRequest,
+  ) => stream.Stream<
+    ListScheduledReportsResponse,
+    ListScheduledReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScheduledReportsRequest,
+  ) => stream.Stream<
+    ScheduledReportSummary,
+    ListScheduledReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException

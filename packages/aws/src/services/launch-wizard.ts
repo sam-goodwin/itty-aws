@@ -1133,7 +1133,27 @@ export const listDeploymentEvents: API.OperationMethod<
     items: "deploymentEvents",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentEventsInput,
+  ListDeploymentEventsOutput,
+  ListDeploymentEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentEventsInput,
+  ) => stream.Stream<
+    ListDeploymentEventsOutput,
+    ListDeploymentEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentEventsInput,
+  ) => stream.Stream<
+    DeploymentEventDataSummary,
+    ListDeploymentEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentPatternVersionsError =
   | InternalServerException
@@ -1180,7 +1200,27 @@ export const listDeploymentPatternVersions: API.OperationMethod<
     items: "deploymentPatternVersions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentPatternVersionsInput,
+  ListDeploymentPatternVersionsOutput,
+  ListDeploymentPatternVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentPatternVersionsInput,
+  ) => stream.Stream<
+    ListDeploymentPatternVersionsOutput,
+    ListDeploymentPatternVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentPatternVersionsInput,
+  ) => stream.Stream<
+    DeploymentPatternVersionDataSummary,
+    ListDeploymentPatternVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDeploymentsError =
   | InternalServerException
@@ -1222,7 +1262,27 @@ export const listDeployments: API.OperationMethod<
     items: "deployments",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDeploymentsInput,
+  ListDeploymentsOutput,
+  ListDeploymentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDeploymentsInput,
+  ) => stream.Stream<
+    ListDeploymentsOutput,
+    ListDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDeploymentsInput,
+  ) => stream.Stream<
+    DeploymentDataSummary,
+    ListDeploymentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | InternalServerException
@@ -1295,7 +1355,27 @@ export const listWorkloadDeploymentPatterns: API.OperationMethod<
     items: "workloadDeploymentPatterns",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkloadDeploymentPatternsInput,
+  ListWorkloadDeploymentPatternsOutput,
+  ListWorkloadDeploymentPatternsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkloadDeploymentPatternsInput,
+  ) => stream.Stream<
+    ListWorkloadDeploymentPatternsOutput,
+    ListWorkloadDeploymentPatternsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkloadDeploymentPatternsInput,
+  ) => stream.Stream<
+    WorkloadDeploymentPatternDataSummary,
+    ListWorkloadDeploymentPatternsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListWorkloadsError =
   | InternalServerException
@@ -1337,7 +1417,27 @@ export const listWorkloads: API.OperationMethod<
     items: "workloads",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListWorkloadsInput,
+  ListWorkloadsOutput,
+  ListWorkloadsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWorkloadsInput,
+  ) => stream.Stream<
+    ListWorkloadsOutput,
+    ListWorkloadsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWorkloadsInput,
+  ) => stream.Stream<
+    WorkloadDataSummary,
+    ListWorkloadsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type TagResourceError =
   | InternalServerException

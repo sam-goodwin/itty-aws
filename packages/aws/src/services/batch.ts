@@ -5388,7 +5388,27 @@ export const describeComputeEnvironments: API.OperationMethod<
     items: "computeEnvironments",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeComputeEnvironmentsRequest,
+  DescribeComputeEnvironmentsResponse,
+  DescribeComputeEnvironmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeComputeEnvironmentsRequest,
+  ) => stream.Stream<
+    DescribeComputeEnvironmentsResponse,
+    DescribeComputeEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeComputeEnvironmentsRequest,
+  ) => stream.Stream<
+    ComputeEnvironmentDetail,
+    DescribeComputeEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeConsumableResourceError =
   | ClientException
@@ -5452,7 +5472,27 @@ export const describeJobDefinitions: API.OperationMethod<
     items: "jobDefinitions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeJobDefinitionsRequest,
+  DescribeJobDefinitionsResponse,
+  DescribeJobDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeJobDefinitionsRequest,
+  ) => stream.Stream<
+    DescribeJobDefinitionsResponse,
+    DescribeJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeJobDefinitionsRequest,
+  ) => stream.Stream<
+    JobDefinition,
+    DescribeJobDefinitionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeJobQueuesError =
   | ClientException
@@ -5494,7 +5534,27 @@ export const describeJobQueues: API.OperationMethod<
     items: "jobQueues",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeJobQueuesRequest,
+  DescribeJobQueuesResponse,
+  DescribeJobQueuesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeJobQueuesRequest,
+  ) => stream.Stream<
+    DescribeJobQueuesResponse,
+    DescribeJobQueuesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeJobQueuesRequest,
+  ) => stream.Stream<
+    JobQueueDetail,
+    DescribeJobQueuesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeJobsError =
   | ClientException
@@ -5599,7 +5659,27 @@ export const describeServiceEnvironments: API.OperationMethod<
     items: "serviceEnvironments",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeServiceEnvironmentsRequest,
+  DescribeServiceEnvironmentsResponse,
+  DescribeServiceEnvironmentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeServiceEnvironmentsRequest,
+  ) => stream.Stream<
+    DescribeServiceEnvironmentsResponse,
+    DescribeServiceEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeServiceEnvironmentsRequest,
+  ) => stream.Stream<
+    ServiceEnvironmentDetail,
+    DescribeServiceEnvironmentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeServiceJobError =
   | ClientException
@@ -5686,7 +5766,27 @@ export const listConsumableResources: API.OperationMethod<
     items: "consumableResources",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConsumableResourcesRequest,
+  ListConsumableResourcesResponse,
+  ListConsumableResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConsumableResourcesRequest,
+  ) => stream.Stream<
+    ListConsumableResourcesResponse,
+    ListConsumableResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConsumableResourcesRequest,
+  ) => stream.Stream<
+    ConsumableResourceSummary,
+    ListConsumableResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobsError = ClientException | ServerException | CommonErrors;
 /**
@@ -5733,7 +5833,27 @@ export const listJobs: API.OperationMethod<
     items: "jobSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobsRequest,
+  ListJobsResponse,
+  ListJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResponse,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    JobSummary,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListJobsByConsumableResourceError =
   | ClientException
@@ -5775,7 +5895,27 @@ export const listJobsByConsumableResource: API.OperationMethod<
     items: "jobs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListJobsByConsumableResourceRequest,
+  ListJobsByConsumableResourceResponse,
+  ListJobsByConsumableResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobsByConsumableResourceRequest,
+  ) => stream.Stream<
+    ListJobsByConsumableResourceResponse,
+    ListJobsByConsumableResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobsByConsumableResourceRequest,
+  ) => stream.Stream<
+    ListJobsByConsumableResourceSummary,
+    ListJobsByConsumableResourceError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListQuotaSharesError =
   | ClientException
@@ -5817,7 +5957,27 @@ export const listQuotaShares: API.OperationMethod<
     items: "quotaShares",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListQuotaSharesRequest,
+  ListQuotaSharesResponse,
+  ListQuotaSharesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListQuotaSharesRequest,
+  ) => stream.Stream<
+    ListQuotaSharesResponse,
+    ListQuotaSharesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListQuotaSharesRequest,
+  ) => stream.Stream<
+    QuotaShareDetail,
+    ListQuotaSharesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSchedulingPoliciesError =
   | ClientException
@@ -5859,7 +6019,27 @@ export const listSchedulingPolicies: API.OperationMethod<
     items: "schedulingPolicies",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSchedulingPoliciesRequest,
+  ListSchedulingPoliciesResponse,
+  ListSchedulingPoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSchedulingPoliciesRequest,
+  ) => stream.Stream<
+    ListSchedulingPoliciesResponse,
+    ListSchedulingPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSchedulingPoliciesRequest,
+  ) => stream.Stream<
+    SchedulingPolicyListingDetail,
+    ListSchedulingPoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListServiceJobsError =
   | ClientException
@@ -5901,7 +6081,27 @@ export const listServiceJobs: API.OperationMethod<
     items: "jobSummaryList",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListServiceJobsRequest,
+  ListServiceJobsResponse,
+  ListServiceJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceJobsRequest,
+  ) => stream.Stream<
+    ListServiceJobsResponse,
+    ListServiceJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceJobsRequest,
+  ) => stream.Stream<
+    ServiceJobSummary,
+    ListServiceJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | ClientException

@@ -929,7 +929,27 @@ export const listChallengeMetadata: API.OperationMethod<
     items: "Challenges",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListChallengeMetadataRequest,
+  ListChallengeMetadataResponse,
+  ListChallengeMetadataError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListChallengeMetadataRequest,
+  ) => stream.Stream<
+    ListChallengeMetadataResponse,
+    ListChallengeMetadataError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListChallengeMetadataRequest,
+  ) => stream.Stream<
+    ChallengeMetadataSummary,
+    ListChallengeMetadataError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListConnectorsError =
   | AccessDeniedException
@@ -978,7 +998,27 @@ export const listConnectors: API.OperationMethod<
     items: "Connectors",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListConnectorsRequest,
+  ListConnectorsResponse,
+  ListConnectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
+    ListConnectorsResponse,
+    ListConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
+    ConnectorSummary,
+    ListConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

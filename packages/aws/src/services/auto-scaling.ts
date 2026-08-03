@@ -5420,7 +5420,27 @@ export const describeAutoScalingGroups: API.OperationMethod<
     items: "AutoScalingGroups",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  AutoScalingGroupNamesType,
+  AutoScalingGroupsType,
+  DescribeAutoScalingGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: AutoScalingGroupNamesType,
+  ) => stream.Stream<
+    AutoScalingGroupsType,
+    DescribeAutoScalingGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: AutoScalingGroupNamesType,
+  ) => stream.Stream<
+    AutoScalingGroup,
+    DescribeAutoScalingGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAutoScalingInstancesError =
   | InvalidNextToken
@@ -5462,7 +5482,27 @@ export const describeAutoScalingInstances: API.OperationMethod<
     items: "AutoScalingInstances",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeAutoScalingInstancesType,
+  AutoScalingInstancesType,
+  DescribeAutoScalingInstancesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeAutoScalingInstancesType,
+  ) => stream.Stream<
+    AutoScalingInstancesType,
+    DescribeAutoScalingInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeAutoScalingInstancesType,
+  ) => stream.Stream<
+    AutoScalingInstanceDetails,
+    DescribeAutoScalingInstancesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeAutoScalingNotificationTypesError =
   | ResourceContentionFault
@@ -5535,7 +5575,27 @@ export const describeInstanceRefreshes: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeInstanceRefreshesType,
+  DescribeInstanceRefreshesAnswer,
+  DescribeInstanceRefreshesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeInstanceRefreshesType,
+  ) => stream.Stream<
+    DescribeInstanceRefreshesAnswer,
+    DescribeInstanceRefreshesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeInstanceRefreshesType,
+  ) => stream.Stream<
+    unknown,
+    DescribeInstanceRefreshesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLaunchConfigurationsError =
   | InvalidNextToken
@@ -5577,7 +5637,27 @@ export const describeLaunchConfigurations: API.OperationMethod<
     items: "LaunchConfigurations",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  LaunchConfigurationNamesType,
+  LaunchConfigurationsType,
+  DescribeLaunchConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: LaunchConfigurationNamesType,
+  ) => stream.Stream<
+    LaunchConfigurationsType,
+    DescribeLaunchConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: LaunchConfigurationNamesType,
+  ) => stream.Stream<
+    LaunchConfiguration,
+    DescribeLaunchConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLifecycleHooksError =
   | ResourceContentionFault
@@ -5698,7 +5778,27 @@ export const describeLoadBalancers: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLoadBalancersRequest,
+  DescribeLoadBalancersResponse,
+  DescribeLoadBalancersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLoadBalancersRequest,
+  ) => stream.Stream<
+    DescribeLoadBalancersResponse,
+    DescribeLoadBalancersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLoadBalancersRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeLoadBalancersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeLoadBalancerTargetGroupsError =
   | InvalidNextToken
@@ -5772,7 +5872,27 @@ export const describeLoadBalancerTargetGroups: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeLoadBalancerTargetGroupsRequest,
+  DescribeLoadBalancerTargetGroupsResponse,
+  DescribeLoadBalancerTargetGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeLoadBalancerTargetGroupsRequest,
+  ) => stream.Stream<
+    DescribeLoadBalancerTargetGroupsResponse,
+    DescribeLoadBalancerTargetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeLoadBalancerTargetGroupsRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeLoadBalancerTargetGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMetricCollectionTypesError =
   | ResourceContentionFault
@@ -5835,7 +5955,27 @@ export const describeNotificationConfigurations: API.OperationMethod<
     items: "NotificationConfigurations",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeNotificationConfigurationsType,
+  DescribeNotificationConfigurationsAnswer,
+  DescribeNotificationConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeNotificationConfigurationsType,
+  ) => stream.Stream<
+    DescribeNotificationConfigurationsAnswer,
+    DescribeNotificationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeNotificationConfigurationsType,
+  ) => stream.Stream<
+    NotificationConfiguration,
+    DescribeNotificationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribePoliciesError =
   | InvalidNextToken
@@ -5878,7 +6018,27 @@ export const describePolicies: API.OperationMethod<
     items: "ScalingPolicies",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribePoliciesType,
+  PoliciesType,
+  DescribePoliciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribePoliciesType,
+  ) => stream.Stream<
+    PoliciesType,
+    DescribePoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribePoliciesType,
+  ) => stream.Stream<
+    ScalingPolicy,
+    DescribePoliciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeScalingActivitiesError =
   | InvalidNextToken
@@ -5930,7 +6090,27 @@ export const describeScalingActivities: API.OperationMethod<
     items: "Activities",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeScalingActivitiesType,
+  ActivitiesType,
+  DescribeScalingActivitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeScalingActivitiesType,
+  ) => stream.Stream<
+    ActivitiesType,
+    DescribeScalingActivitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeScalingActivitiesType,
+  ) => stream.Stream<
+    Activity,
+    DescribeScalingActivitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeScalingProcessTypesError =
   | ResourceContentionFault
@@ -5998,7 +6178,27 @@ export const describeScheduledActions: API.OperationMethod<
     items: "ScheduledUpdateGroupActions",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeScheduledActionsType,
+  ScheduledActionsType,
+  DescribeScheduledActionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeScheduledActionsType,
+  ) => stream.Stream<
+    ScheduledActionsType,
+    DescribeScheduledActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeScheduledActionsType,
+  ) => stream.Stream<
+    ScheduledUpdateGroupAction,
+    DescribeScheduledActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTagsError =
   | InvalidNextToken
@@ -6051,7 +6251,27 @@ export const describeTags: API.OperationMethod<
     items: "Tags",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTagsType,
+  TagsType,
+  DescribeTagsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTagsType,
+  ) => stream.Stream<
+    TagsType,
+    DescribeTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTagsType,
+  ) => stream.Stream<
+    TagDescription,
+    DescribeTagsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTerminationPolicyTypesError =
   | ResourceContentionFault
@@ -6122,7 +6342,27 @@ export const describeTrafficSources: API.OperationMethod<
     outputToken: "NextToken",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTrafficSourcesRequest,
+  DescribeTrafficSourcesResponse,
+  DescribeTrafficSourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTrafficSourcesRequest,
+  ) => stream.Stream<
+    DescribeTrafficSourcesResponse,
+    DescribeTrafficSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTrafficSourcesRequest,
+  ) => stream.Stream<
+    unknown,
+    DescribeTrafficSourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeWarmPoolError =
   | InvalidNextToken
@@ -6168,7 +6408,27 @@ export const describeWarmPool: API.OperationMethod<
     items: "Instances",
     pageSize: "MaxRecords",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeWarmPoolType,
+  DescribeWarmPoolAnswer,
+  DescribeWarmPoolError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeWarmPoolType,
+  ) => stream.Stream<
+    DescribeWarmPoolAnswer,
+    DescribeWarmPoolError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeWarmPoolType,
+  ) => stream.Stream<
+    Instance,
+    DescribeWarmPoolError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DetachInstancesError = ResourceContentionFault | CommonErrors;
 /**

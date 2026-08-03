@@ -4019,7 +4019,27 @@ export const describeCodeCoverages: API.OperationMethod<
     items: "codeCoverages",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeCodeCoveragesInput,
+  DescribeCodeCoveragesOutput,
+  DescribeCodeCoveragesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeCodeCoveragesInput,
+  ) => stream.Stream<
+    DescribeCodeCoveragesOutput,
+    DescribeCodeCoveragesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeCodeCoveragesInput,
+  ) => stream.Stream<
+    CodeCoverage,
+    DescribeCodeCoveragesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeTestCasesError =
   | InvalidInputException
@@ -4061,7 +4081,27 @@ export const describeTestCases: API.OperationMethod<
     items: "testCases",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeTestCasesInput,
+  DescribeTestCasesOutput,
+  DescribeTestCasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeTestCasesInput,
+  ) => stream.Stream<
+    DescribeTestCasesOutput,
+    DescribeTestCasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeTestCasesInput,
+  ) => stream.Stream<
+    TestCase,
+    DescribeTestCasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetReportGroupTrendError =
   | InvalidInputException
@@ -4190,7 +4230,27 @@ export const listBuildBatches: API.OperationMethod<
     items: "ids",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBuildBatchesInput,
+  ListBuildBatchesOutput,
+  ListBuildBatchesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBuildBatchesInput,
+  ) => stream.Stream<
+    ListBuildBatchesOutput,
+    ListBuildBatchesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBuildBatchesInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListBuildBatchesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBuildBatchesForProjectError =
   | InvalidInputException
@@ -4232,7 +4292,27 @@ export const listBuildBatchesForProject: API.OperationMethod<
     items: "ids",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBuildBatchesForProjectInput,
+  ListBuildBatchesForProjectOutput,
+  ListBuildBatchesForProjectError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBuildBatchesForProjectInput,
+  ) => stream.Stream<
+    ListBuildBatchesForProjectOutput,
+    ListBuildBatchesForProjectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBuildBatchesForProjectInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListBuildBatchesForProjectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBuildsError = InvalidInputException | CommonErrors;
 /**
@@ -4270,7 +4350,27 @@ export const listBuilds: API.OperationMethod<
     outputToken: "nextToken",
     items: "ids",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBuildsInput,
+  ListBuildsOutput,
+  ListBuildsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBuildsInput,
+  ) => stream.Stream<
+    ListBuildsOutput,
+    ListBuildsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBuildsInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListBuildsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListBuildsForProjectError =
   | InvalidInputException
@@ -4312,7 +4412,27 @@ export const listBuildsForProject: API.OperationMethod<
     outputToken: "nextToken",
     items: "ids",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBuildsForProjectInput,
+  ListBuildsForProjectOutput,
+  ListBuildsForProjectError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBuildsForProjectInput,
+  ) => stream.Stream<
+    ListBuildsForProjectOutput,
+    ListBuildsForProjectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBuildsForProjectInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListBuildsForProjectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCommandExecutionsForSandboxError =
   | InvalidInputException
@@ -4354,7 +4474,27 @@ export const listCommandExecutionsForSandbox: API.OperationMethod<
     items: "commandExecutions",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListCommandExecutionsForSandboxInput,
+  ListCommandExecutionsForSandboxOutput,
+  ListCommandExecutionsForSandboxError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListCommandExecutionsForSandboxInput,
+  ) => stream.Stream<
+    ListCommandExecutionsForSandboxOutput,
+    ListCommandExecutionsForSandboxError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListCommandExecutionsForSandboxInput,
+  ) => stream.Stream<
+    CommandExecution,
+    ListCommandExecutionsForSandboxError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListCuratedEnvironmentImagesError = CommonErrors;
 /**
@@ -4410,7 +4550,27 @@ export const listFleets: API.OperationMethod<
     outputToken: "nextToken",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFleetsInput,
+  ListFleetsOutput,
+  ListFleetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFleetsInput,
+  ) => stream.Stream<
+    ListFleetsOutput,
+    ListFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFleetsInput,
+  ) => stream.Stream<
+    unknown,
+    ListFleetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListProjectsError = InvalidInputException | CommonErrors;
 /**
@@ -4449,7 +4609,27 @@ export const listProjects: API.OperationMethod<
     outputToken: "nextToken",
     items: "projects",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListProjectsInput,
+  ListProjectsOutput,
+  ListProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProjectsInput,
+  ) => stream.Stream<
+    ListProjectsOutput,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProjectsInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReportGroupsError = InvalidInputException | CommonErrors;
 /**
@@ -4488,7 +4668,27 @@ export const listReportGroups: API.OperationMethod<
     items: "reportGroups",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReportGroupsInput,
+  ListReportGroupsOutput,
+  ListReportGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReportGroupsInput,
+  ) => stream.Stream<
+    ListReportGroupsOutput,
+    ListReportGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReportGroupsInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListReportGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReportsError = InvalidInputException | CommonErrors;
 /**
@@ -4527,7 +4727,27 @@ export const listReports: API.OperationMethod<
     items: "reports",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReportsInput,
+  ListReportsOutput,
+  ListReportsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReportsInput,
+  ) => stream.Stream<
+    ListReportsOutput,
+    ListReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReportsInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListReportsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListReportsForReportGroupError =
   | InvalidInputException
@@ -4569,7 +4789,27 @@ export const listReportsForReportGroup: API.OperationMethod<
     items: "reports",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListReportsForReportGroupInput,
+  ListReportsForReportGroupOutput,
+  ListReportsForReportGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListReportsForReportGroupInput,
+  ) => stream.Stream<
+    ListReportsForReportGroupOutput,
+    ListReportsForReportGroupError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListReportsForReportGroupInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListReportsForReportGroupError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSandboxesError = InvalidInputException | CommonErrors;
 /**
@@ -4608,7 +4848,27 @@ export const listSandboxes: API.OperationMethod<
     items: "ids",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSandboxesInput,
+  ListSandboxesOutput,
+  ListSandboxesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSandboxesInput,
+  ) => stream.Stream<
+    ListSandboxesOutput,
+    ListSandboxesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSandboxesInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListSandboxesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSandboxesForProjectError =
   | InvalidInputException
@@ -4650,7 +4910,27 @@ export const listSandboxesForProject: API.OperationMethod<
     items: "ids",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSandboxesForProjectInput,
+  ListSandboxesForProjectOutput,
+  ListSandboxesForProjectError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSandboxesForProjectInput,
+  ) => stream.Stream<
+    ListSandboxesForProjectOutput,
+    ListSandboxesForProjectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSandboxesForProjectInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListSandboxesForProjectError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSharedProjectsError = InvalidInputException | CommonErrors;
 /**
@@ -4689,7 +4969,27 @@ export const listSharedProjects: API.OperationMethod<
     items: "projects",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSharedProjectsInput,
+  ListSharedProjectsOutput,
+  ListSharedProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSharedProjectsInput,
+  ) => stream.Stream<
+    ListSharedProjectsOutput,
+    ListSharedProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSharedProjectsInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListSharedProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSharedReportGroupsError = InvalidInputException | CommonErrors;
 /**
@@ -4728,7 +5028,27 @@ export const listSharedReportGroups: API.OperationMethod<
     items: "reportGroups",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSharedReportGroupsInput,
+  ListSharedReportGroupsOutput,
+  ListSharedReportGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSharedReportGroupsInput,
+  ) => stream.Stream<
+    ListSharedReportGroupsOutput,
+    ListSharedReportGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSharedReportGroupsInput,
+  ) => stream.Stream<
+    NonEmptyString,
+    ListSharedReportGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSourceCredentialsError = InvalidInputException | CommonErrors;
 /**

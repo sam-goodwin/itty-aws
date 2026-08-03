@@ -3819,7 +3819,27 @@ export const getFindingRecommendation: API.OperationMethod<
     items: "recommendedSteps",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetFindingRecommendationRequest,
+  GetFindingRecommendationResponse,
+  GetFindingRecommendationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetFindingRecommendationRequest,
+  ) => stream.Stream<
+    GetFindingRecommendationResponse,
+    GetFindingRecommendationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetFindingRecommendationRequest,
+  ) => stream.Stream<
+    RecommendedStep,
+    GetFindingRecommendationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetFindingsStatisticsError =
   | AccessDeniedException
@@ -3900,7 +3920,27 @@ export const getFindingV2: API.OperationMethod<
     items: "findingDetails",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  GetFindingV2Request,
+  GetFindingV2Response,
+  GetFindingV2Error,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetFindingV2Request,
+  ) => stream.Stream<
+    GetFindingV2Response,
+    GetFindingV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetFindingV2Request,
+  ) => stream.Stream<
+    FindingDetails,
+    GetFindingV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type GetGeneratedPolicyError =
   | AccessDeniedException
@@ -3981,7 +4021,27 @@ export const listAccessPreviewFindings: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccessPreviewFindingsRequest,
+  ListAccessPreviewFindingsResponse,
+  ListAccessPreviewFindingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccessPreviewFindingsRequest,
+  ) => stream.Stream<
+    ListAccessPreviewFindingsResponse,
+    ListAccessPreviewFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccessPreviewFindingsRequest,
+  ) => stream.Stream<
+    AccessPreviewFinding,
+    ListAccessPreviewFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAccessPreviewsError =
   | AccessDeniedException
@@ -4032,7 +4092,27 @@ export const listAccessPreviews: API.OperationMethod<
     items: "accessPreviews",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAccessPreviewsRequest,
+  ListAccessPreviewsResponse,
+  ListAccessPreviewsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAccessPreviewsRequest,
+  ) => stream.Stream<
+    ListAccessPreviewsResponse,
+    ListAccessPreviewsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAccessPreviewsRequest,
+  ) => stream.Stream<
+    AccessPreviewSummary,
+    ListAccessPreviewsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAnalyzedResourcesError =
   | AccessDeniedException
@@ -4083,7 +4163,27 @@ export const listAnalyzedResources: API.OperationMethod<
     items: "analyzedResources",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAnalyzedResourcesRequest,
+  ListAnalyzedResourcesResponse,
+  ListAnalyzedResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAnalyzedResourcesRequest,
+  ) => stream.Stream<
+    ListAnalyzedResourcesResponse,
+    ListAnalyzedResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAnalyzedResourcesRequest,
+  ) => stream.Stream<
+    AnalyzedResourceSummary,
+    ListAnalyzedResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListAnalyzersError =
   | AccessDeniedException
@@ -4132,7 +4232,27 @@ export const listAnalyzers: API.OperationMethod<
     items: "analyzers",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListAnalyzersRequest,
+  ListAnalyzersResponse,
+  ListAnalyzersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAnalyzersRequest,
+  ) => stream.Stream<
+    ListAnalyzersResponse,
+    ListAnalyzersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAnalyzersRequest,
+  ) => stream.Stream<
+    AnalyzerSummary,
+    ListAnalyzersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListArchiveRulesError =
   | AccessDeniedException
@@ -4181,7 +4301,27 @@ export const listArchiveRules: API.OperationMethod<
     items: "archiveRules",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListArchiveRulesRequest,
+  ListArchiveRulesResponse,
+  ListArchiveRulesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListArchiveRulesRequest,
+  ) => stream.Stream<
+    ListArchiveRulesResponse,
+    ListArchiveRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListArchiveRulesRequest,
+  ) => stream.Stream<
+    ArchiveRuleSummary,
+    ListArchiveRulesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFindingsError =
   | AccessDeniedException
@@ -4236,7 +4376,27 @@ export const listFindings: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFindingsRequest,
+  ListFindingsResponse,
+  ListFindingsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFindingsRequest,
+  ) => stream.Stream<
+    ListFindingsResponse,
+    ListFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFindingsRequest,
+  ) => stream.Stream<
+    FindingSummary,
+    ListFindingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListFindingsV2Error =
   | AccessDeniedException
@@ -4289,7 +4449,27 @@ export const listFindingsV2: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListFindingsV2Request,
+  ListFindingsV2Response,
+  ListFindingsV2Error,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFindingsV2Request,
+  ) => stream.Stream<
+    ListFindingsV2Response,
+    ListFindingsV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFindingsV2Request,
+  ) => stream.Stream<
+    FindingSummaryV2,
+    ListFindingsV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListPolicyGenerationsError =
   | AccessDeniedException
@@ -4338,7 +4518,27 @@ export const listPolicyGenerations: API.OperationMethod<
     items: "policyGenerations",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListPolicyGenerationsRequest,
+  ListPolicyGenerationsResponse,
+  ListPolicyGenerationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyGenerationsRequest,
+  ) => stream.Stream<
+    ListPolicyGenerationsResponse,
+    ListPolicyGenerationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyGenerationsRequest,
+  ) => stream.Stream<
+    PolicyGeneration,
+    ListPolicyGenerationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
@@ -4635,4 +4835,24 @@ export const validatePolicy: API.OperationMethod<
     items: "findings",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ValidatePolicyRequest,
+  ValidatePolicyResponse,
+  ValidatePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ValidatePolicyRequest,
+  ) => stream.Stream<
+    ValidatePolicyResponse,
+    ValidatePolicyError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ValidatePolicyRequest,
+  ) => stream.Stream<
+    ValidatePolicyFinding,
+    ValidatePolicyError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};

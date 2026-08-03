@@ -2036,7 +2036,27 @@ export const describeMappedResourceConfiguration: API.OperationMethod<
     items: "MappedResourceConfigurationList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  DescribeMappedResourceConfigurationInput,
+  DescribeMappedResourceConfigurationOutput,
+  DescribeMappedResourceConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeMappedResourceConfigurationInput,
+  ) => stream.Stream<
+    DescribeMappedResourceConfigurationOutput,
+    DescribeMappedResourceConfigurationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeMappedResourceConfigurationInput,
+  ) => stream.Stream<
+    MappedResourceConfigurationListItem,
+    DescribeMappedResourceConfigurationError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type DescribeMediaStorageConfigurationError =
   | AccessDeniedException
@@ -2314,7 +2334,27 @@ export const listEdgeAgentConfigurations: API.OperationMethod<
     items: "EdgeConfigs",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListEdgeAgentConfigurationsInput,
+  ListEdgeAgentConfigurationsOutput,
+  ListEdgeAgentConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEdgeAgentConfigurationsInput,
+  ) => stream.Stream<
+    ListEdgeAgentConfigurationsOutput,
+    ListEdgeAgentConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEdgeAgentConfigurationsInput,
+  ) => stream.Stream<
+    ListEdgeAgentConfigurationsEdgeConfig,
+    ListEdgeAgentConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListSignalingChannelsError =
   | AccessDeniedException
@@ -2363,7 +2403,27 @@ export const listSignalingChannels: API.OperationMethod<
     items: "ChannelInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListSignalingChannelsInput,
+  ListSignalingChannelsOutput,
+  ListSignalingChannelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSignalingChannelsInput,
+  ) => stream.Stream<
+    ListSignalingChannelsOutput,
+    ListSignalingChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSignalingChannelsInput,
+  ) => stream.Stream<
+    ChannelInfo,
+    ListSignalingChannelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListStreamsError =
   | ClientLimitExceededException
@@ -2407,7 +2467,27 @@ export const listStreams: API.OperationMethod<
     items: "StreamInfoList",
     pageSize: "MaxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListStreamsInput,
+  ListStreamsOutput,
+  ListStreamsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamsInput,
+  ) => stream.Stream<
+    ListStreamsOutput,
+    ListStreamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamsInput,
+  ) => stream.Stream<
+    StreamInfo,
+    ListStreamsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException

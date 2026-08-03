@@ -2872,7 +2872,27 @@ export const listBlueprints: API.OperationMethod<
     items: "blueprints",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListBlueprintsRequest,
+  ListBlueprintsResponse,
+  ListBlueprintsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBlueprintsRequest,
+  ) => stream.Stream<
+    ListBlueprintsResponse,
+    ListBlueprintsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBlueprintsRequest,
+  ) => stream.Stream<
+    BlueprintSummary,
+    ListBlueprintsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataAutomationLibrariesError =
   | AccessDeniedException
@@ -2921,7 +2941,27 @@ export const listDataAutomationLibraries: API.OperationMethod<
     items: "libraries",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataAutomationLibrariesRequest,
+  ListDataAutomationLibrariesResponse,
+  ListDataAutomationLibrariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationLibrariesRequest,
+  ) => stream.Stream<
+    ListDataAutomationLibrariesResponse,
+    ListDataAutomationLibrariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationLibrariesRequest,
+  ) => stream.Stream<
+    DataAutomationLibrarySummary,
+    ListDataAutomationLibrariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataAutomationLibraryEntitiesError =
   | AccessDeniedException
@@ -2972,7 +3012,27 @@ export const listDataAutomationLibraryEntities: API.OperationMethod<
     items: "entities",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataAutomationLibraryEntitiesRequest,
+  ListDataAutomationLibraryEntitiesResponse,
+  ListDataAutomationLibraryEntitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationLibraryEntitiesRequest,
+  ) => stream.Stream<
+    ListDataAutomationLibraryEntitiesResponse,
+    ListDataAutomationLibraryEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationLibraryEntitiesRequest,
+  ) => stream.Stream<
+    DataAutomationLibraryEntitySummary,
+    ListDataAutomationLibraryEntitiesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataAutomationLibraryIngestionJobsError =
   | AccessDeniedException
@@ -3023,7 +3083,27 @@ export const listDataAutomationLibraryIngestionJobs: API.OperationMethod<
     items: "jobs",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataAutomationLibraryIngestionJobsRequest,
+  ListDataAutomationLibraryIngestionJobsResponse,
+  ListDataAutomationLibraryIngestionJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationLibraryIngestionJobsRequest,
+  ) => stream.Stream<
+    ListDataAutomationLibraryIngestionJobsResponse,
+    ListDataAutomationLibraryIngestionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationLibraryIngestionJobsRequest,
+  ) => stream.Stream<
+    DataAutomationLibraryIngestionJobSummary,
+    ListDataAutomationLibraryIngestionJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListDataAutomationProjectsError =
   | AccessDeniedException
@@ -3074,7 +3154,27 @@ export const listDataAutomationProjects: API.OperationMethod<
     items: "projects",
     pageSize: "maxResults",
   } as const,
-}));
+})) as any as API.OperationMethod<
+  ListDataAutomationProjectsRequest,
+  ListDataAutomationProjectsResponse,
+  ListDataAutomationProjectsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDataAutomationProjectsRequest,
+  ) => stream.Stream<
+    ListDataAutomationProjectsResponse,
+    ListDataAutomationProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDataAutomationProjectsRequest,
+  ) => stream.Stream<
+    DataAutomationProjectSummary,
+    ListDataAutomationProjectsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+};
 
 export type ListTagsForResourceError =
   | AccessDeniedException
