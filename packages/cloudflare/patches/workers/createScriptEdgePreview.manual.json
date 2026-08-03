@@ -159,6 +159,12 @@
               "smithy.api#documentation": "Token to send as cf-workers-preview-token header when making requests to the preview host.",
               "smithy.api#required": {}
             }
+          },
+          "tail_url": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#documentation": "URL for tailing live logs from the preview worker."
+            }
           }
         },
         "traits": {
