@@ -8572,10 +8572,13 @@ export const CreateScriptEdgePreviewRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateScriptEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
   previewToken: string;
+  /** URL for tailing live logs from the preview worker. */
+  tailUrl?: string | null;
 }
 export const CreateScriptEdgePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previewToken: S.String.pipe(T.Body("preview_token")),
+    tailUrl: S.optional(S.NullOr(S.String).pipe(T.Body("tail_url"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateScriptEdgePreviewResponse",
@@ -11715,6 +11718,66 @@ export const CreateScriptVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptVersionResponse",
 }) as any as S.Schema<CreateScriptVersionResponse>;
 
+export interface CreateServiceEdgePreviewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Name of the Worker service. */
+  serviceName: string;
+  /** Name of the environment within the service. */
+  environmentName: string;
+  /** The session token returned by createSubdomainEdgePreviewSession. */
+  cfPreviewUploadConfigToken: string;
+  /** JSON-encoded multipart `metadata` part: the preview worker's modules, bindings and settings. */
+  metadata?: CreateScriptEdgePreviewMetadata;
+  /** Module files comprising the worker script, appended under their own filenames. */
+  files?: File | Blob | (File | Blob)[];
+  /** JSON-encoded multipart part selecting how the preview is routed (workers.dev or explicit routes); without it edge previews cannot opt into workers.dev routing. */
+  wranglerSessionConfig?: CreateScriptEdgePreviewWranglerSessionConfig;
+}
+export const CreateServiceEdgePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    serviceName: S.String.pipe(T.Label("service_name")),
+    environmentName: S.String.pipe(T.Label("environment_name")),
+    cfPreviewUploadConfigToken: S.String.pipe(
+      T.Header("cf-preview-upload-config-token"),
+    ),
+    metadata: S.optional(CreateScriptEdgePreviewMetadata),
+    files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+    wranglerSessionConfig: S.optional(
+      CreateScriptEdgePreviewWranglerSessionConfig.pipe(
+        T.Body("wrangler-session-config"),
+      ),
+    ),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/edge-preview",
+        code: 200,
+        contentType: "multipart",
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateServiceEdgePreviewRequest",
+}) as any as S.Schema<CreateServiceEdgePreviewRequest>;
+
+export interface CreateServiceEdgePreviewResponse {
+  /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
+  previewToken: string;
+  /** URL for tailing live logs from the preview worker. */
+  tailUrl?: string | null;
+}
+export const CreateServiceEdgePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    previewToken: S.String.pipe(T.Body("preview_token")),
+    tailUrl: S.optional(S.NullOr(S.String).pipe(T.Body("tail_url"))),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateServiceEdgePreviewResponse",
+}) as any as S.Schema<CreateServiceEdgePreviewResponse>;
+
 export interface CreateSubdomainEdgePreviewSessionRequest {
   /** Identifier. */
   accountId: string;
@@ -11751,6 +11814,42 @@ export const CreateSubdomainEdgePreviewSessionResponse =
   ).annotate({
     identifier: "CreateSubdomainEdgePreviewSessionResponse",
   }) as any as S.Schema<CreateSubdomainEdgePreviewSessionResponse>;
+
+export interface CreateZoneEdgePreviewSessionRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const CreateZoneEdgePreviewSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  })
+    .pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/workers/edge-preview",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateZoneEdgePreviewSessionRequest",
+}) as any as S.Schema<CreateZoneEdgePreviewSessionRequest>;
+
+export interface CreateZoneEdgePreviewSessionResponse {
+  /** Session token used as cf-preview-upload-config-token when uploading a preview worker. */
+  token: string;
+  /** Optional URL to exchange the token for a re-encoded version. */
+  exchangeUrl?: string | null;
+}
+export const CreateZoneEdgePreviewSessionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      token: S.String,
+      exchangeUrl: S.optional(S.NullOr(S.String).pipe(T.Body("exchange_url"))),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateZoneEdgePreviewSessionResponse",
+}) as any as S.Schema<CreateZoneEdgePreviewSessionResponse>;
 
 export interface DeleteBetaWorkerRequest {
   /** Identifier. */
@@ -34967,6 +35066,21 @@ export const createScriptVersion: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateServiceEdgePreviewError = InvalidRoute | CloudflareOpError;
+/** Upload a preview worker for one environment of a service under an edge-preview session (undocumented endpoint). */
+export const createServiceEdgePreview: API.OperationMethod<
+  CreateServiceEdgePreviewRequest,
+  CreateServiceEdgePreviewResponse,
+  CreateServiceEdgePreviewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateServiceEdgePreviewRequest,
+  output: CreateServiceEdgePreviewResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateSubdomainEdgePreviewSessionError =
   | InvalidRoute
   | CloudflareOpError;
@@ -34979,6 +35093,23 @@ export const createSubdomainEdgePreviewSession: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSubdomainEdgePreviewSessionRequest,
   output: CreateSubdomainEdgePreviewSessionResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateZoneEdgePreviewSessionError =
+  | InvalidRoute
+  | CloudflareOpError;
+/** Create an edge-preview session scoped to a zone (undocumented endpoint). */
+export const createZoneEdgePreviewSession: API.OperationMethod<
+  CreateZoneEdgePreviewSessionRequest,
+  CreateZoneEdgePreviewSessionResponse,
+  CreateZoneEdgePreviewSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateZoneEdgePreviewSessionRequest,
+  output: CreateZoneEdgePreviewSessionResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
