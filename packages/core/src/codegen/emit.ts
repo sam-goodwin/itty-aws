@@ -119,11 +119,24 @@ export interface ErrorClassOptions {
   readonly wrap?: (cls: string) => string;
 }
 
-/** `export class X extends S.TaggedErrorClass<X>()("X", { … }) {}` */
+/**
+ * `export class X extends /*@__PURE__*​/ S.TaggedErrorClass<X>()("X", { … }) {}`
+ *
+ * The PURE markers are what make an unused error class droppable. A class
+ * whose heritage clause is an unannotated call can never be tree-shaken —
+ * the bundler has to assume the call has side effects — so a consumer
+ * importing one operation would retain every error class in the module
+ * (distilled #191).
+ *
+ * `wrap` needs its own marker as well as the inner one: a pure call's
+ * ARGUMENTS are still evaluated, so annotating only
+ * `T.applyErrorMatchers(S.TaggedErrorClass…(…), […])` leaves the inner call
+ * holding the class alive. Verified against esbuild in both directions.
+ */
 export const errorClass = (o: ErrorClassOptions): string => {
   const annotations = o.annotations ? `,\n${o.annotations}` : "";
-  const cls = `S.TaggedErrorClass<${o.name}>()(${q(o.tag ?? o.name)}, {\n${o.fields.join("\n")}\n}${annotations})${o.pipes ?? ""}`;
-  const body = o.wrap ? o.wrap(cls) : cls;
+  const cls = `${PURE}S.TaggedErrorClass<${o.name}>()(${q(o.tag ?? o.name)}, {\n${o.fields.join("\n")}\n}${annotations})${o.pipes ?? ""}`;
+  const body = o.wrap ? `${PURE}${o.wrap(cls)}` : cls;
   return `export class ${o.name} extends ${body} {}\n`;
 };
 
