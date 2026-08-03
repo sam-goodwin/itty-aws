@@ -17,6 +17,14 @@ on:
         required: false
         type: string
         default: "rc"
+      force-latest:
+        description: >-
+          Publish under npm's `latest` dist-tag regardless of channel —
+          use to promote a release candidate. If the version is already
+          on npm, its `latest` tag is moved rather than skipped.
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: release-${{ github.ref }}
@@ -49,6 +57,7 @@ jobs:
     uses: alchemy-run/actions/.github/workflows/release.yml@a18b368e044cb380a8c4904d5cfbccbc2798e768 # main
     with:
       version: ${{ inputs.version }}
+      force-latest: ${{ inputs.force-latest }}
       repo: alchemy-run/distilled
       # Anchor for prerelease bumps: rc.N hangs off this.
       current-version: "1.0.0"
