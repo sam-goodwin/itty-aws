@@ -23,32 +23,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   vnetId: "vnet_id",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class KeylessCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<KeylessCertificateNotFound>()(
-    "KeylessCertificateNotFound",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1005, message: { includes: "Invalid or missing Keyless SSL" } }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class KeylessSslNotAvailable extends T.applyErrorMatchers(
-  S.TaggedErrorClass<KeylessSslNotAvailable>()("KeylessSslNotAvailable", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
-) {}
+export class KeylessCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<KeylessCertificateNotFound>()(
+      "KeylessCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1005, message: { includes: "Invalid or missing Keyless SSL" } }],
+  ) {}
+
+export class KeylessSslNotAvailable
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<KeylessSslNotAvailable>()(
+      "KeylessSslNotAvailable",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
+  ) {}
 
 export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
 export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;

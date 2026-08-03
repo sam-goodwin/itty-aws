@@ -147,26 +147,31 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ExpiredIteratorException extends S.TaggedErrorClass<ExpiredIteratorException>()(
-  "ExpiredIteratorException",
-  { message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class TrimmedDataAccessException extends S.TaggedErrorClass<TrimmedDataAccessException>()(
-  "TrimmedDataAccessException",
-  { message: S.optional(S.String) },
-) {}
+export class ExpiredIteratorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredIteratorException>()(
+    "ExpiredIteratorException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InternalServerError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+    "InternalServerError",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class TrimmedDataAccessException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TrimmedDataAccessException>()(
+    "TrimmedDataAccessException",
+    { message: S.optional(S.String) },
+  ) {}
 export type StreamArn = string;
 export type PositiveIntegerObject = number;
 export type ShardId = string;

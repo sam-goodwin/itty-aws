@@ -18,21 +18,26 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   preferredLanguages: "preferred_languages",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class SecurityTxtInvalid extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecurityTxtInvalid>()("SecurityTxtInvalid", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10400, message: { includes: "invalid or missing values" } }],
-) {}
+export class SecurityTxtInvalid
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecurityTxtInvalid>()(
+      "SecurityTxtInvalid",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10400, message: { includes: "invalid or missing values" } }],
+  ) {}
 
 export interface DeleteSecurityTxtRequest {
   /** Identifier. */

@@ -31,77 +31,90 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class AccessRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessRuleNotFound>()("AccessRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10001, message: { includes: "not_found" } }, { status: 404 }],
-) {}
+export class AccessRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessRuleNotFound>()(
+      "AccessRuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10001, message: { includes: "not_found" } }, { status: 404 }],
+  ) {}
 
-export class DuplicateAccessRule extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DuplicateAccessRule>()("DuplicateAccessRule", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10009, message: { includes: "duplicate_of_existing" } }],
-) {}
+export class DuplicateAccessRule
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DuplicateAccessRule>()(
+      "DuplicateAccessRule",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10009, message: { includes: "duplicate_of_existing" } }],
+  ) {}
 
-export class DuplicateLockdown extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      code: 10009,
-      message: { includes: "zonelockdown.api.duplicate_of_existing" },
-    },
-  ],
-) {}
+export class DuplicateLockdown
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      {
+        code: 10009,
+        message: { includes: "zonelockdown.api.duplicate_of_existing" },
+      },
+    ],
+  ) {}
 
-export class DuplicateUaRule extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DuplicateUaRule>()("DuplicateUaRule", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      code: 10009,
-      message: { includes: "firewalluablock.api.duplicate_of_existing" },
-    },
-  ],
-) {}
+export class DuplicateUaRule
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DuplicateUaRule>()("DuplicateUaRule", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      {
+        code: 10009,
+        message: { includes: "firewalluablock.api.duplicate_of_existing" },
+      },
+    ],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class LockdownNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LockdownNotFound>()("LockdownNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 10001, message: { includes: "zonelockdown.api.not_found" } },
-    { status: 404 },
-  ],
-) {}
+export class LockdownNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LockdownNotFound>()("LockdownNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 10001, message: { includes: "zonelockdown.api.not_found" } },
+      { status: 404 },
+    ],
+  ) {}
 
-export class UaRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UaRuleNotFound>()("UaRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 10001, message: { includes: "firewalluablock.api.not_found" } },
-    { status: 404 },
-  ],
-) {}
+export class UaRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UaRuleNotFound>()("UaRuleNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 10001, message: { includes: "firewalluablock.api.not_found" } },
+      { status: 404 },
+    ],
+  ) {}
 
 export interface BulkDeleteRulesRequest {
   /** Defines an identifier. */

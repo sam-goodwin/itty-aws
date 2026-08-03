@@ -46,77 +46,95 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   uploadUrl: "upload_url",
 };
 
-export class DatabaseAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DatabaseAlreadyExists>()("DatabaseAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7502 }],
-) {}
+export class DatabaseAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DatabaseAlreadyExists>()(
+      "DatabaseAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7502 }],
+  ) {}
 
-export class DatabaseNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DatabaseNotFound>()("DatabaseNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7404 }],
-) {}
+export class DatabaseNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DatabaseNotFound>()("DatabaseNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7404 }],
+  ) {}
 
-export class InternalError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InternalError>()("InternalError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7500 }],
-) {}
+export class InternalError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InternalError>()("InternalError", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7500 }],
+  ) {}
 
-export class InvalidObjectIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidObjectIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+      "InvalidObjectIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
-export class InvalidProperty extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidProperty>()("InvalidProperty", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7400 }],
-) {}
+export class InvalidProperty
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidProperty>()("InvalidProperty", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7400 }],
+  ) {}
 
-export class InvalidRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7400 }],
-) {}
+export class InvalidRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7400 }],
+  ) {}
 
-export class NoHistoryAvailable extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoHistoryAvailable>()("NoHistoryAvailable", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7500 }],
-) {}
+export class NoHistoryAvailable
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoHistoryAvailable>()(
+      "NoHistoryAvailable",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7500 }],
+  ) {}
 
-export class TimestampTooOld extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TimestampTooOld>()("TimestampTooOld", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7400 }],
-) {}
+export class TimestampTooOld
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TimestampTooOld>()("TimestampTooOld", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7400 }],
+  ) {}
 
-export class UnknownError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnknownError>()("UnknownError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 0 }],
-) {}
+export class UnknownError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnknownError>()("UnknownError", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 0 }],
+  ) {}
 
 export type DatabaseCreateRequestJurisdiction = "eu" | "fedramp";
 export const DatabaseCreateRequestJurisdiction = /*@__PURE__*/ S.String;

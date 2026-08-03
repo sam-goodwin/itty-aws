@@ -90,89 +90,105 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidArgsException extends S.TaggedErrorClass<InvalidArgsException>()(
-  "InvalidArgsException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDomainValidationOptionsException extends S.TaggedErrorClass<InvalidDomainValidationOptionsException>()(
-  "InvalidDomainValidationOptionsException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
-  "InvalidTagException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class RequestInProgressException extends S.TaggedErrorClass<RequestInProgressException>()(
-  "RequestInProgressException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
-  "TagPolicyException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.optional(S.String),
-    throttlingReasons: S.optional(
-      S.suspend(() => ThrottlingReasonList).annotate({
-        identifier: "ThrottlingReasonList",
-      }),
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+      T.HttpError(403),
     ),
-  },
-  T.all(
-    T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+  ).pipe(C.withAuthError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidArgsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgsException>()(
+    "InvalidArgsException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidArnException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArnException>()(
+    "InvalidArnException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidDomainValidationOptionsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDomainValidationOptionsException>()(
+    "InvalidDomainValidationOptionsException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+    "InvalidStateException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidTagException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
+    "InvalidTagException",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withQuotaError) {}
+export class RequestInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestInProgressException>()(
+    "RequestInProgressException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withConflictError, C.withRetryableError) {}
+export class ResourceInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+    "ResourceInUseException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class TagPolicyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyException>()(
+    "TagPolicyException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    {
+      message: S.optional(S.String),
+      throttlingReasons: S.optional(
+        S.suspend(() => ThrottlingReasonList).annotate({
+          identifier: "ThrottlingReasonList",
+        }),
+      ),
+    },
+    T.all(
+      T.AwsQueryError({ code: "Throttling", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { message: S.optional(S.String) },
+  ) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type TagKey = string;
 export type TagValue = string;

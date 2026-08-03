@@ -88,278 +88,306 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "IdempotentParameterMismatch",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClientTokenException extends S.TaggedErrorClass<InvalidClientTokenException>()(
-  "InvalidClientTokenException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidClientToken", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidMaxResultsException extends S.TaggedErrorClass<InvalidMaxResultsException>()(
-  "InvalidMaxResultsException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
-  "InvalidPolicyException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidResourceTypeException extends S.TaggedErrorClass<InvalidResourceTypeException>()(
-  "InvalidResourceTypeException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceType.Unknown",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
-  "InvalidStateTransitionException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidStateTransitionException.Unknown",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MalformedArnException extends S.TaggedErrorClass<MalformedArnException>()(
-  "MalformedArnException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidArn.Malformed", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyTemplateException extends S.TaggedErrorClass<MalformedPolicyTemplateException>()(
-  "MalformedPolicyTemplateException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "MalformedPolicyTemplateException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
-  "MissingRequiredParameterException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "MissingRequiredParameter",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PermissionAlreadyExistsException extends S.TaggedErrorClass<PermissionAlreadyExistsException>()(
-  "PermissionAlreadyExistsException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "PermissionAlreadyExistsException",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class PermissionLimitExceededException extends S.TaggedErrorClass<PermissionLimitExceededException>()(
-  "PermissionLimitExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "PermissionLimitExceededException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PermissionVersionsLimitExceededException extends S.TaggedErrorClass<PermissionVersionsLimitExceededException>()(
-  "PermissionVersionsLimitExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "PermissionVersionsLimitExceededException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceArnNotFoundException extends S.TaggedErrorClass<ResourceArnNotFoundException>()(
-  "ResourceArnNotFoundException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceArn.NotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationAlreadyAcceptedException extends S.TaggedErrorClass<ResourceShareInvitationAlreadyAcceptedException>()(
-  "ResourceShareInvitationAlreadyAcceptedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceShareInvitationArn.AlreadyAccepted",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationAlreadyRejectedException extends S.TaggedErrorClass<ResourceShareInvitationAlreadyRejectedException>()(
-  "ResourceShareInvitationAlreadyRejectedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceShareInvitationArn.AlreadyRejected",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationArnNotFoundException extends S.TaggedErrorClass<ResourceShareInvitationArnNotFoundException>()(
-  "ResourceShareInvitationArnNotFoundException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceShareInvitationArn.NotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationExpiredException extends S.TaggedErrorClass<ResourceShareInvitationExpiredException>()(
-  "ResourceShareInvitationExpiredException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceShareInvitationArn.Expired",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareLimitExceededException extends S.TaggedErrorClass<ResourceShareLimitExceededException>()(
-  "ResourceShareLimitExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceShareLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
-  "ServerInternalException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "Unavailable", httpResponseCode: 503 }),
-    T.HttpError(503),
-  ),
-).pipe(C.withServerError) {}
-export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
-  "TagLimitExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TagPolicyViolationException extends S.TaggedErrorClass<TagPolicyViolationException>()(
-  "TagPolicyViolationException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "TagPolicyViolation", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class UnknownResourceException extends S.TaggedErrorClass<UnknownResourceException>()(
-  "UnknownResourceException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResourceShareArn.NotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnmatchedPolicyPermissionException extends S.TaggedErrorClass<UnmatchedPolicyPermissionException>()(
-  "UnmatchedPolicyPermissionException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "UnmatchedPolicyPermissionException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+export class IdempotentParameterMismatchException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+    "IdempotentParameterMismatchException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "IdempotentParameterMismatch",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidClientTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientTokenException>()(
+    "InvalidClientTokenException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidClientToken", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidMaxResultsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidMaxResultsException>()(
+    "InvalidMaxResultsException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+    "InvalidNextTokenException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidPolicyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPolicyException>()(
+    "InvalidPolicyException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidResourceTypeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceTypeException>()(
+    "InvalidResourceTypeException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceType.Unknown",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidStateTransitionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateTransitionException>()(
+    "InvalidStateTransitionException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidStateTransitionException.Unknown",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MalformedArnException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedArnException>()(
+    "MalformedArnException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InvalidArn.Malformed", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MalformedPolicyTemplateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyTemplateException>()(
+    "MalformedPolicyTemplateException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "MalformedPolicyTemplateException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MissingRequiredParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameterException>()(
+    "MissingRequiredParameterException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "MissingRequiredParameter",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedException>()(
+    "OperationNotPermittedException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PermissionAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionAlreadyExistsException>()(
+    "PermissionAlreadyExistsException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "PermissionAlreadyExistsException",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class PermissionLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionLimitExceededException>()(
+    "PermissionLimitExceededException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "PermissionLimitExceededException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PermissionVersionsLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PermissionVersionsLimitExceededException>()(
+    "PermissionVersionsLimitExceededException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "PermissionVersionsLimitExceededException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceArnNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceArnNotFoundException>()(
+    "ResourceArnNotFoundException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceArn.NotFound",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationAlreadyAcceptedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationAlreadyAcceptedException>()(
+    "ResourceShareInvitationAlreadyAcceptedException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceShareInvitationArn.AlreadyAccepted",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationAlreadyRejectedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationAlreadyRejectedException>()(
+    "ResourceShareInvitationAlreadyRejectedException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceShareInvitationArn.AlreadyRejected",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationArnNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationArnNotFoundException>()(
+    "ResourceShareInvitationArnNotFoundException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceShareInvitationArn.NotFound",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationExpiredException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareInvitationExpiredException>()(
+    "ResourceShareInvitationExpiredException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceShareInvitationArn.Expired",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceShareLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceShareLimitExceededException>()(
+    "ResourceShareLimitExceededException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "ResourceShareLimitExceeded",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ServerInternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServerInternalException>()(
+    "ServerInternalException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class ServiceUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+    "ServiceUnavailableException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "Unavailable", httpResponseCode: 503 }),
+      T.HttpError(503),
+    ),
+  ).pipe(C.withServerError) {}
+export class TagLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
+    "TagLimitExceededException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class TagPolicyViolationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagPolicyViolationException>()(
+    "TagPolicyViolationException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "TagPolicyViolation", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class UnknownResourceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownResourceException>()(
+    "UnknownResourceException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResourceShareArn.NotFound",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class UnmatchedPolicyPermissionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnmatchedPolicyPermissionException>()(
+    "UnmatchedPolicyPermissionException",
+    { message: S.String },
+    T.all(
+      T.AwsQueryError({
+        code: "UnmatchedPolicyPermissionException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export interface AcceptResourceShareInvitationRequest {
   resourceShareInvitationArn: string;
   clientToken?: string;

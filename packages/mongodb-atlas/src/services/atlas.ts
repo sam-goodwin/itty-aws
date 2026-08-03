@@ -13,45 +13,50 @@ import * as Retry from "../retry.ts";
 
 export type { MongodbAtlasOpError, MongodbAtlasOpContext };
 
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400 }],
-) {}
+export class BadRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 400 }],
+  ) {}
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class PaymentRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PaymentRequired>()("PaymentRequired", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 402 }],
-) {}
+export class PaymentRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PaymentRequired>()("PaymentRequired", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 402 }],
+  ) {}
 
 export interface AcceptGroupStreamVpcPeeringConnectionRequest {
   /** Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access. **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. */

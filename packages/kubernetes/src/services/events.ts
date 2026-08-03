@@ -12,29 +12,35 @@ import * as Retry from "../retry.ts";
 
 export type { KubernetesOpError, KubernetesOpContext };
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class UnprocessableEntity extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnprocessableEntity>()("UnprocessableEntity", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422 }],
-) {}
+export class UnprocessableEntity
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntity>()(
+      "UnprocessableEntity",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 422 }],
+  ) {}
 
 /** EventSource contains information for an event. */
 export interface IoK8sApiCoreV1EventSource {

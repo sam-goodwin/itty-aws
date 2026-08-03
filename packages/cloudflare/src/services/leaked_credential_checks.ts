@@ -14,40 +14,47 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export class DetectionNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DetectionNotFound>()("DetectionNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11002 }],
-) {}
-
-export class DetectionQuotaExceeded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DetectionQuotaExceeded>()("DetectionQuotaExceeded", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 50001 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class LeakedCredentialChecksDisabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LeakedCredentialChecksDisabled>()(
-    "LeakedCredentialChecksDisabled",
-    {
+export class DetectionNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DetectionNotFound>()("DetectionNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 11001 }],
-) {}
+    }),
+    [{ code: 11002 }],
+  ) {}
+
+export class DetectionQuotaExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DetectionQuotaExceeded>()(
+      "DetectionQuotaExceeded",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 50001 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
+
+export class LeakedCredentialChecksDisabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LeakedCredentialChecksDisabled>()(
+      "LeakedCredentialChecksDisabled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11001 }],
+  ) {}
 
 export interface CreateDetectionRequest {
   /** Defines an identifier. */

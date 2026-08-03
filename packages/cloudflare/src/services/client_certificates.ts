@@ -29,35 +29,41 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   validityDays: "validity_days",
 };
 
-export class ClientCertificateAlreadyRevoked extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
-    "ClientCertificateAlreadyRevoked",
-    {
+export class ClientCertificateAlreadyRevoked
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
+      "ClientCertificateAlreadyRevoked",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1407, message: { includes: "already deleted" } }],
+  ) {}
+
+export class ClientCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ClientCertificateNotFound>()(
+      "ClientCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 1415, message: { includes: "Invalid Certificate ID" } },
+      { status: 404 },
+    ],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1407, message: { includes: "already deleted" } }],
-) {}
-
-export class ClientCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ClientCertificateNotFound>()("ClientCertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 1415, message: { includes: "Invalid Certificate ID" } },
-    { status: 404 },
-  ],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export interface CreateClientCertificateRequest {
   /** Identifier. */

@@ -12,53 +12,57 @@ import * as Retry from "../retry.ts";
 
 export type { GcpOpError, GcpOpContext };
 
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
-) {}
+export class BadRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 400 }],
+  ) {}
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 404 }],
+  ) {}
 
 /** An ad parameter that is used to update numeric values (such as prices or inventory levels) in any text line of an ad (including URLs). There can be a maximum of two AdParameters per ad group criterion. (One with parameter_index = 1 and one with parameter_index = 2.) In the ad the parameters are referenced by a placeholder of the form "{param#:value}". For example, "{param1:$17}" */
 export interface GoogleAdsSearchads360V23Resources__AdParameter {

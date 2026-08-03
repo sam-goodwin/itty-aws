@@ -71,21 +71,26 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   xZoneName: "x_ZoneName",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class OrganizationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OrganizationNotFound>()("OrganizationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class OrganizationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotFound>()(
+      "OrganizationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export interface CreateRequestParent {
   id: string;

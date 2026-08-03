@@ -84,176 +84,210 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BulkLoadIdNotFoundException extends S.TaggedErrorClass<BulkLoadIdNotFoundException>()(
-  "BulkLoadIdNotFoundException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(404), T.Retryable()),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class CancelledByUserException extends S.TaggedErrorClass<CancelledByUserException>()(
-  "CancelledByUserException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ClientTimeoutException extends S.TaggedErrorClass<ClientTimeoutException>()(
-  "ClientTimeoutException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(408), T.Retryable()),
-).pipe(C.withTimeoutError, C.withRetryableError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ConstraintViolationException extends S.TaggedErrorClass<ConstraintViolationException>()(
-  "ConstraintViolationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(400), T.Retryable()),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class ExpiredStreamException extends S.TaggedErrorClass<ExpiredStreamException>()(
-  "ExpiredStreamException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FailureByQueryException extends S.TaggedErrorClass<FailureByQueryException>()(
-  "FailureByQueryException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class IllegalArgumentException extends S.TaggedErrorClass<IllegalArgumentException>()(
-  "IllegalArgumentException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNumericDataException extends S.TaggedErrorClass<InvalidNumericDataException>()(
-  "InvalidNumericDataException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LoadUrlAccessDeniedException extends S.TaggedErrorClass<LoadUrlAccessDeniedException>()(
-  "LoadUrlAccessDeniedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class MalformedQueryException extends S.TaggedErrorClass<MalformedQueryException>()(
-  "MalformedQueryException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MemoryLimitExceededException extends S.TaggedErrorClass<MemoryLimitExceededException>()(
-  "MemoryLimitExceededException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
-  "MethodNotAllowedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class MissingParameterException extends S.TaggedErrorClass<MissingParameterException>()(
-  "MissingParameterException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MLResourceNotFoundException extends S.TaggedErrorClass<MLResourceNotFoundException>()(
-  "MLResourceNotFoundException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ParsingException extends S.TaggedErrorClass<ParsingException>()(
-  "ParsingException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PreconditionsFailedException extends S.TaggedErrorClass<PreconditionsFailedException>()(
-  "PreconditionsFailedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class QueryLimitExceededException extends S.TaggedErrorClass<QueryLimitExceededException>()(
-  "QueryLimitExceededException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class QueryLimitException extends S.TaggedErrorClass<QueryLimitException>()(
-  "QueryLimitException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class QueryTooLargeException extends S.TaggedErrorClass<QueryTooLargeException>()(
-  "QueryTooLargeException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ReadOnlyViolationException extends S.TaggedErrorClass<ReadOnlyViolationException>()(
-  "ReadOnlyViolationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class S3Exception extends S.TaggedErrorClass<S3Exception>()(
-  "S3Exception",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(400), T.Retryable()),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class ServerShutdownException extends S.TaggedErrorClass<ServerShutdownException>()(
-  "ServerShutdownException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class StatisticsNotAvailableException extends S.TaggedErrorClass<StatisticsNotAvailableException>()(
-  "StatisticsNotAvailableException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class StreamRecordsNotFoundException extends S.TaggedErrorClass<StreamRecordsNotFoundException>()(
-  "StreamRecordsNotFoundException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class TimeLimitExceededException extends S.TaggedErrorClass<TimeLimitExceededException>()(
-  "TimeLimitExceededException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class BadRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+    "BadRequestException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class BulkLoadIdNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BulkLoadIdNotFoundException>()(
+    "BulkLoadIdNotFoundException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(404), T.Retryable()),
+  ).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class CancelledByUserException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CancelledByUserException>()(
+    "CancelledByUserException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class ClientTimeoutException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ClientTimeoutException>()(
+    "ClientTimeoutException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(408), T.Retryable()),
+  ).pipe(C.withTimeoutError, C.withRetryableError) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(500), T.Retryable()),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class ConstraintViolationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConstraintViolationException>()(
+    "ConstraintViolationException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(400), T.Retryable()),
+  ).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class ExpiredStreamException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredStreamException>()(
+    "ExpiredStreamException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class FailureByQueryException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FailureByQueryException>()(
+    "FailureByQueryException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(500), T.Retryable()),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class IllegalArgumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IllegalArgumentException>()(
+    "IllegalArgumentException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InternalFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+    "InternalFailureException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidArgumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidArgumentException>()(
+    "InvalidArgumentException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNumericDataException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNumericDataException>()(
+    "InvalidNumericDataException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class LoadUrlAccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LoadUrlAccessDeniedException>()(
+    "LoadUrlAccessDeniedException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError, C.withAuthError) {}
+export class MalformedQueryException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedQueryException>()(
+    "MalformedQueryException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class MemoryLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MemoryLimitExceededException>()(
+    "MemoryLimitExceededException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(500), T.Retryable()),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class MethodNotAllowedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowedException>()(
+    "MethodNotAllowedException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(405),
+  ).pipe(C.withBadRequestError) {}
+export class MissingParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameterException>()(
+    "MissingParameterException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class MLResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MLResourceNotFoundException>()(
+    "MLResourceNotFoundException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ParsingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ParsingException>()(
+    "ParsingException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class PreconditionsFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionsFailedException>()(
+    "PreconditionsFailedException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class QueryLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<QueryLimitExceededException>()(
+    "QueryLimitExceededException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(500), T.Retryable()),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class QueryLimitException
+  extends /*@__PURE__*/ S.TaggedErrorClass<QueryLimitException>()(
+    "QueryLimitException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class QueryTooLargeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<QueryTooLargeException>()(
+    "QueryTooLargeException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ReadOnlyViolationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ReadOnlyViolationException>()(
+    "ReadOnlyViolationException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class S3Exception
+  extends /*@__PURE__*/ S.TaggedErrorClass<S3Exception>()(
+    "S3Exception",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(400), T.Retryable()),
+  ).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class ServerShutdownException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServerShutdownException>()(
+    "ServerShutdownException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class StatisticsNotAvailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<StatisticsNotAvailableException>()(
+    "StatisticsNotAvailableException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class StreamRecordsNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<StreamRecordsNotFoundException>()(
+    "StreamRecordsNotFoundException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(500), T.Retryable()),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class TimeLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TimeLimitExceededException>()(
+    "TimeLimitExceededException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(500), T.Retryable()),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class TooManyRequestsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+    "TooManyRequestsException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.all(T.HttpError(429), T.Retryable()),
+  ).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class UnsupportedOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+    "UnsupportedOperationException",
+    { detailedMessage: S.String, requestId: S.String, code: S.String },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export interface CancelGremlinQueryInput {
   queryId: string;
 }

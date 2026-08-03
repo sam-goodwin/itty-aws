@@ -23,32 +23,44 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   uploadedOn: "uploaded_on",
 };
 
-export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "already deleted" } }],
-) {}
+export class CertificateAlreadyDeleted
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyDeleted>()(
+      "CertificateAlreadyDeleted",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "already deleted" } }],
+  ) {}
 
-export class CertificateAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateAlreadyExists>()("CertificateAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1471, message: { includes: "already exists" } }],
-) {}
+export class CertificateAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyExists>()(
+      "CertificateAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1471, message: { includes: "already exists" } }],
+  ) {}
 
-export class CertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 1472, message: { includes: "Certificate not found" } },
-    { status: 404 },
-  ],
-) {}
+export class CertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFound>()(
+      "CertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 1472, message: { includes: "Certificate not found" } },
+      { status: 404 },
+    ],
+  ) {}
 
 export interface CreateMtlsCertificateRequest {
   /** Identifier. */

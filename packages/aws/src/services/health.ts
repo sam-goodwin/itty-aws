@@ -140,18 +140,21 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidPaginationToken extends S.TaggedErrorClass<InvalidPaginationToken>()(
-  "InvalidPaginationToken",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedLocale extends S.TaggedErrorClass<UnsupportedLocale>()(
-  "UnsupportedLocale",
-  { message: S.optional(S.String) },
-) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class InvalidPaginationToken
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPaginationToken>()(
+    "InvalidPaginationToken",
+    { message: S.optional(S.String) },
+  ) {}
+export class UnsupportedLocale
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedLocale>()(
+    "UnsupportedLocale",
+    { message: S.optional(S.String) },
+  ) {}
 export type EventArn = string;
 export type NextToken = string;
 export type MaxResults = number;

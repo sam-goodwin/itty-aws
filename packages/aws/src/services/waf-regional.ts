@@ -85,106 +85,126 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class WAFBadRequestException extends S.TaggedErrorClass<WAFBadRequestException>()(
-  "WAFBadRequestException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFDisallowedNameException extends S.TaggedErrorClass<WAFDisallowedNameException>()(
-  "WAFDisallowedNameException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFEntityMigrationException extends S.TaggedErrorClass<WAFEntityMigrationException>()(
-  "WAFEntityMigrationException",
-  {
-    message: S.optional(S.String),
-    MigrationErrorType: S.optional(
-      S.suspend(() => MigrationErrorType).annotate({
-        identifier: "MigrationErrorType",
-      }),
-    ),
-    MigrationErrorReason: S.optional(S.String),
-  },
-) {}
-export class WAFInternalErrorException extends S.TaggedErrorClass<WAFInternalErrorException>()(
-  "WAFInternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class WAFInvalidAccountException extends S.TaggedErrorClass<WAFInvalidAccountException>()(
-  "WAFInvalidAccountException",
-  {},
-) {}
-export class WAFInvalidOperationException extends S.TaggedErrorClass<WAFInvalidOperationException>()(
-  "WAFInvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFInvalidParameterException extends S.TaggedErrorClass<WAFInvalidParameterException>()(
-  "WAFInvalidParameterException",
-  {
-    field: S.optional(
-      S.suspend(() => ParameterExceptionField).annotate({
-        identifier: "ParameterExceptionField",
-      }),
-    ),
-    parameter: S.optional(S.String),
-    reason: S.optional(
-      S.suspend(() => ParameterExceptionReason).annotate({
-        identifier: "ParameterExceptionReason",
-      }),
-    ),
-  },
-) {}
-export class WAFInvalidPermissionPolicyException extends S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
-  "WAFInvalidPermissionPolicyException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFInvalidRegexPatternException extends S.TaggedErrorClass<WAFInvalidRegexPatternException>()(
-  "WAFInvalidRegexPatternException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFLimitsExceededException extends S.TaggedErrorClass<WAFLimitsExceededException>()(
-  "WAFLimitsExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFNonEmptyEntityException extends S.TaggedErrorClass<WAFNonEmptyEntityException>()(
-  "WAFNonEmptyEntityException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFNonexistentContainerException extends S.TaggedErrorClass<WAFNonexistentContainerException>()(
-  "WAFNonexistentContainerException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFNonexistentItemException extends S.TaggedErrorClass<WAFNonexistentItemException>()(
-  "WAFNonexistentItemException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFReferencedItemException extends S.TaggedErrorClass<WAFReferencedItemException>()(
-  "WAFReferencedItemException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFServiceLinkedRoleErrorException extends S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
-  "WAFServiceLinkedRoleErrorException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFStaleDataException extends S.TaggedErrorClass<WAFStaleDataException>()(
-  "WAFStaleDataException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFSubscriptionNotFoundException extends S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
-  "WAFSubscriptionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFTagOperationException extends S.TaggedErrorClass<WAFTagOperationException>()(
-  "WAFTagOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFTagOperationInternalErrorException extends S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
-  "WAFTagOperationInternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class WAFUnavailableEntityException extends S.TaggedErrorClass<WAFUnavailableEntityException>()(
-  "WAFUnavailableEntityException",
-  { message: S.optional(S.String) },
-) {}
+export class WAFBadRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFBadRequestException>()(
+    "WAFBadRequestException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFDisallowedNameException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFDisallowedNameException>()(
+    "WAFDisallowedNameException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFEntityMigrationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFEntityMigrationException>()(
+    "WAFEntityMigrationException",
+    {
+      message: S.optional(S.String),
+      MigrationErrorType: S.optional(
+        S.suspend(() => MigrationErrorType).annotate({
+          identifier: "MigrationErrorType",
+        }),
+      ),
+      MigrationErrorReason: S.optional(S.String),
+    },
+  ) {}
+export class WAFInternalErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFInternalErrorException>()(
+    "WAFInternalErrorException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withServerError) {}
+export class WAFInvalidAccountException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidAccountException>()(
+    "WAFInvalidAccountException",
+    {},
+  ) {}
+export class WAFInvalidOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidOperationException>()(
+    "WAFInvalidOperationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFInvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidParameterException>()(
+    "WAFInvalidParameterException",
+    {
+      field: S.optional(
+        S.suspend(() => ParameterExceptionField).annotate({
+          identifier: "ParameterExceptionField",
+        }),
+      ),
+      parameter: S.optional(S.String),
+      reason: S.optional(
+        S.suspend(() => ParameterExceptionReason).annotate({
+          identifier: "ParameterExceptionReason",
+        }),
+      ),
+    },
+  ) {}
+export class WAFInvalidPermissionPolicyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
+    "WAFInvalidPermissionPolicyException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFInvalidRegexPatternException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFInvalidRegexPatternException>()(
+    "WAFInvalidRegexPatternException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFLimitsExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFLimitsExceededException>()(
+    "WAFLimitsExceededException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFNonEmptyEntityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFNonEmptyEntityException>()(
+    "WAFNonEmptyEntityException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFNonexistentContainerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFNonexistentContainerException>()(
+    "WAFNonexistentContainerException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFNonexistentItemException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFNonexistentItemException>()(
+    "WAFNonexistentItemException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFReferencedItemException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFReferencedItemException>()(
+    "WAFReferencedItemException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFServiceLinkedRoleErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
+    "WAFServiceLinkedRoleErrorException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFStaleDataException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFStaleDataException>()(
+    "WAFStaleDataException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFSubscriptionNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
+    "WAFSubscriptionNotFoundException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFTagOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFTagOperationException>()(
+    "WAFTagOperationException",
+    { message: S.optional(S.String) },
+  ) {}
+export class WAFTagOperationInternalErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
+    "WAFTagOperationInternalErrorException",
+    { message: S.optional(S.String) },
+  ).pipe(C.withServerError) {}
+export class WAFUnavailableEntityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<WAFUnavailableEntityException>()(
+    "WAFUnavailableEntityException",
+    { message: S.optional(S.String) },
+  ) {}
 export type ResourceId = string;
 export type ResourceArn = string;
 export interface AssociateWebACLRequest {

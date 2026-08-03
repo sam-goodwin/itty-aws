@@ -21,37 +21,53 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class TestScheduleAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TestScheduleAlreadyExists>()("TestScheduleAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 400, message: { includes: "scheduled_test_already_exists" } }],
-) {}
+export class TestScheduleAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TestScheduleAlreadyExists>()(
+      "TestScheduleAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 400, message: { includes: "scheduled_test_already_exists" } }],
+  ) {}
 
-export class TestScheduleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TestScheduleNotFound>()("TestScheduleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 404, message: { includes: "schedule_not_found" } }, { status: 404 }],
-) {}
+export class TestScheduleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TestScheduleNotFound>()(
+      "TestScheduleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 404, message: { includes: "schedule_not_found" } },
+      { status: 404 },
+    ],
+  ) {}
 
-export class TestScheduleQuotaReached extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TestScheduleQuotaReached>()("TestScheduleQuotaReached", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 429, message: { includes: "quota reached" } }],
-) {}
+export class TestScheduleQuotaReached
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TestScheduleQuotaReached>()(
+      "TestScheduleQuotaReached",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 429, message: { includes: "quota reached" } }],
+  ) {}
 
 export type PagesTestsCreateRequestRegion =
   | "asia-east1"

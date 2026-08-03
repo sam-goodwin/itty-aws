@@ -63,103 +63,125 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   wpPlugin: "wp_plugin",
 };
 
-export class CustomNameserverSetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomNameserverSetNotFound>()(
-    "CustomNameserverSetNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      code: 1001,
-      message: { includes: "Custom Nameserver set doesn't exist" },
-    },
-  ],
-) {}
-
-export class DomainNotRegistered extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DomainNotRegistered>()("DomainNotRegistered", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1099 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class InvalidDomain extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidDomain>()("InvalidDomain", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002 }],
-) {}
-
-export class InvalidZoneIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 9109, message: { includes: "Invalid zone identifier" } }],
-) {}
-
-export class SubdomainNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SubdomainNotAllowed>()("SubdomainNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1116 }],
-) {}
-
-export class ZoneAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneAlreadyExists>()("ZoneAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1061 }],
-) {}
-
-export class ZoneCreationBlocked extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneCreationBlocked>()("ZoneCreationBlocked", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1052 }],
-) {}
-
-export class ZoneHoldNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneHoldNotFound>()("ZoneHoldNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003, message: { includes: "No Zone Hold Found" } }],
-) {}
-
-export class ZoneHoldsRequireEnterprise extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneHoldsRequireEnterprise>()(
-    "ZoneHoldsRequireEnterprise",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      code: 1005,
-      message: {
-        includes: "Zone holds are only available on Enterprise zones",
+export class CustomNameserverSetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomNameserverSetNotFound>()(
+      "CustomNameserverSetNotFound",
+      {
+        code: S.Number,
+        message: S.String,
       },
-    },
-  ],
-) {}
+    ),
+    [
+      {
+        code: 1001,
+        message: { includes: "Custom Nameserver set doesn't exist" },
+      },
+    ],
+  ) {}
+
+export class DomainNotRegistered
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DomainNotRegistered>()(
+      "DomainNotRegistered",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1099 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
+
+export class InvalidDomain
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidDomain>()("InvalidDomain", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002 }],
+  ) {}
+
+export class InvalidZoneIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneIdentifier>()(
+      "InvalidZoneIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 9109, message: { includes: "Invalid zone identifier" } }],
+  ) {}
+
+export class SubdomainNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SubdomainNotAllowed>()(
+      "SubdomainNotAllowed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1116 }],
+  ) {}
+
+export class ZoneAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneAlreadyExists>()("ZoneAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1061 }],
+  ) {}
+
+export class ZoneCreationBlocked
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneCreationBlocked>()(
+      "ZoneCreationBlocked",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1052 }],
+  ) {}
+
+export class ZoneHoldNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneHoldNotFound>()("ZoneHoldNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003, message: { includes: "No Zone Hold Found" } }],
+  ) {}
+
+export class ZoneHoldsRequireEnterprise
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneHoldsRequireEnterprise>()(
+      "ZoneHoldsRequireEnterprise",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 1005,
+        message: {
+          includes: "Zone holds are only available on Enterprise zones",
+        },
+      },
+    ],
+  ) {}
 
 export interface EnvironmentsCreateRequestEnvironmentsItemPosition {
   after?: string;

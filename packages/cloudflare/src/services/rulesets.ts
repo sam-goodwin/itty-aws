@@ -102,29 +102,32 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   usernameExpression: "username_expression",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class PhaseNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PhaseNotEntitled>()("PhaseNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 50002 }, { status: 400, message: { includes: "not entitled" } }],
-) {}
+export class PhaseNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PhaseNotEntitled>()("PhaseNotEntitled", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 50002 }, { status: 400, message: { includes: "not entitled" } }],
+  ) {}
 
-export class RulesetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }, { code: 10001 }],
-) {}
+export class RulesetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10003 }, { code: 10001 }],
+  ) {}
 
 export interface RulesCreateRequestBodyBlockRulePositionBeforePosition {
   /** The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top. */

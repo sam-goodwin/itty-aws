@@ -576,405 +576,515 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workerId: "worker_id",
 };
 
-export class AccessBookmarkNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessBookmarkNotFound>()("AccessBookmarkNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 12045 }, { code: 12135 }, { code: 11021 }],
-) {}
-
-export class AccessCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessCertificateNotFound>()("AccessCertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 12135 }],
-) {}
-
-export class AccessCertificateQuotaExceeded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
-    "AccessCertificateQuotaExceeded",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 12130, message: { includes: "maximum number of certificates" } }],
-) {}
-
-export class AccessCustomPageNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessCustomPageNotFound>()("AccessCustomPageNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 12135 }],
-) {}
-
-export class AccessCustomPagesNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessCustomPagesNotEntitled>()(
-    "AccessCustomPagesNotEntitled",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      code: 12133,
-      message: { includes: "does not have permission for custom pages" },
-    },
-  ],
-) {}
-
-export class AccessGroupNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessGroupNotFound>()("AccessGroupNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 12152 }],
-) {}
-
-export class AccessIdentityProviderNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessIdentityProviderNotFound>()(
-    "AccessIdentityProviderNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 12135 }],
-) {}
-
-export class AccessReferenceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessReferenceNotFound>()("AccessReferenceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "not found" } }],
-) {}
-
-export class AccessServiceTokenNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessServiceTokenNotFound>()(
-    "AccessServiceTokenNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 12135 }],
-) {}
-
-export class AccessTagNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AccessTagNotFound>()("AccessTagNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 12135 }],
-) {}
-
-export class CannotDeleteDefaultGatewayLocation extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
-    "CannotDeleteDefaultGatewayLocation",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1217 }],
-) {}
-
-export class CannotDemoteDefaultGatewayLocation extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CannotDemoteDefaultGatewayLocation>()(
-    "CannotDemoteDefaultGatewayLocation",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1216 }],
-) {}
-
-export class DeviceNetworkNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DeviceNetworkNotFound>()("DeviceNetworkNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2053 }],
-) {}
-
-export class DevicePolicyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DevicePolicyNotFound>()("DevicePolicyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2052 }],
-) {}
-
-export class DevicePostureIntegrationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DevicePostureIntegrationNotFound>()(
-    "DevicePostureIntegrationNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
-
-export class DexTestNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DexTestNotFound>()("DexTestNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class DlpEntryNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DlpEntryNotFound>()("DlpEntryNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class DlpProfileNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DlpProfileNotFound>()("DlpProfileNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class DuplicateTunnelName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DuplicateTunnelName>()("DuplicateTunnelName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1013 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class GatewayCertificateInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayCertificateInUse>()("GatewayCertificateInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2118 }],
-) {}
-
-export class GatewayCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayCertificateNotFound>()(
-    "GatewayCertificateNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 2027 }],
-) {}
-
-export class GatewayCertificateQuotaReached extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayCertificateQuotaReached>()(
-    "GatewayCertificateQuotaReached",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      status: 400,
-      message: {
-        includes: "Up to 3 certificates may be created in a 24 hour period",
+export class AccessBookmarkNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessBookmarkNotFound>()(
+      "AccessBookmarkNotFound",
+      {
+        code: S.Number,
+        message: S.String,
       },
-    },
-  ],
-) {}
+    ),
+    [{ code: 12045 }, { code: 12135 }, { code: 11021 }],
+  ) {}
 
-export class GatewayListNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayListNotFound>()("GatewayListNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2218 }],
-) {}
+export class AccessCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessCertificateNotFound>()(
+      "AccessCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 12135 }],
+  ) {}
 
-export class GatewayLocationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayLocationNotFound>()("GatewayLocationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1103 }],
-) {}
+export class AccessCertificateQuotaExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
+      "AccessCertificateQuotaExceeded",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 12130, message: { includes: "maximum number of certificates" } }],
+  ) {}
 
-export class HostnameRouteAlreadyRouted extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameRouteAlreadyRouted>()(
-    "HostnameRouteAlreadyRouted",
-    {
+export class AccessCustomPageNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessCustomPageNotFound>()(
+      "AccessCustomPageNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 12135 }],
+  ) {}
+
+export class AccessCustomPagesNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessCustomPagesNotEntitled>()(
+      "AccessCustomPagesNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 12133,
+        message: { includes: "does not have permission for custom pages" },
+      },
+    ],
+  ) {}
+
+export class AccessGroupNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessGroupNotFound>()(
+      "AccessGroupNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 12152 }],
+  ) {}
+
+export class AccessIdentityProviderNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessIdentityProviderNotFound>()(
+      "AccessIdentityProviderNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 12135 }],
+  ) {}
+
+export class AccessReferenceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessReferenceNotFound>()(
+      "AccessReferenceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "not found" } }],
+  ) {}
+
+export class AccessServiceTokenNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessServiceTokenNotFound>()(
+      "AccessServiceTokenNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 12135 }],
+  ) {}
+
+export class AccessTagNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AccessTagNotFound>()("AccessTagNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 409, message: { includes: "already routed to another tunnel" } }],
-) {}
+    }),
+    [{ code: 12135 }],
+  ) {}
 
-export class HostnameRouteNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameRouteNotFound>()("HostnameRouteNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class CannotDeleteDefaultGatewayLocation
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
+      "CannotDeleteDefaultGatewayLocation",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1217 }],
+  ) {}
 
-export class InvalidPostureIntegrationConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidPostureIntegrationConfig>()(
-    "InvalidPostureIntegrationConfig",
-    {
+export class CannotDemoteDefaultGatewayLocation
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CannotDemoteDefaultGatewayLocation>()(
+      "CannotDemoteDefaultGatewayLocation",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1216 }],
+  ) {}
+
+export class DeviceNetworkNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DeviceNetworkNotFound>()(
+      "DeviceNetworkNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2053 }],
+  ) {}
+
+export class DevicePolicyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DevicePolicyNotFound>()(
+      "DevicePolicyNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2052 }],
+  ) {}
+
+export class DevicePostureIntegrationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DevicePostureIntegrationNotFound>()(
+      "DevicePostureIntegrationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class DexTestNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DexTestNotFound>()("DexTestNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [
-    {
-      status: 400,
-      message: { includes: "invalid posture integration request" },
-    },
-  ],
-) {}
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class IpProxyEndpointsRequireEnterprise extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
-    "IpProxyEndpointsRequireEnterprise",
-    {
+export class DlpEntryNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DlpEntryNotFound>()("DlpEntryNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 2009 }],
-) {}
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class McpPortalHostnameInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<McpPortalHostnameInUse>()("McpPortalHostnameInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      status: 400,
-      message: { includes: "already in use in a different MCP Portal" },
-    },
-  ],
-) {}
+export class DlpProfileNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DlpProfileNotFound>()(
+      "DlpProfileNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class McpPortalNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<McpPortalNotFound>()("McpPortalNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class DuplicateTunnelName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DuplicateTunnelName>()(
+      "DuplicateTunnelName",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1013 }],
+  ) {}
 
-export class OrganizationAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OrganizationAlreadyExists>()("OrganizationAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11002 }],
-) {}
-
-export class OrganizationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OrganizationNotFound>()("OrganizationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
-
-export class PostureRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PostureRuleNotFound>()("PostureRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 6024 }],
-) {}
-
-export class ProxyEndpointNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ProxyEndpointNotFound>()("ProxyEndpointNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2002 }],
-) {}
-
-export class RiskScoringIntegrationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RiskScoringIntegrationNotFound>()(
-    "RiskScoringIntegrationNotFound",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class TargetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TargetNotFound>()("TargetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class GatewayCertificateInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayCertificateInUse>()(
+      "GatewayCertificateInUse",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2118 }],
+  ) {}
 
-export class TunnelConfigurationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TunnelConfigurationNotFound>()(
-    "TunnelConfigurationNotFound",
-    {
+export class GatewayCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayCertificateNotFound>()(
+      "GatewayCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2027 }],
+  ) {}
+
+export class GatewayCertificateQuotaReached
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayCertificateQuotaReached>()(
+      "GatewayCertificateQuotaReached",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 400,
+        message: {
+          includes: "Up to 3 certificates may be created in a 24 hour period",
+        },
+      },
+    ],
+  ) {}
+
+export class GatewayListNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayListNotFound>()(
+      "GatewayListNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2218 }],
+  ) {}
+
+export class GatewayLocationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayLocationNotFound>()(
+      "GatewayLocationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1103 }],
+  ) {}
+
+export class HostnameRouteAlreadyRouted
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameRouteAlreadyRouted>()(
+      "HostnameRouteAlreadyRouted",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 409,
+        message: { includes: "already routed to another tunnel" },
+      },
+    ],
+  ) {}
+
+export class HostnameRouteNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameRouteNotFound>()(
+      "HostnameRouteNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class InvalidPostureIntegrationConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidPostureIntegrationConfig>()(
+      "InvalidPostureIntegrationConfig",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 400,
+        message: { includes: "invalid posture integration request" },
+      },
+    ],
+  ) {}
+
+export class IpProxyEndpointsRequireEnterprise
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
+      "IpProxyEndpointsRequireEnterprise",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2009 }],
+  ) {}
+
+export class McpPortalHostnameInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<McpPortalHostnameInUse>()(
+      "McpPortalHostnameInUse",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 400,
+        message: { includes: "already in use in a different MCP Portal" },
+      },
+    ],
+  ) {}
+
+export class McpPortalNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<McpPortalNotFound>()("McpPortalNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1055 }],
-) {}
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class TunnelNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TunnelNotFound>()("TunnelNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002 }, { status: 404 }],
-) {}
+export class OrganizationAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OrganizationAlreadyExists>()(
+      "OrganizationAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11002 }],
+  ) {}
 
-export class TunnelTokenNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TunnelTokenNotFound>()("TunnelTokenNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1054 }],
-) {}
+export class OrganizationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotFound>()(
+      "OrganizationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class VirtualNetworkConflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VirtualNetworkConflict>()("VirtualNetworkConflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1014 }],
-) {}
+export class PostureRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PostureRuleNotFound>()(
+      "PostureRuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 6024 }],
+  ) {}
 
-export class VirtualNetworkNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VirtualNetworkNotFound>()("VirtualNetworkNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1046 }],
-) {}
+export class ProxyEndpointNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ProxyEndpointNotFound>()(
+      "ProxyEndpointNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2002 }],
+  ) {}
+
+export class RiskScoringIntegrationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RiskScoringIntegrationNotFound>()(
+      "RiskScoringIntegrationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class TargetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TargetNotFound>()("TargetNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
+
+export class TunnelConfigurationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TunnelConfigurationNotFound>()(
+      "TunnelConfigurationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1055 }],
+  ) {}
+
+export class TunnelNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TunnelNotFound>()("TunnelNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002 }, { status: 404 }],
+  ) {}
+
+export class TunnelTokenNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TunnelTokenNotFound>()(
+      "TunnelTokenNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1054 }],
+  ) {}
+
+export class VirtualNetworkConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VirtualNetworkConflict>()(
+      "VirtualNetworkConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1014 }],
+  ) {}
+
+export class VirtualNetworkNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VirtualNetworkNotFound>()(
+      "VirtualNetworkNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1046 }],
+  ) {}
 
 export interface ActivateGatewayCertificateRequest {
   accountId: string;

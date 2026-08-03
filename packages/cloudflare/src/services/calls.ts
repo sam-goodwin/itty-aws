@@ -19,29 +19,32 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   key: "secret",
 };
 
-export class CallsAppNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 20007 }],
-) {}
+export class CallsAppNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 20007 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class TurnKeyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TurnKeyNotFound>()("TurnKeyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 20008 }],
-) {}
+export class TurnKeyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TurnKeyNotFound>()("TurnKeyNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 20008 }],
+  ) {}
 
 export interface CreateSfuRequest {
   /** The account identifier tag. */

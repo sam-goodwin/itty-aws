@@ -88,42 +88,45 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  {
-    message: S.optional(S.String),
-    error: S.optional(
-      S.suspend(() => StorageGatewayError).annotate({
-        identifier: "StorageGatewayError",
-      }),
-    ),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidGatewayRequestException extends S.TaggedErrorClass<InvalidGatewayRequestException>()(
-  "InvalidGatewayRequestException",
-  {
-    message: S.optional(S.String),
-    error: S.optional(
-      S.suspend(() => StorageGatewayError).annotate({
-        identifier: "StorageGatewayError",
-      }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
-  "ServiceUnavailableError",
-  {
-    message: S.optional(S.String),
-    error: S.optional(
-      S.suspend(() => StorageGatewayError).annotate({
-        identifier: "StorageGatewayError",
-      }),
-    ),
-  },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
+export class InternalServerError
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerError>()(
+    "InternalServerError",
+    {
+      message: S.optional(S.String),
+      error: S.optional(
+        S.suspend(() => StorageGatewayError).annotate({
+          identifier: "StorageGatewayError",
+        }),
+      ),
+    },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidGatewayRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGatewayRequestException>()(
+    "InvalidGatewayRequestException",
+    {
+      message: S.optional(S.String),
+      error: S.optional(
+        S.suspend(() => StorageGatewayError).annotate({
+          identifier: "StorageGatewayError",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableError>()(
+    "ServiceUnavailableError",
+    {
+      message: S.optional(S.String),
+      error: S.optional(
+        S.suspend(() => StorageGatewayError).annotate({
+          identifier: "StorageGatewayError",
+        }),
+      ),
+    },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
 export type ActivationKey = string;
 export type GatewayName = string;
 export type GatewayTimezone = string;

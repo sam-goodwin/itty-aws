@@ -25,43 +25,50 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class SnippetInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SnippetInUse>()("SnippetInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { status: 400, message: { includes: "still used" } },
-    { status: 409, message: { includes: "still used" } },
-  ],
-) {}
+export class SnippetInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SnippetInUse>()("SnippetInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { status: 400, message: { includes: "still used" } },
+      { status: 409, message: { includes: "still used" } },
+    ],
+  ) {}
 
-export class SnippetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SnippetNotFound>()("SnippetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { status: 400, message: { includes: "snippet not found" } },
-    { status: 404 },
-  ],
-) {}
+export class SnippetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SnippetNotFound>()("SnippetNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { status: 400, message: { includes: "snippet not found" } },
+      { status: 404 },
+    ],
+  ) {}
 
-export class SnippetRulesNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SnippetRulesNotFound>()("SnippetRulesNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class SnippetRulesNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SnippetRulesNotFound>()(
+      "SnippetRulesNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export interface DeleteRuleRequest {
   /** Use this field to specify the unique ID of the zone. */

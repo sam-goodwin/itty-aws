@@ -104,51 +104,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DefaultUndefinedFault extends S.TaggedErrorClass<DefaultUndefinedFault>()(
-  "DefaultUndefinedFault",
-  { message: S.optional(S.String) },
-) {}
-export class DomainAlreadyExistsFault extends S.TaggedErrorClass<DomainAlreadyExistsFault>()(
-  "DomainAlreadyExistsFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class DomainDeprecatedFault extends S.TaggedErrorClass<DomainDeprecatedFault>()(
-  "DomainDeprecatedFault",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
-  "LimitExceededFault",
-  { message: S.optional(S.String) },
-) {}
-export class OperationNotPermittedFault extends S.TaggedErrorClass<OperationNotPermittedFault>()(
-  "OperationNotPermittedFault",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTagsFault extends S.TaggedErrorClass<TooManyTagsFault>()(
-  "TooManyTagsFault",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TypeAlreadyExistsFault extends S.TaggedErrorClass<TypeAlreadyExistsFault>()(
-  "TypeAlreadyExistsFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class TypeDeprecatedFault extends S.TaggedErrorClass<TypeDeprecatedFault>()(
-  "TypeDeprecatedFault",
-  { message: S.optional(S.String) },
-) {}
-export class TypeNotDeprecatedFault extends S.TaggedErrorClass<TypeNotDeprecatedFault>()(
-  "TypeNotDeprecatedFault",
-  { message: S.optional(S.String) },
-) {}
-export class UnknownResourceFault extends S.TaggedErrorClass<UnknownResourceFault>()(
-  "UnknownResourceFault",
-  { message: S.optional(S.String) },
-) {}
-export class WorkflowExecutionAlreadyStartedFault extends S.TaggedErrorClass<WorkflowExecutionAlreadyStartedFault>()(
-  "WorkflowExecutionAlreadyStartedFault",
-  { message: S.optional(S.String) },
-) {}
+export class DefaultUndefinedFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<DefaultUndefinedFault>()(
+    "DefaultUndefinedFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class DomainAlreadyExistsFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<DomainAlreadyExistsFault>()(
+    "DomainAlreadyExistsFault",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class DomainDeprecatedFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<DomainDeprecatedFault>()(
+    "DomainDeprecatedFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededFault>()(
+    "LimitExceededFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class OperationNotPermittedFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermittedFault>()(
+    "OperationNotPermittedFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class TooManyTagsFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsFault>()(
+    "TooManyTagsFault",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TypeAlreadyExistsFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<TypeAlreadyExistsFault>()(
+    "TypeAlreadyExistsFault",
+    { message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class TypeDeprecatedFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<TypeDeprecatedFault>()(
+    "TypeDeprecatedFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class TypeNotDeprecatedFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<TypeNotDeprecatedFault>()(
+    "TypeNotDeprecatedFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class UnknownResourceFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownResourceFault>()(
+    "UnknownResourceFault",
+    { message: S.optional(S.String) },
+  ) {}
+export class WorkflowExecutionAlreadyStartedFault
+  extends /*@__PURE__*/ S.TaggedErrorClass<WorkflowExecutionAlreadyStartedFault>()(
+    "WorkflowExecutionAlreadyStartedFault",
+    { message: S.optional(S.String) },
+  ) {}
 export type DomainName = string;
 export interface ExecutionTimeFilter {
   oldestDate: Date;

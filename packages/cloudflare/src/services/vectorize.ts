@@ -20,72 +20,92 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   modifiedOn: "modified_on",
 };
 
-export class Gone extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Gone>()("Gone", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 3005 }, { message: { includes: "index deleted" } }],
-) {}
-
-export class IndexAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IndexAlreadyExists>()("IndexAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 3002 }],
-) {}
-
-export class IndexInvalidConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IndexInvalidConfig>()("IndexInvalidConfig", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 3003 }],
-) {}
-
-export class IndexInvalidName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IndexInvalidName>()("IndexInvalidName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 3001 }],
-) {}
-
-export class MetadataIndexAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MetadataIndexAlreadyExists>()(
-    "MetadataIndexAlreadyExists",
-    {
+export class Gone
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Gone>()("Gone", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 40004 }],
-) {}
+    }),
+    [{ code: 3005 }, { message: { includes: "index deleted" } }],
+  ) {}
 
-export class MetadataIndexInvalidType extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MetadataIndexInvalidType>()("MetadataIndexInvalidType", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 40026 }],
-) {}
+export class IndexAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IndexAlreadyExists>()(
+      "IndexAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 3002 }],
+  ) {}
 
-export class MetadataIndexNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MetadataIndexNotFound>()("MetadataIndexNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 40005 }],
-) {}
+export class IndexInvalidConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IndexInvalidConfig>()(
+      "IndexInvalidConfig",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 3003 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 3000 }],
-) {}
+export class IndexInvalidName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IndexInvalidName>()("IndexInvalidName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 3001 }],
+  ) {}
+
+export class MetadataIndexAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MetadataIndexAlreadyExists>()(
+      "MetadataIndexAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 40004 }],
+  ) {}
+
+export class MetadataIndexInvalidType
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MetadataIndexInvalidType>()(
+      "MetadataIndexInvalidType",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 40026 }],
+  ) {}
+
+export class MetadataIndexNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MetadataIndexNotFound>()(
+      "MetadataIndexNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 40005 }],
+  ) {}
+
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 3000 }],
+  ) {}
 
 export type IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
   | "cosine"

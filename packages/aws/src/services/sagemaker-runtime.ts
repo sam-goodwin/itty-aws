@@ -95,52 +95,63 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class InternalDependencyException extends S.TaggedErrorClass<InternalDependencyException>()(
-  "InternalDependencyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(530),
-).pipe(C.withServerError) {}
-export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
-  "InternalFailure",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
-  "InternalStreamFailure",
-  { Message: S.optional(S.String) },
-) {}
-export class ModelError extends S.TaggedErrorClass<ModelError>()(
-  "ModelError",
-  {
-    Message: S.optional(S.String),
-    OriginalStatusCode: S.optional(S.Number),
-    OriginalMessage: S.optional(S.String),
-    LogStreamArn: S.optional(S.String),
-  },
-  T.HttpError(424),
-) {}
-export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
-  "ModelNotReadyException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
-  "ModelStreamError",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-) {}
-export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
-  "ServiceUnavailable",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class InternalDependencyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalDependencyException>()(
+    "InternalDependencyException",
+    { Message: S.optional(S.String) },
+    T.HttpError(530),
+  ).pipe(C.withServerError) {}
+export class InternalFailure
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailure>()(
+    "InternalFailure",
+    { Message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InternalStreamFailure
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalStreamFailure>()(
+    "InternalStreamFailure",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ModelError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ModelError>()(
+    "ModelError",
+    {
+      Message: S.optional(S.String),
+      OriginalStatusCode: S.optional(S.Number),
+      OriginalMessage: S.optional(S.String),
+      LogStreamArn: S.optional(S.String),
+    },
+    T.HttpError(424),
+  ) {}
+export class ModelNotReadyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ModelNotReadyException>()(
+    "ModelNotReadyException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ModelNotReadyException",
+        httpResponseCode: 429,
+      }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class ModelStreamError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ModelStreamError>()(
+    "ModelStreamError",
+    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  ) {}
+export class ServiceUnavailable
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailable>()(
+    "ServiceUnavailable",
+    { Message: S.optional(S.String) },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
+export class ValidationError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
+    "ValidationError",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type EndpointName = string;
 export type Header = string;
 export type CustomAttributesHeader = string | redacted.Redacted<string>;

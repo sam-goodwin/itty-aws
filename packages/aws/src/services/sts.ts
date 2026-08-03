@@ -174,117 +174,135 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
-  "ExpiredTokenException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ExpiredTokenException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ExpiredTradeInTokenException extends S.TaggedErrorClass<ExpiredTradeInTokenException>()(
-  "ExpiredTradeInTokenException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ExpiredTradeInTokenException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IDPCommunicationErrorException extends S.TaggedErrorClass<IDPCommunicationErrorException>()(
-  "IDPCommunicationErrorException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "IDPCommunicationError", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IDPRejectedClaimException extends S.TaggedErrorClass<IDPRejectedClaimException>()(
-  "IDPRejectedClaimException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "IDPRejectedClaim", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidAuthorizationMessageException extends S.TaggedErrorClass<InvalidAuthorizationMessageException>()(
-  "InvalidAuthorizationMessageException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidAuthorizationMessageException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidIdentityTokenException extends S.TaggedErrorClass<InvalidIdentityTokenException>()(
-  "InvalidIdentityTokenException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidIdentityToken", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class JWTPayloadSizeExceededException extends S.TaggedErrorClass<JWTPayloadSizeExceededException>()(
-  "JWTPayloadSizeExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "JWTPayloadSizeExceededException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OutboundWebIdentityFederationDisabledException extends S.TaggedErrorClass<OutboundWebIdentityFederationDisabledException>()(
-  "OutboundWebIdentityFederationDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "OutboundWebIdentityFederationDisabledException",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class PackedPolicyTooLargeException extends S.TaggedErrorClass<PackedPolicyTooLargeException>()(
-  "PackedPolicyTooLargeException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PackedPolicyTooLarge", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RegionDisabledException extends S.TaggedErrorClass<RegionDisabledException>()(
-  "RegionDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RegionDisabledException", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class SessionDurationEscalationException extends S.TaggedErrorClass<SessionDurationEscalationException>()(
-  "SessionDurationEscalationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SessionDurationEscalationException",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
+export class ExpiredTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTokenException>()(
+    "ExpiredTokenException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ExpiredTokenException", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ExpiredTradeInTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ExpiredTradeInTokenException>()(
+    "ExpiredTradeInTokenException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ExpiredTradeInTokenException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class IDPCommunicationErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IDPCommunicationErrorException>()(
+    "IDPCommunicationErrorException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "IDPCommunicationError", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class IDPRejectedClaimException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IDPRejectedClaimException>()(
+    "IDPRejectedClaimException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "IDPRejectedClaim", httpResponseCode: 403 }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class InvalidAuthorizationMessageException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAuthorizationMessageException>()(
+    "InvalidAuthorizationMessageException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidAuthorizationMessageException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidIdentityTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIdentityTokenException>()(
+    "InvalidIdentityTokenException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidIdentityToken", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class JWTPayloadSizeExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<JWTPayloadSizeExceededException>()(
+    "JWTPayloadSizeExceededException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "JWTPayloadSizeExceededException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MalformedPolicyDocumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+    "MalformedPolicyDocumentException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "MalformedPolicyDocument",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class OutboundWebIdentityFederationDisabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OutboundWebIdentityFederationDisabledException>()(
+    "OutboundWebIdentityFederationDisabledException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "OutboundWebIdentityFederationDisabledException",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class PackedPolicyTooLargeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PackedPolicyTooLargeException>()(
+    "PackedPolicyTooLargeException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "PackedPolicyTooLarge", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class RegionDisabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RegionDisabledException>()(
+    "RegionDisabledException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "RegionDisabledException",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class SessionDurationEscalationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SessionDurationEscalationException>()(
+    "SessionDurationEscalationException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "SessionDurationEscalationException",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
 export type ArnType = string;
 export type RoleSessionNameType = string;
 export interface PolicyDescriptorType {

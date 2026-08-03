@@ -12,53 +12,57 @@ import * as Retry from "../retry.ts";
 
 export type { GcpOpError, GcpOpContext };
 
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
-) {}
+export class BadRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 400 }],
+  ) {}
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 404 }],
+  ) {}
 
 /** Configuration options for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. */
 export interface HttpLoadBalancing {

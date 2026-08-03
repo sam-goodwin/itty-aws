@@ -28,141 +28,179 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   uploadedOn: "uploaded_on",
 };
 
-export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "already deleted" } }],
-) {}
+export class CertificateAlreadyDeleted
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyDeleted>()(
+      "CertificateAlreadyDeleted",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "already deleted" } }],
+  ) {}
 
-export class CertificateAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateAlreadyExists>()("CertificateAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1406, message: { includes: "already exists" } }],
-) {}
+export class CertificateAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateAlreadyExists>()(
+      "CertificateAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1406, message: { includes: "already exists" } }],
+  ) {}
 
-export class CertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 1552, message: { includes: "certificate not found" } },
-    { status: 404 },
-  ],
-) {}
+export class CertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificateNotFound>()(
+      "CertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 1552, message: { includes: "certificate not found" } },
+      { status: 404 },
+    ],
+  ) {}
 
-export class CertificatePendingDeletion extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificatePendingDeletion>()(
-    "CertificatePendingDeletion",
-    {
+export class CertificatePendingDeletion
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificatePendingDeletion>()(
+      "CertificatePendingDeletion",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1414, message: { includes: "pending deletion" } }],
+  ) {}
+
+export class CertificatePendingDeployment
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificatePendingDeployment>()(
+      "CertificatePendingDeployment",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1434, message: { includes: "pending deployment" } }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1414, message: { includes: "pending deletion" } }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class CertificatePendingDeployment extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificatePendingDeployment>()(
-    "CertificatePendingDeployment",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1434, message: { includes: "pending deployment" } }],
-) {}
+export class HostnameAssociationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameAssociationNotFound>()(
+      "HostnameAssociationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        code: 1553,
+        message: { includes: "setting for this hostname not found" },
+      },
+      { status: 404 },
+    ],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class HostnameCertificateIdRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameCertificateIdRequired>()(
+      "HostnameCertificateIdRequired",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1404, message: { includes: "Certificate ID required" } }],
+  ) {}
 
-export class HostnameAssociationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameAssociationNotFound>()(
-    "HostnameAssociationNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [
-    {
-      code: 1553,
-      message: { includes: "setting for this hostname not found" },
-    },
-    { status: 404 },
-  ],
-) {}
+export class HostnameCertificateInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameCertificateInUse>()(
+      "HostnameCertificateInUse",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1433, message: { includes: "in use" } }],
+  ) {}
 
-export class HostnameCertificateIdRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameCertificateIdRequired>()(
-    "HostnameCertificateIdRequired",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1404, message: { includes: "Certificate ID required" } }],
-) {}
+export class HostnameCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HostnameCertificateNotFound>()(
+      "HostnameCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1552 }, { code: 1551 }, { status: 404 }],
+  ) {}
 
-export class HostnameCertificateInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameCertificateInUse>()("HostnameCertificateInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1433, message: { includes: "in use" } }],
-) {}
+export class InvalidCertificate
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificate>()(
+      "InvalidCertificate",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1408, message: { includes: "Unable to parse certificate" } }],
+  ) {}
 
-export class HostnameCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HostnameCertificateNotFound>()(
-    "HostnameCertificateNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 1552 }, { code: 1551 }, { status: 404 }],
-) {}
+export class InvalidCertificateId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateId>()(
+      "InvalidCertificateId",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1415, message: { includes: "Invalid Certificate ID" } }],
+  ) {}
 
-export class InvalidCertificate extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidCertificate>()("InvalidCertificate", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1408, message: { includes: "Unable to parse certificate" } }],
-) {}
+export class InvalidHostnameConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidHostnameConfig>()(
+      "InvalidHostnameConfig",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1415 }],
+  ) {}
 
-export class InvalidCertificateId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidCertificateId>()("InvalidCertificateId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1415, message: { includes: "Invalid Certificate ID" } }],
-) {}
-
-export class InvalidHostnameConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidHostnameConfig>()("InvalidHostnameConfig", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1415 }],
-) {}
-
-export class ZoneClientCertConflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneClientCertConflict>()("ZoneClientCertConflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
+export class ZoneClientCertConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneClientCertConflict>()(
+      "ZoneClientCertConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 409 }],
+  ) {}
 
 export interface CreateHostnameCertificateRequest {
   /** Identifier. */

@@ -85,61 +85,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DataCatalogNotFound extends S.TaggedErrorClass<DataCatalogNotFound>()(
-  "DataCatalogNotFound",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "DataCatalog.*not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class MetadataException extends S.TaggedErrorClass<MetadataException>()(
-  "MetadataException",
-  { Message: S.optional(S.String) },
-) {}
-export class NamedQueryNotFound extends S.TaggedErrorClass<NamedQueryNotFound>()(
-  "NamedQueryNotFound",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "NamedQuery.*does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-) {}
-export class SessionAlreadyExistsException extends S.TaggedErrorClass<SessionAlreadyExistsException>()(
-  "SessionAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(
-      S.suspend(() => ThrottleReason).annotate({
-        identifier: "ThrottleReason",
-      }),
-    ),
-  },
-) {}
-export class WorkGroupNotFound extends S.TaggedErrorClass<WorkGroupNotFound>()(
-  "WorkGroupNotFound",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "WorkGroup.*not found" },
-  }),
-).pipe(C.withNotFoundError) {}
+export class DataCatalogNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<DataCatalogNotFound>()(
+    "DataCatalogNotFound",
+    { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: "DataCatalog.*not found" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  ) {}
+export class MetadataException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MetadataException>()(
+    "MetadataException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class NamedQueryNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<NamedQueryNotFound>()(
+    "NamedQueryNotFound",
+    { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: "NamedQuery.*does not exist" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  ) {}
+export class SessionAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SessionAlreadyExistsException>()(
+    "SessionAlreadyExistsException",
+    { Message: S.optional(S.String) },
+  ).pipe(C.withAlreadyExistsError) {}
+export class TooManyRequestsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+    "TooManyRequestsException",
+    {
+      Message: S.optional(S.String),
+      Reason: S.optional(
+        S.suspend(() => ThrottleReason).annotate({
+          identifier: "ThrottleReason",
+        }),
+      ),
+    },
+  ) {}
+export class WorkGroupNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<WorkGroupNotFound>()(
+    "WorkGroupNotFound",
+    { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: "WorkGroup.*not found" },
+    }),
+  ).pipe(C.withNotFoundError) {}
 export type NamedQueryId = string;
 export type NamedQueryIdList = string[];
 export const NamedQueryIdList = /*@__PURE__*/ S.Array(S.String);

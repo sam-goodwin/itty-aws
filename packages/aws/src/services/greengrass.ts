@@ -120,26 +120,28 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    ErrorDetails: S.optional(
-      S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
-    ),
-    Message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  {
-    ErrorDetails: S.optional(
-      S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
-    ),
-    Message: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
+export class BadRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<BadRequestException>()(
+    "BadRequestException",
+    {
+      ErrorDetails: S.optional(
+        S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+      ),
+      Message: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InternalServerErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerErrorException>()(
+    "InternalServerErrorException",
+    {
+      ErrorDetails: S.optional(
+        S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+      ),
+      Message: S.optional(S.String),
+    },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
 export interface AssociateRoleToGroupRequest {
   GroupId: string;
   RoleArn?: string;

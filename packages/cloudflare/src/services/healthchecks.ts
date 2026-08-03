@@ -33,29 +33,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class HealthcheckAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HealthcheckAlreadyExists>()("HealthcheckAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ message: { includes: "already exists" } }],
-) {}
+export class HealthcheckAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HealthcheckAlreadyExists>()(
+      "HealthcheckAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ message: { includes: "already exists" } }],
+  ) {}
 
-export class HealthcheckNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HealthcheckNotFound>()("HealthcheckNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class HealthcheckNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HealthcheckNotFound>()(
+      "HealthcheckNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export type CreateRequestCheckRegionsItem =
   | "WNAM"

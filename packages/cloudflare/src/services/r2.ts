@@ -26,153 +26,179 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   storageClass: "storage_class",
 };
 
-export class BucketAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BucketAlreadyExists>()("BucketAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10004 }],
-) {}
+export class BucketAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BucketAlreadyExists>()(
+      "BucketAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10004 }],
+  ) {}
 
-export class BucketNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BucketNotFound>()("BucketNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10085 }],
-) {}
-
-export class CustomDomainInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomDomainInUse>()("CustomDomainInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409, message: { includes: "in use" } }],
-) {}
-
-export class DomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10053 }],
-) {}
-
-export class EventNotificationConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EventNotificationConfigNotFound>()(
-    "EventNotificationConfigNotFound",
-    {
+export class BucketNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BucketNotFound>()("BucketNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 11011 }],
-) {}
+    }),
+    [{ code: 10085 }],
+  ) {}
 
-export class EventNotificationRuleConflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EventNotificationRuleConflict>()(
-    "EventNotificationRuleConflict",
-    {
+export class CustomDomainInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomDomainInUse>()("CustomDomainInUse", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 11020 }],
-) {}
+    }),
+    [{ status: 409, message: { includes: "in use" } }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class InvalidBucketName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidBucketName>()("InvalidBucketName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10005 }],
-) {}
-
-export class InvalidEventNotificationConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidEventNotificationConfig>()(
-    "InvalidEventNotificationConfig",
-    {
+export class DomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 11014 }, { code: 11019 }],
-) {}
+    }),
+    [{ code: 10053 }],
+  ) {}
 
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class EventNotificationConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EventNotificationConfigNotFound>()(
+      "EventNotificationConfigNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11011 }],
+  ) {}
 
-export class InvalidUpstreamCredentials extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidUpstreamCredentials>()(
-    "InvalidUpstreamCredentials",
-    {
+export class EventNotificationRuleConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EventNotificationRuleConflict>()(
+      "EventNotificationRuleConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11020 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10063 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class NoCorsConfiguration extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoCorsConfiguration>()("NoCorsConfiguration", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10059 }],
-) {}
+export class InvalidBucketName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidBucketName>()("InvalidBucketName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10005 }],
+  ) {}
 
-export class NoEventNotificationConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoEventNotificationConfig>()("NoEventNotificationConfig", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11015 }],
-) {}
+export class InvalidEventNotificationConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidEventNotificationConfig>()(
+      "InvalidEventNotificationConfig",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11014 }, { code: 11019 }],
+  ) {}
 
-export class NoRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoRoute>()("NoRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10015 }],
-) {}
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class NoSuchBucket extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10006 }],
-) {}
+export class InvalidUpstreamCredentials
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidUpstreamCredentials>()(
+      "InvalidUpstreamCredentials",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10063 }],
+  ) {}
 
-export class NoSuchKey extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoSuchKey>()("NoSuchKey", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "specified key does not exist" } }],
-) {}
+export class NoCorsConfiguration
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoCorsConfiguration>()(
+      "NoCorsConfiguration",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10059 }],
+  ) {}
 
-export class QueueNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11000 }],
-) {}
+export class NoEventNotificationConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoEventNotificationConfig>()(
+      "NoEventNotificationConfig",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11015 }],
+  ) {}
+
+export class NoRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoRoute>()("NoRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10015 }],
+  ) {}
+
+export class NoSuchBucket
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10006 }],
+  ) {}
+
+export class NoSuchKey
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoSuchKey>()("NoSuchKey", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404, message: { includes: "specified key does not exist" } }],
+  ) {}
+
+export class QueueNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 11000 }],
+  ) {}
 
 export interface AbortAllSuperSlurperJobRequest {
   accountId: string;

@@ -47,77 +47,92 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   validationOverrideMitigationAction: "validation_override_mitigation_action",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidObjectIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidObjectIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+      "InvalidObjectIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
-export class LabelAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LabelAlreadyExists>()("LabelAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 70009 }],
-) {}
+export class LabelAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LabelAlreadyExists>()(
+      "LabelAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 70009 }],
+  ) {}
 
-export class LabelNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LabelNotFound>()("LabelNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 70014 }],
-) {}
+export class LabelNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LabelNotFound>()("LabelNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 70014 }],
+  ) {}
 
-export class NotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10403 }, { code: 10404 }],
-) {}
+export class NotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10403 }, { code: 10404 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class OperationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10404 }],
-) {}
+export class OperationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10404 }],
+  ) {}
 
-export class SchemaNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 19400 }],
-) {}
+export class SchemaNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 19400 }],
+  ) {}
 
-export class ZonePurged extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZonePurged>()("ZonePurged", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10410 }],
-) {}
+export class ZonePurged
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZonePurged>()("ZonePurged", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10410 }],
+  ) {}
 
 export interface LabelsUserBulkCreateRequestBodyItem {
   /** The name of the label */

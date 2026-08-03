@@ -48,32 +48,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneId: "zone_id",
 };
 
-export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
-    "AdvancedCertificateManagerRequired",
-    {
+export class AdvancedCertificateManagerRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+      "AdvancedCertificateManagerRequired",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1450 }],
+  ) {}
+
+export class CertificatePackNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CertificatePackNotFound>()(
+      "CertificatePackNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1408 }, { status: 404 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1450 }],
-) {}
-
-export class CertificatePackNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CertificatePackNotFound>()("CertificatePackNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1408 }, { status: 404 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export interface AutomaticUpgraderGetRequest {
   zoneId: string;

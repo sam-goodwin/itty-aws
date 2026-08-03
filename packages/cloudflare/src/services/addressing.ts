@@ -52,175 +52,216 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   verifiedAt: "verified_at",
 };
 
-export class AddressMapNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AddressMapNotFound>()("AddressMapNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000 }, { code: 1000, message: { includes: "not_found" } }],
-) {}
+export class AddressMapNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AddressMapNotFound>()(
+      "AddressMapNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1000 }, { code: 1000, message: { includes: "not_found" } }],
+  ) {}
 
-export class BgpPrefixNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BgpPrefixNotFound>()("BgpPrefixNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002 }],
-) {}
-
-export class BindingNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BindingNotFound>()("BindingNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002 }],
-) {}
-
-export class DelegationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DelegationNotFound>()("DelegationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000 }],
-) {}
-
-export class FeatureNotEnabled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "address_maps_not_enabled" } }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class InvalidAccountId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003, message: { includes: "Could not route" } }],
-) {}
-
-export class InvalidHostname extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidHostname>()("InvalidHostname", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "forbidden" } }],
-) {}
-
-export class InvalidLoaForm extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidLoaForm>()("InvalidLoaForm", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "invalid_loa_form" } }, { code: 1001 }],
-) {}
-
-export class InvalidNetworkCidr extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidNetworkCidr>()("InvalidNetworkCidr", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "invalid_network_cidr" } }],
-) {}
-
-export class InvalidZoneId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidZoneId>()("InvalidZoneId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003, message: { includes: "Could not route" } }],
-) {}
-
-export class IrrEntryNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<IrrEntryNotFound>()("IrrEntryNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003, message: { includes: "irr_entry_not_found" } }],
-) {}
-
-export class LoaDocumentNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LoaDocumentNotFound>()("LoaDocumentNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000 }],
-) {}
-
-export class MethodNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 10405, message: { includes: "not allowed" } },
-    { code: 10000, message: { includes: "not allowed" } },
-  ],
-) {}
-
-export class MissingAccountId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MissingAccountId>()("MissingAccountId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001 }],
-) {}
-
-export class NonexistentAccountPrefix extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NonexistentAccountPrefix>()("NonexistentAccountPrefix", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
-
-export class PrefixNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PrefixNotFound>()("PrefixNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 1000 },
-    { code: 1000, message: { includes: "not_found" } },
-    { code: 1002, message: { includes: "forbidden" } },
-  ],
-) {}
-
-export class RegionalHostnameEmpty extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RegionalHostnameEmpty>()("RegionalHostnameEmpty", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000, message: { includes: "not_found" } }],
-) {}
-
-export class RegionalHostnameNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RegionalHostnameNotFound>()("RegionalHostnameNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002, message: { includes: "forbidden" } }],
-) {}
-
-export class UnsupportedBindingConfiguration extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnsupportedBindingConfiguration>()(
-    "UnsupportedBindingConfiguration",
-    {
+export class BgpPrefixNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BgpPrefixNotFound>()("BgpPrefixNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1003 }],
-) {}
+    }),
+    [{ code: 1002 }],
+  ) {}
+
+export class BindingNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BindingNotFound>()("BindingNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002 }],
+  ) {}
+
+export class DelegationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DelegationNotFound>()(
+      "DelegationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1000 }],
+  ) {}
+
+export class FeatureNotEnabled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002, message: { includes: "address_maps_not_enabled" } }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
+
+export class InvalidAccountId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003, message: { includes: "Could not route" } }],
+  ) {}
+
+export class InvalidHostname
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidHostname>()("InvalidHostname", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1002, message: { includes: "forbidden" } }],
+  ) {}
+
+export class InvalidLoaForm
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidLoaForm>()("InvalidLoaForm", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001, message: { includes: "invalid_loa_form" } }, { code: 1001 }],
+  ) {}
+
+export class InvalidNetworkCidr
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkCidr>()(
+      "InvalidNetworkCidr",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "invalid_network_cidr" } }],
+  ) {}
+
+export class InvalidZoneId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneId>()("InvalidZoneId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003, message: { includes: "Could not route" } }],
+  ) {}
+
+export class IrrEntryNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<IrrEntryNotFound>()("IrrEntryNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003, message: { includes: "irr_entry_not_found" } }],
+  ) {}
+
+export class LoaDocumentNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LoaDocumentNotFound>()(
+      "LoaDocumentNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1000 }],
+  ) {}
+
+export class MethodNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 10405, message: { includes: "not allowed" } },
+      { code: 10000, message: { includes: "not allowed" } },
+    ],
+  ) {}
+
+export class MissingAccountId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MissingAccountId>()("MissingAccountId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001 }],
+  ) {}
+
+export class NonexistentAccountPrefix
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NonexistentAccountPrefix>()(
+      "NonexistentAccountPrefix",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003 }],
+  ) {}
+
+export class PrefixNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PrefixNotFound>()("PrefixNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 1000 },
+      { code: 1000, message: { includes: "not_found" } },
+      { code: 1002, message: { includes: "forbidden" } },
+    ],
+  ) {}
+
+export class RegionalHostnameEmpty
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RegionalHostnameEmpty>()(
+      "RegionalHostnameEmpty",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1000, message: { includes: "not_found" } }],
+  ) {}
+
+export class RegionalHostnameNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RegionalHostnameNotFound>()(
+      "RegionalHostnameNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002, message: { includes: "forbidden" } }],
+  ) {}
+
+export class UnsupportedBindingConfiguration
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnsupportedBindingConfiguration>()(
+      "UnsupportedBindingConfiguration",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003 }],
+  ) {}
 
 export type AddressMapsCreateRequestIpsList = Array<string>;
 export const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(

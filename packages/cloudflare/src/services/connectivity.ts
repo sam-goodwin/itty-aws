@@ -33,40 +33,47 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   updatedAt: "updated_at",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class VpcServiceNameAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VpcServiceNameAlreadyExists>()(
-    "VpcServiceNameAlreadyExists",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 5101, message: { includes: "already exists" } }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class VpcServiceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VpcServiceNotFound>()("VpcServiceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5104 }],
-) {}
+export class VpcServiceNameAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VpcServiceNameAlreadyExists>()(
+      "VpcServiceNameAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5101, message: { includes: "already exists" } }],
+  ) {}
 
-export class VpcTunnelNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VpcTunnelNotFound>()("VpcTunnelNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 5101, message: { includes: "Tunnel ID Not Found" } }],
-) {}
+export class VpcServiceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VpcServiceNotFound>()(
+      "VpcServiceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 5104 }],
+  ) {}
+
+export class VpcTunnelNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VpcTunnelNotFound>()("VpcTunnelNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 5101, message: { includes: "Tunnel ID Not Found" } }],
+  ) {}
 
 export interface DirectoryServicesCreateRequestHostInfraIPv4HostNetwork {
   tunnelId: string;

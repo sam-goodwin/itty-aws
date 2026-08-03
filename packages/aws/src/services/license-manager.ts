@@ -89,144 +89,162 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
-    T.HttpError(401),
-  ),
-).pipe(C.withAuthError) {}
-export class AuthorizationException extends S.TaggedErrorClass<AuthorizationException>()(
-  "AuthorizationException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class EntitlementNotAllowedException extends S.TaggedErrorClass<EntitlementNotAllowedException>()(
-  "EntitlementNotAllowedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FailedDependencyException extends S.TaggedErrorClass<FailedDependencyException>()(
-  "FailedDependencyException",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
-    T.HttpError(424),
-  ),
-) {}
-export class FilterLimitExceededException extends S.TaggedErrorClass<FilterLimitExceededException>()(
-  "FilterLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
+      T.HttpError(401),
+    ),
+  ).pipe(C.withAuthError) {}
+export class AuthorizationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AuthorizationException>()(
+    "AuthorizationException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class EntitlementNotAllowedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EntitlementNotAllowedException>()(
+    "EntitlementNotAllowedException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidParameterValueProvided",
-      httpResponseCode: 400,
+  ).pipe(C.withBadRequestError) {}
+export class FailedDependencyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FailedDependencyException>()(
+    "FailedDependencyException",
+    { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
+      T.HttpError(424),
+    ),
+  ) {}
+export class FilterLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FilterLimitExceededException>()(
+    "FilterLimitExceededException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+    "InvalidParameterValueException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidParameterValueProvided",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidResourceStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceStateException>()(
+    "InvalidResourceStateException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class LicenseConfigurationNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<LicenseConfigurationNotFound>()(
+    "LicenseConfigurationNotFound",
+    { Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: { includes: "Invalid license configuration ARN" },
     }),
+  ).pipe(C.withNotFoundError) {}
+export class LicenseUsageException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LicenseUsageException>()(
+    "LicenseUsageException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
+      T.HttpError(412),
+    ),
+  ) {}
+export class NoEntitlementsAllowedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoEntitlementsAllowedException>()(
+    "NoEntitlementsAllowedException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
+  ).pipe(C.withBadRequestError) {}
+export class RateLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RateLimitExceededException>()(
+    "RateLimitExceededException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class RedirectException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RedirectException>()(
+    "RedirectException",
+    {
+      Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
+      Message: S.optional(S.String),
+    },
+    T.HttpError(308),
+  ) {}
+export class ResourceLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceededException>()(
+    "ResourceLimitExceededException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidResource.NotFound",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ServerInternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServerInternalException>()(
+    "ServerInternalException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class UnsupportedDigitalSignatureMethodException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedDigitalSignatureMethodException>()(
+    "UnsupportedDigitalSignatureMethodException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LicenseConfigurationNotFound extends S.TaggedErrorClass<LicenseConfigurationNotFound>()(
-  "LicenseConfigurationNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidParameterValueException",
-    message: { includes: "Invalid license configuration ARN" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class LicenseUsageException extends S.TaggedErrorClass<LicenseUsageException>()(
-  "LicenseUsageException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
-    T.HttpError(412),
-  ),
-) {}
-export class NoEntitlementsAllowedException extends S.TaggedErrorClass<NoEntitlementsAllowedException>()(
-  "NoEntitlementsAllowedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RateLimitExceededException extends S.TaggedErrorClass<RateLimitExceededException>()(
-  "RateLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class RedirectException extends S.TaggedErrorClass<RedirectException>()(
-  "RedirectException",
-  {
-    Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
-    Message: S.optional(S.String),
-  },
-  T.HttpError(308),
-) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
+  ).pipe(C.withBadRequestError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResource.NotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
-  "ServerInternalException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class UnsupportedDigitalSignatureMethodException extends S.TaggedErrorClass<UnsupportedDigitalSignatureMethodException>()(
-  "UnsupportedDigitalSignatureMethodException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+  ).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export interface AcceptGrantRequest {
   GrantArn: string;

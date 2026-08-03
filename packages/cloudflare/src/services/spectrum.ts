@@ -34,32 +34,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   virtualNetworkId: "virtual_network_id",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class SpectrumAppNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SpectrumAppNotFound>()("SpectrumAppNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10006 }],
-) {}
-
-export class SpectrumProtocolNotAvailable extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
-    "SpectrumProtocolNotAvailable",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 13002 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
+
+export class SpectrumAppNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SpectrumAppNotFound>()(
+      "SpectrumAppNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10006 }],
+  ) {}
+
+export class SpectrumProtocolNotAvailable
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
+      "SpectrumProtocolNotAvailable",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 13002 }],
+  ) {}
 
 export type AppsCreateRequestDnsSpectrumConfigAppConfigType =
   | "CNAME"

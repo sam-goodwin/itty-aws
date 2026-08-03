@@ -248,294 +248,340 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccountNotManagementOrDelegatedAdministratorException extends S.TaggedErrorClass<AccountNotManagementOrDelegatedAdministratorException>()(
-  "AccountNotManagementOrDelegatedAdministratorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CallerIsNotManagementAccountException extends S.TaggedErrorClass<CallerIsNotManagementAccountException>()(
-  "CallerIsNotManagementAccountException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class CredentialReportExpiredException extends S.TaggedErrorClass<CredentialReportExpiredException>()(
-  "CredentialReportExpiredException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReportExpired", httpResponseCode: 410 }),
-    T.HttpError(410),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CredentialReportNotPresentException extends S.TaggedErrorClass<CredentialReportNotPresentException>()(
-  "CredentialReportNotPresentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReportNotPresent", httpResponseCode: 410 }),
-    T.HttpError(410),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CredentialReportNotReadyException extends S.TaggedErrorClass<CredentialReportNotReadyException>()(
-  "CredentialReportNotReadyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReportInProgress", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DeleteConflictException extends S.TaggedErrorClass<DeleteConflictException>()(
-  "DeleteConflictException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DeleteConflict", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class DuplicateCertificateException extends S.TaggedErrorClass<DuplicateCertificateException>()(
-  "DuplicateCertificateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateCertificate", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class DuplicateSSHPublicKeyException extends S.TaggedErrorClass<DuplicateSSHPublicKeyException>()(
-  "DuplicateSSHPublicKeyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateSSHPublicKey", httpResponseCode: 400 }),
+export class AccountNotManagementOrDelegatedAdministratorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccountNotManagementOrDelegatedAdministratorException>()(
+    "AccountNotManagementOrDelegatedAdministratorException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
-  "EntityAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "EntityAlreadyExists", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class EntityTemporarilyUnmodifiableException extends S.TaggedErrorClass<EntityTemporarilyUnmodifiableException>()(
-  "EntityTemporarilyUnmodifiableException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EntityTemporarilyUnmodifiable",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class FeatureDisabledException extends S.TaggedErrorClass<FeatureDisabledException>()(
-  "FeatureDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FeatureDisabled", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class FeatureEnabledException extends S.TaggedErrorClass<FeatureEnabledException>()(
-  "FeatureEnabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FeatureEnabled", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class InvalidAuthenticationCodeException extends S.TaggedErrorClass<InvalidAuthenticationCodeException>()(
-  "InvalidAuthenticationCodeException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidAuthenticationCode",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidCertificateException extends S.TaggedErrorClass<InvalidCertificateException>()(
-  "InvalidCertificateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidCertificate", httpResponseCode: 400 }),
+  ).pipe(C.withBadRequestError) {}
+export class CallerIsNotManagementAccountException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CallerIsNotManagementAccountException>()(
+    "CallerIsNotManagementAccountException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
-  "InvalidInput",
-  {},
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidInput", httpResponseCode: 400 }),
+  ).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ConcurrentModification",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError, C.withRetryableError) {}
+export class CredentialReportExpiredException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CredentialReportExpiredException>()(
+    "CredentialReportExpiredException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ReportExpired", httpResponseCode: 410 }),
+      T.HttpError(410),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class CredentialReportNotPresentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CredentialReportNotPresentException>()(
+    "CredentialReportNotPresentException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ReportNotPresent", httpResponseCode: 410 }),
+      T.HttpError(410),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class CredentialReportNotReadyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CredentialReportNotReadyException>()(
+    "CredentialReportNotReadyException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ReportInProgress", httpResponseCode: 404 }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class DeleteConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteConflictException>()(
+    "DeleteConflictException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DeleteConflict", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class DuplicateCertificateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateCertificateException>()(
+    "DuplicateCertificateException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DuplicateCertificate", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class DuplicateSSHPublicKeyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateSSHPublicKeyException>()(
+    "DuplicateSSHPublicKeyException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "DuplicateSSHPublicKey", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class EntityAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EntityAlreadyExistsException>()(
+    "EntityAlreadyExistsException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "EntityAlreadyExists", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class EntityTemporarilyUnmodifiableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EntityTemporarilyUnmodifiableException>()(
+    "EntityTemporarilyUnmodifiableException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "EntityTemporarilyUnmodifiable",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError, C.withRetryableError) {}
+export class FeatureDisabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FeatureDisabledException>()(
+    "FeatureDisabledException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "FeatureDisabled", httpResponseCode: 404 }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class FeatureEnabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FeatureEnabledException>()(
+    "FeatureEnabledException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "FeatureEnabled", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class InvalidAuthenticationCodeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAuthenticationCodeException>()(
+    "InvalidAuthenticationCodeException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidAuthenticationCode",
+        httpResponseCode: 403,
+      }),
+      T.HttpError(403),
+    ),
+  ).pipe(C.withAuthError) {}
+export class InvalidCertificateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateException>()(
+    "InvalidCertificateException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidCertificate", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidInput
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInput>()(
+    "InvalidInput",
+    {},
+  ) {}
+export class InvalidInputException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+    "InvalidInputException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidInput", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidPublicKeyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPublicKeyException>()(
+    "InvalidPublicKeyException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidPublicKey", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidUserTypeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUserTypeException>()(
+    "InvalidUserTypeException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "InvalidUserType", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class KeyPairMismatchException
+  extends /*@__PURE__*/ S.TaggedErrorClass<KeyPairMismatchException>()(
+    "KeyPairMismatchException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "KeyPairMismatch", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError, C.withQuotaError) {}
+export class MalformedCertificateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedCertificateException>()(
+    "MalformedCertificateException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "MalformedCertificate", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class MalformedPolicyDocumentException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+    "MalformedPolicyDocumentException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "MalformedPolicyDocument",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class NoSuchEntityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NoSuchEntityException>()(
+    "NoSuchEntityException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError, C.withNotFoundError) {}
+export class OpenIdIdpCommunicationErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OpenIdIdpCommunicationErrorException>()(
+    "OpenIdIdpCommunicationErrorException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "OpenIdIdpCommunicationError",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class OrganizationNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotFoundException>()(
+    "OrganizationNotFoundException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidPublicKeyException extends S.TaggedErrorClass<InvalidPublicKeyException>()(
-  "InvalidPublicKeyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidPublicKey", httpResponseCode: 400 }),
+  ).pipe(C.withBadRequestError) {}
+export class OrganizationNotInAllFeaturesModeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+    "OrganizationNotInAllFeaturesModeException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidUserTypeException extends S.TaggedErrorClass<InvalidUserTypeException>()(
-  "InvalidUserTypeException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidUserType", httpResponseCode: 400 }),
+  ).pipe(C.withBadRequestError) {}
+export class PasswordPolicyViolationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PasswordPolicyViolationException>()(
+    "PasswordPolicyViolationException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "PasswordPolicyViolation",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PolicyEvaluationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyEvaluationException>()(
+    "PolicyEvaluationException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "PolicyEvaluation", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class PolicyNotAttachableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PolicyNotAttachableException>()(
+    "PolicyNotAttachableException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "PolicyNotAttachable", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ReportGenerationLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ReportGenerationLimitExceededException>()(
+    "ReportGenerationLimitExceededException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ReportGenerationLimitExceeded",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class RequestLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
+    "RequestLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ServiceAccessNotEnabledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceAccessNotEnabledException>()(
+    "ServiceAccessNotEnabledException",
+    { Message: S.optional(S.String) },
     T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class KeyPairMismatchException extends S.TaggedErrorClass<KeyPairMismatchException>()(
-  "KeyPairMismatchException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KeyPairMismatch", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withQuotaError) {}
-export class MalformedCertificateException extends S.TaggedErrorClass<MalformedCertificateException>()(
-  "MalformedCertificateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MalformedCertificate", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
-  "NoSuchEntityException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError, C.withNotFoundError) {}
-export class OpenIdIdpCommunicationErrorException extends S.TaggedErrorClass<OpenIdIdpCommunicationErrorException>()(
-  "OpenIdIdpCommunicationErrorException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "OpenIdIdpCommunicationError",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
-  "OrganizationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
-  "OrganizationNotInAllFeaturesModeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PasswordPolicyViolationException extends S.TaggedErrorClass<PasswordPolicyViolationException>()(
-  "PasswordPolicyViolationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PasswordPolicyViolation", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PolicyEvaluationException extends S.TaggedErrorClass<PolicyEvaluationException>()(
-  "PolicyEvaluationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PolicyEvaluation", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class PolicyNotAttachableException extends S.TaggedErrorClass<PolicyNotAttachableException>()(
-  "PolicyNotAttachableException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PolicyNotAttachable", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ReportGenerationLimitExceededException extends S.TaggedErrorClass<ReportGenerationLimitExceededException>()(
-  "ReportGenerationLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReportGenerationLimitExceeded",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ServiceAccessNotEnabledException extends S.TaggedErrorClass<ServiceAccessNotEnabledException>()(
-  "ServiceAccessNotEnabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ServiceNotSupportedException extends S.TaggedErrorClass<ServiceNotSupportedException>()(
-  "ServiceNotSupportedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NotSupportedService", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnmodifiableEntityException extends S.TaggedErrorClass<UnmodifiableEntityException>()(
-  "UnmodifiableEntityException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnmodifiableEntity", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnrecognizedPublicKeyEncodingException extends S.TaggedErrorClass<UnrecognizedPublicKeyEncodingException>()(
-  "UnrecognizedPublicKeyEncodingException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "UnrecognizedPublicKeyEncoding",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
+  ).pipe(C.withBadRequestError) {}
+export class ServiceFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceFailureException>()(
+    "ServiceFailureException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError, C.withRetryableError) {}
+export class ServiceNotSupportedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceNotSupportedException>()(
+    "ServiceNotSupportedException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "NotSupportedService", httpResponseCode: 404 }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class UnmodifiableEntityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnmodifiableEntityException>()(
+    "UnmodifiableEntityException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "UnmodifiableEntity", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class UnrecognizedPublicKeyEncodingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnrecognizedPublicKeyEncodingException>()(
+    "UnrecognizedPublicKeyEncodingException",
+    { message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "UnrecognizedPublicKeyEncoding",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type DelegationRequestIdType = string;
 export interface AcceptDelegationRequestRequest {
   DelegationRequestId: string;

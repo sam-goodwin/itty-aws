@@ -96,183 +96,217 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class CertificateConflictException extends S.TaggedErrorClass<CertificateConflictException>()(
-  "CertificateConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class CertificateStateException extends S.TaggedErrorClass<CertificateStateException>()(
-  "CertificateStateException",
-  { message: S.optional(S.String) },
-  T.HttpError(406),
-).pipe(C.withBadRequestError) {}
-export class CertificateValidationException extends S.TaggedErrorClass<CertificateValidationException>()(
-  "CertificateValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String), resourceId: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ConflictingResourceUpdateException extends S.TaggedErrorClass<ConflictingResourceUpdateException>()(
-  "ConflictingResourceUpdateException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class DeleteConflictException extends S.TaggedErrorClass<DeleteConflictException>()(
-  "DeleteConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IndexNotReadyException extends S.TaggedErrorClass<IndexNotReadyException>()(
-  "IndexNotReadyException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidAggregationException extends S.TaggedErrorClass<InvalidAggregationException>()(
-  "InvalidAggregationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidQueryException extends S.TaggedErrorClass<InvalidQueryException>()(
-  "InvalidQueryException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidResponseException extends S.TaggedErrorClass<InvalidResponseException>()(
-  "InvalidResponseException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
-  "InvalidStateTransitionException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyException extends S.TaggedErrorClass<MalformedPolicyException>()(
-  "MalformedPolicyException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotConfiguredException extends S.TaggedErrorClass<NotConfiguredException>()(
-  "NotConfiguredException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class RegistrationCodeValidationException extends S.TaggedErrorClass<RegistrationCodeValidationException>()(
-  "RegistrationCodeValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceArn: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceRegistrationFailureException extends S.TaggedErrorClass<ResourceRegistrationFailureException>()(
-  "ResourceRegistrationFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class SqlParseException extends S.TaggedErrorClass<SqlParseException>()(
-  "SqlParseException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TaskAlreadyExistsException extends S.TaggedErrorClass<TaskAlreadyExistsException>()(
-  "TaskAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TopicRuleNotFound extends S.TaggedErrorClass<TopicRuleNotFound>()(
-  "TopicRuleNotFound",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "UnauthorizedException",
-    message: { includes: "Access to topic rule" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class TransferAlreadyCompletedException extends S.TaggedErrorClass<TransferAlreadyCompletedException>()(
-  "TransferAlreadyCompletedException",
-  { message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class TransferConflictException extends S.TaggedErrorClass<TransferConflictException>()(
-  "TransferConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class VersionConflictException extends S.TaggedErrorClass<VersionConflictException>()(
-  "VersionConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class VersionsLimitExceededException extends S.TaggedErrorClass<VersionsLimitExceededException>()(
-  "VersionsLimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
+export class CertificateConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateConflictException>()(
+    "CertificateConflictException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class CertificateStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateStateException>()(
+    "CertificateStateException",
+    { message: S.optional(S.String) },
+    T.HttpError(406),
+  ).pipe(C.withBadRequestError) {}
+export class CertificateValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CertificateValidationException>()(
+    "CertificateValidationException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { message: S.optional(S.String), resourceId: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ConflictingResourceUpdateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictingResourceUpdateException>()(
+    "ConflictingResourceUpdateException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class DeleteConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DeleteConflictException>()(
+    "DeleteConflictException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class IndexNotReadyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IndexNotReadyException>()(
+    "IndexNotReadyException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+    "InternalException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InternalFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+    "InternalFailureException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidAggregationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAggregationException>()(
+    "InvalidAggregationException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidQueryException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidQueryException>()(
+    "InvalidQueryException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidResponseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResponseException>()(
+    "InvalidResponseException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidStateTransitionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateTransitionException>()(
+    "InvalidStateTransitionException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+    T.HttpError(410),
+  ).pipe(C.withBadRequestError) {}
+export class MalformedPolicyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedPolicyException>()(
+    "MalformedPolicyException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class NotConfiguredException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotConfiguredException>()(
+    "NotConfiguredException",
+    { message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class RegistrationCodeValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RegistrationCodeValidationException>()(
+    "RegistrationCodeValidationException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+    "ResourceAlreadyExistsException",
+    {
+      message: S.optional(S.String),
+      resourceId: S.optional(S.String),
+      resourceArn: S.optional(S.String),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceRegistrationFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceRegistrationFailureException>()(
+    "ResourceRegistrationFailureException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    { message: S.optional(S.String) },
+    T.HttpError(402),
+  ).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailableException>()(
+    "ServiceUnavailableException",
+    { message: S.optional(S.String) },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
+export class SqlParseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SqlParseException>()(
+    "SqlParseException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TaskAlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TaskAlreadyExistsException>()(
+    "TaskAlreadyExistsException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TopicRuleNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<TopicRuleNotFound>()(
+    "TopicRuleNotFound",
+    { message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "UnauthorizedException",
+      message: { includes: "Access to topic rule" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class TransferAlreadyCompletedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TransferAlreadyCompletedException>()(
+    "TransferAlreadyCompletedException",
+    { message: S.optional(S.String) },
+    T.HttpError(410),
+  ).pipe(C.withBadRequestError) {}
+export class TransferConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TransferConflictException>()(
+    "TransferConflictException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class UnauthorizedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+    "UnauthorizedException",
+    { message: S.optional(S.String) },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class VersionConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<VersionConflictException>()(
+    "VersionConflictException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class VersionsLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<VersionsLimitExceededException>()(
+    "VersionsLimitExceededException",
+    { message: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
 export type CertificateId = string;
 export type SetAsActive = boolean;
 export interface AcceptCertificateTransferRequest {

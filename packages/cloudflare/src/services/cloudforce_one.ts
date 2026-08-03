@@ -34,13 +34,17 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   sortOrder: "sort_order",
 };
 
-export class ScanConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ScanConfigNotFound>()("ScanConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class ScanConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ScanConfigNotFound>()(
+      "ScanConfigNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export type ThreatEventsBulkCreateRequestDataItemRawDataMap = {
   [key: string]: unknown | undefined;

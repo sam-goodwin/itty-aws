@@ -17,13 +17,14 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   mtlsCertificateId: "mtls_certificate_id",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export interface GetHostnameAssociationRequest {
   /** Identifier. */

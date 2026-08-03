@@ -85,39 +85,45 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessForbidden extends S.TaggedErrorClass<AccessForbidden>()(
-  "AccessForbidden",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class FeatureGroupNotFound extends S.TaggedErrorClass<FeatureGroupNotFound>()(
-  "FeatureGroupNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ValidationError",
-    message: { includes: "Resource Not Found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
-  "InternalFailure",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
-  "ServiceUnavailable",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class AccessForbidden
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessForbidden>()(
+    "AccessForbidden",
+    { Message: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class FeatureGroupNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<FeatureGroupNotFound>()(
+    "FeatureGroupNotFound",
+    { Message: S.optional(S.String) },
+    T.SyntheticError({
+      from: "ValidationError",
+      message: { includes: "Resource Not Found" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class InternalFailure
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailure>()(
+    "InternalFailure",
+    { Message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class ResourceNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
+    "ResourceNotFound",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceUnavailable
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceUnavailable>()(
+    "ServiceUnavailable",
+    { Message: S.optional(S.String) },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
+export class ValidationError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationError>()(
+    "ValidationError",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type FeatureGroupNameOrArn = string;
 export type ValueAsString = string;
 export type RecordIdentifiers = string[];

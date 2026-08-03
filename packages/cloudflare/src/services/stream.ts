@@ -22,61 +22,74 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   shareLink: "share_link",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class LiveInputNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LiveInputNotFound>()("LiveInputNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }],
-) {}
+export class LiveInputNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LiveInputNotFound>()("LiveInputNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10003 }],
+  ) {}
 
-export class OutputNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<OutputNotFound>()("OutputNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }],
-) {}
+export class OutputNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<OutputNotFound>()("OutputNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10003 }],
+  ) {}
 
-export class SigningKeyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SigningKeyNotFound>()("SigningKeyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }],
-) {}
+export class SigningKeyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SigningKeyNotFound>()(
+      "SigningKeyNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10003 }],
+  ) {}
 
-export class WatermarkImageInvalid extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WatermarkImageInvalid>()("WatermarkImageInvalid", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10004 }],
-) {}
+export class WatermarkImageInvalid
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WatermarkImageInvalid>()(
+      "WatermarkImageInvalid",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10004 }],
+  ) {}
 
-export class WatermarkNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WatermarkNotFound>()("WatermarkNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }],
-) {}
+export class WatermarkNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WatermarkNotFound>()("WatermarkNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10003 }],
+  ) {}
 
-export class WebhookNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }],
-) {}
+export class WebhookNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10003 }],
+  ) {}
 
 export interface CopyAudioTrackRequest {
   /** The account identifier tag. */

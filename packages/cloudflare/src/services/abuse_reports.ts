@@ -52,21 +52,23 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   trademarkSymbol: "trademark_symbol",
 };
 
-export class InvalidAccountId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidAccountId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class InvalidRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
 export type CreateRequestAct =
   | "abuse_dmca"

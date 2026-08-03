@@ -87,207 +87,246 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClientTokenConflictException extends S.TaggedErrorClass<ClientTokenConflictException>()(
-  "ClientTokenConflictException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClientTokenConflictException",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConcurrentModificationException",
-      httpResponseCode: 500,
-    }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ConcurrentOperationException extends S.TaggedErrorClass<ConcurrentOperationException>()(
-  "ConcurrentOperationException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConcurrentOperationException",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class GeneralServiceException extends S.TaggedErrorClass<GeneralServiceException>()(
-  "GeneralServiceException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "GeneralServiceException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class HandlerFailureException extends S.TaggedErrorClass<HandlerFailureException>()(
-  "HandlerFailureException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "HandlerFailureException", httpResponseCode: 502 }),
-    T.HttpError(502),
-  ),
-).pipe(C.withServerError) {}
-export class HandlerInternalFailureException extends S.TaggedErrorClass<HandlerInternalFailureException>()(
-  "HandlerInternalFailureException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HandlerInternalFailureException",
-      httpResponseCode: 502,
-    }),
-    T.HttpError(502),
-  ),
-).pipe(C.withServerError) {}
-export class InvalidCredentialsException extends S.TaggedErrorClass<InvalidCredentialsException>()(
-  "InvalidCredentialsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidCredentialsException",
-      httpResponseCode: 401,
-    }),
-    T.HttpError(401),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidRequestException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NetworkFailureException extends S.TaggedErrorClass<NetworkFailureException>()(
-  "NetworkFailureException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NetworkFailureException", httpResponseCode: 502 }),
-    T.HttpError(502),
-  ),
-).pipe(C.withServerError) {}
-export class NotStabilizedException extends S.TaggedErrorClass<NotStabilizedException>()(
-  "NotStabilizedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NotStabilizedException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NotUpdatableException extends S.TaggedErrorClass<NotUpdatableException>()(
-  "NotUpdatableException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NotUpdatableException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PrivateTypeException extends S.TaggedErrorClass<PrivateTypeException>()(
-  "PrivateTypeException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PrivateTypeException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RequestTokenNotFoundException extends S.TaggedErrorClass<RequestTokenNotFoundException>()(
-  "RequestTokenNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "RequestTokenNotFoundException",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceConflictException",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceNotFoundException",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceInternalErrorException extends S.TaggedErrorClass<ServiceInternalErrorException>()(
-  "ServiceInternalErrorException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ServiceInternalErrorException",
-      httpResponseCode: 502,
-    }),
-    T.HttpError(502),
-  ),
-).pipe(C.withServerError) {}
-export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
-  "ServiceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ServiceLimitExceededException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class TypeNotFoundException extends S.TaggedErrorClass<TypeNotFoundException>()(
-  "TypeNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedActionException extends S.TaggedErrorClass<UnsupportedActionException>()(
-  "UnsupportedActionException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "UnsupportedActionException",
-      httpResponseCode: 405,
-    }),
-    T.HttpError(405),
-  ),
-).pipe(C.withBadRequestError) {}
+export class AlreadyExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AlreadyExistsException>()(
+    "AlreadyExistsException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "AlreadyExistsException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClientTokenConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ClientTokenConflictException>()(
+    "ClientTokenConflictException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ClientTokenConflictException",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ConcurrentModificationException",
+        httpResponseCode: 500,
+      }),
+      T.HttpError(500),
+    ),
+  ).pipe(C.withServerError) {}
+export class ConcurrentOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentOperationException>()(
+    "ConcurrentOperationException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ConcurrentOperationException",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class GeneralServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<GeneralServiceException>()(
+    "GeneralServiceException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "GeneralServiceException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class HandlerFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<HandlerFailureException>()(
+    "HandlerFailureException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "HandlerFailureException",
+        httpResponseCode: 502,
+      }),
+      T.HttpError(502),
+    ),
+  ).pipe(C.withServerError) {}
+export class HandlerInternalFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<HandlerInternalFailureException>()(
+    "HandlerInternalFailureException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "HandlerInternalFailureException",
+        httpResponseCode: 502,
+      }),
+      T.HttpError(502),
+    ),
+  ).pipe(C.withServerError) {}
+export class InvalidCredentialsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCredentialsException>()(
+    "InvalidCredentialsException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidCredentialsException",
+        httpResponseCode: 401,
+      }),
+      T.HttpError(401),
+    ),
+  ).pipe(C.withAuthError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "InvalidRequestException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class NetworkFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NetworkFailureException>()(
+    "NetworkFailureException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "NetworkFailureException",
+        httpResponseCode: 502,
+      }),
+      T.HttpError(502),
+    ),
+  ).pipe(C.withServerError) {}
+export class NotStabilizedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotStabilizedException>()(
+    "NotStabilizedException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "NotStabilizedException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class NotUpdatableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotUpdatableException>()(
+    "NotUpdatableException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "NotUpdatableException", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class PrivateTypeException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PrivateTypeException>()(
+    "PrivateTypeException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "PrivateTypeException", httpResponseCode: 400 }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class RequestTokenNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestTokenNotFoundException>()(
+    "RequestTokenNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "RequestTokenNotFoundException",
+        httpResponseCode: 404,
+      }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceConflictException>()(
+    "ResourceConflictException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ResourceConflictException",
+        httpResponseCode: 409,
+      }),
+      T.HttpError(409),
+    ),
+  ).pipe(C.withConflictError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ResourceNotFoundException",
+        httpResponseCode: 404,
+      }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceInternalErrorException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceInternalErrorException>()(
+    "ServiceInternalErrorException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ServiceInternalErrorException",
+        httpResponseCode: 502,
+      }),
+      T.HttpError(502),
+    ),
+  ).pipe(C.withServerError) {}
+export class ServiceLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceLimitExceededException>()(
+    "ServiceLimitExceededException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "ServiceLimitExceededException",
+        httpResponseCode: 400,
+      }),
+      T.HttpError(400),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+      T.HttpError(429),
+    ),
+  ).pipe(C.withThrottlingError) {}
+export class TypeNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TypeNotFoundException>()(
+    "TypeNotFoundException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
+      T.HttpError(404),
+    ),
+  ).pipe(C.withBadRequestError) {}
+export class UnsupportedActionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedActionException>()(
+    "UnsupportedActionException",
+    { Message: S.optional(S.String) },
+    T.all(
+      T.AwsQueryError({
+        code: "UnsupportedActionException",
+        httpResponseCode: 405,
+      }),
+      T.HttpError(405),
+    ),
+  ).pipe(C.withBadRequestError) {}
 export type RequestToken = string;
 export interface CancelResourceRequestInput {
   RequestToken: string;

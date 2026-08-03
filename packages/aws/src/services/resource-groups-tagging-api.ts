@@ -84,30 +84,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConstraintViolationException extends S.TaggedErrorClass<ConstraintViolationException>()(
-  "ConstraintViolationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-) {}
-export class PaginationTokenExpiredException extends S.TaggedErrorClass<PaginationTokenExpiredException>()(
-  "PaginationTokenExpiredException",
-  { Message: S.optional(S.String) },
-) {}
-export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
-  "ThrottledException",
-  { Message: S.optional(S.String) },
-) {}
+export class ConcurrentModificationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentModificationException>()(
+    "ConcurrentModificationException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ConstraintViolationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConstraintViolationException>()(
+    "ConstraintViolationException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InternalServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+    "InternalServiceException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class PaginationTokenExpiredException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PaginationTokenExpiredException>()(
+    "PaginationTokenExpiredException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ThrottledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottledException>()(
+    "ThrottledException",
+    { Message: S.optional(S.String) },
+  ) {}
 export interface DescribeReportCreationInput {}
 export const DescribeReportCreationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(

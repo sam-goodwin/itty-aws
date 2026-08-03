@@ -94,72 +94,81 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class EndpointAlreadyExists extends S.TaggedErrorClass<EndpointAlreadyExists>()(
-  "EndpointAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Cannot create already existing endpoint" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class EndpointConfigAlreadyExists extends S.TaggedErrorClass<EndpointConfigAlreadyExists>()(
-  "EndpointConfigAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: {
-      includes: "Cannot create already existing endpoint configuration",
-    },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class EndpointConfigNotFound extends S.TaggedErrorClass<EndpointConfigNotFound>()(
-  "EndpointConfigNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Could not find endpoint configuration" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class EndpointNotFound extends S.TaggedErrorClass<EndpointNotFound>()(
-  "EndpointNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: 'Could not find endpoint "' },
-  }),
-).pipe(C.withNotFoundError) {}
-export class ModelAlreadyExists extends S.TaggedErrorClass<ModelAlreadyExists>()(
-  "ModelAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Cannot create already existing model" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class ModelNotFound extends S.TaggedErrorClass<ModelNotFound>()(
-  "ModelNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Could not find model" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class ResourceInUse extends S.TaggedErrorClass<ResourceInUse>()(
-  "ResourceInUse",
-  { Message: S.optional(S.String) },
-).pipe(C.withDependencyViolationError) {}
-export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
-  "ResourceLimitExceeded",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { Message: S.optional(S.String) },
-) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class EndpointAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointAlreadyExists>()(
+    "EndpointAlreadyExists",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "Cannot create already existing endpoint" },
+    }),
+  ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class EndpointConfigAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointConfigAlreadyExists>()(
+    "EndpointConfigAlreadyExists",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: {
+        includes: "Cannot create already existing endpoint configuration",
+      },
+    }),
+  ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class EndpointConfigNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointConfigNotFound>()(
+    "EndpointConfigNotFound",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "Could not find endpoint configuration" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class EndpointNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<EndpointNotFound>()(
+    "EndpointNotFound",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: 'Could not find endpoint "' },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class ModelAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<ModelAlreadyExists>()(
+    "ModelAlreadyExists",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "Cannot create already existing model" },
+    }),
+  ).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class ModelNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ModelNotFound>()(
+    "ModelNotFound",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "Could not find model" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class ResourceInUse
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUse>()("ResourceInUse", {
+    Message: S.optional(S.String),
+  }).pipe(C.withDependencyViolationError) {}
+export class ResourceLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceeded>()(
+    "ResourceLimitExceeded",
+    { Message: S.optional(S.String) },
+  ).pipe(C.withThrottlingError) {}
+export class ResourceNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFound>()(
+    "ResourceNotFound",
+    { Message: S.optional(S.String) },
+  ) {}
 export type AssociationEntityArn = string;
 export type AssociationEdgeType =
   | "ContributedTo"

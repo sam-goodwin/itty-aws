@@ -87,169 +87,193 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ConcurrentUpdatingException extends S.TaggedErrorClass<ConcurrentUpdatingException>()(
-  "ConcurrentUpdatingException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class CustomerManagedKeyUnavailableException extends S.TaggedErrorClass<CustomerManagedKeyUnavailableException>()(
-  "CustomerManagedKeyUnavailableException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DomainNotWhitelistedException extends S.TaggedErrorClass<DomainNotWhitelistedException>()(
-  "DomainNotWhitelistedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class IdentityTypeNotSupportedException extends S.TaggedErrorClass<IdentityTypeNotSupportedException>()(
-  "IdentityTypeNotSupportedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidDataSetParameterValueException extends S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
-  "InvalidDataSetParameterValueException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(
-      S.suspend(() => ExceptionResourceType).annotate({
-        identifier: "ExceptionResourceType",
-      }),
-    ),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
-  "PreconditionNotMetException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class QuickSightSubscriptionRequired extends S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
-  "QuickSightSubscriptionRequired",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(
-      S.suspend(() => ExceptionResourceType).annotate({
-        identifier: "ExceptionResourceType",
-      }),
-    ),
-    RequestId: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "ResourceNotFoundException",
-    message: { includes: "Directory information" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class QuickSightUserNotFoundException extends S.TaggedErrorClass<QuickSightUserNotFoundException>()(
-  "QuickSightUserNotFoundException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
-  "ResourceExistsException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(
-      S.suspend(() => ExceptionResourceType).annotate({
-        identifier: "ExceptionResourceType",
-      }),
-    ),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(
-      S.suspend(() => ExceptionResourceType).annotate({
-        identifier: "ExceptionResourceType",
-      }),
-    ),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(
-      S.suspend(() => ExceptionResourceType).annotate({
-        identifier: "ExceptionResourceType",
-      }),
-    ),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class SessionLifetimeInMinutesInvalidException extends S.TaggedErrorClass<SessionLifetimeInMinutesInvalidException>()(
-  "SessionLifetimeInMinutesInvalidException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnsupportedPricingPlanException extends S.TaggedErrorClass<UnsupportedPricingPlanException>()(
-  "UnsupportedPricingPlanException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class UnsupportedUserEditionException extends S.TaggedErrorClass<UnsupportedUserEditionException>()(
-  "UnsupportedUserEditionException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
+export class ConcurrentUpdatingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConcurrentUpdatingException>()(
+    "ConcurrentUpdatingException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class CustomerManagedKeyUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CustomerManagedKeyUnavailableException>()(
+    "CustomerManagedKeyUnavailableException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class DomainNotWhitelistedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DomainNotWhitelistedException>()(
+    "DomainNotWhitelistedException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class IdentityTypeNotSupportedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdentityTypeNotSupportedException>()(
+    "IdentityTypeNotSupportedException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class InternalFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalFailureException>()(
+    "InternalFailureException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { Message: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidDataSetParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
+    "InvalidDataSetParameterValueException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNextTokenException>()(
+    "InvalidNextTokenException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValueException>()(
+    "InvalidParameterValueException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {
+      Message: S.optional(S.String),
+      ResourceType: S.optional(
+        S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
+      ),
+      RequestId: S.optional(S.String),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class PreconditionNotMetException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PreconditionNotMetException>()(
+    "PreconditionNotMetException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class QuickSightSubscriptionRequired
+  extends /*@__PURE__*/ S.TaggedErrorClass<QuickSightSubscriptionRequired>()(
+    "QuickSightSubscriptionRequired",
+    {
+      Message: S.optional(S.String),
+      ResourceType: S.optional(
+        S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
+      ),
+      RequestId: S.optional(S.String),
+    },
+    T.SyntheticError({
+      from: "ResourceNotFoundException",
+      message: { includes: "Directory information" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class QuickSightUserNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<QuickSightUserNotFoundException>()(
+    "QuickSightUserNotFoundException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceExistsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceExistsException>()(
+    "ResourceExistsException",
+    {
+      Message: S.optional(S.String),
+      ResourceType: S.optional(
+        S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
+      ),
+      RequestId: S.optional(S.String),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    {
+      Message: S.optional(S.String),
+      ResourceType: S.optional(
+        S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
+      ),
+      RequestId: S.optional(S.String),
+    },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceUnavailableException>()(
+    "ResourceUnavailableException",
+    {
+      Message: S.optional(S.String),
+      ResourceType: S.optional(
+        S.suspend(() => ExceptionResourceType).annotate({
+          identifier: "ExceptionResourceType",
+        }),
+      ),
+      RequestId: S.optional(S.String),
+    },
+    T.HttpError(503),
+  ).pipe(C.withServerError) {}
+export class SessionLifetimeInMinutesInvalidException
+  extends /*@__PURE__*/ S.TaggedErrorClass<SessionLifetimeInMinutesInvalidException>()(
+    "SessionLifetimeInMinutesInvalidException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(429),
+  ).pipe(C.withThrottlingError) {}
+export class UnsupportedPricingPlanException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedPricingPlanException>()(
+    "UnsupportedPricingPlanException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class UnsupportedUserEditionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedUserEditionException>()(
+    "UnsupportedUserEditionException",
+    { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
 export type AwsAccountId = string;
 export type TopicId = string;
 export type AnswerId = string;

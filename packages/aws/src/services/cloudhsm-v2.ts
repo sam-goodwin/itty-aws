@@ -91,34 +91,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class CloudHsmAccessDeniedException extends S.TaggedErrorClass<CloudHsmAccessDeniedException>()(
-  "CloudHsmAccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class CloudHsmInternalFailureException extends S.TaggedErrorClass<CloudHsmInternalFailureException>()(
-  "CloudHsmInternalFailureException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmInvalidRequestException extends S.TaggedErrorClass<CloudHsmInvalidRequestException>()(
-  "CloudHsmInvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmResourceLimitExceededException extends S.TaggedErrorClass<CloudHsmResourceLimitExceededException>()(
-  "CloudHsmResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmResourceNotFoundException extends S.TaggedErrorClass<CloudHsmResourceNotFoundException>()(
-  "CloudHsmResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmServiceException extends S.TaggedErrorClass<CloudHsmServiceException>()(
-  "CloudHsmServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmTagException extends S.TaggedErrorClass<CloudHsmTagException>()(
-  "CloudHsmTagException",
-  { Message: S.optional(S.String) },
-) {}
+export class CloudHsmAccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmAccessDeniedException>()(
+    "CloudHsmAccessDeniedException",
+    { Message: S.optional(S.String) },
+  ).pipe(C.withAuthError) {}
+export class CloudHsmInternalFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInternalFailureException>()(
+    "CloudHsmInternalFailureException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class CloudHsmInvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmInvalidRequestException>()(
+    "CloudHsmInvalidRequestException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class CloudHsmResourceLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmResourceLimitExceededException>()(
+    "CloudHsmResourceLimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class CloudHsmResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmResourceNotFoundException>()(
+    "CloudHsmResourceNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class CloudHsmServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmServiceException>()(
+    "CloudHsmServiceException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class CloudHsmTagException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CloudHsmTagException>()(
+    "CloudHsmTagException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type Region = string;
 export type BackupId = string;
 export type TagKey = string;

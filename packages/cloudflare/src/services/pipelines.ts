@@ -50,125 +50,146 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workerBinding: "worker_binding",
 };
 
-export class InvalidSinkConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1012 }],
-) {}
+export class InvalidSinkConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1012 }],
+  ) {}
 
-export class InvalidSinkId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidSinkId>()("InvalidSinkId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2 }],
-) {}
+export class InvalidSinkId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidSinkId>()("InvalidSinkId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 2 }],
+  ) {}
 
-export class InvalidSql extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidSql>()("InvalidSql", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1014 }],
-) {}
+export class InvalidSql
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidSql>()("InvalidSql", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1014 }],
+  ) {}
 
-export class InvalidStreamId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidStreamId>()("InvalidStreamId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2 }],
-) {}
+export class InvalidStreamId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidStreamId>()("InvalidStreamId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 2 }],
+  ) {}
 
-export class InvalidStreamName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidStreamName>()("InvalidStreamName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2 }],
-) {}
+export class InvalidStreamName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidStreamName>()("InvalidStreamName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 2 }],
+  ) {}
 
-export class PipelineAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PipelineAlreadyExists>()("PipelineAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
+export class PipelineAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PipelineAlreadyExists>()(
+      "PipelineAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003 }],
+  ) {}
 
-export class PipelineNotExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PipelineNotExists>()("PipelineNotExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000 }],
-) {}
+export class PipelineNotExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PipelineNotExists>()("PipelineNotExists", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1000 }],
+  ) {}
 
-export class SinkAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SinkAlreadyExists>()("SinkAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
+export class SinkAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SinkAlreadyExists>()("SinkAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1003 }],
+  ) {}
 
-export class SinkAuthFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SinkAuthFailed>()("SinkAuthFailed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1012, message: { includes: "could not authenticate" } }],
-) {}
+export class SinkAuthFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SinkAuthFailed>()("SinkAuthFailed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1012, message: { includes: "could not authenticate" } }],
+  ) {}
 
-export class SinkInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SinkInUse>()("SinkInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422, message: { includes: "in use" } }],
-) {}
+export class SinkInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SinkInUse>()("SinkInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 422, message: { includes: "in use" } }],
+  ) {}
 
-export class SinkNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SinkNotFound>()("SinkNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1015 }],
-) {}
+export class SinkNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SinkNotFound>()("SinkNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1015 }],
+  ) {}
 
-export class StreamAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<StreamAlreadyExists>()("StreamAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003 }],
-) {}
+export class StreamAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<StreamAlreadyExists>()(
+      "StreamAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003 }],
+  ) {}
 
-export class StreamInUse extends T.applyErrorMatchers(
-  S.TaggedErrorClass<StreamInUse>()("StreamInUse", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422, message: { includes: "in use" } }],
-) {}
+export class StreamInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<StreamInUse>()("StreamInUse", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 422, message: { includes: "in use" } }],
+  ) {}
 
-export class StreamNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<StreamNotFound>()("StreamNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1016 }],
-) {}
+export class StreamNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<StreamNotFound>()("StreamNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1016 }],
+  ) {}
 
-export class TableNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1014, message: { includes: "not found" } }],
-) {}
+export class TableNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1014, message: { includes: "not found" } }],
+  ) {}
 
 export interface CreateRequestDestinationBatch {
   /** Specifies rough maximum size of files. */

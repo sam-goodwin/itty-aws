@@ -41,29 +41,32 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   timestampFormat: "timestamp_format",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class JobNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<JobNotFound>()("JobNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000, message: { includes: "job not found" } }, { status: 404 }],
-) {}
+export class JobNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<JobNotFound>()("JobNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1000, message: { includes: "job not found" } }, { status: 404 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
 export interface CreateEdgeRequest {
   /** Identifier. */

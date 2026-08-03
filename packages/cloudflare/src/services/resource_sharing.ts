@@ -36,37 +36,47 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class ShareNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ShareNotFound>()("ShareNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1004 }, { status: 404 }],
-) {}
+export class ShareNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ShareNotFound>()("ShareNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1004 }, { status: 404 }],
+  ) {}
 
-export class ShareRecipientNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ShareRecipientNotFound>()("ShareRecipientNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1004 }, { status: 404 }],
-) {}
+export class ShareRecipientNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ShareRecipientNotFound>()(
+      "ShareRecipientNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1004 }, { status: 404 }],
+  ) {}
 
-export class ShareResourceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ShareResourceNotFound>()("ShareResourceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1004 }, { status: 404 }],
-) {}
+export class ShareResourceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ShareResourceNotFound>()(
+      "ShareResourceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1004 }, { status: 404 }],
+  ) {}
 
 export interface CreateRecipientRequest {
   /** Account identifier. */

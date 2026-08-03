@@ -35,29 +35,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   upstreamIps: "upstream_ips",
 };
 
-export class DnsFirewallNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DnsFirewallNotEntitled>()("DnsFirewallNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10101 }],
-) {}
+export class DnsFirewallNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DnsFirewallNotEntitled>()(
+      "DnsFirewallNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10101 }],
+  ) {}
 
-export class DnsFirewallNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DnsFirewallNotFound>()("DnsFirewallNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11001 }],
-) {}
+export class DnsFirewallNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DnsFirewallNotFound>()(
+      "DnsFirewallNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11001 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export type CreateRequestUpstreamIpsList = Array<string>;
 export const CreateRequestUpstreamIpsList = /*@__PURE__*/ S.Array(

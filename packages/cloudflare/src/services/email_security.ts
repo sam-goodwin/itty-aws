@@ -128,72 +128,91 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   xOriginatingIp: "x_originating_ip",
 };
 
-export class AllowPolicyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AllowPolicyNotFound>()("AllowPolicyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class AllowPolicyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AllowPolicyNotFound>()(
+      "AllowPolicyNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class BlockSenderNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BlockSenderNotFound>()("BlockSenderNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class BlockSenderNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BlockSenderNotFound>()(
+      "BlockSenderNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class EmailSecurityDomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EmailSecurityDomainNotFound>()(
-    "EmailSecurityDomainNotFound",
-    {
+export class EmailSecurityDomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EmailSecurityDomainNotFound>()(
+      "EmailSecurityDomainNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class EmailSecurityNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EmailSecurityNotEntitled>()(
+      "EmailSecurityNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 403,
+        message: { includes: "not available in the current subscription" },
+      },
+    ],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class EmailSecurityNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EmailSecurityNotEntitled>()("EmailSecurityNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      status: 403,
-      message: { includes: "not available in the current subscription" },
-    },
-  ],
-) {}
+export class ImpersonationRegistryEntryNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
+      "ImpersonationRegistryEntryNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class ImpersonationRegistryEntryNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
-    "ImpersonationRegistryEntryNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
-
-export class TrustedDomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TrustedDomainNotFound>()("TrustedDomainNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class TrustedDomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TrustedDomainNotFound>()(
+      "TrustedDomainNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export type InvestigateMoveBulkRequestDestination =
   | "Inbox"

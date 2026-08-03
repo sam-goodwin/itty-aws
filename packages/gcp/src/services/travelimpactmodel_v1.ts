@@ -12,53 +12,57 @@ import * as Retry from "../retry.ts";
 
 export type { GcpOpError, GcpOpContext };
 
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 400 }],
-) {}
+export class BadRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 400 }],
+  ) {}
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 409 }],
-) {}
+export class Conflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Conflict>()("Conflict", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 409 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.optional(S.Number),
-    message: S.String,
-    status: S.optional(S.String),
-    reason: S.optional(S.String),
-    domain: S.optional(S.String),
-    details: S.optional(S.Array(S.Unknown)),
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 404 }],
+  ) {}
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Travelimpactmodel_Date {

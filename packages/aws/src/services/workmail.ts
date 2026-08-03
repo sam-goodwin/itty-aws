@@ -87,96 +87,118 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DirectoryInUseException extends S.TaggedErrorClass<DirectoryInUseException>()(
-  "DirectoryInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class DirectoryServiceAuthenticationFailedException extends S.TaggedErrorClass<DirectoryServiceAuthenticationFailedException>()(
-  "DirectoryServiceAuthenticationFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
-  "DirectoryUnavailableException",
-  { Message: S.optional(S.String) },
-) {}
-export class EmailAddressInUseException extends S.TaggedErrorClass<EmailAddressInUseException>()(
-  "EmailAddressInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityAlreadyRegisteredException extends S.TaggedErrorClass<EntityAlreadyRegisteredException>()(
-  "EntityAlreadyRegisteredException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
-  "EntityNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityStateException extends S.TaggedErrorClass<EntityStateException>()(
-  "EntityStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidConfigurationException extends S.TaggedErrorClass<InvalidConfigurationException>()(
-  "InvalidConfigurationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidCustomSesConfigurationException extends S.TaggedErrorClass<InvalidCustomSesConfigurationException>()(
-  "InvalidCustomSesConfigurationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
-  "InvalidPasswordException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class MailDomainInUseException extends S.TaggedErrorClass<MailDomainInUseException>()(
-  "MailDomainInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class MailDomainNotFoundException extends S.TaggedErrorClass<MailDomainNotFoundException>()(
-  "MailDomainNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class MailDomainStateException extends S.TaggedErrorClass<MailDomainStateException>()(
-  "MailDomainStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class NameAvailabilityException extends S.TaggedErrorClass<NameAvailabilityException>()(
-  "NameAvailabilityException",
-  { Message: S.optional(S.String) },
-) {}
-export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
-  "OrganizationNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class OrganizationStateException extends S.TaggedErrorClass<OrganizationStateException>()(
-  "OrganizationStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class ReservedNameException extends S.TaggedErrorClass<ReservedNameException>()(
-  "ReservedNameException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-) {}
+export class DirectoryInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryInUseException>()(
+    "DirectoryInUseException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class DirectoryServiceAuthenticationFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryServiceAuthenticationFailedException>()(
+    "DirectoryServiceAuthenticationFailedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class DirectoryUnavailableException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DirectoryUnavailableException>()(
+    "DirectoryUnavailableException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class EmailAddressInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EmailAddressInUseException>()(
+    "EmailAddressInUseException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class EntityAlreadyRegisteredException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EntityAlreadyRegisteredException>()(
+    "EntityAlreadyRegisteredException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class EntityNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EntityNotFoundException>()(
+    "EntityNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class EntityStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EntityStateException>()(
+    "EntityStateException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidConfigurationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConfigurationException>()(
+    "InvalidConfigurationException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidCustomSesConfigurationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCustomSesConfigurationException>()(
+    "InvalidCustomSesConfigurationException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidParameterException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterException>()(
+    "InvalidParameterException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidPasswordException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPasswordException>()(
+    "InvalidPasswordException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class MailDomainInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MailDomainInUseException>()(
+    "MailDomainInUseException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class MailDomainNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MailDomainNotFoundException>()(
+    "MailDomainNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class MailDomainStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MailDomainStateException>()(
+    "MailDomainStateException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class NameAvailabilityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NameAvailabilityException>()(
+    "NameAvailabilityException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class OrganizationNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationNotFoundException>()(
+    "OrganizationNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class OrganizationStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OrganizationStateException>()(
+    "OrganizationStateException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ReservedNameException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ReservedNameException>()(
+    "ReservedNameException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { Message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperationException>()(
+    "UnsupportedOperationException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type OrganizationId = string;
 export type EntityIdentifier = string;
 export interface AssociateDelegateToResourceRequest {

@@ -56,148 +56,188 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workflowName: "workflow_name",
 };
 
-export class ConsumerAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ConsumerAlreadyExists>()("ConsumerAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11004 }],
-) {}
+export class ConsumerAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ConsumerAlreadyExists>()(
+      "ConsumerAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11004 }],
+  ) {}
 
-export class ConsumerNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ConsumerNotFound>()("ConsumerNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10013 }, { code: 10105 }, { code: 11006 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class InvalidMessageBody extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidMessageBody>()("InvalidMessageBody", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10207 }, { code: 10013 }],
-) {}
-
-export class InvalidQueueId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidQueueId>()("InvalidQueueId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10107 }],
-) {}
-
-export class InvalidQueueName extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidQueueName>()("InvalidQueueName", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11003 }],
-) {}
-
-export class InvalidRequestBody extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRequestBody>()("InvalidRequestBody", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10026 }],
-) {}
-
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
-
-export class QueueAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueAlreadyExists>()("QueueAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11009 }],
-) {}
-
-export class QueueHandlerMissing extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueHandlerMissing>()("QueueHandlerMissing", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 11001 },
-    { status: 400, message: { includes: "queue handler is missing" } },
-  ],
-) {}
-
-export class QueueInUseByEventNotification extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueInUseByEventNotification>()(
-    "QueueInUseByEventNotification",
-    {
+export class ConsumerNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ConsumerNotFound>()("ConsumerNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 11017 }],
-) {}
+    }),
+    [{ code: 10013 }, { code: 10105 }, { code: 11006 }],
+  ) {}
 
-export class QueueNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 11000 },
-    { code: 0, message: { includes: "Queue does not exist" } },
-    { status: 404, message: { includes: "Queue does not exist" } },
-  ],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class SubscriptionAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SubscriptionAlreadyExists>()("SubscriptionAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    {
-      status: 405,
-      message: { includes: "do not support multiple subscriptions" },
-    },
-  ],
-) {}
+export class InvalidMessageBody
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidMessageBody>()(
+      "InvalidMessageBody",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10207 }, { code: 10013 }],
+  ) {}
 
-export class SubscriptionNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SubscriptionNotFound>()("SubscriptionNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "No subscription with this ID" } }],
-) {}
+export class InvalidQueueId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidQueueId>()("InvalidQueueId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10107 }],
+  ) {}
 
-export class UnrecognizedEventType extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnrecognizedEventType>()("UnrecognizedEventType", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 0, message: { includes: "Unrecognized event types" } }],
-) {}
+export class InvalidQueueName
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidQueueName>()("InvalidQueueName", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 11003 }],
+  ) {}
 
-export class WorkerNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10007 }],
-) {}
+export class InvalidRequestBody
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestBody>()(
+      "InvalidRequestBody",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10026 }],
+  ) {}
+
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
+
+export class QueueAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueAlreadyExists>()(
+      "QueueAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11009 }],
+  ) {}
+
+export class QueueHandlerMissing
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueHandlerMissing>()(
+      "QueueHandlerMissing",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 11001 },
+      { status: 400, message: { includes: "queue handler is missing" } },
+    ],
+  ) {}
+
+export class QueueInUseByEventNotification
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueInUseByEventNotification>()(
+      "QueueInUseByEventNotification",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 11017 }],
+  ) {}
+
+export class QueueNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 11000 },
+      { code: 0, message: { includes: "Queue does not exist" } },
+      { status: 404, message: { includes: "Queue does not exist" } },
+    ],
+  ) {}
+
+export class SubscriptionAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SubscriptionAlreadyExists>()(
+      "SubscriptionAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      {
+        status: 405,
+        message: { includes: "do not support multiple subscriptions" },
+      },
+    ],
+  ) {}
+
+export class SubscriptionNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SubscriptionNotFound>()(
+      "SubscriptionNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "No subscription with this ID" } }],
+  ) {}
+
+export class UnrecognizedEventType
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnrecognizedEventType>()(
+      "UnrecognizedEventType",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 0, message: { includes: "Unrecognized event types" } }],
+  ) {}
+
+export class WorkerNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10007 }],
+  ) {}
 
 export interface MessagesAckRequestAcksItem {
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */

@@ -86,86 +86,94 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class AccountSetupInProgressException extends S.TaggedErrorClass<AccountSetupInProgressException>()(
-  "AccountSetupInProgressException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(428),
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class OperationFailureException extends S.TaggedErrorClass<OperationFailureException>()(
-  "OperationFailureException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RegionSetupInProgressException extends S.TaggedErrorClass<RegionSetupInProgressException>()(
-  "RegionSetupInProgressException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(428),
-) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class UnauthenticatedException extends S.TaggedErrorClass<UnauthenticatedException>()(
-  "UnauthenticatedException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class AccountSetupInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccountSetupInProgressException>()(
+    "AccountSetupInProgressException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(428),
+  ) {}
+export class InvalidInputException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+    "InvalidInputException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class NotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+    "NotFoundException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class OperationFailureException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationFailureException>()(
+    "OperationFailureException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class RegionSetupInProgressException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RegionSetupInProgressException>()(
+    "RegionSetupInProgressException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(428),
+  ) {}
+export class ServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceException>()(
+    "ServiceException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class UnauthenticatedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthenticatedException>()(
+    "UnauthenticatedException",
+    {
+      code: S.optional(S.String),
+      docs: S.optional(S.String),
+      message: S.optional(S.String),
+      tip: S.optional(S.String),
+    },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
 export type ResourceName = string;
 export interface AllocateStaticIpRequest {
   staticIpName: string;

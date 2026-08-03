@@ -88,942 +88,1166 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AddressLimitExceeded extends S.TaggedErrorClass<AddressLimitExceeded>()(
-  "AddressLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class AuthFailure extends S.TaggedErrorClass<AuthFailure>()(
-  "AuthFailure",
-  {},
-).pipe(C.withAuthError) {}
-export class CannotDelete extends S.TaggedErrorClass<CannotDelete>()(
-  "CannotDelete",
-  {},
-) {}
-export class CapacityManagerDisabled extends S.TaggedErrorClass<CapacityManagerDisabled>()(
-  "CapacityManager.Disabled",
-  {},
-) {}
-export class CidrConflict extends S.TaggedErrorClass<CidrConflict>()(
-  "CidrConflict",
-  {},
-).pipe(C.withConflictError) {}
-export class DeclarativePoliciesAccessDenied extends S.TaggedErrorClass<DeclarativePoliciesAccessDenied>()(
-  "DeclarativePoliciesAccessDenied",
-  {},
-).pipe(C.withAuthError) {}
-export class DefaultSubnetAlreadyExistsInAvailabilityZone extends S.TaggedErrorClass<DefaultSubnetAlreadyExistsInAvailabilityZone>()(
-  "DefaultSubnetAlreadyExistsInAvailabilityZone",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class DefaultVpcAlreadyExists extends S.TaggedErrorClass<DefaultVpcAlreadyExists>()(
-  "DefaultVpcAlreadyExists",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class DependencyViolation extends S.TaggedErrorClass<DependencyViolation>()(
-  "DependencyViolation",
-  {},
-).pipe(C.withDependencyViolationError) {}
-export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
-  "DryRunOperation",
-  {},
-) {}
-export class FilterLimitExceeded extends S.TaggedErrorClass<FilterLimitExceeded>()(
-  "FilterLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class GatewayNotAttached extends S.TaggedErrorClass<GatewayNotAttached>()(
-  "Gateway.NotAttached",
-  {},
-) {}
-export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
-  "IdempotentParameterMismatch",
-  {},
-).pipe(C.withConflictError) {}
-export class InaccessibleStorageLocation extends S.TaggedErrorClass<InaccessibleStorageLocation>()(
-  "InaccessibleStorageLocation",
-  {},
-) {}
-export class IncorrectState extends S.TaggedErrorClass<IncorrectState>()(
-  "IncorrectState",
-  {},
-).pipe(C.withConflictError) {}
-export class InternetGatewayLimitExceeded extends S.TaggedErrorClass<InternetGatewayLimitExceeded>()(
-  "InternetGatewayLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidAction extends S.TaggedErrorClass<InvalidAction>()(
-  "InvalidAction",
-  {},
-) {}
-export class InvalidAddressMalformed extends S.TaggedErrorClass<InvalidAddressMalformed>()(
-  "InvalidAddress.Malformed",
-  {},
-) {}
-export class InvalidAddressNotFound extends S.TaggedErrorClass<InvalidAddressNotFound>()(
-  "InvalidAddress.NotFound",
-  {},
-) {}
-export class InvalidAllocationIDNotFound extends S.TaggedErrorClass<InvalidAllocationIDNotFound>()(
-  "InvalidAllocationID.NotFound",
-  {},
-) {}
-export class InvalidAMIIDMalformed extends S.TaggedErrorClass<InvalidAMIIDMalformed>()(
-  "InvalidAMIID.Malformed",
-  {},
-) {}
-export class InvalidAMIIDNotFound extends S.TaggedErrorClass<InvalidAMIIDNotFound>()(
-  "InvalidAMIID.NotFound",
-  {},
-) {}
-export class InvalidAssociationIDNotFound extends S.TaggedErrorClass<InvalidAssociationIDNotFound>()(
-  "InvalidAssociationID.NotFound",
-  {},
-) {}
-export class InvalidAttachmentIDNotFound extends S.TaggedErrorClass<InvalidAttachmentIDNotFound>()(
-  "InvalidAttachmentID.NotFound",
-  {},
-) {}
-export class InvalidBundleIDNotFound extends S.TaggedErrorClass<InvalidBundleIDNotFound>()(
-  "InvalidBundleID.NotFound",
-  {},
-) {}
-export class InvalidCapacityBlockIdMalformed extends S.TaggedErrorClass<InvalidCapacityBlockIdMalformed>()(
-  "InvalidCapacityBlockId.Malformed",
-  {},
-) {}
-export class InvalidCapacityManagerDataExportIdMalformed extends S.TaggedErrorClass<InvalidCapacityManagerDataExportIdMalformed>()(
-  "InvalidCapacityManagerDataExportId.Malformed",
-  {},
-) {}
-export class InvalidCapacityManagerDataExportIdNotFound extends S.TaggedErrorClass<InvalidCapacityManagerDataExportIdNotFound>()(
-  "InvalidCapacityManagerDataExportId.NotFound",
-  {},
-) {}
-export class InvalidCapacityReservationFleetIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationFleetIdMalformed>()(
-  "InvalidCapacityReservationFleetId.Malformed",
-  {},
-) {}
-export class InvalidCapacityReservationIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationIdMalformed>()(
-  "InvalidCapacityReservationId.Malformed",
-  {},
-) {}
-export class InvalidCapacityReservationIdNotFound extends S.TaggedErrorClass<InvalidCapacityReservationIdNotFound>()(
-  "InvalidCapacityReservationId.NotFound",
-  {},
-) {}
-export class InvalidCarrierGatewayIDMalformed extends S.TaggedErrorClass<InvalidCarrierGatewayIDMalformed>()(
-  "InvalidCarrierGatewayID.Malformed",
-  {},
-) {}
-export class InvalidCarrierGatewayIDNotFound extends S.TaggedErrorClass<InvalidCarrierGatewayIDNotFound>()(
-  "InvalidCarrierGatewayID.NotFound",
-  {},
-) {}
-export class InvalidCertificateArnMalformed extends S.TaggedErrorClass<InvalidCertificateArnMalformed>()(
-  "InvalidCertificateArn.Malformed",
-  {},
-) {}
-export class InvalidCidrBlockMalformed extends S.TaggedErrorClass<InvalidCidrBlockMalformed>()(
-  "InvalidCidrBlock.Malformed",
-  {},
-) {}
-export class InvalidCidrNotFound extends S.TaggedErrorClass<InvalidCidrNotFound>()(
-  "InvalidCidr.NotFound",
-  {},
-) {}
-export class InvalidClientVpnEndpointIdNotFound extends S.TaggedErrorClass<InvalidClientVpnEndpointIdNotFound>()(
-  "InvalidClientVpnEndpointId.NotFound",
-  {},
-) {}
-export class InvalidConnectionNotification extends S.TaggedErrorClass<InvalidConnectionNotification>()(
-  "InvalidConnectionNotification",
-  {},
-) {}
-export class InvalidConversionTaskIdMalformed extends S.TaggedErrorClass<InvalidConversionTaskIdMalformed>()(
-  "InvalidConversionTaskId.Malformed",
-  {},
-) {}
-export class InvalidCustomerGatewayIdMalformed extends S.TaggedErrorClass<InvalidCustomerGatewayIdMalformed>()(
-  "InvalidCustomerGatewayId.Malformed",
-  {},
-) {}
-export class InvalidCustomerGatewayIDNotFound extends S.TaggedErrorClass<InvalidCustomerGatewayIDNotFound>()(
-  "InvalidCustomerGatewayID.NotFound",
-  {},
-) {}
-export class InvalidDeclarativePoliciesReportIdMalformed extends S.TaggedErrorClass<InvalidDeclarativePoliciesReportIdMalformed>()(
-  "InvalidDeclarativePoliciesReportId.Malformed",
-  {},
-) {}
-export class InvalidDhcpOptionIDNotFound extends S.TaggedErrorClass<InvalidDhcpOptionIDNotFound>()(
-  "InvalidDhcpOptionID.NotFound",
-  {},
-) {}
-export class InvalidDhcpOptionsIdMalformed extends S.TaggedErrorClass<InvalidDhcpOptionsIdMalformed>()(
-  "InvalidDhcpOptionsId.Malformed",
-  {},
-) {}
-export class InvalidDhcpOptionsIDNotFound extends S.TaggedErrorClass<InvalidDhcpOptionsIDNotFound>()(
-  "InvalidDhcpOptionsID.NotFound",
-  {},
-) {}
-export class InvalidEgressOnlyInternetGatewayIdMalformed extends S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdMalformed>()(
-  "InvalidEgressOnlyInternetGatewayId.Malformed",
-  {},
-) {}
-export class InvalidEgressOnlyInternetGatewayIdNotFound extends S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdNotFound>()(
-  "InvalidEgressOnlyInternetGatewayId.NotFound",
-  {},
-) {}
-export class InvalidElasticIpIDNotFound extends S.TaggedErrorClass<InvalidElasticIpIDNotFound>()(
-  "InvalidElasticIpID.NotFound",
-  {},
-) {}
-export class InvalidExportTaskIDMalformed extends S.TaggedErrorClass<InvalidExportTaskIDMalformed>()(
-  "InvalidExportTaskID.Malformed",
-  {},
-) {}
-export class InvalidFleetIdMalformed extends S.TaggedErrorClass<InvalidFleetIdMalformed>()(
-  "InvalidFleetId.Malformed",
-  {},
-) {}
-export class InvalidFlowLogIdNotFound extends S.TaggedErrorClass<InvalidFlowLogIdNotFound>()(
-  "InvalidFlowLogId.NotFound",
-  {},
-) {}
-export class InvalidFpgaImageIDMalformed extends S.TaggedErrorClass<InvalidFpgaImageIDMalformed>()(
-  "InvalidFpgaImageID.Malformed",
-  {},
-) {}
-export class InvalidFpgaImageIDNotFound extends S.TaggedErrorClass<InvalidFpgaImageIDNotFound>()(
-  "InvalidFpgaImageID.NotFound",
-  {},
-) {}
-export class InvalidGatewayIDNotFound extends S.TaggedErrorClass<InvalidGatewayIDNotFound>()(
-  "InvalidGatewayID.NotFound",
-  {},
-) {}
-export class InvalidGroupDuplicate extends S.TaggedErrorClass<InvalidGroupDuplicate>()(
-  "InvalidGroup.Duplicate",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidGroupIdMalformed extends S.TaggedErrorClass<InvalidGroupIdMalformed>()(
-  "InvalidGroupId.Malformed",
-  {},
-) {}
-export class InvalidGroupNotFound extends S.TaggedErrorClass<InvalidGroupNotFound>()(
-  "InvalidGroup.NotFound",
-  {},
-) {}
-export class InvalidHostConfiguration extends S.TaggedErrorClass<InvalidHostConfiguration>()(
-  "InvalidHostConfiguration",
-  {},
-) {}
-export class InvalidHostIDMalformed extends S.TaggedErrorClass<InvalidHostIDMalformed>()(
-  "InvalidHostID.Malformed",
-  {},
-) {}
-export class InvalidHostReservationOfferingIdMalformed extends S.TaggedErrorClass<InvalidHostReservationOfferingIdMalformed>()(
-  "InvalidHostReservationOfferingId.Malformed",
-  {},
-) {}
-export class InvalidID extends S.TaggedErrorClass<InvalidID>()(
-  "InvalidID",
-  {},
-) {}
-export class InvalidImageUsageReportIdMalformed extends S.TaggedErrorClass<InvalidImageUsageReportIdMalformed>()(
-  "InvalidImageUsageReportId.Malformed",
-  {},
-) {}
-export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
-  "InvalidInput",
-  {},
-) {}
-export class InvalidInstanceConnectEndpointIdMalformed extends S.TaggedErrorClass<InvalidInstanceConnectEndpointIdMalformed>()(
-  "InvalidInstanceConnectEndpointId.Malformed",
-  {},
-) {}
-export class InvalidInstanceConnectEndpointIdNotFound extends S.TaggedErrorClass<InvalidInstanceConnectEndpointIdNotFound>()(
-  "InvalidInstanceConnectEndpointId.NotFound",
-  {},
-) {}
-export class InvalidInstanceEventWindowIdMalformed extends S.TaggedErrorClass<InvalidInstanceEventWindowIdMalformed>()(
-  "InvalidInstanceEventWindowId.Malformed",
-  {},
-) {}
-export class InvalidInstanceEventWindowIDNotFound extends S.TaggedErrorClass<InvalidInstanceEventWindowIDNotFound>()(
-  "InvalidInstanceEventWindowIDNotFound",
-  {},
-) {}
-export class InvalidInstanceIDMalformed extends S.TaggedErrorClass<InvalidInstanceIDMalformed>()(
-  "InvalidInstanceID.Malformed",
-  {},
-) {}
-export class InvalidInstanceIDNotFound extends S.TaggedErrorClass<InvalidInstanceIDNotFound>()(
-  "InvalidInstanceID.NotFound",
-  {},
-) {}
-export class InvalidInternetGatewayIdMalformed extends S.TaggedErrorClass<InvalidInternetGatewayIdMalformed>()(
-  "InvalidInternetGatewayId.Malformed",
-  {},
-) {}
-export class InvalidInternetGatewayIDNotFound extends S.TaggedErrorClass<InvalidInternetGatewayIDNotFound>()(
-  "InvalidInternetGatewayID.NotFound",
-  {},
-) {}
-export class InvalidIPAddressInUse extends S.TaggedErrorClass<InvalidIPAddressInUse>()(
-  "InvalidIPAddress.InUse",
-  {},
-).pipe(C.withDependencyViolationError) {}
-export class InvalidIpamExternalResourceVerificationTokenIdMalformed extends S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdMalformed>()(
-  "InvalidIpamExternalResourceVerificationTokenId.Malformed",
-  {},
-) {}
-export class InvalidIpamExternalResourceVerificationTokenIdNotFound extends S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdNotFound>()(
-  "InvalidIpamExternalResourceVerificationTokenId.NotFound",
-  {},
-) {}
-export class InvalidIpamIdNotFound extends S.TaggedErrorClass<InvalidIpamIdNotFound>()(
-  "InvalidIpamId.NotFound",
-  {},
-) {}
-export class InvalidIpamPolicyIdMalformed extends S.TaggedErrorClass<InvalidIpamPolicyIdMalformed>()(
-  "InvalidIpamPolicyId.Malformed",
-  {},
-) {}
-export class InvalidIpamPolicyIdNotFound extends S.TaggedErrorClass<InvalidIpamPolicyIdNotFound>()(
-  "InvalidIpamPolicyId.NotFound",
-  {},
-) {}
-export class InvalidIpamPoolIdNotFound extends S.TaggedErrorClass<InvalidIpamPoolIdNotFound>()(
-  "InvalidIpamPoolId.NotFound",
-  {},
-) {}
-export class InvalidIpamPrefixListResolverIdMalformed extends S.TaggedErrorClass<InvalidIpamPrefixListResolverIdMalformed>()(
-  "InvalidIpamPrefixListResolverId.Malformed",
-  {},
-) {}
-export class InvalidIpamPrefixListResolverIdNotFound extends S.TaggedErrorClass<InvalidIpamPrefixListResolverIdNotFound>()(
-  "InvalidIpamPrefixListResolverId.NotFound",
-  {},
-) {}
-export class InvalidIpamPrefixListResolverTargetIdMalformed extends S.TaggedErrorClass<InvalidIpamPrefixListResolverTargetIdMalformed>()(
-  "InvalidIpamPrefixListResolverTargetId.Malformed",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryAssociationIdMalformed extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdMalformed>()(
-  "InvalidIpamResourceDiscoveryAssociationId.Malformed",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryAssociationIdNotFound extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdNotFound>()(
-  "InvalidIpamResourceDiscoveryAssociationId.NotFound",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryIdMalformed extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdMalformed>()(
-  "InvalidIpamResourceDiscoveryId.Malformed",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryIdNotFound extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdNotFound>()(
-  "InvalidIpamResourceDiscoveryId.NotFound",
-  {},
-) {}
-export class InvalidIpamScopeIdMalformed extends S.TaggedErrorClass<InvalidIpamScopeIdMalformed>()(
-  "InvalidIpamScopeId.Malformed",
-  {},
-) {}
-export class InvalidIpamScopeIdNotFound extends S.TaggedErrorClass<InvalidIpamScopeIdNotFound>()(
-  "InvalidIpamScopeId.NotFound",
-  {},
-) {}
-export class InvalidIpv4PoolCoipIdMalformed extends S.TaggedErrorClass<InvalidIpv4PoolCoipIdMalformed>()(
-  "InvalidIpv4PoolCoipId.Malformed",
-  {},
-) {}
-export class InvalidIpv6PoolIDMalformed extends S.TaggedErrorClass<InvalidIpv6PoolIDMalformed>()(
-  "InvalidIpv6PoolID.Malformed",
-  {},
-) {}
-export class InvalidIpv6PoolIDNotFound extends S.TaggedErrorClass<InvalidIpv6PoolIDNotFound>()(
-  "InvalidIpv6PoolID.NotFound",
-  {},
-) {}
-export class InvalidKeyPairDuplicate extends S.TaggedErrorClass<InvalidKeyPairDuplicate>()(
-  "InvalidKeyPair.Duplicate",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidKeyPairNotFound extends S.TaggedErrorClass<InvalidKeyPairNotFound>()(
-  "InvalidKeyPair.NotFound",
-  {},
-) {}
-export class InvalidLaunchTemplateIdMalformed extends S.TaggedErrorClass<InvalidLaunchTemplateIdMalformed>()(
-  "InvalidLaunchTemplateId.Malformed",
-  {},
-) {}
-export class InvalidLaunchTemplateIdNotFound extends S.TaggedErrorClass<InvalidLaunchTemplateIdNotFound>()(
-  "InvalidLaunchTemplateId.NotFound",
-  {},
-) {}
-export class InvalidLaunchTemplateNameNotFoundException extends S.TaggedErrorClass<InvalidLaunchTemplateNameNotFoundException>()(
-  "InvalidLaunchTemplateName.NotFoundException",
-  {},
-) {}
-export class InvalidLocalGatewayIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayIDMalformed>()(
-  "InvalidLocalGatewayID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayIDNotFound>()(
-  "InvalidLocalGatewayID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDMalformed>()(
-  "InvalidLocalGatewayRouteTableID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDNotFound>()(
-  "InvalidLocalGatewayRouteTableID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed>()(
-  "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound>()(
-  "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVpcAssociationIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDMalformed>()(
-  "InvalidLocalGatewayRouteTableVpcAssociationID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVpcAssociationIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDNotFound>()(
-  "InvalidLocalGatewayRouteTableVpcAssociationID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceGroupIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDMalformed>()(
-  "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceGroupIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDNotFound>()(
-  "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDMalformed>()(
-  "InvalidLocalGatewayVirtualInterfaceID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDNotFound>()(
-  "InvalidLocalGatewayVirtualInterfaceID.NotFound",
-  {},
-) {}
-export class InvalidNetworkAclEntryNotFound extends S.TaggedErrorClass<InvalidNetworkAclEntryNotFound>()(
-  "InvalidNetworkAclEntry.NotFound",
-  {},
-) {}
-export class InvalidNetworkAclIdMalformed extends S.TaggedErrorClass<InvalidNetworkAclIdMalformed>()(
-  "InvalidNetworkAclId.Malformed",
-  {},
-) {}
-export class InvalidNetworkAclIDNotFound extends S.TaggedErrorClass<InvalidNetworkAclIDNotFound>()(
-  "InvalidNetworkAclID.NotFound",
-  {},
-) {}
-export class InvalidNetworkInsightsAccessScopeIdNotFound extends S.TaggedErrorClass<InvalidNetworkInsightsAccessScopeIdNotFound>()(
-  "InvalidNetworkInsightsAccessScopeId.NotFound",
-  {},
-) {}
-export class InvalidNetworkInterfaceAttachmentIdMalformed extends S.TaggedErrorClass<InvalidNetworkInterfaceAttachmentIdMalformed>()(
-  "InvalidNetworkInterfaceAttachmentId.Malformed",
-  {},
-) {}
-export class InvalidNetworkInterfaceIdMalformed extends S.TaggedErrorClass<InvalidNetworkInterfaceIdMalformed>()(
-  "InvalidNetworkInterfaceId.Malformed",
-  {},
-) {}
-export class InvalidNetworkInterfaceIDNotFound extends S.TaggedErrorClass<InvalidNetworkInterfaceIDNotFound>()(
-  "InvalidNetworkInterfaceID.NotFound",
-  {},
-) {}
-export class InvalidNetworkInterfaceInUse extends S.TaggedErrorClass<InvalidNetworkInterfaceInUse>()(
-  "InvalidNetworkInterface.InUse",
-  {},
-).pipe(C.withDependencyViolationError) {}
-export class InvalidOutpostLagIDMalformed extends S.TaggedErrorClass<InvalidOutpostLagIDMalformed>()(
-  "InvalidOutpostLagID.Malformed",
-  {},
-) {}
-export class InvalidParameter extends S.TaggedErrorClass<InvalidParameter>()(
-  "InvalidParameter",
-  {},
-) {}
-export class InvalidParameterCombination extends S.TaggedErrorClass<InvalidParameterCombination>()(
-  "InvalidParameterCombination",
-  {},
-) {}
-export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
-  "InvalidParameterValue",
-  {},
-) {}
-export class InvalidPermissionDuplicate extends S.TaggedErrorClass<InvalidPermissionDuplicate>()(
-  "InvalidPermission.Duplicate",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidPermissionIDMalformed extends S.TaggedErrorClass<InvalidPermissionIDMalformed>()(
-  "InvalidPermissionID.Malformed",
-  {},
-) {}
-export class InvalidPermissionIDNotFound extends S.TaggedErrorClass<InvalidPermissionIDNotFound>()(
-  "InvalidPermissionID.NotFound",
-  {},
-) {}
-export class InvalidPermissionNotFound extends S.TaggedErrorClass<InvalidPermissionNotFound>()(
-  "InvalidPermission.NotFound",
-  {},
-) {}
-export class InvalidPlacementGroupUnknown extends S.TaggedErrorClass<InvalidPlacementGroupUnknown>()(
-  "InvalidPlacementGroup.Unknown",
-  {},
-) {}
-export class InvalidPoolIDMalformed extends S.TaggedErrorClass<InvalidPoolIDMalformed>()(
-  "InvalidPoolID.Malformed",
-  {},
-) {}
-export class InvalidPoolIDNotFound extends S.TaggedErrorClass<InvalidPoolIDNotFound>()(
-  "InvalidPoolID.NotFound",
-  {},
-) {}
-export class InvalidPrefixListIdMalformed extends S.TaggedErrorClass<InvalidPrefixListIdMalformed>()(
-  "InvalidPrefixListId.Malformed",
-  {},
-) {}
-export class InvalidPrefixListIdNotFound extends S.TaggedErrorClass<InvalidPrefixListIdNotFound>()(
-  "InvalidPrefixListId.NotFound",
-  {},
-) {}
-export class InvalidPrefixListIDNotFound extends S.TaggedErrorClass<InvalidPrefixListIDNotFound>()(
-  "InvalidPrefixListID.NotFound",
-  {},
-) {}
-export class InvalidPublicIpv4PoolIDMalformed extends S.TaggedErrorClass<InvalidPublicIpv4PoolIDMalformed>()(
-  "InvalidPublicIpv4PoolID.Malformed",
-  {},
-) {}
-export class InvalidPublicIpv4PoolIDNotFound extends S.TaggedErrorClass<InvalidPublicIpv4PoolIDNotFound>()(
-  "InvalidPublicIpv4PoolID.NotFound",
-  {},
-) {}
-export class InvalidPublicIpv4PoolNotFound extends S.TaggedErrorClass<InvalidPublicIpv4PoolNotFound>()(
-  "InvalidPublicIpv4Pool.NotFound",
-  {},
-) {}
-export class InvalidPurchaseTokenMalformed extends S.TaggedErrorClass<InvalidPurchaseTokenMalformed>()(
-  "InvalidPurchaseToken.Malformed",
-  {},
-) {}
-export class InvalidRegion extends S.TaggedErrorClass<InvalidRegion>()(
-  "InvalidRegion",
-  {},
-) {}
-export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  {},
-) {}
-export class InvalidReservedInstancesIDNotFound extends S.TaggedErrorClass<InvalidReservedInstancesIDNotFound>()(
-  "InvalidReservedInstancesID.NotFound",
-  {},
-) {}
-export class InvalidRoleArnMalformed extends S.TaggedErrorClass<InvalidRoleArnMalformed>()(
-  "InvalidRoleArn.Malformed",
-  {},
-) {}
-export class InvalidRouteMalformed extends S.TaggedErrorClass<InvalidRouteMalformed>()(
-  "InvalidRoute.Malformed",
-  {},
-) {}
-export class InvalidRouteNotFound extends S.TaggedErrorClass<InvalidRouteNotFound>()(
-  "InvalidRoute.NotFound",
-  {},
-) {}
-export class InvalidRouteServerEndpointIdNotFound extends S.TaggedErrorClass<InvalidRouteServerEndpointIdNotFound>()(
-  "InvalidRouteServerEndpointId.NotFound",
-  {},
-) {}
-export class InvalidRouteServerIdNotAssociated extends S.TaggedErrorClass<InvalidRouteServerIdNotAssociated>()(
-  "InvalidRouteServerId.NotAssociated",
-  {},
-) {}
-export class InvalidRouteServerIdNotFound extends S.TaggedErrorClass<InvalidRouteServerIdNotFound>()(
-  "InvalidRouteServerId.NotFound",
-  {},
-) {}
-export class InvalidRouteServerPeerIdMalformed extends S.TaggedErrorClass<InvalidRouteServerPeerIdMalformed>()(
-  "InvalidRouteServerPeerId.Malformed",
-  {},
-) {}
-export class InvalidRouteServerPeerIdNotFound extends S.TaggedErrorClass<InvalidRouteServerPeerIdNotFound>()(
-  "InvalidRouteServerPeerId.NotFound",
-  {},
-) {}
-export class InvalidRouteTableAssociationIdMalformed extends S.TaggedErrorClass<InvalidRouteTableAssociationIdMalformed>()(
-  "InvalidRouteTableAssociationId.Malformed",
-  {},
-) {}
-export class InvalidRouteTableIdMalformed extends S.TaggedErrorClass<InvalidRouteTableIdMalformed>()(
-  "InvalidRouteTableId.Malformed",
-  {},
-) {}
-export class InvalidRouteTableIDNotFound extends S.TaggedErrorClass<InvalidRouteTableIDNotFound>()(
-  "InvalidRouteTableID.NotFound",
-  {},
-) {}
-export class InvalidScheduledInstance extends S.TaggedErrorClass<InvalidScheduledInstance>()(
-  "InvalidScheduledInstance",
-  {},
-) {}
-export class InvalidSecurityGroupRuleIdMalformed extends S.TaggedErrorClass<InvalidSecurityGroupRuleIdMalformed>()(
-  "InvalidSecurityGroupRuleId.Malformed",
-  {},
-) {}
-export class InvalidSecurityGroupRuleIdNotFound extends S.TaggedErrorClass<InvalidSecurityGroupRuleIdNotFound>()(
-  "InvalidSecurityGroupRuleId.NotFound",
-  {},
-) {}
-export class InvalidServiceLinkVirtualInterfaceIDMalformed extends S.TaggedErrorClass<InvalidServiceLinkVirtualInterfaceIDMalformed>()(
-  "InvalidServiceLinkVirtualInterfaceID.Malformed",
-  {},
-) {}
-export class InvalidServiceName extends S.TaggedErrorClass<InvalidServiceName>()(
-  "InvalidServiceName",
-  {},
-) {}
-export class InvalidSnapshotIDMalformed extends S.TaggedErrorClass<InvalidSnapshotIDMalformed>()(
-  "InvalidSnapshotID.Malformed",
-  {},
-) {}
-export class InvalidSnapshotNotFound extends S.TaggedErrorClass<InvalidSnapshotNotFound>()(
-  "InvalidSnapshot.NotFound",
-  {},
-) {}
-export class InvalidSpotDatafeedNotFound extends S.TaggedErrorClass<InvalidSpotDatafeedNotFound>()(
-  "InvalidSpotDatafeed.NotFound",
-  {},
-) {}
-export class InvalidSpotInstanceRequestIDMalformed extends S.TaggedErrorClass<InvalidSpotInstanceRequestIDMalformed>()(
-  "InvalidSpotInstanceRequestID.Malformed",
-  {},
-) {}
-export class InvalidState extends S.TaggedErrorClass<InvalidState>()(
-  "InvalidState",
-  {},
-) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  {},
-) {}
-export class InvalidSubnetCidrBlockAssociationIdMalformed extends S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIdMalformed>()(
-  "InvalidSubnetCidrBlockAssociationId.Malformed",
-  {},
-) {}
-export class InvalidSubnetCidrBlockAssociationIDNotFound extends S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIDNotFound>()(
-  "InvalidSubnetCidrBlockAssociationID.NotFound",
-  {},
-) {}
-export class InvalidSubnetCidrReservationIDMalformed extends S.TaggedErrorClass<InvalidSubnetCidrReservationIDMalformed>()(
-  "InvalidSubnetCidrReservationID.Malformed",
-  {},
-) {}
-export class InvalidSubnetCidrReservationIDNotFound extends S.TaggedErrorClass<InvalidSubnetCidrReservationIDNotFound>()(
-  "InvalidSubnetCidrReservationID.NotFound",
-  {},
-) {}
-export class InvalidSubnetConflict extends S.TaggedErrorClass<InvalidSubnetConflict>()(
-  "InvalidSubnet.Conflict",
-  {},
-) {}
-export class InvalidSubnetIdMalformed extends S.TaggedErrorClass<InvalidSubnetIdMalformed>()(
-  "InvalidSubnetId.Malformed",
-  {},
-) {}
-export class InvalidSubnetIDMalformed extends S.TaggedErrorClass<InvalidSubnetIDMalformed>()(
-  "InvalidSubnetID.Malformed",
-  {},
-) {}
-export class InvalidSubnetIDNotFound extends S.TaggedErrorClass<InvalidSubnetIDNotFound>()(
-  "InvalidSubnetID.NotFound",
-  {},
-) {}
-export class InvalidTargetArnUnknown extends S.TaggedErrorClass<InvalidTargetArnUnknown>()(
-  "InvalidTargetArn.Unknown",
-  {},
-) {}
-export class InvalidTrafficMirrorFilterIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorFilterIdNotFound>()(
-  "InvalidTrafficMirrorFilterId.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorFilterRuleIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorFilterRuleIdNotFound>()(
-  "InvalidTrafficMirrorFilterRuleId.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorSessionIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorSessionIdNotFound>()(
-  "InvalidTrafficMirrorSessionId.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorTargetIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorTargetIdNotFound>()(
-  "InvalidTrafficMirrorTargetId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayAttachmentIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDMalformed>()(
-  "InvalidTransitGatewayAttachmentID.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayAttachmentIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDNotFound>()(
-  "InvalidTransitGatewayAttachmentID.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayConnectPeerIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDMalformed>()(
-  "InvalidTransitGatewayConnectPeerID.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayConnectPeerIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDNotFound>()(
-  "InvalidTransitGatewayConnectPeerID.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayIDMalformed>()(
-  "InvalidTransitGatewayID.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayIDNotFound>()(
-  "InvalidTransitGatewayID.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayMeteringPolicyIdMalformedException extends S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdMalformedException>()(
-  "InvalidTransitGatewayMeteringPolicyIdMalformedException",
-  {},
-) {}
-export class InvalidTransitGatewayMeteringPolicyIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdNotFound>()(
-  "InvalidTransitGatewayMeteringPolicyId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayMulticastDomainIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdMalformed>()(
-  "InvalidTransitGatewayMulticastDomainId.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayMulticastDomainIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdNotFound>()(
-  "InvalidTransitGatewayMulticastDomainId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayPolicyTableIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdMalformed>()(
-  "InvalidTransitGatewayPolicyTableId.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayPolicyTableIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdNotFound>()(
-  "InvalidTransitGatewayPolicyTableId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayRouteTableAnnouncementIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayRouteTableAnnouncementIdMalformed>()(
-  "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
-  {},
-) {}
-export class InvalidUserIDMalformed extends S.TaggedErrorClass<InvalidUserIDMalformed>()(
-  "InvalidUserID.Malformed",
-  {},
-) {}
-export class InvalidVerifiedAccessEndpointIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessEndpointIdNotFound>()(
-  "InvalidVerifiedAccessEndpointId.NotFound",
-  {},
-) {}
-export class InvalidVerifiedAccessGroupIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessGroupIdNotFound>()(
-  "InvalidVerifiedAccessGroupId.NotFound",
-  {},
-) {}
-export class InvalidVerifiedAccessInstanceIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessInstanceIdNotFound>()(
-  "InvalidVerifiedAccessInstanceId.NotFound",
-  {},
-) {}
-export class InvalidVerifiedAccessTrustProviderIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessTrustProviderIdNotFound>()(
-  "InvalidVerifiedAccessTrustProviderId.NotFound",
-  {},
-) {}
-export class InvalidVolumeIDMalformed extends S.TaggedErrorClass<InvalidVolumeIDMalformed>()(
-  "InvalidVolumeID.Malformed",
-  {},
-) {}
-export class InvalidVolumeNotFound extends S.TaggedErrorClass<InvalidVolumeNotFound>()(
-  "InvalidVolume.NotFound",
-  {},
-) {}
-export class InvalidVpcCidrBlockAssociationIdErrorNotFound extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdErrorNotFound>()(
-  "InvalidVpcCidrBlockAssociationIdError.NotFound",
-  {},
-) {}
-export class InvalidVpcCidrBlockAssociationIdMalformed extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdMalformed>()(
-  "InvalidVpcCidrBlockAssociationId.Malformed",
-  {},
-) {}
-export class InvalidVpcCidrBlockAssociationIDNotFound extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIDNotFound>()(
-  "InvalidVpcCidrBlockAssociationID.NotFound",
-  {},
-) {}
-export class InvalidVpcEncryptionControlIdMalformed extends S.TaggedErrorClass<InvalidVpcEncryptionControlIdMalformed>()(
-  "InvalidVpcEncryptionControlId.Malformed",
-  {},
-) {}
-export class InvalidVpcEncryptionControlIdNotFound extends S.TaggedErrorClass<InvalidVpcEncryptionControlIdNotFound>()(
-  "InvalidVpcEncryptionControlId.NotFound",
-  {},
-) {}
-export class InvalidVpcEndpointIdNotFound extends S.TaggedErrorClass<InvalidVpcEndpointIdNotFound>()(
-  "InvalidVpcEndpointId.NotFound",
-  {},
-) {}
-export class InvalidVpcEndpointServiceIdMalformed extends S.TaggedErrorClass<InvalidVpcEndpointServiceIdMalformed>()(
-  "InvalidVpcEndpointServiceId.Malformed",
-  {},
-) {}
-export class InvalidVpcEndpointServiceIdNotFound extends S.TaggedErrorClass<InvalidVpcEndpointServiceIdNotFound>()(
-  "InvalidVpcEndpointServiceId.NotFound",
-  {},
-) {}
-export class InvalidVpcIdMalformed extends S.TaggedErrorClass<InvalidVpcIdMalformed>()(
-  "InvalidVpcId.Malformed",
-  {},
-) {}
-export class InvalidVpcIdNotFound extends S.TaggedErrorClass<InvalidVpcIdNotFound>()(
-  "InvalidVpcId.NotFound",
-  {},
-) {}
-export class InvalidVpcIDNotFound extends S.TaggedErrorClass<InvalidVpcIDNotFound>()(
-  "InvalidVpcID.NotFound",
-  {},
-) {}
-export class InvalidVpcPeeringConnectionIdNotFound extends S.TaggedErrorClass<InvalidVpcPeeringConnectionIdNotFound>()(
-  "InvalidVpcPeeringConnectionId.NotFound",
-  {},
-) {}
-export class InvalidVpcPeeringConnectionIDNotFound extends S.TaggedErrorClass<InvalidVpcPeeringConnectionIDNotFound>()(
-  "InvalidVpcPeeringConnectionID.NotFound",
-  {},
-) {}
-export class InvalidVpnConcentratorIdMalformed extends S.TaggedErrorClass<InvalidVpnConcentratorIdMalformed>()(
-  "InvalidVpnConcentratorId.Malformed",
-  {},
-) {}
-export class InvalidVpnConcentratorIDMalformed extends S.TaggedErrorClass<InvalidVpnConcentratorIDMalformed>()(
-  "InvalidVpnConcentratorID.Malformed",
-  {},
-) {}
-export class InvalidVpnConnectionDeviceTypeIdNotFound extends S.TaggedErrorClass<InvalidVpnConnectionDeviceTypeIdNotFound>()(
-  "InvalidVpnConnectionDeviceTypeId.NotFound",
-  {},
-) {}
-export class InvalidVpnConnectionId extends S.TaggedErrorClass<InvalidVpnConnectionId>()(
-  "InvalidVpnConnectionId",
-  {},
-) {}
-export class InvalidVpnConnectionIDNotFound extends S.TaggedErrorClass<InvalidVpnConnectionIDNotFound>()(
-  "InvalidVpnConnectionID.NotFound",
-  {},
-) {}
-export class InvalidVpnGatewayIDNotFound extends S.TaggedErrorClass<InvalidVpnGatewayIDNotFound>()(
-  "InvalidVpnGatewayID.NotFound",
-  {},
-) {}
-export class InvalidZoneNotFound extends S.TaggedErrorClass<InvalidZoneNotFound>()(
-  "InvalidZone.NotFound",
-  {},
-) {}
-export class MalformedGatewayIDNotFound extends S.TaggedErrorClass<MalformedGatewayIDNotFound>()(
-  "MalformedGatewayID.NotFound",
-  {},
-) {}
-export class MissingParameter extends S.TaggedErrorClass<MissingParameter>()(
-  "MissingParameter",
-  {},
-) {}
-export class MissingRequiredParameter extends S.TaggedErrorClass<MissingRequiredParameter>()(
-  "MissingRequiredParameter",
-  {},
-) {}
-export class NatGatewayMalformed extends S.TaggedErrorClass<NatGatewayMalformed>()(
-  "NatGatewayMalformed",
-  {},
-) {}
-export class NatGatewayNotFound extends S.TaggedErrorClass<NatGatewayNotFound>()(
-  "NatGatewayNotFound",
-  {},
-) {}
-export class OperationNotPermitted extends S.TaggedErrorClass<OperationNotPermitted>()(
-  "OperationNotPermitted",
-  {},
-) {}
-export class ParseError extends S.TaggedErrorClass<ParseError>()(
-  "ParseError",
-  {},
-) {}
-export class RequestError extends S.TaggedErrorClass<RequestError>()(
-  "RequestError",
-  {},
-) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
-  "ResourceLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class RouteAlreadyExists extends S.TaggedErrorClass<RouteAlreadyExists>()(
-  "RouteAlreadyExists",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class TransitGatewayLimitExceeded extends S.TaggedErrorClass<TransitGatewayLimitExceeded>()(
-  "TransitGatewayLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
-  "UnauthorizedOperation",
-  {},
-).pipe(C.withAuthError) {}
-export class UnknownParameter extends S.TaggedErrorClass<UnknownParameter>()(
-  "UnknownParameter",
-  {},
-) {}
-export class UnknownResource extends S.TaggedErrorClass<UnknownResource>()(
-  "UnknownResource",
-  {},
-) {}
-export class Unsupported extends S.TaggedErrorClass<Unsupported>()(
-  "Unsupported",
-  {},
-) {}
-export class UnsupportedOperation extends S.TaggedErrorClass<UnsupportedOperation>()(
-  "UnsupportedOperation",
-  {},
-) {}
-export class VerifiedAccessInstanceLimitExceeded extends S.TaggedErrorClass<VerifiedAccessInstanceLimitExceeded>()(
-  "VerifiedAccessInstanceLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class VolumeInUse extends S.TaggedErrorClass<VolumeInUse>()(
-  "VolumeInUse",
-  {},
-).pipe(
-  C.withConflictError,
-  C.withRetryableError,
-  C.withDependencyViolationError,
-) {}
-export class VpcBlockPublicAccessExclusionIdMalformed extends S.TaggedErrorClass<VpcBlockPublicAccessExclusionIdMalformed>()(
-  "VpcBlockPublicAccessExclusionId.Malformed",
-  {},
-) {}
-export class VPCIdNotSpecified extends S.TaggedErrorClass<VPCIdNotSpecified>()(
-  "VPCIdNotSpecified",
-  {},
-) {}
-export class VpcLimitExceeded extends S.TaggedErrorClass<VpcLimitExceeded>()(
-  "VpcLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
+export class AddressLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<AddressLimitExceeded>()(
+    "AddressLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class AuthFailure
+  extends /*@__PURE__*/ S.TaggedErrorClass<AuthFailure>()(
+    "AuthFailure",
+    {},
+  ).pipe(C.withAuthError) {}
+export class CannotDelete
+  extends /*@__PURE__*/ S.TaggedErrorClass<CannotDelete>()(
+    "CannotDelete",
+    {},
+  ) {}
+export class CapacityManagerDisabled
+  extends /*@__PURE__*/ S.TaggedErrorClass<CapacityManagerDisabled>()(
+    "CapacityManager.Disabled",
+    {},
+  ) {}
+export class CidrConflict
+  extends /*@__PURE__*/ S.TaggedErrorClass<CidrConflict>()(
+    "CidrConflict",
+    {},
+  ).pipe(C.withConflictError) {}
+export class DeclarativePoliciesAccessDenied
+  extends /*@__PURE__*/ S.TaggedErrorClass<DeclarativePoliciesAccessDenied>()(
+    "DeclarativePoliciesAccessDenied",
+    {},
+  ).pipe(C.withAuthError) {}
+export class DefaultSubnetAlreadyExistsInAvailabilityZone
+  extends /*@__PURE__*/ S.TaggedErrorClass<DefaultSubnetAlreadyExistsInAvailabilityZone>()(
+    "DefaultSubnetAlreadyExistsInAvailabilityZone",
+    {},
+  ).pipe(C.withAlreadyExistsError) {}
+export class DefaultVpcAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<DefaultVpcAlreadyExists>()(
+    "DefaultVpcAlreadyExists",
+    {},
+  ).pipe(C.withAlreadyExistsError) {}
+export class DependencyViolation
+  extends /*@__PURE__*/ S.TaggedErrorClass<DependencyViolation>()(
+    "DependencyViolation",
+    {},
+  ).pipe(C.withDependencyViolationError) {}
+export class DryRunOperation
+  extends /*@__PURE__*/ S.TaggedErrorClass<DryRunOperation>()(
+    "DryRunOperation",
+    {},
+  ) {}
+export class FilterLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<FilterLimitExceeded>()(
+    "FilterLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class GatewayNotAttached
+  extends /*@__PURE__*/ S.TaggedErrorClass<GatewayNotAttached>()(
+    "Gateway.NotAttached",
+    {},
+  ) {}
+export class IdempotentParameterMismatch
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatch>()(
+    "IdempotentParameterMismatch",
+    {},
+  ).pipe(C.withConflictError) {}
+export class InaccessibleStorageLocation
+  extends /*@__PURE__*/ S.TaggedErrorClass<InaccessibleStorageLocation>()(
+    "InaccessibleStorageLocation",
+    {},
+  ) {}
+export class IncorrectState
+  extends /*@__PURE__*/ S.TaggedErrorClass<IncorrectState>()(
+    "IncorrectState",
+    {},
+  ).pipe(C.withConflictError) {}
+export class InternetGatewayLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternetGatewayLimitExceeded>()(
+    "InternetGatewayLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class InvalidAction
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAction>()(
+    "InvalidAction",
+    {},
+  ) {}
+export class InvalidAddressMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAddressMalformed>()(
+    "InvalidAddress.Malformed",
+    {},
+  ) {}
+export class InvalidAddressNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAddressNotFound>()(
+    "InvalidAddress.NotFound",
+    {},
+  ) {}
+export class InvalidAllocationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAllocationIDNotFound>()(
+    "InvalidAllocationID.NotFound",
+    {},
+  ) {}
+export class InvalidAMIIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAMIIDMalformed>()(
+    "InvalidAMIID.Malformed",
+    {},
+  ) {}
+export class InvalidAMIIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAMIIDNotFound>()(
+    "InvalidAMIID.NotFound",
+    {},
+  ) {}
+export class InvalidAssociationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAssociationIDNotFound>()(
+    "InvalidAssociationID.NotFound",
+    {},
+  ) {}
+export class InvalidAttachmentIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidAttachmentIDNotFound>()(
+    "InvalidAttachmentID.NotFound",
+    {},
+  ) {}
+export class InvalidBundleIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidBundleIDNotFound>()(
+    "InvalidBundleID.NotFound",
+    {},
+  ) {}
+export class InvalidCapacityBlockIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCapacityBlockIdMalformed>()(
+    "InvalidCapacityBlockId.Malformed",
+    {},
+  ) {}
+export class InvalidCapacityManagerDataExportIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCapacityManagerDataExportIdMalformed>()(
+    "InvalidCapacityManagerDataExportId.Malformed",
+    {},
+  ) {}
+export class InvalidCapacityManagerDataExportIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCapacityManagerDataExportIdNotFound>()(
+    "InvalidCapacityManagerDataExportId.NotFound",
+    {},
+  ) {}
+export class InvalidCapacityReservationFleetIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCapacityReservationFleetIdMalformed>()(
+    "InvalidCapacityReservationFleetId.Malformed",
+    {},
+  ) {}
+export class InvalidCapacityReservationIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCapacityReservationIdMalformed>()(
+    "InvalidCapacityReservationId.Malformed",
+    {},
+  ) {}
+export class InvalidCapacityReservationIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCapacityReservationIdNotFound>()(
+    "InvalidCapacityReservationId.NotFound",
+    {},
+  ) {}
+export class InvalidCarrierGatewayIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCarrierGatewayIDMalformed>()(
+    "InvalidCarrierGatewayID.Malformed",
+    {},
+  ) {}
+export class InvalidCarrierGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCarrierGatewayIDNotFound>()(
+    "InvalidCarrierGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidCertificateArnMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCertificateArnMalformed>()(
+    "InvalidCertificateArn.Malformed",
+    {},
+  ) {}
+export class InvalidCidrBlockMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCidrBlockMalformed>()(
+    "InvalidCidrBlock.Malformed",
+    {},
+  ) {}
+export class InvalidCidrNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCidrNotFound>()(
+    "InvalidCidr.NotFound",
+    {},
+  ) {}
+export class InvalidClientVpnEndpointIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidClientVpnEndpointIdNotFound>()(
+    "InvalidClientVpnEndpointId.NotFound",
+    {},
+  ) {}
+export class InvalidConnectionNotification
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConnectionNotification>()(
+    "InvalidConnectionNotification",
+    {},
+  ) {}
+export class InvalidConversionTaskIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidConversionTaskIdMalformed>()(
+    "InvalidConversionTaskId.Malformed",
+    {},
+  ) {}
+export class InvalidCustomerGatewayIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCustomerGatewayIdMalformed>()(
+    "InvalidCustomerGatewayId.Malformed",
+    {},
+  ) {}
+export class InvalidCustomerGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidCustomerGatewayIDNotFound>()(
+    "InvalidCustomerGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidDeclarativePoliciesReportIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDeclarativePoliciesReportIdMalformed>()(
+    "InvalidDeclarativePoliciesReportId.Malformed",
+    {},
+  ) {}
+export class InvalidDhcpOptionIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDhcpOptionIDNotFound>()(
+    "InvalidDhcpOptionID.NotFound",
+    {},
+  ) {}
+export class InvalidDhcpOptionsIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDhcpOptionsIdMalformed>()(
+    "InvalidDhcpOptionsId.Malformed",
+    {},
+  ) {}
+export class InvalidDhcpOptionsIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidDhcpOptionsIDNotFound>()(
+    "InvalidDhcpOptionsID.NotFound",
+    {},
+  ) {}
+export class InvalidEgressOnlyInternetGatewayIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdMalformed>()(
+    "InvalidEgressOnlyInternetGatewayId.Malformed",
+    {},
+  ) {}
+export class InvalidEgressOnlyInternetGatewayIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdNotFound>()(
+    "InvalidEgressOnlyInternetGatewayId.NotFound",
+    {},
+  ) {}
+export class InvalidElasticIpIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidElasticIpIDNotFound>()(
+    "InvalidElasticIpID.NotFound",
+    {},
+  ) {}
+export class InvalidExportTaskIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidExportTaskIDMalformed>()(
+    "InvalidExportTaskID.Malformed",
+    {},
+  ) {}
+export class InvalidFleetIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFleetIdMalformed>()(
+    "InvalidFleetId.Malformed",
+    {},
+  ) {}
+export class InvalidFlowLogIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFlowLogIdNotFound>()(
+    "InvalidFlowLogId.NotFound",
+    {},
+  ) {}
+export class InvalidFpgaImageIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFpgaImageIDMalformed>()(
+    "InvalidFpgaImageID.Malformed",
+    {},
+  ) {}
+export class InvalidFpgaImageIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFpgaImageIDNotFound>()(
+    "InvalidFpgaImageID.NotFound",
+    {},
+  ) {}
+export class InvalidGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGatewayIDNotFound>()(
+    "InvalidGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidGroupDuplicate
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGroupDuplicate>()(
+    "InvalidGroup.Duplicate",
+    {},
+  ).pipe(C.withAlreadyExistsError) {}
+export class InvalidGroupIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGroupIdMalformed>()(
+    "InvalidGroupId.Malformed",
+    {},
+  ) {}
+export class InvalidGroupNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGroupNotFound>()(
+    "InvalidGroup.NotFound",
+    {},
+  ) {}
+export class InvalidHostConfiguration
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHostConfiguration>()(
+    "InvalidHostConfiguration",
+    {},
+  ) {}
+export class InvalidHostIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHostIDMalformed>()(
+    "InvalidHostID.Malformed",
+    {},
+  ) {}
+export class InvalidHostReservationOfferingIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidHostReservationOfferingIdMalformed>()(
+    "InvalidHostReservationOfferingId.Malformed",
+    {},
+  ) {}
+export class InvalidID
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidID>()("InvalidID", {}) {}
+export class InvalidImageUsageReportIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidImageUsageReportIdMalformed>()(
+    "InvalidImageUsageReportId.Malformed",
+    {},
+  ) {}
+export class InvalidInput
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInput>()(
+    "InvalidInput",
+    {},
+  ) {}
+export class InvalidInstanceConnectEndpointIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceConnectEndpointIdMalformed>()(
+    "InvalidInstanceConnectEndpointId.Malformed",
+    {},
+  ) {}
+export class InvalidInstanceConnectEndpointIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceConnectEndpointIdNotFound>()(
+    "InvalidInstanceConnectEndpointId.NotFound",
+    {},
+  ) {}
+export class InvalidInstanceEventWindowIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceEventWindowIdMalformed>()(
+    "InvalidInstanceEventWindowId.Malformed",
+    {},
+  ) {}
+export class InvalidInstanceEventWindowIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceEventWindowIDNotFound>()(
+    "InvalidInstanceEventWindowIDNotFound",
+    {},
+  ) {}
+export class InvalidInstanceIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceIDMalformed>()(
+    "InvalidInstanceID.Malformed",
+    {},
+  ) {}
+export class InvalidInstanceIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInstanceIDNotFound>()(
+    "InvalidInstanceID.NotFound",
+    {},
+  ) {}
+export class InvalidInternetGatewayIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInternetGatewayIdMalformed>()(
+    "InvalidInternetGatewayId.Malformed",
+    {},
+  ) {}
+export class InvalidInternetGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInternetGatewayIDNotFound>()(
+    "InvalidInternetGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidIPAddressInUse
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIPAddressInUse>()(
+    "InvalidIPAddress.InUse",
+    {},
+  ).pipe(C.withDependencyViolationError) {}
+export class InvalidIpamExternalResourceVerificationTokenIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdMalformed>()(
+    "InvalidIpamExternalResourceVerificationTokenId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamExternalResourceVerificationTokenIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdNotFound>()(
+    "InvalidIpamExternalResourceVerificationTokenId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamIdNotFound>()(
+    "InvalidIpamId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamPolicyIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamPolicyIdMalformed>()(
+    "InvalidIpamPolicyId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamPolicyIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamPolicyIdNotFound>()(
+    "InvalidIpamPolicyId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamPoolIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamPoolIdNotFound>()(
+    "InvalidIpamPoolId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamPrefixListResolverIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamPrefixListResolverIdMalformed>()(
+    "InvalidIpamPrefixListResolverId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamPrefixListResolverIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamPrefixListResolverIdNotFound>()(
+    "InvalidIpamPrefixListResolverId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamPrefixListResolverTargetIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamPrefixListResolverTargetIdMalformed>()(
+    "InvalidIpamPrefixListResolverTargetId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamResourceDiscoveryAssociationIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdMalformed>()(
+    "InvalidIpamResourceDiscoveryAssociationId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamResourceDiscoveryAssociationIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdNotFound>()(
+    "InvalidIpamResourceDiscoveryAssociationId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamResourceDiscoveryIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdMalformed>()(
+    "InvalidIpamResourceDiscoveryId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamResourceDiscoveryIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdNotFound>()(
+    "InvalidIpamResourceDiscoveryId.NotFound",
+    {},
+  ) {}
+export class InvalidIpamScopeIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamScopeIdMalformed>()(
+    "InvalidIpamScopeId.Malformed",
+    {},
+  ) {}
+export class InvalidIpamScopeIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpamScopeIdNotFound>()(
+    "InvalidIpamScopeId.NotFound",
+    {},
+  ) {}
+export class InvalidIpv4PoolCoipIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpv4PoolCoipIdMalformed>()(
+    "InvalidIpv4PoolCoipId.Malformed",
+    {},
+  ) {}
+export class InvalidIpv6PoolIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpv6PoolIDMalformed>()(
+    "InvalidIpv6PoolID.Malformed",
+    {},
+  ) {}
+export class InvalidIpv6PoolIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidIpv6PoolIDNotFound>()(
+    "InvalidIpv6PoolID.NotFound",
+    {},
+  ) {}
+export class InvalidKeyPairDuplicate
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeyPairDuplicate>()(
+    "InvalidKeyPair.Duplicate",
+    {},
+  ).pipe(C.withAlreadyExistsError) {}
+export class InvalidKeyPairNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidKeyPairNotFound>()(
+    "InvalidKeyPair.NotFound",
+    {},
+  ) {}
+export class InvalidLaunchTemplateIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLaunchTemplateIdMalformed>()(
+    "InvalidLaunchTemplateId.Malformed",
+    {},
+  ) {}
+export class InvalidLaunchTemplateIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLaunchTemplateIdNotFound>()(
+    "InvalidLaunchTemplateId.NotFound",
+    {},
+  ) {}
+export class InvalidLaunchTemplateNameNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLaunchTemplateNameNotFoundException>()(
+    "InvalidLaunchTemplateName.NotFoundException",
+    {},
+  ) {}
+export class InvalidLocalGatewayIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayIDMalformed>()(
+    "InvalidLocalGatewayID.Malformed",
+    {},
+  ) {}
+export class InvalidLocalGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayIDNotFound>()(
+    "InvalidLocalGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidLocalGatewayRouteTableIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDMalformed>()(
+    "InvalidLocalGatewayRouteTableID.Malformed",
+    {},
+  ) {}
+export class InvalidLocalGatewayRouteTableIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDNotFound>()(
+    "InvalidLocalGatewayRouteTableID.NotFound",
+    {},
+  ) {}
+export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed>()(
+    "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.Malformed",
+    {},
+  ) {}
+export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound>()(
+    "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.NotFound",
+    {},
+  ) {}
+export class InvalidLocalGatewayRouteTableVpcAssociationIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDMalformed>()(
+    "InvalidLocalGatewayRouteTableVpcAssociationID.Malformed",
+    {},
+  ) {}
+export class InvalidLocalGatewayRouteTableVpcAssociationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDNotFound>()(
+    "InvalidLocalGatewayRouteTableVpcAssociationID.NotFound",
+    {},
+  ) {}
+export class InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDMalformed>()(
+    "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
+    {},
+  ) {}
+export class InvalidLocalGatewayVirtualInterfaceGroupIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDNotFound>()(
+    "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
+    {},
+  ) {}
+export class InvalidLocalGatewayVirtualInterfaceIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDMalformed>()(
+    "InvalidLocalGatewayVirtualInterfaceID.Malformed",
+    {},
+  ) {}
+export class InvalidLocalGatewayVirtualInterfaceIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDNotFound>()(
+    "InvalidLocalGatewayVirtualInterfaceID.NotFound",
+    {},
+  ) {}
+export class InvalidNetworkAclEntryNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkAclEntryNotFound>()(
+    "InvalidNetworkAclEntry.NotFound",
+    {},
+  ) {}
+export class InvalidNetworkAclIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkAclIdMalformed>()(
+    "InvalidNetworkAclId.Malformed",
+    {},
+  ) {}
+export class InvalidNetworkAclIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkAclIDNotFound>()(
+    "InvalidNetworkAclID.NotFound",
+    {},
+  ) {}
+export class InvalidNetworkInsightsAccessScopeIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkInsightsAccessScopeIdNotFound>()(
+    "InvalidNetworkInsightsAccessScopeId.NotFound",
+    {},
+  ) {}
+export class InvalidNetworkInterfaceAttachmentIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkInterfaceAttachmentIdMalformed>()(
+    "InvalidNetworkInterfaceAttachmentId.Malformed",
+    {},
+  ) {}
+export class InvalidNetworkInterfaceIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkInterfaceIdMalformed>()(
+    "InvalidNetworkInterfaceId.Malformed",
+    {},
+  ) {}
+export class InvalidNetworkInterfaceIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkInterfaceIDNotFound>()(
+    "InvalidNetworkInterfaceID.NotFound",
+    {},
+  ) {}
+export class InvalidNetworkInterfaceInUse
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidNetworkInterfaceInUse>()(
+    "InvalidNetworkInterface.InUse",
+    {},
+  ).pipe(C.withDependencyViolationError) {}
+export class InvalidOutpostLagIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidOutpostLagIDMalformed>()(
+    "InvalidOutpostLagID.Malformed",
+    {},
+  ) {}
+export class InvalidParameter
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameter>()(
+    "InvalidParameter",
+    {},
+  ) {}
+export class InvalidParameterCombination
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterCombination>()(
+    "InvalidParameterCombination",
+    {},
+  ) {}
+export class InvalidParameterValue
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParameterValue>()(
+    "InvalidParameterValue",
+    {},
+  ) {}
+export class InvalidPermissionDuplicate
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPermissionDuplicate>()(
+    "InvalidPermission.Duplicate",
+    {},
+  ).pipe(C.withAlreadyExistsError) {}
+export class InvalidPermissionIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPermissionIDMalformed>()(
+    "InvalidPermissionID.Malformed",
+    {},
+  ) {}
+export class InvalidPermissionIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPermissionIDNotFound>()(
+    "InvalidPermissionID.NotFound",
+    {},
+  ) {}
+export class InvalidPermissionNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPermissionNotFound>()(
+    "InvalidPermission.NotFound",
+    {},
+  ) {}
+export class InvalidPlacementGroupUnknown
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPlacementGroupUnknown>()(
+    "InvalidPlacementGroup.Unknown",
+    {},
+  ) {}
+export class InvalidPoolIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPoolIDMalformed>()(
+    "InvalidPoolID.Malformed",
+    {},
+  ) {}
+export class InvalidPoolIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPoolIDNotFound>()(
+    "InvalidPoolID.NotFound",
+    {},
+  ) {}
+export class InvalidPrefixListIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPrefixListIdMalformed>()(
+    "InvalidPrefixListId.Malformed",
+    {},
+  ) {}
+export class InvalidPrefixListIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPrefixListIdNotFound>()(
+    "InvalidPrefixListId.NotFound",
+    {},
+  ) {}
+export class InvalidPrefixListIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPrefixListIDNotFound>()(
+    "InvalidPrefixListID.NotFound",
+    {},
+  ) {}
+export class InvalidPublicIpv4PoolIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPublicIpv4PoolIDMalformed>()(
+    "InvalidPublicIpv4PoolID.Malformed",
+    {},
+  ) {}
+export class InvalidPublicIpv4PoolIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPublicIpv4PoolIDNotFound>()(
+    "InvalidPublicIpv4PoolID.NotFound",
+    {},
+  ) {}
+export class InvalidPublicIpv4PoolNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPublicIpv4PoolNotFound>()(
+    "InvalidPublicIpv4Pool.NotFound",
+    {},
+  ) {}
+export class InvalidPurchaseTokenMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidPurchaseTokenMalformed>()(
+    "InvalidPurchaseToken.Malformed",
+    {},
+  ) {}
+export class InvalidRegion
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRegion>()(
+    "InvalidRegion",
+    {},
+  ) {}
+export class InvalidRequest
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequest>()(
+    "InvalidRequest",
+    {},
+  ) {}
+export class InvalidReservedInstancesIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidReservedInstancesIDNotFound>()(
+    "InvalidReservedInstancesID.NotFound",
+    {},
+  ) {}
+export class InvalidRoleArnMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRoleArnMalformed>()(
+    "InvalidRoleArn.Malformed",
+    {},
+  ) {}
+export class InvalidRouteMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteMalformed>()(
+    "InvalidRoute.Malformed",
+    {},
+  ) {}
+export class InvalidRouteNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteNotFound>()(
+    "InvalidRoute.NotFound",
+    {},
+  ) {}
+export class InvalidRouteServerEndpointIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteServerEndpointIdNotFound>()(
+    "InvalidRouteServerEndpointId.NotFound",
+    {},
+  ) {}
+export class InvalidRouteServerIdNotAssociated
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteServerIdNotAssociated>()(
+    "InvalidRouteServerId.NotAssociated",
+    {},
+  ) {}
+export class InvalidRouteServerIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteServerIdNotFound>()(
+    "InvalidRouteServerId.NotFound",
+    {},
+  ) {}
+export class InvalidRouteServerPeerIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteServerPeerIdMalformed>()(
+    "InvalidRouteServerPeerId.Malformed",
+    {},
+  ) {}
+export class InvalidRouteServerPeerIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteServerPeerIdNotFound>()(
+    "InvalidRouteServerPeerId.NotFound",
+    {},
+  ) {}
+export class InvalidRouteTableAssociationIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteTableAssociationIdMalformed>()(
+    "InvalidRouteTableAssociationId.Malformed",
+    {},
+  ) {}
+export class InvalidRouteTableIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteTableIdMalformed>()(
+    "InvalidRouteTableId.Malformed",
+    {},
+  ) {}
+export class InvalidRouteTableIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRouteTableIDNotFound>()(
+    "InvalidRouteTableID.NotFound",
+    {},
+  ) {}
+export class InvalidScheduledInstance
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidScheduledInstance>()(
+    "InvalidScheduledInstance",
+    {},
+  ) {}
+export class InvalidSecurityGroupRuleIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupRuleIdMalformed>()(
+    "InvalidSecurityGroupRuleId.Malformed",
+    {},
+  ) {}
+export class InvalidSecurityGroupRuleIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSecurityGroupRuleIdNotFound>()(
+    "InvalidSecurityGroupRuleId.NotFound",
+    {},
+  ) {}
+export class InvalidServiceLinkVirtualInterfaceIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidServiceLinkVirtualInterfaceIDMalformed>()(
+    "InvalidServiceLinkVirtualInterfaceID.Malformed",
+    {},
+  ) {}
+export class InvalidServiceName
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidServiceName>()(
+    "InvalidServiceName",
+    {},
+  ) {}
+export class InvalidSnapshotIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnapshotIDMalformed>()(
+    "InvalidSnapshotID.Malformed",
+    {},
+  ) {}
+export class InvalidSnapshotNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSnapshotNotFound>()(
+    "InvalidSnapshot.NotFound",
+    {},
+  ) {}
+export class InvalidSpotDatafeedNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSpotDatafeedNotFound>()(
+    "InvalidSpotDatafeed.NotFound",
+    {},
+  ) {}
+export class InvalidSpotInstanceRequestIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSpotInstanceRequestIDMalformed>()(
+    "InvalidSpotInstanceRequestID.Malformed",
+    {},
+  ) {}
+export class InvalidState
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidState>()(
+    "InvalidState",
+    {},
+  ) {}
+export class InvalidSubnet
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnet>()(
+    "InvalidSubnet",
+    {},
+  ) {}
+export class InvalidSubnetCidrBlockAssociationIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIdMalformed>()(
+    "InvalidSubnetCidrBlockAssociationId.Malformed",
+    {},
+  ) {}
+export class InvalidSubnetCidrBlockAssociationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIDNotFound>()(
+    "InvalidSubnetCidrBlockAssociationID.NotFound",
+    {},
+  ) {}
+export class InvalidSubnetCidrReservationIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetCidrReservationIDMalformed>()(
+    "InvalidSubnetCidrReservationID.Malformed",
+    {},
+  ) {}
+export class InvalidSubnetCidrReservationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetCidrReservationIDNotFound>()(
+    "InvalidSubnetCidrReservationID.NotFound",
+    {},
+  ) {}
+export class InvalidSubnetConflict
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetConflict>()(
+    "InvalidSubnet.Conflict",
+    {},
+  ) {}
+export class InvalidSubnetIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetIdMalformed>()(
+    "InvalidSubnetId.Malformed",
+    {},
+  ) {}
+export class InvalidSubnetIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetIDMalformed>()(
+    "InvalidSubnetID.Malformed",
+    {},
+  ) {}
+export class InvalidSubnetIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidSubnetIDNotFound>()(
+    "InvalidSubnetID.NotFound",
+    {},
+  ) {}
+export class InvalidTargetArnUnknown
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTargetArnUnknown>()(
+    "InvalidTargetArn.Unknown",
+    {},
+  ) {}
+export class InvalidTrafficMirrorFilterIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrafficMirrorFilterIdNotFound>()(
+    "InvalidTrafficMirrorFilterId.NotFound",
+    {},
+  ) {}
+export class InvalidTrafficMirrorFilterRuleIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrafficMirrorFilterRuleIdNotFound>()(
+    "InvalidTrafficMirrorFilterRuleId.NotFound",
+    {},
+  ) {}
+export class InvalidTrafficMirrorSessionIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrafficMirrorSessionIdNotFound>()(
+    "InvalidTrafficMirrorSessionId.NotFound",
+    {},
+  ) {}
+export class InvalidTrafficMirrorTargetIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTrafficMirrorTargetIdNotFound>()(
+    "InvalidTrafficMirrorTargetId.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayAttachmentIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDMalformed>()(
+    "InvalidTransitGatewayAttachmentID.Malformed",
+    {},
+  ) {}
+export class InvalidTransitGatewayAttachmentIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDNotFound>()(
+    "InvalidTransitGatewayAttachmentID.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayConnectPeerIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDMalformed>()(
+    "InvalidTransitGatewayConnectPeerID.Malformed",
+    {},
+  ) {}
+export class InvalidTransitGatewayConnectPeerIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDNotFound>()(
+    "InvalidTransitGatewayConnectPeerID.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayIDMalformed>()(
+    "InvalidTransitGatewayID.Malformed",
+    {},
+  ) {}
+export class InvalidTransitGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayIDNotFound>()(
+    "InvalidTransitGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayMeteringPolicyIdMalformedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdMalformedException>()(
+    "InvalidTransitGatewayMeteringPolicyIdMalformedException",
+    {},
+  ) {}
+export class InvalidTransitGatewayMeteringPolicyIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdNotFound>()(
+    "InvalidTransitGatewayMeteringPolicyId.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayMulticastDomainIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdMalformed>()(
+    "InvalidTransitGatewayMulticastDomainId.Malformed",
+    {},
+  ) {}
+export class InvalidTransitGatewayMulticastDomainIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdNotFound>()(
+    "InvalidTransitGatewayMulticastDomainId.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayPolicyTableIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdMalformed>()(
+    "InvalidTransitGatewayPolicyTableId.Malformed",
+    {},
+  ) {}
+export class InvalidTransitGatewayPolicyTableIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdNotFound>()(
+    "InvalidTransitGatewayPolicyTableId.NotFound",
+    {},
+  ) {}
+export class InvalidTransitGatewayRouteTableAnnouncementIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTransitGatewayRouteTableAnnouncementIdMalformed>()(
+    "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
+    {},
+  ) {}
+export class InvalidUserIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidUserIDMalformed>()(
+    "InvalidUserID.Malformed",
+    {},
+  ) {}
+export class InvalidVerifiedAccessEndpointIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVerifiedAccessEndpointIdNotFound>()(
+    "InvalidVerifiedAccessEndpointId.NotFound",
+    {},
+  ) {}
+export class InvalidVerifiedAccessGroupIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVerifiedAccessGroupIdNotFound>()(
+    "InvalidVerifiedAccessGroupId.NotFound",
+    {},
+  ) {}
+export class InvalidVerifiedAccessInstanceIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVerifiedAccessInstanceIdNotFound>()(
+    "InvalidVerifiedAccessInstanceId.NotFound",
+    {},
+  ) {}
+export class InvalidVerifiedAccessTrustProviderIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVerifiedAccessTrustProviderIdNotFound>()(
+    "InvalidVerifiedAccessTrustProviderId.NotFound",
+    {},
+  ) {}
+export class InvalidVolumeIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVolumeIDMalformed>()(
+    "InvalidVolumeID.Malformed",
+    {},
+  ) {}
+export class InvalidVolumeNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVolumeNotFound>()(
+    "InvalidVolume.NotFound",
+    {},
+  ) {}
+export class InvalidVpcCidrBlockAssociationIdErrorNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdErrorNotFound>()(
+    "InvalidVpcCidrBlockAssociationIdError.NotFound",
+    {},
+  ) {}
+export class InvalidVpcCidrBlockAssociationIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdMalformed>()(
+    "InvalidVpcCidrBlockAssociationId.Malformed",
+    {},
+  ) {}
+export class InvalidVpcCidrBlockAssociationIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIDNotFound>()(
+    "InvalidVpcCidrBlockAssociationID.NotFound",
+    {},
+  ) {}
+export class InvalidVpcEncryptionControlIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcEncryptionControlIdMalformed>()(
+    "InvalidVpcEncryptionControlId.Malformed",
+    {},
+  ) {}
+export class InvalidVpcEncryptionControlIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcEncryptionControlIdNotFound>()(
+    "InvalidVpcEncryptionControlId.NotFound",
+    {},
+  ) {}
+export class InvalidVpcEndpointIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcEndpointIdNotFound>()(
+    "InvalidVpcEndpointId.NotFound",
+    {},
+  ) {}
+export class InvalidVpcEndpointServiceIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcEndpointServiceIdMalformed>()(
+    "InvalidVpcEndpointServiceId.Malformed",
+    {},
+  ) {}
+export class InvalidVpcEndpointServiceIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcEndpointServiceIdNotFound>()(
+    "InvalidVpcEndpointServiceId.NotFound",
+    {},
+  ) {}
+export class InvalidVpcIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcIdMalformed>()(
+    "InvalidVpcId.Malformed",
+    {},
+  ) {}
+export class InvalidVpcIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcIdNotFound>()(
+    "InvalidVpcId.NotFound",
+    {},
+  ) {}
+export class InvalidVpcIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcIDNotFound>()(
+    "InvalidVpcID.NotFound",
+    {},
+  ) {}
+export class InvalidVpcPeeringConnectionIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcPeeringConnectionIdNotFound>()(
+    "InvalidVpcPeeringConnectionId.NotFound",
+    {},
+  ) {}
+export class InvalidVpcPeeringConnectionIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpcPeeringConnectionIDNotFound>()(
+    "InvalidVpcPeeringConnectionID.NotFound",
+    {},
+  ) {}
+export class InvalidVpnConcentratorIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpnConcentratorIdMalformed>()(
+    "InvalidVpnConcentratorId.Malformed",
+    {},
+  ) {}
+export class InvalidVpnConcentratorIDMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpnConcentratorIDMalformed>()(
+    "InvalidVpnConcentratorID.Malformed",
+    {},
+  ) {}
+export class InvalidVpnConnectionDeviceTypeIdNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpnConnectionDeviceTypeIdNotFound>()(
+    "InvalidVpnConnectionDeviceTypeId.NotFound",
+    {},
+  ) {}
+export class InvalidVpnConnectionId
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpnConnectionId>()(
+    "InvalidVpnConnectionId",
+    {},
+  ) {}
+export class InvalidVpnConnectionIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpnConnectionIDNotFound>()(
+    "InvalidVpnConnectionID.NotFound",
+    {},
+  ) {}
+export class InvalidVpnGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidVpnGatewayIDNotFound>()(
+    "InvalidVpnGatewayID.NotFound",
+    {},
+  ) {}
+export class InvalidZoneNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneNotFound>()(
+    "InvalidZone.NotFound",
+    {},
+  ) {}
+export class MalformedGatewayIDNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<MalformedGatewayIDNotFound>()(
+    "MalformedGatewayID.NotFound",
+    {},
+  ) {}
+export class MissingParameter
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingParameter>()(
+    "MissingParameter",
+    {},
+  ) {}
+export class MissingRequiredParameter
+  extends /*@__PURE__*/ S.TaggedErrorClass<MissingRequiredParameter>()(
+    "MissingRequiredParameter",
+    {},
+  ) {}
+export class NatGatewayMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<NatGatewayMalformed>()(
+    "NatGatewayMalformed",
+    {},
+  ) {}
+export class NatGatewayNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<NatGatewayNotFound>()(
+    "NatGatewayNotFound",
+    {},
+  ) {}
+export class OperationNotPermitted
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotPermitted>()(
+    "OperationNotPermitted",
+    {},
+  ) {}
+export class ParseError
+  extends /*@__PURE__*/ S.TaggedErrorClass<ParseError>()("ParseError", {}) {}
+export class RequestError
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestError>()(
+    "RequestError",
+    {},
+  ) {}
+export class RequestLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestLimitExceeded>()(
+    "RequestLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class ResourceLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceLimitExceeded>()(
+    "ResourceLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class RouteAlreadyExists
+  extends /*@__PURE__*/ S.TaggedErrorClass<RouteAlreadyExists>()(
+    "RouteAlreadyExists",
+    {},
+  ).pipe(C.withAlreadyExistsError) {}
+export class TransitGatewayLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<TransitGatewayLimitExceeded>()(
+    "TransitGatewayLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class UnauthorizedOperation
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedOperation>()(
+    "UnauthorizedOperation",
+    {},
+  ).pipe(C.withAuthError) {}
+export class UnknownParameter
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownParameter>()(
+    "UnknownParameter",
+    {},
+  ) {}
+export class UnknownResource
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnknownResource>()(
+    "UnknownResource",
+    {},
+  ) {}
+export class Unsupported
+  extends /*@__PURE__*/ S.TaggedErrorClass<Unsupported>()("Unsupported", {}) {}
+export class UnsupportedOperation
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedOperation>()(
+    "UnsupportedOperation",
+    {},
+  ) {}
+export class VerifiedAccessInstanceLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<VerifiedAccessInstanceLimitExceeded>()(
+    "VerifiedAccessInstanceLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
+export class VolumeInUse
+  extends /*@__PURE__*/ S.TaggedErrorClass<VolumeInUse>()(
+    "VolumeInUse",
+    {},
+  ).pipe(
+    C.withConflictError,
+    C.withRetryableError,
+    C.withDependencyViolationError,
+  ) {}
+export class VpcBlockPublicAccessExclusionIdMalformed
+  extends /*@__PURE__*/ S.TaggedErrorClass<VpcBlockPublicAccessExclusionIdMalformed>()(
+    "VpcBlockPublicAccessExclusionId.Malformed",
+    {},
+  ) {}
+export class VPCIdNotSpecified
+  extends /*@__PURE__*/ S.TaggedErrorClass<VPCIdNotSpecified>()(
+    "VPCIdNotSpecified",
+    {},
+  ) {}
+export class VpcLimitExceeded
+  extends /*@__PURE__*/ S.TaggedErrorClass<VpcLimitExceeded>()(
+    "VpcLimitExceeded",
+    {},
+  ).pipe(C.withThrottlingError) {}
 export type ResourceType =
   | "capacity-reservation"
   | "client-vpn-endpoint"

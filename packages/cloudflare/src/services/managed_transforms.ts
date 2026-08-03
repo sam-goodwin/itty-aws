@@ -20,13 +20,14 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   managedResponseHeaders: "managed_response_headers",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
 export interface DeleteManagedTransformRequest {
   /** The unique ID of the zone. */

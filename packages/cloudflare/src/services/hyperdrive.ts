@@ -28,48 +28,65 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   staleWhileRevalidate: "stale_while_revalidate",
 };
 
-export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HyperdriveConfigNotFound>()("HyperdriveConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2006 }, { status: 404 }],
-) {}
+export class HyperdriveConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HyperdriveConfigNotFound>()(
+      "HyperdriveConfigNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2006 }, { status: 404 }],
+  ) {}
 
-export class InvalidHyperdriveConfig extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidHyperdriveConfig>()("InvalidHyperdriveConfig", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2007 }],
-) {}
+export class InvalidHyperdriveConfig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidHyperdriveConfig>()(
+      "InvalidHyperdriveConfig",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2007 }],
+  ) {}
 
-export class InvalidObjectIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidObjectIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+      "InvalidObjectIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
-export class MethodNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 10000, message: { includes: "method not allowed" } },
-    { code: 10405, message: { includes: "Method not allowed" } },
-  ],
-) {}
+export class MethodNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 10000, message: { includes: "method not allowed" } },
+      { code: 10405, message: { includes: "Method not allowed" } },
+    ],
+  ) {}
 
-export class PrivateHostNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PrivateHostNotAllowed>()("PrivateHostNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2009 }],
-) {}
+export class PrivateHostNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PrivateHostNotAllowed>()(
+      "PrivateHostNotAllowed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2009 }],
+  ) {}
 
 export type ConfigsCreateRequestOriginPublicDatabaseScheme =
   | "postgres"

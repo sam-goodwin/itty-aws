@@ -25,29 +25,35 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   updatedAt: "updated_at",
 };
 
-export class CmbConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class CmbConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class LogsControlNotAuthorized extends T.applyErrorMatchers(
-  S.TaggedErrorClass<LogsControlNotAuthorized>()("LogsControlNotAuthorized", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10000, message: { includes: "Unauthorized" } }],
-) {}
+export class LogsControlNotAuthorized
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<LogsControlNotAuthorized>()(
+      "LogsControlNotAuthorized",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10000, message: { includes: "Unauthorized" } }],
+  ) {}
 
 export interface CreateControlCmbConfigRequest {
   /** Identifier. */

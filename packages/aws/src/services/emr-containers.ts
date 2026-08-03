@@ -93,43 +93,50 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class EKSRequestThrottledException extends S.TaggedErrorClass<EKSRequestThrottledException>()(
-  "EKSRequestThrottledException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidResourceArn extends S.TaggedErrorClass<InvalidResourceArn>()(
-  "InvalidResourceArn",
-  {},
-  T.SyntheticError({
-    from: "BadRequestException",
-    message: { includes: "Invalid input resource arn" },
-  }),
-) {}
-export class RequestThrottledException extends S.TaggedErrorClass<RequestThrottledException>()(
-  "RequestThrottledException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class EKSRequestThrottledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<EKSRequestThrottledException>()(
+    "EKSRequestThrottledException",
+    { message: S.optional(S.String) },
+    T.HttpError(429),
+  ).pipe(C.withThrottlingError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidResourceArn
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidResourceArn>()(
+    "InvalidResourceArn",
+    {},
+    T.SyntheticError({
+      from: "BadRequestException",
+      message: { includes: "Invalid input resource arn" },
+    }),
+  ) {}
+export class RequestThrottledException
+  extends /*@__PURE__*/ S.TaggedErrorClass<RequestThrottledException>()(
+    "RequestThrottledException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyRequestsException>()(
+    "TooManyRequestsException",
+    {},
+  ).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type ResourceIdString = string;
 export interface CancelJobRunRequest {
   id: string;

@@ -24,29 +24,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneId: "zone_id",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class TagPreconditionFailed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TagPreconditionFailed>()("TagPreconditionFailed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 412 }],
-) {}
+export class TagPreconditionFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TagPreconditionFailed>()(
+      "TagPreconditionFailed",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 412 }],
+  ) {}
 
-export class ZoneTagResourceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ZoneTagResourceNotFound>()("ZoneTagResourceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class ZoneTagResourceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ZoneTagResourceNotFound>()(
+      "ZoneTagResourceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export interface DeleteAccountTagRequest {
   /** Identifier. */

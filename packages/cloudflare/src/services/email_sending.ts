@@ -26,32 +26,38 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   returnPathDomain: "return_path_domain",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class SendingSubdomainAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
-    "SendingSubdomainAlreadyExists",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 2040 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class SendingSubdomainNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SendingSubdomainNotFound>()("SendingSubdomainNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 2033 }],
-) {}
+export class SendingSubdomainAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
+      "SendingSubdomainAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2040 }],
+  ) {}
+
+export class SendingSubdomainNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SendingSubdomainNotFound>()(
+      "SendingSubdomainNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 2033 }],
+  ) {}
 
 export interface CreateSubdomainRequest {
   /** Identifier. */

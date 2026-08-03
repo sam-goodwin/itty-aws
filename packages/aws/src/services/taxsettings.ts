@@ -103,51 +103,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: SensitiveString },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class AttachmentUploadException extends S.TaggedErrorClass<AttachmentUploadException>()(
-  "AttachmentUploadException",
-  { message: SensitiveString },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CaseCreationLimitExceededException extends S.TaggedErrorClass<CaseCreationLimitExceededException>()(
-  "CaseCreationLimitExceededException",
-  { message: SensitiveString },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: SensitiveString, errorCode: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: SensitiveString, errorCode: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: SensitiveString, errorCode: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: SensitiveString,
-    errorCode: S.suspend(() => ValidationExceptionErrorCode).annotate({
-      identifier: "ValidationExceptionErrorCode",
-    }),
-    fieldList: S.optional(
-      S.suspend(() => ValidationExceptionFieldList).annotate({
-        identifier: "ValidationExceptionFieldList",
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    { message: SensitiveString },
+    T.HttpError(401),
+  ).pipe(C.withAuthError) {}
+export class AttachmentUploadException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AttachmentUploadException>()(
+    "AttachmentUploadException",
+    { message: SensitiveString },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class CaseCreationLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<CaseCreationLimitExceededException>()(
+    "CaseCreationLimitExceededException",
+    { message: SensitiveString },
+    T.HttpError(413),
+  ).pipe(C.withBadRequestError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { message: SensitiveString, errorCode: S.String },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { message: SensitiveString, errorCode: S.String },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: SensitiveString, errorCode: S.String },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    {
+      message: SensitiveString,
+      errorCode: S.suspend(() => ValidationExceptionErrorCode).annotate({
+        identifier: "ValidationExceptionErrorCode",
       }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+      fieldList: S.optional(
+        S.suspend(() => ValidationExceptionFieldList).annotate({
+          identifier: "ValidationExceptionFieldList",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export type AccountIds = string[];
 export const AccountIds = /*@__PURE__*/ S.Array(S.String);

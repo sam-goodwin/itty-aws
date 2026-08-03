@@ -25,83 +25,104 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   unsuccessfulKeys: "unsuccessful_keys",
 };
 
-export class InvalidExpirationTtl extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidExpirationTtl>()("InvalidExpirationTtl", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10034 }],
-) {}
+export class InvalidExpirationTtl
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidExpirationTtl>()(
+      "InvalidExpirationTtl",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10034 }],
+  ) {}
 
-export class InvalidObjectIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidObjectIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+      "InvalidObjectIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
-export class InvalidRequestBody extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRequestBody>()("InvalidRequestBody", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10012 }],
-) {}
+export class InvalidRequestBody
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestBody>()(
+      "InvalidRequestBody",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10012 }],
+  ) {}
 
-export class KeyNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10009 }],
-) {}
-
-export class MethodNotAllowed extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 10405, message: { includes: "not allowed" } },
-    { code: 10000, message: { includes: "not allowed" } },
-  ],
-) {}
-
-export class MinimumKeysRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MinimumKeysRequired>()("MinimumKeysRequired", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10029 }],
-) {}
-
-export class NamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10013 }],
-) {}
-
-export class NamespaceTitleAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NamespaceTitleAlreadyExists>()(
-    "NamespaceTitleAlreadyExists",
-    {
+export class KeyNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10014 }],
-) {}
+    }),
+    [{ code: 10009 }],
+  ) {}
 
-export class TitleRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TitleRequired>()("TitleRequired", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10019 }],
-) {}
+export class MethodNotAllowed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [
+      { code: 10405, message: { includes: "not allowed" } },
+      { code: 10000, message: { includes: "not allowed" } },
+    ],
+  ) {}
+
+export class MinimumKeysRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MinimumKeysRequired>()(
+      "MinimumKeysRequired",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10029 }],
+  ) {}
+
+export class NamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10013 }],
+  ) {}
+
+export class NamespaceTitleAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NamespaceTitleAlreadyExists>()(
+      "NamespaceTitleAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10014 }],
+  ) {}
+
+export class TitleRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TitleRequired>()("TitleRequired", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10019 }],
+  ) {}
 
 export type NamespacesBulkDeleteRequestBodyList = Array<string>;
 export const NamespacesBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(

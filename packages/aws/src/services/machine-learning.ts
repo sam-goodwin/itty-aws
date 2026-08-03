@@ -90,44 +90,52 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { message: S.optional(S.String), code: S.optional(S.Number) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String), code: S.optional(S.Number) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String), code: S.optional(S.Number) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
-  "InvalidTagException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String), code: S.optional(S.Number) },
-  T.HttpError(417),
-) {}
-export class PredictorNotMountedException extends S.TaggedErrorClass<PredictorNotMountedException>()(
-  "PredictorNotMountedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), code: S.optional(S.Number) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
-  "TagLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
+export class IdempotentParameterMismatchException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+    "IdempotentParameterMismatchException",
+    { message: S.optional(S.String), code: S.optional(S.Number) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { message: S.optional(S.String), code: S.optional(S.Number) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidInputException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidInputException>()(
+    "InvalidInputException",
+    { message: S.optional(S.String), code: S.optional(S.Number) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class InvalidTagException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidTagException>()(
+    "InvalidTagException",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String), code: S.optional(S.Number) },
+    T.HttpError(417),
+  ) {}
+export class PredictorNotMountedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<PredictorNotMountedException>()(
+    "PredictorNotMountedException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { message: S.optional(S.String), code: S.optional(S.Number) },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class TagLimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagLimitExceededException>()(
+    "TagLimitExceededException",
+    { message: S.optional(S.String) },
+  ) {}
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {

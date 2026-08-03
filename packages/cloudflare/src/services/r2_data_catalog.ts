@@ -30,61 +30,68 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   updatedAt: "updated_at",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidCredential extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidCredential>()("InvalidCredential", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 30004 }, { code: 30005 }],
-) {}
+export class InvalidCredential
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidCredential>()("InvalidCredential", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 30004 }, { code: 30005 }],
+  ) {}
 
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class NoSuchBucket extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10006 }, { code: 40406 }],
-) {}
+export class NoSuchBucket
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10006 }, { code: 40406 }],
+  ) {}
 
-export class TableNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10001 }, { code: 40403 }],
-) {}
+export class TableNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10001 }, { code: 40403 }],
+  ) {}
 
-export class WarehouseInactive extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WarehouseInactive>()("WarehouseInactive", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 40402 }],
-) {}
+export class WarehouseInactive
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WarehouseInactive>()("WarehouseInactive", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 40402 }],
+  ) {}
 
-export class WarehouseNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WarehouseNotFound>()("WarehouseNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 40401 }],
-) {}
+export class WarehouseNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WarehouseNotFound>()("WarehouseNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 40401 }],
+  ) {}
 
 export interface CreateCredentialRequest {
   /** Use this to identify the account. */

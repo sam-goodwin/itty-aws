@@ -88,70 +88,86 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class FleetCapacityExceededException extends S.TaggedErrorClass<FleetCapacityExceededException>()(
-  "FleetCapacityExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class GameSessionFullException extends S.TaggedErrorClass<GameSessionFullException>()(
-  "GameSessionFullException",
-  { Message: S.optional(S.String) },
-) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidFleetStatusException extends S.TaggedErrorClass<InvalidFleetStatusException>()(
-  "InvalidFleetStatusException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidGameSessionStatusException extends S.TaggedErrorClass<InvalidGameSessionStatusException>()(
-  "InvalidGameSessionStatusException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class NotReadyException extends S.TaggedErrorClass<NotReadyException>()(
-  "NotReadyException",
-  { Message: S.optional(S.String) },
-) {}
-export class OutOfCapacityException extends S.TaggedErrorClass<OutOfCapacityException>()(
-  "OutOfCapacityException",
-  { Message: S.optional(S.String) },
-) {}
-export class TaggingFailedException extends S.TaggedErrorClass<TaggingFailedException>()(
-  "TaggingFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class TerminalRoutingStrategyException extends S.TaggedErrorClass<TerminalRoutingStrategyException>()(
-  "TerminalRoutingStrategyException",
-  { Message: S.optional(S.String) },
-) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class UnsupportedRegionException extends S.TaggedErrorClass<UnsupportedRegionException>()(
-  "UnsupportedRegionException",
-  { Message: S.optional(S.String) },
-) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class FleetCapacityExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<FleetCapacityExceededException>()(
+    "FleetCapacityExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class GameSessionFullException
+  extends /*@__PURE__*/ S.TaggedErrorClass<GameSessionFullException>()(
+    "GameSessionFullException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class IdempotentParameterMismatchException
+  extends /*@__PURE__*/ S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+    "IdempotentParameterMismatchException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InternalServiceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServiceException>()(
+    "InternalServiceException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidFleetStatusException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidFleetStatusException>()(
+    "InvalidFleetStatusException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidGameSessionStatusException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidGameSessionStatusException>()(
+    "InvalidGameSessionStatusException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class NotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotFoundException>()(
+    "NotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class NotReadyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<NotReadyException>()(
+    "NotReadyException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class OutOfCapacityException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OutOfCapacityException>()(
+    "OutOfCapacityException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class TaggingFailedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TaggingFailedException>()(
+    "TaggingFailedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class TerminalRoutingStrategyException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TerminalRoutingStrategyException>()(
+    "TerminalRoutingStrategyException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class UnauthorizedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnauthorizedException>()(
+    "UnauthorizedException",
+    { Message: S.optional(S.String) },
+  ).pipe(C.withAuthError) {}
+export class UnsupportedRegionException
+  extends /*@__PURE__*/ S.TaggedErrorClass<UnsupportedRegionException>()(
+    "UnsupportedRegionException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type MatchmakingIdStringModel = string;
 export type PlayerId = string | redacted.Redacted<string>;
 export type PlayerIdsForAcceptMatch = (string | redacted.Redacted<string>)[];

@@ -28,53 +28,62 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   zoneTag: "zone_tag",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class MaxRulesExceeded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MaxRulesExceeded>()("MaxRulesExceeded", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409, message: { includes: "maxRulesError" } }],
-) {}
+export class MaxRulesExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MaxRulesExceeded>()("MaxRulesExceeded", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409, message: { includes: "maxRulesError" } }],
+  ) {}
 
-export class RuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RuleNotFound>()("RuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10003 }],
-) {}
+export class RuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RuleNotFound>()("RuleNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10003 }],
+  ) {}
 
-export class RulesetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class RulesetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class RumSiteQuotaExceeded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RumSiteQuotaExceeded>()("RumSiteQuotaExceeded", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10014 }],
-) {}
+export class RumSiteQuotaExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RumSiteQuotaExceeded>()(
+      "RumSiteQuotaExceeded",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10014 }],
+  ) {}
 
-export class SiteNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10015 }],
-) {}
+export class SiteNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10015 }],
+  ) {}
 
 export type RulesBulkCreateRequestDeleteRulesList = Array<string>;
 export const RulesBulkCreateRequestDeleteRulesList = /*@__PURE__*/ S.Array(

@@ -23,85 +23,104 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class InvalidAccountId extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidAccountId
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class InvalidJsonBody extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidJsonBody>()("InvalidJsonBody", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "invalid_json_body" } }],
-) {}
+export class InvalidJsonBody
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidJsonBody>()("InvalidJsonBody", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001, message: { includes: "invalid_json_body" } }],
+  ) {}
 
-export class MaximumStoresExceeded extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MaximumStoresExceeded>()("MaximumStoresExceeded", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003, message: { includes: "maximum_stores_exceeded" } }],
-) {}
+export class MaximumStoresExceeded
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MaximumStoresExceeded>()(
+      "MaximumStoresExceeded",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003, message: { includes: "maximum_stores_exceeded" } }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1000 }],
+  ) {}
 
-export class SecretNameAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretNameAlreadyExists>()("SecretNameAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1003, message: { includes: "secret_name_already_exists" } }],
-) {}
+export class SecretNameAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretNameAlreadyExists>()(
+      "SecretNameAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1003, message: { includes: "secret_name_already_exists" } }],
+  ) {}
 
-export class SecretNameEmpty extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretNameEmpty>()("SecretNameEmpty", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "secret_name_empty" } }],
-) {}
+export class SecretNameEmpty
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretNameEmpty>()("SecretNameEmpty", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001, message: { includes: "secret_name_empty" } }],
+  ) {}
 
-export class SecretNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "secret_not_found" } }],
-) {}
+export class SecretNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001, message: { includes: "secret_not_found" } }],
+  ) {}
 
-export class SecretScopeInvalid extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretScopeInvalid>()("SecretScopeInvalid", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "secret_scope_invalid" } }],
-) {}
+export class SecretScopeInvalid
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretScopeInvalid>()(
+      "SecretScopeInvalid",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1001, message: { includes: "secret_scope_invalid" } }],
+  ) {}
 
-export class SecretScopesEmpty extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretScopesEmpty>()("SecretScopesEmpty", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "secret_scopes_empty" } }],
-) {}
+export class SecretScopesEmpty
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretScopesEmpty>()("SecretScopesEmpty", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001, message: { includes: "secret_scopes_empty" } }],
+  ) {}
 
-export class StoreNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<StoreNotFound>()("StoreNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1001, message: { includes: "store_not_found" } }],
-) {}
+export class StoreNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<StoreNotFound>()("StoreNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1001, message: { includes: "store_not_found" } }],
+  ) {}
 
 export interface BulkDeleteStoreSecretsRequest {
   /** Account Identifier */

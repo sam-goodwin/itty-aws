@@ -20,37 +20,50 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   modifiedOn: "modified_on",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidWeb3HostnameTarget extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidWeb3HostnameTarget>()("InvalidWeb3HostnameTarget", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1006 }],
-) {}
+export class InvalidWeb3HostnameTarget
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidWeb3HostnameTarget>()(
+      "InvalidWeb3HostnameTarget",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1006 }],
+  ) {}
 
-export class Web3HostnameNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Web3HostnameNotEntitled>()("Web3HostnameNotEntitled", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1010, message: { includes: "not entitled" } }],
-) {}
+export class Web3HostnameNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Web3HostnameNotEntitled>()(
+      "Web3HostnameNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1010, message: { includes: "not entitled" } }],
+  ) {}
 
-export class Web3HostnameNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Web3HostnameNotFound>()("Web3HostnameNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1002 }],
-) {}
+export class Web3HostnameNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Web3HostnameNotFound>()(
+      "Web3HostnameNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1002 }],
+  ) {}
 
 export type HostnamesCreateRequestTarget =
   | "ethereum"

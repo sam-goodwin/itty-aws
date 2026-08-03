@@ -84,46 +84,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
-  "DuplicateResourceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParametersException extends S.TaggedErrorClass<InvalidParametersException>()(
-  "InvalidParametersException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
-  "OperationNotSupportedException",
-  { Message: S.optional(S.String) },
-) {}
-export class ProvisionedProductNotFound extends S.TaggedErrorClass<ProvisionedProductNotFound>()(
-  "ProvisionedProductNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Provisioned product not found" },
-  }),
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class TagOptionNotMigratedException extends S.TaggedErrorClass<TagOptionNotMigratedException>()(
-  "TagOptionNotMigratedException",
-  { Message: S.optional(S.String) },
-) {}
+export class DuplicateResourceException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateResourceException>()(
+    "DuplicateResourceException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidParametersException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidParametersException>()(
+    "InvalidParametersException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class InvalidStateException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidStateException>()(
+    "InvalidStateException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class OperationNotSupportedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<OperationNotSupportedException>()(
+    "OperationNotSupportedException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ProvisionedProductNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<ProvisionedProductNotFound>()(
+    "ProvisionedProductNotFound",
+    {},
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "Provisioned product not found" },
+    }),
+  ) {}
+export class ResourceInUseException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceInUseException>()(
+    "ResourceInUseException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    { Message: S.optional(S.String) },
+  ) {}
+export class TagOptionNotMigratedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TagOptionNotMigratedException>()(
+    "TagOptionNotMigratedException",
+    { Message: S.optional(S.String) },
+  ) {}
 export type AcceptLanguage = string;
 export type Id = string;
 export type PortfolioShareType =

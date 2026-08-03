@@ -85,28 +85,33 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class DirectConnectClientException extends S.TaggedErrorClass<DirectConnectClientException>()(
-  "DirectConnectClientException",
-  { message: S.optional(S.String) },
-) {}
-export class DirectConnectServerException extends S.TaggedErrorClass<DirectConnectServerException>()(
-  "DirectConnectServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class DuplicateTagKeysException extends S.TaggedErrorClass<DuplicateTagKeysException>()(
-  "DuplicateTagKeysException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
+export class DirectConnectClientException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DirectConnectClientException>()(
+    "DirectConnectClientException",
+    { message: S.optional(S.String) },
+  ) {}
+export class DirectConnectServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DirectConnectServerException>()(
+    "DirectConnectServerException",
+    { message: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class DuplicateTagKeysException
+  extends /*@__PURE__*/ S.TaggedErrorClass<DuplicateTagKeysException>()(
+    "DuplicateTagKeysException",
+    { message: S.optional(S.String) },
+  ) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    { message: S.optional(S.String) },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class TooManyTagsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<TooManyTagsException>()(
+    "TooManyTagsException",
+    { message: S.optional(S.String) },
+  ) {}
 export type DirectConnectGatewayId = string;
 export type DirectConnectGatewayAssociationProposalId = string;
 export type OwnerAccount = string;

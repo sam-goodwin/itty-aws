@@ -12,29 +12,35 @@ import * as Retry from "../retry.ts";
 
 export type { AxiomOpError, AxiomOpContext };
 
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400 }],
-) {}
+export class BadRequest
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<BadRequest>()("BadRequest", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 400 }],
+  ) {}
 
-export class NotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NotFound>()("NotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
-export class UnprocessableEntity extends T.applyErrorMatchers(
-  S.TaggedErrorClass<UnprocessableEntity>()("UnprocessableEntity", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 422 }],
-) {}
+export class UnprocessableEntity
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<UnprocessableEntity>()(
+      "UnprocessableEntity",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 422 }],
+  ) {}
 
 export interface IngestToDatasetRequest {
   dataset_id: string;

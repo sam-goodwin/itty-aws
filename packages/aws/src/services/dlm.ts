@@ -84,46 +84,54 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    RequiredParameters: S.optional(
-      S.suspend(() => ParameterList).annotate({ identifier: "ParameterList" }),
-    ),
-    MutuallyExclusiveParameters: S.optional(
-      S.suspend(() => ParameterList).annotate({ identifier: "ParameterList" }),
-    ),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceIds: S.optional(
-      S.suspend(() => PolicyIdList).annotate({ identifier: "PolicyIdList" }),
-    ),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    { Message: S.optional(S.String), Code: S.optional(S.String) },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    {
+      Message: S.optional(S.String),
+      Code: S.optional(S.String),
+      RequiredParameters: S.optional(
+        S.suspend(() => ParameterList).annotate({
+          identifier: "ParameterList",
+        }),
+      ),
+      MutuallyExclusiveParameters: S.optional(
+        S.suspend(() => ParameterList).annotate({
+          identifier: "ParameterList",
+        }),
+      ),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
+export class LimitExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<LimitExceededException>()(
+    "LimitExceededException",
+    {
+      Message: S.optional(S.String),
+      Code: S.optional(S.String),
+      ResourceType: S.optional(S.String),
+    },
+    T.HttpError(429),
+  ).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    {
+      Message: S.optional(S.String),
+      Code: S.optional(S.String),
+      ResourceType: S.optional(S.String),
+      ResourceIds: S.optional(
+        S.suspend(() => PolicyIdList).annotate({ identifier: "PolicyIdList" }),
+      ),
+    },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
 export type ExecutionRoleArn = string;
 export type PolicyDescription = string;
 export type SettablePolicyStateValues = "ENABLED" | "DISABLED" | (string & {});

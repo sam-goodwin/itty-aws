@@ -26,29 +26,41 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   updatedBy: "updated_by",
 };
 
-export class FlagshipAppNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FlagshipAppNotFound>()("FlagshipAppNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "App not found" } }],
-) {}
+export class FlagshipAppNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FlagshipAppNotFound>()(
+      "FlagshipAppNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "App not found" } }],
+  ) {}
 
-export class FlagshipFlagAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FlagshipFlagAlreadyExists>()("FlagshipFlagAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409, message: { includes: "Flag already exists" } }],
-) {}
+export class FlagshipFlagAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FlagshipFlagAlreadyExists>()(
+      "FlagshipFlagAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 409, message: { includes: "Flag already exists" } }],
+  ) {}
 
-export class FlagshipFlagNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<FlagshipFlagNotFound>()("FlagshipFlagNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404, message: { includes: "Flag not found" } }],
-) {}
+export class FlagshipFlagNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<FlagshipFlagNotFound>()(
+      "FlagshipFlagNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "Flag not found" } }],
+  ) {}
 
 export interface CreateAppRequest {
   /** Cloudflare account ID. */

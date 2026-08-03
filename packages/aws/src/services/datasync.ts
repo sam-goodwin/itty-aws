@@ -87,66 +87,72 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.optional(S.String), errorCode: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-) {}
-export class LocationAccessTestFailed extends S.TaggedErrorClass<LocationAccessTestFailed>()(
-  "LocationAccessTestFailed",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "location access test failed" },
-  }),
-).pipe(C.withRetryableError) {}
-export class LocationNotFound extends S.TaggedErrorClass<LocationNotFound>()(
-  "LocationNotFound",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Location .* is not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class LocationRoleNotAssumable extends S.TaggedErrorClass<LocationRoleNotAssumable>()(
-  "LocationRoleNotAssumable",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "Invalid IAM role" },
-  }),
-).pipe(C.withRetryableError) {}
-export class TaskNotFound extends S.TaggedErrorClass<TaskNotFound>()(
-  "TaskNotFound",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Task .* is not found" },
-  }),
-).pipe(C.withNotFoundError) {}
+export class InternalException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalException>()(
+    "InternalException",
+    { message: S.optional(S.String), errorCode: S.optional(S.String) },
+  ) {}
+export class InvalidRequestException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InvalidRequestException>()(
+    "InvalidRequestException",
+    {
+      message: S.optional(S.String),
+      errorCode: S.optional(S.String),
+      datasyncErrorCode: S.optional(S.String),
+    },
+  ) {}
+export class LocationAccessTestFailed
+  extends /*@__PURE__*/ S.TaggedErrorClass<LocationAccessTestFailed>()(
+    "LocationAccessTestFailed",
+    {
+      message: S.optional(S.String),
+      errorCode: S.optional(S.String),
+      datasyncErrorCode: S.optional(S.String),
+    },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { includes: "location access test failed" },
+    }),
+  ).pipe(C.withRetryableError) {}
+export class LocationNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<LocationNotFound>()(
+    "LocationNotFound",
+    {
+      message: S.optional(S.String),
+      errorCode: S.optional(S.String),
+      datasyncErrorCode: S.optional(S.String),
+    },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: "^Location .* is not found" },
+    }),
+  ).pipe(C.withNotFoundError) {}
+export class LocationRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedErrorClass<LocationRoleNotAssumable>()(
+    "LocationRoleNotAssumable",
+    {
+      message: S.optional(S.String),
+      errorCode: S.optional(S.String),
+      datasyncErrorCode: S.optional(S.String),
+    },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { includes: "Invalid IAM role" },
+    }),
+  ).pipe(C.withRetryableError) {}
+export class TaskNotFound
+  extends /*@__PURE__*/ S.TaggedErrorClass<TaskNotFound>()(
+    "TaskNotFound",
+    {
+      message: S.optional(S.String),
+      errorCode: S.optional(S.String),
+      datasyncErrorCode: S.optional(S.String),
+    },
+    T.SyntheticError({
+      from: "InvalidRequestException",
+      message: { matches: "^Task .* is not found" },
+    }),
+  ).pipe(C.withNotFoundError) {}
 export type TaskExecutionArn = string;
 export interface CancelTaskExecutionRequest {
   TaskExecutionArn: string;

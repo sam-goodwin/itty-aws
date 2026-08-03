@@ -87,185 +87,207 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
-  "PendingVerification",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {},
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export class AccessDeniedException
+  extends /*@__PURE__*/ S.TaggedErrorClass<AccessDeniedException>()(
+    "AccessDeniedException",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class ConflictException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ConflictException>()(
+    "ConflictException",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(409),
+  ).pipe(C.withConflictError) {}
+export class InternalServerException
+  extends /*@__PURE__*/ S.TaggedErrorClass<InternalServerException>()(
+    "InternalServerException",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(500),
+  ).pipe(C.withServerError) {}
+export class PendingVerification
+  extends /*@__PURE__*/ S.TaggedErrorClass<PendingVerification>()(
+    "PendingVerification",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(403),
+  ).pipe(C.withAuthError) {}
+export class ResourceNotFoundException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ResourceNotFoundException>()(
+    "ResourceNotFoundException",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(404),
+  ).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ServiceQuotaExceededException>()(
+    "ServiceQuotaExceededException",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(402),
+  ).pipe(C.withQuotaError) {}
+export class ThrottlingException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ThrottlingException>()(
+    "ThrottlingException",
+    {},
+  ) {}
+export class ValidationException
+  extends /*@__PURE__*/ S.TaggedErrorClass<ValidationException>()(
+    "ValidationException",
+    {
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      xAmznErrorType: S.optional(S.String).pipe(
+        T.HttpHeader("x-amzn-ErrorType"),
+      ),
+      exceptionMessage: S.optional(S.String),
+    },
+    T.HttpError(400),
+  ).pipe(C.withBadRequestError) {}
 export type EncoderConfigurationName = string;
 export type Width = number;
 export type Height = number;

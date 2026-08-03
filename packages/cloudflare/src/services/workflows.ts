@@ -44,69 +44,86 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workflowId: "workflow_id",
 };
 
-export class InstanceAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InstanceAlreadyExists>()("InstanceAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10405 }],
-) {}
+export class InstanceAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InstanceAlreadyExists>()(
+      "InstanceAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10405 }],
+  ) {}
 
-export class InstanceCannotTerminate extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InstanceCannotTerminate>()("InstanceCannotTerminate", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10401 }],
-) {}
+export class InstanceCannotTerminate
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InstanceCannotTerminate>()(
+      "InstanceCannotTerminate",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10401 }],
+  ) {}
 
-export class InstanceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InstanceNotFound>()("InstanceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10201 }, { code: 10400 }],
-) {}
+export class InstanceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InstanceNotFound>()("InstanceNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10201 }, { code: 10400 }],
+  ) {}
 
-export class InvalidBody extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidBody>()("InvalidBody", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10002 }],
-) {}
+export class InvalidBody
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidBody>()("InvalidBody", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10002 }],
+  ) {}
 
-export class InvalidRoute extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
+export class InvalidRoute
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 7003 }],
+  ) {}
 
-export class VersionNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10300 }],
-) {}
+export class VersionNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10300 }],
+  ) {}
 
-export class WorkflowInternalError extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WorkflowInternalError>()("WorkflowInternalError", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10001 }],
-) {}
+export class WorkflowInternalError
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WorkflowInternalError>()(
+      "WorkflowInternalError",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10001 }],
+  ) {}
 
-export class WorkflowNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<WorkflowNotFound>()("WorkflowNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10200 }],
-) {}
+export class WorkflowNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<WorkflowNotFound>()("WorkflowNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10200 }],
+  ) {}
 
 export type InstancesBulkRequestBodyItemInstanceRetentionErrorRetention =
   | string

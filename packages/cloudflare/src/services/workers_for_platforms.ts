@@ -85,129 +85,164 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workflowName: "workflow_name",
 };
 
-export class D1DatabaseNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<D1DatabaseNotFound>()("D1DatabaseNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10181 }],
-) {}
+export class D1DatabaseNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<D1DatabaseNotFound>()(
+      "D1DatabaseNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10181 }],
+  ) {}
 
-export class DispatchNamespaceAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
-    "DispatchNamespaceAlreadyExists",
-    {
+export class DispatchNamespaceAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
+      "DispatchNamespaceAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 100120 }],
+  ) {}
+
+export class DispatchNamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceNotFound>()(
+      "DispatchNamespaceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 100119 }],
+  ) {}
+
+export class DispatchNamespaceScriptNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DispatchNamespaceScriptNotFound>()(
+      "DispatchNamespaceScriptNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10007 }],
+  ) {}
+
+export class DurableObjectClassNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DurableObjectClassNotFound>()(
+      "DurableObjectClassNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10061 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 100120 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class DispatchNamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DispatchNamespaceNotFound>()("DispatchNamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100119 }],
-) {}
+export class HyperdriveConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<HyperdriveConfigNotFound>()(
+      "HyperdriveConfigNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10157 }],
+  ) {}
 
-export class DispatchNamespaceScriptNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DispatchNamespaceScriptNotFound>()(
-    "DispatchNamespaceScriptNotFound",
-    {
+export class KVNamespaceNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<KVNamespaceNotFound>()(
+      "KVNamespaceNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10041 }],
+  ) {}
+
+export class MtlsCertificateNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<MtlsCertificateNotFound>()(
+      "MtlsCertificateNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 100143 }],
+  ) {}
+
+export class QueueNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10007 }],
-) {}
+    }),
+    [{ code: 11000 }],
+  ) {}
 
-export class DurableObjectClassNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DurableObjectClassNotFound>()(
-    "DurableObjectClassNotFound",
-    {
+export class R2BucketNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 10061 }],
-) {}
+    }),
+    [{ code: 10085 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class SecretsStoreBindingNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<SecretsStoreBindingNotFound>()(
+      "SecretsStoreBindingNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10182 }],
+  ) {}
 
-export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<HyperdriveConfigNotFound>()("HyperdriveConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10157 }],
-) {}
+export class ServiceBindingNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ServiceBindingNotFound>()(
+      "ServiceBindingNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10144 }],
+  ) {}
 
-export class KVNamespaceNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<KVNamespaceNotFound>()("KVNamespaceNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10041 }],
-) {}
-
-export class MtlsCertificateNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<MtlsCertificateNotFound>()("MtlsCertificateNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 100143 }],
-) {}
-
-export class QueueNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 11000 }],
-) {}
-
-export class R2BucketNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10085 }],
-) {}
-
-export class SecretsStoreBindingNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<SecretsStoreBindingNotFound>()(
-    "SecretsStoreBindingNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 10182 }],
-) {}
-
-export class ServiceBindingNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ServiceBindingNotFound>()("ServiceBindingNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10144 }],
-) {}
-
-export class VectorizeIndexNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<VectorizeIndexNotFound>()("VectorizeIndexNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 10159 }],
-) {}
+export class VectorizeIndexNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<VectorizeIndexNotFound>()(
+      "VectorizeIndexNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10159 }],
+  ) {}
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsSecretTextType =
   "secret_text";

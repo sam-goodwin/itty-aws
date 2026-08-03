@@ -83,10 +83,11 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-export class MarketplaceCommerceAnalyticsException extends S.TaggedErrorClass<MarketplaceCommerceAnalyticsException>()(
-  "MarketplaceCommerceAnalyticsException",
-  { message: S.optional(S.String) },
-) {}
+export class MarketplaceCommerceAnalyticsException
+  extends /*@__PURE__*/ S.TaggedErrorClass<MarketplaceCommerceAnalyticsException>()(
+    "MarketplaceCommerceAnalyticsException",
+    { message: S.optional(S.String) },
+  ) {}
 export type DataSetType =
   | "customer_subscriber_hourly_monthly_subscriptions"
   | "customer_subscriber_annual_subscriptions"

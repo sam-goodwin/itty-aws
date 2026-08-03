@@ -22,29 +22,35 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   statusCode: "status_code",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class InvalidZoneIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "Invalid zone identifier" } }],
-) {}
+export class InvalidZoneIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidZoneIdentifier>()(
+      "InvalidZoneIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "Invalid zone identifier" } }],
+  ) {}
 
-export class PageRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PageRuleNotFound>()("PageRuleNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class PageRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PageRuleNotFound>()("PageRuleNotFound", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404 }],
+  ) {}
 
 export type CreateRequestActionsItemAlwaysUseHTTPSId = "always_use_https";
 export const CreateRequestActionsItemAlwaysUseHTTPSId = /*@__PURE__*/ S.String;

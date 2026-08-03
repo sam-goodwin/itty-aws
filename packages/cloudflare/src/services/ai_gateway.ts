@@ -116,127 +116,155 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workersAiBillingMode: "workers_ai_billing_mode",
 };
 
-export class AiGatewaySpendingLimitDeprecated extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AiGatewaySpendingLimitDeprecated>()(
-    "AiGatewaySpendingLimitDeprecated",
-    {
+export class AiGatewaySpendingLimitDeprecated
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AiGatewaySpendingLimitDeprecated>()(
+      "AiGatewaySpendingLimitDeprecated",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ message: { includes: "spending limits are deprecated" } }],
+  ) {}
+
+export class DatasetNameAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DatasetNameAlreadyExists>()(
+      "DatasetNameAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "already exists" } }],
+  ) {}
+
+export class DatasetNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<DatasetNotFound>()("DatasetNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ message: { includes: "spending limits are deprecated" } }],
-) {}
+    }),
+    [{ code: 7002 }],
+  ) {}
 
-export class DatasetNameAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DatasetNameAlreadyExists>()("DatasetNameAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400, message: { includes: "already exists" } }],
-) {}
+export class EvaluationNameAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EvaluationNameAlreadyExists>()(
+      "EvaluationNameAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 400, message: { includes: "already exists" } }],
+  ) {}
 
-export class DatasetNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<DatasetNotFound>()("DatasetNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7002 }],
-) {}
+export class EvaluationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<EvaluationNotFound>()(
+      "EvaluationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7002 }],
+  ) {}
 
-export class EvaluationNameAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EvaluationNameAlreadyExists>()(
-    "EvaluationNameAlreadyExists",
-    {
+export class GatewayAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayAlreadyExists>()(
+      "GatewayAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7001 }, { status: 504 }],
+  ) {}
+
+export class GatewayNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<GatewayNotFound>()("GatewayNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 400, message: { includes: "already exists" } }],
-) {}
+    }),
+    [{ code: 7002 }],
+  ) {}
 
-export class EvaluationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<EvaluationNotFound>()("EvaluationNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7002 }],
-) {}
-
-export class GatewayAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayAlreadyExists>()("GatewayAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7001 }, { status: 504 }],
-) {}
-
-export class GatewayNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<GatewayNotFound>()("GatewayNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7002 }],
-) {}
-
-export class NoManualTopup extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoManualTopup>()("NoManualTopup", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1000, message: { includes: "NO_MANUAL_TOPUP" } }],
-) {}
-
-export class ProviderConfigAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ProviderConfigAlreadyExists>()(
-    "ProviderConfigAlreadyExists",
-    {
+export class NoManualTopup
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoManualTopup>()("NoManualTopup", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 7001, message: { includes: "already exists" } }],
-) {}
+    }),
+    [{ code: 1000, message: { includes: "NO_MANUAL_TOPUP" } }],
+  ) {}
 
-export class ProviderConfigNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ProviderConfigNotFound>()("ProviderConfigNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7002 }],
-) {}
+export class ProviderConfigAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ProviderConfigAlreadyExists>()(
+      "ProviderConfigAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7001, message: { includes: "already exists" } }],
+  ) {}
 
-export class ProviderConfigSecretNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<ProviderConfigSecretNotFound>()(
-    "ProviderConfigSecretNotFound",
-    {
+export class ProviderConfigNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ProviderConfigNotFound>()(
+      "ProviderConfigNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7002 }],
+  ) {}
+
+export class ProviderConfigSecretNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<ProviderConfigSecretNotFound>()(
+      "ProviderConfigSecretNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7001, message: { includes: "was not found" } }],
+  ) {}
+
+export class RouteAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RouteAlreadyExists>()(
+      "RouteAlreadyExists",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { code: 7005, message: { includes: "already exists" } },
+      {
+        status: 500,
+        message: { includes: "UNIQUE constraint failed: routes.name" },
+      },
+    ],
+  ) {}
+
+export class RouteNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 7001, message: { includes: "was not found" } }],
-) {}
-
-export class RouteAlreadyExists extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RouteAlreadyExists>()("RouteAlreadyExists", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [
-    { code: 7005, message: { includes: "already exists" } },
-    {
-      status: 500,
-      message: { includes: "UNIQUE constraint failed: routes.name" },
-    },
-  ],
-) {}
-
-export class RouteNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7005, message: { includes: "not found" } }],
-) {}
+    }),
+    [{ code: 7005, message: { includes: "not found" } }],
+  ) {}
 
 export type CreateRequestLogManagementStrategy =
   | "STOP_INSERTING"

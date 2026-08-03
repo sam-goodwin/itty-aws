@@ -26,56 +26,71 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   validityPeriod: "validity_period",
 };
 
-export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
-  S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
-    "AdvancedCertificateManagerRequired",
-    {
+export class AdvancedCertificateManagerRequired
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+      "AdvancedCertificateManagerRequired",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1450 }],
+  ) {}
+
+export class CustomTrustStoreNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<CustomTrustStoreNotFound>()(
+      "CustomTrustStoreNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ code: 1450 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class CustomTrustStoreNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<CustomTrustStoreNotFound>()("CustomTrustStoreNotFound", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 404 }],
-) {}
+export class InvalidObjectIdentifier
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<InvalidObjectIdentifier>()(
+      "InvalidObjectIdentifier",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 7003 }],
+  ) {}
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
+export class NoStateChange
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<NoStateChange>()("NoStateChange", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 1467 }],
+  ) {}
 
-export class InvalidObjectIdentifier extends T.applyErrorMatchers(
-  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 7003 }],
-) {}
-
-export class NoStateChange extends T.applyErrorMatchers(
-  S.TaggedErrorClass<NoStateChange>()("NoStateChange", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1467 }],
-) {}
-
-export class PreviousJobInProgress extends T.applyErrorMatchers(
-  S.TaggedErrorClass<PreviousJobInProgress>()("PreviousJobInProgress", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ code: 1482 }],
-) {}
+export class PreviousJobInProgress
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<PreviousJobInProgress>()(
+      "PreviousJobInProgress",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 1482 }],
+  ) {}
 
 export interface CreateCustomTrustStoreRequest {
   /** Identifier. */

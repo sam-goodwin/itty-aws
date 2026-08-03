@@ -27,46 +27,50 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   totalCount: "total_count",
 };
 
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export class TokenConfigurationNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenConfigurationNotFound>()(
-    "TokenConfigurationNotFound",
-    {
+export class Forbidden
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+    }),
+    [{ status: 403 }],
+  ) {}
 
-export class TokenValidationNotEntitled extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenValidationNotEntitled>()(
-    "TokenValidationNotEntitled",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ code: 10403 }],
-) {}
+export class TokenConfigurationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenConfigurationNotFound>()(
+      "TokenConfigurationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
-export class TokenValidationRuleNotFound extends T.applyErrorMatchers(
-  S.TaggedErrorClass<TokenValidationRuleNotFound>()(
-    "TokenValidationRuleNotFound",
-    {
-      code: S.Number,
-      message: S.String,
-    },
-  ),
-  [{ status: 404 }],
-) {}
+export class TokenValidationNotEntitled
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenValidationNotEntitled>()(
+      "TokenValidationNotEntitled",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ code: 10403 }],
+  ) {}
+
+export class TokenValidationRuleNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedErrorClass<TokenValidationRuleNotFound>()(
+      "TokenValidationRuleNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
 
 export type RulesBulkCreateRequestBodyItemAction = "log" | "block";
 export const RulesBulkCreateRequestBodyItemAction = /*@__PURE__*/ S.String;
