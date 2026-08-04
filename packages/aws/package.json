@@ -18,59 +18,70 @@
     ".": {
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
+      "worker": "./src/index.ts",
       "browser": "./lib/index.browser.js",
       "default": "./lib/index.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
+      "worker": "./src/services/*.ts",
       "default": "./lib/services/*.js"
     },
     "./Auth": {
       "types": "./lib/auth.d.ts",
       "bun": "./src/auth.ts",
+      "worker": "./src/auth.ts",
       "browser": "./lib/auth.browser.js",
       "default": "./lib/auth.js"
     },
     "./Category": {
       "types": "./lib/category.d.ts",
       "bun": "./src/category.ts",
+      "worker": "./src/category.ts",
       "default": "./lib/category.js"
     },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
       "bun": "./src/credentials.ts",
+      "worker": "./src/credentials.ts",
       "browser": "./lib/credentials.browser.js",
       "default": "./lib/credentials.js"
     },
     "./Errors": {
       "types": "./lib/errors.d.ts",
       "bun": "./src/errors.ts",
+      "worker": "./src/errors.ts",
       "default": "./lib/errors.js"
     },
     "./Presign": {
       "types": "./lib/presign.d.ts",
       "bun": "./src/presign.ts",
+      "worker": "./src/presign.ts",
       "default": "./lib/presign.js"
     },
     "./Region": {
       "types": "./lib/region.d.ts",
       "bun": "./src/region.ts",
+      "worker": "./src/region.ts",
       "default": "./lib/region.js"
     },
     "./Retry": {
       "types": "./lib/retry.d.ts",
       "bun": "./src/retry.ts",
+      "worker": "./src/retry.ts",
       "default": "./lib/retry.js"
     },
     "./Sensitive": {
       "types": "./lib/sensitive.d.ts",
       "bun": "./src/sensitive.ts",
+      "worker": "./src/sensitive.ts",
       "default": "./lib/sensitive.js"
     },
     "./Traits": {
       "types": "./lib/traits.d.ts",
       "bun": "./src/traits.ts",
+      "worker": "./src/traits.ts",
       "default": "./lib/traits.js"
     }
   },
