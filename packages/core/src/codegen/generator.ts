@@ -383,14 +383,10 @@ export interface GeneratedService {
   operations: number;
 }
 
-/**
- * Compile one Smithy model into a service module. `limitRef` supports
- * partial generation (`--limit N` across models).
- */
+/** Compile one Smithy model into a service module. */
 export const generateService = (
   model: any,
   spec: SdkSpec,
-  limitRef: { remaining: number } = { remaining: Infinity },
 ): GeneratedService => {
   const shapes: ShapeMap = model.shapes;
   const pure = spec.pure ?? PURE;
@@ -411,8 +407,6 @@ export const generateService = (
 
   const selected: OpEntry[] = [];
   for (const op of operations) {
-    if (limitRef.remaining <= 0) break;
-    limitRef.remaining--;
     selected.push(op);
 
     const { input, output } = ensureNamedIo(shapes, op, ns);

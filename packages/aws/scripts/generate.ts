@@ -210,5 +210,26 @@ BunRuntime.runMain(
     );
 
     yield* Console.log(`✅ index.ts`);
+
+    // Format what was just written, like the shared generator CLI does — the
+    // emitter produces a canonical token stream, not formatted source, so
+    // otherwise running this script directly leaves the tree dirty against
+    // the committed (formatted) output. `bun run generate` additionally runs
+    // `oxlint --fix`, which can undo formatting, so it reformats afterwards.
+    yield* Console.log(`🧹 Formatting ${RESULT_ROOT_PATH}`);
+    yield* Effect.tryPromise({
+      try: () =>
+        Bun.spawn(["bunx", "oxfmt", RESULT_ROOT_PATH], {
+          stdout: "inherit",
+          stderr: "inherit",
+        }).exited,
+      catch: (cause) => new Error(`oxfmt failed: ${cause}`),
+    }).pipe(
+      Effect.flatMap((code) =>
+        code === 0
+          ? Effect.void
+          : Effect.die(new Error(`oxfmt exited with ${code}`)),
+      ),
+    );
   }).pipe(Effect.provide(BunServices.layer)),
 );
