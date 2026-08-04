@@ -4396,7 +4396,7 @@ export const CrawlGetResponseRecordsItemJsonMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CrawlGetResponseRecordsItemJsonMap>;
 
 export interface CrawlGetResponseRecordsItem {
-  metadata: CrawlGetResponseRecordsItemMetadata;
+  metadata?: CrawlGetResponseRecordsItemMetadata | null;
   /** Current status of the crawled URL. */
   status: CrawlGetResponseRecordsItemStatus;
   /** Crawled URL. */
@@ -4410,7 +4410,7 @@ export interface CrawlGetResponseRecordsItem {
 }
 export const CrawlGetResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: CrawlGetResponseRecordsItemMetadata,
+    metadata: S.optional(S.NullOr(CrawlGetResponseRecordsItemMetadata)),
     status: CrawlGetResponseRecordsItemStatus,
     url: S.String,
     html: S.optional(S.NullOr(S.String)),
@@ -4443,7 +4443,7 @@ export interface GetCrawlResponse {
   /** Total current number of URLs in the crawl job. */
   total: number;
   /** Cursor for pagination. */
-  cursor?: string | null;
+  cursor?: number | null;
 }
 export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4454,7 +4454,7 @@ export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
     skipped: S.Number,
     status: S.String,
     total: S.Number,
-    cursor: S.optional(S.NullOr(S.String)),
+    cursor: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetCrawlResponse",
