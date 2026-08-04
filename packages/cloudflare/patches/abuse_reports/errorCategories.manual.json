@@ -1,0 +1,15 @@
+{
+  "description": "Classify the two abuse-reports errors so the runtime can act on them. Both are wire code 7003 — a malformed or unroutable request — so they are BadRequestError: caller-fixable, and explicitly NOT transient, so the default retry policy leaves them alone. Without a category a generated error is invisible to `isTransientError` and to every other `Category.*` check, and because the protocol matches per-operation error codes BEFORE falling back to HTTP-status classes, a code-matched error shadows the categorized class it would otherwise have become.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.abuse_reports#InvalidAccountId/traits/distilled.cloud#category",
+      "value": ["BadRequestError"]
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.abuse_reports#InvalidRequest/traits/distilled.cloud#category",
+      "value": ["BadRequestError"]
+    }
+  ]
+}

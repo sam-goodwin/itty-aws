@@ -58,6 +58,65 @@ import { validatePaginated } from "./pagination.ts";
 
 const PAGINATED_TRAIT = "smithy.api#paginated";
 
+/**
+ * Error-category trait, read from any model.
+ *
+ * Smithy classifies errors only as `client`/`server` plus `httpError` and
+ * `retryable`, which is too coarse for the categories the runtime acts on —
+ * `core/retry.ts` retries on `isTransientError`, and `core/category.ts`
+ * distinguishes not-found from quota from conflict. There is no Smithy
+ * vocabulary for that, so it rides as a namespaced trait, the same way
+ * `com.cloudflare.protocols#errorMatchers` and `aws.auth#sigv2` do.
+ *
+ * A model or a patch says:
+ *
+ *   "traits": { "distilled.cloud#category": ["NotFoundError"] }
+ *
+ * and the error class is emitted with `.pipe(C.withNotFoundError)`.
+ */
+export const CATEGORY_TRAIT = "distilled.cloud#category";
+
+/**
+ * Category names accepted in {@link CATEGORY_TRAIT}, each mapping to the
+ * `with<Name>` decorator exported by `@distilled.cloud/core/category`.
+ * Listed explicitly so a typo in a patch fails the generate run rather than
+ * emitting a call to a decorator that doesn't exist.
+ */
+const CATEGORY_NAMES = new Set([
+  "AbortedError",
+  "AlreadyExistsError",
+  "AuthError",
+  "BadRequestError",
+  "ConflictError",
+  "DependencyViolationError",
+  "NetworkError",
+  "NotFoundError",
+  "QuotaError",
+  "RetryableError",
+  "ServerError",
+  "ThrottlingError",
+  "TimeoutError",
+]);
+
+/** `["NotFoundError"]` → `.pipe(C.withNotFoundError)` — validated. */
+const categoryPipes = (traits: Record<string, any> | undefined): string[] => {
+  const raw = traits?.[CATEGORY_TRAIT];
+  if (raw === undefined) return [];
+  if (!Array.isArray(raw)) {
+    throw new Error(
+      `${CATEGORY_TRAIT} must be an array of category names, got ${JSON.stringify(raw)}`,
+    );
+  }
+  return raw.map((name) => {
+    if (typeof name !== "string" || !CATEGORY_NAMES.has(name)) {
+      throw new Error(
+        `unknown error category ${JSON.stringify(name)} — expected one of ${[...CATEGORY_NAMES].sort().join(", ")}`,
+      );
+    }
+    return `C.with${name}`;
+  });
+};
+
 /** A member's resolved binding. The four generic kinds plus provider extras. */
 export type MemberBinding =
   | "label"
@@ -672,6 +731,9 @@ export const generateService = (
 
   // 4. Error classes from the operations' errors lists.
   const out: string[] = [];
+  // Set when any error carries CATEGORY_TRAIT, so the header only imports
+  // the category module when something actually uses it.
+  let usesCategories = false;
   const errorIds = collectOpErrorIds(selected, shapes);
   const errorIdSet = new Set(errorIds);
   const errorNames = new Set(errorIds.map(local));
@@ -704,10 +766,15 @@ export const generateService = (
     const matchers = spec.errorMatchersTrait
       ? d.traits?.[spec.errorMatchersTrait]
       : undefined;
+    const categories = categoryPipes(d.traits);
+    if (categories.length) usesCategories = true;
     out.push(
       errorClass({
         name,
         fields,
+        pipes: categories.length
+          ? `.pipe(${categories.join(", ")})`
+          : undefined,
         wrap:
           spec.errors?.wrap?.(d.traits ?? {}) ??
           (matchers
@@ -1046,6 +1113,9 @@ export const generateService = (
       }. Do not edit.\n` +
       `import * as S from "@distilled.cloud/core/schema";\n` +
       `import * as API from "@distilled.cloud/core/api";\n` +
+      (usesCategories
+        ? `import * as C from "@distilled.cloud/core/category";\n`
+        : "") +
       `import * as T from "../traits.ts";\n` +
       `import {\n` +
       `  ${decl.protocol},\n` +
