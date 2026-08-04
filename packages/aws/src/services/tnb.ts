@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2547,27 +2546,13 @@ export type ListSolFunctionInstancesError =
  *
  * A network function instance is a function in a function package .
  */
-export const listSolFunctionInstances: API.OperationMethod<
+export const listSolFunctionInstances: API.PaginatedOperationMethod<
   ListSolFunctionInstancesInput,
   ListSolFunctionInstancesOutput,
   ListSolFunctionInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolFunctionInstancesInput,
-  ) => stream.Stream<
-    ListSolFunctionInstancesOutput,
-    ListSolFunctionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolFunctionInstancesInput,
-  ) => stream.Stream<
-    ListSolFunctionInstanceInfo,
-    ListSolFunctionInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSolFunctionInstanceInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolFunctionInstancesInput,
   output: ListSolFunctionInstancesOutput,
   errors: [
@@ -2598,27 +2583,13 @@ export type ListSolFunctionPackagesError =
  *
  * A function package is a .zip file in CSAR (Cloud Service Archive) format that contains a network function (an ETSI standard telecommunication application) and function package descriptor that uses the TOSCA standard to describe how the network functions should run on your network.
  */
-export const listSolFunctionPackages: API.OperationMethod<
+export const listSolFunctionPackages: API.PaginatedOperationMethod<
   ListSolFunctionPackagesInput,
   ListSolFunctionPackagesOutput,
   ListSolFunctionPackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolFunctionPackagesInput,
-  ) => stream.Stream<
-    ListSolFunctionPackagesOutput,
-    ListSolFunctionPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolFunctionPackagesInput,
-  ) => stream.Stream<
-    ListSolFunctionPackageInfo,
-    ListSolFunctionPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSolFunctionPackageInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolFunctionPackagesInput,
   output: ListSolFunctionPackagesOutput,
   errors: [
@@ -2649,27 +2620,13 @@ export type ListSolNetworkInstancesError =
  *
  * A network instance is a single network created in Amazon Web Services TNB that can be deployed and on which life-cycle operations (like terminate, update, and delete) can be performed.
  */
-export const listSolNetworkInstances: API.OperationMethod<
+export const listSolNetworkInstances: API.PaginatedOperationMethod<
   ListSolNetworkInstancesInput,
   ListSolNetworkInstancesOutput,
   ListSolNetworkInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolNetworkInstancesInput,
-  ) => stream.Stream<
-    ListSolNetworkInstancesOutput,
-    ListSolNetworkInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolNetworkInstancesInput,
-  ) => stream.Stream<
-    ListSolNetworkInstanceInfo,
-    ListSolNetworkInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSolNetworkInstanceInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkInstancesInput,
   output: ListSolNetworkInstancesOutput,
   errors: [
@@ -2701,27 +2658,13 @@ export type ListSolNetworkOperationsError =
  *
  * A network operation is any operation that is done to your network, such as network instance instantiation or termination.
  */
-export const listSolNetworkOperations: API.OperationMethod<
+export const listSolNetworkOperations: API.PaginatedOperationMethod<
   ListSolNetworkOperationsInput,
   ListSolNetworkOperationsOutput,
   ListSolNetworkOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolNetworkOperationsInput,
-  ) => stream.Stream<
-    ListSolNetworkOperationsOutput,
-    ListSolNetworkOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolNetworkOperationsInput,
-  ) => stream.Stream<
-    ListSolNetworkOperationsInfo,
-    ListSolNetworkOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSolNetworkOperationsInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkOperationsInput,
   output: ListSolNetworkOperationsOutput,
   errors: [
@@ -2752,27 +2695,13 @@ export type ListSolNetworkPackagesError =
  *
  * A network package is a .zip file in CSAR (Cloud Service Archive) format defines the function packages you want to deploy and the Amazon Web Services infrastructure you want to deploy them on.
  */
-export const listSolNetworkPackages: API.OperationMethod<
+export const listSolNetworkPackages: API.PaginatedOperationMethod<
   ListSolNetworkPackagesInput,
   ListSolNetworkPackagesOutput,
   ListSolNetworkPackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolNetworkPackagesInput,
-  ) => stream.Stream<
-    ListSolNetworkPackagesOutput,
-    ListSolNetworkPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolNetworkPackagesInput,
-  ) => stream.Stream<
-    ListSolNetworkPackageInfo,
-    ListSolNetworkPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListSolNetworkPackageInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolNetworkPackagesInput,
   output: ListSolNetworkPackagesOutput,
   errors: [

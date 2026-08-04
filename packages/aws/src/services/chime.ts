@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4096,27 +4095,13 @@ export type ListAccountsError =
  * by account name prefix. To find out which Amazon Chime account a user belongs to, you can
  * filter by the user's email address, which returns one account result.
  */
-export const listAccounts: API.OperationMethod<
+export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    ListAccountsResponse,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -4150,27 +4135,13 @@ export type ListBotsError =
 /**
  * Lists the bots associated with the administrator's Amazon Chime Enterprise account ID.
  */
-export const listBots: API.OperationMethod<
+export const listBots: API.PaginatedOperationMethod<
   ListBotsRequest,
   ListBotsResponse,
   ListBotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    ListBotsResponse,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -4203,27 +4174,13 @@ export type ListPhoneNumberOrdersError =
 /**
  * Lists the phone number orders for the administrator's Amazon Chime account.
  */
-export const listPhoneNumberOrders: API.OperationMethod<
+export const listPhoneNumberOrders: API.PaginatedOperationMethod<
   ListPhoneNumberOrdersRequest,
   ListPhoneNumberOrdersResponse,
   ListPhoneNumberOrdersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumberOrdersRequest,
-  ) => stream.Stream<
-    ListPhoneNumberOrdersResponse,
-    ListPhoneNumberOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumberOrdersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPhoneNumberOrdersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumberOrdersRequest,
   output: ListPhoneNumberOrdersResponse,
   errors: [
@@ -4256,27 +4213,13 @@ export type ListPhoneNumbersError =
 /**
  * Lists the phone numbers for the specified Amazon Chime account, Amazon Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice Connector group.
  */
-export const listPhoneNumbers: API.OperationMethod<
+export const listPhoneNumbers: API.PaginatedOperationMethod<
   ListPhoneNumbersRequest,
   ListPhoneNumbersResponse,
   ListPhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    ListPhoneNumbersResponse,
-    ListPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersRequest,
   output: ListPhoneNumbersResponse,
   errors: [
@@ -4311,27 +4254,13 @@ export type ListRoomMembershipsError =
  * Lists the membership details for the specified room in an Amazon Chime Enterprise account,
  * such as the members' IDs, email addresses, and names.
  */
-export const listRoomMemberships: API.OperationMethod<
+export const listRoomMemberships: API.PaginatedOperationMethod<
   ListRoomMembershipsRequest,
   ListRoomMembershipsResponse,
   ListRoomMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoomMembershipsRequest,
-  ) => stream.Stream<
-    ListRoomMembershipsResponse,
-    ListRoomMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoomMembershipsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRoomMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomMembershipsRequest,
   output: ListRoomMembershipsResponse,
   errors: [
@@ -4365,27 +4294,13 @@ export type ListRoomsError =
 /**
  * Lists the room details for the specified Amazon Chime Enterprise account. Optionally, filter the results by a member ID (user ID or bot ID) to see a list of rooms that the member belongs to.
  */
-export const listRooms: API.OperationMethod<
+export const listRooms: API.PaginatedOperationMethod<
   ListRoomsRequest,
   ListRoomsResponse,
   ListRoomsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoomsRequest,
-  ) => stream.Stream<
-    ListRoomsResponse,
-    ListRoomsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoomsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRoomsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomsRequest,
   output: ListRoomsResponse,
   errors: [
@@ -4454,27 +4369,13 @@ export type ListUsersError =
  * Lists the users that belong to the specified Amazon Chime account. You can specify an email
  * address to list only the user that the email address belongs to.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -4802,27 +4703,13 @@ export type SearchAvailablePhoneNumbersError =
  * `City`, you must also provide `State`. Numbers outside the US only
  * support the `PhoneNumberType` filter, which you must use.
  */
-export const searchAvailablePhoneNumbers: API.OperationMethod<
+export const searchAvailablePhoneNumbers: API.PaginatedOperationMethod<
   SearchAvailablePhoneNumbersRequest,
   SearchAvailablePhoneNumbersResponse,
   SearchAvailablePhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    SearchAvailablePhoneNumbersResponse,
-    SearchAvailablePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchAvailablePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAvailablePhoneNumbersRequest,
   output: SearchAvailablePhoneNumbersResponse,
   errors: [

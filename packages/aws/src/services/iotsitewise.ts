@@ -7238,27 +7238,13 @@ export type BatchGetAssetPropertyAggregatesError =
  * properties. For more information, see Querying aggregates in the
  * *IoT SiteWise User Guide*.
  */
-export const batchGetAssetPropertyAggregates: API.OperationMethod<
+export const batchGetAssetPropertyAggregates: API.PaginatedOperationMethod<
   BatchGetAssetPropertyAggregatesRequest,
   BatchGetAssetPropertyAggregatesResponse,
   BatchGetAssetPropertyAggregatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    BatchGetAssetPropertyAggregatesResponse,
-    BatchGetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetAssetPropertyAggregatesRequest,
   output: BatchGetAssetPropertyAggregatesResponse,
   errors: [
@@ -7288,27 +7274,13 @@ export type BatchGetAssetPropertyValueError =
  * Gets the current value for one or more asset properties. For more information, see Querying
  * current values in the *IoT SiteWise User Guide*.
  */
-export const batchGetAssetPropertyValue: API.OperationMethod<
+export const batchGetAssetPropertyValue: API.PaginatedOperationMethod<
   BatchGetAssetPropertyValueRequest,
   BatchGetAssetPropertyValueResponse,
   BatchGetAssetPropertyValueError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetAssetPropertyValueRequest,
-  ) => stream.Stream<
-    BatchGetAssetPropertyValueResponse,
-    BatchGetAssetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetAssetPropertyValueRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetAssetPropertyValueError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetAssetPropertyValueRequest,
   output: BatchGetAssetPropertyValueResponse,
   errors: [
@@ -7334,27 +7306,13 @@ export type BatchGetAssetPropertyValueHistoryError =
  * Gets the historical values for one or more asset properties. For more information, see
  * Querying historical values in the *IoT SiteWise User Guide*.
  */
-export const batchGetAssetPropertyValueHistory: API.OperationMethod<
+export const batchGetAssetPropertyValueHistory: API.PaginatedOperationMethod<
   BatchGetAssetPropertyValueHistoryRequest,
   BatchGetAssetPropertyValueHistoryResponse,
   BatchGetAssetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BatchGetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    BatchGetAssetPropertyValueHistoryResponse,
-    BatchGetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: BatchGetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    BatchGetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BatchGetAssetPropertyValueHistoryRequest,
   output: BatchGetAssetPropertyValueHistoryResponse,
   errors: [
@@ -9055,27 +9013,13 @@ export type ExecuteQueryError =
  * Run SQL queries to retrieve metadata and time-series data from asset models, assets,
  * measurements, metrics, transforms, and aggregates.
  */
-export const executeQuery: API.OperationMethod<
+export const executeQuery: API.PaginatedOperationMethod<
   ExecuteQueryRequest,
   ExecuteQueryResponse,
   ExecuteQueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    ExecuteQueryResponse,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExecuteQueryRequest,
-  ) => stream.Stream<
-    Row,
-    ExecuteQueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Row
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExecuteQueryRequest,
   output: ExecuteQueryResponse,
   errors: [
@@ -9117,27 +9061,13 @@ export type GetAssetPropertyAggregatesError =
  * - A `propertyAlias`, which is a data stream alias (for example,
  * `/company/windfarm/3/turbine/7/temperature`). To define an asset property's alias, see UpdateAssetProperty.
  */
-export const getAssetPropertyAggregates: API.OperationMethod<
+export const getAssetPropertyAggregates: API.PaginatedOperationMethod<
   GetAssetPropertyAggregatesRequest,
   GetAssetPropertyAggregatesResponse,
   GetAssetPropertyAggregatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    GetAssetPropertyAggregatesResponse,
-    GetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAssetPropertyAggregatesRequest,
-  ) => stream.Stream<
-    AggregatedValue,
-    GetAssetPropertyAggregatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregatedValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssetPropertyAggregatesRequest,
   output: GetAssetPropertyAggregatesResponse,
   errors: [
@@ -9216,27 +9146,13 @@ export type GetAssetPropertyValueHistoryError =
  * - A `propertyAlias`, which is a data stream alias (for example,
  * `/company/windfarm/3/turbine/7/temperature`). To define an asset property's alias, see UpdateAssetProperty.
  */
-export const getAssetPropertyValueHistory: API.OperationMethod<
+export const getAssetPropertyValueHistory: API.PaginatedOperationMethod<
   GetAssetPropertyValueHistoryRequest,
   GetAssetPropertyValueHistoryResponse,
   GetAssetPropertyValueHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    GetAssetPropertyValueHistoryResponse,
-    GetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAssetPropertyValueHistoryRequest,
-  ) => stream.Stream<
-    AssetPropertyValue,
-    GetAssetPropertyValueHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetPropertyValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssetPropertyValueHistoryRequest,
   output: GetAssetPropertyValueHistoryResponse,
   errors: [
@@ -9280,27 +9196,13 @@ export type GetInterpolatedAssetPropertyValuesError =
  * - A `propertyAlias`, which is a data stream alias (for example,
  * `/company/windfarm/3/turbine/7/temperature`). To define an asset property's alias, see UpdateAssetProperty.
  */
-export const getInterpolatedAssetPropertyValues: API.OperationMethod<
+export const getInterpolatedAssetPropertyValues: API.PaginatedOperationMethod<
   GetInterpolatedAssetPropertyValuesRequest,
   GetInterpolatedAssetPropertyValuesResponse,
   GetInterpolatedAssetPropertyValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInterpolatedAssetPropertyValuesRequest,
-  ) => stream.Stream<
-    GetInterpolatedAssetPropertyValuesResponse,
-    GetInterpolatedAssetPropertyValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInterpolatedAssetPropertyValuesRequest,
-  ) => stream.Stream<
-    InterpolatedAssetPropertyValue,
-    GetInterpolatedAssetPropertyValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InterpolatedAssetPropertyValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInterpolatedAssetPropertyValuesRequest,
   output: GetInterpolatedAssetPropertyValuesResponse,
   errors: [
@@ -9366,27 +9268,13 @@ export type ListAccessPoliciesError =
  * Retrieves a paginated list of access policies for an identity (an IAM Identity Center user, an IAM Identity Center
  * group, or an IAM user) or an IoT SiteWise Monitor resource (a portal or project).
  */
-export const listAccessPolicies: API.OperationMethod<
+export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAccessPoliciesResponse,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    AccessPolicySummary,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessPolicySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [
@@ -9415,27 +9303,13 @@ export type ListActionsError =
 /**
  * Retrieves a paginated list of actions for a specific target resource.
  */
-export const listActions: API.OperationMethod<
+export const listActions: API.PaginatedOperationMethod<
   ListActionsRequest,
   ListActionsResponse,
   ListActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ListActionsResponse,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ActionSummary,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [
@@ -9465,27 +9339,13 @@ export type ListAssetModelCompositeModelsError =
 /**
  * Retrieves a paginated list of composite models associated with the asset model
  */
-export const listAssetModelCompositeModels: API.OperationMethod<
+export const listAssetModelCompositeModels: API.PaginatedOperationMethod<
   ListAssetModelCompositeModelsRequest,
   ListAssetModelCompositeModelsResponse,
   ListAssetModelCompositeModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetModelCompositeModelsRequest,
-  ) => stream.Stream<
-    ListAssetModelCompositeModelsResponse,
-    ListAssetModelCompositeModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetModelCompositeModelsRequest,
-  ) => stream.Stream<
-    AssetModelCompositeModelSummary,
-    ListAssetModelCompositeModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetModelCompositeModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetModelCompositeModelsRequest,
   output: ListAssetModelCompositeModelsResponse,
   errors: [
@@ -9517,27 +9377,13 @@ export type ListAssetModelPropertiesError =
  * If you update properties associated with the model before you finish listing all the properties,
  * you need to start all over again.
  */
-export const listAssetModelProperties: API.OperationMethod<
+export const listAssetModelProperties: API.PaginatedOperationMethod<
   ListAssetModelPropertiesRequest,
   ListAssetModelPropertiesResponse,
   ListAssetModelPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetModelPropertiesRequest,
-  ) => stream.Stream<
-    ListAssetModelPropertiesResponse,
-    ListAssetModelPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetModelPropertiesRequest,
-  ) => stream.Stream<
-    AssetModelPropertySummary,
-    ListAssetModelPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetModelPropertySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetModelPropertiesRequest,
   output: ListAssetModelPropertiesResponse,
   errors: [
@@ -9566,27 +9412,13 @@ export type ListAssetModelsError =
 /**
  * Retrieves a paginated list of summaries of all asset models.
  */
-export const listAssetModels: API.OperationMethod<
+export const listAssetModels: API.PaginatedOperationMethod<
   ListAssetModelsRequest,
   ListAssetModelsResponse,
   ListAssetModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetModelsRequest,
-  ) => stream.Stream<
-    ListAssetModelsResponse,
-    ListAssetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetModelsRequest,
-  ) => stream.Stream<
-    AssetModelSummary,
-    ListAssetModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetModelsRequest,
   output: ListAssetModelsResponse,
   errors: [
@@ -9617,27 +9449,13 @@ export type ListAssetPropertiesError =
  * If you update properties associated with the model before you finish listing all the properties,
  * you need to start all over again.
  */
-export const listAssetProperties: API.OperationMethod<
+export const listAssetProperties: API.PaginatedOperationMethod<
   ListAssetPropertiesRequest,
   ListAssetPropertiesResponse,
   ListAssetPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetPropertiesRequest,
-  ) => stream.Stream<
-    ListAssetPropertiesResponse,
-    ListAssetPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetPropertiesRequest,
-  ) => stream.Stream<
-    AssetPropertySummary,
-    ListAssetPropertiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetPropertySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetPropertiesRequest,
   output: ListAssetPropertiesResponse,
   errors: [
@@ -9669,27 +9487,13 @@ export type ListAssetRelationshipsError =
  * to identify an asset's root asset and all associated assets between that asset and its
  * root.
  */
-export const listAssetRelationships: API.OperationMethod<
+export const listAssetRelationships: API.PaginatedOperationMethod<
   ListAssetRelationshipsRequest,
   ListAssetRelationshipsResponse,
   ListAssetRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetRelationshipsRequest,
-  ) => stream.Stream<
-    ListAssetRelationshipsResponse,
-    ListAssetRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetRelationshipsRequest,
-  ) => stream.Stream<
-    AssetRelationshipSummary,
-    ListAssetRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetRelationshipSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetRelationshipsRequest,
   output: ListAssetRelationshipsResponse,
   errors: [
@@ -9729,27 +9533,13 @@ export type ListAssetsError =
  * assets, use ListAssetModels to get all of your asset model IDs. Then, use ListAssets to get all
  * assets for each asset model.
  */
-export const listAssets: API.OperationMethod<
+export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    ListAssetsResponse,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    AssetSummary,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
   errors: [
@@ -9785,27 +9575,13 @@ export type ListAssociatedAssetsError =
  *
  * - `PARENT` - List the asset's parent asset.
  */
-export const listAssociatedAssets: API.OperationMethod<
+export const listAssociatedAssets: API.PaginatedOperationMethod<
   ListAssociatedAssetsRequest,
   ListAssociatedAssetsResponse,
   ListAssociatedAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedAssetsRequest,
-  ) => stream.Stream<
-    ListAssociatedAssetsResponse,
-    ListAssociatedAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedAssetsRequest,
-  ) => stream.Stream<
-    AssociatedAssetsSummary,
-    ListAssociatedAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociatedAssetsSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedAssetsRequest,
   output: ListAssociatedAssetsResponse,
   errors: [
@@ -9836,27 +9612,13 @@ export type ListBulkImportJobsError =
  * Retrieves a paginated list of bulk import job requests. For more information, see List bulk
  * import jobs (CLI) in the *IoT SiteWise User Guide*.
  */
-export const listBulkImportJobs: API.OperationMethod<
+export const listBulkImportJobs: API.PaginatedOperationMethod<
   ListBulkImportJobsRequest,
   ListBulkImportJobsResponse,
   ListBulkImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBulkImportJobsRequest,
-  ) => stream.Stream<
-    ListBulkImportJobsResponse,
-    ListBulkImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBulkImportJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListBulkImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBulkImportJobsRequest,
   output: ListBulkImportJobsResponse,
   errors: [
@@ -9887,27 +9649,13 @@ export type ListCompositionRelationshipsError =
  * Retrieves a paginated list of composition relationships for an asset model of type
  * `COMPONENT_MODEL`.
  */
-export const listCompositionRelationships: API.OperationMethod<
+export const listCompositionRelationships: API.PaginatedOperationMethod<
   ListCompositionRelationshipsRequest,
   ListCompositionRelationshipsResponse,
   ListCompositionRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCompositionRelationshipsRequest,
-  ) => stream.Stream<
-    ListCompositionRelationshipsResponse,
-    ListCompositionRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCompositionRelationshipsRequest,
-  ) => stream.Stream<
-    CompositionRelationshipSummary,
-    ListCompositionRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CompositionRelationshipSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositionRelationshipsRequest,
   output: ListCompositionRelationshipsResponse,
   errors: [
@@ -9938,27 +9686,13 @@ export type ListComputationModelDataBindingUsagesError =
  * specific data bindings are being utilized across the computation models. This track
  * dependencies between data sources and computation models.
  */
-export const listComputationModelDataBindingUsages: API.OperationMethod<
+export const listComputationModelDataBindingUsages: API.PaginatedOperationMethod<
   ListComputationModelDataBindingUsagesRequest,
   ListComputationModelDataBindingUsagesResponse,
   ListComputationModelDataBindingUsagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputationModelDataBindingUsagesRequest,
-  ) => stream.Stream<
-    ListComputationModelDataBindingUsagesResponse,
-    ListComputationModelDataBindingUsagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputationModelDataBindingUsagesRequest,
-  ) => stream.Stream<
-    ComputationModelDataBindingUsageSummary,
-    ListComputationModelDataBindingUsagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComputationModelDataBindingUsageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputationModelDataBindingUsagesRequest,
   output: ListComputationModelDataBindingUsagesResponse,
   errors: [
@@ -9988,27 +9722,13 @@ export type ListComputationModelResolveToResourcesError =
  * Lists all distinct resources that are resolved from the executed actions of the
  * computation model.
  */
-export const listComputationModelResolveToResources: API.OperationMethod<
+export const listComputationModelResolveToResources: API.PaginatedOperationMethod<
   ListComputationModelResolveToResourcesRequest,
   ListComputationModelResolveToResourcesResponse,
   ListComputationModelResolveToResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputationModelResolveToResourcesRequest,
-  ) => stream.Stream<
-    ListComputationModelResolveToResourcesResponse,
-    ListComputationModelResolveToResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputationModelResolveToResourcesRequest,
-  ) => stream.Stream<
-    ComputationModelResolveToResourceSummary,
-    ListComputationModelResolveToResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComputationModelResolveToResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputationModelResolveToResourcesRequest,
   output: ListComputationModelResolveToResourcesResponse,
   errors: [
@@ -10037,27 +9757,13 @@ export type ListComputationModelsError =
 /**
  * Retrieves a paginated list of summaries of all computation models.
  */
-export const listComputationModels: API.OperationMethod<
+export const listComputationModels: API.PaginatedOperationMethod<
   ListComputationModelsRequest,
   ListComputationModelsResponse,
   ListComputationModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComputationModelsRequest,
-  ) => stream.Stream<
-    ListComputationModelsResponse,
-    ListComputationModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComputationModelsRequest,
-  ) => stream.Stream<
-    ComputationModelSummary,
-    ListComputationModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComputationModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputationModelsRequest,
   output: ListComputationModelsResponse,
   errors: [
@@ -10085,27 +9791,13 @@ export type ListDashboardsError =
 /**
  * Retrieves a paginated list of dashboards for an IoT SiteWise Monitor project.
  */
-export const listDashboards: API.OperationMethod<
+export const listDashboards: API.PaginatedOperationMethod<
   ListDashboardsRequest,
   ListDashboardsResponse,
   ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDashboardsRequest,
-  ) => stream.Stream<
-    ListDashboardsResponse,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDashboardsRequest,
-  ) => stream.Stream<
-    DashboardSummary,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DashboardSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [
@@ -10133,27 +9825,13 @@ export type ListDatasetsError =
 /**
  * Retrieves a paginated list of datasets for a specific target resource.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -10182,27 +9860,13 @@ export type ListExecutionsError =
 /**
  * Retrieves a paginated list of summaries of all executions.
  */
-export const listExecutions: API.OperationMethod<
+export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsRequest,
   ListExecutionsResponse,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ListExecutionsResponse,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ExecutionSummary,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsRequest,
   output: ListExecutionsResponse,
   errors: [
@@ -10231,27 +9895,13 @@ export type ListGatewaysError =
 /**
  * Retrieves a paginated list of gateways.
  */
-export const listGateways: API.OperationMethod<
+export const listGateways: API.PaginatedOperationMethod<
   ListGatewaysRequest,
   ListGatewaysResponse,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    GatewaySummary,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewaySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysRequest,
   output: ListGatewaysResponse,
   errors: [
@@ -10281,27 +9931,13 @@ export type ListInterfaceRelationshipsError =
  * Retrieves a paginated list of asset models that have a specific interface asset model
  * applied to them.
  */
-export const listInterfaceRelationships: API.OperationMethod<
+export const listInterfaceRelationships: API.PaginatedOperationMethod<
   ListInterfaceRelationshipsRequest,
   ListInterfaceRelationshipsResponse,
   ListInterfaceRelationshipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInterfaceRelationshipsRequest,
-  ) => stream.Stream<
-    ListInterfaceRelationshipsResponse,
-    ListInterfaceRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInterfaceRelationshipsRequest,
-  ) => stream.Stream<
-    InterfaceRelationshipSummary,
-    ListInterfaceRelationshipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InterfaceRelationshipSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInterfaceRelationshipsRequest,
   output: ListInterfaceRelationshipsResponse,
   errors: [
@@ -10330,27 +9966,13 @@ export type ListPortalsError =
 /**
  * Retrieves a paginated list of IoT SiteWise Monitor portals.
  */
-export const listPortals: API.OperationMethod<
+export const listPortals: API.PaginatedOperationMethod<
   ListPortalsRequest,
   ListPortalsResponse,
   ListPortalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPortalsRequest,
-  ) => stream.Stream<
-    ListPortalsResponse,
-    ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPortalsRequest,
-  ) => stream.Stream<
-    PortalSummary,
-    ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PortalSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortalsRequest,
   output: ListPortalsResponse,
   errors: [
@@ -10378,27 +10000,13 @@ export type ListProjectAssetsError =
 /**
  * Retrieves a paginated list of assets associated with an IoT SiteWise Monitor project.
  */
-export const listProjectAssets: API.OperationMethod<
+export const listProjectAssets: API.PaginatedOperationMethod<
   ListProjectAssetsRequest,
   ListProjectAssetsResponse,
   ListProjectAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectAssetsRequest,
-  ) => stream.Stream<
-    ListProjectAssetsResponse,
-    ListProjectAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectAssetsRequest,
-  ) => stream.Stream<
-    ID,
-    ListProjectAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ID
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectAssetsRequest,
   output: ListProjectAssetsResponse,
   errors: [
@@ -10426,27 +10034,13 @@ export type ListProjectsError =
 /**
  * Retrieves a paginated list of projects for an IoT SiteWise Monitor portal.
  */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ListProjectsResponse,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ListProjectsResponse,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsRequest,
-  ) => stream.Stream<
-    ProjectSummary,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProjectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [
@@ -10510,27 +10104,13 @@ export type ListTimeSeriesError =
 /**
  * Retrieves a paginated list of time series (data streams).
  */
-export const listTimeSeries: API.OperationMethod<
+export const listTimeSeries: API.PaginatedOperationMethod<
   ListTimeSeriesRequest,
   ListTimeSeriesResponse,
   ListTimeSeriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTimeSeriesRequest,
-  ) => stream.Stream<
-    ListTimeSeriesResponse,
-    ListTimeSeriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTimeSeriesRequest,
-  ) => stream.Stream<
-    TimeSeriesSummary,
-    ListTimeSeriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TimeSeriesSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTimeSeriesRequest,
   output: ListTimeSeriesResponse,
   errors: [

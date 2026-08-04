@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -21693,27 +21692,13 @@ export type DescribeEntityError =
  *
  * The response includes all the fields which make up the entity.
  */
-export const describeEntity: API.OperationMethod<
+export const describeEntity: API.PaginatedOperationMethod<
   DescribeEntityRequest,
   DescribeEntityResponse,
   DescribeEntityError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEntityRequest,
-  ) => stream.Stream<
-    DescribeEntityResponse,
-    DescribeEntityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEntityRequest,
-  ) => stream.Stream<
-    Field,
-    DescribeEntityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Field
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEntityRequest,
   output: DescribeEntityResponse,
   errors: [
@@ -21962,27 +21947,13 @@ export type GetBlueprintRunsError =
 /**
  * Retrieves the details of blueprint runs for a specified blueprint.
  */
-export const getBlueprintRuns: API.OperationMethod<
+export const getBlueprintRuns: API.PaginatedOperationMethod<
   GetBlueprintRunsRequest,
   GetBlueprintRunsResponse,
   GetBlueprintRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBlueprintRunsRequest,
-  ) => stream.Stream<
-    GetBlueprintRunsResponse,
-    GetBlueprintRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBlueprintRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetBlueprintRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBlueprintRunsRequest,
   output: GetBlueprintRunsResponse,
   errors: [
@@ -22119,27 +22090,13 @@ export type GetClassifiersError = OperationTimeoutException | CommonErrors;
 /**
  * Lists all classifier objects in the Data Catalog.
  */
-export const getClassifiers: API.OperationMethod<
+export const getClassifiers: API.PaginatedOperationMethod<
   GetClassifiersRequest,
   GetClassifiersResponse,
   GetClassifiersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetClassifiersRequest,
-  ) => stream.Stream<
-    GetClassifiersResponse,
-    GetClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetClassifiersRequest,
-  ) => stream.Stream<
-    unknown,
-    GetClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetClassifiersRequest,
   output: GetClassifiersResponse,
   errors: [OperationTimeoutException],
@@ -22249,27 +22206,13 @@ export type GetColumnStatisticsTaskRunsError =
 /**
  * Retrieves information about all runs associated with the specified table.
  */
-export const getColumnStatisticsTaskRuns: API.OperationMethod<
+export const getColumnStatisticsTaskRuns: API.PaginatedOperationMethod<
   GetColumnStatisticsTaskRunsRequest,
   GetColumnStatisticsTaskRunsResponse,
   GetColumnStatisticsTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    GetColumnStatisticsTaskRunsResponse,
-    GetColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetColumnStatisticsTaskRunsRequest,
   output: GetColumnStatisticsTaskRunsResponse,
   errors: [OperationTimeoutException],
@@ -22346,27 +22289,13 @@ export type GetConnectionsError =
 /**
  * Retrieves a list of connection definitions from the Data Catalog.
  */
-export const getConnections: API.OperationMethod<
+export const getConnections: API.PaginatedOperationMethod<
   GetConnectionsRequest,
   GetConnectionsResponse,
   GetConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConnectionsRequest,
-  ) => stream.Stream<
-    GetConnectionsResponse,
-    GetConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConnectionsRequest,
   output: GetConnectionsResponse,
   errors: [
@@ -22410,27 +22339,13 @@ export type GetCrawlerMetricsError = OperationTimeoutException | CommonErrors;
 /**
  * Retrieves metrics about specified crawlers.
  */
-export const getCrawlerMetrics: API.OperationMethod<
+export const getCrawlerMetrics: API.PaginatedOperationMethod<
   GetCrawlerMetricsRequest,
   GetCrawlerMetricsResponse,
   GetCrawlerMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCrawlerMetricsRequest,
-  ) => stream.Stream<
-    GetCrawlerMetricsResponse,
-    GetCrawlerMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCrawlerMetricsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCrawlerMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCrawlerMetricsRequest,
   output: GetCrawlerMetricsResponse,
   errors: [OperationTimeoutException],
@@ -22449,27 +22364,13 @@ export type GetCrawlersError = OperationTimeoutException | CommonErrors;
  * Retrieves metadata for all crawlers defined in the customer
  * account.
  */
-export const getCrawlers: API.OperationMethod<
+export const getCrawlers: API.PaginatedOperationMethod<
   GetCrawlersRequest,
   GetCrawlersResponse,
   GetCrawlersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCrawlersRequest,
-  ) => stream.Stream<
-    GetCrawlersResponse,
-    GetCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCrawlersRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCrawlersRequest,
   output: GetCrawlersResponse,
   errors: [OperationTimeoutException],
@@ -22589,27 +22490,13 @@ export type GetDatabasesError =
 /**
  * Retrieves all databases defined in a given Data Catalog.
  */
-export const getDatabases: API.OperationMethod<
+export const getDatabases: API.PaginatedOperationMethod<
   GetDatabasesRequest,
   GetDatabasesResponse,
   GetDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDatabasesRequest,
-  ) => stream.Stream<
-    GetDatabasesResponse,
-    GetDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDatabasesRequest,
   output: GetDatabasesResponse,
   errors: [
@@ -22896,27 +22783,13 @@ export type GetDevEndpointsError =
  * and the public IP address field is not populated. When you create a non-VPC development
  * endpoint, Glue returns only a public IP address.
  */
-export const getDevEndpoints: API.OperationMethod<
+export const getDevEndpoints: API.PaginatedOperationMethod<
   GetDevEndpointsRequest,
   GetDevEndpointsResponse,
   GetDevEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDevEndpointsRequest,
-  ) => stream.Stream<
-    GetDevEndpointsResponse,
-    GetDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDevEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevEndpointsRequest,
   output: GetDevEndpointsResponse,
   errors: [
@@ -23265,27 +23138,13 @@ export type GetJobRunsError =
  *
  * `GetJobRuns` returns the job runs in chronological order, with the newest jobs returned first.
  */
-export const getJobRuns: API.OperationMethod<
+export const getJobRuns: API.PaginatedOperationMethod<
   GetJobRunsRequest,
   GetJobRunsResponse,
   GetJobRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetJobRunsRequest,
-  ) => stream.Stream<
-    GetJobRunsResponse,
-    GetJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetJobRunsRequest,
-  ) => stream.Stream<
-    JobRun,
-    GetJobRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetJobRunsRequest,
   output: GetJobRunsResponse,
   errors: [
@@ -23314,27 +23173,13 @@ export type GetJobsError =
 /**
  * Retrieves all current job definitions.
  */
-export const getJobs: API.OperationMethod<
+export const getJobs: API.PaginatedOperationMethod<
   GetJobsRequest,
   GetJobsResponse,
   GetJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetJobsRequest,
-  ) => stream.Stream<
-    GetJobsResponse,
-    GetJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetJobsRequest,
-  ) => stream.Stream<
-    Job,
-    GetJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetJobsRequest,
   output: GetJobsResponse,
   errors: [
@@ -23457,27 +23302,13 @@ export type GetMLTaskRunsError =
  *
  * This operation returns a list of historic runs and must be paginated.
  */
-export const getMLTaskRuns: API.OperationMethod<
+export const getMLTaskRuns: API.PaginatedOperationMethod<
   GetMLTaskRunsRequest,
   GetMLTaskRunsResponse,
   GetMLTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMLTaskRunsRequest,
-  ) => stream.Stream<
-    GetMLTaskRunsResponse,
-    GetMLTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMLTaskRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMLTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMLTaskRunsRequest,
   output: GetMLTaskRunsResponse,
   errors: [
@@ -23541,27 +23372,13 @@ export type GetMLTransformsError =
  * These transformations are then saved by Glue, and you can retrieve their metadata by
  * calling `GetMLTransforms`.
  */
-export const getMLTransforms: API.OperationMethod<
+export const getMLTransforms: API.PaginatedOperationMethod<
   GetMLTransformsRequest,
   GetMLTransformsResponse,
   GetMLTransformsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMLTransformsRequest,
-  ) => stream.Stream<
-    GetMLTransformsResponse,
-    GetMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMLTransformsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMLTransformsRequest,
   output: GetMLTransformsResponse,
   errors: [
@@ -23624,27 +23441,13 @@ export type GetPartitionIndexesError =
 /**
  * Retrieves the partition indexes associated with a table.
  */
-export const getPartitionIndexes: API.OperationMethod<
+export const getPartitionIndexes: API.PaginatedOperationMethod<
   GetPartitionIndexesRequest,
   GetPartitionIndexesResponse,
   GetPartitionIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPartitionIndexesRequest,
-  ) => stream.Stream<
-    GetPartitionIndexesResponse,
-    GetPartitionIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPartitionIndexesRequest,
-  ) => stream.Stream<
-    PartitionIndexDescriptor,
-    GetPartitionIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PartitionIndexDescriptor
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPartitionIndexesRequest,
   output: GetPartitionIndexesResponse,
   errors: [
@@ -23678,27 +23481,13 @@ export type GetPartitionsError =
 /**
  * Retrieves information about the partitions in a table.
  */
-export const getPartitions: API.OperationMethod<
+export const getPartitions: API.PaginatedOperationMethod<
   GetPartitionsRequest,
   GetPartitionsResponse,
   GetPartitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPartitionsRequest,
-  ) => stream.Stream<
-    GetPartitionsResponse,
-    GetPartitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPartitionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPartitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPartitionsRequest,
   output: GetPartitionsResponse,
   errors: [
@@ -23791,27 +23580,13 @@ export type GetResourcePoliciesError =
  * permission on the KMS key, the operation can't return the Data Catalog resource
  * policy.
  */
-export const getResourcePolicies: API.OperationMethod<
+export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesRequest,
   GetResourcePoliciesResponse,
   GetResourcePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GetResourcePoliciesResponse,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GluePolicy,
-    GetResourcePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GluePolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
   output: GetResourcePoliciesResponse,
   errors: [
@@ -24010,27 +23785,13 @@ export type GetSecurityConfigurationsError =
 /**
  * Retrieves a list of all security configurations.
  */
-export const getSecurityConfigurations: API.OperationMethod<
+export const getSecurityConfigurations: API.PaginatedOperationMethod<
   GetSecurityConfigurationsRequest,
   GetSecurityConfigurationsResponse,
   GetSecurityConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    GetSecurityConfigurationsResponse,
-    GetSecurityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSecurityConfigurationsRequest,
-  ) => stream.Stream<
-    SecurityConfiguration,
-    GetSecurityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSecurityConfigurationsRequest,
   output: GetSecurityConfigurationsResponse,
   errors: [
@@ -24226,27 +23987,13 @@ export type GetTablesError =
  * Retrieves the definitions of some or all of the tables in a given
  * `Database`.
  */
-export const getTables: API.OperationMethod<
+export const getTables: API.PaginatedOperationMethod<
   GetTablesRequest,
   GetTablesResponse,
   GetTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTablesRequest,
-  ) => stream.Stream<
-    GetTablesResponse,
-    GetTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTablesRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTablesRequest,
   output: GetTablesResponse,
   errors: [
@@ -24309,27 +24056,13 @@ export type GetTableVersionsError =
  * Retrieves a list of strings that identify available versions of
  * a specified table.
  */
-export const getTableVersions: API.OperationMethod<
+export const getTableVersions: API.PaginatedOperationMethod<
   GetTableVersionsRequest,
   GetTableVersionsResponse,
   GetTableVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTableVersionsRequest,
-  ) => stream.Stream<
-    GetTableVersionsResponse,
-    GetTableVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTableVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetTableVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTableVersionsRequest,
   output: GetTableVersionsResponse,
   errors: [
@@ -24414,27 +24147,13 @@ export type GetTriggersError =
 /**
  * Gets all the triggers associated with a job.
  */
-export const getTriggers: API.OperationMethod<
+export const getTriggers: API.PaginatedOperationMethod<
   GetTriggersRequest,
   GetTriggersResponse,
   GetTriggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTriggersRequest,
-  ) => stream.Stream<
-    GetTriggersResponse,
-    GetTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTriggersRequest,
-  ) => stream.Stream<
-    Trigger,
-    GetTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Trigger
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTriggersRequest,
   output: GetTriggersResponse,
   errors: [
@@ -24509,27 +24228,13 @@ export type GetUnfilteredPartitionsMetadataError =
  *
  * For IAM authorization, the public IAM action associated with this API is `glue:GetPartitions`.
  */
-export const getUnfilteredPartitionsMetadata: API.OperationMethod<
+export const getUnfilteredPartitionsMetadata: API.PaginatedOperationMethod<
   GetUnfilteredPartitionsMetadataRequest,
   GetUnfilteredPartitionsMetadataResponse,
   GetUnfilteredPartitionsMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUnfilteredPartitionsMetadataRequest,
-  ) => stream.Stream<
-    GetUnfilteredPartitionsMetadataResponse,
-    GetUnfilteredPartitionsMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUnfilteredPartitionsMetadataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUnfilteredPartitionsMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUnfilteredPartitionsMetadataRequest,
   output: GetUnfilteredPartitionsMetadataResponse,
   errors: [
@@ -24660,27 +24365,13 @@ export type GetUserDefinedFunctionsError =
 /**
  * Retrieves multiple function definitions from the Data Catalog.
  */
-export const getUserDefinedFunctions: API.OperationMethod<
+export const getUserDefinedFunctions: API.PaginatedOperationMethod<
   GetUserDefinedFunctionsRequest,
   GetUserDefinedFunctionsResponse,
   GetUserDefinedFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUserDefinedFunctionsRequest,
-  ) => stream.Stream<
-    GetUserDefinedFunctionsResponse,
-    GetUserDefinedFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUserDefinedFunctionsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUserDefinedFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUserDefinedFunctionsRequest,
   output: GetUserDefinedFunctionsResponse,
   errors: [
@@ -24793,27 +24484,13 @@ export type GetWorkflowRunsError =
 /**
  * Retrieves metadata for all runs of a given workflow.
  */
-export const getWorkflowRuns: API.OperationMethod<
+export const getWorkflowRuns: API.PaginatedOperationMethod<
   GetWorkflowRunsRequest,
   GetWorkflowRunsResponse,
   GetWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetWorkflowRunsRequest,
-  ) => stream.Stream<
-    GetWorkflowRunsResponse,
-    GetWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetWorkflowRunsRequest,
-  ) => stream.Stream<
-    WorkflowRun,
-    GetWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetWorkflowRunsRequest,
   output: GetWorkflowRunsResponse,
   errors: [
@@ -24863,27 +24540,13 @@ export type ListAssetTypesError =
 /**
  * Lists the asset types defined in Glue Data Catalog.
  */
-export const listAssetTypes: API.OperationMethod<
+export const listAssetTypes: API.PaginatedOperationMethod<
   ListAssetTypesRequest,
   ListAssetTypesResponse,
   ListAssetTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetTypesRequest,
-  ) => stream.Stream<
-    ListAssetTypesResponse,
-    ListAssetTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetTypesRequest,
-  ) => stream.Stream<
-    AssetTypeItem,
-    ListAssetTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetTypeItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetTypesRequest,
   output: ListAssetTypesResponse,
   errors: [
@@ -24911,27 +24574,13 @@ export type ListBlueprintsError =
 /**
  * Lists all the blueprint names in an account.
  */
-export const listBlueprints: API.OperationMethod<
+export const listBlueprints: API.PaginatedOperationMethod<
   ListBlueprintsRequest,
   ListBlueprintsResponse,
   ListBlueprintsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBlueprintsRequest,
-  ) => stream.Stream<
-    ListBlueprintsResponse,
-    ListBlueprintsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBlueprintsRequest,
-  ) => stream.Stream<
-    OrchestrationNameString,
-    ListBlueprintsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrchestrationNameString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBlueprintsRequest,
   output: ListBlueprintsResponse,
   errors: [
@@ -24956,27 +24605,13 @@ export type ListColumnStatisticsTaskRunsError =
 /**
  * List all task runs for a particular account.
  */
-export const listColumnStatisticsTaskRuns: API.OperationMethod<
+export const listColumnStatisticsTaskRuns: API.PaginatedOperationMethod<
   ListColumnStatisticsTaskRunsRequest,
   ListColumnStatisticsTaskRunsResponse,
   ListColumnStatisticsTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    ListColumnStatisticsTaskRunsResponse,
-    ListColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListColumnStatisticsTaskRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListColumnStatisticsTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListColumnStatisticsTaskRunsRequest,
   output: ListColumnStatisticsTaskRunsResponse,
   errors: [OperationTimeoutException],
@@ -24999,27 +24634,13 @@ export type ListConnectionTypesError =
  *
  * See also: `DescribeConnectionType`, `RegisterConnectionType`, `DeleteConnectionType`
  */
-export const listConnectionTypes: API.OperationMethod<
+export const listConnectionTypes: API.PaginatedOperationMethod<
   ListConnectionTypesRequest,
   ListConnectionTypesResponse,
   ListConnectionTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionTypesRequest,
-  ) => stream.Stream<
-    ListConnectionTypesResponse,
-    ListConnectionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionTypesRequest,
-  ) => stream.Stream<
-    ConnectionTypeBrief,
-    ListConnectionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectionTypeBrief
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionTypesRequest,
   output: ListConnectionTypesResponse,
   errors: [AccessDeniedException, InternalServiceException],
@@ -25044,27 +24665,13 @@ export type ListCrawlersError = OperationTimeoutException | CommonErrors;
  * the response so that tagged resources can be retrieved as a group. If you choose to use tags
  * filtering, only resources with the tag are retrieved.
  */
-export const listCrawlers: API.OperationMethod<
+export const listCrawlers: API.PaginatedOperationMethod<
   ListCrawlersRequest,
   ListCrawlersResponse,
   ListCrawlersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrawlersRequest,
-  ) => stream.Stream<
-    ListCrawlersResponse,
-    ListCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrawlersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCrawlersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrawlersRequest,
   output: ListCrawlersResponse,
   errors: [OperationTimeoutException],
@@ -25122,27 +24729,13 @@ export type ListCustomEntityTypesError =
 /**
  * Lists all the custom patterns that have been created.
  */
-export const listCustomEntityTypes: API.OperationMethod<
+export const listCustomEntityTypes: API.PaginatedOperationMethod<
   ListCustomEntityTypesRequest,
   ListCustomEntityTypesResponse,
   ListCustomEntityTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomEntityTypesRequest,
-  ) => stream.Stream<
-    ListCustomEntityTypesResponse,
-    ListCustomEntityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomEntityTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomEntityTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomEntityTypesRequest,
   output: ListCustomEntityTypesResponse,
   errors: [
@@ -25168,27 +24761,13 @@ export type ListDataQualityResultsError =
 /**
  * Returns all data quality execution results for your account.
  */
-export const listDataQualityResults: API.OperationMethod<
+export const listDataQualityResults: API.PaginatedOperationMethod<
   ListDataQualityResultsRequest,
   ListDataQualityResultsResponse,
   ListDataQualityResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityResultsRequest,
-  ) => stream.Stream<
-    ListDataQualityResultsResponse,
-    ListDataQualityResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityResultsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataQualityResultsRequest,
   output: ListDataQualityResultsResponse,
   errors: [
@@ -25214,27 +24793,13 @@ export type ListDataQualityRuleRecommendationRunsError =
 /**
  * Lists the recommendation runs meeting the filter criteria.
  */
-export const listDataQualityRuleRecommendationRuns: API.OperationMethod<
+export const listDataQualityRuleRecommendationRuns: API.PaginatedOperationMethod<
   ListDataQualityRuleRecommendationRunsRequest,
   ListDataQualityRuleRecommendationRunsResponse,
   ListDataQualityRuleRecommendationRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityRuleRecommendationRunsRequest,
-  ) => stream.Stream<
-    ListDataQualityRuleRecommendationRunsResponse,
-    ListDataQualityRuleRecommendationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityRuleRecommendationRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityRuleRecommendationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataQualityRuleRecommendationRunsRequest,
   output: ListDataQualityRuleRecommendationRunsResponse,
   errors: [
@@ -25260,27 +24825,13 @@ export type ListDataQualityRulesetEvaluationRunsError =
 /**
  * Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source.
  */
-export const listDataQualityRulesetEvaluationRuns: API.OperationMethod<
+export const listDataQualityRulesetEvaluationRuns: API.PaginatedOperationMethod<
   ListDataQualityRulesetEvaluationRunsRequest,
   ListDataQualityRulesetEvaluationRunsResponse,
   ListDataQualityRulesetEvaluationRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityRulesetEvaluationRunsRequest,
-  ) => stream.Stream<
-    ListDataQualityRulesetEvaluationRunsResponse,
-    ListDataQualityRulesetEvaluationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityRulesetEvaluationRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityRulesetEvaluationRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataQualityRulesetEvaluationRunsRequest,
   output: ListDataQualityRulesetEvaluationRunsResponse,
   errors: [
@@ -25307,27 +24858,13 @@ export type ListDataQualityRulesetsError =
 /**
  * Returns a paginated list of rulesets for the specified list of Glue tables.
  */
-export const listDataQualityRulesets: API.OperationMethod<
+export const listDataQualityRulesets: API.PaginatedOperationMethod<
   ListDataQualityRulesetsRequest,
   ListDataQualityRulesetsResponse,
   ListDataQualityRulesetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataQualityRulesetsRequest,
-  ) => stream.Stream<
-    ListDataQualityRulesetsResponse,
-    ListDataQualityRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataQualityRulesetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDataQualityRulesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataQualityRulesetsRequest,
   output: ListDataQualityRulesetsResponse,
   errors: [
@@ -25408,27 +24945,13 @@ export type ListDevEndpointsError =
  * the response so that tagged resources can be retrieved as a group. If you choose to use tags
  * filtering, only resources with the tag are retrieved.
  */
-export const listDevEndpoints: API.OperationMethod<
+export const listDevEndpoints: API.PaginatedOperationMethod<
   ListDevEndpointsRequest,
   ListDevEndpointsResponse,
   ListDevEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevEndpointsRequest,
-  ) => stream.Stream<
-    ListDevEndpointsResponse,
-    ListDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevEndpointsRequest,
   output: ListDevEndpointsResponse,
   errors: [
@@ -25459,27 +24982,13 @@ export type ListEntitiesError =
 /**
  * Returns the available entities supported by the connection type.
  */
-export const listEntities: API.OperationMethod<
+export const listEntities: API.PaginatedOperationMethod<
   ListEntitiesRequest,
   ListEntitiesResponse,
   ListEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    ListEntitiesResponse,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesRequest,
-  ) => stream.Stream<
-    Entity,
-    ListEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Entity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesRequest,
   output: ListEntitiesResponse,
   errors: [
@@ -25510,27 +25019,13 @@ export type ListFormTypesError =
 /**
  * Lists the form types defined in Glue Data Catalog.
  */
-export const listFormTypes: API.OperationMethod<
+export const listFormTypes: API.PaginatedOperationMethod<
   ListFormTypesRequest,
   ListFormTypesResponse,
   ListFormTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFormTypesRequest,
-  ) => stream.Stream<
-    ListFormTypesResponse,
-    ListFormTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFormTypesRequest,
-  ) => stream.Stream<
-    FormTypeItem,
-    ListFormTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FormTypeItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormTypesRequest,
   output: ListFormTypesResponse,
   errors: [
@@ -25559,27 +25054,13 @@ export type ListGlossariesError =
 /**
  * Lists business glossaries in Glue Data Catalog.
  */
-export const listGlossaries: API.OperationMethod<
+export const listGlossaries: API.PaginatedOperationMethod<
   ListGlossariesRequest,
   ListGlossariesResponse,
   ListGlossariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGlossariesRequest,
-  ) => stream.Stream<
-    ListGlossariesResponse,
-    ListGlossariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGlossariesRequest,
-  ) => stream.Stream<
-    GlossaryItem,
-    ListGlossariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GlossaryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlossariesRequest,
   output: ListGlossariesResponse,
   errors: [
@@ -25608,27 +25089,13 @@ export type ListGlossaryTermsError =
 /**
  * Lists glossary terms within a business glossary in Glue Data Catalog.
  */
-export const listGlossaryTerms: API.OperationMethod<
+export const listGlossaryTerms: API.PaginatedOperationMethod<
   ListGlossaryTermsRequest,
   ListGlossaryTermsResponse,
   ListGlossaryTermsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGlossaryTermsRequest,
-  ) => stream.Stream<
-    ListGlossaryTermsResponse,
-    ListGlossaryTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGlossaryTermsRequest,
-  ) => stream.Stream<
-    GlossaryTermItem,
-    ListGlossaryTermsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GlossaryTermItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGlossaryTermsRequest,
   output: ListGlossaryTermsResponse,
   errors: [
@@ -25692,27 +25159,13 @@ export type ListIterableFormsError =
 /**
  * Lists the items in an iterable form on an asset in Glue Data Catalog. For example, lists the columns of a table asset.
  */
-export const listIterableForms: API.OperationMethod<
+export const listIterableForms: API.PaginatedOperationMethod<
   ListIterableFormsRequest,
   ListIterableFormsResponse,
   ListIterableFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIterableFormsRequest,
-  ) => stream.Stream<
-    ListIterableFormsResponse,
-    ListIterableFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIterableFormsRequest,
-  ) => stream.Stream<
-    IterableFormListItem,
-    ListIterableFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IterableFormListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIterableFormsRequest,
   output: ListIterableFormsResponse,
   errors: [
@@ -25746,27 +25199,13 @@ export type ListJobsError =
  * the response so that tagged resources can be retrieved as a group. If you choose to use tags
  * filtering, only resources with the tag are retrieved.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    NameString,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NameString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [
@@ -25794,27 +25233,13 @@ export type ListMaterializedViewRefreshTaskRunsError =
 /**
  * List all task runs for a particular account.
  */
-export const listMaterializedViewRefreshTaskRuns: API.OperationMethod<
+export const listMaterializedViewRefreshTaskRuns: API.PaginatedOperationMethod<
   ListMaterializedViewRefreshTaskRunsRequest,
   ListMaterializedViewRefreshTaskRunsResponse,
   ListMaterializedViewRefreshTaskRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMaterializedViewRefreshTaskRunsRequest,
-  ) => stream.Stream<
-    ListMaterializedViewRefreshTaskRunsResponse,
-    ListMaterializedViewRefreshTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMaterializedViewRefreshTaskRunsRequest,
-  ) => stream.Stream<
-    MaterializedViewRefreshTaskRun,
-    ListMaterializedViewRefreshTaskRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MaterializedViewRefreshTaskRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMaterializedViewRefreshTaskRunsRequest,
   output: ListMaterializedViewRefreshTaskRunsResponse,
   errors: [
@@ -25845,27 +25270,13 @@ export type ListMLTransformsError =
  * a filter of the responses so that tagged resources can be retrieved as a group. If you choose to use tag
  * filtering, only resources with the tags are retrieved.
  */
-export const listMLTransforms: API.OperationMethod<
+export const listMLTransforms: API.PaginatedOperationMethod<
   ListMLTransformsRequest,
   ListMLTransformsResponse,
   ListMLTransformsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMLTransformsRequest,
-  ) => stream.Stream<
-    ListMLTransformsResponse,
-    ListMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMLTransformsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMLTransformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMLTransformsRequest,
   output: ListMLTransformsResponse,
   errors: [
@@ -25892,27 +25303,13 @@ export type ListRegistriesError =
 /**
  * Returns a list of registries that you have created, with minimal registry information. Registries in the `Deleting` status will not be included in the results. Empty results will be returned if there are no registries available.
  */
-export const listRegistries: API.OperationMethod<
+export const listRegistries: API.PaginatedOperationMethod<
   ListRegistriesInput,
   ListRegistriesResponse,
   ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistriesInput,
-  ) => stream.Stream<
-    ListRegistriesResponse,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistriesInput,
-  ) => stream.Stream<
-    RegistryListItem,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistryListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistriesInput,
   output: ListRegistriesResponse,
   errors: [
@@ -25942,27 +25339,13 @@ export type ListSchemasError =
  *
  * When the `RegistryId` is not provided, all the schemas across registries will be part of the API response.
  */
-export const listSchemas: API.OperationMethod<
+export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasInput,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasInput,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasInput,
-  ) => stream.Stream<
-    SchemaListItem,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasInput,
   output: ListSchemasResponse,
   errors: [
@@ -25991,27 +25374,13 @@ export type ListSchemaVersionsError =
 /**
  * Returns a list of schema versions that you have created, with minimal information. Schema versions in Deleted status will not be included in the results. Empty results will be returned if there are no schema versions available.
  */
-export const listSchemaVersions: API.OperationMethod<
+export const listSchemaVersions: API.PaginatedOperationMethod<
   ListSchemaVersionsInput,
   ListSchemaVersionsResponse,
   ListSchemaVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaVersionsInput,
-  ) => stream.Stream<
-    ListSchemaVersionsResponse,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaVersionsInput,
-  ) => stream.Stream<
-    SchemaVersionListItem,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaVersionListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaVersionsInput,
   output: ListSchemaVersionsResponse,
   errors: [
@@ -26040,27 +25409,13 @@ export type ListSessionsError =
 /**
  * Retrieve a list of sessions.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -26122,27 +25477,13 @@ export type ListTableOptimizerRunsError =
 /**
  * Lists the history of previous optimizer runs for a specific table.
  */
-export const listTableOptimizerRuns: API.OperationMethod<
+export const listTableOptimizerRuns: API.PaginatedOperationMethod<
   ListTableOptimizerRunsRequest,
   ListTableOptimizerRunsResponse,
   ListTableOptimizerRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTableOptimizerRunsRequest,
-  ) => stream.Stream<
-    ListTableOptimizerRunsResponse,
-    ListTableOptimizerRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTableOptimizerRunsRequest,
-  ) => stream.Stream<
-    TableOptimizerRun,
-    ListTableOptimizerRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableOptimizerRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableOptimizerRunsRequest,
   output: ListTableOptimizerRunsResponse,
   errors: [
@@ -26177,27 +25518,13 @@ export type ListTriggersError =
  * the response so that tagged resources can be retrieved as a group. If you choose to use tags
  * filtering, only resources with the tag are retrieved.
  */
-export const listTriggers: API.OperationMethod<
+export const listTriggers: API.PaginatedOperationMethod<
   ListTriggersRequest,
   ListTriggersResponse,
   ListTriggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTriggersRequest,
-  ) => stream.Stream<
-    ListTriggersResponse,
-    ListTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTriggersRequest,
-  ) => stream.Stream<
-    NameString,
-    ListTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NameString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTriggersRequest,
   output: ListTriggersResponse,
   errors: [
@@ -26226,27 +25553,13 @@ export type ListUsageProfilesError =
 /**
  * List all the Glue usage profiles.
  */
-export const listUsageProfiles: API.OperationMethod<
+export const listUsageProfiles: API.PaginatedOperationMethod<
   ListUsageProfilesRequest,
   ListUsageProfilesResponse,
   ListUsageProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsageProfilesRequest,
-  ) => stream.Stream<
-    ListUsageProfilesResponse,
-    ListUsageProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsageProfilesRequest,
-  ) => stream.Stream<
-    UsageProfileDefinition,
-    ListUsageProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UsageProfileDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsageProfilesRequest,
   output: ListUsageProfilesResponse,
   errors: [
@@ -26274,27 +25587,13 @@ export type ListWorkflowsError =
 /**
  * Lists names of workflows created in the account.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    NameString,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NameString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [
@@ -26867,27 +26166,13 @@ export type SearchAssetsError =
 /**
  * Searches for assets in Glue Data Catalog using full-text search, filters, sorting, and aggregations. Returns matching assets with relevance-ranked results.
  */
-export const searchAssets: API.OperationMethod<
+export const searchAssets: API.PaginatedOperationMethod<
   SearchAssetsInput,
   SearchAssetsOutput,
   SearchAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAssetsInput,
-  ) => stream.Stream<
-    SearchAssetsOutput,
-    SearchAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAssetsInput,
-  ) => stream.Stream<
-    SearchResultItem,
-    SearchAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SearchResultItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAssetsInput,
   output: SearchAssetsOutput,
   errors: [
@@ -26917,27 +26202,13 @@ export type SearchTablesError =
  *
  * You can only get tables that you have access to based on the security policies defined in Lake Formation. You need at least a read-only access to the table for it to be returned. If you do not have access to all the columns in the table, these columns will not be searched against when returning the list of tables back to you. If you have access to the columns but not the data in the columns, those columns and the associated metadata for those columns will be included in the search.
  */
-export const searchTables: API.OperationMethod<
+export const searchTables: API.PaginatedOperationMethod<
   SearchTablesRequest,
   SearchTablesResponse,
   SearchTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTablesRequest,
-  ) => stream.Stream<
-    SearchTablesResponse,
-    SearchTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTablesRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTablesRequest,
   output: SearchTablesResponse,
   errors: [

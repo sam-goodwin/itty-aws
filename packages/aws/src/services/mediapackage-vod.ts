@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1913,27 +1912,13 @@ export type ListAssetsError =
 /**
  * Returns a collection of MediaPackage VOD Asset resources.
  */
-export const listAssets: API.OperationMethod<
+export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    ListAssetsResponse,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    AssetShallow,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetShallow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
   errors: [
@@ -1966,27 +1951,13 @@ export type ListPackagingConfigurationsError =
 /**
  * Returns a collection of MediaPackage VOD PackagingConfiguration resources.
  */
-export const listPackagingConfigurations: API.OperationMethod<
+export const listPackagingConfigurations: API.PaginatedOperationMethod<
   ListPackagingConfigurationsRequest,
   ListPackagingConfigurationsResponse,
   ListPackagingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagingConfigurationsRequest,
-  ) => stream.Stream<
-    ListPackagingConfigurationsResponse,
-    ListPackagingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagingConfigurationsRequest,
-  ) => stream.Stream<
-    PackagingConfiguration,
-    ListPackagingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackagingConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingConfigurationsRequest,
   output: ListPackagingConfigurationsResponse,
   errors: [
@@ -2019,27 +1990,13 @@ export type ListPackagingGroupsError =
 /**
  * Returns a collection of MediaPackage VOD PackagingGroup resources.
  */
-export const listPackagingGroups: API.OperationMethod<
+export const listPackagingGroups: API.PaginatedOperationMethod<
   ListPackagingGroupsRequest,
   ListPackagingGroupsResponse,
   ListPackagingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagingGroupsRequest,
-  ) => stream.Stream<
-    ListPackagingGroupsResponse,
-    ListPackagingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagingGroupsRequest,
-  ) => stream.Stream<
-    PackagingGroup,
-    ListPackagingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackagingGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagingGroupsRequest,
   output: ListPackagingGroupsResponse,
   errors: [

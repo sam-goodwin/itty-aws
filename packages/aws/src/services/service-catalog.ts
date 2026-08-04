@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5026,27 +5025,13 @@ export type DescribePortfolioSharesError =
  *
  * The `PortfolioId` and `Type` parameters are both required.
  */
-export const describePortfolioShares: API.OperationMethod<
+export const describePortfolioShares: API.PaginatedOperationMethod<
   DescribePortfolioSharesInput,
   DescribePortfolioSharesOutput,
   DescribePortfolioSharesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePortfolioSharesInput,
-  ) => stream.Stream<
-    DescribePortfolioSharesOutput,
-    DescribePortfolioSharesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePortfolioSharesInput,
-  ) => stream.Stream<
-    unknown,
-    DescribePortfolioSharesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePortfolioSharesInput,
   output: DescribePortfolioSharesOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5626,27 +5611,13 @@ export type GetProvisionedProductOutputsError =
 /**
  * This API takes either a `ProvisonedProductId` or a `ProvisionedProductName`, along with a list of one or more output keys, and responds with the key/value pairs of those outputs.
  */
-export const getProvisionedProductOutputs: API.OperationMethod<
+export const getProvisionedProductOutputs: API.PaginatedOperationMethod<
   GetProvisionedProductOutputsInput,
   GetProvisionedProductOutputsOutput,
   GetProvisionedProductOutputsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetProvisionedProductOutputsInput,
-  ) => stream.Stream<
-    GetProvisionedProductOutputsOutput,
-    GetProvisionedProductOutputsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetProvisionedProductOutputsInput,
-  ) => stream.Stream<
-    unknown,
-    GetProvisionedProductOutputsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetProvisionedProductOutputsInput,
   output: GetProvisionedProductOutputsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5722,27 +5693,13 @@ export type ListAcceptedPortfolioSharesError =
  * this account. By specifying the `PortfolioShareType`, you can list portfolios for which
  * organizational shares were accepted by this account.
  */
-export const listAcceptedPortfolioShares: API.OperationMethod<
+export const listAcceptedPortfolioShares: API.PaginatedOperationMethod<
   ListAcceptedPortfolioSharesInput,
   ListAcceptedPortfolioSharesOutput,
   ListAcceptedPortfolioSharesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAcceptedPortfolioSharesInput,
-  ) => stream.Stream<
-    ListAcceptedPortfolioSharesOutput,
-    ListAcceptedPortfolioSharesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAcceptedPortfolioSharesInput,
-  ) => stream.Stream<
-    unknown,
-    ListAcceptedPortfolioSharesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAcceptedPortfolioSharesInput,
   output: ListAcceptedPortfolioSharesOutput,
   errors: [InvalidParametersException, OperationNotSupportedException],
@@ -5763,27 +5720,13 @@ export type ListBudgetsForResourceError =
 /**
  * Lists all the budgets associated to the specified resource.
  */
-export const listBudgetsForResource: API.OperationMethod<
+export const listBudgetsForResource: API.PaginatedOperationMethod<
   ListBudgetsForResourceInput,
   ListBudgetsForResourceOutput,
   ListBudgetsForResourceError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBudgetsForResourceInput,
-  ) => stream.Stream<
-    ListBudgetsForResourceOutput,
-    ListBudgetsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBudgetsForResourceInput,
-  ) => stream.Stream<
-    unknown,
-    ListBudgetsForResourceError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBudgetsForResourceInput,
   output: ListBudgetsForResourceOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5804,27 +5747,13 @@ export type ListConstraintsForPortfolioError =
 /**
  * Lists the constraints for the specified portfolio and product.
  */
-export const listConstraintsForPortfolio: API.OperationMethod<
+export const listConstraintsForPortfolio: API.PaginatedOperationMethod<
   ListConstraintsForPortfolioInput,
   ListConstraintsForPortfolioOutput,
   ListConstraintsForPortfolioError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConstraintsForPortfolioInput,
-  ) => stream.Stream<
-    ListConstraintsForPortfolioOutput,
-    ListConstraintsForPortfolioError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConstraintsForPortfolioInput,
-  ) => stream.Stream<
-    unknown,
-    ListConstraintsForPortfolioError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConstraintsForPortfolioInput,
   output: ListConstraintsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5865,27 +5794,13 @@ export type ListLaunchPathsError =
  * see Granting users access
  * in the *Service Catalog User Guide*.
  */
-export const listLaunchPaths: API.OperationMethod<
+export const listLaunchPaths: API.PaginatedOperationMethod<
   ListLaunchPathsInput,
   ListLaunchPathsOutput,
   ListLaunchPathsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLaunchPathsInput,
-  ) => stream.Stream<
-    ListLaunchPathsOutput,
-    ListLaunchPathsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLaunchPathsInput,
-  ) => stream.Stream<
-    unknown,
-    ListLaunchPathsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLaunchPathsInput,
   output: ListLaunchPathsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5911,27 +5826,13 @@ export type ListOrganizationPortfolioAccessError =
  *
  * If a delegated admin is de-registered, they can no longer perform this operation.
  */
-export const listOrganizationPortfolioAccess: API.OperationMethod<
+export const listOrganizationPortfolioAccess: API.PaginatedOperationMethod<
   ListOrganizationPortfolioAccessInput,
   ListOrganizationPortfolioAccessOutput,
   ListOrganizationPortfolioAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationPortfolioAccessInput,
-  ) => stream.Stream<
-    ListOrganizationPortfolioAccessOutput,
-    ListOrganizationPortfolioAccessError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationPortfolioAccessInput,
-  ) => stream.Stream<
-    unknown,
-    ListOrganizationPortfolioAccessError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationPortfolioAccessInput,
   output: ListOrganizationPortfolioAccessOutput,
   errors: [
@@ -5958,27 +5859,13 @@ export type ListPortfolioAccessError =
  *
  * A delegated admin can list the accounts that have access to the shared portfolio. Note that if a delegated admin is de-registered, they can no longer perform this operation.
  */
-export const listPortfolioAccess: API.OperationMethod<
+export const listPortfolioAccess: API.PaginatedOperationMethod<
   ListPortfolioAccessInput,
   ListPortfolioAccessOutput,
   ListPortfolioAccessError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPortfolioAccessInput,
-  ) => stream.Stream<
-    ListPortfolioAccessOutput,
-    ListPortfolioAccessError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPortfolioAccessInput,
-  ) => stream.Stream<
-    unknown,
-    ListPortfolioAccessError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortfolioAccessInput,
   output: ListPortfolioAccessOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -5996,27 +5883,13 @@ export type ListPortfoliosError = InvalidParametersException | CommonErrors;
 /**
  * Lists all portfolios in the catalog.
  */
-export const listPortfolios: API.OperationMethod<
+export const listPortfolios: API.PaginatedOperationMethod<
   ListPortfoliosInput,
   ListPortfoliosOutput,
   ListPortfoliosError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPortfoliosInput,
-  ) => stream.Stream<
-    ListPortfoliosOutput,
-    ListPortfoliosError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPortfoliosInput,
-  ) => stream.Stream<
-    unknown,
-    ListPortfoliosError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortfoliosInput,
   output: ListPortfoliosOutput,
   errors: [InvalidParametersException],
@@ -6037,27 +5910,13 @@ export type ListPortfoliosForProductError =
 /**
  * Lists all portfolios that the specified product is associated with.
  */
-export const listPortfoliosForProduct: API.OperationMethod<
+export const listPortfoliosForProduct: API.PaginatedOperationMethod<
   ListPortfoliosForProductInput,
   ListPortfoliosForProductOutput,
   ListPortfoliosForProductError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPortfoliosForProductInput,
-  ) => stream.Stream<
-    ListPortfoliosForProductOutput,
-    ListPortfoliosForProductError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPortfoliosForProductInput,
-  ) => stream.Stream<
-    unknown,
-    ListPortfoliosForProductError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortfoliosForProductInput,
   output: ListPortfoliosForProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6078,27 +5937,13 @@ export type ListPrincipalsForPortfolioError =
 /**
  * Lists all `PrincipalARN`s and corresponding `PrincipalType`s associated with the specified portfolio.
  */
-export const listPrincipalsForPortfolio: API.OperationMethod<
+export const listPrincipalsForPortfolio: API.PaginatedOperationMethod<
   ListPrincipalsForPortfolioInput,
   ListPrincipalsForPortfolioOutput,
   ListPrincipalsForPortfolioError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrincipalsForPortfolioInput,
-  ) => stream.Stream<
-    ListPrincipalsForPortfolioOutput,
-    ListPrincipalsForPortfolioError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrincipalsForPortfolioInput,
-  ) => stream.Stream<
-    unknown,
-    ListPrincipalsForPortfolioError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalsForPortfolioInput,
   output: ListPrincipalsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6161,27 +6006,13 @@ export type ListProvisioningArtifactsForServiceActionError =
 /**
  * Lists all provisioning artifacts (also known as versions) for the specified self-service action.
  */
-export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
+export const listProvisioningArtifactsForServiceAction: API.PaginatedOperationMethod<
   ListProvisioningArtifactsForServiceActionInput,
   ListProvisioningArtifactsForServiceActionOutput,
   ListProvisioningArtifactsForServiceActionError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisioningArtifactsForServiceActionInput,
-  ) => stream.Stream<
-    ListProvisioningArtifactsForServiceActionOutput,
-    ListProvisioningArtifactsForServiceActionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisioningArtifactsForServiceActionInput,
-  ) => stream.Stream<
-    unknown,
-    ListProvisioningArtifactsForServiceActionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisioningArtifactsForServiceActionInput,
   output: ListProvisioningArtifactsForServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6221,27 +6052,13 @@ export type ListResourcesForTagOptionError =
 /**
  * Lists the resources associated with the specified TagOption.
  */
-export const listResourcesForTagOption: API.OperationMethod<
+export const listResourcesForTagOption: API.PaginatedOperationMethod<
   ListResourcesForTagOptionInput,
   ListResourcesForTagOptionOutput,
   ListResourcesForTagOptionError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesForTagOptionInput,
-  ) => stream.Stream<
-    ListResourcesForTagOptionOutput,
-    ListResourcesForTagOptionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesForTagOptionInput,
-  ) => stream.Stream<
-    unknown,
-    ListResourcesForTagOptionError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesForTagOptionInput,
   output: ListResourcesForTagOptionOutput,
   errors: [
@@ -6263,27 +6080,13 @@ export type ListServiceActionsError = InvalidParametersException | CommonErrors;
 /**
  * Lists all self-service actions.
  */
-export const listServiceActions: API.OperationMethod<
+export const listServiceActions: API.PaginatedOperationMethod<
   ListServiceActionsInput,
   ListServiceActionsOutput,
   ListServiceActionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceActionsInput,
-  ) => stream.Stream<
-    ListServiceActionsOutput,
-    ListServiceActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceActionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListServiceActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceActionsInput,
   output: ListServiceActionsOutput,
   errors: [InvalidParametersException],
@@ -6304,27 +6107,13 @@ export type ListServiceActionsForProvisioningArtifactError =
 /**
  * Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
  */
-export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
+export const listServiceActionsForProvisioningArtifact: API.PaginatedOperationMethod<
   ListServiceActionsForProvisioningArtifactInput,
   ListServiceActionsForProvisioningArtifactOutput,
   ListServiceActionsForProvisioningArtifactError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceActionsForProvisioningArtifactInput,
-  ) => stream.Stream<
-    ListServiceActionsForProvisioningArtifactOutput,
-    ListServiceActionsForProvisioningArtifactError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceActionsForProvisioningArtifactInput,
-  ) => stream.Stream<
-    unknown,
-    ListServiceActionsForProvisioningArtifactError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceActionsForProvisioningArtifactInput,
   output: ListServiceActionsForProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6366,27 +6155,13 @@ export type ListTagOptionsError =
 /**
  * Lists the specified TagOptions or all TagOptions.
  */
-export const listTagOptions: API.OperationMethod<
+export const listTagOptions: API.PaginatedOperationMethod<
   ListTagOptionsInput,
   ListTagOptionsOutput,
   ListTagOptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagOptionsInput,
-  ) => stream.Stream<
-    ListTagOptionsOutput,
-    ListTagOptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagOptionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListTagOptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagOptionsInput,
   output: ListTagOptionsOutput,
   errors: [InvalidParametersException, TagOptionNotMigratedException],
@@ -6567,27 +6342,13 @@ export type SearchProductsError = InvalidParametersException | CommonErrors;
 /**
  * Gets information about the products to which the caller has access.
  */
-export const searchProducts: API.OperationMethod<
+export const searchProducts: API.PaginatedOperationMethod<
   SearchProductsInput,
   SearchProductsOutput,
   SearchProductsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchProductsInput,
-  ) => stream.Stream<
-    SearchProductsOutput,
-    SearchProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchProductsInput,
-  ) => stream.Stream<
-    unknown,
-    SearchProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProductsInput,
   output: SearchProductsOutput,
   errors: [InvalidParametersException],
@@ -6608,27 +6369,13 @@ export type SearchProductsAsAdminError =
 /**
  * Gets information about the products for the specified portfolio or all products.
  */
-export const searchProductsAsAdmin: API.OperationMethod<
+export const searchProductsAsAdmin: API.PaginatedOperationMethod<
   SearchProductsAsAdminInput,
   SearchProductsAsAdminOutput,
   SearchProductsAsAdminError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchProductsAsAdminInput,
-  ) => stream.Stream<
-    SearchProductsAsAdminOutput,
-    SearchProductsAsAdminError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchProductsAsAdminInput,
-  ) => stream.Stream<
-    unknown,
-    SearchProductsAsAdminError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProductsAsAdminInput,
   output: SearchProductsAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
@@ -6648,27 +6395,13 @@ export type SearchProvisionedProductsError =
 /**
  * Gets information about the provisioned products that meet the specified criteria.
  */
-export const searchProvisionedProducts: API.OperationMethod<
+export const searchProvisionedProducts: API.PaginatedOperationMethod<
   SearchProvisionedProductsInput,
   SearchProvisionedProductsOutput,
   SearchProvisionedProductsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchProvisionedProductsInput,
-  ) => stream.Stream<
-    SearchProvisionedProductsOutput,
-    SearchProvisionedProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchProvisionedProductsInput,
-  ) => stream.Stream<
-    unknown,
-    SearchProvisionedProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProvisionedProductsInput,
   output: SearchProvisionedProductsOutput,
   errors: [InvalidParametersException],

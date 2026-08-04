@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1190,27 +1189,13 @@ export type ListIdentityProvidersError =
 /**
  * Lists the Active Directory identity providers for user-based subscriptions.
  */
-export const listIdentityProviders: API.OperationMethod<
+export const listIdentityProviders: API.PaginatedOperationMethod<
   ListIdentityProvidersRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ListIdentityProvidersResponse,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    IdentityProviderSummary,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdentityProviderSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
   output: ListIdentityProvidersResponse,
   errors: [
@@ -1245,27 +1230,13 @@ export type ListInstancesError =
 /**
  * Lists the EC2 instances providing user-based subscriptions.
  */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    InstanceSummary,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [
@@ -1299,27 +1270,13 @@ export type ListLicenseServerEndpointsError =
 /**
  * List the Remote Desktop Services (RDS) License Server endpoints
  */
-export const listLicenseServerEndpoints: API.OperationMethod<
+export const listLicenseServerEndpoints: API.PaginatedOperationMethod<
   ListLicenseServerEndpointsRequest,
   ListLicenseServerEndpointsResponse,
   ListLicenseServerEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLicenseServerEndpointsRequest,
-  ) => stream.Stream<
-    ListLicenseServerEndpointsResponse,
-    ListLicenseServerEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLicenseServerEndpointsRequest,
-  ) => stream.Stream<
-    LicenseServerEndpoint,
-    ListLicenseServerEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LicenseServerEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLicenseServerEndpointsRequest,
   output: ListLicenseServerEndpointsResponse,
   errors: [
@@ -1353,27 +1310,13 @@ export type ListProductSubscriptionsError =
 /**
  * Lists the user-based subscription products available from an identity provider.
  */
-export const listProductSubscriptions: API.OperationMethod<
+export const listProductSubscriptions: API.PaginatedOperationMethod<
   ListProductSubscriptionsRequest,
   ListProductSubscriptionsResponse,
   ListProductSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProductSubscriptionsRequest,
-  ) => stream.Stream<
-    ListProductSubscriptionsResponse,
-    ListProductSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProductSubscriptionsRequest,
-  ) => stream.Stream<
-    ProductUserSummary,
-    ListProductSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProductUserSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductSubscriptionsRequest,
   output: ListProductSubscriptionsResponse,
   errors: [
@@ -1434,27 +1377,13 @@ export type ListUserAssociationsError =
 /**
  * Lists user associations for an identity provider.
  */
-export const listUserAssociations: API.OperationMethod<
+export const listUserAssociations: API.PaginatedOperationMethod<
   ListUserAssociationsRequest,
   ListUserAssociationsResponse,
   ListUserAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserAssociationsRequest,
-  ) => stream.Stream<
-    ListUserAssociationsResponse,
-    ListUserAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserAssociationsRequest,
-  ) => stream.Stream<
-    InstanceUserSummary,
-    ListUserAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceUserSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserAssociationsRequest,
   output: ListUserAssociationsResponse,
   errors: [

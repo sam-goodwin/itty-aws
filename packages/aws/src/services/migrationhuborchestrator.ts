@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2267,27 +2266,13 @@ export type ListPluginsError =
 /**
  * List AWS Migration Hub Orchestrator plugins.
  */
-export const listPlugins: API.OperationMethod<
+export const listPlugins: API.PaginatedOperationMethod<
   ListPluginsRequest,
   ListPluginsResponse,
   ListPluginsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPluginsRequest,
-  ) => stream.Stream<
-    ListPluginsResponse,
-    ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPluginsRequest,
-  ) => stream.Stream<
-    PluginSummary,
-    ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PluginSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginsRequest,
   output: ListPluginsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -2331,27 +2316,13 @@ export type ListTemplatesError =
 /**
  * List the templates available in Migration Hub Orchestrator to create a migration workflow.
  */
-export const listTemplates: API.OperationMethod<
+export const listTemplates: API.PaginatedOperationMethod<
   ListMigrationWorkflowTemplatesRequest,
   ListMigrationWorkflowTemplatesResponse,
   ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMigrationWorkflowTemplatesRequest,
-  ) => stream.Stream<
-    ListMigrationWorkflowTemplatesResponse,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMigrationWorkflowTemplatesRequest,
-  ) => stream.Stream<
-    TemplateSummary,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationWorkflowTemplatesRequest,
   output: ListMigrationWorkflowTemplatesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -2375,27 +2346,13 @@ export type ListTemplateStepGroupsError =
 /**
  * List the step groups in a template.
  */
-export const listTemplateStepGroups: API.OperationMethod<
+export const listTemplateStepGroups: API.PaginatedOperationMethod<
   ListTemplateStepGroupsRequest,
   ListTemplateStepGroupsResponse,
   ListTemplateStepGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateStepGroupsRequest,
-  ) => stream.Stream<
-    ListTemplateStepGroupsResponse,
-    ListTemplateStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateStepGroupsRequest,
-  ) => stream.Stream<
-    TemplateStepGroupSummary,
-    ListTemplateStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TemplateStepGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateStepGroupsRequest,
   output: ListTemplateStepGroupsResponse,
   errors: [
@@ -2425,27 +2382,13 @@ export type ListTemplateStepsError =
 /**
  * List the steps in a template.
  */
-export const listTemplateSteps: API.OperationMethod<
+export const listTemplateSteps: API.PaginatedOperationMethod<
   ListTemplateStepsRequest,
   ListTemplateStepsResponse,
   ListTemplateStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateStepsRequest,
-  ) => stream.Stream<
-    ListTemplateStepsResponse,
-    ListTemplateStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateStepsRequest,
-  ) => stream.Stream<
-    TemplateStepSummary,
-    ListTemplateStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TemplateStepSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateStepsRequest,
   output: ListTemplateStepsResponse,
   errors: [
@@ -2476,27 +2419,13 @@ export type ListWorkflowsError =
 /**
  * List the migration workflows.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListMigrationWorkflowsRequest,
   ListMigrationWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMigrationWorkflowsRequest,
-  ) => stream.Stream<
-    ListMigrationWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMigrationWorkflowsRequest,
-  ) => stream.Stream<
-    MigrationWorkflowSummary,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MigrationWorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationWorkflowsRequest,
   output: ListMigrationWorkflowsResponse,
   errors: [
@@ -2527,27 +2456,13 @@ export type ListWorkflowStepGroupsError =
 /**
  * List the step groups in a migration workflow.
  */
-export const listWorkflowStepGroups: API.OperationMethod<
+export const listWorkflowStepGroups: API.PaginatedOperationMethod<
   ListWorkflowStepGroupsRequest,
   ListWorkflowStepGroupsResponse,
   ListWorkflowStepGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowStepGroupsRequest,
-  ) => stream.Stream<
-    ListWorkflowStepGroupsResponse,
-    ListWorkflowStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowStepGroupsRequest,
-  ) => stream.Stream<
-    WorkflowStepGroupSummary,
-    ListWorkflowStepGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowStepGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepGroupsRequest,
   output: ListWorkflowStepGroupsResponse,
   errors: [
@@ -2577,27 +2492,13 @@ export type ListWorkflowStepsError =
 /**
  * List the steps in a workflow.
  */
-export const listWorkflowSteps: API.OperationMethod<
+export const listWorkflowSteps: API.PaginatedOperationMethod<
   ListWorkflowStepsRequest,
   ListWorkflowStepsResponse,
   ListWorkflowStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowStepsRequest,
-  ) => stream.Stream<
-    ListWorkflowStepsResponse,
-    ListWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowStepsRequest,
-  ) => stream.Stream<
-    WorkflowStepSummary,
-    ListWorkflowStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowStepSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowStepsRequest,
   output: ListWorkflowStepsResponse,
   errors: [

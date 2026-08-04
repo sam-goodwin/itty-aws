@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5318,27 +5317,13 @@ export type ListAudienceExportJobsError =
 /**
  * Returns a list of the audience export jobs.
  */
-export const listAudienceExportJobs: API.OperationMethod<
+export const listAudienceExportJobs: API.PaginatedOperationMethod<
   ListAudienceExportJobsRequest,
   ListAudienceExportJobsResponse,
   ListAudienceExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAudienceExportJobsRequest,
-  ) => stream.Stream<
-    ListAudienceExportJobsResponse,
-    ListAudienceExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAudienceExportJobsRequest,
-  ) => stream.Stream<
-    AudienceExportJobSummary,
-    ListAudienceExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AudienceExportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceExportJobsRequest,
   output: ListAudienceExportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5360,27 +5345,13 @@ export type ListAudienceGenerationJobsError =
 /**
  * Returns a list of audience generation jobs.
  */
-export const listAudienceGenerationJobs: API.OperationMethod<
+export const listAudienceGenerationJobs: API.PaginatedOperationMethod<
   ListAudienceGenerationJobsRequest,
   ListAudienceGenerationJobsResponse,
   ListAudienceGenerationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAudienceGenerationJobsRequest,
-  ) => stream.Stream<
-    ListAudienceGenerationJobsResponse,
-    ListAudienceGenerationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAudienceGenerationJobsRequest,
-  ) => stream.Stream<
-    AudienceGenerationJobSummary,
-    ListAudienceGenerationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AudienceGenerationJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceGenerationJobsRequest,
   output: ListAudienceGenerationJobsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5402,27 +5373,13 @@ export type ListAudienceModelsError =
 /**
  * Returns a list of audience models.
  */
-export const listAudienceModels: API.OperationMethod<
+export const listAudienceModels: API.PaginatedOperationMethod<
   ListAudienceModelsRequest,
   ListAudienceModelsResponse,
   ListAudienceModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAudienceModelsRequest,
-  ) => stream.Stream<
-    ListAudienceModelsResponse,
-    ListAudienceModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAudienceModelsRequest,
-  ) => stream.Stream<
-    AudienceModelSummary,
-    ListAudienceModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AudienceModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAudienceModelsRequest,
   output: ListAudienceModelsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5445,27 +5402,13 @@ export type ListCollaborationConfiguredModelAlgorithmAssociationsError =
 /**
  * Returns a list of the configured model algorithm associations in a collaboration.
  */
-export const listCollaborationConfiguredModelAlgorithmAssociations: API.OperationMethod<
+export const listCollaborationConfiguredModelAlgorithmAssociations: API.PaginatedOperationMethod<
   ListCollaborationConfiguredModelAlgorithmAssociationsRequest,
   ListCollaborationConfiguredModelAlgorithmAssociationsResponse,
   ListCollaborationConfiguredModelAlgorithmAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationConfiguredModelAlgorithmAssociationsRequest,
-  ) => stream.Stream<
-    ListCollaborationConfiguredModelAlgorithmAssociationsResponse,
-    ListCollaborationConfiguredModelAlgorithmAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationConfiguredModelAlgorithmAssociationsRequest,
-  ) => stream.Stream<
-    CollaborationConfiguredModelAlgorithmAssociationSummary,
-    ListCollaborationConfiguredModelAlgorithmAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationConfiguredModelAlgorithmAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationConfiguredModelAlgorithmAssociationsRequest,
   output: ListCollaborationConfiguredModelAlgorithmAssociationsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5488,27 +5431,13 @@ export type ListCollaborationMLInputChannelsError =
 /**
  * Returns a list of the ML input channels in a collaboration.
  */
-export const listCollaborationMLInputChannels: API.OperationMethod<
+export const listCollaborationMLInputChannels: API.PaginatedOperationMethod<
   ListCollaborationMLInputChannelsRequest,
   ListCollaborationMLInputChannelsResponse,
   ListCollaborationMLInputChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationMLInputChannelsRequest,
-  ) => stream.Stream<
-    ListCollaborationMLInputChannelsResponse,
-    ListCollaborationMLInputChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationMLInputChannelsRequest,
-  ) => stream.Stream<
-    CollaborationMLInputChannelSummary,
-    ListCollaborationMLInputChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationMLInputChannelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationMLInputChannelsRequest,
   output: ListCollaborationMLInputChannelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5531,27 +5460,13 @@ export type ListCollaborationTrainedModelExportJobsError =
 /**
  * Returns a list of the export jobs for a trained model in a collaboration.
  */
-export const listCollaborationTrainedModelExportJobs: API.OperationMethod<
+export const listCollaborationTrainedModelExportJobs: API.PaginatedOperationMethod<
   ListCollaborationTrainedModelExportJobsRequest,
   ListCollaborationTrainedModelExportJobsResponse,
   ListCollaborationTrainedModelExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationTrainedModelExportJobsRequest,
-  ) => stream.Stream<
-    ListCollaborationTrainedModelExportJobsResponse,
-    ListCollaborationTrainedModelExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationTrainedModelExportJobsRequest,
-  ) => stream.Stream<
-    CollaborationTrainedModelExportJobSummary,
-    ListCollaborationTrainedModelExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationTrainedModelExportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationTrainedModelExportJobsRequest,
   output: ListCollaborationTrainedModelExportJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5574,27 +5489,13 @@ export type ListCollaborationTrainedModelInferenceJobsError =
 /**
  * Returns a list of trained model inference jobs in a specified collaboration.
  */
-export const listCollaborationTrainedModelInferenceJobs: API.OperationMethod<
+export const listCollaborationTrainedModelInferenceJobs: API.PaginatedOperationMethod<
   ListCollaborationTrainedModelInferenceJobsRequest,
   ListCollaborationTrainedModelInferenceJobsResponse,
   ListCollaborationTrainedModelInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationTrainedModelInferenceJobsRequest,
-  ) => stream.Stream<
-    ListCollaborationTrainedModelInferenceJobsResponse,
-    ListCollaborationTrainedModelInferenceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationTrainedModelInferenceJobsRequest,
-  ) => stream.Stream<
-    CollaborationTrainedModelInferenceJobSummary,
-    ListCollaborationTrainedModelInferenceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationTrainedModelInferenceJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationTrainedModelInferenceJobsRequest,
   output: ListCollaborationTrainedModelInferenceJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5617,27 +5518,13 @@ export type ListCollaborationTrainedModelsError =
 /**
  * Returns a list of the trained models in a collaboration.
  */
-export const listCollaborationTrainedModels: API.OperationMethod<
+export const listCollaborationTrainedModels: API.PaginatedOperationMethod<
   ListCollaborationTrainedModelsRequest,
   ListCollaborationTrainedModelsResponse,
   ListCollaborationTrainedModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationTrainedModelsRequest,
-  ) => stream.Stream<
-    ListCollaborationTrainedModelsResponse,
-    ListCollaborationTrainedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationTrainedModelsRequest,
-  ) => stream.Stream<
-    CollaborationTrainedModelSummary,
-    ListCollaborationTrainedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationTrainedModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationTrainedModelsRequest,
   output: ListCollaborationTrainedModelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5659,27 +5546,13 @@ export type ListConfiguredAudienceModelsError =
 /**
  * Returns a list of the configured audience models.
  */
-export const listConfiguredAudienceModels: API.OperationMethod<
+export const listConfiguredAudienceModels: API.PaginatedOperationMethod<
   ListConfiguredAudienceModelsRequest,
   ListConfiguredAudienceModelsResponse,
   ListConfiguredAudienceModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfiguredAudienceModelsRequest,
-  ) => stream.Stream<
-    ListConfiguredAudienceModelsResponse,
-    ListConfiguredAudienceModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfiguredAudienceModelsRequest,
-  ) => stream.Stream<
-    ConfiguredAudienceModelSummary,
-    ListConfiguredAudienceModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredAudienceModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredAudienceModelsRequest,
   output: ListConfiguredAudienceModelsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5702,27 +5575,13 @@ export type ListConfiguredModelAlgorithmAssociationsError =
 /**
  * Returns a list of configured model algorithm associations.
  */
-export const listConfiguredModelAlgorithmAssociations: API.OperationMethod<
+export const listConfiguredModelAlgorithmAssociations: API.PaginatedOperationMethod<
   ListConfiguredModelAlgorithmAssociationsRequest,
   ListConfiguredModelAlgorithmAssociationsResponse,
   ListConfiguredModelAlgorithmAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfiguredModelAlgorithmAssociationsRequest,
-  ) => stream.Stream<
-    ListConfiguredModelAlgorithmAssociationsResponse,
-    ListConfiguredModelAlgorithmAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfiguredModelAlgorithmAssociationsRequest,
-  ) => stream.Stream<
-    ConfiguredModelAlgorithmAssociationSummary,
-    ListConfiguredModelAlgorithmAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredModelAlgorithmAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredModelAlgorithmAssociationsRequest,
   output: ListConfiguredModelAlgorithmAssociationsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5744,27 +5603,13 @@ export type ListConfiguredModelAlgorithmsError =
 /**
  * Returns a list of configured model algorithms.
  */
-export const listConfiguredModelAlgorithms: API.OperationMethod<
+export const listConfiguredModelAlgorithms: API.PaginatedOperationMethod<
   ListConfiguredModelAlgorithmsRequest,
   ListConfiguredModelAlgorithmsResponse,
   ListConfiguredModelAlgorithmsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfiguredModelAlgorithmsRequest,
-  ) => stream.Stream<
-    ListConfiguredModelAlgorithmsResponse,
-    ListConfiguredModelAlgorithmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfiguredModelAlgorithmsRequest,
-  ) => stream.Stream<
-    ConfiguredModelAlgorithmSummary,
-    ListConfiguredModelAlgorithmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredModelAlgorithmSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredModelAlgorithmsRequest,
   output: ListConfiguredModelAlgorithmsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -5787,27 +5632,13 @@ export type ListMLInputChannelsError =
 /**
  * Returns a list of ML input channels.
  */
-export const listMLInputChannels: API.OperationMethod<
+export const listMLInputChannels: API.PaginatedOperationMethod<
   ListMLInputChannelsRequest,
   ListMLInputChannelsResponse,
   ListMLInputChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMLInputChannelsRequest,
-  ) => stream.Stream<
-    ListMLInputChannelsResponse,
-    ListMLInputChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMLInputChannelsRequest,
-  ) => stream.Stream<
-    MLInputChannelSummary,
-    ListMLInputChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MLInputChannelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMLInputChannelsRequest,
   output: ListMLInputChannelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5856,27 +5687,13 @@ export type ListTrainedModelInferenceJobsError =
 /**
  * Returns a list of trained model inference jobs that match the request parameters.
  */
-export const listTrainedModelInferenceJobs: API.OperationMethod<
+export const listTrainedModelInferenceJobs: API.PaginatedOperationMethod<
   ListTrainedModelInferenceJobsRequest,
   ListTrainedModelInferenceJobsResponse,
   ListTrainedModelInferenceJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrainedModelInferenceJobsRequest,
-  ) => stream.Stream<
-    ListTrainedModelInferenceJobsResponse,
-    ListTrainedModelInferenceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrainedModelInferenceJobsRequest,
-  ) => stream.Stream<
-    TrainedModelInferenceJobSummary,
-    ListTrainedModelInferenceJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrainedModelInferenceJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainedModelInferenceJobsRequest,
   output: ListTrainedModelInferenceJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5899,27 +5716,13 @@ export type ListTrainedModelsError =
 /**
  * Returns a list of trained models.
  */
-export const listTrainedModels: API.OperationMethod<
+export const listTrainedModels: API.PaginatedOperationMethod<
   ListTrainedModelsRequest,
   ListTrainedModelsResponse,
   ListTrainedModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrainedModelsRequest,
-  ) => stream.Stream<
-    ListTrainedModelsResponse,
-    ListTrainedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrainedModelsRequest,
-  ) => stream.Stream<
-    TrainedModelSummary,
-    ListTrainedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrainedModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainedModelsRequest,
   output: ListTrainedModelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -5943,27 +5746,13 @@ export type ListTrainedModelVersionsError =
 /**
  * Returns a list of trained model versions for a specified trained model. This operation allows you to view all versions of a trained model, including information about their status and creation details. You can use this to track the evolution of your trained models and select specific versions for inference or further training.
  */
-export const listTrainedModelVersions: API.OperationMethod<
+export const listTrainedModelVersions: API.PaginatedOperationMethod<
   ListTrainedModelVersionsRequest,
   ListTrainedModelVersionsResponse,
   ListTrainedModelVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrainedModelVersionsRequest,
-  ) => stream.Stream<
-    ListTrainedModelVersionsResponse,
-    ListTrainedModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrainedModelVersionsRequest,
-  ) => stream.Stream<
-    TrainedModelSummary,
-    ListTrainedModelVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrainedModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainedModelVersionsRequest,
   output: ListTrainedModelVersionsResponse,
   errors: [
@@ -5990,27 +5779,13 @@ export type ListTrainingDatasetsError =
 /**
  * Returns a list of training datasets.
  */
-export const listTrainingDatasets: API.OperationMethod<
+export const listTrainingDatasets: API.PaginatedOperationMethod<
   ListTrainingDatasetsRequest,
   ListTrainingDatasetsResponse,
   ListTrainingDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrainingDatasetsRequest,
-  ) => stream.Stream<
-    ListTrainingDatasetsResponse,
-    ListTrainingDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrainingDatasetsRequest,
-  ) => stream.Stream<
-    TrainingDatasetSummary,
-    ListTrainingDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrainingDatasetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrainingDatasetsRequest,
   output: ListTrainingDatasetsResponse,
   errors: [AccessDeniedException, ValidationException],

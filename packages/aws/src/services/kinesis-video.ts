@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2014,27 +2013,13 @@ export type DescribeMappedResourceConfigurationError =
  * Returns the most current information about the stream. The `streamName`
  * or `streamARN` should be provided in the input.
  */
-export const describeMappedResourceConfiguration: API.OperationMethod<
+export const describeMappedResourceConfiguration: API.PaginatedOperationMethod<
   DescribeMappedResourceConfigurationInput,
   DescribeMappedResourceConfigurationOutput,
   DescribeMappedResourceConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMappedResourceConfigurationInput,
-  ) => stream.Stream<
-    DescribeMappedResourceConfigurationOutput,
-    DescribeMappedResourceConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMappedResourceConfigurationInput,
-  ) => stream.Stream<
-    MappedResourceConfigurationListItem,
-    DescribeMappedResourceConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MappedResourceConfigurationListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMappedResourceConfigurationInput,
   output: DescribeMappedResourceConfigurationOutput,
   errors: [
@@ -2293,27 +2278,13 @@ export type ListEdgeAgentConfigurationsError =
  *
  * In the request, you must specify the Edge Agent `HubDeviceArn`.
  */
-export const listEdgeAgentConfigurations: API.OperationMethod<
+export const listEdgeAgentConfigurations: API.PaginatedOperationMethod<
   ListEdgeAgentConfigurationsInput,
   ListEdgeAgentConfigurationsOutput,
   ListEdgeAgentConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEdgeAgentConfigurationsInput,
-  ) => stream.Stream<
-    ListEdgeAgentConfigurationsOutput,
-    ListEdgeAgentConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEdgeAgentConfigurationsInput,
-  ) => stream.Stream<
-    ListEdgeAgentConfigurationsEdgeConfig,
-    ListEdgeAgentConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListEdgeAgentConfigurationsEdgeConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEdgeAgentConfigurationsInput,
   output: ListEdgeAgentConfigurationsOutput,
   errors: [
@@ -2342,27 +2313,13 @@ export type ListSignalingChannelsError =
  * signaling channel. To retrieve only those channels that satisfy a specific condition,
  * you can specify a `ChannelNameCondition`.
  */
-export const listSignalingChannels: API.OperationMethod<
+export const listSignalingChannels: API.PaginatedOperationMethod<
   ListSignalingChannelsInput,
   ListSignalingChannelsOutput,
   ListSignalingChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSignalingChannelsInput,
-  ) => stream.Stream<
-    ListSignalingChannelsOutput,
-    ListSignalingChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSignalingChannelsInput,
-  ) => stream.Stream<
-    ChannelInfo,
-    ListSignalingChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalingChannelsInput,
   output: ListSignalingChannelsOutput,
   errors: [
@@ -2390,27 +2347,13 @@ export type ListStreamsError =
  * stream. To retrieve only streams that satisfy a specific condition, you can specify a
  * `StreamNameCondition`.
  */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    StreamInfo,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StreamInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [ClientLimitExceededException, InvalidArgumentException],

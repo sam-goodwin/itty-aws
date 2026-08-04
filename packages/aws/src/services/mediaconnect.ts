@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9546,27 +9545,13 @@ export type ListBridgesError =
 /**
  * Displays a list of bridges that are associated with this account and an optionally specified Amazon Resource Name (ARN). This request returns a paginated result.
  */
-export const listBridges: API.OperationMethod<
+export const listBridges: API.PaginatedOperationMethod<
   ListBridgesRequest,
   ListBridgesResponse,
   ListBridgesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBridgesRequest,
-  ) => stream.Stream<
-    ListBridgesResponse,
-    ListBridgesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBridgesRequest,
-  ) => stream.Stream<
-    ListedBridge,
-    ListBridgesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedBridge
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBridgesRequest,
   output: ListBridgesResponse,
   errors: [
@@ -9596,27 +9581,13 @@ export type ListEntitlementsError =
 /**
  * Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.
  */
-export const listEntitlements: API.OperationMethod<
+export const listEntitlements: API.PaginatedOperationMethod<
   ListEntitlementsRequest,
   ListEntitlementsResponse,
   ListEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitlementsRequest,
-  ) => stream.Stream<
-    ListEntitlementsResponse,
-    ListEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitlementsRequest,
-  ) => stream.Stream<
-    ListedEntitlement,
-    ListEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedEntitlement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitlementsRequest,
   output: ListEntitlementsResponse,
   errors: [
@@ -9645,27 +9616,13 @@ export type ListFlowsError =
 /**
  * Displays a list of flows that are associated with this account. This request returns a paginated result.
  */
-export const listFlows: API.OperationMethod<
+export const listFlows: API.PaginatedOperationMethod<
   ListFlowsRequest,
   ListFlowsResponse,
   ListFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    ListFlowsResponse,
-    ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    ListedFlow,
-    ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedFlow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [
@@ -9695,27 +9652,13 @@ export type ListGatewayInstancesError =
 /**
  * Displays a list of instances associated with the Amazon Web Services account. This request returns a paginated result. You can use the filterArn property to display only the instances associated with the selected Gateway Amazon Resource Name (ARN).
  */
-export const listGatewayInstances: API.OperationMethod<
+export const listGatewayInstances: API.PaginatedOperationMethod<
   ListGatewayInstancesRequest,
   ListGatewayInstancesResponse,
   ListGatewayInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayInstancesRequest,
-  ) => stream.Stream<
-    ListGatewayInstancesResponse,
-    ListGatewayInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayInstancesRequest,
-  ) => stream.Stream<
-    ListedGatewayInstance,
-    ListGatewayInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedGatewayInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayInstancesRequest,
   output: ListGatewayInstancesResponse,
   errors: [
@@ -9746,27 +9689,13 @@ export type ListGatewaysError =
 /**
  * Displays a list of gateways that are associated with this account. This request returns a paginated result.
  */
-export const listGateways: API.OperationMethod<
+export const listGateways: API.PaginatedOperationMethod<
   ListGatewaysRequest,
   ListGatewaysResponse,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListedGateway,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysRequest,
   output: ListGatewaysResponse,
   errors: [
@@ -9796,27 +9725,13 @@ export type ListOfferingsError =
 /**
  * Displays a list of all offerings that are available to this account in the current Amazon Web Services Region. If you have an active reservation (which means you've purchased an offering that has already started and hasn't expired yet), your account isn't eligible for other offerings.
  */
-export const listOfferings: API.OperationMethod<
+export const listOfferings: API.PaginatedOperationMethod<
   ListOfferingsRequest,
   ListOfferingsResponse,
   ListOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    ListOfferingsResponse,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    Offering,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Offering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingsRequest,
   output: ListOfferingsResponse,
   errors: [
@@ -9845,27 +9760,13 @@ export type ListReservationsError =
 /**
  * Displays a list of all reservations that have been purchased by this account in the current Amazon Web Services Region. This list includes all reservations in all states (such as active and expired).
  */
-export const listReservations: API.OperationMethod<
+export const listReservations: API.PaginatedOperationMethod<
   ListReservationsRequest,
   ListReservationsResponse,
   ListReservationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReservationsRequest,
-  ) => stream.Stream<
-    ListReservationsResponse,
-    ListReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReservationsRequest,
-  ) => stream.Stream<
-    Reservation,
-    ListReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Reservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
   output: ListReservationsResponse,
   errors: [
@@ -9895,27 +9796,13 @@ export type ListRouterInputsError =
 /**
  * Retrieves a list of router inputs in AWS Elemental MediaConnect.
  */
-export const listRouterInputs: API.OperationMethod<
+export const listRouterInputs: API.PaginatedOperationMethod<
   ListRouterInputsRequest,
   ListRouterInputsResponse,
   ListRouterInputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouterInputsRequest,
-  ) => stream.Stream<
-    ListRouterInputsResponse,
-    ListRouterInputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouterInputsRequest,
-  ) => stream.Stream<
-    ListedRouterInput,
-    ListRouterInputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedRouterInput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouterInputsRequest,
   output: ListRouterInputsResponse,
   errors: [
@@ -9946,27 +9833,13 @@ export type ListRouterNetworkInterfacesError =
 /**
  * Retrieves a list of router network interfaces in AWS Elemental MediaConnect.
  */
-export const listRouterNetworkInterfaces: API.OperationMethod<
+export const listRouterNetworkInterfaces: API.PaginatedOperationMethod<
   ListRouterNetworkInterfacesRequest,
   ListRouterNetworkInterfacesResponse,
   ListRouterNetworkInterfacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouterNetworkInterfacesRequest,
-  ) => stream.Stream<
-    ListRouterNetworkInterfacesResponse,
-    ListRouterNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouterNetworkInterfacesRequest,
-  ) => stream.Stream<
-    ListedRouterNetworkInterface,
-    ListRouterNetworkInterfacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedRouterNetworkInterface
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouterNetworkInterfacesRequest,
   output: ListRouterNetworkInterfacesResponse,
   errors: [
@@ -9997,27 +9870,13 @@ export type ListRouterOutputsError =
 /**
  * Retrieves a list of router outputs in AWS Elemental MediaConnect.
  */
-export const listRouterOutputs: API.OperationMethod<
+export const listRouterOutputs: API.PaginatedOperationMethod<
   ListRouterOutputsRequest,
   ListRouterOutputsResponse,
   ListRouterOutputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouterOutputsRequest,
-  ) => stream.Stream<
-    ListRouterOutputsResponse,
-    ListRouterOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouterOutputsRequest,
-  ) => stream.Stream<
-    ListedRouterOutput,
-    ListRouterOutputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedRouterOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouterOutputsRequest,
   output: ListRouterOutputsResponse,
   errors: [

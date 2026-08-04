@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -11198,27 +11197,13 @@ export type GetSessionsStatisticsAggregationError =
 /**
  * Gets a set of statistics for queues or farms. Before you can call the `GetSessionStatisticsAggregation` operation, you must first call the `StartSessionsStatisticsAggregation` operation. Statistics are available for 1 hour after you call the `StartSessionsStatisticsAggregation` operation.
  */
-export const getSessionsStatisticsAggregation: API.OperationMethod<
+export const getSessionsStatisticsAggregation: API.PaginatedOperationMethod<
   GetSessionsStatisticsAggregationRequest,
   GetSessionsStatisticsAggregationResponse,
   GetSessionsStatisticsAggregationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSessionsStatisticsAggregationRequest,
-  ) => stream.Stream<
-    GetSessionsStatisticsAggregationResponse,
-    GetSessionsStatisticsAggregationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSessionsStatisticsAggregationRequest,
-  ) => stream.Stream<
-    Statistics,
-    GetSessionsStatisticsAggregationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Statistics
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSessionsStatisticsAggregationRequest,
   output: GetSessionsStatisticsAggregationResponse,
   errors: [
@@ -11433,27 +11418,13 @@ export type ListAvailableMeteredProductsError =
 /**
  * A list of the available metered products.
  */
-export const listAvailableMeteredProducts: API.OperationMethod<
+export const listAvailableMeteredProducts: API.PaginatedOperationMethod<
   ListAvailableMeteredProductsRequest,
   ListAvailableMeteredProductsResponse,
   ListAvailableMeteredProductsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAvailableMeteredProductsRequest,
-  ) => stream.Stream<
-    ListAvailableMeteredProductsResponse,
-    ListAvailableMeteredProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAvailableMeteredProductsRequest,
-  ) => stream.Stream<
-    MeteredProductSummary,
-    ListAvailableMeteredProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MeteredProductSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableMeteredProductsRequest,
   output: ListAvailableMeteredProductsResponse,
   errors: [InternalServerErrorException, ThrottlingException],
@@ -11479,27 +11450,13 @@ export type ListBudgetsError =
 /**
  * A list of budgets in a farm.
  */
-export const listBudgets: API.OperationMethod<
+export const listBudgets: API.PaginatedOperationMethod<
   ListBudgetsRequest,
   ListBudgetsResponse,
   ListBudgetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBudgetsRequest,
-  ) => stream.Stream<
-    ListBudgetsResponse,
-    ListBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBudgetsRequest,
-  ) => stream.Stream<
-    BudgetSummary,
-    ListBudgetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  BudgetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBudgetsRequest,
   output: ListBudgetsResponse,
   errors: [
@@ -11531,27 +11488,13 @@ export type ListFarmMembersError =
 /**
  * Lists the members of a farm.
  */
-export const listFarmMembers: API.OperationMethod<
+export const listFarmMembers: API.PaginatedOperationMethod<
   ListFarmMembersRequest,
   ListFarmMembersResponse,
   ListFarmMembersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFarmMembersRequest,
-  ) => stream.Stream<
-    ListFarmMembersResponse,
-    ListFarmMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFarmMembersRequest,
-  ) => stream.Stream<
-    FarmMember,
-    ListFarmMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FarmMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFarmMembersRequest,
   output: ListFarmMembersResponse,
   errors: [
@@ -11582,27 +11525,13 @@ export type ListFarmsError =
 /**
  * Lists farms.
  */
-export const listFarms: API.OperationMethod<
+export const listFarms: API.PaginatedOperationMethod<
   ListFarmsRequest,
   ListFarmsResponse,
   ListFarmsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFarmsRequest,
-  ) => stream.Stream<
-    ListFarmsResponse,
-    ListFarmsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFarmsRequest,
-  ) => stream.Stream<
-    FarmSummary,
-    ListFarmsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FarmSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFarmsRequest,
   output: ListFarmsResponse,
   errors: [
@@ -11633,27 +11562,13 @@ export type ListFleetMembersError =
 /**
  * Lists fleet members.
  */
-export const listFleetMembers: API.OperationMethod<
+export const listFleetMembers: API.PaginatedOperationMethod<
   ListFleetMembersRequest,
   ListFleetMembersResponse,
   ListFleetMembersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetMembersRequest,
-  ) => stream.Stream<
-    ListFleetMembersResponse,
-    ListFleetMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetMembersRequest,
-  ) => stream.Stream<
-    FleetMember,
-    ListFleetMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FleetMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetMembersRequest,
   output: ListFleetMembersResponse,
   errors: [
@@ -11685,27 +11600,13 @@ export type ListFleetsError =
 /**
  * Lists fleets.
  */
-export const listFleets: API.OperationMethod<
+export const listFleets: API.PaginatedOperationMethod<
   ListFleetsRequest,
   ListFleetsResponse,
   ListFleetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsRequest,
-  ) => stream.Stream<
-    ListFleetsResponse,
-    ListFleetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsRequest,
-  ) => stream.Stream<
-    FleetSummary,
-    ListFleetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  FleetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsRequest,
   output: ListFleetsResponse,
   errors: [
@@ -11737,27 +11638,13 @@ export type ListJobMembersError =
 /**
  * Lists members on a job.
  */
-export const listJobMembers: API.OperationMethod<
+export const listJobMembers: API.PaginatedOperationMethod<
   ListJobMembersRequest,
   ListJobMembersResponse,
   ListJobMembersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobMembersRequest,
-  ) => stream.Stream<
-    ListJobMembersResponse,
-    ListJobMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobMembersRequest,
-  ) => stream.Stream<
-    JobMember,
-    ListJobMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  JobMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobMembersRequest,
   output: ListJobMembersResponse,
   errors: [
@@ -11789,27 +11676,13 @@ export type ListJobParameterDefinitionsError =
 /**
  * Lists parameter definitions of a job.
  */
-export const listJobParameterDefinitions: API.OperationMethod<
+export const listJobParameterDefinitions: API.PaginatedOperationMethod<
   ListJobParameterDefinitionsRequest,
   ListJobParameterDefinitionsResponse,
   ListJobParameterDefinitionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobParameterDefinitionsRequest,
-  ) => stream.Stream<
-    ListJobParameterDefinitionsResponse,
-    ListJobParameterDefinitionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobParameterDefinitionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListJobParameterDefinitionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobParameterDefinitionsRequest,
   output: ListJobParameterDefinitionsResponse,
   errors: [
@@ -11841,27 +11714,13 @@ export type ListJobsError =
 /**
  * Lists jobs.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [
@@ -11893,27 +11752,13 @@ export type ListLicenseEndpointsError =
 /**
  * Lists license endpoints.
  */
-export const listLicenseEndpoints: API.OperationMethod<
+export const listLicenseEndpoints: API.PaginatedOperationMethod<
   ListLicenseEndpointsRequest,
   ListLicenseEndpointsResponse,
   ListLicenseEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLicenseEndpointsRequest,
-  ) => stream.Stream<
-    ListLicenseEndpointsResponse,
-    ListLicenseEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLicenseEndpointsRequest,
-  ) => stream.Stream<
-    LicenseEndpointSummary,
-    ListLicenseEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LicenseEndpointSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLicenseEndpointsRequest,
   output: ListLicenseEndpointsResponse,
   errors: [
@@ -11945,27 +11790,13 @@ export type ListLimitsError =
 /**
  * Gets a list of limits defined in the specified farm.
  */
-export const listLimits: API.OperationMethod<
+export const listLimits: API.PaginatedOperationMethod<
   ListLimitsRequest,
   ListLimitsResponse,
   ListLimitsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLimitsRequest,
-  ) => stream.Stream<
-    ListLimitsResponse,
-    ListLimitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLimitsRequest,
-  ) => stream.Stream<
-    LimitSummary,
-    ListLimitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LimitSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLimitsRequest,
   output: ListLimitsResponse,
   errors: [
@@ -11997,27 +11828,13 @@ export type ListMeteredProductsError =
 /**
  * Lists metered products.
  */
-export const listMeteredProducts: API.OperationMethod<
+export const listMeteredProducts: API.PaginatedOperationMethod<
   ListMeteredProductsRequest,
   ListMeteredProductsResponse,
   ListMeteredProductsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMeteredProductsRequest,
-  ) => stream.Stream<
-    ListMeteredProductsResponse,
-    ListMeteredProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMeteredProductsRequest,
-  ) => stream.Stream<
-    MeteredProductSummary,
-    ListMeteredProductsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MeteredProductSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMeteredProductsRequest,
   output: ListMeteredProductsResponse,
   errors: [
@@ -12048,27 +11865,13 @@ export type ListMonitorsError =
 /**
  * Gets a list of your monitors in Deadline Cloud.
  */
-export const listMonitors: API.OperationMethod<
+export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsRequest,
   ListMonitorsResponse,
   ListMonitorsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    ListMonitorsResponse,
-    ListMonitorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    MonitorSummary,
-    ListMonitorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MonitorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [
@@ -12099,27 +11902,13 @@ export type ListQueueEnvironmentsError =
 /**
  * Lists queue environments.
  */
-export const listQueueEnvironments: API.OperationMethod<
+export const listQueueEnvironments: API.PaginatedOperationMethod<
   ListQueueEnvironmentsRequest,
   ListQueueEnvironmentsResponse,
   ListQueueEnvironmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueueEnvironmentsRequest,
-  ) => stream.Stream<
-    ListQueueEnvironmentsResponse,
-    ListQueueEnvironmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueueEnvironmentsRequest,
-  ) => stream.Stream<
-    QueueEnvironmentSummary,
-    ListQueueEnvironmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  QueueEnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueEnvironmentsRequest,
   output: ListQueueEnvironmentsResponse,
   errors: [
@@ -12150,27 +11939,13 @@ export type ListQueueFleetAssociationsError =
 /**
  * Lists queue-fleet associations.
  */
-export const listQueueFleetAssociations: API.OperationMethod<
+export const listQueueFleetAssociations: API.PaginatedOperationMethod<
   ListQueueFleetAssociationsRequest,
   ListQueueFleetAssociationsResponse,
   ListQueueFleetAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueueFleetAssociationsRequest,
-  ) => stream.Stream<
-    ListQueueFleetAssociationsResponse,
-    ListQueueFleetAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueueFleetAssociationsRequest,
-  ) => stream.Stream<
-    QueueFleetAssociationSummary,
-    ListQueueFleetAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  QueueFleetAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueFleetAssociationsRequest,
   output: ListQueueFleetAssociationsResponse,
   errors: [
@@ -12200,27 +11975,13 @@ export type ListQueueLimitAssociationsError =
 /**
  * Gets a list of the associations between queues and limits defined in a farm.
  */
-export const listQueueLimitAssociations: API.OperationMethod<
+export const listQueueLimitAssociations: API.PaginatedOperationMethod<
   ListQueueLimitAssociationsRequest,
   ListQueueLimitAssociationsResponse,
   ListQueueLimitAssociationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueueLimitAssociationsRequest,
-  ) => stream.Stream<
-    ListQueueLimitAssociationsResponse,
-    ListQueueLimitAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueueLimitAssociationsRequest,
-  ) => stream.Stream<
-    QueueLimitAssociationSummary,
-    ListQueueLimitAssociationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  QueueLimitAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueLimitAssociationsRequest,
   output: ListQueueLimitAssociationsResponse,
   errors: [
@@ -12251,27 +12012,13 @@ export type ListQueueMembersError =
 /**
  * Lists the members in a queue.
  */
-export const listQueueMembers: API.OperationMethod<
+export const listQueueMembers: API.PaginatedOperationMethod<
   ListQueueMembersRequest,
   ListQueueMembersResponse,
   ListQueueMembersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueueMembersRequest,
-  ) => stream.Stream<
-    ListQueueMembersResponse,
-    ListQueueMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueueMembersRequest,
-  ) => stream.Stream<
-    QueueMember,
-    ListQueueMembersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  QueueMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueMembersRequest,
   output: ListQueueMembersResponse,
   errors: [
@@ -12303,27 +12050,13 @@ export type ListQueuesError =
 /**
  * Lists queues.
  */
-export const listQueues: API.OperationMethod<
+export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    QueueSummary,
-    ListQueuesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  QueueSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [
@@ -12355,27 +12088,13 @@ export type ListSessionActionsError =
 /**
  * Lists session actions.
  */
-export const listSessionActions: API.OperationMethod<
+export const listSessionActions: API.PaginatedOperationMethod<
   ListSessionActionsRequest,
   ListSessionActionsResponse,
   ListSessionActionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionActionsRequest,
-  ) => stream.Stream<
-    ListSessionActionsResponse,
-    ListSessionActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionActionsRequest,
-  ) => stream.Stream<
-    SessionActionSummary,
-    ListSessionActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SessionActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionActionsRequest,
   output: ListSessionActionsResponse,
   errors: [
@@ -12407,27 +12126,13 @@ export type ListSessionsError =
 /**
  * Lists sessions.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    ListSessionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -12459,27 +12164,13 @@ export type ListSessionsForWorkerError =
 /**
  * Lists sessions for a worker.
  */
-export const listSessionsForWorker: API.OperationMethod<
+export const listSessionsForWorker: API.PaginatedOperationMethod<
   ListSessionsForWorkerRequest,
   ListSessionsForWorkerResponse,
   ListSessionsForWorkerError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsForWorkerRequest,
-  ) => stream.Stream<
-    ListSessionsForWorkerResponse,
-    ListSessionsForWorkerError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsForWorkerRequest,
-  ) => stream.Stream<
-    WorkerSessionSummary,
-    ListSessionsForWorkerError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  WorkerSessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsForWorkerRequest,
   output: ListSessionsForWorkerResponse,
   errors: [
@@ -12511,27 +12202,13 @@ export type ListStepConsumersError =
 /**
  * Lists step consumers.
  */
-export const listStepConsumers: API.OperationMethod<
+export const listStepConsumers: API.PaginatedOperationMethod<
   ListStepConsumersRequest,
   ListStepConsumersResponse,
   ListStepConsumersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStepConsumersRequest,
-  ) => stream.Stream<
-    ListStepConsumersResponse,
-    ListStepConsumersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStepConsumersRequest,
-  ) => stream.Stream<
-    StepConsumer,
-    ListStepConsumersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StepConsumer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepConsumersRequest,
   output: ListStepConsumersResponse,
   errors: [
@@ -12563,27 +12240,13 @@ export type ListStepDependenciesError =
 /**
  * Lists the dependencies for a step.
  */
-export const listStepDependencies: API.OperationMethod<
+export const listStepDependencies: API.PaginatedOperationMethod<
   ListStepDependenciesRequest,
   ListStepDependenciesResponse,
   ListStepDependenciesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStepDependenciesRequest,
-  ) => stream.Stream<
-    ListStepDependenciesResponse,
-    ListStepDependenciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStepDependenciesRequest,
-  ) => stream.Stream<
-    StepDependency,
-    ListStepDependenciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StepDependency
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepDependenciesRequest,
   output: ListStepDependenciesResponse,
   errors: [
@@ -12615,27 +12278,13 @@ export type ListStepsError =
 /**
  * Lists steps for a job.
  */
-export const listSteps: API.OperationMethod<
+export const listSteps: API.PaginatedOperationMethod<
   ListStepsRequest,
   ListStepsResponse,
   ListStepsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStepsRequest,
-  ) => stream.Stream<
-    ListStepsResponse,
-    ListStepsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStepsRequest,
-  ) => stream.Stream<
-    StepSummary,
-    ListStepsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StepSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepsRequest,
   output: ListStepsResponse,
   errors: [
@@ -12667,27 +12316,13 @@ export type ListStorageProfilesError =
 /**
  * Lists storage profiles.
  */
-export const listStorageProfiles: API.OperationMethod<
+export const listStorageProfiles: API.PaginatedOperationMethod<
   ListStorageProfilesRequest,
   ListStorageProfilesResponse,
   ListStorageProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageProfilesRequest,
-  ) => stream.Stream<
-    ListStorageProfilesResponse,
-    ListStorageProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageProfilesRequest,
-  ) => stream.Stream<
-    StorageProfileSummary,
-    ListStorageProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StorageProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageProfilesRequest,
   output: ListStorageProfilesResponse,
   errors: [
@@ -12719,27 +12354,13 @@ export type ListStorageProfilesForQueueError =
 /**
  * Lists storage profiles for a queue.
  */
-export const listStorageProfilesForQueue: API.OperationMethod<
+export const listStorageProfilesForQueue: API.PaginatedOperationMethod<
   ListStorageProfilesForQueueRequest,
   ListStorageProfilesForQueueResponse,
   ListStorageProfilesForQueueError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageProfilesForQueueRequest,
-  ) => stream.Stream<
-    ListStorageProfilesForQueueResponse,
-    ListStorageProfilesForQueueError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageProfilesForQueueRequest,
-  ) => stream.Stream<
-    StorageProfileSummary,
-    ListStorageProfilesForQueueError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StorageProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageProfilesForQueueRequest,
   output: ListStorageProfilesForQueueResponse,
   errors: [
@@ -12802,27 +12423,13 @@ export type ListTasksError =
 /**
  * Lists tasks for a job.
  */
-export const listTasks: API.OperationMethod<
+export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    ListTasksResponse,
-    ListTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    TaskSummary,
-    ListTasksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [
@@ -12854,27 +12461,13 @@ export type ListVolumesError =
 /**
  * Lists the persistent volumes in a fleet.
  */
-export const listVolumes: API.OperationMethod<
+export const listVolumes: API.PaginatedOperationMethod<
   ListVolumesRequest,
   ListVolumesResponse,
   ListVolumesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVolumesRequest,
-  ) => stream.Stream<
-    ListVolumesResponse,
-    ListVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVolumesRequest,
-  ) => stream.Stream<
-    VolumeSummary,
-    ListVolumesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  VolumeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVolumesRequest,
   output: ListVolumesResponse,
   errors: [
@@ -12906,27 +12499,13 @@ export type ListWorkersError =
 /**
  * Lists workers.
  */
-export const listWorkers: API.OperationMethod<
+export const listWorkers: API.PaginatedOperationMethod<
   ListWorkersRequest,
   ListWorkersResponse,
   ListWorkersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkersRequest,
-  ) => stream.Stream<
-    ListWorkersResponse,
-    ListWorkersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkersRequest,
-  ) => stream.Stream<
-    WorkerSummary,
-    ListWorkersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  WorkerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkersRequest,
   output: ListWorkersResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1088,27 +1087,13 @@ export type ListContainersError = InternalServerError | CommonErrors;
  * See also DescribeContainer, which gets the properties of one
  * container.
  */
-export const listContainers: API.OperationMethod<
+export const listContainers: API.PaginatedOperationMethod<
   ListContainersInput,
   ListContainersOutput,
   ListContainersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainersInput,
-  ) => stream.Stream<
-    ListContainersOutput,
-    ListContainersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainersInput,
-  ) => stream.Stream<
-    unknown,
-    ListContainersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainersInput,
   output: ListContainersOutput,
   errors: [InternalServerError],

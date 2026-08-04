@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7292,27 +7291,13 @@ export type DescribeAggregateComplianceByConfigRulesError =
  * have a `nextToken`, the results are displayed on the next
  * page.
  */
-export const describeAggregateComplianceByConfigRules: API.OperationMethod<
+export const describeAggregateComplianceByConfigRules: API.PaginatedOperationMethod<
   DescribeAggregateComplianceByConfigRulesRequest,
   DescribeAggregateComplianceByConfigRulesResponse,
   DescribeAggregateComplianceByConfigRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAggregateComplianceByConfigRulesRequest,
-  ) => stream.Stream<
-    DescribeAggregateComplianceByConfigRulesResponse,
-    DescribeAggregateComplianceByConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAggregateComplianceByConfigRulesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeAggregateComplianceByConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregateComplianceByConfigRulesRequest,
   output: DescribeAggregateComplianceByConfigRulesResponse,
   errors: [
@@ -7343,27 +7328,13 @@ export type DescribeAggregateComplianceByConformancePacksError =
  *
  * The results can return an empty result page, but if you have a `nextToken`, the results are displayed on the next page.
  */
-export const describeAggregateComplianceByConformancePacks: API.OperationMethod<
+export const describeAggregateComplianceByConformancePacks: API.PaginatedOperationMethod<
   DescribeAggregateComplianceByConformancePacksRequest,
   DescribeAggregateComplianceByConformancePacksResponse,
   DescribeAggregateComplianceByConformancePacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAggregateComplianceByConformancePacksRequest,
-  ) => stream.Stream<
-    DescribeAggregateComplianceByConformancePacksResponse,
-    DescribeAggregateComplianceByConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAggregateComplianceByConformancePacksRequest,
-  ) => stream.Stream<
-    AggregateComplianceByConformancePack,
-    DescribeAggregateComplianceByConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregateComplianceByConformancePack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregateComplianceByConformancePacksRequest,
   output: DescribeAggregateComplianceByConformancePacksResponse,
   errors: [
@@ -7392,27 +7363,13 @@ export type DescribeAggregationAuthorizationsError =
  * Returns a list of authorizations granted to various aggregator
  * accounts and regions.
  */
-export const describeAggregationAuthorizations: API.OperationMethod<
+export const describeAggregationAuthorizations: API.PaginatedOperationMethod<
   DescribeAggregationAuthorizationsRequest,
   DescribeAggregationAuthorizationsResponse,
   DescribeAggregationAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAggregationAuthorizationsRequest,
-  ) => stream.Stream<
-    DescribeAggregationAuthorizationsResponse,
-    DescribeAggregationAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAggregationAuthorizationsRequest,
-  ) => stream.Stream<
-    AggregationAuthorization,
-    DescribeAggregationAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregationAuthorization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAggregationAuthorizationsRequest,
   output: DescribeAggregationAuthorizationsResponse,
   errors: [
@@ -7468,27 +7425,13 @@ export type DescribeComplianceByConfigRuleError =
  * This can occur if the resources were deleted or removed from
  * the rule's scope.
  */
-export const describeComplianceByConfigRule: API.OperationMethod<
+export const describeComplianceByConfigRule: API.PaginatedOperationMethod<
   DescribeComplianceByConfigRuleRequest,
   DescribeComplianceByConfigRuleResponse,
   DescribeComplianceByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeComplianceByConfigRuleRequest,
-  ) => stream.Stream<
-    DescribeComplianceByConfigRuleResponse,
-    DescribeComplianceByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeComplianceByConfigRuleRequest,
-  ) => stream.Stream<
-    ComplianceByConfigRule,
-    DescribeComplianceByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComplianceByConfigRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeComplianceByConfigRuleRequest,
   output: DescribeComplianceByConfigRuleResponse,
   errors: [
@@ -7542,27 +7485,13 @@ export type DescribeComplianceByResourceError =
  * This can occur if the resources were deleted or removed from
  * the rule's scope.
  */
-export const describeComplianceByResource: API.OperationMethod<
+export const describeComplianceByResource: API.PaginatedOperationMethod<
   DescribeComplianceByResourceRequest,
   DescribeComplianceByResourceResponse,
   DescribeComplianceByResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeComplianceByResourceRequest,
-  ) => stream.Stream<
-    DescribeComplianceByResourceResponse,
-    DescribeComplianceByResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeComplianceByResourceRequest,
-  ) => stream.Stream<
-    ComplianceByResource,
-    DescribeComplianceByResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComplianceByResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeComplianceByResourceRequest,
   output: DescribeComplianceByResourceResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException],
@@ -7586,27 +7515,13 @@ export type DescribeConfigRuleEvaluationStatusError =
  * Returns status information for each of your Config managed rules. The status includes information such as the last time Config invoked the rule, the last time Config failed to invoke
  * the rule, and the related error for the last failure.
  */
-export const describeConfigRuleEvaluationStatus: API.OperationMethod<
+export const describeConfigRuleEvaluationStatus: API.PaginatedOperationMethod<
   DescribeConfigRuleEvaluationStatusRequest,
   DescribeConfigRuleEvaluationStatusResponse,
   DescribeConfigRuleEvaluationStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigRuleEvaluationStatusRequest,
-  ) => stream.Stream<
-    DescribeConfigRuleEvaluationStatusResponse,
-    DescribeConfigRuleEvaluationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigRuleEvaluationStatusRequest,
-  ) => stream.Stream<
-    ConfigRuleEvaluationStatus,
-    DescribeConfigRuleEvaluationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigRuleEvaluationStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigRuleEvaluationStatusRequest,
   output: DescribeConfigRuleEvaluationStatusResponse,
   errors: [
@@ -7633,27 +7548,13 @@ export type DescribeConfigRulesError =
 /**
  * Returns details about your Config rules.
  */
-export const describeConfigRules: API.OperationMethod<
+export const describeConfigRules: API.PaginatedOperationMethod<
   DescribeConfigRulesRequest,
   DescribeConfigRulesResponse,
   DescribeConfigRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigRulesRequest,
-  ) => stream.Stream<
-    DescribeConfigRulesResponse,
-    DescribeConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigRulesRequest,
-  ) => stream.Stream<
-    ConfigRule,
-    DescribeConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigRulesRequest,
   output: DescribeConfigRulesResponse,
   errors: [
@@ -7683,27 +7584,13 @@ export type DescribeConfigurationAggregatorsError =
  * returns the details for all the configuration aggregators associated
  * with the account.
  */
-export const describeConfigurationAggregators: API.OperationMethod<
+export const describeConfigurationAggregators: API.PaginatedOperationMethod<
   DescribeConfigurationAggregatorsRequest,
   DescribeConfigurationAggregatorsResponse,
   DescribeConfigurationAggregatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigurationAggregatorsRequest,
-  ) => stream.Stream<
-    DescribeConfigurationAggregatorsResponse,
-    DescribeConfigurationAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigurationAggregatorsRequest,
-  ) => stream.Stream<
-    ConfigurationAggregator,
-    DescribeConfigurationAggregatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationAggregator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationAggregatorsRequest,
   output: DescribeConfigurationAggregatorsResponse,
   errors: [
@@ -7733,27 +7620,13 @@ export type DescribeConfigurationAggregatorSourcesStatusError =
  * Returns status information for sources within an aggregator.
  * The status includes information about the last time Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message.
  */
-export const describeConfigurationAggregatorSourcesStatus: API.OperationMethod<
+export const describeConfigurationAggregatorSourcesStatus: API.PaginatedOperationMethod<
   DescribeConfigurationAggregatorSourcesStatusRequest,
   DescribeConfigurationAggregatorSourcesStatusResponse,
   DescribeConfigurationAggregatorSourcesStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigurationAggregatorSourcesStatusRequest,
-  ) => stream.Stream<
-    DescribeConfigurationAggregatorSourcesStatusResponse,
-    DescribeConfigurationAggregatorSourcesStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigurationAggregatorSourcesStatusRequest,
-  ) => stream.Stream<
-    AggregatedSourceStatus,
-    DescribeConfigurationAggregatorSourcesStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregatedSourceStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationAggregatorSourcesStatusRequest,
   output: DescribeConfigurationAggregatorSourcesStatusResponse,
   errors: [
@@ -7840,27 +7713,13 @@ export type DescribeConformancePackComplianceError =
  *
  * You must provide exact rule names.
  */
-export const describeConformancePackCompliance: API.OperationMethod<
+export const describeConformancePackCompliance: API.PaginatedOperationMethod<
   DescribeConformancePackComplianceRequest,
   DescribeConformancePackComplianceResponse,
   DescribeConformancePackComplianceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConformancePackComplianceRequest,
-  ) => stream.Stream<
-    DescribeConformancePackComplianceResponse,
-    DescribeConformancePackComplianceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConformancePackComplianceRequest,
-  ) => stream.Stream<
-    ConformancePackRuleCompliance,
-    DescribeConformancePackComplianceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConformancePackRuleCompliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePackComplianceRequest,
   output: DescribeConformancePackComplianceResponse,
   errors: [
@@ -7890,27 +7749,13 @@ export type DescribeConformancePacksError =
 /**
  * Returns a list of one or more conformance packs.
  */
-export const describeConformancePacks: API.OperationMethod<
+export const describeConformancePacks: API.PaginatedOperationMethod<
   DescribeConformancePacksRequest,
   DescribeConformancePacksResponse,
   DescribeConformancePacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConformancePacksRequest,
-  ) => stream.Stream<
-    DescribeConformancePacksResponse,
-    DescribeConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConformancePacksRequest,
-  ) => stream.Stream<
-    ConformancePackDetail,
-    DescribeConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConformancePackDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePacksRequest,
   output: DescribeConformancePacksResponse,
   errors: [
@@ -7940,27 +7785,13 @@ export type DescribeConformancePackStatusError =
  *
  * If there are no conformance packs then you will see an empty result.
  */
-export const describeConformancePackStatus: API.OperationMethod<
+export const describeConformancePackStatus: API.PaginatedOperationMethod<
   DescribeConformancePackStatusRequest,
   DescribeConformancePackStatusResponse,
   DescribeConformancePackStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConformancePackStatusRequest,
-  ) => stream.Stream<
-    DescribeConformancePackStatusResponse,
-    DescribeConformancePackStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConformancePackStatusRequest,
-  ) => stream.Stream<
-    ConformancePackStatusDetail,
-    DescribeConformancePackStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConformancePackStatusDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConformancePackStatusRequest,
   output: DescribeConformancePackStatusResponse,
   errors: [
@@ -8057,27 +7888,13 @@ export type DescribeOrganizationConfigRulesError =
  * the organization-related resource that were deployed from within the account calling
  * those APIs.
  */
-export const describeOrganizationConfigRules: API.OperationMethod<
+export const describeOrganizationConfigRules: API.PaginatedOperationMethod<
   DescribeOrganizationConfigRulesRequest,
   DescribeOrganizationConfigRulesResponse,
   DescribeOrganizationConfigRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationConfigRulesRequest,
-  ) => stream.Stream<
-    DescribeOrganizationConfigRulesResponse,
-    DescribeOrganizationConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationConfigRulesRequest,
-  ) => stream.Stream<
-    OrganizationConfigRule,
-    DescribeOrganizationConfigRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationConfigRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigRulesRequest,
   output: DescribeOrganizationConfigRulesResponse,
   errors: [
@@ -8113,27 +7930,13 @@ export type DescribeOrganizationConfigRuleStatusesError =
  * Limit and next token are not applicable if you specify organization Config rule names.
  * It is only applicable, when you request all the organization Config rules.
  */
-export const describeOrganizationConfigRuleStatuses: API.OperationMethod<
+export const describeOrganizationConfigRuleStatuses: API.PaginatedOperationMethod<
   DescribeOrganizationConfigRuleStatusesRequest,
   DescribeOrganizationConfigRuleStatusesResponse,
   DescribeOrganizationConfigRuleStatusesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationConfigRuleStatusesRequest,
-  ) => stream.Stream<
-    DescribeOrganizationConfigRuleStatusesResponse,
-    DescribeOrganizationConfigRuleStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationConfigRuleStatusesRequest,
-  ) => stream.Stream<
-    OrganizationConfigRuleStatus,
-    DescribeOrganizationConfigRuleStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationConfigRuleStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigRuleStatusesRequest,
   output: DescribeOrganizationConfigRuleStatusesResponse,
   errors: [
@@ -8180,27 +7983,13 @@ export type DescribeOrganizationConformancePacksError =
  * the organization-related resource that were deployed from within the account calling
  * those APIs.
  */
-export const describeOrganizationConformancePacks: API.OperationMethod<
+export const describeOrganizationConformancePacks: API.PaginatedOperationMethod<
   DescribeOrganizationConformancePacksRequest,
   DescribeOrganizationConformancePacksResponse,
   DescribeOrganizationConformancePacksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationConformancePacksRequest,
-  ) => stream.Stream<
-    DescribeOrganizationConformancePacksResponse,
-    DescribeOrganizationConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationConformancePacksRequest,
-  ) => stream.Stream<
-    OrganizationConformancePack,
-    DescribeOrganizationConformancePacksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationConformancePack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConformancePacksRequest,
   output: DescribeOrganizationConformancePacksResponse,
   errors: [
@@ -8236,27 +8025,13 @@ export type DescribeOrganizationConformancePackStatusesError =
  * Limit and next token are not applicable if you specify organization conformance pack names.
  * They are only applicable, when you request all the organization conformance packs.
  */
-export const describeOrganizationConformancePackStatuses: API.OperationMethod<
+export const describeOrganizationConformancePackStatuses: API.PaginatedOperationMethod<
   DescribeOrganizationConformancePackStatusesRequest,
   DescribeOrganizationConformancePackStatusesResponse,
   DescribeOrganizationConformancePackStatusesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationConformancePackStatusesRequest,
-  ) => stream.Stream<
-    DescribeOrganizationConformancePackStatusesResponse,
-    DescribeOrganizationConformancePackStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationConformancePackStatusesRequest,
-  ) => stream.Stream<
-    OrganizationConformancePackStatus,
-    DescribeOrganizationConformancePackStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationConformancePackStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConformancePackStatusesRequest,
   output: DescribeOrganizationConformancePackStatusesResponse,
   errors: [
@@ -8284,27 +8059,13 @@ export type DescribePendingAggregationRequestsError =
 /**
  * Returns a list of all pending aggregation requests.
  */
-export const describePendingAggregationRequests: API.OperationMethod<
+export const describePendingAggregationRequests: API.PaginatedOperationMethod<
   DescribePendingAggregationRequestsRequest,
   DescribePendingAggregationRequestsResponse,
   DescribePendingAggregationRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePendingAggregationRequestsRequest,
-  ) => stream.Stream<
-    DescribePendingAggregationRequestsResponse,
-    DescribePendingAggregationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePendingAggregationRequestsRequest,
-  ) => stream.Stream<
-    PendingAggregationRequest,
-    DescribePendingAggregationRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PendingAggregationRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePendingAggregationRequestsRequest,
   output: DescribePendingAggregationRequestsResponse,
   errors: [
@@ -8356,27 +8117,13 @@ export type DescribeRemediationExceptionsError =
  *
  * Limit and next token are not applicable if you request resources in batch. It is only applicable, when you request all resources.
  */
-export const describeRemediationExceptions: API.OperationMethod<
+export const describeRemediationExceptions: API.PaginatedOperationMethod<
   DescribeRemediationExceptionsRequest,
   DescribeRemediationExceptionsResponse,
   DescribeRemediationExceptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRemediationExceptionsRequest,
-  ) => stream.Stream<
-    DescribeRemediationExceptionsResponse,
-    DescribeRemediationExceptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRemediationExceptionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeRemediationExceptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRemediationExceptionsRequest,
   output: DescribeRemediationExceptionsResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException],
@@ -8399,27 +8146,13 @@ export type DescribeRemediationExecutionStatusError =
  * Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed.
  * When you specify the limit and the next token, you receive a paginated response.
  */
-export const describeRemediationExecutionStatus: API.OperationMethod<
+export const describeRemediationExecutionStatus: API.PaginatedOperationMethod<
   DescribeRemediationExecutionStatusRequest,
   DescribeRemediationExecutionStatusResponse,
   DescribeRemediationExecutionStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRemediationExecutionStatusRequest,
-  ) => stream.Stream<
-    DescribeRemediationExecutionStatusResponse,
-    DescribeRemediationExecutionStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRemediationExecutionStatusRequest,
-  ) => stream.Stream<
-    RemediationExecutionStatus,
-    DescribeRemediationExecutionStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RemediationExecutionStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRemediationExecutionStatusRequest,
   output: DescribeRemediationExecutionStatusResponse,
   errors: [
@@ -8452,27 +8185,13 @@ export type DescribeRetentionConfigurationsError =
  * Currently, Config supports only one retention
  * configuration per region in your account.
  */
-export const describeRetentionConfigurations: API.OperationMethod<
+export const describeRetentionConfigurations: API.PaginatedOperationMethod<
   DescribeRetentionConfigurationsRequest,
   DescribeRetentionConfigurationsResponse,
   DescribeRetentionConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRetentionConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeRetentionConfigurationsResponse,
-    DescribeRetentionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRetentionConfigurationsRequest,
-  ) => stream.Stream<
-    RetentionConfiguration,
-    DescribeRetentionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RetentionConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRetentionConfigurationsRequest,
   output: DescribeRetentionConfigurationsResponse,
   errors: [
@@ -8534,27 +8253,13 @@ export type GetAggregateComplianceDetailsByConfigRuleError =
  * have a `nextToken`, the results are displayed on the next
  * page.
  */
-export const getAggregateComplianceDetailsByConfigRule: API.OperationMethod<
+export const getAggregateComplianceDetailsByConfigRule: API.PaginatedOperationMethod<
   GetAggregateComplianceDetailsByConfigRuleRequest,
   GetAggregateComplianceDetailsByConfigRuleResponse,
   GetAggregateComplianceDetailsByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAggregateComplianceDetailsByConfigRuleRequest,
-  ) => stream.Stream<
-    GetAggregateComplianceDetailsByConfigRuleResponse,
-    GetAggregateComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAggregateComplianceDetailsByConfigRuleRequest,
-  ) => stream.Stream<
-    AggregateEvaluationResult,
-    GetAggregateComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregateEvaluationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateComplianceDetailsByConfigRuleRequest,
   output: GetAggregateComplianceDetailsByConfigRuleResponse,
   errors: [
@@ -8588,27 +8293,13 @@ export type GetAggregateConfigRuleComplianceSummaryError =
  * have a nextToken, the results are displayed on the next
  * page.
  */
-export const getAggregateConfigRuleComplianceSummary: API.OperationMethod<
+export const getAggregateConfigRuleComplianceSummary: API.PaginatedOperationMethod<
   GetAggregateConfigRuleComplianceSummaryRequest,
   GetAggregateConfigRuleComplianceSummaryResponse,
   GetAggregateConfigRuleComplianceSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAggregateConfigRuleComplianceSummaryRequest,
-  ) => stream.Stream<
-    GetAggregateConfigRuleComplianceSummaryResponse,
-    GetAggregateConfigRuleComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAggregateConfigRuleComplianceSummaryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetAggregateConfigRuleComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateConfigRuleComplianceSummaryRequest,
   output: GetAggregateConfigRuleComplianceSummaryResponse,
   errors: [
@@ -8638,27 +8329,13 @@ export type GetAggregateConformancePackComplianceSummaryError =
  *
  * The results can return an empty result page, but if you have a nextToken, the results are displayed on the next page.
  */
-export const getAggregateConformancePackComplianceSummary: API.OperationMethod<
+export const getAggregateConformancePackComplianceSummary: API.PaginatedOperationMethod<
   GetAggregateConformancePackComplianceSummaryRequest,
   GetAggregateConformancePackComplianceSummaryResponse,
   GetAggregateConformancePackComplianceSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAggregateConformancePackComplianceSummaryRequest,
-  ) => stream.Stream<
-    GetAggregateConformancePackComplianceSummaryResponse,
-    GetAggregateConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAggregateConformancePackComplianceSummaryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetAggregateConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateConformancePackComplianceSummaryRequest,
   output: GetAggregateConformancePackComplianceSummaryResponse,
   errors: [
@@ -8689,27 +8366,13 @@ export type GetAggregateDiscoveredResourceCountsError =
  * For example, if the input contains accountID 12345678910 and region us-east-1 in filters, the API returns the count of resources in account ID 12345678910 and region us-east-1.
  * If the input contains ACCOUNT_ID as a GroupByKey, the API returns resource counts for all source accounts that are present in your aggregator.
  */
-export const getAggregateDiscoveredResourceCounts: API.OperationMethod<
+export const getAggregateDiscoveredResourceCounts: API.PaginatedOperationMethod<
   GetAggregateDiscoveredResourceCountsRequest,
   GetAggregateDiscoveredResourceCountsResponse,
   GetAggregateDiscoveredResourceCountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAggregateDiscoveredResourceCountsRequest,
-  ) => stream.Stream<
-    GetAggregateDiscoveredResourceCountsResponse,
-    GetAggregateDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAggregateDiscoveredResourceCountsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetAggregateDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAggregateDiscoveredResourceCountsRequest,
   output: GetAggregateDiscoveredResourceCountsResponse,
   errors: [
@@ -8769,27 +8432,13 @@ export type GetComplianceDetailsByConfigRuleError =
  * rule, when each resource was last evaluated, and whether each
  * resource complies with the rule.
  */
-export const getComplianceDetailsByConfigRule: API.OperationMethod<
+export const getComplianceDetailsByConfigRule: API.PaginatedOperationMethod<
   GetComplianceDetailsByConfigRuleRequest,
   GetComplianceDetailsByConfigRuleResponse,
   GetComplianceDetailsByConfigRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetComplianceDetailsByConfigRuleRequest,
-  ) => stream.Stream<
-    GetComplianceDetailsByConfigRuleResponse,
-    GetComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetComplianceDetailsByConfigRuleRequest,
-  ) => stream.Stream<
-    EvaluationResult,
-    GetComplianceDetailsByConfigRuleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EvaluationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceDetailsByConfigRuleRequest,
   output: GetComplianceDetailsByConfigRuleResponse,
   errors: [
@@ -8817,27 +8466,13 @@ export type GetComplianceDetailsByResourceError =
  * the resource, when each rule was last invoked, and whether the resource
  * complies with each rule.
  */
-export const getComplianceDetailsByResource: API.OperationMethod<
+export const getComplianceDetailsByResource: API.PaginatedOperationMethod<
   GetComplianceDetailsByResourceRequest,
   GetComplianceDetailsByResourceResponse,
   GetComplianceDetailsByResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetComplianceDetailsByResourceRequest,
-  ) => stream.Stream<
-    GetComplianceDetailsByResourceResponse,
-    GetComplianceDetailsByResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetComplianceDetailsByResourceRequest,
-  ) => stream.Stream<
-    EvaluationResult,
-    GetComplianceDetailsByResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EvaluationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceDetailsByResourceRequest,
   output: GetComplianceDetailsByResourceResponse,
   errors: [InvalidParameterValueException],
@@ -8903,27 +8538,13 @@ export type GetConformancePackComplianceDetailsError =
 /**
  * Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack.
  */
-export const getConformancePackComplianceDetails: API.OperationMethod<
+export const getConformancePackComplianceDetails: API.PaginatedOperationMethod<
   GetConformancePackComplianceDetailsRequest,
   GetConformancePackComplianceDetailsResponse,
   GetConformancePackComplianceDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConformancePackComplianceDetailsRequest,
-  ) => stream.Stream<
-    GetConformancePackComplianceDetailsResponse,
-    GetConformancePackComplianceDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConformancePackComplianceDetailsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetConformancePackComplianceDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConformancePackComplianceDetailsRequest,
   output: GetConformancePackComplianceDetailsResponse,
   errors: [
@@ -8951,27 +8572,13 @@ export type GetConformancePackComplianceSummaryError =
 /**
  * Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack.
  */
-export const getConformancePackComplianceSummary: API.OperationMethod<
+export const getConformancePackComplianceSummary: API.PaginatedOperationMethod<
   GetConformancePackComplianceSummaryRequest,
   GetConformancePackComplianceSummaryResponse,
   GetConformancePackComplianceSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetConformancePackComplianceSummaryRequest,
-  ) => stream.Stream<
-    GetConformancePackComplianceSummaryResponse,
-    GetConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetConformancePackComplianceSummaryRequest,
-  ) => stream.Stream<
-    ConformancePackComplianceSummary,
-    GetConformancePackComplianceSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConformancePackComplianceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetConformancePackComplianceSummaryRequest,
   output: GetConformancePackComplianceSummaryResponse,
   errors: [
@@ -9058,27 +8665,13 @@ export type GetDiscoveredResourceCountsError =
  * count your resources. Wait a few minutes and then retry the
  * GetDiscoveredResourceCounts action.
  */
-export const getDiscoveredResourceCounts: API.OperationMethod<
+export const getDiscoveredResourceCounts: API.PaginatedOperationMethod<
   GetDiscoveredResourceCountsRequest,
   GetDiscoveredResourceCountsResponse,
   GetDiscoveredResourceCountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDiscoveredResourceCountsRequest,
-  ) => stream.Stream<
-    GetDiscoveredResourceCountsResponse,
-    GetDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDiscoveredResourceCountsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDiscoveredResourceCountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDiscoveredResourceCountsRequest,
   output: GetDiscoveredResourceCountsResponse,
   errors: [
@@ -9105,27 +8698,13 @@ export type GetOrganizationConfigRuleDetailedStatusError =
 /**
  * Returns detailed status for each member account within an organization for a given organization Config rule.
  */
-export const getOrganizationConfigRuleDetailedStatus: API.OperationMethod<
+export const getOrganizationConfigRuleDetailedStatus: API.PaginatedOperationMethod<
   GetOrganizationConfigRuleDetailedStatusRequest,
   GetOrganizationConfigRuleDetailedStatusResponse,
   GetOrganizationConfigRuleDetailedStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOrganizationConfigRuleDetailedStatusRequest,
-  ) => stream.Stream<
-    GetOrganizationConfigRuleDetailedStatusResponse,
-    GetOrganizationConfigRuleDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOrganizationConfigRuleDetailedStatusRequest,
-  ) => stream.Stream<
-    MemberAccountStatus,
-    GetOrganizationConfigRuleDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MemberAccountStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOrganizationConfigRuleDetailedStatusRequest,
   output: GetOrganizationConfigRuleDetailedStatusResponse,
   errors: [
@@ -9154,27 +8733,13 @@ export type GetOrganizationConformancePackDetailedStatusError =
 /**
  * Returns detailed status for each member account within an organization for a given organization conformance pack.
  */
-export const getOrganizationConformancePackDetailedStatus: API.OperationMethod<
+export const getOrganizationConformancePackDetailedStatus: API.PaginatedOperationMethod<
   GetOrganizationConformancePackDetailedStatusRequest,
   GetOrganizationConformancePackDetailedStatusResponse,
   GetOrganizationConformancePackDetailedStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOrganizationConformancePackDetailedStatusRequest,
-  ) => stream.Stream<
-    GetOrganizationConformancePackDetailedStatusResponse,
-    GetOrganizationConformancePackDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOrganizationConformancePackDetailedStatusRequest,
-  ) => stream.Stream<
-    OrganizationConformancePackDetailedStatus,
-    GetOrganizationConformancePackDetailedStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OrganizationConformancePackDetailedStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOrganizationConformancePackDetailedStatusRequest,
   output: GetOrganizationConformancePackDetailedStatusResponse,
   errors: [
@@ -9257,27 +8822,13 @@ export type GetResourceConfigHistoryError =
  * you can make another call, using the
  * `nextToken`.
  */
-export const getResourceConfigHistory: API.OperationMethod<
+export const getResourceConfigHistory: API.PaginatedOperationMethod<
   GetResourceConfigHistoryRequest,
   GetResourceConfigHistoryResponse,
   GetResourceConfigHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceConfigHistoryRequest,
-  ) => stream.Stream<
-    GetResourceConfigHistoryResponse,
-    GetResourceConfigHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceConfigHistoryRequest,
-  ) => stream.Stream<
-    ConfigurationItem,
-    GetResourceConfigHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceConfigHistoryRequest,
   output: GetResourceConfigHistoryResponse,
   errors: [
@@ -9358,27 +8909,13 @@ export type ListAggregateDiscoveredResourcesError =
  *
  * For example, if the input consists of accountID 12345678910 and the region is us-east-1 for resource type `AWS::EC2::Instance` then the API returns all the EC2 instance identifiers of accountID 12345678910 and region us-east-1.
  */
-export const listAggregateDiscoveredResources: API.OperationMethod<
+export const listAggregateDiscoveredResources: API.PaginatedOperationMethod<
   ListAggregateDiscoveredResourcesRequest,
   ListAggregateDiscoveredResourcesResponse,
   ListAggregateDiscoveredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAggregateDiscoveredResourcesRequest,
-  ) => stream.Stream<
-    ListAggregateDiscoveredResourcesResponse,
-    ListAggregateDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAggregateDiscoveredResourcesRequest,
-  ) => stream.Stream<
-    AggregateResourceIdentifier,
-    ListAggregateDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AggregateResourceIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAggregateDiscoveredResourcesRequest,
   output: ListAggregateDiscoveredResourcesResponse,
   errors: [
@@ -9404,27 +8941,13 @@ export type ListConfigurationRecordersError =
 /**
  * Returns a list of configuration recorders depending on the filters you specify.
  */
-export const listConfigurationRecorders: API.OperationMethod<
+export const listConfigurationRecorders: API.PaginatedOperationMethod<
   ListConfigurationRecordersRequest,
   ListConfigurationRecordersResponse,
   ListConfigurationRecordersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationRecordersRequest,
-  ) => stream.Stream<
-    ListConfigurationRecordersResponse,
-    ListConfigurationRecordersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationRecordersRequest,
-  ) => stream.Stream<
-    ConfigurationRecorderSummary,
-    ListConfigurationRecordersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationRecorderSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationRecordersRequest,
   output: ListConfigurationRecordersResponse,
   errors: [ValidationException],
@@ -9452,27 +8975,13 @@ export type ListConformancePackComplianceScoresError =
  *
  * Conformance packs with no evaluation results will have a compliance score of `INSUFFICIENT_DATA`.
  */
-export const listConformancePackComplianceScores: API.OperationMethod<
+export const listConformancePackComplianceScores: API.PaginatedOperationMethod<
   ListConformancePackComplianceScoresRequest,
   ListConformancePackComplianceScoresResponse,
   ListConformancePackComplianceScoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConformancePackComplianceScoresRequest,
-  ) => stream.Stream<
-    ListConformancePackComplianceScoresResponse,
-    ListConformancePackComplianceScoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConformancePackComplianceScoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConformancePackComplianceScoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConformancePackComplianceScoresRequest,
   output: ListConformancePackComplianceScoresResponse,
   errors: [
@@ -9532,27 +9041,13 @@ export type ListDiscoveredResourcesError =
  * for that stack in Config, even after the stack is deleted. This helps make sure that Config only
  * tracks resources that were successfully provisioned.
  */
-export const listDiscoveredResources: API.OperationMethod<
+export const listDiscoveredResources: API.PaginatedOperationMethod<
   ListDiscoveredResourcesRequest,
   ListDiscoveredResourcesResponse,
   ListDiscoveredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDiscoveredResourcesRequest,
-  ) => stream.Stream<
-    ListDiscoveredResourcesResponse,
-    ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDiscoveredResourcesRequest,
-  ) => stream.Stream<
-    ResourceIdentifier,
-    ListDiscoveredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResponse,
   errors: [
@@ -9580,27 +9075,13 @@ export type ListResourceEvaluationsError =
 /**
  * Returns a list of proactive resource evaluations.
  */
-export const listResourceEvaluations: API.OperationMethod<
+export const listResourceEvaluations: API.PaginatedOperationMethod<
   ListResourceEvaluationsRequest,
   ListResourceEvaluationsResponse,
   ListResourceEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceEvaluationsRequest,
-  ) => stream.Stream<
-    ListResourceEvaluationsResponse,
-    ListResourceEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceEvaluationsRequest,
-  ) => stream.Stream<
-    ResourceEvaluation,
-    ListResourceEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceEvaluation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceEvaluationsRequest,
   output: ListResourceEvaluationsResponse,
   errors: [
@@ -9626,27 +9107,13 @@ export type ListStoredQueriesError =
 /**
  * Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region. The default is 100.
  */
-export const listStoredQueries: API.OperationMethod<
+export const listStoredQueries: API.PaginatedOperationMethod<
   ListStoredQueriesRequest,
   ListStoredQueriesResponse,
   ListStoredQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStoredQueriesRequest,
-  ) => stream.Stream<
-    ListStoredQueriesResponse,
-    ListStoredQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStoredQueriesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStoredQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStoredQueriesRequest,
   output: ListStoredQueriesResponse,
   errors: [InvalidNextTokenException, ValidationException],
@@ -9669,27 +9136,13 @@ export type ListTagsForResourceError =
 /**
  * List the tags for Config resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -10499,27 +9952,13 @@ export type SelectAggregateResourceConfigError =
  * If you run a non-aggregation query (i.e., not using `GROUP BY` or aggregate function; e.g., `SELECT * WHERE resourceType = 'AWS::IAM::Role'`)
  * and do not specify the `MaxResults` or the `Limit` query parameters, the default page size is set to 25.
  */
-export const selectAggregateResourceConfig: API.OperationMethod<
+export const selectAggregateResourceConfig: API.PaginatedOperationMethod<
   SelectAggregateResourceConfigRequest,
   SelectAggregateResourceConfigResponse,
   SelectAggregateResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SelectAggregateResourceConfigRequest,
-  ) => stream.Stream<
-    SelectAggregateResourceConfigResponse,
-    SelectAggregateResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SelectAggregateResourceConfigRequest,
-  ) => stream.Stream<
-    string,
-    SelectAggregateResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectAggregateResourceConfigRequest,
   output: SelectAggregateResourceConfigResponse,
   errors: [
@@ -10552,27 +9991,13 @@ export type SelectResourceConfigError =
  * **Query Components**
  * section in the *Config Developer Guide*.
  */
-export const selectResourceConfig: API.OperationMethod<
+export const selectResourceConfig: API.PaginatedOperationMethod<
   SelectResourceConfigRequest,
   SelectResourceConfigResponse,
   SelectResourceConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SelectResourceConfigRequest,
-  ) => stream.Stream<
-    SelectResourceConfigResponse,
-    SelectResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SelectResourceConfigRequest,
-  ) => stream.Stream<
-    string,
-    SelectResourceConfigError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectResourceConfigRequest,
   output: SelectResourceConfigResponse,
   errors: [

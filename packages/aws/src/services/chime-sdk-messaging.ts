@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3901,27 +3900,13 @@ export type ListChannelBansError =
  * ARN of the `AppInstanceUser` or `AppInstanceBot` that makes the API call as the value in
  * the header.
  */
-export const listChannelBans: API.OperationMethod<
+export const listChannelBans: API.PaginatedOperationMethod<
   ListChannelBansRequest,
   ListChannelBansResponse,
   ListChannelBansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelBansRequest,
-  ) => stream.Stream<
-    ListChannelBansResponse,
-    ListChannelBansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelBansRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelBansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelBansRequest,
   output: ListChannelBansResponse,
   errors: [
@@ -3953,27 +3938,13 @@ export type ListChannelFlowsError =
 /**
  * Returns a paginated lists of all the channel flows created under a single Chime. This is a developer API.
  */
-export const listChannelFlows: API.OperationMethod<
+export const listChannelFlows: API.PaginatedOperationMethod<
   ListChannelFlowsRequest,
   ListChannelFlowsResponse,
   ListChannelFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelFlowsRequest,
-  ) => stream.Stream<
-    ListChannelFlowsResponse,
-    ListChannelFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelFlowsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelFlowsRequest,
   output: ListChannelFlowsResponse,
   errors: [
@@ -4012,27 +3983,13 @@ export type ListChannelMembershipsError =
  * If you want to list the channels to which a specific app instance user belongs, see the
  * ListChannelMembershipsForAppInstanceUser API.
  */
-export const listChannelMemberships: API.OperationMethod<
+export const listChannelMemberships: API.PaginatedOperationMethod<
   ListChannelMembershipsRequest,
   ListChannelMembershipsResponse,
   ListChannelMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelMembershipsRequest,
-  ) => stream.Stream<
-    ListChannelMembershipsResponse,
-    ListChannelMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelMembershipsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMembershipsRequest,
   output: ListChannelMembershipsResponse,
   errors: [
@@ -4069,27 +4026,13 @@ export type ListChannelMembershipsForAppInstanceUserError =
  * ARN of the `AppInstanceUser` or `AppInstanceBot` that makes the API call as the value in
  * the header.
  */
-export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
+export const listChannelMembershipsForAppInstanceUser: API.PaginatedOperationMethod<
   ListChannelMembershipsForAppInstanceUserRequest,
   ListChannelMembershipsForAppInstanceUserResponse,
   ListChannelMembershipsForAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelMembershipsForAppInstanceUserRequest,
-  ) => stream.Stream<
-    ListChannelMembershipsForAppInstanceUserResponse,
-    ListChannelMembershipsForAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelMembershipsForAppInstanceUserRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelMembershipsForAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMembershipsForAppInstanceUserRequest,
   output: ListChannelMembershipsForAppInstanceUserResponse,
   errors: [
@@ -4131,27 +4074,13 @@ export type ListChannelMessagesError =
  * ARN of the `AppInstanceUser` or `AppInstanceBot` that makes the API call as the value in
  * the header.
  */
-export const listChannelMessages: API.OperationMethod<
+export const listChannelMessages: API.PaginatedOperationMethod<
   ListChannelMessagesRequest,
   ListChannelMessagesResponse,
   ListChannelMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelMessagesRequest,
-  ) => stream.Stream<
-    ListChannelMessagesResponse,
-    ListChannelMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelMessagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelMessagesRequest,
   output: ListChannelMessagesResponse,
   errors: [
@@ -4187,27 +4116,13 @@ export type ListChannelModeratorsError =
  * ARN of the `AppInstanceUser` or `AppInstanceBot` that makes the API call as the value in
  * the header.
  */
-export const listChannelModerators: API.OperationMethod<
+export const listChannelModerators: API.PaginatedOperationMethod<
   ListChannelModeratorsRequest,
   ListChannelModeratorsResponse,
   ListChannelModeratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelModeratorsRequest,
-  ) => stream.Stream<
-    ListChannelModeratorsResponse,
-    ListChannelModeratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelModeratorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelModeratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelModeratorsRequest,
   output: ListChannelModeratorsResponse,
   errors: [
@@ -4252,27 +4167,13 @@ export type ListChannelsError =
  * ARN of the `AppInstanceUser` or `AppInstanceBot` that makes the API call as the value in
  * the header.
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -4304,27 +4205,13 @@ export type ListChannelsAssociatedWithChannelFlowError =
 /**
  * Lists all channels associated with a specified channel flow. You can associate a channel flow with multiple channels, but you can only associate a channel with one channel flow. This is a developer API.
  */
-export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
+export const listChannelsAssociatedWithChannelFlow: API.PaginatedOperationMethod<
   ListChannelsAssociatedWithChannelFlowRequest,
   ListChannelsAssociatedWithChannelFlowResponse,
   ListChannelsAssociatedWithChannelFlowError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsAssociatedWithChannelFlowRequest,
-  ) => stream.Stream<
-    ListChannelsAssociatedWithChannelFlowResponse,
-    ListChannelsAssociatedWithChannelFlowError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsAssociatedWithChannelFlowRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsAssociatedWithChannelFlowError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsAssociatedWithChannelFlowRequest,
   output: ListChannelsAssociatedWithChannelFlowResponse,
   errors: [
@@ -4360,27 +4247,13 @@ export type ListChannelsModeratedByAppInstanceUserError =
  * ARN of the `AppInstanceUser` or `AppInstanceBot` that makes the API call as the value in
  * the header.
  */
-export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
+export const listChannelsModeratedByAppInstanceUser: API.PaginatedOperationMethod<
   ListChannelsModeratedByAppInstanceUserRequest,
   ListChannelsModeratedByAppInstanceUserResponse,
   ListChannelsModeratedByAppInstanceUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsModeratedByAppInstanceUserRequest,
-  ) => stream.Stream<
-    ListChannelsModeratedByAppInstanceUserResponse,
-    ListChannelsModeratedByAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsModeratedByAppInstanceUserRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsModeratedByAppInstanceUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsModeratedByAppInstanceUserRequest,
   output: ListChannelsModeratedByAppInstanceUserResponse,
   errors: [
@@ -4412,27 +4285,13 @@ export type ListSubChannelsError =
 /**
  * Lists all the SubChannels in an elastic channel when given a channel ID. Available only to the app instance admins and channel moderators of elastic channels.
  */
-export const listSubChannels: API.OperationMethod<
+export const listSubChannels: API.PaginatedOperationMethod<
   ListSubChannelsRequest,
   ListSubChannelsResponse,
   ListSubChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubChannelsRequest,
-  ) => stream.Stream<
-    ListSubChannelsResponse,
-    ListSubChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSubChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubChannelsRequest,
   output: ListSubChannelsResponse,
   errors: [
@@ -4666,27 +4525,13 @@ export type SearchChannelsError =
  *
  * This operation isn't supported for `AppInstanceUsers` with a large number of memberships.
  */
-export const searchChannels: API.OperationMethod<
+export const searchChannels: API.PaginatedOperationMethod<
   SearchChannelsRequest,
   SearchChannelsResponse,
   SearchChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchChannelsRequest,
-  ) => stream.Stream<
-    SearchChannelsResponse,
-    SearchChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchChannelsRequest,
   output: SearchChannelsResponse,
   errors: [

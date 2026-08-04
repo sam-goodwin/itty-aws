@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5765,27 +5764,13 @@ export type ListBootstrapActionsError =
 /**
  * Provides information about the bootstrap actions associated with a cluster.
  */
-export const listBootstrapActions: API.OperationMethod<
+export const listBootstrapActions: API.PaginatedOperationMethod<
   ListBootstrapActionsInput,
   ListBootstrapActionsOutput,
   ListBootstrapActionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBootstrapActionsInput,
-  ) => stream.Stream<
-    ListBootstrapActionsOutput,
-    ListBootstrapActionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBootstrapActionsInput,
-  ) => stream.Stream<
-    Command,
-    ListBootstrapActionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Command
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBootstrapActionsInput,
   output: ListBootstrapActionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5810,27 +5795,13 @@ export type ListClustersError =
  * unsorted order per call, but returns a marker to track the paging of the cluster list
  * across multiple ListClusters calls.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersInput,
   ListClustersOutput,
   ListClustersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ListClustersOutput,
-    ListClustersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersInput,
-  ) => stream.Stream<
-    ClusterSummary,
-    ListClustersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ClusterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5854,27 +5825,13 @@ export type ListInstanceFleetsError =
  * The instance fleet configuration is available only in Amazon EMR releases
  * 4.8.0 and later, excluding 5.0.x versions.
  */
-export const listInstanceFleets: API.OperationMethod<
+export const listInstanceFleets: API.PaginatedOperationMethod<
   ListInstanceFleetsInput,
   ListInstanceFleetsOutput,
   ListInstanceFleetsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceFleetsInput,
-  ) => stream.Stream<
-    ListInstanceFleetsOutput,
-    ListInstanceFleetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceFleetsInput,
-  ) => stream.Stream<
-    InstanceFleet,
-    ListInstanceFleetsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  InstanceFleet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceFleetsInput,
   output: ListInstanceFleetsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5895,27 +5852,13 @@ export type ListInstanceGroupsError =
 /**
  * Provides all available details about the instance groups in a cluster.
  */
-export const listInstanceGroups: API.OperationMethod<
+export const listInstanceGroups: API.PaginatedOperationMethod<
   ListInstanceGroupsInput,
   ListInstanceGroupsOutput,
   ListInstanceGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceGroupsInput,
-  ) => stream.Stream<
-    ListInstanceGroupsOutput,
-    ListInstanceGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceGroupsInput,
-  ) => stream.Stream<
-    InstanceGroup,
-    ListInstanceGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  InstanceGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupsInput,
   output: ListInstanceGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5939,27 +5882,13 @@ export type ListInstancesError =
  * instances in any of the following states are considered active: AWAITING_FULFILLMENT,
  * PROVISIONING, BOOTSTRAPPING, RUNNING.
  */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesInput,
   ListInstancesOutput,
   ListInstancesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesInput,
-  ) => stream.Stream<
-    ListInstancesOutput,
-    ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesInput,
-  ) => stream.Stream<
-    Instance,
-    ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Instance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesInput,
   output: ListInstancesOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -5983,27 +5912,13 @@ export type ListNotebookExecutionsError =
  * executions and a marker to track the paging of a longer notebook execution list across
  * multiple `ListNotebookExecutions` calls.
  */
-export const listNotebookExecutions: API.OperationMethod<
+export const listNotebookExecutions: API.PaginatedOperationMethod<
   ListNotebookExecutionsInput,
   ListNotebookExecutionsOutput,
   ListNotebookExecutionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotebookExecutionsInput,
-  ) => stream.Stream<
-    ListNotebookExecutionsOutput,
-    ListNotebookExecutionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotebookExecutionsInput,
-  ) => stream.Stream<
-    NotebookExecutionSummary,
-    ListNotebookExecutionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  NotebookExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotebookExecutionsInput,
   output: ListNotebookExecutionsOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -6025,27 +5940,13 @@ export type ListReleaseLabelsError =
  * Retrieves release labels of Amazon EMR services in the Region where the API is
  * called.
  */
-export const listReleaseLabels: API.OperationMethod<
+export const listReleaseLabels: API.PaginatedOperationMethod<
   ListReleaseLabelsInput,
   ListReleaseLabelsOutput,
   ListReleaseLabelsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReleaseLabelsInput,
-  ) => stream.Stream<
-    ListReleaseLabelsOutput,
-    ListReleaseLabelsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReleaseLabelsInput,
-  ) => stream.Stream<
-    unknown,
-    ListReleaseLabelsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReleaseLabelsInput,
   output: ListReleaseLabelsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -6069,27 +5970,13 @@ export type ListSecurityConfigurationsError =
  * returns a marker to track the paging of the cluster list across multiple
  * ListSecurityConfigurations calls.
  */
-export const listSecurityConfigurations: API.OperationMethod<
+export const listSecurityConfigurations: API.PaginatedOperationMethod<
   ListSecurityConfigurationsInput,
   ListSecurityConfigurationsOutput,
   ListSecurityConfigurationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityConfigurationsInput,
-  ) => stream.Stream<
-    ListSecurityConfigurationsOutput,
-    ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityConfigurationsInput,
-  ) => stream.Stream<
-    SecurityConfigurationSummary,
-    ListSecurityConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigurationsInput,
   output: ListSecurityConfigurationsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -6110,27 +5997,13 @@ export type ListSessionsError =
 /**
  * Lists the sessions on a cluster. You can filter the results by session state. Newer sessions are returned first.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsInput,
   ListSessionsOutput,
   ListSessionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsInput,
-  ) => stream.Stream<
-    ListSessionsOutput,
-    ListSessionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsInput,
-  ) => stream.Stream<
-    Session,
-    ListSessionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Session
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsInput,
   output: ListSessionsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -6156,27 +6029,13 @@ export type ListStepsError =
  * using the CLI, specify a `Marker`, which is a pagination token
  * that indicates the next set of steps to retrieve.
  */
-export const listSteps: API.OperationMethod<
+export const listSteps: API.PaginatedOperationMethod<
   ListStepsInput,
   ListStepsOutput,
   ListStepsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStepsInput,
-  ) => stream.Stream<
-    ListStepsOutput,
-    ListStepsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStepsInput,
-  ) => stream.Stream<
-    StepSummary,
-    ListStepsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  StepSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStepsInput,
   output: ListStepsOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -6198,27 +6057,13 @@ export type ListStudiosError =
  * Returns a list of all Amazon EMR Studios associated with the Amazon Web Services account. The list includes details such as ID, Studio Access URL, and
  * creation time for each Studio.
  */
-export const listStudios: API.OperationMethod<
+export const listStudios: API.PaginatedOperationMethod<
   ListStudiosInput,
   ListStudiosOutput,
   ListStudiosError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStudiosInput,
-  ) => stream.Stream<
-    ListStudiosOutput,
-    ListStudiosError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStudiosInput,
-  ) => stream.Stream<
-    StudioSummary,
-    ListStudiosError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  StudioSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStudiosInput,
   output: ListStudiosOutput,
   errors: [InternalServerException, InvalidRequestException],
@@ -6240,27 +6085,13 @@ export type ListStudioSessionMappingsError =
  * Returns a list of all user or group session mappings for the Amazon EMR Studio
  * specified by `StudioId`.
  */
-export const listStudioSessionMappings: API.OperationMethod<
+export const listStudioSessionMappings: API.PaginatedOperationMethod<
   ListStudioSessionMappingsInput,
   ListStudioSessionMappingsOutput,
   ListStudioSessionMappingsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStudioSessionMappingsInput,
-  ) => stream.Stream<
-    ListStudioSessionMappingsOutput,
-    ListStudioSessionMappingsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStudioSessionMappingsInput,
-  ) => stream.Stream<
-    SessionMappingSummary,
-    ListStudioSessionMappingsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SessionMappingSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStudioSessionMappingsInput,
   output: ListStudioSessionMappingsOutput,
   errors: [InternalServerError, InvalidRequestException],
@@ -6282,27 +6113,13 @@ export type ListSupportedInstanceTypesError =
  * A list of the instance types that Amazon EMR supports. You can filter the
  * list by Amazon Web Services Region and Amazon EMR release.
  */
-export const listSupportedInstanceTypes: API.OperationMethod<
+export const listSupportedInstanceTypes: API.PaginatedOperationMethod<
   ListSupportedInstanceTypesInput,
   ListSupportedInstanceTypesOutput,
   ListSupportedInstanceTypesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSupportedInstanceTypesInput,
-  ) => stream.Stream<
-    ListSupportedInstanceTypesOutput,
-    ListSupportedInstanceTypesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSupportedInstanceTypesInput,
-  ) => stream.Stream<
-    unknown,
-    ListSupportedInstanceTypesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedInstanceTypesInput,
   output: ListSupportedInstanceTypesOutput,
   errors: [InternalServerException, InvalidRequestException],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1970,27 +1969,13 @@ export type ListDiscoverersError =
 /**
  * List the discoverers.
  */
-export const listDiscoverers: API.OperationMethod<
+export const listDiscoverers: API.PaginatedOperationMethod<
   ListDiscoverersRequest,
   ListDiscoverersResponse,
   ListDiscoverersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDiscoverersRequest,
-  ) => stream.Stream<
-    ListDiscoverersResponse,
-    ListDiscoverersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDiscoverersRequest,
-  ) => stream.Stream<
-    DiscovererSummary,
-    ListDiscoverersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DiscovererSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoverersRequest,
   output: ListDiscoverersResponse,
   errors: [
@@ -2021,27 +2006,13 @@ export type ListRegistriesError =
 /**
  * List the registries.
  */
-export const listRegistries: API.OperationMethod<
+export const listRegistries: API.PaginatedOperationMethod<
   ListRegistriesRequest,
   ListRegistriesResponse,
   ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    ListRegistriesResponse,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    RegistrySummary,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistriesRequest,
   output: ListRegistriesResponse,
   errors: [
@@ -2072,27 +2043,13 @@ export type ListSchemasError =
 /**
  * List the schemas.
  */
-export const listSchemas: API.OperationMethod<
+export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasRequest,
   ListSchemasResponse,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    SchemaSummary,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [
@@ -2124,27 +2081,13 @@ export type ListSchemaVersionsError =
 /**
  * Provides a list of the schema versions and related information.
  */
-export const listSchemaVersions: API.OperationMethod<
+export const listSchemaVersions: API.PaginatedOperationMethod<
   ListSchemaVersionsRequest,
   ListSchemaVersionsResponse,
   ListSchemaVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaVersionsRequest,
-  ) => stream.Stream<
-    ListSchemaVersionsResponse,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaVersionsRequest,
-  ) => stream.Stream<
-    SchemaVersionSummary,
-    ListSchemaVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaVersionsRequest,
   output: ListSchemaVersionsResponse,
   errors: [
@@ -2274,27 +2217,13 @@ export type SearchSchemasError =
 /**
  * Search the schemas
  */
-export const searchSchemas: API.OperationMethod<
+export const searchSchemas: API.PaginatedOperationMethod<
   SearchSchemasRequest,
   SearchSchemasResponse,
   SearchSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSchemasRequest,
-  ) => stream.Stream<
-    SearchSchemasResponse,
-    SearchSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSchemasRequest,
-  ) => stream.Stream<
-    SearchSchemaSummary,
-    SearchSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SearchSchemaSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSchemasRequest,
   output: SearchSchemasResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -942,27 +941,13 @@ export type ListBillingViewsError =
  *
  * Every Amazon Web Services account has a unique `PRIMARY` billing view that represents the billing data available by default. Accounts that use Billing Conductor also have `BILLING_GROUP` billing views representing pro forma costs associated with each created billing group.
  */
-export const listBillingViews: API.OperationMethod<
+export const listBillingViews: API.PaginatedOperationMethod<
   ListBillingViewsRequest,
   ListBillingViewsResponse,
   ListBillingViewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingViewsRequest,
-  ) => stream.Stream<
-    ListBillingViewsResponse,
-    ListBillingViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillingViewsRequest,
-  ) => stream.Stream<
-    BillingViewListElement,
-    ListBillingViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillingViewListElement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingViewsRequest,
   output: ListBillingViewsResponse,
   errors: [
@@ -992,27 +977,13 @@ export type ListSourceViewsForBillingViewError =
 /**
  * Lists the source views (managed Amazon Web Services billing views) associated with the billing view.
  */
-export const listSourceViewsForBillingView: API.OperationMethod<
+export const listSourceViewsForBillingView: API.PaginatedOperationMethod<
   ListSourceViewsForBillingViewRequest,
   ListSourceViewsForBillingViewResponse,
   ListSourceViewsForBillingViewError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceViewsForBillingViewRequest,
-  ) => stream.Stream<
-    ListSourceViewsForBillingViewResponse,
-    ListSourceViewsForBillingViewError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceViewsForBillingViewRequest,
-  ) => stream.Stream<
-    BillingViewArn,
-    ListSourceViewsForBillingViewError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillingViewArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceViewsForBillingViewRequest,
   output: ListSourceViewsForBillingViewResponse,
   errors: [

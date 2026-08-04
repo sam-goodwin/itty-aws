@@ -17486,27 +17486,13 @@ export type ListBucketsError =
  *
  * You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
  */
-export const listBuckets: API.OperationMethod<
+export const listBuckets: API.PaginatedOperationMethod<
   ListBucketsRequest,
   ListBucketsOutput,
   ListBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBucketsRequest,
-  ) => stream.Stream<
-    ListBucketsOutput,
-    ListBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBucketsRequest,
-  ) => stream.Stream<
-    Bucket,
-    ListBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Bucket
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBucketsRequest,
   output: ListBucketsOutput,
   errors: [RequestLimitExceeded, SlowDown, RequestError],
@@ -17549,27 +17535,13 @@ export type ListDirectoryBucketsError = CommonErrors;
  *
  * You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
  */
-export const listDirectoryBuckets: API.OperationMethod<
+export const listDirectoryBuckets: API.PaginatedOperationMethod<
   ListDirectoryBucketsRequest,
   ListDirectoryBucketsOutput,
   ListDirectoryBucketsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDirectoryBucketsRequest,
-  ) => stream.Stream<
-    ListDirectoryBucketsOutput,
-    ListDirectoryBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDirectoryBucketsRequest,
-  ) => stream.Stream<
-    Bucket,
-    ListDirectoryBucketsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Bucket
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryBucketsRequest,
   output: ListDirectoryBucketsOutput,
   errors: [],
@@ -17715,27 +17687,13 @@ export type ListObjectAnnotationsError =
  *
  * - DeleteObjectAnnotation
  */
-export const listObjectAnnotations: API.OperationMethod<
+export const listObjectAnnotations: API.PaginatedOperationMethod<
   ListObjectAnnotationsRequest,
   ListObjectAnnotationsOutput,
   ListObjectAnnotationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectAnnotationsRequest,
-  ) => stream.Stream<
-    ListObjectAnnotationsOutput,
-    ListObjectAnnotationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectAnnotationsRequest,
-  ) => stream.Stream<
-    AnnotationEntry,
-    ListObjectAnnotationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AnnotationEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectAnnotationsRequest,
   output: ListObjectAnnotationsOutput,
   errors: [InvalidPrefix, NoSuchBucket, NoSuchKey],
@@ -17868,27 +17826,13 @@ export type ListObjectsV2Error =
  *
  * You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
  */
-export const listObjectsV2: API.OperationMethod<
+export const listObjectsV2: API.PaginatedOperationMethod<
   ListObjectsV2Request,
   ListObjectsV2Output,
   ListObjectsV2Error,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectsV2Request,
-  ) => stream.Stream<
-    ListObjectsV2Output,
-    ListObjectsV2Error,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectsV2Request,
-  ) => stream.Stream<
-    unknown,
-    ListObjectsV2Error,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsV2Request,
   output: ListObjectsV2Output,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
@@ -18015,27 +17959,13 @@ export type ListPartsError =
  *
  * You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
  */
-export const listParts: API.OperationMethod<
+export const listParts: API.PaginatedOperationMethod<
   ListPartsRequest,
   ListPartsOutput,
   ListPartsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartsRequest,
-  ) => stream.Stream<
-    ListPartsOutput,
-    ListPartsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartsRequest,
-  ) => stream.Stream<
-    Part,
-    ListPartsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Part
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartsRequest,
   output: ListPartsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],

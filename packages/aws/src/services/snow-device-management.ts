@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1051,27 +1050,13 @@ export type ListDeviceResourcesError =
 /**
  * Returns a list of the Amazon Web Services resources available for a device. Currently, Amazon EC2 instances are the only supported resource type.
  */
-export const listDeviceResources: API.OperationMethod<
+export const listDeviceResources: API.PaginatedOperationMethod<
   ListDeviceResourcesInput,
   ListDeviceResourcesOutput,
   ListDeviceResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeviceResourcesInput,
-  ) => stream.Stream<
-    ListDeviceResourcesOutput,
-    ListDeviceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeviceResourcesInput,
-  ) => stream.Stream<
-    ResourceSummary,
-    ListDeviceResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceResourcesInput,
   output: ListDeviceResourcesOutput,
   errors: [
@@ -1102,27 +1087,13 @@ export type ListDevicesError =
  * Returns a list of all devices on your Amazon Web Services account that have Amazon Web Services Snow Device Management
  * enabled in the Amazon Web Services Region where the command is run.
  */
-export const listDevices: API.OperationMethod<
+export const listDevices: API.PaginatedOperationMethod<
   ListDevicesInput,
   ListDevicesOutput,
   ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesInput,
-  ) => stream.Stream<
-    ListDevicesOutput,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesInput,
-  ) => stream.Stream<
-    DeviceSummary,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeviceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesInput,
   output: ListDevicesOutput,
   errors: [
@@ -1152,27 +1123,13 @@ export type ListExecutionsError =
 /**
  * Returns the status of tasks for one or more target devices.
  */
-export const listExecutions: API.OperationMethod<
+export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsInput,
   ListExecutionsOutput,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ListExecutionsOutput,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ExecutionSummary,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
   output: ListExecutionsOutput,
   errors: [
@@ -1228,27 +1185,13 @@ export type ListTasksError =
 /**
  * Returns a list of tasks that can be filtered by state.
  */
-export const listTasks: API.OperationMethod<
+export const listTasks: API.PaginatedOperationMethod<
   ListTasksInput,
   ListTasksOutput,
   ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksInput,
-  ) => stream.Stream<
-    ListTasksOutput,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksInput,
-  ) => stream.Stream<
-    TaskSummary,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksInput,
   output: ListTasksOutput,
   errors: [

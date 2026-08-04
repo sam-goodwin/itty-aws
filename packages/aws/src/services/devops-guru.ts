@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3244,27 +3243,13 @@ export type DescribeOrganizationResourceCollectionHealthError =
  * of your organization, you can filter those accounts using the `AccountIds`
  * field.
  */
-export const describeOrganizationResourceCollectionHealth: API.OperationMethod<
+export const describeOrganizationResourceCollectionHealth: API.PaginatedOperationMethod<
   DescribeOrganizationResourceCollectionHealthRequest,
   DescribeOrganizationResourceCollectionHealthResponse,
   DescribeOrganizationResourceCollectionHealthError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationResourceCollectionHealthRequest,
-  ) => stream.Stream<
-    DescribeOrganizationResourceCollectionHealthResponse,
-    DescribeOrganizationResourceCollectionHealthError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationResourceCollectionHealthRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeOrganizationResourceCollectionHealthError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationResourceCollectionHealthRequest,
   output: DescribeOrganizationResourceCollectionHealthResponse,
   errors: [
@@ -3292,27 +3277,13 @@ export type DescribeResourceCollectionHealthError =
  * Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze
  * the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag *key*. You can specify up to 500 Amazon Web Services CloudFormation stacks.
  */
-export const describeResourceCollectionHealth: API.OperationMethod<
+export const describeResourceCollectionHealth: API.PaginatedOperationMethod<
   DescribeResourceCollectionHealthRequest,
   DescribeResourceCollectionHealthResponse,
   DescribeResourceCollectionHealthError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeResourceCollectionHealthRequest,
-  ) => stream.Stream<
-    DescribeResourceCollectionHealthResponse,
-    DescribeResourceCollectionHealthError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeResourceCollectionHealthRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeResourceCollectionHealthError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeResourceCollectionHealthRequest,
   output: DescribeResourceCollectionHealthResponse,
   errors: [
@@ -3373,27 +3344,13 @@ export type GetCostEstimationError =
  * Amazon DevOps Guru costs and
  * Amazon DevOps Guru pricing.
  */
-export const getCostEstimation: API.OperationMethod<
+export const getCostEstimation: API.PaginatedOperationMethod<
   GetCostEstimationRequest,
   GetCostEstimationResponse,
   GetCostEstimationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCostEstimationRequest,
-  ) => stream.Stream<
-    GetCostEstimationResponse,
-    GetCostEstimationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCostEstimationRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCostEstimationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCostEstimationRequest,
   output: GetCostEstimationResponse,
   errors: [
@@ -3422,27 +3379,13 @@ export type GetResourceCollectionError =
  * Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze
  * the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag *key*. You can specify up to 500 Amazon Web Services CloudFormation stacks.
  */
-export const getResourceCollection: API.OperationMethod<
+export const getResourceCollection: API.PaginatedOperationMethod<
   GetResourceCollectionRequest,
   GetResourceCollectionResponse,
   GetResourceCollectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourceCollectionRequest,
-  ) => stream.Stream<
-    GetResourceCollectionResponse,
-    GetResourceCollectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourceCollectionRequest,
-  ) => stream.Stream<
-    unknown,
-    GetResourceCollectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceCollectionRequest,
   output: GetResourceCollectionResponse,
   errors: [
@@ -3469,27 +3412,13 @@ export type ListAnomaliesForInsightError =
  * Returns a list of the anomalies that belong to an insight that you specify using its
  * ID.
  */
-export const listAnomaliesForInsight: API.OperationMethod<
+export const listAnomaliesForInsight: API.PaginatedOperationMethod<
   ListAnomaliesForInsightRequest,
   ListAnomaliesForInsightResponse,
   ListAnomaliesForInsightError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnomaliesForInsightRequest,
-  ) => stream.Stream<
-    ListAnomaliesForInsightResponse,
-    ListAnomaliesForInsightError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnomaliesForInsightRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAnomaliesForInsightError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesForInsightRequest,
   output: ListAnomaliesForInsightResponse,
   errors: [
@@ -3519,27 +3448,13 @@ export type ListAnomalousLogGroupsError =
 /**
  * Returns the list of log groups that contain log anomalies.
  */
-export const listAnomalousLogGroups: API.OperationMethod<
+export const listAnomalousLogGroups: API.PaginatedOperationMethod<
   ListAnomalousLogGroupsRequest,
   ListAnomalousLogGroupsResponse,
   ListAnomalousLogGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnomalousLogGroupsRequest,
-  ) => stream.Stream<
-    ListAnomalousLogGroupsResponse,
-    ListAnomalousLogGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnomalousLogGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAnomalousLogGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomalousLogGroupsRequest,
   output: ListAnomalousLogGroupsResponse,
   errors: [
@@ -3570,27 +3485,13 @@ export type ListEventsError =
  * Returns a list of the events emitted by the resources that are evaluated by DevOps Guru.
  * You can use filters to specify which events are returned.
  */
-export const listEvents: API.OperationMethod<
+export const listEvents: API.PaginatedOperationMethod<
   ListEventsRequest,
   ListEventsResponse,
   ListEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventsRequest,
-  ) => stream.Stream<
-    ListEventsResponse,
-    ListEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventsRequest,
-  ) => stream.Stream<
-    Event,
-    ListEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: ListEventsResponse,
   errors: [
@@ -3622,27 +3523,13 @@ export type ListInsightsError =
  * returned by their start time and status (`ONGOING`, `CLOSED`, or
  * `ANY`).
  */
-export const listInsights: API.OperationMethod<
+export const listInsights: API.PaginatedOperationMethod<
   ListInsightsRequest,
   ListInsightsResponse,
   ListInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    ListInsightsResponse,
-    ListInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsRequest,
   output: ListInsightsResponse,
   errors: [
@@ -3670,27 +3557,13 @@ export type ListMonitoredResourcesError =
 /**
  * Returns the list of all log groups that are being monitored and tagged by DevOps Guru.
  */
-export const listMonitoredResources: API.OperationMethod<
+export const listMonitoredResources: API.PaginatedOperationMethod<
   ListMonitoredResourcesRequest,
   ListMonitoredResourcesResponse,
   ListMonitoredResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitoredResourcesRequest,
-  ) => stream.Stream<
-    ListMonitoredResourcesResponse,
-    ListMonitoredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitoredResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMonitoredResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoredResourcesRequest,
   output: ListMonitoredResourcesResponse,
   errors: [
@@ -3721,27 +3594,13 @@ export type ListNotificationChannelsError =
  * about how to improve your operations. The one
  * supported notification channel is Amazon Simple Notification Service (Amazon SNS).
  */
-export const listNotificationChannels: API.OperationMethod<
+export const listNotificationChannels: API.PaginatedOperationMethod<
   ListNotificationChannelsRequest,
   ListNotificationChannelsResponse,
   ListNotificationChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationChannelsRequest,
-  ) => stream.Stream<
-    ListNotificationChannelsResponse,
-    ListNotificationChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationChannelsRequest,
-  ) => stream.Stream<
-    NotificationChannel,
-    ListNotificationChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotificationChannel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationChannelsRequest,
   output: ListNotificationChannelsResponse,
   errors: [
@@ -3769,27 +3628,13 @@ export type ListOrganizationInsightsError =
 /**
  * Returns a list of insights associated with the account or OU Id.
  */
-export const listOrganizationInsights: API.OperationMethod<
+export const listOrganizationInsights: API.PaginatedOperationMethod<
   ListOrganizationInsightsRequest,
   ListOrganizationInsightsResponse,
   ListOrganizationInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationInsightsRequest,
-  ) => stream.Stream<
-    ListOrganizationInsightsResponse,
-    ListOrganizationInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationInsightsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOrganizationInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationInsightsRequest,
   output: ListOrganizationInsightsResponse,
   errors: [
@@ -3819,27 +3664,13 @@ export type ListRecommendationsError =
  * Returns a list of a specified insight's recommendations. Each recommendation includes
  * a list of related metrics and a list of related events.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    Recommendation,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Recommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -3941,27 +3772,13 @@ export type SearchInsightsError =
  * parameters. Use the `Type` parameter to specify `REACTIVE` or
  * `PROACTIVE` in your search.
  */
-export const searchInsights: API.OperationMethod<
+export const searchInsights: API.PaginatedOperationMethod<
   SearchInsightsRequest,
   SearchInsightsResponse,
   SearchInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchInsightsRequest,
-  ) => stream.Stream<
-    SearchInsightsResponse,
-    SearchInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchInsightsRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInsightsRequest,
   output: SearchInsightsResponse,
   errors: [
@@ -3997,27 +3814,13 @@ export type SearchOrganizationInsightsError =
  * parameters. Use the `Type` parameter to specify `REACTIVE` or
  * `PROACTIVE` in your search.
  */
-export const searchOrganizationInsights: API.OperationMethod<
+export const searchOrganizationInsights: API.PaginatedOperationMethod<
   SearchOrganizationInsightsRequest,
   SearchOrganizationInsightsResponse,
   SearchOrganizationInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchOrganizationInsightsRequest,
-  ) => stream.Stream<
-    SearchOrganizationInsightsResponse,
-    SearchOrganizationInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchOrganizationInsightsRequest,
-  ) => stream.Stream<
-    unknown,
-    SearchOrganizationInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationInsightsRequest,
   output: SearchOrganizationInsightsResponse,
   errors: [

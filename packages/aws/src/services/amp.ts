@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3147,27 +3146,13 @@ export type ListAnomalyDetectorsError =
 /**
  * Returns a paginated list of anomaly detectors for a workspace with optional filtering by alias.
  */
-export const listAnomalyDetectors: API.OperationMethod<
+export const listAnomalyDetectors: API.PaginatedOperationMethod<
   ListAnomalyDetectorsRequest,
   ListAnomalyDetectorsResponse,
   ListAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnomalyDetectorsRequest,
-  ) => stream.Stream<
-    ListAnomalyDetectorsResponse,
-    ListAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnomalyDetectorsRequest,
-  ) => stream.Stream<
-    AnomalyDetectorSummary,
-    ListAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnomalyDetectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnomalyDetectorsRequest,
   output: ListAnomalyDetectorsResponse,
   errors: [
@@ -3198,27 +3183,13 @@ export type ListRuleGroupsNamespacesError =
 /**
  * Returns a list of rule groups namespaces in a workspace.
  */
-export const listRuleGroupsNamespaces: API.OperationMethod<
+export const listRuleGroupsNamespaces: API.PaginatedOperationMethod<
   ListRuleGroupsNamespacesRequest,
   ListRuleGroupsNamespacesResponse,
   ListRuleGroupsNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleGroupsNamespacesRequest,
-  ) => stream.Stream<
-    ListRuleGroupsNamespacesResponse,
-    ListRuleGroupsNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleGroupsNamespacesRequest,
-  ) => stream.Stream<
-    RuleGroupsNamespaceSummary,
-    ListRuleGroupsNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleGroupsNamespaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleGroupsNamespacesRequest,
   output: ListRuleGroupsNamespacesResponse,
   errors: [
@@ -3248,27 +3219,13 @@ export type ListScrapersError =
 /**
  * The `ListScrapers` operation lists all of the scrapers in your account. This includes scrapers being created or deleted. You can optionally filter the returned list.
  */
-export const listScrapers: API.OperationMethod<
+export const listScrapers: API.PaginatedOperationMethod<
   ListScrapersRequest,
   ListScrapersResponse,
   ListScrapersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScrapersRequest,
-  ) => stream.Stream<
-    ListScrapersResponse,
-    ListScrapersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScrapersRequest,
-  ) => stream.Stream<
-    ScraperSummary,
-    ListScrapersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScraperSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScrapersRequest,
   output: ListScrapersResponse,
   errors: [
@@ -3327,27 +3284,13 @@ export type ListWorkspacesError =
 /**
  * Lists all of the Amazon Managed Service for Prometheus workspaces in your account. This includes workspaces being created or deleted.
  */
-export const listWorkspaces: API.OperationMethod<
+export const listWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSummary,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkspaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
   output: ListWorkspacesResponse,
   errors: [

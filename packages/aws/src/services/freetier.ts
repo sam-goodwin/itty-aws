@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -530,27 +529,13 @@ export type GetFreeTierUsageError =
 /**
  * Returns a list of all Free Tier usage objects that match your filters.
  */
-export const getFreeTierUsage: API.OperationMethod<
+export const getFreeTierUsage: API.PaginatedOperationMethod<
   GetFreeTierUsageRequest,
   GetFreeTierUsageResponse,
   GetFreeTierUsageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFreeTierUsageRequest,
-  ) => stream.Stream<
-    GetFreeTierUsageResponse,
-    GetFreeTierUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFreeTierUsageRequest,
-  ) => stream.Stream<
-    FreeTierUsage,
-    GetFreeTierUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FreeTierUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFreeTierUsageRequest,
   output: GetFreeTierUsageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -573,27 +558,13 @@ export type ListAccountActivitiesError =
 /**
  * Returns a list of activities that are available. This operation supports pagination and filtering by status.
  */
-export const listAccountActivities: API.OperationMethod<
+export const listAccountActivities: API.PaginatedOperationMethod<
   ListAccountActivitiesRequest,
   ListAccountActivitiesResponse,
   ListAccountActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountActivitiesRequest,
-  ) => stream.Stream<
-    ListAccountActivitiesResponse,
-    ListAccountActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountActivitiesRequest,
-  ) => stream.Stream<
-    ActivitySummary,
-    ListAccountActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActivitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountActivitiesRequest,
   output: ListAccountActivitiesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],

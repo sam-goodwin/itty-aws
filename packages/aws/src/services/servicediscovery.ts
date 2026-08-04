@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1900,27 +1899,13 @@ export type GetInstancesHealthStatusError =
  * There's a brief delay between when you register an instance and when the health status for
  * the instance is available.
  */
-export const getInstancesHealthStatus: API.OperationMethod<
+export const getInstancesHealthStatus: API.PaginatedOperationMethod<
   GetInstancesHealthStatusRequest,
   GetInstancesHealthStatusResponse,
   GetInstancesHealthStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInstancesHealthStatusRequest,
-  ) => stream.Stream<
-    GetInstancesHealthStatusResponse,
-    GetInstancesHealthStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInstancesHealthStatusRequest,
-  ) => stream.Stream<
-    unknown,
-    GetInstancesHealthStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstancesHealthStatusRequest,
   output: GetInstancesHealthStatusResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
@@ -2017,27 +2002,13 @@ export type ListInstancesError = InvalidInput | ServiceNotFound | CommonErrors;
  * Lists summary information about the instances that you registered by using a specified
  * service.
  */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidInput, ServiceNotFound],
@@ -2055,27 +2026,13 @@ export type ListNamespacesError = InvalidInput | CommonErrors;
 /**
  * Lists summary information about the namespaces that were created by the current Amazon Web Services account and shared with the current Amazon Web Services account.
  */
-export const listNamespaces: API.OperationMethod<
+export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    ListNamespacesResponse,
-    ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidInput],
@@ -2093,27 +2050,13 @@ export type ListOperationsError = InvalidInput | CommonErrors;
 /**
  * Lists operations that match the criteria that you specify.
  */
-export const listOperations: API.OperationMethod<
+export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    ListOperationsResponse,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
@@ -2132,27 +2075,13 @@ export type ListServicesError = InvalidInput | CommonErrors;
  * Lists summary information for all the services that are associated with one or more
  * namespaces.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InvalidInput],

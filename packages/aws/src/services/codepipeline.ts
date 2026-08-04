@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4217,27 +4216,13 @@ export type ListActionExecutionsError =
 /**
  * Lists the action executions that have occurred in a pipeline.
  */
-export const listActionExecutions: API.OperationMethod<
+export const listActionExecutions: API.PaginatedOperationMethod<
   ListActionExecutionsInput,
   ListActionExecutionsOutput,
   ListActionExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionExecutionsInput,
-  ) => stream.Stream<
-    ListActionExecutionsOutput,
-    ListActionExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionExecutionsInput,
-  ) => stream.Stream<
-    ActionExecutionDetail,
-    ListActionExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionExecutionDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionExecutionsInput,
   output: ListActionExecutionsOutput,
   errors: [
@@ -4265,27 +4250,13 @@ export type ListActionTypesError =
  * Gets a summary of all CodePipeline action types associated with your
  * account.
  */
-export const listActionTypes: API.OperationMethod<
+export const listActionTypes: API.PaginatedOperationMethod<
   ListActionTypesInput,
   ListActionTypesOutput,
   ListActionTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionTypesInput,
-  ) => stream.Stream<
-    ListActionTypesOutput,
-    ListActionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionTypesInput,
-  ) => stream.Stream<
-    ActionType,
-    ListActionTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionTypesInput,
   output: ListActionTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4308,27 +4279,13 @@ export type ListDeployActionExecutionTargetsError =
 /**
  * Lists the targets for the deploy action.
  */
-export const listDeployActionExecutionTargets: API.OperationMethod<
+export const listDeployActionExecutionTargets: API.PaginatedOperationMethod<
   ListDeployActionExecutionTargetsInput,
   ListDeployActionExecutionTargetsOutput,
   ListDeployActionExecutionTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeployActionExecutionTargetsInput,
-  ) => stream.Stream<
-    ListDeployActionExecutionTargetsOutput,
-    ListDeployActionExecutionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeployActionExecutionTargetsInput,
-  ) => stream.Stream<
-    DeployActionExecutionTarget,
-    ListDeployActionExecutionTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeployActionExecutionTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeployActionExecutionTargetsInput,
   output: ListDeployActionExecutionTargetsOutput,
   errors: [
@@ -4360,27 +4317,13 @@ export type ListPipelineExecutionsError =
  * the operation returns all executions in the current pipeline version beginning on
  * February 1, 2024.
  */
-export const listPipelineExecutions: API.OperationMethod<
+export const listPipelineExecutions: API.PaginatedOperationMethod<
   ListPipelineExecutionsInput,
   ListPipelineExecutionsOutput,
   ListPipelineExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelineExecutionsInput,
-  ) => stream.Stream<
-    ListPipelineExecutionsOutput,
-    ListPipelineExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelineExecutionsInput,
-  ) => stream.Stream<
-    PipelineExecutionSummary,
-    ListPipelineExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PipelineExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineExecutionsInput,
   output: ListPipelineExecutionsOutput,
   errors: [
@@ -4406,27 +4349,13 @@ export type ListPipelinesError =
 /**
  * Gets a summary of all of the pipelines associated with your account.
  */
-export const listPipelines: API.OperationMethod<
+export const listPipelines: API.PaginatedOperationMethod<
   ListPipelinesInput,
   ListPipelinesOutput,
   ListPipelinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    ListPipelinesOutput,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipelinesInput,
-  ) => stream.Stream<
-    PipelineSummary,
-    ListPipelinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PipelineSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4451,27 +4380,13 @@ export type ListRuleExecutionsError =
  * Lists the rule executions that have occurred in a pipeline configured for conditions
  * with rules.
  */
-export const listRuleExecutions: API.OperationMethod<
+export const listRuleExecutions: API.PaginatedOperationMethod<
   ListRuleExecutionsInput,
   ListRuleExecutionsOutput,
   ListRuleExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleExecutionsInput,
-  ) => stream.Stream<
-    ListRuleExecutionsOutput,
-    ListRuleExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleExecutionsInput,
-  ) => stream.Stream<
-    RuleExecutionDetail,
-    ListRuleExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleExecutionDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleExecutionsInput,
   output: ListRuleExecutionsOutput,
   errors: [
@@ -4524,27 +4439,13 @@ export type ListTagsForResourceError =
  * Gets the set of key-value pairs (metadata) that are used to manage the
  * resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceInput,
   ListTagsForResourceOutput,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    ListTagsForResourceOutput,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceInput,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4575,27 +4476,13 @@ export type ListWebhooksError =
  *
  * If a secret token was provided, it will be redacted in the response.
  */
-export const listWebhooks: API.OperationMethod<
+export const listWebhooks: API.PaginatedOperationMethod<
   ListWebhooksInput,
   ListWebhooksOutput,
   ListWebhooksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWebhooksInput,
-  ) => stream.Stream<
-    ListWebhooksOutput,
-    ListWebhooksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWebhooksInput,
-  ) => stream.Stream<
-    ListWebhookItem,
-    ListWebhooksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListWebhookItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
   errors: [InvalidNextTokenException, ValidationException],

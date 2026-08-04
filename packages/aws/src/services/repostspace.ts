@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1344,27 +1343,13 @@ export type ListChannelsError =
 /**
  * Returns the list of channel within a private re:Post with some information about each channel.
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsInput,
   ListChannelsOutput,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsInput,
-  ) => stream.Stream<
-    ListChannelsOutput,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsInput,
-  ) => stream.Stream<
-    ChannelData,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsInput,
   output: ListChannelsOutput,
   errors: [
@@ -1394,27 +1379,13 @@ export type ListSpacesError =
 /**
  * Returns a list of AWS re:Post Private private re:Posts in the account with some information about each private re:Post.
  */
-export const listSpaces: API.OperationMethod<
+export const listSpaces: API.PaginatedOperationMethod<
   ListSpacesInput,
   ListSpacesOutput,
   ListSpacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSpacesInput,
-  ) => stream.Stream<
-    ListSpacesOutput,
-    ListSpacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSpacesInput,
-  ) => stream.Stream<
-    SpaceData,
-    ListSpacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SpaceData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesInput,
   output: ListSpacesOutput,
   errors: [

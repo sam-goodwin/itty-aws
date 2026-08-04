@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1513,27 +1512,13 @@ export type ListScheduledQueriesError =
  * Gets a list of all scheduled queries in the caller's Amazon account and Region.
  * `ListScheduledQueries` is eventually consistent.
  */
-export const listScheduledQueries: API.OperationMethod<
+export const listScheduledQueries: API.PaginatedOperationMethod<
   ListScheduledQueriesRequest,
   ListScheduledQueriesResponse,
   ListScheduledQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ListScheduledQueriesResponse,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledQueriesRequest,
-  ) => stream.Stream<
-    ScheduledQuery,
-    ListScheduledQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledQuery
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledQueriesRequest,
   output: ListScheduledQueriesResponse,
   errors: [
@@ -1563,27 +1548,13 @@ export type ListTagsForResourceError =
 /**
  * List all tags on a Timestream query resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1677,27 +1648,13 @@ export type QueryError =
  * string in the query requests, the query will fail with an Invalid
  * pagination token error.
  */
-export const query: API.OperationMethod<
+export const query: API.PaginatedOperationMethod<
   QueryRequest,
   QueryResponse,
   QueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryRequest,
-  ) => stream.Stream<
-    QueryResponse,
-    QueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryRequest,
-  ) => stream.Stream<
-    Row,
-    QueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Row
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryRequest,
   output: QueryResponse,
   errors: [

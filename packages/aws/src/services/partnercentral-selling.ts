@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5256,27 +5255,13 @@ export type ListEngagementByAcceptingInvitationTasksError =
 /**
  * Lists all in-progress, completed, or failed StartEngagementByAcceptingInvitationTask tasks that were initiated by the caller's account.
  */
-export const listEngagementByAcceptingInvitationTasks: API.OperationMethod<
+export const listEngagementByAcceptingInvitationTasks: API.PaginatedOperationMethod<
   ListEngagementByAcceptingInvitationTasksRequest,
   ListEngagementByAcceptingInvitationTasksResponse,
   ListEngagementByAcceptingInvitationTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementByAcceptingInvitationTasksRequest,
-  ) => stream.Stream<
-    ListEngagementByAcceptingInvitationTasksResponse,
-    ListEngagementByAcceptingInvitationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementByAcceptingInvitationTasksRequest,
-  ) => stream.Stream<
-    ListEngagementByAcceptingInvitationTaskSummary,
-    ListEngagementByAcceptingInvitationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListEngagementByAcceptingInvitationTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementByAcceptingInvitationTasksRequest,
   output: ListEngagementByAcceptingInvitationTasksResponse,
   errors: [
@@ -5307,27 +5292,13 @@ export type ListEngagementFromOpportunityTasksError =
 /**
  * Lists all in-progress, completed, or failed `EngagementFromOpportunity` tasks that were initiated by the caller's account.
  */
-export const listEngagementFromOpportunityTasks: API.OperationMethod<
+export const listEngagementFromOpportunityTasks: API.PaginatedOperationMethod<
   ListEngagementFromOpportunityTasksRequest,
   ListEngagementFromOpportunityTasksResponse,
   ListEngagementFromOpportunityTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementFromOpportunityTasksRequest,
-  ) => stream.Stream<
-    ListEngagementFromOpportunityTasksResponse,
-    ListEngagementFromOpportunityTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementFromOpportunityTasksRequest,
-  ) => stream.Stream<
-    ListEngagementFromOpportunityTaskSummary,
-    ListEngagementFromOpportunityTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListEngagementFromOpportunityTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementFromOpportunityTasksRequest,
   output: ListEngagementFromOpportunityTasksResponse,
   errors: [
@@ -5358,27 +5329,13 @@ export type ListEngagementInvitationsError =
 /**
  * Retrieves a list of engagement invitations sent to the partner. This allows partners to view all pending or past engagement invitations, helping them track opportunities shared by AWS.
  */
-export const listEngagementInvitations: API.OperationMethod<
+export const listEngagementInvitations: API.PaginatedOperationMethod<
   ListEngagementInvitationsRequest,
   ListEngagementInvitationsResponse,
   ListEngagementInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementInvitationsRequest,
-  ) => stream.Stream<
-    ListEngagementInvitationsResponse,
-    ListEngagementInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementInvitationsRequest,
-  ) => stream.Stream<
-    EngagementInvitationSummary,
-    ListEngagementInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EngagementInvitationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementInvitationsRequest,
   output: ListEngagementInvitationsResponse,
   errors: [
@@ -5409,27 +5366,13 @@ export type ListEngagementMembersError =
 /**
  * Retrieves the details of member partners in an Engagement. This operation can only be invoked by members of the Engagement. The `ListEngagementMembers` operation allows you to fetch information about the members of a specific Engagement. This action is restricted to members of the Engagement being queried.
  */
-export const listEngagementMembers: API.OperationMethod<
+export const listEngagementMembers: API.PaginatedOperationMethod<
   ListEngagementMembersRequest,
   ListEngagementMembersResponse,
   ListEngagementMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementMembersRequest,
-  ) => stream.Stream<
-    ListEngagementMembersResponse,
-    ListEngagementMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementMembersRequest,
-  ) => stream.Stream<
-    EngagementMember,
-    ListEngagementMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EngagementMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementMembersRequest,
   output: ListEngagementMembersResponse,
   errors: [
@@ -5460,27 +5403,13 @@ export type ListEngagementResourceAssociationsError =
 /**
  * Lists the associations between resources and engagements where the caller is a member and has at least one snapshot in the engagement.
  */
-export const listEngagementResourceAssociations: API.OperationMethod<
+export const listEngagementResourceAssociations: API.PaginatedOperationMethod<
   ListEngagementResourceAssociationsRequest,
   ListEngagementResourceAssociationsResponse,
   ListEngagementResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementResourceAssociationsRequest,
-  ) => stream.Stream<
-    ListEngagementResourceAssociationsResponse,
-    ListEngagementResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementResourceAssociationsRequest,
-  ) => stream.Stream<
-    EngagementResourceAssociationSummary,
-    ListEngagementResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EngagementResourceAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementResourceAssociationsRequest,
   output: ListEngagementResourceAssociationsResponse,
   errors: [
@@ -5511,27 +5440,13 @@ export type ListEngagementsError =
 /**
  * This action allows users to retrieve a list of Engagement records from Partner Central. This action can be used to manage and track various engagements across different stages of the partner selling process.
  */
-export const listEngagements: API.OperationMethod<
+export const listEngagements: API.PaginatedOperationMethod<
   ListEngagementsRequest,
   ListEngagementsResponse,
   ListEngagementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngagementsRequest,
-  ) => stream.Stream<
-    ListEngagementsResponse,
-    ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngagementsRequest,
-  ) => stream.Stream<
-    EngagementSummary,
-    ListEngagementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EngagementSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngagementsRequest,
   output: ListEngagementsResponse,
   errors: [
@@ -5572,27 +5487,13 @@ export type ListOpportunitiesError =
  *
  * - Amazon Web Services only returns opportunities created or updated on or after that date and time. Use `NextToken` to iterate over all pages.
  */
-export const listOpportunities: API.OperationMethod<
+export const listOpportunities: API.PaginatedOperationMethod<
   ListOpportunitiesRequest,
   ListOpportunitiesResponse,
   ListOpportunitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpportunitiesRequest,
-  ) => stream.Stream<
-    ListOpportunitiesResponse,
-    ListOpportunitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpportunitiesRequest,
-  ) => stream.Stream<
-    OpportunitySummary,
-    ListOpportunitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OpportunitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpportunitiesRequest,
   output: ListOpportunitiesResponse,
   errors: [
@@ -5623,27 +5524,13 @@ export type ListOpportunityFromEngagementTasksError =
 /**
  * Lists all in-progress, completed, or failed opportunity creation tasks from engagements that were initiated by the caller's account.
  */
-export const listOpportunityFromEngagementTasks: API.OperationMethod<
+export const listOpportunityFromEngagementTasks: API.PaginatedOperationMethod<
   ListOpportunityFromEngagementTasksRequest,
   ListOpportunityFromEngagementTasksResponse,
   ListOpportunityFromEngagementTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpportunityFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ListOpportunityFromEngagementTasksResponse,
-    ListOpportunityFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpportunityFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ListOpportunityFromEngagementTaskSummary,
-    ListOpportunityFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListOpportunityFromEngagementTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpportunityFromEngagementTasksRequest,
   output: ListOpportunityFromEngagementTasksResponse,
   errors: [
@@ -5673,27 +5560,13 @@ export type ListProspectingFromEngagementTasksError =
 /**
  * Lists all prospecting tasks initiated by the caller's account. Supports optional filters by task identifier, task name, or start time range. Results can be sorted using configurable options. The response is paginated. Use the `NextToken` value from each response to retrieve subsequent pages.
  */
-export const listProspectingFromEngagementTasks: API.OperationMethod<
+export const listProspectingFromEngagementTasks: API.PaginatedOperationMethod<
   ListProspectingFromEngagementTasksRequest,
   ListProspectingFromEngagementTasksResponse,
   ListProspectingFromEngagementTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProspectingFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ListProspectingFromEngagementTasksResponse,
-    ListProspectingFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProspectingFromEngagementTasksRequest,
-  ) => stream.Stream<
-    ProspectingTaskSummary,
-    ListProspectingFromEngagementTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProspectingTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProspectingFromEngagementTasksRequest,
   output: ListProspectingFromEngagementTasksResponse,
   errors: [
@@ -5723,27 +5596,13 @@ export type ListResourceSnapshotJobsError =
 /**
  * Lists resource snapshot jobs owned by the customer. This operation supports various filtering scenarios, including listing all jobs owned by the caller, jobs for a specific engagement, jobs with a specific status, or any combination of these filters.
  */
-export const listResourceSnapshotJobs: API.OperationMethod<
+export const listResourceSnapshotJobs: API.PaginatedOperationMethod<
   ListResourceSnapshotJobsRequest,
   ListResourceSnapshotJobsResponse,
   ListResourceSnapshotJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSnapshotJobsRequest,
-  ) => stream.Stream<
-    ListResourceSnapshotJobsResponse,
-    ListResourceSnapshotJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSnapshotJobsRequest,
-  ) => stream.Stream<
-    ResourceSnapshotJobSummary,
-    ListResourceSnapshotJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceSnapshotJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSnapshotJobsRequest,
   output: ListResourceSnapshotJobsResponse,
   errors: [
@@ -5784,27 +5643,13 @@ export type ListResourceSnapshotsError =
  *
  * - Filtering snapshots by resource owner.
  */
-export const listResourceSnapshots: API.OperationMethod<
+export const listResourceSnapshots: API.PaginatedOperationMethod<
   ListResourceSnapshotsRequest,
   ListResourceSnapshotsResponse,
   ListResourceSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSnapshotsRequest,
-  ) => stream.Stream<
-    ListResourceSnapshotsResponse,
-    ListResourceSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSnapshotsRequest,
-  ) => stream.Stream<
-    ResourceSnapshotSummary,
-    ListResourceSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceSnapshotSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSnapshotsRequest,
   output: ListResourceSnapshotsResponse,
   errors: [
@@ -5835,27 +5680,13 @@ export type ListSolutionsError =
 /**
  * Retrieves a list of Partner Solutions that the partner registered on Partner Central. This API is used to generate a list of solutions that an end user selects from for association with an opportunity.
  */
-export const listSolutions: API.OperationMethod<
+export const listSolutions: API.PaginatedOperationMethod<
   ListSolutionsRequest,
   ListSolutionsResponse,
   ListSolutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSolutionsRequest,
-  ) => stream.Stream<
-    ListSolutionsResponse,
-    ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSolutionsRequest,
-  ) => stream.Stream<
-    SolutionBase,
-    ListSolutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SolutionBase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSolutionsRequest,
   output: ListSolutionsResponse,
   errors: [

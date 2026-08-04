@@ -2372,10 +2372,13 @@ export const awsSpec = (
           opShape,
           paginatedTrait as Record<string, string>,
         );
-        typeAnnotation = `API.OperationMethod<${input}, ${output}, ${errorTypeName}, ${depsType}> & {
-  pages: (input: ${input}) => stream.Stream<${output}, ${errorTypeName}, ${depsType}>;
-  items: (input: ${input}) => stream.Stream<${itemType}, ${errorTypeName}, ${depsType}>;
-}`;
+        // `API.PaginatedOperationMethod` rather than an inline
+        // `OperationMethod & { pages; items }`: the intersection only reaches
+        // the operation object, so `const op = yield* listDomains` came back
+        // as a bare call function with no streaming methods (distilled#145).
+        // The item type still has to be passed explicitly — makePaginated
+        // resolves it from a runtime path string (distilled#404).
+        typeAnnotation = `API.PaginatedOperationMethod<${input}, ${output}, ${errorTypeName}, ${depsType}, ${itemType}>`;
       } else {
         typeAnnotation = `API.OperationMethod<${input}, ${output}, ${errorTypeName}, ${depsType}>`;
       }

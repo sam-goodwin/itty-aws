@@ -4073,27 +4073,13 @@ export type ListAsyncInvokesError =
 /**
  * Lists asynchronous invocations.
  */
-export const listAsyncInvokes: API.OperationMethod<
+export const listAsyncInvokes: API.PaginatedOperationMethod<
   ListAsyncInvokesRequest,
   ListAsyncInvokesResponse,
   ListAsyncInvokesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAsyncInvokesRequest,
-  ) => stream.Stream<
-    ListAsyncInvokesResponse,
-    ListAsyncInvokesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAsyncInvokesRequest,
-  ) => stream.Stream<
-    AsyncInvokeSummary,
-    ListAsyncInvokesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AsyncInvokeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAsyncInvokesRequest,
   output: ListAsyncInvokesResponse,
   errors: [

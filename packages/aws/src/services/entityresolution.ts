@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3134,27 +3133,13 @@ export type ListIdMappingJobsError =
 /**
  * Lists all ID mapping jobs for a given workflow.
  */
-export const listIdMappingJobs: API.OperationMethod<
+export const listIdMappingJobs: API.PaginatedOperationMethod<
   ListIdMappingJobsInput,
   ListIdMappingJobsOutput,
   ListIdMappingJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdMappingJobsInput,
-  ) => stream.Stream<
-    ListIdMappingJobsOutput,
-    ListIdMappingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdMappingJobsInput,
-  ) => stream.Stream<
-    JobSummary,
-    ListIdMappingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingJobsInput,
   output: ListIdMappingJobsOutput,
   errors: [
@@ -3184,27 +3169,13 @@ export type ListIdMappingWorkflowsError =
 /**
  * Returns a list of all the `IdMappingWorkflows` that have been created for an Amazon Web Services account.
  */
-export const listIdMappingWorkflows: API.OperationMethod<
+export const listIdMappingWorkflows: API.PaginatedOperationMethod<
   ListIdMappingWorkflowsInput,
   ListIdMappingWorkflowsOutput,
   ListIdMappingWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdMappingWorkflowsInput,
-  ) => stream.Stream<
-    ListIdMappingWorkflowsOutput,
-    ListIdMappingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdMappingWorkflowsInput,
-  ) => stream.Stream<
-    IdMappingWorkflowSummary,
-    ListIdMappingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdMappingWorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingWorkflowsInput,
   output: ListIdMappingWorkflowsOutput,
   errors: [
@@ -3233,27 +3204,13 @@ export type ListIdNamespacesError =
 /**
  * Returns a list of all ID namespaces.
  */
-export const listIdNamespaces: API.OperationMethod<
+export const listIdNamespaces: API.PaginatedOperationMethod<
   ListIdNamespacesInput,
   ListIdNamespacesOutput,
   ListIdNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdNamespacesInput,
-  ) => stream.Stream<
-    ListIdNamespacesOutput,
-    ListIdNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdNamespacesInput,
-  ) => stream.Stream<
-    IdNamespaceSummary,
-    ListIdNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdNamespaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdNamespacesInput,
   output: ListIdNamespacesOutput,
   errors: [
@@ -3283,27 +3240,13 @@ export type ListMatchingJobsError =
 /**
  * Lists all jobs for a given workflow.
  */
-export const listMatchingJobs: API.OperationMethod<
+export const listMatchingJobs: API.PaginatedOperationMethod<
   ListMatchingJobsInput,
   ListMatchingJobsOutput,
   ListMatchingJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMatchingJobsInput,
-  ) => stream.Stream<
-    ListMatchingJobsOutput,
-    ListMatchingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMatchingJobsInput,
-  ) => stream.Stream<
-    JobSummary,
-    ListMatchingJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMatchingJobsInput,
   output: ListMatchingJobsOutput,
   errors: [
@@ -3333,27 +3276,13 @@ export type ListMatchingWorkflowsError =
 /**
  * Returns a list of all the `MatchingWorkflows` that have been created for an Amazon Web Services account.
  */
-export const listMatchingWorkflows: API.OperationMethod<
+export const listMatchingWorkflows: API.PaginatedOperationMethod<
   ListMatchingWorkflowsInput,
   ListMatchingWorkflowsOutput,
   ListMatchingWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMatchingWorkflowsInput,
-  ) => stream.Stream<
-    ListMatchingWorkflowsOutput,
-    ListMatchingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMatchingWorkflowsInput,
-  ) => stream.Stream<
-    MatchingWorkflowSummary,
-    ListMatchingWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MatchingWorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMatchingWorkflowsInput,
   output: ListMatchingWorkflowsOutput,
   errors: [
@@ -3382,27 +3311,13 @@ export type ListProviderServicesError =
 /**
  * Returns a list of all the `ProviderServices` that are available in this Amazon Web Services Region.
  */
-export const listProviderServices: API.OperationMethod<
+export const listProviderServices: API.PaginatedOperationMethod<
   ListProviderServicesInput,
   ListProviderServicesOutput,
   ListProviderServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProviderServicesInput,
-  ) => stream.Stream<
-    ListProviderServicesOutput,
-    ListProviderServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProviderServicesInput,
-  ) => stream.Stream<
-    ProviderServiceSummary,
-    ListProviderServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProviderServiceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProviderServicesInput,
   output: ListProviderServicesOutput,
   errors: [
@@ -3431,27 +3346,13 @@ export type ListSchemaMappingsError =
 /**
  * Returns a list of all the `SchemaMappings` that have been created for an Amazon Web Services account.
  */
-export const listSchemaMappings: API.OperationMethod<
+export const listSchemaMappings: API.PaginatedOperationMethod<
   ListSchemaMappingsInput,
   ListSchemaMappingsOutput,
   ListSchemaMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemaMappingsInput,
-  ) => stream.Stream<
-    ListSchemaMappingsOutput,
-    ListSchemaMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemaMappingsInput,
-  ) => stream.Stream<
-    SchemaMappingSummary,
-    ListSchemaMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaMappingSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemaMappingsInput,
   output: ListSchemaMappingsOutput,
   errors: [

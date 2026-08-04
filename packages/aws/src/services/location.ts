@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4950,27 +4949,13 @@ export type ForecastGeofenceEventsError =
  *
  * Heading direction is not considered in the current version. The API takes a conservative approach and includes events that can occur for any heading.
  */
-export const forecastGeofenceEvents: API.OperationMethod<
+export const forecastGeofenceEvents: API.PaginatedOperationMethod<
   ForecastGeofenceEventsRequest,
   ForecastGeofenceEventsResponse,
   ForecastGeofenceEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ForecastGeofenceEventsRequest,
-  ) => stream.Stream<
-    ForecastGeofenceEventsResponse,
-    ForecastGeofenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ForecastGeofenceEventsRequest,
-  ) => stream.Stream<
-    ForecastedEvent,
-    ForecastGeofenceEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ForecastedEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ForecastGeofenceEventsRequest,
   output: ForecastGeofenceEventsResponse,
   errors: [
@@ -5037,27 +5022,13 @@ export type GetDevicePositionHistoryError =
  *
  * Device positions are deleted after 30 days.
  */
-export const getDevicePositionHistory: API.OperationMethod<
+export const getDevicePositionHistory: API.PaginatedOperationMethod<
   GetDevicePositionHistoryRequest,
   GetDevicePositionHistoryResponse,
   GetDevicePositionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDevicePositionHistoryRequest,
-  ) => stream.Stream<
-    GetDevicePositionHistoryResponse,
-    GetDevicePositionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDevicePositionHistoryRequest,
-  ) => stream.Stream<
-    DevicePosition,
-    GetDevicePositionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DevicePosition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePositionHistoryRequest,
   output: GetDevicePositionHistoryResponse,
   errors: [
@@ -5383,27 +5354,13 @@ export type ListDevicePositionsError =
 /**
  * A batch request to retrieve all device positions.
  */
-export const listDevicePositions: API.OperationMethod<
+export const listDevicePositions: API.PaginatedOperationMethod<
   ListDevicePositionsRequest,
   ListDevicePositionsResponse,
   ListDevicePositionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicePositionsRequest,
-  ) => stream.Stream<
-    ListDevicePositionsResponse,
-    ListDevicePositionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicePositionsRequest,
-  ) => stream.Stream<
-    ListDevicePositionsResponseEntry,
-    ListDevicePositionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListDevicePositionsResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePositionsRequest,
   output: ListDevicePositionsResponse,
   errors: [
@@ -5433,27 +5390,13 @@ export type ListGeofenceCollectionsError =
 /**
  * Lists geofence collections in your Amazon Web Services account.
  */
-export const listGeofenceCollections: API.OperationMethod<
+export const listGeofenceCollections: API.PaginatedOperationMethod<
   ListGeofenceCollectionsRequest,
   ListGeofenceCollectionsResponse,
   ListGeofenceCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGeofenceCollectionsRequest,
-  ) => stream.Stream<
-    ListGeofenceCollectionsResponse,
-    ListGeofenceCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGeofenceCollectionsRequest,
-  ) => stream.Stream<
-    ListGeofenceCollectionsResponseEntry,
-    ListGeofenceCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListGeofenceCollectionsResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeofenceCollectionsRequest,
   output: ListGeofenceCollectionsResponse,
   errors: [
@@ -5484,27 +5427,13 @@ export type ListGeofencesError =
 /**
  * Lists geofences stored in a given geofence collection.
  */
-export const listGeofences: API.OperationMethod<
+export const listGeofences: API.PaginatedOperationMethod<
   ListGeofencesRequest,
   ListGeofencesResponse,
   ListGeofencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGeofencesRequest,
-  ) => stream.Stream<
-    ListGeofencesResponse,
-    ListGeofencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGeofencesRequest,
-  ) => stream.Stream<
-    ListGeofenceResponseEntry,
-    ListGeofencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListGeofenceResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeofencesRequest,
   output: ListGeofencesResponse,
   errors: [
@@ -5537,27 +5466,13 @@ export type ListJobsError =
  *
  * For more information, see Job concepts in the *Amazon Location Service Developer Guide*.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponseEntry,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListJobsResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [
@@ -5589,27 +5504,13 @@ export type ListKeysError =
  *
  * For more information, see Use API keys to authenticate in the *Amazon Location Service Developer Guide*.
  */
-export const listKeys: API.OperationMethod<
+export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    ListKeysResponse,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    ListKeysResponseEntry,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListKeysResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [
@@ -5651,27 +5552,13 @@ export type ListMapsError =
  *
  * Lists map resources in your Amazon Web Services account.
  */
-export const listMaps: API.OperationMethod<
+export const listMaps: API.PaginatedOperationMethod<
   ListMapsRequest,
   ListMapsResponse,
   ListMapsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMapsRequest,
-  ) => stream.Stream<
-    ListMapsResponse,
-    ListMapsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMapsRequest,
-  ) => stream.Stream<
-    ListMapsResponseEntry,
-    ListMapsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListMapsResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMapsRequest,
   output: ListMapsResponse,
   errors: [
@@ -5713,27 +5600,13 @@ export type ListPlaceIndexesError =
  *
  * Lists place index resources in your Amazon Web Services account.
  */
-export const listPlaceIndexes: API.OperationMethod<
+export const listPlaceIndexes: API.PaginatedOperationMethod<
   ListPlaceIndexesRequest,
   ListPlaceIndexesResponse,
   ListPlaceIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlaceIndexesRequest,
-  ) => stream.Stream<
-    ListPlaceIndexesResponse,
-    ListPlaceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlaceIndexesRequest,
-  ) => stream.Stream<
-    ListPlaceIndexesResponseEntry,
-    ListPlaceIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListPlaceIndexesResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaceIndexesRequest,
   output: ListPlaceIndexesResponse,
   errors: [
@@ -5775,27 +5648,13 @@ export type ListRouteCalculatorsError =
  *
  * Lists route calculator resources in your Amazon Web Services account.
  */
-export const listRouteCalculators: API.OperationMethod<
+export const listRouteCalculators: API.PaginatedOperationMethod<
   ListRouteCalculatorsRequest,
   ListRouteCalculatorsResponse,
   ListRouteCalculatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRouteCalculatorsRequest,
-  ) => stream.Stream<
-    ListRouteCalculatorsResponse,
-    ListRouteCalculatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRouteCalculatorsRequest,
-  ) => stream.Stream<
-    ListRouteCalculatorsResponseEntry,
-    ListRouteCalculatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListRouteCalculatorsResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRouteCalculatorsRequest,
   output: ListRouteCalculatorsResponse,
   errors: [
@@ -5857,27 +5716,13 @@ export type ListTrackerConsumersError =
 /**
  * Lists geofence collections currently associated to the given tracker resource.
  */
-export const listTrackerConsumers: API.OperationMethod<
+export const listTrackerConsumers: API.PaginatedOperationMethod<
   ListTrackerConsumersRequest,
   ListTrackerConsumersResponse,
   ListTrackerConsumersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrackerConsumersRequest,
-  ) => stream.Stream<
-    ListTrackerConsumersResponse,
-    ListTrackerConsumersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrackerConsumersRequest,
-  ) => stream.Stream<
-    Arn,
-    ListTrackerConsumersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Arn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrackerConsumersRequest,
   output: ListTrackerConsumersResponse,
   errors: [
@@ -5908,27 +5753,13 @@ export type ListTrackersError =
 /**
  * Lists tracker resources in your Amazon Web Services account.
  */
-export const listTrackers: API.OperationMethod<
+export const listTrackers: API.PaginatedOperationMethod<
   ListTrackersRequest,
   ListTrackersResponse,
   ListTrackersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrackersRequest,
-  ) => stream.Stream<
-    ListTrackersResponse,
-    ListTrackersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrackersRequest,
-  ) => stream.Stream<
-    ListTrackersResponseEntry,
-    ListTrackersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListTrackersResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrackersRequest,
   output: ListTrackersResponse,
   errors: [

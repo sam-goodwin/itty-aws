@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -342,27 +341,13 @@ export type ListExportsError =
 /**
  * Lists all exports that were created. The results are paginated and can be filtered by domain name.
  */
-export const listExports: API.OperationMethod<
+export const listExports: API.PaginatedOperationMethod<
   ListExportsRequest,
   ListExportsResponse,
   ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ListExportsResponse,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsRequest,
-  ) => stream.Stream<
-    ExportSummary,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [

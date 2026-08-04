@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3139,27 +3138,13 @@ export type ListAdConfigurationsError =
 /**
  * Gets summary information about all ad configurations in your account, in the AWS region where the API request is processed.
  */
-export const listAdConfigurations: API.OperationMethod<
+export const listAdConfigurations: API.PaginatedOperationMethod<
   ListAdConfigurationsRequest,
   ListAdConfigurationsResponse,
   ListAdConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdConfigurationsRequest,
-  ) => stream.Stream<
-    ListAdConfigurationsResponse,
-    ListAdConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdConfigurationsRequest,
-  ) => stream.Stream<
-    AdConfigurationSummary,
-    ListAdConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdConfigurationsRequest,
   output: ListAdConfigurationsResponse,
   errors: [
@@ -3188,27 +3173,13 @@ export type ListChannelsError =
 /**
  * Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed. This list can be filtered to match a specified name or recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If you try to use both filters, you will get an error (409 ConflictException).
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -3235,27 +3206,13 @@ export type ListPlaybackKeyPairsError =
 /**
  * Gets summary information about playback key pairs. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
  */
-export const listPlaybackKeyPairs: API.OperationMethod<
+export const listPlaybackKeyPairs: API.PaginatedOperationMethod<
   ListPlaybackKeyPairsRequest,
   ListPlaybackKeyPairsResponse,
   ListPlaybackKeyPairsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlaybackKeyPairsRequest,
-  ) => stream.Stream<
-    ListPlaybackKeyPairsResponse,
-    ListPlaybackKeyPairsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlaybackKeyPairsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPlaybackKeyPairsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackKeyPairsRequest,
   output: ListPlaybackKeyPairsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
@@ -3279,27 +3236,13 @@ export type ListPlaybackRestrictionPoliciesError =
 /**
  * Gets summary information about playback restriction policies.
  */
-export const listPlaybackRestrictionPolicies: API.OperationMethod<
+export const listPlaybackRestrictionPolicies: API.PaginatedOperationMethod<
   ListPlaybackRestrictionPoliciesRequest,
   ListPlaybackRestrictionPoliciesResponse,
   ListPlaybackRestrictionPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlaybackRestrictionPoliciesRequest,
-  ) => stream.Stream<
-    ListPlaybackRestrictionPoliciesResponse,
-    ListPlaybackRestrictionPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPlaybackRestrictionPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPlaybackRestrictionPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackRestrictionPoliciesRequest,
   output: ListPlaybackRestrictionPoliciesResponse,
   errors: [
@@ -3328,27 +3271,13 @@ export type ListRecordingConfigurationsError =
 /**
  * Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.
  */
-export const listRecordingConfigurations: API.OperationMethod<
+export const listRecordingConfigurations: API.PaginatedOperationMethod<
   ListRecordingConfigurationsRequest,
   ListRecordingConfigurationsResponse,
   ListRecordingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecordingConfigurationsRequest,
-  ) => stream.Stream<
-    ListRecordingConfigurationsResponse,
-    ListRecordingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecordingConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecordingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
   errors: [
@@ -3376,27 +3305,13 @@ export type ListStreamKeysError =
 /**
  * Gets summary information about stream keys for the specified channel.
  */
-export const listStreamKeys: API.OperationMethod<
+export const listStreamKeys: API.PaginatedOperationMethod<
   ListStreamKeysRequest,
   ListStreamKeysResponse,
   ListStreamKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamKeysRequest,
-  ) => stream.Stream<
-    ListStreamKeysResponse,
-    ListStreamKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamKeysRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStreamKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamKeysRequest,
   output: ListStreamKeysResponse,
   errors: [
@@ -3423,27 +3338,13 @@ export type ListStreamsError =
 /**
  * Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed.
  */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsRequest,
-  ) => stream.Stream<
-    ListStreamsResponse,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [AccessDeniedException, ValidationException, ThrottlingException],
@@ -3466,27 +3367,13 @@ export type ListStreamSessionsError =
 /**
  * Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed.
  */
-export const listStreamSessions: API.OperationMethod<
+export const listStreamSessions: API.PaginatedOperationMethod<
   ListStreamSessionsRequest,
   ListStreamSessionsResponse,
   ListStreamSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamSessionsRequest,
-  ) => stream.Stream<
-    ListStreamSessionsResponse,
-    ListStreamSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStreamSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsRequest,
   output: ListStreamSessionsResponse,
   errors: [

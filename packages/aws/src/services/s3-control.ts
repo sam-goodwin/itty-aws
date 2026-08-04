@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9767,27 +9766,13 @@ export type ListAccessGrantsError = CommonErrors;
  *
  * You must have the `s3:ListAccessGrants` permission to use this operation.
  */
-export const listAccessGrants: API.OperationMethod<
+export const listAccessGrants: API.PaginatedOperationMethod<
   ListAccessGrantsRequest,
   ListAccessGrantsResult,
   ListAccessGrantsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessGrantsRequest,
-  ) => stream.Stream<
-    ListAccessGrantsResult,
-    ListAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessGrantsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGrantsRequest,
   output: ListAccessGrantsResult,
   errors: [],
@@ -9810,27 +9795,13 @@ export type ListAccessGrantsInstancesError = CommonErrors;
  *
  * You must have the `s3:ListAccessGrantsInstances` permission to use this operation.
  */
-export const listAccessGrantsInstances: API.OperationMethod<
+export const listAccessGrantsInstances: API.PaginatedOperationMethod<
   ListAccessGrantsInstancesRequest,
   ListAccessGrantsInstancesResult,
   ListAccessGrantsInstancesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessGrantsInstancesRequest,
-  ) => stream.Stream<
-    ListAccessGrantsInstancesResult,
-    ListAccessGrantsInstancesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessGrantsInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessGrantsInstancesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGrantsInstancesRequest,
   output: ListAccessGrantsInstancesResult,
   errors: [],
@@ -9853,27 +9824,13 @@ export type ListAccessGrantsLocationsError = CommonErrors;
  *
  * You must have the `s3:ListAccessGrantsLocations` permission to use this operation.
  */
-export const listAccessGrantsLocations: API.OperationMethod<
+export const listAccessGrantsLocations: API.PaginatedOperationMethod<
   ListAccessGrantsLocationsRequest,
   ListAccessGrantsLocationsResult,
   ListAccessGrantsLocationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessGrantsLocationsRequest,
-  ) => stream.Stream<
-    ListAccessGrantsLocationsResult,
-    ListAccessGrantsLocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessGrantsLocationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessGrantsLocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGrantsLocationsRequest,
   output: ListAccessGrantsLocationsResult,
   errors: [],
@@ -9910,27 +9867,13 @@ export type ListAccessPointsError = CommonErrors;
  *
  * - GetAccessPoint
  */
-export const listAccessPoints: API.OperationMethod<
+export const listAccessPoints: API.PaginatedOperationMethod<
   ListAccessPointsRequest,
   ListAccessPointsResult,
   ListAccessPointsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    ListAccessPointsResult,
-    ListAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsRequest,
   output: ListAccessPointsResult,
   errors: [],
@@ -9956,27 +9899,13 @@ export type ListAccessPointsForDirectoryBucketsError = CommonErrors;
  *
  * For information about REST API errors, see REST error responses.
  */
-export const listAccessPointsForDirectoryBuckets: API.OperationMethod<
+export const listAccessPointsForDirectoryBuckets: API.PaginatedOperationMethod<
   ListAccessPointsForDirectoryBucketsRequest,
   ListAccessPointsForDirectoryBucketsResult,
   ListAccessPointsForDirectoryBucketsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsForDirectoryBucketsRequest,
-  ) => stream.Stream<
-    ListAccessPointsForDirectoryBucketsResult,
-    ListAccessPointsForDirectoryBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsForDirectoryBucketsRequest,
-  ) => stream.Stream<
-    AccessPoint,
-    ListAccessPointsForDirectoryBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  AccessPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsForDirectoryBucketsRequest,
   output: ListAccessPointsForDirectoryBucketsResult,
   errors: [],
@@ -10008,27 +9937,13 @@ export type ListAccessPointsForObjectLambdaError = CommonErrors;
  *
  * - GetAccessPointForObjectLambda
  */
-export const listAccessPointsForObjectLambda: API.OperationMethod<
+export const listAccessPointsForObjectLambda: API.PaginatedOperationMethod<
   ListAccessPointsForObjectLambdaRequest,
   ListAccessPointsForObjectLambdaResult,
   ListAccessPointsForObjectLambdaError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPointsForObjectLambdaRequest,
-  ) => stream.Stream<
-    ListAccessPointsForObjectLambdaResult,
-    ListAccessPointsForObjectLambdaError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPointsForObjectLambdaRequest,
-  ) => stream.Stream<
-    ObjectLambdaAccessPoint,
-    ListAccessPointsForObjectLambdaError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ObjectLambdaAccessPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPointsForObjectLambdaRequest,
   output: ListAccessPointsForObjectLambdaResult,
   errors: [],
@@ -10052,27 +9967,13 @@ export type ListCallerAccessGrantsError = CommonErrors;
  *
  * You must have the `s3:ListCallerAccessGrants` permission to use this operation.
  */
-export const listCallerAccessGrants: API.OperationMethod<
+export const listCallerAccessGrants: API.PaginatedOperationMethod<
   ListCallerAccessGrantsRequest,
   ListCallerAccessGrantsResult,
   ListCallerAccessGrantsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCallerAccessGrantsRequest,
-  ) => stream.Stream<
-    ListCallerAccessGrantsResult,
-    ListCallerAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCallerAccessGrantsRequest,
-  ) => stream.Stream<
-    ListCallerAccessGrantsEntry,
-    ListCallerAccessGrantsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ListCallerAccessGrantsEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCallerAccessGrantsRequest,
   output: ListCallerAccessGrantsResult,
   errors: [],
@@ -10113,27 +10014,13 @@ export type ListJobsError =
  *
  * - UpdateJobStatus
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListJobsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [
@@ -10174,27 +10061,13 @@ export type ListMultiRegionAccessPointsError = CommonErrors;
  *
  * - GetMultiRegionAccessPoint
  */
-export const listMultiRegionAccessPoints: API.OperationMethod<
+export const listMultiRegionAccessPoints: API.PaginatedOperationMethod<
   ListMultiRegionAccessPointsRequest,
   ListMultiRegionAccessPointsResult,
   ListMultiRegionAccessPointsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultiRegionAccessPointsRequest,
-  ) => stream.Stream<
-    ListMultiRegionAccessPointsResult,
-    ListMultiRegionAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultiRegionAccessPointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMultiRegionAccessPointsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiRegionAccessPointsRequest,
   output: ListMultiRegionAccessPointsResult,
   errors: [],
@@ -10220,27 +10093,13 @@ export type ListRegionalBucketsError = CommonErrors;
  * For an example of the request syntax for Amazon S3 on Outposts that uses the S3 on Outposts
  * endpoint hostname prefix and `x-amz-outpost-id` in your request, see the Examples section.
  */
-export const listRegionalBuckets: API.OperationMethod<
+export const listRegionalBuckets: API.PaginatedOperationMethod<
   ListRegionalBucketsRequest,
   ListRegionalBucketsResult,
   ListRegionalBucketsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionalBucketsRequest,
-  ) => stream.Stream<
-    ListRegionalBucketsResult,
-    ListRegionalBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionalBucketsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRegionalBucketsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionalBucketsRequest,
   output: ListRegionalBucketsResult,
   errors: [],
@@ -10269,27 +10128,13 @@ export type ListStorageLensConfigurationsError = CommonErrors;
  * Setting permissions to
  * use Amazon S3 Storage Lens in the *Amazon S3 User Guide*.
  */
-export const listStorageLensConfigurations: API.OperationMethod<
+export const listStorageLensConfigurations: API.PaginatedOperationMethod<
   ListStorageLensConfigurationsRequest,
   ListStorageLensConfigurationsResult,
   ListStorageLensConfigurationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageLensConfigurationsRequest,
-  ) => stream.Stream<
-    ListStorageLensConfigurationsResult,
-    ListStorageLensConfigurationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageLensConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStorageLensConfigurationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageLensConfigurationsRequest,
   output: ListStorageLensConfigurationsResult,
   errors: [],
@@ -10311,27 +10156,13 @@ export type ListStorageLensGroupsError = CommonErrors;
  * For information about Storage Lens groups errors, see List of Amazon S3 Storage
  * Lens error codes.
  */
-export const listStorageLensGroups: API.OperationMethod<
+export const listStorageLensGroups: API.PaginatedOperationMethod<
   ListStorageLensGroupsRequest,
   ListStorageLensGroupsResult,
   ListStorageLensGroupsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageLensGroupsRequest,
-  ) => stream.Stream<
-    ListStorageLensGroupsResult,
-    ListStorageLensGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageLensGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStorageLensGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageLensGroupsRequest,
   output: ListStorageLensGroupsResult,
   errors: [],

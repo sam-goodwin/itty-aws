@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1535,27 +1534,13 @@ export type SearchDevicesError =
 /**
  * Searches for devices using the specified filters.
  */
-export const searchDevices: API.OperationMethod<
+export const searchDevices: API.PaginatedOperationMethod<
   SearchDevicesRequest,
   SearchDevicesResponse,
   SearchDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchDevicesRequest,
-  ) => stream.Stream<
-    SearchDevicesResponse,
-    SearchDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchDevicesRequest,
-  ) => stream.Stream<
-    DeviceSummary,
-    SearchDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeviceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDevicesRequest,
   output: SearchDevicesResponse,
   errors: [
@@ -1584,27 +1569,13 @@ export type SearchJobsError =
 /**
  * Searches for Amazon Braket hybrid jobs that match the specified filter values.
  */
-export const searchJobs: API.OperationMethod<
+export const searchJobs: API.PaginatedOperationMethod<
   SearchJobsRequest,
   SearchJobsResponse,
   SearchJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    SearchJobsResponse,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    SearchJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsRequest,
   output: SearchJobsResponse,
   errors: [
@@ -1633,27 +1604,13 @@ export type SearchQuantumTasksError =
 /**
  * Searches for tasks that match the specified filter values.
  */
-export const searchQuantumTasks: API.OperationMethod<
+export const searchQuantumTasks: API.PaginatedOperationMethod<
   SearchQuantumTasksRequest,
   SearchQuantumTasksResponse,
   SearchQuantumTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuantumTasksRequest,
-  ) => stream.Stream<
-    SearchQuantumTasksResponse,
-    SearchQuantumTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuantumTasksRequest,
-  ) => stream.Stream<
-    QuantumTaskSummary,
-    SearchQuantumTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QuantumTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQuantumTasksRequest,
   output: SearchQuantumTasksResponse,
   errors: [
@@ -1682,27 +1639,13 @@ export type SearchSpendingLimitsError =
 /**
  * Searches and lists spending limits based on specified filters. This operation supports pagination and allows filtering by various criteria to find specific spending limits. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const searchSpendingLimits: API.OperationMethod<
+export const searchSpendingLimits: API.PaginatedOperationMethod<
   SearchSpendingLimitsRequest,
   SearchSpendingLimitsResponse,
   SearchSpendingLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSpendingLimitsRequest,
-  ) => stream.Stream<
-    SearchSpendingLimitsResponse,
-    SearchSpendingLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSpendingLimitsRequest,
-  ) => stream.Stream<
-    SpendingLimitSummary,
-    SearchSpendingLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SpendingLimitSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSpendingLimitsRequest,
   output: SearchSpendingLimitsResponse,
   errors: [

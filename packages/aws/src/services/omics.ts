@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -8914,27 +8913,13 @@ export type ListAnnotationImportJobsError =
  *
  * Retrieves a list of annotation import jobs.
  */
-export const listAnnotationImportJobs: API.OperationMethod<
+export const listAnnotationImportJobs: API.PaginatedOperationMethod<
   ListAnnotationImportJobsRequest,
   ListAnnotationImportJobsResponse,
   ListAnnotationImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnnotationImportJobsRequest,
-  ) => stream.Stream<
-    ListAnnotationImportJobsResponse,
-    ListAnnotationImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnnotationImportJobsRequest,
-  ) => stream.Stream<
-    AnnotationImportJobItem,
-    ListAnnotationImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnnotationImportJobItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnnotationImportJobsRequest,
   output: ListAnnotationImportJobsResponse,
   errors: [
@@ -8968,27 +8953,13 @@ export type ListAnnotationStoresError =
  *
  * Retrieves a list of annotation stores.
  */
-export const listAnnotationStores: API.OperationMethod<
+export const listAnnotationStores: API.PaginatedOperationMethod<
   ListAnnotationStoresRequest,
   ListAnnotationStoresResponse,
   ListAnnotationStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnnotationStoresRequest,
-  ) => stream.Stream<
-    ListAnnotationStoresResponse,
-    ListAnnotationStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnnotationStoresRequest,
-  ) => stream.Stream<
-    AnnotationStoreItem,
-    ListAnnotationStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnnotationStoreItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnnotationStoresRequest,
   output: ListAnnotationStoresResponse,
   errors: [
@@ -9020,27 +8991,13 @@ export type ListAnnotationStoreVersionsError =
 /**
  * Lists the versions of an annotation store.
  */
-export const listAnnotationStoreVersions: API.OperationMethod<
+export const listAnnotationStoreVersions: API.PaginatedOperationMethod<
   ListAnnotationStoreVersionsRequest,
   ListAnnotationStoreVersionsResponse,
   ListAnnotationStoreVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnnotationStoreVersionsRequest,
-  ) => stream.Stream<
-    ListAnnotationStoreVersionsResponse,
-    ListAnnotationStoreVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnnotationStoreVersionsRequest,
-  ) => stream.Stream<
-    AnnotationStoreVersionItem,
-    ListAnnotationStoreVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnnotationStoreVersionItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnnotationStoreVersionsRequest,
   output: ListAnnotationStoreVersionsResponse,
   errors: [
@@ -9072,27 +9029,13 @@ export type ListBatchError =
 /**
  * Returns a list of run batches in your account, with optional filtering by status, name, or run group. Results are paginated. Only one filter per call is supported.
  */
-export const listBatch: API.OperationMethod<
+export const listBatch: API.PaginatedOperationMethod<
   ListBatchRequest,
   ListBatchResponse,
   ListBatchError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchRequest,
-  ) => stream.Stream<
-    ListBatchResponse,
-    ListBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchRequest,
-  ) => stream.Stream<
-    BatchListItem,
-    ListBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchRequest,
   output: ListBatchResponse,
   errors: [
@@ -9127,27 +9070,13 @@ export type ListConfigurationsError =
 /**
  * List all configurations for the account.
  */
-export const listConfigurations: API.OperationMethod<
+export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsRequest,
   ListConfigurationsResponse,
   ListConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ListConfigurationsResponse,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ConfigurationListItem,
-    ListConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
   errors: [
@@ -9185,27 +9114,13 @@ export type ListMultipartReadSetUploadsError =
 /**
  * Lists in-progress multipart read set uploads for a sequence store and returns it in a JSON formatted output. Multipart read set uploads are initiated by the `CreateMultipartReadSetUploads` API operation. This operation returns a response with no body when the upload is complete.
  */
-export const listMultipartReadSetUploads: API.OperationMethod<
+export const listMultipartReadSetUploads: API.PaginatedOperationMethod<
   ListMultipartReadSetUploadsRequest,
   ListMultipartReadSetUploadsResponse,
   ListMultipartReadSetUploadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultipartReadSetUploadsRequest,
-  ) => stream.Stream<
-    ListMultipartReadSetUploadsResponse,
-    ListMultipartReadSetUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultipartReadSetUploadsRequest,
-  ) => stream.Stream<
-    MultipartReadSetUploadListItem,
-    ListMultipartReadSetUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MultipartReadSetUploadListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultipartReadSetUploadsRequest,
   output: ListMultipartReadSetUploadsResponse,
   errors: [
@@ -9241,27 +9156,13 @@ export type ListReadSetActivationJobsError =
 /**
  * Retrieves a list of read set activation jobs and returns the metadata in a JSON formatted output. To extract metadata from a read set activation job, use the `GetReadSetActivationJob` API operation.
  */
-export const listReadSetActivationJobs: API.OperationMethod<
+export const listReadSetActivationJobs: API.PaginatedOperationMethod<
   ListReadSetActivationJobsRequest,
   ListReadSetActivationJobsResponse,
   ListReadSetActivationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetActivationJobsRequest,
-  ) => stream.Stream<
-    ListReadSetActivationJobsResponse,
-    ListReadSetActivationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetActivationJobsRequest,
-  ) => stream.Stream<
-    ActivateReadSetJobItem,
-    ListReadSetActivationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActivateReadSetJobItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetActivationJobsRequest,
   output: ListReadSetActivationJobsResponse,
   errors: [
@@ -9295,27 +9196,13 @@ export type ListReadSetExportJobsError =
 /**
  * Retrieves a list of read set export jobs in a JSON formatted response. This API operation is used to check the status of a read set export job initiated by the `StartReadSetExportJob` API operation.
  */
-export const listReadSetExportJobs: API.OperationMethod<
+export const listReadSetExportJobs: API.PaginatedOperationMethod<
   ListReadSetExportJobsRequest,
   ListReadSetExportJobsResponse,
   ListReadSetExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetExportJobsRequest,
-  ) => stream.Stream<
-    ListReadSetExportJobsResponse,
-    ListReadSetExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetExportJobsRequest,
-  ) => stream.Stream<
-    ExportReadSetJobDetail,
-    ListReadSetExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportReadSetJobDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetExportJobsRequest,
   output: ListReadSetExportJobsResponse,
   errors: [
@@ -9349,27 +9236,13 @@ export type ListReadSetImportJobsError =
 /**
  * Retrieves a list of read set import jobs and returns the data in JSON format.
  */
-export const listReadSetImportJobs: API.OperationMethod<
+export const listReadSetImportJobs: API.PaginatedOperationMethod<
   ListReadSetImportJobsRequest,
   ListReadSetImportJobsResponse,
   ListReadSetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetImportJobsRequest,
-  ) => stream.Stream<
-    ListReadSetImportJobsResponse,
-    ListReadSetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetImportJobsRequest,
-  ) => stream.Stream<
-    ImportReadSetJobItem,
-    ListReadSetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportReadSetJobItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetImportJobsRequest,
   output: ListReadSetImportJobsResponse,
   errors: [
@@ -9403,27 +9276,13 @@ export type ListReadSetsError =
 /**
  * Retrieves a list of read sets from a sequence store ID and returns the metadata in JSON format.
  */
-export const listReadSets: API.OperationMethod<
+export const listReadSets: API.PaginatedOperationMethod<
   ListReadSetsRequest,
   ListReadSetsResponse,
   ListReadSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetsRequest,
-  ) => stream.Stream<
-    ListReadSetsResponse,
-    ListReadSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetsRequest,
-  ) => stream.Stream<
-    ReadSetListItem,
-    ListReadSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReadSetListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetsRequest,
   output: ListReadSetsResponse,
   errors: [
@@ -9459,27 +9318,13 @@ export type ListReadSetUploadPartsError =
 /**
  * Lists all parts in a multipart read set upload for a sequence store and returns the metadata in a JSON formatted output.
  */
-export const listReadSetUploadParts: API.OperationMethod<
+export const listReadSetUploadParts: API.PaginatedOperationMethod<
   ListReadSetUploadPartsRequest,
   ListReadSetUploadPartsResponse,
   ListReadSetUploadPartsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadSetUploadPartsRequest,
-  ) => stream.Stream<
-    ListReadSetUploadPartsResponse,
-    ListReadSetUploadPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadSetUploadPartsRequest,
-  ) => stream.Stream<
-    ReadSetUploadPartListItem,
-    ListReadSetUploadPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReadSetUploadPartListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadSetUploadPartsRequest,
   output: ListReadSetUploadPartsResponse,
   errors: [
@@ -9515,27 +9360,13 @@ export type ListReferenceImportJobsError =
 /**
  * Retrieves the metadata of one or more reference import jobs for a reference store.
  */
-export const listReferenceImportJobs: API.OperationMethod<
+export const listReferenceImportJobs: API.PaginatedOperationMethod<
   ListReferenceImportJobsRequest,
   ListReferenceImportJobsResponse,
   ListReferenceImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReferenceImportJobsRequest,
-  ) => stream.Stream<
-    ListReferenceImportJobsResponse,
-    ListReferenceImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReferenceImportJobsRequest,
-  ) => stream.Stream<
-    ImportReferenceJobItem,
-    ListReferenceImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportReferenceJobItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferenceImportJobsRequest,
   output: ListReferenceImportJobsResponse,
   errors: [
@@ -9571,27 +9402,13 @@ export type ListReferencesError =
  *
  * For more information, see Creating a reference store in the *Amazon Web Services HealthOmics User Guide*.
  */
-export const listReferences: API.OperationMethod<
+export const listReferences: API.PaginatedOperationMethod<
   ListReferencesRequest,
   ListReferencesResponse,
   ListReferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReferencesRequest,
-  ) => stream.Stream<
-    ListReferencesResponse,
-    ListReferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReferencesRequest,
-  ) => stream.Stream<
-    ReferenceListItem,
-    ListReferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReferenceListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferencesRequest,
   output: ListReferencesResponse,
   errors: [
@@ -9626,27 +9443,13 @@ export type ListReferenceStoresError =
  *
  * For more information, see Creating a reference store in the *Amazon Web Services HealthOmics User Guide*.
  */
-export const listReferenceStores: API.OperationMethod<
+export const listReferenceStores: API.PaginatedOperationMethod<
   ListReferenceStoresRequest,
   ListReferenceStoresResponse,
   ListReferenceStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReferenceStoresRequest,
-  ) => stream.Stream<
-    ListReferenceStoresResponse,
-    ListReferenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReferenceStoresRequest,
-  ) => stream.Stream<
-    ReferenceStoreDetail,
-    ListReferenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReferenceStoreDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReferenceStoresRequest,
   output: ListReferenceStoresResponse,
   errors: [
@@ -9681,27 +9484,13 @@ export type ListRunCachesError =
 /**
  * Retrieves a list of your run caches and the metadata for each cache.
  */
-export const listRunCaches: API.OperationMethod<
+export const listRunCaches: API.PaginatedOperationMethod<
   ListRunCachesRequest,
   ListRunCachesResponse,
   ListRunCachesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunCachesRequest,
-  ) => stream.Stream<
-    ListRunCachesResponse,
-    ListRunCachesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunCachesRequest,
-  ) => stream.Stream<
-    RunCacheListItem,
-    ListRunCachesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RunCacheListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunCachesRequest,
   output: ListRunCachesResponse,
   errors: [
@@ -9739,27 +9528,13 @@ export type ListRunGroupsError =
 /**
  * Retrieves a list of all run groups and returns the metadata for each run group.
  */
-export const listRunGroups: API.OperationMethod<
+export const listRunGroups: API.PaginatedOperationMethod<
   ListRunGroupsRequest,
   ListRunGroupsResponse,
   ListRunGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunGroupsRequest,
-  ) => stream.Stream<
-    ListRunGroupsResponse,
-    ListRunGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunGroupsRequest,
-  ) => stream.Stream<
-    RunGroupListItem,
-    ListRunGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RunGroupListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunGroupsRequest,
   output: ListRunGroupsResponse,
   errors: [
@@ -9799,27 +9574,13 @@ export type ListRunsError =
  *
  * Amazon Web Services HealthOmics stores a configurable number of runs, as determined by service limits, that are available to the console and API. If the `ListRuns` response doesn't include specific runs that you expected, you can find all run logs in the CloudWatch logs. For more information about viewing the run logs, see CloudWatch logs in the *Amazon Web Services HealthOmics User Guide*.
  */
-export const listRuns: API.OperationMethod<
+export const listRuns: API.PaginatedOperationMethod<
   ListRunsRequest,
   ListRunsResponse,
   ListRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunsRequest,
-  ) => stream.Stream<
-    ListRunsResponse,
-    ListRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunsRequest,
-  ) => stream.Stream<
-    RunListItem,
-    ListRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RunListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunsRequest,
   output: ListRunsResponse,
   errors: [
@@ -9857,27 +9618,13 @@ export type ListRunsInBatchError =
 /**
  * Returns a paginated list of individual workflow runs within a specific batch. Use this operation to map each `runSettingId` to its HealthOmics-generated `runId`, and to check the submission status of each run. Only one filter per call is supported.
  */
-export const listRunsInBatch: API.OperationMethod<
+export const listRunsInBatch: API.PaginatedOperationMethod<
   ListRunsInBatchRequest,
   ListRunsInBatchResponse,
   ListRunsInBatchError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunsInBatchRequest,
-  ) => stream.Stream<
-    ListRunsInBatchResponse,
-    ListRunsInBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunsInBatchRequest,
-  ) => stream.Stream<
-    RunBatchListItem,
-    ListRunsInBatchError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RunBatchListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunsInBatchRequest,
   output: ListRunsInBatchResponse,
   errors: [
@@ -9915,27 +9662,13 @@ export type ListRunTasksError =
 /**
  * Returns a list of tasks and status information within their specified run. Use this operation to monitor runs and to identify which specific tasks have failed.
  */
-export const listRunTasks: API.OperationMethod<
+export const listRunTasks: API.PaginatedOperationMethod<
   ListRunTasksRequest,
   ListRunTasksResponse,
   ListRunTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRunTasksRequest,
-  ) => stream.Stream<
-    ListRunTasksResponse,
-    ListRunTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRunTasksRequest,
-  ) => stream.Stream<
-    TaskListItem,
-    ListRunTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaskListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRunTasksRequest,
   output: ListRunTasksResponse,
   errors: [
@@ -9972,27 +9705,13 @@ export type ListSequenceStoresError =
  *
  * For more information, see Creating a HealthOmics sequence store in the *Amazon Web Services HealthOmics User Guide*.
  */
-export const listSequenceStores: API.OperationMethod<
+export const listSequenceStores: API.PaginatedOperationMethod<
   ListSequenceStoresRequest,
   ListSequenceStoresResponse,
   ListSequenceStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSequenceStoresRequest,
-  ) => stream.Stream<
-    ListSequenceStoresResponse,
-    ListSequenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSequenceStoresRequest,
-  ) => stream.Stream<
-    SequenceStoreDetail,
-    ListSequenceStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SequenceStoreDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSequenceStoresRequest,
   output: ListSequenceStoresResponse,
   errors: [
@@ -10026,27 +9745,13 @@ export type ListSharesError =
 /**
  * Retrieves the resource shares associated with an account. Use the filter parameter to retrieve a specific subset of the shares.
  */
-export const listShares: API.OperationMethod<
+export const listShares: API.PaginatedOperationMethod<
   ListSharesRequest,
   ListSharesResponse,
   ListSharesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSharesRequest,
-  ) => stream.Stream<
-    ListSharesResponse,
-    ListSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSharesRequest,
-  ) => stream.Stream<
-    ShareDetails,
-    ListSharesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ShareDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharesRequest,
   output: ListSharesResponse,
   errors: [
@@ -10119,27 +9824,13 @@ export type ListVariantImportJobsError =
  *
  * Retrieves a list of variant import jobs.
  */
-export const listVariantImportJobs: API.OperationMethod<
+export const listVariantImportJobs: API.PaginatedOperationMethod<
   ListVariantImportJobsRequest,
   ListVariantImportJobsResponse,
   ListVariantImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVariantImportJobsRequest,
-  ) => stream.Stream<
-    ListVariantImportJobsResponse,
-    ListVariantImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVariantImportJobsRequest,
-  ) => stream.Stream<
-    VariantImportJobItem,
-    ListVariantImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VariantImportJobItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVariantImportJobsRequest,
   output: ListVariantImportJobsResponse,
   errors: [
@@ -10173,27 +9864,13 @@ export type ListVariantStoresError =
  *
  * Retrieves a list of variant stores.
  */
-export const listVariantStores: API.OperationMethod<
+export const listVariantStores: API.PaginatedOperationMethod<
   ListVariantStoresRequest,
   ListVariantStoresResponse,
   ListVariantStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVariantStoresRequest,
-  ) => stream.Stream<
-    ListVariantStoresResponse,
-    ListVariantStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVariantStoresRequest,
-  ) => stream.Stream<
-    VariantStoreItem,
-    ListVariantStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VariantStoreItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVariantStoresRequest,
   output: ListVariantStoresResponse,
   errors: [
@@ -10228,27 +9905,13 @@ export type ListWorkflowsError =
 /**
  * Retrieves a list of existing workflows. You can filter for specific workflows by their name and type. Using the type parameter, specify `PRIVATE` to retrieve a list of private workflows or specify `READY2RUN` for a list of all Ready2Run workflows. If you do not specify the type of workflow, this operation returns a list of existing workflows.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    WorkflowListItem,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [
@@ -10286,27 +9949,13 @@ export type ListWorkflowVersionsError =
 /**
  * Lists the workflow versions for the specified workflow. For more information, see Workflow versioning in Amazon Web Services HealthOmics in the *Amazon Web Services HealthOmics User Guide*.
  */
-export const listWorkflowVersions: API.OperationMethod<
+export const listWorkflowVersions: API.PaginatedOperationMethod<
   ListWorkflowVersionsRequest,
   ListWorkflowVersionsResponse,
   ListWorkflowVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowVersionsRequest,
-  ) => stream.Stream<
-    ListWorkflowVersionsResponse,
-    ListWorkflowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowVersionsRequest,
-  ) => stream.Stream<
-    WorkflowVersionListItem,
-    ListWorkflowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowVersionListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowVersionsRequest,
   output: ListWorkflowVersionsResponse,
   errors: [

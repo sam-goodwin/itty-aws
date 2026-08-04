@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -10498,27 +10497,13 @@ export type DescribeMalwareScansError =
  *
  * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
-export const describeMalwareScans: API.OperationMethod<
+export const describeMalwareScans: API.PaginatedOperationMethod<
   DescribeMalwareScansRequest,
   DescribeMalwareScansResponse,
   DescribeMalwareScansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMalwareScansRequest,
-  ) => stream.Stream<
-    DescribeMalwareScansResponse,
-    DescribeMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMalwareScansRequest,
-  ) => stream.Stream<
-    Scan,
-    DescribeMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Scan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMalwareScansRequest,
   output: DescribeMalwareScansResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -10542,27 +10527,13 @@ export type DescribeOrganizationConfigurationError =
  *
  * There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
  */
-export const describeOrganizationConfiguration: API.OperationMethod<
+export const describeOrganizationConfiguration: API.PaginatedOperationMethod<
   DescribeOrganizationConfigurationRequest,
   DescribeOrganizationConfigurationResponse,
   DescribeOrganizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOrganizationConfigurationRequest,
-  ) => stream.Stream<
-    DescribeOrganizationConfigurationResponse,
-    DescribeOrganizationConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOrganizationConfigurationRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeOrganizationConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOrganizationConfigurationRequest,
   output: DescribeOrganizationConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11188,27 +11159,13 @@ export type GetUsageStatisticsError =
 /**
  * Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see Understanding How Usage Costs are Calculated.
  */
-export const getUsageStatistics: API.OperationMethod<
+export const getUsageStatistics: API.PaginatedOperationMethod<
   GetUsageStatisticsRequest,
   GetUsageStatisticsResponse,
   GetUsageStatisticsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUsageStatisticsRequest,
-  ) => stream.Stream<
-    GetUsageStatisticsResponse,
-    GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUsageStatisticsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUsageStatisticsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsageStatisticsRequest,
   output: GetUsageStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11260,27 +11217,13 @@ export type ListCoverageError =
  *
  * Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent running on their resources.
  */
-export const listCoverage: API.OperationMethod<
+export const listCoverage: API.PaginatedOperationMethod<
   ListCoverageRequest,
   ListCoverageResponse,
   ListCoverageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoverageRequest,
-  ) => stream.Stream<
-    ListCoverageResponse,
-    ListCoverageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoverageRequest,
-  ) => stream.Stream<
-    CoverageResource,
-    ListCoverageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CoverageResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoverageRequest,
   output: ListCoverageResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11302,27 +11245,13 @@ export type ListDetectorsError =
 /**
  * Lists detectorIds of all the existing Amazon GuardDuty detector resources.
  */
-export const listDetectors: API.OperationMethod<
+export const listDetectors: API.PaginatedOperationMethod<
   ListDetectorsRequest,
   ListDetectorsResponse,
   ListDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDetectorsRequest,
-  ) => stream.Stream<
-    ListDetectorsResponse,
-    ListDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDetectorsRequest,
-  ) => stream.Stream<
-    DetectorId,
-    ListDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DetectorId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDetectorsRequest,
   output: ListDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11344,27 +11273,13 @@ export type ListFiltersError =
 /**
  * Returns a paginated list of the current filters.
  */
-export const listFilters: API.OperationMethod<
+export const listFilters: API.PaginatedOperationMethod<
   ListFiltersRequest,
   ListFiltersResponse,
   ListFiltersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    ListFiltersResponse,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    FilterName,
-    ListFiltersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FilterName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11388,27 +11303,13 @@ export type ListFindingsError =
  *
  * There might be regional differences because some flags might not be available in all the Regions where GuardDuty is currently supported. For more information, see Regions and endpoints.
  */
-export const listFindings: API.OperationMethod<
+export const listFindings: API.PaginatedOperationMethod<
   ListFindingsRequest,
   ListFindingsResponse,
   ListFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    ListFindingsResponse,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFindingsRequest,
-  ) => stream.Stream<
-    FindingId,
-    ListFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FindingId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11435,27 +11336,13 @@ export type ListInvestigationsError =
  *
  * An administrator account sees all investigations across the organization. Member accounts see only the investigations that belong to them.
  */
-export const listInvestigations: API.OperationMethod<
+export const listInvestigations: API.PaginatedOperationMethod<
   ListInvestigationsRequest,
   ListInvestigationsResponse,
   ListInvestigationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    ListInvestigationsResponse,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    InvestigationSummary,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InvestigationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationsRequest,
   output: ListInvestigationsResponse,
   errors: [
@@ -11481,27 +11368,13 @@ export type ListInvitationsError =
 /**
  * Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account.
  */
-export const listInvitations: API.OperationMethod<
+export const listInvitations: API.PaginatedOperationMethod<
   ListInvitationsRequest,
   ListInvitationsResponse,
   ListInvitationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    ListInvitationsResponse,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvitationsRequest,
-  ) => stream.Stream<
-    Invitation,
-    ListInvitationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Invitation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11523,27 +11396,13 @@ export type ListIPSetsError =
 /**
  * Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.
  */
-export const listIPSets: API.OperationMethod<
+export const listIPSets: API.PaginatedOperationMethod<
   ListIPSetsRequest,
   ListIPSetsResponse,
   ListIPSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIPSetsRequest,
-  ) => stream.Stream<
-    ListIPSetsResponse,
-    ListIPSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIPSetsRequest,
-  ) => stream.Stream<
-    string,
-    ListIPSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIPSetsRequest,
   output: ListIPSetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11591,27 +11450,13 @@ export type ListMalwareScansError =
 /**
  * Returns a list of malware scans. Each member account can view the malware scans for their own accounts. An administrator can view the malware scans for all of its members' accounts.
  */
-export const listMalwareScans: API.OperationMethod<
+export const listMalwareScans: API.PaginatedOperationMethod<
   ListMalwareScansRequest,
   ListMalwareScansResponse,
   ListMalwareScansError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMalwareScansRequest,
-  ) => stream.Stream<
-    ListMalwareScansResponse,
-    ListMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMalwareScansRequest,
-  ) => stream.Stream<
-    MalwareScan,
-    ListMalwareScansError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MalwareScan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMalwareScansRequest,
   output: ListMalwareScansResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11633,27 +11478,13 @@ export type ListMembersError =
 /**
  * Lists details about all member accounts for the current GuardDuty administrator account.
  */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersRequest,
   ListMembersResponse,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    ListMembersResponse,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersRequest,
-  ) => stream.Stream<
-    Member,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Member
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11675,27 +11506,13 @@ export type ListOrganizationAdminAccountsError =
 /**
  * Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.
  */
-export const listOrganizationAdminAccounts: API.OperationMethod<
+export const listOrganizationAdminAccounts: API.PaginatedOperationMethod<
   ListOrganizationAdminAccountsRequest,
   ListOrganizationAdminAccountsResponse,
   ListOrganizationAdminAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    ListOrganizationAdminAccountsResponse,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationAdminAccountsRequest,
-  ) => stream.Stream<
-    AdminAccount,
-    ListOrganizationAdminAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdminAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationAdminAccountsRequest,
   output: ListOrganizationAdminAccountsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11717,27 +11534,13 @@ export type ListPublishingDestinationsError =
 /**
  * Returns a list of publishing destinations associated with the specified `detectorId`.
  */
-export const listPublishingDestinations: API.OperationMethod<
+export const listPublishingDestinations: API.PaginatedOperationMethod<
   ListPublishingDestinationsRequest,
   ListPublishingDestinationsResponse,
   ListPublishingDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublishingDestinationsRequest,
-  ) => stream.Stream<
-    ListPublishingDestinationsResponse,
-    ListPublishingDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublishingDestinationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPublishingDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublishingDestinationsRequest,
   output: ListPublishingDestinationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11784,27 +11587,13 @@ export type ListThreatEntitySetsError =
 /**
  * Lists the threat entity sets associated with the specified GuardDuty detector ID. If you use this operation from a member account, the threat entity sets that are returned as a response, belong to the administrator account.
  */
-export const listThreatEntitySets: API.OperationMethod<
+export const listThreatEntitySets: API.PaginatedOperationMethod<
   ListThreatEntitySetsRequest,
   ListThreatEntitySetsResponse,
   ListThreatEntitySetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThreatEntitySetsRequest,
-  ) => stream.Stream<
-    ListThreatEntitySetsResponse,
-    ListThreatEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThreatEntitySetsRequest,
-  ) => stream.Stream<
-    string,
-    ListThreatEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThreatEntitySetsRequest,
   output: ListThreatEntitySetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11826,27 +11615,13 @@ export type ListThreatIntelSetsError =
 /**
  * Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the ThreatIntelSets associated with the administrator account are returned.
  */
-export const listThreatIntelSets: API.OperationMethod<
+export const listThreatIntelSets: API.PaginatedOperationMethod<
   ListThreatIntelSetsRequest,
   ListThreatIntelSetsResponse,
   ListThreatIntelSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThreatIntelSetsRequest,
-  ) => stream.Stream<
-    ListThreatIntelSetsResponse,
-    ListThreatIntelSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThreatIntelSetsRequest,
-  ) => stream.Stream<
-    string,
-    ListThreatIntelSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThreatIntelSetsRequest,
   output: ListThreatIntelSetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
@@ -11868,27 +11643,13 @@ export type ListTrustedEntitySetsError =
 /**
  * Lists the trusted entity sets associated with the specified GuardDuty detector ID. If you use this operation from a member account, the trusted entity sets that are returned as a response, belong to the administrator account.
  */
-export const listTrustedEntitySets: API.OperationMethod<
+export const listTrustedEntitySets: API.PaginatedOperationMethod<
   ListTrustedEntitySetsRequest,
   ListTrustedEntitySetsResponse,
   ListTrustedEntitySetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustedEntitySetsRequest,
-  ) => stream.Stream<
-    ListTrustedEntitySetsResponse,
-    ListTrustedEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustedEntitySetsRequest,
-  ) => stream.Stream<
-    string,
-    ListTrustedEntitySetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustedEntitySetsRequest,
   output: ListTrustedEntitySetsResponse,
   errors: [BadRequestException, InternalServerErrorException],

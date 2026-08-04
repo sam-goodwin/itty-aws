@@ -3553,27 +3553,13 @@ export type ListStreamConsumersError =
  *
  * This operation has a limit of 5 transactions per second per stream.
  */
-export const listStreamConsumers: API.OperationMethod<
+export const listStreamConsumers: API.PaginatedOperationMethod<
   ListStreamConsumersInput,
   ListStreamConsumersOutput,
   ListStreamConsumersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamConsumersInput,
-  ) => stream.Stream<
-    ListStreamConsumersOutput,
-    ListStreamConsumersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamConsumersInput,
-  ) => stream.Stream<
-    unknown,
-    ListStreamConsumersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamConsumersInput,
   output: ListStreamConsumersOutput,
   errors: [
@@ -3618,27 +3604,13 @@ export type ListStreamsError =
  * ListStreams has a limit of five transactions per second per
  * account.
  */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsInput,
   ListStreamsOutput,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    ListStreamsOutput,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsInput,
-  ) => stream.Stream<
-    unknown,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [

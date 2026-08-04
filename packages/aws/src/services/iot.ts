@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -19315,27 +19314,13 @@ export type GetBehaviorModelTrainingSummariesError =
  *
  * Requires permission to access the GetBehaviorModelTrainingSummaries action.
  */
-export const getBehaviorModelTrainingSummaries: API.OperationMethod<
+export const getBehaviorModelTrainingSummaries: API.PaginatedOperationMethod<
   GetBehaviorModelTrainingSummariesRequest,
   GetBehaviorModelTrainingSummariesResponse,
   GetBehaviorModelTrainingSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetBehaviorModelTrainingSummariesRequest,
-  ) => stream.Stream<
-    GetBehaviorModelTrainingSummariesResponse,
-    GetBehaviorModelTrainingSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetBehaviorModelTrainingSummariesRequest,
-  ) => stream.Stream<
-    BehaviorModelTrainingSummary,
-    GetBehaviorModelTrainingSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BehaviorModelTrainingSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetBehaviorModelTrainingSummariesRequest,
   output: GetBehaviorModelTrainingSummariesResponse,
   errors: [
@@ -20068,27 +20053,13 @@ export type ListActiveViolationsError =
  *
  * Requires permission to access the ListActiveViolations action.
  */
-export const listActiveViolations: API.OperationMethod<
+export const listActiveViolations: API.PaginatedOperationMethod<
   ListActiveViolationsRequest,
   ListActiveViolationsResponse,
   ListActiveViolationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActiveViolationsRequest,
-  ) => stream.Stream<
-    ListActiveViolationsResponse,
-    ListActiveViolationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActiveViolationsRequest,
-  ) => stream.Stream<
-    ActiveViolation,
-    ListActiveViolationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActiveViolation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActiveViolationsRequest,
   output: ListActiveViolationsResponse,
   errors: [
@@ -20122,27 +20093,13 @@ export type ListAttachedPoliciesError =
  *
  * Requires permission to access the ListAttachedPolicies action.
  */
-export const listAttachedPolicies: API.OperationMethod<
+export const listAttachedPolicies: API.PaginatedOperationMethod<
   ListAttachedPoliciesRequest,
   ListAttachedPoliciesResponse,
   ListAttachedPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedPoliciesRequest,
-  ) => stream.Stream<
-    ListAttachedPoliciesResponse,
-    ListAttachedPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListAttachedPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedPoliciesRequest,
   output: ListAttachedPoliciesResponse,
   errors: [
@@ -20176,27 +20133,13 @@ export type ListAuditFindingsError =
  *
  * Requires permission to access the ListAuditFindings action.
  */
-export const listAuditFindings: API.OperationMethod<
+export const listAuditFindings: API.PaginatedOperationMethod<
   ListAuditFindingsRequest,
   ListAuditFindingsResponse,
   ListAuditFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditFindingsRequest,
-  ) => stream.Stream<
-    ListAuditFindingsResponse,
-    ListAuditFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuditFindingsRequest,
-  ) => stream.Stream<
-    AuditFinding,
-    ListAuditFindingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuditFinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuditFindingsRequest,
   output: ListAuditFindingsResponse,
   errors: [
@@ -20226,27 +20169,13 @@ export type ListAuditMitigationActionsExecutionsError =
  *
  * Requires permission to access the ListAuditMitigationActionsExecutions action.
  */
-export const listAuditMitigationActionsExecutions: API.OperationMethod<
+export const listAuditMitigationActionsExecutions: API.PaginatedOperationMethod<
   ListAuditMitigationActionsExecutionsRequest,
   ListAuditMitigationActionsExecutionsResponse,
   ListAuditMitigationActionsExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditMitigationActionsExecutionsRequest,
-  ) => stream.Stream<
-    ListAuditMitigationActionsExecutionsResponse,
-    ListAuditMitigationActionsExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuditMitigationActionsExecutionsRequest,
-  ) => stream.Stream<
-    AuditMitigationActionExecutionMetadata,
-    ListAuditMitigationActionsExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuditMitigationActionExecutionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuditMitigationActionsExecutionsRequest,
   output: ListAuditMitigationActionsExecutionsResponse,
   errors: [
@@ -20275,27 +20204,13 @@ export type ListAuditMitigationActionsTasksError =
  *
  * Requires permission to access the ListAuditMitigationActionsTasks action.
  */
-export const listAuditMitigationActionsTasks: API.OperationMethod<
+export const listAuditMitigationActionsTasks: API.PaginatedOperationMethod<
   ListAuditMitigationActionsTasksRequest,
   ListAuditMitigationActionsTasksResponse,
   ListAuditMitigationActionsTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditMitigationActionsTasksRequest,
-  ) => stream.Stream<
-    ListAuditMitigationActionsTasksResponse,
-    ListAuditMitigationActionsTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuditMitigationActionsTasksRequest,
-  ) => stream.Stream<
-    AuditMitigationActionsTaskMetadata,
-    ListAuditMitigationActionsTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuditMitigationActionsTaskMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuditMitigationActionsTasksRequest,
   output: ListAuditMitigationActionsTasksResponse,
   errors: [
@@ -20324,27 +20239,13 @@ export type ListAuditSuppressionsError =
  *
  * Requires permission to access the ListAuditSuppressions action.
  */
-export const listAuditSuppressions: API.OperationMethod<
+export const listAuditSuppressions: API.PaginatedOperationMethod<
   ListAuditSuppressionsRequest,
   ListAuditSuppressionsResponse,
   ListAuditSuppressionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditSuppressionsRequest,
-  ) => stream.Stream<
-    ListAuditSuppressionsResponse,
-    ListAuditSuppressionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuditSuppressionsRequest,
-  ) => stream.Stream<
-    AuditSuppression,
-    ListAuditSuppressionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuditSuppression
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuditSuppressionsRequest,
   output: ListAuditSuppressionsResponse,
   errors: [
@@ -20374,27 +20275,13 @@ export type ListAuditTasksError =
  *
  * Requires permission to access the ListAuditTasks action.
  */
-export const listAuditTasks: API.OperationMethod<
+export const listAuditTasks: API.PaginatedOperationMethod<
   ListAuditTasksRequest,
   ListAuditTasksResponse,
   ListAuditTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditTasksRequest,
-  ) => stream.Stream<
-    ListAuditTasksResponse,
-    ListAuditTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuditTasksRequest,
-  ) => stream.Stream<
-    AuditTaskMetadata,
-    ListAuditTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuditTaskMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuditTasksRequest,
   output: ListAuditTasksResponse,
   errors: [
@@ -20425,27 +20312,13 @@ export type ListAuthorizersError =
  *
  * Requires permission to access the ListAuthorizers action.
  */
-export const listAuthorizers: API.OperationMethod<
+export const listAuthorizers: API.PaginatedOperationMethod<
   ListAuthorizersRequest,
   ListAuthorizersResponse,
   ListAuthorizersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuthorizersRequest,
-  ) => stream.Stream<
-    ListAuthorizersResponse,
-    ListAuthorizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuthorizersRequest,
-  ) => stream.Stream<
-    AuthorizerSummary,
-    ListAuthorizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuthorizerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuthorizersRequest,
   output: ListAuthorizersResponse,
   errors: [
@@ -20477,27 +20350,13 @@ export type ListBillingGroupsError =
  *
  * Requires permission to access the ListBillingGroups action.
  */
-export const listBillingGroups: API.OperationMethod<
+export const listBillingGroups: API.PaginatedOperationMethod<
   ListBillingGroupsRequest,
   ListBillingGroupsResponse,
   ListBillingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingGroupsRequest,
-  ) => stream.Stream<
-    ListBillingGroupsResponse,
-    ListBillingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillingGroupsRequest,
-  ) => stream.Stream<
-    GroupNameAndArn,
-    ListBillingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupNameAndArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillingGroupsRequest,
   output: ListBillingGroupsResponse,
   errors: [
@@ -20532,27 +20391,13 @@ export type ListCACertificatesError =
  *
  * Requires permission to access the ListCACertificates action.
  */
-export const listCACertificates: API.OperationMethod<
+export const listCACertificates: API.PaginatedOperationMethod<
   ListCACertificatesRequest,
   ListCACertificatesResponse,
   ListCACertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCACertificatesRequest,
-  ) => stream.Stream<
-    ListCACertificatesResponse,
-    ListCACertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCACertificatesRequest,
-  ) => stream.Stream<
-    CACertificate,
-    ListCACertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CACertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCACertificatesRequest,
   output: ListCACertificatesResponse,
   errors: [
@@ -20620,27 +20465,13 @@ export type ListCertificatesError =
  *
  * Requires permission to access the ListCertificates action.
  */
-export const listCertificates: API.OperationMethod<
+export const listCertificates: API.PaginatedOperationMethod<
   ListCertificatesRequest,
   ListCertificatesResponse,
   ListCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    ListCertificatesResponse,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    Certificate,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Certificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesRequest,
   output: ListCertificatesResponse,
   errors: [
@@ -20673,27 +20504,13 @@ export type ListCertificatesByCAError =
  *
  * Requires permission to access the ListCertificatesByCA action.
  */
-export const listCertificatesByCA: API.OperationMethod<
+export const listCertificatesByCA: API.PaginatedOperationMethod<
   ListCertificatesByCARequest,
   ListCertificatesByCAResponse,
   ListCertificatesByCAError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatesByCARequest,
-  ) => stream.Stream<
-    ListCertificatesByCAResponse,
-    ListCertificatesByCAError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificatesByCARequest,
-  ) => stream.Stream<
-    Certificate,
-    ListCertificatesByCAError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Certificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesByCARequest,
   output: ListCertificatesByCAResponse,
   errors: [
@@ -20738,27 +20555,13 @@ export type ListCommandExecutionsError =
  * List
  * command executions in your account (CLI).
  */
-export const listCommandExecutions: API.OperationMethod<
+export const listCommandExecutions: API.PaginatedOperationMethod<
   ListCommandExecutionsRequest,
   ListCommandExecutionsResponse,
   ListCommandExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommandExecutionsRequest,
-  ) => stream.Stream<
-    ListCommandExecutionsResponse,
-    ListCommandExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommandExecutionsRequest,
-  ) => stream.Stream<
-    CommandExecutionSummary,
-    ListCommandExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CommandExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandExecutionsRequest,
   output: ListCommandExecutionsResponse,
   errors: [
@@ -20786,27 +20589,13 @@ export type ListCommandsError =
 /**
  * List all commands in your account.
  */
-export const listCommands: API.OperationMethod<
+export const listCommands: API.PaginatedOperationMethod<
   ListCommandsRequest,
   ListCommandsResponse,
   ListCommandsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommandsRequest,
-  ) => stream.Stream<
-    ListCommandsResponse,
-    ListCommandsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommandsRequest,
-  ) => stream.Stream<
-    CommandSummary,
-    ListCommandsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CommandSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandsRequest,
   output: ListCommandsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -20831,27 +20620,13 @@ export type ListCustomMetricsError =
  *
  * Requires permission to access the ListCustomMetrics action.
  */
-export const listCustomMetrics: API.OperationMethod<
+export const listCustomMetrics: API.PaginatedOperationMethod<
   ListCustomMetricsRequest,
   ListCustomMetricsResponse,
   ListCustomMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomMetricsRequest,
-  ) => stream.Stream<
-    ListCustomMetricsResponse,
-    ListCustomMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomMetricsRequest,
-  ) => stream.Stream<
-    MetricName,
-    ListCustomMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomMetricsRequest,
   output: ListCustomMetricsResponse,
   errors: [
@@ -20880,27 +20655,13 @@ export type ListDetectMitigationActionsExecutionsError =
  *
  * Requires permission to access the ListDetectMitigationActionsExecutions action.
  */
-export const listDetectMitigationActionsExecutions: API.OperationMethod<
+export const listDetectMitigationActionsExecutions: API.PaginatedOperationMethod<
   ListDetectMitigationActionsExecutionsRequest,
   ListDetectMitigationActionsExecutionsResponse,
   ListDetectMitigationActionsExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDetectMitigationActionsExecutionsRequest,
-  ) => stream.Stream<
-    ListDetectMitigationActionsExecutionsResponse,
-    ListDetectMitigationActionsExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDetectMitigationActionsExecutionsRequest,
-  ) => stream.Stream<
-    DetectMitigationActionExecution,
-    ListDetectMitigationActionsExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DetectMitigationActionExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDetectMitigationActionsExecutionsRequest,
   output: ListDetectMitigationActionsExecutionsResponse,
   errors: [
@@ -20929,27 +20690,13 @@ export type ListDetectMitigationActionsTasksError =
  *
  * Requires permission to access the ListDetectMitigationActionsTasks action.
  */
-export const listDetectMitigationActionsTasks: API.OperationMethod<
+export const listDetectMitigationActionsTasks: API.PaginatedOperationMethod<
   ListDetectMitigationActionsTasksRequest,
   ListDetectMitigationActionsTasksResponse,
   ListDetectMitigationActionsTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDetectMitigationActionsTasksRequest,
-  ) => stream.Stream<
-    ListDetectMitigationActionsTasksResponse,
-    ListDetectMitigationActionsTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDetectMitigationActionsTasksRequest,
-  ) => stream.Stream<
-    DetectMitigationActionsTaskSummary,
-    ListDetectMitigationActionsTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DetectMitigationActionsTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDetectMitigationActionsTasksRequest,
   output: ListDetectMitigationActionsTasksResponse,
   errors: [
@@ -20978,27 +20725,13 @@ export type ListDimensionsError =
  *
  * Requires permission to access the ListDimensions action.
  */
-export const listDimensions: API.OperationMethod<
+export const listDimensions: API.PaginatedOperationMethod<
   ListDimensionsRequest,
   ListDimensionsResponse,
   ListDimensionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDimensionsRequest,
-  ) => stream.Stream<
-    ListDimensionsResponse,
-    ListDimensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDimensionsRequest,
-  ) => stream.Stream<
-    DimensionName,
-    ListDimensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DimensionName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDimensionsRequest,
   output: ListDimensionsResponse,
   errors: [
@@ -21030,27 +20763,13 @@ export type ListDomainConfigurationsError =
  *
  * Requires permission to access the ListDomainConfigurations action.
  */
-export const listDomainConfigurations: API.OperationMethod<
+export const listDomainConfigurations: API.PaginatedOperationMethod<
   ListDomainConfigurationsRequest,
   ListDomainConfigurationsResponse,
   ListDomainConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainConfigurationsRequest,
-  ) => stream.Stream<
-    ListDomainConfigurationsResponse,
-    ListDomainConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainConfigurationsRequest,
-  ) => stream.Stream<
-    DomainConfigurationSummary,
-    ListDomainConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainConfigurationsRequest,
   output: ListDomainConfigurationsResponse,
   errors: [
@@ -21083,27 +20802,13 @@ export type ListFleetMetricsError =
  *
  * Requires permission to access the ListFleetMetrics action.
  */
-export const listFleetMetrics: API.OperationMethod<
+export const listFleetMetrics: API.PaginatedOperationMethod<
   ListFleetMetricsRequest,
   ListFleetMetricsResponse,
   ListFleetMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetMetricsRequest,
-  ) => stream.Stream<
-    ListFleetMetricsResponse,
-    ListFleetMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetMetricsRequest,
-  ) => stream.Stream<
-    FleetMetricNameAndArn,
-    ListFleetMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FleetMetricNameAndArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetMetricsRequest,
   output: ListFleetMetricsResponse,
   errors: [
@@ -21136,27 +20841,13 @@ export type ListIndicesError =
  *
  * Requires permission to access the ListIndices action.
  */
-export const listIndices: API.OperationMethod<
+export const listIndices: API.PaginatedOperationMethod<
   ListIndicesRequest,
   ListIndicesResponse,
   ListIndicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndicesRequest,
-  ) => stream.Stream<
-    ListIndicesResponse,
-    ListIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndicesRequest,
-  ) => stream.Stream<
-    IndexName,
-    ListIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IndexName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicesRequest,
   output: ListIndicesResponse,
   errors: [
@@ -21188,27 +20879,13 @@ export type ListJobExecutionsForJobError =
  *
  * Requires permission to access the ListJobExecutionsForJob action.
  */
-export const listJobExecutionsForJob: API.OperationMethod<
+export const listJobExecutionsForJob: API.PaginatedOperationMethod<
   ListJobExecutionsForJobRequest,
   ListJobExecutionsForJobResponse,
   ListJobExecutionsForJobError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobExecutionsForJobRequest,
-  ) => stream.Stream<
-    ListJobExecutionsForJobResponse,
-    ListJobExecutionsForJobError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobExecutionsForJobRequest,
-  ) => stream.Stream<
-    JobExecutionSummaryForJob,
-    ListJobExecutionsForJobError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobExecutionSummaryForJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobExecutionsForJobRequest,
   output: ListJobExecutionsForJobResponse,
   errors: [
@@ -21239,27 +20916,13 @@ export type ListJobExecutionsForThingError =
  *
  * Requires permission to access the ListJobExecutionsForThing action.
  */
-export const listJobExecutionsForThing: API.OperationMethod<
+export const listJobExecutionsForThing: API.PaginatedOperationMethod<
   ListJobExecutionsForThingRequest,
   ListJobExecutionsForThingResponse,
   ListJobExecutionsForThingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobExecutionsForThingRequest,
-  ) => stream.Stream<
-    ListJobExecutionsForThingResponse,
-    ListJobExecutionsForThingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobExecutionsForThingRequest,
-  ) => stream.Stream<
-    JobExecutionSummaryForThing,
-    ListJobExecutionsForThingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobExecutionSummaryForThing
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobExecutionsForThingRequest,
   output: ListJobExecutionsForThingResponse,
   errors: [
@@ -21290,27 +20953,13 @@ export type ListJobsError =
  *
  * Requires permission to access the ListJobs action.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [
@@ -21340,27 +20989,13 @@ export type ListJobTemplatesError =
  *
  * Requires permission to access the ListJobTemplates action.
  */
-export const listJobTemplates: API.OperationMethod<
+export const listJobTemplates: API.PaginatedOperationMethod<
   ListJobTemplatesRequest,
   ListJobTemplatesResponse,
   ListJobTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    ListJobTemplatesResponse,
-    ListJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobTemplatesRequest,
-  ) => stream.Stream<
-    JobTemplateSummary,
-    ListJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
   errors: [
@@ -21388,27 +21023,13 @@ export type ListManagedJobTemplatesError =
 /**
  * Returns a list of managed job templates.
  */
-export const listManagedJobTemplates: API.OperationMethod<
+export const listManagedJobTemplates: API.PaginatedOperationMethod<
   ListManagedJobTemplatesRequest,
   ListManagedJobTemplatesResponse,
   ListManagedJobTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedJobTemplatesRequest,
-  ) => stream.Stream<
-    ListManagedJobTemplatesResponse,
-    ListManagedJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedJobTemplatesRequest,
-  ) => stream.Stream<
-    ManagedJobTemplateSummary,
-    ListManagedJobTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedJobTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedJobTemplatesRequest,
   output: ListManagedJobTemplatesResponse,
   errors: [
@@ -21438,27 +21059,13 @@ export type ListMetricValuesError =
  * Lists the values reported for an IoT Device Defender metric (device-side metric, cloud-side metric, or custom metric)
  * by the given thing during the specified time period.
  */
-export const listMetricValues: API.OperationMethod<
+export const listMetricValues: API.PaginatedOperationMethod<
   ListMetricValuesRequest,
   ListMetricValuesResponse,
   ListMetricValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricValuesRequest,
-  ) => stream.Stream<
-    ListMetricValuesResponse,
-    ListMetricValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricValuesRequest,
-  ) => stream.Stream<
-    MetricDatum,
-    ListMetricValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MetricDatum
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricValuesRequest,
   output: ListMetricValuesResponse,
   errors: [
@@ -21488,27 +21095,13 @@ export type ListMitigationActionsError =
  *
  * Requires permission to access the ListMitigationActions action.
  */
-export const listMitigationActions: API.OperationMethod<
+export const listMitigationActions: API.PaginatedOperationMethod<
   ListMitigationActionsRequest,
   ListMitigationActionsResponse,
   ListMitigationActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMitigationActionsRequest,
-  ) => stream.Stream<
-    ListMitigationActionsResponse,
-    ListMitigationActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMitigationActionsRequest,
-  ) => stream.Stream<
-    MitigationActionIdentifier,
-    ListMitigationActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MitigationActionIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMitigationActionsRequest,
   output: ListMitigationActionsResponse,
   errors: [
@@ -21539,27 +21132,13 @@ export type ListOTAUpdatesError =
  *
  * Requires permission to access the ListOTAUpdates action.
  */
-export const listOTAUpdates: API.OperationMethod<
+export const listOTAUpdates: API.PaginatedOperationMethod<
   ListOTAUpdatesRequest,
   ListOTAUpdatesResponse,
   ListOTAUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOTAUpdatesRequest,
-  ) => stream.Stream<
-    ListOTAUpdatesResponse,
-    ListOTAUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOTAUpdatesRequest,
-  ) => stream.Stream<
-    OTAUpdateSummary,
-    ListOTAUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OTAUpdateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOTAUpdatesRequest,
   output: ListOTAUpdatesResponse,
   errors: [
@@ -21592,27 +21171,13 @@ export type ListOutgoingCertificatesError =
  *
  * Requires permission to access the ListOutgoingCertificates action.
  */
-export const listOutgoingCertificates: API.OperationMethod<
+export const listOutgoingCertificates: API.PaginatedOperationMethod<
   ListOutgoingCertificatesRequest,
   ListOutgoingCertificatesResponse,
   ListOutgoingCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOutgoingCertificatesRequest,
-  ) => stream.Stream<
-    ListOutgoingCertificatesResponse,
-    ListOutgoingCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOutgoingCertificatesRequest,
-  ) => stream.Stream<
-    OutgoingCertificate,
-    ListOutgoingCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OutgoingCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutgoingCertificatesRequest,
   output: ListOutgoingCertificatesResponse,
   errors: [
@@ -21643,27 +21208,13 @@ export type ListPackagesError =
  *
  * Requires permission to access the ListPackages action.
  */
-export const listPackages: API.OperationMethod<
+export const listPackages: API.PaginatedOperationMethod<
   ListPackagesRequest,
   ListPackagesResponse,
   ListPackagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    ListPackagesResponse,
-    ListPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    PackageSummary,
-    ListPackagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesRequest,
   output: ListPackagesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -21688,27 +21239,13 @@ export type ListPackageVersionsError =
  *
  * Requires permission to access the ListPackageVersions action.
  */
-export const listPackageVersions: API.OperationMethod<
+export const listPackageVersions: API.PaginatedOperationMethod<
   ListPackageVersionsRequest,
   ListPackageVersionsResponse,
   ListPackageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackageVersionsRequest,
-  ) => stream.Stream<
-    ListPackageVersionsResponse,
-    ListPackageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackageVersionsRequest,
-  ) => stream.Stream<
-    PackageVersionSummary,
-    ListPackageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PackageVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageVersionsRequest,
   output: ListPackageVersionsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -21735,27 +21272,13 @@ export type ListPoliciesError =
  *
  * Requires permission to access the ListPolicies action.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -21792,27 +21315,13 @@ export type ListPolicyPrincipalsError =
  *
  * Requires permission to access the ListPolicyPrincipals action.
  */
-export const listPolicyPrincipals: API.OperationMethod<
+export const listPolicyPrincipals: API.PaginatedOperationMethod<
   ListPolicyPrincipalsRequest,
   ListPolicyPrincipalsResponse,
   ListPolicyPrincipalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyPrincipalsRequest,
-  ) => stream.Stream<
-    ListPolicyPrincipalsResponse,
-    ListPolicyPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyPrincipalsRequest,
-  ) => stream.Stream<
-    PrincipalArn,
-    ListPolicyPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrincipalArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyPrincipalsRequest,
   output: ListPolicyPrincipalsResponse,
   errors: [
@@ -21886,27 +21395,13 @@ export type ListPrincipalPoliciesError =
  *
  * Requires permission to access the ListPrincipalPolicies action.
  */
-export const listPrincipalPolicies: API.OperationMethod<
+export const listPrincipalPolicies: API.PaginatedOperationMethod<
   ListPrincipalPoliciesRequest,
   ListPrincipalPoliciesResponse,
   ListPrincipalPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrincipalPoliciesRequest,
-  ) => stream.Stream<
-    ListPrincipalPoliciesResponse,
-    ListPrincipalPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrincipalPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListPrincipalPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalPoliciesRequest,
   output: ListPrincipalPoliciesResponse,
   errors: [
@@ -21943,27 +21438,13 @@ export type ListPrincipalThingsError =
  *
  * Requires permission to access the ListPrincipalThings action.
  */
-export const listPrincipalThings: API.OperationMethod<
+export const listPrincipalThings: API.PaginatedOperationMethod<
   ListPrincipalThingsRequest,
   ListPrincipalThingsResponse,
   ListPrincipalThingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrincipalThingsRequest,
-  ) => stream.Stream<
-    ListPrincipalThingsResponse,
-    ListPrincipalThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrincipalThingsRequest,
-  ) => stream.Stream<
-    ThingName,
-    ListPrincipalThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThingName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalThingsRequest,
   output: ListPrincipalThingsResponse,
   errors: [
@@ -21999,27 +21480,13 @@ export type ListPrincipalThingsV2Error =
  *
  * Requires permission to access the ListPrincipalThings action.
  */
-export const listPrincipalThingsV2: API.OperationMethod<
+export const listPrincipalThingsV2: API.PaginatedOperationMethod<
   ListPrincipalThingsV2Request,
   ListPrincipalThingsV2Response,
   ListPrincipalThingsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrincipalThingsV2Request,
-  ) => stream.Stream<
-    ListPrincipalThingsV2Response,
-    ListPrincipalThingsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrincipalThingsV2Request,
-  ) => stream.Stream<
-    PrincipalThingObject,
-    ListPrincipalThingsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrincipalThingObject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrincipalThingsV2Request,
   output: ListPrincipalThingsV2Response,
   errors: [
@@ -22052,27 +21519,13 @@ export type ListProvisioningTemplatesError =
  *
  * Requires permission to access the ListProvisioningTemplates action.
  */
-export const listProvisioningTemplates: API.OperationMethod<
+export const listProvisioningTemplates: API.PaginatedOperationMethod<
   ListProvisioningTemplatesRequest,
   ListProvisioningTemplatesResponse,
   ListProvisioningTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisioningTemplatesRequest,
-  ) => stream.Stream<
-    ListProvisioningTemplatesResponse,
-    ListProvisioningTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisioningTemplatesRequest,
-  ) => stream.Stream<
-    ProvisioningTemplateSummary,
-    ListProvisioningTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisioningTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisioningTemplatesRequest,
   output: ListProvisioningTemplatesResponse,
   errors: [
@@ -22104,27 +21557,13 @@ export type ListProvisioningTemplateVersionsError =
  *
  * Requires permission to access the ListProvisioningTemplateVersions action.
  */
-export const listProvisioningTemplateVersions: API.OperationMethod<
+export const listProvisioningTemplateVersions: API.PaginatedOperationMethod<
   ListProvisioningTemplateVersionsRequest,
   ListProvisioningTemplateVersionsResponse,
   ListProvisioningTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisioningTemplateVersionsRequest,
-  ) => stream.Stream<
-    ListProvisioningTemplateVersionsResponse,
-    ListProvisioningTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisioningTemplateVersionsRequest,
-  ) => stream.Stream<
-    ProvisioningTemplateVersionSummary,
-    ListProvisioningTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisioningTemplateVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisioningTemplateVersionsRequest,
   output: ListProvisioningTemplateVersionsResponse,
   errors: [
@@ -22178,27 +21617,13 @@ export type ListRelatedResourcesForAuditFindingError =
  * When calling DescribeAuditFinding for the intermediate CA revoked for
  * active device certificates check, RelatedResources will not be populated. You must use this API, ListRelatedResourcesForAuditFinding, to list the certificates.
  */
-export const listRelatedResourcesForAuditFinding: API.OperationMethod<
+export const listRelatedResourcesForAuditFinding: API.PaginatedOperationMethod<
   ListRelatedResourcesForAuditFindingRequest,
   ListRelatedResourcesForAuditFindingResponse,
   ListRelatedResourcesForAuditFindingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelatedResourcesForAuditFindingRequest,
-  ) => stream.Stream<
-    ListRelatedResourcesForAuditFindingResponse,
-    ListRelatedResourcesForAuditFindingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelatedResourcesForAuditFindingRequest,
-  ) => stream.Stream<
-    RelatedResource,
-    ListRelatedResourcesForAuditFindingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RelatedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelatedResourcesForAuditFindingRequest,
   output: ListRelatedResourcesForAuditFindingResponse,
   errors: [
@@ -22230,27 +21655,13 @@ export type ListRoleAliasesError =
  *
  * Requires permission to access the ListRoleAliases action.
  */
-export const listRoleAliases: API.OperationMethod<
+export const listRoleAliases: API.PaginatedOperationMethod<
   ListRoleAliasesRequest,
   ListRoleAliasesResponse,
   ListRoleAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoleAliasesRequest,
-  ) => stream.Stream<
-    ListRoleAliasesResponse,
-    ListRoleAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoleAliasesRequest,
-  ) => stream.Stream<
-    RoleAlias,
-    ListRoleAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RoleAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoleAliasesRequest,
   output: ListRoleAliasesResponse,
   errors: [
@@ -22282,27 +21693,13 @@ export type ListSbomValidationResultsError =
  *
  * Requires permission to access the ListSbomValidationResults action.
  */
-export const listSbomValidationResults: API.OperationMethod<
+export const listSbomValidationResults: API.PaginatedOperationMethod<
   ListSbomValidationResultsRequest,
   ListSbomValidationResultsResponse,
   ListSbomValidationResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSbomValidationResultsRequest,
-  ) => stream.Stream<
-    ListSbomValidationResultsResponse,
-    ListSbomValidationResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSbomValidationResultsRequest,
-  ) => stream.Stream<
-    SbomValidationResultSummary,
-    ListSbomValidationResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SbomValidationResultSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSbomValidationResultsRequest,
   output: ListSbomValidationResultsResponse,
   errors: [
@@ -22332,27 +21729,13 @@ export type ListScheduledAuditsError =
  *
  * Requires permission to access the ListScheduledAudits action.
  */
-export const listScheduledAudits: API.OperationMethod<
+export const listScheduledAudits: API.PaginatedOperationMethod<
   ListScheduledAuditsRequest,
   ListScheduledAuditsResponse,
   ListScheduledAuditsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduledAuditsRequest,
-  ) => stream.Stream<
-    ListScheduledAuditsResponse,
-    ListScheduledAuditsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduledAuditsRequest,
-  ) => stream.Stream<
-    ScheduledAuditMetadata,
-    ListScheduledAuditsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledAuditMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledAuditsRequest,
   output: ListScheduledAuditsResponse,
   errors: [
@@ -22386,27 +21769,13 @@ export type ListSecurityProfilesError =
  *
  * `dimensionName` and `metricName` cannot be used in the same request.
  */
-export const listSecurityProfiles: API.OperationMethod<
+export const listSecurityProfiles: API.PaginatedOperationMethod<
   ListSecurityProfilesRequest,
   ListSecurityProfilesResponse,
   ListSecurityProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfilesRequest,
-  ) => stream.Stream<
-    ListSecurityProfilesResponse,
-    ListSecurityProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileIdentifier,
-    ListSecurityProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityProfileIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityProfilesRequest,
   output: ListSecurityProfilesResponse,
   errors: [
@@ -22437,27 +21806,13 @@ export type ListSecurityProfilesForTargetError =
  *
  * Requires permission to access the ListSecurityProfilesForTarget action.
  */
-export const listSecurityProfilesForTarget: API.OperationMethod<
+export const listSecurityProfilesForTarget: API.PaginatedOperationMethod<
   ListSecurityProfilesForTargetRequest,
   ListSecurityProfilesForTargetResponse,
   ListSecurityProfilesForTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfilesForTargetRequest,
-  ) => stream.Stream<
-    ListSecurityProfilesForTargetResponse,
-    ListSecurityProfilesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfilesForTargetRequest,
-  ) => stream.Stream<
-    SecurityProfileTargetMapping,
-    ListSecurityProfilesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityProfileTargetMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityProfilesForTargetRequest,
   output: ListSecurityProfilesForTargetResponse,
   errors: [
@@ -22489,27 +21844,13 @@ export type ListStreamsError =
  *
  * Requires permission to access the ListStreams action.
  */
-export const listStreams: API.OperationMethod<
+export const listStreams: API.PaginatedOperationMethod<
   ListStreamsRequest,
   ListStreamsResponse,
   ListStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsRequest,
-  ) => stream.Stream<
-    ListStreamsResponse,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamsRequest,
-  ) => stream.Stream<
-    StreamSummary,
-    ListStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StreamSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [
@@ -22541,27 +21882,13 @@ export type ListTagsForResourceError =
  *
  * Requires permission to access the ListTagsForResource action.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -22594,27 +21921,13 @@ export type ListTargetsForPolicyError =
  *
  * Requires permission to access the ListTargetsForPolicy action.
  */
-export const listTargetsForPolicy: API.OperationMethod<
+export const listTargetsForPolicy: API.PaginatedOperationMethod<
   ListTargetsForPolicyRequest,
   ListTargetsForPolicyResponse,
   ListTargetsForPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsForPolicyRequest,
-  ) => stream.Stream<
-    ListTargetsForPolicyResponse,
-    ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsForPolicyRequest,
-  ) => stream.Stream<
-    PolicyTarget,
-    ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsForPolicyRequest,
   output: ListTargetsForPolicyResponse,
   errors: [
@@ -22648,27 +21961,13 @@ export type ListTargetsForSecurityProfileError =
  *
  * Requires permission to access the ListTargetsForSecurityProfile action.
  */
-export const listTargetsForSecurityProfile: API.OperationMethod<
+export const listTargetsForSecurityProfile: API.PaginatedOperationMethod<
   ListTargetsForSecurityProfileRequest,
   ListTargetsForSecurityProfileResponse,
   ListTargetsForSecurityProfileError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsForSecurityProfileRequest,
-  ) => stream.Stream<
-    ListTargetsForSecurityProfileResponse,
-    ListTargetsForSecurityProfileError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsForSecurityProfileRequest,
-  ) => stream.Stream<
-    SecurityProfileTarget,
-    ListTargetsForSecurityProfileError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityProfileTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsForSecurityProfileRequest,
   output: ListTargetsForSecurityProfileResponse,
   errors: [
@@ -22699,27 +21998,13 @@ export type ListThingGroupsError =
  *
  * Requires permission to access the ListThingGroups action.
  */
-export const listThingGroups: API.OperationMethod<
+export const listThingGroups: API.PaginatedOperationMethod<
   ListThingGroupsRequest,
   ListThingGroupsResponse,
   ListThingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingGroupsRequest,
-  ) => stream.Stream<
-    ListThingGroupsResponse,
-    ListThingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingGroupsRequest,
-  ) => stream.Stream<
-    GroupNameAndArn,
-    ListThingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupNameAndArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingGroupsRequest,
   output: ListThingGroupsResponse,
   errors: [
@@ -22750,27 +22035,13 @@ export type ListThingGroupsForThingError =
  *
  * Requires permission to access the ListThingGroupsForThing action.
  */
-export const listThingGroupsForThing: API.OperationMethod<
+export const listThingGroupsForThing: API.PaginatedOperationMethod<
   ListThingGroupsForThingRequest,
   ListThingGroupsForThingResponse,
   ListThingGroupsForThingError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingGroupsForThingRequest,
-  ) => stream.Stream<
-    ListThingGroupsForThingResponse,
-    ListThingGroupsForThingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingGroupsForThingRequest,
-  ) => stream.Stream<
-    GroupNameAndArn,
-    ListThingGroupsForThingError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupNameAndArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingGroupsForThingRequest,
   output: ListThingGroupsForThingResponse,
   errors: [
@@ -22805,27 +22076,13 @@ export type ListThingPrincipalsError =
  *
  * Requires permission to access the ListThingPrincipals action.
  */
-export const listThingPrincipals: API.OperationMethod<
+export const listThingPrincipals: API.PaginatedOperationMethod<
   ListThingPrincipalsRequest,
   ListThingPrincipalsResponse,
   ListThingPrincipalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingPrincipalsRequest,
-  ) => stream.Stream<
-    ListThingPrincipalsResponse,
-    ListThingPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingPrincipalsRequest,
-  ) => stream.Stream<
-    PrincipalArn,
-    ListThingPrincipalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrincipalArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingPrincipalsRequest,
   output: ListThingPrincipalsResponse,
   errors: [
@@ -22861,27 +22118,13 @@ export type ListThingPrincipalsV2Error =
  *
  * Requires permission to access the ListThingPrincipals action.
  */
-export const listThingPrincipalsV2: API.OperationMethod<
+export const listThingPrincipalsV2: API.PaginatedOperationMethod<
   ListThingPrincipalsV2Request,
   ListThingPrincipalsV2Response,
   ListThingPrincipalsV2Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingPrincipalsV2Request,
-  ) => stream.Stream<
-    ListThingPrincipalsV2Response,
-    ListThingPrincipalsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingPrincipalsV2Request,
-  ) => stream.Stream<
-    ThingPrincipalObject,
-    ListThingPrincipalsV2Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThingPrincipalObject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingPrincipalsV2Request,
   output: ListThingPrincipalsV2Response,
   errors: [
@@ -22912,27 +22155,13 @@ export type ListThingRegistrationTaskReportsError =
 /**
  * Information about the thing registration tasks.
  */
-export const listThingRegistrationTaskReports: API.OperationMethod<
+export const listThingRegistrationTaskReports: API.PaginatedOperationMethod<
   ListThingRegistrationTaskReportsRequest,
   ListThingRegistrationTaskReportsResponse,
   ListThingRegistrationTaskReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingRegistrationTaskReportsRequest,
-  ) => stream.Stream<
-    ListThingRegistrationTaskReportsResponse,
-    ListThingRegistrationTaskReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingRegistrationTaskReportsRequest,
-  ) => stream.Stream<
-    S3FileUrl,
-    ListThingRegistrationTaskReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  S3FileUrl
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingRegistrationTaskReportsRequest,
   output: ListThingRegistrationTaskReportsResponse,
   errors: [
@@ -22963,27 +22192,13 @@ export type ListThingRegistrationTasksError =
  *
  * Requires permission to access the ListThingRegistrationTasks action.
  */
-export const listThingRegistrationTasks: API.OperationMethod<
+export const listThingRegistrationTasks: API.PaginatedOperationMethod<
   ListThingRegistrationTasksRequest,
   ListThingRegistrationTasksResponse,
   ListThingRegistrationTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingRegistrationTasksRequest,
-  ) => stream.Stream<
-    ListThingRegistrationTasksResponse,
-    ListThingRegistrationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingRegistrationTasksRequest,
-  ) => stream.Stream<
-    TaskId,
-    ListThingRegistrationTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaskId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingRegistrationTasksRequest,
   output: ListThingRegistrationTasksResponse,
   errors: [
@@ -23021,27 +22236,13 @@ export type ListThingsError =
  *
  * You will not be charged for calling this API if an `Access denied` error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned.
  */
-export const listThings: API.OperationMethod<
+export const listThings: API.PaginatedOperationMethod<
   ListThingsRequest,
   ListThingsResponse,
   ListThingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingsRequest,
-  ) => stream.Stream<
-    ListThingsResponse,
-    ListThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingsRequest,
-  ) => stream.Stream<
-    ThingAttribute,
-    ListThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThingAttribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingsRequest,
   output: ListThingsResponse,
   errors: [
@@ -23073,27 +22274,13 @@ export type ListThingsInBillingGroupError =
  *
  * Requires permission to access the ListThingsInBillingGroup action.
  */
-export const listThingsInBillingGroup: API.OperationMethod<
+export const listThingsInBillingGroup: API.PaginatedOperationMethod<
   ListThingsInBillingGroupRequest,
   ListThingsInBillingGroupResponse,
   ListThingsInBillingGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingsInBillingGroupRequest,
-  ) => stream.Stream<
-    ListThingsInBillingGroupResponse,
-    ListThingsInBillingGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingsInBillingGroupRequest,
-  ) => stream.Stream<
-    ThingName,
-    ListThingsInBillingGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThingName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingsInBillingGroupRequest,
   output: ListThingsInBillingGroupResponse,
   errors: [
@@ -23124,27 +22311,13 @@ export type ListThingsInThingGroupError =
  *
  * Requires permission to access the ListThingsInThingGroup action.
  */
-export const listThingsInThingGroup: API.OperationMethod<
+export const listThingsInThingGroup: API.PaginatedOperationMethod<
   ListThingsInThingGroupRequest,
   ListThingsInThingGroupResponse,
   ListThingsInThingGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingsInThingGroupRequest,
-  ) => stream.Stream<
-    ListThingsInThingGroupResponse,
-    ListThingsInThingGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingsInThingGroupRequest,
-  ) => stream.Stream<
-    ThingName,
-    ListThingsInThingGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThingName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingsInThingGroupRequest,
   output: ListThingsInThingGroupResponse,
   errors: [
@@ -23176,27 +22349,13 @@ export type ListThingTypesError =
  *
  * Requires permission to access the ListThingTypes action.
  */
-export const listThingTypes: API.OperationMethod<
+export const listThingTypes: API.PaginatedOperationMethod<
   ListThingTypesRequest,
   ListThingTypesResponse,
   ListThingTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThingTypesRequest,
-  ) => stream.Stream<
-    ListThingTypesResponse,
-    ListThingTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThingTypesRequest,
-  ) => stream.Stream<
-    ThingTypeDefinition,
-    ListThingTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThingTypeDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThingTypesRequest,
   output: ListThingTypesResponse,
   errors: [
@@ -23228,27 +22387,13 @@ export type ListTopicRuleDestinationsError =
  *
  * Requires permission to access the ListTopicRuleDestinations action.
  */
-export const listTopicRuleDestinations: API.OperationMethod<
+export const listTopicRuleDestinations: API.PaginatedOperationMethod<
   ListTopicRuleDestinationsRequest,
   ListTopicRuleDestinationsResponse,
   ListTopicRuleDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicRuleDestinationsRequest,
-  ) => stream.Stream<
-    ListTopicRuleDestinationsResponse,
-    ListTopicRuleDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicRuleDestinationsRequest,
-  ) => stream.Stream<
-    TopicRuleDestinationSummary,
-    ListTopicRuleDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TopicRuleDestinationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicRuleDestinationsRequest,
   output: ListTopicRuleDestinationsResponse,
   errors: [
@@ -23279,27 +22424,13 @@ export type ListTopicRulesError =
  *
  * Requires permission to access the ListTopicRules action.
  */
-export const listTopicRules: API.OperationMethod<
+export const listTopicRules: API.PaginatedOperationMethod<
   ListTopicRulesRequest,
   ListTopicRulesResponse,
   ListTopicRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicRulesRequest,
-  ) => stream.Stream<
-    ListTopicRulesResponse,
-    ListTopicRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicRulesRequest,
-  ) => stream.Stream<
-    TopicRuleListItem,
-    ListTopicRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TopicRuleListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicRulesRequest,
   output: ListTopicRulesResponse,
   errors: [
@@ -23330,27 +22461,13 @@ export type ListV2LoggingLevelsError =
  *
  * Requires permission to access the ListV2LoggingLevels action.
  */
-export const listV2LoggingLevels: API.OperationMethod<
+export const listV2LoggingLevels: API.PaginatedOperationMethod<
   ListV2LoggingLevelsRequest,
   ListV2LoggingLevelsResponse,
   ListV2LoggingLevelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListV2LoggingLevelsRequest,
-  ) => stream.Stream<
-    ListV2LoggingLevelsResponse,
-    ListV2LoggingLevelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListV2LoggingLevelsRequest,
-  ) => stream.Stream<
-    LogTargetConfiguration,
-    ListV2LoggingLevelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LogTargetConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListV2LoggingLevelsRequest,
   output: ListV2LoggingLevelsResponse,
   errors: [
@@ -23382,27 +22499,13 @@ export type ListViolationEventsError =
  *
  * Requires permission to access the ListViolationEvents action.
  */
-export const listViolationEvents: API.OperationMethod<
+export const listViolationEvents: API.PaginatedOperationMethod<
   ListViolationEventsRequest,
   ListViolationEventsResponse,
   ListViolationEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViolationEventsRequest,
-  ) => stream.Stream<
-    ListViolationEventsResponse,
-    ListViolationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViolationEventsRequest,
-  ) => stream.Stream<
-    ViolationEvent,
-    ListViolationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ViolationEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListViolationEventsRequest,
   output: ListViolationEventsResponse,
   errors: [

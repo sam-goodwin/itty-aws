@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3512,27 +3511,13 @@ export type GetExecutionHistoryError =
  *
  * This API action is not supported by `EXPRESS` state machines.
  */
-export const getExecutionHistory: API.OperationMethod<
+export const getExecutionHistory: API.PaginatedOperationMethod<
   GetExecutionHistoryInput,
   GetExecutionHistoryOutput,
   GetExecutionHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetExecutionHistoryInput,
-  ) => stream.Stream<
-    GetExecutionHistoryOutput,
-    GetExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetExecutionHistoryInput,
-  ) => stream.Stream<
-    HistoryEvent,
-    GetExecutionHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HistoryEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionHistoryInput,
   output: GetExecutionHistoryOutput,
   errors: [
@@ -3563,27 +3548,13 @@ export type ListActivitiesError = InvalidToken | CommonErrors;
  *
  * This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
  */
-export const listActivities: API.OperationMethod<
+export const listActivities: API.PaginatedOperationMethod<
   ListActivitiesInput,
   ListActivitiesOutput,
   ListActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActivitiesInput,
-  ) => stream.Stream<
-    ListActivitiesOutput,
-    ListActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActivitiesInput,
-  ) => stream.Stream<
-    ActivityListItem,
-    ListActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActivityListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesInput,
   output: ListActivitiesOutput,
   errors: [InvalidToken],
@@ -3621,27 +3592,13 @@ export type ListExecutionsError =
  *
  * This API action is not supported by `EXPRESS` state machines.
  */
-export const listExecutions: API.OperationMethod<
+export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsInput,
   ListExecutionsOutput,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ListExecutionsOutput,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsInput,
-  ) => stream.Stream<
-    ExecutionListItem,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExecutionListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsInput,
   output: ListExecutionsOutput,
   errors: [
@@ -3671,27 +3628,13 @@ export type ListMapRunsError =
 /**
  * Lists all Map Runs that were started by a given state machine execution. Use this API action to obtain Map Run ARNs, and then call `DescribeMapRun` to obtain more information, if needed.
  */
-export const listMapRuns: API.OperationMethod<
+export const listMapRuns: API.PaginatedOperationMethod<
   ListMapRunsInput,
   ListMapRunsOutput,
   ListMapRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMapRunsInput,
-  ) => stream.Stream<
-    ListMapRunsOutput,
-    ListMapRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMapRunsInput,
-  ) => stream.Stream<
-    MapRunListItem,
-    ListMapRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MapRunListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMapRunsInput,
   output: ListMapRunsOutput,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
@@ -3760,27 +3703,13 @@ export type ListStateMachinesError = InvalidToken | CommonErrors;
  *
  * This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.
  */
-export const listStateMachines: API.OperationMethod<
+export const listStateMachines: API.PaginatedOperationMethod<
   ListStateMachinesInput,
   ListStateMachinesOutput,
   ListStateMachinesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStateMachinesInput,
-  ) => stream.Stream<
-    ListStateMachinesOutput,
-    ListStateMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStateMachinesInput,
-  ) => stream.Stream<
-    StateMachineListItem,
-    ListStateMachinesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StateMachineListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStateMachinesInput,
   output: ListStateMachinesOutput,
   errors: [InvalidToken],

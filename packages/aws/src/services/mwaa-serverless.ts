@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1268,27 +1267,13 @@ export type ListTaskInstancesError =
 /**
  * Lists all task instances for a specific workflow run, with optional pagination support.
  */
-export const listTaskInstances: API.OperationMethod<
+export const listTaskInstances: API.PaginatedOperationMethod<
   ListTaskInstancesRequest,
   ListTaskInstancesResponse,
   ListTaskInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskInstancesRequest,
-  ) => stream.Stream<
-    ListTaskInstancesResponse,
-    ListTaskInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskInstancesRequest,
-  ) => stream.Stream<
-    TaskInstanceSummary,
-    ListTaskInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TaskInstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskInstancesRequest,
   output: ListTaskInstancesResponse,
   errors: [
@@ -1319,27 +1304,13 @@ export type ListWorkflowRunsError =
 /**
  * Lists all runs for a specified workflow, with optional pagination and filtering support.
  */
-export const listWorkflowRuns: API.OperationMethod<
+export const listWorkflowRuns: API.PaginatedOperationMethod<
   ListWorkflowRunsRequest,
   ListWorkflowRunsResponse,
   ListWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowRunsRequest,
-  ) => stream.Stream<
-    ListWorkflowRunsResponse,
-    ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowRunsRequest,
-  ) => stream.Stream<
-    WorkflowRunSummary,
-    ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,
   output: ListWorkflowRunsResponse,
   errors: [
@@ -1370,27 +1341,13 @@ export type ListWorkflowsError =
 /**
  * Lists all workflows in your account, with optional pagination support. This operation returns summary information for workflows, showing only the most recently created version of each workflow. Amazon Managed Workflows for Apache Airflow Serverless maintains workflow metadata in a highly available, distributed storage system that enables efficient querying and filtering. The service implements proper access controls to ensure you can only view workflows that you have permissions to access, supporting both individual and team-based workflow management scenarios.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    WorkflowSummary,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [
@@ -1421,27 +1378,13 @@ export type ListWorkflowVersionsError =
 /**
  * Lists all versions of a specified workflow, with optional pagination support.
  */
-export const listWorkflowVersions: API.OperationMethod<
+export const listWorkflowVersions: API.PaginatedOperationMethod<
   ListWorkflowVersionsRequest,
   ListWorkflowVersionsResponse,
   ListWorkflowVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowVersionsRequest,
-  ) => stream.Stream<
-    ListWorkflowVersionsResponse,
-    ListWorkflowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowVersionsRequest,
-  ) => stream.Stream<
-    WorkflowVersionSummary,
-    ListWorkflowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowVersionsRequest,
   output: ListWorkflowVersionsResponse,
   errors: [

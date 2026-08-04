@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -31209,27 +31208,13 @@ export type EvaluateDataTableValuesError =
  * not included in the operation name since it does not meet all the criteria for a batch operation as specified in
  * Batch Operations: Amazon Web Services API Standards.
  */
-export const evaluateDataTableValues: API.OperationMethod<
+export const evaluateDataTableValues: API.PaginatedOperationMethod<
   EvaluateDataTableValuesRequest,
   EvaluateDataTableValuesResponse,
   EvaluateDataTableValuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: EvaluateDataTableValuesRequest,
-  ) => stream.Stream<
-    EvaluateDataTableValuesResponse,
-    EvaluateDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: EvaluateDataTableValuesRequest,
-  ) => stream.Stream<
-    unknown,
-    EvaluateDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: EvaluateDataTableValuesRequest,
   output: EvaluateDataTableValuesResponse,
   errors: [
@@ -31392,27 +31377,13 @@ export type GetCurrentMetricDataError =
  *
  * - Add filters to reduce the amount of data returned
  */
-export const getCurrentMetricData: API.OperationMethod<
+export const getCurrentMetricData: API.PaginatedOperationMethod<
   GetCurrentMetricDataRequest,
   GetCurrentMetricDataResponse,
   GetCurrentMetricDataError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCurrentMetricDataRequest,
-  ) => stream.Stream<
-    GetCurrentMetricDataResponse,
-    GetCurrentMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCurrentMetricDataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCurrentMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCurrentMetricDataRequest,
   output: GetCurrentMetricDataResponse,
   errors: [
@@ -31442,27 +31413,13 @@ export type GetCurrentUserDataError =
 /**
  * Gets the real-time active user data from the specified Connect Customer instance.
  */
-export const getCurrentUserData: API.OperationMethod<
+export const getCurrentUserData: API.PaginatedOperationMethod<
   GetCurrentUserDataRequest,
   GetCurrentUserDataResponse,
   GetCurrentUserDataError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCurrentUserDataRequest,
-  ) => stream.Stream<
-    GetCurrentUserDataResponse,
-    GetCurrentUserDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCurrentUserDataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCurrentUserDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCurrentUserDataRequest,
   output: GetCurrentUserDataResponse,
   errors: [
@@ -31634,27 +31591,13 @@ export type GetMetricDataError =
  * For example, you can track the number of incoming contacts for the last 7 days, with data split by day, to see how
  * contact volume changed per day of the week.
  */
-export const getMetricData: API.OperationMethod<
+export const getMetricData: API.PaginatedOperationMethod<
   GetMetricDataRequest,
   GetMetricDataResponse,
   GetMetricDataError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMetricDataRequest,
-  ) => stream.Stream<
-    GetMetricDataResponse,
-    GetMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMetricDataRequest,
-  ) => stream.Stream<
-    unknown,
-    GetMetricDataError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMetricDataRequest,
   output: GetMetricDataResponse,
   errors: [
@@ -31715,27 +31658,13 @@ export type GetMetricDataV2Error =
  *
  * - Add filters to reduce the amount of data returned
  */
-export const getMetricDataV2: API.OperationMethod<
+export const getMetricDataV2: API.PaginatedOperationMethod<
   GetMetricDataV2Request,
   GetMetricDataV2Response,
   GetMetricDataV2Error,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMetricDataV2Request,
-  ) => stream.Stream<
-    GetMetricDataV2Response,
-    GetMetricDataV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMetricDataV2Request,
-  ) => stream.Stream<
-    unknown,
-    GetMetricDataV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMetricDataV2Request,
   output: GetMetricDataV2Response,
   errors: [
@@ -31965,27 +31894,13 @@ export type ListAgentStatusesError =
 /**
  * Lists agent statuses.
  */
-export const listAgentStatuses: API.OperationMethod<
+export const listAgentStatuses: API.PaginatedOperationMethod<
   ListAgentStatusRequest,
   ListAgentStatusResponse,
   ListAgentStatusesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentStatusRequest,
-  ) => stream.Stream<
-    ListAgentStatusResponse,
-    ListAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentStatusRequest,
-  ) => stream.Stream<
-    AgentStatusSummary,
-    ListAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  AgentStatusSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentStatusRequest,
   output: ListAgentStatusResponse,
   errors: [
@@ -32078,27 +31993,13 @@ export type ListApprovedOriginsError =
  *
  * Returns a paginated list of all approved origins associated with the instance.
  */
-export const listApprovedOrigins: API.OperationMethod<
+export const listApprovedOrigins: API.PaginatedOperationMethod<
   ListApprovedOriginsRequest,
   ListApprovedOriginsResponse,
   ListApprovedOriginsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApprovedOriginsRequest,
-  ) => stream.Stream<
-    ListApprovedOriginsResponse,
-    ListApprovedOriginsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApprovedOriginsRequest,
-  ) => stream.Stream<
-    Origin,
-    ListApprovedOriginsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Origin
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApprovedOriginsRequest,
   output: ListApprovedOriginsResponse,
   errors: [
@@ -32161,27 +32062,13 @@ export type ListAttachedFilesConfigurationsError =
  *
  * This API returns effective configurations (custom overrides or defaults) for each attachment scope. If no custom configuration exists for a scope, the default configuration values are returned.
  */
-export const listAttachedFilesConfigurations: API.OperationMethod<
+export const listAttachedFilesConfigurations: API.PaginatedOperationMethod<
   ListAttachedFilesConfigurationsRequest,
   ListAttachedFilesConfigurationsResponse,
   ListAttachedFilesConfigurationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedFilesConfigurationsRequest,
-  ) => stream.Stream<
-    ListAttachedFilesConfigurationsResponse,
-    ListAttachedFilesConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedFilesConfigurationsRequest,
-  ) => stream.Stream<
-    AttachedFilesConfigurationSummary,
-    ListAttachedFilesConfigurationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  AttachedFilesConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedFilesConfigurationsRequest,
   output: ListAttachedFilesConfigurationsResponse,
   errors: [
@@ -32216,27 +32103,13 @@ export type ListAuthenticationProfilesError =
  * Provides summary information about the authentication profiles in a specified Connect Customer
  * instance.
  */
-export const listAuthenticationProfiles: API.OperationMethod<
+export const listAuthenticationProfiles: API.PaginatedOperationMethod<
   ListAuthenticationProfilesRequest,
   ListAuthenticationProfilesResponse,
   ListAuthenticationProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuthenticationProfilesRequest,
-  ) => stream.Stream<
-    ListAuthenticationProfilesResponse,
-    ListAuthenticationProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuthenticationProfilesRequest,
-  ) => stream.Stream<
-    AuthenticationProfileSummary,
-    ListAuthenticationProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  AuthenticationProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuthenticationProfilesRequest,
   output: ListAuthenticationProfilesResponse,
   errors: [
@@ -32270,27 +32143,13 @@ export type ListBotsError =
  * currently associated with the instance. Use this API to return both Amazon Lex V1 and V2
  * bots.
  */
-export const listBots: API.OperationMethod<
+export const listBots: API.PaginatedOperationMethod<
   ListBotsRequest,
   ListBotsResponse,
   ListBotsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    ListBotsResponse,
-    ListBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBotsRequest,
-  ) => stream.Stream<
-    LexBotConfig,
-    ListBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  LexBotConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -32323,27 +32182,13 @@ export type ListChildHoursOfOperationsError =
  * For more information about child hours of operations, see Link overrides from different hours of operation in the
  * * Administrator Guide*.
  */
-export const listChildHoursOfOperations: API.OperationMethod<
+export const listChildHoursOfOperations: API.PaginatedOperationMethod<
   ListChildHoursOfOperationsRequest,
   ListChildHoursOfOperationsResponse,
   ListChildHoursOfOperationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChildHoursOfOperationsRequest,
-  ) => stream.Stream<
-    ListChildHoursOfOperationsResponse,
-    ListChildHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChildHoursOfOperationsRequest,
-  ) => stream.Stream<
-    HoursOfOperationsIdentifier,
-    ListChildHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HoursOfOperationsIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildHoursOfOperationsRequest,
   output: ListChildHoursOfOperationsResponse,
   errors: [
@@ -32373,27 +32218,13 @@ export type ListContactEvaluationsError =
 /**
  * Lists contact evaluations in the specified Connect Customer instance.
  */
-export const listContactEvaluations: API.OperationMethod<
+export const listContactEvaluations: API.PaginatedOperationMethod<
   ListContactEvaluationsRequest,
   ListContactEvaluationsResponse,
   ListContactEvaluationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactEvaluationsRequest,
-  ) => stream.Stream<
-    ListContactEvaluationsResponse,
-    ListContactEvaluationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactEvaluationsRequest,
-  ) => stream.Stream<
-    EvaluationSummary,
-    ListContactEvaluationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  EvaluationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactEvaluationsRequest,
   output: ListContactEvaluationsResponse,
   errors: [
@@ -32424,27 +32255,13 @@ export type ListContactFlowModuleAliasesError =
  * Lists all aliases associated with a contact flow module, showing their current version mappings and
  * metadata.
  */
-export const listContactFlowModuleAliases: API.OperationMethod<
+export const listContactFlowModuleAliases: API.PaginatedOperationMethod<
   ListContactFlowModuleAliasesRequest,
   ListContactFlowModuleAliasesResponse,
   ListContactFlowModuleAliasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowModuleAliasesRequest,
-  ) => stream.Stream<
-    ListContactFlowModuleAliasesResponse,
-    ListContactFlowModuleAliasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowModuleAliasesRequest,
-  ) => stream.Stream<
-    ContactFlowModuleAliasSummary,
-    ListContactFlowModuleAliasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlowModuleAliasSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactFlowModuleAliasesRequest,
   output: ListContactFlowModuleAliasesResponse,
   errors: [
@@ -32477,27 +32294,13 @@ export type ListContactFlowModulesError =
 /**
  * Provides information about the flow modules for the specified Connect Customer instance.
  */
-export const listContactFlowModules: API.OperationMethod<
+export const listContactFlowModules: API.PaginatedOperationMethod<
   ListContactFlowModulesRequest,
   ListContactFlowModulesResponse,
   ListContactFlowModulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowModulesRequest,
-  ) => stream.Stream<
-    ListContactFlowModulesResponse,
-    ListContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowModulesRequest,
-  ) => stream.Stream<
-    ContactFlowModuleSummary,
-    ListContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlowModuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactFlowModulesRequest,
   output: ListContactFlowModulesResponse,
   errors: [
@@ -32530,27 +32333,13 @@ export type ListContactFlowModuleVersionsError =
 /**
  * Retrieves a paginated list of all versions for a specific contact flow module.
  */
-export const listContactFlowModuleVersions: API.OperationMethod<
+export const listContactFlowModuleVersions: API.PaginatedOperationMethod<
   ListContactFlowModuleVersionsRequest,
   ListContactFlowModuleVersionsResponse,
   ListContactFlowModuleVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowModuleVersionsRequest,
-  ) => stream.Stream<
-    ListContactFlowModuleVersionsResponse,
-    ListContactFlowModuleVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowModuleVersionsRequest,
-  ) => stream.Stream<
-    ContactFlowModuleVersionSummary,
-    ListContactFlowModuleVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlowModuleVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactFlowModuleVersionsRequest,
   output: ListContactFlowModuleVersionsResponse,
   errors: [
@@ -32588,27 +32377,13 @@ export type ListContactFlowsError =
  * For more information about flows, see Flows in the Connect Customer
  * Administrator Guide.
  */
-export const listContactFlows: API.OperationMethod<
+export const listContactFlows: API.PaginatedOperationMethod<
   ListContactFlowsRequest,
   ListContactFlowsResponse,
   ListContactFlowsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowsRequest,
-  ) => stream.Stream<
-    ListContactFlowsResponse,
-    ListContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowsRequest,
-  ) => stream.Stream<
-    ContactFlowSummary,
-    ListContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactFlowsRequest,
   output: ListContactFlowsResponse,
   errors: [
@@ -32640,27 +32415,13 @@ export type ListContactFlowVersionsError =
 /**
  * Returns all the available versions for the specified Connect Customer instance and flow identifier.
  */
-export const listContactFlowVersions: API.OperationMethod<
+export const listContactFlowVersions: API.PaginatedOperationMethod<
   ListContactFlowVersionsRequest,
   ListContactFlowVersionsResponse,
   ListContactFlowVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactFlowVersionsRequest,
-  ) => stream.Stream<
-    ListContactFlowVersionsResponse,
-    ListContactFlowVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactFlowVersionsRequest,
-  ) => stream.Stream<
-    ContactFlowVersionSummary,
-    ListContactFlowVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlowVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactFlowVersionsRequest,
   output: ListContactFlowVersionsResponse,
   errors: [
@@ -32696,27 +32457,13 @@ export type ListContactReferencesError =
  * *References* are links to documents that are related to a contact, such as emails, attachments,
  * or URLs.
  */
-export const listContactReferences: API.OperationMethod<
+export const listContactReferences: API.PaginatedOperationMethod<
   ListContactReferencesRequest,
   ListContactReferencesResponse,
   ListContactReferencesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactReferencesRequest,
-  ) => stream.Stream<
-    ListContactReferencesResponse,
-    ListContactReferencesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactReferencesRequest,
-  ) => stream.Stream<
-    ReferenceSummary,
-    ListContactReferencesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ReferenceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactReferencesRequest,
   output: ListContactReferencesResponse,
   errors: [
@@ -32749,27 +32496,13 @@ export type ListDataTableAttributesError =
  * Customers can request an increase by using Amazon Web Services Service Quotas. The response can be filtered by specific attribute IDs
  * for CloudFormation integration.
  */
-export const listDataTableAttributes: API.OperationMethod<
+export const listDataTableAttributes: API.PaginatedOperationMethod<
   ListDataTableAttributesRequest,
   ListDataTableAttributesResponse,
   ListDataTableAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTableAttributesRequest,
-  ) => stream.Stream<
-    ListDataTableAttributesResponse,
-    ListDataTableAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTableAttributesRequest,
-  ) => stream.Stream<
-    DataTableAttribute,
-    ListDataTableAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  DataTableAttribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataTableAttributesRequest,
   output: ListDataTableAttributesResponse,
   errors: [
@@ -32803,27 +32536,13 @@ export type ListDataTablePrimaryValuesError =
  * Lists all primary value combinations for a given data table. Returns the unique combinations of primary
  * attribute values that identify records in the table. Up to 100 records are returned per request.
  */
-export const listDataTablePrimaryValues: API.OperationMethod<
+export const listDataTablePrimaryValues: API.PaginatedOperationMethod<
   ListDataTablePrimaryValuesRequest,
   ListDataTablePrimaryValuesResponse,
   ListDataTablePrimaryValuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTablePrimaryValuesRequest,
-  ) => stream.Stream<
-    ListDataTablePrimaryValuesResponse,
-    ListDataTablePrimaryValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTablePrimaryValuesRequest,
-  ) => stream.Stream<
-    RecordPrimaryValue,
-    ListDataTablePrimaryValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  RecordPrimaryValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataTablePrimaryValuesRequest,
   output: ListDataTablePrimaryValuesResponse,
   errors: [
@@ -32857,27 +32576,13 @@ export type ListDataTablesError =
  * Lists all data tables for the specified Amazon Connect instance. Returns summary information for each table
  * including basic metadata and modification details.
  */
-export const listDataTables: API.OperationMethod<
+export const listDataTables: API.PaginatedOperationMethod<
   ListDataTablesRequest,
   ListDataTablesResponse,
   ListDataTablesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTablesRequest,
-  ) => stream.Stream<
-    ListDataTablesResponse,
-    ListDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTablesRequest,
-  ) => stream.Stream<
-    DataTableSummary,
-    ListDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  DataTableSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataTablesRequest,
   output: ListDataTablesResponse,
   errors: [
@@ -32911,27 +32616,13 @@ export type ListDataTableValuesError =
  * Lists values stored in a data table with optional filtering by record IDs or primary attribute values. Returns
  * the raw stored values along with metadata such as lock versions and modification timestamps.
  */
-export const listDataTableValues: API.OperationMethod<
+export const listDataTableValues: API.PaginatedOperationMethod<
   ListDataTableValuesRequest,
   ListDataTableValuesResponse,
   ListDataTableValuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataTableValuesRequest,
-  ) => stream.Stream<
-    ListDataTableValuesResponse,
-    ListDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataTableValuesRequest,
-  ) => stream.Stream<
-    DataTableValueSummary,
-    ListDataTableValuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  DataTableValueSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataTableValuesRequest,
   output: ListDataTableValuesResponse,
   errors: [
@@ -32962,27 +32653,13 @@ export type ListDefaultVocabulariesError =
 /**
  * Lists the default vocabularies for the specified Connect Customer instance.
  */
-export const listDefaultVocabularies: API.OperationMethod<
+export const listDefaultVocabularies: API.PaginatedOperationMethod<
   ListDefaultVocabulariesRequest,
   ListDefaultVocabulariesResponse,
   ListDefaultVocabulariesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDefaultVocabulariesRequest,
-  ) => stream.Stream<
-    ListDefaultVocabulariesResponse,
-    ListDefaultVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDefaultVocabulariesRequest,
-  ) => stream.Stream<
-    DefaultVocabulary,
-    ListDefaultVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  DefaultVocabulary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDefaultVocabulariesRequest,
   output: ListDefaultVocabulariesResponse,
   errors: [
@@ -33012,27 +32689,13 @@ export type ListEntitySecurityProfilesError =
 /**
  * Lists all security profiles attached to a Q in Connect AIAgent Entity in an Amazon Connect instance.
  */
-export const listEntitySecurityProfiles: API.OperationMethod<
+export const listEntitySecurityProfiles: API.PaginatedOperationMethod<
   ListEntitySecurityProfilesRequest,
   ListEntitySecurityProfilesResponse,
   ListEntitySecurityProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitySecurityProfilesRequest,
-  ) => stream.Stream<
-    ListEntitySecurityProfilesResponse,
-    ListEntitySecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitySecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileItem,
-    ListEntitySecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityProfileItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitySecurityProfilesRequest,
   output: ListEntitySecurityProfilesResponse,
   errors: [
@@ -33062,27 +32725,13 @@ export type ListEvaluationFormsError =
 /**
  * Lists evaluation forms in the specified Connect Customer instance.
  */
-export const listEvaluationForms: API.OperationMethod<
+export const listEvaluationForms: API.PaginatedOperationMethod<
   ListEvaluationFormsRequest,
   ListEvaluationFormsResponse,
   ListEvaluationFormsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationFormsRequest,
-  ) => stream.Stream<
-    ListEvaluationFormsResponse,
-    ListEvaluationFormsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluationFormsRequest,
-  ) => stream.Stream<
-    EvaluationFormSummary,
-    ListEvaluationFormsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  EvaluationFormSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationFormsRequest,
   output: ListEvaluationFormsResponse,
   errors: [
@@ -33111,27 +32760,13 @@ export type ListEvaluationFormVersionsError =
 /**
  * Lists versions of an evaluation form in the specified Connect Customer instance.
  */
-export const listEvaluationFormVersions: API.OperationMethod<
+export const listEvaluationFormVersions: API.PaginatedOperationMethod<
   ListEvaluationFormVersionsRequest,
   ListEvaluationFormVersionsResponse,
   ListEvaluationFormVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationFormVersionsRequest,
-  ) => stream.Stream<
-    ListEvaluationFormVersionsResponse,
-    ListEvaluationFormVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluationFormVersionsRequest,
-  ) => stream.Stream<
-    EvaluationFormVersionSummary,
-    ListEvaluationFormVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  EvaluationFormVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationFormVersionsRequest,
   output: ListEvaluationFormVersionsResponse,
   errors: [
@@ -33162,27 +32797,13 @@ export type ListFlowAssociationsError =
 /**
  * List the flow association based on the filters.
  */
-export const listFlowAssociations: API.OperationMethod<
+export const listFlowAssociations: API.PaginatedOperationMethod<
   ListFlowAssociationsRequest,
   ListFlowAssociationsResponse,
   ListFlowAssociationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowAssociationsRequest,
-  ) => stream.Stream<
-    ListFlowAssociationsResponse,
-    ListFlowAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowAssociationsRequest,
-  ) => stream.Stream<
-    FlowAssociationSummary,
-    ListFlowAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  FlowAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowAssociationsRequest,
   output: ListFlowAssociationsResponse,
   errors: [
@@ -33214,27 +32835,13 @@ export type ListHoursOfOperationOverridesError =
 /**
  * List the hours of operation overrides.
  */
-export const listHoursOfOperationOverrides: API.OperationMethod<
+export const listHoursOfOperationOverrides: API.PaginatedOperationMethod<
   ListHoursOfOperationOverridesRequest,
   ListHoursOfOperationOverridesResponse,
   ListHoursOfOperationOverridesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    ListHoursOfOperationOverridesResponse,
-    ListHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    HoursOfOperationOverride,
-    ListHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HoursOfOperationOverride
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHoursOfOperationOverridesRequest,
   output: ListHoursOfOperationOverridesResponse,
   errors: [
@@ -33268,27 +32875,13 @@ export type ListHoursOfOperationsError =
  * For more information about hours of operation, see Set the Hours of Operation for a Queue in the
  * *Connect Customer Administrator Guide*.
  */
-export const listHoursOfOperations: API.OperationMethod<
+export const listHoursOfOperations: API.PaginatedOperationMethod<
   ListHoursOfOperationsRequest,
   ListHoursOfOperationsResponse,
   ListHoursOfOperationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHoursOfOperationsRequest,
-  ) => stream.Stream<
-    ListHoursOfOperationsResponse,
-    ListHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHoursOfOperationsRequest,
-  ) => stream.Stream<
-    HoursOfOperationSummary,
-    ListHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HoursOfOperationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHoursOfOperationsRequest,
   output: ListHoursOfOperationsResponse,
   errors: [
@@ -33321,27 +32914,13 @@ export type ListInstanceAttributesError =
  *
  * Returns a paginated list of all attribute types for the given instance.
  */
-export const listInstanceAttributes: API.OperationMethod<
+export const listInstanceAttributes: API.PaginatedOperationMethod<
   ListInstanceAttributesRequest,
   ListInstanceAttributesResponse,
   ListInstanceAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceAttributesRequest,
-  ) => stream.Stream<
-    ListInstanceAttributesResponse,
-    ListInstanceAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceAttributesRequest,
-  ) => stream.Stream<
-    Attribute,
-    ListInstanceAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Attribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceAttributesRequest,
   output: ListInstanceAttributesResponse,
   errors: [
@@ -33373,27 +32952,13 @@ export type ListInstancesError =
  * that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance
  * API was invoked.
  */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    InstanceSummary,
-    ListInstancesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  InstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InternalServiceException, InvalidRequestException],
@@ -33420,27 +32985,13 @@ export type ListInstanceStorageConfigsError =
  *
  * Returns a paginated list of storage configs for the identified instance and resource type.
  */
-export const listInstanceStorageConfigs: API.OperationMethod<
+export const listInstanceStorageConfigs: API.PaginatedOperationMethod<
   ListInstanceStorageConfigsRequest,
   ListInstanceStorageConfigsResponse,
   ListInstanceStorageConfigsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceStorageConfigsRequest,
-  ) => stream.Stream<
-    ListInstanceStorageConfigsResponse,
-    ListInstanceStorageConfigsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceStorageConfigsRequest,
-  ) => stream.Stream<
-    InstanceStorageConfig,
-    ListInstanceStorageConfigsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  InstanceStorageConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceStorageConfigsRequest,
   output: ListInstanceStorageConfigsResponse,
   errors: [
@@ -33470,27 +33021,13 @@ export type ListIntegrationAssociationsError =
 /**
  * Provides summary information about the Amazon Web Services resource associations for the specified Connect Customer instance.
  */
-export const listIntegrationAssociations: API.OperationMethod<
+export const listIntegrationAssociations: API.PaginatedOperationMethod<
   ListIntegrationAssociationsRequest,
   ListIntegrationAssociationsResponse,
   ListIntegrationAssociationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    ListIntegrationAssociationsResponse,
-    ListIntegrationAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    IntegrationAssociationSummary,
-    ListIntegrationAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  IntegrationAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIntegrationAssociationsRequest,
   output: ListIntegrationAssociationsResponse,
   errors: [
@@ -33523,27 +33060,13 @@ export type ListLambdaFunctionsError =
  * Returns a paginated list of all Lambda functions that display in the dropdown options in the relevant flow
  * blocks.
  */
-export const listLambdaFunctions: API.OperationMethod<
+export const listLambdaFunctions: API.PaginatedOperationMethod<
   ListLambdaFunctionsRequest,
   ListLambdaFunctionsResponse,
   ListLambdaFunctionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLambdaFunctionsRequest,
-  ) => stream.Stream<
-    ListLambdaFunctionsResponse,
-    ListLambdaFunctionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLambdaFunctionsRequest,
-  ) => stream.Stream<
-    FunctionArn,
-    ListLambdaFunctionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  FunctionArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLambdaFunctionsRequest,
   output: ListLambdaFunctionsResponse,
   errors: [
@@ -33577,27 +33100,13 @@ export type ListLexBotsError =
  * Returns a paginated list of all the Amazon Lex V1 bots currently associated with the instance. To return
  * both Amazon Lex V1 and V2 bots, use the ListBots API.
  */
-export const listLexBots: API.OperationMethod<
+export const listLexBots: API.PaginatedOperationMethod<
   ListLexBotsRequest,
   ListLexBotsResponse,
   ListLexBotsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLexBotsRequest,
-  ) => stream.Stream<
-    ListLexBotsResponse,
-    ListLexBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLexBotsRequest,
-  ) => stream.Stream<
-    LexBot,
-    ListLexBotsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  LexBot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLexBotsRequest,
   output: ListLexBotsResponse,
   errors: [
@@ -33671,27 +33180,13 @@ export type ListPhoneNumbersError =
  * `ResourceNotFoundException`. Instead, use the ListPhoneNumbersV2 API. It returns the new
  * phone number ARN that can be used to tag phone number resources.
  */
-export const listPhoneNumbers: API.OperationMethod<
+export const listPhoneNumbers: API.PaginatedOperationMethod<
   ListPhoneNumbersRequest,
   ListPhoneNumbersResponse,
   ListPhoneNumbersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    ListPhoneNumbersResponse,
-    ListPhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersRequest,
-  ) => stream.Stream<
-    PhoneNumberSummary,
-    ListPhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  PhoneNumberSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersRequest,
   output: ListPhoneNumbersResponse,
   errors: [
@@ -33732,27 +33227,13 @@ export type ListPhoneNumbersV2Error =
  * - When given a traffic distribution group ARN `ListPhoneNumbersV2` returns only the phone numbers claimed to the
  * traffic distribution group.
  */
-export const listPhoneNumbersV2: API.OperationMethod<
+export const listPhoneNumbersV2: API.PaginatedOperationMethod<
   ListPhoneNumbersV2Request,
   ListPhoneNumbersV2Response,
   ListPhoneNumbersV2Error,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhoneNumbersV2Request,
-  ) => stream.Stream<
-    ListPhoneNumbersV2Response,
-    ListPhoneNumbersV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPhoneNumbersV2Request,
-  ) => stream.Stream<
-    ListPhoneNumbersSummary,
-    ListPhoneNumbersV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ListPhoneNumbersSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersV2Request,
   output: ListPhoneNumbersV2Response,
   errors: [
@@ -33796,27 +33277,13 @@ export type ListPredefinedAttributesError =
  *
  * **Endpoints**: See Connect Customer endpoints and quotas.
  */
-export const listPredefinedAttributes: API.OperationMethod<
+export const listPredefinedAttributes: API.PaginatedOperationMethod<
   ListPredefinedAttributesRequest,
   ListPredefinedAttributesResponse,
   ListPredefinedAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPredefinedAttributesRequest,
-  ) => stream.Stream<
-    ListPredefinedAttributesResponse,
-    ListPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPredefinedAttributesRequest,
-  ) => stream.Stream<
-    PredefinedAttributeSummary,
-    ListPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  PredefinedAttributeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPredefinedAttributesRequest,
   output: ListPredefinedAttributesResponse,
   errors: [
@@ -33847,27 +33314,13 @@ export type ListPromptsError =
 /**
  * Provides information about the prompts for the specified Connect Customer instance.
  */
-export const listPrompts: API.OperationMethod<
+export const listPrompts: API.PaginatedOperationMethod<
   ListPromptsRequest,
   ListPromptsResponse,
   ListPromptsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPromptsRequest,
-  ) => stream.Stream<
-    ListPromptsResponse,
-    ListPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPromptsRequest,
-  ) => stream.Stream<
-    PromptSummary,
-    ListPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  PromptSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromptsRequest,
   output: ListPromptsResponse,
   errors: [
@@ -33940,27 +33393,13 @@ export type ListQueueQuickConnectsError =
 /**
  * Lists the quick connects associated with a queue.
  */
-export const listQueueQuickConnects: API.OperationMethod<
+export const listQueueQuickConnects: API.PaginatedOperationMethod<
   ListQueueQuickConnectsRequest,
   ListQueueQuickConnectsResponse,
   ListQueueQuickConnectsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueueQuickConnectsRequest,
-  ) => stream.Stream<
-    ListQueueQuickConnectsResponse,
-    ListQueueQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueueQuickConnectsRequest,
-  ) => stream.Stream<
-    QuickConnectSummary,
-    ListQueueQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  QuickConnectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueueQuickConnectsRequest,
   output: ListQueueQuickConnectsResponse,
   errors: [
@@ -33998,27 +33437,13 @@ export type ListQueuesError =
  * For more information about queues, see Queues: Standard and Agent in the
  * *Connect Customer Administrator Guide*.
  */
-export const listQueues: API.OperationMethod<
+export const listQueues: API.PaginatedOperationMethod<
   ListQueuesRequest,
   ListQueuesResponse,
   ListQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    QueueSummary,
-    ListQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  QueueSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [
@@ -34049,27 +33474,13 @@ export type ListQuickConnectsError =
 /**
  * Provides information about the quick connects for the specified Connect Customer instance.
  */
-export const listQuickConnects: API.OperationMethod<
+export const listQuickConnects: API.PaginatedOperationMethod<
   ListQuickConnectsRequest,
   ListQuickConnectsResponse,
   ListQuickConnectsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQuickConnectsRequest,
-  ) => stream.Stream<
-    ListQuickConnectsResponse,
-    ListQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQuickConnectsRequest,
-  ) => stream.Stream<
-    QuickConnectSummary,
-    ListQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  QuickConnectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQuickConnectsRequest,
   output: ListQuickConnectsResponse,
   errors: [
@@ -34105,27 +33516,13 @@ export type ListRealtimeContactAnalysisSegmentsV2Error =
  * This API does not support VOICE. If you attempt to use it for VOICE, an `InvalidRequestException`
  * occurs.
  */
-export const listRealtimeContactAnalysisSegmentsV2: API.OperationMethod<
+export const listRealtimeContactAnalysisSegmentsV2: API.PaginatedOperationMethod<
   ListRealtimeContactAnalysisSegmentsV2Request,
   ListRealtimeContactAnalysisSegmentsV2Response,
   ListRealtimeContactAnalysisSegmentsV2Error,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRealtimeContactAnalysisSegmentsV2Request,
-  ) => stream.Stream<
-    ListRealtimeContactAnalysisSegmentsV2Response,
-    ListRealtimeContactAnalysisSegmentsV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRealtimeContactAnalysisSegmentsV2Request,
-  ) => stream.Stream<
-    unknown,
-    ListRealtimeContactAnalysisSegmentsV2Error,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRealtimeContactAnalysisSegmentsV2Request,
   output: ListRealtimeContactAnalysisSegmentsV2Response,
   errors: [
@@ -34173,27 +33570,13 @@ export type ListRoutingProfileManualAssignmentQueuesError =
  *
  * **Endpoints**: See Connect Customer endpoints and quotas.
  */
-export const listRoutingProfileManualAssignmentQueues: API.OperationMethod<
+export const listRoutingProfileManualAssignmentQueues: API.PaginatedOperationMethod<
   ListRoutingProfileManualAssignmentQueuesRequest,
   ListRoutingProfileManualAssignmentQueuesResponse,
   ListRoutingProfileManualAssignmentQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingProfileManualAssignmentQueuesRequest,
-  ) => stream.Stream<
-    ListRoutingProfileManualAssignmentQueuesResponse,
-    ListRoutingProfileManualAssignmentQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingProfileManualAssignmentQueuesRequest,
-  ) => stream.Stream<
-    RoutingProfileManualAssignmentQueueConfigSummary,
-    ListRoutingProfileManualAssignmentQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  RoutingProfileManualAssignmentQueueConfigSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingProfileManualAssignmentQueuesRequest,
   output: ListRoutingProfileManualAssignmentQueuesResponse,
   errors: [
@@ -34224,27 +33607,13 @@ export type ListRoutingProfileQueuesError =
 /**
  * Lists the queues associated with a routing profile.
  */
-export const listRoutingProfileQueues: API.OperationMethod<
+export const listRoutingProfileQueues: API.PaginatedOperationMethod<
   ListRoutingProfileQueuesRequest,
   ListRoutingProfileQueuesResponse,
   ListRoutingProfileQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingProfileQueuesRequest,
-  ) => stream.Stream<
-    ListRoutingProfileQueuesResponse,
-    ListRoutingProfileQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingProfileQueuesRequest,
-  ) => stream.Stream<
-    RoutingProfileQueueConfigSummary,
-    ListRoutingProfileQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  RoutingProfileQueueConfigSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingProfileQueuesRequest,
   output: ListRoutingProfileQueuesResponse,
   errors: [
@@ -34277,27 +33646,13 @@ export type ListRoutingProfilesError =
  *
  * For more information about routing profiles, see Routing Profiles and Create a Routing Profile in the *Connect Customer Administrator Guide*.
  */
-export const listRoutingProfiles: API.OperationMethod<
+export const listRoutingProfiles: API.PaginatedOperationMethod<
   ListRoutingProfilesRequest,
   ListRoutingProfilesResponse,
   ListRoutingProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingProfilesRequest,
-  ) => stream.Stream<
-    ListRoutingProfilesResponse,
-    ListRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingProfilesRequest,
-  ) => stream.Stream<
-    RoutingProfileSummary,
-    ListRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  RoutingProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingProfilesRequest,
   output: ListRoutingProfilesResponse,
   errors: [
@@ -34328,27 +33683,13 @@ export type ListRulesError =
 /**
  * List all rules for the specified Connect Customer instance.
  */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    RuleSummary,
-    ListRulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  RuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [
@@ -34381,27 +33722,13 @@ export type ListSecurityKeysError =
  *
  * Returns a paginated list of all security keys associated with the instance.
  */
-export const listSecurityKeys: API.OperationMethod<
+export const listSecurityKeys: API.PaginatedOperationMethod<
   ListSecurityKeysRequest,
   ListSecurityKeysResponse,
   ListSecurityKeysError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityKeysRequest,
-  ) => stream.Stream<
-    ListSecurityKeysResponse,
-    ListSecurityKeysError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityKeysRequest,
-  ) => stream.Stream<
-    SecurityKey,
-    ListSecurityKeysError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityKeysRequest,
   output: ListSecurityKeysResponse,
   errors: [
@@ -34432,27 +33759,13 @@ export type ListSecurityProfileApplicationsError =
 /**
  * Returns a list of third-party applications or MCP Servers in a specific security profile.
  */
-export const listSecurityProfileApplications: API.OperationMethod<
+export const listSecurityProfileApplications: API.PaginatedOperationMethod<
   ListSecurityProfileApplicationsRequest,
   ListSecurityProfileApplicationsResponse,
   ListSecurityProfileApplicationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfileApplicationsRequest,
-  ) => stream.Stream<
-    ListSecurityProfileApplicationsResponse,
-    ListSecurityProfileApplicationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfileApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListSecurityProfileApplicationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityProfileApplicationsRequest,
   output: ListSecurityProfileApplicationsResponse,
   errors: [
@@ -34483,27 +33796,13 @@ export type ListSecurityProfileFlowModulesError =
 /**
  * A list of Flow Modules an AI Agent can invoke as a tool
  */
-export const listSecurityProfileFlowModules: API.OperationMethod<
+export const listSecurityProfileFlowModules: API.PaginatedOperationMethod<
   ListSecurityProfileFlowModulesRequest,
   ListSecurityProfileFlowModulesResponse,
   ListSecurityProfileFlowModulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfileFlowModulesRequest,
-  ) => stream.Stream<
-    ListSecurityProfileFlowModulesResponse,
-    ListSecurityProfileFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfileFlowModulesRequest,
-  ) => stream.Stream<
-    FlowModule,
-    ListSecurityProfileFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  FlowModule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityProfileFlowModulesRequest,
   output: ListSecurityProfileFlowModulesResponse,
   errors: [
@@ -34538,27 +33837,13 @@ export type ListSecurityProfilePermissionsError =
  * profile permissions, see List
  * of security profile permissions.
  */
-export const listSecurityProfilePermissions: API.OperationMethod<
+export const listSecurityProfilePermissions: API.PaginatedOperationMethod<
   ListSecurityProfilePermissionsRequest,
   ListSecurityProfilePermissionsResponse,
   ListSecurityProfilePermissionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfilePermissionsRequest,
-  ) => stream.Stream<
-    ListSecurityProfilePermissionsResponse,
-    ListSecurityProfilePermissionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfilePermissionsRequest,
-  ) => stream.Stream<
-    SecurityProfilePermission,
-    ListSecurityProfilePermissionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityProfilePermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityProfilePermissionsRequest,
   output: ListSecurityProfilePermissionsResponse,
   errors: [
@@ -34593,27 +33878,13 @@ export type ListSecurityProfilesError =
  * profile permissions, see List
  * of security profile permissions.
  */
-export const listSecurityProfiles: API.OperationMethod<
+export const listSecurityProfiles: API.PaginatedOperationMethod<
   ListSecurityProfilesRequest,
   ListSecurityProfilesResponse,
   ListSecurityProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityProfilesRequest,
-  ) => stream.Stream<
-    ListSecurityProfilesResponse,
-    ListSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileSummary,
-    ListSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityProfilesRequest,
   output: ListSecurityProfilesResponse,
   errors: [
@@ -34677,27 +33948,13 @@ export type ListTaskTemplatesError =
 /**
  * Lists task templates for the specified Connect Customer instance.
  */
-export const listTaskTemplates: API.OperationMethod<
+export const listTaskTemplates: API.PaginatedOperationMethod<
   ListTaskTemplatesRequest,
   ListTaskTemplatesResponse,
   ListTaskTemplatesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskTemplatesRequest,
-  ) => stream.Stream<
-    ListTaskTemplatesResponse,
-    ListTaskTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskTemplatesRequest,
-  ) => stream.Stream<
-    TaskTemplateMetadata,
-    ListTaskTemplatesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  TaskTemplateMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskTemplatesRequest,
   output: ListTaskTemplatesResponse,
   errors: [
@@ -34793,27 +34050,13 @@ export type ListTestCasesError =
 /**
  * Lists the test cases present in the specific Amazon Connect instance.
  */
-export const listTestCases: API.OperationMethod<
+export const listTestCases: API.PaginatedOperationMethod<
   ListTestCasesRequest,
   ListTestCasesResponse,
   ListTestCasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTestCasesRequest,
-  ) => stream.Stream<
-    ListTestCasesResponse,
-    ListTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTestCasesRequest,
-  ) => stream.Stream<
-    TestCaseSummary,
-    ListTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  TestCaseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTestCasesRequest,
   output: ListTestCasesResponse,
   errors: [
@@ -34844,27 +34087,13 @@ export type ListTrafficDistributionGroupsError =
 /**
  * Lists traffic distribution groups.
  */
-export const listTrafficDistributionGroups: API.OperationMethod<
+export const listTrafficDistributionGroups: API.PaginatedOperationMethod<
   ListTrafficDistributionGroupsRequest,
   ListTrafficDistributionGroupsResponse,
   ListTrafficDistributionGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrafficDistributionGroupsRequest,
-  ) => stream.Stream<
-    ListTrafficDistributionGroupsResponse,
-    ListTrafficDistributionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrafficDistributionGroupsRequest,
-  ) => stream.Stream<
-    TrafficDistributionGroupSummary,
-    ListTrafficDistributionGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  TrafficDistributionGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrafficDistributionGroupsRequest,
   output: ListTrafficDistributionGroupsResponse,
   errors: [
@@ -34894,27 +34123,13 @@ export type ListTrafficDistributionGroupUsersError =
 /**
  * Lists traffic distribution group users.
  */
-export const listTrafficDistributionGroupUsers: API.OperationMethod<
+export const listTrafficDistributionGroupUsers: API.PaginatedOperationMethod<
   ListTrafficDistributionGroupUsersRequest,
   ListTrafficDistributionGroupUsersResponse,
   ListTrafficDistributionGroupUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrafficDistributionGroupUsersRequest,
-  ) => stream.Stream<
-    ListTrafficDistributionGroupUsersResponse,
-    ListTrafficDistributionGroupUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrafficDistributionGroupUsersRequest,
-  ) => stream.Stream<
-    TrafficDistributionGroupUserSummary,
-    ListTrafficDistributionGroupUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  TrafficDistributionGroupUserSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrafficDistributionGroupUsersRequest,
   output: ListTrafficDistributionGroupUsersResponse,
   errors: [
@@ -34944,27 +34159,13 @@ export type ListUseCasesError =
 /**
  * Lists the use cases for the integration association.
  */
-export const listUseCases: API.OperationMethod<
+export const listUseCases: API.PaginatedOperationMethod<
   ListUseCasesRequest,
   ListUseCasesResponse,
   ListUseCasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUseCasesRequest,
-  ) => stream.Stream<
-    ListUseCasesResponse,
-    ListUseCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUseCasesRequest,
-  ) => stream.Stream<
-    UseCase,
-    ListUseCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  UseCase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUseCasesRequest,
   output: ListUseCasesResponse,
   errors: [
@@ -34996,27 +34197,13 @@ export type ListUserHierarchyGroupsError =
  *
  * For more information about agent hierarchies, see Set Up Agent Hierarchies in the *Connect Customer Administrator Guide*.
  */
-export const listUserHierarchyGroups: API.OperationMethod<
+export const listUserHierarchyGroups: API.PaginatedOperationMethod<
   ListUserHierarchyGroupsRequest,
   ListUserHierarchyGroupsResponse,
   ListUserHierarchyGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    ListUserHierarchyGroupsResponse,
-    ListUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    HierarchyGroupSummary,
-    ListUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HierarchyGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserHierarchyGroupsRequest,
   output: ListUserHierarchyGroupsResponse,
   errors: [
@@ -35079,27 +34266,13 @@ export type ListUserProficienciesError =
 /**
  * Lists proficiencies associated with a user.
  */
-export const listUserProficiencies: API.OperationMethod<
+export const listUserProficiencies: API.PaginatedOperationMethod<
   ListUserProficienciesRequest,
   ListUserProficienciesResponse,
   ListUserProficienciesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserProficienciesRequest,
-  ) => stream.Stream<
-    ListUserProficienciesResponse,
-    ListUserProficienciesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserProficienciesRequest,
-  ) => stream.Stream<
-    UserProficiency,
-    ListUserProficienciesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  UserProficiency
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserProficienciesRequest,
   output: ListUserProficienciesResponse,
   errors: [
@@ -35130,27 +34303,13 @@ export type ListUsersError =
 /**
  * Provides summary information about the users for the specified Connect Customer instance.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    UserSummary,
-    ListUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  UserSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -35184,27 +34343,13 @@ export type ListViewsError =
  *
  * Results are sorted primarily by type, and secondarily by name.
  */
-export const listViews: API.OperationMethod<
+export const listViews: API.PaginatedOperationMethod<
   ListViewsRequest,
   ListViewsResponse,
   ListViewsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViewsRequest,
-  ) => stream.Stream<
-    ListViewsResponse,
-    ListViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViewsRequest,
-  ) => stream.Stream<
-    ViewSummary,
-    ListViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ViewSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListViewsRequest,
   output: ListViewsResponse,
   errors: [
@@ -35239,27 +34384,13 @@ export type ListViewVersionsError =
  *
  * Results will be sorted from highest to lowest.
  */
-export const listViewVersions: API.OperationMethod<
+export const listViewVersions: API.PaginatedOperationMethod<
   ListViewVersionsRequest,
   ListViewVersionsResponse,
   ListViewVersionsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViewVersionsRequest,
-  ) => stream.Stream<
-    ListViewVersionsResponse,
-    ListViewVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViewVersionsRequest,
-  ) => stream.Stream<
-    ViewVersionSummary,
-    ListViewVersionsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ViewVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListViewVersionsRequest,
   output: ListViewVersionsResponse,
   errors: [
@@ -35324,27 +34455,13 @@ export type ListWorkspacePagesError =
 /**
  * Lists the page configurations in a workspace, including the views assigned to each page.
  */
-export const listWorkspacePages: API.OperationMethod<
+export const listWorkspacePages: API.PaginatedOperationMethod<
   ListWorkspacePagesRequest,
   ListWorkspacePagesResponse,
   ListWorkspacePagesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacePagesRequest,
-  ) => stream.Stream<
-    ListWorkspacePagesResponse,
-    ListWorkspacePagesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacePagesRequest,
-  ) => stream.Stream<
-    WorkspacePage,
-    ListWorkspacePagesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  WorkspacePage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacePagesRequest,
   output: ListWorkspacePagesResponse,
   errors: [
@@ -35377,27 +34494,13 @@ export type ListWorkspacesError =
 /**
  * Lists the workspaces in an Amazon Connect instance.
  */
-export const listWorkspaces: API.OperationMethod<
+export const listWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSummary,
-    ListWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  WorkspaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
   output: ListWorkspacesResponse,
   errors: [
@@ -35699,27 +34802,13 @@ export type SearchAgentStatusesError =
 /**
  * Searches AgentStatuses in an Connect Customer instance, with optional filtering.
  */
-export const searchAgentStatuses: API.OperationMethod<
+export const searchAgentStatuses: API.PaginatedOperationMethod<
   SearchAgentStatusesRequest,
   SearchAgentStatusesResponse,
   SearchAgentStatusesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAgentStatusesRequest,
-  ) => stream.Stream<
-    SearchAgentStatusesResponse,
-    SearchAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAgentStatusesRequest,
-  ) => stream.Stream<
-    AgentStatus,
-    SearchAgentStatusesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  AgentStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAgentStatusesRequest,
   output: SearchAgentStatusesResponse,
   errors: [
@@ -35751,27 +34840,13 @@ export type SearchAvailablePhoneNumbersError =
  * provided `TargetArn` is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with
  * the traffic distribution group.
  */
-export const searchAvailablePhoneNumbers: API.OperationMethod<
+export const searchAvailablePhoneNumbers: API.PaginatedOperationMethod<
   SearchAvailablePhoneNumbersRequest,
   SearchAvailablePhoneNumbersResponse,
   SearchAvailablePhoneNumbersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    SearchAvailablePhoneNumbersResponse,
-    SearchAvailablePhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAvailablePhoneNumbersRequest,
-  ) => stream.Stream<
-    AvailableNumberSummary,
-    SearchAvailablePhoneNumbersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  AvailableNumberSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAvailablePhoneNumbersRequest,
   output: SearchAvailablePhoneNumbersResponse,
   errors: [
@@ -35847,27 +34922,13 @@ export type SearchContactFlowModulesError =
 /**
  * Searches the flow modules in an Connect Customer instance, with optional filtering.
  */
-export const searchContactFlowModules: API.OperationMethod<
+export const searchContactFlowModules: API.PaginatedOperationMethod<
   SearchContactFlowModulesRequest,
   SearchContactFlowModulesResponse,
   SearchContactFlowModulesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContactFlowModulesRequest,
-  ) => stream.Stream<
-    SearchContactFlowModulesResponse,
-    SearchContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContactFlowModulesRequest,
-  ) => stream.Stream<
-    ContactFlowModule,
-    SearchContactFlowModulesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlowModule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchContactFlowModulesRequest,
   output: SearchContactFlowModulesResponse,
   errors: [
@@ -35898,27 +34959,13 @@ export type SearchContactFlowsError =
 /**
  * Searches the flows in an Connect Customer instance, with optional filtering.
  */
-export const searchContactFlows: API.OperationMethod<
+export const searchContactFlows: API.PaginatedOperationMethod<
   SearchContactFlowsRequest,
   SearchContactFlowsResponse,
   SearchContactFlowsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContactFlowsRequest,
-  ) => stream.Stream<
-    SearchContactFlowsResponse,
-    SearchContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContactFlowsRequest,
-  ) => stream.Stream<
-    ContactFlow,
-    SearchContactFlowsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactFlow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchContactFlowsRequest,
   output: SearchContactFlowsResponse,
   errors: [
@@ -35949,27 +34996,13 @@ export type SearchContactsError =
 /**
  * Searches contacts in an Connect Customer instance.
  */
-export const searchContacts: API.OperationMethod<
+export const searchContacts: API.PaginatedOperationMethod<
   SearchContactsRequest,
   SearchContactsResponse,
   SearchContactsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchContactsRequest,
-  ) => stream.Stream<
-    SearchContactsResponse,
-    SearchContactsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchContactsRequest,
-  ) => stream.Stream<
-    ContactSearchSummary,
-    SearchContactsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  ContactSearchSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchContactsRequest,
   output: SearchContactsResponse,
   errors: [
@@ -36002,27 +35035,13 @@ export type SearchDataTablesError =
  * support searching on attribute names and possibly primary values. Follows other search operations closely and
  * supports both search criteria and filters.
  */
-export const searchDataTables: API.OperationMethod<
+export const searchDataTables: API.PaginatedOperationMethod<
   SearchDataTablesRequest,
   SearchDataTablesResponse,
   SearchDataTablesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchDataTablesRequest,
-  ) => stream.Stream<
-    SearchDataTablesResponse,
-    SearchDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchDataTablesRequest,
-  ) => stream.Stream<
-    DataTable,
-    SearchDataTablesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  DataTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDataTablesRequest,
   output: SearchDataTablesResponse,
   errors: [
@@ -36133,27 +35152,13 @@ export type SearchHoursOfOperationOverridesError =
 /**
  * Searches the hours of operation overrides.
  */
-export const searchHoursOfOperationOverrides: API.OperationMethod<
+export const searchHoursOfOperationOverrides: API.PaginatedOperationMethod<
   SearchHoursOfOperationOverridesRequest,
   SearchHoursOfOperationOverridesResponse,
   SearchHoursOfOperationOverridesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    SearchHoursOfOperationOverridesResponse,
-    SearchHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchHoursOfOperationOverridesRequest,
-  ) => stream.Stream<
-    HoursOfOperationOverride,
-    SearchHoursOfOperationOverridesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HoursOfOperationOverride
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchHoursOfOperationOverridesRequest,
   output: SearchHoursOfOperationOverridesResponse,
   errors: [
@@ -36184,27 +35189,13 @@ export type SearchHoursOfOperationsError =
 /**
  * Searches the hours of operation in an Connect Customer instance, with optional filtering.
  */
-export const searchHoursOfOperations: API.OperationMethod<
+export const searchHoursOfOperations: API.PaginatedOperationMethod<
   SearchHoursOfOperationsRequest,
   SearchHoursOfOperationsResponse,
   SearchHoursOfOperationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchHoursOfOperationsRequest,
-  ) => stream.Stream<
-    SearchHoursOfOperationsResponse,
-    SearchHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchHoursOfOperationsRequest,
-  ) => stream.Stream<
-    HoursOfOperation,
-    SearchHoursOfOperationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HoursOfOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchHoursOfOperationsRequest,
   output: SearchHoursOfOperationsResponse,
   errors: [
@@ -36280,27 +35271,13 @@ export type SearchPredefinedAttributesError =
  *
  * **Endpoints**: See Connect Customer endpoints and quotas.
  */
-export const searchPredefinedAttributes: API.OperationMethod<
+export const searchPredefinedAttributes: API.PaginatedOperationMethod<
   SearchPredefinedAttributesRequest,
   SearchPredefinedAttributesResponse,
   SearchPredefinedAttributesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchPredefinedAttributesRequest,
-  ) => stream.Stream<
-    SearchPredefinedAttributesResponse,
-    SearchPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchPredefinedAttributesRequest,
-  ) => stream.Stream<
-    PredefinedAttribute,
-    SearchPredefinedAttributesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  PredefinedAttribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchPredefinedAttributesRequest,
   output: SearchPredefinedAttributesResponse,
   errors: [
@@ -36331,27 +35308,13 @@ export type SearchPromptsError =
 /**
  * Searches prompts in an Connect Customer instance, with optional filtering.
  */
-export const searchPrompts: API.OperationMethod<
+export const searchPrompts: API.PaginatedOperationMethod<
   SearchPromptsRequest,
   SearchPromptsResponse,
   SearchPromptsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchPromptsRequest,
-  ) => stream.Stream<
-    SearchPromptsResponse,
-    SearchPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchPromptsRequest,
-  ) => stream.Stream<
-    Prompt,
-    SearchPromptsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Prompt
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchPromptsRequest,
   output: SearchPromptsResponse,
   errors: [
@@ -36382,27 +35345,13 @@ export type SearchQueuesError =
 /**
  * Searches queues in an Connect Customer instance, with optional filtering.
  */
-export const searchQueues: API.OperationMethod<
+export const searchQueues: API.PaginatedOperationMethod<
   SearchQueuesRequest,
   SearchQueuesResponse,
   SearchQueuesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQueuesRequest,
-  ) => stream.Stream<
-    SearchQueuesResponse,
-    SearchQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQueuesRequest,
-  ) => stream.Stream<
-    Queue,
-    SearchQueuesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  Queue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQueuesRequest,
   output: SearchQueuesResponse,
   errors: [
@@ -36433,27 +35382,13 @@ export type SearchQuickConnectsError =
 /**
  * Searches quick connects in an Connect Customer instance, with optional filtering.
  */
-export const searchQuickConnects: API.OperationMethod<
+export const searchQuickConnects: API.PaginatedOperationMethod<
   SearchQuickConnectsRequest,
   SearchQuickConnectsResponse,
   SearchQuickConnectsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchQuickConnectsRequest,
-  ) => stream.Stream<
-    SearchQuickConnectsResponse,
-    SearchQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchQuickConnectsRequest,
-  ) => stream.Stream<
-    QuickConnect,
-    SearchQuickConnectsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  QuickConnect
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchQuickConnectsRequest,
   output: SearchQuickConnectsResponse,
   errors: [
@@ -36485,27 +35420,13 @@ export type SearchResourceTagsError =
 /**
  * Searches tags used in an Connect Customer instance using optional search criteria.
  */
-export const searchResourceTags: API.OperationMethod<
+export const searchResourceTags: API.PaginatedOperationMethod<
   SearchResourceTagsRequest,
   SearchResourceTagsResponse,
   SearchResourceTagsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchResourceTagsRequest,
-  ) => stream.Stream<
-    SearchResourceTagsResponse,
-    SearchResourceTagsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchResourceTagsRequest,
-  ) => stream.Stream<
-    TagSet,
-    SearchResourceTagsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  TagSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchResourceTagsRequest,
   output: SearchResourceTagsResponse,
   errors: [
@@ -36540,27 +35461,13 @@ export type SearchRoutingProfilesError =
  * `SearchRoutingProfiles` does not populate LastModifiedRegion, LastModifiedTime,
  * MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but DescribeRoutingProfile does.
  */
-export const searchRoutingProfiles: API.OperationMethod<
+export const searchRoutingProfiles: API.PaginatedOperationMethod<
   SearchRoutingProfilesRequest,
   SearchRoutingProfilesResponse,
   SearchRoutingProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchRoutingProfilesRequest,
-  ) => stream.Stream<
-    SearchRoutingProfilesResponse,
-    SearchRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchRoutingProfilesRequest,
-  ) => stream.Stream<
-    RoutingProfile,
-    SearchRoutingProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  RoutingProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRoutingProfilesRequest,
   output: SearchRoutingProfilesResponse,
   errors: [
@@ -36595,27 +35502,13 @@ export type SearchSecurityProfilesError =
  * profile permissions, see List
  * of security profile permissions.
  */
-export const searchSecurityProfiles: API.OperationMethod<
+export const searchSecurityProfiles: API.PaginatedOperationMethod<
   SearchSecurityProfilesRequest,
   SearchSecurityProfilesResponse,
   SearchSecurityProfilesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSecurityProfilesRequest,
-  ) => stream.Stream<
-    SearchSecurityProfilesResponse,
-    SearchSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSecurityProfilesRequest,
-  ) => stream.Stream<
-    SecurityProfileSearchSummary,
-    SearchSecurityProfilesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  SecurityProfileSearchSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSecurityProfilesRequest,
   output: SearchSecurityProfilesResponse,
   errors: [
@@ -36647,27 +35540,13 @@ export type SearchTestCasesError =
 /**
  * Searches for test cases in the specified Amazon Connect instance, with optional filtering.
  */
-export const searchTestCases: API.OperationMethod<
+export const searchTestCases: API.PaginatedOperationMethod<
   SearchTestCasesRequest,
   SearchTestCasesResponse,
   SearchTestCasesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTestCasesRequest,
-  ) => stream.Stream<
-    SearchTestCasesResponse,
-    SearchTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTestCasesRequest,
-  ) => stream.Stream<
-    TestCase,
-    SearchTestCasesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  TestCase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTestCasesRequest,
   output: SearchTestCasesResponse,
   errors: [
@@ -36702,27 +35581,13 @@ export type SearchUserHierarchyGroupsError =
  * The UserHierarchyGroup with `"LevelId": "0"` is the foundation for building levels on top of an
  * instance. It is not user-definable, nor is it visible in the UI.
  */
-export const searchUserHierarchyGroups: API.OperationMethod<
+export const searchUserHierarchyGroups: API.PaginatedOperationMethod<
   SearchUserHierarchyGroupsRequest,
   SearchUserHierarchyGroupsResponse,
   SearchUserHierarchyGroupsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    SearchUserHierarchyGroupsResponse,
-    SearchUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchUserHierarchyGroupsRequest,
-  ) => stream.Stream<
-    HierarchyGroup,
-    SearchUserHierarchyGroupsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  HierarchyGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchUserHierarchyGroupsRequest,
   output: SearchUserHierarchyGroupsResponse,
   errors: [
@@ -36755,27 +35620,13 @@ export type SearchUsersError =
  *
  * `AfterContactWorkTimeLimit` is returned in milliseconds.
  */
-export const searchUsers: API.OperationMethod<
+export const searchUsers: API.PaginatedOperationMethod<
   SearchUsersRequest,
   SearchUsersResponse,
   SearchUsersError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchUsersRequest,
-  ) => stream.Stream<
-    SearchUsersResponse,
-    SearchUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchUsersRequest,
-  ) => stream.Stream<
-    UserSearchSummary,
-    SearchUsersError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  UserSearchSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchUsersRequest,
   output: SearchUsersResponse,
   errors: [
@@ -36807,27 +35658,13 @@ export type SearchViewsError =
 /**
  * Searches views based on name, description, or tags.
  */
-export const searchViews: API.OperationMethod<
+export const searchViews: API.PaginatedOperationMethod<
   SearchViewsRequest,
   SearchViewsResponse,
   SearchViewsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchViewsRequest,
-  ) => stream.Stream<
-    SearchViewsResponse,
-    SearchViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchViewsRequest,
-  ) => stream.Stream<
-    View,
-    SearchViewsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  View
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchViewsRequest,
   output: SearchViewsResponse,
   errors: [
@@ -36859,27 +35696,13 @@ export type SearchVocabulariesError =
  * Searches for vocabularies within a specific Connect Customer instance using `State`,
  * `NameStartsWith`, and `LanguageCode`.
  */
-export const searchVocabularies: API.OperationMethod<
+export const searchVocabularies: API.PaginatedOperationMethod<
   SearchVocabulariesRequest,
   SearchVocabulariesResponse,
   SearchVocabulariesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchVocabulariesRequest,
-  ) => stream.Stream<
-    SearchVocabulariesResponse,
-    SearchVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchVocabulariesRequest,
-  ) => stream.Stream<
-    VocabularySummary,
-    SearchVocabulariesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  VocabularySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchVocabulariesRequest,
   output: SearchVocabulariesResponse,
   errors: [
@@ -36910,27 +35733,13 @@ export type SearchWorkspaceAssociationsError =
 /**
  * Searches for workspace associations with users or routing profiles based on various criteria.
  */
-export const searchWorkspaceAssociations: API.OperationMethod<
+export const searchWorkspaceAssociations: API.PaginatedOperationMethod<
   SearchWorkspaceAssociationsRequest,
   SearchWorkspaceAssociationsResponse,
   SearchWorkspaceAssociationsError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchWorkspaceAssociationsRequest,
-  ) => stream.Stream<
-    SearchWorkspaceAssociationsResponse,
-    SearchWorkspaceAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchWorkspaceAssociationsRequest,
-  ) => stream.Stream<
-    WorkspaceAssociationSearchSummary,
-    SearchWorkspaceAssociationsError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  WorkspaceAssociationSearchSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchWorkspaceAssociationsRequest,
   output: SearchWorkspaceAssociationsResponse,
   errors: [
@@ -36963,27 +35772,13 @@ export type SearchWorkspacesError =
 /**
  * Searches workspaces based on name, description, visibility, or tags.
  */
-export const searchWorkspaces: API.OperationMethod<
+export const searchWorkspaces: API.PaginatedOperationMethod<
   SearchWorkspacesRequest,
   SearchWorkspacesResponse,
   SearchWorkspacesError,
-  Creds | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchWorkspacesRequest,
-  ) => stream.Stream<
-    SearchWorkspacesResponse,
-    SearchWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSearchSummary,
-    SearchWorkspacesError,
-    Creds | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Region | HttpClient.HttpClient,
+  WorkspaceSearchSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchWorkspacesRequest,
   output: SearchWorkspacesResponse,
   errors: [

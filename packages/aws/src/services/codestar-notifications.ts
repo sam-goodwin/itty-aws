@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -818,27 +817,13 @@ export type ListEventTypesError =
 /**
  * Returns information about the event types available for configuring notifications.
  */
-export const listEventTypes: API.OperationMethod<
+export const listEventTypes: API.PaginatedOperationMethod<
   ListEventTypesRequest,
   ListEventTypesResult,
   ListEventTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventTypesRequest,
-  ) => stream.Stream<
-    ListEventTypesResult,
-    ListEventTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventTypesRequest,
-  ) => stream.Stream<
-    EventTypeSummary,
-    ListEventTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventTypeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventTypesRequest,
   output: ListEventTypesResult,
   errors: [InvalidNextTokenException, ValidationException],
@@ -860,27 +845,13 @@ export type ListNotificationRulesError =
 /**
  * Returns a list of the notification rules for an Amazon Web Services account.
  */
-export const listNotificationRules: API.OperationMethod<
+export const listNotificationRules: API.PaginatedOperationMethod<
   ListNotificationRulesRequest,
   ListNotificationRulesResult,
   ListNotificationRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationRulesRequest,
-  ) => stream.Stream<
-    ListNotificationRulesResult,
-    ListNotificationRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationRulesRequest,
-  ) => stream.Stream<
-    NotificationRuleSummary,
-    ListNotificationRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotificationRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationRulesRequest,
   output: ListNotificationRulesResult,
   errors: [InvalidNextTokenException, ValidationException],
@@ -923,27 +894,13 @@ export type ListTargetsError =
 /**
  * Returns a list of the notification rule targets for an Amazon Web Services account.
  */
-export const listTargets: API.OperationMethod<
+export const listTargets: API.PaginatedOperationMethod<
   ListTargetsRequest,
   ListTargetsResult,
   ListTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsRequest,
-  ) => stream.Stream<
-    ListTargetsResult,
-    ListTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsRequest,
-  ) => stream.Stream<
-    TargetSummary,
-    ListTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsRequest,
   output: ListTargetsResult,
   errors: [InvalidNextTokenException, ValidationException],

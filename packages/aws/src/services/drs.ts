@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3416,27 +3415,13 @@ export type DescribeJobLogItemsError =
 /**
  * Retrieves a detailed Job log with pagination.
  */
-export const describeJobLogItems: API.OperationMethod<
+export const describeJobLogItems: API.PaginatedOperationMethod<
   DescribeJobLogItemsRequest,
   DescribeJobLogItemsResponse,
   DescribeJobLogItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobLogItemsRequest,
-  ) => stream.Stream<
-    DescribeJobLogItemsResponse,
-    DescribeJobLogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobLogItemsRequest,
-  ) => stream.Stream<
-    JobLog,
-    DescribeJobLogItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobLog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobLogItemsRequest,
   output: DescribeJobLogItemsResponse,
   errors: [
@@ -3465,27 +3450,13 @@ export type DescribeJobsError =
 /**
  * Returns a list of Jobs. Use the JobsID and fromDate and toDate filters to limit which jobs are returned. The response is sorted by creationDataTime - latest date first. Jobs are created by the StartRecovery, TerminateRecoveryInstances and StartFailbackLaunch APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and only used in response to relevant support tickets.
  */
-export const describeJobs: API.OperationMethod<
+export const describeJobs: API.PaginatedOperationMethod<
   DescribeJobsRequest,
   DescribeJobsResponse,
   DescribeJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeJobsRequest,
-  ) => stream.Stream<
-    DescribeJobsResponse,
-    DescribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeJobsRequest,
-  ) => stream.Stream<
-    Job,
-    DescribeJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeJobsRequest,
   output: DescribeJobsResponse,
   errors: [
@@ -3515,27 +3486,13 @@ export type DescribeLaunchConfigurationTemplatesError =
 /**
  * Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
  */
-export const describeLaunchConfigurationTemplates: API.OperationMethod<
+export const describeLaunchConfigurationTemplates: API.PaginatedOperationMethod<
   DescribeLaunchConfigurationTemplatesRequest,
   DescribeLaunchConfigurationTemplatesResponse,
   DescribeLaunchConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeLaunchConfigurationTemplatesResponse,
-    DescribeLaunchConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLaunchConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    LaunchConfigurationTemplate,
-    DescribeLaunchConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LaunchConfigurationTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLaunchConfigurationTemplatesRequest,
   output: DescribeLaunchConfigurationTemplatesResponse,
   errors: [
@@ -3565,27 +3522,13 @@ export type DescribeRecoveryInstancesError =
 /**
  * Lists all Recovery Instances or multiple Recovery Instances by ID.
  */
-export const describeRecoveryInstances: API.OperationMethod<
+export const describeRecoveryInstances: API.PaginatedOperationMethod<
   DescribeRecoveryInstancesRequest,
   DescribeRecoveryInstancesResponse,
   DescribeRecoveryInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecoveryInstancesRequest,
-  ) => stream.Stream<
-    DescribeRecoveryInstancesResponse,
-    DescribeRecoveryInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecoveryInstancesRequest,
-  ) => stream.Stream<
-    RecoveryInstance,
-    DescribeRecoveryInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecoveryInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecoveryInstancesRequest,
   output: DescribeRecoveryInstancesResponse,
   errors: [
@@ -3615,27 +3558,13 @@ export type DescribeRecoverySnapshotsError =
 /**
  * Lists all Recovery Snapshots for a single Source Server.
  */
-export const describeRecoverySnapshots: API.OperationMethod<
+export const describeRecoverySnapshots: API.PaginatedOperationMethod<
   DescribeRecoverySnapshotsRequest,
   DescribeRecoverySnapshotsResponse,
   DescribeRecoverySnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecoverySnapshotsRequest,
-  ) => stream.Stream<
-    DescribeRecoverySnapshotsResponse,
-    DescribeRecoverySnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecoverySnapshotsRequest,
-  ) => stream.Stream<
-    RecoverySnapshot,
-    DescribeRecoverySnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecoverySnapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecoverySnapshotsRequest,
   output: DescribeRecoverySnapshotsResponse,
   errors: [
@@ -3666,27 +3595,13 @@ export type DescribeReplicationConfigurationTemplatesError =
 /**
  * Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
  */
-export const describeReplicationConfigurationTemplates: API.OperationMethod<
+export const describeReplicationConfigurationTemplates: API.PaginatedOperationMethod<
   DescribeReplicationConfigurationTemplatesRequest,
   DescribeReplicationConfigurationTemplatesResponse,
   DescribeReplicationConfigurationTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    DescribeReplicationConfigurationTemplatesResponse,
-    DescribeReplicationConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationConfigurationTemplatesRequest,
-  ) => stream.Stream<
-    ReplicationConfigurationTemplate,
-    DescribeReplicationConfigurationTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReplicationConfigurationTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigurationTemplatesRequest,
   output: DescribeReplicationConfigurationTemplatesResponse,
   errors: [
@@ -3716,27 +3631,13 @@ export type DescribeSourceNetworksError =
 /**
  * Lists all Source Networks or multiple Source Networks filtered by ID.
  */
-export const describeSourceNetworks: API.OperationMethod<
+export const describeSourceNetworks: API.PaginatedOperationMethod<
   DescribeSourceNetworksRequest,
   DescribeSourceNetworksResponse,
   DescribeSourceNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSourceNetworksRequest,
-  ) => stream.Stream<
-    DescribeSourceNetworksResponse,
-    DescribeSourceNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSourceNetworksRequest,
-  ) => stream.Stream<
-    SourceNetwork,
-    DescribeSourceNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceNetworksRequest,
   output: DescribeSourceNetworksResponse,
   errors: [
@@ -3765,27 +3666,13 @@ export type DescribeSourceServersError =
 /**
  * Lists all Source Servers or multiple Source Servers filtered by ID.
  */
-export const describeSourceServers: API.OperationMethod<
+export const describeSourceServers: API.PaginatedOperationMethod<
   DescribeSourceServersRequest,
   DescribeSourceServersResponse,
   DescribeSourceServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSourceServersRequest,
-  ) => stream.Stream<
-    DescribeSourceServersResponse,
-    DescribeSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSourceServersRequest,
-  ) => stream.Stream<
-    SourceServer,
-    DescribeSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSourceServersRequest,
   output: DescribeSourceServersResponse,
   errors: [
@@ -4023,27 +3910,13 @@ export type ListExtensibleSourceServersError =
 /**
  * Returns a list of source servers on a staging account that are extensible, which means that: a. The source server is not already extended into this Account. b. The source server on the Account we’re reading from is not an extension of another source server.
  */
-export const listExtensibleSourceServers: API.OperationMethod<
+export const listExtensibleSourceServers: API.PaginatedOperationMethod<
   ListExtensibleSourceServersRequest,
   ListExtensibleSourceServersResponse,
   ListExtensibleSourceServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExtensibleSourceServersRequest,
-  ) => stream.Stream<
-    ListExtensibleSourceServersResponse,
-    ListExtensibleSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExtensibleSourceServersRequest,
-  ) => stream.Stream<
-    StagingSourceServer,
-    ListExtensibleSourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StagingSourceServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensibleSourceServersRequest,
   output: ListExtensibleSourceServersResponse,
   errors: [
@@ -4074,27 +3947,13 @@ export type ListLaunchActionsError =
 /**
  * Lists resource launch actions.
  */
-export const listLaunchActions: API.OperationMethod<
+export const listLaunchActions: API.PaginatedOperationMethod<
   ListLaunchActionsRequest,
   ListLaunchActionsResponse,
   ListLaunchActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLaunchActionsRequest,
-  ) => stream.Stream<
-    ListLaunchActionsResponse,
-    ListLaunchActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLaunchActionsRequest,
-  ) => stream.Stream<
-    LaunchAction,
-    ListLaunchActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LaunchAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLaunchActionsRequest,
   output: ListLaunchActionsResponse,
   errors: [
@@ -4125,27 +3984,13 @@ export type ListStagingAccountsError =
 /**
  * Returns an array of staging accounts for existing extended source servers.
  */
-export const listStagingAccounts: API.OperationMethod<
+export const listStagingAccounts: API.PaginatedOperationMethod<
   ListStagingAccountsRequest,
   ListStagingAccountsResponse,
   ListStagingAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStagingAccountsRequest,
-  ) => stream.Stream<
-    ListStagingAccountsResponse,
-    ListStagingAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStagingAccountsRequest,
-  ) => stream.Stream<
-    Account,
-    ListStagingAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStagingAccountsRequest,
   output: ListStagingAccountsResponse,
   errors: [

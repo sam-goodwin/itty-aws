@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5399,27 +5398,13 @@ export type DescribeAutoScalingGroupsError =
  * information about the instances in a warm pool, you must call the
  * DescribeWarmPool API.
  */
-export const describeAutoScalingGroups: API.OperationMethod<
+export const describeAutoScalingGroups: API.PaginatedOperationMethod<
   AutoScalingGroupNamesType,
   AutoScalingGroupsType,
   DescribeAutoScalingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: AutoScalingGroupNamesType,
-  ) => stream.Stream<
-    AutoScalingGroupsType,
-    DescribeAutoScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: AutoScalingGroupNamesType,
-  ) => stream.Stream<
-    AutoScalingGroup,
-    DescribeAutoScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutoScalingGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: AutoScalingGroupNamesType,
   output: AutoScalingGroupsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5441,27 +5426,13 @@ export type DescribeAutoScalingInstancesError =
 /**
  * Gets information about the Auto Scaling instances in the account and Region.
  */
-export const describeAutoScalingInstances: API.OperationMethod<
+export const describeAutoScalingInstances: API.PaginatedOperationMethod<
   DescribeAutoScalingInstancesType,
   AutoScalingInstancesType,
   DescribeAutoScalingInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAutoScalingInstancesType,
-  ) => stream.Stream<
-    AutoScalingInstancesType,
-    DescribeAutoScalingInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAutoScalingInstancesType,
-  ) => stream.Stream<
-    AutoScalingInstanceDetails,
-    DescribeAutoScalingInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutoScalingInstanceDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutoScalingInstancesType,
   output: AutoScalingInstancesType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5515,27 +5486,13 @@ export type DescribeInstanceRefreshesError =
  * is initiated while an instance refresh is in progress, Amazon EC2 Auto Scaling also returns information
  * about the rollback of the instance refresh.
  */
-export const describeInstanceRefreshes: API.OperationMethod<
+export const describeInstanceRefreshes: API.PaginatedOperationMethod<
   DescribeInstanceRefreshesType,
   DescribeInstanceRefreshesAnswer,
   DescribeInstanceRefreshesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceRefreshesType,
-  ) => stream.Stream<
-    DescribeInstanceRefreshesAnswer,
-    DescribeInstanceRefreshesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceRefreshesType,
-  ) => stream.Stream<
-    unknown,
-    DescribeInstanceRefreshesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceRefreshesType,
   output: DescribeInstanceRefreshesAnswer,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5556,27 +5513,13 @@ export type DescribeLaunchConfigurationsError =
 /**
  * Gets information about the launch configurations in the account and Region.
  */
-export const describeLaunchConfigurations: API.OperationMethod<
+export const describeLaunchConfigurations: API.PaginatedOperationMethod<
   LaunchConfigurationNamesType,
   LaunchConfigurationsType,
   DescribeLaunchConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: LaunchConfigurationNamesType,
-  ) => stream.Stream<
-    LaunchConfigurationsType,
-    DescribeLaunchConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: LaunchConfigurationNamesType,
-  ) => stream.Stream<
-    LaunchConfiguration,
-    DescribeLaunchConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LaunchConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: LaunchConfigurationNamesType,
   output: LaunchConfigurationsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5678,27 +5621,13 @@ export type DescribeLoadBalancersError =
  * distribute traffic across the instances in your Auto Scaling group in the
  * *Amazon EC2 Auto Scaling User Guide*.
  */
-export const describeLoadBalancers: API.OperationMethod<
+export const describeLoadBalancers: API.PaginatedOperationMethod<
   DescribeLoadBalancersRequest,
   DescribeLoadBalancersResponse,
   DescribeLoadBalancersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLoadBalancersRequest,
-  ) => stream.Stream<
-    DescribeLoadBalancersResponse,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLoadBalancersRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeLoadBalancersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancersRequest,
   output: DescribeLoadBalancersResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5752,27 +5681,13 @@ export type DescribeLoadBalancerTargetGroupsError =
  * AttachLoadBalancerTargetGroups, but not for target groups that
  * were attached by using AttachTrafficSources.
  */
-export const describeLoadBalancerTargetGroups: API.OperationMethod<
+export const describeLoadBalancerTargetGroups: API.PaginatedOperationMethod<
   DescribeLoadBalancerTargetGroupsRequest,
   DescribeLoadBalancerTargetGroupsResponse,
   DescribeLoadBalancerTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeLoadBalancerTargetGroupsRequest,
-  ) => stream.Stream<
-    DescribeLoadBalancerTargetGroupsResponse,
-    DescribeLoadBalancerTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeLoadBalancerTargetGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeLoadBalancerTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeLoadBalancerTargetGroupsRequest,
   output: DescribeLoadBalancerTargetGroupsResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5814,27 +5729,13 @@ export type DescribeNotificationConfigurationsError =
  * Gets information about the Amazon SNS notifications that are configured for one or more
  * Auto Scaling groups.
  */
-export const describeNotificationConfigurations: API.OperationMethod<
+export const describeNotificationConfigurations: API.PaginatedOperationMethod<
   DescribeNotificationConfigurationsType,
   DescribeNotificationConfigurationsAnswer,
   DescribeNotificationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotificationConfigurationsType,
-  ) => stream.Stream<
-    DescribeNotificationConfigurationsAnswer,
-    DescribeNotificationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotificationConfigurationsType,
-  ) => stream.Stream<
-    NotificationConfiguration,
-    DescribeNotificationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotificationConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationConfigurationsType,
   output: DescribeNotificationConfigurationsAnswer,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5857,27 +5758,13 @@ export type DescribePoliciesError =
 /**
  * Gets information about the scaling policies in the account and Region.
  */
-export const describePolicies: API.OperationMethod<
+export const describePolicies: API.PaginatedOperationMethod<
   DescribePoliciesType,
   PoliciesType,
   DescribePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePoliciesType,
-  ) => stream.Stream<
-    PoliciesType,
-    DescribePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePoliciesType,
-  ) => stream.Stream<
-    ScalingPolicy,
-    DescribePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScalingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePoliciesType,
   output: PoliciesType,
   errors: [InvalidNextToken, ResourceContentionFault, ServiceLinkedRoleFailure],
@@ -5909,27 +5796,13 @@ export type DescribeScalingActivitiesError =
  * the `StatusMessage` element in the response indicates the cause of the
  * failure. For help interpreting the `StatusMessage`, see Troubleshooting Amazon EC2 Auto Scaling in the *Amazon EC2 Auto Scaling User Guide*.
  */
-export const describeScalingActivities: API.OperationMethod<
+export const describeScalingActivities: API.PaginatedOperationMethod<
   DescribeScalingActivitiesType,
   ActivitiesType,
   DescribeScalingActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScalingActivitiesType,
-  ) => stream.Stream<
-    ActivitiesType,
-    DescribeScalingActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScalingActivitiesType,
-  ) => stream.Stream<
-    Activity,
-    DescribeScalingActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Activity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScalingActivitiesType,
   output: ActivitiesType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -5977,27 +5850,13 @@ export type DescribeScheduledActionsError =
  * To describe the scaling activities for scheduled actions that have already run, call
  * the DescribeScalingActivities API.
  */
-export const describeScheduledActions: API.OperationMethod<
+export const describeScheduledActions: API.PaginatedOperationMethod<
   DescribeScheduledActionsType,
   ScheduledActionsType,
   DescribeScheduledActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduledActionsType,
-  ) => stream.Stream<
-    ScheduledActionsType,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduledActionsType,
-  ) => stream.Stream<
-    ScheduledUpdateGroupAction,
-    DescribeScheduledActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduledUpdateGroupAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsType,
   output: ScheduledActionsType,
   errors: [InvalidNextToken, ResourceContentionFault, AutoScalingGroupNotFound],
@@ -6030,27 +5889,13 @@ export type DescribeTagsError =
  * For more information, see Tag Auto Scaling groups and
  * instances in the *Amazon EC2 Auto Scaling User Guide*.
  */
-export const describeTags: API.OperationMethod<
+export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsType,
   TagsType,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsType,
-  ) => stream.Stream<
-    TagsType,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsType,
-  ) => stream.Stream<
-    TagDescription,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TagDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsType,
   output: TagsType,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -6102,27 +5947,13 @@ export type DescribeTrafficSourcesError =
  * If you do not provide a traffic source type, then the results include all the traffic
  * sources for the specified Auto Scaling group.
  */
-export const describeTrafficSources: API.OperationMethod<
+export const describeTrafficSources: API.PaginatedOperationMethod<
   DescribeTrafficSourcesRequest,
   DescribeTrafficSourcesResponse,
   DescribeTrafficSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTrafficSourcesRequest,
-  ) => stream.Stream<
-    DescribeTrafficSourcesResponse,
-    DescribeTrafficSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTrafficSourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeTrafficSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficSourcesRequest,
   output: DescribeTrafficSourcesResponse,
   errors: [InvalidNextToken, ResourceContentionFault],
@@ -6147,27 +5978,13 @@ export type DescribeWarmPoolError =
  * For more information, see Warm pools for
  * Amazon EC2 Auto Scaling in the *Amazon EC2 Auto Scaling User Guide*.
  */
-export const describeWarmPool: API.OperationMethod<
+export const describeWarmPool: API.PaginatedOperationMethod<
   DescribeWarmPoolType,
   DescribeWarmPoolAnswer,
   DescribeWarmPoolError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeWarmPoolType,
-  ) => stream.Stream<
-    DescribeWarmPoolAnswer,
-    DescribeWarmPoolError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeWarmPoolType,
-  ) => stream.Stream<
-    Instance,
-    DescribeWarmPoolError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Instance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeWarmPoolType,
   output: DescribeWarmPoolAnswer,
   errors: [InvalidNextToken, LimitExceededFault, ResourceContentionFault],

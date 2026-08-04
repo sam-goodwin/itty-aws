@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7710,27 +7709,13 @@ export type AdminListGroupsForUserError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const adminListGroupsForUser: API.OperationMethod<
+export const adminListGroupsForUser: API.PaginatedOperationMethod<
   AdminListGroupsForUserRequest,
   AdminListGroupsForUserResponse,
   AdminListGroupsForUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: AdminListGroupsForUserRequest,
-  ) => stream.Stream<
-    AdminListGroupsForUserResponse,
-    AdminListGroupsForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: AdminListGroupsForUserRequest,
-  ) => stream.Stream<
-    GroupType,
-    AdminListGroupsForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: AdminListGroupsForUserRequest,
   output: AdminListGroupsForUserResponse,
   errors: [
@@ -7777,27 +7762,13 @@ export type AdminListUserAuthEventsError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const adminListUserAuthEvents: API.OperationMethod<
+export const adminListUserAuthEvents: API.PaginatedOperationMethod<
   AdminListUserAuthEventsRequest,
   AdminListUserAuthEventsResponse,
   AdminListUserAuthEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: AdminListUserAuthEventsRequest,
-  ) => stream.Stream<
-    AdminListUserAuthEventsResponse,
-    AdminListUserAuthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: AdminListUserAuthEventsRequest,
-  ) => stream.Stream<
-    AuthEventType,
-    AdminListUserAuthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuthEventType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: AdminListUserAuthEventsRequest,
   output: AdminListUserAuthEventsResponse,
   errors: [
@@ -11225,27 +11196,13 @@ export type ListGroupsError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    GroupType,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -11288,27 +11245,13 @@ export type ListIdentityProvidersError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listIdentityProviders: API.OperationMethod<
+export const listIdentityProviders: API.PaginatedOperationMethod<
   ListIdentityProvidersRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ListIdentityProvidersResponse,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ProviderDescription,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProviderDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
   output: ListIdentityProvidersResponse,
   errors: [
@@ -11351,27 +11294,13 @@ export type ListResourceServersError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listResourceServers: API.OperationMethod<
+export const listResourceServers: API.PaginatedOperationMethod<
   ListResourceServersRequest,
   ListResourceServersResponse,
   ListResourceServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceServersRequest,
-  ) => stream.Stream<
-    ListResourceServersResponse,
-    ListResourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceServersRequest,
-  ) => stream.Stream<
-    ResourceServerType,
-    ListResourceServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceServerType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceServersRequest,
   output: ListResourceServersResponse,
   errors: [
@@ -11535,27 +11464,13 @@ export type ListUserPoolClientsError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listUserPoolClients: API.OperationMethod<
+export const listUserPoolClients: API.PaginatedOperationMethod<
   ListUserPoolClientsRequest,
   ListUserPoolClientsResponse,
   ListUserPoolClientsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserPoolClientsRequest,
-  ) => stream.Stream<
-    ListUserPoolClientsResponse,
-    ListUserPoolClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserPoolClientsRequest,
-  ) => stream.Stream<
-    UserPoolClientDescription,
-    ListUserPoolClientsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserPoolClientDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserPoolClientsRequest,
   output: ListUserPoolClientsResponse,
   errors: [
@@ -11670,27 +11585,13 @@ export type ListUserPoolsError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listUserPools: API.OperationMethod<
+export const listUserPools: API.PaginatedOperationMethod<
   ListUserPoolsRequest,
   ListUserPoolsResponse,
   ListUserPoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserPoolsRequest,
-  ) => stream.Stream<
-    ListUserPoolsResponse,
-    ListUserPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserPoolsRequest,
-  ) => stream.Stream<
-    UserPoolDescriptionType,
-    ListUserPoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserPoolDescriptionType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserPoolsRequest,
   output: ListUserPoolsResponse,
   errors: [
@@ -11736,27 +11637,13 @@ export type ListUsersError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    UserType,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -11800,27 +11687,13 @@ export type ListUsersInGroupError =
  *
  * - Using the Amazon Cognito user pools API and user pool endpoints
  */
-export const listUsersInGroup: API.OperationMethod<
+export const listUsersInGroup: API.PaginatedOperationMethod<
   ListUsersInGroupRequest,
   ListUsersInGroupResponse,
   ListUsersInGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersInGroupRequest,
-  ) => stream.Stream<
-    ListUsersInGroupResponse,
-    ListUsersInGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersInGroupRequest,
-  ) => stream.Stream<
-    UserType,
-    ListUsersInGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersInGroupRequest,
   output: ListUsersInGroupResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1370,27 +1369,13 @@ export type ListCampaignsError =
 /**
  * Provides summary information about the campaigns under the specified Amazon Connect account.
  */
-export const listCampaigns: API.OperationMethod<
+export const listCampaigns: API.PaginatedOperationMethod<
   ListCampaignsRequest,
   ListCampaignsResponse,
   ListCampaignsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    ListCampaignsResponse,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCampaignsRequest,
-  ) => stream.Stream<
-    CampaignSummary,
-    ListCampaignsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CampaignSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],

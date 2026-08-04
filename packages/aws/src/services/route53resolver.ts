@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4483,27 +4482,13 @@ export type ListFirewallConfigsError =
  *
  * A single call might return only a partial list of the configurations. For information, see `MaxResults`.
  */
-export const listFirewallConfigs: API.OperationMethod<
+export const listFirewallConfigs: API.PaginatedOperationMethod<
   ListFirewallConfigsRequest,
   ListFirewallConfigsResponse,
   ListFirewallConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallConfigsRequest,
-  ) => stream.Stream<
-    ListFirewallConfigsResponse,
-    ListFirewallConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallConfigsRequest,
-  ) => stream.Stream<
-    FirewallConfig,
-    ListFirewallConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallConfigsRequest,
   output: ListFirewallConfigsResponse,
   errors: [
@@ -4534,27 +4519,13 @@ export type ListFirewallDomainListsError =
  *
  * A single call to this list operation might return only a partial list of the domain lists. For information, see `MaxResults`.
  */
-export const listFirewallDomainLists: API.OperationMethod<
+export const listFirewallDomainLists: API.PaginatedOperationMethod<
   ListFirewallDomainListsRequest,
   ListFirewallDomainListsResponse,
   ListFirewallDomainListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainListsRequest,
-  ) => stream.Stream<
-    ListFirewallDomainListsResponse,
-    ListFirewallDomainListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainListsRequest,
-  ) => stream.Stream<
-    FirewallDomainListMetadata,
-    ListFirewallDomainListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallDomainListMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainListsRequest,
   output: ListFirewallDomainListsResponse,
   errors: [
@@ -4586,27 +4557,13 @@ export type ListFirewallDomainsError =
  *
  * A single call might return only a partial list of the domains. For information, see `MaxResults`.
  */
-export const listFirewallDomains: API.OperationMethod<
+export const listFirewallDomains: API.PaginatedOperationMethod<
   ListFirewallDomainsRequest,
   ListFirewallDomainsResponse,
   ListFirewallDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallDomainsRequest,
-  ) => stream.Stream<
-    ListFirewallDomainsResponse,
-    ListFirewallDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallDomainsRequest,
-  ) => stream.Stream<
-    FirewallDomainName,
-    ListFirewallDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallDomainName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallDomainsRequest,
   output: ListFirewallDomainsResponse,
   errors: [
@@ -4638,27 +4595,13 @@ export type ListFirewallRuleGroupAssociationsError =
  *
  * A single call might return only a partial list of the associations. For information, see `MaxResults`.
  */
-export const listFirewallRuleGroupAssociations: API.OperationMethod<
+export const listFirewallRuleGroupAssociations: API.PaginatedOperationMethod<
   ListFirewallRuleGroupAssociationsRequest,
   ListFirewallRuleGroupAssociationsResponse,
   ListFirewallRuleGroupAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRuleGroupAssociationsRequest,
-  ) => stream.Stream<
-    ListFirewallRuleGroupAssociationsResponse,
-    ListFirewallRuleGroupAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRuleGroupAssociationsRequest,
-  ) => stream.Stream<
-    FirewallRuleGroupAssociation,
-    ListFirewallRuleGroupAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallRuleGroupAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRuleGroupAssociationsRequest,
   output: ListFirewallRuleGroupAssociationsResponse,
   errors: [
@@ -4689,27 +4632,13 @@ export type ListFirewallRuleGroupsError =
  *
  * A single call might return only a partial list of the rule groups. For information, see `MaxResults`.
  */
-export const listFirewallRuleGroups: API.OperationMethod<
+export const listFirewallRuleGroups: API.PaginatedOperationMethod<
   ListFirewallRuleGroupsRequest,
   ListFirewallRuleGroupsResponse,
   ListFirewallRuleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRuleGroupsRequest,
-  ) => stream.Stream<
-    ListFirewallRuleGroupsResponse,
-    ListFirewallRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRuleGroupsRequest,
-  ) => stream.Stream<
-    FirewallRuleGroupMetadata,
-    ListFirewallRuleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallRuleGroupMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRuleGroupsRequest,
   output: ListFirewallRuleGroupsResponse,
   errors: [
@@ -4743,27 +4672,13 @@ export type ListFirewallRulesError =
  *
  * For rules that require asynchronous provisioning, the response includes `Status` (see FirewallRuleStatus) and, on failure, `StatusMessage` with the reason.
  */
-export const listFirewallRules: API.OperationMethod<
+export const listFirewallRules: API.PaginatedOperationMethod<
   ListFirewallRulesRequest,
   ListFirewallRulesResponse,
   ListFirewallRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRulesRequest,
-  ) => stream.Stream<
-    ListFirewallRulesResponse,
-    ListFirewallRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRulesRequest,
-  ) => stream.Stream<
-    FirewallRule,
-    ListFirewallRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRulesRequest,
   output: ListFirewallRulesResponse,
   errors: [
@@ -4795,27 +4710,13 @@ export type ListFirewallRuleTypesError =
  *
  * The supported `RuleType` filter values are `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, and `PartnerThreatProtection`. When a returned definition's variant requires an external subscription (currently only `PartnerThreatProtection`), the response also includes a SubscriptionInfo identifying the AWS Marketplace product that backs it; absence of `SubscriptionInfo` means the variant is fully managed by AWS and requires no separate subscription.
  */
-export const listFirewallRuleTypes: API.OperationMethod<
+export const listFirewallRuleTypes: API.PaginatedOperationMethod<
   ListFirewallRuleTypesRequest,
   ListFirewallRuleTypesResponse,
   ListFirewallRuleTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFirewallRuleTypesRequest,
-  ) => stream.Stream<
-    ListFirewallRuleTypesResponse,
-    ListFirewallRuleTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFirewallRuleTypesRequest,
-  ) => stream.Stream<
-    FirewallRuleTypeDefinition,
-    ListFirewallRuleTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FirewallRuleTypeDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallRuleTypesRequest,
   output: ListFirewallRuleTypesResponse,
   errors: [
@@ -4845,27 +4746,13 @@ export type ListOutpostResolversError =
 /**
  * Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account.
  */
-export const listOutpostResolvers: API.OperationMethod<
+export const listOutpostResolvers: API.PaginatedOperationMethod<
   ListOutpostResolversRequest,
   ListOutpostResolversResponse,
   ListOutpostResolversError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOutpostResolversRequest,
-  ) => stream.Stream<
-    ListOutpostResolversResponse,
-    ListOutpostResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOutpostResolversRequest,
-  ) => stream.Stream<
-    OutpostResolver,
-    ListOutpostResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OutpostResolver
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostResolversRequest,
   output: ListOutpostResolversResponse,
   errors: [
@@ -4899,27 +4786,13 @@ export type ListResolverConfigsError =
  * Retrieves the Resolver configurations that you have defined.
  * Route 53 Resolver uses the configurations to manage DNS resolution behavior for your VPCs.
  */
-export const listResolverConfigs: API.OperationMethod<
+export const listResolverConfigs: API.PaginatedOperationMethod<
   ListResolverConfigsRequest,
   ListResolverConfigsResponse,
   ListResolverConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverConfigsRequest,
-  ) => stream.Stream<
-    ListResolverConfigsResponse,
-    ListResolverConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverConfigsRequest,
-  ) => stream.Stream<
-    ResolverConfig,
-    ListResolverConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverConfigsRequest,
   output: ListResolverConfigsResponse,
   errors: [
@@ -4953,27 +4826,13 @@ export type ListResolverDnssecConfigsError =
 /**
  * Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account.
  */
-export const listResolverDnssecConfigs: API.OperationMethod<
+export const listResolverDnssecConfigs: API.PaginatedOperationMethod<
   ListResolverDnssecConfigsRequest,
   ListResolverDnssecConfigsResponse,
   ListResolverDnssecConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverDnssecConfigsRequest,
-  ) => stream.Stream<
-    ListResolverDnssecConfigsResponse,
-    ListResolverDnssecConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverDnssecConfigsRequest,
-  ) => stream.Stream<
-    ResolverDnssecConfig,
-    ListResolverDnssecConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverDnssecConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverDnssecConfigsRequest,
   output: ListResolverDnssecConfigsResponse,
   errors: [
@@ -5005,27 +4864,13 @@ export type ListResolverEndpointIpAddressesError =
 /**
  * Gets the IP addresses for a specified Resolver endpoint.
  */
-export const listResolverEndpointIpAddresses: API.OperationMethod<
+export const listResolverEndpointIpAddresses: API.PaginatedOperationMethod<
   ListResolverEndpointIpAddressesRequest,
   ListResolverEndpointIpAddressesResponse,
   ListResolverEndpointIpAddressesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverEndpointIpAddressesRequest,
-  ) => stream.Stream<
-    ListResolverEndpointIpAddressesResponse,
-    ListResolverEndpointIpAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverEndpointIpAddressesRequest,
-  ) => stream.Stream<
-    IpAddressResponse,
-    ListResolverEndpointIpAddressesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IpAddressResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverEndpointIpAddressesRequest,
   output: ListResolverEndpointIpAddressesResponse,
   errors: [
@@ -5056,27 +4901,13 @@ export type ListResolverEndpointsError =
 /**
  * Lists all the Resolver endpoints that were created using the current Amazon Web Services account.
  */
-export const listResolverEndpoints: API.OperationMethod<
+export const listResolverEndpoints: API.PaginatedOperationMethod<
   ListResolverEndpointsRequest,
   ListResolverEndpointsResponse,
   ListResolverEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverEndpointsRequest,
-  ) => stream.Stream<
-    ListResolverEndpointsResponse,
-    ListResolverEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverEndpointsRequest,
-  ) => stream.Stream<
-    ResolverEndpoint,
-    ListResolverEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverEndpointsRequest,
   output: ListResolverEndpointsResponse,
   errors: [
@@ -5108,27 +4939,13 @@ export type ListResolverQueryLogConfigAssociationsError =
 /**
  * Lists information about associations between Amazon VPCs and query logging configurations.
  */
-export const listResolverQueryLogConfigAssociations: API.OperationMethod<
+export const listResolverQueryLogConfigAssociations: API.PaginatedOperationMethod<
   ListResolverQueryLogConfigAssociationsRequest,
   ListResolverQueryLogConfigAssociationsResponse,
   ListResolverQueryLogConfigAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverQueryLogConfigAssociationsRequest,
-  ) => stream.Stream<
-    ListResolverQueryLogConfigAssociationsResponse,
-    ListResolverQueryLogConfigAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverQueryLogConfigAssociationsRequest,
-  ) => stream.Stream<
-    ResolverQueryLogConfigAssociation,
-    ListResolverQueryLogConfigAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverQueryLogConfigAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverQueryLogConfigAssociationsRequest,
   output: ListResolverQueryLogConfigAssociationsResponse,
   errors: [
@@ -5162,27 +4979,13 @@ export type ListResolverQueryLogConfigsError =
  * Lists information about the specified query logging configurations. Each configuration defines where you want Resolver to save
  * DNS query logs and specifies the VPCs that you want to log queries for.
  */
-export const listResolverQueryLogConfigs: API.OperationMethod<
+export const listResolverQueryLogConfigs: API.PaginatedOperationMethod<
   ListResolverQueryLogConfigsRequest,
   ListResolverQueryLogConfigsResponse,
   ListResolverQueryLogConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverQueryLogConfigsRequest,
-  ) => stream.Stream<
-    ListResolverQueryLogConfigsResponse,
-    ListResolverQueryLogConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverQueryLogConfigsRequest,
-  ) => stream.Stream<
-    ResolverQueryLogConfig,
-    ListResolverQueryLogConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverQueryLogConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverQueryLogConfigsRequest,
   output: ListResolverQueryLogConfigsResponse,
   errors: [
@@ -5214,27 +5017,13 @@ export type ListResolverRuleAssociationsError =
 /**
  * Lists the associations that were created between Resolver rules and VPCs using the current Amazon Web Services account.
  */
-export const listResolverRuleAssociations: API.OperationMethod<
+export const listResolverRuleAssociations: API.PaginatedOperationMethod<
   ListResolverRuleAssociationsRequest,
   ListResolverRuleAssociationsResponse,
   ListResolverRuleAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverRuleAssociationsRequest,
-  ) => stream.Stream<
-    ListResolverRuleAssociationsResponse,
-    ListResolverRuleAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverRuleAssociationsRequest,
-  ) => stream.Stream<
-    ResolverRuleAssociation,
-    ListResolverRuleAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverRuleAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverRuleAssociationsRequest,
   output: ListResolverRuleAssociationsResponse,
   errors: [
@@ -5265,27 +5054,13 @@ export type ListResolverRulesError =
 /**
  * Lists the Resolver rules that were created using the current Amazon Web Services account.
  */
-export const listResolverRules: API.OperationMethod<
+export const listResolverRules: API.PaginatedOperationMethod<
   ListResolverRulesRequest,
   ListResolverRulesResponse,
   ListResolverRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolverRulesRequest,
-  ) => stream.Stream<
-    ListResolverRulesResponse,
-    ListResolverRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolverRulesRequest,
-  ) => stream.Stream<
-    ResolverRule,
-    ListResolverRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolverRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolverRulesRequest,
   output: ListResolverRulesResponse,
   errors: [
@@ -5317,27 +5092,13 @@ export type ListTagsForResourceError =
 /**
  * Lists the tags that you associated with the specified resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [

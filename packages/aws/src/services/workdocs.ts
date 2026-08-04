@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3483,27 +3482,13 @@ export type DescribeActivitiesError =
 /**
  * Describes the user activities in a specified time period.
  */
-export const describeActivities: API.OperationMethod<
+export const describeActivities: API.PaginatedOperationMethod<
   DescribeActivitiesRequest,
   DescribeActivitiesResponse,
   DescribeActivitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeActivitiesRequest,
-  ) => stream.Stream<
-    DescribeActivitiesResponse,
-    DescribeActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeActivitiesRequest,
-  ) => stream.Stream<
-    Activity,
-    DescribeActivitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Activity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeActivitiesRequest,
   output: DescribeActivitiesResponse,
   errors: [
@@ -3535,27 +3520,13 @@ export type DescribeCommentsError =
 /**
  * List all the comments for the specified document version.
  */
-export const describeComments: API.OperationMethod<
+export const describeComments: API.PaginatedOperationMethod<
   DescribeCommentsRequest,
   DescribeCommentsResponse,
   DescribeCommentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCommentsRequest,
-  ) => stream.Stream<
-    DescribeCommentsResponse,
-    DescribeCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCommentsRequest,
-  ) => stream.Stream<
-    Comment,
-    DescribeCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Comment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCommentsRequest,
   output: DescribeCommentsResponse,
   errors: [
@@ -3592,27 +3563,13 @@ export type DescribeDocumentVersionsError =
  *
  * By default, only active versions are returned.
  */
-export const describeDocumentVersions: API.OperationMethod<
+export const describeDocumentVersions: API.PaginatedOperationMethod<
   DescribeDocumentVersionsRequest,
   DescribeDocumentVersionsResponse,
   DescribeDocumentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDocumentVersionsRequest,
-  ) => stream.Stream<
-    DescribeDocumentVersionsResponse,
-    DescribeDocumentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDocumentVersionsRequest,
-  ) => stream.Stream<
-    DocumentVersionMetadata,
-    DescribeDocumentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DocumentVersionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDocumentVersionsRequest,
   output: DescribeDocumentVersionsResponse,
   errors: [
@@ -3653,27 +3610,13 @@ export type DescribeFolderContentsError =
  * use to request the next set of results. You can also request initialized
  * documents.
  */
-export const describeFolderContents: API.OperationMethod<
+export const describeFolderContents: API.PaginatedOperationMethod<
   DescribeFolderContentsRequest,
   DescribeFolderContentsResponse,
   DescribeFolderContentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFolderContentsRequest,
-  ) => stream.Stream<
-    DescribeFolderContentsResponse,
-    DescribeFolderContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFolderContentsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFolderContentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFolderContentsRequest,
   output: DescribeFolderContentsResponse,
   errors: [
@@ -3704,27 +3647,13 @@ export type DescribeGroupsError =
  * Describes the groups specified by the query. Groups are defined by the underlying
  * Active Directory.
  */
-export const describeGroups: API.OperationMethod<
+export const describeGroups: API.PaginatedOperationMethod<
   DescribeGroupsRequest,
   DescribeGroupsResponse,
   DescribeGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGroupsRequest,
-  ) => stream.Stream<
-    DescribeGroupsResponse,
-    DescribeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGroupsRequest,
-  ) => stream.Stream<
-    GroupMetadata,
-    DescribeGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGroupsRequest,
   output: DescribeGroupsResponse,
   errors: [
@@ -3752,27 +3681,13 @@ export type DescribeNotificationSubscriptionsError =
 /**
  * Lists the specified notification subscriptions.
  */
-export const describeNotificationSubscriptions: API.OperationMethod<
+export const describeNotificationSubscriptions: API.PaginatedOperationMethod<
   DescribeNotificationSubscriptionsRequest,
   DescribeNotificationSubscriptionsResponse,
   DescribeNotificationSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotificationSubscriptionsRequest,
-  ) => stream.Stream<
-    DescribeNotificationSubscriptionsResponse,
-    DescribeNotificationSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotificationSubscriptionsRequest,
-  ) => stream.Stream<
-    Subscription,
-    DescribeNotificationSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotificationSubscriptionsRequest,
   output: DescribeNotificationSubscriptionsResponse,
   errors: [
@@ -3801,27 +3716,13 @@ export type DescribeResourcePermissionsError =
 /**
  * Describes the permissions of a specified resource.
  */
-export const describeResourcePermissions: API.OperationMethod<
+export const describeResourcePermissions: API.PaginatedOperationMethod<
   DescribeResourcePermissionsRequest,
   DescribeResourcePermissionsResponse,
   DescribeResourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeResourcePermissionsRequest,
-  ) => stream.Stream<
-    DescribeResourcePermissionsResponse,
-    DescribeResourcePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeResourcePermissionsRequest,
-  ) => stream.Stream<
-    Principal,
-    DescribeResourcePermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Principal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeResourcePermissionsRequest,
   output: DescribeResourcePermissionsResponse,
   errors: [
@@ -3861,27 +3762,13 @@ export type DescribeRootFoldersError =
  * Amazon
  * WorkDocs Developer Guide.
  */
-export const describeRootFolders: API.OperationMethod<
+export const describeRootFolders: API.PaginatedOperationMethod<
   DescribeRootFoldersRequest,
   DescribeRootFoldersResponse,
   DescribeRootFoldersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRootFoldersRequest,
-  ) => stream.Stream<
-    DescribeRootFoldersResponse,
-    DescribeRootFoldersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRootFoldersRequest,
-  ) => stream.Stream<
-    FolderMetadata,
-    DescribeRootFoldersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FolderMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRootFoldersRequest,
   output: DescribeRootFoldersResponse,
   errors: [
@@ -3919,27 +3806,13 @@ export type DescribeUsersError =
  * are more results, the response includes a marker that you can use to request the next
  * set of results.
  */
-export const describeUsers: API.OperationMethod<
+export const describeUsers: API.PaginatedOperationMethod<
   DescribeUsersRequest,
   DescribeUsersResponse,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUsersRequest,
-  ) => stream.Stream<
-    DescribeUsersResponse,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUsersRequest,
-  ) => stream.Stream<
-    User,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersRequest,
   output: DescribeUsersResponse,
   errors: [
@@ -4361,27 +4234,13 @@ export type SearchResourcesError =
 /**
  * Searches metadata and the content of folders, documents, document versions, and comments.
  */
-export const searchResources: API.OperationMethod<
+export const searchResources: API.PaginatedOperationMethod<
   SearchResourcesRequest,
   SearchResourcesResponse,
   SearchResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchResourcesRequest,
-  ) => stream.Stream<
-    SearchResourcesResponse,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchResourcesRequest,
-  ) => stream.Stream<
-    ResponseItem,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResponseItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchResourcesRequest,
   output: SearchResourcesResponse,
   errors: [

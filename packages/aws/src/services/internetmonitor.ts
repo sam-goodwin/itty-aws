@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1281,27 +1280,13 @@ export type GetQueryResultsError =
  * Using the Amazon CloudWatch Internet Monitor query interface
  * in the Amazon CloudWatch Internet Monitor User Guide.
  */
-export const getQueryResults: API.OperationMethod<
+export const getQueryResults: API.PaginatedOperationMethod<
   GetQueryResultsInput,
   GetQueryResultsOutput,
   GetQueryResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    GetQueryResultsOutput,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsInput,
-  ) => stream.Stream<
-    unknown,
-    GetQueryResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsInput,
   output: GetQueryResultsOutput,
   errors: [
@@ -1374,27 +1359,13 @@ export type ListHealthEventsError =
  *
  * Health events that have start times during the time frame that is requested are not included in the list of health events.
  */
-export const listHealthEvents: API.OperationMethod<
+export const listHealthEvents: API.PaginatedOperationMethod<
   ListHealthEventsInput,
   ListHealthEventsOutput,
   ListHealthEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHealthEventsInput,
-  ) => stream.Stream<
-    ListHealthEventsOutput,
-    ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHealthEventsInput,
-  ) => stream.Stream<
-    HealthEvent,
-    ListHealthEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HealthEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHealthEventsInput,
   output: ListHealthEventsOutput,
   errors: [
@@ -1432,27 +1403,13 @@ export type ListInternetEventsError =
  * You can also limit the events returned to a specific status
  * (`ACTIVE` or `RESOLVED`) or type (`PERFORMANCE` or `AVAILABILITY`).
  */
-export const listInternetEvents: API.OperationMethod<
+export const listInternetEvents: API.PaginatedOperationMethod<
   ListInternetEventsInput,
   ListInternetEventsOutput,
   ListInternetEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInternetEventsInput,
-  ) => stream.Stream<
-    ListInternetEventsOutput,
-    ListInternetEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInternetEventsInput,
-  ) => stream.Stream<
-    InternetEventSummary,
-    ListInternetEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InternetEventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInternetEventsInput,
   output: ListInternetEventsOutput,
   errors: [
@@ -1481,27 +1438,13 @@ export type ListMonitorsError =
 /**
  * Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the Amazon Resource Name (ARN) and name of each monitor.
  */
-export const listMonitors: API.OperationMethod<
+export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsInput,
   ListMonitorsOutput,
   ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    ListMonitorsOutput,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    Monitor,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Monitor
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsInput,
   output: ListMonitorsOutput,
   errors: [

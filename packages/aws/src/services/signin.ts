@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -992,27 +991,13 @@ export type ListResourcePermissionStatementsError =
 /**
  * Retrieve all permission statements in the account's SignIn resource-based policy
  */
-export const listResourcePermissionStatements: API.OperationMethod<
+export const listResourcePermissionStatements: API.PaginatedOperationMethod<
   ListResourcePermissionStatementsInput,
   ListResourcePermissionStatementsOutput,
   ListResourcePermissionStatementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcePermissionStatementsInput,
-  ) => stream.Stream<
-    ListResourcePermissionStatementsOutput,
-    ListResourcePermissionStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcePermissionStatementsInput,
-  ) => stream.Stream<
-    PermissionStatementSummary,
-    ListResourcePermissionStatementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PermissionStatementSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePermissionStatementsInput,
   output: ListResourcePermissionStatementsOutput,
   errors: [

@@ -1592,27 +1592,13 @@ export type ListDomainsError = CommonErrors;
 /**
  * Lists Domains for a given account.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsInput,
   ListDomainsOutput,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    ListDomainsOutput,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
   output: ListDomainsOutput,
   errors: [],
@@ -1636,27 +1622,13 @@ export type ListSubscriptionsError =
 /**
  * Lists all Subscriptions within a Domain.
  */
-export const listSubscriptions: API.OperationMethod<
+export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsInput,
   ListSubscriptionsOutput,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    ListSubscriptionsOutput,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    SubscriptionDescription,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SubscriptionDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
   output: ListSubscriptionsOutput,
   errors: [

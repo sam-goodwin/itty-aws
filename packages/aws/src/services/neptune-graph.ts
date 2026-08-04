@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2841,27 +2840,13 @@ export type ListExportTasksError =
 /**
  * Retrieves a list of export tasks.
  */
-export const listExportTasks: API.OperationMethod<
+export const listExportTasks: API.PaginatedOperationMethod<
   ListExportTasksInput,
   ListExportTasksOutput,
   ListExportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportTasksInput,
-  ) => stream.Stream<
-    ListExportTasksOutput,
-    ListExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportTasksInput,
-  ) => stream.Stream<
-    ExportTaskSummary,
-    ListExportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportTasksInput,
   output: ListExportTasksOutput,
   errors: [
@@ -2889,27 +2874,13 @@ export type ListGraphsError =
 /**
  * Lists available Neptune Analytics graphs.
  */
-export const listGraphs: API.OperationMethod<
+export const listGraphs: API.PaginatedOperationMethod<
   ListGraphsInput,
   ListGraphsOutput,
   ListGraphsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGraphsInput,
-  ) => stream.Stream<
-    ListGraphsOutput,
-    ListGraphsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGraphsInput,
-  ) => stream.Stream<
-    GraphSummary,
-    ListGraphsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GraphSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphsInput,
   output: ListGraphsOutput,
   errors: [
@@ -2937,27 +2908,13 @@ export type ListGraphSnapshotsError =
 /**
  * Lists available snapshots of a specified Neptune Analytics graph.
  */
-export const listGraphSnapshots: API.OperationMethod<
+export const listGraphSnapshots: API.PaginatedOperationMethod<
   ListGraphSnapshotsInput,
   ListGraphSnapshotsOutput,
   ListGraphSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGraphSnapshotsInput,
-  ) => stream.Stream<
-    ListGraphSnapshotsOutput,
-    ListGraphSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGraphSnapshotsInput,
-  ) => stream.Stream<
-    GraphSnapshotSummary,
-    ListGraphSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GraphSnapshotSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphSnapshotsInput,
   output: ListGraphSnapshotsOutput,
   errors: [
@@ -2986,27 +2943,13 @@ export type ListImportTasksError =
 /**
  * Lists import tasks.
  */
-export const listImportTasks: API.OperationMethod<
+export const listImportTasks: API.PaginatedOperationMethod<
   ListImportTasksInput,
   ListImportTasksOutput,
   ListImportTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportTasksInput,
-  ) => stream.Stream<
-    ListImportTasksOutput,
-    ListImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportTasksInput,
-  ) => stream.Stream<
-    ImportTaskSummary,
-    ListImportTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportTaskSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportTasksInput,
   output: ListImportTasksOutput,
   errors: [
@@ -3035,27 +2978,13 @@ export type ListPrivateGraphEndpointsError =
 /**
  * Lists private endpoints for a specified Neptune Analytics graph.
  */
-export const listPrivateGraphEndpoints: API.OperationMethod<
+export const listPrivateGraphEndpoints: API.PaginatedOperationMethod<
   ListPrivateGraphEndpointsInput,
   ListPrivateGraphEndpointsOutput,
   ListPrivateGraphEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrivateGraphEndpointsInput,
-  ) => stream.Stream<
-    ListPrivateGraphEndpointsOutput,
-    ListPrivateGraphEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrivateGraphEndpointsInput,
-  ) => stream.Stream<
-    PrivateGraphEndpointSummary,
-    ListPrivateGraphEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrivateGraphEndpointSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivateGraphEndpointsInput,
   output: ListPrivateGraphEndpointsOutput,
   errors: [

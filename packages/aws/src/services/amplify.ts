@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2797,27 +2796,13 @@ export type ListAppsError =
 /**
  * Returns a list of the existing Amplify apps.
  */
-export const listApps: API.OperationMethod<
+export const listApps: API.PaginatedOperationMethod<
   ListAppsRequest,
   ListAppsResult,
   ListAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    ListAppsResult,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    App,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  App
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResult,
   errors: [
@@ -2917,27 +2902,13 @@ export type ListBranchesError =
 /**
  * Lists the branches of an Amplify app.
  */
-export const listBranches: API.OperationMethod<
+export const listBranches: API.PaginatedOperationMethod<
   ListBranchesRequest,
   ListBranchesResult,
   ListBranchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBranchesRequest,
-  ) => stream.Stream<
-    ListBranchesResult,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBranchesRequest,
-  ) => stream.Stream<
-    Branch,
-    ListBranchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Branch
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBranchesRequest,
   output: ListBranchesResult,
   errors: [
@@ -2966,27 +2937,13 @@ export type ListDomainAssociationsError =
 /**
  * Returns the domain associations for an Amplify app.
  */
-export const listDomainAssociations: API.OperationMethod<
+export const listDomainAssociations: API.PaginatedOperationMethod<
   ListDomainAssociationsRequest,
   ListDomainAssociationsResult,
   ListDomainAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainAssociationsRequest,
-  ) => stream.Stream<
-    ListDomainAssociationsResult,
-    ListDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainAssociationsRequest,
-  ) => stream.Stream<
-    DomainAssociation,
-    ListDomainAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainAssociationsRequest,
   output: ListDomainAssociationsResult,
   errors: [
@@ -3016,27 +2973,13 @@ export type ListJobsError =
 /**
  * Lists the jobs for a branch of an Amplify app.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResult,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResult,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobSummary,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [

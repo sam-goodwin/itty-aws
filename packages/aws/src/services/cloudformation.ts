@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7295,27 +7294,13 @@ export type DescribeAccountLimitsError = CommonErrors;
  * Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you
  * can create in your account. For more information about account limits, see Understand CloudFormation quotas in the *CloudFormation User Guide*.
  */
-export const describeAccountLimits: API.OperationMethod<
+export const describeAccountLimits: API.PaginatedOperationMethod<
   DescribeAccountLimitsInput,
   DescribeAccountLimitsOutput,
   DescribeAccountLimitsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountLimitsInput,
-  ) => stream.Stream<
-    DescribeAccountLimitsOutput,
-    DescribeAccountLimitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountLimitsInput,
-  ) => stream.Stream<
-    AccountLimit,
-    DescribeAccountLimitsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccountLimit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
@@ -7336,27 +7321,13 @@ export type DescribeChangeSetError = ChangeSetNotFoundException | CommonErrors;
  * CloudFormation stacks using change sets in the
  * *CloudFormation User Guide*.
  */
-export const describeChangeSet: API.OperationMethod<
+export const describeChangeSet: API.PaginatedOperationMethod<
   DescribeChangeSetInput,
   DescribeChangeSetOutput,
   DescribeChangeSetError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeChangeSetInput,
-  ) => stream.Stream<
-    DescribeChangeSetOutput,
-    DescribeChangeSetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeChangeSetInput,
-  ) => stream.Stream<
-    Change,
-    DescribeChangeSetError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Change
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeChangeSetInput,
   output: DescribeChangeSetOutput,
   errors: [ChangeSetNotFoundException],
@@ -7418,27 +7389,13 @@ export type DescribeEventsError = CommonErrors;
  * One of `ChangeSetName`, `OperationId` or `StackName`
  * must be specified as input.
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsInput,
   DescribeEventsOutput,
   DescribeEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsInput,
-  ) => stream.Stream<
-    DescribeEventsOutput,
-    DescribeEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsInput,
-  ) => stream.Stream<
-    OperationEvent,
-    DescribeEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  OperationEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsInput,
   output: DescribeEventsOutput,
   errors: [],
@@ -7588,27 +7545,13 @@ export type DescribeStackEventsError = CommonErrors;
  * You can list events for stacks that have failed to create or have been deleted by
  * specifying the unique stack identifier (stack ID).
  */
-export const describeStackEvents: API.OperationMethod<
+export const describeStackEvents: API.PaginatedOperationMethod<
   DescribeStackEventsInput,
   DescribeStackEventsOutput,
   DescribeStackEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStackEventsInput,
-  ) => stream.Stream<
-    DescribeStackEventsOutput,
-    DescribeStackEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStackEventsInput,
-  ) => stream.Stream<
-    StackEvent,
-    DescribeStackEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStackEventsInput,
   output: DescribeStackEventsOutput,
   errors: [],
@@ -7703,27 +7646,13 @@ export type DescribeStackResourceDriftsError = CommonErrors;
  * DetectStackDrift to detect drift on all supported resources for a given
  * stack.
  */
-export const describeStackResourceDrifts: API.OperationMethod<
+export const describeStackResourceDrifts: API.PaginatedOperationMethod<
   DescribeStackResourceDriftsInput,
   DescribeStackResourceDriftsOutput,
   DescribeStackResourceDriftsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStackResourceDriftsInput,
-  ) => stream.Stream<
-    DescribeStackResourceDriftsOutput,
-    DescribeStackResourceDriftsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStackResourceDriftsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeStackResourceDriftsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStackResourceDriftsInput,
   output: DescribeStackResourceDriftsOutput,
   errors: [],
@@ -7781,27 +7710,13 @@ export type DescribeStacksError = StackNotFound | CommonErrors;
  *
  * If the stack doesn't exist, a `ValidationError` is returned.
  */
-export const describeStacks: API.OperationMethod<
+export const describeStacks: API.PaginatedOperationMethod<
   DescribeStacksInput,
   DescribeStacksOutput,
   DescribeStacksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeStacksInput,
-  ) => stream.Stream<
-    DescribeStacksOutput,
-    DescribeStacksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeStacksInput,
-  ) => stream.Stream<
-    Stack,
-    DescribeStacksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Stack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStacksInput,
   output: DescribeStacksOutput,
   errors: [StackNotFound],
@@ -8283,27 +8198,13 @@ export type ListChangeSetsError = CommonErrors;
  * lists change sets that are in the `CREATE_IN_PROGRESS` or
  * `CREATE_PENDING` state.
  */
-export const listChangeSets: API.OperationMethod<
+export const listChangeSets: API.PaginatedOperationMethod<
   ListChangeSetsInput,
   ListChangeSetsOutput,
   ListChangeSetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangeSetsInput,
-  ) => stream.Stream<
-    ListChangeSetsOutput,
-    ListChangeSetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangeSetsInput,
-  ) => stream.Stream<
-    ChangeSetSummary,
-    ListChangeSetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ChangeSetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangeSetsInput,
   output: ListChangeSetsOutput,
   errors: [],
@@ -8326,27 +8227,13 @@ export type ListExportsError = CommonErrors;
  * For more information, see Get exported outputs
  * from a deployed CloudFormation stack.
  */
-export const listExports: API.OperationMethod<
+export const listExports: API.PaginatedOperationMethod<
   ListExportsInput,
   ListExportsOutput,
   ListExportsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsInput,
-  ) => stream.Stream<
-    ListExportsOutput,
-    ListExportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsInput,
-  ) => stream.Stream<
-    Export,
-    ListExportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Export
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [],
@@ -8364,27 +8251,13 @@ export type ListGeneratedTemplatesError = CommonErrors;
 /**
  * Lists your generated templates in this Region.
  */
-export const listGeneratedTemplates: API.OperationMethod<
+export const listGeneratedTemplates: API.PaginatedOperationMethod<
   ListGeneratedTemplatesInput,
   ListGeneratedTemplatesOutput,
   ListGeneratedTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGeneratedTemplatesInput,
-  ) => stream.Stream<
-    ListGeneratedTemplatesOutput,
-    ListGeneratedTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGeneratedTemplatesInput,
-  ) => stream.Stream<
-    TemplateSummary,
-    ListGeneratedTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGeneratedTemplatesInput,
   output: ListGeneratedTemplatesOutput,
   errors: [],
@@ -8438,27 +8311,13 @@ export type ListImportsError = CommonErrors;
  *
  * For more information about importing an exported output value, see the Fn::ImportValue function.
  */
-export const listImports: API.OperationMethod<
+export const listImports: API.PaginatedOperationMethod<
   ListImportsInput,
   ListImportsOutput,
   ListImportsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsInput,
-  ) => stream.Stream<
-    ListImportsOutput,
-    ListImportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsInput,
-  ) => stream.Stream<
-    StackName,
-    ListImportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [],
@@ -8480,27 +8339,13 @@ export type ListResourceScanRelatedResourcesError =
  * Lists the related resources for a list of resources from a resource scan. The response
  * indicates whether each returned resource is already managed by CloudFormation.
  */
-export const listResourceScanRelatedResources: API.OperationMethod<
+export const listResourceScanRelatedResources: API.PaginatedOperationMethod<
   ListResourceScanRelatedResourcesInput,
   ListResourceScanRelatedResourcesOutput,
   ListResourceScanRelatedResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceScanRelatedResourcesInput,
-  ) => stream.Stream<
-    ListResourceScanRelatedResourcesOutput,
-    ListResourceScanRelatedResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceScanRelatedResourcesInput,
-  ) => stream.Stream<
-    ScannedResource,
-    ListResourceScanRelatedResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ScannedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScanRelatedResourcesInput,
   output: ListResourceScanRelatedResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
@@ -8525,27 +8370,13 @@ export type ListResourceScanResourcesError =
  * specified filters are returned. The response indicates whether each returned resource is
  * already managed by CloudFormation.
  */
-export const listResourceScanResources: API.OperationMethod<
+export const listResourceScanResources: API.PaginatedOperationMethod<
   ListResourceScanResourcesInput,
   ListResourceScanResourcesOutput,
   ListResourceScanResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceScanResourcesInput,
-  ) => stream.Stream<
-    ListResourceScanResourcesOutput,
-    ListResourceScanResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceScanResourcesInput,
-  ) => stream.Stream<
-    ScannedResource,
-    ListResourceScanResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ScannedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScanResourcesInput,
   output: ListResourceScanResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
@@ -8565,27 +8396,13 @@ export type ListResourceScansError = CommonErrors;
  * List the resource scans from newest to oldest. By default it will return up to 10 resource
  * scans.
  */
-export const listResourceScans: API.OperationMethod<
+export const listResourceScans: API.PaginatedOperationMethod<
   ListResourceScansInput,
   ListResourceScansOutput,
   ListResourceScansError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceScansInput,
-  ) => stream.Stream<
-    ListResourceScansOutput,
-    ListResourceScansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceScansInput,
-  ) => stream.Stream<
-    ResourceScanSummary,
-    ListResourceScansError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ResourceScanSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceScansInput,
   output: ListResourceScansOutput,
   errors: [],
@@ -8636,27 +8453,13 @@ export type ListStackInstancesError = StackSetNotFoundException | CommonErrors;
  * StackSet. You can filter for stack instances that are associated with a specific Amazon Web Services account
  * name or Region, or that have a specific status.
  */
-export const listStackInstances: API.OperationMethod<
+export const listStackInstances: API.PaginatedOperationMethod<
   ListStackInstancesInput,
   ListStackInstancesOutput,
   ListStackInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackInstancesInput,
-  ) => stream.Stream<
-    ListStackInstancesOutput,
-    ListStackInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackInstancesInput,
-  ) => stream.Stream<
-    StackInstanceSummary,
-    ListStackInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackInstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackInstancesInput,
   output: ListStackInstancesOutput,
   errors: [StackSetNotFoundException],
@@ -8675,27 +8478,13 @@ export type ListStackRefactorActionsError = CommonErrors;
 /**
  * Lists the stack refactor actions that will be taken after calling the ExecuteStackRefactor action.
  */
-export const listStackRefactorActions: API.OperationMethod<
+export const listStackRefactorActions: API.PaginatedOperationMethod<
   ListStackRefactorActionsInput,
   ListStackRefactorActionsOutput,
   ListStackRefactorActionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackRefactorActionsInput,
-  ) => stream.Stream<
-    ListStackRefactorActionsOutput,
-    ListStackRefactorActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackRefactorActionsInput,
-  ) => stream.Stream<
-    StackRefactorAction,
-    ListStackRefactorActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackRefactorAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackRefactorActionsInput,
   output: ListStackRefactorActionsOutput,
   errors: [],
@@ -8714,27 +8503,13 @@ export type ListStackRefactorsError = CommonErrors;
 /**
  * Lists all account stack refactor operations and their statuses.
  */
-export const listStackRefactors: API.OperationMethod<
+export const listStackRefactors: API.PaginatedOperationMethod<
   ListStackRefactorsInput,
   ListStackRefactorsOutput,
   ListStackRefactorsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackRefactorsInput,
-  ) => stream.Stream<
-    ListStackRefactorsOutput,
-    ListStackRefactorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackRefactorsInput,
-  ) => stream.Stream<
-    StackRefactorSummary,
-    ListStackRefactorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackRefactorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackRefactorsInput,
   output: ListStackRefactorsOutput,
   errors: [],
@@ -8756,27 +8531,13 @@ export type ListStackResourcesError = CommonErrors;
  * For deleted stacks, ListStackResources returns resource information for up to 90 days
  * after the stack has been deleted.
  */
-export const listStackResources: API.OperationMethod<
+export const listStackResources: API.PaginatedOperationMethod<
   ListStackResourcesInput,
   ListStackResourcesOutput,
   ListStackResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackResourcesInput,
-  ) => stream.Stream<
-    ListStackResourcesOutput,
-    ListStackResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackResourcesInput,
-  ) => stream.Stream<
-    StackResourceSummary,
-    ListStackResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackResourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackResourcesInput,
   output: ListStackResourcesOutput,
   errors: [],
@@ -8798,27 +8559,13 @@ export type ListStacksError = CommonErrors;
  * specified, summary information for all stacks is returned (including existing stacks and
  * stacks that have been deleted).
  */
-export const listStacks: API.OperationMethod<
+export const listStacks: API.PaginatedOperationMethod<
   ListStacksInput,
   ListStacksOutput,
   ListStacksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStacksInput,
-  ) => stream.Stream<
-    ListStacksOutput,
-    ListStacksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStacksInput,
-  ) => stream.Stream<
-    StackSummary,
-    ListStacksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStacksInput,
   output: ListStacksOutput,
   errors: [],
@@ -8862,27 +8609,13 @@ export type ListStackSetOperationResultsError =
  * This API provides *eventually consistent* reads meaning it may take
  * some time but will eventually return the most up-to-date data.
  */
-export const listStackSetOperationResults: API.OperationMethod<
+export const listStackSetOperationResults: API.PaginatedOperationMethod<
   ListStackSetOperationResultsInput,
   ListStackSetOperationResultsOutput,
   ListStackSetOperationResultsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackSetOperationResultsInput,
-  ) => stream.Stream<
-    ListStackSetOperationResultsOutput,
-    ListStackSetOperationResultsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackSetOperationResultsInput,
-  ) => stream.Stream<
-    StackSetOperationResultSummary,
-    ListStackSetOperationResultsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackSetOperationResultSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetOperationResultsInput,
   output: ListStackSetOperationResultsOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
@@ -8906,27 +8639,13 @@ export type ListStackSetOperationsError =
  * This API provides *eventually consistent* reads meaning it may take
  * some time but will eventually return the most up-to-date data.
  */
-export const listStackSetOperations: API.OperationMethod<
+export const listStackSetOperations: API.PaginatedOperationMethod<
   ListStackSetOperationsInput,
   ListStackSetOperationsOutput,
   ListStackSetOperationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackSetOperationsInput,
-  ) => stream.Stream<
-    ListStackSetOperationsOutput,
-    ListStackSetOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackSetOperationsInput,
-  ) => stream.Stream<
-    StackSetOperationSummary,
-    ListStackSetOperationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackSetOperationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetOperationsInput,
   output: ListStackSetOperationsOutput,
   errors: [StackSetNotFoundException],
@@ -8961,27 +8680,13 @@ export type ListStackSetsError = CommonErrors;
  * `ListStackSets` returns all StackSets with service-managed permissions in the
  * management account.
  */
-export const listStackSets: API.OperationMethod<
+export const listStackSets: API.PaginatedOperationMethod<
   ListStackSetsInput,
   ListStackSetsOutput,
   ListStackSetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStackSetsInput,
-  ) => stream.Stream<
-    ListStackSetsOutput,
-    ListStackSetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStackSetsInput,
-  ) => stream.Stream<
-    StackSetSummary,
-    ListStackSetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  StackSetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStackSetsInput,
   output: ListStackSetsOutput,
   errors: [],
@@ -9000,27 +8705,13 @@ export type ListTypeRegistrationsError = CFNRegistryException | CommonErrors;
 /**
  * Returns a list of registration tokens for the specified extension(s).
  */
-export const listTypeRegistrations: API.OperationMethod<
+export const listTypeRegistrations: API.PaginatedOperationMethod<
   ListTypeRegistrationsInput,
   ListTypeRegistrationsOutput,
   ListTypeRegistrationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypeRegistrationsInput,
-  ) => stream.Stream<
-    ListTypeRegistrationsOutput,
-    ListTypeRegistrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypeRegistrationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListTypeRegistrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeRegistrationsInput,
   output: ListTypeRegistrationsOutput,
   errors: [CFNRegistryException],
@@ -9040,27 +8731,13 @@ export type ListTypesError = CFNRegistryException | CommonErrors;
  * modules, and Hooks as well as all public extensions from Amazon Web Services and third-party
  * publishers.
  */
-export const listTypes: API.OperationMethod<
+export const listTypes: API.PaginatedOperationMethod<
   ListTypesInput,
   ListTypesOutput,
   ListTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypesInput,
-  ) => stream.Stream<
-    ListTypesOutput,
-    ListTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypesInput,
-  ) => stream.Stream<
-    TypeSummary,
-    ListTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TypeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesInput,
   output: ListTypesOutput,
   errors: [CFNRegistryException],
@@ -9079,27 +8756,13 @@ export type ListTypeVersionsError = CFNRegistryException | CommonErrors;
 /**
  * Returns summary information about the versions of an extension.
  */
-export const listTypeVersions: API.OperationMethod<
+export const listTypeVersions: API.PaginatedOperationMethod<
   ListTypeVersionsInput,
   ListTypeVersionsOutput,
   ListTypeVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypeVersionsInput,
-  ) => stream.Stream<
-    ListTypeVersionsOutput,
-    ListTypeVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypeVersionsInput,
-  ) => stream.Stream<
-    unknown,
-    ListTypeVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypeVersionsInput,
   output: ListTypeVersionsOutput,
   errors: [CFNRegistryException],

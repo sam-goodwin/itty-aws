@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1668,27 +1667,13 @@ export type ListAssociatedRoute53HealthChecksError =
 /**
  * Returns an array of all Amazon Route 53 health checks associated with a specific routing control.
  */
-export const listAssociatedRoute53HealthChecks: API.OperationMethod<
+export const listAssociatedRoute53HealthChecks: API.PaginatedOperationMethod<
   ListAssociatedRoute53HealthChecksRequest,
   ListAssociatedRoute53HealthChecksResponse,
   ListAssociatedRoute53HealthChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedRoute53HealthChecksRequest,
-  ) => stream.Stream<
-    ListAssociatedRoute53HealthChecksResponse,
-    ListAssociatedRoute53HealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedRoute53HealthChecksRequest,
-  ) => stream.Stream<
-    __stringMax36PatternS,
-    ListAssociatedRoute53HealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  __stringMax36PatternS
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedRoute53HealthChecksRequest,
   output: ListAssociatedRoute53HealthChecksResponse,
   errors: [
@@ -1717,27 +1702,13 @@ export type ListClustersError =
 /**
  * Returns an array of all the clusters in an account.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    Cluster,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -1768,27 +1739,13 @@ export type ListControlPanelsError =
 /**
  * Returns an array of control panels in an account or in a cluster.
  */
-export const listControlPanels: API.OperationMethod<
+export const listControlPanels: API.PaginatedOperationMethod<
   ListControlPanelsRequest,
   ListControlPanelsResponse,
   ListControlPanelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlPanelsRequest,
-  ) => stream.Stream<
-    ListControlPanelsResponse,
-    ListControlPanelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlPanelsRequest,
-  ) => stream.Stream<
-    ControlPanel,
-    ListControlPanelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ControlPanel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListControlPanelsRequest,
   output: ListControlPanelsResponse,
   errors: [
@@ -1819,27 +1776,13 @@ export type ListRoutingControlsError =
 /**
  * Returns an array of routing controls for a control panel. A routing control is an Amazon Route 53 Application Recovery Controller construct that has one of two states: ON and OFF. You can map the routing control state to the state of an Amazon Route 53 health check, which can be used to control routing.
  */
-export const listRoutingControls: API.OperationMethod<
+export const listRoutingControls: API.PaginatedOperationMethod<
   ListRoutingControlsRequest,
   ListRoutingControlsResponse,
   ListRoutingControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutingControlsRequest,
-  ) => stream.Stream<
-    ListRoutingControlsResponse,
-    ListRoutingControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutingControlsRequest,
-  ) => stream.Stream<
-    RoutingControl,
-    ListRoutingControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RoutingControl
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoutingControlsRequest,
   output: ListRoutingControlsResponse,
   errors: [
@@ -1870,27 +1813,13 @@ export type ListSafetyRulesError =
 /**
  * List the safety rules (the assertion rules and gating rules) that you've defined for the routing controls in a control panel.
  */
-export const listSafetyRules: API.OperationMethod<
+export const listSafetyRules: API.PaginatedOperationMethod<
   ListSafetyRulesRequest,
   ListSafetyRulesResponse,
   ListSafetyRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSafetyRulesRequest,
-  ) => stream.Stream<
-    ListSafetyRulesResponse,
-    ListSafetyRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSafetyRulesRequest,
-  ) => stream.Stream<
-    Rule,
-    ListSafetyRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Rule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSafetyRulesRequest,
   output: ListSafetyRulesResponse,
   errors: [

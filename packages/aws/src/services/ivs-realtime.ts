@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3087,27 +3086,13 @@ export type ListCompositionsError =
  * Gets summary information about all Compositions in your account, in the AWS region
  * where the API request is processed.
  */
-export const listCompositions: API.OperationMethod<
+export const listCompositions: API.PaginatedOperationMethod<
   ListCompositionsRequest,
   ListCompositionsResponse,
   ListCompositionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCompositionsRequest,
-  ) => stream.Stream<
-    ListCompositionsResponse,
-    ListCompositionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCompositionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCompositionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCompositionsRequest,
   output: ListCompositionsResponse,
   errors: [
@@ -3138,27 +3123,13 @@ export type ListEncoderConfigurationsError =
  * Gets summary information about all EncoderConfigurations in your account, in the AWS
  * region where the API request is processed.
  */
-export const listEncoderConfigurations: API.OperationMethod<
+export const listEncoderConfigurations: API.PaginatedOperationMethod<
   ListEncoderConfigurationsRequest,
   ListEncoderConfigurationsResponse,
   ListEncoderConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEncoderConfigurationsRequest,
-  ) => stream.Stream<
-    ListEncoderConfigurationsResponse,
-    ListEncoderConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEncoderConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEncoderConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEncoderConfigurationsRequest,
   output: ListEncoderConfigurationsResponse,
   errors: [
@@ -3185,27 +3156,13 @@ export type ListIngestConfigurationsError =
 /**
  * Lists all IngestConfigurations in your account, in the AWS region where the API request is processed.
  */
-export const listIngestConfigurations: API.OperationMethod<
+export const listIngestConfigurations: API.PaginatedOperationMethod<
   ListIngestConfigurationsRequest,
   ListIngestConfigurationsResponse,
   ListIngestConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngestConfigurationsRequest,
-  ) => stream.Stream<
-    ListIngestConfigurationsResponse,
-    ListIngestConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngestConfigurationsRequest,
-  ) => stream.Stream<
-    IngestConfigurationSummary,
-    ListIngestConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IngestConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestConfigurationsRequest,
   output: ListIngestConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3228,27 +3185,13 @@ export type ListParticipantEventsError =
  * Lists events for a specified participant that occurred during a specified stage
  * session.
  */
-export const listParticipantEvents: API.OperationMethod<
+export const listParticipantEvents: API.PaginatedOperationMethod<
   ListParticipantEventsRequest,
   ListParticipantEventsResponse,
   ListParticipantEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParticipantEventsRequest,
-  ) => stream.Stream<
-    ListParticipantEventsResponse,
-    ListParticipantEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParticipantEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParticipantEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantEventsRequest,
   output: ListParticipantEventsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3269,27 +3212,13 @@ export type ListParticipantReplicasError =
 /**
  * Lists all the replicas for a participant from a source stage.
  */
-export const listParticipantReplicas: API.OperationMethod<
+export const listParticipantReplicas: API.PaginatedOperationMethod<
   ListParticipantReplicasRequest,
   ListParticipantReplicasResponse,
   ListParticipantReplicasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParticipantReplicasRequest,
-  ) => stream.Stream<
-    ListParticipantReplicasResponse,
-    ListParticipantReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParticipantReplicasRequest,
-  ) => stream.Stream<
-    ParticipantReplica,
-    ListParticipantReplicasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ParticipantReplica
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantReplicasRequest,
   output: ListParticipantReplicasResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3311,27 +3240,13 @@ export type ListParticipantsError =
 /**
  * Lists all participants in a specified stage session.
  */
-export const listParticipants: API.OperationMethod<
+export const listParticipants: API.PaginatedOperationMethod<
   ListParticipantsRequest,
   ListParticipantsResponse,
   ListParticipantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParticipantsRequest,
-  ) => stream.Stream<
-    ListParticipantsResponse,
-    ListParticipantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParticipantsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParticipantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParticipantsRequest,
   output: ListParticipantsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3352,27 +3267,13 @@ export type ListPublicKeysError =
 /**
  * Gets summary information about all public keys in your account, in the AWS region where the API request is processed.
  */
-export const listPublicKeys: API.OperationMethod<
+export const listPublicKeys: API.PaginatedOperationMethod<
   ListPublicKeysRequest,
   ListPublicKeysResponse,
   ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    ListPublicKeysResponse,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    PublicKeySummary,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PublicKeySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
   output: ListPublicKeysResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3397,27 +3298,13 @@ export type ListStagesError =
  * Gets summary information about all stages in your account, in the AWS region where the
  * API request is processed.
  */
-export const listStages: API.OperationMethod<
+export const listStages: API.PaginatedOperationMethod<
   ListStagesRequest,
   ListStagesResponse,
   ListStagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStagesRequest,
-  ) => stream.Stream<
-    ListStagesResponse,
-    ListStagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStagesRequest,
   output: ListStagesResponse,
   errors: [
@@ -3443,27 +3330,13 @@ export type ListStageSessionsError =
 /**
  * Gets all sessions for a specified stage.
  */
-export const listStageSessions: API.OperationMethod<
+export const listStageSessions: API.PaginatedOperationMethod<
   ListStageSessionsRequest,
   ListStageSessionsResponse,
   ListStageSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStageSessionsRequest,
-  ) => stream.Stream<
-    ListStageSessionsResponse,
-    ListStageSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStageSessionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStageSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStageSessionsRequest,
   output: ListStageSessionsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -3488,27 +3361,13 @@ export type ListStorageConfigurationsError =
  * Gets summary information about all storage configurations in your account,
  * in the AWS region where the API request is processed.
  */
-export const listStorageConfigurations: API.OperationMethod<
+export const listStorageConfigurations: API.PaginatedOperationMethod<
   ListStorageConfigurationsRequest,
   ListStorageConfigurationsResponse,
   ListStorageConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStorageConfigurationsRequest,
-  ) => stream.Stream<
-    ListStorageConfigurationsResponse,
-    ListStorageConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStorageConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStorageConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStorageConfigurationsRequest,
   output: ListStorageConfigurationsResponse,
   errors: [

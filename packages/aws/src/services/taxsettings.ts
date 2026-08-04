@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1961,27 +1960,13 @@ export type ListSupplementalTaxRegistrationsError =
 /**
  * Retrieves supplemental tax registrations for a single account.
  */
-export const listSupplementalTaxRegistrations: API.OperationMethod<
+export const listSupplementalTaxRegistrations: API.PaginatedOperationMethod<
   ListSupplementalTaxRegistrationsRequest,
   ListSupplementalTaxRegistrationsResponse,
   ListSupplementalTaxRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSupplementalTaxRegistrationsRequest,
-  ) => stream.Stream<
-    ListSupplementalTaxRegistrationsResponse,
-    ListSupplementalTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSupplementalTaxRegistrationsRequest,
-  ) => stream.Stream<
-    SupplementalTaxRegistration,
-    ListSupplementalTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SupplementalTaxRegistration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupplementalTaxRegistrationsRequest,
   output: ListSupplementalTaxRegistrationsResponse,
   errors: [
@@ -2008,27 +1993,13 @@ export type ListTaxExemptionsError =
 /**
  * Retrieves the tax exemption of accounts listed in a consolidated billing family. The IAM action is `tax:GetExemptions`.
  */
-export const listTaxExemptions: API.OperationMethod<
+export const listTaxExemptions: API.PaginatedOperationMethod<
   ListTaxExemptionsRequest,
   ListTaxExemptionsResponse,
   ListTaxExemptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaxExemptionsRequest,
-  ) => stream.Stream<
-    ListTaxExemptionsResponse,
-    ListTaxExemptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaxExemptionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTaxExemptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaxExemptionsRequest,
   output: ListTaxExemptionsResponse,
   errors: [
@@ -2055,27 +2026,13 @@ export type ListTaxRegistrationsError =
 /**
  * Retrieves the tax registration of accounts listed in a consolidated billing family. This can be used to retrieve up to 100 accounts' tax registrations in one call (default 50).
  */
-export const listTaxRegistrations: API.OperationMethod<
+export const listTaxRegistrations: API.PaginatedOperationMethod<
   ListTaxRegistrationsRequest,
   ListTaxRegistrationsResponse,
   ListTaxRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaxRegistrationsRequest,
-  ) => stream.Stream<
-    ListTaxRegistrationsResponse,
-    ListTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaxRegistrationsRequest,
-  ) => stream.Stream<
-    AccountDetails,
-    ListTaxRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaxRegistrationsRequest,
   output: ListTaxRegistrationsResponse,
   errors: [

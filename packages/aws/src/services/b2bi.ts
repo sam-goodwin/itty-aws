@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2846,27 +2845,13 @@ export type ListCapabilitiesError =
 /**
  * Lists the capabilities associated with your Amazon Web Services account for your current or specified region. A trading capability contains the information required to transform incoming EDI documents into JSON or XML outputs.
  */
-export const listCapabilities: API.OperationMethod<
+export const listCapabilities: API.PaginatedOperationMethod<
   ListCapabilitiesRequest,
   ListCapabilitiesResponse,
   ListCapabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCapabilitiesRequest,
-  ) => stream.Stream<
-    ListCapabilitiesResponse,
-    ListCapabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCapabilitiesRequest,
-  ) => stream.Stream<
-    CapabilitySummary,
-    ListCapabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CapabilitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCapabilitiesRequest,
   output: ListCapabilitiesResponse,
   errors: [
@@ -2896,27 +2881,13 @@ export type ListPartnershipsError =
 /**
  * Lists the partnerships associated with your Amazon Web Services account for your current or specified region. A partnership represents the connection between you and your trading partner. It ties together a profile and one or more trading capabilities.
  */
-export const listPartnerships: API.OperationMethod<
+export const listPartnerships: API.PaginatedOperationMethod<
   ListPartnershipsRequest,
   ListPartnershipsResponse,
   ListPartnershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartnershipsRequest,
-  ) => stream.Stream<
-    ListPartnershipsResponse,
-    ListPartnershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartnershipsRequest,
-  ) => stream.Stream<
-    PartnershipSummary,
-    ListPartnershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PartnershipSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartnershipsRequest,
   output: ListPartnershipsResponse,
   errors: [
@@ -2946,27 +2917,13 @@ export type ListProfilesError =
 /**
  * Lists the profiles associated with your Amazon Web Services account for your current or specified region. A profile is the mechanism used to create the concept of a private network.
  */
-export const listProfiles: API.OperationMethod<
+export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ListProfilesResponse,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ProfileSummary,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
   output: ListProfilesResponse,
   errors: [
@@ -3021,27 +2978,13 @@ export type ListTransformersError =
 /**
  * Lists the available transformers. A transformer can take an EDI file as input and transform it into a JSON-or XML-formatted document. Alternatively, a transformer can take a JSON-or XML-formatted document as input and transform it into an EDI file.
  */
-export const listTransformers: API.OperationMethod<
+export const listTransformers: API.PaginatedOperationMethod<
   ListTransformersRequest,
   ListTransformersResponse,
   ListTransformersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTransformersRequest,
-  ) => stream.Stream<
-    ListTransformersResponse,
-    ListTransformersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTransformersRequest,
-  ) => stream.Stream<
-    TransformerSummary,
-    ListTransformersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TransformerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransformersRequest,
   output: ListTransformersResponse,
   errors: [

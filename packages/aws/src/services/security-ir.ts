@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1666,27 +1665,13 @@ export type ListCaseEditsError = CommonErrors;
 /**
  * Views the case history for edits made to a designated case.
  */
-export const listCaseEdits: API.OperationMethod<
+export const listCaseEdits: API.PaginatedOperationMethod<
   ListCaseEditsRequest,
   ListCaseEditsResponse,
   ListCaseEditsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCaseEditsRequest,
-  ) => stream.Stream<
-    ListCaseEditsResponse,
-    ListCaseEditsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCaseEditsRequest,
-  ) => stream.Stream<
-    CaseEditItem,
-    ListCaseEditsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CaseEditItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCaseEditsRequest,
   output: ListCaseEditsResponse,
   errors: [],
@@ -1705,27 +1690,13 @@ export type ListCasesError = CommonErrors;
 /**
  * Lists all cases the requester has access to.
  */
-export const listCases: API.OperationMethod<
+export const listCases: API.PaginatedOperationMethod<
   ListCasesRequest,
   ListCasesResponse,
   ListCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCasesRequest,
-  ) => stream.Stream<
-    ListCasesResponse,
-    ListCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCasesRequest,
-  ) => stream.Stream<
-    ListCasesItem,
-    ListCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListCasesItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesRequest,
   output: ListCasesResponse,
   errors: [],
@@ -1744,27 +1715,13 @@ export type ListCommentsError = CommonErrors;
 /**
  * Returns comments for a designated case.
  */
-export const listComments: API.OperationMethod<
+export const listComments: API.PaginatedOperationMethod<
   ListCommentsRequest,
   ListCommentsResponse,
   ListCommentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommentsRequest,
-  ) => stream.Stream<
-    ListCommentsResponse,
-    ListCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommentsRequest,
-  ) => stream.Stream<
-    ListCommentsItem,
-    ListCommentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListCommentsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: ListCommentsResponse,
   errors: [],
@@ -1783,27 +1740,13 @@ export type ListInvestigationsError = CommonErrors;
 /**
  * Investigation performed by an agent for a security incident...
  */
-export const listInvestigations: API.OperationMethod<
+export const listInvestigations: API.PaginatedOperationMethod<
   ListInvestigationsRequest,
   ListInvestigationsResponse,
   ListInvestigationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    ListInvestigationsResponse,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvestigationsRequest,
-  ) => stream.Stream<
-    InvestigationAction,
-    ListInvestigationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InvestigationAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigationsRequest,
   output: ListInvestigationsResponse,
   errors: [],
@@ -1822,27 +1765,13 @@ export type ListMembershipsError = CommonErrors;
 /**
  * Returns the memberships that the calling principal can access.
  */
-export const listMemberships: API.OperationMethod<
+export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembershipsRequest,
-  ) => stream.Stream<
-    ListMembershipsResponse,
-    ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembershipsRequest,
-  ) => stream.Stream<
-    ListMembershipItem,
-    ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListMembershipItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],

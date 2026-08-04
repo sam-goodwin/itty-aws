@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3084,27 +3083,13 @@ export type ListAcceleratorsError =
 /**
  * List the accelerators for an Amazon Web Services account.
  */
-export const listAccelerators: API.OperationMethod<
+export const listAccelerators: API.PaginatedOperationMethod<
   ListAcceleratorsRequest,
   ListAcceleratorsResponse,
   ListAcceleratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAcceleratorsRequest,
-  ) => stream.Stream<
-    ListAcceleratorsResponse,
-    ListAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAcceleratorsRequest,
-  ) => stream.Stream<
-    Accelerator,
-    ListAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Accelerator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAcceleratorsRequest,
   output: ListAcceleratorsResponse,
   errors: [
@@ -3133,27 +3118,13 @@ export type ListByoipCidrsError =
  * Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, including
  * the current state and a history of state changes.
  */
-export const listByoipCidrs: API.OperationMethod<
+export const listByoipCidrs: API.PaginatedOperationMethod<
   ListByoipCidrsRequest,
   ListByoipCidrsResponse,
   ListByoipCidrsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListByoipCidrsRequest,
-  ) => stream.Stream<
-    ListByoipCidrsResponse,
-    ListByoipCidrsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListByoipCidrsRequest,
-  ) => stream.Stream<
-    ByoipCidr,
-    ListByoipCidrsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ByoipCidr
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByoipCidrsRequest,
   output: ListByoipCidrsResponse,
   errors: [
@@ -3182,27 +3153,13 @@ export type ListCrossAccountAttachmentsError =
 /**
  * List the cross-account attachments that have been created in Global Accelerator.
  */
-export const listCrossAccountAttachments: API.OperationMethod<
+export const listCrossAccountAttachments: API.PaginatedOperationMethod<
   ListCrossAccountAttachmentsRequest,
   ListCrossAccountAttachmentsResponse,
   ListCrossAccountAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrossAccountAttachmentsRequest,
-  ) => stream.Stream<
-    ListCrossAccountAttachmentsResponse,
-    ListCrossAccountAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrossAccountAttachmentsRequest,
-  ) => stream.Stream<
-    Attachment,
-    ListCrossAccountAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Attachment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountAttachmentsRequest,
   output: ListCrossAccountAttachmentsResponse,
   errors: [
@@ -3257,27 +3214,13 @@ export type ListCrossAccountResourcesError =
 /**
  * List the cross-account resources available to work with.
  */
-export const listCrossAccountResources: API.OperationMethod<
+export const listCrossAccountResources: API.PaginatedOperationMethod<
   ListCrossAccountResourcesRequest,
   ListCrossAccountResourcesResponse,
   ListCrossAccountResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrossAccountResourcesRequest,
-  ) => stream.Stream<
-    ListCrossAccountResourcesResponse,
-    ListCrossAccountResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrossAccountResourcesRequest,
-  ) => stream.Stream<
-    CrossAccountResource,
-    ListCrossAccountResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CrossAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountResourcesRequest,
   output: ListCrossAccountResourcesResponse,
   errors: [
@@ -3306,27 +3249,13 @@ export type ListCustomRoutingAcceleratorsError =
 /**
  * List the custom routing accelerators for an Amazon Web Services account.
  */
-export const listCustomRoutingAccelerators: API.OperationMethod<
+export const listCustomRoutingAccelerators: API.PaginatedOperationMethod<
   ListCustomRoutingAcceleratorsRequest,
   ListCustomRoutingAcceleratorsResponse,
   ListCustomRoutingAcceleratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingAcceleratorsRequest,
-  ) => stream.Stream<
-    ListCustomRoutingAcceleratorsResponse,
-    ListCustomRoutingAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingAcceleratorsRequest,
-  ) => stream.Stream<
-    CustomRoutingAccelerator,
-    ListCustomRoutingAcceleratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomRoutingAccelerator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingAcceleratorsRequest,
   output: ListCustomRoutingAcceleratorsResponse,
   errors: [
@@ -3354,27 +3283,13 @@ export type ListCustomRoutingEndpointGroupsError =
 /**
  * List the endpoint groups that are associated with a listener for a custom routing accelerator.
  */
-export const listCustomRoutingEndpointGroups: API.OperationMethod<
+export const listCustomRoutingEndpointGroups: API.PaginatedOperationMethod<
   ListCustomRoutingEndpointGroupsRequest,
   ListCustomRoutingEndpointGroupsResponse,
   ListCustomRoutingEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingEndpointGroupsRequest,
-  ) => stream.Stream<
-    ListCustomRoutingEndpointGroupsResponse,
-    ListCustomRoutingEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingEndpointGroupsRequest,
-  ) => stream.Stream<
-    CustomRoutingEndpointGroup,
-    ListCustomRoutingEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomRoutingEndpointGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingEndpointGroupsRequest,
   output: ListCustomRoutingEndpointGroupsResponse,
   errors: [
@@ -3403,27 +3318,13 @@ export type ListCustomRoutingListenersError =
 /**
  * List the listeners for a custom routing accelerator.
  */
-export const listCustomRoutingListeners: API.OperationMethod<
+export const listCustomRoutingListeners: API.PaginatedOperationMethod<
   ListCustomRoutingListenersRequest,
   ListCustomRoutingListenersResponse,
   ListCustomRoutingListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingListenersRequest,
-  ) => stream.Stream<
-    ListCustomRoutingListenersResponse,
-    ListCustomRoutingListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingListenersRequest,
-  ) => stream.Stream<
-    CustomRoutingListener,
-    ListCustomRoutingListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomRoutingListener
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingListenersRequest,
   output: ListCustomRoutingListenersResponse,
   errors: [
@@ -3463,27 +3364,13 @@ export type ListCustomRoutingPortMappingsError =
  * The mappings also include a flag for each destination denoting which destination IP addresses and
  * ports are allowed or denied traffic.
  */
-export const listCustomRoutingPortMappings: API.OperationMethod<
+export const listCustomRoutingPortMappings: API.PaginatedOperationMethod<
   ListCustomRoutingPortMappingsRequest,
   ListCustomRoutingPortMappingsResponse,
   ListCustomRoutingPortMappingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingPortMappingsRequest,
-  ) => stream.Stream<
-    ListCustomRoutingPortMappingsResponse,
-    ListCustomRoutingPortMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingPortMappingsRequest,
-  ) => stream.Stream<
-    PortMapping,
-    ListCustomRoutingPortMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PortMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingPortMappingsRequest,
   output: ListCustomRoutingPortMappingsResponse,
   errors: [
@@ -3516,27 +3403,13 @@ export type ListCustomRoutingPortMappingsByDestinationError =
  * span multiple custom routing accelerators in your account, or for scenarios where you only want to
  * list the port mappings for a specific destination instance.
  */
-export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
+export const listCustomRoutingPortMappingsByDestination: API.PaginatedOperationMethod<
   ListCustomRoutingPortMappingsByDestinationRequest,
   ListCustomRoutingPortMappingsByDestinationResponse,
   ListCustomRoutingPortMappingsByDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomRoutingPortMappingsByDestinationRequest,
-  ) => stream.Stream<
-    ListCustomRoutingPortMappingsByDestinationResponse,
-    ListCustomRoutingPortMappingsByDestinationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomRoutingPortMappingsByDestinationRequest,
-  ) => stream.Stream<
-    DestinationPortMapping,
-    ListCustomRoutingPortMappingsByDestinationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DestinationPortMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomRoutingPortMappingsByDestinationRequest,
   output: ListCustomRoutingPortMappingsByDestinationResponse,
   errors: [
@@ -3565,27 +3438,13 @@ export type ListEndpointGroupsError =
 /**
  * List the endpoint groups that are associated with a listener.
  */
-export const listEndpointGroups: API.OperationMethod<
+export const listEndpointGroups: API.PaginatedOperationMethod<
   ListEndpointGroupsRequest,
   ListEndpointGroupsResponse,
   ListEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointGroupsRequest,
-  ) => stream.Stream<
-    ListEndpointGroupsResponse,
-    ListEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointGroupsRequest,
-  ) => stream.Stream<
-    EndpointGroup,
-    ListEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EndpointGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointGroupsRequest,
   output: ListEndpointGroupsResponse,
   errors: [
@@ -3614,27 +3473,13 @@ export type ListListenersError =
 /**
  * List the listeners for an accelerator.
  */
-export const listListeners: API.OperationMethod<
+export const listListeners: API.PaginatedOperationMethod<
   ListListenersRequest,
   ListListenersResponse,
   ListListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListListenersRequest,
-  ) => stream.Stream<
-    ListListenersResponse,
-    ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListListenersRequest,
-  ) => stream.Stream<
-    Listener,
-    ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Listener
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListenersRequest,
   output: ListListenersResponse,
   errors: [

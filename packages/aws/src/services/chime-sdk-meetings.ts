@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1518,27 +1517,13 @@ export type ListAttendeesError =
  * Using the Amazon Chime SDK
  * in the *Amazon Chime Developer Guide*.
  */
-export const listAttendees: API.OperationMethod<
+export const listAttendees: API.PaginatedOperationMethod<
   ListAttendeesRequest,
   ListAttendeesResponse,
   ListAttendeesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttendeesRequest,
-  ) => stream.Stream<
-    ListAttendeesResponse,
-    ListAttendeesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttendeesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAttendeesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttendeesRequest,
   output: ListAttendeesResponse,
   errors: [

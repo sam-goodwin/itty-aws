@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -608,27 +607,13 @@ export type ListNetworkConnectorsError =
  *
  * Each item in the response includes the connector ARN, name, ID, type, current state, and last modified timestamp. To retrieve full configuration details for a specific connector, use `GetNetworkConnector`.
  */
-export const listNetworkConnectors: API.OperationMethod<
+export const listNetworkConnectors: API.PaginatedOperationMethod<
   ListNetworkConnectorsRequest,
   ListNetworkConnectorsResponse,
   ListNetworkConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkConnectorsRequest,
-  ) => stream.Stream<
-    ListNetworkConnectorsResponse,
-    ListNetworkConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkConnectorsRequest,
-  ) => stream.Stream<
-    NetworkConnectorSummary,
-    ListNetworkConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NetworkConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkConnectorsRequest,
   output: ListNetworkConnectorsResponse,
   errors: [

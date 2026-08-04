@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -631,27 +630,13 @@ export type GetComplianceSummaryError =
  * recieve a `null` value. A null value for `PaginationToken` indicates that
  * there are no more results waiting to be returned.
  */
-export const getComplianceSummary: API.OperationMethod<
+export const getComplianceSummary: API.PaginatedOperationMethod<
   GetComplianceSummaryInput,
   GetComplianceSummaryOutput,
   GetComplianceSummaryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetComplianceSummaryInput,
-  ) => stream.Stream<
-    GetComplianceSummaryOutput,
-    GetComplianceSummaryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetComplianceSummaryInput,
-  ) => stream.Stream<
-    Summary,
-    GetComplianceSummaryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Summary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetComplianceSummaryInput,
   output: GetComplianceSummaryOutput,
   errors: [
@@ -704,27 +689,13 @@ export type GetResourcesError =
  * To find untagged resources in your account, use Amazon Web Services Resource Explorer with a
  * query that uses `tag:none`. For more information, see Search query syntax reference for Resource Explorer.
  */
-export const getResources: API.OperationMethod<
+export const getResources: API.PaginatedOperationMethod<
   GetResourcesInput,
   GetResourcesOutput,
   GetResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcesInput,
-  ) => stream.Stream<
-    GetResourcesOutput,
-    GetResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcesInput,
-  ) => stream.Stream<
-    ResourceTagMapping,
-    GetResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ResourceTagMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcesInput,
   output: GetResourcesOutput,
   errors: [
@@ -761,27 +732,13 @@ export type GetTagKeysError =
  * recieve a `null` value. A null value for `PaginationToken` indicates that
  * there are no more results waiting to be returned.
  */
-export const getTagKeys: API.OperationMethod<
+export const getTagKeys: API.PaginatedOperationMethod<
   GetTagKeysInput,
   GetTagKeysOutput,
   GetTagKeysError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTagKeysInput,
-  ) => stream.Stream<
-    GetTagKeysOutput,
-    GetTagKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTagKeysInput,
-  ) => stream.Stream<
-    TagKey,
-    GetTagKeysError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TagKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTagKeysInput,
   output: GetTagKeysOutput,
   errors: [
@@ -817,27 +774,13 @@ export type GetTagValuesError =
  * recieve a `null` value. A null value for `PaginationToken` indicates that
  * there are no more results waiting to be returned.
  */
-export const getTagValues: API.OperationMethod<
+export const getTagValues: API.PaginatedOperationMethod<
   GetTagValuesInput,
   GetTagValuesOutput,
   GetTagValuesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetTagValuesInput,
-  ) => stream.Stream<
-    GetTagValuesOutput,
-    GetTagValuesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetTagValuesInput,
-  ) => stream.Stream<
-    TagValue,
-    GetTagValuesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TagValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTagValuesInput,
   output: GetTagValuesOutput,
   errors: [
@@ -865,27 +808,13 @@ export type ListRequiredTagsError =
 /**
  * Lists the required tags for supported resource types in an Amazon Web Services account.
  */
-export const listRequiredTags: API.OperationMethod<
+export const listRequiredTags: API.PaginatedOperationMethod<
   ListRequiredTagsInput,
   ListRequiredTagsOutput,
   ListRequiredTagsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequiredTagsInput,
-  ) => stream.Stream<
-    ListRequiredTagsOutput,
-    ListRequiredTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequiredTagsInput,
-  ) => stream.Stream<
-    RequiredTag,
-    ListRequiredTagsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RequiredTag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequiredTagsInput,
   output: ListRequiredTagsOutput,
   errors: [

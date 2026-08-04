@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5652,27 +5651,13 @@ export type ListAccessLogSubscriptionsError =
 /**
  * Lists the access log subscriptions for the specified service network or service.
  */
-export const listAccessLogSubscriptions: API.OperationMethod<
+export const listAccessLogSubscriptions: API.PaginatedOperationMethod<
   ListAccessLogSubscriptionsRequest,
   ListAccessLogSubscriptionsResponse,
   ListAccessLogSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessLogSubscriptionsRequest,
-  ) => stream.Stream<
-    ListAccessLogSubscriptionsResponse,
-    ListAccessLogSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessLogSubscriptionsRequest,
-  ) => stream.Stream<
-    AccessLogSubscriptionSummary,
-    ListAccessLogSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessLogSubscriptionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessLogSubscriptionsRequest,
   output: ListAccessLogSubscriptionsResponse,
   errors: [
@@ -5703,27 +5688,13 @@ export type ListDomainVerificationsError =
 /**
  * Lists the domain verifications.
  */
-export const listDomainVerifications: API.OperationMethod<
+export const listDomainVerifications: API.PaginatedOperationMethod<
   ListDomainVerificationsRequest,
   ListDomainVerificationsResponse,
   ListDomainVerificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainVerificationsRequest,
-  ) => stream.Stream<
-    ListDomainVerificationsResponse,
-    ListDomainVerificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainVerificationsRequest,
-  ) => stream.Stream<
-    DomainVerificationSummary,
-    ListDomainVerificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainVerificationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainVerificationsRequest,
   output: ListDomainVerificationsResponse,
   errors: [
@@ -5754,27 +5725,13 @@ export type ListListenersError =
 /**
  * Lists the listeners for the specified service.
  */
-export const listListeners: API.OperationMethod<
+export const listListeners: API.PaginatedOperationMethod<
   ListListenersRequest,
   ListListenersResponse,
   ListListenersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListListenersRequest,
-  ) => stream.Stream<
-    ListListenersResponse,
-    ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListListenersRequest,
-  ) => stream.Stream<
-    ListenerSummary,
-    ListListenersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListenerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListListenersRequest,
   output: ListListenersResponse,
   errors: [
@@ -5804,27 +5761,13 @@ export type ListResourceConfigurationsError =
 /**
  * Lists the resource configurations owned by or shared with this account.
  */
-export const listResourceConfigurations: API.OperationMethod<
+export const listResourceConfigurations: API.PaginatedOperationMethod<
   ListResourceConfigurationsRequest,
   ListResourceConfigurationsResponse,
   ListResourceConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceConfigurationsRequest,
-  ) => stream.Stream<
-    ListResourceConfigurationsResponse,
-    ListResourceConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceConfigurationsRequest,
-  ) => stream.Stream<
-    ResourceConfigurationSummary,
-    ListResourceConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceConfigurationsRequest,
   output: ListResourceConfigurationsResponse,
   errors: [
@@ -5853,27 +5796,13 @@ export type ListResourceEndpointAssociationsError =
 /**
  * Lists the associations for the specified VPC endpoint.
  */
-export const listResourceEndpointAssociations: API.OperationMethod<
+export const listResourceEndpointAssociations: API.PaginatedOperationMethod<
   ListResourceEndpointAssociationsRequest,
   ListResourceEndpointAssociationsResponse,
   ListResourceEndpointAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceEndpointAssociationsRequest,
-  ) => stream.Stream<
-    ListResourceEndpointAssociationsResponse,
-    ListResourceEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceEndpointAssociationsRequest,
-  ) => stream.Stream<
-    ResourceEndpointAssociationSummary,
-    ListResourceEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceEndpointAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceEndpointAssociationsRequest,
   output: ListResourceEndpointAssociationsResponse,
   errors: [
@@ -5902,27 +5831,13 @@ export type ListResourceGatewaysError =
 /**
  * Lists the resource gateways that you own or that were shared with you.
  */
-export const listResourceGateways: API.OperationMethod<
+export const listResourceGateways: API.PaginatedOperationMethod<
   ListResourceGatewaysRequest,
   ListResourceGatewaysResponse,
   ListResourceGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceGatewaysRequest,
-  ) => stream.Stream<
-    ListResourceGatewaysResponse,
-    ListResourceGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceGatewaysRequest,
-  ) => stream.Stream<
-    ResourceGatewaySummary,
-    ListResourceGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceGatewaySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceGatewaysRequest,
   output: ListResourceGatewaysResponse,
   errors: [
@@ -5952,27 +5867,13 @@ export type ListRulesError =
 /**
  * Lists the rules for the specified listener.
  */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    RuleSummary,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [
@@ -6002,27 +5903,13 @@ export type ListServiceNetworkResourceAssociationsError =
 /**
  * Lists the associations between a service network and a resource configuration.
  */
-export const listServiceNetworkResourceAssociations: API.OperationMethod<
+export const listServiceNetworkResourceAssociations: API.PaginatedOperationMethod<
   ListServiceNetworkResourceAssociationsRequest,
   ListServiceNetworkResourceAssociationsResponse,
   ListServiceNetworkResourceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceNetworkResourceAssociationsRequest,
-  ) => stream.Stream<
-    ListServiceNetworkResourceAssociationsResponse,
-    ListServiceNetworkResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceNetworkResourceAssociationsRequest,
-  ) => stream.Stream<
-    ServiceNetworkResourceAssociationSummary,
-    ListServiceNetworkResourceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceNetworkResourceAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceNetworkResourceAssociationsRequest,
   output: ListServiceNetworkResourceAssociationsResponse,
   errors: [
@@ -6051,27 +5938,13 @@ export type ListServiceNetworksError =
 /**
  * Lists the service networks owned by or shared with this account. The account ID in the ARN shows which account owns the service network.
  */
-export const listServiceNetworks: API.OperationMethod<
+export const listServiceNetworks: API.PaginatedOperationMethod<
   ListServiceNetworksRequest,
   ListServiceNetworksResponse,
   ListServiceNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceNetworksRequest,
-  ) => stream.Stream<
-    ListServiceNetworksResponse,
-    ListServiceNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceNetworksRequest,
-  ) => stream.Stream<
-    ServiceNetworkSummary,
-    ListServiceNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceNetworkSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceNetworksRequest,
   output: ListServiceNetworksResponse,
   errors: [
@@ -6102,27 +5975,13 @@ export type ListServiceNetworkServiceAssociationsError =
  *
  * Every association in Amazon VPC Lattice has a unique Amazon Resource Name (ARN), such as when a service network is associated with a VPC or when a service is associated with a service network. If the association is for a resource is shared with another account, the association includes the local account ID as the prefix in the ARN.
  */
-export const listServiceNetworkServiceAssociations: API.OperationMethod<
+export const listServiceNetworkServiceAssociations: API.PaginatedOperationMethod<
   ListServiceNetworkServiceAssociationsRequest,
   ListServiceNetworkServiceAssociationsResponse,
   ListServiceNetworkServiceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceNetworkServiceAssociationsRequest,
-  ) => stream.Stream<
-    ListServiceNetworkServiceAssociationsResponse,
-    ListServiceNetworkServiceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceNetworkServiceAssociationsRequest,
-  ) => stream.Stream<
-    ServiceNetworkServiceAssociationSummary,
-    ListServiceNetworkServiceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceNetworkServiceAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceNetworkServiceAssociationsRequest,
   output: ListServiceNetworkServiceAssociationsResponse,
   errors: [
@@ -6151,27 +6010,13 @@ export type ListServiceNetworkVpcAssociationsError =
 /**
  * Lists the associations between a service network and a VPC. You can filter the list either by VPC or service network. You must provide either the ID of the service network identifier or the ID of the VPC.
  */
-export const listServiceNetworkVpcAssociations: API.OperationMethod<
+export const listServiceNetworkVpcAssociations: API.PaginatedOperationMethod<
   ListServiceNetworkVpcAssociationsRequest,
   ListServiceNetworkVpcAssociationsResponse,
   ListServiceNetworkVpcAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceNetworkVpcAssociationsRequest,
-  ) => stream.Stream<
-    ListServiceNetworkVpcAssociationsResponse,
-    ListServiceNetworkVpcAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceNetworkVpcAssociationsRequest,
-  ) => stream.Stream<
-    ServiceNetworkVpcAssociationSummary,
-    ListServiceNetworkVpcAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceNetworkVpcAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceNetworkVpcAssociationsRequest,
   output: ListServiceNetworkVpcAssociationsResponse,
   errors: [
@@ -6200,27 +6045,13 @@ export type ListServiceNetworkVpcEndpointAssociationsError =
 /**
  * Lists the associations between a service network and a VPC endpoint.
  */
-export const listServiceNetworkVpcEndpointAssociations: API.OperationMethod<
+export const listServiceNetworkVpcEndpointAssociations: API.PaginatedOperationMethod<
   ListServiceNetworkVpcEndpointAssociationsRequest,
   ListServiceNetworkVpcEndpointAssociationsResponse,
   ListServiceNetworkVpcEndpointAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceNetworkVpcEndpointAssociationsRequest,
-  ) => stream.Stream<
-    ListServiceNetworkVpcEndpointAssociationsResponse,
-    ListServiceNetworkVpcEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceNetworkVpcEndpointAssociationsRequest,
-  ) => stream.Stream<
-    ServiceNetworkEndpointAssociation,
-    ListServiceNetworkVpcEndpointAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceNetworkEndpointAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceNetworkVpcEndpointAssociationsRequest,
   output: ListServiceNetworkVpcEndpointAssociationsResponse,
   errors: [
@@ -6249,27 +6080,13 @@ export type ListServicesError =
 /**
  * Lists the services owned by the caller account or shared with the caller account.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ServiceSummary,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [
@@ -6326,27 +6143,13 @@ export type ListTargetGroupsError =
 /**
  * Lists your target groups. You can narrow your search by using the filters below in your request.
  */
-export const listTargetGroups: API.OperationMethod<
+export const listTargetGroups: API.PaginatedOperationMethod<
   ListTargetGroupsRequest,
   ListTargetGroupsResponse,
   ListTargetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetGroupsRequest,
-  ) => stream.Stream<
-    ListTargetGroupsResponse,
-    ListTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetGroupsRequest,
-  ) => stream.Stream<
-    TargetGroupSummary,
-    ListTargetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetGroupsRequest,
   output: ListTargetGroupsResponse,
   errors: [
@@ -6376,27 +6179,13 @@ export type ListTargetsError =
 /**
  * Lists the targets for the target group. By default, all targets are included. You can use this API to check the health status of targets. You can also ﬁlter the results by target.
  */
-export const listTargets: API.OperationMethod<
+export const listTargets: API.PaginatedOperationMethod<
   ListTargetsRequest,
   ListTargetsResponse,
   ListTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsRequest,
-  ) => stream.Stream<
-    ListTargetsResponse,
-    ListTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsRequest,
-  ) => stream.Stream<
-    TargetSummary,
-    ListTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsRequest,
   output: ListTargetsResponse,
   errors: [

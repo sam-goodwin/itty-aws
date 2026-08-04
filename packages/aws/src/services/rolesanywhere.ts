@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1414,27 +1413,13 @@ export type ListCrlsError =
  *
  * **Required permissions: ** `rolesanywhere:ListCrls`.
  */
-export const listCrls: API.OperationMethod<
+export const listCrls: API.PaginatedOperationMethod<
   ListRequest,
   ListCrlsResponse,
   ListCrlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequest,
-  ) => stream.Stream<
-    ListCrlsResponse,
-    ListCrlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequest,
-  ) => stream.Stream<
-    CrlDetail,
-    ListCrlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CrlDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequest,
   output: ListCrlsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1463,27 +1448,13 @@ export type ListProfilesError =
  *
  * **Required permissions: ** `rolesanywhere:ListProfiles`.
  */
-export const listProfiles: API.OperationMethod<
+export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ListProfilesResponse,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ProfileDetail,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProfileDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
   output: ListProfilesResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1512,27 +1483,13 @@ export type ListSubjectsError =
  *
  * **Required permissions: ** `rolesanywhere:ListSubjects`.
  */
-export const listSubjects: API.OperationMethod<
+export const listSubjects: API.PaginatedOperationMethod<
   ListSubjectsRequest,
   ListSubjectsResponse,
   ListSubjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubjectsRequest,
-  ) => stream.Stream<
-    ListSubjectsResponse,
-    ListSubjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubjectsRequest,
-  ) => stream.Stream<
-    SubjectSummary,
-    ListSubjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SubjectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubjectsRequest,
   output: ListSubjectsResponse,
   errors: [AccessDeniedException, ValidationException],
@@ -1589,27 +1546,13 @@ export type ListTrustAnchorsError =
  *
  * **Required permissions: ** `rolesanywhere:ListTrustAnchors`.
  */
-export const listTrustAnchors: API.OperationMethod<
+export const listTrustAnchors: API.PaginatedOperationMethod<
   ListTrustAnchorsRequest,
   ListTrustAnchorsResponse,
   ListTrustAnchorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustAnchorsRequest,
-  ) => stream.Stream<
-    ListTrustAnchorsResponse,
-    ListTrustAnchorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustAnchorsRequest,
-  ) => stream.Stream<
-    TrustAnchorDetail,
-    ListTrustAnchorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrustAnchorDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustAnchorsRequest,
   output: ListTrustAnchorsResponse,
   errors: [AccessDeniedException, ValidationException],

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1986,27 +1985,13 @@ export type ListPipesError =
 /**
  * Get the pipes associated with this account. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
  */
-export const listPipes: API.OperationMethod<
+export const listPipes: API.PaginatedOperationMethod<
   ListPipesRequest,
   ListPipesResponse,
   ListPipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipesRequest,
-  ) => stream.Stream<
-    ListPipesResponse,
-    ListPipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipesRequest,
-  ) => stream.Stream<
-    Pipe,
-    ListPipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Pipe
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipesRequest,
   output: ListPipesResponse,
   errors: [InternalException, ThrottlingException, ValidationException],

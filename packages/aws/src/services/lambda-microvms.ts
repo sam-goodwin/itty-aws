@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1943,27 +1942,13 @@ export type ListManagedMicrovmImagesError =
 /**
  * Lists AWS managed MicroVM images available for use as base images. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listManagedMicrovmImages: API.OperationMethod<
+export const listManagedMicrovmImages: API.PaginatedOperationMethod<
   ListManagedMicrovmImagesInput,
   ListManagedMicrovmImagesOutput,
   ListManagedMicrovmImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedMicrovmImagesInput,
-  ) => stream.Stream<
-    ListManagedMicrovmImagesOutput,
-    ListManagedMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedMicrovmImagesInput,
-  ) => stream.Stream<
-    ManagedMicrovmImageSummary,
-    ListManagedMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedMicrovmImageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedMicrovmImagesInput,
   output: ListManagedMicrovmImagesOutput,
   errors: [
@@ -1993,27 +1978,13 @@ export type ListManagedMicrovmImageVersionsError =
 /**
  * Lists versions of a managed MicroVM image. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listManagedMicrovmImageVersions: API.OperationMethod<
+export const listManagedMicrovmImageVersions: API.PaginatedOperationMethod<
   ListManagedMicrovmImageVersionsInput,
   ListManagedMicrovmImageVersionsOutput,
   ListManagedMicrovmImageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    ListManagedMicrovmImageVersionsOutput,
-    ListManagedMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    ManagedMicrovmImageVersion,
-    ListManagedMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ManagedMicrovmImageVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedMicrovmImageVersionsInput,
   output: ListManagedMicrovmImageVersionsOutput,
   errors: [
@@ -2044,27 +2015,13 @@ export type ListMicrovmImageBuildsError =
 /**
  * Lists builds for a MicroVM image version with optional filtering by architecture and chipset. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listMicrovmImageBuilds: API.OperationMethod<
+export const listMicrovmImageBuilds: API.PaginatedOperationMethod<
   ListMicrovmImageBuildsInput,
   ListMicrovmImageBuildsOutput,
   ListMicrovmImageBuildsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmImageBuildsInput,
-  ) => stream.Stream<
-    ListMicrovmImageBuildsOutput,
-    ListMicrovmImageBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmImageBuildsInput,
-  ) => stream.Stream<
-    MicrovmImageBuildSummary,
-    ListMicrovmImageBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MicrovmImageBuildSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmImageBuildsInput,
   output: ListMicrovmImageBuildsOutput,
   errors: [
@@ -2094,27 +2051,13 @@ export type ListMicrovmImagesError =
 /**
  * Lists MicroVM images in the account with optional name filtering. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listMicrovmImages: API.OperationMethod<
+export const listMicrovmImages: API.PaginatedOperationMethod<
   ListMicrovmImagesRequest,
   ListMicrovmImagesResponse,
   ListMicrovmImagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmImagesRequest,
-  ) => stream.Stream<
-    ListMicrovmImagesResponse,
-    ListMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmImagesRequest,
-  ) => stream.Stream<
-    MicrovmImageSummary,
-    ListMicrovmImagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MicrovmImageSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmImagesRequest,
   output: ListMicrovmImagesResponse,
   errors: [
@@ -2144,27 +2087,13 @@ export type ListMicrovmImageVersionsError =
 /**
  * Lists versions of a MicroVM image. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listMicrovmImageVersions: API.OperationMethod<
+export const listMicrovmImageVersions: API.PaginatedOperationMethod<
   ListMicrovmImageVersionsInput,
   ListMicrovmImageVersionsOutput,
   ListMicrovmImageVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    ListMicrovmImageVersionsOutput,
-    ListMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmImageVersionsInput,
-  ) => stream.Stream<
-    MicrovmImageVersionSummary,
-    ListMicrovmImageVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MicrovmImageVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmImageVersionsInput,
   output: ListMicrovmImageVersionsOutput,
   errors: [
@@ -2195,27 +2124,13 @@ export type ListMicrovmsError =
 /**
  * Lists MicroVMs in the account with optional filtering by image and version. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listMicrovms: API.OperationMethod<
+export const listMicrovms: API.PaginatedOperationMethod<
   ListMicrovmsRequest,
   ListMicrovmsResponse,
   ListMicrovmsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrovmsRequest,
-  ) => stream.Stream<
-    ListMicrovmsResponse,
-    ListMicrovmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrovmsRequest,
-  ) => stream.Stream<
-    MicrovmItem,
-    ListMicrovmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MicrovmItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrovmsRequest,
   output: ListMicrovmsResponse,
   errors: [

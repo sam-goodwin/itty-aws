@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2807,27 +2806,13 @@ export type ListCentralizationRulesForOrganizationError =
 /**
  * Lists all centralization rules in your organization. This operation can only be called by the organization's management account or a delegated administrator account.
  */
-export const listCentralizationRulesForOrganization: API.OperationMethod<
+export const listCentralizationRulesForOrganization: API.PaginatedOperationMethod<
   ListCentralizationRulesForOrganizationInput,
   ListCentralizationRulesForOrganizationOutput,
   ListCentralizationRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCentralizationRulesForOrganizationInput,
-  ) => stream.Stream<
-    ListCentralizationRulesForOrganizationOutput,
-    ListCentralizationRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCentralizationRulesForOrganizationInput,
-  ) => stream.Stream<
-    CentralizationRuleSummary,
-    ListCentralizationRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  CentralizationRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCentralizationRulesForOrganizationInput,
   output: ListCentralizationRulesForOrganizationOutput,
   errors: [
@@ -2856,27 +2841,13 @@ export type ListResourceTelemetryError =
 /**
  * Returns a list of telemetry configurations for Amazon Web Services resources supported by telemetry config. For more information, see Auditing CloudWatch telemetry configurations.
  */
-export const listResourceTelemetry: API.OperationMethod<
+export const listResourceTelemetry: API.PaginatedOperationMethod<
   ListResourceTelemetryInput,
   ListResourceTelemetryOutput,
   ListResourceTelemetryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTelemetryInput,
-  ) => stream.Stream<
-    ListResourceTelemetryOutput,
-    ListResourceTelemetryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTelemetryInput,
-  ) => stream.Stream<
-    TelemetryConfiguration,
-    ListResourceTelemetryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TelemetryConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryInput,
   output: ListResourceTelemetryOutput,
   errors: [
@@ -2905,27 +2876,13 @@ export type ListResourceTelemetryForOrganizationError =
 /**
  * Returns a list of telemetry configurations for Amazon Web Services resources supported by telemetry config in the organization.
  */
-export const listResourceTelemetryForOrganization: API.OperationMethod<
+export const listResourceTelemetryForOrganization: API.PaginatedOperationMethod<
   ListResourceTelemetryForOrganizationInput,
   ListResourceTelemetryForOrganizationOutput,
   ListResourceTelemetryForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTelemetryForOrganizationInput,
-  ) => stream.Stream<
-    ListResourceTelemetryForOrganizationOutput,
-    ListResourceTelemetryForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTelemetryForOrganizationInput,
-  ) => stream.Stream<
-    TelemetryConfiguration,
-    ListResourceTelemetryForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TelemetryConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTelemetryForOrganizationInput,
   output: ListResourceTelemetryForOrganizationOutput,
   errors: [
@@ -2954,27 +2911,13 @@ export type ListS3TableIntegrationsError =
 /**
  * Lists all S3 Table integrations in your account. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listS3TableIntegrations: API.OperationMethod<
+export const listS3TableIntegrations: API.PaginatedOperationMethod<
   ListS3TableIntegrationsInput,
   ListS3TableIntegrationsOutput,
   ListS3TableIntegrationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListS3TableIntegrationsInput,
-  ) => stream.Stream<
-    ListS3TableIntegrationsOutput,
-    ListS3TableIntegrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListS3TableIntegrationsInput,
-  ) => stream.Stream<
-    IntegrationSummary,
-    ListS3TableIntegrationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  IntegrationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListS3TableIntegrationsInput,
   output: ListS3TableIntegrationsOutput,
   errors: [
@@ -3033,27 +2976,13 @@ export type ListTelemetryPipelinesError =
 /**
  * Returns a list of telemetry pipelines in your account. Returns up to 100 results. If more than 100 telemetry pipelines exist, include the `NextToken` value from the response to retrieve the next set of results.
  */
-export const listTelemetryPipelines: API.OperationMethod<
+export const listTelemetryPipelines: API.PaginatedOperationMethod<
   ListTelemetryPipelinesInput,
   ListTelemetryPipelinesOutput,
   ListTelemetryPipelinesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryPipelinesInput,
-  ) => stream.Stream<
-    ListTelemetryPipelinesOutput,
-    ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryPipelinesInput,
-  ) => stream.Stream<
-    TelemetryPipelineSummary,
-    ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TelemetryPipelineSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryPipelinesInput,
   output: ListTelemetryPipelinesOutput,
   errors: [
@@ -3082,27 +3011,13 @@ export type ListTelemetryRulesError =
 /**
  * Lists all telemetry rules in your account. You can filter the results by specifying a rule name prefix.
  */
-export const listTelemetryRules: API.OperationMethod<
+export const listTelemetryRules: API.PaginatedOperationMethod<
   ListTelemetryRulesInput,
   ListTelemetryRulesOutput,
   ListTelemetryRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryRulesInput,
-  ) => stream.Stream<
-    ListTelemetryRulesOutput,
-    ListTelemetryRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryRulesInput,
-  ) => stream.Stream<
-    TelemetryRuleSummary,
-    ListTelemetryRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TelemetryRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesInput,
   output: ListTelemetryRulesOutput,
   errors: [
@@ -3131,27 +3046,13 @@ export type ListTelemetryRulesForOrganizationError =
 /**
  * Lists all telemetry rules in your organization. This operation can only be called by the organization's management account or a delegated administrator account.
  */
-export const listTelemetryRulesForOrganization: API.OperationMethod<
+export const listTelemetryRulesForOrganization: API.PaginatedOperationMethod<
   ListTelemetryRulesForOrganizationInput,
   ListTelemetryRulesForOrganizationOutput,
   ListTelemetryRulesForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryRulesForOrganizationInput,
-  ) => stream.Stream<
-    ListTelemetryRulesForOrganizationOutput,
-    ListTelemetryRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryRulesForOrganizationInput,
-  ) => stream.Stream<
-    TelemetryRuleSummary,
-    ListTelemetryRulesForOrganizationError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TelemetryRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTelemetryRulesForOrganizationInput,
   output: ListTelemetryRulesForOrganizationOutput,
   errors: [

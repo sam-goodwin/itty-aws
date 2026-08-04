@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1985,27 +1984,13 @@ export type ListEarthObservationJobsError =
 /**
  * Use this operation to get a list of the Earth Observation jobs associated with the calling Amazon Web Services account.
  */
-export const listEarthObservationJobs: API.OperationMethod<
+export const listEarthObservationJobs: API.PaginatedOperationMethod<
   ListEarthObservationJobInput,
   ListEarthObservationJobOutput,
   ListEarthObservationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEarthObservationJobInput,
-  ) => stream.Stream<
-    ListEarthObservationJobOutput,
-    ListEarthObservationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEarthObservationJobInput,
-  ) => stream.Stream<
-    ListEarthObservationJobOutputConfig,
-    ListEarthObservationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListEarthObservationJobOutputConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEarthObservationJobInput,
   output: ListEarthObservationJobOutput,
   errors: [
@@ -2035,27 +2020,13 @@ export type ListRasterDataCollectionsError =
 /**
  * Use this operation to get raster data collections.
  */
-export const listRasterDataCollections: API.OperationMethod<
+export const listRasterDataCollections: API.PaginatedOperationMethod<
   ListRasterDataCollectionsInput,
   ListRasterDataCollectionsOutput,
   ListRasterDataCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRasterDataCollectionsInput,
-  ) => stream.Stream<
-    ListRasterDataCollectionsOutput,
-    ListRasterDataCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRasterDataCollectionsInput,
-  ) => stream.Stream<
-    RasterDataCollectionMetadata,
-    ListRasterDataCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RasterDataCollectionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRasterDataCollectionsInput,
   output: ListRasterDataCollectionsOutput,
   errors: [
@@ -2115,27 +2086,13 @@ export type ListVectorEnrichmentJobsError =
 /**
  * Retrieves a list of vector enrichment jobs.
  */
-export const listVectorEnrichmentJobs: API.OperationMethod<
+export const listVectorEnrichmentJobs: API.PaginatedOperationMethod<
   ListVectorEnrichmentJobInput,
   ListVectorEnrichmentJobOutput,
   ListVectorEnrichmentJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVectorEnrichmentJobInput,
-  ) => stream.Stream<
-    ListVectorEnrichmentJobOutput,
-    ListVectorEnrichmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVectorEnrichmentJobInput,
-  ) => stream.Stream<
-    ListVectorEnrichmentJobOutputConfig,
-    ListVectorEnrichmentJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListVectorEnrichmentJobOutputConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorEnrichmentJobInput,
   output: ListVectorEnrichmentJobOutput,
   errors: [
@@ -2165,27 +2122,13 @@ export type SearchRasterDataCollectionError =
 /**
  * Allows you run image query on a specific raster data collection to get a list of the satellite imagery matching the selected filters.
  */
-export const searchRasterDataCollection: API.OperationMethod<
+export const searchRasterDataCollection: API.PaginatedOperationMethod<
   SearchRasterDataCollectionInput,
   SearchRasterDataCollectionOutput,
   SearchRasterDataCollectionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchRasterDataCollectionInput,
-  ) => stream.Stream<
-    SearchRasterDataCollectionOutput,
-    SearchRasterDataCollectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchRasterDataCollectionInput,
-  ) => stream.Stream<
-    unknown,
-    SearchRasterDataCollectionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRasterDataCollectionInput,
   output: SearchRasterDataCollectionOutput,
   errors: [

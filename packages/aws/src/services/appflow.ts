@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4154,27 +4153,13 @@ export type DescribeConnectorProfilesError =
  * If no names or `connector-types` are provided, returns all connector profiles
  * in a paginated form. If there is no match, this operation returns an empty list.
  */
-export const describeConnectorProfiles: API.OperationMethod<
+export const describeConnectorProfiles: API.PaginatedOperationMethod<
   DescribeConnectorProfilesRequest,
   DescribeConnectorProfilesResponse,
   DescribeConnectorProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConnectorProfilesRequest,
-  ) => stream.Stream<
-    DescribeConnectorProfilesResponse,
-    DescribeConnectorProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConnectorProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeConnectorProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectorProfilesRequest,
   output: DescribeConnectorProfilesResponse,
   errors: [InternalServerException, ValidationException],
@@ -4198,27 +4183,13 @@ export type DescribeConnectorsError =
  * contains a `nextToken` object, which can be be passed in to the next call to the
  * `DescribeConnectors` API operation to retrieve the next page.
  */
-export const describeConnectors: API.OperationMethod<
+export const describeConnectors: API.PaginatedOperationMethod<
   DescribeConnectorsRequest,
   DescribeConnectorsResponse,
   DescribeConnectorsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConnectorsRequest,
-  ) => stream.Stream<
-    DescribeConnectorsResponse,
-    DescribeConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConnectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConnectorsRequest,
   output: DescribeConnectorsResponse,
   errors: [InternalServerException, ValidationException],
@@ -4261,27 +4232,13 @@ export type DescribeFlowExecutionRecordsError =
 /**
  * Fetches the execution history of the flow.
  */
-export const describeFlowExecutionRecords: API.OperationMethod<
+export const describeFlowExecutionRecords: API.PaginatedOperationMethod<
   DescribeFlowExecutionRecordsRequest,
   DescribeFlowExecutionRecordsResponse,
   DescribeFlowExecutionRecordsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFlowExecutionRecordsRequest,
-  ) => stream.Stream<
-    DescribeFlowExecutionRecordsResponse,
-    DescribeFlowExecutionRecordsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFlowExecutionRecordsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeFlowExecutionRecordsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowExecutionRecordsRequest,
   output: DescribeFlowExecutionRecordsResponse,
   errors: [
@@ -4341,27 +4298,13 @@ export type ListConnectorsError =
  * This API lists only custom connectors registered in this account, not the Amazon Web Services
  * authored connectors.
  */
-export const listConnectors: API.OperationMethod<
+export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConnectorsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [InternalServerException, ValidationException],
@@ -4382,27 +4325,13 @@ export type ListFlowsError =
 /**
  * Lists all of the flows associated with your account.
  */
-export const listFlows: API.OperationMethod<
+export const listFlows: API.PaginatedOperationMethod<
   ListFlowsRequest,
   ListFlowsResponse,
   ListFlowsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    ListFlowsResponse,
-    ListFlowsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFlowsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [InternalServerException, ValidationException],

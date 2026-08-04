@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1001,27 +1000,13 @@ export type ListAppsError =
 /**
  * Lists all custom apps or service apps for the given simulation and domain.
  */
-export const listApps: API.OperationMethod<
+export const listApps: API.PaginatedOperationMethod<
   ListAppsInput,
   ListAppsOutput,
   ListAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsInput,
-  ) => stream.Stream<
-    ListAppsOutput,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsInput,
-  ) => stream.Stream<
-    unknown,
-    ListAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsInput,
   output: ListAppsOutput,
   errors: [
@@ -1048,27 +1033,13 @@ export type ListSimulationsError =
 /**
  * Lists the SimSpace Weaver simulations in the Amazon Web Services account used to make the API call.
  */
-export const listSimulations: API.OperationMethod<
+export const listSimulations: API.PaginatedOperationMethod<
   ListSimulationsInput,
   ListSimulationsOutput,
   ListSimulationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSimulationsInput,
-  ) => stream.Stream<
-    ListSimulationsOutput,
-    ListSimulationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSimulationsInput,
-  ) => stream.Stream<
-    unknown,
-    ListSimulationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSimulationsInput,
   output: ListSimulationsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],

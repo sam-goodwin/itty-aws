@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -8458,27 +8457,13 @@ export type ListDestinationsError =
 /**
  * Lists the destinations registered to your AWS account.
  */
-export const listDestinations: API.OperationMethod<
+export const listDestinations: API.PaginatedOperationMethod<
   ListDestinationsRequest,
   ListDestinationsResponse,
   ListDestinationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDestinationsRequest,
-  ) => stream.Stream<
-    ListDestinationsResponse,
-    ListDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDestinationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDestinationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDestinationsRequest,
   output: ListDestinationsResponse,
   errors: [
@@ -8506,27 +8491,13 @@ export type ListDeviceProfilesError =
 /**
  * Lists the device profiles registered to your AWS account.
  */
-export const listDeviceProfiles: API.OperationMethod<
+export const listDeviceProfiles: API.PaginatedOperationMethod<
   ListDeviceProfilesRequest,
   ListDeviceProfilesResponse,
   ListDeviceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeviceProfilesRequest,
-  ) => stream.Stream<
-    ListDeviceProfilesResponse,
-    ListDeviceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeviceProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDeviceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceProfilesRequest,
   output: ListDeviceProfilesResponse,
   errors: [
@@ -8614,27 +8585,13 @@ export type ListFuotaTasksError =
 /**
  * Lists the FUOTA tasks registered to your AWS account.
  */
-export const listFuotaTasks: API.OperationMethod<
+export const listFuotaTasks: API.PaginatedOperationMethod<
   ListFuotaTasksRequest,
   ListFuotaTasksResponse,
   ListFuotaTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFuotaTasksRequest,
-  ) => stream.Stream<
-    ListFuotaTasksResponse,
-    ListFuotaTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFuotaTasksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFuotaTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFuotaTasksRequest,
   output: ListFuotaTasksResponse,
   errors: [
@@ -8662,27 +8619,13 @@ export type ListMulticastGroupsError =
 /**
  * Lists the multicast groups registered to your AWS account.
  */
-export const listMulticastGroups: API.OperationMethod<
+export const listMulticastGroups: API.PaginatedOperationMethod<
   ListMulticastGroupsRequest,
   ListMulticastGroupsResponse,
   ListMulticastGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMulticastGroupsRequest,
-  ) => stream.Stream<
-    ListMulticastGroupsResponse,
-    ListMulticastGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMulticastGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMulticastGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMulticastGroupsRequest,
   output: ListMulticastGroupsResponse,
   errors: [
@@ -8711,27 +8654,13 @@ export type ListMulticastGroupsByFuotaTaskError =
 /**
  * List all multicast groups associated with a FUOTA task.
  */
-export const listMulticastGroupsByFuotaTask: API.OperationMethod<
+export const listMulticastGroupsByFuotaTask: API.PaginatedOperationMethod<
   ListMulticastGroupsByFuotaTaskRequest,
   ListMulticastGroupsByFuotaTaskResponse,
   ListMulticastGroupsByFuotaTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMulticastGroupsByFuotaTaskRequest,
-  ) => stream.Stream<
-    ListMulticastGroupsByFuotaTaskResponse,
-    ListMulticastGroupsByFuotaTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMulticastGroupsByFuotaTaskRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMulticastGroupsByFuotaTaskError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMulticastGroupsByFuotaTaskRequest,
   output: ListMulticastGroupsByFuotaTaskResponse,
   errors: [
@@ -8760,27 +8689,13 @@ export type ListNetworkAnalyzerConfigurationsError =
 /**
  * Lists the network analyzer configurations.
  */
-export const listNetworkAnalyzerConfigurations: API.OperationMethod<
+export const listNetworkAnalyzerConfigurations: API.PaginatedOperationMethod<
   ListNetworkAnalyzerConfigurationsRequest,
   ListNetworkAnalyzerConfigurationsResponse,
   ListNetworkAnalyzerConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkAnalyzerConfigurationsRequest,
-  ) => stream.Stream<
-    ListNetworkAnalyzerConfigurationsResponse,
-    ListNetworkAnalyzerConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkAnalyzerConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNetworkAnalyzerConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkAnalyzerConfigurationsRequest,
   output: ListNetworkAnalyzerConfigurationsResponse,
   errors: [
@@ -8839,27 +8754,13 @@ export type ListPositionConfigurationsError =
  * This action is no longer supported. Calls to retrieve position information should
  * use the GetResourcePosition API operation instead.
  */
-export const listPositionConfigurations: API.OperationMethod<
+export const listPositionConfigurations: API.PaginatedOperationMethod<
   ListPositionConfigurationsRequest,
   ListPositionConfigurationsResponse,
   ListPositionConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPositionConfigurationsRequest,
-  ) => stream.Stream<
-    ListPositionConfigurationsResponse,
-    ListPositionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPositionConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPositionConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPositionConfigurationsRequest,
   output: ListPositionConfigurationsResponse,
   errors: [
@@ -8888,27 +8789,13 @@ export type ListQueuedMessagesError =
 /**
  * List queued messages in the downlink queue.
  */
-export const listQueuedMessages: API.OperationMethod<
+export const listQueuedMessages: API.PaginatedOperationMethod<
   ListQueuedMessagesRequest,
   ListQueuedMessagesResponse,
   ListQueuedMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuedMessagesRequest,
-  ) => stream.Stream<
-    ListQueuedMessagesResponse,
-    ListQueuedMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueuedMessagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListQueuedMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuedMessagesRequest,
   output: ListQueuedMessagesResponse,
   errors: [
@@ -8937,27 +8824,13 @@ export type ListServiceProfilesError =
 /**
  * Lists the service profiles registered to your AWS account.
  */
-export const listServiceProfiles: API.OperationMethod<
+export const listServiceProfiles: API.PaginatedOperationMethod<
   ListServiceProfilesRequest,
   ListServiceProfilesResponse,
   ListServiceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceProfilesRequest,
-  ) => stream.Stream<
-    ListServiceProfilesResponse,
-    ListServiceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListServiceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceProfilesRequest,
   output: ListServiceProfilesResponse,
   errors: [
@@ -9048,27 +8921,13 @@ export type ListWirelessDevicesError =
 /**
  * Lists the wireless devices registered to your AWS account.
  */
-export const listWirelessDevices: API.OperationMethod<
+export const listWirelessDevices: API.PaginatedOperationMethod<
   ListWirelessDevicesRequest,
   ListWirelessDevicesResponse,
   ListWirelessDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWirelessDevicesRequest,
-  ) => stream.Stream<
-    ListWirelessDevicesResponse,
-    ListWirelessDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWirelessDevicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWirelessDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWirelessDevicesRequest,
   output: ListWirelessDevicesResponse,
   errors: [
@@ -9096,27 +8955,13 @@ export type ListWirelessGatewaysError =
 /**
  * Lists the wireless gateways registered to your AWS account.
  */
-export const listWirelessGateways: API.OperationMethod<
+export const listWirelessGateways: API.PaginatedOperationMethod<
   ListWirelessGatewaysRequest,
   ListWirelessGatewaysResponse,
   ListWirelessGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWirelessGatewaysRequest,
-  ) => stream.Stream<
-    ListWirelessGatewaysResponse,
-    ListWirelessGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWirelessGatewaysRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWirelessGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWirelessGatewaysRequest,
   output: ListWirelessGatewaysResponse,
   errors: [

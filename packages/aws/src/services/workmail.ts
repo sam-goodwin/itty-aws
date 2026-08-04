@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4941,27 +4940,13 @@ export type ListAliasesError =
  * Creates a paginated call to list the aliases associated with a given
  * entity.
  */
-export const listAliases: API.OperationMethod<
+export const listAliases: API.PaginatedOperationMethod<
   ListAliasesRequest,
   ListAliasesResponse,
   ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    ListAliasesResponse,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -4989,27 +4974,13 @@ export type ListAvailabilityConfigurationsError =
 /**
  * List all the `AvailabilityConfiguration`'s for the given WorkMail organization.
  */
-export const listAvailabilityConfigurations: API.OperationMethod<
+export const listAvailabilityConfigurations: API.PaginatedOperationMethod<
   ListAvailabilityConfigurationsRequest,
   ListAvailabilityConfigurationsResponse,
   ListAvailabilityConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAvailabilityConfigurationsRequest,
-  ) => stream.Stream<
-    ListAvailabilityConfigurationsResponse,
-    ListAvailabilityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAvailabilityConfigurationsRequest,
-  ) => stream.Stream<
-    AvailabilityConfiguration,
-    ListAvailabilityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AvailabilityConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailabilityConfigurationsRequest,
   output: ListAvailabilityConfigurationsResponse,
   errors: [
@@ -5039,27 +5010,13 @@ export type ListGroupMembersError =
  * Returns an overview of the members of a group. Users and groups can be members of a
  * group.
  */
-export const listGroupMembers: API.OperationMethod<
+export const listGroupMembers: API.PaginatedOperationMethod<
   ListGroupMembersRequest,
   ListGroupMembersResponse,
   ListGroupMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupMembersRequest,
-  ) => stream.Stream<
-    ListGroupMembersResponse,
-    ListGroupMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupMembersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGroupMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembersRequest,
   output: ListGroupMembersResponse,
   errors: [
@@ -5088,27 +5045,13 @@ export type ListGroupsError =
 /**
  * Returns summaries of the organization's groups.
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -5137,27 +5080,13 @@ export type ListGroupsForEntityError =
 /**
  * Returns all the groups to which an entity belongs.
  */
-export const listGroupsForEntity: API.OperationMethod<
+export const listGroupsForEntity: API.PaginatedOperationMethod<
   ListGroupsForEntityRequest,
   ListGroupsForEntityResponse,
   ListGroupsForEntityError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsForEntityRequest,
-  ) => stream.Stream<
-    ListGroupsForEntityResponse,
-    ListGroupsForEntityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsForEntityRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGroupsForEntityError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsForEntityRequest,
   output: ListGroupsForEntityResponse,
   errors: [
@@ -5185,27 +5114,13 @@ export type ListImpersonationRolesError =
 /**
  * Lists all the impersonation roles for the given WorkMail organization.
  */
-export const listImpersonationRoles: API.OperationMethod<
+export const listImpersonationRoles: API.PaginatedOperationMethod<
   ListImpersonationRolesRequest,
   ListImpersonationRolesResponse,
   ListImpersonationRolesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImpersonationRolesRequest,
-  ) => stream.Stream<
-    ListImpersonationRolesResponse,
-    ListImpersonationRolesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImpersonationRolesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListImpersonationRolesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImpersonationRolesRequest,
   output: ListImpersonationRolesResponse,
   errors: [
@@ -5232,27 +5147,13 @@ export type ListMailboxExportJobsError =
  * Lists the mailbox export jobs started for the specified organization within the last
  * seven days.
  */
-export const listMailboxExportJobs: API.OperationMethod<
+export const listMailboxExportJobs: API.PaginatedOperationMethod<
   ListMailboxExportJobsRequest,
   ListMailboxExportJobsResponse,
   ListMailboxExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMailboxExportJobsRequest,
-  ) => stream.Stream<
-    ListMailboxExportJobsResponse,
-    ListMailboxExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMailboxExportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMailboxExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailboxExportJobsRequest,
   output: ListMailboxExportJobsResponse,
   errors: [
@@ -5280,27 +5181,13 @@ export type ListMailboxPermissionsError =
  * Lists the mailbox permissions associated with a user, group, or resource
  * mailbox.
  */
-export const listMailboxPermissions: API.OperationMethod<
+export const listMailboxPermissions: API.PaginatedOperationMethod<
   ListMailboxPermissionsRequest,
   ListMailboxPermissionsResponse,
   ListMailboxPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMailboxPermissionsRequest,
-  ) => stream.Stream<
-    ListMailboxPermissionsResponse,
-    ListMailboxPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMailboxPermissionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMailboxPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailboxPermissionsRequest,
   output: ListMailboxPermissionsResponse,
   errors: [
@@ -5327,27 +5214,13 @@ export type ListMailDomainsError =
 /**
  * Lists the mail domains in a given WorkMail organization.
  */
-export const listMailDomains: API.OperationMethod<
+export const listMailDomains: API.PaginatedOperationMethod<
   ListMailDomainsRequest,
   ListMailDomainsResponse,
   ListMailDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMailDomainsRequest,
-  ) => stream.Stream<
-    ListMailDomainsResponse,
-    ListMailDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMailDomainsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMailDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailDomainsRequest,
   output: ListMailDomainsResponse,
   errors: [
@@ -5374,27 +5247,13 @@ export type ListMobileDeviceAccessOverridesError =
 /**
  * Lists all the mobile device access overrides for any given combination of WorkMail organization, user, or device.
  */
-export const listMobileDeviceAccessOverrides: API.OperationMethod<
+export const listMobileDeviceAccessOverrides: API.PaginatedOperationMethod<
   ListMobileDeviceAccessOverridesRequest,
   ListMobileDeviceAccessOverridesResponse,
   ListMobileDeviceAccessOverridesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMobileDeviceAccessOverridesRequest,
-  ) => stream.Stream<
-    ListMobileDeviceAccessOverridesResponse,
-    ListMobileDeviceAccessOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMobileDeviceAccessOverridesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListMobileDeviceAccessOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMobileDeviceAccessOverridesRequest,
   output: ListMobileDeviceAccessOverridesResponse,
   errors: [
@@ -5443,27 +5302,13 @@ export type ListOrganizationsError = InvalidParameterException | CommonErrors;
 /**
  * Returns summaries of the customer's organizations.
  */
-export const listOrganizations: API.OperationMethod<
+export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   ListOrganizationsResponse,
   ListOrganizationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationsRequest,
-  ) => stream.Stream<
-    ListOrganizationsResponse,
-    ListOrganizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOrganizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [InvalidParameterException],
@@ -5487,27 +5332,13 @@ export type ListPersonalAccessTokensError =
 /**
  * Returns a summary of your Personal Access Tokens.
  */
-export const listPersonalAccessTokens: API.OperationMethod<
+export const listPersonalAccessTokens: API.PaginatedOperationMethod<
   ListPersonalAccessTokensRequest,
   ListPersonalAccessTokensResponse,
   ListPersonalAccessTokensError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPersonalAccessTokensRequest,
-  ) => stream.Stream<
-    ListPersonalAccessTokensResponse,
-    ListPersonalAccessTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPersonalAccessTokensRequest,
-  ) => stream.Stream<
-    PersonalAccessTokenSummary,
-    ListPersonalAccessTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PersonalAccessTokenSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPersonalAccessTokensRequest,
   output: ListPersonalAccessTokensResponse,
   errors: [
@@ -5540,27 +5371,13 @@ export type ListResourceDelegatesError =
  * Lists the delegates associated with a resource. Users and groups can be resource
  * delegates and answer requests on behalf of the resource.
  */
-export const listResourceDelegates: API.OperationMethod<
+export const listResourceDelegates: API.PaginatedOperationMethod<
   ListResourceDelegatesRequest,
   ListResourceDelegatesResponse,
   ListResourceDelegatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceDelegatesRequest,
-  ) => stream.Stream<
-    ListResourceDelegatesResponse,
-    ListResourceDelegatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceDelegatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourceDelegatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceDelegatesRequest,
   output: ListResourceDelegatesResponse,
   errors: [
@@ -5590,27 +5407,13 @@ export type ListResourcesError =
 /**
  * Returns summaries of the organization's resources.
  */
-export const listResources: API.OperationMethod<
+export const listResources: API.PaginatedOperationMethod<
   ListResourcesRequest,
   ListResourcesResponse,
   ListResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    ListResourcesResponse,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [
@@ -5655,27 +5458,13 @@ export type ListUsersError =
 /**
  * Returns summaries of the organization's users.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [

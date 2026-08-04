@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1762,27 +1761,13 @@ export type ListDatastoresError =
 /**
  * List data stores.
  */
-export const listDatastores: API.OperationMethod<
+export const listDatastores: API.PaginatedOperationMethod<
   ListDatastoresRequest,
   ListDatastoresResponse,
   ListDatastoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatastoresRequest,
-  ) => stream.Stream<
-    ListDatastoresResponse,
-    ListDatastoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatastoresRequest,
-  ) => stream.Stream<
-    DatastoreSummary,
-    ListDatastoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatastoreSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatastoresRequest,
   output: ListDatastoresResponse,
   errors: [
@@ -1813,27 +1798,13 @@ export type ListDICOMImportJobsError =
 /**
  * List import jobs created for a specific data store.
  */
-export const listDICOMImportJobs: API.OperationMethod<
+export const listDICOMImportJobs: API.PaginatedOperationMethod<
   ListDICOMImportJobsRequest,
   ListDICOMImportJobsResponse,
   ListDICOMImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDICOMImportJobsRequest,
-  ) => stream.Stream<
-    ListDICOMImportJobsResponse,
-    ListDICOMImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDICOMImportJobsRequest,
-  ) => stream.Stream<
-    DICOMImportJobSummary,
-    ListDICOMImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DICOMImportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDICOMImportJobsRequest,
   output: ListDICOMImportJobsResponse,
   errors: [
@@ -1866,27 +1837,13 @@ export type ListImageSetVersionsError =
 /**
  * List image set versions.
  */
-export const listImageSetVersions: API.OperationMethod<
+export const listImageSetVersions: API.PaginatedOperationMethod<
   ListImageSetVersionsRequest,
   ListImageSetVersionsResponse,
   ListImageSetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImageSetVersionsRequest,
-  ) => stream.Stream<
-    ListImageSetVersionsResponse,
-    ListImageSetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImageSetVersionsRequest,
-  ) => stream.Stream<
-    ImageSetProperties,
-    ListImageSetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageSetProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImageSetVersionsRequest,
   output: ListImageSetVersionsResponse,
   errors: [
@@ -1954,27 +1911,13 @@ export type SearchImageSetsError =
  *
  * By default, `SearchImageSets` uses the `updatedAt` field for sorting in descending order from newest to oldest.
  */
-export const searchImageSets: API.OperationMethod<
+export const searchImageSets: API.PaginatedOperationMethod<
   SearchImageSetsRequest,
   SearchImageSetsResponse,
   SearchImageSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchImageSetsRequest,
-  ) => stream.Stream<
-    SearchImageSetsResponse,
-    SearchImageSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchImageSetsRequest,
-  ) => stream.Stream<
-    ImageSetsMetadataSummary,
-    SearchImageSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImageSetsMetadataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchImageSetsRequest,
   output: SearchImageSetsResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1962,27 +1961,13 @@ export type ListApplicationsError =
 /**
  * Retrieves a list of all Amazon GameLift Streams applications that are associated with the Amazon Web Services account in use. This operation returns applications in all statuses, in no particular order. You can paginate the results as needed.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsInput,
   ListApplicationsOutput,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ListApplicationsOutput,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [
@@ -2011,27 +1996,13 @@ export type ListStreamGroupsError =
 /**
  * Retrieves a list of all Amazon GameLift Streams stream groups that are associated with the Amazon Web Services account in use. This operation returns stream groups in all statuses, in no particular order. You can paginate the results as needed.
  */
-export const listStreamGroups: API.OperationMethod<
+export const listStreamGroups: API.PaginatedOperationMethod<
   ListStreamGroupsInput,
   ListStreamGroupsOutput,
   ListStreamGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamGroupsInput,
-  ) => stream.Stream<
-    ListStreamGroupsOutput,
-    ListStreamGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamGroupsInput,
-  ) => stream.Stream<
-    StreamGroupSummary,
-    ListStreamGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StreamGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamGroupsInput,
   output: ListStreamGroupsOutput,
   errors: [
@@ -2065,27 +2036,13 @@ export type ListStreamSessionsError =
  *
  * This operation returns the requested stream sessions in no particular order.
  */
-export const listStreamSessions: API.OperationMethod<
+export const listStreamSessions: API.PaginatedOperationMethod<
   ListStreamSessionsInput,
   ListStreamSessionsOutput,
   ListStreamSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamSessionsInput,
-  ) => stream.Stream<
-    ListStreamSessionsOutput,
-    ListStreamSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamSessionsInput,
-  ) => stream.Stream<
-    StreamSessionSummary,
-    ListStreamSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StreamSessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsInput,
   output: ListStreamSessionsOutput,
   errors: [
@@ -2119,27 +2076,13 @@ export type ListStreamSessionsByAccountError =
  *
  * We don't recommend using this operation to regularly check stream session statuses because it's costly. Instead, to check status updates for a specific stream session, use GetStreamSession.
  */
-export const listStreamSessionsByAccount: API.OperationMethod<
+export const listStreamSessionsByAccount: API.PaginatedOperationMethod<
   ListStreamSessionsByAccountInput,
   ListStreamSessionsByAccountOutput,
   ListStreamSessionsByAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamSessionsByAccountInput,
-  ) => stream.Stream<
-    ListStreamSessionsByAccountOutput,
-    ListStreamSessionsByAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamSessionsByAccountInput,
-  ) => stream.Stream<
-    StreamSessionSummary,
-    ListStreamSessionsByAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  StreamSessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamSessionsByAccountInput,
   output: ListStreamSessionsByAccountOutput,
   errors: [

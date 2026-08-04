@@ -7317,27 +7317,13 @@ export type GetChatControlsConfigurationError =
 /**
  * Gets information about chat controls configured for an existing Amazon Q Business application.
  */
-export const getChatControlsConfiguration: API.OperationMethod<
+export const getChatControlsConfiguration: API.PaginatedOperationMethod<
   GetChatControlsConfigurationRequest,
   GetChatControlsConfigurationResponse,
   GetChatControlsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetChatControlsConfigurationRequest,
-  ) => stream.Stream<
-    GetChatControlsConfigurationResponse,
-    GetChatControlsConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetChatControlsConfigurationRequest,
-  ) => stream.Stream<
-    TopicConfiguration,
-    GetChatControlsConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TopicConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChatControlsConfigurationRequest,
   output: GetChatControlsConfigurationResponse,
   errors: [
@@ -7739,27 +7725,13 @@ export type ListApplicationsError =
  *
  * Amazon Q Business applications may securely transmit data for processing across Amazon Web Services Regions within your geography. For more information, see Cross region inference in Amazon Q Business.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -7790,27 +7762,13 @@ export type ListAttachmentsError =
 /**
  * Gets a list of attachments associated with an Amazon Q Business web experience or a list of attachements associated with a specific Amazon Q Business conversation.
  */
-export const listAttachments: API.OperationMethod<
+export const listAttachments: API.PaginatedOperationMethod<
   ListAttachmentsRequest,
   ListAttachmentsResponse,
   ListAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachmentsRequest,
-  ) => stream.Stream<
-    ListAttachmentsResponse,
-    ListAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachmentsRequest,
-  ) => stream.Stream<
-    Attachment,
-    ListAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Attachment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachmentsRequest,
   output: ListAttachmentsResponse,
   errors: [
@@ -7842,27 +7800,13 @@ export type ListChatResponseConfigurationsError =
 /**
  * Retrieves a list of all chat response configurations available in a specified Amazon Q Business application. This operation returns summary information about each configuration to help administrators manage and select appropriate response settings.
  */
-export const listChatResponseConfigurations: API.OperationMethod<
+export const listChatResponseConfigurations: API.PaginatedOperationMethod<
   ListChatResponseConfigurationsRequest,
   ListChatResponseConfigurationsResponse,
   ListChatResponseConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChatResponseConfigurationsRequest,
-  ) => stream.Stream<
-    ListChatResponseConfigurationsResponse,
-    ListChatResponseConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChatResponseConfigurationsRequest,
-  ) => stream.Stream<
-    ChatResponseConfiguration,
-    ListChatResponseConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChatResponseConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChatResponseConfigurationsRequest,
   output: ListChatResponseConfigurationsResponse,
   errors: [
@@ -7894,27 +7838,13 @@ export type ListConversationsError =
 /**
  * Lists one or more Amazon Q Business conversations.
  */
-export const listConversations: API.OperationMethod<
+export const listConversations: API.PaginatedOperationMethod<
   ListConversationsRequest,
   ListConversationsResponse,
   ListConversationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConversationsRequest,
-  ) => stream.Stream<
-    ListConversationsResponse,
-    ListConversationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConversationsRequest,
-  ) => stream.Stream<
-    Conversation,
-    ListConversationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Conversation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConversationsRequest,
   output: ListConversationsResponse,
   errors: [
@@ -7946,27 +7876,13 @@ export type ListDataAccessorsError =
 /**
  * Lists the data accessors for a Amazon Q Business application. This operation returns a paginated list of data accessor summaries, including the friendly name, unique identifier, ARN, associated IAM role, and creation/update timestamps for each data accessor.
  */
-export const listDataAccessors: API.OperationMethod<
+export const listDataAccessors: API.PaginatedOperationMethod<
   ListDataAccessorsRequest,
   ListDataAccessorsResponse,
   ListDataAccessorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataAccessorsRequest,
-  ) => stream.Stream<
-    ListDataAccessorsResponse,
-    ListDataAccessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataAccessorsRequest,
-  ) => stream.Stream<
-    DataAccessor,
-    ListDataAccessorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataAccessor
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataAccessorsRequest,
   output: ListDataAccessorsResponse,
   errors: [
@@ -7997,27 +7913,13 @@ export type ListDataSourcesError =
 /**
  * Lists the Amazon Q Business data source connectors that you have created.
  */
-export const listDataSources: API.OperationMethod<
+export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    ListDataSourcesResponse,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    DataSource,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -8049,27 +7951,13 @@ export type ListDataSourceSyncJobsError =
 /**
  * Get information about an Amazon Q Business data source connector synchronization.
  */
-export const listDataSourceSyncJobs: API.OperationMethod<
+export const listDataSourceSyncJobs: API.PaginatedOperationMethod<
   ListDataSourceSyncJobsRequest,
   ListDataSourceSyncJobsResponse,
   ListDataSourceSyncJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourceSyncJobsRequest,
-  ) => stream.Stream<
-    ListDataSourceSyncJobsResponse,
-    ListDataSourceSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourceSyncJobsRequest,
-  ) => stream.Stream<
-    DataSourceSyncJob,
-    ListDataSourceSyncJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSourceSyncJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceSyncJobsRequest,
   output: ListDataSourceSyncJobsResponse,
   errors: [
@@ -8101,27 +7989,13 @@ export type ListDocumentsError =
 /**
  * A list of documents attached to an index.
  */
-export const listDocuments: API.OperationMethod<
+export const listDocuments: API.PaginatedOperationMethod<
   ListDocumentsRequest,
   ListDocumentsResponse,
   ListDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentsRequest,
-  ) => stream.Stream<
-    ListDocumentsResponse,
-    ListDocumentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentsRequest,
-  ) => stream.Stream<
-    DocumentDetails,
-    ListDocumentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DocumentDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsRequest,
   output: ListDocumentsResponse,
   errors: [
@@ -8153,27 +8027,13 @@ export type ListGroupsError =
 /**
  * Provides a list of groups that are mapped to users.
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    GroupSummary,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -8205,27 +8065,13 @@ export type ListIndicesError =
 /**
  * Lists the Amazon Q Business indices you have created.
  */
-export const listIndices: API.OperationMethod<
+export const listIndices: API.PaginatedOperationMethod<
   ListIndicesRequest,
   ListIndicesResponse,
   ListIndicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndicesRequest,
-  ) => stream.Stream<
-    ListIndicesResponse,
-    ListIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndicesRequest,
-  ) => stream.Stream<
-    Index,
-    ListIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Index
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndicesRequest,
   output: ListIndicesResponse,
   errors: [
@@ -8257,27 +8103,13 @@ export type ListMessagesError =
 /**
  * Gets a list of messages associated with an Amazon Q Business web experience.
  */
-export const listMessages: API.OperationMethod<
+export const listMessages: API.PaginatedOperationMethod<
   ListMessagesRequest,
   ListMessagesResponse,
   ListMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMessagesRequest,
-  ) => stream.Stream<
-    ListMessagesResponse,
-    ListMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMessagesRequest,
-  ) => stream.Stream<
-    Message,
-    ListMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Message
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMessagesRequest,
   output: ListMessagesResponse,
   errors: [
@@ -8309,27 +8141,13 @@ export type ListPluginActionsError =
 /**
  * Lists configured Amazon Q Business actions for a specific plugin in an Amazon Q Business application.
  */
-export const listPluginActions: API.OperationMethod<
+export const listPluginActions: API.PaginatedOperationMethod<
   ListPluginActionsRequest,
   ListPluginActionsResponse,
   ListPluginActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPluginActionsRequest,
-  ) => stream.Stream<
-    ListPluginActionsResponse,
-    ListPluginActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPluginActionsRequest,
-  ) => stream.Stream<
-    ActionSummary,
-    ListPluginActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginActionsRequest,
   output: ListPluginActionsResponse,
   errors: [
@@ -8360,27 +8178,13 @@ export type ListPluginsError =
 /**
  * Lists configured Amazon Q Business plugins.
  */
-export const listPlugins: API.OperationMethod<
+export const listPlugins: API.PaginatedOperationMethod<
   ListPluginsRequest,
   ListPluginsResponse,
   ListPluginsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPluginsRequest,
-  ) => stream.Stream<
-    ListPluginsResponse,
-    ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPluginsRequest,
-  ) => stream.Stream<
-    Plugin,
-    ListPluginsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Plugin
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginsRequest,
   output: ListPluginsResponse,
   errors: [
@@ -8410,27 +8214,13 @@ export type ListPluginTypeActionsError =
 /**
  * Lists configured Amazon Q Business actions for any plugin type—both built-in and custom.
  */
-export const listPluginTypeActions: API.OperationMethod<
+export const listPluginTypeActions: API.PaginatedOperationMethod<
   ListPluginTypeActionsRequest,
   ListPluginTypeActionsResponse,
   ListPluginTypeActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPluginTypeActionsRequest,
-  ) => stream.Stream<
-    ListPluginTypeActionsResponse,
-    ListPluginTypeActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPluginTypeActionsRequest,
-  ) => stream.Stream<
-    ActionSummary,
-    ListPluginTypeActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginTypeActionsRequest,
   output: ListPluginTypeActionsResponse,
   errors: [
@@ -8459,27 +8249,13 @@ export type ListPluginTypeMetadataError =
 /**
  * Lists metadata for all Amazon Q Business plugin types.
  */
-export const listPluginTypeMetadata: API.OperationMethod<
+export const listPluginTypeMetadata: API.PaginatedOperationMethod<
   ListPluginTypeMetadataRequest,
   ListPluginTypeMetadataResponse,
   ListPluginTypeMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPluginTypeMetadataRequest,
-  ) => stream.Stream<
-    ListPluginTypeMetadataResponse,
-    ListPluginTypeMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPluginTypeMetadataRequest,
-  ) => stream.Stream<
-    PluginTypeMetadataSummary,
-    ListPluginTypeMetadataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PluginTypeMetadataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPluginTypeMetadataRequest,
   output: ListPluginTypeMetadataResponse,
   errors: [
@@ -8509,27 +8285,13 @@ export type ListRetrieversError =
 /**
  * Lists the retriever used by an Amazon Q Business application.
  */
-export const listRetrievers: API.OperationMethod<
+export const listRetrievers: API.PaginatedOperationMethod<
   ListRetrieversRequest,
   ListRetrieversResponse,
   ListRetrieversError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRetrieversRequest,
-  ) => stream.Stream<
-    ListRetrieversResponse,
-    ListRetrieversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRetrieversRequest,
-  ) => stream.Stream<
-    Retriever,
-    ListRetrieversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Retriever
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetrieversRequest,
   output: ListRetrieversResponse,
   errors: [
@@ -8561,27 +8323,13 @@ export type ListSubscriptionsError =
 /**
  * Lists all subscriptions created in an Amazon Q Business application.
  */
-export const listSubscriptions: API.OperationMethod<
+export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsRequest,
   ListSubscriptionsResponse,
   ListSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsRequest,
-  ) => stream.Stream<
-    ListSubscriptionsResponse,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsRequest,
-  ) => stream.Stream<
-    Subscription,
-    ListSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Subscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [
@@ -8643,27 +8391,13 @@ export type ListWebExperiencesError =
 /**
  * Lists one or more Amazon Q Business Web Experiences.
  */
-export const listWebExperiences: API.OperationMethod<
+export const listWebExperiences: API.PaginatedOperationMethod<
   ListWebExperiencesRequest,
   ListWebExperiencesResponse,
   ListWebExperiencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWebExperiencesRequest,
-  ) => stream.Stream<
-    ListWebExperiencesResponse,
-    ListWebExperiencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWebExperiencesRequest,
-  ) => stream.Stream<
-    WebExperience,
-    ListWebExperiencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WebExperience
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebExperiencesRequest,
   output: ListWebExperiencesResponse,
   errors: [
@@ -8763,27 +8497,13 @@ export type SearchRelevantContentError =
 /**
  * Searches for relevant content in a Amazon Q Business application based on a query. This operation takes a search query text, the Amazon Q Business application identifier, and optional filters (such as content source and maximum results) as input. It returns a list of relevant content items, where each item includes the content text, the unique document identifier, the document title, the document URI, any relevant document attributes, and score attributes indicating the confidence level of the relevance.
  */
-export const searchRelevantContent: API.OperationMethod<
+export const searchRelevantContent: API.PaginatedOperationMethod<
   SearchRelevantContentRequest,
   SearchRelevantContentResponse,
   SearchRelevantContentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchRelevantContentRequest,
-  ) => stream.Stream<
-    SearchRelevantContentResponse,
-    SearchRelevantContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchRelevantContentRequest,
-  ) => stream.Stream<
-    RelevantContent,
-    SearchRelevantContentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RelevantContent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRelevantContentRequest,
   output: SearchRelevantContentResponse,
   errors: [

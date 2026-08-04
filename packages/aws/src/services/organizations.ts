@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5119,27 +5118,13 @@ export type ListAccountsError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listAccounts: API.OperationMethod<
+export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    ListAccountsResponse,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -5180,27 +5165,13 @@ export type ListAccountsForParentError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listAccountsForParent: API.OperationMethod<
+export const listAccountsForParent: API.PaginatedOperationMethod<
   ListAccountsForParentRequest,
   ListAccountsForParentResponse,
   ListAccountsForParentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsForParentRequest,
-  ) => stream.Stream<
-    ListAccountsForParentResponse,
-    ListAccountsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsForParentRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccountsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsForParentRequest,
   output: ListAccountsForParentResponse,
   errors: [
@@ -5239,27 +5210,13 @@ export type ListAccountsWithInvalidEffectivePolicyError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listAccountsWithInvalidEffectivePolicy: API.OperationMethod<
+export const listAccountsWithInvalidEffectivePolicy: API.PaginatedOperationMethod<
   ListAccountsWithInvalidEffectivePolicyRequest,
   ListAccountsWithInvalidEffectivePolicyResponse,
   ListAccountsWithInvalidEffectivePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsWithInvalidEffectivePolicyRequest,
-  ) => stream.Stream<
-    ListAccountsWithInvalidEffectivePolicyResponse,
-    ListAccountsWithInvalidEffectivePolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsWithInvalidEffectivePolicyRequest,
-  ) => stream.Stream<
-    Account,
-    ListAccountsWithInvalidEffectivePolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsWithInvalidEffectivePolicyRequest,
   output: ListAccountsWithInvalidEffectivePolicyResponse,
   errors: [
@@ -5303,27 +5260,13 @@ export type ListAWSServiceAccessForOrganizationError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listAWSServiceAccessForOrganization: API.OperationMethod<
+export const listAWSServiceAccessForOrganization: API.PaginatedOperationMethod<
   ListAWSServiceAccessForOrganizationRequest,
   ListAWSServiceAccessForOrganizationResponse,
   ListAWSServiceAccessForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAWSServiceAccessForOrganizationRequest,
-  ) => stream.Stream<
-    ListAWSServiceAccessForOrganizationResponse,
-    ListAWSServiceAccessForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAWSServiceAccessForOrganizationRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAWSServiceAccessForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAWSServiceAccessForOrganizationRequest,
   output: ListAWSServiceAccessForOrganizationResponse,
   errors: [
@@ -5364,27 +5307,13 @@ export type ListChildrenError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listChildren: API.OperationMethod<
+export const listChildren: API.PaginatedOperationMethod<
   ListChildrenRequest,
   ListChildrenResponse,
   ListChildrenError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChildrenRequest,
-  ) => stream.Stream<
-    ListChildrenResponse,
-    ListChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChildrenRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChildrenRequest,
   output: ListChildrenResponse,
   errors: [
@@ -5423,27 +5352,13 @@ export type ListCreateAccountStatusError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listCreateAccountStatus: API.OperationMethod<
+export const listCreateAccountStatus: API.PaginatedOperationMethod<
   ListCreateAccountStatusRequest,
   ListCreateAccountStatusResponse,
   ListCreateAccountStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCreateAccountStatusRequest,
-  ) => stream.Stream<
-    ListCreateAccountStatusResponse,
-    ListCreateAccountStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCreateAccountStatusRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCreateAccountStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreateAccountStatusRequest,
   output: ListCreateAccountStatusResponse,
   errors: [
@@ -5479,27 +5394,13 @@ export type ListDelegatedAdministratorsError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listDelegatedAdministrators: API.OperationMethod<
+export const listDelegatedAdministrators: API.PaginatedOperationMethod<
   ListDelegatedAdministratorsRequest,
   ListDelegatedAdministratorsResponse,
   ListDelegatedAdministratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDelegatedAdministratorsRequest,
-  ) => stream.Stream<
-    ListDelegatedAdministratorsResponse,
-    ListDelegatedAdministratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDelegatedAdministratorsRequest,
-  ) => stream.Stream<
-    DelegatedAdministrator,
-    ListDelegatedAdministratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DelegatedAdministrator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedAdministratorsRequest,
   output: ListDelegatedAdministratorsResponse,
   errors: [
@@ -5539,27 +5440,13 @@ export type ListDelegatedServicesForAccountError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listDelegatedServicesForAccount: API.OperationMethod<
+export const listDelegatedServicesForAccount: API.PaginatedOperationMethod<
   ListDelegatedServicesForAccountRequest,
   ListDelegatedServicesForAccountResponse,
   ListDelegatedServicesForAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDelegatedServicesForAccountRequest,
-  ) => stream.Stream<
-    ListDelegatedServicesForAccountResponse,
-    ListDelegatedServicesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDelegatedServicesForAccountRequest,
-  ) => stream.Stream<
-    DelegatedService,
-    ListDelegatedServicesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DelegatedService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDelegatedServicesForAccountRequest,
   output: ListDelegatedServicesForAccountResponse,
   errors: [
@@ -5601,27 +5488,13 @@ export type ListEffectivePolicyValidationErrorsError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listEffectivePolicyValidationErrors: API.OperationMethod<
+export const listEffectivePolicyValidationErrors: API.PaginatedOperationMethod<
   ListEffectivePolicyValidationErrorsRequest,
   ListEffectivePolicyValidationErrorsResponse,
   ListEffectivePolicyValidationErrorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEffectivePolicyValidationErrorsRequest,
-  ) => stream.Stream<
-    ListEffectivePolicyValidationErrorsResponse,
-    ListEffectivePolicyValidationErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEffectivePolicyValidationErrorsRequest,
-  ) => stream.Stream<
-    EffectivePolicyValidationError,
-    ListEffectivePolicyValidationErrorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EffectivePolicyValidationError
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEffectivePolicyValidationErrorsRequest,
   output: ListEffectivePolicyValidationErrorsResponse,
   errors: [
@@ -5666,27 +5539,13 @@ export type ListHandshakesForAccountError =
  * These operations can occasionally return an empty set of results even when more results are available.
  * Continue making requests until `NextToken` returns null. A null `NextToken` value indicates that you have retrieved all available results.
  */
-export const listHandshakesForAccount: API.OperationMethod<
+export const listHandshakesForAccount: API.PaginatedOperationMethod<
   ListHandshakesForAccountRequest,
   ListHandshakesForAccountResponse,
   ListHandshakesForAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHandshakesForAccountRequest,
-  ) => stream.Stream<
-    ListHandshakesForAccountResponse,
-    ListHandshakesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHandshakesForAccountRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHandshakesForAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHandshakesForAccountRequest,
   output: ListHandshakesForAccountResponse,
   errors: [
@@ -5727,27 +5586,13 @@ export type ListHandshakesForOrganizationError =
  * These operations can occasionally return an empty set of results even when more results are available.
  * Continue making requests until `NextToken` returns null. A null `NextToken` value indicates that you have retrieved all available results.
  */
-export const listHandshakesForOrganization: API.OperationMethod<
+export const listHandshakesForOrganization: API.PaginatedOperationMethod<
   ListHandshakesForOrganizationRequest,
   ListHandshakesForOrganizationResponse,
   ListHandshakesForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHandshakesForOrganizationRequest,
-  ) => stream.Stream<
-    ListHandshakesForOrganizationResponse,
-    ListHandshakesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHandshakesForOrganizationRequest,
-  ) => stream.Stream<
-    unknown,
-    ListHandshakesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHandshakesForOrganizationRequest,
   output: ListHandshakesForOrganizationResponse,
   errors: [
@@ -5826,27 +5671,13 @@ export type ListOrganizationalUnitsForParentError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listOrganizationalUnitsForParent: API.OperationMethod<
+export const listOrganizationalUnitsForParent: API.PaginatedOperationMethod<
   ListOrganizationalUnitsForParentRequest,
   ListOrganizationalUnitsForParentResponse,
   ListOrganizationalUnitsForParentError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationalUnitsForParentRequest,
-  ) => stream.Stream<
-    ListOrganizationalUnitsForParentResponse,
-    ListOrganizationalUnitsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOrganizationalUnitsForParentRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOrganizationalUnitsForParentError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationalUnitsForParentRequest,
   output: ListOrganizationalUnitsForParentResponse,
   errors: [
@@ -5928,27 +5759,13 @@ export type ListParentsError =
  *
  * In the current release, a child can have only a single parent.
  */
-export const listParents: API.OperationMethod<
+export const listParents: API.PaginatedOperationMethod<
   ListParentsRequest,
   ListParentsResponse,
   ListParentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListParentsRequest,
-  ) => stream.Stream<
-    ListParentsResponse,
-    ListParentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListParentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListParentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListParentsRequest,
   output: ListParentsResponse,
   errors: [
@@ -5986,27 +5803,13 @@ export type ListPoliciesError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -6047,27 +5850,13 @@ export type ListPoliciesForTargetError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listPoliciesForTarget: API.OperationMethod<
+export const listPoliciesForTarget: API.PaginatedOperationMethod<
   ListPoliciesForTargetRequest,
   ListPoliciesForTargetResponse,
   ListPoliciesForTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesForTargetRequest,
-  ) => stream.Stream<
-    ListPoliciesForTargetResponse,
-    ListPoliciesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesForTargetRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPoliciesForTargetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesForTargetRequest,
   output: ListPoliciesForTargetResponse,
   errors: [
@@ -6111,27 +5900,13 @@ export type ListRootsError =
  * enabled and disabled in a root. To see the availability of a policy type in an
  * organization, use DescribeOrganization.
  */
-export const listRoots: API.OperationMethod<
+export const listRoots: API.PaginatedOperationMethod<
   ListRootsRequest,
   ListRootsResponse,
   ListRootsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRootsRequest,
-  ) => stream.Stream<
-    ListRootsResponse,
-    ListRootsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRootsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRootsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRootsRequest,
   output: ListRootsResponse,
   errors: [
@@ -6174,27 +5949,13 @@ export type ListTagsForResourceError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -6234,27 +5995,13 @@ export type ListTargetsForPolicyError =
  *
  * You can only call this operation from the management account or a member account that is a delegated administrator.
  */
-export const listTargetsForPolicy: API.OperationMethod<
+export const listTargetsForPolicy: API.PaginatedOperationMethod<
   ListTargetsForPolicyRequest,
   ListTargetsForPolicyResponse,
   ListTargetsForPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetsForPolicyRequest,
-  ) => stream.Stream<
-    ListTargetsForPolicyResponse,
-    ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetsForPolicyRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTargetsForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetsForPolicyRequest,
   output: ListTargetsForPolicyResponse,
   errors: [

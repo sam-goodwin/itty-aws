@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -22175,27 +22174,13 @@ export type DescribeScheduleError =
 /**
  * Get a channel schedule
  */
-export const describeSchedule: API.OperationMethod<
+export const describeSchedule: API.PaginatedOperationMethod<
   DescribeScheduleRequest,
   DescribeScheduleResponse,
   DescribeScheduleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeScheduleRequest,
-  ) => stream.Stream<
-    DescribeScheduleResponse,
-    DescribeScheduleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeScheduleRequest,
-  ) => stream.Stream<
-    ScheduleAction,
-    DescribeScheduleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduleAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
   errors: [
@@ -22450,27 +22435,13 @@ export type ListAlertsError =
 /**
  * List the alerts for a channel with optional filtering based on alert state.
  */
-export const listAlerts: API.OperationMethod<
+export const listAlerts: API.PaginatedOperationMethod<
   ListAlertsRequest,
   ListAlertsResponse,
   ListAlertsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAlertsRequest,
-  ) => stream.Stream<
-    ListAlertsResponse,
-    ListAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAlertsRequest,
-  ) => stream.Stream<
-    ChannelAlert,
-    ListAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelAlert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse,
   errors: [
@@ -22504,27 +22475,13 @@ export type ListChannelPlacementGroupsError =
 /**
  * Retrieve the list of ChannelPlacementGroups in the specified Cluster.
  */
-export const listChannelPlacementGroups: API.OperationMethod<
+export const listChannelPlacementGroups: API.PaginatedOperationMethod<
   ListChannelPlacementGroupsRequest,
   ListChannelPlacementGroupsResponse,
   ListChannelPlacementGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelPlacementGroupsRequest,
-  ) => stream.Stream<
-    ListChannelPlacementGroupsResponse,
-    ListChannelPlacementGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelPlacementGroupsRequest,
-  ) => stream.Stream<
-    DescribeChannelPlacementGroupSummary,
-    ListChannelPlacementGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeChannelPlacementGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelPlacementGroupsRequest,
   output: ListChannelPlacementGroupsResponse,
   errors: [
@@ -22557,27 +22514,13 @@ export type ListChannelsError =
 /**
  * Produces list of channels that have been created
  */
-export const listChannels: API.OperationMethod<
+export const listChannels: API.PaginatedOperationMethod<
   ListChannelsRequest,
   ListChannelsResponse,
   ListChannelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ListChannelsResponse,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelsRequest,
-  ) => stream.Stream<
-    ChannelSummary,
-    ListChannelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [
@@ -22609,27 +22552,13 @@ export type ListCloudWatchAlarmTemplateGroupsError =
 /**
  * Lists cloudwatch alarm template groups.
  */
-export const listCloudWatchAlarmTemplateGroups: API.OperationMethod<
+export const listCloudWatchAlarmTemplateGroups: API.PaginatedOperationMethod<
   ListCloudWatchAlarmTemplateGroupsRequest,
   ListCloudWatchAlarmTemplateGroupsResponse,
   ListCloudWatchAlarmTemplateGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudWatchAlarmTemplateGroupsRequest,
-  ) => stream.Stream<
-    ListCloudWatchAlarmTemplateGroupsResponse,
-    ListCloudWatchAlarmTemplateGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudWatchAlarmTemplateGroupsRequest,
-  ) => stream.Stream<
-    CloudWatchAlarmTemplateGroupSummary,
-    ListCloudWatchAlarmTemplateGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CloudWatchAlarmTemplateGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudWatchAlarmTemplateGroupsRequest,
   output: ListCloudWatchAlarmTemplateGroupsResponse,
   errors: [
@@ -22660,27 +22589,13 @@ export type ListCloudWatchAlarmTemplatesError =
 /**
  * Lists cloudwatch alarm templates.
  */
-export const listCloudWatchAlarmTemplates: API.OperationMethod<
+export const listCloudWatchAlarmTemplates: API.PaginatedOperationMethod<
   ListCloudWatchAlarmTemplatesRequest,
   ListCloudWatchAlarmTemplatesResponse,
   ListCloudWatchAlarmTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudWatchAlarmTemplatesRequest,
-  ) => stream.Stream<
-    ListCloudWatchAlarmTemplatesResponse,
-    ListCloudWatchAlarmTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudWatchAlarmTemplatesRequest,
-  ) => stream.Stream<
-    CloudWatchAlarmTemplateSummary,
-    ListCloudWatchAlarmTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CloudWatchAlarmTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudWatchAlarmTemplatesRequest,
   output: ListCloudWatchAlarmTemplatesResponse,
   errors: [
@@ -22713,27 +22628,13 @@ export type ListClusterAlertsError =
 /**
  * List the alerts for a cluster with optional filtering based on alert state.
  */
-export const listClusterAlerts: API.OperationMethod<
+export const listClusterAlerts: API.PaginatedOperationMethod<
   ListClusterAlertsRequest,
   ListClusterAlertsResponse,
   ListClusterAlertsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClusterAlertsRequest,
-  ) => stream.Stream<
-    ListClusterAlertsResponse,
-    ListClusterAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClusterAlertsRequest,
-  ) => stream.Stream<
-    ClusterAlert,
-    ListClusterAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ClusterAlert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClusterAlertsRequest,
   output: ListClusterAlertsResponse,
   errors: [
@@ -22767,27 +22668,13 @@ export type ListClustersError =
 /**
  * Retrieve the list of Clusters.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    DescribeClusterSummary,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeClusterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -22819,27 +22706,13 @@ export type ListEventBridgeRuleTemplateGroupsError =
 /**
  * Lists eventbridge rule template groups.
  */
-export const listEventBridgeRuleTemplateGroups: API.OperationMethod<
+export const listEventBridgeRuleTemplateGroups: API.PaginatedOperationMethod<
   ListEventBridgeRuleTemplateGroupsRequest,
   ListEventBridgeRuleTemplateGroupsResponse,
   ListEventBridgeRuleTemplateGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventBridgeRuleTemplateGroupsRequest,
-  ) => stream.Stream<
-    ListEventBridgeRuleTemplateGroupsResponse,
-    ListEventBridgeRuleTemplateGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventBridgeRuleTemplateGroupsRequest,
-  ) => stream.Stream<
-    EventBridgeRuleTemplateGroupSummary,
-    ListEventBridgeRuleTemplateGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventBridgeRuleTemplateGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventBridgeRuleTemplateGroupsRequest,
   output: ListEventBridgeRuleTemplateGroupsResponse,
   errors: [
@@ -22870,27 +22743,13 @@ export type ListEventBridgeRuleTemplatesError =
 /**
  * Lists eventbridge rule templates.
  */
-export const listEventBridgeRuleTemplates: API.OperationMethod<
+export const listEventBridgeRuleTemplates: API.PaginatedOperationMethod<
   ListEventBridgeRuleTemplatesRequest,
   ListEventBridgeRuleTemplatesResponse,
   ListEventBridgeRuleTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventBridgeRuleTemplatesRequest,
-  ) => stream.Stream<
-    ListEventBridgeRuleTemplatesResponse,
-    ListEventBridgeRuleTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventBridgeRuleTemplatesRequest,
-  ) => stream.Stream<
-    EventBridgeRuleTemplateSummary,
-    ListEventBridgeRuleTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventBridgeRuleTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventBridgeRuleTemplatesRequest,
   output: ListEventBridgeRuleTemplatesResponse,
   errors: [
@@ -22922,27 +22781,13 @@ export type ListInputDevicesError =
 /**
  * List input devices
  */
-export const listInputDevices: API.OperationMethod<
+export const listInputDevices: API.PaginatedOperationMethod<
   ListInputDevicesRequest,
   ListInputDevicesResponse,
   ListInputDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInputDevicesRequest,
-  ) => stream.Stream<
-    ListInputDevicesResponse,
-    ListInputDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInputDevicesRequest,
-  ) => stream.Stream<
-    InputDeviceSummary,
-    ListInputDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InputDeviceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputDevicesRequest,
   output: ListInputDevicesResponse,
   errors: [
@@ -22976,27 +22821,13 @@ export type ListInputDeviceTransfersError =
 /**
  * List input devices that are currently being transferred. List input devices that you are transferring from your AWS account or input devices that another AWS account is transferring to you.
  */
-export const listInputDeviceTransfers: API.OperationMethod<
+export const listInputDeviceTransfers: API.PaginatedOperationMethod<
   ListInputDeviceTransfersRequest,
   ListInputDeviceTransfersResponse,
   ListInputDeviceTransfersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInputDeviceTransfersRequest,
-  ) => stream.Stream<
-    ListInputDeviceTransfersResponse,
-    ListInputDeviceTransfersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInputDeviceTransfersRequest,
-  ) => stream.Stream<
-    TransferringInputDeviceSummary,
-    ListInputDeviceTransfersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TransferringInputDeviceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputDeviceTransfersRequest,
   output: ListInputDeviceTransfersResponse,
   errors: [
@@ -23030,27 +22861,13 @@ export type ListInputsError =
 /**
  * Produces list of inputs that have been created
  */
-export const listInputs: API.OperationMethod<
+export const listInputs: API.PaginatedOperationMethod<
   ListInputsRequest,
   ListInputsResponse,
   ListInputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInputsRequest,
-  ) => stream.Stream<
-    ListInputsResponse,
-    ListInputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInputsRequest,
-  ) => stream.Stream<
-    Input,
-    ListInputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Input
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputsRequest,
   output: ListInputsResponse,
   errors: [
@@ -23083,27 +22900,13 @@ export type ListInputSecurityGroupsError =
 /**
  * Produces a list of Input Security Groups for an account
  */
-export const listInputSecurityGroups: API.OperationMethod<
+export const listInputSecurityGroups: API.PaginatedOperationMethod<
   ListInputSecurityGroupsRequest,
   ListInputSecurityGroupsResponse,
   ListInputSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInputSecurityGroupsRequest,
-  ) => stream.Stream<
-    ListInputSecurityGroupsResponse,
-    ListInputSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInputSecurityGroupsRequest,
-  ) => stream.Stream<
-    InputSecurityGroup,
-    ListInputSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InputSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInputSecurityGroupsRequest,
   output: ListInputSecurityGroupsResponse,
   errors: [
@@ -23137,27 +22940,13 @@ export type ListMultiplexAlertsError =
 /**
  * List the alerts for a multiplex with optional filtering based on alert state.
  */
-export const listMultiplexAlerts: API.OperationMethod<
+export const listMultiplexAlerts: API.PaginatedOperationMethod<
   ListMultiplexAlertsRequest,
   ListMultiplexAlertsResponse,
   ListMultiplexAlertsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultiplexAlertsRequest,
-  ) => stream.Stream<
-    ListMultiplexAlertsResponse,
-    ListMultiplexAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultiplexAlertsRequest,
-  ) => stream.Stream<
-    MultiplexAlert,
-    ListMultiplexAlertsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MultiplexAlert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiplexAlertsRequest,
   output: ListMultiplexAlertsResponse,
   errors: [
@@ -23191,27 +22980,13 @@ export type ListMultiplexesError =
 /**
  * Retrieve a list of the existing multiplexes.
  */
-export const listMultiplexes: API.OperationMethod<
+export const listMultiplexes: API.PaginatedOperationMethod<
   ListMultiplexesRequest,
   ListMultiplexesResponse,
   ListMultiplexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultiplexesRequest,
-  ) => stream.Stream<
-    ListMultiplexesResponse,
-    ListMultiplexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultiplexesRequest,
-  ) => stream.Stream<
-    MultiplexSummary,
-    ListMultiplexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MultiplexSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiplexesRequest,
   output: ListMultiplexesResponse,
   errors: [
@@ -23245,27 +23020,13 @@ export type ListMultiplexProgramsError =
 /**
  * List the programs that currently exist for a specific multiplex.
  */
-export const listMultiplexPrograms: API.OperationMethod<
+export const listMultiplexPrograms: API.PaginatedOperationMethod<
   ListMultiplexProgramsRequest,
   ListMultiplexProgramsResponse,
   ListMultiplexProgramsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultiplexProgramsRequest,
-  ) => stream.Stream<
-    ListMultiplexProgramsResponse,
-    ListMultiplexProgramsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultiplexProgramsRequest,
-  ) => stream.Stream<
-    MultiplexProgramSummary,
-    ListMultiplexProgramsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MultiplexProgramSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiplexProgramsRequest,
   output: ListMultiplexProgramsResponse,
   errors: [
@@ -23299,27 +23060,13 @@ export type ListNetworksError =
 /**
  * Retrieve the list of Networks.
  */
-export const listNetworks: API.OperationMethod<
+export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksRequest,
   ListNetworksResponse,
   ListNetworksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworksRequest,
-  ) => stream.Stream<
-    ListNetworksResponse,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworksRequest,
-  ) => stream.Stream<
-    DescribeNetworkSummary,
-    ListNetworksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeNetworkSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksRequest,
   output: ListNetworksResponse,
   errors: [
@@ -23352,27 +23099,13 @@ export type ListNodesError =
 /**
  * Retrieve the list of Nodes.
  */
-export const listNodes: API.OperationMethod<
+export const listNodes: API.PaginatedOperationMethod<
   ListNodesRequest,
   ListNodesResponse,
   ListNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    ListNodesResponse,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    DescribeNodeSummary,
-    ListNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeNodeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
   output: ListNodesResponse,
   errors: [
@@ -23405,27 +23138,13 @@ export type ListOfferingsError =
 /**
  * List offerings available for purchase.
  */
-export const listOfferings: API.OperationMethod<
+export const listOfferings: API.PaginatedOperationMethod<
   ListOfferingsRequest,
   ListOfferingsResponse,
   ListOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    ListOfferingsResponse,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOfferingsRequest,
-  ) => stream.Stream<
-    Offering,
-    ListOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Offering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOfferingsRequest,
   output: ListOfferingsResponse,
   errors: [
@@ -23458,27 +23177,13 @@ export type ListReservationsError =
 /**
  * List purchased reservations.
  */
-export const listReservations: API.OperationMethod<
+export const listReservations: API.PaginatedOperationMethod<
   ListReservationsRequest,
   ListReservationsResponse,
   ListReservationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReservationsRequest,
-  ) => stream.Stream<
-    ListReservationsResponse,
-    ListReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReservationsRequest,
-  ) => stream.Stream<
-    Reservation,
-    ListReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Reservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
   output: ListReservationsResponse,
   errors: [
@@ -23511,27 +23216,13 @@ export type ListSdiSourcesError =
 /**
  * List all the SdiSources in the AWS account.
  */
-export const listSdiSources: API.OperationMethod<
+export const listSdiSources: API.PaginatedOperationMethod<
   ListSdiSourcesRequest,
   ListSdiSourcesResponse,
   ListSdiSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSdiSourcesRequest,
-  ) => stream.Stream<
-    ListSdiSourcesResponse,
-    ListSdiSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSdiSourcesRequest,
-  ) => stream.Stream<
-    SdiSourceSummary,
-    ListSdiSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SdiSourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSdiSourcesRequest,
   output: ListSdiSourcesResponse,
   errors: [
@@ -23563,27 +23254,13 @@ export type ListSignalMapsError =
 /**
  * Lists signal maps.
  */
-export const listSignalMaps: API.OperationMethod<
+export const listSignalMaps: API.PaginatedOperationMethod<
   ListSignalMapsRequest,
   ListSignalMapsResponse,
   ListSignalMapsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSignalMapsRequest,
-  ) => stream.Stream<
-    ListSignalMapsResponse,
-    ListSignalMapsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSignalMapsRequest,
-  ) => stream.Stream<
-    SignalMapSummary,
-    ListSignalMapsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SignalMapSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSignalMapsRequest,
   output: ListSignalMapsResponse,
   errors: [

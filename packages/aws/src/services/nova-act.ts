@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1368,27 +1367,13 @@ export type ListActsError =
 /**
  * Lists all acts within a specific session with their current status and execution details.
  */
-export const listActs: API.OperationMethod<
+export const listActs: API.PaginatedOperationMethod<
   ListActsRequest,
   ListActsResponse,
   ListActsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActsRequest,
-  ) => stream.Stream<
-    ListActsResponse,
-    ListActsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActsRequest,
-  ) => stream.Stream<
-    ActSummary,
-    ListActsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActsRequest,
   output: ListActsResponse,
   errors: [
@@ -1443,27 +1428,13 @@ export type ListSessionsError =
 /**
  * Lists all sessions within a specific workflow run.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -1494,27 +1465,13 @@ export type ListWorkflowDefinitionsError =
 /**
  * Lists all workflow definitions in your account with optional filtering and pagination.
  */
-export const listWorkflowDefinitions: API.OperationMethod<
+export const listWorkflowDefinitions: API.PaginatedOperationMethod<
   ListWorkflowDefinitionsRequest,
   ListWorkflowDefinitionsResponse,
   ListWorkflowDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowDefinitionsRequest,
-  ) => stream.Stream<
-    ListWorkflowDefinitionsResponse,
-    ListWorkflowDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowDefinitionsRequest,
-  ) => stream.Stream<
-    WorkflowDefinitionSummary,
-    ListWorkflowDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowDefinitionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowDefinitionsRequest,
   output: ListWorkflowDefinitionsResponse,
   errors: [
@@ -1545,27 +1502,13 @@ export type ListWorkflowRunsError =
 /**
  * Lists all workflow runs for a specific workflow definition with optional filtering and pagination.
  */
-export const listWorkflowRuns: API.OperationMethod<
+export const listWorkflowRuns: API.PaginatedOperationMethod<
   ListWorkflowRunsRequest,
   ListWorkflowRunsResponse,
   ListWorkflowRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowRunsRequest,
-  ) => stream.Stream<
-    ListWorkflowRunsResponse,
-    ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowRunsRequest,
-  ) => stream.Stream<
-    WorkflowRunSummary,
-    ListWorkflowRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkflowRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowRunsRequest,
   output: ListWorkflowRunsResponse,
   errors: [

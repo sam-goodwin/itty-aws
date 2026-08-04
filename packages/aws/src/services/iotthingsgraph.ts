@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1854,27 +1853,13 @@ export type GetFlowTemplateRevisionsError =
  * Gets revisions of the specified workflow. Only the last 100 revisions are stored. If the workflow has been deprecated,
  * this action will return revisions that occurred before the deprecation. This action won't work for workflows that have been deleted.
  */
-export const getFlowTemplateRevisions: API.OperationMethod<
+export const getFlowTemplateRevisions: API.PaginatedOperationMethod<
   GetFlowTemplateRevisionsRequest,
   GetFlowTemplateRevisionsResponse,
   GetFlowTemplateRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetFlowTemplateRevisionsRequest,
-  ) => stream.Stream<
-    GetFlowTemplateRevisionsResponse,
-    GetFlowTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetFlowTemplateRevisionsRequest,
-  ) => stream.Stream<
-    FlowTemplateSummary,
-    GetFlowTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFlowTemplateRevisionsRequest,
   output: GetFlowTemplateRevisionsResponse,
   errors: [
@@ -1986,27 +1971,13 @@ export type GetSystemTemplateRevisionsError =
  * Gets revisions made to the specified system template. Only the previous 100 revisions are stored. If the system has been deprecated, this action will return
  * the revisions that occurred before its deprecation. This action won't work with systems that have been deleted.
  */
-export const getSystemTemplateRevisions: API.OperationMethod<
+export const getSystemTemplateRevisions: API.PaginatedOperationMethod<
   GetSystemTemplateRevisionsRequest,
   GetSystemTemplateRevisionsResponse,
   GetSystemTemplateRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSystemTemplateRevisionsRequest,
-  ) => stream.Stream<
-    GetSystemTemplateRevisionsResponse,
-    GetSystemTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetSystemTemplateRevisionsRequest,
-  ) => stream.Stream<
-    SystemTemplateSummary,
-    GetSystemTemplateRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SystemTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSystemTemplateRevisionsRequest,
   output: GetSystemTemplateRevisionsResponse,
   errors: [
@@ -2063,27 +2034,13 @@ export type ListFlowExecutionMessagesError =
 /**
  * Returns a list of objects that contain information about events in a flow execution.
  */
-export const listFlowExecutionMessages: API.OperationMethod<
+export const listFlowExecutionMessages: API.PaginatedOperationMethod<
   ListFlowExecutionMessagesRequest,
   ListFlowExecutionMessagesResponse,
   ListFlowExecutionMessagesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowExecutionMessagesRequest,
-  ) => stream.Stream<
-    ListFlowExecutionMessagesResponse,
-    ListFlowExecutionMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowExecutionMessagesRequest,
-  ) => stream.Stream<
-    FlowExecutionMessage,
-    ListFlowExecutionMessagesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowExecutionMessage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowExecutionMessagesRequest,
   output: ListFlowExecutionMessagesResponse,
   errors: [
@@ -2112,27 +2069,13 @@ export type ListTagsForResourceError =
 /**
  * Lists all tags on an AWS IoT Things Graph resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2160,27 +2103,13 @@ export type SearchEntitiesError =
 /**
  * Searches for entities of the specified type. You can search for entities in your namespace and the public namespace that you're tracking.
  */
-export const searchEntities: API.OperationMethod<
+export const searchEntities: API.PaginatedOperationMethod<
   SearchEntitiesRequest,
   SearchEntitiesResponse,
   SearchEntitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchEntitiesRequest,
-  ) => stream.Stream<
-    SearchEntitiesResponse,
-    SearchEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchEntitiesRequest,
-  ) => stream.Stream<
-    EntityDescription,
-    SearchEntitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EntityDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchEntitiesRequest,
   output: SearchEntitiesResponse,
   errors: [
@@ -2208,27 +2137,13 @@ export type SearchFlowExecutionsError =
 /**
  * Searches for AWS IoT Things Graph workflow execution instances.
  */
-export const searchFlowExecutions: API.OperationMethod<
+export const searchFlowExecutions: API.PaginatedOperationMethod<
   SearchFlowExecutionsRequest,
   SearchFlowExecutionsResponse,
   SearchFlowExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchFlowExecutionsRequest,
-  ) => stream.Stream<
-    SearchFlowExecutionsResponse,
-    SearchFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchFlowExecutionsRequest,
-  ) => stream.Stream<
-    FlowExecutionSummary,
-    SearchFlowExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowExecutionsRequest,
   output: SearchFlowExecutionsResponse,
   errors: [
@@ -2256,27 +2171,13 @@ export type SearchFlowTemplatesError =
 /**
  * Searches for summary information about workflows.
  */
-export const searchFlowTemplates: API.OperationMethod<
+export const searchFlowTemplates: API.PaginatedOperationMethod<
   SearchFlowTemplatesRequest,
   SearchFlowTemplatesResponse,
   SearchFlowTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchFlowTemplatesRequest,
-  ) => stream.Stream<
-    SearchFlowTemplatesResponse,
-    SearchFlowTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchFlowTemplatesRequest,
-  ) => stream.Stream<
-    FlowTemplateSummary,
-    SearchFlowTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowTemplatesRequest,
   output: SearchFlowTemplatesResponse,
   errors: [
@@ -2303,27 +2204,13 @@ export type SearchSystemInstancesError =
 /**
  * Searches for system instances in the user's account.
  */
-export const searchSystemInstances: API.OperationMethod<
+export const searchSystemInstances: API.PaginatedOperationMethod<
   SearchSystemInstancesRequest,
   SearchSystemInstancesResponse,
   SearchSystemInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSystemInstancesRequest,
-  ) => stream.Stream<
-    SearchSystemInstancesResponse,
-    SearchSystemInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSystemInstancesRequest,
-  ) => stream.Stream<
-    SystemInstanceSummary,
-    SearchSystemInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SystemInstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemInstancesRequest,
   output: SearchSystemInstancesResponse,
   errors: [
@@ -2350,27 +2237,13 @@ export type SearchSystemTemplatesError =
 /**
  * Searches for summary information about systems in the user's account. You can filter by the ID of a workflow to return only systems that use the specified workflow.
  */
-export const searchSystemTemplates: API.OperationMethod<
+export const searchSystemTemplates: API.PaginatedOperationMethod<
   SearchSystemTemplatesRequest,
   SearchSystemTemplatesResponse,
   SearchSystemTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchSystemTemplatesRequest,
-  ) => stream.Stream<
-    SearchSystemTemplatesResponse,
-    SearchSystemTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchSystemTemplatesRequest,
-  ) => stream.Stream<
-    SystemTemplateSummary,
-    SearchSystemTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SystemTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchSystemTemplatesRequest,
   output: SearchSystemTemplatesResponse,
   errors: [
@@ -2403,27 +2276,13 @@ export type SearchThingsError =
  *
  * This action searches for exact matches and doesn't perform partial text matching.
  */
-export const searchThings: API.OperationMethod<
+export const searchThings: API.PaginatedOperationMethod<
   SearchThingsRequest,
   SearchThingsResponse,
   SearchThingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchThingsRequest,
-  ) => stream.Stream<
-    SearchThingsResponse,
-    SearchThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchThingsRequest,
-  ) => stream.Stream<
-    Thing,
-    SearchThingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Thing
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchThingsRequest,
   output: SearchThingsResponse,
   errors: [

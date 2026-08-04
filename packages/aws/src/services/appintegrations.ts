@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1730,27 +1729,13 @@ export type ListApplicationAssociationsError =
 /**
  * Returns a paginated list of application associations for an application.
  */
-export const listApplicationAssociations: API.OperationMethod<
+export const listApplicationAssociations: API.PaginatedOperationMethod<
   ListApplicationAssociationsRequest,
   ListApplicationAssociationsResponse,
   ListApplicationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAssociationsRequest,
-  ) => stream.Stream<
-    ListApplicationAssociationsResponse,
-    ListApplicationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAssociationsRequest,
-  ) => stream.Stream<
-    ApplicationAssociationSummary,
-    ListApplicationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssociationsRequest,
   output: ListApplicationAssociationsResponse,
   errors: [
@@ -1782,27 +1767,13 @@ export type ListApplicationsError =
 /**
  * Lists applications in the account.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -1838,27 +1809,13 @@ export type ListDataIntegrationAssociationsError =
  * Use a different DataIntegration, or recreate the DataIntegration using the
  * CreateDataIntegration API.
  */
-export const listDataIntegrationAssociations: API.OperationMethod<
+export const listDataIntegrationAssociations: API.PaginatedOperationMethod<
   ListDataIntegrationAssociationsRequest,
   ListDataIntegrationAssociationsResponse,
   ListDataIntegrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationAssociationsResponse,
-    ListDataIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    DataIntegrationAssociationSummary,
-    ListDataIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataIntegrationAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationAssociationsRequest,
   output: ListDataIntegrationAssociationsResponse,
   errors: [
@@ -1894,27 +1851,13 @@ export type ListDataIntegrationsError =
  * Use a different DataIntegration, or recreate the DataIntegration using the
  * CreateDataIntegration API.
  */
-export const listDataIntegrations: API.OperationMethod<
+export const listDataIntegrations: API.PaginatedOperationMethod<
   ListDataIntegrationsRequest,
   ListDataIntegrationsResponse,
   ListDataIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataIntegrationsRequest,
-  ) => stream.Stream<
-    ListDataIntegrationsResponse,
-    ListDataIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataIntegrationsRequest,
-  ) => stream.Stream<
-    DataIntegrationSummary,
-    ListDataIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataIntegrationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationsRequest,
   output: ListDataIntegrationsResponse,
   errors: [
@@ -1946,27 +1889,13 @@ export type ListEventIntegrationAssociationsError =
 /**
  * Returns a paginated list of event integration associations in the account.
  */
-export const listEventIntegrationAssociations: API.OperationMethod<
+export const listEventIntegrationAssociations: API.PaginatedOperationMethod<
   ListEventIntegrationAssociationsRequest,
   ListEventIntegrationAssociationsResponse,
   ListEventIntegrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    ListEventIntegrationAssociationsResponse,
-    ListEventIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventIntegrationAssociationsRequest,
-  ) => stream.Stream<
-    EventIntegrationAssociation,
-    ListEventIntegrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventIntegrationAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventIntegrationAssociationsRequest,
   output: ListEventIntegrationAssociationsResponse,
   errors: [
@@ -1998,27 +1927,13 @@ export type ListEventIntegrationsError =
 /**
  * Returns a paginated list of event integrations in the account.
  */
-export const listEventIntegrations: API.OperationMethod<
+export const listEventIntegrations: API.PaginatedOperationMethod<
   ListEventIntegrationsRequest,
   ListEventIntegrationsResponse,
   ListEventIntegrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventIntegrationsRequest,
-  ) => stream.Stream<
-    ListEventIntegrationsResponse,
-    ListEventIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventIntegrationsRequest,
-  ) => stream.Stream<
-    EventIntegration,
-    ListEventIntegrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventIntegration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventIntegrationsRequest,
   output: ListEventIntegrationsResponse,
   errors: [

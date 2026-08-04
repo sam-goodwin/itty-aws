@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2481,27 +2480,13 @@ export type ListAdaptersError =
 /**
  * Lists all adapters that match the specified filtration criteria.
  */
-export const listAdapters: API.OperationMethod<
+export const listAdapters: API.PaginatedOperationMethod<
   ListAdaptersRequest,
   ListAdaptersResponse,
   ListAdaptersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdaptersRequest,
-  ) => stream.Stream<
-    ListAdaptersResponse,
-    ListAdaptersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdaptersRequest,
-  ) => stream.Stream<
-    AdapterOverview,
-    ListAdaptersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdapterOverview
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdaptersRequest,
   output: ListAdaptersResponse,
   errors: [
@@ -2535,27 +2520,13 @@ export type ListAdapterVersionsError =
 /**
  * List all version of an adapter that meet the specified filtration criteria.
  */
-export const listAdapterVersions: API.OperationMethod<
+export const listAdapterVersions: API.PaginatedOperationMethod<
   ListAdapterVersionsRequest,
   ListAdapterVersionsResponse,
   ListAdapterVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdapterVersionsRequest,
-  ) => stream.Stream<
-    ListAdapterVersionsResponse,
-    ListAdapterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdapterVersionsRequest,
-  ) => stream.Stream<
-    AdapterVersionOverview,
-    ListAdapterVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdapterVersionOverview
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdapterVersionsRequest,
   output: ListAdapterVersionsResponse,
   errors: [

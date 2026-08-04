@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2538,27 +2537,13 @@ export type DescribeCustomDomainsError =
 /**
  * Return a description of custom domain names that are associated with an App Runner service.
  */
-export const describeCustomDomains: API.OperationMethod<
+export const describeCustomDomains: API.PaginatedOperationMethod<
   DescribeCustomDomainsRequest,
   DescribeCustomDomainsResponse,
   DescribeCustomDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCustomDomainsRequest,
-  ) => stream.Stream<
-    DescribeCustomDomainsResponse,
-    DescribeCustomDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCustomDomainsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeCustomDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomDomainsRequest,
   output: DescribeCustomDomainsResponse,
   errors: [
@@ -2724,27 +2709,13 @@ export type ListAutoScalingConfigurationsError =
  * To retrieve a full description of a particular configuration revision, call and provide one of
  * the ARNs returned by `ListAutoScalingConfigurations`.
  */
-export const listAutoScalingConfigurations: API.OperationMethod<
+export const listAutoScalingConfigurations: API.PaginatedOperationMethod<
   ListAutoScalingConfigurationsRequest,
   ListAutoScalingConfigurationsResponse,
   ListAutoScalingConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutoScalingConfigurationsRequest,
-  ) => stream.Stream<
-    ListAutoScalingConfigurationsResponse,
-    ListAutoScalingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutoScalingConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAutoScalingConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutoScalingConfigurationsRequest,
   output: ListAutoScalingConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2765,27 +2736,13 @@ export type ListConnectionsError =
 /**
  * Returns a list of App Runner connections that are associated with your Amazon Web Services account.
  */
-export const listConnections: API.OperationMethod<
+export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   ListConnectionsResponse,
   ListConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ListConnectionsResponse,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2811,27 +2768,13 @@ export type ListObservabilityConfigurationsError =
  * To retrieve a full description of a particular configuration revision, call and provide one
  * of the ARNs returned by `ListObservabilityConfigurations`.
  */
-export const listObservabilityConfigurations: API.OperationMethod<
+export const listObservabilityConfigurations: API.PaginatedOperationMethod<
   ListObservabilityConfigurationsRequest,
   ListObservabilityConfigurationsResponse,
   ListObservabilityConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObservabilityConfigurationsRequest,
-  ) => stream.Stream<
-    ListObservabilityConfigurationsResponse,
-    ListObservabilityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObservabilityConfigurationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListObservabilityConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObservabilityConfigurationsRequest,
   output: ListObservabilityConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2856,27 +2799,13 @@ export type ListOperationsError =
  * The resulting list of OperationSummary objects is sorted in reverse chronological order. The first object on the list represents the
  * last started operation.
  */
-export const listOperations: API.OperationMethod<
+export const listOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    ListOperationsResponse,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [
@@ -2901,27 +2830,13 @@ export type ListServicesError =
 /**
  * Returns a list of running App Runner services in your Amazon Web Services account.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -2943,27 +2858,13 @@ export type ListServicesForAutoScalingConfigurationError =
 /**
  * Returns a list of the associated App Runner services using an auto scaling configuration.
  */
-export const listServicesForAutoScalingConfiguration: API.OperationMethod<
+export const listServicesForAutoScalingConfiguration: API.PaginatedOperationMethod<
   ListServicesForAutoScalingConfigurationRequest,
   ListServicesForAutoScalingConfigurationResponse,
   ListServicesForAutoScalingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesForAutoScalingConfigurationRequest,
-  ) => stream.Stream<
-    ListServicesForAutoScalingConfigurationResponse,
-    ListServicesForAutoScalingConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesForAutoScalingConfigurationRequest,
-  ) => stream.Stream<
-    unknown,
-    ListServicesForAutoScalingConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesForAutoScalingConfigurationRequest,
   output: ListServicesForAutoScalingConfigurationResponse,
   errors: [
@@ -3016,27 +2917,13 @@ export type ListVpcConnectorsError =
 /**
  * Returns a list of App Runner VPC connectors in your Amazon Web Services account.
  */
-export const listVpcConnectors: API.OperationMethod<
+export const listVpcConnectors: API.PaginatedOperationMethod<
   ListVpcConnectorsRequest,
   ListVpcConnectorsResponse,
   ListVpcConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVpcConnectorsRequest,
-  ) => stream.Stream<
-    ListVpcConnectorsResponse,
-    ListVpcConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVpcConnectorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVpcConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcConnectorsRequest,
   output: ListVpcConnectorsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
@@ -3057,27 +2944,13 @@ export type ListVpcIngressConnectionsError =
 /**
  * Return a list of App Runner VPC Ingress Connections in your Amazon Web Services account.
  */
-export const listVpcIngressConnections: API.OperationMethod<
+export const listVpcIngressConnections: API.PaginatedOperationMethod<
   ListVpcIngressConnectionsRequest,
   ListVpcIngressConnectionsResponse,
   ListVpcIngressConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVpcIngressConnectionsRequest,
-  ) => stream.Stream<
-    ListVpcIngressConnectionsResponse,
-    ListVpcIngressConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVpcIngressConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVpcIngressConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcIngressConnectionsRequest,
   output: ListVpcIngressConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],

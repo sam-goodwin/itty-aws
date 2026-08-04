@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6234,27 +6233,13 @@ export type ListDatasetsError =
  * List the datasets that you have configured in this Region. For more information about datasets, see
  * Flywheel overview in the *Amazon Comprehend Developer Guide*.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -6283,27 +6268,13 @@ export type ListDocumentClassificationJobsError =
 /**
  * Gets a list of the documentation classification jobs that you have submitted.
  */
-export const listDocumentClassificationJobs: API.OperationMethod<
+export const listDocumentClassificationJobs: API.PaginatedOperationMethod<
   ListDocumentClassificationJobsRequest,
   ListDocumentClassificationJobsResponse,
   ListDocumentClassificationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentClassificationJobsRequest,
-  ) => stream.Stream<
-    ListDocumentClassificationJobsResponse,
-    ListDocumentClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentClassificationJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDocumentClassificationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentClassificationJobsRequest,
   output: ListDocumentClassificationJobsResponse,
   errors: [
@@ -6331,27 +6302,13 @@ export type ListDocumentClassifiersError =
 /**
  * Gets a list of the document classifiers that you have created.
  */
-export const listDocumentClassifiers: API.OperationMethod<
+export const listDocumentClassifiers: API.PaginatedOperationMethod<
   ListDocumentClassifiersRequest,
   ListDocumentClassifiersResponse,
   ListDocumentClassifiersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentClassifiersRequest,
-  ) => stream.Stream<
-    ListDocumentClassifiersResponse,
-    ListDocumentClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentClassifiersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDocumentClassifiersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentClassifiersRequest,
   output: ListDocumentClassifiersResponse,
   errors: [
@@ -6378,27 +6335,13 @@ export type ListDocumentClassifierSummariesError =
 /**
  * Gets a list of summaries of the document classifiers that you have created
  */
-export const listDocumentClassifierSummaries: API.OperationMethod<
+export const listDocumentClassifierSummaries: API.PaginatedOperationMethod<
   ListDocumentClassifierSummariesRequest,
   ListDocumentClassifierSummariesResponse,
   ListDocumentClassifierSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentClassifierSummariesRequest,
-  ) => stream.Stream<
-    ListDocumentClassifierSummariesResponse,
-    ListDocumentClassifierSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentClassifierSummariesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDocumentClassifierSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentClassifierSummariesRequest,
   output: ListDocumentClassifierSummariesResponse,
   errors: [
@@ -6425,27 +6368,13 @@ export type ListDominantLanguageDetectionJobsError =
 /**
  * Gets a list of the dominant language detection jobs that you have submitted.
  */
-export const listDominantLanguageDetectionJobs: API.OperationMethod<
+export const listDominantLanguageDetectionJobs: API.PaginatedOperationMethod<
   ListDominantLanguageDetectionJobsRequest,
   ListDominantLanguageDetectionJobsResponse,
   ListDominantLanguageDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDominantLanguageDetectionJobsRequest,
-  ) => stream.Stream<
-    ListDominantLanguageDetectionJobsResponse,
-    ListDominantLanguageDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDominantLanguageDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDominantLanguageDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDominantLanguageDetectionJobsRequest,
   output: ListDominantLanguageDetectionJobsResponse,
   errors: [
@@ -6473,27 +6402,13 @@ export type ListEndpointsError =
  * Gets a list of all existing endpoints that you've created.
  * For information about endpoints, see Managing endpoints.
  */
-export const listEndpoints: API.OperationMethod<
+export const listEndpoints: API.PaginatedOperationMethod<
   ListEndpointsRequest,
   ListEndpointsResponse,
   ListEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    ListEndpointsResponse,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    EndpointProperties,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EndpointProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsRequest,
   output: ListEndpointsResponse,
   errors: [
@@ -6521,27 +6436,13 @@ export type ListEntitiesDetectionJobsError =
 /**
  * Gets a list of the entity detection jobs that you have submitted.
  */
-export const listEntitiesDetectionJobs: API.OperationMethod<
+export const listEntitiesDetectionJobs: API.PaginatedOperationMethod<
   ListEntitiesDetectionJobsRequest,
   ListEntitiesDetectionJobsResponse,
   ListEntitiesDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    ListEntitiesDetectionJobsResponse,
-    ListEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesDetectionJobsRequest,
   output: ListEntitiesDetectionJobsResponse,
   errors: [
@@ -6575,27 +6476,13 @@ export type ListEntityRecognizersError =
  * The results of this list are not in any particular order. Please get the list and sort
  * locally if needed.
  */
-export const listEntityRecognizers: API.OperationMethod<
+export const listEntityRecognizers: API.PaginatedOperationMethod<
   ListEntityRecognizersRequest,
   ListEntityRecognizersResponse,
   ListEntityRecognizersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityRecognizersRequest,
-  ) => stream.Stream<
-    ListEntityRecognizersResponse,
-    ListEntityRecognizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityRecognizersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntityRecognizersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityRecognizersRequest,
   output: ListEntityRecognizersResponse,
   errors: [
@@ -6622,27 +6509,13 @@ export type ListEntityRecognizerSummariesError =
 /**
  * Gets a list of summaries for the entity recognizers that you have created.
  */
-export const listEntityRecognizerSummaries: API.OperationMethod<
+export const listEntityRecognizerSummaries: API.PaginatedOperationMethod<
   ListEntityRecognizerSummariesRequest,
   ListEntityRecognizerSummariesResponse,
   ListEntityRecognizerSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityRecognizerSummariesRequest,
-  ) => stream.Stream<
-    ListEntityRecognizerSummariesResponse,
-    ListEntityRecognizerSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityRecognizerSummariesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntityRecognizerSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityRecognizerSummariesRequest,
   output: ListEntityRecognizerSummariesResponse,
   errors: [
@@ -6670,27 +6543,13 @@ export type ListEventsDetectionJobsError =
 /**
  * Gets a list of the events detection jobs that you have submitted.
  */
-export const listEventsDetectionJobs: API.OperationMethod<
+export const listEventsDetectionJobs: API.PaginatedOperationMethod<
   ListEventsDetectionJobsRequest,
   ListEventsDetectionJobsResponse,
   ListEventsDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventsDetectionJobsRequest,
-  ) => stream.Stream<
-    ListEventsDetectionJobsResponse,
-    ListEventsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventsDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEventsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsDetectionJobsRequest,
   output: ListEventsDetectionJobsResponse,
   errors: [
@@ -6722,27 +6581,13 @@ export type ListFlywheelIterationHistoryError =
  * For more information about flywheels, see
  * Flywheel overview in the *Amazon Comprehend Developer Guide*.
  */
-export const listFlywheelIterationHistory: API.OperationMethod<
+export const listFlywheelIterationHistory: API.PaginatedOperationMethod<
   ListFlywheelIterationHistoryRequest,
   ListFlywheelIterationHistoryResponse,
   ListFlywheelIterationHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlywheelIterationHistoryRequest,
-  ) => stream.Stream<
-    ListFlywheelIterationHistoryResponse,
-    ListFlywheelIterationHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlywheelIterationHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFlywheelIterationHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlywheelIterationHistoryRequest,
   output: ListFlywheelIterationHistoryResponse,
   errors: [
@@ -6771,27 +6616,13 @@ export type ListFlywheelsError =
 /**
  * Gets a list of the flywheels that you have created.
  */
-export const listFlywheels: API.OperationMethod<
+export const listFlywheels: API.PaginatedOperationMethod<
   ListFlywheelsRequest,
   ListFlywheelsResponse,
   ListFlywheelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlywheelsRequest,
-  ) => stream.Stream<
-    ListFlywheelsResponse,
-    ListFlywheelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlywheelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFlywheelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlywheelsRequest,
   output: ListFlywheelsResponse,
   errors: [
@@ -6819,27 +6650,13 @@ export type ListKeyPhrasesDetectionJobsError =
 /**
  * Get a list of key phrase detection jobs that you have submitted.
  */
-export const listKeyPhrasesDetectionJobs: API.OperationMethod<
+export const listKeyPhrasesDetectionJobs: API.PaginatedOperationMethod<
   ListKeyPhrasesDetectionJobsRequest,
   ListKeyPhrasesDetectionJobsResponse,
   ListKeyPhrasesDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyPhrasesDetectionJobsRequest,
-  ) => stream.Stream<
-    ListKeyPhrasesDetectionJobsResponse,
-    ListKeyPhrasesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyPhrasesDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKeyPhrasesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyPhrasesDetectionJobsRequest,
   output: ListKeyPhrasesDetectionJobsResponse,
   errors: [
@@ -6867,27 +6684,13 @@ export type ListPiiEntitiesDetectionJobsError =
 /**
  * Gets a list of the PII entity detection jobs that you have submitted.
  */
-export const listPiiEntitiesDetectionJobs: API.OperationMethod<
+export const listPiiEntitiesDetectionJobs: API.PaginatedOperationMethod<
   ListPiiEntitiesDetectionJobsRequest,
   ListPiiEntitiesDetectionJobsResponse,
   ListPiiEntitiesDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPiiEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    ListPiiEntitiesDetectionJobsResponse,
-    ListPiiEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPiiEntitiesDetectionJobsRequest,
-  ) => stream.Stream<
-    PiiEntitiesDetectionJobProperties,
-    ListPiiEntitiesDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PiiEntitiesDetectionJobProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPiiEntitiesDetectionJobsRequest,
   output: ListPiiEntitiesDetectionJobsResponse,
   errors: [
@@ -6916,27 +6719,13 @@ export type ListSentimentDetectionJobsError =
 /**
  * Gets a list of sentiment detection jobs that you have submitted.
  */
-export const listSentimentDetectionJobs: API.OperationMethod<
+export const listSentimentDetectionJobs: API.PaginatedOperationMethod<
   ListSentimentDetectionJobsRequest,
   ListSentimentDetectionJobsResponse,
   ListSentimentDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    ListSentimentDetectionJobsResponse,
-    ListSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSentimentDetectionJobsRequest,
   output: ListSentimentDetectionJobsResponse,
   errors: [
@@ -6990,27 +6779,13 @@ export type ListTargetedSentimentDetectionJobsError =
 /**
  * Gets a list of targeted sentiment detection jobs that you have submitted.
  */
-export const listTargetedSentimentDetectionJobs: API.OperationMethod<
+export const listTargetedSentimentDetectionJobs: API.PaginatedOperationMethod<
   ListTargetedSentimentDetectionJobsRequest,
   ListTargetedSentimentDetectionJobsResponse,
   ListTargetedSentimentDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetedSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    ListTargetedSentimentDetectionJobsResponse,
-    ListTargetedSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetedSentimentDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTargetedSentimentDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetedSentimentDetectionJobsRequest,
   output: ListTargetedSentimentDetectionJobsResponse,
   errors: [
@@ -7038,27 +6813,13 @@ export type ListTopicsDetectionJobsError =
 /**
  * Gets a list of the topic detection jobs that you have submitted.
  */
-export const listTopicsDetectionJobs: API.OperationMethod<
+export const listTopicsDetectionJobs: API.PaginatedOperationMethod<
   ListTopicsDetectionJobsRequest,
   ListTopicsDetectionJobsResponse,
   ListTopicsDetectionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTopicsDetectionJobsRequest,
-  ) => stream.Stream<
-    ListTopicsDetectionJobsResponse,
-    ListTopicsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTopicsDetectionJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTopicsDetectionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsDetectionJobsRequest,
   output: ListTopicsDetectionJobsResponse,
   errors: [

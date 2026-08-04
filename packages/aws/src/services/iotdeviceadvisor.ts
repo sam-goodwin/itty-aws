@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1049,27 +1048,13 @@ export type ListSuiteDefinitionsError =
  *
  * Requires permission to access the ListSuiteDefinitions action.
  */
-export const listSuiteDefinitions: API.OperationMethod<
+export const listSuiteDefinitions: API.PaginatedOperationMethod<
   ListSuiteDefinitionsRequest,
   ListSuiteDefinitionsResponse,
   ListSuiteDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuiteDefinitionsRequest,
-  ) => stream.Stream<
-    ListSuiteDefinitionsResponse,
-    ListSuiteDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSuiteDefinitionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSuiteDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuiteDefinitionsRequest,
   output: ListSuiteDefinitionsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1093,27 +1078,13 @@ export type ListSuiteRunsError =
  *
  * Requires permission to access the ListSuiteRuns action.
  */
-export const listSuiteRuns: API.OperationMethod<
+export const listSuiteRuns: API.PaginatedOperationMethod<
   ListSuiteRunsRequest,
   ListSuiteRunsResponse,
   ListSuiteRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuiteRunsRequest,
-  ) => stream.Stream<
-    ListSuiteRunsResponse,
-    ListSuiteRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSuiteRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSuiteRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuiteRunsRequest,
   output: ListSuiteRunsResponse,
   errors: [InternalServerException, ValidationException],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3604,27 +3603,13 @@ export type DescribeAlarmHistoryError = InvalidNextToken | CommonErrors;
  * scoped to `*`. You can't return information about composite alarms if your
  * `cloudwatch:DescribeAlarmHistory` permission has a narrower scope.
  */
-export const describeAlarmHistory: API.OperationMethod<
+export const describeAlarmHistory: API.PaginatedOperationMethod<
   DescribeAlarmHistoryInput,
   DescribeAlarmHistoryOutput,
   DescribeAlarmHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAlarmHistoryInput,
-  ) => stream.Stream<
-    DescribeAlarmHistoryOutput,
-    DescribeAlarmHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAlarmHistoryInput,
-  ) => stream.Stream<
-    AlarmHistoryItem,
-    DescribeAlarmHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AlarmHistoryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAlarmHistoryInput,
   output: DescribeAlarmHistoryOutput,
   errors: [InvalidNextToken],
@@ -3649,27 +3634,13 @@ export type DescribeAlarmsError = InvalidNextToken | CommonErrors;
  * `*`. You can't return information about composite alarms if your
  * `cloudwatch:DescribeAlarms` permission has a narrower scope.
  */
-export const describeAlarms: API.OperationMethod<
+export const describeAlarms: API.PaginatedOperationMethod<
   DescribeAlarmsInput,
   DescribeAlarmsOutput,
   DescribeAlarmsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAlarmsInput,
-  ) => stream.Stream<
-    DescribeAlarmsOutput,
-    DescribeAlarmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAlarmsInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeAlarmsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAlarmsInput,
   output: DescribeAlarmsOutput,
   errors: [InvalidNextToken],
@@ -3720,27 +3691,13 @@ export type DescribeAnomalyDetectorsError =
  * `METRIC_MATH` to the `AnomalyDetectorTypes` array. This will
  * return all metric math anomaly detectors in your account.
  */
-export const describeAnomalyDetectors: API.OperationMethod<
+export const describeAnomalyDetectors: API.PaginatedOperationMethod<
   DescribeAnomalyDetectorsInput,
   DescribeAnomalyDetectorsOutput,
   DescribeAnomalyDetectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAnomalyDetectorsInput,
-  ) => stream.Stream<
-    DescribeAnomalyDetectorsOutput,
-    DescribeAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAnomalyDetectorsInput,
-  ) => stream.Stream<
-    AnomalyDetector,
-    DescribeAnomalyDetectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnomalyDetector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAnomalyDetectorsInput,
   output: DescribeAnomalyDetectorsOutput,
   errors: [
@@ -3767,27 +3724,13 @@ export type DescribeInsightRulesError = InvalidNextToken | CommonErrors;
  * For more information about Contributor Insights, see Using Contributor
  * Insights to Analyze High-Cardinality Data.
  */
-export const describeInsightRules: API.OperationMethod<
+export const describeInsightRules: API.PaginatedOperationMethod<
   DescribeInsightRulesInput,
   DescribeInsightRulesOutput,
   DescribeInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInsightRulesInput,
-  ) => stream.Stream<
-    DescribeInsightRulesOutput,
-    DescribeInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInsightRulesInput,
-  ) => stream.Stream<
-    unknown,
-    DescribeInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInsightRulesInput,
   output: DescribeInsightRulesOutput,
   errors: [InvalidNextToken],
@@ -4157,27 +4100,13 @@ export type GetMetricDataError = InvalidNextToken | CommonErrors;
  * (TS[]), and can be used as input for a metric math expression that expects an array of
  * time series.
  */
-export const getMetricData: API.OperationMethod<
+export const getMetricData: API.PaginatedOperationMethod<
   GetMetricDataInput,
   GetMetricDataOutput,
   GetMetricDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMetricDataInput,
-  ) => stream.Stream<
-    GetMetricDataOutput,
-    GetMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetMetricDataInput,
-  ) => stream.Stream<
-    unknown,
-    GetMetricDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetMetricDataInput,
   output: GetMetricDataOutput,
   errors: [InvalidNextToken],
@@ -4374,27 +4303,13 @@ export type ListAlarmMuteRulesError =
  * To list mute rules, you need the `cloudwatch:ListAlarmMuteRules`
  * permission.
  */
-export const listAlarmMuteRules: API.OperationMethod<
+export const listAlarmMuteRules: API.PaginatedOperationMethod<
   ListAlarmMuteRulesInput,
   ListAlarmMuteRulesOutput,
   ListAlarmMuteRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAlarmMuteRulesInput,
-  ) => stream.Stream<
-    ListAlarmMuteRulesOutput,
-    ListAlarmMuteRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAlarmMuteRulesInput,
-  ) => stream.Stream<
-    AlarmMuteRuleSummary,
-    ListAlarmMuteRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AlarmMuteRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlarmMuteRulesInput,
   output: ListAlarmMuteRulesOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
@@ -4423,27 +4338,13 @@ export type ListDashboardsError =
  * the value you received for `NextToken` in the first call, to receive the next
  * 1000 results.
  */
-export const listDashboards: API.OperationMethod<
+export const listDashboards: API.PaginatedOperationMethod<
   ListDashboardsInput,
   ListDashboardsOutput,
   ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDashboardsInput,
-  ) => stream.Stream<
-    ListDashboardsOutput,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDashboardsInput,
-  ) => stream.Stream<
-    DashboardEntry,
-    ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DashboardEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsInput,
   output: ListDashboardsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
@@ -4466,27 +4367,13 @@ export type ListManagedInsightRulesError =
  * Returns a list that contains the number of managed Contributor Insights rules in your
  * account.
  */
-export const listManagedInsightRules: API.OperationMethod<
+export const listManagedInsightRules: API.PaginatedOperationMethod<
   ListManagedInsightRulesInput,
   ListManagedInsightRulesOutput,
   ListManagedInsightRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedInsightRulesInput,
-  ) => stream.Stream<
-    ListManagedInsightRulesOutput,
-    ListManagedInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedInsightRulesInput,
-  ) => stream.Stream<
-    unknown,
-    ListManagedInsightRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInsightRulesInput,
   output: ListManagedInsightRulesOutput,
   errors: [
@@ -4524,27 +4411,13 @@ export type ListMetricsError =
  * `ListMetrics` doesn't return information about metrics if those metrics
  * haven't reported data in the past two weeks. To retrieve those metrics, use GetMetricData or GetMetricStatistics.
  */
-export const listMetrics: API.OperationMethod<
+export const listMetrics: API.PaginatedOperationMethod<
   ListMetricsInput,
   ListMetricsOutput,
   ListMetricsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricsInput,
-  ) => stream.Stream<
-    ListMetricsOutput,
-    ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricsInput,
-  ) => stream.Stream<
-    unknown,
-    ListMetricsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricsInput,
   output: ListMetricsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
@@ -4563,27 +4436,13 @@ export type ListMetricStreamsError =
 /**
  * Returns a list of metric streams in this account.
  */
-export const listMetricStreams: API.OperationMethod<
+export const listMetricStreams: API.PaginatedOperationMethod<
   ListMetricStreamsInput,
   ListMetricStreamsOutput,
   ListMetricStreamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetricStreamsInput,
-  ) => stream.Stream<
-    ListMetricStreamsOutput,
-    ListMetricStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetricStreamsInput,
-  ) => stream.Stream<
-    unknown,
-    ListMetricStreamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetricStreamsInput,
   output: ListMetricStreamsOutput,
   errors: [

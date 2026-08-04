@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2615,27 +2614,13 @@ export type ListActionsError = ValidationException | CommonErrors;
 /**
  * Lists the available FIS actions.
  */
-export const listActions: API.OperationMethod<
+export const listActions: API.PaginatedOperationMethod<
   ListActionsRequest,
   ListActionsResponse,
   ListActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ListActionsResponse,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActionsRequest,
-  ) => stream.Stream<
-    ActionSummary,
-    ListActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ValidationException],
@@ -2657,27 +2642,13 @@ export type ListExperimentResolvedTargetsError =
 /**
  * Lists the resolved targets information of the specified experiment.
  */
-export const listExperimentResolvedTargets: API.OperationMethod<
+export const listExperimentResolvedTargets: API.PaginatedOperationMethod<
   ListExperimentResolvedTargetsRequest,
   ListExperimentResolvedTargetsResponse,
   ListExperimentResolvedTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentResolvedTargetsRequest,
-  ) => stream.Stream<
-    ListExperimentResolvedTargetsResponse,
-    ListExperimentResolvedTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentResolvedTargetsRequest,
-  ) => stream.Stream<
-    ResolvedTarget,
-    ListExperimentResolvedTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResolvedTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentResolvedTargetsRequest,
   output: ListExperimentResolvedTargetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2696,27 +2667,13 @@ export type ListExperimentsError = ValidationException | CommonErrors;
 /**
  * Lists your experiments.
  */
-export const listExperiments: API.OperationMethod<
+export const listExperiments: API.PaginatedOperationMethod<
   ListExperimentsRequest,
   ListExperimentsResponse,
   ListExperimentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentsRequest,
-  ) => stream.Stream<
-    ListExperimentsResponse,
-    ListExperimentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentsRequest,
-  ) => stream.Stream<
-    ExperimentSummary,
-    ListExperimentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExperimentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [ValidationException],
@@ -2756,27 +2713,13 @@ export type ListExperimentTemplatesError = ValidationException | CommonErrors;
 /**
  * Lists your experiment templates.
  */
-export const listExperimentTemplates: API.OperationMethod<
+export const listExperimentTemplates: API.PaginatedOperationMethod<
   ListExperimentTemplatesRequest,
   ListExperimentTemplatesResponse,
   ListExperimentTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentTemplatesRequest,
-  ) => stream.Stream<
-    ListExperimentTemplatesResponse,
-    ListExperimentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentTemplatesRequest,
-  ) => stream.Stream<
-    ExperimentTemplateSummary,
-    ListExperimentTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExperimentTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentTemplatesRequest,
   output: ListExperimentTemplatesResponse,
   errors: [ValidationException],
@@ -2816,27 +2759,13 @@ export type ListTargetAccountConfigurationsError =
 /**
  * Lists the target account configurations of the specified experiment template.
  */
-export const listTargetAccountConfigurations: API.OperationMethod<
+export const listTargetAccountConfigurations: API.PaginatedOperationMethod<
   ListTargetAccountConfigurationsRequest,
   ListTargetAccountConfigurationsResponse,
   ListTargetAccountConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetAccountConfigurationsRequest,
-  ) => stream.Stream<
-    ListTargetAccountConfigurationsResponse,
-    ListTargetAccountConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetAccountConfigurationsRequest,
-  ) => stream.Stream<
-    TargetAccountConfigurationSummary,
-    ListTargetAccountConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetAccountConfigurationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetAccountConfigurationsRequest,
   output: ListTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2855,27 +2784,13 @@ export type ListTargetResourceTypesError = ValidationException | CommonErrors;
 /**
  * Lists the target resource types.
  */
-export const listTargetResourceTypes: API.OperationMethod<
+export const listTargetResourceTypes: API.PaginatedOperationMethod<
   ListTargetResourceTypesRequest,
   ListTargetResourceTypesResponse,
   ListTargetResourceTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTargetResourceTypesRequest,
-  ) => stream.Stream<
-    ListTargetResourceTypesResponse,
-    ListTargetResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTargetResourceTypesRequest,
-  ) => stream.Stream<
-    TargetResourceTypeSummary,
-    ListTargetResourceTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetResourceTypeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetResourceTypesRequest,
   output: ListTargetResourceTypesResponse,
   errors: [ValidationException],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2942,27 +2941,13 @@ export type ListApplicationsError =
  * unique identifier of a specific runtime environment in a query parameter to see all
  * applications associated with that environment.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -2992,27 +2977,13 @@ export type ListApplicationVersionsError =
 /**
  * Returns a list of the application versions for a specific application.
  */
-export const listApplicationVersions: API.OperationMethod<
+export const listApplicationVersions: API.PaginatedOperationMethod<
   ListApplicationVersionsRequest,
   ListApplicationVersionsResponse,
   ListApplicationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ListApplicationVersionsResponse,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationVersionsRequest,
-  ) => stream.Stream<
-    ApplicationVersionSummary,
-    ListApplicationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
   output: ListApplicationVersionsResponse,
   errors: [
@@ -3045,27 +3016,13 @@ export type ListBatchJobDefinitionsError =
  * during the application creation. You can use the batch job definitions in the list to start
  * a batch job.
  */
-export const listBatchJobDefinitions: API.OperationMethod<
+export const listBatchJobDefinitions: API.PaginatedOperationMethod<
   ListBatchJobDefinitionsRequest,
   ListBatchJobDefinitionsResponse,
   ListBatchJobDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchJobDefinitionsRequest,
-  ) => stream.Stream<
-    ListBatchJobDefinitionsResponse,
-    ListBatchJobDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchJobDefinitionsRequest,
-  ) => stream.Stream<
-    BatchJobDefinition,
-    ListBatchJobDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchJobDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchJobDefinitionsRequest,
   output: ListBatchJobDefinitionsResponse,
   errors: [
@@ -3097,27 +3054,13 @@ export type ListBatchJobExecutionsError =
  * Lists historical, current, and scheduled batch job executions for a specific
  * application.
  */
-export const listBatchJobExecutions: API.OperationMethod<
+export const listBatchJobExecutions: API.PaginatedOperationMethod<
   ListBatchJobExecutionsRequest,
   ListBatchJobExecutionsResponse,
   ListBatchJobExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchJobExecutionsRequest,
-  ) => stream.Stream<
-    ListBatchJobExecutionsResponse,
-    ListBatchJobExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchJobExecutionsRequest,
-  ) => stream.Stream<
-    BatchJobExecutionSummary,
-    ListBatchJobExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchJobExecutionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchJobExecutionsRequest,
   output: ListBatchJobExecutionsResponse,
   errors: [
@@ -3180,27 +3123,13 @@ export type ListDataSetExportHistoryError =
 /**
  * Lists the data set exports for the specified application.
  */
-export const listDataSetExportHistory: API.OperationMethod<
+export const listDataSetExportHistory: API.PaginatedOperationMethod<
   ListDataSetExportHistoryRequest,
   ListDataSetExportHistoryResponse,
   ListDataSetExportHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSetExportHistoryRequest,
-  ) => stream.Stream<
-    ListDataSetExportHistoryResponse,
-    ListDataSetExportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSetExportHistoryRequest,
-  ) => stream.Stream<
-    DataSetExportTask,
-    ListDataSetExportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSetExportTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetExportHistoryRequest,
   output: ListDataSetExportHistoryResponse,
   errors: [
@@ -3231,27 +3160,13 @@ export type ListDataSetImportHistoryError =
 /**
  * Lists the data set imports for the specified application.
  */
-export const listDataSetImportHistory: API.OperationMethod<
+export const listDataSetImportHistory: API.PaginatedOperationMethod<
   ListDataSetImportHistoryRequest,
   ListDataSetImportHistoryResponse,
   ListDataSetImportHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSetImportHistoryRequest,
-  ) => stream.Stream<
-    ListDataSetImportHistoryResponse,
-    ListDataSetImportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSetImportHistoryRequest,
-  ) => stream.Stream<
-    DataSetImportTask,
-    ListDataSetImportHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSetImportTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetImportHistoryRequest,
   output: ListDataSetImportHistoryResponse,
   errors: [
@@ -3287,27 +3202,13 @@ export type ListDataSetsError =
  * associated with applications deployed on runtime environments. This is known as importing
  * data sets. Currently, Amazon Web Services Mainframe Modernization can import data sets into catalogs using CreateDataSetImportTask.
  */
-export const listDataSets: API.OperationMethod<
+export const listDataSets: API.PaginatedOperationMethod<
   ListDataSetsRequest,
   ListDataSetsResponse,
   ListDataSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSetsRequest,
-  ) => stream.Stream<
-    ListDataSetsResponse,
-    ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSetsRequest,
-  ) => stream.Stream<
-    DataSetSummary,
-    ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
   output: ListDataSetsResponse,
   errors: [
@@ -3343,27 +3244,13 @@ export type ListDeploymentsError =
  * combination of a specific application and a specific version of that application. Each
  * deployment is mapped to a particular application version.
  */
-export const listDeployments: API.OperationMethod<
+export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   ListDeploymentsResponse,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    ListDeploymentsResponse,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    DeploymentSummary,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [
@@ -3393,27 +3280,13 @@ export type ListEngineVersionsError =
 /**
  * Lists the available engine versions.
  */
-export const listEngineVersions: API.OperationMethod<
+export const listEngineVersions: API.PaginatedOperationMethod<
   ListEngineVersionsRequest,
   ListEngineVersionsResponse,
   ListEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEngineVersionsRequest,
-  ) => stream.Stream<
-    ListEngineVersionsResponse,
-    ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEngineVersionsRequest,
-  ) => stream.Stream<
-    EngineVersionsSummary,
-    ListEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EngineVersionsSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngineVersionsRequest,
   output: ListEngineVersionsResponse,
   errors: [
@@ -3442,27 +3315,13 @@ export type ListEnvironmentsError =
 /**
  * Lists the runtime environments.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4093,27 +4092,13 @@ export type ListAddonInstancesError = ValidationException | CommonErrors;
 /**
  * Lists all Add On instances in your account.
  */
-export const listAddonInstances: API.OperationMethod<
+export const listAddonInstances: API.PaginatedOperationMethod<
   ListAddonInstancesRequest,
   ListAddonInstancesResponse,
   ListAddonInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddonInstancesRequest,
-  ) => stream.Stream<
-    ListAddonInstancesResponse,
-    ListAddonInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddonInstancesRequest,
-  ) => stream.Stream<
-    AddonInstance,
-    ListAddonInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AddonInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddonInstancesRequest,
   output: ListAddonInstancesResponse,
   errors: [ValidationException],
@@ -4132,27 +4117,13 @@ export type ListAddonSubscriptionsError = ValidationException | CommonErrors;
 /**
  * Lists all Add On subscriptions in your account.
  */
-export const listAddonSubscriptions: API.OperationMethod<
+export const listAddonSubscriptions: API.PaginatedOperationMethod<
   ListAddonSubscriptionsRequest,
   ListAddonSubscriptionsResponse,
   ListAddonSubscriptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddonSubscriptionsRequest,
-  ) => stream.Stream<
-    ListAddonSubscriptionsResponse,
-    ListAddonSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddonSubscriptionsRequest,
-  ) => stream.Stream<
-    AddonSubscription,
-    ListAddonSubscriptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AddonSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddonSubscriptionsRequest,
   output: ListAddonSubscriptionsResponse,
   errors: [ValidationException],
@@ -4176,27 +4147,13 @@ export type ListAddressListImportJobsError =
 /**
  * Lists jobs for an address list.
  */
-export const listAddressListImportJobs: API.OperationMethod<
+export const listAddressListImportJobs: API.PaginatedOperationMethod<
   ListAddressListImportJobsRequest,
   ListAddressListImportJobsResponse,
   ListAddressListImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddressListImportJobsRequest,
-  ) => stream.Stream<
-    ListAddressListImportJobsResponse,
-    ListAddressListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddressListImportJobsRequest,
-  ) => stream.Stream<
-    ImportJob,
-    ListAddressListImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddressListImportJobsRequest,
   output: ListAddressListImportJobsResponse,
   errors: [
@@ -4224,27 +4181,13 @@ export type ListAddressListsError =
 /**
  * Lists address lists for this account.
  */
-export const listAddressLists: API.OperationMethod<
+export const listAddressLists: API.PaginatedOperationMethod<
   ListAddressListsRequest,
   ListAddressListsResponse,
   ListAddressListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddressListsRequest,
-  ) => stream.Stream<
-    ListAddressListsResponse,
-    ListAddressListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAddressListsRequest,
-  ) => stream.Stream<
-    AddressList,
-    ListAddressListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AddressList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAddressListsRequest,
   output: ListAddressListsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4268,27 +4211,13 @@ export type ListArchiveExportsError =
 /**
  * Returns a list of email archive export jobs.
  */
-export const listArchiveExports: API.OperationMethod<
+export const listArchiveExports: API.PaginatedOperationMethod<
   ListArchiveExportsRequest,
   ListArchiveExportsResponse,
   ListArchiveExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArchiveExportsRequest,
-  ) => stream.Stream<
-    ListArchiveExportsResponse,
-    ListArchiveExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArchiveExportsRequest,
-  ) => stream.Stream<
-    ExportSummary,
-    ListArchiveExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchiveExportsRequest,
   output: ListArchiveExportsResponse,
   errors: [
@@ -4316,27 +4245,13 @@ export type ListArchivesError =
 /**
  * Returns a list of all email archives in your account.
  */
-export const listArchives: API.OperationMethod<
+export const listArchives: API.PaginatedOperationMethod<
   ListArchivesRequest,
   ListArchivesResponse,
   ListArchivesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArchivesRequest,
-  ) => stream.Stream<
-    ListArchivesResponse,
-    ListArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArchivesRequest,
-  ) => stream.Stream<
-    Archive,
-    ListArchivesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Archive
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
@@ -4360,27 +4275,13 @@ export type ListArchiveSearchesError =
 /**
  * Returns a list of email archive search jobs.
  */
-export const listArchiveSearches: API.OperationMethod<
+export const listArchiveSearches: API.PaginatedOperationMethod<
   ListArchiveSearchesRequest,
   ListArchiveSearchesResponse,
   ListArchiveSearchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListArchiveSearchesRequest,
-  ) => stream.Stream<
-    ListArchiveSearchesResponse,
-    ListArchiveSearchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListArchiveSearchesRequest,
-  ) => stream.Stream<
-    SearchSummary,
-    ListArchiveSearchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SearchSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListArchiveSearchesRequest,
   output: ListArchiveSearchesResponse,
   errors: [
@@ -4404,27 +4305,13 @@ export type ListIngressPointsError = ValidationException | CommonErrors;
 /**
  * List all ingress endpoint resources.
  */
-export const listIngressPoints: API.OperationMethod<
+export const listIngressPoints: API.PaginatedOperationMethod<
   ListIngressPointsRequest,
   ListIngressPointsResponse,
   ListIngressPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngressPointsRequest,
-  ) => stream.Stream<
-    ListIngressPointsResponse,
-    ListIngressPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngressPointsRequest,
-  ) => stream.Stream<
-    IngressPoint,
-    ListIngressPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IngressPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngressPointsRequest,
   output: ListIngressPointsResponse,
   errors: [ValidationException],
@@ -4448,27 +4335,13 @@ export type ListMembersOfAddressListError =
 /**
  * Lists members of an address list.
  */
-export const listMembersOfAddressList: API.OperationMethod<
+export const listMembersOfAddressList: API.PaginatedOperationMethod<
   ListMembersOfAddressListRequest,
   ListMembersOfAddressListResponse,
   ListMembersOfAddressListError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersOfAddressListRequest,
-  ) => stream.Stream<
-    ListMembersOfAddressListResponse,
-    ListMembersOfAddressListError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersOfAddressListRequest,
-  ) => stream.Stream<
-    SavedAddress,
-    ListMembersOfAddressListError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SavedAddress
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersOfAddressListRequest,
   output: ListMembersOfAddressListResponse,
   errors: [
@@ -4492,27 +4365,13 @@ export type ListRelaysError = ValidationException | CommonErrors;
 /**
  * Lists all the existing relay resources.
  */
-export const listRelays: API.OperationMethod<
+export const listRelays: API.PaginatedOperationMethod<
   ListRelaysRequest,
   ListRelaysResponse,
   ListRelaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRelaysRequest,
-  ) => stream.Stream<
-    ListRelaysResponse,
-    ListRelaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRelaysRequest,
-  ) => stream.Stream<
-    Relay,
-    ListRelaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Relay
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRelaysRequest,
   output: ListRelaysResponse,
   errors: [ValidationException],
@@ -4531,27 +4390,13 @@ export type ListRuleSetsError = ValidationException | CommonErrors;
 /**
  * List rule sets for this account.
  */
-export const listRuleSets: API.OperationMethod<
+export const listRuleSets: API.PaginatedOperationMethod<
   ListRuleSetsRequest,
   ListRuleSetsResponse,
   ListRuleSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRuleSetsRequest,
-  ) => stream.Stream<
-    ListRuleSetsResponse,
-    ListRuleSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRuleSetsRequest,
-  ) => stream.Stream<
-    RuleSet,
-    ListRuleSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleSetsRequest,
   output: ListRuleSetsResponse,
   errors: [ValidationException],
@@ -4591,27 +4436,13 @@ export type ListTrafficPoliciesError = ValidationException | CommonErrors;
 /**
  * List traffic policy resources.
  */
-export const listTrafficPolicies: API.OperationMethod<
+export const listTrafficPolicies: API.PaginatedOperationMethod<
   ListTrafficPoliciesRequest,
   ListTrafficPoliciesResponse,
   ListTrafficPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrafficPoliciesRequest,
-  ) => stream.Stream<
-    ListTrafficPoliciesResponse,
-    ListTrafficPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrafficPoliciesRequest,
-  ) => stream.Stream<
-    TrafficPolicy,
-    ListTrafficPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrafficPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
   errors: [ValidationException],

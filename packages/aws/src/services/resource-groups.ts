@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1704,27 +1703,13 @@ export type ListGroupingStatusesError =
  * Returns the status of the last grouping or ungrouping action for
  * each resource in the specified application group.
  */
-export const listGroupingStatuses: API.OperationMethod<
+export const listGroupingStatuses: API.PaginatedOperationMethod<
   ListGroupingStatusesInput,
   ListGroupingStatusesOutput,
   ListGroupingStatusesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupingStatusesInput,
-  ) => stream.Stream<
-    ListGroupingStatusesOutput,
-    ListGroupingStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupingStatusesInput,
-  ) => stream.Stream<
-    GroupingStatusesItem,
-    ListGroupingStatusesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupingStatusesItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupingStatusesInput,
   output: ListGroupingStatusesOutput,
   errors: [
@@ -1771,27 +1756,13 @@ export type ListGroupResourcesError =
  *
  * - `tag:GetResources`
  */
-export const listGroupResources: API.OperationMethod<
+export const listGroupResources: API.PaginatedOperationMethod<
   ListGroupResourcesInput,
   ListGroupResourcesOutput,
   ListGroupResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupResourcesInput,
-  ) => stream.Stream<
-    ListGroupResourcesOutput,
-    ListGroupResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupResourcesInput,
-  ) => stream.Stream<
-    ResourceIdentifier,
-    ListGroupResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupResourcesInput,
   output: ListGroupResourcesOutput,
   errors: [
@@ -1830,27 +1801,13 @@ export type ListGroupsError =
  *
  * - `resource-groups:ListGroups`
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsInput,
   ListGroupsOutput,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsInput,
-  ) => stream.Stream<
-    ListGroupsOutput,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsInput,
-  ) => stream.Stream<
-    GroupIdentifier,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroupIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsInput,
   output: ListGroupsOutput,
   errors: [
@@ -1889,27 +1846,13 @@ export type ListTagSyncTasksError =
  * - `resource-groups:ListTagSyncTasks` with the group passed in the filters as the resource
  * or * if using no filters
  */
-export const listTagSyncTasks: API.OperationMethod<
+export const listTagSyncTasks: API.PaginatedOperationMethod<
   ListTagSyncTasksInput,
   ListTagSyncTasksOutput,
   ListTagSyncTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagSyncTasksInput,
-  ) => stream.Stream<
-    ListTagSyncTasksOutput,
-    ListTagSyncTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagSyncTasksInput,
-  ) => stream.Stream<
-    TagSyncTaskItem,
-    ListTagSyncTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TagSyncTaskItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagSyncTasksInput,
   output: ListTagSyncTasksOutput,
   errors: [
@@ -1996,27 +1939,13 @@ export type SearchResourcesError =
  *
  * - `tag:GetResources`
  */
-export const searchResources: API.OperationMethod<
+export const searchResources: API.PaginatedOperationMethod<
   SearchResourcesInput,
   SearchResourcesOutput,
   SearchResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchResourcesInput,
-  ) => stream.Stream<
-    SearchResourcesOutput,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchResourcesInput,
-  ) => stream.Stream<
-    ResourceIdentifier,
-    SearchResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchResourcesInput,
   output: SearchResourcesOutput,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -11864,27 +11863,13 @@ export type ListAdvancedPromptOptimizationJobsError =
 /**
  * Lists the advanced prompt optimization jobs in your account.
  */
-export const listAdvancedPromptOptimizationJobs: API.OperationMethod<
+export const listAdvancedPromptOptimizationJobs: API.PaginatedOperationMethod<
   ListAdvancedPromptOptimizationJobsRequest,
   ListAdvancedPromptOptimizationJobsResponse,
   ListAdvancedPromptOptimizationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdvancedPromptOptimizationJobsRequest,
-  ) => stream.Stream<
-    ListAdvancedPromptOptimizationJobsResponse,
-    ListAdvancedPromptOptimizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdvancedPromptOptimizationJobsRequest,
-  ) => stream.Stream<
-    AdvancedPromptOptimizationJobSummary,
-    ListAdvancedPromptOptimizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdvancedPromptOptimizationJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdvancedPromptOptimizationJobsRequest,
   output: ListAdvancedPromptOptimizationJobsResponse,
   errors: [
@@ -11914,27 +11899,13 @@ export type ListAutomatedReasoningPoliciesError =
 /**
  * Lists all Automated Reasoning policies in your account, with optional filtering by policy ARN. This helps you manage and discover existing policies.
  */
-export const listAutomatedReasoningPolicies: API.OperationMethod<
+export const listAutomatedReasoningPolicies: API.PaginatedOperationMethod<
   ListAutomatedReasoningPoliciesRequest,
   ListAutomatedReasoningPoliciesResponse,
   ListAutomatedReasoningPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPoliciesRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPoliciesResponse,
-    ListAutomatedReasoningPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPoliciesRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicySummary,
-    ListAutomatedReasoningPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomatedReasoningPolicySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPoliciesRequest,
   output: ListAutomatedReasoningPoliciesResponse,
   errors: [
@@ -11965,27 +11936,13 @@ export type ListAutomatedReasoningPolicyBuildWorkflowsError =
 /**
  * Lists all build workflows for an Automated Reasoning policy, showing the history of policy creation and modification attempts.
  */
-export const listAutomatedReasoningPolicyBuildWorkflows: API.OperationMethod<
+export const listAutomatedReasoningPolicyBuildWorkflows: API.PaginatedOperationMethod<
   ListAutomatedReasoningPolicyBuildWorkflowsRequest,
   ListAutomatedReasoningPolicyBuildWorkflowsResponse,
   ListAutomatedReasoningPolicyBuildWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPolicyBuildWorkflowsResponse,
-    ListAutomatedReasoningPolicyBuildWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicyBuildWorkflowSummary,
-    ListAutomatedReasoningPolicyBuildWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomatedReasoningPolicyBuildWorkflowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyBuildWorkflowsRequest,
   output: ListAutomatedReasoningPolicyBuildWorkflowsResponse,
   errors: [
@@ -12016,27 +11973,13 @@ export type ListAutomatedReasoningPolicyTestCasesError =
 /**
  * Lists tests for an Automated Reasoning policy. We recommend using pagination to ensure that the operation returns quickly and successfully.
  */
-export const listAutomatedReasoningPolicyTestCases: API.OperationMethod<
+export const listAutomatedReasoningPolicyTestCases: API.PaginatedOperationMethod<
   ListAutomatedReasoningPolicyTestCasesRequest,
   ListAutomatedReasoningPolicyTestCasesResponse,
   ListAutomatedReasoningPolicyTestCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPolicyTestCasesRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPolicyTestCasesResponse,
-    ListAutomatedReasoningPolicyTestCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPolicyTestCasesRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicyTestCase,
-    ListAutomatedReasoningPolicyTestCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomatedReasoningPolicyTestCase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyTestCasesRequest,
   output: ListAutomatedReasoningPolicyTestCasesResponse,
   errors: [
@@ -12068,27 +12011,13 @@ export type ListAutomatedReasoningPolicyTestResultsError =
 /**
  * Lists test results for an Automated Reasoning policy, showing how the policy performed against various test scenarios and validation checks.
  */
-export const listAutomatedReasoningPolicyTestResults: API.OperationMethod<
+export const listAutomatedReasoningPolicyTestResults: API.PaginatedOperationMethod<
   ListAutomatedReasoningPolicyTestResultsRequest,
   ListAutomatedReasoningPolicyTestResultsResponse,
   ListAutomatedReasoningPolicyTestResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomatedReasoningPolicyTestResultsRequest,
-  ) => stream.Stream<
-    ListAutomatedReasoningPolicyTestResultsResponse,
-    ListAutomatedReasoningPolicyTestResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomatedReasoningPolicyTestResultsRequest,
-  ) => stream.Stream<
-    AutomatedReasoningPolicyTestResult,
-    ListAutomatedReasoningPolicyTestResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomatedReasoningPolicyTestResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomatedReasoningPolicyTestResultsRequest,
   output: ListAutomatedReasoningPolicyTestResultsResponse,
   errors: [
@@ -12129,27 +12058,13 @@ export type ListCustomModelDeploymentsError =
  *
  * - DeleteCustomModelDeployment
  */
-export const listCustomModelDeployments: API.OperationMethod<
+export const listCustomModelDeployments: API.PaginatedOperationMethod<
   ListCustomModelDeploymentsRequest,
   ListCustomModelDeploymentsResponse,
   ListCustomModelDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomModelDeploymentsRequest,
-  ) => stream.Stream<
-    ListCustomModelDeploymentsResponse,
-    ListCustomModelDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomModelDeploymentsRequest,
-  ) => stream.Stream<
-    CustomModelDeploymentSummary,
-    ListCustomModelDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomModelDeploymentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomModelDeploymentsRequest,
   output: ListCustomModelDeploymentsResponse,
   errors: [
@@ -12180,27 +12095,13 @@ export type ListCustomModelsError =
  *
  * For more information, see Custom models in the Amazon Bedrock User Guide.
  */
-export const listCustomModels: API.OperationMethod<
+export const listCustomModels: API.PaginatedOperationMethod<
   ListCustomModelsRequest,
   ListCustomModelsResponse,
   ListCustomModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomModelsRequest,
-  ) => stream.Stream<
-    ListCustomModelsResponse,
-    ListCustomModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomModelsRequest,
-  ) => stream.Stream<
-    CustomModelSummary,
-    ListCustomModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomModelsRequest,
   output: ListCustomModelsResponse,
   errors: [
@@ -12230,27 +12131,13 @@ export type ListEnforcedGuardrailsConfigurationError =
 /**
  * Lists the account-level enforced guardrail configurations.
  */
-export const listEnforcedGuardrailsConfiguration: API.OperationMethod<
+export const listEnforcedGuardrailsConfiguration: API.PaginatedOperationMethod<
   ListEnforcedGuardrailsConfigurationRequest,
   ListEnforcedGuardrailsConfigurationResponse,
   ListEnforcedGuardrailsConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnforcedGuardrailsConfigurationRequest,
-  ) => stream.Stream<
-    ListEnforcedGuardrailsConfigurationResponse,
-    ListEnforcedGuardrailsConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnforcedGuardrailsConfigurationRequest,
-  ) => stream.Stream<
-    AccountEnforcedGuardrailOutputConfiguration,
-    ListEnforcedGuardrailsConfigurationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountEnforcedGuardrailOutputConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnforcedGuardrailsConfigurationRequest,
   output: ListEnforcedGuardrailsConfigurationResponse,
   errors: [
@@ -12279,27 +12166,13 @@ export type ListEvaluationJobsError =
 /**
  * Lists all existing evaluation jobs.
  */
-export const listEvaluationJobs: API.OperationMethod<
+export const listEvaluationJobs: API.PaginatedOperationMethod<
   ListEvaluationJobsRequest,
   ListEvaluationJobsResponse,
   ListEvaluationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationJobsRequest,
-  ) => stream.Stream<
-    ListEvaluationJobsResponse,
-    ListEvaluationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluationJobsRequest,
-  ) => stream.Stream<
-    EvaluationSummary,
-    ListEvaluationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EvaluationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationJobsRequest,
   output: ListEvaluationJobsResponse,
   errors: [
@@ -12389,27 +12262,13 @@ export type ListGuardrailsError =
  *
  * You can set the maximum number of results to return in a response in the `maxResults` field. If there are more results than the number you set, the response returns a `nextToken` that you can send in another `ListGuardrails` request to see the next batch of results.
  */
-export const listGuardrails: API.OperationMethod<
+export const listGuardrails: API.PaginatedOperationMethod<
   ListGuardrailsRequest,
   ListGuardrailsResponse,
   ListGuardrailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGuardrailsRequest,
-  ) => stream.Stream<
-    ListGuardrailsResponse,
-    ListGuardrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGuardrailsRequest,
-  ) => stream.Stream<
-    GuardrailSummary,
-    ListGuardrailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GuardrailSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGuardrailsRequest,
   output: ListGuardrailsResponse,
   errors: [
@@ -12439,27 +12298,13 @@ export type ListImportedModelsError =
 /**
  * Returns a list of models you've imported. You can filter the results to return based on one or more criteria. For more information, see Import a customized model in the Amazon Bedrock User Guide.
  */
-export const listImportedModels: API.OperationMethod<
+export const listImportedModels: API.PaginatedOperationMethod<
   ListImportedModelsRequest,
   ListImportedModelsResponse,
   ListImportedModelsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportedModelsRequest,
-  ) => stream.Stream<
-    ListImportedModelsResponse,
-    ListImportedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportedModelsRequest,
-  ) => stream.Stream<
-    ImportedModelSummary,
-    ListImportedModelsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ImportedModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportedModelsRequest,
   output: ListImportedModelsResponse,
   errors: [
@@ -12488,27 +12333,13 @@ export type ListInferenceProfilesError =
 /**
  * Returns a list of inference profiles that you can use. For more information, see Increase throughput and resilience with cross-region inference in Amazon Bedrock. in the Amazon Bedrock User Guide.
  */
-export const listInferenceProfiles: API.OperationMethod<
+export const listInferenceProfiles: API.PaginatedOperationMethod<
   ListInferenceProfilesRequest,
   ListInferenceProfilesResponse,
   ListInferenceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInferenceProfilesRequest,
-  ) => stream.Stream<
-    ListInferenceProfilesResponse,
-    ListInferenceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInferenceProfilesRequest,
-  ) => stream.Stream<
-    InferenceProfileSummary,
-    ListInferenceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InferenceProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInferenceProfilesRequest,
   output: ListInferenceProfilesResponse,
   errors: [
@@ -12538,27 +12369,13 @@ export type ListMarketplaceModelEndpointsError =
 /**
  * Lists the endpoints for models from Amazon Bedrock Marketplace in your Amazon Web Services account.
  */
-export const listMarketplaceModelEndpoints: API.OperationMethod<
+export const listMarketplaceModelEndpoints: API.PaginatedOperationMethod<
   ListMarketplaceModelEndpointsRequest,
   ListMarketplaceModelEndpointsResponse,
   ListMarketplaceModelEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMarketplaceModelEndpointsRequest,
-  ) => stream.Stream<
-    ListMarketplaceModelEndpointsResponse,
-    ListMarketplaceModelEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMarketplaceModelEndpointsRequest,
-  ) => stream.Stream<
-    MarketplaceModelEndpointSummary,
-    ListMarketplaceModelEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MarketplaceModelEndpointSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMarketplaceModelEndpointsRequest,
   output: ListMarketplaceModelEndpointsResponse,
   errors: [
@@ -12589,27 +12406,13 @@ export type ListModelCopyJobsError =
 /**
  * Returns a list of model copy jobs that you have submitted. You can filter the jobs to return based on one or more criteria. For more information, see Copy models to be used in other regions in the Amazon Bedrock User Guide.
  */
-export const listModelCopyJobs: API.OperationMethod<
+export const listModelCopyJobs: API.PaginatedOperationMethod<
   ListModelCopyJobsRequest,
   ListModelCopyJobsResponse,
   ListModelCopyJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelCopyJobsRequest,
-  ) => stream.Stream<
-    ListModelCopyJobsResponse,
-    ListModelCopyJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelCopyJobsRequest,
-  ) => stream.Stream<
-    ModelCopyJobSummary,
-    ListModelCopyJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ModelCopyJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCopyJobsRequest,
   output: ListModelCopyJobsResponse,
   errors: [
@@ -12641,27 +12444,13 @@ export type ListModelCustomizationJobsError =
  *
  * For more information, see Custom models in the Amazon Bedrock User Guide.
  */
-export const listModelCustomizationJobs: API.OperationMethod<
+export const listModelCustomizationJobs: API.PaginatedOperationMethod<
   ListModelCustomizationJobsRequest,
   ListModelCustomizationJobsResponse,
   ListModelCustomizationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelCustomizationJobsRequest,
-  ) => stream.Stream<
-    ListModelCustomizationJobsResponse,
-    ListModelCustomizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelCustomizationJobsRequest,
-  ) => stream.Stream<
-    ModelCustomizationJobSummary,
-    ListModelCustomizationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ModelCustomizationJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelCustomizationJobsRequest,
   output: ListModelCustomizationJobsResponse,
   errors: [
@@ -12690,27 +12479,13 @@ export type ListModelImportJobsError =
 /**
  * Returns a list of import jobs you've submitted. You can filter the results to return based on one or more criteria. For more information, see Import a customized model in the Amazon Bedrock User Guide.
  */
-export const listModelImportJobs: API.OperationMethod<
+export const listModelImportJobs: API.PaginatedOperationMethod<
   ListModelImportJobsRequest,
   ListModelImportJobsResponse,
   ListModelImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelImportJobsRequest,
-  ) => stream.Stream<
-    ListModelImportJobsResponse,
-    ListModelImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelImportJobsRequest,
-  ) => stream.Stream<
-    ModelImportJobSummary,
-    ListModelImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ModelImportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelImportJobsRequest,
   output: ListModelImportJobsResponse,
   errors: [
@@ -12739,27 +12514,13 @@ export type ListModelInvocationJobsError =
 /**
  * Lists all batch inference jobs in the account. For more information, see View details about a batch inference job.
  */
-export const listModelInvocationJobs: API.OperationMethod<
+export const listModelInvocationJobs: API.PaginatedOperationMethod<
   ListModelInvocationJobsRequest,
   ListModelInvocationJobsResponse,
   ListModelInvocationJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelInvocationJobsRequest,
-  ) => stream.Stream<
-    ListModelInvocationJobsResponse,
-    ListModelInvocationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelInvocationJobsRequest,
-  ) => stream.Stream<
-    ModelInvocationJobSummary,
-    ListModelInvocationJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ModelInvocationJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelInvocationJobsRequest,
   output: ListModelInvocationJobsResponse,
   errors: [
@@ -12788,27 +12549,13 @@ export type ListPromptRoutersError =
 /**
  * Retrieves a list of prompt routers.
  */
-export const listPromptRouters: API.OperationMethod<
+export const listPromptRouters: API.PaginatedOperationMethod<
   ListPromptRoutersRequest,
   ListPromptRoutersResponse,
   ListPromptRoutersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPromptRoutersRequest,
-  ) => stream.Stream<
-    ListPromptRoutersResponse,
-    ListPromptRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPromptRoutersRequest,
-  ) => stream.Stream<
-    PromptRouterSummary,
-    ListPromptRoutersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PromptRouterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromptRoutersRequest,
   output: ListPromptRoutersResponse,
   errors: [
@@ -12837,27 +12584,13 @@ export type ListProvisionedModelThroughputsError =
 /**
  * Lists the Provisioned Throughputs in the account. For more information, see Provisioned Throughput in the Amazon Bedrock User Guide.
  */
-export const listProvisionedModelThroughputs: API.OperationMethod<
+export const listProvisionedModelThroughputs: API.PaginatedOperationMethod<
   ListProvisionedModelThroughputsRequest,
   ListProvisionedModelThroughputsResponse,
   ListProvisionedModelThroughputsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProvisionedModelThroughputsRequest,
-  ) => stream.Stream<
-    ListProvisionedModelThroughputsResponse,
-    ListProvisionedModelThroughputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProvisionedModelThroughputsRequest,
-  ) => stream.Stream<
-    ProvisionedModelSummary,
-    ListProvisionedModelThroughputsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProvisionedModelSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvisionedModelThroughputsRequest,
   output: ListProvisionedModelThroughputsResponse,
   errors: [

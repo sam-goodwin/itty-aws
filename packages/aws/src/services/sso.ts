@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -327,27 +326,13 @@ export type ListAccountRolesError =
 /**
  * Lists all roles that are assigned to the user for a given AWS account.
  */
-export const listAccountRoles: API.OperationMethod<
+export const listAccountRoles: API.PaginatedOperationMethod<
   ListAccountRolesRequest,
   ListAccountRolesResponse,
   ListAccountRolesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountRolesRequest,
-  ) => stream.Stream<
-    ListAccountRolesResponse,
-    ListAccountRolesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountRolesRequest,
-  ) => stream.Stream<
-    RoleInfo,
-    ListAccountRolesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RoleInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountRolesRequest,
   output: ListAccountRolesResponse,
   errors: [
@@ -378,27 +363,13 @@ export type ListAccountsError =
  * administrator of the account. For more information, see Assign User Access in the *IAM Identity Center User Guide*. This operation
  * returns a paginated response.
  */
-export const listAccounts: API.OperationMethod<
+export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    ListAccountsResponse,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    AccountInfo,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [

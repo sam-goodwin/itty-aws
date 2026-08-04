@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -15942,27 +15941,13 @@ export type ListAgentRuntimeEndpointsError =
 /**
  * Lists all endpoints for a specific Amazon Secure Agent.
  */
-export const listAgentRuntimeEndpoints: API.OperationMethod<
+export const listAgentRuntimeEndpoints: API.PaginatedOperationMethod<
   ListAgentRuntimeEndpointsRequest,
   ListAgentRuntimeEndpointsResponse,
   ListAgentRuntimeEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentRuntimeEndpointsRequest,
-  ) => stream.Stream<
-    ListAgentRuntimeEndpointsResponse,
-    ListAgentRuntimeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentRuntimeEndpointsRequest,
-  ) => stream.Stream<
-    AgentRuntimeEndpoint,
-    ListAgentRuntimeEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentRuntimeEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentRuntimeEndpointsRequest,
   output: ListAgentRuntimeEndpointsResponse,
   errors: [
@@ -15991,27 +15976,13 @@ export type ListAgentRuntimesError =
 /**
  * Lists all Amazon Secure Agents in your account.
  */
-export const listAgentRuntimes: API.OperationMethod<
+export const listAgentRuntimes: API.PaginatedOperationMethod<
   ListAgentRuntimesRequest,
   ListAgentRuntimesResponse,
   ListAgentRuntimesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentRuntimesRequest,
-  ) => stream.Stream<
-    ListAgentRuntimesResponse,
-    ListAgentRuntimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentRuntimesRequest,
-  ) => stream.Stream<
-    AgentRuntime,
-    ListAgentRuntimesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentRuntime
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentRuntimesRequest,
   output: ListAgentRuntimesResponse,
   errors: [
@@ -16041,27 +16012,13 @@ export type ListAgentRuntimeVersionsError =
 /**
  * Lists all versions of a specific Amazon Secure Agent.
  */
-export const listAgentRuntimeVersions: API.OperationMethod<
+export const listAgentRuntimeVersions: API.PaginatedOperationMethod<
   ListAgentRuntimeVersionsRequest,
   ListAgentRuntimeVersionsResponse,
   ListAgentRuntimeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentRuntimeVersionsRequest,
-  ) => stream.Stream<
-    ListAgentRuntimeVersionsResponse,
-    ListAgentRuntimeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentRuntimeVersionsRequest,
-  ) => stream.Stream<
-    AgentRuntime,
-    ListAgentRuntimeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentRuntime
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentRuntimeVersionsRequest,
   output: ListAgentRuntimeVersionsResponse,
   errors: [
@@ -16093,27 +16050,13 @@ export type ListApiKeyCredentialProvidersError =
 /**
  * Lists all API key credential providers in your account.
  */
-export const listApiKeyCredentialProviders: API.OperationMethod<
+export const listApiKeyCredentialProviders: API.PaginatedOperationMethod<
   ListApiKeyCredentialProvidersRequest,
   ListApiKeyCredentialProvidersResponse,
   ListApiKeyCredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApiKeyCredentialProvidersRequest,
-  ) => stream.Stream<
-    ListApiKeyCredentialProvidersResponse,
-    ListApiKeyCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApiKeyCredentialProvidersRequest,
-  ) => stream.Stream<
-    ApiKeyCredentialProviderItem,
-    ListApiKeyCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApiKeyCredentialProviderItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApiKeyCredentialProvidersRequest,
   output: ListApiKeyCredentialProvidersResponse,
   errors: [
@@ -16144,27 +16087,13 @@ export type ListBrowserProfilesError =
 /**
  * Lists all browser profiles in your account.
  */
-export const listBrowserProfiles: API.OperationMethod<
+export const listBrowserProfiles: API.PaginatedOperationMethod<
   ListBrowserProfilesRequest,
   ListBrowserProfilesResponse,
   ListBrowserProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrowserProfilesRequest,
-  ) => stream.Stream<
-    ListBrowserProfilesResponse,
-    ListBrowserProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrowserProfilesRequest,
-  ) => stream.Stream<
-    BrowserProfileSummary,
-    ListBrowserProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BrowserProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrowserProfilesRequest,
   output: ListBrowserProfilesResponse,
   errors: [
@@ -16193,27 +16122,13 @@ export type ListBrowsersError =
 /**
  * Lists all custom browsers in your account.
  */
-export const listBrowsers: API.OperationMethod<
+export const listBrowsers: API.PaginatedOperationMethod<
   ListBrowsersRequest,
   ListBrowsersResponse,
   ListBrowsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrowsersRequest,
-  ) => stream.Stream<
-    ListBrowsersResponse,
-    ListBrowsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrowsersRequest,
-  ) => stream.Stream<
-    BrowserSummary,
-    ListBrowsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BrowserSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrowsersRequest,
   output: ListBrowsersResponse,
   errors: [
@@ -16242,27 +16157,13 @@ export type ListCodeInterpretersError =
 /**
  * Lists all custom code interpreters in your account.
  */
-export const listCodeInterpreters: API.OperationMethod<
+export const listCodeInterpreters: API.PaginatedOperationMethod<
   ListCodeInterpretersRequest,
   ListCodeInterpretersResponse,
   ListCodeInterpretersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodeInterpretersRequest,
-  ) => stream.Stream<
-    ListCodeInterpretersResponse,
-    ListCodeInterpretersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodeInterpretersRequest,
-  ) => stream.Stream<
-    CodeInterpreterSummary,
-    ListCodeInterpretersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CodeInterpreterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeInterpretersRequest,
   output: ListCodeInterpretersResponse,
   errors: [
@@ -16291,27 +16192,13 @@ export type ListConfigurationBundlesError =
 /**
  * Lists all configuration bundles in the account.
  */
-export const listConfigurationBundles: API.OperationMethod<
+export const listConfigurationBundles: API.PaginatedOperationMethod<
   ListConfigurationBundlesRequest,
   ListConfigurationBundlesResponse,
   ListConfigurationBundlesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationBundlesRequest,
-  ) => stream.Stream<
-    ListConfigurationBundlesResponse,
-    ListConfigurationBundlesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationBundlesRequest,
-  ) => stream.Stream<
-    ConfigurationBundleSummary,
-    ListConfigurationBundlesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationBundleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationBundlesRequest,
   output: ListConfigurationBundlesResponse,
   errors: [
@@ -16341,27 +16228,13 @@ export type ListConfigurationBundleVersionsError =
 /**
  * Lists all versions of a configuration bundle, with optional filtering by branch name or creation source.
  */
-export const listConfigurationBundleVersions: API.OperationMethod<
+export const listConfigurationBundleVersions: API.PaginatedOperationMethod<
   ListConfigurationBundleVersionsRequest,
   ListConfigurationBundleVersionsResponse,
   ListConfigurationBundleVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationBundleVersionsRequest,
-  ) => stream.Stream<
-    ListConfigurationBundleVersionsResponse,
-    ListConfigurationBundleVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationBundleVersionsRequest,
-  ) => stream.Stream<
-    ConfigurationBundleVersionSummary,
-    ListConfigurationBundleVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationBundleVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationBundleVersionsRequest,
   output: ListConfigurationBundleVersionsResponse,
   errors: [
@@ -16393,27 +16266,13 @@ export type ListDatasetExamplesError =
 /**
  * Returns paginated examples from the dataset. The server embeds the resolved version in the pagination token. Once pagination begins, all subsequent pages are pinned to that version regardless of concurrent mutations.
  */
-export const listDatasetExamples: API.OperationMethod<
+export const listDatasetExamples: API.PaginatedOperationMethod<
   ListDatasetExamplesRequest,
   ListDatasetExamplesResponse,
   ListDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetExamplesRequest,
-  ) => stream.Stream<
-    ListDatasetExamplesResponse,
-    ListDatasetExamplesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetExamplesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatasetExamplesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetExamplesRequest,
   output: ListDatasetExamplesResponse,
   errors: [
@@ -16444,27 +16303,13 @@ export type ListDatasetsError =
 /**
  * Lists all datasets in the caller's account, paginated.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [
@@ -16494,27 +16339,13 @@ export type ListDatasetVersionsError =
 /**
  * Lists all published versions of a dataset, sorted by version number descending (newest first). Does not include the DRAFT working copy.
  */
-export const listDatasetVersions: API.OperationMethod<
+export const listDatasetVersions: API.PaginatedOperationMethod<
   ListDatasetVersionsRequest,
   ListDatasetVersionsResponse,
   ListDatasetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetVersionsRequest,
-  ) => stream.Stream<
-    ListDatasetVersionsResponse,
-    ListDatasetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetVersionsRequest,
-  ) => stream.Stream<
-    DatasetVersionSummary,
-    ListDatasetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetVersionsRequest,
   output: ListDatasetVersionsResponse,
   errors: [
@@ -16544,27 +16375,13 @@ export type ListEvaluatorsError =
 /**
  * Lists all available evaluators, including both builtin evaluators provided by the service and custom evaluators created by the user.
  */
-export const listEvaluators: API.OperationMethod<
+export const listEvaluators: API.PaginatedOperationMethod<
   ListEvaluatorsRequest,
   ListEvaluatorsResponse,
   ListEvaluatorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluatorsRequest,
-  ) => stream.Stream<
-    ListEvaluatorsResponse,
-    ListEvaluatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEvaluatorsRequest,
-  ) => stream.Stream<
-    EvaluatorSummary,
-    ListEvaluatorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EvaluatorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluatorsRequest,
   output: ListEvaluatorsResponse,
   errors: [
@@ -16594,27 +16411,13 @@ export type ListGatewayRulesError =
 /**
  * Lists all rules for a gateway.
  */
-export const listGatewayRules: API.OperationMethod<
+export const listGatewayRules: API.PaginatedOperationMethod<
   ListGatewayRulesRequest,
   ListGatewayRulesResponse,
   ListGatewayRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayRulesRequest,
-  ) => stream.Stream<
-    ListGatewayRulesResponse,
-    ListGatewayRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayRulesRequest,
-  ) => stream.Stream<
-    GatewayRuleDetail,
-    ListGatewayRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewayRuleDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayRulesRequest,
   output: ListGatewayRulesResponse,
   errors: [
@@ -16644,27 +16447,13 @@ export type ListGatewaysError =
 /**
  * Lists all gateways in the account.
  */
-export const listGateways: API.OperationMethod<
+export const listGateways: API.PaginatedOperationMethod<
   ListGatewaysRequest,
   ListGatewaysResponse,
   ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    GatewaySummary,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GatewaySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewaysRequest,
   output: ListGatewaysResponse,
   errors: [
@@ -16694,27 +16483,13 @@ export type ListGatewayTargetsError =
 /**
  * Lists all targets for a specific gateway.
  */
-export const listGatewayTargets: API.OperationMethod<
+export const listGatewayTargets: API.PaginatedOperationMethod<
   ListGatewayTargetsRequest,
   ListGatewayTargetsResponse,
   ListGatewayTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewayTargetsRequest,
-  ) => stream.Stream<
-    ListGatewayTargetsResponse,
-    ListGatewayTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewayTargetsRequest,
-  ) => stream.Stream<
-    TargetSummary,
-    ListGatewayTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TargetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayTargetsRequest,
   output: ListGatewayTargetsResponse,
   errors: [
@@ -16745,27 +16520,13 @@ export type ListHarnessEndpointsError =
 /**
  * Operation to list the endpoints of a harness.
  */
-export const listHarnessEndpoints: API.OperationMethod<
+export const listHarnessEndpoints: API.PaginatedOperationMethod<
   ListHarnessEndpointsRequest,
   ListHarnessEndpointsResponse,
   ListHarnessEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarnessEndpointsRequest,
-  ) => stream.Stream<
-    ListHarnessEndpointsResponse,
-    ListHarnessEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarnessEndpointsRequest,
-  ) => stream.Stream<
-    HarnessEndpoint,
-    ListHarnessEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HarnessEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarnessEndpointsRequest,
   output: ListHarnessEndpointsResponse,
   errors: [
@@ -16795,27 +16556,13 @@ export type ListHarnessesError =
 /**
  * Operation to list harnesses.
  */
-export const listHarnesses: API.OperationMethod<
+export const listHarnesses: API.PaginatedOperationMethod<
   ListHarnessesRequest,
   ListHarnessesResponse,
   ListHarnessesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarnessesRequest,
-  ) => stream.Stream<
-    ListHarnessesResponse,
-    ListHarnessesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarnessesRequest,
-  ) => stream.Stream<
-    HarnessSummary,
-    ListHarnessesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HarnessSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarnessesRequest,
   output: ListHarnessesResponse,
   errors: [
@@ -16845,27 +16592,13 @@ export type ListHarnessVersionsError =
 /**
  * Operation to list the versions of a Harness.
  */
-export const listHarnessVersions: API.OperationMethod<
+export const listHarnessVersions: API.PaginatedOperationMethod<
   ListHarnessVersionsRequest,
   ListHarnessVersionsResponse,
   ListHarnessVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHarnessVersionsRequest,
-  ) => stream.Stream<
-    ListHarnessVersionsResponse,
-    ListHarnessVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHarnessVersionsRequest,
-  ) => stream.Stream<
-    HarnessVersionSummary,
-    ListHarnessVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HarnessVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHarnessVersionsRequest,
   output: ListHarnessVersionsResponse,
   errors: [
@@ -16896,27 +16629,13 @@ export type ListMemoriesError =
 /**
  * Lists the available Amazon Bedrock AgentCore Memory resources in the current Amazon Web Services Region.
  */
-export const listMemories: API.OperationMethod<
+export const listMemories: API.PaginatedOperationMethod<
   ListMemoriesInput,
   ListMemoriesOutput,
   ListMemoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemoriesInput,
-  ) => stream.Stream<
-    ListMemoriesOutput,
-    ListMemoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemoriesInput,
-  ) => stream.Stream<
-    MemorySummary,
-    ListMemoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MemorySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoriesInput,
   output: ListMemoriesOutput,
   errors: [
@@ -16948,27 +16667,13 @@ export type ListOauth2CredentialProvidersError =
 /**
  * Lists all OAuth2 credential providers in your account.
  */
-export const listOauth2CredentialProviders: API.OperationMethod<
+export const listOauth2CredentialProviders: API.PaginatedOperationMethod<
   ListOauth2CredentialProvidersRequest,
   ListOauth2CredentialProvidersResponse,
   ListOauth2CredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOauth2CredentialProvidersRequest,
-  ) => stream.Stream<
-    ListOauth2CredentialProvidersResponse,
-    ListOauth2CredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOauth2CredentialProvidersRequest,
-  ) => stream.Stream<
-    Oauth2CredentialProviderItem,
-    ListOauth2CredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Oauth2CredentialProviderItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOauth2CredentialProvidersRequest,
   output: ListOauth2CredentialProvidersResponse,
   errors: [
@@ -16999,27 +16704,13 @@ export type ListOnlineEvaluationConfigsError =
 /**
  * Lists all online evaluation configurations in the account, providing summary information about each configuration's status and settings.
  */
-export const listOnlineEvaluationConfigs: API.OperationMethod<
+export const listOnlineEvaluationConfigs: API.PaginatedOperationMethod<
   ListOnlineEvaluationConfigsRequest,
   ListOnlineEvaluationConfigsResponse,
   ListOnlineEvaluationConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOnlineEvaluationConfigsRequest,
-  ) => stream.Stream<
-    ListOnlineEvaluationConfigsResponse,
-    ListOnlineEvaluationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOnlineEvaluationConfigsRequest,
-  ) => stream.Stream<
-    OnlineEvaluationConfigSummary,
-    ListOnlineEvaluationConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OnlineEvaluationConfigSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOnlineEvaluationConfigsRequest,
   output: ListOnlineEvaluationConfigsResponse,
   errors: [
@@ -17048,27 +16739,13 @@ export type ListPaymentConnectorsError =
 /**
  * Lists all payment connectors for a specified payment manager.
  */
-export const listPaymentConnectors: API.OperationMethod<
+export const listPaymentConnectors: API.PaginatedOperationMethod<
   ListPaymentConnectorsRequest,
   ListPaymentConnectorsResponse,
   ListPaymentConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentConnectorsRequest,
-  ) => stream.Stream<
-    ListPaymentConnectorsResponse,
-    ListPaymentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentConnectorsRequest,
-  ) => stream.Stream<
-    PaymentConnectorSummary,
-    ListPaymentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PaymentConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentConnectorsRequest,
   output: ListPaymentConnectorsResponse,
   errors: [
@@ -17099,27 +16776,13 @@ export type ListPaymentCredentialProvidersError =
 /**
  * Lists all payment credential providers in the account.
  */
-export const listPaymentCredentialProviders: API.OperationMethod<
+export const listPaymentCredentialProviders: API.PaginatedOperationMethod<
   ListPaymentCredentialProvidersRequest,
   ListPaymentCredentialProvidersResponse,
   ListPaymentCredentialProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentCredentialProvidersRequest,
-  ) => stream.Stream<
-    ListPaymentCredentialProvidersResponse,
-    ListPaymentCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentCredentialProvidersRequest,
-  ) => stream.Stream<
-    PaymentCredentialProviderItem,
-    ListPaymentCredentialProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PaymentCredentialProviderItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentCredentialProvidersRequest,
   output: ListPaymentCredentialProvidersResponse,
   errors: [
@@ -17150,27 +16813,13 @@ export type ListPaymentManagersError =
 /**
  * Lists all payment managers in the account.
  */
-export const listPaymentManagers: API.OperationMethod<
+export const listPaymentManagers: API.PaginatedOperationMethod<
   ListPaymentManagersRequest,
   ListPaymentManagersResponse,
   ListPaymentManagersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentManagersRequest,
-  ) => stream.Stream<
-    ListPaymentManagersResponse,
-    ListPaymentManagersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentManagersRequest,
-  ) => stream.Stream<
-    PaymentManagerSummary,
-    ListPaymentManagersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PaymentManagerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentManagersRequest,
   output: ListPaymentManagersResponse,
   errors: [
@@ -17200,27 +16849,13 @@ export type ListPoliciesError =
 /**
  * Retrieves a list of policies within the AgentCore Policy engine. This operation supports pagination and filtering to help administrators manage and discover policies across policy engines. Results can be filtered by policy engine or resource associations.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -17250,27 +16885,13 @@ export type ListPolicyEnginesError =
 /**
  * Retrieves a list of policy engines within the AgentCore Policy system. This operation supports pagination to help administrators discover and manage policy engines across their account. Each policy engine serves as a container for related policies.
  */
-export const listPolicyEngines: API.OperationMethod<
+export const listPolicyEngines: API.PaginatedOperationMethod<
   ListPolicyEnginesRequest,
   ListPolicyEnginesResponse,
   ListPolicyEnginesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyEnginesRequest,
-  ) => stream.Stream<
-    ListPolicyEnginesResponse,
-    ListPolicyEnginesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyEnginesRequest,
-  ) => stream.Stream<
-    PolicyEngine,
-    ListPolicyEnginesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyEngine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyEnginesRequest,
   output: ListPolicyEnginesResponse,
   errors: [
@@ -17299,27 +16920,13 @@ export type ListPolicyEngineSummariesError =
 /**
  * Retrieves a paginated list of metadata-only policy engine summaries without decrypting customer content. This lightweight read operation returns resource identifiers, status, and timestamps for each policy engine, but does not include descriptions or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
  */
-export const listPolicyEngineSummaries: API.OperationMethod<
+export const listPolicyEngineSummaries: API.PaginatedOperationMethod<
   ListPolicyEngineSummariesRequest,
   ListPolicyEngineSummariesResponse,
   ListPolicyEngineSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyEngineSummariesRequest,
-  ) => stream.Stream<
-    ListPolicyEngineSummariesResponse,
-    ListPolicyEngineSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyEngineSummariesRequest,
-  ) => stream.Stream<
-    PolicyEngineSummary,
-    ListPolicyEngineSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyEngineSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyEngineSummariesRequest,
   output: ListPolicyEngineSummariesResponse,
   errors: [
@@ -17349,27 +16956,13 @@ export type ListPolicyGenerationAssetsError =
 /**
  * Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Cedar policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
  */
-export const listPolicyGenerationAssets: API.OperationMethod<
+export const listPolicyGenerationAssets: API.PaginatedOperationMethod<
   ListPolicyGenerationAssetsRequest,
   ListPolicyGenerationAssetsResponse,
   ListPolicyGenerationAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationAssetsRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationAssetsResponse,
-    ListPolicyGenerationAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationAssetsRequest,
-  ) => stream.Stream<
-    PolicyGenerationAsset,
-    ListPolicyGenerationAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyGenerationAsset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationAssetsRequest,
   output: ListPolicyGenerationAssetsResponse,
   errors: [
@@ -17400,27 +16993,13 @@ export type ListPolicyGenerationsError =
 /**
  * Retrieves a list of policy generation requests within the AgentCore Policy system. This operation supports pagination and filtering to help track and manage AI-powered policy generation operations.
  */
-export const listPolicyGenerations: API.OperationMethod<
+export const listPolicyGenerations: API.PaginatedOperationMethod<
   ListPolicyGenerationsRequest,
   ListPolicyGenerationsResponse,
   ListPolicyGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationsRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationsResponse,
-    ListPolicyGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationsRequest,
-  ) => stream.Stream<
-    PolicyGeneration,
-    ListPolicyGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyGeneration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationsRequest,
   output: ListPolicyGenerationsResponse,
   errors: [
@@ -17451,27 +17030,13 @@ export type ListPolicyGenerationSummariesError =
 /**
  * Retrieves a paginated list of metadata-only policy generation summaries within a policy engine without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and findings for each policy generation, but does not include status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
  */
-export const listPolicyGenerationSummaries: API.OperationMethod<
+export const listPolicyGenerationSummaries: API.PaginatedOperationMethod<
   ListPolicyGenerationSummariesRequest,
   ListPolicyGenerationSummariesResponse,
   ListPolicyGenerationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationSummariesRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationSummariesResponse,
-    ListPolicyGenerationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationSummariesRequest,
-  ) => stream.Stream<
-    PolicyGenerationSummary,
-    ListPolicyGenerationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyGenerationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGenerationSummariesRequest,
   output: ListPolicyGenerationSummariesResponse,
   errors: [
@@ -17502,27 +17067,13 @@ export type ListPolicySummariesError =
 /**
  * Retrieves a paginated list of metadata-only policy summaries within a policy engine without decrypting customer content. This lightweight read operation returns resource identifiers, status, and timestamps for each policy, but does not include policy definitions, descriptions, or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
  */
-export const listPolicySummaries: API.OperationMethod<
+export const listPolicySummaries: API.PaginatedOperationMethod<
   ListPolicySummariesRequest,
   ListPolicySummariesResponse,
   ListPolicySummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicySummariesRequest,
-  ) => stream.Stream<
-    ListPolicySummariesResponse,
-    ListPolicySummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicySummariesRequest,
-  ) => stream.Stream<
-    PolicySummary,
-    ListPolicySummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicySummariesRequest,
   output: ListPolicySummariesResponse,
   errors: [
@@ -17552,27 +17103,13 @@ export type ListRegistriesError =
 /**
  * Lists all registries in the account. You can optionally filter results by status using the `status` parameter, or by authorizer type using the `authorizerType` parameter.
  */
-export const listRegistries: API.OperationMethod<
+export const listRegistries: API.PaginatedOperationMethod<
   ListRegistriesRequest,
   ListRegistriesResponse,
   ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    ListRegistriesResponse,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    RegistrySummary,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistriesRequest,
   output: ListRegistriesResponse,
   errors: [
@@ -17603,27 +17140,13 @@ export type ListRegistryRecordsError =
 /**
  * Lists registry records within a registry. You can optionally filter results using the `name`, `status`, and `descriptorType` parameters. When multiple filters are specified, they are combined using AND logic.
  */
-export const listRegistryRecords: API.OperationMethod<
+export const listRegistryRecords: API.PaginatedOperationMethod<
   ListRegistryRecordsRequest,
   ListRegistryRecordsResponse,
   ListRegistryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistryRecordsRequest,
-  ) => stream.Stream<
-    ListRegistryRecordsResponse,
-    ListRegistryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistryRecordsRequest,
-  ) => stream.Stream<
-    RegistryRecordSummary,
-    ListRegistryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistryRecordSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistryRecordsRequest,
   output: ListRegistryRecordsResponse,
   errors: [
@@ -17688,27 +17211,13 @@ export type ListWorkloadIdentitiesError =
 /**
  * Lists all workload identities in your account.
  */
-export const listWorkloadIdentities: API.OperationMethod<
+export const listWorkloadIdentities: API.PaginatedOperationMethod<
   ListWorkloadIdentitiesRequest,
   ListWorkloadIdentitiesResponse,
   ListWorkloadIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadIdentitiesRequest,
-  ) => stream.Stream<
-    ListWorkloadIdentitiesResponse,
-    ListWorkloadIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadIdentitiesRequest,
-  ) => stream.Stream<
-    WorkloadIdentityType,
-    ListWorkloadIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadIdentityType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadIdentitiesRequest,
   output: ListWorkloadIdentitiesResponse,
   errors: [

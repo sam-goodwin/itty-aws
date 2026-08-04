@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -13004,27 +13003,13 @@ export type DescribeActivationsError =
  * the managed nodes in the activation, and the number of nodes registered by using this
  * activation.
  */
-export const describeActivations: API.OperationMethod<
+export const describeActivations: API.PaginatedOperationMethod<
   DescribeActivationsRequest,
   DescribeActivationsResult,
   DescribeActivationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeActivationsRequest,
-  ) => stream.Stream<
-    DescribeActivationsResult,
-    DescribeActivationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeActivationsRequest,
-  ) => stream.Stream<
-    Activation,
-    DescribeActivationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  Activation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeActivationsRequest,
   output: DescribeActivationsResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -13079,27 +13064,13 @@ export type DescribeAssociationExecutionsError =
 /**
  * Views all executions for a specific association ID.
  */
-export const describeAssociationExecutions: API.OperationMethod<
+export const describeAssociationExecutions: API.PaginatedOperationMethod<
   DescribeAssociationExecutionsRequest,
   DescribeAssociationExecutionsResult,
   DescribeAssociationExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAssociationExecutionsRequest,
-  ) => stream.Stream<
-    DescribeAssociationExecutionsResult,
-    DescribeAssociationExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAssociationExecutionsRequest,
-  ) => stream.Stream<
-    AssociationExecution,
-    DescribeAssociationExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  AssociationExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAssociationExecutionsRequest,
   output: DescribeAssociationExecutionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
@@ -13123,27 +13094,13 @@ export type DescribeAssociationExecutionTargetsError =
 /**
  * Views information about a specific execution of a specific association.
  */
-export const describeAssociationExecutionTargets: API.OperationMethod<
+export const describeAssociationExecutionTargets: API.PaginatedOperationMethod<
   DescribeAssociationExecutionTargetsRequest,
   DescribeAssociationExecutionTargetsResult,
   DescribeAssociationExecutionTargetsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAssociationExecutionTargetsRequest,
-  ) => stream.Stream<
-    DescribeAssociationExecutionTargetsResult,
-    DescribeAssociationExecutionTargetsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAssociationExecutionTargetsRequest,
-  ) => stream.Stream<
-    AssociationExecutionTarget,
-    DescribeAssociationExecutionTargetsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  AssociationExecutionTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAssociationExecutionTargetsRequest,
   output: DescribeAssociationExecutionTargetsResult,
   errors: [
@@ -13172,27 +13129,13 @@ export type DescribeAutomationExecutionsError =
 /**
  * Provides details about all active and terminated Automation executions.
  */
-export const describeAutomationExecutions: API.OperationMethod<
+export const describeAutomationExecutions: API.PaginatedOperationMethod<
   DescribeAutomationExecutionsRequest,
   DescribeAutomationExecutionsResult,
   DescribeAutomationExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAutomationExecutionsRequest,
-  ) => stream.Stream<
-    DescribeAutomationExecutionsResult,
-    DescribeAutomationExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAutomationExecutionsRequest,
-  ) => stream.Stream<
-    AutomationExecutionMetadata,
-    DescribeAutomationExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  AutomationExecutionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutomationExecutionsRequest,
   output: DescribeAutomationExecutionsResult,
   errors: [
@@ -13223,27 +13166,13 @@ export type DescribeAutomationStepExecutionsError =
  * Information about all active and terminated step executions in an Automation
  * workflow.
  */
-export const describeAutomationStepExecutions: API.OperationMethod<
+export const describeAutomationStepExecutions: API.PaginatedOperationMethod<
   DescribeAutomationStepExecutionsRequest,
   DescribeAutomationStepExecutionsResult,
   DescribeAutomationStepExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAutomationStepExecutionsRequest,
-  ) => stream.Stream<
-    DescribeAutomationStepExecutionsResult,
-    DescribeAutomationStepExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAutomationStepExecutionsRequest,
-  ) => stream.Stream<
-    StepExecution,
-    DescribeAutomationStepExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  StepExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAutomationStepExecutionsRequest,
   output: DescribeAutomationStepExecutionsResult,
   errors: [
@@ -13271,27 +13200,13 @@ export type DescribeAvailablePatchesError = InternalServerError | CommonErrors;
  * Currently, `DescribeAvailablePatches` supports only the Amazon Linux 1, Amazon
  * Linux 2, and Windows Server operating systems.
  */
-export const describeAvailablePatches: API.OperationMethod<
+export const describeAvailablePatches: API.PaginatedOperationMethod<
   DescribeAvailablePatchesRequest,
   DescribeAvailablePatchesResult,
   DescribeAvailablePatchesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAvailablePatchesRequest,
-  ) => stream.Stream<
-    DescribeAvailablePatchesResult,
-    DescribeAvailablePatchesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAvailablePatchesRequest,
-  ) => stream.Stream<
-    Patch,
-    DescribeAvailablePatchesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  Patch
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAvailablePatchesRequest,
   output: DescribeAvailablePatchesResult,
   errors: [InternalServerError],
@@ -13368,27 +13283,13 @@ export type DescribeEffectiveInstanceAssociationsError =
 /**
  * All associations for the managed nodes.
  */
-export const describeEffectiveInstanceAssociations: API.OperationMethod<
+export const describeEffectiveInstanceAssociations: API.PaginatedOperationMethod<
   DescribeEffectiveInstanceAssociationsRequest,
   DescribeEffectiveInstanceAssociationsResult,
   DescribeEffectiveInstanceAssociationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEffectiveInstanceAssociationsRequest,
-  ) => stream.Stream<
-    DescribeEffectiveInstanceAssociationsResult,
-    DescribeEffectiveInstanceAssociationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEffectiveInstanceAssociationsRequest,
-  ) => stream.Stream<
-    InstanceAssociation,
-    DescribeEffectiveInstanceAssociationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InstanceAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEffectiveInstanceAssociationsRequest,
   output: DescribeEffectiveInstanceAssociationsResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
@@ -13413,27 +13314,13 @@ export type DescribeEffectivePatchesForPatchBaselineError =
  * Retrieves the current effective patches (the patch and the approval state) for the specified
  * patch baseline. Applies to patch baselines for Windows only.
  */
-export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
+export const describeEffectivePatchesForPatchBaseline: API.PaginatedOperationMethod<
   DescribeEffectivePatchesForPatchBaselineRequest,
   DescribeEffectivePatchesForPatchBaselineResult,
   DescribeEffectivePatchesForPatchBaselineError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEffectivePatchesForPatchBaselineRequest,
-  ) => stream.Stream<
-    DescribeEffectivePatchesForPatchBaselineResult,
-    DescribeEffectivePatchesForPatchBaselineError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEffectivePatchesForPatchBaselineRequest,
-  ) => stream.Stream<
-    EffectivePatch,
-    DescribeEffectivePatchesForPatchBaselineError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  EffectivePatch
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEffectivePatchesForPatchBaselineRequest,
   output: DescribeEffectivePatchesForPatchBaselineResult,
   errors: [
@@ -13461,27 +13348,13 @@ export type DescribeInstanceAssociationsStatusError =
 /**
  * The status of the associations for the managed nodes.
  */
-export const describeInstanceAssociationsStatus: API.OperationMethod<
+export const describeInstanceAssociationsStatus: API.PaginatedOperationMethod<
   DescribeInstanceAssociationsStatusRequest,
   DescribeInstanceAssociationsStatusResult,
   DescribeInstanceAssociationsStatusError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceAssociationsStatusRequest,
-  ) => stream.Stream<
-    DescribeInstanceAssociationsStatusResult,
-    DescribeInstanceAssociationsStatusError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceAssociationsStatusRequest,
-  ) => stream.Stream<
-    InstanceAssociationStatusInfo,
-    DescribeInstanceAssociationsStatusError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InstanceAssociationStatusInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceAssociationsStatusRequest,
   output: DescribeInstanceAssociationsStatusResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
@@ -13516,27 +13389,13 @@ export type DescribeInstanceInformationError =
  * Amazon EC2 instance configured with a Systems Manager Quick Setup host management configuration or
  * the role assigned to an on-premises managed node.
  */
-export const describeInstanceInformation: API.OperationMethod<
+export const describeInstanceInformation: API.PaginatedOperationMethod<
   DescribeInstanceInformationRequest,
   DescribeInstanceInformationResult,
   DescribeInstanceInformationError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstanceInformationRequest,
-  ) => stream.Stream<
-    DescribeInstanceInformationResult,
-    DescribeInstanceInformationError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstanceInformationRequest,
-  ) => stream.Stream<
-    InstanceInformation,
-    DescribeInstanceInformationError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InstanceInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceInformationRequest,
   output: DescribeInstanceInformationResult,
   errors: [
@@ -13567,27 +13426,13 @@ export type DescribeInstancePatchesError =
  * Retrieves information about the patches on the specified managed node and their state
  * relative to the patch baseline being used for the node.
  */
-export const describeInstancePatches: API.OperationMethod<
+export const describeInstancePatches: API.PaginatedOperationMethod<
   DescribeInstancePatchesRequest,
   DescribeInstancePatchesResult,
   DescribeInstancePatchesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstancePatchesRequest,
-  ) => stream.Stream<
-    DescribeInstancePatchesResult,
-    DescribeInstancePatchesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstancePatchesRequest,
-  ) => stream.Stream<
-    PatchComplianceData,
-    DescribeInstancePatchesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  PatchComplianceData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchesRequest,
   output: DescribeInstancePatchesResult,
   errors: [
@@ -13614,27 +13459,13 @@ export type DescribeInstancePatchStatesError =
 /**
  * Retrieves the high-level patch state of one or more managed nodes.
  */
-export const describeInstancePatchStates: API.OperationMethod<
+export const describeInstancePatchStates: API.PaginatedOperationMethod<
   DescribeInstancePatchStatesRequest,
   DescribeInstancePatchStatesResult,
   DescribeInstancePatchStatesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstancePatchStatesRequest,
-  ) => stream.Stream<
-    DescribeInstancePatchStatesResult,
-    DescribeInstancePatchStatesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstancePatchStatesRequest,
-  ) => stream.Stream<
-    InstancePatchState,
-    DescribeInstancePatchStatesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InstancePatchState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchStatesRequest,
   output: DescribeInstancePatchStatesResult,
   errors: [InternalServerError, InvalidNextToken],
@@ -13658,27 +13489,13 @@ export type DescribeInstancePatchStatesForPatchGroupError =
  * Retrieves the high-level patch state for the managed nodes in the specified patch
  * group.
  */
-export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
+export const describeInstancePatchStatesForPatchGroup: API.PaginatedOperationMethod<
   DescribeInstancePatchStatesForPatchGroupRequest,
   DescribeInstancePatchStatesForPatchGroupResult,
   DescribeInstancePatchStatesForPatchGroupError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstancePatchStatesForPatchGroupRequest,
-  ) => stream.Stream<
-    DescribeInstancePatchStatesForPatchGroupResult,
-    DescribeInstancePatchStatesForPatchGroupError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstancePatchStatesForPatchGroupRequest,
-  ) => stream.Stream<
-    InstancePatchState,
-    DescribeInstancePatchStatesForPatchGroupError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InstancePatchState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePatchStatesForPatchGroupRequest,
   output: DescribeInstancePatchStatesForPatchGroupResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -13706,27 +13523,13 @@ export type DescribeInstancePropertiesError =
  * An API operation used by the Systems Manager console to display information about Systems Manager managed
  * nodes.
  */
-export const describeInstanceProperties: API.OperationMethod<
+export const describeInstanceProperties: API.PaginatedOperationMethod<
   DescribeInstancePropertiesRequest,
   DescribeInstancePropertiesResult,
   DescribeInstancePropertiesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInstancePropertiesRequest,
-  ) => stream.Stream<
-    DescribeInstancePropertiesResult,
-    DescribeInstancePropertiesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInstancePropertiesRequest,
-  ) => stream.Stream<
-    InstanceProperty,
-    DescribeInstancePropertiesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InstanceProperty
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstancePropertiesRequest,
   output: DescribeInstancePropertiesResult,
   errors: [
@@ -13757,27 +13560,13 @@ export type DescribeInventoryDeletionsError =
 /**
  * Describes a specific delete inventory operation.
  */
-export const describeInventoryDeletions: API.OperationMethod<
+export const describeInventoryDeletions: API.PaginatedOperationMethod<
   DescribeInventoryDeletionsRequest,
   DescribeInventoryDeletionsResult,
   DescribeInventoryDeletionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInventoryDeletionsRequest,
-  ) => stream.Stream<
-    DescribeInventoryDeletionsResult,
-    DescribeInventoryDeletionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInventoryDeletionsRequest,
-  ) => stream.Stream<
-    InventoryDeletionStatusItem,
-    DescribeInventoryDeletionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InventoryDeletionStatusItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInventoryDeletionsRequest,
   output: DescribeInventoryDeletionsResult,
   errors: [InternalServerError, InvalidDeletionIdException, InvalidNextToken],
@@ -13800,27 +13589,13 @@ export type DescribeMaintenanceWindowExecutionsError =
  * maintenance window was scheduled to be active, and information about tasks registered and run
  * with the maintenance window.
  */
-export const describeMaintenanceWindowExecutions: API.OperationMethod<
+export const describeMaintenanceWindowExecutions: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowExecutionsRequest,
   DescribeMaintenanceWindowExecutionsResult,
   DescribeMaintenanceWindowExecutionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowExecutionsRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowExecutionsResult,
-    DescribeMaintenanceWindowExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowExecutionsRequest,
-  ) => stream.Stream<
-    MaintenanceWindowExecution,
-    DescribeMaintenanceWindowExecutionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionsRequest,
   output: DescribeMaintenanceWindowExecutionsResult,
   errors: [InternalServerError],
@@ -13843,27 +13618,13 @@ export type DescribeMaintenanceWindowExecutionTaskInvocationsError =
  * Retrieves the individual task executions (one per target) for a particular task run as part
  * of a maintenance window execution.
  */
-export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMethod<
+export const describeMaintenanceWindowExecutionTaskInvocations: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   DescribeMaintenanceWindowExecutionTaskInvocationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowExecutionTaskInvocationsResult,
-    DescribeMaintenanceWindowExecutionTaskInvocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
-  ) => stream.Stream<
-    MaintenanceWindowExecutionTaskInvocationIdentity,
-    DescribeMaintenanceWindowExecutionTaskInvocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowExecutionTaskInvocationIdentity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   output: DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13885,27 +13646,13 @@ export type DescribeMaintenanceWindowExecutionTasksError =
 /**
  * For a given maintenance window execution, lists the tasks that were run.
  */
-export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
+export const describeMaintenanceWindowExecutionTasks: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowExecutionTasksRequest,
   DescribeMaintenanceWindowExecutionTasksResult,
   DescribeMaintenanceWindowExecutionTasksError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowExecutionTasksRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowExecutionTasksResult,
-    DescribeMaintenanceWindowExecutionTasksError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowExecutionTasksRequest,
-  ) => stream.Stream<
-    MaintenanceWindowExecutionTaskIdentity,
-    DescribeMaintenanceWindowExecutionTasksError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowExecutionTaskIdentity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowExecutionTasksRequest,
   output: DescribeMaintenanceWindowExecutionTasksResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -13926,27 +13673,13 @@ export type DescribeMaintenanceWindowsError =
 /**
  * Retrieves the maintenance windows in an Amazon Web Services account.
  */
-export const describeMaintenanceWindows: API.OperationMethod<
+export const describeMaintenanceWindows: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowsRequest,
   DescribeMaintenanceWindowsResult,
   DescribeMaintenanceWindowsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowsRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowsResult,
-    DescribeMaintenanceWindowsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowsRequest,
-  ) => stream.Stream<
-    MaintenanceWindowIdentity,
-    DescribeMaintenanceWindowsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowIdentity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowsRequest,
   output: DescribeMaintenanceWindowsResult,
   errors: [InternalServerError],
@@ -13968,27 +13701,13 @@ export type DescribeMaintenanceWindowScheduleError =
 /**
  * Retrieves information about upcoming executions of a maintenance window.
  */
-export const describeMaintenanceWindowSchedule: API.OperationMethod<
+export const describeMaintenanceWindowSchedule: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowScheduleRequest,
   DescribeMaintenanceWindowScheduleResult,
   DescribeMaintenanceWindowScheduleError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowScheduleRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowScheduleResult,
-    DescribeMaintenanceWindowScheduleError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowScheduleRequest,
-  ) => stream.Stream<
-    ScheduledWindowExecution,
-    DescribeMaintenanceWindowScheduleError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ScheduledWindowExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowScheduleRequest,
   output: DescribeMaintenanceWindowScheduleResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14010,27 +13729,13 @@ export type DescribeMaintenanceWindowsForTargetError =
  * Retrieves information about the maintenance window targets or tasks that a managed node is
  * associated with.
  */
-export const describeMaintenanceWindowsForTarget: API.OperationMethod<
+export const describeMaintenanceWindowsForTarget: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowsForTargetRequest,
   DescribeMaintenanceWindowsForTargetResult,
   DescribeMaintenanceWindowsForTargetError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowsForTargetRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowsForTargetResult,
-    DescribeMaintenanceWindowsForTargetError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowsForTargetRequest,
-  ) => stream.Stream<
-    MaintenanceWindowIdentityForTarget,
-    DescribeMaintenanceWindowsForTargetError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowIdentityForTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowsForTargetRequest,
   output: DescribeMaintenanceWindowsForTargetResult,
   errors: [InternalServerError],
@@ -14052,27 +13757,13 @@ export type DescribeMaintenanceWindowTargetsError =
 /**
  * Lists the targets registered with the maintenance window.
  */
-export const describeMaintenanceWindowTargets: API.OperationMethod<
+export const describeMaintenanceWindowTargets: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowTargetsRequest,
   DescribeMaintenanceWindowTargetsResult,
   DescribeMaintenanceWindowTargetsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowTargetsRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowTargetsResult,
-    DescribeMaintenanceWindowTargetsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowTargetsRequest,
-  ) => stream.Stream<
-    MaintenanceWindowTarget,
-    DescribeMaintenanceWindowTargetsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowTargetsRequest,
   output: DescribeMaintenanceWindowTargetsResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14099,27 +13790,13 @@ export type DescribeMaintenanceWindowTasksError =
  * placeholder value of `1`, which may be reported in the response to this command.
  * These values don't affect the running of your task and can be ignored.
  */
-export const describeMaintenanceWindowTasks: API.OperationMethod<
+export const describeMaintenanceWindowTasks: API.PaginatedOperationMethod<
   DescribeMaintenanceWindowTasksRequest,
   DescribeMaintenanceWindowTasksResult,
   DescribeMaintenanceWindowTasksError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMaintenanceWindowTasksRequest,
-  ) => stream.Stream<
-    DescribeMaintenanceWindowTasksResult,
-    DescribeMaintenanceWindowTasksError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMaintenanceWindowTasksRequest,
-  ) => stream.Stream<
-    MaintenanceWindowTask,
-    DescribeMaintenanceWindowTasksError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  MaintenanceWindowTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMaintenanceWindowTasksRequest,
   output: DescribeMaintenanceWindowTasksResult,
   errors: [DoesNotExistException, InternalServerError],
@@ -14144,27 +13821,13 @@ export type DescribeOpsItemsError = InternalServerError | CommonErrors;
  * more information, see Amazon Web Services Systems Manager OpsCenter in the
  * *Amazon Web Services Systems Manager User Guide*.
  */
-export const describeOpsItems: API.OperationMethod<
+export const describeOpsItems: API.PaginatedOperationMethod<
   DescribeOpsItemsRequest,
   DescribeOpsItemsResponse,
   DescribeOpsItemsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOpsItemsRequest,
-  ) => stream.Stream<
-    DescribeOpsItemsResponse,
-    DescribeOpsItemsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOpsItemsRequest,
-  ) => stream.Stream<
-    OpsItemSummary,
-    DescribeOpsItemsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  OpsItemSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOpsItemsRequest,
   output: DescribeOpsItemsResponse,
   errors: [InternalServerError],
@@ -14206,27 +13869,13 @@ export type DescribeParametersError =
  * `DescribeParameters` retrieves whatever the original key alias was
  * referencing.
  */
-export const describeParameters: API.OperationMethod<
+export const describeParameters: API.PaginatedOperationMethod<
   DescribeParametersRequest,
   DescribeParametersResult,
   DescribeParametersError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeParametersRequest,
-  ) => stream.Stream<
-    DescribeParametersResult,
-    DescribeParametersError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeParametersRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeParametersError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeParametersRequest,
   output: DescribeParametersResult,
   errors: [
@@ -14250,27 +13899,13 @@ export type DescribePatchBaselinesError = InternalServerError | CommonErrors;
 /**
  * Lists the patch baselines in your Amazon Web Services account.
  */
-export const describePatchBaselines: API.OperationMethod<
+export const describePatchBaselines: API.PaginatedOperationMethod<
   DescribePatchBaselinesRequest,
   DescribePatchBaselinesResult,
   DescribePatchBaselinesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePatchBaselinesRequest,
-  ) => stream.Stream<
-    DescribePatchBaselinesResult,
-    DescribePatchBaselinesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePatchBaselinesRequest,
-  ) => stream.Stream<
-    PatchBaselineIdentity,
-    DescribePatchBaselinesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  PatchBaselineIdentity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchBaselinesRequest,
   output: DescribePatchBaselinesResult,
   errors: [InternalServerError],
@@ -14289,27 +13924,13 @@ export type DescribePatchGroupsError = InternalServerError | CommonErrors;
 /**
  * Lists all patch groups that have been registered with patch baselines.
  */
-export const describePatchGroups: API.OperationMethod<
+export const describePatchGroups: API.PaginatedOperationMethod<
   DescribePatchGroupsRequest,
   DescribePatchGroupsResult,
   DescribePatchGroupsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePatchGroupsRequest,
-  ) => stream.Stream<
-    DescribePatchGroupsResult,
-    DescribePatchGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePatchGroupsRequest,
-  ) => stream.Stream<
-    PatchGroupPatchBaselineMapping,
-    DescribePatchGroupsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  PatchGroupPatchBaselineMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchGroupsRequest,
   output: DescribePatchGroupsResult,
   errors: [InternalServerError],
@@ -14406,27 +14027,13 @@ export type DescribePatchPropertiesError = InternalServerError | CommonErrors;
  * Valid properties: `PRODUCT` | `PRODUCT_FAMILY` |
  * `CLASSIFICATION` | `MSRC_SEVERITY`
  */
-export const describePatchProperties: API.OperationMethod<
+export const describePatchProperties: API.PaginatedOperationMethod<
   DescribePatchPropertiesRequest,
   DescribePatchPropertiesResult,
   DescribePatchPropertiesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePatchPropertiesRequest,
-  ) => stream.Stream<
-    DescribePatchPropertiesResult,
-    DescribePatchPropertiesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePatchPropertiesRequest,
-  ) => stream.Stream<
-    { [key: string]: string | undefined },
-    DescribePatchPropertiesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  { [key: string]: string | undefined }
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePatchPropertiesRequest,
   output: DescribePatchPropertiesResult,
   errors: [InternalServerError],
@@ -14450,27 +14057,13 @@ export type DescribeSessionsError =
  * Retrieves a list of all active sessions (both connected and disconnected) or terminated
  * sessions from the past 30 days.
  */
-export const describeSessions: API.OperationMethod<
+export const describeSessions: API.PaginatedOperationMethod<
   DescribeSessionsRequest,
   DescribeSessionsResponse,
   DescribeSessionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSessionsRequest,
-  ) => stream.Stream<
-    DescribeSessionsResponse,
-    DescribeSessionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSessionsRequest,
-  ) => stream.Stream<
-    Session,
-    DescribeSessionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  Session
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSessionsRequest,
   output: DescribeSessionsResponse,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
@@ -14776,27 +14369,13 @@ export type GetInventoryError =
  * Query inventory information. This includes managed node status, such as `Stopped`
  * or `Terminated`.
  */
-export const getInventory: API.OperationMethod<
+export const getInventory: API.PaginatedOperationMethod<
   GetInventoryRequest,
   GetInventoryResult,
   GetInventoryError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInventoryRequest,
-  ) => stream.Stream<
-    GetInventoryResult,
-    GetInventoryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInventoryRequest,
-  ) => stream.Stream<
-    InventoryResultEntity,
-    GetInventoryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InventoryResultEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInventoryRequest,
   output: GetInventoryResult,
   errors: [
@@ -14828,27 +14407,13 @@ export type GetInventorySchemaError =
  * Return a list of inventory type names for the account, or return a list of attribute names
  * for a specific Inventory item type.
  */
-export const getInventorySchema: API.OperationMethod<
+export const getInventorySchema: API.PaginatedOperationMethod<
   GetInventorySchemaRequest,
   GetInventorySchemaResult,
   GetInventorySchemaError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInventorySchemaRequest,
-  ) => stream.Stream<
-    GetInventorySchemaResult,
-    GetInventorySchemaError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInventorySchemaRequest,
-  ) => stream.Stream<
-    InventoryItemSchema,
-    GetInventorySchemaError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  InventoryItemSchema
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInventorySchemaRequest,
   output: GetInventorySchemaResult,
   errors: [InternalServerError, InvalidNextToken, InvalidTypeNameException],
@@ -15049,27 +14614,13 @@ export type GetOpsSummaryError =
  * well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager
  * Explorer.
  */
-export const getOpsSummary: API.OperationMethod<
+export const getOpsSummary: API.PaginatedOperationMethod<
   GetOpsSummaryRequest,
   GetOpsSummaryResult,
   GetOpsSummaryError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetOpsSummaryRequest,
-  ) => stream.Stream<
-    GetOpsSummaryResult,
-    GetOpsSummaryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetOpsSummaryRequest,
-  ) => stream.Stream<
-    OpsEntity,
-    GetOpsSummaryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  OpsEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOpsSummaryRequest,
   output: GetOpsSummaryResult,
   errors: [
@@ -15143,27 +14694,13 @@ export type GetParameterHistoryError =
  * `GetParameterHistory` retrieves whatever the original key alias was
  * referencing.
  */
-export const getParameterHistory: API.OperationMethod<
+export const getParameterHistory: API.PaginatedOperationMethod<
   GetParameterHistoryRequest,
   GetParameterHistoryResult,
   GetParameterHistoryError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetParameterHistoryRequest,
-  ) => stream.Stream<
-    GetParameterHistoryResult,
-    GetParameterHistoryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetParameterHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetParameterHistoryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetParameterHistoryRequest,
   output: GetParameterHistoryResult,
   errors: [
@@ -15232,27 +14769,13 @@ export type GetParametersByPathError =
  * beginning or end of a parameter name. If the specified name for a parameter contains spaces
  * between characters, the request fails with a `ValidationException` error.
  */
-export const getParametersByPath: API.OperationMethod<
+export const getParametersByPath: API.PaginatedOperationMethod<
   GetParametersByPathRequest,
   GetParametersByPathResult,
   GetParametersByPathError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetParametersByPathRequest,
-  ) => stream.Stream<
-    GetParametersByPathResult,
-    GetParametersByPathError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetParametersByPathRequest,
-  ) => stream.Stream<
-    unknown,
-    GetParametersByPathError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetParametersByPathRequest,
   output: GetParametersByPathResult,
   errors: [
@@ -15323,27 +14846,13 @@ export type GetResourcePoliciesError =
 /**
  * Returns an array of the `Policy` object.
  */
-export const getResourcePolicies: API.OperationMethod<
+export const getResourcePolicies: API.PaginatedOperationMethod<
   GetResourcePoliciesRequest,
   GetResourcePoliciesResponse,
   GetResourcePoliciesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GetResourcePoliciesResponse,
-    GetResourcePoliciesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetResourcePoliciesRequest,
-  ) => stream.Stream<
-    GetResourcePoliciesResponseEntry,
-    GetResourcePoliciesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  GetResourcePoliciesResponseEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourcePoliciesRequest,
   output: GetResourcePoliciesResponse,
   errors: [
@@ -15467,27 +14976,13 @@ export type ListAssociationsError =
  * can limit the results to a specific State Manager association document or managed node by
  * specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.
  */
-export const listAssociations: API.OperationMethod<
+export const listAssociations: API.PaginatedOperationMethod<
   ListAssociationsRequest,
   ListAssociationsResult,
   ListAssociationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociationsRequest,
-  ) => stream.Stream<
-    ListAssociationsResult,
-    ListAssociationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociationsRequest,
-  ) => stream.Stream<
-    Association,
-    ListAssociationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  Association
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [InternalServerError, InvalidNextToken],
@@ -15510,27 +15005,13 @@ export type ListAssociationVersionsError =
 /**
  * Retrieves all versions of an association for a specific association ID.
  */
-export const listAssociationVersions: API.OperationMethod<
+export const listAssociationVersions: API.PaginatedOperationMethod<
   ListAssociationVersionsRequest,
   ListAssociationVersionsResult,
   ListAssociationVersionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociationVersionsRequest,
-  ) => stream.Stream<
-    ListAssociationVersionsResult,
-    ListAssociationVersionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociationVersionsRequest,
-  ) => stream.Stream<
-    AssociationVersionInfo,
-    ListAssociationVersionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  AssociationVersionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationVersionsRequest,
   output: ListAssociationVersionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
@@ -15559,27 +15040,13 @@ export type ListCommandInvocationsError =
  * created for each requested managed node ID. `ListCommandInvocations` provide status
  * about command execution.
  */
-export const listCommandInvocations: API.OperationMethod<
+export const listCommandInvocations: API.PaginatedOperationMethod<
   ListCommandInvocationsRequest,
   ListCommandInvocationsResult,
   ListCommandInvocationsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommandInvocationsRequest,
-  ) => stream.Stream<
-    ListCommandInvocationsResult,
-    ListCommandInvocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommandInvocationsRequest,
-  ) => stream.Stream<
-    CommandInvocation,
-    ListCommandInvocationsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  CommandInvocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandInvocationsRequest,
   output: ListCommandInvocationsResult,
   errors: [
@@ -15610,27 +15077,13 @@ export type ListCommandsError =
 /**
  * Lists the commands requested by users of the Amazon Web Services account.
  */
-export const listCommands: API.OperationMethod<
+export const listCommands: API.PaginatedOperationMethod<
   ListCommandsRequest,
   ListCommandsResult,
   ListCommandsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommandsRequest,
-  ) => stream.Stream<
-    ListCommandsResult,
-    ListCommandsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommandsRequest,
-  ) => stream.Stream<
-    Command,
-    ListCommandsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  Command
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandsRequest,
   output: ListCommandsResult,
   errors: [
@@ -15663,27 +15116,13 @@ export type ListComplianceItemsError =
  * different resource types. Currently, you can only specify one resource ID per call. List results
  * depend on the criteria specified in the filter.
  */
-export const listComplianceItems: API.OperationMethod<
+export const listComplianceItems: API.PaginatedOperationMethod<
   ListComplianceItemsRequest,
   ListComplianceItemsResult,
   ListComplianceItemsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComplianceItemsRequest,
-  ) => stream.Stream<
-    ListComplianceItemsResult,
-    ListComplianceItemsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComplianceItemsRequest,
-  ) => stream.Stream<
-    ComplianceItem,
-    ListComplianceItemsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ComplianceItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceItemsRequest,
   output: ListComplianceItemsResult,
   errors: [
@@ -15714,27 +15153,13 @@ export type ListComplianceSummariesError =
  * example, this call can return State Manager associations, patches, or custom compliance types
  * according to the filter criteria that you specify.
  */
-export const listComplianceSummaries: API.OperationMethod<
+export const listComplianceSummaries: API.PaginatedOperationMethod<
   ListComplianceSummariesRequest,
   ListComplianceSummariesResult,
   ListComplianceSummariesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComplianceSummariesRequest,
-  ) => stream.Stream<
-    ListComplianceSummariesResult,
-    ListComplianceSummariesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComplianceSummariesRequest,
-  ) => stream.Stream<
-    ComplianceSummaryItem,
-    ListComplianceSummariesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ComplianceSummaryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceSummariesRequest,
   output: ListComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -15790,27 +15215,13 @@ export type ListDocumentsError =
  * Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region. You can
  * limit the results of this request by using a filter.
  */
-export const listDocuments: API.OperationMethod<
+export const listDocuments: API.PaginatedOperationMethod<
   ListDocumentsRequest,
   ListDocumentsResult,
   ListDocumentsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentsRequest,
-  ) => stream.Stream<
-    ListDocumentsResult,
-    ListDocumentsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentsRequest,
-  ) => stream.Stream<
-    DocumentIdentifier,
-    ListDocumentsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  DocumentIdentifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsRequest,
   output: ListDocumentsResult,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
@@ -15833,27 +15244,13 @@ export type ListDocumentVersionsError =
 /**
  * List all versions for a document.
  */
-export const listDocumentVersions: API.OperationMethod<
+export const listDocumentVersions: API.PaginatedOperationMethod<
   ListDocumentVersionsRequest,
   ListDocumentVersionsResult,
   ListDocumentVersionsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDocumentVersionsRequest,
-  ) => stream.Stream<
-    ListDocumentVersionsResult,
-    ListDocumentVersionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDocumentVersionsRequest,
-  ) => stream.Stream<
-    DocumentVersionInfo,
-    ListDocumentVersionsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  DocumentVersionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentVersionsRequest,
   output: ListDocumentVersionsResult,
   errors: [InternalServerError, InvalidDocument, InvalidNextToken],
@@ -15908,23 +15305,13 @@ export type ListNodesError =
 /**
  * Takes in filters and returns a list of managed nodes matching the filter criteria.
  */
-export const listNodes: API.OperationMethod<
+export const listNodes: API.PaginatedOperationMethod<
   ListNodesRequest,
   ListNodesResult,
   ListNodesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    ListNodesResult,
-    ListNodesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesRequest,
-  ) => stream.Stream<Node, ListNodesError, Creds | Rgn | HttpClient.HttpClient>;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  Node
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
   output: ListNodesResult,
   errors: [
@@ -15957,27 +15344,13 @@ export type ListNodesSummaryError =
  * Generates a summary of managed instance/node metadata based on the filters and aggregators
  * you specify. Results are grouped by the input aggregator you specify.
  */
-export const listNodesSummary: API.OperationMethod<
+export const listNodesSummary: API.PaginatedOperationMethod<
   ListNodesSummaryRequest,
   ListNodesSummaryResult,
   ListNodesSummaryError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesSummaryRequest,
-  ) => stream.Stream<
-    ListNodesSummaryResult,
-    ListNodesSummaryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesSummaryRequest,
-  ) => stream.Stream<
-    { [key: string]: string | undefined },
-    ListNodesSummaryError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  { [key: string]: string | undefined }
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesSummaryRequest,
   output: ListNodesSummaryResult,
   errors: [
@@ -16009,27 +15382,13 @@ export type ListOpsItemEventsError =
  * Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account. You can
  * limit the results to events associated with specific OpsItems by specifying a filter.
  */
-export const listOpsItemEvents: API.OperationMethod<
+export const listOpsItemEvents: API.PaginatedOperationMethod<
   ListOpsItemEventsRequest,
   ListOpsItemEventsResponse,
   ListOpsItemEventsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpsItemEventsRequest,
-  ) => stream.Stream<
-    ListOpsItemEventsResponse,
-    ListOpsItemEventsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpsItemEventsRequest,
-  ) => stream.Stream<
-    OpsItemEventSummary,
-    ListOpsItemEventsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  OpsItemEventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsItemEventsRequest,
   output: ListOpsItemEventsResponse,
   errors: [
@@ -16057,27 +15416,13 @@ export type ListOpsItemRelatedItemsError =
  * Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a
  * tool in Amazon Web Services Systems Manager.
  */
-export const listOpsItemRelatedItems: API.OperationMethod<
+export const listOpsItemRelatedItems: API.PaginatedOperationMethod<
   ListOpsItemRelatedItemsRequest,
   ListOpsItemRelatedItemsResponse,
   ListOpsItemRelatedItemsError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpsItemRelatedItemsRequest,
-  ) => stream.Stream<
-    ListOpsItemRelatedItemsResponse,
-    ListOpsItemRelatedItemsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpsItemRelatedItemsRequest,
-  ) => stream.Stream<
-    OpsItemRelatedItemSummary,
-    ListOpsItemRelatedItemsError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  OpsItemRelatedItemSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsItemRelatedItemsRequest,
   output: ListOpsItemRelatedItemsResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
@@ -16100,27 +15445,13 @@ export type ListOpsMetadataError =
  * Amazon Web Services Systems Manager calls this API operation when displaying all Application Manager OpsMetadata objects or
  * blobs.
  */
-export const listOpsMetadata: API.OperationMethod<
+export const listOpsMetadata: API.PaginatedOperationMethod<
   ListOpsMetadataRequest,
   ListOpsMetadataResult,
   ListOpsMetadataError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpsMetadataRequest,
-  ) => stream.Stream<
-    ListOpsMetadataResult,
-    ListOpsMetadataError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpsMetadataRequest,
-  ) => stream.Stream<
-    OpsMetadata,
-    ListOpsMetadataError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  OpsMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpsMetadataRequest,
   output: ListOpsMetadataResult,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException],
@@ -16145,27 +15476,13 @@ export type ListResourceComplianceSummariesError =
  * non-compliant statuses and detailed compliance-item severity counts, according to the filter
  * criteria you specify.
  */
-export const listResourceComplianceSummaries: API.OperationMethod<
+export const listResourceComplianceSummaries: API.PaginatedOperationMethod<
   ListResourceComplianceSummariesRequest,
   ListResourceComplianceSummariesResult,
   ListResourceComplianceSummariesError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceComplianceSummariesRequest,
-  ) => stream.Stream<
-    ListResourceComplianceSummariesResult,
-    ListResourceComplianceSummariesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceComplianceSummariesRequest,
-  ) => stream.Stream<
-    ResourceComplianceSummaryItem,
-    ListResourceComplianceSummariesError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ResourceComplianceSummaryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceComplianceSummariesRequest,
   output: ListResourceComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
@@ -16197,27 +15514,13 @@ export type ListResourceDataSyncError =
  * more sync configurations to list, you can request them by specifying the `NextToken`
  * returned in the call to the parameter of a subsequent call.
  */
-export const listResourceDataSync: API.OperationMethod<
+export const listResourceDataSync: API.PaginatedOperationMethod<
   ListResourceDataSyncRequest,
   ListResourceDataSyncResult,
   ListResourceDataSyncError,
-  Creds | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceDataSyncRequest,
-  ) => stream.Stream<
-    ListResourceDataSyncResult,
-    ListResourceDataSyncError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceDataSyncRequest,
-  ) => stream.Stream<
-    ResourceDataSyncItem,
-    ListResourceDataSyncError,
-    Creds | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Creds | Rgn | HttpClient.HttpClient,
+  ResourceDataSyncItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceDataSyncRequest,
   output: ListResourceDataSyncResult,
   errors: [

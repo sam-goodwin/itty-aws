@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -8514,27 +8513,13 @@ export type ListAnalysisTemplatesError =
 /**
  * Lists analysis templates that the caller owns.
  */
-export const listAnalysisTemplates: API.OperationMethod<
+export const listAnalysisTemplates: API.PaginatedOperationMethod<
   ListAnalysisTemplatesInput,
   ListAnalysisTemplatesOutput,
   ListAnalysisTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAnalysisTemplatesInput,
-  ) => stream.Stream<
-    ListAnalysisTemplatesOutput,
-    ListAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAnalysisTemplatesInput,
-  ) => stream.Stream<
-    AnalysisTemplateSummary,
-    ListAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AnalysisTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysisTemplatesInput,
   output: ListAnalysisTemplatesOutput,
   errors: [
@@ -8565,27 +8550,13 @@ export type ListCollaborationAnalysisTemplatesError =
 /**
  * Lists analysis templates within a collaboration.
  */
-export const listCollaborationAnalysisTemplates: API.OperationMethod<
+export const listCollaborationAnalysisTemplates: API.PaginatedOperationMethod<
   ListCollaborationAnalysisTemplatesInput,
   ListCollaborationAnalysisTemplatesOutput,
   ListCollaborationAnalysisTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationAnalysisTemplatesInput,
-  ) => stream.Stream<
-    ListCollaborationAnalysisTemplatesOutput,
-    ListCollaborationAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationAnalysisTemplatesInput,
-  ) => stream.Stream<
-    CollaborationAnalysisTemplateSummary,
-    ListCollaborationAnalysisTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationAnalysisTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationAnalysisTemplatesInput,
   output: ListCollaborationAnalysisTemplatesOutput,
   errors: [
@@ -8616,27 +8587,13 @@ export type ListCollaborationChangeRequestsError =
 /**
  * Lists all change requests for a collaboration with pagination support. Returns change requests sorted by creation time.
  */
-export const listCollaborationChangeRequests: API.OperationMethod<
+export const listCollaborationChangeRequests: API.PaginatedOperationMethod<
   ListCollaborationChangeRequestsInput,
   ListCollaborationChangeRequestsOutput,
   ListCollaborationChangeRequestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationChangeRequestsInput,
-  ) => stream.Stream<
-    ListCollaborationChangeRequestsOutput,
-    ListCollaborationChangeRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationChangeRequestsInput,
-  ) => stream.Stream<
-    CollaborationChangeRequestSummary,
-    ListCollaborationChangeRequestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationChangeRequestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationChangeRequestsInput,
   output: ListCollaborationChangeRequestsOutput,
   errors: [
@@ -8667,27 +8624,13 @@ export type ListCollaborationConfiguredAudienceModelAssociationsError =
 /**
  * Lists configured audience model associations within a collaboration.
  */
-export const listCollaborationConfiguredAudienceModelAssociations: API.OperationMethod<
+export const listCollaborationConfiguredAudienceModelAssociations: API.PaginatedOperationMethod<
   ListCollaborationConfiguredAudienceModelAssociationsInput,
   ListCollaborationConfiguredAudienceModelAssociationsOutput,
   ListCollaborationConfiguredAudienceModelAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationConfiguredAudienceModelAssociationsInput,
-  ) => stream.Stream<
-    ListCollaborationConfiguredAudienceModelAssociationsOutput,
-    ListCollaborationConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationConfiguredAudienceModelAssociationsInput,
-  ) => stream.Stream<
-    CollaborationConfiguredAudienceModelAssociationSummary,
-    ListCollaborationConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationConfiguredAudienceModelAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationConfiguredAudienceModelAssociationsInput,
   output: ListCollaborationConfiguredAudienceModelAssociationsOutput,
   errors: [
@@ -8718,27 +8661,13 @@ export type ListCollaborationIdNamespaceAssociationsError =
 /**
  * Returns a list of the ID namespace associations in a collaboration.
  */
-export const listCollaborationIdNamespaceAssociations: API.OperationMethod<
+export const listCollaborationIdNamespaceAssociations: API.PaginatedOperationMethod<
   ListCollaborationIdNamespaceAssociationsInput,
   ListCollaborationIdNamespaceAssociationsOutput,
   ListCollaborationIdNamespaceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationIdNamespaceAssociationsInput,
-  ) => stream.Stream<
-    ListCollaborationIdNamespaceAssociationsOutput,
-    ListCollaborationIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationIdNamespaceAssociationsInput,
-  ) => stream.Stream<
-    CollaborationIdNamespaceAssociationSummary,
-    ListCollaborationIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationIdNamespaceAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationIdNamespaceAssociationsInput,
   output: ListCollaborationIdNamespaceAssociationsOutput,
   errors: [
@@ -8769,27 +8698,13 @@ export type ListCollaborationPrivacyBudgetsError =
 /**
  * Returns an array that summarizes each privacy budget in a specified collaboration. The summary includes the collaboration ARN, creation time, creating account, and privacy budget details.
  */
-export const listCollaborationPrivacyBudgets: API.OperationMethod<
+export const listCollaborationPrivacyBudgets: API.PaginatedOperationMethod<
   ListCollaborationPrivacyBudgetsInput,
   ListCollaborationPrivacyBudgetsOutput,
   ListCollaborationPrivacyBudgetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationPrivacyBudgetsInput,
-  ) => stream.Stream<
-    ListCollaborationPrivacyBudgetsOutput,
-    ListCollaborationPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationPrivacyBudgetsInput,
-  ) => stream.Stream<
-    CollaborationPrivacyBudgetSummary,
-    ListCollaborationPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationPrivacyBudgetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationPrivacyBudgetsInput,
   output: ListCollaborationPrivacyBudgetsOutput,
   errors: [
@@ -8820,27 +8735,13 @@ export type ListCollaborationPrivacyBudgetTemplatesError =
 /**
  * Returns an array that summarizes each privacy budget template in a specified collaboration.
  */
-export const listCollaborationPrivacyBudgetTemplates: API.OperationMethod<
+export const listCollaborationPrivacyBudgetTemplates: API.PaginatedOperationMethod<
   ListCollaborationPrivacyBudgetTemplatesInput,
   ListCollaborationPrivacyBudgetTemplatesOutput,
   ListCollaborationPrivacyBudgetTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationPrivacyBudgetTemplatesInput,
-  ) => stream.Stream<
-    ListCollaborationPrivacyBudgetTemplatesOutput,
-    ListCollaborationPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationPrivacyBudgetTemplatesInput,
-  ) => stream.Stream<
-    CollaborationPrivacyBudgetTemplateSummary,
-    ListCollaborationPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationPrivacyBudgetTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationPrivacyBudgetTemplatesInput,
   output: ListCollaborationPrivacyBudgetTemplatesOutput,
   errors: [
@@ -8870,27 +8771,13 @@ export type ListCollaborationsError =
 /**
  * Lists collaborations the caller owns, is active in, or has been invited to.
  */
-export const listCollaborations: API.OperationMethod<
+export const listCollaborations: API.PaginatedOperationMethod<
   ListCollaborationsInput,
   ListCollaborationsOutput,
   ListCollaborationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollaborationsInput,
-  ) => stream.Stream<
-    ListCollaborationsOutput,
-    ListCollaborationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollaborationsInput,
-  ) => stream.Stream<
-    CollaborationSummary,
-    ListCollaborationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollaborationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollaborationsInput,
   output: ListCollaborationsOutput,
   errors: [
@@ -8920,27 +8807,13 @@ export type ListConfiguredAudienceModelAssociationsError =
 /**
  * Lists information about requested configured audience model associations.
  */
-export const listConfiguredAudienceModelAssociations: API.OperationMethod<
+export const listConfiguredAudienceModelAssociations: API.PaginatedOperationMethod<
   ListConfiguredAudienceModelAssociationsInput,
   ListConfiguredAudienceModelAssociationsOutput,
   ListConfiguredAudienceModelAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfiguredAudienceModelAssociationsInput,
-  ) => stream.Stream<
-    ListConfiguredAudienceModelAssociationsOutput,
-    ListConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfiguredAudienceModelAssociationsInput,
-  ) => stream.Stream<
-    ConfiguredAudienceModelAssociationSummary,
-    ListConfiguredAudienceModelAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredAudienceModelAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredAudienceModelAssociationsInput,
   output: ListConfiguredAudienceModelAssociationsOutput,
   errors: [
@@ -8971,27 +8844,13 @@ export type ListConfiguredTableAssociationsError =
 /**
  * Lists configured table associations for a membership.
  */
-export const listConfiguredTableAssociations: API.OperationMethod<
+export const listConfiguredTableAssociations: API.PaginatedOperationMethod<
   ListConfiguredTableAssociationsInput,
   ListConfiguredTableAssociationsOutput,
   ListConfiguredTableAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfiguredTableAssociationsInput,
-  ) => stream.Stream<
-    ListConfiguredTableAssociationsOutput,
-    ListConfiguredTableAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfiguredTableAssociationsInput,
-  ) => stream.Stream<
-    ConfiguredTableAssociationSummary,
-    ListConfiguredTableAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredTableAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredTableAssociationsInput,
   output: ListConfiguredTableAssociationsOutput,
   errors: [
@@ -9021,27 +8880,13 @@ export type ListConfiguredTablesError =
 /**
  * Lists configured tables.
  */
-export const listConfiguredTables: API.OperationMethod<
+export const listConfiguredTables: API.PaginatedOperationMethod<
   ListConfiguredTablesInput,
   ListConfiguredTablesOutput,
   ListConfiguredTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfiguredTablesInput,
-  ) => stream.Stream<
-    ListConfiguredTablesOutput,
-    ListConfiguredTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfiguredTablesInput,
-  ) => stream.Stream<
-    ConfiguredTableSummary,
-    ListConfiguredTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredTableSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfiguredTablesInput,
   output: ListConfiguredTablesOutput,
   errors: [
@@ -9071,27 +8916,13 @@ export type ListIdMappingTablesError =
 /**
  * Returns a list of ID mapping tables.
  */
-export const listIdMappingTables: API.OperationMethod<
+export const listIdMappingTables: API.PaginatedOperationMethod<
   ListIdMappingTablesInput,
   ListIdMappingTablesOutput,
   ListIdMappingTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdMappingTablesInput,
-  ) => stream.Stream<
-    ListIdMappingTablesOutput,
-    ListIdMappingTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdMappingTablesInput,
-  ) => stream.Stream<
-    IdMappingTableSummary,
-    ListIdMappingTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdMappingTableSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdMappingTablesInput,
   output: ListIdMappingTablesOutput,
   errors: [
@@ -9122,27 +8953,13 @@ export type ListIdNamespaceAssociationsError =
 /**
  * Returns a list of ID namespace associations.
  */
-export const listIdNamespaceAssociations: API.OperationMethod<
+export const listIdNamespaceAssociations: API.PaginatedOperationMethod<
   ListIdNamespaceAssociationsInput,
   ListIdNamespaceAssociationsOutput,
   ListIdNamespaceAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdNamespaceAssociationsInput,
-  ) => stream.Stream<
-    ListIdNamespaceAssociationsOutput,
-    ListIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdNamespaceAssociationsInput,
-  ) => stream.Stream<
-    IdNamespaceAssociationSummary,
-    ListIdNamespaceAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdNamespaceAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdNamespaceAssociationsInput,
   output: ListIdNamespaceAssociationsOutput,
   errors: [
@@ -9173,27 +8990,13 @@ export type ListMembersError =
 /**
  * Lists all members within a collaboration.
  */
-export const listMembers: API.OperationMethod<
+export const listMembers: API.PaginatedOperationMethod<
   ListMembersInput,
   ListMembersOutput,
   ListMembersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembersInput,
-  ) => stream.Stream<
-    ListMembersOutput,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembersInput,
-  ) => stream.Stream<
-    MemberSummary,
-    ListMembersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MemberSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersInput,
   output: ListMembersOutput,
   errors: [
@@ -9223,27 +9026,13 @@ export type ListMembershipsError =
 /**
  * Lists all memberships resources within the caller's account.
  */
-export const listMemberships: API.OperationMethod<
+export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsInput,
   ListMembershipsOutput,
   ListMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembershipsInput,
-  ) => stream.Stream<
-    ListMembershipsOutput,
-    ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMembershipsInput,
-  ) => stream.Stream<
-    MembershipSummary,
-    ListMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MembershipSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsInput,
   output: ListMembershipsOutput,
   errors: [
@@ -9273,27 +9062,13 @@ export type ListPrivacyBudgetsError =
 /**
  * Returns detailed information about the privacy budgets in a specified membership.
  */
-export const listPrivacyBudgets: API.OperationMethod<
+export const listPrivacyBudgets: API.PaginatedOperationMethod<
   ListPrivacyBudgetsInput,
   ListPrivacyBudgetsOutput,
   ListPrivacyBudgetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrivacyBudgetsInput,
-  ) => stream.Stream<
-    ListPrivacyBudgetsOutput,
-    ListPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrivacyBudgetsInput,
-  ) => stream.Stream<
-    PrivacyBudgetSummary,
-    ListPrivacyBudgetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrivacyBudgetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivacyBudgetsInput,
   output: ListPrivacyBudgetsOutput,
   errors: [
@@ -9324,27 +9099,13 @@ export type ListPrivacyBudgetTemplatesError =
 /**
  * Returns detailed information about the privacy budget templates in a specified membership.
  */
-export const listPrivacyBudgetTemplates: API.OperationMethod<
+export const listPrivacyBudgetTemplates: API.PaginatedOperationMethod<
   ListPrivacyBudgetTemplatesInput,
   ListPrivacyBudgetTemplatesOutput,
   ListPrivacyBudgetTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrivacyBudgetTemplatesInput,
-  ) => stream.Stream<
-    ListPrivacyBudgetTemplatesOutput,
-    ListPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPrivacyBudgetTemplatesInput,
-  ) => stream.Stream<
-    PrivacyBudgetTemplateSummary,
-    ListPrivacyBudgetTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PrivacyBudgetTemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrivacyBudgetTemplatesInput,
   output: ListPrivacyBudgetTemplatesOutput,
   errors: [
@@ -9375,27 +9136,13 @@ export type ListProtectedJobsError =
 /**
  * Lists protected jobs, sorted by most recent job.
  */
-export const listProtectedJobs: API.OperationMethod<
+export const listProtectedJobs: API.PaginatedOperationMethod<
   ListProtectedJobsInput,
   ListProtectedJobsOutput,
   ListProtectedJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectedJobsInput,
-  ) => stream.Stream<
-    ListProtectedJobsOutput,
-    ListProtectedJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectedJobsInput,
-  ) => stream.Stream<
-    ProtectedJobSummary,
-    ListProtectedJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProtectedJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectedJobsInput,
   output: ListProtectedJobsOutput,
   errors: [
@@ -9426,27 +9173,13 @@ export type ListProtectedQueriesError =
 /**
  * Lists protected queries, sorted by the most recent query.
  */
-export const listProtectedQueries: API.OperationMethod<
+export const listProtectedQueries: API.PaginatedOperationMethod<
   ListProtectedQueriesInput,
   ListProtectedQueriesOutput,
   ListProtectedQueriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectedQueriesInput,
-  ) => stream.Stream<
-    ListProtectedQueriesOutput,
-    ListProtectedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectedQueriesInput,
-  ) => stream.Stream<
-    ProtectedQuerySummary,
-    ListProtectedQueriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProtectedQuerySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectedQueriesInput,
   output: ListProtectedQueriesOutput,
   errors: [
@@ -9477,27 +9210,13 @@ export type ListSchemasError =
 /**
  * Lists the schemas for relations within a collaboration.
  */
-export const listSchemas: API.OperationMethod<
+export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasInput,
   ListSchemasOutput,
   ListSchemasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasInput,
-  ) => stream.Stream<
-    ListSchemasOutput,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchemasInput,
-  ) => stream.Stream<
-    SchemaSummary,
-    ListSchemasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SchemaSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasInput,
   output: ListSchemasOutput,
   errors: [

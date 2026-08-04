@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -14089,27 +14088,13 @@ export type ListCloudFrontOriginAccessIdentitiesError =
 /**
  * Lists origin access identities.
  */
-export const listCloudFrontOriginAccessIdentities: API.OperationMethod<
+export const listCloudFrontOriginAccessIdentities: API.PaginatedOperationMethod<
   ListCloudFrontOriginAccessIdentitiesRequest,
   ListCloudFrontOriginAccessIdentitiesResult,
   ListCloudFrontOriginAccessIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCloudFrontOriginAccessIdentitiesRequest,
-  ) => stream.Stream<
-    ListCloudFrontOriginAccessIdentitiesResult,
-    ListCloudFrontOriginAccessIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCloudFrontOriginAccessIdentitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCloudFrontOriginAccessIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCloudFrontOriginAccessIdentitiesRequest,
   output: ListCloudFrontOriginAccessIdentitiesResult,
   errors: [InvalidArgument],
@@ -14163,27 +14148,13 @@ export type ListConnectionFunctionsError =
 /**
  * Lists connection functions.
  */
-export const listConnectionFunctions: API.OperationMethod<
+export const listConnectionFunctions: API.PaginatedOperationMethod<
   ListConnectionFunctionsRequest,
   ListConnectionFunctionsResult,
   ListConnectionFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionFunctionsRequest,
-  ) => stream.Stream<
-    ListConnectionFunctionsResult,
-    ListConnectionFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionFunctionsRequest,
-  ) => stream.Stream<
-    ConnectionFunctionSummary,
-    ListConnectionFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectionFunctionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionFunctionsRequest,
   output: ListConnectionFunctionsResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
@@ -14206,27 +14177,13 @@ export type ListConnectionGroupsError =
 /**
  * Lists the connection groups in your Amazon Web Services account.
  */
-export const listConnectionGroups: API.OperationMethod<
+export const listConnectionGroups: API.PaginatedOperationMethod<
   ListConnectionGroupsRequest,
   ListConnectionGroupsResult,
   ListConnectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionGroupsRequest,
-  ) => stream.Stream<
-    ListConnectionGroupsResult,
-    ListConnectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionGroupsRequest,
-  ) => stream.Stream<
-    ConnectionGroupSummary,
-    ListConnectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectionGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionGroupsRequest,
   output: ListConnectionGroupsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14269,27 +14226,13 @@ export type ListDistributionsError = InvalidArgument | CommonErrors;
 /**
  * List CloudFront distributions.
  */
-export const listDistributions: API.OperationMethod<
+export const listDistributions: API.PaginatedOperationMethod<
   ListDistributionsRequest,
   ListDistributionsResult,
   ListDistributionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsRequest,
-  ) => stream.Stream<
-    ListDistributionsResult,
-    ListDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsRequest,
   output: ListDistributionsResult,
   errors: [InvalidArgument],
@@ -14359,27 +14302,13 @@ export type ListDistributionsByConnectionFunctionError =
 /**
  * Lists distributions by connection function.
  */
-export const listDistributionsByConnectionFunction: API.OperationMethod<
+export const listDistributionsByConnectionFunction: API.PaginatedOperationMethod<
   ListDistributionsByConnectionFunctionRequest,
   ListDistributionsByConnectionFunctionResult,
   ListDistributionsByConnectionFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsByConnectionFunctionRequest,
-  ) => stream.Stream<
-    ListDistributionsByConnectionFunctionResult,
-    ListDistributionsByConnectionFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsByConnectionFunctionRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsByConnectionFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByConnectionFunctionRequest,
   output: ListDistributionsByConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14401,27 +14330,13 @@ export type ListDistributionsByConnectionModeError =
 /**
  * Lists the distributions by the connection mode that you specify.
  */
-export const listDistributionsByConnectionMode: API.OperationMethod<
+export const listDistributionsByConnectionMode: API.PaginatedOperationMethod<
   ListDistributionsByConnectionModeRequest,
   ListDistributionsByConnectionModeResult,
   ListDistributionsByConnectionModeError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsByConnectionModeRequest,
-  ) => stream.Stream<
-    ListDistributionsByConnectionModeResult,
-    ListDistributionsByConnectionModeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsByConnectionModeRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsByConnectionModeError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByConnectionModeRequest,
   output: ListDistributionsByConnectionModeResult,
   errors: [AccessDenied, InvalidArgument],
@@ -14562,27 +14477,13 @@ export type ListDistributionsByTrustStoreError =
 /**
  * Lists distributions by trust store.
  */
-export const listDistributionsByTrustStore: API.OperationMethod<
+export const listDistributionsByTrustStore: API.PaginatedOperationMethod<
   ListDistributionsByTrustStoreRequest,
   ListDistributionsByTrustStoreResult,
   ListDistributionsByTrustStoreError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionsByTrustStoreRequest,
-  ) => stream.Stream<
-    ListDistributionsByTrustStoreResult,
-    ListDistributionsByTrustStoreError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionsByTrustStoreRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDistributionsByTrustStoreError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionsByTrustStoreRequest,
   output: ListDistributionsByTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14649,27 +14550,13 @@ export type ListDistributionTenantsError =
 /**
  * Lists the distribution tenants in your Amazon Web Services account.
  */
-export const listDistributionTenants: API.OperationMethod<
+export const listDistributionTenants: API.PaginatedOperationMethod<
   ListDistributionTenantsRequest,
   ListDistributionTenantsResult,
   ListDistributionTenantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionTenantsRequest,
-  ) => stream.Stream<
-    ListDistributionTenantsResult,
-    ListDistributionTenantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionTenantsRequest,
-  ) => stream.Stream<
-    DistributionTenantSummary,
-    ListDistributionTenantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DistributionTenantSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionTenantsRequest,
   output: ListDistributionTenantsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14694,27 +14581,13 @@ export type ListDistributionTenantsByCustomizationError =
  *
  * You must specify either the `CertificateArn` parameter or `WebACLArn` parameter, but not both in the same request.
  */
-export const listDistributionTenantsByCustomization: API.OperationMethod<
+export const listDistributionTenantsByCustomization: API.PaginatedOperationMethod<
   ListDistributionTenantsByCustomizationRequest,
   ListDistributionTenantsByCustomizationResult,
   ListDistributionTenantsByCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDistributionTenantsByCustomizationRequest,
-  ) => stream.Stream<
-    ListDistributionTenantsByCustomizationResult,
-    ListDistributionTenantsByCustomizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDistributionTenantsByCustomizationRequest,
-  ) => stream.Stream<
-    DistributionTenantSummary,
-    ListDistributionTenantsByCustomizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DistributionTenantSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDistributionTenantsByCustomizationRequest,
   output: ListDistributionTenantsByCustomizationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14753,27 +14626,13 @@ export type ListDomainConflictsError =
  *
  * You can optionally specify the maximum number of items to receive in the response. If the total number of items in the list exceeds the maximum that you specify, or the default maximum, the response is paginated. To get the next page of items, send a subsequent request that specifies the `NextMarker` value from the current response as the `Marker` value in the subsequent request.
  */
-export const listDomainConflicts: API.OperationMethod<
+export const listDomainConflicts: API.PaginatedOperationMethod<
   ListDomainConflictsRequest,
   ListDomainConflictsResult,
   ListDomainConflictsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainConflictsRequest,
-  ) => stream.Stream<
-    ListDomainConflictsResult,
-    ListDomainConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainConflictsRequest,
-  ) => stream.Stream<
-    DomainConflict,
-    ListDomainConflictsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainConflict
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainConflictsRequest,
   output: ListDomainConflictsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14861,27 +14720,13 @@ export type ListInvalidationsError =
 /**
  * Lists invalidation batches.
  */
-export const listInvalidations: API.OperationMethod<
+export const listInvalidations: API.PaginatedOperationMethod<
   ListInvalidationsRequest,
   ListInvalidationsResult,
   ListInvalidationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvalidationsRequest,
-  ) => stream.Stream<
-    ListInvalidationsResult,
-    ListInvalidationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvalidationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInvalidationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvalidationsRequest,
   output: ListInvalidationsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchDistribution],
@@ -14904,27 +14749,13 @@ export type ListInvalidationsForDistributionTenantError =
 /**
  * Lists the invalidations for a distribution tenant.
  */
-export const listInvalidationsForDistributionTenant: API.OperationMethod<
+export const listInvalidationsForDistributionTenant: API.PaginatedOperationMethod<
   ListInvalidationsForDistributionTenantRequest,
   ListInvalidationsForDistributionTenantResult,
   ListInvalidationsForDistributionTenantError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvalidationsForDistributionTenantRequest,
-  ) => stream.Stream<
-    ListInvalidationsForDistributionTenantResult,
-    ListInvalidationsForDistributionTenantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInvalidationsForDistributionTenantRequest,
-  ) => stream.Stream<
-    unknown,
-    ListInvalidationsForDistributionTenantError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvalidationsForDistributionTenantRequest,
   output: ListInvalidationsForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
@@ -14967,27 +14798,13 @@ export type ListKeyValueStoresError =
 /**
  * Specifies the key value stores to list.
  */
-export const listKeyValueStores: API.OperationMethod<
+export const listKeyValueStores: API.PaginatedOperationMethod<
   ListKeyValueStoresRequest,
   ListKeyValueStoresResult,
   ListKeyValueStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyValueStoresRequest,
-  ) => stream.Stream<
-    ListKeyValueStoresResult,
-    ListKeyValueStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyValueStoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKeyValueStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyValueStoresRequest,
   output: ListKeyValueStoresResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
@@ -15010,27 +14827,13 @@ export type ListOriginAccessControlsError = InvalidArgument | CommonErrors;
  *
  * If you're not using origin access controls for your Amazon Web Services account, the `ListOriginAccessControls` operation doesn't return the `Items` element in the response.
  */
-export const listOriginAccessControls: API.OperationMethod<
+export const listOriginAccessControls: API.PaginatedOperationMethod<
   ListOriginAccessControlsRequest,
   ListOriginAccessControlsResult,
   ListOriginAccessControlsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginAccessControlsRequest,
-  ) => stream.Stream<
-    ListOriginAccessControlsResult,
-    ListOriginAccessControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOriginAccessControlsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListOriginAccessControlsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginAccessControlsRequest,
   output: ListOriginAccessControlsResult,
   errors: [InvalidArgument],
@@ -15075,27 +14878,13 @@ export type ListPublicKeysError = InvalidArgument | CommonErrors;
 /**
  * List all public keys that have been added to CloudFront for this account.
  */
-export const listPublicKeys: API.OperationMethod<
+export const listPublicKeys: API.PaginatedOperationMethod<
   ListPublicKeysRequest,
   ListPublicKeysResult,
   ListPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    ListPublicKeysResult,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublicKeysRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublicKeysRequest,
   output: ListPublicKeysResult,
   errors: [InvalidArgument],
@@ -15164,27 +14953,13 @@ export type ListStreamingDistributionsError = InvalidArgument | CommonErrors;
 /**
  * List streaming distributions.
  */
-export const listStreamingDistributions: API.OperationMethod<
+export const listStreamingDistributions: API.PaginatedOperationMethod<
   ListStreamingDistributionsRequest,
   ListStreamingDistributionsResult,
   ListStreamingDistributionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamingDistributionsRequest,
-  ) => stream.Stream<
-    ListStreamingDistributionsResult,
-    ListStreamingDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamingDistributionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListStreamingDistributionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingDistributionsRequest,
   output: ListStreamingDistributionsResult,
   errors: [InvalidArgument],
@@ -15230,27 +15005,13 @@ export type ListTrustStoresError =
 /**
  * Lists trust stores.
  */
-export const listTrustStores: API.OperationMethod<
+export const listTrustStores: API.PaginatedOperationMethod<
   ListTrustStoresRequest,
   ListTrustStoresResult,
   ListTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustStoresRequest,
-  ) => stream.Stream<
-    ListTrustStoresResult,
-    ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustStoresRequest,
-  ) => stream.Stream<
-    TrustStoreSummary,
-    ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrustStoreSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoresRequest,
   output: ListTrustStoresResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3590,27 +3589,13 @@ export type ListAdminAccountsForOrganizationError =
  *
  * This operation can be called only from the organization's management account.
  */
-export const listAdminAccountsForOrganization: API.OperationMethod<
+export const listAdminAccountsForOrganization: API.PaginatedOperationMethod<
   ListAdminAccountsForOrganizationRequest,
   ListAdminAccountsForOrganizationResponse,
   ListAdminAccountsForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdminAccountsForOrganizationRequest,
-  ) => stream.Stream<
-    ListAdminAccountsForOrganizationResponse,
-    ListAdminAccountsForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdminAccountsForOrganizationRequest,
-  ) => stream.Stream<
-    AdminAccountSummary,
-    ListAdminAccountsForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AdminAccountSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdminAccountsForOrganizationRequest,
   output: ListAdminAccountsForOrganizationResponse,
   errors: [
@@ -3638,27 +3623,13 @@ export type ListAdminsManagingAccountError =
 /**
  * Lists the accounts that are managing the specified Organizations member account. This is useful for any member account so that they can view the accounts who are managing their account. This operation only returns the managing administrators that have the requested account within their AdminScope.
  */
-export const listAdminsManagingAccount: API.OperationMethod<
+export const listAdminsManagingAccount: API.PaginatedOperationMethod<
   ListAdminsManagingAccountRequest,
   ListAdminsManagingAccountResponse,
   ListAdminsManagingAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAdminsManagingAccountRequest,
-  ) => stream.Stream<
-    ListAdminsManagingAccountResponse,
-    ListAdminsManagingAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAdminsManagingAccountRequest,
-  ) => stream.Stream<
-    AWSAccountId,
-    ListAdminsManagingAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AWSAccountId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdminsManagingAccountRequest,
   output: ListAdminsManagingAccountResponse,
   errors: [
@@ -3686,27 +3657,13 @@ export type ListAppsListsError =
 /**
  * Returns an array of `AppsListDataSummary` objects.
  */
-export const listAppsLists: API.OperationMethod<
+export const listAppsLists: API.PaginatedOperationMethod<
   ListAppsListsRequest,
   ListAppsListsResponse,
   ListAppsListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsListsRequest,
-  ) => stream.Stream<
-    ListAppsListsResponse,
-    ListAppsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppsListsRequest,
-  ) => stream.Stream<
-    AppsListDataSummary,
-    ListAppsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AppsListDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsListsRequest,
   output: ListAppsListsResponse,
   errors: [
@@ -3735,27 +3692,13 @@ export type ListComplianceStatusError =
  * `PolicyComplianceStatus` to get a summary of which member accounts are protected
  * by the specified policy.
  */
-export const listComplianceStatus: API.OperationMethod<
+export const listComplianceStatus: API.PaginatedOperationMethod<
   ListComplianceStatusRequest,
   ListComplianceStatusResponse,
   ListComplianceStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComplianceStatusRequest,
-  ) => stream.Stream<
-    ListComplianceStatusResponse,
-    ListComplianceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComplianceStatusRequest,
-  ) => stream.Stream<
-    PolicyComplianceStatus,
-    ListComplianceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyComplianceStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceStatusRequest,
   output: ListComplianceStatusResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -3806,27 +3749,13 @@ export type ListMemberAccountsError =
  *
  * Either an Firewall Manager administrator or the organization's management account can make this request.
  */
-export const listMemberAccounts: API.OperationMethod<
+export const listMemberAccounts: API.PaginatedOperationMethod<
   ListMemberAccountsRequest,
   ListMemberAccountsResponse,
   ListMemberAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    ListMemberAccountsResponse,
-    ListMemberAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemberAccountsRequest,
-  ) => stream.Stream<
-    AWSAccountId,
-    ListMemberAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AWSAccountId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -3850,27 +3779,13 @@ export type ListPoliciesError =
 /**
  * Returns an array of `PolicySummary` objects.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    PolicySummary,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -3898,27 +3813,13 @@ export type ListProtocolsListsError =
 /**
  * Returns an array of `ProtocolsListDataSummary` objects.
  */
-export const listProtocolsLists: API.OperationMethod<
+export const listProtocolsLists: API.PaginatedOperationMethod<
   ListProtocolsListsRequest,
   ListProtocolsListsResponse,
   ListProtocolsListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtocolsListsRequest,
-  ) => stream.Stream<
-    ListProtocolsListsResponse,
-    ListProtocolsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtocolsListsRequest,
-  ) => stream.Stream<
-    ProtocolsListDataSummary,
-    ListProtocolsListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProtocolsListDataSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtocolsListsRequest,
   output: ListProtocolsListsResponse,
   errors: [
@@ -4028,27 +3929,13 @@ export type ListThirdPartyFirewallFirewallPoliciesError =
 /**
  * Retrieves a list of all of the third-party firewall policies that are associated with the third-party firewall administrator's account.
  */
-export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
+export const listThirdPartyFirewallFirewallPolicies: API.PaginatedOperationMethod<
   ListThirdPartyFirewallFirewallPoliciesRequest,
   ListThirdPartyFirewallFirewallPoliciesResponse,
   ListThirdPartyFirewallFirewallPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListThirdPartyFirewallFirewallPoliciesRequest,
-  ) => stream.Stream<
-    ListThirdPartyFirewallFirewallPoliciesResponse,
-    ListThirdPartyFirewallFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListThirdPartyFirewallFirewallPoliciesRequest,
-  ) => stream.Stream<
-    ThirdPartyFirewallFirewallPolicy,
-    ListThirdPartyFirewallFirewallPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ThirdPartyFirewallFirewallPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThirdPartyFirewallFirewallPoliciesRequest,
   output: ListThirdPartyFirewallFirewallPoliciesResponse,
   errors: [

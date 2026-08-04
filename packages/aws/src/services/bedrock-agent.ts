@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9820,27 +9819,13 @@ export type ListAgentActionGroupsError =
 /**
  * Lists the action groups for an agent and information about each one.
  */
-export const listAgentActionGroups: API.OperationMethod<
+export const listAgentActionGroups: API.PaginatedOperationMethod<
   ListAgentActionGroupsRequest,
   ListAgentActionGroupsResponse,
   ListAgentActionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentActionGroupsRequest,
-  ) => stream.Stream<
-    ListAgentActionGroupsResponse,
-    ListAgentActionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentActionGroupsRequest,
-  ) => stream.Stream<
-    ActionGroupSummary,
-    ListAgentActionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActionGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentActionGroupsRequest,
   output: ListAgentActionGroupsResponse,
   errors: [
@@ -9871,27 +9856,13 @@ export type ListAgentAliasesError =
 /**
  * Lists the aliases of an agent and information about each one.
  */
-export const listAgentAliases: API.OperationMethod<
+export const listAgentAliases: API.PaginatedOperationMethod<
   ListAgentAliasesRequest,
   ListAgentAliasesResponse,
   ListAgentAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentAliasesRequest,
-  ) => stream.Stream<
-    ListAgentAliasesResponse,
-    ListAgentAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentAliasesRequest,
-  ) => stream.Stream<
-    AgentAliasSummary,
-    ListAgentAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentAliasSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentAliasesRequest,
   output: ListAgentAliasesResponse,
   errors: [
@@ -9922,27 +9893,13 @@ export type ListAgentCollaboratorsError =
 /**
  * Retrieve a list of an agent's collaborators.
  */
-export const listAgentCollaborators: API.OperationMethod<
+export const listAgentCollaborators: API.PaginatedOperationMethod<
   ListAgentCollaboratorsRequest,
   ListAgentCollaboratorsResponse,
   ListAgentCollaboratorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentCollaboratorsRequest,
-  ) => stream.Stream<
-    ListAgentCollaboratorsResponse,
-    ListAgentCollaboratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentCollaboratorsRequest,
-  ) => stream.Stream<
-    AgentCollaboratorSummary,
-    ListAgentCollaboratorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentCollaboratorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentCollaboratorsRequest,
   output: ListAgentCollaboratorsResponse,
   errors: [
@@ -9973,27 +9930,13 @@ export type ListAgentKnowledgeBasesError =
 /**
  * Lists knowledge bases associated with an agent and information about each one.
  */
-export const listAgentKnowledgeBases: API.OperationMethod<
+export const listAgentKnowledgeBases: API.PaginatedOperationMethod<
   ListAgentKnowledgeBasesRequest,
   ListAgentKnowledgeBasesResponse,
   ListAgentKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentKnowledgeBasesRequest,
-  ) => stream.Stream<
-    ListAgentKnowledgeBasesResponse,
-    ListAgentKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentKnowledgeBasesRequest,
-  ) => stream.Stream<
-    AgentKnowledgeBaseSummary,
-    ListAgentKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentKnowledgeBaseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentKnowledgeBasesRequest,
   output: ListAgentKnowledgeBasesResponse,
   errors: [
@@ -10023,27 +9966,13 @@ export type ListAgentsError =
 /**
  * Lists the agents belonging to an account and information about each agent.
  */
-export const listAgents: API.OperationMethod<
+export const listAgents: API.PaginatedOperationMethod<
   ListAgentsRequest,
   ListAgentsResponse,
   ListAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentsRequest,
-  ) => stream.Stream<
-    ListAgentsResponse,
-    ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentsRequest,
-  ) => stream.Stream<
-    AgentSummary,
-    ListAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentsRequest,
   output: ListAgentsResponse,
   errors: [
@@ -10073,27 +10002,13 @@ export type ListAgentVersionsError =
 /**
  * Lists the versions of an agent and information about each version.
  */
-export const listAgentVersions: API.OperationMethod<
+export const listAgentVersions: API.PaginatedOperationMethod<
   ListAgentVersionsRequest,
   ListAgentVersionsResponse,
   ListAgentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentVersionsRequest,
-  ) => stream.Stream<
-    ListAgentVersionsResponse,
-    ListAgentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentVersionsRequest,
-  ) => stream.Stream<
-    AgentVersionSummary,
-    ListAgentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentVersionsRequest,
   output: ListAgentVersionsResponse,
   errors: [
@@ -10124,27 +10039,13 @@ export type ListDataSourcesError =
 /**
  * Lists the data sources in a knowledge base and information about each one.
  */
-export const listDataSources: API.OperationMethod<
+export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    ListDataSourcesResponse,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    DataSourceSummary,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -10175,27 +10076,13 @@ export type ListFlowAliasesError =
 /**
  * Returns a list of aliases for a flow.
  */
-export const listFlowAliases: API.OperationMethod<
+export const listFlowAliases: API.PaginatedOperationMethod<
   ListFlowAliasesRequest,
   ListFlowAliasesResponse,
   ListFlowAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowAliasesRequest,
-  ) => stream.Stream<
-    ListFlowAliasesResponse,
-    ListFlowAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowAliasesRequest,
-  ) => stream.Stream<
-    FlowAliasSummary,
-    ListFlowAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowAliasSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowAliasesRequest,
   output: ListFlowAliasesResponse,
   errors: [
@@ -10225,27 +10112,13 @@ export type ListFlowsError =
 /**
  * Returns a list of flows and information about each flow. For more information, see Manage a flow in Amazon Bedrock in the Amazon Bedrock User Guide.
  */
-export const listFlows: API.OperationMethod<
+export const listFlows: API.PaginatedOperationMethod<
   ListFlowsRequest,
   ListFlowsResponse,
   ListFlowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    ListFlowsResponse,
-    ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowsRequest,
-  ) => stream.Stream<
-    FlowSummary,
-    ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [
@@ -10275,27 +10148,13 @@ export type ListFlowVersionsError =
 /**
  * Returns a list of information about each flow. For more information, see Deploy a flow in Amazon Bedrock in the Amazon Bedrock User Guide.
  */
-export const listFlowVersions: API.OperationMethod<
+export const listFlowVersions: API.PaginatedOperationMethod<
   ListFlowVersionsRequest,
   ListFlowVersionsResponse,
   ListFlowVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFlowVersionsRequest,
-  ) => stream.Stream<
-    ListFlowVersionsResponse,
-    ListFlowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFlowVersionsRequest,
-  ) => stream.Stream<
-    FlowVersionSummary,
-    ListFlowVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FlowVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFlowVersionsRequest,
   output: ListFlowVersionsResponse,
   errors: [
@@ -10326,27 +10185,13 @@ export type ListIngestionJobsError =
 /**
  * Lists the data ingestion jobs for a data source. The list also includes information about each job.
  */
-export const listIngestionJobs: API.OperationMethod<
+export const listIngestionJobs: API.PaginatedOperationMethod<
   ListIngestionJobsRequest,
   ListIngestionJobsResponse,
   ListIngestionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIngestionJobsRequest,
-  ) => stream.Stream<
-    ListIngestionJobsResponse,
-    ListIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIngestionJobsRequest,
-  ) => stream.Stream<
-    IngestionJobSummary,
-    ListIngestionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IngestionJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionJobsRequest,
   output: ListIngestionJobsResponse,
   errors: [
@@ -10378,27 +10223,13 @@ export type ListKnowledgeBaseDocumentsError =
 /**
  * Retrieves all the documents contained in a data source that is connected to a knowledge base. For more information, see Ingest changes directly into a knowledge base in the Amazon Bedrock User Guide.
  */
-export const listKnowledgeBaseDocuments: API.OperationMethod<
+export const listKnowledgeBaseDocuments: API.PaginatedOperationMethod<
   ListKnowledgeBaseDocumentsRequest,
   ListKnowledgeBaseDocumentsResponse,
   ListKnowledgeBaseDocumentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKnowledgeBaseDocumentsRequest,
-  ) => stream.Stream<
-    ListKnowledgeBaseDocumentsResponse,
-    ListKnowledgeBaseDocumentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKnowledgeBaseDocumentsRequest,
-  ) => stream.Stream<
-    KnowledgeBaseDocumentDetail,
-    ListKnowledgeBaseDocumentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KnowledgeBaseDocumentDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBaseDocumentsRequest,
   output: ListKnowledgeBaseDocumentsResponse,
   errors: [
@@ -10429,27 +10260,13 @@ export type ListKnowledgeBasesError =
 /**
  * Lists the knowledge bases in an account. The list also includesinformation about each knowledge base.
  */
-export const listKnowledgeBases: API.OperationMethod<
+export const listKnowledgeBases: API.PaginatedOperationMethod<
   ListKnowledgeBasesRequest,
   ListKnowledgeBasesResponse,
   ListKnowledgeBasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    ListKnowledgeBasesResponse,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKnowledgeBasesRequest,
-  ) => stream.Stream<
-    KnowledgeBaseSummary,
-    ListKnowledgeBasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KnowledgeBaseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [
@@ -10479,27 +10296,13 @@ export type ListPromptsError =
 /**
  * Returns either information about the working draft (`DRAFT` version) of each prompt in an account, or information about of all versions of a prompt, depending on whether you include the `promptIdentifier` field or not. For more information, see View information about prompts using Prompt management in the Amazon Bedrock User Guide.
  */
-export const listPrompts: API.OperationMethod<
+export const listPrompts: API.PaginatedOperationMethod<
   ListPromptsRequest,
   ListPromptsResponse,
   ListPromptsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPromptsRequest,
-  ) => stream.Stream<
-    ListPromptsResponse,
-    ListPromptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPromptsRequest,
-  ) => stream.Stream<
-    PromptSummary,
-    ListPromptsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PromptSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPromptsRequest,
   output: ListPromptsResponse,
   errors: [

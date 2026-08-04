@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4694,27 +4693,13 @@ export type ListAccessesError =
 /**
  * Lists the details for all the accesses you have on your server.
  */
-export const listAccesses: API.OperationMethod<
+export const listAccesses: API.PaginatedOperationMethod<
   ListAccessesRequest,
   ListAccessesResponse,
   ListAccessesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessesRequest,
-  ) => stream.Stream<
-    ListAccessesResponse,
-    ListAccessesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessesRequest,
-  ) => stream.Stream<
-    ListedAccess,
-    ListAccessesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedAccess
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessesRequest,
   output: ListAccessesResponse,
   errors: [
@@ -4745,27 +4730,13 @@ export type ListAgreementsError =
 /**
  * Returns a list of the agreements for the server that's identified by the `ServerId` that you supply. If you want to limit the results to a certain number, supply a value for the `MaxResults` parameter. If you ran the command previously and received a value for `NextToken`, you can supply that value to continue listing agreements from where you left off.
  */
-export const listAgreements: API.OperationMethod<
+export const listAgreements: API.PaginatedOperationMethod<
   ListAgreementsRequest,
   ListAgreementsResponse,
   ListAgreementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgreementsRequest,
-  ) => stream.Stream<
-    ListAgreementsResponse,
-    ListAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgreementsRequest,
-  ) => stream.Stream<
-    ListedAgreement,
-    ListAgreementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedAgreement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgreementsRequest,
   output: ListAgreementsResponse,
   errors: [
@@ -4796,27 +4767,13 @@ export type ListCertificatesError =
 /**
  * Returns a list of the current certificates that have been imported into Transfer Family. If you want to limit the results to a certain number, supply a value for the `MaxResults` parameter. If you ran the command previously and received a value for the `NextToken` parameter, you can supply that value to continue listing certificates from where you left off.
  */
-export const listCertificates: API.OperationMethod<
+export const listCertificates: API.PaginatedOperationMethod<
   ListCertificatesRequest,
   ListCertificatesResponse,
   ListCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    ListCertificatesResponse,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificatesRequest,
-  ) => stream.Stream<
-    ListedCertificate,
-    ListCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatesRequest,
   output: ListCertificatesResponse,
   errors: [
@@ -4847,27 +4804,13 @@ export type ListConnectorsError =
 /**
  * Lists the connectors for the specified Region.
  */
-export const listConnectors: API.OperationMethod<
+export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListedConnector,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedConnector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [
@@ -4900,27 +4843,13 @@ export type ListExecutionsError =
  *
  * If the specified workflow ID cannot be found, `ListExecutions` returns a `ResourceNotFound` exception.
  */
-export const listExecutions: API.OperationMethod<
+export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsRequest,
   ListExecutionsResponse,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ListExecutionsResponse,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ListedExecution,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsRequest,
   output: ListExecutionsResponse,
   errors: [
@@ -4952,27 +4881,13 @@ export type ListFileTransferResultsError =
  *
  * File transfer results are available up to 7 days after an operation has been requested.
  */
-export const listFileTransferResults: API.OperationMethod<
+export const listFileTransferResults: API.PaginatedOperationMethod<
   ListFileTransferResultsRequest,
   ListFileTransferResultsResponse,
   ListFileTransferResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFileTransferResultsRequest,
-  ) => stream.Stream<
-    ListFileTransferResultsResponse,
-    ListFileTransferResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFileTransferResultsRequest,
-  ) => stream.Stream<
-    ConnectorFileTransferResult,
-    ListFileTransferResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorFileTransferResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFileTransferResultsRequest,
   output: ListFileTransferResultsResponse,
   errors: [
@@ -5032,27 +4947,13 @@ export type ListProfilesError =
 /**
  * Returns a list of the profiles for your system. If you want to limit the results to a certain number, supply a value for the `MaxResults` parameter. If you ran the command previously and received a value for `NextToken`, you can supply that value to continue listing profiles from where you left off.
  */
-export const listProfiles: API.OperationMethod<
+export const listProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ListProfilesResponse,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProfilesRequest,
-  ) => stream.Stream<
-    ListedProfile,
-    ListProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
   output: ListProfilesResponse,
   errors: [
@@ -5082,27 +4983,13 @@ export type ListSecurityPoliciesError =
 /**
  * Lists the security policies that are attached to your servers and SFTP connectors. For more information about security policies, see Working with security policies for servers or Working with security policies for SFTP connectors.
  */
-export const listSecurityPolicies: API.OperationMethod<
+export const listSecurityPolicies: API.PaginatedOperationMethod<
   ListSecurityPoliciesRequest,
   ListSecurityPoliciesResponse,
   ListSecurityPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityPoliciesRequest,
-  ) => stream.Stream<
-    ListSecurityPoliciesResponse,
-    ListSecurityPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityPoliciesRequest,
-  ) => stream.Stream<
-    SecurityPolicyName,
-    ListSecurityPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SecurityPolicyName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityPoliciesRequest,
   output: ListSecurityPoliciesResponse,
   errors: [
@@ -5131,27 +5018,13 @@ export type ListServersError =
 /**
  * Lists the file transfer protocol-enabled servers that are associated with your Amazon Web Services account.
  */
-export const listServers: API.OperationMethod<
+export const listServers: API.PaginatedOperationMethod<
   ListServersRequest,
   ListServersResponse,
   ListServersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServersRequest,
-  ) => stream.Stream<
-    ListServersResponse,
-    ListServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServersRequest,
-  ) => stream.Stream<
-    ListedServer,
-    ListServersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServersRequest,
   output: ListServersResponse,
   errors: [
@@ -5180,27 +5053,13 @@ export type ListTagsForResourceError =
 /**
  * Lists all of the tags associated with the Amazon Resource Name (ARN) that you specify. The resource can be a user, server, or role.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5230,27 +5089,13 @@ export type ListUsersError =
 /**
  * Lists the users for a file transfer protocol-enabled server that you specify by passing the `ServerId` parameter.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListedUser,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedUser
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -5282,27 +5127,13 @@ export type ListWebAppsError =
  *
  * For more information about using VPC endpoints with Transfer Family, see Create a Transfer Family web app in a VPC.
  */
-export const listWebApps: API.OperationMethod<
+export const listWebApps: API.PaginatedOperationMethod<
   ListWebAppsRequest,
   ListWebAppsResponse,
   ListWebAppsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWebAppsRequest,
-  ) => stream.Stream<
-    ListWebAppsResponse,
-    ListWebAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWebAppsRequest,
-  ) => stream.Stream<
-    ListedWebApp,
-    ListWebAppsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedWebApp
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebAppsRequest,
   output: ListWebAppsResponse,
   errors: [
@@ -5331,27 +5162,13 @@ export type ListWorkflowsError =
 /**
  * Lists all workflows associated with your Amazon Web Services account for your current region.
  */
-export const listWorkflows: API.OperationMethod<
+export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsRequest,
   ListWorkflowsResponse,
   ListWorkflowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListedWorkflow,
-    ListWorkflowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListedWorkflow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [

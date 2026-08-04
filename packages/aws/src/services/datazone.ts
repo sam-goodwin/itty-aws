@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -20681,27 +20680,13 @@ export type ListAccountPoolsError =
 /**
  * Lists existing account pools.
  */
-export const listAccountPools: API.OperationMethod<
+export const listAccountPools: API.PaginatedOperationMethod<
   ListAccountPoolsInput,
   ListAccountPoolsOutput,
   ListAccountPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountPoolsInput,
-  ) => stream.Stream<
-    ListAccountPoolsOutput,
-    ListAccountPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountPoolsInput,
-  ) => stream.Stream<
-    AccountPoolSummary,
-    ListAccountPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccountPoolSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountPoolsInput,
   output: ListAccountPoolsOutput,
   errors: [
@@ -20731,27 +20716,13 @@ export type ListAccountsInAccountPoolError =
 /**
  * Lists the accounts in the specified account pool.
  */
-export const listAccountsInAccountPool: API.OperationMethod<
+export const listAccountsInAccountPool: API.PaginatedOperationMethod<
   ListAccountsInAccountPoolInput,
   ListAccountsInAccountPoolOutput,
   ListAccountsInAccountPoolError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsInAccountPoolInput,
-  ) => stream.Stream<
-    ListAccountsInAccountPoolOutput,
-    ListAccountsInAccountPoolError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsInAccountPoolInput,
-  ) => stream.Stream<
-    AccountInfo,
-    ListAccountsInAccountPoolError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AccountInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsInAccountPoolInput,
   output: ListAccountsInAccountPoolOutput,
   errors: [
@@ -20788,27 +20759,13 @@ export type ListAssetFiltersError =
  *
  * - The asset must have at least one filter created to return results.
  */
-export const listAssetFilters: API.OperationMethod<
+export const listAssetFilters: API.PaginatedOperationMethod<
   ListAssetFiltersInput,
   ListAssetFiltersOutput,
   ListAssetFiltersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetFiltersInput,
-  ) => stream.Stream<
-    ListAssetFiltersOutput,
-    ListAssetFiltersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetFiltersInput,
-  ) => stream.Stream<
-    AssetFilterSummary,
-    ListAssetFiltersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AssetFilterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetFiltersInput,
   output: ListAssetFiltersOutput,
   errors: [
@@ -20849,27 +20806,13 @@ export type ListAssetRevisionsError =
  *
  * - User must have permissions on the asset and domain.
  */
-export const listAssetRevisions: API.OperationMethod<
+export const listAssetRevisions: API.PaginatedOperationMethod<
   ListAssetRevisionsInput,
   ListAssetRevisionsOutput,
   ListAssetRevisionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetRevisionsInput,
-  ) => stream.Stream<
-    ListAssetRevisionsOutput,
-    ListAssetRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetRevisionsInput,
-  ) => stream.Stream<
-    AssetRevision,
-    ListAssetRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  AssetRevision
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetRevisionsInput,
   output: ListAssetRevisionsOutput,
   errors: [
@@ -20899,27 +20842,13 @@ export type ListConnectionsError =
 /**
  * Lists connections. In Amazon DataZone, a connection enables you to connect your resources (domains, projects, and environments) to external resources and services.
  */
-export const listConnections: API.OperationMethod<
+export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsInput,
   ListConnectionsOutput,
   ListConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsInput,
-  ) => stream.Stream<
-    ListConnectionsOutput,
-    ListConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectionsInput,
-  ) => stream.Stream<
-    ConnectionSummary,
-    ListConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ConnectionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsInput,
   output: ListConnectionsOutput,
   errors: [
@@ -20957,27 +20886,13 @@ export type ListDataProductRevisionsError =
  *
  * - The domain must be in a valid and accessible state.
  */
-export const listDataProductRevisions: API.OperationMethod<
+export const listDataProductRevisions: API.PaginatedOperationMethod<
   ListDataProductRevisionsInput,
   ListDataProductRevisionsOutput,
   ListDataProductRevisionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataProductRevisionsInput,
-  ) => stream.Stream<
-    ListDataProductRevisionsOutput,
-    ListDataProductRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataProductRevisionsInput,
-  ) => stream.Stream<
-    DataProductRevision,
-    ListDataProductRevisionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataProductRevision
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataProductRevisionsInput,
   output: ListDataProductRevisionsOutput,
   errors: [
@@ -21010,27 +20925,13 @@ export type ListDataSourceRunActivitiesError =
 /**
  * Lists data source run activities.
  */
-export const listDataSourceRunActivities: API.OperationMethod<
+export const listDataSourceRunActivities: API.PaginatedOperationMethod<
   ListDataSourceRunActivitiesInput,
   ListDataSourceRunActivitiesOutput,
   ListDataSourceRunActivitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourceRunActivitiesInput,
-  ) => stream.Stream<
-    ListDataSourceRunActivitiesOutput,
-    ListDataSourceRunActivitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourceRunActivitiesInput,
-  ) => stream.Stream<
-    DataSourceRunActivity,
-    ListDataSourceRunActivitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataSourceRunActivity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceRunActivitiesInput,
   output: ListDataSourceRunActivitiesOutput,
   errors: [
@@ -21065,27 +20966,13 @@ export type ListDataSourceRunsError =
 /**
  * Lists data source runs in Amazon DataZone.
  */
-export const listDataSourceRuns: API.OperationMethod<
+export const listDataSourceRuns: API.PaginatedOperationMethod<
   ListDataSourceRunsInput,
   ListDataSourceRunsOutput,
   ListDataSourceRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourceRunsInput,
-  ) => stream.Stream<
-    ListDataSourceRunsOutput,
-    ListDataSourceRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourceRunsInput,
-  ) => stream.Stream<
-    DataSourceRunSummary,
-    ListDataSourceRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataSourceRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourceRunsInput,
   output: ListDataSourceRunsOutput,
   errors: [
@@ -21120,27 +21007,13 @@ export type ListDataSourcesError =
 /**
  * Lists data sources in Amazon DataZone.
  */
-export const listDataSources: API.OperationMethod<
+export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesInput,
   ListDataSourcesOutput,
   ListDataSourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourcesInput,
-  ) => stream.Stream<
-    ListDataSourcesOutput,
-    ListDataSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourcesInput,
-  ) => stream.Stream<
-    DataSourceSummary,
-    ListDataSourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DataSourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesInput,
   output: ListDataSourcesOutput,
   errors: [
@@ -21175,27 +21048,13 @@ export type ListDomainsError =
 /**
  * Lists Amazon DataZone domains.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsInput,
   ListDomainsOutput,
   ListDomainsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    ListDomainsOutput,
-    ListDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsInput,
-  ) => stream.Stream<
-    DomainSummary,
-    ListDomainsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DomainSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsInput,
   output: ListDomainsOutput,
   errors: [
@@ -21227,27 +21086,13 @@ export type ListDomainUnitsForParentError =
 /**
  * Lists child domain units for the specified parent domain unit.
  */
-export const listDomainUnitsForParent: API.OperationMethod<
+export const listDomainUnitsForParent: API.PaginatedOperationMethod<
   ListDomainUnitsForParentInput,
   ListDomainUnitsForParentOutput,
   ListDomainUnitsForParentError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainUnitsForParentInput,
-  ) => stream.Stream<
-    ListDomainUnitsForParentOutput,
-    ListDomainUnitsForParentError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainUnitsForParentInput,
-  ) => stream.Stream<
-    DomainUnitSummary,
-    ListDomainUnitsForParentError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  DomainUnitSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainUnitsForParentInput,
   output: ListDomainUnitsForParentOutput,
   errors: [
@@ -21276,27 +21121,13 @@ export type ListEntityOwnersError =
 /**
  * Lists the entity (domain units) owners.
  */
-export const listEntityOwners: API.OperationMethod<
+export const listEntityOwners: API.PaginatedOperationMethod<
   ListEntityOwnersInput,
   ListEntityOwnersOutput,
   ListEntityOwnersError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityOwnersInput,
-  ) => stream.Stream<
-    ListEntityOwnersOutput,
-    ListEntityOwnersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityOwnersInput,
-  ) => stream.Stream<
-    OwnerPropertiesOutput,
-    ListEntityOwnersError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  OwnerPropertiesOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntityOwnersInput,
   output: ListEntityOwnersOutput,
   errors: [
@@ -21325,27 +21156,13 @@ export type ListEnvironmentActionsError =
 /**
  * Lists existing environment actions.
  */
-export const listEnvironmentActions: API.OperationMethod<
+export const listEnvironmentActions: API.PaginatedOperationMethod<
   ListEnvironmentActionsInput,
   ListEnvironmentActionsOutput,
   ListEnvironmentActionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentActionsInput,
-  ) => stream.Stream<
-    ListEnvironmentActionsOutput,
-    ListEnvironmentActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentActionsInput,
-  ) => stream.Stream<
-    EnvironmentActionSummary,
-    ListEnvironmentActionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnvironmentActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentActionsInput,
   output: ListEnvironmentActionsOutput,
   errors: [
@@ -21374,27 +21191,13 @@ export type ListEnvironmentBlueprintConfigurationsError =
 /**
  * Lists blueprint configurations for a Amazon DataZone environment.
  */
-export const listEnvironmentBlueprintConfigurations: API.OperationMethod<
+export const listEnvironmentBlueprintConfigurations: API.PaginatedOperationMethod<
   ListEnvironmentBlueprintConfigurationsInput,
   ListEnvironmentBlueprintConfigurationsOutput,
   ListEnvironmentBlueprintConfigurationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentBlueprintConfigurationsInput,
-  ) => stream.Stream<
-    ListEnvironmentBlueprintConfigurationsOutput,
-    ListEnvironmentBlueprintConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentBlueprintConfigurationsInput,
-  ) => stream.Stream<
-    EnvironmentBlueprintConfigurationItem,
-    ListEnvironmentBlueprintConfigurationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnvironmentBlueprintConfigurationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentBlueprintConfigurationsInput,
   output: ListEnvironmentBlueprintConfigurationsOutput,
   errors: [
@@ -21424,27 +21227,13 @@ export type ListEnvironmentBlueprintsError =
 /**
  * Lists blueprints in an Amazon DataZone environment.
  */
-export const listEnvironmentBlueprints: API.OperationMethod<
+export const listEnvironmentBlueprints: API.PaginatedOperationMethod<
   ListEnvironmentBlueprintsInput,
   ListEnvironmentBlueprintsOutput,
   ListEnvironmentBlueprintsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentBlueprintsInput,
-  ) => stream.Stream<
-    ListEnvironmentBlueprintsOutput,
-    ListEnvironmentBlueprintsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentBlueprintsInput,
-  ) => stream.Stream<
-    EnvironmentBlueprintSummary,
-    ListEnvironmentBlueprintsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnvironmentBlueprintSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentBlueprintsInput,
   output: ListEnvironmentBlueprintsOutput,
   errors: [
@@ -21474,27 +21263,13 @@ export type ListEnvironmentProfilesError =
 /**
  * Lists Amazon DataZone environment profiles.
  */
-export const listEnvironmentProfiles: API.OperationMethod<
+export const listEnvironmentProfiles: API.PaginatedOperationMethod<
   ListEnvironmentProfilesInput,
   ListEnvironmentProfilesOutput,
   ListEnvironmentProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentProfilesInput,
-  ) => stream.Stream<
-    ListEnvironmentProfilesOutput,
-    ListEnvironmentProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentProfilesInput,
-  ) => stream.Stream<
-    EnvironmentProfileSummary,
-    ListEnvironmentProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnvironmentProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentProfilesInput,
   output: ListEnvironmentProfilesOutput,
   errors: [
@@ -21524,27 +21299,13 @@ export type ListEnvironmentsError =
 /**
  * Lists Amazon DataZone environments.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsInput,
   ListEnvironmentsOutput,
   ListEnvironmentsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    ListEnvironmentsOutput,
-    ListEnvironmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  EnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsInput,
   output: ListEnvironmentsOutput,
   errors: [
@@ -21575,27 +21336,13 @@ export type ListJobRunsError =
 /**
  * Lists job runs.
  */
-export const listJobRuns: API.OperationMethod<
+export const listJobRuns: API.PaginatedOperationMethod<
   ListJobRunsInput,
   ListJobRunsOutput,
   ListJobRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobRunsInput,
-  ) => stream.Stream<
-    ListJobRunsOutput,
-    ListJobRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobRunsInput,
-  ) => stream.Stream<
-    JobRunSummary,
-    ListJobRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  JobRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsInput,
   output: ListJobRunsOutput,
   errors: [
@@ -21625,27 +21372,13 @@ export type ListLineageEventsError =
 /**
  * Lists lineage events.
  */
-export const listLineageEvents: API.OperationMethod<
+export const listLineageEvents: API.PaginatedOperationMethod<
   ListLineageEventsInput,
   ListLineageEventsOutput,
   ListLineageEventsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLineageEventsInput,
-  ) => stream.Stream<
-    ListLineageEventsOutput,
-    ListLineageEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLineageEventsInput,
-  ) => stream.Stream<
-    LineageEventSummary,
-    ListLineageEventsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LineageEventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLineageEventsInput,
   output: ListLineageEventsOutput,
   errors: [
@@ -21675,27 +21408,13 @@ export type ListLineageNodeHistoryError =
 /**
  * Lists the history of the specified data lineage node.
  */
-export const listLineageNodeHistory: API.OperationMethod<
+export const listLineageNodeHistory: API.PaginatedOperationMethod<
   ListLineageNodeHistoryInput,
   ListLineageNodeHistoryOutput,
   ListLineageNodeHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLineageNodeHistoryInput,
-  ) => stream.Stream<
-    ListLineageNodeHistoryOutput,
-    ListLineageNodeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLineageNodeHistoryInput,
-  ) => stream.Stream<
-    LineageNodeSummary,
-    ListLineageNodeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  LineageNodeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLineageNodeHistoryInput,
   output: ListLineageNodeHistoryOutput,
   errors: [
@@ -21734,27 +21453,13 @@ export type ListMetadataGenerationRunsError =
  *
  * - User must have access to metadata generation runs in the domain.
  */
-export const listMetadataGenerationRuns: API.OperationMethod<
+export const listMetadataGenerationRuns: API.PaginatedOperationMethod<
   ListMetadataGenerationRunsInput,
   ListMetadataGenerationRunsOutput,
   ListMetadataGenerationRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMetadataGenerationRunsInput,
-  ) => stream.Stream<
-    ListMetadataGenerationRunsOutput,
-    ListMetadataGenerationRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMetadataGenerationRunsInput,
-  ) => stream.Stream<
-    MetadataGenerationRunItem,
-    ListMetadataGenerationRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MetadataGenerationRunItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMetadataGenerationRunsInput,
   output: ListMetadataGenerationRunsOutput,
   errors: [
@@ -21784,27 +21489,13 @@ export type ListNotebookRunsError =
 /**
  * Lists notebook runs in Amazon SageMaker Unified Studio.
  */
-export const listNotebookRuns: API.OperationMethod<
+export const listNotebookRuns: API.PaginatedOperationMethod<
   ListNotebookRunsInput,
   ListNotebookRunsOutput,
   ListNotebookRunsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotebookRunsInput,
-  ) => stream.Stream<
-    ListNotebookRunsOutput,
-    ListNotebookRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotebookRunsInput,
-  ) => stream.Stream<
-    NotebookRunSummary,
-    ListNotebookRunsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NotebookRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotebookRunsInput,
   output: ListNotebookRunsOutput,
   errors: [
@@ -21833,27 +21524,13 @@ export type ListNotebooksError =
 /**
  * Lists notebooks in Amazon SageMaker Unified Studio.
  */
-export const listNotebooks: API.OperationMethod<
+export const listNotebooks: API.PaginatedOperationMethod<
   ListNotebooksInput,
   ListNotebooksOutput,
   ListNotebooksError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotebooksInput,
-  ) => stream.Stream<
-    ListNotebooksOutput,
-    ListNotebooksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotebooksInput,
-  ) => stream.Stream<
-    NotebookSummary,
-    ListNotebooksError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NotebookSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotebooksInput,
   output: ListNotebooksOutput,
   errors: [
@@ -21882,27 +21559,13 @@ export type ListNotificationsError =
 /**
  * Lists all Amazon DataZone notifications.
  */
-export const listNotifications: API.OperationMethod<
+export const listNotifications: API.PaginatedOperationMethod<
   ListNotificationsInput,
   ListNotificationsOutput,
   ListNotificationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotificationsInput,
-  ) => stream.Stream<
-    ListNotificationsOutput,
-    ListNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotificationsInput,
-  ) => stream.Stream<
-    NotificationOutput,
-    ListNotificationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  NotificationOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotificationsInput,
   output: ListNotificationsOutput,
   errors: [
@@ -21931,27 +21594,13 @@ export type ListPolicyGrantsError =
 /**
  * Lists policy grants.
  */
-export const listPolicyGrants: API.OperationMethod<
+export const listPolicyGrants: API.PaginatedOperationMethod<
   ListPolicyGrantsInput,
   ListPolicyGrantsOutput,
   ListPolicyGrantsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGrantsInput,
-  ) => stream.Stream<
-    ListPolicyGrantsOutput,
-    ListPolicyGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGrantsInput,
-  ) => stream.Stream<
-    PolicyGrantMember,
-    ListPolicyGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  PolicyGrantMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyGrantsInput,
   output: ListPolicyGrantsOutput,
   errors: [
@@ -21981,27 +21630,13 @@ export type ListProjectMembershipsError =
 /**
  * Lists all members of the specified project.
  */
-export const listProjectMemberships: API.OperationMethod<
+export const listProjectMemberships: API.PaginatedOperationMethod<
   ListProjectMembershipsInput,
   ListProjectMembershipsOutput,
   ListProjectMembershipsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectMembershipsInput,
-  ) => stream.Stream<
-    ListProjectMembershipsOutput,
-    ListProjectMembershipsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectMembershipsInput,
-  ) => stream.Stream<
-    ProjectMember,
-    ListProjectMembershipsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ProjectMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectMembershipsInput,
   output: ListProjectMembershipsOutput,
   errors: [
@@ -22031,27 +21666,13 @@ export type ListProjectProfilesError =
 /**
  * Lists project profiles.
  */
-export const listProjectProfiles: API.OperationMethod<
+export const listProjectProfiles: API.PaginatedOperationMethod<
   ListProjectProfilesInput,
   ListProjectProfilesOutput,
   ListProjectProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectProfilesInput,
-  ) => stream.Stream<
-    ListProjectProfilesOutput,
-    ListProjectProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectProfilesInput,
-  ) => stream.Stream<
-    ProjectProfileSummary,
-    ListProjectProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ProjectProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectProfilesInput,
   output: ListProjectProfilesOutput,
   errors: [
@@ -22081,27 +21702,13 @@ export type ListProjectsError =
 /**
  * Lists Amazon DataZone projects.
  */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsInput,
   ListProjectsOutput,
   ListProjectsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsInput,
-  ) => stream.Stream<
-    ListProjectsOutput,
-    ListProjectsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsInput,
-  ) => stream.Stream<
-    ProjectSummary,
-    ListProjectsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ProjectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [
@@ -22132,27 +21739,13 @@ export type ListRulesError =
 /**
  * Lists existing rules. In Amazon DataZone, a rule is a formal agreement that enforces specific requirements across user workflows (e.g., publishing assets to the catalog, requesting subscriptions, creating projects) within the Amazon DataZone data portal. These rules help maintain consistency, ensure compliance, and uphold governance standards in data management processes. For instance, a metadata enforcement rule can specify the required information for creating a subscription request or publishing a data asset to the catalog, ensuring alignment with organizational standards.
  */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesInput,
   ListRulesOutput,
   ListRulesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesInput,
-  ) => stream.Stream<
-    ListRulesOutput,
-    ListRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesInput,
-  ) => stream.Stream<
-    RuleSummary,
-    ListRulesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  RuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesInput,
   output: ListRulesOutput,
   errors: [
@@ -22183,27 +21776,13 @@ export type ListSubscriptionGrantsError =
 /**
  * Lists subscription grants.
  */
-export const listSubscriptionGrants: API.OperationMethod<
+export const listSubscriptionGrants: API.PaginatedOperationMethod<
   ListSubscriptionGrantsInput,
   ListSubscriptionGrantsOutput,
   ListSubscriptionGrantsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionGrantsInput,
-  ) => stream.Stream<
-    ListSubscriptionGrantsOutput,
-    ListSubscriptionGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionGrantsInput,
-  ) => stream.Stream<
-    SubscriptionGrantSummary,
-    ListSubscriptionGrantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SubscriptionGrantSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionGrantsInput,
   output: ListSubscriptionGrantsOutput,
   errors: [
@@ -22234,27 +21813,13 @@ export type ListSubscriptionRequestsError =
 /**
  * Lists Amazon DataZone subscription requests.
  */
-export const listSubscriptionRequests: API.OperationMethod<
+export const listSubscriptionRequests: API.PaginatedOperationMethod<
   ListSubscriptionRequestsInput,
   ListSubscriptionRequestsOutput,
   ListSubscriptionRequestsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionRequestsInput,
-  ) => stream.Stream<
-    ListSubscriptionRequestsOutput,
-    ListSubscriptionRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionRequestsInput,
-  ) => stream.Stream<
-    SubscriptionRequestSummary,
-    ListSubscriptionRequestsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SubscriptionRequestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionRequestsInput,
   output: ListSubscriptionRequestsOutput,
   errors: [
@@ -22285,27 +21850,13 @@ export type ListSubscriptionsError =
 /**
  * Lists subscriptions in Amazon DataZone.
  */
-export const listSubscriptions: API.OperationMethod<
+export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsInput,
   ListSubscriptionsOutput,
   ListSubscriptionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    ListSubscriptionsOutput,
-    ListSubscriptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionsInput,
-  ) => stream.Stream<
-    SubscriptionSummary,
-    ListSubscriptionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SubscriptionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsInput,
   output: ListSubscriptionsOutput,
   errors: [
@@ -22336,27 +21887,13 @@ export type ListSubscriptionTargetsError =
 /**
  * Lists subscription targets in Amazon DataZone.
  */
-export const listSubscriptionTargets: API.OperationMethod<
+export const listSubscriptionTargets: API.PaginatedOperationMethod<
   ListSubscriptionTargetsInput,
   ListSubscriptionTargetsOutput,
   ListSubscriptionTargetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionTargetsInput,
-  ) => stream.Stream<
-    ListSubscriptionTargetsOutput,
-    ListSubscriptionTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubscriptionTargetsInput,
-  ) => stream.Stream<
-    SubscriptionTargetSummary,
-    ListSubscriptionTargetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SubscriptionTargetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionTargetsInput,
   output: ListSubscriptionTargetsOutput,
   errors: [
@@ -22413,27 +21950,13 @@ export type ListTimeSeriesDataPointsError =
 /**
  * Lists time series data points.
  */
-export const listTimeSeriesDataPoints: API.OperationMethod<
+export const listTimeSeriesDataPoints: API.PaginatedOperationMethod<
   ListTimeSeriesDataPointsInput,
   ListTimeSeriesDataPointsOutput,
   ListTimeSeriesDataPointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTimeSeriesDataPointsInput,
-  ) => stream.Stream<
-    ListTimeSeriesDataPointsOutput,
-    ListTimeSeriesDataPointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTimeSeriesDataPointsInput,
-  ) => stream.Stream<
-    TimeSeriesDataPointSummaryFormOutput,
-    ListTimeSeriesDataPointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TimeSeriesDataPointSummaryFormOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTimeSeriesDataPointsInput,
   output: ListTimeSeriesDataPointsOutput,
   errors: [
@@ -22605,27 +22128,13 @@ export type QueryGraphError =
 /**
  * Queries entities in the graph store.
  */
-export const queryGraph: API.OperationMethod<
+export const queryGraph: API.PaginatedOperationMethod<
   QueryGraphInput,
   QueryGraphOutput,
   QueryGraphError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryGraphInput,
-  ) => stream.Stream<
-    QueryGraphOutput,
-    QueryGraphError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryGraphInput,
-  ) => stream.Stream<
-    ResultItem,
-    QueryGraphError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ResultItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryGraphInput,
   output: QueryGraphOutput,
   errors: [
@@ -22830,27 +22339,13 @@ export type SearchError =
  *
  * To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.
  */
-export const search: API.OperationMethod<
+export const search: API.PaginatedOperationMethod<
   SearchInput,
   SearchOutput,
   SearchError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchInput,
-  ) => stream.Stream<
-    SearchOutput,
-    SearchError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchInput,
-  ) => stream.Stream<
-    SearchInventoryResultItem,
-    SearchError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SearchInventoryResultItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInput,
   output: SearchOutput,
   errors: [
@@ -22879,27 +22374,13 @@ export type SearchGroupProfilesError =
 /**
  * Searches group profiles in Amazon DataZone.
  */
-export const searchGroupProfiles: API.OperationMethod<
+export const searchGroupProfiles: API.PaginatedOperationMethod<
   SearchGroupProfilesInput,
   SearchGroupProfilesOutput,
   SearchGroupProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchGroupProfilesInput,
-  ) => stream.Stream<
-    SearchGroupProfilesOutput,
-    SearchGroupProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchGroupProfilesInput,
-  ) => stream.Stream<
-    GroupProfileSummary,
-    SearchGroupProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  GroupProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupProfilesInput,
   output: SearchGroupProfilesOutput,
   errors: [
@@ -22940,27 +22421,13 @@ export type SearchListingsError =
  *
  * To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.
  */
-export const searchListings: API.OperationMethod<
+export const searchListings: API.PaginatedOperationMethod<
   SearchListingsInput,
   SearchListingsOutput,
   SearchListingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchListingsInput,
-  ) => stream.Stream<
-    SearchListingsOutput,
-    SearchListingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchListingsInput,
-  ) => stream.Stream<
-    SearchResultItem,
-    SearchListingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SearchResultItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchListingsInput,
   output: SearchListingsOutput,
   errors: [
@@ -23003,27 +22470,13 @@ export type SearchTypesError =
  *
  * - Filters contain correct structure (attribute, value, operator).
  */
-export const searchTypes: API.OperationMethod<
+export const searchTypes: API.PaginatedOperationMethod<
   SearchTypesInput,
   SearchTypesOutput,
   SearchTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchTypesInput,
-  ) => stream.Stream<
-    SearchTypesOutput,
-    SearchTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchTypesInput,
-  ) => stream.Stream<
-    SearchTypesResultItem,
-    SearchTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  SearchTypesResultItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTypesInput,
   output: SearchTypesOutput,
   errors: [
@@ -23052,27 +22505,13 @@ export type SearchUserProfilesError =
 /**
  * Searches user profiles in Amazon DataZone.
  */
-export const searchUserProfiles: API.OperationMethod<
+export const searchUserProfiles: API.PaginatedOperationMethod<
   SearchUserProfilesInput,
   SearchUserProfilesOutput,
   SearchUserProfilesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchUserProfilesInput,
-  ) => stream.Stream<
-    SearchUserProfilesOutput,
-    SearchUserProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchUserProfilesInput,
-  ) => stream.Stream<
-    UserProfileSummary,
-    SearchUserProfilesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  UserProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchUserProfilesInput,
   output: SearchUserProfilesOutput,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -696,27 +695,13 @@ export type ListRecordsError =
  * `FeatureGroup`'s `OnlineStore`. This enables you to discover which
  * records exist without retrieving the full record data.
  */
-export const listRecords: API.OperationMethod<
+export const listRecords: API.PaginatedOperationMethod<
   ListRecordsRequest,
   ListRecordsResponse,
   ListRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecordsRequest,
-  ) => stream.Stream<
-    ListRecordsResponse,
-    ListRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecordsRequest,
-  ) => stream.Stream<
-    ValueAsString,
-    ListRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ValueAsString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
   errors: [

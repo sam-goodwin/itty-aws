@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -7237,27 +7236,13 @@ export type GetDedicatedIpsError =
  * List the dedicated IP addresses that are associated with your Amazon Web Services
  * account.
  */
-export const getDedicatedIps: API.OperationMethod<
+export const getDedicatedIps: API.PaginatedOperationMethod<
   GetDedicatedIpsRequest,
   GetDedicatedIpsResponse,
   GetDedicatedIpsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDedicatedIpsRequest,
-  ) => stream.Stream<
-    GetDedicatedIpsResponse,
-    GetDedicatedIpsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDedicatedIpsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetDedicatedIpsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDedicatedIpsRequest,
   output: GetDedicatedIpsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -7661,27 +7646,13 @@ export type ListConfigurationSetsError =
  * the configuration set in the headers of the email. When you apply a configuration set to
  * an email, all of the rules in that configuration set are applied to the email.
  */
-export const listConfigurationSets: API.OperationMethod<
+export const listConfigurationSets: API.PaginatedOperationMethod<
   ListConfigurationSetsRequest,
   ListConfigurationSetsResponse,
   ListConfigurationSetsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationSetsRequest,
-  ) => stream.Stream<
-    ListConfigurationSetsResponse,
-    ListConfigurationSetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationSetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConfigurationSetsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -7705,27 +7676,13 @@ export type ListContactListsError =
  * If your output includes a "NextToken" field with a string value, this indicates there may be additional
  * contacts on the filtered list - regardless of the number of contacts returned.
  */
-export const listContactLists: API.OperationMethod<
+export const listContactLists: API.PaginatedOperationMethod<
   ListContactListsRequest,
   ListContactListsResponse,
   ListContactListsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactListsRequest,
-  ) => stream.Stream<
-    ListContactListsResponse,
-    ListContactListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactListsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListContactListsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactListsRequest,
   output: ListContactListsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -7747,27 +7704,13 @@ export type ListContactsError =
 /**
  * Lists the contacts present in a specific contact list.
  */
-export const listContacts: API.OperationMethod<
+export const listContacts: API.PaginatedOperationMethod<
   ListContactsRequest,
   ListContactsResponse,
   ListContactsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactsRequest,
-  ) => stream.Stream<
-    ListContactsResponse,
-    ListContactsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListContactsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
   output: ListContactsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -7795,27 +7738,13 @@ export type ListCustomVerificationEmailTemplatesError =
  *
  * You can execute this operation no more than once per second.
  */
-export const listCustomVerificationEmailTemplates: API.OperationMethod<
+export const listCustomVerificationEmailTemplates: API.PaginatedOperationMethod<
   ListCustomVerificationEmailTemplatesRequest,
   ListCustomVerificationEmailTemplatesResponse,
   ListCustomVerificationEmailTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomVerificationEmailTemplatesRequest,
-  ) => stream.Stream<
-    ListCustomVerificationEmailTemplatesResponse,
-    ListCustomVerificationEmailTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomVerificationEmailTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCustomVerificationEmailTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomVerificationEmailTemplatesRequest,
   output: ListCustomVerificationEmailTemplatesResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -7837,27 +7766,13 @@ export type ListDedicatedIpPoolsError =
  * List all of the dedicated IP pools that exist in your Amazon Web Services account in the current
  * Region.
  */
-export const listDedicatedIpPools: API.OperationMethod<
+export const listDedicatedIpPools: API.PaginatedOperationMethod<
   ListDedicatedIpPoolsRequest,
   ListDedicatedIpPoolsResponse,
   ListDedicatedIpPoolsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDedicatedIpPoolsRequest,
-  ) => stream.Stream<
-    ListDedicatedIpPoolsResponse,
-    ListDedicatedIpPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDedicatedIpPoolsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDedicatedIpPoolsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDedicatedIpPoolsRequest,
   output: ListDedicatedIpPoolsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -7881,27 +7796,13 @@ export type ListDeliverabilityTestReportsError =
  * predictive inbox placement tests that are complete, you can use the `GetDeliverabilityTestReport`
  * operation to view the results.
  */
-export const listDeliverabilityTestReports: API.OperationMethod<
+export const listDeliverabilityTestReports: API.PaginatedOperationMethod<
   ListDeliverabilityTestReportsRequest,
   ListDeliverabilityTestReportsResponse,
   ListDeliverabilityTestReportsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeliverabilityTestReportsRequest,
-  ) => stream.Stream<
-    ListDeliverabilityTestReportsResponse,
-    ListDeliverabilityTestReportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeliverabilityTestReportsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDeliverabilityTestReportsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeliverabilityTestReportsRequest,
   output: ListDeliverabilityTestReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -7925,27 +7826,13 @@ export type ListDomainDeliverabilityCampaignsError =
  * email during a specified time range. This data is available for a domain only if you
  * enabled the Deliverability dashboard for the domain.
  */
-export const listDomainDeliverabilityCampaigns: API.OperationMethod<
+export const listDomainDeliverabilityCampaigns: API.PaginatedOperationMethod<
   ListDomainDeliverabilityCampaignsRequest,
   ListDomainDeliverabilityCampaignsResponse,
   ListDomainDeliverabilityCampaignsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainDeliverabilityCampaignsRequest,
-  ) => stream.Stream<
-    ListDomainDeliverabilityCampaignsResponse,
-    ListDomainDeliverabilityCampaignsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainDeliverabilityCampaignsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainDeliverabilityCampaignsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainDeliverabilityCampaignsRequest,
   output: ListDomainDeliverabilityCampaignsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -7969,27 +7856,13 @@ export type ListEmailIdentitiesError =
  * identities that are verified as well as those that aren't. This operation returns
  * identities that are associated with Amazon SES and Amazon Pinpoint.
  */
-export const listEmailIdentities: API.OperationMethod<
+export const listEmailIdentities: API.PaginatedOperationMethod<
   ListEmailIdentitiesRequest,
   ListEmailIdentitiesResponse,
   ListEmailIdentitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEmailIdentitiesRequest,
-  ) => stream.Stream<
-    ListEmailIdentitiesResponse,
-    ListEmailIdentitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEmailIdentitiesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEmailIdentitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEmailIdentitiesRequest,
   output: ListEmailIdentitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8013,27 +7886,13 @@ export type ListEmailTemplatesError =
  *
  * You can execute this operation no more than once per second.
  */
-export const listEmailTemplates: API.OperationMethod<
+export const listEmailTemplates: API.PaginatedOperationMethod<
   ListEmailTemplatesRequest,
   ListEmailTemplatesResponse,
   ListEmailTemplatesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEmailTemplatesRequest,
-  ) => stream.Stream<
-    ListEmailTemplatesResponse,
-    ListEmailTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEmailTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEmailTemplatesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEmailTemplatesRequest,
   output: ListEmailTemplatesResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8054,27 +7913,13 @@ export type ListExportJobsError =
 /**
  * Lists all of the export jobs.
  */
-export const listExportJobs: API.OperationMethod<
+export const listExportJobs: API.PaginatedOperationMethod<
   ListExportJobsRequest,
   ListExportJobsResponse,
   ListExportJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportJobsRequest,
-  ) => stream.Stream<
-    ListExportJobsResponse,
-    ListExportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListExportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportJobsRequest,
   output: ListExportJobsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8095,27 +7940,13 @@ export type ListImportJobsError =
 /**
  * Lists all of the import jobs.
  */
-export const listImportJobs: API.OperationMethod<
+export const listImportJobs: API.PaginatedOperationMethod<
   ListImportJobsRequest,
   ListImportJobsResponse,
   ListImportJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    ListImportJobsResponse,
-    ListImportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListImportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8139,27 +7970,13 @@ export type ListMultiRegionEndpointsError =
  * Only multi-region endpoints (global-endpoints) whose primary region is the AWS-Region
  * where operation is executed will be listed.
  */
-export const listMultiRegionEndpoints: API.OperationMethod<
+export const listMultiRegionEndpoints: API.PaginatedOperationMethod<
   ListMultiRegionEndpointsRequest,
   ListMultiRegionEndpointsResponse,
   ListMultiRegionEndpointsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultiRegionEndpointsRequest,
-  ) => stream.Stream<
-    ListMultiRegionEndpointsResponse,
-    ListMultiRegionEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultiRegionEndpointsRequest,
-  ) => stream.Stream<
-    MultiRegionEndpoint,
-    ListMultiRegionEndpointsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  MultiRegionEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultiRegionEndpointsRequest,
   output: ListMultiRegionEndpointsResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8184,27 +8001,13 @@ export type ListRecommendationsError =
  *
  * You can execute this operation no more than once per second.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8231,27 +8034,13 @@ export type ListReputationEntitiesError =
  * tracking and management capabilities. Use this operation to get an overview of
  * all entities and their current reputation status.
  */
-export const listReputationEntities: API.OperationMethod<
+export const listReputationEntities: API.PaginatedOperationMethod<
   ListReputationEntitiesRequest,
   ListReputationEntitiesResponse,
   ListReputationEntitiesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReputationEntitiesRequest,
-  ) => stream.Stream<
-    ListReputationEntitiesResponse,
-    ListReputationEntitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReputationEntitiesRequest,
-  ) => stream.Stream<
-    ReputationEntity,
-    ListReputationEntitiesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ReputationEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReputationEntitiesRequest,
   output: ListReputationEntitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],
@@ -8278,27 +8067,13 @@ export type ListResourceTenantsError =
  * resource. This is useful for understanding which tenants are currently using a particular
  * resource such as an email identity, configuration set, or email template.
  */
-export const listResourceTenants: API.OperationMethod<
+export const listResourceTenants: API.PaginatedOperationMethod<
   ListResourceTenantsRequest,
   ListResourceTenantsResponse,
   ListResourceTenantsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTenantsRequest,
-  ) => stream.Stream<
-    ListResourceTenantsResponse,
-    ListResourceTenantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTenantsRequest,
-  ) => stream.Stream<
-    ResourceTenantMetadata,
-    ListResourceTenantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  ResourceTenantMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTenantsRequest,
   output: ListResourceTenantsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8325,27 +8100,13 @@ export type ListSuppressedDestinationsError =
  * `TenantName` parameter. If you omit `TenantName`, the operation
  * targets the account-level suppression list.
  */
-export const listSuppressedDestinations: API.OperationMethod<
+export const listSuppressedDestinations: API.PaginatedOperationMethod<
   ListSuppressedDestinationsRequest,
   ListSuppressedDestinationsResponse,
   ListSuppressedDestinationsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuppressedDestinationsRequest,
-  ) => stream.Stream<
-    ListSuppressedDestinationsResponse,
-    ListSuppressedDestinationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSuppressedDestinationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSuppressedDestinationsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSuppressedDestinationsRequest,
   output: ListSuppressedDestinationsResponse,
   errors: [
@@ -8403,27 +8164,13 @@ export type ListTenantResourcesError =
  * or email templates) that are associated with the specified tenant. You can optionally
  * filter the results by resource type.
  */
-export const listTenantResources: API.OperationMethod<
+export const listTenantResources: API.PaginatedOperationMethod<
   ListTenantResourcesRequest,
   ListTenantResourcesResponse,
   ListTenantResourcesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTenantResourcesRequest,
-  ) => stream.Stream<
-    ListTenantResourcesResponse,
-    ListTenantResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTenantResourcesRequest,
-  ) => stream.Stream<
-    TenantResource,
-    ListTenantResourcesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TenantResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTenantResourcesRequest,
   output: ListTenantResourcesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
@@ -8448,27 +8195,13 @@ export type ListTenantsError =
  * This operation returns basic information about each tenant,
  * such as tenant name, ID, ARN, and creation timestamp.
  */
-export const listTenants: API.OperationMethod<
+export const listTenants: API.PaginatedOperationMethod<
   ListTenantsRequest,
   ListTenantsResponse,
   ListTenantsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTenantsRequest,
-  ) => stream.Stream<
-    ListTenantsResponse,
-    ListTenantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTenantsRequest,
-  ) => stream.Stream<
-    TenantInfo,
-    ListTenantsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  TenantInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTenantsRequest,
   output: ListTenantsResponse,
   errors: [BadRequestException, TooManyRequestsException],

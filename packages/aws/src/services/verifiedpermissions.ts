@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3092,27 +3091,13 @@ export type ListIdentitySourcesError = ResourceNotFoundException | CommonErrors;
 /**
  * Returns a paginated list of all of the identity sources defined in the specified policy store.
  */
-export const listIdentitySources: API.OperationMethod<
+export const listIdentitySources: API.PaginatedOperationMethod<
   ListIdentitySourcesInput,
   ListIdentitySourcesOutput,
   ListIdentitySourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentitySourcesInput,
-  ) => stream.Stream<
-    ListIdentitySourcesOutput,
-    ListIdentitySourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentitySourcesInput,
-  ) => stream.Stream<
-    IdentitySourceItem,
-    ListIdentitySourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IdentitySourceItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentitySourcesInput,
   output: ListIdentitySourcesOutput,
   errors: [ResourceNotFoundException],
@@ -3131,27 +3116,13 @@ export type ListPoliciesError = ResourceNotFoundException | CommonErrors;
 /**
  * Returns a paginated list of all policies stored in the specified policy store.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesInput,
   ListPoliciesOutput,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesInput,
-  ) => stream.Stream<
-    ListPoliciesOutput,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesInput,
-  ) => stream.Stream<
-    PolicyItem,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesInput,
   output: ListPoliciesOutput,
   errors: [ResourceNotFoundException],
@@ -3170,27 +3141,13 @@ export type ListPolicyStoreAliasesError = CommonErrors;
 /**
  * Returns a paginated list of all policy store aliases in the calling Amazon Web Services account.
  */
-export const listPolicyStoreAliases: API.OperationMethod<
+export const listPolicyStoreAliases: API.PaginatedOperationMethod<
   ListPolicyStoreAliasesInput,
   ListPolicyStoreAliasesOutput,
   ListPolicyStoreAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyStoreAliasesInput,
-  ) => stream.Stream<
-    ListPolicyStoreAliasesOutput,
-    ListPolicyStoreAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyStoreAliasesInput,
-  ) => stream.Stream<
-    PolicyStoreAliasItem,
-    ListPolicyStoreAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyStoreAliasItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyStoreAliasesInput,
   output: ListPolicyStoreAliasesOutput,
   errors: [],
@@ -3209,27 +3166,13 @@ export type ListPolicyStoresError = CommonErrors;
 /**
  * Returns a paginated list of all policy stores in the calling Amazon Web Services account.
  */
-export const listPolicyStores: API.OperationMethod<
+export const listPolicyStores: API.PaginatedOperationMethod<
   ListPolicyStoresInput,
   ListPolicyStoresOutput,
   ListPolicyStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyStoresInput,
-  ) => stream.Stream<
-    ListPolicyStoresOutput,
-    ListPolicyStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyStoresInput,
-  ) => stream.Stream<
-    PolicyStoreItem,
-    ListPolicyStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyStoreItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyStoresInput,
   output: ListPolicyStoresOutput,
   errors: [],
@@ -3248,27 +3191,13 @@ export type ListPolicyTemplatesError = ResourceNotFoundException | CommonErrors;
 /**
  * Returns a paginated list of all policy templates in the specified policy store.
  */
-export const listPolicyTemplates: API.OperationMethod<
+export const listPolicyTemplates: API.PaginatedOperationMethod<
   ListPolicyTemplatesInput,
   ListPolicyTemplatesOutput,
   ListPolicyTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyTemplatesInput,
-  ) => stream.Stream<
-    ListPolicyTemplatesOutput,
-    ListPolicyTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyTemplatesInput,
-  ) => stream.Stream<
-    PolicyTemplateItem,
-    ListPolicyTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyTemplateItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyTemplatesInput,
   output: ListPolicyTemplatesOutput,
   errors: [ResourceNotFoundException],

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1870,27 +1869,13 @@ export type ListDbClustersError =
 /**
  * Returns a list of Timestream for InfluxDB DB clusters.
  */
-export const listDbClusters: API.OperationMethod<
+export const listDbClusters: API.PaginatedOperationMethod<
   ListDbClustersInput,
   ListDbClustersOutput,
   ListDbClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbClustersInput,
-  ) => stream.Stream<
-    ListDbClustersOutput,
-    ListDbClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbClustersInput,
-  ) => stream.Stream<
-    DbClusterSummary,
-    ListDbClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DbClusterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbClustersInput,
   output: ListDbClustersOutput,
   errors: [
@@ -1921,27 +1906,13 @@ export type ListDbInstancesError =
 /**
  * Returns a list of Timestream for InfluxDB DB instances.
  */
-export const listDbInstances: API.OperationMethod<
+export const listDbInstances: API.PaginatedOperationMethod<
   ListDbInstancesInput,
   ListDbInstancesOutput,
   ListDbInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbInstancesInput,
-  ) => stream.Stream<
-    ListDbInstancesOutput,
-    ListDbInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbInstancesInput,
-  ) => stream.Stream<
-    DbInstanceSummary,
-    ListDbInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DbInstanceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesInput,
   output: ListDbInstancesOutput,
   errors: [
@@ -1972,27 +1943,13 @@ export type ListDbInstancesForClusterError =
 /**
  * Returns a list of Timestream for InfluxDB clusters.
  */
-export const listDbInstancesForCluster: API.OperationMethod<
+export const listDbInstancesForCluster: API.PaginatedOperationMethod<
   ListDbInstancesForClusterInput,
   ListDbInstancesForClusterOutput,
   ListDbInstancesForClusterError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbInstancesForClusterInput,
-  ) => stream.Stream<
-    ListDbInstancesForClusterOutput,
-    ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbInstancesForClusterInput,
-  ) => stream.Stream<
-    DbInstanceForClusterSummary,
-    ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DbInstanceForClusterSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesForClusterInput,
   output: ListDbInstancesForClusterOutput,
   errors: [
@@ -2023,27 +1980,13 @@ export type ListDbParameterGroupsError =
 /**
  * Returns a list of Timestream for InfluxDB DB parameter groups.
  */
-export const listDbParameterGroups: API.OperationMethod<
+export const listDbParameterGroups: API.PaginatedOperationMethod<
   ListDbParameterGroupsInput,
   ListDbParameterGroupsOutput,
   ListDbParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbParameterGroupsInput,
-  ) => stream.Stream<
-    ListDbParameterGroupsOutput,
-    ListDbParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbParameterGroupsInput,
-  ) => stream.Stream<
-    DbParameterGroupSummary,
-    ListDbParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DbParameterGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbParameterGroupsInput,
   output: ListDbParameterGroupsOutput,
   errors: [

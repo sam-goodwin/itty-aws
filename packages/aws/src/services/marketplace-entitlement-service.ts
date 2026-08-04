@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -232,27 +231,13 @@ export type GetEntitlementsError =
  * GetEntitlements retrieves entitlement values for a given product. The results can be
  * filtered based on customer identifier, AWS account ID, license ARN, or product dimensions.
  */
-export const getEntitlements: API.OperationMethod<
+export const getEntitlements: API.PaginatedOperationMethod<
   GetEntitlementsRequest,
   GetEntitlementsResult,
   GetEntitlementsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEntitlementsRequest,
-  ) => stream.Stream<
-    GetEntitlementsResult,
-    GetEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEntitlementsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetEntitlementsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEntitlementsRequest,
   output: GetEntitlementsResult,
   errors: [

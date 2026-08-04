@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1583,27 +1582,13 @@ export type ListAWSDefaultServiceQuotasError =
  * Lists the default values for the quotas for the specified Amazon Web Services service. A default
  * value does not reflect any quota increases.
  */
-export const listAWSDefaultServiceQuotas: API.OperationMethod<
+export const listAWSDefaultServiceQuotas: API.PaginatedOperationMethod<
   ListAWSDefaultServiceQuotasRequest,
   ListAWSDefaultServiceQuotasResponse,
   ListAWSDefaultServiceQuotasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAWSDefaultServiceQuotasRequest,
-  ) => stream.Stream<
-    ListAWSDefaultServiceQuotasResponse,
-    ListAWSDefaultServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAWSDefaultServiceQuotasRequest,
-  ) => stream.Stream<
-    ServiceQuota,
-    ListAWSDefaultServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceQuota
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAWSDefaultServiceQuotasRequest,
   output: ListAWSDefaultServiceQuotasResponse,
   errors: [
@@ -1638,27 +1623,13 @@ export type ListRequestedServiceQuotaChangeHistoryError =
  * responses to return quota requests at either the account level, resource level, or all
  * levels. Responses include any open or closed requests within 90 days.
  */
-export const listRequestedServiceQuotaChangeHistory: API.OperationMethod<
+export const listRequestedServiceQuotaChangeHistory: API.PaginatedOperationMethod<
   ListRequestedServiceQuotaChangeHistoryRequest,
   ListRequestedServiceQuotaChangeHistoryResponse,
   ListRequestedServiceQuotaChangeHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequestedServiceQuotaChangeHistoryRequest,
-  ) => stream.Stream<
-    ListRequestedServiceQuotaChangeHistoryResponse,
-    ListRequestedServiceQuotaChangeHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequestedServiceQuotaChangeHistoryRequest,
-  ) => stream.Stream<
-    RequestedServiceQuotaChange,
-    ListRequestedServiceQuotaChangeHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RequestedServiceQuotaChange
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequestedServiceQuotaChangeHistoryRequest,
   output: ListRequestedServiceQuotaChangeHistoryResponse,
   errors: [
@@ -1692,27 +1663,13 @@ export type ListRequestedServiceQuotaChangeHistoryByQuotaError =
  * Retrieves the quota increase requests for the specified quota. Filter responses to
  * return quota requests at either the account level, resource level, or all levels.
  */
-export const listRequestedServiceQuotaChangeHistoryByQuota: API.OperationMethod<
+export const listRequestedServiceQuotaChangeHistoryByQuota: API.PaginatedOperationMethod<
   ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
   ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
   ListRequestedServiceQuotaChangeHistoryByQuotaError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
-  ) => stream.Stream<
-    ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
-    ListRequestedServiceQuotaChangeHistoryByQuotaError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
-  ) => stream.Stream<
-    RequestedServiceQuotaChange,
-    ListRequestedServiceQuotaChangeHistoryByQuotaError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RequestedServiceQuotaChange
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
   output: ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
   errors: [
@@ -1747,27 +1704,13 @@ export type ListServiceQuotaIncreaseRequestsInTemplateError =
 /**
  * Lists the quota increase requests in the specified quota request template.
  */
-export const listServiceQuotaIncreaseRequestsInTemplate: API.OperationMethod<
+export const listServiceQuotaIncreaseRequestsInTemplate: API.PaginatedOperationMethod<
   ListServiceQuotaIncreaseRequestsInTemplateRequest,
   ListServiceQuotaIncreaseRequestsInTemplateResponse,
   ListServiceQuotaIncreaseRequestsInTemplateError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
-  ) => stream.Stream<
-    ListServiceQuotaIncreaseRequestsInTemplateResponse,
-    ListServiceQuotaIncreaseRequestsInTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
-  ) => stream.Stream<
-    ServiceQuotaIncreaseRequestInTemplate,
-    ListServiceQuotaIncreaseRequestsInTemplateError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceQuotaIncreaseRequestInTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
   output: ListServiceQuotaIncreaseRequestsInTemplateResponse,
   errors: [
@@ -1805,27 +1748,13 @@ export type ListServiceQuotasError =
  * quota, the quota is not retrieved. Filter responses to return applied quota values at
  * either the account level, resource level, or all levels.
  */
-export const listServiceQuotas: API.OperationMethod<
+export const listServiceQuotas: API.PaginatedOperationMethod<
   ListServiceQuotasRequest,
   ListServiceQuotasResponse,
   ListServiceQuotasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceQuotasRequest,
-  ) => stream.Stream<
-    ListServiceQuotasResponse,
-    ListServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceQuotasRequest,
-  ) => stream.Stream<
-    ServiceQuota,
-    ListServiceQuotasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceQuota
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceQuotasRequest,
   output: ListServiceQuotasResponse,
   errors: [
@@ -1857,27 +1786,13 @@ export type ListServicesError =
 /**
  * Lists the names and codes for the Amazon Web Services services integrated with Service Quotas.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ServiceInfo,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [

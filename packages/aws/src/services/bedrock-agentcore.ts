@@ -8575,27 +8575,13 @@ export type ListABTestsError =
 /**
  * Lists all A/B tests in the account.
  */
-export const listABTests: API.OperationMethod<
+export const listABTests: API.PaginatedOperationMethod<
   ListABTestsRequest,
   ListABTestsResponse,
   ListABTestsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListABTestsRequest,
-  ) => stream.Stream<
-    ListABTestsResponse,
-    ListABTestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListABTestsRequest,
-  ) => stream.Stream<
-    ABTestSummary,
-    ListABTestsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ABTestSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListABTestsRequest,
   output: ListABTestsResponse,
   errors: [
@@ -8630,27 +8616,13 @@ export type ListActorsError =
  *
  * To use this operation, you must have the `bedrock-agentcore:ListActors` permission.
  */
-export const listActors: API.OperationMethod<
+export const listActors: API.PaginatedOperationMethod<
   ListActorsInput,
   ListActorsOutput,
   ListActorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListActorsInput,
-  ) => stream.Stream<
-    ListActorsOutput,
-    ListActorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListActorsInput,
-  ) => stream.Stream<
-    ActorSummary,
-    ListActorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ActorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActorsInput,
   output: ListActorsOutput,
   errors: [
@@ -8683,27 +8655,13 @@ export type ListBatchEvaluationsError =
 /**
  * Lists all batch evaluations in the account, providing summary information about each evaluation's status and configuration.
  */
-export const listBatchEvaluations: API.OperationMethod<
+export const listBatchEvaluations: API.PaginatedOperationMethod<
   ListBatchEvaluationsRequest,
   ListBatchEvaluationsResponse,
   ListBatchEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchEvaluationsRequest,
-  ) => stream.Stream<
-    ListBatchEvaluationsResponse,
-    ListBatchEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchEvaluationsRequest,
-  ) => stream.Stream<
-    BatchEvaluationSummary,
-    ListBatchEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BatchEvaluationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchEvaluationsRequest,
   output: ListBatchEvaluationsResponse,
   errors: [
@@ -8818,27 +8776,13 @@ export type ListEventsError =
  *
  * To use this operation, you must have the `bedrock-agentcore:ListEvents` permission.
  */
-export const listEvents: API.OperationMethod<
+export const listEvents: API.PaginatedOperationMethod<
   ListEventsInput,
   ListEventsOutput,
   ListEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventsInput,
-  ) => stream.Stream<
-    ListEventsOutput,
-    ListEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventsInput,
-  ) => stream.Stream<
-    Event,
-    ListEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventsInput,
   output: ListEventsOutput,
   errors: [
@@ -8874,27 +8818,13 @@ export type ListMemoryExtractionJobsError =
  *
  * To use this operation, you must have the `bedrock-agentcore:ListMemoryExtractionJobs` permission.
  */
-export const listMemoryExtractionJobs: API.OperationMethod<
+export const listMemoryExtractionJobs: API.PaginatedOperationMethod<
   ListMemoryExtractionJobsInput,
   ListMemoryExtractionJobsOutput,
   ListMemoryExtractionJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemoryExtractionJobsInput,
-  ) => stream.Stream<
-    ListMemoryExtractionJobsOutput,
-    ListMemoryExtractionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemoryExtractionJobsInput,
-  ) => stream.Stream<
-    ExtractionJobMetadata,
-    ListMemoryExtractionJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExtractionJobMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryExtractionJobsInput,
   output: ListMemoryExtractionJobsOutput,
   errors: [
@@ -8930,27 +8860,13 @@ export type ListMemoryRecordsError =
  *
  * To use this operation, you must have the `bedrock-agentcore:ListMemoryRecords` permission.
  */
-export const listMemoryRecords: API.OperationMethod<
+export const listMemoryRecords: API.PaginatedOperationMethod<
   ListMemoryRecordsInput,
   ListMemoryRecordsOutput,
   ListMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMemoryRecordsInput,
-  ) => stream.Stream<
-    ListMemoryRecordsOutput,
-    ListMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMemoryRecordsInput,
-  ) => stream.Stream<
-    MemoryRecordSummary,
-    ListMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MemoryRecordSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemoryRecordsInput,
   output: ListMemoryRecordsOutput,
   errors: [
@@ -8982,27 +8898,13 @@ export type ListPaymentInstrumentsError =
 /**
  * List payment instruments for a manager.
  */
-export const listPaymentInstruments: API.OperationMethod<
+export const listPaymentInstruments: API.PaginatedOperationMethod<
   ListPaymentInstrumentsRequest,
   ListPaymentInstrumentsResponse,
   ListPaymentInstrumentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentInstrumentsRequest,
-  ) => stream.Stream<
-    ListPaymentInstrumentsResponse,
-    ListPaymentInstrumentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentInstrumentsRequest,
-  ) => stream.Stream<
-    PaymentInstrumentSummary,
-    ListPaymentInstrumentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PaymentInstrumentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentInstrumentsRequest,
   output: ListPaymentInstrumentsResponse,
   errors: [
@@ -9031,27 +8933,13 @@ export type ListPaymentSessionsError =
 /**
  * List payment sessions.
  */
-export const listPaymentSessions: API.OperationMethod<
+export const listPaymentSessions: API.PaginatedOperationMethod<
   ListPaymentSessionsRequest,
   ListPaymentSessionsResponse,
   ListPaymentSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentSessionsRequest,
-  ) => stream.Stream<
-    ListPaymentSessionsResponse,
-    ListPaymentSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentSessionsRequest,
-  ) => stream.Stream<
-    PaymentSessionSummary,
-    ListPaymentSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PaymentSessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPaymentSessionsRequest,
   output: ListPaymentSessionsResponse,
   errors: [
@@ -9080,27 +8968,13 @@ export type ListRecommendationsError =
 /**
  * Lists all recommendations in the account, with optional filtering by status.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    RecommendationSummary,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -9136,27 +9010,13 @@ export type ListSessionsError =
  *
  * To use this operation, you must have the `bedrock-agentcore:ListSessions` permission.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsInput,
   ListSessionsOutput,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsInput,
-  ) => stream.Stream<
-    ListSessionsOutput,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsInput,
-  ) => stream.Stream<
-    SessionSummary,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsInput,
   output: ListSessionsOutput,
   errors: [
@@ -9225,27 +9085,13 @@ export type RetrieveMemoryRecordsError =
  *
  * To use this operation, you must have the `bedrock-agentcore:RetrieveMemoryRecords` permission.
  */
-export const retrieveMemoryRecords: API.OperationMethod<
+export const retrieveMemoryRecords: API.PaginatedOperationMethod<
   RetrieveMemoryRecordsInput,
   RetrieveMemoryRecordsOutput,
   RetrieveMemoryRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: RetrieveMemoryRecordsInput,
-  ) => stream.Stream<
-    RetrieveMemoryRecordsOutput,
-    RetrieveMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: RetrieveMemoryRecordsInput,
-  ) => stream.Stream<
-    MemoryRecordSummary,
-    RetrieveMemoryRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MemoryRecordSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: RetrieveMemoryRecordsInput,
   output: RetrieveMemoryRecordsOutput,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4420,27 +4419,13 @@ export type ListKxChangesetsError =
 /**
  * Returns a list of all the changesets for a database.
  */
-export const listKxChangesets: API.OperationMethod<
+export const listKxChangesets: API.PaginatedOperationMethod<
   ListKxChangesetsRequest,
   ListKxChangesetsResponse,
   ListKxChangesetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxChangesetsRequest,
-  ) => stream.Stream<
-    ListKxChangesetsResponse,
-    ListKxChangesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxChangesetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxChangesetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxChangesetsRequest,
   output: ListKxChangesetsResponse,
   errors: [
@@ -4471,27 +4456,13 @@ export type ListKxClusterNodesError =
 /**
  * Lists all the nodes in a kdb cluster.
  */
-export const listKxClusterNodes: API.OperationMethod<
+export const listKxClusterNodes: API.PaginatedOperationMethod<
   ListKxClusterNodesRequest,
   ListKxClusterNodesResponse,
   ListKxClusterNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxClusterNodesRequest,
-  ) => stream.Stream<
-    ListKxClusterNodesResponse,
-    ListKxClusterNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxClusterNodesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxClusterNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxClusterNodesRequest,
   output: ListKxClusterNodesResponse,
   errors: [
@@ -4556,27 +4527,13 @@ export type ListKxDatabasesError =
 /**
  * Returns a list of all the databases in the kdb environment.
  */
-export const listKxDatabases: API.OperationMethod<
+export const listKxDatabases: API.PaginatedOperationMethod<
   ListKxDatabasesRequest,
   ListKxDatabasesResponse,
   ListKxDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxDatabasesRequest,
-  ) => stream.Stream<
-    ListKxDatabasesResponse,
-    ListKxDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxDatabasesRequest,
   output: ListKxDatabasesResponse,
   errors: [
@@ -4606,27 +4563,13 @@ export type ListKxDataviewsError =
 /**
  * Returns a list of all the dataviews in the database.
  */
-export const listKxDataviews: API.OperationMethod<
+export const listKxDataviews: API.PaginatedOperationMethod<
   ListKxDataviewsRequest,
   ListKxDataviewsResponse,
   ListKxDataviewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxDataviewsRequest,
-  ) => stream.Stream<
-    ListKxDataviewsResponse,
-    ListKxDataviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxDataviewsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxDataviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxDataviewsRequest,
   output: ListKxDataviewsResponse,
   errors: [
@@ -4654,27 +4597,13 @@ export type ListKxEnvironmentsError =
 /**
  * Returns a list of kdb environments created in an account.
  */
-export const listKxEnvironments: API.OperationMethod<
+export const listKxEnvironments: API.PaginatedOperationMethod<
   ListKxEnvironmentsRequest,
   ListKxEnvironmentsResponse,
   ListKxEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxEnvironmentsRequest,
-  ) => stream.Stream<
-    ListKxEnvironmentsResponse,
-    ListKxEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxEnvironmentsRequest,
-  ) => stream.Stream<
-    KxEnvironment,
-    ListKxEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KxEnvironment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxEnvironmentsRequest,
   output: ListKxEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -4701,27 +4630,13 @@ export type ListKxScalingGroupsError =
 /**
  * Returns a list of scaling groups in a kdb environment.
  */
-export const listKxScalingGroups: API.OperationMethod<
+export const listKxScalingGroups: API.PaginatedOperationMethod<
   ListKxScalingGroupsRequest,
   ListKxScalingGroupsResponse,
   ListKxScalingGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKxScalingGroupsRequest,
-  ) => stream.Stream<
-    ListKxScalingGroupsResponse,
-    ListKxScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKxScalingGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListKxScalingGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKxScalingGroupsRequest,
   output: ListKxScalingGroupsResponse,
   errors: [

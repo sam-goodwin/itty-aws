@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -373,27 +372,13 @@ export type DescribeServicesError =
 /**
  * Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as `AmazonEC2`, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are `volumeType`, `maxIopsVolume`, `operation`, `locationType`, and `instanceCapacity10xlarge`.
  */
-export const describeServices: API.OperationMethod<
+export const describeServices: API.PaginatedOperationMethod<
   DescribeServicesRequest,
   DescribeServicesResponse,
   DescribeServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServicesRequest,
-  ) => stream.Stream<
-    DescribeServicesResponse,
-    DescribeServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServicesRequest,
-  ) => stream.Stream<
-    Service,
-    DescribeServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Service
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [
@@ -428,27 +413,13 @@ export type GetAttributeValuesError =
 /**
  * Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see Offer File Definitions in the Billing and Cost Management User Guide.
  */
-export const getAttributeValues: API.OperationMethod<
+export const getAttributeValues: API.PaginatedOperationMethod<
   GetAttributeValuesRequest,
   GetAttributeValuesResponse,
   GetAttributeValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAttributeValuesRequest,
-  ) => stream.Stream<
-    GetAttributeValuesResponse,
-    GetAttributeValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAttributeValuesRequest,
-  ) => stream.Stream<
-    AttributeValue,
-    GetAttributeValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttributeValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAttributeValuesRequest,
   output: GetAttributeValuesResponse,
   errors: [
@@ -517,27 +488,13 @@ export type GetProductsError =
 /**
  * Returns a list of all products that match the filter criteria.
  */
-export const getProducts: API.OperationMethod<
+export const getProducts: API.PaginatedOperationMethod<
   GetProductsRequest,
   GetProductsResponse,
   GetProductsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetProductsRequest,
-  ) => stream.Stream<
-    GetProductsResponse,
-    GetProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetProductsRequest,
-  ) => stream.Stream<
-    SynthesizedJsonPriceListJsonItem,
-    GetProductsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SynthesizedJsonPriceListJsonItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetProductsRequest,
   output: GetProductsResponse,
   errors: [
@@ -575,27 +532,13 @@ export type ListPriceListsError =
  *
  * This returns a list of Price List references that the requester if authorized to view, given a `ServiceCode`, `CurrencyCode`, and an `EffectiveDate`. Use without a `RegionCode` filter to list Price List references from all available Amazon Web Services Regions. Use with a `RegionCode` filter to get the Price List reference that's specific to a specific Amazon Web Services Region. You can use the `PriceListArn` from the response to get your preferred Price List files through the GetPriceListFileUrl API.
  */
-export const listPriceLists: API.OperationMethod<
+export const listPriceLists: API.PaginatedOperationMethod<
   ListPriceListsRequest,
   ListPriceListsResponse,
   ListPriceListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPriceListsRequest,
-  ) => stream.Stream<
-    ListPriceListsResponse,
-    ListPriceListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPriceListsRequest,
-  ) => stream.Stream<
-    PriceList,
-    ListPriceListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PriceList
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPriceListsRequest,
   output: ListPriceListsResponse,
   errors: [

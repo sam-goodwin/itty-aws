@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2973,27 +2972,13 @@ export type ListAccessPoliciesError =
 /**
  * Returns information about a list of OpenSearch Serverless access policies.
  */
-export const listAccessPolicies: API.OperationMethod<
+export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesRequest,
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    ListAccessPoliciesResponse,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAccessPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [InternalServerException, ValidationException],
@@ -3010,27 +2995,13 @@ export type ListCollectionGroupsError =
 /**
  * Returns a list of collection groups. For more information, see Creating and managing Amazon OpenSearch Serverless collections.
  */
-export const listCollectionGroups: API.OperationMethod<
+export const listCollectionGroups: API.PaginatedOperationMethod<
   ListCollectionGroupsRequest,
   ListCollectionGroupsResponse,
   ListCollectionGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollectionGroupsRequest,
-  ) => stream.Stream<
-    ListCollectionGroupsResponse,
-    ListCollectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollectionGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCollectionGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionGroupsRequest,
   output: ListCollectionGroupsResponse,
   errors: [InternalServerException, ValidationException],
@@ -3049,27 +3020,13 @@ export type ListCollectionsError =
  *
  * Make sure to include an empty request body {} if you don't include any collection filters in the request.
  */
-export const listCollections: API.OperationMethod<
+export const listCollections: API.PaginatedOperationMethod<
   ListCollectionsRequest,
   ListCollectionsResponse,
   ListCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCollectionsRequest,
-  ) => stream.Stream<
-    ListCollectionsResponse,
-    ListCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCollectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [InternalServerException, ValidationException],
@@ -3086,27 +3043,13 @@ export type ListLifecyclePoliciesError =
 /**
  * Returns a list of OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.
  */
-export const listLifecyclePolicies: API.OperationMethod<
+export const listLifecyclePolicies: API.PaginatedOperationMethod<
   ListLifecyclePoliciesRequest,
   ListLifecyclePoliciesResponse,
   ListLifecyclePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLifecyclePoliciesRequest,
-  ) => stream.Stream<
-    ListLifecyclePoliciesResponse,
-    ListLifecyclePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLifecyclePoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLifecyclePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLifecyclePoliciesRequest,
   output: ListLifecyclePoliciesResponse,
   errors: [InternalServerException, ValidationException],
@@ -3123,27 +3066,13 @@ export type ListSecurityConfigsError =
 /**
  * Returns information about configured OpenSearch Serverless security configurations. For more information, see SAML authentication for Amazon OpenSearch Serverless.
  */
-export const listSecurityConfigs: API.OperationMethod<
+export const listSecurityConfigs: API.PaginatedOperationMethod<
   ListSecurityConfigsRequest,
   ListSecurityConfigsResponse,
   ListSecurityConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityConfigsRequest,
-  ) => stream.Stream<
-    ListSecurityConfigsResponse,
-    ListSecurityConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityConfigsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecurityConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigsRequest,
   output: ListSecurityConfigsResponse,
   errors: [InternalServerException, ValidationException],
@@ -3160,27 +3089,13 @@ export type ListSecurityPoliciesError =
 /**
  * Returns information about configured OpenSearch Serverless security policies.
  */
-export const listSecurityPolicies: API.OperationMethod<
+export const listSecurityPolicies: API.PaginatedOperationMethod<
   ListSecurityPoliciesRequest,
   ListSecurityPoliciesResponse,
   ListSecurityPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSecurityPoliciesRequest,
-  ) => stream.Stream<
-    ListSecurityPoliciesResponse,
-    ListSecurityPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSecurityPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSecurityPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityPoliciesRequest,
   output: ListSecurityPoliciesResponse,
   errors: [InternalServerException, ValidationException],
@@ -3223,27 +3138,13 @@ export type ListVpcEndpointsError =
 /**
  * Returns the OpenSearch Serverless-managed interface VPC endpoints associated with the current account. For more information, see Access Amazon OpenSearch Serverless using an interface endpoint.
  */
-export const listVpcEndpoints: API.OperationMethod<
+export const listVpcEndpoints: API.PaginatedOperationMethod<
   ListVpcEndpointsRequest,
   ListVpcEndpointsResponse,
   ListVpcEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVpcEndpointsRequest,
-  ) => stream.Stream<
-    ListVpcEndpointsResponse,
-    ListVpcEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVpcEndpointsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListVpcEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [InternalServerException, ValidationException],

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -436,27 +435,13 @@ export type ListItemsError =
  * Provides a list of metadata entries about folders and objects in the specified
  * folder.
  */
-export const listItems: API.OperationMethod<
+export const listItems: API.PaginatedOperationMethod<
   ListItemsRequest,
   ListItemsResponse,
   ListItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListItemsRequest,
-  ) => stream.Stream<
-    ListItemsResponse,
-    ListItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListItemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListItemsRequest,
   output: ListItemsResponse,
   errors: [ContainerNotFoundException, InternalServerError],

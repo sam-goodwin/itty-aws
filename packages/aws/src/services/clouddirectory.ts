@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5379,27 +5378,13 @@ export type ListAppliedSchemaArnsError =
 /**
  * Lists schema major versions applied to a directory. If `SchemaArn` is provided, lists the minor version.
  */
-export const listAppliedSchemaArns: API.OperationMethod<
+export const listAppliedSchemaArns: API.PaginatedOperationMethod<
   ListAppliedSchemaArnsRequest,
   ListAppliedSchemaArnsResponse,
   ListAppliedSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppliedSchemaArnsRequest,
-  ) => stream.Stream<
-    ListAppliedSchemaArnsResponse,
-    ListAppliedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAppliedSchemaArnsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAppliedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppliedSchemaArnsRequest,
   output: ListAppliedSchemaArnsResponse,
   errors: [
@@ -5435,27 +5420,13 @@ export type ListAttachedIndicesError =
 /**
  * Lists indices attached to the specified object.
  */
-export const listAttachedIndices: API.OperationMethod<
+export const listAttachedIndices: API.PaginatedOperationMethod<
   ListAttachedIndicesRequest,
   ListAttachedIndicesResponse,
   ListAttachedIndicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedIndicesRequest,
-  ) => stream.Stream<
-    ListAttachedIndicesResponse,
-    ListAttachedIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedIndicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAttachedIndicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedIndicesRequest,
   output: ListAttachedIndicesResponse,
   errors: [
@@ -5492,27 +5463,13 @@ export type ListDevelopmentSchemaArnsError =
  * Retrieves each Amazon Resource Name (ARN) of schemas in the development
  * state.
  */
-export const listDevelopmentSchemaArns: API.OperationMethod<
+export const listDevelopmentSchemaArns: API.PaginatedOperationMethod<
   ListDevelopmentSchemaArnsRequest,
   ListDevelopmentSchemaArnsResponse,
   ListDevelopmentSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevelopmentSchemaArnsRequest,
-  ) => stream.Stream<
-    ListDevelopmentSchemaArnsResponse,
-    ListDevelopmentSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevelopmentSchemaArnsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevelopmentSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevelopmentSchemaArnsRequest,
   output: ListDevelopmentSchemaArnsResponse,
   errors: [
@@ -5547,27 +5504,13 @@ export type ListDirectoriesError =
 /**
  * Lists directories created within an account.
  */
-export const listDirectories: API.OperationMethod<
+export const listDirectories: API.PaginatedOperationMethod<
   ListDirectoriesRequest,
   ListDirectoriesResponse,
   ListDirectoriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDirectoriesRequest,
-  ) => stream.Stream<
-    ListDirectoriesResponse,
-    ListDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDirectoriesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDirectoriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoriesRequest,
   output: ListDirectoriesResponse,
   errors: [
@@ -5603,27 +5546,13 @@ export type ListFacetAttributesError =
 /**
  * Retrieves attributes attached to the facet.
  */
-export const listFacetAttributes: API.OperationMethod<
+export const listFacetAttributes: API.PaginatedOperationMethod<
   ListFacetAttributesRequest,
   ListFacetAttributesResponse,
   ListFacetAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFacetAttributesRequest,
-  ) => stream.Stream<
-    ListFacetAttributesResponse,
-    ListFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFacetAttributesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacetAttributesRequest,
   output: ListFacetAttributesResponse,
   errors: [
@@ -5660,27 +5589,13 @@ export type ListFacetNamesError =
 /**
  * Retrieves the names of facets that exist in a schema.
  */
-export const listFacetNames: API.OperationMethod<
+export const listFacetNames: API.PaginatedOperationMethod<
   ListFacetNamesRequest,
   ListFacetNamesResponse,
   ListFacetNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFacetNamesRequest,
-  ) => stream.Stream<
-    ListFacetNamesResponse,
-    ListFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFacetNamesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFacetNamesRequest,
   output: ListFacetNamesResponse,
   errors: [
@@ -5761,27 +5676,13 @@ export type ListIndexError =
 /**
  * Lists objects attached to the specified index.
  */
-export const listIndex: API.OperationMethod<
+export const listIndex: API.PaginatedOperationMethod<
   ListIndexRequest,
   ListIndexResponse,
   ListIndexError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexRequest,
-  ) => stream.Stream<
-    ListIndexResponse,
-    ListIndexError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndexRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIndexError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexRequest,
   output: ListIndexResponse,
   errors: [
@@ -5818,27 +5719,13 @@ export type ListManagedSchemaArnsError =
 /**
  * Lists the major version families of each managed schema. If a major version ARN is provided as SchemaArn, the minor version revisions in that family are listed instead.
  */
-export const listManagedSchemaArns: API.OperationMethod<
+export const listManagedSchemaArns: API.PaginatedOperationMethod<
   ListManagedSchemaArnsRequest,
   ListManagedSchemaArnsResponse,
   ListManagedSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedSchemaArnsRequest,
-  ) => stream.Stream<
-    ListManagedSchemaArnsResponse,
-    ListManagedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedSchemaArnsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListManagedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedSchemaArnsRequest,
   output: ListManagedSchemaArnsResponse,
   errors: [
@@ -5874,27 +5761,13 @@ export type ListObjectAttributesError =
 /**
  * Lists all attributes that are associated with an object.
  */
-export const listObjectAttributes: API.OperationMethod<
+export const listObjectAttributes: API.PaginatedOperationMethod<
   ListObjectAttributesRequest,
   ListObjectAttributesResponse,
   ListObjectAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectAttributesRequest,
-  ) => stream.Stream<
-    ListObjectAttributesResponse,
-    ListObjectAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectAttributesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListObjectAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectAttributesRequest,
   output: ListObjectAttributesResponse,
   errors: [
@@ -5935,27 +5808,13 @@ export type ListObjectChildrenError =
  * Returns a paginated list of child objects that are associated with a given
  * object.
  */
-export const listObjectChildren: API.OperationMethod<
+export const listObjectChildren: API.PaginatedOperationMethod<
   ListObjectChildrenRequest,
   ListObjectChildrenResponse,
   ListObjectChildrenError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectChildrenRequest,
-  ) => stream.Stream<
-    ListObjectChildrenResponse,
-    ListObjectChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectChildrenRequest,
-  ) => stream.Stream<
-    unknown,
-    ListObjectChildrenError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectChildrenRequest,
   output: ListObjectChildrenResponse,
   errors: [
@@ -6002,27 +5861,13 @@ export type ListObjectParentPathsError =
  * objects are deleted or moved. Paths not leading to the directory root are ignored from the
  * target object.
  */
-export const listObjectParentPaths: API.OperationMethod<
+export const listObjectParentPaths: API.PaginatedOperationMethod<
   ListObjectParentPathsRequest,
   ListObjectParentPathsResponse,
   ListObjectParentPathsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectParentPathsRequest,
-  ) => stream.Stream<
-    ListObjectParentPathsResponse,
-    ListObjectParentPathsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectParentPathsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListObjectParentPathsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectParentPathsRequest,
   output: ListObjectParentPathsResponse,
   errors: [
@@ -6062,27 +5907,13 @@ export type ListObjectParentsError =
  * Lists parent objects that are associated with a given object in pagination
  * fashion.
  */
-export const listObjectParents: API.OperationMethod<
+export const listObjectParents: API.PaginatedOperationMethod<
   ListObjectParentsRequest,
   ListObjectParentsResponse,
   ListObjectParentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectParentsRequest,
-  ) => stream.Stream<
-    ListObjectParentsResponse,
-    ListObjectParentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectParentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListObjectParentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectParentsRequest,
   output: ListObjectParentsResponse,
   errors: [
@@ -6121,27 +5952,13 @@ export type ListObjectPoliciesError =
 /**
  * Returns policies attached to an object in pagination fashion.
  */
-export const listObjectPolicies: API.OperationMethod<
+export const listObjectPolicies: API.PaginatedOperationMethod<
   ListObjectPoliciesRequest,
   ListObjectPoliciesResponse,
   ListObjectPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListObjectPoliciesRequest,
-  ) => stream.Stream<
-    ListObjectPoliciesResponse,
-    ListObjectPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListObjectPoliciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListObjectPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListObjectPoliciesRequest,
   output: ListObjectPoliciesResponse,
   errors: [
@@ -6222,27 +6039,13 @@ export type ListPolicyAttachmentsError =
 /**
  * Returns all of the `ObjectIdentifiers` to which a given policy is attached.
  */
-export const listPolicyAttachments: API.OperationMethod<
+export const listPolicyAttachments: API.PaginatedOperationMethod<
   ListPolicyAttachmentsRequest,
   ListPolicyAttachmentsResponse,
   ListPolicyAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyAttachmentsRequest,
-  ) => stream.Stream<
-    ListPolicyAttachmentsResponse,
-    ListPolicyAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyAttachmentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPolicyAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyAttachmentsRequest,
   output: ListPolicyAttachmentsResponse,
   errors: [
@@ -6280,27 +6083,13 @@ export type ListPublishedSchemaArnsError =
 /**
  * Lists the major version families of each published schema. If a major version ARN is provided as `SchemaArn`, the minor version revisions in that family are listed instead.
  */
-export const listPublishedSchemaArns: API.OperationMethod<
+export const listPublishedSchemaArns: API.PaginatedOperationMethod<
   ListPublishedSchemaArnsRequest,
   ListPublishedSchemaArnsResponse,
   ListPublishedSchemaArnsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPublishedSchemaArnsRequest,
-  ) => stream.Stream<
-    ListPublishedSchemaArnsResponse,
-    ListPublishedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPublishedSchemaArnsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPublishedSchemaArnsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPublishedSchemaArnsRequest,
   output: ListPublishedSchemaArnsResponse,
   errors: [
@@ -6338,27 +6127,13 @@ export type ListTagsForResourceError =
  * limit of 50 tags per directory. All 50 tags are returned for a given directory with this API
  * call.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -6395,27 +6170,13 @@ export type ListTypedLinkFacetAttributesError =
 /**
  * Returns a paginated list of all attribute definitions for a particular TypedLinkFacet. For more information, see Typed Links.
  */
-export const listTypedLinkFacetAttributes: API.OperationMethod<
+export const listTypedLinkFacetAttributes: API.PaginatedOperationMethod<
   ListTypedLinkFacetAttributesRequest,
   ListTypedLinkFacetAttributesResponse,
   ListTypedLinkFacetAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypedLinkFacetAttributesRequest,
-  ) => stream.Stream<
-    ListTypedLinkFacetAttributesResponse,
-    ListTypedLinkFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypedLinkFacetAttributesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTypedLinkFacetAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypedLinkFacetAttributesRequest,
   output: ListTypedLinkFacetAttributesResponse,
   errors: [
@@ -6453,27 +6214,13 @@ export type ListTypedLinkFacetNamesError =
  * Returns a paginated list of `TypedLink` facet names for a particular schema.
  * For more information, see Typed Links.
  */
-export const listTypedLinkFacetNames: API.OperationMethod<
+export const listTypedLinkFacetNames: API.PaginatedOperationMethod<
   ListTypedLinkFacetNamesRequest,
   ListTypedLinkFacetNamesResponse,
   ListTypedLinkFacetNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypedLinkFacetNamesRequest,
-  ) => stream.Stream<
-    ListTypedLinkFacetNamesResponse,
-    ListTypedLinkFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypedLinkFacetNamesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTypedLinkFacetNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypedLinkFacetNamesRequest,
   output: ListTypedLinkFacetNamesResponse,
   errors: [
@@ -6515,27 +6262,13 @@ export type LookupPolicyError =
  * `policyType`. Paths that don't lead to the root from the target object are ignored. For more
  * information, see Policies.
  */
-export const lookupPolicy: API.OperationMethod<
+export const lookupPolicy: API.PaginatedOperationMethod<
   LookupPolicyRequest,
   LookupPolicyResponse,
   LookupPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: LookupPolicyRequest,
-  ) => stream.Stream<
-    LookupPolicyResponse,
-    LookupPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: LookupPolicyRequest,
-  ) => stream.Stream<
-    unknown,
-    LookupPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupPolicyRequest,
   output: LookupPolicyResponse,
   errors: [

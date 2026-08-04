@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6146,27 +6145,13 @@ export type ListCidrBlocksError =
 /**
  * Returns a paginated list of location objects and their CIDR blocks.
  */
-export const listCidrBlocks: API.OperationMethod<
+export const listCidrBlocks: API.PaginatedOperationMethod<
   ListCidrBlocksRequest,
   ListCidrBlocksResponse,
   ListCidrBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCidrBlocksRequest,
-  ) => stream.Stream<
-    ListCidrBlocksResponse,
-    ListCidrBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCidrBlocksRequest,
-  ) => stream.Stream<
-    CidrBlockSummary,
-    ListCidrBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CidrBlockSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCidrBlocksRequest,
   output: ListCidrBlocksResponse,
   errors: [
@@ -6190,27 +6175,13 @@ export type ListCidrCollectionsError = InvalidInput | CommonErrors;
  * Returns a paginated list of CIDR collections in the Amazon Web Services account
  * (metadata only).
  */
-export const listCidrCollections: API.OperationMethod<
+export const listCidrCollections: API.PaginatedOperationMethod<
   ListCidrCollectionsRequest,
   ListCidrCollectionsResponse,
   ListCidrCollectionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCidrCollectionsRequest,
-  ) => stream.Stream<
-    ListCidrCollectionsResponse,
-    ListCidrCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCidrCollectionsRequest,
-  ) => stream.Stream<
-    CollectionSummary,
-    ListCidrCollectionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CollectionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCidrCollectionsRequest,
   output: ListCidrCollectionsResponse,
   errors: [InvalidInput],
@@ -6233,27 +6204,13 @@ export type ListCidrLocationsError =
  * Returns a paginated list of CIDR locations for the given collection (metadata only,
  * does not include CIDR blocks).
  */
-export const listCidrLocations: API.OperationMethod<
+export const listCidrLocations: API.PaginatedOperationMethod<
   ListCidrLocationsRequest,
   ListCidrLocationsResponse,
   ListCidrLocationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCidrLocationsRequest,
-  ) => stream.Stream<
-    ListCidrLocationsResponse,
-    ListCidrLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCidrLocationsRequest,
-  ) => stream.Stream<
-    LocationSummary,
-    ListCidrLocationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LocationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCidrLocationsRequest,
   output: ListCidrLocationsResponse,
   errors: [InvalidInput, NoSuchCidrCollectionException],
@@ -6304,27 +6261,13 @@ export type ListHealthChecksError =
 /**
  * Retrieve a list of the health checks that are associated with the current Amazon Web Services account.
  */
-export const listHealthChecks: API.OperationMethod<
+export const listHealthChecks: API.PaginatedOperationMethod<
   ListHealthChecksRequest,
   ListHealthChecksResponse,
   ListHealthChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHealthChecksRequest,
-  ) => stream.Stream<
-    ListHealthChecksResponse,
-    ListHealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHealthChecksRequest,
-  ) => stream.Stream<
-    HealthCheck,
-    ListHealthChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HealthCheck
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHealthChecksRequest,
   output: ListHealthChecksResponse,
   errors: [IncompatibleVersion, InvalidInput],
@@ -6353,27 +6296,13 @@ export type ListHostedZonesError =
  * hosted zones, you can use the `maxitems` parameter to list them in groups of
  * up to 100.
  */
-export const listHostedZones: API.OperationMethod<
+export const listHostedZones: API.PaginatedOperationMethod<
   ListHostedZonesRequest,
   ListHostedZonesResponse,
   ListHostedZonesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostedZonesRequest,
-  ) => stream.Stream<
-    ListHostedZonesResponse,
-    ListHostedZonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostedZonesRequest,
-  ) => stream.Stream<
-    HostedZone,
-    ListHostedZonesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HostedZone
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedZonesRequest,
   output: ListHostedZonesResponse,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
@@ -6527,27 +6456,13 @@ export type ListQueryLoggingConfigsError =
  * DNS query logs, appears in Logging DNS Queries in
  * the *Amazon Route 53 Developer Guide*.
  */
-export const listQueryLoggingConfigs: API.OperationMethod<
+export const listQueryLoggingConfigs: API.PaginatedOperationMethod<
   ListQueryLoggingConfigsRequest,
   ListQueryLoggingConfigsResponse,
   ListQueryLoggingConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueryLoggingConfigsRequest,
-  ) => stream.Stream<
-    ListQueryLoggingConfigsResponse,
-    ListQueryLoggingConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListQueryLoggingConfigsRequest,
-  ) => stream.Stream<
-    QueryLoggingConfig,
-    ListQueryLoggingConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QueryLoggingConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueryLoggingConfigsRequest,
   output: ListQueryLoggingConfigsResponse,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],

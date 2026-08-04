@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2752,27 +2751,13 @@ export type ListClientDevicesAssociatedWithCoreDeviceError =
  * Retrieves a paginated list of client devices that are associated with a core
  * device.
  */
-export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
+export const listClientDevicesAssociatedWithCoreDevice: API.PaginatedOperationMethod<
   ListClientDevicesAssociatedWithCoreDeviceRequest,
   ListClientDevicesAssociatedWithCoreDeviceResponse,
   ListClientDevicesAssociatedWithCoreDeviceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClientDevicesAssociatedWithCoreDeviceRequest,
-  ) => stream.Stream<
-    ListClientDevicesAssociatedWithCoreDeviceResponse,
-    ListClientDevicesAssociatedWithCoreDeviceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClientDevicesAssociatedWithCoreDeviceRequest,
-  ) => stream.Stream<
-    AssociatedClientDevice,
-    ListClientDevicesAssociatedWithCoreDeviceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociatedClientDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClientDevicesAssociatedWithCoreDeviceRequest,
   output: ListClientDevicesAssociatedWithCoreDeviceResponse,
   errors: [
@@ -2804,27 +2789,13 @@ export type ListComponentsError =
  * Retrieves a paginated list of component summaries. This list includes components that you
  * have permission to view.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    Component,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Component
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [
@@ -2856,27 +2827,13 @@ export type ListComponentVersionsError =
  * Retrieves a paginated list of all versions for a component. Greater versions are listed
  * first.
  */
-export const listComponentVersions: API.OperationMethod<
+export const listComponentVersions: API.PaginatedOperationMethod<
   ListComponentVersionsRequest,
   ListComponentVersionsResponse,
   ListComponentVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentVersionsRequest,
-  ) => stream.Stream<
-    ListComponentVersionsResponse,
-    ListComponentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentVersionsRequest,
-  ) => stream.Stream<
-    ComponentVersionListItem,
-    ListComponentVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComponentVersionListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentVersionsRequest,
   output: ListComponentVersionsResponse,
   errors: [
@@ -2930,27 +2887,13 @@ export type ListCoreDevicesError =
  * - For IoT Greengrass Core v2.7.0, the core device sends status updates upon local deployment and
  * cloud deployment
  */
-export const listCoreDevices: API.OperationMethod<
+export const listCoreDevices: API.PaginatedOperationMethod<
   ListCoreDevicesRequest,
   ListCoreDevicesResponse,
   ListCoreDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCoreDevicesRequest,
-  ) => stream.Stream<
-    ListCoreDevicesResponse,
-    ListCoreDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCoreDevicesRequest,
-  ) => stream.Stream<
-    CoreDevice,
-    ListCoreDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CoreDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCoreDevicesRequest,
   output: ListCoreDevicesResponse,
   errors: [
@@ -2979,27 +2922,13 @@ export type ListDeploymentsError =
 /**
  * Retrieves a paginated list of deployments.
  */
-export const listDeployments: API.OperationMethod<
+export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   ListDeploymentsResponse,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    ListDeploymentsResponse,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    Deployment,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [
@@ -3029,27 +2958,13 @@ export type ListEffectiveDeploymentsError =
 /**
  * Retrieves a paginated list of deployment jobs that IoT Greengrass sends to Greengrass core devices.
  */
-export const listEffectiveDeployments: API.OperationMethod<
+export const listEffectiveDeployments: API.PaginatedOperationMethod<
   ListEffectiveDeploymentsRequest,
   ListEffectiveDeploymentsResponse,
   ListEffectiveDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEffectiveDeploymentsRequest,
-  ) => stream.Stream<
-    ListEffectiveDeploymentsResponse,
-    ListEffectiveDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEffectiveDeploymentsRequest,
-  ) => stream.Stream<
-    EffectiveDeployment,
-    ListEffectiveDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EffectiveDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEffectiveDeploymentsRequest,
   output: ListEffectiveDeploymentsResponse,
   errors: [
@@ -3102,27 +3017,13 @@ export type ListInstalledComponentsError =
  * - For IoT Greengrass Core v2.7.0, the core device sends status updates upon local deployment and
  * cloud deployment
  */
-export const listInstalledComponents: API.OperationMethod<
+export const listInstalledComponents: API.PaginatedOperationMethod<
   ListInstalledComponentsRequest,
   ListInstalledComponentsResponse,
   ListInstalledComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstalledComponentsRequest,
-  ) => stream.Stream<
-    ListInstalledComponentsResponse,
-    ListInstalledComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstalledComponentsRequest,
-  ) => stream.Stream<
-    InstalledComponent,
-    ListInstalledComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstalledComponent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstalledComponentsRequest,
   output: ListInstalledComponentsResponse,
   errors: [

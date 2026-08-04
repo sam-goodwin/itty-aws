@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1221,27 +1220,13 @@ export type ListIndexesError =
  *
  * You must have the `s3vectors:ListIndexes` permission to use this operation.
  */
-export const listIndexes: API.OperationMethod<
+export const listIndexes: API.PaginatedOperationMethod<
   ListIndexesInput,
   ListIndexesOutput,
   ListIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexesInput,
-  ) => stream.Stream<
-    ListIndexesOutput,
-    ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndexesInput,
-  ) => stream.Stream<
-    IndexSummary,
-    ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  IndexSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1291,27 +1276,13 @@ export type ListVectorBucketsError = ServiceUnavailableException | CommonErrors;
  *
  * You must have the `s3vectors:ListVectorBuckets` permission to use this operation.
  */
-export const listVectorBuckets: API.OperationMethod<
+export const listVectorBuckets: API.PaginatedOperationMethod<
   ListVectorBucketsInput,
   ListVectorBucketsOutput,
   ListVectorBucketsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVectorBucketsInput,
-  ) => stream.Stream<
-    ListVectorBucketsOutput,
-    ListVectorBucketsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVectorBucketsInput,
-  ) => stream.Stream<
-    VectorBucketSummary,
-    ListVectorBucketsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VectorBucketSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorBucketsInput,
   output: ListVectorBucketsOutput,
   errors: [ServiceUnavailableException],
@@ -1344,27 +1315,13 @@ export type ListVectorsError =
  *
  * - If you set `returnData` or `returnMetadata` to true, you must have both `s3vectors:ListVectors` and `s3vectors:GetVectors` permissions. The request fails with a `403 Forbidden` error if you request vector data or metadata without the `s3vectors:GetVectors` permission.
  */
-export const listVectors: API.OperationMethod<
+export const listVectors: API.PaginatedOperationMethod<
   ListVectorsInput,
   ListVectorsOutput,
   ListVectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVectorsInput,
-  ) => stream.Stream<
-    ListVectorsOutput,
-    ListVectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVectorsInput,
-  ) => stream.Stream<
-    ListOutputVector,
-    ListVectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListOutputVector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorsInput,
   output: ListVectorsOutput,
   errors: [
@@ -1473,27 +1430,13 @@ export type QueryVectorsError =
  *
  * - If you specify a metadata filter or set `returnMetadata` to true, you must have both `s3vectors:QueryVectors` and `s3vectors:GetVectors` permissions. The request fails with a `403 Forbidden error` if you request metadata filtering or metadata without the `s3vectors:GetVectors` permission.
  */
-export const queryVectors: API.OperationMethod<
+export const queryVectors: API.PaginatedOperationMethod<
   QueryVectorsInput,
   QueryVectorsOutput,
   QueryVectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryVectorsInput,
-  ) => stream.Stream<
-    QueryVectorsOutput,
-    QueryVectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryVectorsInput,
-  ) => stream.Stream<
-    QueryOutputVector,
-    QueryVectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  QueryOutputVector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryVectorsInput,
   output: QueryVectorsOutput,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2694,27 +2693,13 @@ export type ListApplicationInstanceDependenciesError =
 /**
  * Returns a list of application instance dependencies.
  */
-export const listApplicationInstanceDependencies: API.OperationMethod<
+export const listApplicationInstanceDependencies: API.PaginatedOperationMethod<
   ListApplicationInstanceDependenciesRequest,
   ListApplicationInstanceDependenciesResponse,
   ListApplicationInstanceDependenciesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationInstanceDependenciesRequest,
-  ) => stream.Stream<
-    ListApplicationInstanceDependenciesResponse,
-    ListApplicationInstanceDependenciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationInstanceDependenciesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationInstanceDependenciesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationInstanceDependenciesRequest,
   output: ListApplicationInstanceDependenciesResponse,
   errors: [AccessDeniedException, InternalServerException],
@@ -2735,27 +2720,13 @@ export type ListApplicationInstanceNodeInstancesError =
 /**
  * Returns a list of application node instances.
  */
-export const listApplicationInstanceNodeInstances: API.OperationMethod<
+export const listApplicationInstanceNodeInstances: API.PaginatedOperationMethod<
   ListApplicationInstanceNodeInstancesRequest,
   ListApplicationInstanceNodeInstancesResponse,
   ListApplicationInstanceNodeInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationInstanceNodeInstancesRequest,
-  ) => stream.Stream<
-    ListApplicationInstanceNodeInstancesResponse,
-    ListApplicationInstanceNodeInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationInstanceNodeInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationInstanceNodeInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationInstanceNodeInstancesRequest,
   output: ListApplicationInstanceNodeInstancesResponse,
   errors: [AccessDeniedException, InternalServerException],
@@ -2776,27 +2747,13 @@ export type ListApplicationInstancesError =
 /**
  * Returns a list of application instances.
  */
-export const listApplicationInstances: API.OperationMethod<
+export const listApplicationInstances: API.PaginatedOperationMethod<
   ListApplicationInstancesRequest,
   ListApplicationInstancesResponse,
   ListApplicationInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationInstancesRequest,
-  ) => stream.Stream<
-    ListApplicationInstancesResponse,
-    ListApplicationInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationInstancesRequest,
   output: ListApplicationInstancesResponse,
   errors: [AccessDeniedException, InternalServerException],
@@ -2819,27 +2776,13 @@ export type ListDevicesError =
 /**
  * Returns a list of devices.
  */
-export const listDevices: API.OperationMethod<
+export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResponse,
   ListDevicesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    ListDevicesResponse,
-    ListDevicesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevicesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [
@@ -2868,27 +2811,13 @@ export type ListDevicesJobsError =
 /**
  * Returns a list of jobs.
  */
-export const listDevicesJobs: API.OperationMethod<
+export const listDevicesJobs: API.PaginatedOperationMethod<
   ListDevicesJobsRequest,
   ListDevicesJobsResponse,
   ListDevicesJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesJobsRequest,
-  ) => stream.Stream<
-    ListDevicesJobsResponse,
-    ListDevicesJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDevicesJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesJobsRequest,
   output: ListDevicesJobsResponse,
   errors: [
@@ -2917,27 +2846,13 @@ export type ListNodeFromTemplateJobsError =
 /**
  * Returns a list of camera stream node jobs.
  */
-export const listNodeFromTemplateJobs: API.OperationMethod<
+export const listNodeFromTemplateJobs: API.PaginatedOperationMethod<
   ListNodeFromTemplateJobsRequest,
   ListNodeFromTemplateJobsResponse,
   ListNodeFromTemplateJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodeFromTemplateJobsRequest,
-  ) => stream.Stream<
-    ListNodeFromTemplateJobsResponse,
-    ListNodeFromTemplateJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodeFromTemplateJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNodeFromTemplateJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodeFromTemplateJobsRequest,
   output: ListNodeFromTemplateJobsResponse,
   errors: [
@@ -2964,27 +2879,13 @@ export type ListNodesError =
 /**
  * Returns a list of nodes.
  */
-export const listNodes: API.OperationMethod<
+export const listNodes: API.PaginatedOperationMethod<
   ListNodesRequest,
   ListNodesResponse,
   ListNodesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    ListNodesResponse,
-    ListNodesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNodesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNodesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesRequest,
   output: ListNodesResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
@@ -3007,27 +2908,13 @@ export type ListPackageImportJobsError =
 /**
  * Returns a list of package import jobs.
  */
-export const listPackageImportJobs: API.OperationMethod<
+export const listPackageImportJobs: API.PaginatedOperationMethod<
   ListPackageImportJobsRequest,
   ListPackageImportJobsResponse,
   ListPackageImportJobsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackageImportJobsRequest,
-  ) => stream.Stream<
-    ListPackageImportJobsResponse,
-    ListPackageImportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackageImportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackageImportJobsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackageImportJobsRequest,
   output: ListPackageImportJobsResponse,
   errors: [
@@ -3056,27 +2943,13 @@ export type ListPackagesError =
 /**
  * Returns a list of packages.
  */
-export const listPackages: API.OperationMethod<
+export const listPackages: API.PaginatedOperationMethod<
   ListPackagesRequest,
   ListPackagesResponse,
   ListPackagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    ListPackagesResponse,
-    ListPackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesRequest,
   output: ListPackagesResponse,
   errors: [

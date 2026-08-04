@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1851,27 +1850,13 @@ export type ListApplicationsError =
 /**
  * Lists all the applications registered with AWS Systems Manager for SAP.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsInput,
   ListApplicationsOutput,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ListApplicationsOutput,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [
@@ -1899,27 +1884,13 @@ export type ListComponentsError =
 /**
  * Lists all the components registered with AWS Systems Manager for SAP.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsInput,
   ListComponentsOutput,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsInput,
-  ) => stream.Stream<
-    ListComponentsOutput,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsInput,
-  ) => stream.Stream<
-    ComponentSummary,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ComponentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsInput,
   output: ListComponentsOutput,
   errors: [
@@ -1946,27 +1917,13 @@ export type ListConfigurationCheckDefinitionsError =
 /**
  * Lists all configuration check types supported by AWS Systems Manager for SAP.
  */
-export const listConfigurationCheckDefinitions: API.OperationMethod<
+export const listConfigurationCheckDefinitions: API.PaginatedOperationMethod<
   ListConfigurationCheckDefinitionsInput,
   ListConfigurationCheckDefinitionsOutput,
   ListConfigurationCheckDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationCheckDefinitionsInput,
-  ) => stream.Stream<
-    ListConfigurationCheckDefinitionsOutput,
-    ListConfigurationCheckDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationCheckDefinitionsInput,
-  ) => stream.Stream<
-    ConfigurationCheckDefinition,
-    ListConfigurationCheckDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationCheckDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationCheckDefinitionsInput,
   output: ListConfigurationCheckDefinitionsOutput,
   errors: [InternalServerException, ValidationException],
@@ -1989,27 +1946,13 @@ export type ListConfigurationCheckOperationsError =
 /**
  * Lists the configuration check operations performed by AWS Systems Manager for SAP.
  */
-export const listConfigurationCheckOperations: API.OperationMethod<
+export const listConfigurationCheckOperations: API.PaginatedOperationMethod<
   ListConfigurationCheckOperationsInput,
   ListConfigurationCheckOperationsOutput,
   ListConfigurationCheckOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationCheckOperationsInput,
-  ) => stream.Stream<
-    ListConfigurationCheckOperationsOutput,
-    ListConfigurationCheckOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationCheckOperationsInput,
-  ) => stream.Stream<
-    ConfigurationCheckOperation,
-    ListConfigurationCheckOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationCheckOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationCheckOperationsInput,
   output: ListConfigurationCheckOperationsOutput,
   errors: [
@@ -2036,27 +1979,13 @@ export type ListDatabasesError =
 /**
  * Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.
  */
-export const listDatabases: API.OperationMethod<
+export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesInput,
   ListDatabasesOutput,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesInput,
-  ) => stream.Stream<
-    ListDatabasesOutput,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesInput,
-  ) => stream.Stream<
-    DatabaseSummary,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatabaseSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesInput,
   output: ListDatabasesOutput,
   errors: [
@@ -2084,27 +2013,13 @@ export type ListOperationEventsError =
  *
  * Available parameters include `OperationID`, as well as optional parameters `MaxResults`, `NextToken`, and `Filters`.
  */
-export const listOperationEvents: API.OperationMethod<
+export const listOperationEvents: API.PaginatedOperationMethod<
   ListOperationEventsInput,
   ListOperationEventsOutput,
   ListOperationEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationEventsInput,
-  ) => stream.Stream<
-    ListOperationEventsOutput,
-    ListOperationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationEventsInput,
-  ) => stream.Stream<
-    OperationEvent,
-    ListOperationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OperationEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationEventsInput,
   output: ListOperationEventsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2126,27 +2041,13 @@ export type ListOperationsError =
 /**
  * Lists the operations performed by AWS Systems Manager for SAP.
  */
-export const listOperations: API.OperationMethod<
+export const listOperations: API.PaginatedOperationMethod<
   ListOperationsInput,
   ListOperationsOutput,
   ListOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsInput,
-  ) => stream.Stream<
-    ListOperationsOutput,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOperationsInput,
-  ) => stream.Stream<
-    Operation,
-    ListOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsInput,
   output: ListOperationsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2168,27 +2069,13 @@ export type ListSubCheckResultsError =
 /**
  * Lists the sub-check results of a specified configuration check operation.
  */
-export const listSubCheckResults: API.OperationMethod<
+export const listSubCheckResults: API.PaginatedOperationMethod<
   ListSubCheckResultsInput,
   ListSubCheckResultsOutput,
   ListSubCheckResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubCheckResultsInput,
-  ) => stream.Stream<
-    ListSubCheckResultsOutput,
-    ListSubCheckResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubCheckResultsInput,
-  ) => stream.Stream<
-    SubCheckResult,
-    ListSubCheckResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SubCheckResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubCheckResultsInput,
   output: ListSubCheckResultsOutput,
   errors: [InternalServerException, ValidationException],
@@ -2210,27 +2097,13 @@ export type ListSubCheckRuleResultsError =
 /**
  * Lists the rules of a specified sub-check belonging to a configuration check operation.
  */
-export const listSubCheckRuleResults: API.OperationMethod<
+export const listSubCheckRuleResults: API.PaginatedOperationMethod<
   ListSubCheckRuleResultsInput,
   ListSubCheckRuleResultsOutput,
   ListSubCheckRuleResultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubCheckRuleResultsInput,
-  ) => stream.Stream<
-    ListSubCheckRuleResultsOutput,
-    ListSubCheckRuleResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSubCheckRuleResultsInput,
-  ) => stream.Stream<
-    RuleResult,
-    ListSubCheckRuleResultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubCheckRuleResultsInput,
   output: ListSubCheckRuleResultsOutput,
   errors: [InternalServerException, ValidationException],

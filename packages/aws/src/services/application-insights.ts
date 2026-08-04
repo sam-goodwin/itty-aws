@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2012,27 +2011,13 @@ export type ListApplicationsError =
 /**
  * Lists the IDs of the applications that you are monitoring.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
@@ -2054,27 +2039,13 @@ export type ListComponentsError =
 /**
  * Lists the auto-grouped, standalone, and custom components of the application.
  */
-export const listComponents: API.OperationMethod<
+export const listComponents: API.PaginatedOperationMethod<
   ListComponentsRequest,
   ListComponentsResponse,
   ListComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    ListComponentsResponse,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListComponentsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [
@@ -2108,27 +2079,13 @@ export type ListConfigurationHistoryError =
  *
  * - ERROR: alarm not created due to permission errors or exceeding quotas.
  */
-export const listConfigurationHistory: API.OperationMethod<
+export const listConfigurationHistory: API.PaginatedOperationMethod<
   ListConfigurationHistoryRequest,
   ListConfigurationHistoryResponse,
   ListConfigurationHistoryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationHistoryRequest,
-  ) => stream.Stream<
-    ListConfigurationHistoryResponse,
-    ListConfigurationHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    ListConfigurationHistoryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationHistoryRequest,
   output: ListConfigurationHistoryResponse,
   errors: [
@@ -2154,27 +2111,13 @@ export type ListLogPatternsError =
 /**
  * Lists the log patterns in the specific log `LogPatternSet`.
  */
-export const listLogPatterns: API.OperationMethod<
+export const listLogPatterns: API.PaginatedOperationMethod<
   ListLogPatternsRequest,
   ListLogPatternsResponse,
   ListLogPatternsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogPatternsRequest,
-  ) => stream.Stream<
-    ListLogPatternsResponse,
-    ListLogPatternsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogPatternsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLogPatternsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogPatternsRequest,
   output: ListLogPatternsResponse,
   errors: [
@@ -2200,27 +2143,13 @@ export type ListLogPatternSetsError =
 /**
  * Lists the log pattern sets in the specific application.
  */
-export const listLogPatternSets: API.OperationMethod<
+export const listLogPatternSets: API.PaginatedOperationMethod<
   ListLogPatternSetsRequest,
   ListLogPatternSetsResponse,
   ListLogPatternSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogPatternSetsRequest,
-  ) => stream.Stream<
-    ListLogPatternSetsResponse,
-    ListLogPatternSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLogPatternSetsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLogPatternSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogPatternSetsRequest,
   output: ListLogPatternSetsResponse,
   errors: [
@@ -2246,27 +2175,13 @@ export type ListProblemsError =
 /**
  * Lists the problems with your application.
  */
-export const listProblems: API.OperationMethod<
+export const listProblems: API.PaginatedOperationMethod<
   ListProblemsRequest,
   ListProblemsResponse,
   ListProblemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProblemsRequest,
-  ) => stream.Stream<
-    ListProblemsResponse,
-    ListProblemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProblemsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListProblemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProblemsRequest,
   output: ListProblemsResponse,
   errors: [
@@ -2318,27 +2233,13 @@ export type ListWorkloadsError =
 /**
  * Lists the workloads that are configured on a given component.
  */
-export const listWorkloads: API.OperationMethod<
+export const listWorkloads: API.PaginatedOperationMethod<
   ListWorkloadsRequest,
   ListWorkloadsResponse,
   ListWorkloadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadsRequest,
-  ) => stream.Stream<
-    ListWorkloadsResponse,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWorkloadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadsRequest,
   output: ListWorkloadsResponse,
   errors: [

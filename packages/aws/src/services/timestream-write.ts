@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1497,27 +1496,13 @@ export type ListBatchLoadTasksError =
  * resumable until, and other details. See code
  * sample for details.
  */
-export const listBatchLoadTasks: API.OperationMethod<
+export const listBatchLoadTasks: API.PaginatedOperationMethod<
   ListBatchLoadTasksRequest,
   ListBatchLoadTasksResponse,
   ListBatchLoadTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBatchLoadTasksRequest,
-  ) => stream.Stream<
-    ListBatchLoadTasksResponse,
-    ListBatchLoadTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBatchLoadTasksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBatchLoadTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchLoadTasksRequest,
   output: ListBatchLoadTasksResponse,
   errors: [
@@ -1549,27 +1534,13 @@ export type ListDatabasesError =
  * code sample for
  * details.
  */
-export const listDatabases: API.OperationMethod<
+export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesRequest,
   ListDatabasesResponse,
   ListDatabasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    ListDatabasesResponse,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDatabasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
   output: ListDatabasesResponse,
   errors: [
@@ -1602,27 +1573,13 @@ export type ListTablesError =
  * table. See code sample
  * for details.
  */
-export const listTables: API.OperationMethod<
+export const listTables: API.PaginatedOperationMethod<
   ListTablesRequest,
   ListTablesResponse,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    ListTablesResponse,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [

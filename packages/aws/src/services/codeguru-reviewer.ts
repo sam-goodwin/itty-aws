@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1382,27 +1381,13 @@ export type ListCodeReviewsError =
 /**
  * Lists all the code reviews that the customer has created in the past 90 days.
  */
-export const listCodeReviews: API.OperationMethod<
+export const listCodeReviews: API.PaginatedOperationMethod<
   ListCodeReviewsRequest,
   ListCodeReviewsResponse,
   ListCodeReviewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCodeReviewsRequest,
-  ) => stream.Stream<
-    ListCodeReviewsResponse,
-    ListCodeReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCodeReviewsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCodeReviewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodeReviewsRequest,
   output: ListCodeReviewsResponse,
   errors: [
@@ -1432,27 +1417,13 @@ export type ListRecommendationFeedbackError =
  * Returns a list of RecommendationFeedbackSummary objects that contain customer recommendation
  * feedback for all CodeGuru Reviewer users.
  */
-export const listRecommendationFeedback: API.OperationMethod<
+export const listRecommendationFeedback: API.PaginatedOperationMethod<
   ListRecommendationFeedbackRequest,
   ListRecommendationFeedbackResponse,
   ListRecommendationFeedbackError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationFeedbackRequest,
-  ) => stream.Stream<
-    ListRecommendationFeedbackResponse,
-    ListRecommendationFeedbackError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationFeedbackRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendationFeedbackError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationFeedbackRequest,
   output: ListRecommendationFeedbackResponse,
   errors: [
@@ -1482,27 +1453,13 @@ export type ListRecommendationsError =
 /**
  * Returns the list of all recommendations for a completed code review.
  */
-export const listRecommendations: API.OperationMethod<
+export const listRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ListRecommendationsResponse,
   ListRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    ListRecommendationsResponse,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendationsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendationsRequest,
   output: ListRecommendationsResponse,
   errors: [
@@ -1531,27 +1488,13 @@ export type ListRepositoryAssociationsError =
  * Returns a list of RepositoryAssociationSummary objects that contain summary information about a
  * repository association. You can filter the returned list by ProviderType, Name, State, and Owner.
  */
-export const listRepositoryAssociations: API.OperationMethod<
+export const listRepositoryAssociations: API.PaginatedOperationMethod<
   ListRepositoryAssociationsRequest,
   ListRepositoryAssociationsResponse,
   ListRepositoryAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRepositoryAssociationsRequest,
-  ) => stream.Stream<
-    ListRepositoryAssociationsResponse,
-    ListRepositoryAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRepositoryAssociationsRequest,
-  ) => stream.Stream<
-    RepositoryAssociationSummary,
-    ListRepositoryAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RepositoryAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRepositoryAssociationsRequest,
   output: ListRepositoryAssociationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],

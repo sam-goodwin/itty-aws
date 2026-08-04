@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2383,27 +2382,13 @@ export type ListConnectorsError =
 /**
  * Lists the connectors that you created by using the https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector action.
  */
-export const listConnectors: API.OperationMethod<
+export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsRequest,
   ListConnectorsResponse,
   ListConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ConnectorSummary,
-    ListConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConnectorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [
@@ -2433,27 +2418,13 @@ export type ListDirectoryRegistrationsError =
  * Lists the directory registrations that you created by using the https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration
  * action.
  */
-export const listDirectoryRegistrations: API.OperationMethod<
+export const listDirectoryRegistrations: API.PaginatedOperationMethod<
   ListDirectoryRegistrationsRequest,
   ListDirectoryRegistrationsResponse,
   ListDirectoryRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDirectoryRegistrationsRequest,
-  ) => stream.Stream<
-    ListDirectoryRegistrationsResponse,
-    ListDirectoryRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDirectoryRegistrationsRequest,
-  ) => stream.Stream<
-    DirectoryRegistrationSummary,
-    ListDirectoryRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DirectoryRegistrationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryRegistrationsRequest,
   output: ListDirectoryRegistrationsResponse,
   errors: [
@@ -2484,27 +2455,13 @@ export type ListServicePrincipalNamesError =
  * Lists the service principal names that the connector uses to authenticate with
  * Active Directory.
  */
-export const listServicePrincipalNames: API.OperationMethod<
+export const listServicePrincipalNames: API.PaginatedOperationMethod<
   ListServicePrincipalNamesRequest,
   ListServicePrincipalNamesResponse,
   ListServicePrincipalNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicePrincipalNamesRequest,
-  ) => stream.Stream<
-    ListServicePrincipalNamesResponse,
-    ListServicePrincipalNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicePrincipalNamesRequest,
-  ) => stream.Stream<
-    ServicePrincipalNameSummary,
-    ListServicePrincipalNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServicePrincipalNameSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicePrincipalNamesRequest,
   output: ListServicePrincipalNamesResponse,
   errors: [
@@ -2565,27 +2522,13 @@ export type ListTemplateGroupAccessControlEntriesError =
 /**
  * Lists group access control entries you created.
  */
-export const listTemplateGroupAccessControlEntries: API.OperationMethod<
+export const listTemplateGroupAccessControlEntries: API.PaginatedOperationMethod<
   ListTemplateGroupAccessControlEntriesRequest,
   ListTemplateGroupAccessControlEntriesResponse,
   ListTemplateGroupAccessControlEntriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplateGroupAccessControlEntriesRequest,
-  ) => stream.Stream<
-    ListTemplateGroupAccessControlEntriesResponse,
-    ListTemplateGroupAccessControlEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplateGroupAccessControlEntriesRequest,
-  ) => stream.Stream<
-    AccessControlEntrySummary,
-    ListTemplateGroupAccessControlEntriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessControlEntrySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateGroupAccessControlEntriesRequest,
   output: ListTemplateGroupAccessControlEntriesResponse,
   errors: [
@@ -2616,27 +2559,13 @@ export type ListTemplatesError =
 /**
  * Lists the templates, if any, that are associated with a connector.
  */
-export const listTemplates: API.OperationMethod<
+export const listTemplates: API.PaginatedOperationMethod<
   ListTemplatesRequest,
   ListTemplatesResponse,
   ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplatesRequest,
-  ) => stream.Stream<
-    ListTemplatesResponse,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplatesRequest,
-  ) => stream.Stream<
-    TemplateSummary,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TemplateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [

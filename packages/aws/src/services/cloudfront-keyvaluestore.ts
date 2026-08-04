@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -541,27 +540,13 @@ export type ListKeysError =
 /**
  * Returns a list of key value pairs.
  */
-export const listKeys: API.OperationMethod<
+export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    ListKeysResponse,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    ListKeysResponseListItem,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListKeysResponseListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [

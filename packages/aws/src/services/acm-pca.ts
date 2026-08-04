@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1842,27 +1841,13 @@ export type ListCertificateAuthoritiesError =
 /**
  * Lists the private certificate authorities that you created by using the CreateCertificateAuthority action.
  */
-export const listCertificateAuthorities: API.OperationMethod<
+export const listCertificateAuthorities: API.PaginatedOperationMethod<
   ListCertificateAuthoritiesRequest,
   ListCertificateAuthoritiesResponse,
   ListCertificateAuthoritiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificateAuthoritiesRequest,
-  ) => stream.Stream<
-    ListCertificateAuthoritiesResponse,
-    ListCertificateAuthoritiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCertificateAuthoritiesRequest,
-  ) => stream.Stream<
-    CertificateAuthority,
-    ListCertificateAuthoritiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CertificateAuthority
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCertificateAuthoritiesRequest,
   output: ListCertificateAuthoritiesResponse,
   errors: [InvalidNextTokenException],
@@ -1898,27 +1883,13 @@ export type ListPermissionsError =
  *
  * - If the private CA and the ACM certificates reside in different accounts, then permissions cannot be used to enable automatic renewals. Instead, the ACM certificate owner must set up a resource-based policy to enable cross-account issuance and renewals. For more information, see Using a Resource Based Policy with Amazon Web Services Private CA.
  */
-export const listPermissions: API.OperationMethod<
+export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    ListPermissionsResponse,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    Permission,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Permission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [
@@ -1948,27 +1919,13 @@ export type ListTagsError =
 /**
  * Lists the tags, if any, that are associated with your private CA or one that has been shared with you. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the TagCertificateAuthority action to add one or more tags to your CA. Call the UntagCertificateAuthority action to remove tags.
  */
-export const listTags: API.OperationMethod<
+export const listTags: API.PaginatedOperationMethod<
   ListTagsRequest,
   ListTagsResponse,
   ListTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    ListTagsResponse,
-    ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [

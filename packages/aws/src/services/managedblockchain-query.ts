@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1009,27 +1008,13 @@ export type ListAssetContractsError =
  * The Bitcoin blockchain networks do not support this
  * operation.
  */
-export const listAssetContracts: API.OperationMethod<
+export const listAssetContracts: API.PaginatedOperationMethod<
   ListAssetContractsInput,
   ListAssetContractsOutput,
   ListAssetContractsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetContractsInput,
-  ) => stream.Stream<
-    ListAssetContractsOutput,
-    ListAssetContractsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetContractsInput,
-  ) => stream.Stream<
-    AssetContract,
-    ListAssetContractsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetContract
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetContractsInput,
   output: ListAssetContractsOutput,
   errors: [
@@ -1062,27 +1047,13 @@ export type ListFilteredTransactionEventsError =
  *
  * This operation is only supported on the Bitcoin networks.
  */
-export const listFilteredTransactionEvents: API.OperationMethod<
+export const listFilteredTransactionEvents: API.PaginatedOperationMethod<
   ListFilteredTransactionEventsInput,
   ListFilteredTransactionEventsOutput,
   ListFilteredTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFilteredTransactionEventsInput,
-  ) => stream.Stream<
-    ListFilteredTransactionEventsOutput,
-    ListFilteredTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFilteredTransactionEventsInput,
-  ) => stream.Stream<
-    TransactionEvent,
-    ListFilteredTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TransactionEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFilteredTransactionEventsInput,
   output: ListFilteredTransactionEventsOutput,
   errors: [
@@ -1123,27 +1094,13 @@ export type ListTokenBalancesError =
  * You must always specify the network property of
  * the `tokenFilter` when using this operation.
  */
-export const listTokenBalances: API.OperationMethod<
+export const listTokenBalances: API.PaginatedOperationMethod<
   ListTokenBalancesInput,
   ListTokenBalancesOutput,
   ListTokenBalancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTokenBalancesInput,
-  ) => stream.Stream<
-    ListTokenBalancesOutput,
-    ListTokenBalancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTokenBalancesInput,
-  ) => stream.Stream<
-    TokenBalance,
-    ListTokenBalancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TokenBalance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokenBalancesInput,
   output: ListTokenBalancesOutput,
   errors: [
@@ -1178,27 +1135,13 @@ export type ListTransactionEventsError =
  * that are *confirmed* on the blockchain, even if they have not reached
  * finality.
  */
-export const listTransactionEvents: API.OperationMethod<
+export const listTransactionEvents: API.PaginatedOperationMethod<
   ListTransactionEventsInput,
   ListTransactionEventsOutput,
   ListTransactionEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTransactionEventsInput,
-  ) => stream.Stream<
-    ListTransactionEventsOutput,
-    ListTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTransactionEventsInput,
-  ) => stream.Stream<
-    TransactionEvent,
-    ListTransactionEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TransactionEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionEventsInput,
   output: ListTransactionEventsOutput,
   errors: [
@@ -1229,27 +1172,13 @@ export type ListTransactionsError =
 /**
  * Lists all the transaction events for a transaction.
  */
-export const listTransactions: API.OperationMethod<
+export const listTransactions: API.PaginatedOperationMethod<
   ListTransactionsInput,
   ListTransactionsOutput,
   ListTransactionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTransactionsInput,
-  ) => stream.Stream<
-    ListTransactionsOutput,
-    ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTransactionsInput,
-  ) => stream.Stream<
-    TransactionOutputItem,
-    ListTransactionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TransactionOutputItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTransactionsInput,
   output: ListTransactionsOutput,
   errors: [

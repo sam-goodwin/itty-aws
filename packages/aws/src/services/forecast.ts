@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4760,27 +4759,13 @@ export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
  * dataset group ARN with the DescribeDatasetGroup
  * operation.
  */
-export const listDatasetGroups: API.OperationMethod<
+export const listDatasetGroups: API.PaginatedOperationMethod<
   ListDatasetGroupsRequest,
   ListDatasetGroupsResponse,
   ListDatasetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetGroupsRequest,
-  ) => stream.Stream<
-    ListDatasetGroupsResponse,
-    ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetGroupsRequest,
-  ) => stream.Stream<
-    DatasetGroupSummary,
-    ListDatasetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
@@ -4806,27 +4791,13 @@ export type ListDatasetImportJobsError =
  * ARN with the DescribeDatasetImportJob
  * operation. You can filter the list by providing an array of Filter objects.
  */
-export const listDatasetImportJobs: API.OperationMethod<
+export const listDatasetImportJobs: API.PaginatedOperationMethod<
   ListDatasetImportJobsRequest,
   ListDatasetImportJobsResponse,
   ListDatasetImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetImportJobsRequest,
-  ) => stream.Stream<
-    ListDatasetImportJobsResponse,
-    ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetImportJobsRequest,
-  ) => stream.Stream<
-    DatasetImportJobSummary,
-    ListDatasetImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetImportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -4847,27 +4818,13 @@ export type ListDatasetsError = InvalidNextTokenException | CommonErrors;
  * dataset, a summary of its properties, including its Amazon Resource Name (ARN), is returned.
  * To retrieve the complete set of properties, use the ARN with the DescribeDataset operation.
  */
-export const listDatasets: API.OperationMethod<
+export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   ListDatasetsResponse,
   ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DatasetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidNextTokenException],
@@ -4894,27 +4851,13 @@ export type ListExplainabilitiesError =
  * To retrieve the complete set of properties for a particular Explainability resource,
  * use the ARN with the DescribeExplainability operation.
  */
-export const listExplainabilities: API.OperationMethod<
+export const listExplainabilities: API.PaginatedOperationMethod<
   ListExplainabilitiesRequest,
   ListExplainabilitiesResponse,
   ListExplainabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExplainabilitiesRequest,
-  ) => stream.Stream<
-    ListExplainabilitiesResponse,
-    ListExplainabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExplainabilitiesRequest,
-  ) => stream.Stream<
-    ExplainabilitySummary,
-    ListExplainabilitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExplainabilitySummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExplainabilitiesRequest,
   output: ListExplainabilitiesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -4940,27 +4883,13 @@ export type ListExplainabilityExportsError =
  * To retrieve the complete set of properties for a particular Explainability export, use
  * the ARN with the DescribeExplainability operation.
  */
-export const listExplainabilityExports: API.OperationMethod<
+export const listExplainabilityExports: API.PaginatedOperationMethod<
   ListExplainabilityExportsRequest,
   ListExplainabilityExportsResponse,
   ListExplainabilityExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExplainabilityExportsRequest,
-  ) => stream.Stream<
-    ListExplainabilityExportsResponse,
-    ListExplainabilityExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExplainabilityExportsRequest,
-  ) => stream.Stream<
-    ExplainabilityExportSummary,
-    ListExplainabilityExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExplainabilityExportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExplainabilityExportsRequest,
   output: ListExplainabilityExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -4985,27 +4914,13 @@ export type ListForecastExportJobsError =
  * complete set of properties, use the ARN with the DescribeForecastExportJob
  * operation. You can filter the list using an array of Filter objects.
  */
-export const listForecastExportJobs: API.OperationMethod<
+export const listForecastExportJobs: API.PaginatedOperationMethod<
   ListForecastExportJobsRequest,
   ListForecastExportJobsResponse,
   ListForecastExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListForecastExportJobsRequest,
-  ) => stream.Stream<
-    ListForecastExportJobsResponse,
-    ListForecastExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListForecastExportJobsRequest,
-  ) => stream.Stream<
-    ForecastExportJobSummary,
-    ListForecastExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ForecastExportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForecastExportJobsRequest,
   output: ListForecastExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5031,27 +4946,13 @@ export type ListForecastsError =
  * DescribeForecast operation. You can filter the list using an array of
  * Filter objects.
  */
-export const listForecasts: API.OperationMethod<
+export const listForecasts: API.PaginatedOperationMethod<
   ListForecastsRequest,
   ListForecastsResponse,
   ListForecastsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListForecastsRequest,
-  ) => stream.Stream<
-    ListForecastsResponse,
-    ListForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListForecastsRequest,
-  ) => stream.Stream<
-    ForecastSummary,
-    ListForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ForecastSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListForecastsRequest,
   output: ListForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5078,27 +4979,13 @@ export type ListMonitorEvaluationsError =
  * For information about monitoring see predictor-monitoring. For
  * more information about retrieving monitoring results see Viewing Monitoring Results.
  */
-export const listMonitorEvaluations: API.OperationMethod<
+export const listMonitorEvaluations: API.PaginatedOperationMethod<
   ListMonitorEvaluationsRequest,
   ListMonitorEvaluationsResponse,
   ListMonitorEvaluationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorEvaluationsRequest,
-  ) => stream.Stream<
-    ListMonitorEvaluationsResponse,
-    ListMonitorEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorEvaluationsRequest,
-  ) => stream.Stream<
-    PredictorMonitorEvaluation,
-    ListMonitorEvaluationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PredictorMonitorEvaluation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorEvaluationsRequest,
   output: ListMonitorEvaluationsResponse,
   errors: [
@@ -5125,27 +5012,13 @@ export type ListMonitorsError =
  * Returns a list of monitors created with the CreateMonitor operation and CreateAutoPredictor operation. For each monitor resource, this operation returns of a summary of its properties, including its Amazon Resource Name (ARN). You
  * can retrieve a complete set of properties of a monitor resource by specify the monitor's ARN in the DescribeMonitor operation.
  */
-export const listMonitors: API.OperationMethod<
+export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsRequest,
   ListMonitorsResponse,
   ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    ListMonitorsResponse,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    MonitorSummary,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MonitorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5171,27 +5044,13 @@ export type ListPredictorBacktestExportJobsError =
  * To retrieve the complete set of properties for a particular backtest export job, use
  * the ARN with the DescribePredictorBacktestExportJob operation.
  */
-export const listPredictorBacktestExportJobs: API.OperationMethod<
+export const listPredictorBacktestExportJobs: API.PaginatedOperationMethod<
   ListPredictorBacktestExportJobsRequest,
   ListPredictorBacktestExportJobsResponse,
   ListPredictorBacktestExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPredictorBacktestExportJobsRequest,
-  ) => stream.Stream<
-    ListPredictorBacktestExportJobsResponse,
-    ListPredictorBacktestExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPredictorBacktestExportJobsRequest,
-  ) => stream.Stream<
-    PredictorBacktestExportJobSummary,
-    ListPredictorBacktestExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PredictorBacktestExportJobSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPredictorBacktestExportJobsRequest,
   output: ListPredictorBacktestExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5218,27 +5077,13 @@ export type ListPredictorsError =
  * You can retrieve the complete set of properties by using the ARN with the DescribeAutoPredictor and DescribePredictor operations. You
  * can filter the list using an array of Filter objects.
  */
-export const listPredictors: API.OperationMethod<
+export const listPredictors: API.PaginatedOperationMethod<
   ListPredictorsRequest,
   ListPredictorsResponse,
   ListPredictorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPredictorsRequest,
-  ) => stream.Stream<
-    ListPredictorsResponse,
-    ListPredictorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPredictorsRequest,
-  ) => stream.Stream<
-    PredictorSummary,
-    ListPredictorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PredictorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPredictorsRequest,
   output: ListPredictorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5281,27 +5126,13 @@ export type ListWhatIfAnalysesError =
 /**
  * Returns a list of what-if analyses created using the CreateWhatIfAnalysis operation. For each what-if analysis, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if analysis ARN with the DescribeWhatIfAnalysis operation.
  */
-export const listWhatIfAnalyses: API.OperationMethod<
+export const listWhatIfAnalyses: API.PaginatedOperationMethod<
   ListWhatIfAnalysesRequest,
   ListWhatIfAnalysesResponse,
   ListWhatIfAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWhatIfAnalysesRequest,
-  ) => stream.Stream<
-    ListWhatIfAnalysesResponse,
-    ListWhatIfAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWhatIfAnalysesRequest,
-  ) => stream.Stream<
-    WhatIfAnalysisSummary,
-    ListWhatIfAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WhatIfAnalysisSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWhatIfAnalysesRequest,
   output: ListWhatIfAnalysesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5323,27 +5154,13 @@ export type ListWhatIfForecastExportsError =
 /**
  * Returns a list of what-if forecast exports created using the CreateWhatIfForecastExport operation. For each what-if forecast export, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if forecast export ARN with the DescribeWhatIfForecastExport operation.
  */
-export const listWhatIfForecastExports: API.OperationMethod<
+export const listWhatIfForecastExports: API.PaginatedOperationMethod<
   ListWhatIfForecastExportsRequest,
   ListWhatIfForecastExportsResponse,
   ListWhatIfForecastExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWhatIfForecastExportsRequest,
-  ) => stream.Stream<
-    ListWhatIfForecastExportsResponse,
-    ListWhatIfForecastExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWhatIfForecastExportsRequest,
-  ) => stream.Stream<
-    WhatIfForecastExportSummary,
-    ListWhatIfForecastExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WhatIfForecastExportSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWhatIfForecastExportsRequest,
   output: ListWhatIfForecastExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
@@ -5365,27 +5182,13 @@ export type ListWhatIfForecastsError =
 /**
  * Returns a list of what-if forecasts created using the CreateWhatIfForecast operation. For each what-if forecast, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if forecast ARN with the DescribeWhatIfForecast operation.
  */
-export const listWhatIfForecasts: API.OperationMethod<
+export const listWhatIfForecasts: API.PaginatedOperationMethod<
   ListWhatIfForecastsRequest,
   ListWhatIfForecastsResponse,
   ListWhatIfForecastsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWhatIfForecastsRequest,
-  ) => stream.Stream<
-    ListWhatIfForecastsResponse,
-    ListWhatIfForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWhatIfForecastsRequest,
-  ) => stream.Stream<
-    WhatIfForecastSummary,
-    ListWhatIfForecastsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WhatIfForecastSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWhatIfForecastsRequest,
   output: ListWhatIfForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],

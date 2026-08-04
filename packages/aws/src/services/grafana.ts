@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1892,27 +1891,13 @@ export type ListPermissionsError =
 /**
  * Lists the users and groups who have the Grafana `Admin` and `Editor` roles in this workspace. If you use this operation without specifying `userId` or `groupId`, the operation returns the roles of all users and groups. If you specify a `userId` or a `groupId`, only the roles for that user or group are returned. If you do this, you can specify only one `userId` or one `groupId`.
  */
-export const listPermissions: API.OperationMethod<
+export const listPermissions: API.PaginatedOperationMethod<
   ListPermissionsRequest,
   ListPermissionsResponse,
   ListPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    ListPermissionsResponse,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionsRequest,
-  ) => stream.Stream<
-    PermissionEntry,
-    ListPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PermissionEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
   errors: [
@@ -1973,27 +1958,13 @@ export type ListVersionsError =
 /**
  * Lists available versions of Grafana. These are available when calling `CreateWorkspace`. Optionally, include a workspace to list the versions to which it can be upgraded.
  */
-export const listVersions: API.OperationMethod<
+export const listVersions: API.PaginatedOperationMethod<
   ListVersionsRequest,
   ListVersionsResponse,
   ListVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    GrafanaVersion,
-    ListVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GrafanaVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [
@@ -2022,27 +1993,13 @@ export type ListWorkspacesError =
 /**
  * Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace. For more complete information about one workspace, use DescribeWorkspace.
  */
-export const listWorkspaces: API.OperationMethod<
+export const listWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   ListWorkspacesResponse,
   ListWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    ListWorkspacesResponse,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspacesRequest,
-  ) => stream.Stream<
-    WorkspaceSummary,
-    ListWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkspaceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspacesRequest,
   output: ListWorkspacesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -2070,27 +2027,13 @@ export type ListWorkspaceServiceAccountsError =
  *
  * Service accounts are only available for workspaces that are compatible with Grafana version 9 and above.
  */
-export const listWorkspaceServiceAccounts: API.OperationMethod<
+export const listWorkspaceServiceAccounts: API.PaginatedOperationMethod<
   ListWorkspaceServiceAccountsRequest,
   ListWorkspaceServiceAccountsResponse,
   ListWorkspaceServiceAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspaceServiceAccountsRequest,
-  ) => stream.Stream<
-    ListWorkspaceServiceAccountsResponse,
-    ListWorkspaceServiceAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspaceServiceAccountsRequest,
-  ) => stream.Stream<
-    ServiceAccountSummary,
-    ListWorkspaceServiceAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceAccountSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceServiceAccountsRequest,
   output: ListWorkspaceServiceAccountsResponse,
   errors: [
@@ -2127,27 +2070,13 @@ export type ListWorkspaceServiceAccountTokensError =
  *
  * Service accounts are only available for workspaces that are compatible with Grafana version 9 and above.
  */
-export const listWorkspaceServiceAccountTokens: API.OperationMethod<
+export const listWorkspaceServiceAccountTokens: API.PaginatedOperationMethod<
   ListWorkspaceServiceAccountTokensRequest,
   ListWorkspaceServiceAccountTokensResponse,
   ListWorkspaceServiceAccountTokensError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspaceServiceAccountTokensRequest,
-  ) => stream.Stream<
-    ListWorkspaceServiceAccountTokensResponse,
-    ListWorkspaceServiceAccountTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspaceServiceAccountTokensRequest,
-  ) => stream.Stream<
-    ServiceAccountTokenSummary,
-    ListWorkspaceServiceAccountTokensError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceAccountTokenSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceServiceAccountTokensRequest,
   output: ListWorkspaceServiceAccountTokensResponse,
   errors: [

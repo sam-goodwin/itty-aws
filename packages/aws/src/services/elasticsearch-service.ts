@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4210,27 +4209,13 @@ export type DescribeDomainAutoTunesError =
 /**
  * Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.
  */
-export const describeDomainAutoTunes: API.OperationMethod<
+export const describeDomainAutoTunes: API.PaginatedOperationMethod<
   DescribeDomainAutoTunesRequest,
   DescribeDomainAutoTunesResponse,
   DescribeDomainAutoTunesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeDomainAutoTunesRequest,
-  ) => stream.Stream<
-    DescribeDomainAutoTunesResponse,
-    DescribeDomainAutoTunesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeDomainAutoTunesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeDomainAutoTunesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeDomainAutoTunesRequest,
   output: DescribeDomainAutoTunesResponse,
   errors: [
@@ -4400,27 +4385,13 @@ export type DescribeInboundCrossClusterSearchConnectionsError =
 /**
  * Lists all the inbound cross-cluster search connections for a destination domain.
  */
-export const describeInboundCrossClusterSearchConnections: API.OperationMethod<
+export const describeInboundCrossClusterSearchConnections: API.PaginatedOperationMethod<
   DescribeInboundCrossClusterSearchConnectionsRequest,
   DescribeInboundCrossClusterSearchConnectionsResponse,
   DescribeInboundCrossClusterSearchConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeInboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    DescribeInboundCrossClusterSearchConnectionsResponse,
-    DescribeInboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeInboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeInboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInboundCrossClusterSearchConnectionsRequest,
   output: DescribeInboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -4441,27 +4412,13 @@ export type DescribeOutboundCrossClusterSearchConnectionsError =
 /**
  * Lists all the outbound cross-cluster search connections for a source domain.
  */
-export const describeOutboundCrossClusterSearchConnections: API.OperationMethod<
+export const describeOutboundCrossClusterSearchConnections: API.PaginatedOperationMethod<
   DescribeOutboundCrossClusterSearchConnectionsRequest,
   DescribeOutboundCrossClusterSearchConnectionsResponse,
   DescribeOutboundCrossClusterSearchConnectionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOutboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    DescribeOutboundCrossClusterSearchConnectionsResponse,
-    DescribeOutboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOutboundCrossClusterSearchConnectionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeOutboundCrossClusterSearchConnectionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOutboundCrossClusterSearchConnectionsRequest,
   output: DescribeOutboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
@@ -4485,27 +4442,13 @@ export type DescribePackagesError =
 /**
  * Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.
  */
-export const describePackages: API.OperationMethod<
+export const describePackages: API.PaginatedOperationMethod<
   DescribePackagesRequest,
   DescribePackagesResponse,
   DescribePackagesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePackagesRequest,
-  ) => stream.Stream<
-    DescribePackagesResponse,
-    DescribePackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribePackagesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePackagesRequest,
   output: DescribePackagesResponse,
   errors: [
@@ -4534,27 +4477,13 @@ export type DescribeReservedElasticsearchInstanceOfferingsError =
 /**
  * Lists available reserved Elasticsearch instance offerings.
  */
-export const describeReservedElasticsearchInstanceOfferings: API.OperationMethod<
+export const describeReservedElasticsearchInstanceOfferings: API.PaginatedOperationMethod<
   DescribeReservedElasticsearchInstanceOfferingsRequest,
   DescribeReservedElasticsearchInstanceOfferingsResponse,
   DescribeReservedElasticsearchInstanceOfferingsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedElasticsearchInstanceOfferingsRequest,
-  ) => stream.Stream<
-    DescribeReservedElasticsearchInstanceOfferingsResponse,
-    DescribeReservedElasticsearchInstanceOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedElasticsearchInstanceOfferingsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReservedElasticsearchInstanceOfferingsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedElasticsearchInstanceOfferingsRequest,
   output: DescribeReservedElasticsearchInstanceOfferingsResponse,
   errors: [
@@ -4582,27 +4511,13 @@ export type DescribeReservedElasticsearchInstancesError =
 /**
  * Returns information about reserved Elasticsearch instances for this account.
  */
-export const describeReservedElasticsearchInstances: API.OperationMethod<
+export const describeReservedElasticsearchInstances: API.PaginatedOperationMethod<
   DescribeReservedElasticsearchInstancesRequest,
   DescribeReservedElasticsearchInstancesResponse,
   DescribeReservedElasticsearchInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedElasticsearchInstancesRequest,
-  ) => stream.Stream<
-    DescribeReservedElasticsearchInstancesResponse,
-    DescribeReservedElasticsearchInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedElasticsearchInstancesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeReservedElasticsearchInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedElasticsearchInstancesRequest,
   output: DescribeReservedElasticsearchInstancesResponse,
   errors: [
@@ -4726,27 +4641,13 @@ export type GetPackageVersionHistoryError =
 /**
  * Returns a list of versions of the package, along with their creation time and commit message.
  */
-export const getPackageVersionHistory: API.OperationMethod<
+export const getPackageVersionHistory: API.PaginatedOperationMethod<
   GetPackageVersionHistoryRequest,
   GetPackageVersionHistoryResponse,
   GetPackageVersionHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPackageVersionHistoryRequest,
-  ) => stream.Stream<
-    GetPackageVersionHistoryResponse,
-    GetPackageVersionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetPackageVersionHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetPackageVersionHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetPackageVersionHistoryRequest,
   output: GetPackageVersionHistoryResponse,
   errors: [
@@ -4776,27 +4677,13 @@ export type GetUpgradeHistoryError =
 /**
  * Retrieves the complete history of the last 10 upgrades that were performed on the domain.
  */
-export const getUpgradeHistory: API.OperationMethod<
+export const getUpgradeHistory: API.PaginatedOperationMethod<
   GetUpgradeHistoryRequest,
   GetUpgradeHistoryResponse,
   GetUpgradeHistoryError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetUpgradeHistoryRequest,
-  ) => stream.Stream<
-    GetUpgradeHistoryResponse,
-    GetUpgradeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetUpgradeHistoryRequest,
-  ) => stream.Stream<
-    unknown,
-    GetUpgradeHistoryError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUpgradeHistoryRequest,
   output: GetUpgradeHistoryResponse,
   errors: [
@@ -4877,27 +4764,13 @@ export type ListDomainsForPackageError =
 /**
  * Lists all Amazon ES domains associated with the package.
  */
-export const listDomainsForPackage: API.OperationMethod<
+export const listDomainsForPackage: API.PaginatedOperationMethod<
   ListDomainsForPackageRequest,
   ListDomainsForPackageResponse,
   ListDomainsForPackageError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsForPackageRequest,
-  ) => stream.Stream<
-    ListDomainsForPackageResponse,
-    ListDomainsForPackageError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsForPackageRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainsForPackageError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsForPackageRequest,
   output: ListDomainsForPackageResponse,
   errors: [
@@ -4926,27 +4799,13 @@ export type ListElasticsearchInstanceTypesError =
 /**
  * List all Elasticsearch instance types that are supported for given ElasticsearchVersion
  */
-export const listElasticsearchInstanceTypes: API.OperationMethod<
+export const listElasticsearchInstanceTypes: API.PaginatedOperationMethod<
   ListElasticsearchInstanceTypesRequest,
   ListElasticsearchInstanceTypesResponse,
   ListElasticsearchInstanceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListElasticsearchInstanceTypesRequest,
-  ) => stream.Stream<
-    ListElasticsearchInstanceTypesResponse,
-    ListElasticsearchInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListElasticsearchInstanceTypesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListElasticsearchInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListElasticsearchInstanceTypesRequest,
   output: ListElasticsearchInstanceTypesResponse,
   errors: [
@@ -4974,27 +4833,13 @@ export type ListElasticsearchVersionsError =
 /**
  * List all supported Elasticsearch versions
  */
-export const listElasticsearchVersions: API.OperationMethod<
+export const listElasticsearchVersions: API.PaginatedOperationMethod<
   ListElasticsearchVersionsRequest,
   ListElasticsearchVersionsResponse,
   ListElasticsearchVersionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListElasticsearchVersionsRequest,
-  ) => stream.Stream<
-    ListElasticsearchVersionsResponse,
-    ListElasticsearchVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListElasticsearchVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListElasticsearchVersionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListElasticsearchVersionsRequest,
   output: ListElasticsearchVersionsResponse,
   errors: [
@@ -5023,27 +4868,13 @@ export type ListPackagesForDomainError =
 /**
  * Lists all packages associated with the Amazon ES domain.
  */
-export const listPackagesForDomain: API.OperationMethod<
+export const listPackagesForDomain: API.PaginatedOperationMethod<
   ListPackagesForDomainRequest,
   ListPackagesForDomainResponse,
   ListPackagesForDomainError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPackagesForDomainRequest,
-  ) => stream.Stream<
-    ListPackagesForDomainResponse,
-    ListPackagesForDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPackagesForDomainRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPackagesForDomainError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPackagesForDomainRequest,
   output: ListPackagesForDomainResponse,
   errors: [

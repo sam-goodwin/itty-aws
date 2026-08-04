@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -8848,27 +8847,13 @@ export type ListAccountSettingsError =
 /**
  * Lists the account settings for a specified principal.
  */
-export const listAccountSettings: API.OperationMethod<
+export const listAccountSettings: API.PaginatedOperationMethod<
   ListAccountSettingsRequest,
   ListAccountSettingsResponse,
   ListAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountSettingsRequest,
-  ) => stream.Stream<
-    ListAccountSettingsResponse,
-    ListAccountSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountSettingsRequest,
-  ) => stream.Stream<
-    Setting,
-    ListAccountSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Setting
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSettingsRequest,
   output: ListAccountSettingsResponse,
   errors: [
@@ -8898,27 +8883,13 @@ export type ListAttributesError =
 /**
  * Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, `ListAttributes` returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value. You can do this, for example, to see which container instances in a cluster are running a Linux AMI (`ecs.os-type=linux`).
  */
-export const listAttributes: API.OperationMethod<
+export const listAttributes: API.PaginatedOperationMethod<
   ListAttributesRequest,
   ListAttributesResponse,
   ListAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttributesRequest,
-  ) => stream.Stream<
-    ListAttributesResponse,
-    ListAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttributesRequest,
-  ) => stream.Stream<
-    Attribute,
-    ListAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Attribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttributesRequest,
   output: ListAttributesResponse,
   errors: [
@@ -8948,27 +8919,13 @@ export type ListClustersError =
 /**
  * Returns a list of existing clusters.
  */
-export const listClusters: API.OperationMethod<
+export const listClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ListClustersResponse,
   ListClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    ListClustersResponse,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListClustersRequest,
-  ) => stream.Stream<
-    string,
-    ListClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -8998,27 +8955,13 @@ export type ListContainerInstancesError =
 /**
  * Returns a list of container instances in a specified cluster. You can filter the results of a `ListContainerInstances` operation with cluster query language statements inside the `filter` parameter. For more information, see Cluster Query Language in the *Amazon Elastic Container Service Developer Guide*.
  */
-export const listContainerInstances: API.OperationMethod<
+export const listContainerInstances: API.PaginatedOperationMethod<
   ListContainerInstancesRequest,
   ListContainerInstancesResponse,
   ListContainerInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContainerInstancesRequest,
-  ) => stream.Stream<
-    ListContainerInstancesResponse,
-    ListContainerInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContainerInstancesRequest,
-  ) => stream.Stream<
-    string,
-    ListContainerInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContainerInstancesRequest,
   output: ListContainerInstancesResponse,
   errors: [
@@ -9179,27 +9122,13 @@ export type ListServicesError =
 /**
  * Returns a list of services. You can filter the results by cluster, launch type, and scheduling strategy.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ListServicesResponse,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    string,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [
@@ -9230,27 +9159,13 @@ export type ListServicesByNamespaceError =
 /**
  * This operation lists all of the services that are associated with a Cloud Map namespace. This list might include services in different clusters. In contrast, `ListServices` can only list services in one cluster at a time. If you need to filter the list of services in a single cluster by various parameters, use `ListServices`. For more information, see Service Connect in the *Amazon Elastic Container Service Developer Guide*.
  */
-export const listServicesByNamespace: API.OperationMethod<
+export const listServicesByNamespace: API.PaginatedOperationMethod<
   ListServicesByNamespaceRequest,
   ListServicesByNamespaceResponse,
   ListServicesByNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesByNamespaceRequest,
-  ) => stream.Stream<
-    ListServicesByNamespaceResponse,
-    ListServicesByNamespaceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesByNamespaceRequest,
-  ) => stream.Stream<
-    string,
-    ListServicesByNamespaceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesByNamespaceRequest,
   output: ListServicesByNamespaceResponse,
   errors: [
@@ -9312,27 +9227,13 @@ export type ListTaskDefinitionFamiliesError =
  *
  * You can filter out task definition families that don't contain any `ACTIVE` task definition revisions by setting the `status` parameter to `ACTIVE`. You can also filter the results with the `familyPrefix` parameter.
  */
-export const listTaskDefinitionFamilies: API.OperationMethod<
+export const listTaskDefinitionFamilies: API.PaginatedOperationMethod<
   ListTaskDefinitionFamiliesRequest,
   ListTaskDefinitionFamiliesResponse,
   ListTaskDefinitionFamiliesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskDefinitionFamiliesRequest,
-  ) => stream.Stream<
-    ListTaskDefinitionFamiliesResponse,
-    ListTaskDefinitionFamiliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskDefinitionFamiliesRequest,
-  ) => stream.Stream<
-    string,
-    ListTaskDefinitionFamiliesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskDefinitionFamiliesRequest,
   output: ListTaskDefinitionFamiliesResponse,
   errors: [
@@ -9361,27 +9262,13 @@ export type ListTaskDefinitionsError =
 /**
  * Returns a list of task definitions that are registered to your account. You can filter the results by family name with the `familyPrefix` parameter or by status with the `status` parameter.
  */
-export const listTaskDefinitions: API.OperationMethod<
+export const listTaskDefinitions: API.PaginatedOperationMethod<
   ListTaskDefinitionsRequest,
   ListTaskDefinitionsResponse,
   ListTaskDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTaskDefinitionsRequest,
-  ) => stream.Stream<
-    ListTaskDefinitionsResponse,
-    ListTaskDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTaskDefinitionsRequest,
-  ) => stream.Stream<
-    string,
-    ListTaskDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTaskDefinitionsRequest,
   output: ListTaskDefinitionsResponse,
   errors: [
@@ -9414,27 +9301,13 @@ export type ListTasksError =
  *
  * Recently stopped tasks might appear in the returned results.
  */
-export const listTasks: API.OperationMethod<
+export const listTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   ListTasksResponse,
   ListTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    ListTasksResponse,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    string,
-    ListTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [

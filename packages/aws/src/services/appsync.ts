@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5295,27 +5294,13 @@ export type ListApiKeysError =
  * `DeleteApiKey` to manually delete a key before it's automatically
  * deleted.
  */
-export const listApiKeys: API.OperationMethod<
+export const listApiKeys: API.PaginatedOperationMethod<
   ListApiKeysRequest,
   ListApiKeysResponse,
   ListApiKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApiKeysRequest,
-  ) => stream.Stream<
-    ListApiKeysResponse,
-    ListApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApiKeysRequest,
-  ) => stream.Stream<
-    ApiKey,
-    ListApiKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApiKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApiKeysRequest,
   output: ListApiKeysResponse,
   errors: [
@@ -5346,27 +5331,13 @@ export type ListApisError =
  * `ListApis` returns only the high level API details. For more detailed
  * information about an API, use `GetApi`.
  */
-export const listApis: API.OperationMethod<
+export const listApis: API.PaginatedOperationMethod<
   ListApisRequest,
   ListApisResponse,
   ListApisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApisRequest,
-  ) => stream.Stream<
-    ListApisResponse,
-    ListApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApisRequest,
-  ) => stream.Stream<
-    Api,
-    ListApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Api
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApisRequest,
   output: ListApisResponse,
   errors: [
@@ -5397,27 +5368,13 @@ export type ListChannelNamespacesError =
  * `ListChannelNamespaces` returns only high level details for the channel
  * namespace. To retrieve code handlers, use `GetChannelNamespace`.
  */
-export const listChannelNamespaces: API.OperationMethod<
+export const listChannelNamespaces: API.PaginatedOperationMethod<
   ListChannelNamespacesRequest,
   ListChannelNamespacesResponse,
   ListChannelNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChannelNamespacesRequest,
-  ) => stream.Stream<
-    ListChannelNamespacesResponse,
-    ListChannelNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChannelNamespacesRequest,
-  ) => stream.Stream<
-    ChannelNamespace,
-    ListChannelNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChannelNamespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelNamespacesRequest,
   output: ListChannelNamespacesResponse,
   errors: [
@@ -5446,27 +5403,13 @@ export type ListDataSourcesError =
 /**
  * Lists the data sources for a given API.
  */
-export const listDataSources: API.OperationMethod<
+export const listDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    ListDataSourcesResponse,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSourcesRequest,
-  ) => stream.Stream<
-    DataSource,
-    ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
   output: ListDataSourcesResponse,
   errors: [
@@ -5494,27 +5437,13 @@ export type ListDomainNamesError =
 /**
  * Lists multiple custom domain names.
  */
-export const listDomainNames: API.OperationMethod<
+export const listDomainNames: API.PaginatedOperationMethod<
   ListDomainNamesRequest,
   ListDomainNamesResponse,
   ListDomainNamesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainNamesRequest,
-  ) => stream.Stream<
-    ListDomainNamesResponse,
-    ListDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainNamesRequest,
-  ) => stream.Stream<
-    DomainNameConfig,
-    ListDomainNamesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DomainNameConfig
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [
@@ -5542,27 +5471,13 @@ export type ListFunctionsError =
 /**
  * List multiple functions.
  */
-export const listFunctions: API.OperationMethod<
+export const listFunctions: API.PaginatedOperationMethod<
   ListFunctionsRequest,
   ListFunctionsResponse,
   ListFunctionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    ListFunctionsResponse,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFunctionsRequest,
-  ) => stream.Stream<
-    FunctionConfiguration,
-    ListFunctionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FunctionConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFunctionsRequest,
   output: ListFunctionsResponse,
   errors: [
@@ -5590,27 +5505,13 @@ export type ListGraphqlApisError =
 /**
  * Lists your GraphQL APIs.
  */
-export const listGraphqlApis: API.OperationMethod<
+export const listGraphqlApis: API.PaginatedOperationMethod<
   ListGraphqlApisRequest,
   ListGraphqlApisResponse,
   ListGraphqlApisError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGraphqlApisRequest,
-  ) => stream.Stream<
-    ListGraphqlApisResponse,
-    ListGraphqlApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGraphqlApisRequest,
-  ) => stream.Stream<
-    GraphqlApi,
-    ListGraphqlApisError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GraphqlApi
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGraphqlApisRequest,
   output: ListGraphqlApisResponse,
   errors: [
@@ -5638,27 +5539,13 @@ export type ListResolversError =
 /**
  * Lists the resolvers for a given API and type.
  */
-export const listResolvers: API.OperationMethod<
+export const listResolvers: API.PaginatedOperationMethod<
   ListResolversRequest,
   ListResolversResponse,
   ListResolversError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolversRequest,
-  ) => stream.Stream<
-    ListResolversResponse,
-    ListResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolversRequest,
-  ) => stream.Stream<
-    Resolver,
-    ListResolversError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Resolver
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolversRequest,
   output: ListResolversResponse,
   errors: [
@@ -5687,27 +5574,13 @@ export type ListResolversByFunctionError =
 /**
  * List the resolvers that are associated with a specific function.
  */
-export const listResolversByFunction: API.OperationMethod<
+export const listResolversByFunction: API.PaginatedOperationMethod<
   ListResolversByFunctionRequest,
   ListResolversByFunctionResponse,
   ListResolversByFunctionError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResolversByFunctionRequest,
-  ) => stream.Stream<
-    ListResolversByFunctionResponse,
-    ListResolversByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResolversByFunctionRequest,
-  ) => stream.Stream<
-    Resolver,
-    ListResolversByFunctionError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Resolver
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResolversByFunctionRequest,
   output: ListResolversByFunctionResponse,
   errors: [
@@ -5736,27 +5609,13 @@ export type ListSourceApiAssociationsError =
 /**
  * Lists the `SourceApiAssociationSummary` data.
  */
-export const listSourceApiAssociations: API.OperationMethod<
+export const listSourceApiAssociations: API.PaginatedOperationMethod<
   ListSourceApiAssociationsRequest,
   ListSourceApiAssociationsResponse,
   ListSourceApiAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSourceApiAssociationsRequest,
-  ) => stream.Stream<
-    ListSourceApiAssociationsResponse,
-    ListSourceApiAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSourceApiAssociationsRequest,
-  ) => stream.Stream<
-    SourceApiAssociationSummary,
-    ListSourceApiAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SourceApiAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceApiAssociationsRequest,
   output: ListSourceApiAssociationsResponse,
   errors: [
@@ -5818,27 +5677,13 @@ export type ListTypesError =
 /**
  * Lists the types for a given API.
  */
-export const listTypes: API.OperationMethod<
+export const listTypes: API.PaginatedOperationMethod<
   ListTypesRequest,
   ListTypesResponse,
   ListTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypesRequest,
-  ) => stream.Stream<
-    ListTypesResponse,
-    ListTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypesRequest,
-  ) => stream.Stream<
-    Type,
-    ListTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Type
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesRequest,
   output: ListTypesResponse,
   errors: [
@@ -5869,27 +5714,13 @@ export type ListTypesByAssociationError =
 /**
  * Lists `Type` objects by the source API association ID.
  */
-export const listTypesByAssociation: API.OperationMethod<
+export const listTypesByAssociation: API.PaginatedOperationMethod<
   ListTypesByAssociationRequest,
   ListTypesByAssociationResponse,
   ListTypesByAssociationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTypesByAssociationRequest,
-  ) => stream.Stream<
-    ListTypesByAssociationResponse,
-    ListTypesByAssociationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTypesByAssociationRequest,
-  ) => stream.Stream<
-    Type,
-    ListTypesByAssociationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Type
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTypesByAssociationRequest,
   output: ListTypesByAssociationResponse,
   errors: [

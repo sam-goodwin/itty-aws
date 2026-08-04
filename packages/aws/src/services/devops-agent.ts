@@ -6446,27 +6446,13 @@ export type ListAgentSpacesError =
 /**
  * Lists all AgentSpaces with optional pagination.
  */
-export const listAgentSpaces: API.OperationMethod<
+export const listAgentSpaces: API.PaginatedOperationMethod<
   ListAgentSpacesInput,
   ListAgentSpacesOutput,
   ListAgentSpacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAgentSpacesInput,
-  ) => stream.Stream<
-    ListAgentSpacesOutput,
-    ListAgentSpacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAgentSpacesInput,
-  ) => stream.Stream<
-    AgentSpace,
-    ListAgentSpacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AgentSpace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAgentSpacesInput,
   output: ListAgentSpacesOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -6492,27 +6478,13 @@ export type ListAssetFilesError =
 /**
  * Lists files in an asset
  */
-export const listAssetFiles: API.OperationMethod<
+export const listAssetFiles: API.PaginatedOperationMethod<
   ListAssetFilesRequest,
   ListAssetFilesResponse,
   ListAssetFilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetFilesRequest,
-  ) => stream.Stream<
-    ListAssetFilesResponse,
-    ListAssetFilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetFilesRequest,
-  ) => stream.Stream<
-    AssetFileSummary,
-    ListAssetFilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetFileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetFilesRequest,
   output: ListAssetFilesResponse,
   errors: [
@@ -6543,27 +6515,13 @@ export type ListAssetsError =
 /**
  * Lists assets in the specified agent space
  */
-export const listAssets: API.OperationMethod<
+export const listAssets: API.PaginatedOperationMethod<
   ListAssetsRequest,
   ListAssetsResponse,
   ListAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    ListAssetsResponse,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetsRequest,
-  ) => stream.Stream<
-    Asset,
-    ListAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Asset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse,
   errors: [
@@ -6593,27 +6551,13 @@ export type ListAssetTypesError =
 /**
  * Lists the supported asset types
  */
-export const listAssetTypes: API.OperationMethod<
+export const listAssetTypes: API.PaginatedOperationMethod<
   ListAssetTypesRequest,
   ListAssetTypesResponse,
   ListAssetTypesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetTypesRequest,
-  ) => stream.Stream<
-    ListAssetTypesResponse,
-    ListAssetTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetTypesRequest,
-  ) => stream.Stream<
-    AssetTypeSummary,
-    ListAssetTypesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetTypeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetTypesRequest,
   output: ListAssetTypesResponse,
   errors: [
@@ -6644,27 +6588,13 @@ export type ListAssetVersionsError =
 /**
  * Lists versions of an asset in the specified agent space
  */
-export const listAssetVersions: API.OperationMethod<
+export const listAssetVersions: API.PaginatedOperationMethod<
   ListAssetVersionsRequest,
   ListAssetVersionsResponse,
   ListAssetVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssetVersionsRequest,
-  ) => stream.Stream<
-    ListAssetVersionsResponse,
-    ListAssetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssetVersionsRequest,
-  ) => stream.Stream<
-    AssetVersionMetadata,
-    ListAssetVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetVersionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetVersionsRequest,
   output: ListAssetVersionsResponse,
   errors: [
@@ -6695,27 +6625,13 @@ export type ListAssociationsError =
 /**
  * List all associations for given AgentSpace
  */
-export const listAssociations: API.OperationMethod<
+export const listAssociations: API.PaginatedOperationMethod<
   ListAssociationsInput,
   ListAssociationsOutput,
   ListAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociationsInput,
-  ) => stream.Stream<
-    ListAssociationsOutput,
-    ListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociationsInput,
-  ) => stream.Stream<
-    Association,
-    ListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Association
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsInput,
   output: ListAssociationsOutput,
   errors: [
@@ -6745,27 +6661,13 @@ export type ListBacklogTasksError =
 /**
  * Lists backlog tasks in the specified agent space with optional filtering and sorting
  */
-export const listBacklogTasks: API.OperationMethod<
+export const listBacklogTasks: API.PaginatedOperationMethod<
   ListBacklogTasksRequest,
   ListBacklogTasksResponse,
   ListBacklogTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBacklogTasksRequest,
-  ) => stream.Stream<
-    ListBacklogTasksResponse,
-    ListBacklogTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBacklogTasksRequest,
-  ) => stream.Stream<
-    Task,
-    ListBacklogTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Task
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBacklogTasksRequest,
   output: ListBacklogTasksResponse,
   errors: [
@@ -6825,27 +6727,13 @@ export type ListExecutionsError =
 /**
  * List executions
  */
-export const listExecutions: API.OperationMethod<
+export const listExecutions: API.PaginatedOperationMethod<
   ListExecutionsRequest,
   ListExecutionsResponse,
   ListExecutionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    ListExecutionsResponse,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExecutionsRequest,
-  ) => stream.Stream<
-    Execution,
-    ListExecutionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Execution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExecutionsRequest,
   output: ListExecutionsResponse,
   errors: [
@@ -6876,27 +6764,13 @@ export type ListGoalsError =
 /**
  * Lists goals in the specified agent space with optional filtering
  */
-export const listGoals: API.OperationMethod<
+export const listGoals: API.PaginatedOperationMethod<
   ListGoalsRequest,
   ListGoalsResponse,
   ListGoalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGoalsRequest,
-  ) => stream.Stream<
-    ListGoalsResponse,
-    ListGoalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGoalsRequest,
-  ) => stream.Stream<
-    Goal,
-    ListGoalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Goal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGoalsRequest,
   output: ListGoalsResponse,
   errors: [
@@ -6927,27 +6801,13 @@ export type ListJournalRecordsError =
 /**
  * List journal records for a specific execution
  */
-export const listJournalRecords: API.OperationMethod<
+export const listJournalRecords: API.PaginatedOperationMethod<
   ListJournalRecordsRequest,
   ListJournalRecordsResponse,
   ListJournalRecordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJournalRecordsRequest,
-  ) => stream.Stream<
-    ListJournalRecordsResponse,
-    ListJournalRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJournalRecordsRequest,
-  ) => stream.Stream<
-    JournalRecord,
-    ListJournalRecordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JournalRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJournalRecordsRequest,
   output: ListJournalRecordsResponse,
   errors: [
@@ -7066,27 +6926,13 @@ export type ListServicesError =
 /**
  * List a list of registered service on the account level.
  */
-export const listServices: API.OperationMethod<
+export const listServices: API.PaginatedOperationMethod<
   ListServicesInput,
   ListServicesOutput,
   ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ListServicesOutput,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    RegisteredService,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegisteredService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -7141,27 +6987,13 @@ export type ListTriggersError =
 /**
  * Lists Triggers in the specified agent space
  */
-export const listTriggers: API.OperationMethod<
+export const listTriggers: API.PaginatedOperationMethod<
   ListTriggersRequest,
   ListTriggersResponse,
   ListTriggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTriggersRequest,
-  ) => stream.Stream<
-    ListTriggersResponse,
-    ListTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTriggersRequest,
-  ) => stream.Stream<
-    Trigger,
-    ListTriggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Trigger
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTriggersRequest,
   output: ListTriggersResponse,
   errors: [

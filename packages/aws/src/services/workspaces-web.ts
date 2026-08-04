@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -5175,27 +5174,13 @@ export type ListBrowserSettingsError =
 /**
  * Retrieves a list of browser settings.
  */
-export const listBrowserSettings: API.OperationMethod<
+export const listBrowserSettings: API.PaginatedOperationMethod<
   ListBrowserSettingsRequest,
   ListBrowserSettingsResponse,
   ListBrowserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBrowserSettingsRequest,
-  ) => stream.Stream<
-    ListBrowserSettingsResponse,
-    ListBrowserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBrowserSettingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListBrowserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBrowserSettingsRequest,
   output: ListBrowserSettingsResponse,
   errors: [
@@ -5223,27 +5208,13 @@ export type ListDataProtectionSettingsError =
 /**
  * Retrieves a list of data protection settings.
  */
-export const listDataProtectionSettings: API.OperationMethod<
+export const listDataProtectionSettings: API.PaginatedOperationMethod<
   ListDataProtectionSettingsRequest,
   ListDataProtectionSettingsResponse,
   ListDataProtectionSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataProtectionSettingsRequest,
-  ) => stream.Stream<
-    ListDataProtectionSettingsResponse,
-    ListDataProtectionSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataProtectionSettingsRequest,
-  ) => stream.Stream<
-    DataProtectionSettingsSummary,
-    ListDataProtectionSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataProtectionSettingsSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataProtectionSettingsRequest,
   output: ListDataProtectionSettingsResponse,
   errors: [
@@ -5272,27 +5243,13 @@ export type ListIdentityProvidersError =
 /**
  * Retrieves a list of identity providers for a specific web portal.
  */
-export const listIdentityProviders: API.OperationMethod<
+export const listIdentityProviders: API.PaginatedOperationMethod<
   ListIdentityProvidersRequest,
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    ListIdentityProvidersResponse,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIdentityProvidersRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIdentityProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersRequest,
   output: ListIdentityProvidersResponse,
   errors: [
@@ -5320,27 +5277,13 @@ export type ListIpAccessSettingsError =
 /**
  * Retrieves a list of IP access settings.
  */
-export const listIpAccessSettings: API.OperationMethod<
+export const listIpAccessSettings: API.PaginatedOperationMethod<
   ListIpAccessSettingsRequest,
   ListIpAccessSettingsResponse,
   ListIpAccessSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIpAccessSettingsRequest,
-  ) => stream.Stream<
-    ListIpAccessSettingsResponse,
-    ListIpAccessSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIpAccessSettingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListIpAccessSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIpAccessSettingsRequest,
   output: ListIpAccessSettingsResponse,
   errors: [
@@ -5368,27 +5311,13 @@ export type ListNetworkSettingsError =
 /**
  * Retrieves a list of network settings.
  */
-export const listNetworkSettings: API.OperationMethod<
+export const listNetworkSettings: API.PaginatedOperationMethod<
   ListNetworkSettingsRequest,
   ListNetworkSettingsResponse,
   ListNetworkSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNetworkSettingsRequest,
-  ) => stream.Stream<
-    ListNetworkSettingsResponse,
-    ListNetworkSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNetworkSettingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListNetworkSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkSettingsRequest,
   output: ListNetworkSettingsResponse,
   errors: [
@@ -5416,27 +5345,13 @@ export type ListPortalsError =
 /**
  * Retrieves a list or web portals.
  */
-export const listPortals: API.OperationMethod<
+export const listPortals: API.PaginatedOperationMethod<
   ListPortalsRequest,
   ListPortalsResponse,
   ListPortalsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPortalsRequest,
-  ) => stream.Stream<
-    ListPortalsResponse,
-    ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPortalsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListPortalsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPortalsRequest,
   output: ListPortalsResponse,
   errors: [
@@ -5464,27 +5379,13 @@ export type ListSessionLoggersError =
 /**
  * Lists all available session logger resources.
  */
-export const listSessionLoggers: API.OperationMethod<
+export const listSessionLoggers: API.PaginatedOperationMethod<
   ListSessionLoggersRequest,
   ListSessionLoggersResponse,
   ListSessionLoggersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionLoggersRequest,
-  ) => stream.Stream<
-    ListSessionLoggersResponse,
-    ListSessionLoggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionLoggersRequest,
-  ) => stream.Stream<
-    SessionLoggerSummary,
-    ListSessionLoggersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionLoggerSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionLoggersRequest,
   output: ListSessionLoggersResponse,
   errors: [
@@ -5514,27 +5415,13 @@ export type ListSessionsError =
 /**
  * Lists information for multiple secure browser sessions from a specific portal.
  */
-export const listSessions: API.OperationMethod<
+export const listSessions: API.PaginatedOperationMethod<
   ListSessionsRequest,
   ListSessionsResponse,
   ListSessionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    ListSessionsResponse,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSessionsRequest,
-  ) => stream.Stream<
-    SessionSummary,
-    ListSessionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SessionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSessionsRequest,
   output: ListSessionsResponse,
   errors: [
@@ -5595,27 +5482,13 @@ export type ListTrustStoreCertificatesError =
 /**
  * Retrieves a list of trust store certificates.
  */
-export const listTrustStoreCertificates: API.OperationMethod<
+export const listTrustStoreCertificates: API.PaginatedOperationMethod<
   ListTrustStoreCertificatesRequest,
   ListTrustStoreCertificatesResponse,
   ListTrustStoreCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustStoreCertificatesRequest,
-  ) => stream.Stream<
-    ListTrustStoreCertificatesResponse,
-    ListTrustStoreCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustStoreCertificatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTrustStoreCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoreCertificatesRequest,
   output: ListTrustStoreCertificatesResponse,
   errors: [
@@ -5644,27 +5517,13 @@ export type ListTrustStoresError =
 /**
  * Retrieves a list of trust stores.
  */
-export const listTrustStores: API.OperationMethod<
+export const listTrustStores: API.PaginatedOperationMethod<
   ListTrustStoresRequest,
   ListTrustStoresResponse,
   ListTrustStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustStoresRequest,
-  ) => stream.Stream<
-    ListTrustStoresResponse,
-    ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustStoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTrustStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustStoresRequest,
   output: ListTrustStoresResponse,
   errors: [
@@ -5692,27 +5551,13 @@ export type ListUserAccessLoggingSettingsError =
 /**
  * Retrieves a list of user access logging settings.
  */
-export const listUserAccessLoggingSettings: API.OperationMethod<
+export const listUserAccessLoggingSettings: API.PaginatedOperationMethod<
   ListUserAccessLoggingSettingsRequest,
   ListUserAccessLoggingSettingsResponse,
   ListUserAccessLoggingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserAccessLoggingSettingsRequest,
-  ) => stream.Stream<
-    ListUserAccessLoggingSettingsResponse,
-    ListUserAccessLoggingSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserAccessLoggingSettingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUserAccessLoggingSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserAccessLoggingSettingsRequest,
   output: ListUserAccessLoggingSettingsResponse,
   errors: [
@@ -5740,27 +5585,13 @@ export type ListUserSettingsError =
 /**
  * Retrieves a list of user settings.
  */
-export const listUserSettings: API.OperationMethod<
+export const listUserSettings: API.PaginatedOperationMethod<
   ListUserSettingsRequest,
   ListUserSettingsResponse,
   ListUserSettingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserSettingsRequest,
-  ) => stream.Stream<
-    ListUserSettingsResponse,
-    ListUserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserSettingsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListUserSettingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserSettingsRequest,
   output: ListUserSettingsResponse,
   errors: [

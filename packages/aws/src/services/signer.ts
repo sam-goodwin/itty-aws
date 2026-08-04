@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1459,27 +1458,13 @@ export type ListSigningJobsError =
  * parameter and with new values that Signer returns in the `nextToken`
  * parameter until all of your signing jobs have been returned.
  */
-export const listSigningJobs: API.OperationMethod<
+export const listSigningJobs: API.PaginatedOperationMethod<
   ListSigningJobsRequest,
   ListSigningJobsResponse,
   ListSigningJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningJobsRequest,
-  ) => stream.Stream<
-    ListSigningJobsResponse,
-    ListSigningJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSigningJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningJobsRequest,
   output: ListSigningJobsResponse,
   errors: [
@@ -1513,27 +1498,13 @@ export type ListSigningPlatformsError =
  * `nextToken` parameter until all of your signing jobs have been
  * returned.
  */
-export const listSigningPlatforms: API.OperationMethod<
+export const listSigningPlatforms: API.PaginatedOperationMethod<
   ListSigningPlatformsRequest,
   ListSigningPlatformsResponse,
   ListSigningPlatformsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningPlatformsRequest,
-  ) => stream.Stream<
-    ListSigningPlatformsResponse,
-    ListSigningPlatformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningPlatformsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSigningPlatformsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningPlatformsRequest,
   output: ListSigningPlatformsResponse,
   errors: [
@@ -1567,27 +1538,13 @@ export type ListSigningProfilesError =
  * new values that Signer returns in the `nextToken` parameter until all of
  * your signing jobs have been returned.
  */
-export const listSigningProfiles: API.OperationMethod<
+export const listSigningProfiles: API.PaginatedOperationMethod<
   ListSigningProfilesRequest,
   ListSigningProfilesResponse,
   ListSigningProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningProfilesRequest,
-  ) => stream.Stream<
-    ListSigningProfilesResponse,
-    ListSigningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningProfilesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSigningProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningProfilesRequest,
   output: ListSigningProfilesResponse,
   errors: [

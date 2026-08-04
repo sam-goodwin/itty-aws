@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4331,27 +4330,13 @@ export type DescribeCustomKeyStoresError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const describeCustomKeyStores: API.OperationMethod<
+export const describeCustomKeyStores: API.PaginatedOperationMethod<
   DescribeCustomKeyStoresRequest,
   DescribeCustomKeyStoresResponse,
   DescribeCustomKeyStoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCustomKeyStoresRequest,
-  ) => stream.Stream<
-    DescribeCustomKeyStoresResponse,
-    DescribeCustomKeyStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCustomKeyStoresRequest,
-  ) => stream.Stream<
-    CustomKeyStoresListEntry,
-    DescribeCustomKeyStoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomKeyStoresListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCustomKeyStoresRequest,
   output: DescribeCustomKeyStoresResponse,
   errors: [
@@ -6006,27 +5991,13 @@ export type ListAliasesError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listAliases: API.OperationMethod<
+export const listAliases: API.PaginatedOperationMethod<
   ListAliasesRequest,
   ListAliasesResponse,
   ListAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    ListAliasesResponse,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAliasesRequest,
-  ) => stream.Stream<
-    AliasListEntry,
-    ListAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AliasListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -6095,27 +6066,13 @@ export type ListGrantsError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listGrants: API.OperationMethod<
+export const listGrants: API.PaginatedOperationMethod<
   ListGrantsRequest,
   ListGrantsResponse,
   ListGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGrantsRequest,
-  ) => stream.Stream<
-    ListGrantsResponse,
-    ListGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGrantsRequest,
-  ) => stream.Stream<
-    GrantListEntry,
-    ListGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GrantListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGrantsRequest,
   output: ListGrantsResponse,
   errors: [
@@ -6163,27 +6120,13 @@ export type ListKeyPoliciesError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listKeyPolicies: API.OperationMethod<
+export const listKeyPolicies: API.PaginatedOperationMethod<
   ListKeyPoliciesRequest,
   ListKeyPoliciesResponse,
   ListKeyPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyPoliciesRequest,
-  ) => stream.Stream<
-    ListKeyPoliciesResponse,
-    ListKeyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyPoliciesRequest,
-  ) => stream.Stream<
-    PolicyNameType,
-    ListKeyPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyNameType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyPoliciesRequest,
   output: ListKeyPoliciesResponse,
   errors: [
@@ -6244,27 +6187,13 @@ export type ListKeyRotationsError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listKeyRotations: API.OperationMethod<
+export const listKeyRotations: API.PaginatedOperationMethod<
   ListKeyRotationsRequest,
   ListKeyRotationsResponse,
   ListKeyRotationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeyRotationsRequest,
-  ) => stream.Stream<
-    ListKeyRotationsResponse,
-    ListKeyRotationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeyRotationsRequest,
-  ) => stream.Stream<
-    RotationsListEntry,
-    ListKeyRotationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RotationsListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeyRotationsRequest,
   output: ListKeyRotationsResponse,
   errors: [
@@ -6311,27 +6240,13 @@ export type ListKeysError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listKeys: API.OperationMethod<
+export const listKeys: API.PaginatedOperationMethod<
   ListKeysRequest,
   ListKeysResponse,
   ListKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    ListKeysResponse,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListKeysRequest,
-  ) => stream.Stream<
-    KeyListEntry,
-    ListKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KeyListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListKeysRequest,
   output: ListKeysResponse,
   errors: [
@@ -6381,27 +6296,13 @@ export type ListResourceTagsError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listResourceTags: API.OperationMethod<
+export const listResourceTags: API.PaginatedOperationMethod<
   ListResourceTagsRequest,
   ListResourceTagsResponse,
   ListResourceTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceTagsRequest,
-  ) => stream.Stream<
-    ListResourceTagsResponse,
-    ListResourceTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListResourceTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceTagsRequest,
   output: ListResourceTagsResponse,
   errors: [
@@ -6475,27 +6376,13 @@ export type ListRetirableGrantsError =
  * **Eventual consistency**: The KMS API follows an eventual consistency model.
  * For more information, see KMS eventual consistency.
  */
-export const listRetirableGrants: API.OperationMethod<
+export const listRetirableGrants: API.PaginatedOperationMethod<
   ListRetirableGrantsRequest,
   ListGrantsResponse,
   ListRetirableGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRetirableGrantsRequest,
-  ) => stream.Stream<
-    ListGrantsResponse,
-    ListRetirableGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRetirableGrantsRequest,
-  ) => stream.Stream<
-    GrantListEntry,
-    ListRetirableGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GrantListEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRetirableGrantsRequest,
   output: ListGrantsResponse,
   errors: [

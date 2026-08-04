@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3992,27 +3991,13 @@ export type DescribeCodeCoveragesError = InvalidInputException | CommonErrors;
 /**
  * Retrieves one or more code coverage reports.
  */
-export const describeCodeCoverages: API.OperationMethod<
+export const describeCodeCoverages: API.PaginatedOperationMethod<
   DescribeCodeCoveragesInput,
   DescribeCodeCoveragesOutput,
   DescribeCodeCoveragesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCodeCoveragesInput,
-  ) => stream.Stream<
-    DescribeCodeCoveragesOutput,
-    DescribeCodeCoveragesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCodeCoveragesInput,
-  ) => stream.Stream<
-    CodeCoverage,
-    DescribeCodeCoveragesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CodeCoverage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCodeCoveragesInput,
   output: DescribeCodeCoveragesOutput,
   errors: [InvalidInputException],
@@ -4034,27 +4019,13 @@ export type DescribeTestCasesError =
 /**
  * Returns a list of details about test cases for a report.
  */
-export const describeTestCases: API.OperationMethod<
+export const describeTestCases: API.PaginatedOperationMethod<
   DescribeTestCasesInput,
   DescribeTestCasesOutput,
   DescribeTestCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTestCasesInput,
-  ) => stream.Stream<
-    DescribeTestCasesOutput,
-    DescribeTestCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTestCasesInput,
-  ) => stream.Stream<
-    TestCase,
-    DescribeTestCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TestCase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTestCasesInput,
   output: DescribeTestCasesOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4163,27 +4134,13 @@ export type ListBuildBatchesError = InvalidInputException | CommonErrors;
 /**
  * Retrieves the identifiers of your build batches in the current region.
  */
-export const listBuildBatches: API.OperationMethod<
+export const listBuildBatches: API.PaginatedOperationMethod<
   ListBuildBatchesInput,
   ListBuildBatchesOutput,
   ListBuildBatchesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuildBatchesInput,
-  ) => stream.Stream<
-    ListBuildBatchesOutput,
-    ListBuildBatchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuildBatchesInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListBuildBatchesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildBatchesInput,
   output: ListBuildBatchesOutput,
   errors: [InvalidInputException],
@@ -4205,27 +4162,13 @@ export type ListBuildBatchesForProjectError =
 /**
  * Retrieves the identifiers of the build batches for a specific project.
  */
-export const listBuildBatchesForProject: API.OperationMethod<
+export const listBuildBatchesForProject: API.PaginatedOperationMethod<
   ListBuildBatchesForProjectInput,
   ListBuildBatchesForProjectOutput,
   ListBuildBatchesForProjectError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuildBatchesForProjectInput,
-  ) => stream.Stream<
-    ListBuildBatchesForProjectOutput,
-    ListBuildBatchesForProjectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuildBatchesForProjectInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListBuildBatchesForProjectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildBatchesForProjectInput,
   output: ListBuildBatchesForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4244,27 +4187,13 @@ export type ListBuildsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of build IDs, with each build ID representing a single build.
  */
-export const listBuilds: API.OperationMethod<
+export const listBuilds: API.PaginatedOperationMethod<
   ListBuildsInput,
   ListBuildsOutput,
   ListBuildsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuildsInput,
-  ) => stream.Stream<
-    ListBuildsOutput,
-    ListBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuildsInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListBuildsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildsInput,
   output: ListBuildsOutput,
   errors: [InvalidInputException],
@@ -4286,27 +4215,13 @@ export type ListBuildsForProjectError =
  * Gets a list of build identifiers for the specified build project, with each build
  * identifier representing a single build.
  */
-export const listBuildsForProject: API.OperationMethod<
+export const listBuildsForProject: API.PaginatedOperationMethod<
   ListBuildsForProjectInput,
   ListBuildsForProjectOutput,
   ListBuildsForProjectError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBuildsForProjectInput,
-  ) => stream.Stream<
-    ListBuildsForProjectOutput,
-    ListBuildsForProjectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBuildsForProjectInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListBuildsForProjectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBuildsForProjectInput,
   output: ListBuildsForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4327,27 +4242,13 @@ export type ListCommandExecutionsForSandboxError =
 /**
  * Gets a list of command executions for a sandbox.
  */
-export const listCommandExecutionsForSandbox: API.OperationMethod<
+export const listCommandExecutionsForSandbox: API.PaginatedOperationMethod<
   ListCommandExecutionsForSandboxInput,
   ListCommandExecutionsForSandboxOutput,
   ListCommandExecutionsForSandboxError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCommandExecutionsForSandboxInput,
-  ) => stream.Stream<
-    ListCommandExecutionsForSandboxOutput,
-    ListCommandExecutionsForSandboxError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCommandExecutionsForSandboxInput,
-  ) => stream.Stream<
-    CommandExecution,
-    ListCommandExecutionsForSandboxError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CommandExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommandExecutionsForSandboxInput,
   output: ListCommandExecutionsForSandboxOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4384,27 +4285,13 @@ export type ListFleetsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of compute fleet names with each compute fleet name representing a single compute fleet.
  */
-export const listFleets: API.OperationMethod<
+export const listFleets: API.PaginatedOperationMethod<
   ListFleetsInput,
   ListFleetsOutput,
   ListFleetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFleetsInput,
-  ) => stream.Stream<
-    ListFleetsOutput,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFleetsInput,
-  ) => stream.Stream<
-    unknown,
-    ListFleetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFleetsInput,
   output: ListFleetsOutput,
   errors: [InvalidInputException],
@@ -4423,27 +4310,13 @@ export type ListProjectsError = InvalidInputException | CommonErrors;
  * Gets a list of build project names, with each build project name representing a single
  * build project.
  */
-export const listProjects: API.OperationMethod<
+export const listProjects: API.PaginatedOperationMethod<
   ListProjectsInput,
   ListProjectsOutput,
   ListProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProjectsInput,
-  ) => stream.Stream<
-    ListProjectsOutput,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProjectsInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInput,
   output: ListProjectsOutput,
   errors: [InvalidInputException],
@@ -4461,27 +4334,13 @@ export type ListReportGroupsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list ARNs for the report groups in the current Amazon Web Services account.
  */
-export const listReportGroups: API.OperationMethod<
+export const listReportGroups: API.PaginatedOperationMethod<
   ListReportGroupsInput,
   ListReportGroupsOutput,
   ListReportGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportGroupsInput,
-  ) => stream.Stream<
-    ListReportGroupsOutput,
-    ListReportGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportGroupsInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListReportGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportGroupsInput,
   output: ListReportGroupsOutput,
   errors: [InvalidInputException],
@@ -4500,27 +4359,13 @@ export type ListReportsError = InvalidInputException | CommonErrors;
 /**
  * Returns a list of ARNs for the reports in the current Amazon Web Services account.
  */
-export const listReports: API.OperationMethod<
+export const listReports: API.PaginatedOperationMethod<
   ListReportsInput,
   ListReportsOutput,
   ListReportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportsInput,
-  ) => stream.Stream<
-    ListReportsOutput,
-    ListReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportsInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListReportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsInput,
   output: ListReportsOutput,
   errors: [InvalidInputException],
@@ -4542,27 +4387,13 @@ export type ListReportsForReportGroupError =
 /**
  * Returns a list of ARNs for the reports that belong to a `ReportGroup`.
  */
-export const listReportsForReportGroup: API.OperationMethod<
+export const listReportsForReportGroup: API.PaginatedOperationMethod<
   ListReportsForReportGroupInput,
   ListReportsForReportGroupOutput,
   ListReportsForReportGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReportsForReportGroupInput,
-  ) => stream.Stream<
-    ListReportsForReportGroupOutput,
-    ListReportsForReportGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReportsForReportGroupInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListReportsForReportGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReportsForReportGroupInput,
   output: ListReportsForReportGroupOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4581,27 +4412,13 @@ export type ListSandboxesError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of sandboxes.
  */
-export const listSandboxes: API.OperationMethod<
+export const listSandboxes: API.PaginatedOperationMethod<
   ListSandboxesInput,
   ListSandboxesOutput,
   ListSandboxesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSandboxesInput,
-  ) => stream.Stream<
-    ListSandboxesOutput,
-    ListSandboxesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSandboxesInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListSandboxesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSandboxesInput,
   output: ListSandboxesOutput,
   errors: [InvalidInputException],
@@ -4623,27 +4440,13 @@ export type ListSandboxesForProjectError =
 /**
  * Gets a list of sandboxes for a given project.
  */
-export const listSandboxesForProject: API.OperationMethod<
+export const listSandboxesForProject: API.PaginatedOperationMethod<
   ListSandboxesForProjectInput,
   ListSandboxesForProjectOutput,
   ListSandboxesForProjectError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSandboxesForProjectInput,
-  ) => stream.Stream<
-    ListSandboxesForProjectOutput,
-    ListSandboxesForProjectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSandboxesForProjectInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListSandboxesForProjectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSandboxesForProjectInput,
   output: ListSandboxesForProjectOutput,
   errors: [InvalidInputException, ResourceNotFoundException],
@@ -4662,27 +4465,13 @@ export type ListSharedProjectsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of projects that are shared with other Amazon Web Services accounts or users.
  */
-export const listSharedProjects: API.OperationMethod<
+export const listSharedProjects: API.PaginatedOperationMethod<
   ListSharedProjectsInput,
   ListSharedProjectsOutput,
   ListSharedProjectsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSharedProjectsInput,
-  ) => stream.Stream<
-    ListSharedProjectsOutput,
-    ListSharedProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSharedProjectsInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListSharedProjectsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharedProjectsInput,
   output: ListSharedProjectsOutput,
   errors: [InvalidInputException],
@@ -4701,27 +4490,13 @@ export type ListSharedReportGroupsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
  */
-export const listSharedReportGroups: API.OperationMethod<
+export const listSharedReportGroups: API.PaginatedOperationMethod<
   ListSharedReportGroupsInput,
   ListSharedReportGroupsOutput,
   ListSharedReportGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSharedReportGroupsInput,
-  ) => stream.Stream<
-    ListSharedReportGroupsOutput,
-    ListSharedReportGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSharedReportGroupsInput,
-  ) => stream.Stream<
-    NonEmptyString,
-    ListSharedReportGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NonEmptyString
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharedReportGroupsInput,
   output: ListSharedReportGroupsOutput,
   errors: [InvalidInputException],

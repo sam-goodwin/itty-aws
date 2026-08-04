@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1773,27 +1772,13 @@ export type DescribeCanariesError =
  * see
  * Limiting a user to viewing specific canaries.
  */
-export const describeCanaries: API.OperationMethod<
+export const describeCanaries: API.PaginatedOperationMethod<
   DescribeCanariesRequest,
   DescribeCanariesResponse,
   DescribeCanariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCanariesRequest,
-  ) => stream.Stream<
-    DescribeCanariesResponse,
-    DescribeCanariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCanariesRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeCanariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCanariesRequest,
   output: DescribeCanariesResponse,
   errors: [InternalServerException, ValidationException],
@@ -1824,27 +1809,13 @@ export type DescribeCanariesLastRunError =
  * see
  * Limiting a user to viewing specific canaries.
  */
-export const describeCanariesLastRun: API.OperationMethod<
+export const describeCanariesLastRun: API.PaginatedOperationMethod<
   DescribeCanariesLastRunRequest,
   DescribeCanariesLastRunResponse,
   DescribeCanariesLastRunError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCanariesLastRunRequest,
-  ) => stream.Stream<
-    DescribeCanariesLastRunResponse,
-    DescribeCanariesLastRunError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCanariesLastRunRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeCanariesLastRunError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCanariesLastRunRequest,
   output: DescribeCanariesLastRunResponse,
   errors: [InternalServerException, ValidationException],
@@ -1867,27 +1838,13 @@ export type DescribeRuntimeVersionsError =
  * see
  * Canary Runtime Versions.
  */
-export const describeRuntimeVersions: API.OperationMethod<
+export const describeRuntimeVersions: API.PaginatedOperationMethod<
   DescribeRuntimeVersionsRequest,
   DescribeRuntimeVersionsResponse,
   DescribeRuntimeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRuntimeVersionsRequest,
-  ) => stream.Stream<
-    DescribeRuntimeVersionsResponse,
-    DescribeRuntimeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRuntimeVersionsRequest,
-  ) => stream.Stream<
-    unknown,
-    DescribeRuntimeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRuntimeVersionsRequest,
   output: DescribeRuntimeVersionsResponse,
   errors: [InternalServerException, ValidationException],
@@ -1965,27 +1922,13 @@ export type GetCanaryRunsError =
 /**
  * Retrieves a list of runs for a specified canary.
  */
-export const getCanaryRuns: API.OperationMethod<
+export const getCanaryRuns: API.PaginatedOperationMethod<
   GetCanaryRunsRequest,
   GetCanaryRunsResponse,
   GetCanaryRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCanaryRunsRequest,
-  ) => stream.Stream<
-    GetCanaryRunsResponse,
-    GetCanaryRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCanaryRunsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCanaryRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCanaryRunsRequest,
   output: GetCanaryRunsResponse,
   errors: [
@@ -2041,27 +1984,13 @@ export type ListAssociatedGroupsError =
  * Returns a list of the groups that the specified canary is associated with. The canary
  * that you specify must be in the current Region.
  */
-export const listAssociatedGroups: API.OperationMethod<
+export const listAssociatedGroups: API.PaginatedOperationMethod<
   ListAssociatedGroupsRequest,
   ListAssociatedGroupsResponse,
   ListAssociatedGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociatedGroupsRequest,
-  ) => stream.Stream<
-    ListAssociatedGroupsResponse,
-    ListAssociatedGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociatedGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAssociatedGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociatedGroupsRequest,
   output: ListAssociatedGroupsResponse,
   errors: [
@@ -2088,27 +2017,13 @@ export type ListGroupResourcesError =
 /**
  * This operation returns a list of the ARNs of the canaries that are associated with the specified group.
  */
-export const listGroupResources: API.OperationMethod<
+export const listGroupResources: API.PaginatedOperationMethod<
   ListGroupResourcesRequest,
   ListGroupResourcesResponse,
   ListGroupResourcesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupResourcesRequest,
-  ) => stream.Stream<
-    ListGroupResourcesResponse,
-    ListGroupResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupResourcesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGroupResourcesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupResourcesRequest,
   output: ListGroupResourcesResponse,
   errors: [
@@ -2135,27 +2050,13 @@ export type ListGroupsError =
  * Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs. The groups
  * from all Regions are returned.
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [InternalServerException, ValidationException],

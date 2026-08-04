@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1082,27 +1081,13 @@ export type ListScheduleGroupsError =
 /**
  * Returns a paginated list of your schedule groups.
  */
-export const listScheduleGroups: API.OperationMethod<
+export const listScheduleGroups: API.PaginatedOperationMethod<
   ListScheduleGroupsInput,
   ListScheduleGroupsOutput,
   ListScheduleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduleGroupsInput,
-  ) => stream.Stream<
-    ListScheduleGroupsOutput,
-    ListScheduleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduleGroupsInput,
-  ) => stream.Stream<
-    ScheduleGroupSummary,
-    ListScheduleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduleGroupSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduleGroupsInput,
   output: ListScheduleGroupsOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1126,27 +1111,13 @@ export type ListSchedulesError =
 /**
  * Returns a paginated list of your EventBridge Scheduler schedules.
  */
-export const listSchedules: API.OperationMethod<
+export const listSchedules: API.PaginatedOperationMethod<
   ListSchedulesInput,
   ListSchedulesOutput,
   ListSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchedulesInput,
-  ) => stream.Stream<
-    ListSchedulesOutput,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSchedulesInput,
-  ) => stream.Stream<
-    ScheduleSummary,
-    ListSchedulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScheduleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSchedulesInput,
   output: ListSchedulesOutput,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1274,27 +1273,13 @@ export type ListDevicesError =
 /**
  * Returns a list of thin client devices.
  */
-export const listDevices: API.OperationMethod<
+export const listDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   ListDevicesResponse,
   ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    ListDevicesResponse,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesRequest,
-  ) => stream.Stream<
-    DeviceSummary,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeviceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [
@@ -1324,27 +1309,13 @@ export type ListEnvironmentsError =
 /**
  * Returns a list of environments.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   ListEnvironmentsResponse,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    ListEnvironmentsResponse,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    EnvironmentSummary,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [
@@ -1374,27 +1345,13 @@ export type ListSoftwareSetsError =
 /**
  * Returns a list of software sets.
  */
-export const listSoftwareSets: API.OperationMethod<
+export const listSoftwareSets: API.PaginatedOperationMethod<
   ListSoftwareSetsRequest,
   ListSoftwareSetsResponse,
   ListSoftwareSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSoftwareSetsRequest,
-  ) => stream.Stream<
-    ListSoftwareSetsResponse,
-    ListSoftwareSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSoftwareSetsRequest,
-  ) => stream.Stream<
-    SoftwareSetSummary,
-    ListSoftwareSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SoftwareSetSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSoftwareSetsRequest,
   output: ListSoftwareSetsResponse,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1429,27 +1428,13 @@ export type ListInstanceTypesError =
 /**
  * Retrieves a list of instance types supported by Amazon WorkSpaces Instances, enabling precise workspace infrastructure configuration.
  */
-export const listInstanceTypes: API.OperationMethod<
+export const listInstanceTypes: API.PaginatedOperationMethod<
   ListInstanceTypesRequest,
   ListInstanceTypesResponse,
   ListInstanceTypesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceTypesRequest,
-  ) => stream.Stream<
-    ListInstanceTypesResponse,
-    ListInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceTypesRequest,
-  ) => stream.Stream<
-    InstanceTypeInfo,
-    ListInstanceTypesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  InstanceTypeInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceTypesRequest,
   output: ListInstanceTypesResponse,
   errors: [
@@ -1478,27 +1463,13 @@ export type ListRegionsError =
 /**
  * Retrieves a list of AWS regions supported by Amazon WorkSpaces Instances, enabling region discovery for workspace deployments.
  */
-export const listRegions: API.OperationMethod<
+export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   ListRegionsResponse,
   ListRegionsError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    ListRegionsResponse,
-    ListRegionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    Region,
-    ListRegionsError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  Region
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [
@@ -1557,27 +1528,13 @@ export type ListWorkspaceInstancesError =
 /**
  * Retrieves a collection of WorkSpaces Instances based on specified filters.
  */
-export const listWorkspaceInstances: API.OperationMethod<
+export const listWorkspaceInstances: API.PaginatedOperationMethod<
   ListWorkspaceInstancesRequest,
   ListWorkspaceInstancesResponse,
   ListWorkspaceInstancesError,
-  Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkspaceInstancesRequest,
-  ) => stream.Stream<
-    ListWorkspaceInstancesResponse,
-    ListWorkspaceInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkspaceInstancesRequest,
-  ) => stream.Stream<
-    WorkspaceInstance,
-    ListWorkspaceInstancesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Rgn | HttpClient.HttpClient,
+  WorkspaceInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkspaceInstancesRequest,
   output: ListWorkspaceInstancesResponse,
   errors: [

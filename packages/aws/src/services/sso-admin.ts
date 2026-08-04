@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4365,27 +4364,13 @@ export type ListAccountAssignmentCreationStatusError =
 /**
  * Lists the status of the Amazon Web Services account assignment creation requests for a specified IAM Identity Center instance.
  */
-export const listAccountAssignmentCreationStatus: API.OperationMethod<
+export const listAccountAssignmentCreationStatus: API.PaginatedOperationMethod<
   ListAccountAssignmentCreationStatusRequest,
   ListAccountAssignmentCreationStatusResponse,
   ListAccountAssignmentCreationStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAssignmentCreationStatusRequest,
-  ) => stream.Stream<
-    ListAccountAssignmentCreationStatusResponse,
-    ListAccountAssignmentCreationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAssignmentCreationStatusRequest,
-  ) => stream.Stream<
-    AccountAssignmentOperationStatusMetadata,
-    ListAccountAssignmentCreationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAssignmentOperationStatusMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentCreationStatusRequest,
   output: ListAccountAssignmentCreationStatusResponse,
   errors: [
@@ -4416,27 +4401,13 @@ export type ListAccountAssignmentDeletionStatusError =
 /**
  * Lists the status of the Amazon Web Services account assignment deletion requests for a specified IAM Identity Center instance.
  */
-export const listAccountAssignmentDeletionStatus: API.OperationMethod<
+export const listAccountAssignmentDeletionStatus: API.PaginatedOperationMethod<
   ListAccountAssignmentDeletionStatusRequest,
   ListAccountAssignmentDeletionStatusResponse,
   ListAccountAssignmentDeletionStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAssignmentDeletionStatusRequest,
-  ) => stream.Stream<
-    ListAccountAssignmentDeletionStatusResponse,
-    ListAccountAssignmentDeletionStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAssignmentDeletionStatusRequest,
-  ) => stream.Stream<
-    AccountAssignmentOperationStatusMetadata,
-    ListAccountAssignmentDeletionStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAssignmentOperationStatusMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentDeletionStatusRequest,
   output: ListAccountAssignmentDeletionStatusResponse,
   errors: [
@@ -4467,27 +4438,13 @@ export type ListAccountAssignmentsError =
 /**
  * Lists the assignee of the specified Amazon Web Services account with the specified permission set.
  */
-export const listAccountAssignments: API.OperationMethod<
+export const listAccountAssignments: API.PaginatedOperationMethod<
   ListAccountAssignmentsRequest,
   ListAccountAssignmentsResponse,
   ListAccountAssignmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAssignmentsRequest,
-  ) => stream.Stream<
-    ListAccountAssignmentsResponse,
-    ListAccountAssignmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAssignmentsRequest,
-  ) => stream.Stream<
-    AccountAssignment,
-    ListAccountAssignmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentsRequest,
   output: ListAccountAssignmentsResponse,
   errors: [
@@ -4518,27 +4475,13 @@ export type ListAccountAssignmentsForPrincipalError =
 /**
  * Retrieves a list of the IAM Identity Center associated Amazon Web Services accounts that the principal has access to. This action must be called from the management account containing your organization instance of IAM Identity Center. This action is not valid for account instances of IAM Identity Center.
  */
-export const listAccountAssignmentsForPrincipal: API.OperationMethod<
+export const listAccountAssignmentsForPrincipal: API.PaginatedOperationMethod<
   ListAccountAssignmentsForPrincipalRequest,
   ListAccountAssignmentsForPrincipalResponse,
   ListAccountAssignmentsForPrincipalError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAssignmentsForPrincipalRequest,
-  ) => stream.Stream<
-    ListAccountAssignmentsForPrincipalResponse,
-    ListAccountAssignmentsForPrincipalError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAssignmentsForPrincipalRequest,
-  ) => stream.Stream<
-    AccountAssignmentForPrincipal,
-    ListAccountAssignmentsForPrincipalError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAssignmentForPrincipal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAssignmentsForPrincipalRequest,
   output: ListAccountAssignmentsForPrincipalResponse,
   errors: [
@@ -4569,27 +4512,13 @@ export type ListAccountsForProvisionedPermissionSetError =
 /**
  * Lists all the Amazon Web Services accounts where the specified permission set is provisioned.
  */
-export const listAccountsForProvisionedPermissionSet: API.OperationMethod<
+export const listAccountsForProvisionedPermissionSet: API.PaginatedOperationMethod<
   ListAccountsForProvisionedPermissionSetRequest,
   ListAccountsForProvisionedPermissionSetResponse,
   ListAccountsForProvisionedPermissionSetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsForProvisionedPermissionSetRequest,
-  ) => stream.Stream<
-    ListAccountsForProvisionedPermissionSetResponse,
-    ListAccountsForProvisionedPermissionSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsForProvisionedPermissionSetRequest,
-  ) => stream.Stream<
-    AccountId,
-    ListAccountsForProvisionedPermissionSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountId
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsForProvisionedPermissionSetRequest,
   output: ListAccountsForProvisionedPermissionSetResponse,
   errors: [
@@ -4620,27 +4549,13 @@ export type ListApplicationAccessScopesError =
 /**
  * Lists the access scopes and authorized targets associated with an application.
  */
-export const listApplicationAccessScopes: API.OperationMethod<
+export const listApplicationAccessScopes: API.PaginatedOperationMethod<
   ListApplicationAccessScopesRequest,
   ListApplicationAccessScopesResponse,
   ListApplicationAccessScopesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAccessScopesRequest,
-  ) => stream.Stream<
-    ListApplicationAccessScopesResponse,
-    ListApplicationAccessScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAccessScopesRequest,
-  ) => stream.Stream<
-    ScopeDetails,
-    ListApplicationAccessScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScopeDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAccessScopesRequest,
   output: ListApplicationAccessScopesResponse,
   errors: [
@@ -4671,27 +4586,13 @@ export type ListApplicationAssignmentsError =
 /**
  * Lists Amazon Web Services account users that are assigned to an application.
  */
-export const listApplicationAssignments: API.OperationMethod<
+export const listApplicationAssignments: API.PaginatedOperationMethod<
   ListApplicationAssignmentsRequest,
   ListApplicationAssignmentsResponse,
   ListApplicationAssignmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAssignmentsRequest,
-  ) => stream.Stream<
-    ListApplicationAssignmentsResponse,
-    ListApplicationAssignmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAssignmentsRequest,
-  ) => stream.Stream<
-    ApplicationAssignment,
-    ListApplicationAssignmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssignmentsRequest,
   output: ListApplicationAssignmentsResponse,
   errors: [
@@ -4722,27 +4623,13 @@ export type ListApplicationAssignmentsForPrincipalError =
 /**
  * Lists the applications to which a specified principal is assigned. You must provide a filter when calling this action from a member account against your organization instance of IAM Identity Center. A filter is not required when called from the management account against an organization instance of IAM Identity Center, or from a member account against an account instance of IAM Identity Center in the same account.
  */
-export const listApplicationAssignmentsForPrincipal: API.OperationMethod<
+export const listApplicationAssignmentsForPrincipal: API.PaginatedOperationMethod<
   ListApplicationAssignmentsForPrincipalRequest,
   ListApplicationAssignmentsForPrincipalResponse,
   ListApplicationAssignmentsForPrincipalError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAssignmentsForPrincipalRequest,
-  ) => stream.Stream<
-    ListApplicationAssignmentsForPrincipalResponse,
-    ListApplicationAssignmentsForPrincipalError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAssignmentsForPrincipalRequest,
-  ) => stream.Stream<
-    ApplicationAssignmentForPrincipal,
-    ListApplicationAssignmentsForPrincipalError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationAssignmentForPrincipal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssignmentsForPrincipalRequest,
   output: ListApplicationAssignmentsForPrincipalResponse,
   errors: [
@@ -4773,27 +4660,13 @@ export type ListApplicationAuthenticationMethodsError =
 /**
  * Lists all of the authentication methods supported by the specified application.
  */
-export const listApplicationAuthenticationMethods: API.OperationMethod<
+export const listApplicationAuthenticationMethods: API.PaginatedOperationMethod<
   ListApplicationAuthenticationMethodsRequest,
   ListApplicationAuthenticationMethodsResponse,
   ListApplicationAuthenticationMethodsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAuthenticationMethodsRequest,
-  ) => stream.Stream<
-    ListApplicationAuthenticationMethodsResponse,
-    ListApplicationAuthenticationMethodsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAuthenticationMethodsRequest,
-  ) => stream.Stream<
-    AuthenticationMethodItem,
-    ListApplicationAuthenticationMethodsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AuthenticationMethodItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAuthenticationMethodsRequest,
   output: ListApplicationAuthenticationMethodsResponse,
   errors: [
@@ -4823,27 +4696,13 @@ export type ListApplicationGrantsError =
 /**
  * List the grants associated with an application.
  */
-export const listApplicationGrants: API.OperationMethod<
+export const listApplicationGrants: API.PaginatedOperationMethod<
   ListApplicationGrantsRequest,
   ListApplicationGrantsResponse,
   ListApplicationGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationGrantsRequest,
-  ) => stream.Stream<
-    ListApplicationGrantsResponse,
-    ListApplicationGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationGrantsRequest,
-  ) => stream.Stream<
-    GrantItem,
-    ListApplicationGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GrantItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationGrantsRequest,
   output: ListApplicationGrantsResponse,
   errors: [
@@ -4872,27 +4731,13 @@ export type ListApplicationProvidersError =
 /**
  * Lists the application providers configured in the IAM Identity Center identity store.
  */
-export const listApplicationProviders: API.OperationMethod<
+export const listApplicationProviders: API.PaginatedOperationMethod<
   ListApplicationProvidersRequest,
   ListApplicationProvidersResponse,
   ListApplicationProvidersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationProvidersRequest,
-  ) => stream.Stream<
-    ListApplicationProvidersResponse,
-    ListApplicationProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationProvidersRequest,
-  ) => stream.Stream<
-    ApplicationProvider,
-    ListApplicationProvidersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ApplicationProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationProvidersRequest,
   output: ListApplicationProvidersResponse,
   errors: [
@@ -4921,27 +4766,13 @@ export type ListApplicationsError =
 /**
  * Lists all applications associated with the instance of IAM Identity Center. When listing applications for an organization instance in the management account, member accounts must use the `applicationAccount` parameter to filter the list to only applications created from that account. When listing applications for an account instance in the same member account, a filter is not required.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   ListApplicationsResponse,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    ListApplicationsResponse,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -4971,27 +4802,13 @@ export type ListCustomerManagedPolicyReferencesInPermissionSetError =
 /**
  * Lists all customer managed policies attached to a specified PermissionSet.
  */
-export const listCustomerManagedPolicyReferencesInPermissionSet: API.OperationMethod<
+export const listCustomerManagedPolicyReferencesInPermissionSet: API.PaginatedOperationMethod<
   ListCustomerManagedPolicyReferencesInPermissionSetRequest,
   ListCustomerManagedPolicyReferencesInPermissionSetResponse,
   ListCustomerManagedPolicyReferencesInPermissionSetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomerManagedPolicyReferencesInPermissionSetRequest,
-  ) => stream.Stream<
-    ListCustomerManagedPolicyReferencesInPermissionSetResponse,
-    ListCustomerManagedPolicyReferencesInPermissionSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomerManagedPolicyReferencesInPermissionSetRequest,
-  ) => stream.Stream<
-    CustomerManagedPolicyReference,
-    ListCustomerManagedPolicyReferencesInPermissionSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomerManagedPolicyReference
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomerManagedPolicyReferencesInPermissionSetRequest,
   output: ListCustomerManagedPolicyReferencesInPermissionSetResponse,
   errors: [
@@ -5021,27 +4838,13 @@ export type ListInstancesError =
 /**
  * Lists the details of the organization and account instances of IAM Identity Center that were created in or visible to the account calling this API.
  */
-export const listInstances: API.OperationMethod<
+export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
   ListInstancesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    InstanceMetadata,
-    ListInstancesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [
@@ -5071,27 +4874,13 @@ export type ListManagedPoliciesInPermissionSetError =
 /**
  * Lists the Amazon Web Services managed policy that is attached to a specified permission set.
  */
-export const listManagedPoliciesInPermissionSet: API.OperationMethod<
+export const listManagedPoliciesInPermissionSet: API.PaginatedOperationMethod<
   ListManagedPoliciesInPermissionSetRequest,
   ListManagedPoliciesInPermissionSetResponse,
   ListManagedPoliciesInPermissionSetError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListManagedPoliciesInPermissionSetRequest,
-  ) => stream.Stream<
-    ListManagedPoliciesInPermissionSetResponse,
-    ListManagedPoliciesInPermissionSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListManagedPoliciesInPermissionSetRequest,
-  ) => stream.Stream<
-    AttachedManagedPolicy,
-    ListManagedPoliciesInPermissionSetError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttachedManagedPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedPoliciesInPermissionSetRequest,
   output: ListManagedPoliciesInPermissionSetResponse,
   errors: [
@@ -5122,27 +4911,13 @@ export type ListPermissionSetProvisioningStatusError =
 /**
  * Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance.
  */
-export const listPermissionSetProvisioningStatus: API.OperationMethod<
+export const listPermissionSetProvisioningStatus: API.PaginatedOperationMethod<
   ListPermissionSetProvisioningStatusRequest,
   ListPermissionSetProvisioningStatusResponse,
   ListPermissionSetProvisioningStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionSetProvisioningStatusRequest,
-  ) => stream.Stream<
-    ListPermissionSetProvisioningStatusResponse,
-    ListPermissionSetProvisioningStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionSetProvisioningStatusRequest,
-  ) => stream.Stream<
-    PermissionSetProvisioningStatusMetadata,
-    ListPermissionSetProvisioningStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PermissionSetProvisioningStatusMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionSetProvisioningStatusRequest,
   output: ListPermissionSetProvisioningStatusResponse,
   errors: [
@@ -5173,27 +4948,13 @@ export type ListPermissionSetsError =
 /**
  * Lists the PermissionSets in an IAM Identity Center instance.
  */
-export const listPermissionSets: API.OperationMethod<
+export const listPermissionSets: API.PaginatedOperationMethod<
   ListPermissionSetsRequest,
   ListPermissionSetsResponse,
   ListPermissionSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionSetsRequest,
-  ) => stream.Stream<
-    ListPermissionSetsResponse,
-    ListPermissionSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionSetsRequest,
-  ) => stream.Stream<
-    PermissionSetArn,
-    ListPermissionSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PermissionSetArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionSetsRequest,
   output: ListPermissionSetsResponse,
   errors: [
@@ -5224,27 +4985,13 @@ export type ListPermissionSetsProvisionedToAccountError =
 /**
  * Lists all the permission sets that are provisioned to a specified Amazon Web Services account.
  */
-export const listPermissionSetsProvisionedToAccount: API.OperationMethod<
+export const listPermissionSetsProvisionedToAccount: API.PaginatedOperationMethod<
   ListPermissionSetsProvisionedToAccountRequest,
   ListPermissionSetsProvisionedToAccountResponse,
   ListPermissionSetsProvisionedToAccountError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionSetsProvisionedToAccountRequest,
-  ) => stream.Stream<
-    ListPermissionSetsProvisionedToAccountResponse,
-    ListPermissionSetsProvisionedToAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPermissionSetsProvisionedToAccountRequest,
-  ) => stream.Stream<
-    PermissionSetArn,
-    ListPermissionSetsProvisionedToAccountError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PermissionSetArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionSetsProvisionedToAccountRequest,
   output: ListPermissionSetsProvisionedToAccountResponse,
   errors: [
@@ -5282,27 +5029,13 @@ export type ListRegionsError =
  *
  * - DescribeRegion
  */
-export const listRegions: API.OperationMethod<
+export const listRegions: API.PaginatedOperationMethod<
   ListRegionsRequest,
   ListRegionsResponse,
   ListRegionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    ListRegionsResponse,
-    ListRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionsRequest,
-  ) => stream.Stream<
-    RegionMetadata,
-    ListRegionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegionMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [
@@ -5332,27 +5065,13 @@ export type ListTagsForResourceError =
 /**
  * Lists the tags that are attached to a specified resource.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    Tag,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -5381,27 +5100,13 @@ export type ListTrustedTokenIssuersError =
 /**
  * Lists all the trusted token issuers configured in an instance of IAM Identity Center.
  */
-export const listTrustedTokenIssuers: API.OperationMethod<
+export const listTrustedTokenIssuers: API.PaginatedOperationMethod<
   ListTrustedTokenIssuersRequest,
   ListTrustedTokenIssuersResponse,
   ListTrustedTokenIssuersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTrustedTokenIssuersRequest,
-  ) => stream.Stream<
-    ListTrustedTokenIssuersResponse,
-    ListTrustedTokenIssuersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTrustedTokenIssuersRequest,
-  ) => stream.Stream<
-    TrustedTokenIssuerMetadata,
-    ListTrustedTokenIssuersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TrustedTokenIssuerMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustedTokenIssuersRequest,
   output: ListTrustedTokenIssuersResponse,
   errors: [

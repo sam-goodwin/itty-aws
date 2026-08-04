@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -751,27 +750,13 @@ export type ListDomainsError =
 /**
  * Lists all SimpleDB domains in the account/region. Paginated.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    string,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidNextToken, InvalidParameterValue],
@@ -834,27 +819,13 @@ export type SelectError =
 /**
  * Runs a SimpleDB select expression (`select output_list from domain [where ...]`). Paginated via `NextToken`.
  */
-export const select: API.OperationMethod<
+export const select: API.PaginatedOperationMethod<
   SelectRequest,
   SelectResponse,
   SelectError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SelectRequest,
-  ) => stream.Stream<
-    SelectResponse,
-    SelectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SelectRequest,
-  ) => stream.Stream<
-    Item,
-    SelectError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectRequest,
   output: SelectResponse,
   errors: [

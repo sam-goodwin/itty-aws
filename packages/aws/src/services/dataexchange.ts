@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3493,27 +3492,13 @@ export type ListDataGrantsError =
 /**
  * This operation returns information about all data grants.
  */
-export const listDataGrants: API.OperationMethod<
+export const listDataGrants: API.PaginatedOperationMethod<
   ListDataGrantsRequest,
   ListDataGrantsResponse,
   ListDataGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataGrantsRequest,
-  ) => stream.Stream<
-    ListDataGrantsResponse,
-    ListDataGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataGrantsRequest,
-  ) => stream.Stream<
-    DataGrantSummaryEntry,
-    ListDataGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataGrantSummaryEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataGrantsRequest,
   output: ListDataGrantsResponse,
   errors: [
@@ -3543,27 +3528,13 @@ export type ListDataSetRevisionsError =
 /**
  * This operation lists a data set's revisions sorted by CreatedAt in descending order.
  */
-export const listDataSetRevisions: API.OperationMethod<
+export const listDataSetRevisions: API.PaginatedOperationMethod<
   ListDataSetRevisionsRequest,
   ListDataSetRevisionsResponse,
   ListDataSetRevisionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSetRevisionsRequest,
-  ) => stream.Stream<
-    ListDataSetRevisionsResponse,
-    ListDataSetRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSetRevisionsRequest,
-  ) => stream.Stream<
-    RevisionEntry,
-    ListDataSetRevisionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RevisionEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetRevisionsRequest,
   output: ListDataSetRevisionsResponse,
   errors: [
@@ -3592,27 +3563,13 @@ export type ListDataSetsError =
 /**
  * This operation lists your data sets. When listing by origin OWNED, results are sorted by CreatedAt in descending order. When listing by origin ENTITLED, there is no order.
  */
-export const listDataSets: API.OperationMethod<
+export const listDataSets: API.PaginatedOperationMethod<
   ListDataSetsRequest,
   ListDataSetsResponse,
   ListDataSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataSetsRequest,
-  ) => stream.Stream<
-    ListDataSetsResponse,
-    ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataSetsRequest,
-  ) => stream.Stream<
-    DataSetEntry,
-    ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataSetEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
   output: ListDataSetsResponse,
   errors: [
@@ -3641,27 +3598,13 @@ export type ListEventActionsError =
 /**
  * This operation lists your event actions.
  */
-export const listEventActions: API.OperationMethod<
+export const listEventActions: API.PaginatedOperationMethod<
   ListEventActionsRequest,
   ListEventActionsResponse,
   ListEventActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventActionsRequest,
-  ) => stream.Stream<
-    ListEventActionsResponse,
-    ListEventActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEventActionsRequest,
-  ) => stream.Stream<
-    EventActionEntry,
-    ListEventActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EventActionEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventActionsRequest,
   output: ListEventActionsResponse,
   errors: [
@@ -3690,27 +3633,13 @@ export type ListJobsError =
 /**
  * This operation lists your jobs sorted by CreatedAt in descending order.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   ListJobsResponse,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    ListJobsResponse,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
-    JobEntry,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  JobEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [
@@ -3740,27 +3669,13 @@ export type ListReceivedDataGrantsError =
 /**
  * This operation returns information about all received data grants.
  */
-export const listReceivedDataGrants: API.OperationMethod<
+export const listReceivedDataGrants: API.PaginatedOperationMethod<
   ListReceivedDataGrantsRequest,
   ListReceivedDataGrantsResponse,
   ListReceivedDataGrantsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReceivedDataGrantsRequest,
-  ) => stream.Stream<
-    ListReceivedDataGrantsResponse,
-    ListReceivedDataGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReceivedDataGrantsRequest,
-  ) => stream.Stream<
-    ReceivedDataGrantSummariesEntry,
-    ListReceivedDataGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReceivedDataGrantSummariesEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReceivedDataGrantsRequest,
   output: ListReceivedDataGrantsResponse,
   errors: [
@@ -3790,27 +3705,13 @@ export type ListRevisionAssetsError =
 /**
  * This operation lists a revision's assets sorted alphabetically in descending order.
  */
-export const listRevisionAssets: API.OperationMethod<
+export const listRevisionAssets: API.PaginatedOperationMethod<
   ListRevisionAssetsRequest,
   ListRevisionAssetsResponse,
   ListRevisionAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRevisionAssetsRequest,
-  ) => stream.Stream<
-    ListRevisionAssetsResponse,
-    ListRevisionAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRevisionAssetsRequest,
-  ) => stream.Stream<
-    AssetEntry,
-    ListRevisionAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssetEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionAssetsRequest,
   output: ListRevisionAssetsResponse,
   errors: [

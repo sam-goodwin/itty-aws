@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2993,27 +2992,13 @@ export type ListBillEstimateCommitmentsError =
 /**
  * Lists the commitments associated with a bill estimate.
  */
-export const listBillEstimateCommitments: API.OperationMethod<
+export const listBillEstimateCommitments: API.PaginatedOperationMethod<
   ListBillEstimateCommitmentsRequest,
   ListBillEstimateCommitmentsResponse,
   ListBillEstimateCommitmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateCommitmentsRequest,
-  ) => stream.Stream<
-    ListBillEstimateCommitmentsResponse,
-    ListBillEstimateCommitmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateCommitmentsRequest,
-  ) => stream.Stream<
-    BillEstimateCommitmentSummary,
-    ListBillEstimateCommitmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillEstimateCommitmentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateCommitmentsRequest,
   output: ListBillEstimateCommitmentsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3035,27 +3020,13 @@ export type ListBillEstimateInputCommitmentModificationsError =
 /**
  * Lists the input commitment modifications associated with a bill estimate.
  */
-export const listBillEstimateInputCommitmentModifications: API.OperationMethod<
+export const listBillEstimateInputCommitmentModifications: API.PaginatedOperationMethod<
   ListBillEstimateInputCommitmentModificationsRequest,
   ListBillEstimateInputCommitmentModificationsResponse,
   ListBillEstimateInputCommitmentModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateInputCommitmentModificationsRequest,
-  ) => stream.Stream<
-    ListBillEstimateInputCommitmentModificationsResponse,
-    ListBillEstimateInputCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateInputCommitmentModificationsRequest,
-  ) => stream.Stream<
-    BillEstimateInputCommitmentModificationSummary,
-    ListBillEstimateInputCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillEstimateInputCommitmentModificationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateInputCommitmentModificationsRequest,
   output: ListBillEstimateInputCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3077,27 +3048,13 @@ export type ListBillEstimateInputUsageModificationsError =
 /**
  * Lists the input usage modifications associated with a bill estimate.
  */
-export const listBillEstimateInputUsageModifications: API.OperationMethod<
+export const listBillEstimateInputUsageModifications: API.PaginatedOperationMethod<
   ListBillEstimateInputUsageModificationsRequest,
   ListBillEstimateInputUsageModificationsResponse,
   ListBillEstimateInputUsageModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateInputUsageModificationsRequest,
-  ) => stream.Stream<
-    ListBillEstimateInputUsageModificationsResponse,
-    ListBillEstimateInputUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateInputUsageModificationsRequest,
-  ) => stream.Stream<
-    BillEstimateInputUsageModificationSummary,
-    ListBillEstimateInputUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillEstimateInputUsageModificationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateInputUsageModificationsRequest,
   output: ListBillEstimateInputUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3119,27 +3076,13 @@ export type ListBillEstimateLineItemsError =
 /**
  * Lists the line items associated with a bill estimate.
  */
-export const listBillEstimateLineItems: API.OperationMethod<
+export const listBillEstimateLineItems: API.PaginatedOperationMethod<
   ListBillEstimateLineItemsRequest,
   ListBillEstimateLineItemsResponse,
   ListBillEstimateLineItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimateLineItemsRequest,
-  ) => stream.Stream<
-    ListBillEstimateLineItemsResponse,
-    ListBillEstimateLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimateLineItemsRequest,
-  ) => stream.Stream<
-    BillEstimateLineItemSummary,
-    ListBillEstimateLineItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillEstimateLineItemSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimateLineItemsRequest,
   output: ListBillEstimateLineItemsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3158,27 +3101,13 @@ export type ListBillEstimatesError = DataUnavailableException | CommonErrors;
 /**
  * Lists all bill estimates for the account.
  */
-export const listBillEstimates: API.OperationMethod<
+export const listBillEstimates: API.PaginatedOperationMethod<
   ListBillEstimatesRequest,
   ListBillEstimatesResponse,
   ListBillEstimatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillEstimatesRequest,
-  ) => stream.Stream<
-    ListBillEstimatesResponse,
-    ListBillEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillEstimatesRequest,
-  ) => stream.Stream<
-    BillEstimateSummary,
-    ListBillEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillEstimateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillEstimatesRequest,
   output: ListBillEstimatesResponse,
   errors: [DataUnavailableException],
@@ -3200,27 +3129,13 @@ export type ListBillScenarioCommitmentModificationsError =
 /**
  * Lists the commitment modifications associated with a bill scenario.
  */
-export const listBillScenarioCommitmentModifications: API.OperationMethod<
+export const listBillScenarioCommitmentModifications: API.PaginatedOperationMethod<
   ListBillScenarioCommitmentModificationsRequest,
   ListBillScenarioCommitmentModificationsResponse,
   ListBillScenarioCommitmentModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillScenarioCommitmentModificationsRequest,
-  ) => stream.Stream<
-    ListBillScenarioCommitmentModificationsResponse,
-    ListBillScenarioCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillScenarioCommitmentModificationsRequest,
-  ) => stream.Stream<
-    BillScenarioCommitmentModificationItem,
-    ListBillScenarioCommitmentModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillScenarioCommitmentModificationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenarioCommitmentModificationsRequest,
   output: ListBillScenarioCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3239,27 +3154,13 @@ export type ListBillScenariosError = DataUnavailableException | CommonErrors;
 /**
  * Lists all bill scenarios for the account.
  */
-export const listBillScenarios: API.OperationMethod<
+export const listBillScenarios: API.PaginatedOperationMethod<
   ListBillScenariosRequest,
   ListBillScenariosResponse,
   ListBillScenariosError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillScenariosRequest,
-  ) => stream.Stream<
-    ListBillScenariosResponse,
-    ListBillScenariosError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillScenariosRequest,
-  ) => stream.Stream<
-    BillScenarioSummary,
-    ListBillScenariosError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillScenarioSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenariosRequest,
   output: ListBillScenariosResponse,
   errors: [DataUnavailableException],
@@ -3281,27 +3182,13 @@ export type ListBillScenarioUsageModificationsError =
 /**
  * Lists the usage modifications associated with a bill scenario.
  */
-export const listBillScenarioUsageModifications: API.OperationMethod<
+export const listBillScenarioUsageModifications: API.PaginatedOperationMethod<
   ListBillScenarioUsageModificationsRequest,
   ListBillScenarioUsageModificationsResponse,
   ListBillScenarioUsageModificationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillScenarioUsageModificationsRequest,
-  ) => stream.Stream<
-    ListBillScenarioUsageModificationsResponse,
-    ListBillScenarioUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBillScenarioUsageModificationsRequest,
-  ) => stream.Stream<
-    BillScenarioUsageModificationItem,
-    ListBillScenarioUsageModificationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  BillScenarioUsageModificationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBillScenarioUsageModificationsRequest,
   output: ListBillScenarioUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
@@ -3340,27 +3227,13 @@ export type ListWorkloadEstimatesError =
 /**
  * Lists all workload estimates for the account.
  */
-export const listWorkloadEstimates: API.OperationMethod<
+export const listWorkloadEstimates: API.PaginatedOperationMethod<
   ListWorkloadEstimatesRequest,
   ListWorkloadEstimatesResponse,
   ListWorkloadEstimatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadEstimatesRequest,
-  ) => stream.Stream<
-    ListWorkloadEstimatesResponse,
-    ListWorkloadEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadEstimatesRequest,
-  ) => stream.Stream<
-    WorkloadEstimateSummary,
-    ListWorkloadEstimatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadEstimateSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadEstimatesRequest,
   output: ListWorkloadEstimatesResponse,
   errors: [DataUnavailableException],
@@ -3382,27 +3255,13 @@ export type ListWorkloadEstimateUsageError =
 /**
  * Lists the usage associated with a workload estimate.
  */
-export const listWorkloadEstimateUsage: API.OperationMethod<
+export const listWorkloadEstimateUsage: API.PaginatedOperationMethod<
   ListWorkloadEstimateUsageRequest,
   ListWorkloadEstimateUsageResponse,
   ListWorkloadEstimateUsageError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkloadEstimateUsageRequest,
-  ) => stream.Stream<
-    ListWorkloadEstimateUsageResponse,
-    ListWorkloadEstimateUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWorkloadEstimateUsageRequest,
-  ) => stream.Stream<
-    WorkloadEstimateUsageItem,
-    ListWorkloadEstimateUsageError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadEstimateUsageItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkloadEstimateUsageRequest,
   output: ListWorkloadEstimateUsageResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],

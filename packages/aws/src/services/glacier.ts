@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2786,27 +2785,13 @@ export type ListJobsError =
  * For more information about using this operation,
  * see the documentation for the underlying REST API List Jobs.
  */
-export const listJobs: API.OperationMethod<
+export const listJobs: API.PaginatedOperationMethod<
   ListJobsInput,
   ListJobsOutput,
   ListJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListJobsInput,
-  ) => stream.Stream<
-    ListJobsOutput,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListJobsInput,
-  ) => stream.Stream<
-    GlacierJobDescription,
-    ListJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GlacierJobDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsInput,
   output: ListJobsOutput,
   errors: [
@@ -2862,27 +2847,13 @@ export type ListMultipartUploadsError =
  * with Archives in Amazon Glacier and List Multipart Uploads
  * in the *Amazon Glacier Developer Guide*.
  */
-export const listMultipartUploads: API.OperationMethod<
+export const listMultipartUploads: API.PaginatedOperationMethod<
   ListMultipartUploadsInput,
   ListMultipartUploadsOutput,
   ListMultipartUploadsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMultipartUploadsInput,
-  ) => stream.Stream<
-    ListMultipartUploadsOutput,
-    ListMultipartUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMultipartUploadsInput,
-  ) => stream.Stream<
-    UploadListElement,
-    ListMultipartUploadsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UploadListElement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMultipartUploadsInput,
   output: ListMultipartUploadsOutput,
   errors: [
@@ -2935,27 +2906,13 @@ export type ListPartsError =
  * with Archives in Amazon Glacier and List Parts in the
  * *Amazon Glacier Developer Guide*.
  */
-export const listParts: API.OperationMethod<
+export const listParts: API.PaginatedOperationMethod<
   ListPartsInput,
   ListPartsOutput,
   ListPartsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPartsInput,
-  ) => stream.Stream<
-    ListPartsOutput,
-    ListPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPartsInput,
-  ) => stream.Stream<
-    PartListElement,
-    ListPartsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PartListElement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPartsInput,
   output: ListPartsOutput,
   errors: [
@@ -3066,27 +3023,13 @@ export type ListVaultsError =
  * Amazon Glacier and List Vaults in the
  * *Amazon Glacier Developer Guide*.
  */
-export const listVaults: API.OperationMethod<
+export const listVaults: API.PaginatedOperationMethod<
   ListVaultsInput,
   ListVaultsOutput,
   ListVaultsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVaultsInput,
-  ) => stream.Stream<
-    ListVaultsOutput,
-    ListVaultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVaultsInput,
-  ) => stream.Stream<
-    DescribeVaultOutput,
-    ListVaultsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DescribeVaultOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVaultsInput,
   output: ListVaultsOutput,
   errors: [

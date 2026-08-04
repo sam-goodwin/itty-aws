@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6911,27 +6910,13 @@ export type DescribeAccountAttributesError =
  *
  * New accounts are placed into an SMS or voice sandbox. The sandbox protects both Amazon Web Services end recipients and SMS or voice recipients from fraud and abuse.
  */
-export const describeAccountAttributes: API.OperationMethod<
+export const describeAccountAttributes: API.PaginatedOperationMethod<
   DescribeAccountAttributesRequest,
   DescribeAccountAttributesResult,
   DescribeAccountAttributesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountAttributesRequest,
-  ) => stream.Stream<
-    DescribeAccountAttributesResult,
-    DescribeAccountAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountAttributesRequest,
-  ) => stream.Stream<
-    AccountAttribute,
-    DescribeAccountAttributesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAttribute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [
@@ -6962,27 +6947,13 @@ export type DescribeAccountLimitsError =
  *
  * When you establish an Amazon Web Services account, the account has initial quotas on the maximum number of configuration sets, opt-out lists, phone numbers, and pools that you can create in a given Region. For more information see Quotas in the *End User Messaging SMS User Guide*.
  */
-export const describeAccountLimits: API.OperationMethod<
+export const describeAccountLimits: API.PaginatedOperationMethod<
   DescribeAccountLimitsRequest,
   DescribeAccountLimitsResult,
   DescribeAccountLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccountLimitsRequest,
-  ) => stream.Stream<
-    DescribeAccountLimitsResult,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccountLimitsRequest,
-  ) => stream.Stream<
-    AccountLimit,
-    DescribeAccountLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountLimit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccountLimitsRequest,
   output: DescribeAccountLimitsResult,
   errors: [
@@ -7016,27 +6987,13 @@ export type DescribeConfigurationSetsError =
  *
  * If you specify a configuration set name that isn't valid, an error is returned.
  */
-export const describeConfigurationSets: API.OperationMethod<
+export const describeConfigurationSets: API.PaginatedOperationMethod<
   DescribeConfigurationSetsRequest,
   DescribeConfigurationSetsResult,
   DescribeConfigurationSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeConfigurationSetsRequest,
-  ) => stream.Stream<
-    DescribeConfigurationSetsResult,
-    DescribeConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeConfigurationSetsRequest,
-  ) => stream.Stream<
-    ConfigurationSetInformation,
-    DescribeConfigurationSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationSetInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeConfigurationSetsRequest,
   output: DescribeConfigurationSetsResult,
   errors: [
@@ -7071,27 +7028,13 @@ export type DescribeKeywordsError =
  *
  * If you specify a keyword that isn't valid, an error is returned.
  */
-export const describeKeywords: API.OperationMethod<
+export const describeKeywords: API.PaginatedOperationMethod<
   DescribeKeywordsRequest,
   DescribeKeywordsResult,
   DescribeKeywordsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeKeywordsRequest,
-  ) => stream.Stream<
-    DescribeKeywordsResult,
-    DescribeKeywordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeKeywordsRequest,
-  ) => stream.Stream<
-    KeywordInformation,
-    DescribeKeywordsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  KeywordInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeKeywordsRequest,
   output: DescribeKeywordsResult,
   errors: [
@@ -7126,27 +7069,13 @@ export type DescribeNotifyConfigurationsError =
  *
  * If you specify a notify configuration ID that isn't valid, an error is returned.
  */
-export const describeNotifyConfigurations: API.OperationMethod<
+export const describeNotifyConfigurations: API.PaginatedOperationMethod<
   DescribeNotifyConfigurationsRequest,
   DescribeNotifyConfigurationsResult,
   DescribeNotifyConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotifyConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeNotifyConfigurationsResult,
-    DescribeNotifyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotifyConfigurationsRequest,
-  ) => stream.Stream<
-    NotifyConfigurationInformation,
-    DescribeNotifyConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotifyConfigurationInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotifyConfigurationsRequest,
   output: DescribeNotifyConfigurationsResult,
   errors: [
@@ -7181,27 +7110,13 @@ export type DescribeNotifyTemplatesError =
  *
  * If you specify a template ID that isn't valid, an error is returned.
  */
-export const describeNotifyTemplates: API.OperationMethod<
+export const describeNotifyTemplates: API.PaginatedOperationMethod<
   DescribeNotifyTemplatesRequest,
   DescribeNotifyTemplatesResult,
   DescribeNotifyTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeNotifyTemplatesRequest,
-  ) => stream.Stream<
-    DescribeNotifyTemplatesResult,
-    DescribeNotifyTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeNotifyTemplatesRequest,
-  ) => stream.Stream<
-    NotifyTemplateInformation,
-    DescribeNotifyTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotifyTemplateInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNotifyTemplatesRequest,
   output: DescribeNotifyTemplatesResult,
   errors: [
@@ -7236,27 +7151,13 @@ export type DescribeOptedOutNumbersError =
  *
  * If you specify an opted out number that isn't valid, an exception is returned.
  */
-export const describeOptedOutNumbers: API.OperationMethod<
+export const describeOptedOutNumbers: API.PaginatedOperationMethod<
   DescribeOptedOutNumbersRequest,
   DescribeOptedOutNumbersResult,
   DescribeOptedOutNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptedOutNumbersRequest,
-  ) => stream.Stream<
-    DescribeOptedOutNumbersResult,
-    DescribeOptedOutNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptedOutNumbersRequest,
-  ) => stream.Stream<
-    OptedOutNumberInformation,
-    DescribeOptedOutNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OptedOutNumberInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptedOutNumbersRequest,
   output: DescribeOptedOutNumbersResult,
   errors: [
@@ -7291,27 +7192,13 @@ export type DescribeOptOutListsError =
  *
  * If you specify an opt-out list name that isn't valid, an error is returned.
  */
-export const describeOptOutLists: API.OperationMethod<
+export const describeOptOutLists: API.PaginatedOperationMethod<
   DescribeOptOutListsRequest,
   DescribeOptOutListsResult,
   DescribeOptOutListsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeOptOutListsRequest,
-  ) => stream.Stream<
-    DescribeOptOutListsResult,
-    DescribeOptOutListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeOptOutListsRequest,
-  ) => stream.Stream<
-    OptOutListInformation,
-    DescribeOptOutListsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OptOutListInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeOptOutListsRequest,
   output: DescribeOptOutListsResult,
   errors: [
@@ -7346,27 +7233,13 @@ export type DescribePhoneNumbersError =
  *
  * If you specify a phone number ID that isn't valid, an error is returned.
  */
-export const describePhoneNumbers: API.OperationMethod<
+export const describePhoneNumbers: API.PaginatedOperationMethod<
   DescribePhoneNumbersRequest,
   DescribePhoneNumbersResult,
   DescribePhoneNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePhoneNumbersRequest,
-  ) => stream.Stream<
-    DescribePhoneNumbersResult,
-    DescribePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePhoneNumbersRequest,
-  ) => stream.Stream<
-    PhoneNumberInformation,
-    DescribePhoneNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PhoneNumberInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePhoneNumbersRequest,
   output: DescribePhoneNumbersResult,
   errors: [
@@ -7403,27 +7276,13 @@ export type DescribePoolsError =
  *
  * A pool is a collection of phone numbers and SenderIds. A pool can include one or more phone numbers and SenderIds that are associated with your Amazon Web Services account.
  */
-export const describePools: API.OperationMethod<
+export const describePools: API.PaginatedOperationMethod<
   DescribePoolsRequest,
   DescribePoolsResult,
   DescribePoolsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribePoolsRequest,
-  ) => stream.Stream<
-    DescribePoolsResult,
-    DescribePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribePoolsRequest,
-  ) => stream.Stream<
-    PoolInformation,
-    DescribePoolsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PoolInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePoolsRequest,
   output: DescribePoolsResult,
   errors: [
@@ -7454,27 +7313,13 @@ export type DescribeProtectConfigurationsError =
 /**
  * Retrieves the protect configurations that match any of filters. If a filter isn’t provided then all protect configurations are returned.
  */
-export const describeProtectConfigurations: API.OperationMethod<
+export const describeProtectConfigurations: API.PaginatedOperationMethod<
   DescribeProtectConfigurationsRequest,
   DescribeProtectConfigurationsResult,
   DescribeProtectConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeProtectConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeProtectConfigurationsResult,
-    DescribeProtectConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeProtectConfigurationsRequest,
-  ) => stream.Stream<
-    ProtectConfigurationInformation,
-    DescribeProtectConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProtectConfigurationInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeProtectConfigurationsRequest,
   output: DescribeProtectConfigurationsResult,
   errors: [
@@ -7505,27 +7350,13 @@ export type DescribeRcsAgentCountryLaunchStatusError =
 /**
  * Retrieves the per-country launch status of an RCS agent, including carrier-level details for each country.
  */
-export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
+export const describeRcsAgentCountryLaunchStatus: API.PaginatedOperationMethod<
   DescribeRcsAgentCountryLaunchStatusRequest,
   DescribeRcsAgentCountryLaunchStatusResult,
   DescribeRcsAgentCountryLaunchStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRcsAgentCountryLaunchStatusRequest,
-  ) => stream.Stream<
-    DescribeRcsAgentCountryLaunchStatusResult,
-    DescribeRcsAgentCountryLaunchStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRcsAgentCountryLaunchStatusRequest,
-  ) => stream.Stream<
-    CountryLaunchStatusInformation,
-    DescribeRcsAgentCountryLaunchStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CountryLaunchStatusInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRcsAgentCountryLaunchStatusRequest,
   output: DescribeRcsAgentCountryLaunchStatusResult,
   errors: [
@@ -7558,27 +7389,13 @@ export type DescribeRcsAgentsError =
  *
  * If you specify RCS agent IDs, the output includes information for only the specified RCS agents. If you specify filters, the output includes information for only those RCS agents that meet the filter criteria. If you don't specify RCS agent IDs or filters, the output includes information for all RCS agents.
  */
-export const describeRcsAgents: API.OperationMethod<
+export const describeRcsAgents: API.PaginatedOperationMethod<
   DescribeRcsAgentsRequest,
   DescribeRcsAgentsResult,
   DescribeRcsAgentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRcsAgentsRequest,
-  ) => stream.Stream<
-    DescribeRcsAgentsResult,
-    DescribeRcsAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRcsAgentsRequest,
-  ) => stream.Stream<
-    RcsAgentInformation,
-    DescribeRcsAgentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RcsAgentInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRcsAgentsRequest,
   output: DescribeRcsAgentsResult,
   errors: [
@@ -7609,27 +7426,13 @@ export type DescribeRegistrationAttachmentsError =
 /**
  * Retrieves the specified registration attachments or all registration attachments associated with your Amazon Web Services account.
  */
-export const describeRegistrationAttachments: API.OperationMethod<
+export const describeRegistrationAttachments: API.PaginatedOperationMethod<
   DescribeRegistrationAttachmentsRequest,
   DescribeRegistrationAttachmentsResult,
   DescribeRegistrationAttachmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationAttachmentsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationAttachmentsResult,
-    DescribeRegistrationAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationAttachmentsRequest,
-  ) => stream.Stream<
-    RegistrationAttachmentsInformation,
-    DescribeRegistrationAttachmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationAttachmentsInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationAttachmentsRequest,
   output: DescribeRegistrationAttachmentsResult,
   errors: [
@@ -7659,27 +7462,13 @@ export type DescribeRegistrationFieldDefinitionsError =
 /**
  * Retrieves the specified registration type field definitions. You can use DescribeRegistrationFieldDefinitions to view the requirements for creating, filling out, and submitting each registration type.
  */
-export const describeRegistrationFieldDefinitions: API.OperationMethod<
+export const describeRegistrationFieldDefinitions: API.PaginatedOperationMethod<
   DescribeRegistrationFieldDefinitionsRequest,
   DescribeRegistrationFieldDefinitionsResult,
   DescribeRegistrationFieldDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationFieldDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationFieldDefinitionsResult,
-    DescribeRegistrationFieldDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationFieldDefinitionsRequest,
-  ) => stream.Stream<
-    RegistrationFieldDefinition,
-    DescribeRegistrationFieldDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationFieldDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationFieldDefinitionsRequest,
   output: DescribeRegistrationFieldDefinitionsResult,
   errors: [
@@ -7709,27 +7498,13 @@ export type DescribeRegistrationFieldValuesError =
 /**
  * Retrieves the specified registration field values.
  */
-export const describeRegistrationFieldValues: API.OperationMethod<
+export const describeRegistrationFieldValues: API.PaginatedOperationMethod<
   DescribeRegistrationFieldValuesRequest,
   DescribeRegistrationFieldValuesResult,
   DescribeRegistrationFieldValuesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationFieldValuesRequest,
-  ) => stream.Stream<
-    DescribeRegistrationFieldValuesResult,
-    DescribeRegistrationFieldValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationFieldValuesRequest,
-  ) => stream.Stream<
-    RegistrationFieldValueInformation,
-    DescribeRegistrationFieldValuesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationFieldValueInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationFieldValuesRequest,
   output: DescribeRegistrationFieldValuesResult,
   errors: [
@@ -7760,27 +7535,13 @@ export type DescribeRegistrationsError =
 /**
  * Retrieves the specified registrations.
  */
-export const describeRegistrations: API.OperationMethod<
+export const describeRegistrations: API.PaginatedOperationMethod<
   DescribeRegistrationsRequest,
   DescribeRegistrationsResult,
   DescribeRegistrationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationsResult,
-    DescribeRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationsRequest,
-  ) => stream.Stream<
-    RegistrationInformation,
-    DescribeRegistrationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationsRequest,
   output: DescribeRegistrationsResult,
   errors: [
@@ -7810,27 +7571,13 @@ export type DescribeRegistrationSectionDefinitionsError =
 /**
  * Retrieves the specified registration section definitions. You can use DescribeRegistrationSectionDefinitions to view the requirements for creating, filling out, and submitting each registration type.
  */
-export const describeRegistrationSectionDefinitions: API.OperationMethod<
+export const describeRegistrationSectionDefinitions: API.PaginatedOperationMethod<
   DescribeRegistrationSectionDefinitionsRequest,
   DescribeRegistrationSectionDefinitionsResult,
   DescribeRegistrationSectionDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationSectionDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationSectionDefinitionsResult,
-    DescribeRegistrationSectionDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationSectionDefinitionsRequest,
-  ) => stream.Stream<
-    RegistrationSectionDefinition,
-    DescribeRegistrationSectionDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationSectionDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationSectionDefinitionsRequest,
   output: DescribeRegistrationSectionDefinitionsResult,
   errors: [
@@ -7859,27 +7606,13 @@ export type DescribeRegistrationTypeDefinitionsError =
 /**
  * Retrieves the specified registration type definitions. You can use DescribeRegistrationTypeDefinitions to view the requirements for creating, filling out, and submitting each registration type.
  */
-export const describeRegistrationTypeDefinitions: API.OperationMethod<
+export const describeRegistrationTypeDefinitions: API.PaginatedOperationMethod<
   DescribeRegistrationTypeDefinitionsRequest,
   DescribeRegistrationTypeDefinitionsResult,
   DescribeRegistrationTypeDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationTypeDefinitionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationTypeDefinitionsResult,
-    DescribeRegistrationTypeDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationTypeDefinitionsRequest,
-  ) => stream.Stream<
-    RegistrationTypeDefinition,
-    DescribeRegistrationTypeDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationTypeDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationTypeDefinitionsRequest,
   output: DescribeRegistrationTypeDefinitionsResult,
   errors: [
@@ -7909,27 +7642,13 @@ export type DescribeRegistrationVersionsError =
 /**
  * Retrieves the specified registration version.
  */
-export const describeRegistrationVersions: API.OperationMethod<
+export const describeRegistrationVersions: API.PaginatedOperationMethod<
   DescribeRegistrationVersionsRequest,
   DescribeRegistrationVersionsResult,
   DescribeRegistrationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRegistrationVersionsRequest,
-  ) => stream.Stream<
-    DescribeRegistrationVersionsResult,
-    DescribeRegistrationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRegistrationVersionsRequest,
-  ) => stream.Stream<
-    RegistrationVersionInformation,
-    DescribeRegistrationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationVersionInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRegistrationVersionsRequest,
   output: DescribeRegistrationVersionsResult,
   errors: [
@@ -7964,27 +7683,13 @@ export type DescribeSenderIdsError =
  *
  * f you specify a sender ID that isn't valid, an error is returned.
  */
-export const describeSenderIds: API.OperationMethod<
+export const describeSenderIds: API.PaginatedOperationMethod<
   DescribeSenderIdsRequest,
   DescribeSenderIdsResult,
   DescribeSenderIdsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSenderIdsRequest,
-  ) => stream.Stream<
-    DescribeSenderIdsResult,
-    DescribeSenderIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSenderIdsRequest,
-  ) => stream.Stream<
-    SenderIdInformation,
-    DescribeSenderIdsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SenderIdInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSenderIdsRequest,
   output: DescribeSenderIdsResult,
   errors: [
@@ -8016,27 +7721,13 @@ export type DescribeSpendLimitsError =
  *
  * When you establish an Amazon Web Services account, the account has initial monthly spend limit in a given Region. For more information on increasing your monthly spend limit, see Requesting increases to your monthly SMS, MMS, or Voice spending quota in the *End User Messaging SMS User Guide*.
  */
-export const describeSpendLimits: API.OperationMethod<
+export const describeSpendLimits: API.PaginatedOperationMethod<
   DescribeSpendLimitsRequest,
   DescribeSpendLimitsResult,
   DescribeSpendLimitsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSpendLimitsRequest,
-  ) => stream.Stream<
-    DescribeSpendLimitsResult,
-    DescribeSpendLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSpendLimitsRequest,
-  ) => stream.Stream<
-    SpendLimit,
-    DescribeSpendLimitsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SpendLimit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpendLimitsRequest,
   output: DescribeSpendLimitsResult,
   errors: [
@@ -8066,27 +7757,13 @@ export type DescribeVerifiedDestinationNumbersError =
 /**
  * Retrieves the specified verified destination numbers.
  */
-export const describeVerifiedDestinationNumbers: API.OperationMethod<
+export const describeVerifiedDestinationNumbers: API.PaginatedOperationMethod<
   DescribeVerifiedDestinationNumbersRequest,
   DescribeVerifiedDestinationNumbersResult,
   DescribeVerifiedDestinationNumbersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeVerifiedDestinationNumbersRequest,
-  ) => stream.Stream<
-    DescribeVerifiedDestinationNumbersResult,
-    DescribeVerifiedDestinationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeVerifiedDestinationNumbersRequest,
-  ) => stream.Stream<
-    VerifiedDestinationNumberInformation,
-    DescribeVerifiedDestinationNumbersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VerifiedDestinationNumberInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedDestinationNumbersRequest,
   output: DescribeVerifiedDestinationNumbersResult,
   errors: [
@@ -8274,27 +7951,13 @@ export type ListNotifyCountriesError =
 /**
  * Lists countries that support notify messaging. You can optionally filter by channel, use case, or tier.
  */
-export const listNotifyCountries: API.OperationMethod<
+export const listNotifyCountries: API.PaginatedOperationMethod<
   ListNotifyCountriesRequest,
   ListNotifyCountriesResult,
   ListNotifyCountriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNotifyCountriesRequest,
-  ) => stream.Stream<
-    ListNotifyCountriesResult,
-    ListNotifyCountriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNotifyCountriesRequest,
-  ) => stream.Stream<
-    NotifyCountryInformation,
-    ListNotifyCountriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  NotifyCountryInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNotifyCountriesRequest,
   output: ListNotifyCountriesResult,
   errors: [
@@ -8326,27 +7989,13 @@ export type ListPoolOriginationIdentitiesError =
  *
  * If you specify filters, the output includes information for only those origination identities that meet the filter criteria.
  */
-export const listPoolOriginationIdentities: API.OperationMethod<
+export const listPoolOriginationIdentities: API.PaginatedOperationMethod<
   ListPoolOriginationIdentitiesRequest,
   ListPoolOriginationIdentitiesResult,
   ListPoolOriginationIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoolOriginationIdentitiesRequest,
-  ) => stream.Stream<
-    ListPoolOriginationIdentitiesResult,
-    ListPoolOriginationIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoolOriginationIdentitiesRequest,
-  ) => stream.Stream<
-    OriginationIdentityMetadata,
-    ListPoolOriginationIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  OriginationIdentityMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoolOriginationIdentitiesRequest,
   output: ListPoolOriginationIdentitiesResult,
   errors: [
@@ -8377,27 +8026,13 @@ export type ListProtectConfigurationRuleSetNumberOverridesError =
 /**
  * Retrieve all of the protect configuration rule set number overrides that match the filters.
  */
-export const listProtectConfigurationRuleSetNumberOverrides: API.OperationMethod<
+export const listProtectConfigurationRuleSetNumberOverrides: API.PaginatedOperationMethod<
   ListProtectConfigurationRuleSetNumberOverridesRequest,
   ListProtectConfigurationRuleSetNumberOverridesResult,
   ListProtectConfigurationRuleSetNumberOverridesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListProtectConfigurationRuleSetNumberOverridesRequest,
-  ) => stream.Stream<
-    ListProtectConfigurationRuleSetNumberOverridesResult,
-    ListProtectConfigurationRuleSetNumberOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListProtectConfigurationRuleSetNumberOverridesRequest,
-  ) => stream.Stream<
-    ProtectConfigurationRuleSetNumberOverride,
-    ListProtectConfigurationRuleSetNumberOverridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ProtectConfigurationRuleSetNumberOverride
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtectConfigurationRuleSetNumberOverridesRequest,
   output: ListProtectConfigurationRuleSetNumberOverridesResult,
   errors: [
@@ -8428,27 +8063,13 @@ export type ListRegistrationAssociationsError =
 /**
  * Retrieve all of the origination identities that are associated with a registration.
  */
-export const listRegistrationAssociations: API.OperationMethod<
+export const listRegistrationAssociations: API.PaginatedOperationMethod<
   ListRegistrationAssociationsRequest,
   ListRegistrationAssociationsResult,
   ListRegistrationAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistrationAssociationsRequest,
-  ) => stream.Stream<
-    ListRegistrationAssociationsResult,
-    ListRegistrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistrationAssociationsRequest,
-  ) => stream.Stream<
-    RegistrationAssociationMetadata,
-    ListRegistrationAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RegistrationAssociationMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegistrationAssociationsRequest,
   output: ListRegistrationAssociationsResult,
   errors: [

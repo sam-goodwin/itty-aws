@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3672,27 +3671,13 @@ export type GetCaseError =
 /**
  * Returns information about a specific case if it exists.
  */
-export const getCase: API.OperationMethod<
+export const getCase: API.PaginatedOperationMethod<
   GetCaseRequest,
   GetCaseResponse,
   GetCaseError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCaseRequest,
-  ) => stream.Stream<
-    GetCaseResponse,
-    GetCaseError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCaseRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCaseError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCaseRequest,
   output: GetCaseResponse,
   errors: [
@@ -3718,27 +3703,13 @@ export type GetCaseAuditEventsError =
 /**
  * Returns the audit history about a specific case if it exists.
  */
-export const getCaseAuditEvents: API.OperationMethod<
+export const getCaseAuditEvents: API.PaginatedOperationMethod<
   GetCaseAuditEventsRequest,
   GetCaseAuditEventsResponse,
   GetCaseAuditEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCaseAuditEventsRequest,
-  ) => stream.Stream<
-    GetCaseAuditEventsResponse,
-    GetCaseAuditEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCaseAuditEventsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetCaseAuditEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCaseAuditEventsRequest,
   output: GetCaseAuditEventsResponse,
   errors: [
@@ -3896,27 +3867,13 @@ export type ListCaseRulesError =
 /**
  * Lists all case rules in a Cases domain. In the Amazon Connect admin website, case rules are known as *case field conditions*. For more information about case field conditions, see Add case field conditions to a case template.
  */
-export const listCaseRules: API.OperationMethod<
+export const listCaseRules: API.PaginatedOperationMethod<
   ListCaseRulesRequest,
   ListCaseRulesResponse,
   ListCaseRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCaseRulesRequest,
-  ) => stream.Stream<
-    ListCaseRulesResponse,
-    ListCaseRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCaseRulesRequest,
-  ) => stream.Stream<
-    CaseRuleSummary,
-    ListCaseRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CaseRuleSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCaseRulesRequest,
   output: ListCaseRulesResponse,
   errors: [
@@ -3947,27 +3904,13 @@ export type ListCasesForContactError =
 /**
  * Lists cases for a given contact.
  */
-export const listCasesForContact: API.OperationMethod<
+export const listCasesForContact: API.PaginatedOperationMethod<
   ListCasesForContactRequest,
   ListCasesForContactResponse,
   ListCasesForContactError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCasesForContactRequest,
-  ) => stream.Stream<
-    ListCasesForContactResponse,
-    ListCasesForContactError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCasesForContactRequest,
-  ) => stream.Stream<
-    unknown,
-    ListCasesForContactError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCasesForContactRequest,
   output: ListCasesForContactResponse,
   errors: [
@@ -3996,27 +3939,13 @@ export type ListDomainsError =
 /**
  * Lists all cases domains in the Amazon Web Services account. Each list item is a condensed summary object of the domain.
  */
-export const listDomains: API.OperationMethod<
+export const listDomains: API.PaginatedOperationMethod<
   ListDomainsRequest,
   ListDomainsResponse,
   ListDomainsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListDomainsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [
@@ -4045,27 +3974,13 @@ export type ListFieldOptionsError =
 /**
  * Lists all of the field options for a field identifier in the domain.
  */
-export const listFieldOptions: API.OperationMethod<
+export const listFieldOptions: API.PaginatedOperationMethod<
   ListFieldOptionsRequest,
   ListFieldOptionsResponse,
   ListFieldOptionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFieldOptionsRequest,
-  ) => stream.Stream<
-    ListFieldOptionsResponse,
-    ListFieldOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFieldOptionsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFieldOptionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFieldOptionsRequest,
   output: ListFieldOptionsResponse,
   errors: [
@@ -4095,27 +4010,13 @@ export type ListFieldsError =
 /**
  * Lists all fields in a Cases domain.
  */
-export const listFields: API.OperationMethod<
+export const listFields: API.PaginatedOperationMethod<
   ListFieldsRequest,
   ListFieldsResponse,
   ListFieldsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFieldsRequest,
-  ) => stream.Stream<
-    ListFieldsResponse,
-    ListFieldsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFieldsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFieldsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFieldsRequest,
   output: ListFieldsResponse,
   errors: [
@@ -4145,27 +4046,13 @@ export type ListLayoutsError =
 /**
  * Lists all layouts in the given cases domain. Each list item is a condensed summary object of the layout.
  */
-export const listLayouts: API.OperationMethod<
+export const listLayouts: API.PaginatedOperationMethod<
   ListLayoutsRequest,
   ListLayoutsResponse,
   ListLayoutsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLayoutsRequest,
-  ) => stream.Stream<
-    ListLayoutsResponse,
-    ListLayoutsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListLayoutsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListLayoutsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLayoutsRequest,
   output: ListLayoutsResponse,
   errors: [
@@ -4235,27 +4122,13 @@ export type ListTemplatesError =
  *
  * - UpdateTemplate
  */
-export const listTemplates: API.OperationMethod<
+export const listTemplates: API.PaginatedOperationMethod<
   ListTemplatesRequest,
   ListTemplatesResponse,
   ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTemplatesRequest,
-  ) => stream.Stream<
-    ListTemplatesResponse,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTemplatesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [
@@ -4335,27 +4208,13 @@ export type SearchAllRelatedItemsError =
  *
  * **Endpoints**: See Amazon Connect endpoints and quotas.
  */
-export const searchAllRelatedItems: API.OperationMethod<
+export const searchAllRelatedItems: API.PaginatedOperationMethod<
   SearchAllRelatedItemsRequest,
   SearchAllRelatedItemsResponse,
   SearchAllRelatedItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchAllRelatedItemsRequest,
-  ) => stream.Stream<
-    SearchAllRelatedItemsResponse,
-    SearchAllRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchAllRelatedItemsRequest,
-  ) => stream.Stream<
-    SearchAllRelatedItemsResponseItem,
-    SearchAllRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SearchAllRelatedItemsResponseItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAllRelatedItemsRequest,
   output: SearchAllRelatedItemsResponse,
   errors: [
@@ -4388,27 +4247,13 @@ export type SearchCasesError =
  *
  * For `customer_id` you must provide the full customer profile ARN in this format: ` arn:aws:profile:your AWS Region:your AWS account ID:domains/profiles domain name/profiles/profile ID`.
  */
-export const searchCases: API.OperationMethod<
+export const searchCases: API.PaginatedOperationMethod<
   SearchCasesRequest,
   SearchCasesResponse,
   SearchCasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchCasesRequest,
-  ) => stream.Stream<
-    SearchCasesResponse,
-    SearchCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchCasesRequest,
-  ) => stream.Stream<
-    SearchCasesResponseItem,
-    SearchCasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SearchCasesResponseItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchCasesRequest,
   output: SearchCasesResponse,
   errors: [
@@ -4441,27 +4286,13 @@ export type SearchRelatedItemsError =
  *
  * If no filters are provided, this returns all related items associated with a case.
  */
-export const searchRelatedItems: API.OperationMethod<
+export const searchRelatedItems: API.PaginatedOperationMethod<
   SearchRelatedItemsRequest,
   SearchRelatedItemsResponse,
   SearchRelatedItemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SearchRelatedItemsRequest,
-  ) => stream.Stream<
-    SearchRelatedItemsResponse,
-    SearchRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SearchRelatedItemsRequest,
-  ) => stream.Stream<
-    SearchRelatedItemsResponseItem,
-    SearchRelatedItemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SearchRelatedItemsResponseItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchRelatedItemsRequest,
   output: SearchRelatedItemsResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -4256,27 +4255,13 @@ export type DescribeRecommendationExportJobsError =
  * recommendations. Then use the DescribeRecommendationExportJobs action
  * to view your export jobs.
  */
-export const describeRecommendationExportJobs: API.OperationMethod<
+export const describeRecommendationExportJobs: API.PaginatedOperationMethod<
   DescribeRecommendationExportJobsRequest,
   DescribeRecommendationExportJobsResponse,
   DescribeRecommendationExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeRecommendationExportJobsRequest,
-  ) => stream.Stream<
-    DescribeRecommendationExportJobsResponse,
-    DescribeRecommendationExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeRecommendationExportJobsRequest,
-  ) => stream.Stream<
-    RecommendationExportJob,
-    DescribeRecommendationExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationExportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRecommendationExportJobsRequest,
   output: DescribeRecommendationExportJobsResponse,
   errors: [
@@ -4980,27 +4965,13 @@ export type GetEnrollmentStatusesForOrganizationError =
  *
  * To get the enrollment status of standalone accounts, use the GetEnrollmentStatus action.
  */
-export const getEnrollmentStatusesForOrganization: API.OperationMethod<
+export const getEnrollmentStatusesForOrganization: API.PaginatedOperationMethod<
   GetEnrollmentStatusesForOrganizationRequest,
   GetEnrollmentStatusesForOrganizationResponse,
   GetEnrollmentStatusesForOrganizationError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetEnrollmentStatusesForOrganizationRequest,
-  ) => stream.Stream<
-    GetEnrollmentStatusesForOrganizationResponse,
-    GetEnrollmentStatusesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetEnrollmentStatusesForOrganizationRequest,
-  ) => stream.Stream<
-    AccountEnrollmentStatus,
-    GetEnrollmentStatusesForOrganizationError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountEnrollmentStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEnrollmentStatusesForOrganizationRequest,
   output: GetEnrollmentStatusesForOrganizationResponse,
   errors: [
@@ -5079,27 +5050,13 @@ export type GetLambdaFunctionRecommendationsError =
  * requirements in the Compute Optimizer User
  * Guide.
  */
-export const getLambdaFunctionRecommendations: API.OperationMethod<
+export const getLambdaFunctionRecommendations: API.PaginatedOperationMethod<
   GetLambdaFunctionRecommendationsRequest,
   GetLambdaFunctionRecommendationsResponse,
   GetLambdaFunctionRecommendationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetLambdaFunctionRecommendationsRequest,
-  ) => stream.Stream<
-    GetLambdaFunctionRecommendationsResponse,
-    GetLambdaFunctionRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetLambdaFunctionRecommendationsRequest,
-  ) => stream.Stream<
-    LambdaFunctionRecommendation,
-    GetLambdaFunctionRecommendationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  LambdaFunctionRecommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetLambdaFunctionRecommendationsRequest,
   output: GetLambdaFunctionRecommendationsResponse,
   errors: [
@@ -5264,27 +5221,13 @@ export type GetRecommendationPreferencesError =
  * enhanced infrastructure metrics in the Compute Optimizer User
  * Guide.
  */
-export const getRecommendationPreferences: API.OperationMethod<
+export const getRecommendationPreferences: API.PaginatedOperationMethod<
   GetRecommendationPreferencesRequest,
   GetRecommendationPreferencesResponse,
   GetRecommendationPreferencesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRecommendationPreferencesRequest,
-  ) => stream.Stream<
-    GetRecommendationPreferencesResponse,
-    GetRecommendationPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRecommendationPreferencesRequest,
-  ) => stream.Stream<
-    RecommendationPreferencesDetail,
-    GetRecommendationPreferencesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationPreferencesDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecommendationPreferencesRequest,
   output: GetRecommendationPreferencesResponse,
   errors: [
@@ -5344,27 +5287,13 @@ export type GetRecommendationSummariesError =
  * - Amazon Aurora and Amazon RDS databases in an account that are `Underprovisioned`,
  * `Overprovisioned`, `Optimized`, or `NotOptimized`.
  */
-export const getRecommendationSummaries: API.OperationMethod<
+export const getRecommendationSummaries: API.PaginatedOperationMethod<
   GetRecommendationSummariesRequest,
   GetRecommendationSummariesResponse,
   GetRecommendationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRecommendationSummariesRequest,
-  ) => stream.Stream<
-    GetRecommendationSummariesResponse,
-    GetRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRecommendationSummariesRequest,
-  ) => stream.Stream<
-    RecommendationSummary,
-    GetRecommendationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecommendationSummariesRequest,
   output: GetRecommendationSummariesResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2328,27 +2327,13 @@ export type DescribeAccessPointsError =
  *
  * This operation requires permissions for the `elasticfilesystem:DescribeAccessPoints` action.
  */
-export const describeAccessPoints: API.OperationMethod<
+export const describeAccessPoints: API.PaginatedOperationMethod<
   DescribeAccessPointsRequest,
   DescribeAccessPointsResponse,
   DescribeAccessPointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeAccessPointsRequest,
-  ) => stream.Stream<
-    DescribeAccessPointsResponse,
-    DescribeAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeAccessPointsRequest,
-  ) => stream.Stream<
-    AccessPointDescription,
-    DescribeAccessPointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessPointDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAccessPointsRequest,
   output: DescribeAccessPointsResponse,
   errors: [
@@ -2475,27 +2460,13 @@ export type DescribeFileSystemsError =
  * This operation requires permissions for the
  * `elasticfilesystem:DescribeFileSystems` action.
  */
-export const describeFileSystems: API.OperationMethod<
+export const describeFileSystems: API.PaginatedOperationMethod<
   DescribeFileSystemsRequest,
   DescribeFileSystemsResponse,
   DescribeFileSystemsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeFileSystemsRequest,
-  ) => stream.Stream<
-    DescribeFileSystemsResponse,
-    DescribeFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeFileSystemsRequest,
-  ) => stream.Stream<
-    FileSystemDescription,
-    DescribeFileSystemsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  FileSystemDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -2556,27 +2527,13 @@ export type DescribeMountTargetsError =
  * that you specify in `FileSystemId`, or on the file system of the mount target that
  * you specify in `MountTargetId`.
  */
-export const describeMountTargets: API.OperationMethod<
+export const describeMountTargets: API.PaginatedOperationMethod<
   DescribeMountTargetsRequest,
   DescribeMountTargetsResponse,
   DescribeMountTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeMountTargetsRequest,
-  ) => stream.Stream<
-    DescribeMountTargetsResponse,
-    DescribeMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeMountTargetsRequest,
-  ) => stream.Stream<
-    MountTargetDescription,
-    DescribeMountTargetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MountTargetDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMountTargetsRequest,
   output: DescribeMountTargetsResponse,
   errors: [
@@ -2647,27 +2604,13 @@ export type DescribeReplicationConfigurationsError =
  * not specified, all of the replication configurations for the Amazon Web Services account in an
  * Amazon Web Services Region are retrieved.
  */
-export const describeReplicationConfigurations: API.OperationMethod<
+export const describeReplicationConfigurations: API.PaginatedOperationMethod<
   DescribeReplicationConfigurationsRequest,
   DescribeReplicationConfigurationsResponse,
   DescribeReplicationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeReplicationConfigurationsResponse,
-    DescribeReplicationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationConfigurationsRequest,
-  ) => stream.Stream<
-    ReplicationConfigurationDescription,
-    DescribeReplicationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReplicationConfigurationDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationConfigurationsRequest,
   output: DescribeReplicationConfigurationsResponse,
   errors: [
@@ -2705,27 +2648,13 @@ export type DescribeTagsError =
  * This operation requires permissions for the
  * `elasticfilesystem:DescribeTags` action.
  */
-export const describeTags: API.OperationMethod<
+export const describeTags: API.PaginatedOperationMethod<
   DescribeTagsRequest,
   DescribeTagsResponse,
   DescribeTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    DescribeTagsResponse,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    DescribeTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
@@ -2752,27 +2681,13 @@ export type ListTagsForResourceError =
  *
  * This operation requires permissions for the `elasticfilesystem:DescribeAccessPoints` action.
  */
-export const listTagsForResource: API.OperationMethod<
+export const listTagsForResource: API.PaginatedOperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    ListTagsForResourceResponse,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTagsForResourceRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTagsForResourceError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [

@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1521,27 +1520,13 @@ export type GetQueryResultsMonitorTopContributorsError =
  *
  * Top contributors in Network Flow Monitor are network flows with the highest values for a specific metric type. Top contributors can be across all workload insights, for a given scope, or for a specific monitor. Use the applicable call for the top contributors that you want to be returned.
  */
-export const getQueryResultsMonitorTopContributors: API.OperationMethod<
+export const getQueryResultsMonitorTopContributors: API.PaginatedOperationMethod<
   GetQueryResultsMonitorTopContributorsInput,
   GetQueryResultsMonitorTopContributorsOutput,
   GetQueryResultsMonitorTopContributorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsMonitorTopContributorsInput,
-  ) => stream.Stream<
-    GetQueryResultsMonitorTopContributorsOutput,
-    GetQueryResultsMonitorTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsMonitorTopContributorsInput,
-  ) => stream.Stream<
-    MonitorTopContributorsRow,
-    GetQueryResultsMonitorTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MonitorTopContributorsRow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsMonitorTopContributorsInput,
   output: GetQueryResultsMonitorTopContributorsOutput,
   errors: [
@@ -1580,27 +1565,13 @@ export type GetQueryResultsWorkloadInsightsTopContributorsError =
  *
  * Top contributors in Network Flow Monitor are network flows with the highest values for a specific metric type. Top contributors can be across all workload insights, for a given scope, or for a specific monitor. Use the applicable call for the top contributors that you want to be returned.
  */
-export const getQueryResultsWorkloadInsightsTopContributors: API.OperationMethod<
+export const getQueryResultsWorkloadInsightsTopContributors: API.PaginatedOperationMethod<
   GetQueryResultsWorkloadInsightsTopContributorsInput,
   GetQueryResultsWorkloadInsightsTopContributorsOutput,
   GetQueryResultsWorkloadInsightsTopContributorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsInput,
-  ) => stream.Stream<
-    GetQueryResultsWorkloadInsightsTopContributorsOutput,
-    GetQueryResultsWorkloadInsightsTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsInput,
-  ) => stream.Stream<
-    WorkloadInsightsTopContributorsRow,
-    GetQueryResultsWorkloadInsightsTopContributorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadInsightsTopContributorsRow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsWorkloadInsightsTopContributorsInput,
   output: GetQueryResultsWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -1641,27 +1612,13 @@ export type GetQueryResultsWorkloadInsightsTopContributorsDataError =
  *
  * The top contributor network flows overall are for a specific metric type, for example, the number of retransmissions.
  */
-export const getQueryResultsWorkloadInsightsTopContributorsData: API.OperationMethod<
+export const getQueryResultsWorkloadInsightsTopContributorsData: API.PaginatedOperationMethod<
   GetQueryResultsWorkloadInsightsTopContributorsDataInput,
   GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
   GetQueryResultsWorkloadInsightsTopContributorsDataError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
-  ) => stream.Stream<
-    GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
-    GetQueryResultsWorkloadInsightsTopContributorsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
-  ) => stream.Stream<
-    WorkloadInsightsTopContributorsDataPoint,
-    GetQueryResultsWorkloadInsightsTopContributorsDataError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  WorkloadInsightsTopContributorsDataPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
   output: GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -1828,27 +1785,13 @@ export type ListMonitorsError =
 /**
  * List all monitors in an account. Optionally, you can list only monitors that have a specific status, by using the `STATUS` parameter.
  */
-export const listMonitors: API.OperationMethod<
+export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsInput,
   ListMonitorsOutput,
   ListMonitorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    ListMonitorsOutput,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMonitorsInput,
-  ) => stream.Stream<
-    MonitorSummary,
-    ListMonitorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MonitorSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsInput,
   output: ListMonitorsOutput,
   errors: [
@@ -1878,27 +1821,13 @@ export type ListScopesError =
 /**
  * List all the scopes for an account.
  */
-export const listScopes: API.OperationMethod<
+export const listScopes: API.PaginatedOperationMethod<
   ListScopesInput,
   ListScopesOutput,
   ListScopesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScopesInput,
-  ) => stream.Stream<
-    ListScopesOutput,
-    ListScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScopesInput,
-  ) => stream.Stream<
-    ScopeSummary,
-    ListScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ScopeSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScopesInput,
   output: ListScopesOutput,
   errors: [

@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3781,27 +3780,13 @@ export type ListApplicationsError =
 /**
  * Lists all applications in your Amazon Web Services account.
  */
-export const listApplications: API.OperationMethod<
+export const listApplications: API.PaginatedOperationMethod<
   ListApplicationsRequest,
   Applications,
   ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Applications,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsRequest,
-  ) => stream.Stream<
-    Application,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: Applications,
   errors: [BadRequestException, InternalServerException],
@@ -3824,27 +3809,13 @@ export type ListConfigurationProfilesError =
 /**
  * Lists the configuration profiles for an application.
  */
-export const listConfigurationProfiles: API.OperationMethod<
+export const listConfigurationProfiles: API.PaginatedOperationMethod<
   ListConfigurationProfilesRequest,
   ConfigurationProfiles,
   ListConfigurationProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationProfilesRequest,
-  ) => stream.Stream<
-    ConfigurationProfiles,
-    ListConfigurationProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigurationProfilesRequest,
-  ) => stream.Stream<
-    ConfigurationProfileSummary,
-    ListConfigurationProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigurationProfileSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationProfilesRequest,
   output: ConfigurationProfiles,
   errors: [
@@ -3871,27 +3842,13 @@ export type ListDeploymentsError =
 /**
  * Lists the deployments for an environment in descending deployment number order.
  */
-export const listDeployments: API.OperationMethod<
+export const listDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   Deployments,
   ListDeploymentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    Deployments,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentsRequest,
-  ) => stream.Stream<
-    DeploymentSummary,
-    ListDeploymentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: Deployments,
   errors: [
@@ -3917,27 +3874,13 @@ export type ListDeploymentStrategiesError =
 /**
  * Lists deployment strategies.
  */
-export const listDeploymentStrategies: API.OperationMethod<
+export const listDeploymentStrategies: API.PaginatedOperationMethod<
   ListDeploymentStrategiesRequest,
   DeploymentStrategies,
   ListDeploymentStrategiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDeploymentStrategiesRequest,
-  ) => stream.Stream<
-    DeploymentStrategies,
-    ListDeploymentStrategiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDeploymentStrategiesRequest,
-  ) => stream.Stream<
-    DeploymentStrategy,
-    ListDeploymentStrategiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DeploymentStrategy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentStrategiesRequest,
   output: DeploymentStrategies,
   errors: [BadRequestException, InternalServerException],
@@ -3960,27 +3903,13 @@ export type ListEnvironmentsError =
 /**
  * Lists the environments for an application.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   Environments,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    Environments,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsRequest,
-  ) => stream.Stream<
-    Environment,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Environment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: Environments,
   errors: [
@@ -4007,27 +3936,13 @@ export type ListExperimentDefinitionsError =
 /**
  * Lists the experiment definitions for an account. You can filter results by application, configuration profile, environment, or status.
  */
-export const listExperimentDefinitions: API.OperationMethod<
+export const listExperimentDefinitions: API.PaginatedOperationMethod<
   ListExperimentDefinitionsRequest,
   ExperimentDefinitions,
   ListExperimentDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentDefinitionsRequest,
-  ) => stream.Stream<
-    ExperimentDefinitions,
-    ListExperimentDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentDefinitionsRequest,
-  ) => stream.Stream<
-    ExperimentDefinitionSummary,
-    ListExperimentDefinitionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExperimentDefinitionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentDefinitionsRequest,
   output: ExperimentDefinitions,
   errors: [
@@ -4054,27 +3969,13 @@ export type ListExperimentRunEventsError =
 /**
  * Lists the events for a specified experiment run. Events provide a timeline of actions and state changes that occurred during the run.
  */
-export const listExperimentRunEvents: API.OperationMethod<
+export const listExperimentRunEvents: API.PaginatedOperationMethod<
   ListExperimentRunEventsRequest,
   ExperimentRunEvents,
   ListExperimentRunEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentRunEventsRequest,
-  ) => stream.Stream<
-    ExperimentRunEvents,
-    ListExperimentRunEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentRunEventsRequest,
-  ) => stream.Stream<
-    ExperimentRunEvent,
-    ListExperimentRunEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExperimentRunEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentRunEventsRequest,
   output: ExperimentRunEvents,
   errors: [
@@ -4101,27 +4002,13 @@ export type ListExperimentRunsError =
 /**
  * Lists the experiment runs for a specified experiment definition. You can filter by status.
  */
-export const listExperimentRuns: API.OperationMethod<
+export const listExperimentRuns: API.PaginatedOperationMethod<
   ListExperimentRunsRequest,
   ExperimentRuns,
   ListExperimentRunsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExperimentRunsRequest,
-  ) => stream.Stream<
-    ExperimentRuns,
-    ListExperimentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExperimentRunsRequest,
-  ) => stream.Stream<
-    ExperimentRunSummary,
-    ListExperimentRunsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExperimentRunSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentRunsRequest,
   output: ExperimentRuns,
   errors: [
@@ -4149,27 +4036,13 @@ export type ListExtensionAssociationsError =
  * information about extensions and associations, see Extending
  * workflows in the *AppConfig User Guide*.
  */
-export const listExtensionAssociations: API.OperationMethod<
+export const listExtensionAssociations: API.PaginatedOperationMethod<
   ListExtensionAssociationsRequest,
   ExtensionAssociations,
   ListExtensionAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExtensionAssociationsRequest,
-  ) => stream.Stream<
-    ExtensionAssociations,
-    ListExtensionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExtensionAssociationsRequest,
-  ) => stream.Stream<
-    ExtensionAssociationSummary,
-    ListExtensionAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExtensionAssociationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensionAssociationsRequest,
   output: ExtensionAssociations,
   errors: [BadRequestException, InternalServerException],
@@ -4193,27 +4066,13 @@ export type ListExtensionsError =
  * account. For more information about extensions, see Extending
  * workflows in the *AppConfig User Guide*.
  */
-export const listExtensions: API.OperationMethod<
+export const listExtensions: API.PaginatedOperationMethod<
   ListExtensionsRequest,
   Extensions,
   ListExtensionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExtensionsRequest,
-  ) => stream.Stream<
-    Extensions,
-    ListExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExtensionsRequest,
-  ) => stream.Stream<
-    ExtensionSummary,
-    ListExtensionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ExtensionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExtensionsRequest,
   output: Extensions,
   errors: [BadRequestException, InternalServerException],
@@ -4237,27 +4096,13 @@ export type ListHostedConfigurationVersionsError =
  * Lists configurations stored in the AppConfig hosted configuration store by
  * version.
  */
-export const listHostedConfigurationVersions: API.OperationMethod<
+export const listHostedConfigurationVersions: API.PaginatedOperationMethod<
   ListHostedConfigurationVersionsRequest,
   HostedConfigurationVersions,
   ListHostedConfigurationVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostedConfigurationVersionsRequest,
-  ) => stream.Stream<
-    HostedConfigurationVersions,
-    ListHostedConfigurationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListHostedConfigurationVersionsRequest,
-  ) => stream.Stream<
-    HostedConfigurationVersionSummary,
-    ListHostedConfigurationVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  HostedConfigurationVersionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostedConfigurationVersionsRequest,
   output: HostedConfigurationVersions,
   errors: [

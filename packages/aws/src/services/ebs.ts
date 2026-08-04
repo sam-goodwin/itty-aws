@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -667,27 +666,13 @@ export type ListChangedBlocksError =
  * client error responses. For more information see Error retries in the
  * *Amazon Elastic Compute Cloud User Guide*.
  */
-export const listChangedBlocks: API.OperationMethod<
+export const listChangedBlocks: API.PaginatedOperationMethod<
   ListChangedBlocksRequest,
   ListChangedBlocksResponse,
   ListChangedBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListChangedBlocksRequest,
-  ) => stream.Stream<
-    ListChangedBlocksResponse,
-    ListChangedBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListChangedBlocksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListChangedBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangedBlocksRequest,
   output: ListChangedBlocksResponse,
   errors: [
@@ -724,27 +709,13 @@ export type ListSnapshotBlocksError =
  * client error responses. For more information see Error retries in the
  * *Amazon Elastic Compute Cloud User Guide*.
  */
-export const listSnapshotBlocks: API.OperationMethod<
+export const listSnapshotBlocks: API.PaginatedOperationMethod<
   ListSnapshotBlocksRequest,
   ListSnapshotBlocksResponse,
   ListSnapshotBlocksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSnapshotBlocksRequest,
-  ) => stream.Stream<
-    ListSnapshotBlocksResponse,
-    ListSnapshotBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSnapshotBlocksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListSnapshotBlocksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotBlocksRequest,
   output: ListSnapshotBlocksResponse,
   errors: [

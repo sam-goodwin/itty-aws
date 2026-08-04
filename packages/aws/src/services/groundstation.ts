@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -3531,27 +3530,13 @@ export type ListAntennasError =
 /**
  * Returns a list of antennas at a specified ground station.
  */
-export const listAntennas: API.OperationMethod<
+export const listAntennas: API.PaginatedOperationMethod<
   ListAntennasRequest,
   ListAntennasResponse,
   ListAntennasError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAntennasRequest,
-  ) => stream.Stream<
-    ListAntennasResponse,
-    ListAntennasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAntennasRequest,
-  ) => stream.Stream<
-    AntennaListItem,
-    ListAntennasError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AntennaListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAntennasRequest,
   output: ListAntennasResponse,
   errors: [DependencyException, InvalidParameterException],
@@ -3574,27 +3559,13 @@ export type ListConfigsError =
 /**
  * Returns a list of `Config` objects.
  */
-export const listConfigs: API.OperationMethod<
+export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsRequest,
   ListConfigsResponse,
   ListConfigsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigsRequest,
-  ) => stream.Stream<
-    ListConfigsResponse,
-    ListConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListConfigsRequest,
-  ) => stream.Stream<
-    ConfigListItem,
-    ListConfigsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfigListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [
@@ -3623,27 +3594,13 @@ export type ListContactsError =
  *
  * If `statusList` contains AVAILABLE, the request must include ` groundStation`, `missionprofileArn`, and `satelliteArn`.
  */
-export const listContacts: API.OperationMethod<
+export const listContacts: API.PaginatedOperationMethod<
   ListContactsRequest,
   ListContactsResponse,
   ListContactsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactsRequest,
-  ) => stream.Stream<
-    ListContactsResponse,
-    ListContactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactsRequest,
-  ) => stream.Stream<
-    ContactData,
-    ListContactsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContactData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactsRequest,
   output: ListContactsResponse,
   errors: [
@@ -3670,27 +3627,13 @@ export type ListContactVersionsError =
 /**
  * Returns a list of versions for a specified contact.
  */
-export const listContactVersions: API.OperationMethod<
+export const listContactVersions: API.PaginatedOperationMethod<
   ListContactVersionsRequest,
   ListContactVersionsResponse,
   ListContactVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContactVersionsRequest,
-  ) => stream.Stream<
-    ListContactVersionsResponse,
-    ListContactVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContactVersionsRequest,
-  ) => stream.Stream<
-    ContactVersion,
-    ListContactVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ContactVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContactVersionsRequest,
   output: ListContactVersionsResponse,
   errors: [
@@ -3717,27 +3660,13 @@ export type ListDataflowEndpointGroupsError =
 /**
  * Returns a list of `DataflowEndpoint` groups.
  */
-export const listDataflowEndpointGroups: API.OperationMethod<
+export const listDataflowEndpointGroups: API.PaginatedOperationMethod<
   ListDataflowEndpointGroupsRequest,
   ListDataflowEndpointGroupsResponse,
   ListDataflowEndpointGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDataflowEndpointGroupsRequest,
-  ) => stream.Stream<
-    ListDataflowEndpointGroupsResponse,
-    ListDataflowEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDataflowEndpointGroupsRequest,
-  ) => stream.Stream<
-    DataflowEndpointListItem,
-    ListDataflowEndpointGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  DataflowEndpointListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataflowEndpointGroupsRequest,
   output: ListDataflowEndpointGroupsResponse,
   errors: [
@@ -3764,27 +3693,13 @@ export type ListEphemeridesError =
 /**
  * List your existing ephemerides.
  */
-export const listEphemerides: API.OperationMethod<
+export const listEphemerides: API.PaginatedOperationMethod<
   ListEphemeridesRequest,
   ListEphemeridesResponse,
   ListEphemeridesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEphemeridesRequest,
-  ) => stream.Stream<
-    ListEphemeridesResponse,
-    ListEphemeridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEphemeridesRequest,
-  ) => stream.Stream<
-    EphemerisItem,
-    ListEphemeridesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EphemerisItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEphemeridesRequest,
   output: ListEphemeridesResponse,
   errors: [
@@ -3810,27 +3725,13 @@ export type ListGroundStationReservationsError =
 /**
  * Returns a list of reservations for a specified ground station.
  */
-export const listGroundStationReservations: API.OperationMethod<
+export const listGroundStationReservations: API.PaginatedOperationMethod<
   ListGroundStationReservationsRequest,
   ListGroundStationReservationsResponse,
   ListGroundStationReservationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroundStationReservationsRequest,
-  ) => stream.Stream<
-    ListGroundStationReservationsResponse,
-    ListGroundStationReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroundStationReservationsRequest,
-  ) => stream.Stream<
-    GroundStationReservationListItem,
-    ListGroundStationReservationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroundStationReservationListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationReservationsRequest,
   output: ListGroundStationReservationsResponse,
   errors: [DependencyException, InvalidParameterException],
@@ -3853,27 +3754,13 @@ export type ListGroundStationsError =
 /**
  * Returns a list of ground stations.
  */
-export const listGroundStations: API.OperationMethod<
+export const listGroundStations: API.PaginatedOperationMethod<
   ListGroundStationsRequest,
   ListGroundStationsResponse,
   ListGroundStationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroundStationsRequest,
-  ) => stream.Stream<
-    ListGroundStationsResponse,
-    ListGroundStationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroundStationsRequest,
-  ) => stream.Stream<
-    GroundStationData,
-    ListGroundStationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GroundStationData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroundStationsRequest,
   output: ListGroundStationsResponse,
   errors: [
@@ -3900,27 +3787,13 @@ export type ListMissionProfilesError =
 /**
  * Returns a list of mission profiles.
  */
-export const listMissionProfiles: API.OperationMethod<
+export const listMissionProfiles: API.PaginatedOperationMethod<
   ListMissionProfilesRequest,
   ListMissionProfilesResponse,
   ListMissionProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMissionProfilesRequest,
-  ) => stream.Stream<
-    ListMissionProfilesResponse,
-    ListMissionProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMissionProfilesRequest,
-  ) => stream.Stream<
-    MissionProfileListItem,
-    ListMissionProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MissionProfileListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMissionProfilesRequest,
   output: ListMissionProfilesResponse,
   errors: [
@@ -3947,27 +3820,13 @@ export type ListSatellitesError =
 /**
  * Returns a list of satellites.
  */
-export const listSatellites: API.OperationMethod<
+export const listSatellites: API.PaginatedOperationMethod<
   ListSatellitesRequest,
   ListSatellitesResponse,
   ListSatellitesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSatellitesRequest,
-  ) => stream.Stream<
-    ListSatellitesResponse,
-    ListSatellitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSatellitesRequest,
-  ) => stream.Stream<
-    SatelliteListItem,
-    ListSatellitesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SatelliteListItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSatellitesRequest,
   output: ListSatellitesResponse,
   errors: [

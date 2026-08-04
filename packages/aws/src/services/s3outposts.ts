@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -483,27 +482,13 @@ export type ListEndpointsError =
  *
  * - DeleteEndpoint
  */
-export const listEndpoints: API.OperationMethod<
+export const listEndpoints: API.PaginatedOperationMethod<
   ListEndpointsRequest,
   ListEndpointsResult,
   ListEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    ListEndpointsResult,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    ListEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEndpointsRequest,
   output: ListEndpointsResult,
   errors: [
@@ -535,27 +520,13 @@ export type ListOutpostsWithS3Error =
  * Includes S3 on Outposts that you have access to as the Outposts owner, or as a shared user
  * from Resource Access Manager (RAM).
  */
-export const listOutpostsWithS3: API.OperationMethod<
+export const listOutpostsWithS3: API.PaginatedOperationMethod<
   ListOutpostsWithS3Request,
   ListOutpostsWithS3Result,
   ListOutpostsWithS3Error,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOutpostsWithS3Request,
-  ) => stream.Stream<
-    ListOutpostsWithS3Result,
-    ListOutpostsWithS3Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOutpostsWithS3Request,
-  ) => stream.Stream<
-    Outpost,
-    ListOutpostsWithS3Error,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Outpost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOutpostsWithS3Request,
   output: ListOutpostsWithS3Result,
   errors: [
@@ -591,27 +562,13 @@ export type ListSharedEndpointsError =
  *
  * - DeleteEndpoint
  */
-export const listSharedEndpoints: API.OperationMethod<
+export const listSharedEndpoints: API.PaginatedOperationMethod<
   ListSharedEndpointsRequest,
   ListSharedEndpointsResult,
   ListSharedEndpointsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSharedEndpointsRequest,
-  ) => stream.Stream<
-    ListSharedEndpointsResult,
-    ListSharedEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSharedEndpointsRequest,
-  ) => stream.Stream<
-    Endpoint,
-    ListSharedEndpointsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSharedEndpointsRequest,
   output: ListSharedEndpointsResult,
   errors: [

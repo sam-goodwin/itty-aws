@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2152,27 +2151,13 @@ export type DescribeChimeWebhookConfigurationsError =
 /**
  * Lists Amazon Chime webhook configurations optionally filtered by ChatConfigurationArn
  */
-export const describeChimeWebhookConfigurations: API.OperationMethod<
+export const describeChimeWebhookConfigurations: API.PaginatedOperationMethod<
   DescribeChimeWebhookConfigurationsRequest,
   DescribeChimeWebhookConfigurationsResult,
   DescribeChimeWebhookConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeChimeWebhookConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeChimeWebhookConfigurationsResult,
-    DescribeChimeWebhookConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeChimeWebhookConfigurationsRequest,
-  ) => stream.Stream<
-    ChimeWebhookConfiguration,
-    DescribeChimeWebhookConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ChimeWebhookConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeChimeWebhookConfigurationsRequest,
   output: DescribeChimeWebhookConfigurationsResult,
   errors: [
@@ -2199,27 +2184,13 @@ export type DescribeSlackChannelConfigurationsError =
 /**
  * Lists Slack channel configurations optionally filtered by ChatConfigurationArn
  */
-export const describeSlackChannelConfigurations: API.OperationMethod<
+export const describeSlackChannelConfigurations: API.PaginatedOperationMethod<
   DescribeSlackChannelConfigurationsRequest,
   DescribeSlackChannelConfigurationsResult,
   DescribeSlackChannelConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    DescribeSlackChannelConfigurationsResult,
-    DescribeSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSlackChannelConfigurationsRequest,
-  ) => stream.Stream<
-    SlackChannelConfiguration,
-    DescribeSlackChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SlackChannelConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSlackChannelConfigurationsRequest,
   output: DescribeSlackChannelConfigurationsResult,
   errors: [
@@ -2246,27 +2217,13 @@ export type DescribeSlackUserIdentitiesError =
 /**
  * Lists all Slack user identities with a mapped role.
  */
-export const describeSlackUserIdentities: API.OperationMethod<
+export const describeSlackUserIdentities: API.PaginatedOperationMethod<
   DescribeSlackUserIdentitiesRequest,
   DescribeSlackUserIdentitiesResult,
   DescribeSlackUserIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSlackUserIdentitiesRequest,
-  ) => stream.Stream<
-    DescribeSlackUserIdentitiesResult,
-    DescribeSlackUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSlackUserIdentitiesRequest,
-  ) => stream.Stream<
-    SlackUserIdentity,
-    DescribeSlackUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SlackUserIdentity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSlackUserIdentitiesRequest,
   output: DescribeSlackUserIdentitiesResult,
   errors: [
@@ -2293,27 +2250,13 @@ export type DescribeSlackWorkspacesError =
 /**
  * List all authorized Slack workspaces connected to the AWS Account onboarded with AWS Chatbot.
  */
-export const describeSlackWorkspaces: API.OperationMethod<
+export const describeSlackWorkspaces: API.PaginatedOperationMethod<
   DescribeSlackWorkspacesRequest,
   DescribeSlackWorkspacesResult,
   DescribeSlackWorkspacesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSlackWorkspacesRequest,
-  ) => stream.Stream<
-    DescribeSlackWorkspacesResult,
-    DescribeSlackWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSlackWorkspacesRequest,
-  ) => stream.Stream<
-    SlackWorkspace,
-    DescribeSlackWorkspacesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SlackWorkspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSlackWorkspacesRequest,
   output: DescribeSlackWorkspacesResult,
   errors: [
@@ -2441,27 +2384,13 @@ export type ListAssociationsError = InvalidRequestException | CommonErrors;
 /**
  * Lists resources associated with a channel configuration.
  */
-export const listAssociations: API.OperationMethod<
+export const listAssociations: API.PaginatedOperationMethod<
   ListAssociationsRequest,
   ListAssociationsResult,
   ListAssociationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAssociationsRequest,
-  ) => stream.Stream<
-    ListAssociationsResult,
-    ListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAssociationsRequest,
-  ) => stream.Stream<
-    AssociationListing,
-    ListAssociationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AssociationListing
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [InvalidRequestException],
@@ -2484,27 +2413,13 @@ export type ListCustomActionsError =
 /**
  * Lists custom actions defined in this account.
  */
-export const listCustomActions: API.OperationMethod<
+export const listCustomActions: API.PaginatedOperationMethod<
   ListCustomActionsRequest,
   ListCustomActionsResult,
   ListCustomActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomActionsRequest,
-  ) => stream.Stream<
-    ListCustomActionsResult,
-    ListCustomActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCustomActionsRequest,
-  ) => stream.Stream<
-    CustomActionArn,
-    ListCustomActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CustomActionArn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomActionsRequest,
   output: ListCustomActionsResult,
   errors: [
@@ -2531,27 +2446,13 @@ export type ListMicrosoftTeamsChannelConfigurationsError =
 /**
  * Lists all AWS Chatbot Microsoft Teams channel configurations in an AWS account.
  */
-export const listMicrosoftTeamsChannelConfigurations: API.OperationMethod<
+export const listMicrosoftTeamsChannelConfigurations: API.PaginatedOperationMethod<
   ListTeamsChannelConfigurationsRequest,
   ListTeamsChannelConfigurationsResult,
   ListMicrosoftTeamsChannelConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTeamsChannelConfigurationsRequest,
-  ) => stream.Stream<
-    ListTeamsChannelConfigurationsResult,
-    ListMicrosoftTeamsChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTeamsChannelConfigurationsRequest,
-  ) => stream.Stream<
-    TeamsChannelConfiguration,
-    ListMicrosoftTeamsChannelConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TeamsChannelConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTeamsChannelConfigurationsRequest,
   output: ListTeamsChannelConfigurationsResult,
   errors: [
@@ -2578,27 +2479,13 @@ export type ListMicrosoftTeamsConfiguredTeamsError =
 /**
  * Lists all authorized Microsoft Teams for an AWS Account
  */
-export const listMicrosoftTeamsConfiguredTeams: API.OperationMethod<
+export const listMicrosoftTeamsConfiguredTeams: API.PaginatedOperationMethod<
   ListMicrosoftTeamsConfiguredTeamsRequest,
   ListMicrosoftTeamsConfiguredTeamsResult,
   ListMicrosoftTeamsConfiguredTeamsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrosoftTeamsConfiguredTeamsRequest,
-  ) => stream.Stream<
-    ListMicrosoftTeamsConfiguredTeamsResult,
-    ListMicrosoftTeamsConfiguredTeamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrosoftTeamsConfiguredTeamsRequest,
-  ) => stream.Stream<
-    ConfiguredTeam,
-    ListMicrosoftTeamsConfiguredTeamsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ConfiguredTeam
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrosoftTeamsConfiguredTeamsRequest,
   output: ListMicrosoftTeamsConfiguredTeamsResult,
   errors: [
@@ -2625,27 +2512,13 @@ export type ListMicrosoftTeamsUserIdentitiesError =
 /**
  * A list all Microsoft Teams user identities with a mapped role.
  */
-export const listMicrosoftTeamsUserIdentities: API.OperationMethod<
+export const listMicrosoftTeamsUserIdentities: API.PaginatedOperationMethod<
   ListMicrosoftTeamsUserIdentitiesRequest,
   ListMicrosoftTeamsUserIdentitiesResult,
   ListMicrosoftTeamsUserIdentitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMicrosoftTeamsUserIdentitiesRequest,
-  ) => stream.Stream<
-    ListMicrosoftTeamsUserIdentitiesResult,
-    ListMicrosoftTeamsUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMicrosoftTeamsUserIdentitiesRequest,
-  ) => stream.Stream<
-    TeamsUserIdentity,
-    ListMicrosoftTeamsUserIdentitiesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TeamsUserIdentity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMicrosoftTeamsUserIdentitiesRequest,
   output: ListMicrosoftTeamsUserIdentitiesResult,
   errors: [

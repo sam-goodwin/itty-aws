@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1032,27 +1031,13 @@ export type ListEnvironmentsError =
 /**
  * Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments.
  */
-export const listEnvironments: API.OperationMethod<
+export const listEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsInput,
   ListEnvironmentsOutput,
   ListEnvironmentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    ListEnvironmentsOutput,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEnvironmentsInput,
-  ) => stream.Stream<
-    EnvironmentName,
-    ListEnvironmentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EnvironmentName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsInput,
   output: ListEnvironmentsOutput,
   errors: [InternalServerException, ValidationException],

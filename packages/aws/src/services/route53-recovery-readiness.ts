@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -2133,27 +2132,13 @@ export type GetCellReadinessSummaryError =
 /**
  * Gets readiness for a cell. Aggregates the readiness of all the resources that are associated with the cell into a single value.
  */
-export const getCellReadinessSummary: API.OperationMethod<
+export const getCellReadinessSummary: API.PaginatedOperationMethod<
   GetCellReadinessSummaryRequest,
   GetCellReadinessSummaryResponse,
   GetCellReadinessSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCellReadinessSummaryRequest,
-  ) => stream.Stream<
-    GetCellReadinessSummaryResponse,
-    GetCellReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetCellReadinessSummaryRequest,
-  ) => stream.Stream<
-    ReadinessCheckSummary,
-    GetCellReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReadinessCheckSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCellReadinessSummaryRequest,
   output: GetCellReadinessSummaryResponse,
   errors: [
@@ -2214,27 +2199,13 @@ export type GetReadinessCheckResourceStatusError =
 /**
  * Gets individual readiness status for a readiness check. To see the overall readiness status for a recovery group, that considers the readiness status for all the readiness checks in the recovery group, use GetRecoveryGroupReadinessSummary.
  */
-export const getReadinessCheckResourceStatus: API.OperationMethod<
+export const getReadinessCheckResourceStatus: API.PaginatedOperationMethod<
   GetReadinessCheckResourceStatusRequest,
   GetReadinessCheckResourceStatusResponse,
   GetReadinessCheckResourceStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReadinessCheckResourceStatusRequest,
-  ) => stream.Stream<
-    GetReadinessCheckResourceStatusResponse,
-    GetReadinessCheckResourceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReadinessCheckResourceStatusRequest,
-  ) => stream.Stream<
-    RuleResult,
-    GetReadinessCheckResourceStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RuleResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReadinessCheckResourceStatusRequest,
   output: GetReadinessCheckResourceStatusResponse,
   errors: [
@@ -2265,27 +2236,13 @@ export type GetReadinessCheckStatusError =
 /**
  * Gets the readiness status for an individual readiness check. To see the overall readiness status for a recovery group, that considers the readiness status for all the readiness checks in a recovery group, use GetRecoveryGroupReadinessSummary.
  */
-export const getReadinessCheckStatus: API.OperationMethod<
+export const getReadinessCheckStatus: API.PaginatedOperationMethod<
   GetReadinessCheckStatusRequest,
   GetReadinessCheckStatusResponse,
   GetReadinessCheckStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetReadinessCheckStatusRequest,
-  ) => stream.Stream<
-    GetReadinessCheckStatusResponse,
-    GetReadinessCheckStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetReadinessCheckStatusRequest,
-  ) => stream.Stream<
-    ResourceResult,
-    GetReadinessCheckStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetReadinessCheckStatusRequest,
   output: GetReadinessCheckStatusResponse,
   errors: [
@@ -2346,27 +2303,13 @@ export type GetRecoveryGroupReadinessSummaryError =
 /**
  * Displays a summary of information about a recovery group's readiness status. Includes the readiness checks for resources in the recovery group and the readiness status of each one.
  */
-export const getRecoveryGroupReadinessSummary: API.OperationMethod<
+export const getRecoveryGroupReadinessSummary: API.PaginatedOperationMethod<
   GetRecoveryGroupReadinessSummaryRequest,
   GetRecoveryGroupReadinessSummaryResponse,
   GetRecoveryGroupReadinessSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRecoveryGroupReadinessSummaryRequest,
-  ) => stream.Stream<
-    GetRecoveryGroupReadinessSummaryResponse,
-    GetRecoveryGroupReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetRecoveryGroupReadinessSummaryRequest,
-  ) => stream.Stream<
-    ReadinessCheckSummary,
-    GetRecoveryGroupReadinessSummaryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReadinessCheckSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRecoveryGroupReadinessSummaryRequest,
   output: GetRecoveryGroupReadinessSummaryResponse,
   errors: [
@@ -2426,27 +2369,13 @@ export type ListCellsError =
 /**
  * Lists the cells for an account.
  */
-export const listCells: API.OperationMethod<
+export const listCells: API.PaginatedOperationMethod<
   ListCellsRequest,
   ListCellsResponse,
   ListCellsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCellsRequest,
-  ) => stream.Stream<
-    ListCellsResponse,
-    ListCellsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCellsRequest,
-  ) => stream.Stream<
-    CellOutput,
-    ListCellsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CellOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCellsRequest,
   output: ListCellsResponse,
   errors: [
@@ -2475,27 +2404,13 @@ export type ListCrossAccountAuthorizationsError =
 /**
  * Lists the cross-account readiness authorizations that are in place for an account.
  */
-export const listCrossAccountAuthorizations: API.OperationMethod<
+export const listCrossAccountAuthorizations: API.PaginatedOperationMethod<
   ListCrossAccountAuthorizationsRequest,
   ListCrossAccountAuthorizationsResponse,
   ListCrossAccountAuthorizationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCrossAccountAuthorizationsRequest,
-  ) => stream.Stream<
-    ListCrossAccountAuthorizationsResponse,
-    ListCrossAccountAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListCrossAccountAuthorizationsRequest,
-  ) => stream.Stream<
-    CrossAccountAuthorization,
-    ListCrossAccountAuthorizationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CrossAccountAuthorization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCrossAccountAuthorizationsRequest,
   output: ListCrossAccountAuthorizationsResponse,
   errors: [
@@ -2524,27 +2439,13 @@ export type ListReadinessChecksError =
 /**
  * Lists the readiness checks for an account.
  */
-export const listReadinessChecks: API.OperationMethod<
+export const listReadinessChecks: API.PaginatedOperationMethod<
   ListReadinessChecksRequest,
   ListReadinessChecksResponse,
   ListReadinessChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListReadinessChecksRequest,
-  ) => stream.Stream<
-    ListReadinessChecksResponse,
-    ListReadinessChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListReadinessChecksRequest,
-  ) => stream.Stream<
-    ReadinessCheckOutput,
-    ListReadinessChecksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReadinessCheckOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListReadinessChecksRequest,
   output: ListReadinessChecksResponse,
   errors: [
@@ -2573,27 +2474,13 @@ export type ListRecoveryGroupsError =
 /**
  * Lists the recovery groups in an account.
  */
-export const listRecoveryGroups: API.OperationMethod<
+export const listRecoveryGroups: API.PaginatedOperationMethod<
   ListRecoveryGroupsRequest,
   ListRecoveryGroupsResponse,
   ListRecoveryGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecoveryGroupsRequest,
-  ) => stream.Stream<
-    ListRecoveryGroupsResponse,
-    ListRecoveryGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecoveryGroupsRequest,
-  ) => stream.Stream<
-    RecoveryGroupOutput,
-    ListRecoveryGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecoveryGroupOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecoveryGroupsRequest,
   output: ListRecoveryGroupsResponse,
   errors: [
@@ -2622,27 +2509,13 @@ export type ListResourceSetsError =
 /**
  * Lists the resource sets in an account.
  */
-export const listResourceSets: API.OperationMethod<
+export const listResourceSets: API.PaginatedOperationMethod<
   ListResourceSetsRequest,
   ListResourceSetsResponse,
   ListResourceSetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSetsRequest,
-  ) => stream.Stream<
-    ListResourceSetsResponse,
-    ListResourceSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListResourceSetsRequest,
-  ) => stream.Stream<
-    ResourceSetOutput,
-    ListResourceSetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ResourceSetOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSetsRequest,
   output: ListResourceSetsResponse,
   errors: [
@@ -2671,27 +2544,13 @@ export type ListRulesError =
 /**
  * Lists all readiness rules, or lists the readiness rules for a specific resource type.
  */
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesOutput,
-    ListRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ListRulesOutput
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [

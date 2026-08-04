@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6953,27 +6952,13 @@ export type DescribeCacheClustersError =
  * If cache nodes are currently being removed from the cluster, no endpoint information
  * for the removed nodes is displayed.
  */
-export const describeCacheClusters: API.OperationMethod<
+export const describeCacheClusters: API.PaginatedOperationMethod<
   DescribeCacheClustersMessage,
   CacheClusterMessage,
   DescribeCacheClustersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCacheClustersMessage,
-  ) => stream.Stream<
-    CacheClusterMessage,
-    DescribeCacheClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCacheClustersMessage,
-  ) => stream.Stream<
-    CacheCluster,
-    DescribeCacheClustersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CacheCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheClustersMessage,
   output: CacheClusterMessage,
   errors: [
@@ -6996,27 +6981,13 @@ export type DescribeCacheEngineVersionsError = CommonErrors;
 /**
  * Returns a list of the available cache engines and their versions.
  */
-export const describeCacheEngineVersions: API.OperationMethod<
+export const describeCacheEngineVersions: API.PaginatedOperationMethod<
   DescribeCacheEngineVersionsMessage,
   CacheEngineVersionMessage,
   DescribeCacheEngineVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCacheEngineVersionsMessage,
-  ) => stream.Stream<
-    CacheEngineVersionMessage,
-    DescribeCacheEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCacheEngineVersionsMessage,
-  ) => stream.Stream<
-    CacheEngineVersion,
-    DescribeCacheEngineVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CacheEngineVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheEngineVersionsMessage,
   output: CacheEngineVersionMessage,
   errors: [],
@@ -7040,27 +7011,13 @@ export type DescribeCacheParameterGroupsError =
  * Returns a list of cache parameter group descriptions. If a cache parameter group name
  * is specified, the list contains only the descriptions for that group.
  */
-export const describeCacheParameterGroups: API.OperationMethod<
+export const describeCacheParameterGroups: API.PaginatedOperationMethod<
   DescribeCacheParameterGroupsMessage,
   CacheParameterGroupsMessage,
   DescribeCacheParameterGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCacheParameterGroupsMessage,
-  ) => stream.Stream<
-    CacheParameterGroupsMessage,
-    DescribeCacheParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCacheParameterGroupsMessage,
-  ) => stream.Stream<
-    CacheParameterGroup,
-    DescribeCacheParameterGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CacheParameterGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheParameterGroupsMessage,
   output: CacheParameterGroupsMessage,
   errors: [
@@ -7087,27 +7044,13 @@ export type DescribeCacheParametersError =
 /**
  * Returns the detailed parameter list for a particular cache parameter group.
  */
-export const describeCacheParameters: API.OperationMethod<
+export const describeCacheParameters: API.PaginatedOperationMethod<
   DescribeCacheParametersMessage,
   CacheParameterGroupDetails,
   DescribeCacheParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCacheParametersMessage,
-  ) => stream.Stream<
-    CacheParameterGroupDetails,
-    DescribeCacheParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCacheParametersMessage,
-  ) => stream.Stream<
-    Parameter,
-    DescribeCacheParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Parameter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheParametersMessage,
   output: CacheParameterGroupDetails,
   errors: [
@@ -7136,27 +7079,13 @@ export type DescribeCacheSecurityGroupsError =
  * specified, the list contains only the description of that group. This applicable only
  * when you have ElastiCache in Classic setup
  */
-export const describeCacheSecurityGroups: API.OperationMethod<
+export const describeCacheSecurityGroups: API.PaginatedOperationMethod<
   DescribeCacheSecurityGroupsMessage,
   CacheSecurityGroupMessage,
   DescribeCacheSecurityGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCacheSecurityGroupsMessage,
-  ) => stream.Stream<
-    CacheSecurityGroupMessage,
-    DescribeCacheSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCacheSecurityGroupsMessage,
-  ) => stream.Stream<
-    CacheSecurityGroup,
-    DescribeCacheSecurityGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CacheSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheSecurityGroupsMessage,
   output: CacheSecurityGroupMessage,
   errors: [
@@ -7184,27 +7113,13 @@ export type DescribeCacheSubnetGroupsError =
  * when you have ElastiCache in VPC setup. All ElastiCache clusters now launch in VPC by
  * default.
  */
-export const describeCacheSubnetGroups: API.OperationMethod<
+export const describeCacheSubnetGroups: API.PaginatedOperationMethod<
   DescribeCacheSubnetGroupsMessage,
   CacheSubnetGroupMessage,
   DescribeCacheSubnetGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeCacheSubnetGroupsMessage,
-  ) => stream.Stream<
-    CacheSubnetGroupMessage,
-    DescribeCacheSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeCacheSubnetGroupsMessage,
-  ) => stream.Stream<
-    CacheSubnetGroup,
-    DescribeCacheSubnetGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  CacheSubnetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCacheSubnetGroupsMessage,
   output: CacheSubnetGroupMessage,
   errors: [CacheSubnetGroupNotFoundFault],
@@ -7227,27 +7142,13 @@ export type DescribeEngineDefaultParametersError =
  * Returns the default engine and system parameter information for the specified cache
  * engine.
  */
-export const describeEngineDefaultParameters: API.OperationMethod<
+export const describeEngineDefaultParameters: API.PaginatedOperationMethod<
   DescribeEngineDefaultParametersMessage,
   DescribeEngineDefaultParametersResult,
   DescribeEngineDefaultParametersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEngineDefaultParametersMessage,
-  ) => stream.Stream<
-    DescribeEngineDefaultParametersResult,
-    DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEngineDefaultParametersMessage,
-  ) => stream.Stream<
-    unknown,
-    DescribeEngineDefaultParametersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEngineDefaultParametersMessage,
   output: DescribeEngineDefaultParametersResult,
   errors: [
@@ -7277,27 +7178,13 @@ export type DescribeEventsError =
  * By default, only the events occurring within the last hour are returned; however, you
  * can retrieve up to 14 days' worth of events if necessary.
  */
-export const describeEvents: API.OperationMethod<
+export const describeEvents: API.PaginatedOperationMethod<
   DescribeEventsMessage,
   EventsMessage,
   DescribeEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    EventsMessage,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeEventsMessage,
-  ) => stream.Stream<
-    Event,
-    DescribeEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [
@@ -7324,27 +7211,13 @@ export type DescribeGlobalReplicationGroupsError =
  * Returns information about a particular global replication group. If no identifier is
  * specified, returns information about all Global datastores.
  */
-export const describeGlobalReplicationGroups: API.OperationMethod<
+export const describeGlobalReplicationGroups: API.PaginatedOperationMethod<
   DescribeGlobalReplicationGroupsMessage,
   DescribeGlobalReplicationGroupsResult,
   DescribeGlobalReplicationGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeGlobalReplicationGroupsMessage,
-  ) => stream.Stream<
-    DescribeGlobalReplicationGroupsResult,
-    DescribeGlobalReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeGlobalReplicationGroupsMessage,
-  ) => stream.Stream<
-    GlobalReplicationGroup,
-    DescribeGlobalReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  GlobalReplicationGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeGlobalReplicationGroupsMessage,
   output: DescribeGlobalReplicationGroupsResult,
   errors: [
@@ -7375,27 +7248,13 @@ export type DescribeReplicationGroupsError =
  *
  * This operation is valid for Valkey or Redis OSS only.
  */
-export const describeReplicationGroups: API.OperationMethod<
+export const describeReplicationGroups: API.PaginatedOperationMethod<
   DescribeReplicationGroupsMessage,
   ReplicationGroupMessage,
   DescribeReplicationGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReplicationGroupsMessage,
-  ) => stream.Stream<
-    ReplicationGroupMessage,
-    DescribeReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReplicationGroupsMessage,
-  ) => stream.Stream<
-    ReplicationGroup,
-    DescribeReplicationGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReplicationGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplicationGroupsMessage,
   output: ReplicationGroupMessage,
   errors: [
@@ -7423,27 +7282,13 @@ export type DescribeReservedCacheNodesError =
  * Returns information about reserved cache nodes for this account, or about a specified
  * reserved cache node.
  */
-export const describeReservedCacheNodes: API.OperationMethod<
+export const describeReservedCacheNodes: API.PaginatedOperationMethod<
   DescribeReservedCacheNodesMessage,
   ReservedCacheNodeMessage,
   DescribeReservedCacheNodesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedCacheNodesMessage,
-  ) => stream.Stream<
-    ReservedCacheNodeMessage,
-    DescribeReservedCacheNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedCacheNodesMessage,
-  ) => stream.Stream<
-    ReservedCacheNode,
-    DescribeReservedCacheNodesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedCacheNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedCacheNodesMessage,
   output: ReservedCacheNodeMessage,
   errors: [
@@ -7470,27 +7315,13 @@ export type DescribeReservedCacheNodesOfferingsError =
 /**
  * Lists available reserved cache node offerings.
  */
-export const describeReservedCacheNodesOfferings: API.OperationMethod<
+export const describeReservedCacheNodesOfferings: API.PaginatedOperationMethod<
   DescribeReservedCacheNodesOfferingsMessage,
   ReservedCacheNodesOfferingMessage,
   DescribeReservedCacheNodesOfferingsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeReservedCacheNodesOfferingsMessage,
-  ) => stream.Stream<
-    ReservedCacheNodesOfferingMessage,
-    DescribeReservedCacheNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeReservedCacheNodesOfferingsMessage,
-  ) => stream.Stream<
-    ReservedCacheNodesOffering,
-    DescribeReservedCacheNodesOfferingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ReservedCacheNodesOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedCacheNodesOfferingsMessage,
   output: ReservedCacheNodesOfferingMessage,
   errors: [
@@ -7519,27 +7350,13 @@ export type DescribeServerlessCachesError =
  * If no identifier is specified, then the API returns information on all the serverless caches belonging to
  * this Amazon Web Services account.
  */
-export const describeServerlessCaches: API.OperationMethod<
+export const describeServerlessCaches: API.PaginatedOperationMethod<
   DescribeServerlessCachesRequest,
   DescribeServerlessCachesResponse,
   DescribeServerlessCachesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServerlessCachesRequest,
-  ) => stream.Stream<
-    DescribeServerlessCachesResponse,
-    DescribeServerlessCachesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServerlessCachesRequest,
-  ) => stream.Stream<
-    ServerlessCache,
-    DescribeServerlessCachesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServerlessCache
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessCachesRequest,
   output: DescribeServerlessCachesResponse,
   errors: [
@@ -7570,27 +7387,13 @@ export type DescribeServerlessCacheSnapshotsError =
  * It can also describe a single serverless cache snapshot, or the snapshots associated with
  * a particular serverless cache. Available for Valkey, Redis OSS and Serverless Memcached only.
  */
-export const describeServerlessCacheSnapshots: API.OperationMethod<
+export const describeServerlessCacheSnapshots: API.PaginatedOperationMethod<
   DescribeServerlessCacheSnapshotsRequest,
   DescribeServerlessCacheSnapshotsResponse,
   DescribeServerlessCacheSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServerlessCacheSnapshotsRequest,
-  ) => stream.Stream<
-    DescribeServerlessCacheSnapshotsResponse,
-    DescribeServerlessCacheSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServerlessCacheSnapshotsRequest,
-  ) => stream.Stream<
-    ServerlessCacheSnapshot,
-    DescribeServerlessCacheSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServerlessCacheSnapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServerlessCacheSnapshotsRequest,
   output: DescribeServerlessCacheSnapshotsResponse,
   errors: [
@@ -7618,27 +7421,13 @@ export type DescribeServiceUpdatesError =
 /**
  * Returns details of the service updates
  */
-export const describeServiceUpdates: API.OperationMethod<
+export const describeServiceUpdates: API.PaginatedOperationMethod<
   DescribeServiceUpdatesMessage,
   ServiceUpdatesMessage,
   DescribeServiceUpdatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeServiceUpdatesMessage,
-  ) => stream.Stream<
-    ServiceUpdatesMessage,
-    DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeServiceUpdatesMessage,
-  ) => stream.Stream<
-    ServiceUpdate,
-    DescribeServiceUpdatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServiceUpdate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServiceUpdatesMessage,
   output: ServiceUpdatesMessage,
   errors: [
@@ -7671,27 +7460,13 @@ export type DescribeSnapshotsError =
  *
  * This operation is valid for Valkey or Redis OSS only.
  */
-export const describeSnapshots: API.OperationMethod<
+export const describeSnapshots: API.PaginatedOperationMethod<
   DescribeSnapshotsMessage,
   DescribeSnapshotsListMessage,
   DescribeSnapshotsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeSnapshotsMessage,
-  ) => stream.Stream<
-    DescribeSnapshotsListMessage,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeSnapshotsMessage,
-  ) => stream.Stream<
-    Snapshot,
-    DescribeSnapshotsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSnapshotsMessage,
   output: DescribeSnapshotsListMessage,
   errors: [
@@ -7718,27 +7493,13 @@ export type DescribeUpdateActionsError =
 /**
  * Returns details of the update actions
  */
-export const describeUpdateActions: API.OperationMethod<
+export const describeUpdateActions: API.PaginatedOperationMethod<
   DescribeUpdateActionsMessage,
   UpdateActionsMessage,
   DescribeUpdateActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUpdateActionsMessage,
-  ) => stream.Stream<
-    UpdateActionsMessage,
-    DescribeUpdateActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUpdateActionsMessage,
-  ) => stream.Stream<
-    UpdateAction,
-    DescribeUpdateActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UpdateAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUpdateActionsMessage,
   output: UpdateActionsMessage,
   errors: [
@@ -7764,27 +7525,13 @@ export type DescribeUserGroupsError =
 /**
  * Returns a list of user groups.
  */
-export const describeUserGroups: API.OperationMethod<
+export const describeUserGroups: API.PaginatedOperationMethod<
   DescribeUserGroupsMessage,
   DescribeUserGroupsResult,
   DescribeUserGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUserGroupsMessage,
-  ) => stream.Stream<
-    DescribeUserGroupsResult,
-    DescribeUserGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUserGroupsMessage,
-  ) => stream.Stream<
-    UserGroup,
-    DescribeUserGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  UserGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUserGroupsMessage,
   output: DescribeUserGroupsResult,
   errors: [
@@ -7811,27 +7558,13 @@ export type DescribeUsersError =
 /**
  * Returns a list of users.
  */
-export const describeUsers: API.OperationMethod<
+export const describeUsers: API.PaginatedOperationMethod<
   DescribeUsersMessage,
   DescribeUsersResult,
   DescribeUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DescribeUsersMessage,
-  ) => stream.Stream<
-    DescribeUsersResult,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: DescribeUsersMessage,
-  ) => stream.Stream<
-    User,
-    DescribeUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeUsersMessage,
   output: DescribeUsersResult,
   errors: [

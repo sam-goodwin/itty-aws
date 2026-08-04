@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1002,27 +1001,13 @@ export type ListFHIRDatastoresError =
  * List all FHIR-enabled data stores in a user’s account, regardless of data store
  * status.
  */
-export const listFHIRDatastores: API.OperationMethod<
+export const listFHIRDatastores: API.PaginatedOperationMethod<
   ListFHIRDatastoresRequest,
   ListFHIRDatastoresResponse,
   ListFHIRDatastoresError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFHIRDatastoresRequest,
-  ) => stream.Stream<
-    ListFHIRDatastoresResponse,
-    ListFHIRDatastoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFHIRDatastoresRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFHIRDatastoresError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRDatastoresRequest,
   output: ListFHIRDatastoresResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
@@ -1046,27 +1031,13 @@ export type ListFHIRExportJobsError =
 /**
  * Lists all FHIR export jobs associated with an account and their statuses.
  */
-export const listFHIRExportJobs: API.OperationMethod<
+export const listFHIRExportJobs: API.PaginatedOperationMethod<
   ListFHIRExportJobsRequest,
   ListFHIRExportJobsResponse,
   ListFHIRExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFHIRExportJobsRequest,
-  ) => stream.Stream<
-    ListFHIRExportJobsResponse,
-    ListFHIRExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFHIRExportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFHIRExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRExportJobsRequest,
   output: ListFHIRExportJobsResponse,
   errors: [
@@ -1096,27 +1067,13 @@ export type ListFHIRImportJobsError =
 /**
  * List all FHIR import jobs associated with an account and their statuses.
  */
-export const listFHIRImportJobs: API.OperationMethod<
+export const listFHIRImportJobs: API.PaginatedOperationMethod<
   ListFHIRImportJobsRequest,
   ListFHIRImportJobsResponse,
   ListFHIRImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFHIRImportJobsRequest,
-  ) => stream.Stream<
-    ListFHIRImportJobsResponse,
-    ListFHIRImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListFHIRImportJobsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListFHIRImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFHIRImportJobsRequest,
   output: ListFHIRImportJobsResponse,
   errors: [

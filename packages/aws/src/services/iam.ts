@@ -1,7 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -9897,27 +9896,13 @@ export type GetAccountAuthorizationDetailsError =
  * paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const getAccountAuthorizationDetails: API.OperationMethod<
+export const getAccountAuthorizationDetails: API.PaginatedOperationMethod<
   GetAccountAuthorizationDetailsRequest,
   GetAccountAuthorizationDetailsResponse,
   GetAccountAuthorizationDetailsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAccountAuthorizationDetailsRequest,
-  ) => stream.Stream<
-    GetAccountAuthorizationDetailsResponse,
-    GetAccountAuthorizationDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAccountAuthorizationDetailsRequest,
-  ) => stream.Stream<
-    unknown,
-    GetAccountAuthorizationDetailsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAccountAuthorizationDetailsRequest,
   output: GetAccountAuthorizationDetailsResponse,
   errors: [ServiceFailureException],
@@ -10111,27 +10096,13 @@ export type GetGroupError =
  * Returns a list of IAM users that are in the specified IAM group. You can paginate
  * the results using the `MaxItems` and `Marker` parameters.
  */
-export const getGroup: API.OperationMethod<
+export const getGroup: API.PaginatedOperationMethod<
   GetGroupRequest,
   GetGroupResponse,
   GetGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetGroupRequest,
-  ) => stream.Stream<
-    GetGroupResponse,
-    GetGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetGroupRequest,
-  ) => stream.Stream<
-    User,
-    GetGroupError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -10849,27 +10820,13 @@ export type ListAccessKeysError =
  * To ensure the security of your Amazon Web Services account, the secret access key is accessible
  * only during key and user creation.
  */
-export const listAccessKeys: API.OperationMethod<
+export const listAccessKeys: API.PaginatedOperationMethod<
   ListAccessKeysRequest,
   ListAccessKeysResponse,
   ListAccessKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessKeysRequest,
-  ) => stream.Stream<
-    ListAccessKeysResponse,
-    ListAccessKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccessKeysRequest,
-  ) => stream.Stream<
-    AccessKeyMetadata,
-    ListAccessKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccessKeyMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessKeysRequest,
   output: ListAccessKeysResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -10891,27 +10848,13 @@ export type ListAccountAliasesError = ServiceFailureException | CommonErrors;
  * deleting, and listing an Amazon Web Services account alias in the
  * *IAM User Guide*.
  */
-export const listAccountAliases: API.OperationMethod<
+export const listAccountAliases: API.PaginatedOperationMethod<
   ListAccountAliasesRequest,
   ListAccountAliasesResponse,
   ListAccountAliasesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountAliasesRequest,
-  ) => stream.Stream<
-    ListAccountAliasesResponse,
-    ListAccountAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountAliasesRequest,
-  ) => stream.Stream<
-    AccountAliasType,
-    ListAccountAliasesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountAliasType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountAliasesRequest,
   output: ListAccountAliasesResponse,
   errors: [ServiceFailureException],
@@ -10945,27 +10888,13 @@ export type ListAttachedGroupPoliciesError =
  * attached to the specified group (or none that match the specified path prefix), the
  * operation returns an empty list.
  */
-export const listAttachedGroupPolicies: API.OperationMethod<
+export const listAttachedGroupPolicies: API.PaginatedOperationMethod<
   ListAttachedGroupPoliciesRequest,
   ListAttachedGroupPoliciesResponse,
   ListAttachedGroupPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedGroupPoliciesRequest,
-  ) => stream.Stream<
-    ListAttachedGroupPoliciesResponse,
-    ListAttachedGroupPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedGroupPoliciesRequest,
-  ) => stream.Stream<
-    AttachedPolicy,
-    ListAttachedGroupPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttachedPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedGroupPoliciesRequest,
   output: ListAttachedGroupPoliciesResponse,
   errors: [
@@ -11003,27 +10932,13 @@ export type ListAttachedRolePoliciesError =
  * attached to the specified role (or none that match the specified path prefix), the
  * operation returns an empty list.
  */
-export const listAttachedRolePolicies: API.OperationMethod<
+export const listAttachedRolePolicies: API.PaginatedOperationMethod<
   ListAttachedRolePoliciesRequest,
   ListAttachedRolePoliciesResponse,
   ListAttachedRolePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedRolePoliciesRequest,
-  ) => stream.Stream<
-    ListAttachedRolePoliciesResponse,
-    ListAttachedRolePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedRolePoliciesRequest,
-  ) => stream.Stream<
-    AttachedPolicy,
-    ListAttachedRolePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttachedPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedRolePoliciesRequest,
   output: ListAttachedRolePoliciesResponse,
   errors: [
@@ -11061,27 +10976,13 @@ export type ListAttachedUserPoliciesError =
  * attached to the specified group (or none that match the specified path prefix), the
  * operation returns an empty list.
  */
-export const listAttachedUserPolicies: API.OperationMethod<
+export const listAttachedUserPolicies: API.PaginatedOperationMethod<
   ListAttachedUserPoliciesRequest,
   ListAttachedUserPoliciesResponse,
   ListAttachedUserPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttachedUserPoliciesRequest,
-  ) => stream.Stream<
-    ListAttachedUserPoliciesResponse,
-    ListAttachedUserPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAttachedUserPoliciesRequest,
-  ) => stream.Stream<
-    AttachedPolicy,
-    ListAttachedUserPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AttachedPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachedUserPoliciesRequest,
   output: ListAttachedUserPoliciesResponse,
   errors: [
@@ -11150,27 +11051,13 @@ export type ListEntitiesForPolicyError =
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listEntitiesForPolicy: API.OperationMethod<
+export const listEntitiesForPolicy: API.PaginatedOperationMethod<
   ListEntitiesForPolicyRequest,
   ListEntitiesForPolicyResponse,
   ListEntitiesForPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntitiesForPolicyRequest,
-  ) => stream.Stream<
-    ListEntitiesForPolicyResponse,
-    ListEntitiesForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntitiesForPolicyRequest,
-  ) => stream.Stream<
-    unknown,
-    ListEntitiesForPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitiesForPolicyRequest,
   output: ListEntitiesForPolicyResponse,
   errors: [
@@ -11205,27 +11092,13 @@ export type ListGroupPoliciesError =
  * parameters. If there are no inline policies embedded with the specified group, the
  * operation returns an empty list.
  */
-export const listGroupPolicies: API.OperationMethod<
+export const listGroupPolicies: API.PaginatedOperationMethod<
   ListGroupPoliciesRequest,
   ListGroupPoliciesResponse,
   ListGroupPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupPoliciesRequest,
-  ) => stream.Stream<
-    ListGroupPoliciesResponse,
-    ListGroupPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupPoliciesRequest,
-  ) => stream.Stream<
-    PolicyNameType,
-    ListGroupPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyNameType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupPoliciesRequest,
   output: ListGroupPoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -11247,27 +11120,13 @@ export type ListGroupsError = ServiceFailureException | CommonErrors;
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listGroups: API.OperationMethod<
+export const listGroups: API.PaginatedOperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    ListGroupsResponse,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsRequest,
-  ) => stream.Stream<
-    Group,
-    ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Group
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [ServiceFailureException],
@@ -11292,27 +11151,13 @@ export type ListGroupsForUserError =
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listGroupsForUser: API.OperationMethod<
+export const listGroupsForUser: API.PaginatedOperationMethod<
   ListGroupsForUserRequest,
   ListGroupsForUserResponse,
   ListGroupsForUserError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupsForUserRequest,
-  ) => stream.Stream<
-    ListGroupsForUserResponse,
-    ListGroupsForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupsForUserRequest,
-  ) => stream.Stream<
-    Group,
-    ListGroupsForUserError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Group
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsForUserRequest,
   output: ListGroupsForUserResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -11341,27 +11186,13 @@ export type ListInstanceProfilesError = ServiceFailureException | CommonErrors;
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listInstanceProfiles: API.OperationMethod<
+export const listInstanceProfiles: API.PaginatedOperationMethod<
   ListInstanceProfilesRequest,
   ListInstanceProfilesResponse,
   ListInstanceProfilesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceProfilesRequest,
-  ) => stream.Stream<
-    ListInstanceProfilesResponse,
-    ListInstanceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceProfilesRequest,
-  ) => stream.Stream<
-    InstanceProfile,
-    ListInstanceProfilesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceProfilesRequest,
   output: ListInstanceProfilesResponse,
   errors: [ServiceFailureException],
@@ -11389,27 +11220,13 @@ export type ListInstanceProfilesForRoleError =
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listInstanceProfilesForRole: API.OperationMethod<
+export const listInstanceProfilesForRole: API.PaginatedOperationMethod<
   ListInstanceProfilesForRoleRequest,
   ListInstanceProfilesForRoleResponse,
   ListInstanceProfilesForRoleError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceProfilesForRoleRequest,
-  ) => stream.Stream<
-    ListInstanceProfilesForRoleResponse,
-    ListInstanceProfilesForRoleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceProfilesForRoleRequest,
-  ) => stream.Stream<
-    InstanceProfile,
-    ListInstanceProfilesForRoleError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  InstanceProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceProfilesForRoleRequest,
   output: ListInstanceProfilesForRoleResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -11433,27 +11250,13 @@ export type ListInstanceProfileTagsError =
  * For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listInstanceProfileTags: API.OperationMethod<
+export const listInstanceProfileTags: API.PaginatedOperationMethod<
   ListInstanceProfileTagsRequest,
   ListInstanceProfileTagsResponse,
   ListInstanceProfileTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceProfileTagsRequest,
-  ) => stream.Stream<
-    ListInstanceProfileTagsResponse,
-    ListInstanceProfileTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstanceProfileTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListInstanceProfileTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceProfileTagsRequest,
   output: ListInstanceProfileTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -11481,27 +11284,13 @@ export type ListMFADevicesError =
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listMFADevices: API.OperationMethod<
+export const listMFADevices: API.PaginatedOperationMethod<
   ListMFADevicesRequest,
   ListMFADevicesResponse,
   ListMFADevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMFADevicesRequest,
-  ) => stream.Stream<
-    ListMFADevicesResponse,
-    ListMFADevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMFADevicesRequest,
-  ) => stream.Stream<
-    MFADevice,
-    ListMFADevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  MFADevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMFADevicesRequest,
   output: ListMFADevicesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -11526,27 +11315,13 @@ export type ListMFADeviceTagsError =
  * sorted by tag key. For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listMFADeviceTags: API.OperationMethod<
+export const listMFADeviceTags: API.PaginatedOperationMethod<
   ListMFADeviceTagsRequest,
   ListMFADeviceTagsResponse,
   ListMFADeviceTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMFADeviceTagsRequest,
-  ) => stream.Stream<
-    ListMFADeviceTagsResponse,
-    ListMFADeviceTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListMFADeviceTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListMFADeviceTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMFADeviceTagsRequest,
   output: ListMFADeviceTagsResponse,
   errors: [
@@ -11602,27 +11377,13 @@ export type ListOpenIDConnectProviderTagsError =
  * For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listOpenIDConnectProviderTags: API.OperationMethod<
+export const listOpenIDConnectProviderTags: API.PaginatedOperationMethod<
   ListOpenIDConnectProviderTagsRequest,
   ListOpenIDConnectProviderTagsResponse,
   ListOpenIDConnectProviderTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOpenIDConnectProviderTagsRequest,
-  ) => stream.Stream<
-    ListOpenIDConnectProviderTagsResponse,
-    ListOpenIDConnectProviderTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOpenIDConnectProviderTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListOpenIDConnectProviderTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOpenIDConnectProviderTagsRequest,
   output: ListOpenIDConnectProviderTagsResponse,
   errors: [
@@ -11691,27 +11452,13 @@ export type ListPoliciesError = ServiceFailureException | CommonErrors;
  * attributes for the resource. For example, this operation does not return tags, even though they are an attribute of the returned object. To view all of the information for a customer manged policy, see
  * GetPolicy.
  */
-export const listPolicies: API.OperationMethod<
+export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   ListPoliciesResponse,
   ListPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    Policy,
-    ListPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [ServiceFailureException],
@@ -11790,27 +11537,13 @@ export type ListPolicyTagsError =
  * The returned list of tags is sorted by tag key. For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listPolicyTags: API.OperationMethod<
+export const listPolicyTags: API.PaginatedOperationMethod<
   ListPolicyTagsRequest,
   ListPolicyTagsResponse,
   ListPolicyTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyTagsRequest,
-  ) => stream.Stream<
-    ListPolicyTagsResponse,
-    ListPolicyTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListPolicyTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyTagsRequest,
   output: ListPolicyTagsResponse,
   errors: [
@@ -11841,27 +11574,13 @@ export type ListPolicyVersionsError =
  * For more information about managed policies, see Managed policies and inline
  * policies in the *IAM User Guide*.
  */
-export const listPolicyVersions: API.OperationMethod<
+export const listPolicyVersions: API.PaginatedOperationMethod<
   ListPolicyVersionsRequest,
   ListPolicyVersionsResponse,
   ListPolicyVersionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyVersionsRequest,
-  ) => stream.Stream<
-    ListPolicyVersionsResponse,
-    ListPolicyVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyVersionsRequest,
-  ) => stream.Stream<
-    PolicyVersion,
-    ListPolicyVersionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPolicyVersionsRequest,
   output: ListPolicyVersionsResponse,
   errors: [
@@ -11897,27 +11616,13 @@ export type ListRolePoliciesError =
  * parameters. If there are no inline policies embedded with the specified role, the
  * operation returns an empty list.
  */
-export const listRolePolicies: API.OperationMethod<
+export const listRolePolicies: API.PaginatedOperationMethod<
   ListRolePoliciesRequest,
   ListRolePoliciesResponse,
   ListRolePoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRolePoliciesRequest,
-  ) => stream.Stream<
-    ListRolePoliciesResponse,
-    ListRolePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRolePoliciesRequest,
-  ) => stream.Stream<
-    PolicyNameType,
-    ListRolePoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyNameType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolePoliciesRequest,
   output: ListRolePoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -11952,27 +11657,13 @@ export type ListRolesError = ServiceFailureException | CommonErrors;
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listRoles: API.OperationMethod<
+export const listRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   ListRolesResponse,
   ListRolesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRolesRequest,
-  ) => stream.Stream<
-    ListRolesResponse,
-    ListRolesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRolesRequest,
-  ) => stream.Stream<
-    Role,
-    ListRolesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Role
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: ListRolesResponse,
   errors: [ServiceFailureException],
@@ -11996,27 +11687,13 @@ export type ListRoleTagsError =
  * sorted by tag key. For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listRoleTags: API.OperationMethod<
+export const listRoleTags: API.PaginatedOperationMethod<
   ListRoleTagsRequest,
   ListRoleTagsResponse,
   ListRoleTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoleTagsRequest,
-  ) => stream.Stream<
-    ListRoleTagsResponse,
-    ListRoleTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoleTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListRoleTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoleTagsRequest,
   output: ListRoleTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -12066,27 +11743,13 @@ export type ListSAMLProviderTagsError =
  * For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listSAMLProviderTags: API.OperationMethod<
+export const listSAMLProviderTags: API.PaginatedOperationMethod<
   ListSAMLProviderTagsRequest,
   ListSAMLProviderTagsResponse,
   ListSAMLProviderTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSAMLProviderTagsRequest,
-  ) => stream.Stream<
-    ListSAMLProviderTagsResponse,
-    ListSAMLProviderTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSAMLProviderTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListSAMLProviderTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSAMLProviderTagsRequest,
   output: ListSAMLProviderTagsResponse,
   errors: [
@@ -12124,27 +11787,13 @@ export type ListServerCertificatesError =
  * attributes for the resource. For example, this operation does not return tags, even though they are an attribute of the returned object. To view all of the information for a servercertificate, see
  * GetServerCertificate.
  */
-export const listServerCertificates: API.OperationMethod<
+export const listServerCertificates: API.PaginatedOperationMethod<
   ListServerCertificatesRequest,
   ListServerCertificatesResponse,
   ListServerCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServerCertificatesRequest,
-  ) => stream.Stream<
-    ListServerCertificatesResponse,
-    ListServerCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServerCertificatesRequest,
-  ) => stream.Stream<
-    ServerCertificateMetadata,
-    ListServerCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  ServerCertificateMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServerCertificatesRequest,
   output: ListServerCertificatesResponse,
   errors: [ServiceFailureException],
@@ -12174,27 +11823,13 @@ export type ListServerCertificateTagsError =
  * certificates, Working with server
  * certificates in the *IAM User Guide*.
  */
-export const listServerCertificateTags: API.OperationMethod<
+export const listServerCertificateTags: API.PaginatedOperationMethod<
   ListServerCertificateTagsRequest,
   ListServerCertificateTagsResponse,
   ListServerCertificateTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServerCertificateTagsRequest,
-  ) => stream.Stream<
-    ListServerCertificateTagsResponse,
-    ListServerCertificateTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServerCertificateTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListServerCertificateTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServerCertificateTagsRequest,
   output: ListServerCertificateTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -12270,27 +11905,13 @@ export type ListSigningCertificatesError =
  * this operation to manage Amazon Web Services account root user credentials even if the Amazon Web Services account has no
  * associated users.
  */
-export const listSigningCertificates: API.OperationMethod<
+export const listSigningCertificates: API.PaginatedOperationMethod<
   ListSigningCertificatesRequest,
   ListSigningCertificatesResponse,
   ListSigningCertificatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSigningCertificatesRequest,
-  ) => stream.Stream<
-    ListSigningCertificatesResponse,
-    ListSigningCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSigningCertificatesRequest,
-  ) => stream.Stream<
-    SigningCertificate,
-    ListSigningCertificatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SigningCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSigningCertificatesRequest,
   output: ListSigningCertificatesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -12318,27 +11939,13 @@ export type ListSSHPublicKeysError = NoSuchEntityException | CommonErrors;
  * Although each user is limited to a small number of keys, you can still paginate the
  * results using the `MaxItems` and `Marker` parameters.
  */
-export const listSSHPublicKeys: API.OperationMethod<
+export const listSSHPublicKeys: API.PaginatedOperationMethod<
   ListSSHPublicKeysRequest,
   ListSSHPublicKeysResponse,
   ListSSHPublicKeysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSSHPublicKeysRequest,
-  ) => stream.Stream<
-    ListSSHPublicKeysResponse,
-    ListSSHPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSSHPublicKeysRequest,
-  ) => stream.Stream<
-    SSHPublicKeyMetadata,
-    ListSSHPublicKeysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  SSHPublicKeyMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSSHPublicKeysRequest,
   output: ListSSHPublicKeysResponse,
   errors: [NoSuchEntityException],
@@ -12369,27 +11976,13 @@ export type ListUserPoliciesError =
  * parameters. If there are no inline policies embedded with the specified user, the
  * operation returns an empty list.
  */
-export const listUserPolicies: API.OperationMethod<
+export const listUserPolicies: API.PaginatedOperationMethod<
   ListUserPoliciesRequest,
   ListUserPoliciesResponse,
   ListUserPoliciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserPoliciesRequest,
-  ) => stream.Stream<
-    ListUserPoliciesResponse,
-    ListUserPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserPoliciesRequest,
-  ) => stream.Stream<
-    PolicyNameType,
-    ListUserPoliciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PolicyNameType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserPoliciesRequest,
   output: ListUserPoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -12422,27 +12015,13 @@ export type ListUsersError = ServiceFailureException | CommonErrors;
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listUsers: API.OperationMethod<
+export const listUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    ListUsersResponse,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUsersRequest,
-  ) => stream.Stream<
-    User,
-    ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [ServiceFailureException],
@@ -12465,27 +12044,13 @@ export type ListUserTagsError =
  * Lists the tags that are attached to the specified IAM user. The returned list of tags is sorted by tag key. For more information about tagging, see Tagging IAM resources in the
  * *IAM User Guide*.
  */
-export const listUserTags: API.OperationMethod<
+export const listUserTags: API.PaginatedOperationMethod<
   ListUserTagsRequest,
   ListUserTagsResponse,
   ListUserTagsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserTagsRequest,
-  ) => stream.Stream<
-    ListUserTagsResponse,
-    ListUserTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserTagsRequest,
-  ) => stream.Stream<
-    Tag,
-    ListUserTagsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  Tag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserTagsRequest,
   output: ListUserTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
@@ -12513,27 +12078,13 @@ export type ListVirtualMFADevicesError = CommonErrors;
  * You can paginate the results using the `MaxItems` and `Marker`
  * parameters.
  */
-export const listVirtualMFADevices: API.OperationMethod<
+export const listVirtualMFADevices: API.PaginatedOperationMethod<
   ListVirtualMFADevicesRequest,
   ListVirtualMFADevicesResponse,
   ListVirtualMFADevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVirtualMFADevicesRequest,
-  ) => stream.Stream<
-    ListVirtualMFADevicesResponse,
-    ListVirtualMFADevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListVirtualMFADevicesRequest,
-  ) => stream.Stream<
-    VirtualMFADevice,
-    ListVirtualMFADevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  VirtualMFADevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualMFADevicesRequest,
   output: ListVirtualMFADevicesResponse,
   errors: [],
@@ -13118,27 +12669,13 @@ export type SimulateCustomPolicyError =
  * policies with the IAM policy simulator in the
  * *IAM User Guide*.
  */
-export const simulateCustomPolicy: API.OperationMethod<
+export const simulateCustomPolicy: API.PaginatedOperationMethod<
   SimulateCustomPolicyRequest,
   SimulatePolicyResponse,
   SimulateCustomPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SimulateCustomPolicyRequest,
-  ) => stream.Stream<
-    SimulatePolicyResponse,
-    SimulateCustomPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SimulateCustomPolicyRequest,
-  ) => stream.Stream<
-    EvaluationResult,
-    SimulateCustomPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EvaluationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SimulateCustomPolicyRequest,
   output: SimulatePolicyResponse,
   errors: [InvalidInputException, PolicyEvaluationException],
@@ -13196,27 +12733,13 @@ export type SimulatePrincipalPolicyError =
  * policies with the IAM policy simulator in the
  * *IAM User Guide*.
  */
-export const simulatePrincipalPolicy: API.OperationMethod<
+export const simulatePrincipalPolicy: API.PaginatedOperationMethod<
   SimulatePrincipalPolicyRequest,
   SimulatePolicyResponse,
   SimulatePrincipalPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SimulatePrincipalPolicyRequest,
-  ) => stream.Stream<
-    SimulatePolicyResponse,
-    SimulatePrincipalPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: SimulatePrincipalPolicyRequest,
-  ) => stream.Stream<
-    EvaluationResult,
-    SimulatePrincipalPolicyError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  EvaluationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SimulatePrincipalPolicyRequest,
   output: SimulatePolicyResponse,
   errors: [

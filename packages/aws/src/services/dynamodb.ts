@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -6670,27 +6669,13 @@ export type ListContributorInsightsError =
  * Returns a list of ContributorInsightsSummary for a table and all its global secondary
  * indexes.
  */
-export const listContributorInsights: API.OperationMethod<
+export const listContributorInsights: API.PaginatedOperationMethod<
   ListContributorInsightsInput,
   ListContributorInsightsOutput,
   ListContributorInsightsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListContributorInsightsInput,
-  ) => stream.Stream<
-    ListContributorInsightsOutput,
-    ListContributorInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListContributorInsightsInput,
-  ) => stream.Stream<
-    unknown,
-    ListContributorInsightsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListContributorInsightsInput,
   output: ListContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
@@ -6711,27 +6696,13 @@ export type ListExportsError =
 /**
  * Lists completed exports within the past 90 days, in reverse alphanumeric order of `ExportArn`.
  */
-export const listExports: API.OperationMethod<
+export const listExports: API.PaginatedOperationMethod<
   ListExportsInput,
   ListExportsOutput,
   ListExportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListExportsInput,
-  ) => stream.Stream<
-    ListExportsOutput,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListExportsInput,
-  ) => stream.Stream<
-    unknown,
-    ListExportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [InternalServerError, LimitExceededException],
@@ -6774,27 +6745,13 @@ export type ListImportsError = LimitExceededException | CommonErrors;
 /**
  * Lists completed imports within the past 90 days.
  */
-export const listImports: API.OperationMethod<
+export const listImports: API.PaginatedOperationMethod<
   ListImportsInput,
   ListImportsOutput,
   ListImportsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListImportsInput,
-  ) => stream.Stream<
-    ListImportsOutput,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListImportsInput,
-  ) => stream.Stream<
-    unknown,
-    ListImportsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [LimitExceededException],
@@ -6817,27 +6774,13 @@ export type ListTablesError =
  * output from `ListTables` is paginated, with each page returning a maximum of
  * 100 table names.
  */
-export const listTables: API.OperationMethod<
+export const listTables: API.PaginatedOperationMethod<
   ListTablesInput,
   ListTablesOutput,
   ListTablesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTablesInput,
-  ) => stream.Stream<
-    ListTablesOutput,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTablesInput,
-  ) => stream.Stream<
-    TableName,
-    ListTablesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  TableName
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesInput,
   output: ListTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
@@ -7062,27 +7005,13 @@ export type QueryError =
  * do not specify `ConsistentRead` when querying a global secondary
  * index.
  */
-export const query: API.OperationMethod<
+export const query: API.PaginatedOperationMethod<
   QueryInput,
   QueryOutput,
   QueryError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryInput,
-  ) => stream.Stream<
-    QueryOutput,
-    QueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: QueryInput,
-  ) => stream.Stream<
-    { [key: string]: AttributeValue | undefined },
-    QueryError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  { [key: string]: AttributeValue | undefined }
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryInput,
   output: QueryOutput,
   errors: [
@@ -7282,27 +7211,13 @@ export type ScanError =
  * operation does not guarantee that all reads in a scan see a consistent snapshot of
  * the table when the scan operation was requested.
  */
-export const scan: API.OperationMethod<
+export const scan: API.PaginatedOperationMethod<
   ScanInput,
   ScanOutput,
   ScanError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ScanInput,
-  ) => stream.Stream<
-    ScanOutput,
-    ScanError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ScanInput,
-  ) => stream.Stream<
-    { [key: string]: AttributeValue | undefined },
-    ScanError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  { [key: string]: AttributeValue | undefined }
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ScanInput,
   output: ScanOutput,
   errors: [

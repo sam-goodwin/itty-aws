@@ -1,6 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
@@ -1881,27 +1880,13 @@ export type ListAccountsError =
  *
  * Only the management account or a delegated administrator can perform this action.
  */
-export const listAccounts: API.OperationMethod<
+export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   ListAccountsResponse,
   ListAccountsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    ListAccountsResponse,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAccountsRequest,
-  ) => stream.Stream<
-    AccountInfo,
-    ListAccountsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AccountInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -1937,27 +1922,13 @@ export type ListAutomationEventsError =
 /**
  * Lists automation events based on specified filters. You can retrieve events that were created within the past year.
  */
-export const listAutomationEvents: API.OperationMethod<
+export const listAutomationEvents: API.PaginatedOperationMethod<
   ListAutomationEventsRequest,
   ListAutomationEventsResponse,
   ListAutomationEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomationEventsRequest,
-  ) => stream.Stream<
-    ListAutomationEventsResponse,
-    ListAutomationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomationEventsRequest,
-  ) => stream.Stream<
-    AutomationEvent,
-    ListAutomationEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomationEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventsRequest,
   output: ListAutomationEventsResponse,
   errors: [
@@ -1993,27 +1964,13 @@ export type ListAutomationEventStepsError =
 /**
  * Lists the steps for a specific automation event. You can only list steps for events created within the past year.
  */
-export const listAutomationEventSteps: API.OperationMethod<
+export const listAutomationEventSteps: API.PaginatedOperationMethod<
   ListAutomationEventStepsRequest,
   ListAutomationEventStepsResponse,
   ListAutomationEventStepsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomationEventStepsRequest,
-  ) => stream.Stream<
-    ListAutomationEventStepsResponse,
-    ListAutomationEventStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomationEventStepsRequest,
-  ) => stream.Stream<
-    AutomationEventStep,
-    ListAutomationEventStepsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomationEventStep
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventStepsRequest,
   output: ListAutomationEventStepsResponse,
   errors: [
@@ -2049,27 +2006,13 @@ export type ListAutomationEventSummariesError =
 /**
  * Provides a summary of automation events based on specified filters. Only events created within the past year will be included in the summary.
  */
-export const listAutomationEventSummaries: API.OperationMethod<
+export const listAutomationEventSummaries: API.PaginatedOperationMethod<
   ListAutomationEventSummariesRequest,
   ListAutomationEventSummariesResponse,
   ListAutomationEventSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomationEventSummariesRequest,
-  ) => stream.Stream<
-    ListAutomationEventSummariesResponse,
-    ListAutomationEventSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomationEventSummariesRequest,
-  ) => stream.Stream<
-    AutomationEventSummary,
-    ListAutomationEventSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomationEventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationEventSummariesRequest,
   output: ListAutomationEventSummariesResponse,
   errors: [
@@ -2104,27 +2047,13 @@ export type ListAutomationRulePreviewError =
 /**
  * Returns a preview of the recommended actions that match your Automation rule's configuration and criteria.
  */
-export const listAutomationRulePreview: API.OperationMethod<
+export const listAutomationRulePreview: API.PaginatedOperationMethod<
   ListAutomationRulePreviewRequest,
   ListAutomationRulePreviewResponse,
   ListAutomationRulePreviewError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomationRulePreviewRequest,
-  ) => stream.Stream<
-    ListAutomationRulePreviewResponse,
-    ListAutomationRulePreviewError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomationRulePreviewRequest,
-  ) => stream.Stream<
-    PreviewResult,
-    ListAutomationRulePreviewError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PreviewResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulePreviewRequest,
   output: ListAutomationRulePreviewResponse,
   errors: [
@@ -2159,27 +2088,13 @@ export type ListAutomationRulePreviewSummariesError =
 /**
  * Returns a summary of the recommended actions that match your rule preview configuration and criteria.
  */
-export const listAutomationRulePreviewSummaries: API.OperationMethod<
+export const listAutomationRulePreviewSummaries: API.PaginatedOperationMethod<
   ListAutomationRulePreviewSummariesRequest,
   ListAutomationRulePreviewSummariesResponse,
   ListAutomationRulePreviewSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomationRulePreviewSummariesRequest,
-  ) => stream.Stream<
-    ListAutomationRulePreviewSummariesResponse,
-    ListAutomationRulePreviewSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomationRulePreviewSummariesRequest,
-  ) => stream.Stream<
-    PreviewResultSummary,
-    ListAutomationRulePreviewSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  PreviewResultSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulePreviewSummariesRequest,
   output: ListAutomationRulePreviewSummariesResponse,
   errors: [
@@ -2214,27 +2129,13 @@ export type ListAutomationRulesError =
 /**
  * Lists the automation rules that match specified filters.
  */
-export const listAutomationRules: API.OperationMethod<
+export const listAutomationRules: API.PaginatedOperationMethod<
   ListAutomationRulesRequest,
   ListAutomationRulesResponse,
   ListAutomationRulesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAutomationRulesRequest,
-  ) => stream.Stream<
-    ListAutomationRulesResponse,
-    ListAutomationRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAutomationRulesRequest,
-  ) => stream.Stream<
-    AutomationRule,
-    ListAutomationRulesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  AutomationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAutomationRulesRequest,
   output: ListAutomationRulesResponse,
   errors: [
@@ -2271,27 +2172,13 @@ export type ListRecommendedActionsError =
  *
  * Management accounts and delegated administrators can retrieve recommended actions that include associated member accounts. You can associate a member account using `AssociateAccounts`.
  */
-export const listRecommendedActions: API.OperationMethod<
+export const listRecommendedActions: API.PaginatedOperationMethod<
   ListRecommendedActionsRequest,
   ListRecommendedActionsResponse,
   ListRecommendedActionsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendedActionsRequest,
-  ) => stream.Stream<
-    ListRecommendedActionsResponse,
-    ListRecommendedActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendedActionsRequest,
-  ) => stream.Stream<
-    RecommendedAction,
-    ListRecommendedActionsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendedAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionsRequest,
   output: ListRecommendedActionsResponse,
   errors: [
@@ -2328,27 +2215,13 @@ export type ListRecommendedActionSummariesError =
  *
  * Management accounts and delegated administrators can retrieve recommended actions that include associated member accounts. You can associate a member account using `AssociateAccounts`.
  */
-export const listRecommendedActionSummaries: API.OperationMethod<
+export const listRecommendedActionSummaries: API.PaginatedOperationMethod<
   ListRecommendedActionSummariesRequest,
   ListRecommendedActionSummariesResponse,
   ListRecommendedActionSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecommendedActionSummariesRequest,
-  ) => stream.Stream<
-    ListRecommendedActionSummariesResponse,
-    ListRecommendedActionSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRecommendedActionSummariesRequest,
-  ) => stream.Stream<
-    RecommendedActionSummary,
-    ListRecommendedActionSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
+  Credentials | Region | HttpClient.HttpClient,
+  RecommendedActionSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendedActionSummariesRequest,
   output: ListRecommendedActionSummariesResponse,
   errors: [
