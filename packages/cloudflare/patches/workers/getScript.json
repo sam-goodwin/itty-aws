@@ -77,6 +77,9 @@
         },
         {
           "target": "com.cloudflare.workers#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.workers#WorkerHasNoVersions"
         }
       ]
     }

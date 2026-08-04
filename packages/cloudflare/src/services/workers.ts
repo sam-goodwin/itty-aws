@@ -35563,7 +35563,11 @@ export const getRoute: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetScriptError = WorkerNotFound | InvalidRoute | CloudflareOpError;
+export type GetScriptError =
+  | WorkerNotFound
+  | InvalidRoute
+  | WorkerHasNoVersions
+  | CloudflareOpError;
 /** Fetch raw script content for your worker. Note this is the original script content, not JSON encoded. */
 export const getScript: API.OperationMethod<
   GetScriptRequest,
@@ -35576,6 +35580,7 @@ export const getScript: API.OperationMethod<
   errors: [
     WorkerNotFound,
     InvalidRoute,
+    WorkerHasNoVersions,
     CloudflareRateLimited,
     CloudflareError,
   ],
